@@ -48,7 +48,7 @@ local allbosses = game:GetService("Workspace"):FindFirstChild("npc"):FindFirstCh
 else
     if warplace then
 if game.PlaceId == 5824792748 then
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/E/main/ShindoWarScript"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoWar?token=AVNLIIUZEH5G73ENLYTNSQTBVLGIO"))()
 else
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoDF?token=AVNLIIXFHJVO726DG7W6KBDBVLGFS"))()
 end
