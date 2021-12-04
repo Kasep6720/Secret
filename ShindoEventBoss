@@ -1,0 +1,343 @@
+--if game.PlaceId == 6984568732 then
+
+repeat wait() until game:IsLoaded()
+--old-antitp bypass
+if workspace:FindFirstChild("CCoff") then
+    game:GetService("Workspace").CCoff:Destroy()
+end
+--antiafk
+local VirtualUser=game:service'VirtualUser'
+	game:service'Players'.LocalPlayer.Idled:connect(function()
+	warn("anti-afk")
+	VirtualUser:CaptureController()
+	VirtualUser:ClickButton2(Vector2.new())
+end)
+--variables
+local player = game.Players.LocalPlayer
+local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
+local menuplace = 4616652839
+local forestplace = 5447073001
+local rainplace = 5084678830
+local trainingplace = 5431071837
+local akatsukiplace = 5431069982
+local worldxplace = 5943874201
+local villageplace = game:GetService("Workspace"):FindFirstChild("rank")
+local warplace = game:GetService("Workspace"):FindFirstChild("warmode")
+function toTarget(pos, targetPos, targetCFrame)
+    local tween_s = game:service"TweenService"
+    local info = TweenInfo.new((targetPos - pos).Magnitude/getgenv().speed, Enum.EasingStyle.Linear)
+    local tween, err = pcall(function()
+        local tween = tween_s:Create(game:GetService("Players").LocalPlayer.Character["HumanoidRootPart"], info, {CFrame = targetCFrame * CFrame.fromAxisAngle(Vector3.new(1,0,0), math.rad(90))})
+        tween:Play()
+    end)
+    if not tween then return err end
+end
+
+--loading wally ui revamped By Aika
+local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/AikaV3rm/UiLib/master/Lib.lua')))()
+local w = library:CreateWindow("Boss Farm - Shindo Life")
+_G.ToggleColor = Color3.fromRGB(117, 50, 168)
+_G.ButtonColor = Color3.fromRGB(117, 50, 168)
+_G.ButtonTextColor = Color3.fromRGB(255, 255, 255)
+--AUTOFARM
+getgenv().speed = 1000000
+local b = w:CreateFolder("AutoFarm")
+local autofarm
+b:Toggle("Track Boss",function(bool)
+	autofarm = bool
+end)
+b:Toggle("No Clip", function(bool)
+    NC = bool
+end)
+game:GetService('RunService').Stepped:connect(function()
+    if NC then
+        pcall(function()
+				game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+        end)
+    end
+end)
+b:Button("Semi-god Mode",function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/6Wumpus6/SpyHub/main/Autoopen", true))()
+end)
+b:Button("Auto Charge", function(bool)
+local chakra = string.split(game.Players.LocalPlayer.PlayerGui.Main.ingamearena.Bar.cha.Text,"CHI: ")[2]
+c = chakra:gsub("CH%: ","")
+local cha
+local function chakracheck()
+    chakra = string.split(game.Players.LocalPlayer.PlayerGui.Main.ingamearena.Bar.cha.Text,"CHI: ")[2]
+    c = chakra:gsub("CH%: ","")
+    cha = c
+            if game.Players.LocalPlayer.Character.Humanoid.WalkSpeed == 0 then
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 50
+        end
+end
+halfchi = chakra/1.5
+print("CHI will recharge at "..halfchi)
+spawn(function() 
+    while wait() do
+        if game.Players.LocalPlayer.Character.Humanoid.WalkSpeed == 0 then
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 50
+        end
+        chakracheck()
+    end
+end)
+spawn(function() 
+    while wait() do
+        if tonumber(cha) < halfchi then
+            game.Players.LocalPlayer.Character.combat.update:FireServer("key","c")
+wait(3)
+        else
+            game.Players.LocalPlayer.Character.combat.update:FireServer("key","cend")
+        end
+    end
+end)
+end)
+
+spawn(function()
+    while wait() do
+        if autofarm then
+            if  player.currentmission.Value == nil then
+                for i,v in pairs(workspace.npc:GetChildren()) do
+                    pcall(function()
+                        if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+                            repeat wait()
+                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(0,190,0)))
+                                v.Humanoid.Health = 1000
+until v.Humanoid.Health == 0 or not autofarm
+                        end
+                    end)
+                end
+            end
+        end
+    end
+end)
+b:Button("Infinite Mode",function()
+	local mode = game.Players.LocalPlayer.Character.combat.mode
+    local copy = mode:Clone()
+    copy.Parent = mode.Parent
+    mode:Destroy()
+    local chakra = string.split(game.Players.LocalPlayer.PlayerGui.Main.ingamearena.Bar.cha.Text,"CHI: ")[2]
+    c = chakra:gsub("CH%: ","")
+    local cha
+    local function chakracheck()
+		chakra = string.split(game.Players.LocalPlayer.PlayerGui.Main.ingamearena.Bar.cha.Text,"CHI: ")[2]
+		c = chakra:gsub("CH%: ","")
+		cha = c
+	end
+	halfchi = chakra/1.5
+	print("CHI will recharge at "..halfchi)
+	spawn(function() 
+		while wait() do
+			if game.Players.LocalPlayer.Character.Humanoid.WalkSpeed == 0 then
+				game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 50
+			end
+			chakracheck()
+		end
+	end)
+end)
+
+b:Button("Reset when died", function(bool)
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/6Wumpus6/SpyHub/main/Infmodeclose", true))()
+    end)
+
+local Farm = w:CreateFolder("Spam Keys")
+Farm:Toggle("Spam Q", function(bool)
+    Q = bool
+end)
+game:GetService('RunService').Stepped:connect(function()
+    if Q then
+        pcall(function()
+    game.Players.LocalPlayer.Character.combat.update:FireServer("key","q")
+    wait(.0008)
+    game.Players.LocalPlayer.Character.combat.update:FireServer("key","qend")
+    wait(.0009)
+        end)
+    end
+end)
+Farm:Toggle("Spam E", function(bool)
+    E = bool
+end)
+game:GetService('RunService').Stepped:connect(function()
+    if E then
+        pcall(function()
+    game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+    wait()
+    game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+    wait()
+        end)
+    end
+end)
+Farm:Toggle("Spam R", function(bool)
+    R = bool
+end)
+game:GetService('RunService').Stepped:connect(function()
+    if R then
+        pcall(function()
+    game.Players.LocalPlayer.Character.combat.update:FireServer("key","r")
+    wait(.0008)
+    game.Players.LocalPlayer.Character.combat.update:FireServer("key","rend")
+    wait(.0009)
+        end)
+    end
+end)
+Farm:Toggle("Spam T", function(bool)
+    T = bool
+end)
+game:GetService('RunService').Stepped:connect(function()
+    if T then
+        pcall(function()
+    game.Players.LocalPlayer.Character.combat.update:FireServer("key","t")
+    wait(.0008)
+    game.Players.LocalPlayer.Character.combat.update:FireServer("key","tend")
+    wait(.0009)
+        end)
+    end
+end)
+Farm:Toggle("Spam Y", function(bool)
+    Y = bool
+end)
+game:GetService('RunService').Stepped:connect(function()
+    if Y then
+        pcall(function()
+    game.Players.LocalPlayer.Character.combat.update:FireServer("key","y")
+    wait(.0008)
+    game.Players.LocalPlayer.Character.combat.update:FireServer("key","yend")
+    wait(.0009)
+        end)
+    end
+end)
+Farm:Toggle("Spam F", function(bool)
+    F = bool
+end)
+game:GetService('RunService').Stepped:connect(function()
+    if F then
+        pcall(function()
+    game.Players.LocalPlayer.Character.combat.update:FireServer("key","f")
+    wait(.0008)
+    game.Players.LocalPlayer.Character.combat.update:FireServer("key","fend")
+    wait(.0009)
+        end)
+    end
+end)
+Farm:Toggle("Spam G", function(bool)
+    G = bool
+end)
+game:GetService('RunService').Stepped:connect(function()
+    if G then
+        pcall(function()
+    game.Players.LocalPlayer.Character.combat.update:FireServer("key","g")
+    wait(.0008)
+    game.Players.LocalPlayer.Character.combat.update:FireServer("key","gend")
+    wait(.0009)
+        end)
+    end
+end)
+Farm:Toggle("Spam H", function(bool)
+    H = bool
+end)
+game:GetService('RunService').Stepped:connect(function()
+    if H then
+        pcall(function()
+    game.Players.LocalPlayer.Character.combat.update:FireServer("key","h")
+    wait(.0008)
+    game.Players.LocalPlayer.Character.combat.update:FireServer("key","hend")
+    wait(.0009)
+        end)
+    end
+end)
+Farm:Toggle("Spam V", function(bool)
+    V = bool
+end)
+game:GetService('RunService').Stepped:connect(function()
+    if V then
+        pcall(function()
+    game.Players.LocalPlayer.Character.combat.update:FireServer("key","v")
+    wait(.0008)
+    game.Players.LocalPlayer.Character.combat.update:FireServer("key","vend")
+    wait(.0009)
+        end)
+    end
+end)
+Farm:Toggle("Spam B", function(bool)
+    B = bool
+end)
+game:GetService('RunService').Stepped:connect(function()
+    if B then
+        pcall(function()
+    game.Players.LocalPlayer.Character.combat.update:FireServer("key","b")
+    wait(.0008)
+    game.Players.LocalPlayer.Character.combat.update:FireServer("key","bend")
+    wait(.0009)
+        end)
+    end
+end)
+Farm:Toggle("Spam N", function(bool)
+    N = bool
+end)
+game:GetService('RunService').Stepped:connect(function()
+    if N then
+        pcall(function()
+    game.Players.LocalPlayer.Character.combat.update:FireServer("key","n")
+    wait(.0008)
+    game.Players.LocalPlayer.Character.combat.update:FireServer("key","nend")
+    wait(.0009)
+        end)
+    end
+end)
+
+local f = w:CreateFolder("Credits")
+f:Label("Made by K. H.",{
+	TextSize = 15;
+    TextColor = Color3.fromRGB(255,255,255); 
+    BgColor = Color3.fromRGB(117, 50, 168);
+}) 
+f:Button("Copy Kasep's Discord Username",function()
+	setclipboard("Kasep6720#7142")
+end)
+
+
+--tips
+local player = game.Players.LocalPlayer
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local TextButton = Instance.new("TextButton")
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame.Position = UDim2.new(0.70, 0, 0.20, 0)
+Frame.Size = UDim2.new(0, 200, 0, 150)
+
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
+TextLabel.Size = UDim2.new(0, 330, 0, 90)
+TextLabel.Font = Enum.Font.AmaticSC
+TextLabel.Text = "Do not press Inf Mode and Auto Charge at the same time!!!"
+TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 35.000
+TextLabel.TextWrapped = true
+
+TextButton.Parent = Frame
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 230, 30)
+TextButton.Position = UDim2.new(0, 0, 0.600000006, 0)
+TextButton.Size = UDim2.new(0, 330, 0, 60)
+TextButton.Font = Enum.Font.AmaticSC
+TextButton.Text = "OK"
+TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextScaled = true
+TextButton.TextSize = 40.000
+TextButton.TextWrapped = true
+
+function OK()
+    for i,v in pairs(player.PlayerGui:GetChildren()) do
+        if v.Name == "ScreenGui" then
+            v:Destroy()
+end
+end
+end
+TextButton.MouseButton1Click:connect(OK)
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/HDTerebi/Shindo-Life/main/No%20CD%20Method"))()
