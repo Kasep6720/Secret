@@ -53,7 +53,7 @@ else
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoDF?token=AVNLIIXFHJVO726DG7W6KBDBVLGFS"))()
 end
 else
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/E/Kasep6720-patch-1/ShindoScript"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain?token=AVNLIIRWBYRYJ6ISMQA63ELBVLJ6W"))()
 end
 end
 end
