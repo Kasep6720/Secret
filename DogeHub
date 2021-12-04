@@ -37,7 +37,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/lmmake/jojo-/main/Uni
 end
 
 if game.PlaceId == 4616652839 then
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/E/Kasep6720-patch-2/Anti%20Accident%20Spin"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/Anti%20Accident%20Spin?token=AVNLIIVO4D7BR7TAH2VEMSTBVLGUQ"))()
 end
  
 if game.PlaceId ~= 4616652839 then
