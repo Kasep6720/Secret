@@ -37,23 +37,23 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/lmmake/jojo-/main/Uni
 end
 
 if game.PlaceId == 4616652839 then
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/Anti%20Accident%20Spin?token=AVNLIIVO4D7BR7TAH2VEMSTBVLGUQ"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/Anti%20Accident%20Spin"))()
 end
  
 if game.PlaceId ~= 4616652839 then
 local warplace = game:GetService("Workspace"):FindFirstChild("warmode")
 local allbosses = game:GetService("Workspace"):FindFirstChild("npc"):FindFirstChild("npc1")
     if allbosses then
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoEventBoss?token=AVNLIIX2SZLNHI7IG5CPNKTBVLGOO"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoEventBoss"))()
 else
     if warplace then
 if game.PlaceId == 5824792748 then
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Sechttps://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoEventBoss?token=AVNLIIX2SZLNHI7IG5CPNKTBVLGOOret/Shindo/ShindoWar?token=AVNLIIUZEH5G73ENLYTNSQTBVLGIO"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoWar"))()
 else
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoDF?token=AVNLIIXFHJVO726DG7W6KBDBVLGFS"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoDF"))()
 end
 else
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain?token=AVNLIITXKMW37PYZQVJJEVDBVLLWI"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain"))()
 end
 end
 end
