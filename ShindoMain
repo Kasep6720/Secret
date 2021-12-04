@@ -115,6 +115,11 @@ sp:Button("Glide Walk",function(bool)
         
     end)
 end)
+sp:Label("Special Functions",{
+	TextSize = 20;
+    TextColor = Color3.fromRGB(255,255,255); 
+    BgColor = Color3.fromRGB(117, 50, 168);
+})
 sp:Button("Rocket Jump",function(bool)
 	spawn(function() 
 		while wait() do
@@ -126,74 +131,13 @@ end)
 sp:Button("Add ESP", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/ProjectDolphin's%20ESP?token=AVNLIIQ55WLST5XQ4E4YWSDBVLH4I"))()
 end)
+sp:Label("DANGER",{
+	TextSize = 20;
+    TextColor = Color3.fromRGB(255,255,255); 
+    BgColor = Color3.fromRGB(117, 50, 168);
+}) 
 sp:Button("Reset Script", function()
-local player = game.Players.LocalPlayer
-local ScreenGui = Instance.new("ScreenGui")
-local Frame = Instance.new("Frame")
-local TextLabel = Instance.new("TextLabel")
-local TextButton = Instance.new("TextButton")
-local TextButton2 = Instance.new("TextButton")
-
-
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-
-Frame.Parent = ScreenGui
-Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Frame.Position = UDim2.new(0.36, 0, 0.20, 0)
-Frame.Size = UDim2.new(0, 330, 0, 150)
-
-TextLabel.Parent = Frame
-TextLabel.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
-TextLabel.Size = UDim2.new(0, 330, 0, 90)
-TextLabel.Font = Enum.Font.AmaticSC
-TextLabel.Text = "Warning!!! You must disable all Toggles before reload script!!!"
-TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
-TextLabel.TextScaled = true
-TextLabel.TextSize = 35.000
-TextLabel.TextWrapped = true
-
-TextButton.Parent = Frame
-TextButton.BackgroundColor3 = Color3.fromRGB(0, 230, 30)
-TextButton.Position = UDim2.new(0, 0, 0.600000006, 0)
-TextButton.Size = UDim2.new(0, 165, 0, 60)
-TextButton.Font = Enum.Font.AmaticSC
-TextButton.Text = "OK"
-TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
-TextButton.TextScaled = true
-TextButton.TextSize = 40.000
-TextButton.TextWrapped = true
-
-function OK29()
-    for i,v in pairs(player.PlayerGui:GetChildren()) do
-        if v.Name == "ScreenGui" then
-            v:Destroy()
-end
-end
-local player = game.Players.LocalPlayer
-        player.Character:BreakJoints()
-        wait(11)
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain?token=AVNLIIUMQTOSY4FSVZD2BZDBVLJ2C"))()
-end
-TextButton.MouseButton1Click:connect(OK29)
-
-TextButton2.Parent = Frame
-TextButton2.BackgroundColor3 = Color3.fromRGB(260, 30, 30)
-TextButton2.Position = UDim2.new(0.5, 0, 0.600000006, 0)
-TextButton2.Size = UDim2.new(0, 165, 0, 60)
-TextButton2.Font = Enum.Font.AmaticSC
-TextButton2.Text = "cancel"
-TextButton2.TextColor3 = Color3.fromRGB(0, 0, 0)
-TextButton2.TextSize = 40.000
-TextButton2.TextWrapped = true
-
-function OK22()
-    for i,v in pairs(player.PlayerGui:GetChildren()) do
-        if v.Name == "ScreenGui" then
-            v:Destroy()
-end
-end
-end
-TextButton2.MouseButton1Click:connect(OK22)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Shindo%20reset?token=AVNLIIWSZSJADLYMIVWOOU3BVLKJ2"))()
 end)
 local f = w:CreateFolder("Credits")
 f:Label("Made by K. H.",{
@@ -515,73 +459,7 @@ wkr:Label("DANGER",{
     BgColor = Color3.fromRGB(117, 50, 168);
 }) 
 wkr:Button("Reset Script",function()
-local player = game.Players.LocalPlayer
-local ScreenGui = Instance.new("ScreenGui")
-local Frame = Instance.new("Frame")
-local TextLabel = Instance.new("TextLabel")
-local TextButton = Instance.new("TextButton")
-local TextButton2 = Instance.new("TextButton")
-
-
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-
-Frame.Parent = ScreenGui
-Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Frame.Position = UDim2.new(0.36, 0, 0.20, 0)
-Frame.Size = UDim2.new(0, 330, 0, 150)
-
-TextLabel.Parent = Frame
-TextLabel.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
-TextLabel.Size = UDim2.new(0, 330, 0, 90)
-TextLabel.Font = Enum.Font.AmaticSC
-TextLabel.Text = "Warning!!! You must disable all Toggles before reload script!!!"
-TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
-TextLabel.TextScaled = true
-TextLabel.TextSize = 35.000
-TextLabel.TextWrapped = true
-
-TextButton.Parent = Frame
-TextButton.BackgroundColor3 = Color3.fromRGB(0, 230, 30)
-TextButton.Position = UDim2.new(0, 0, 0.600000006, 0)
-TextButton.Size = UDim2.new(0, 165, 0, 60)
-TextButton.Font = Enum.Font.AmaticSC
-TextButton.Text = "OK"
-TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
-TextButton.TextScaled = true
-TextButton.TextSize = 40.000
-TextButton.TextWrapped = true
-
-function OK2()
-    for i,v in pairs(player.PlayerGui:GetChildren()) do
-        if v.Name == "ScreenGui" then
-            v:Destroy()
-end
-end
-local player = game.Players.LocalPlayer
-        player.Character:BreakJoints()
-        wait(11)
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain?token=AVNLIIUMQTOSY4FSVZD2BZDBVLJ2C"))()
-end
-TextButton.MouseButton1Click:connect(OK2)
-
-TextButton2.Parent = Frame
-TextButton2.BackgroundColor3 = Color3.fromRGB(260, 30, 30)
-TextButton2.Position = UDim2.new(0.5, 0, 0.600000006, 0)
-TextButton2.Size = UDim2.new(0, 165, 0, 60)
-TextButton2.Font = Enum.Font.AmaticSC
-TextButton2.Text = "cancel"
-TextButton2.TextColor3 = Color3.fromRGB(0, 0, 0)
-TextButton2.TextSize = 40.000
-TextButton2.TextWrapped = true
-
-function OK21()
-    for i,v in pairs(player.PlayerGui:GetChildren()) do
-        if v.Name == "ScreenGui" then
-            v:Destroy()
-end
-end
-end
-TextButton2.MouseButton1Click:connect(OK21)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Shindo%20reset?token=AVNLIIWSZSJADLYMIVWOOU3BVLKJ2"))()
 end)
 wkr:Label("Pls Ignore",{
 	TextSize = 20;
@@ -912,73 +790,7 @@ wkr:Label("DANGER",{
     BgColor = Color3.fromRGB(117, 50, 168);
 }) 
 wkr:Button("Reset Script",function()
-local player = game.Players.LocalPlayer
-local ScreenGui = Instance.new("ScreenGui")
-local Frame = Instance.new("Frame")
-local TextLabel = Instance.new("TextLabel")
-local TextButton = Instance.new("TextButton")
-local TextButton2 = Instance.new("TextButton")
-
-
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-
-Frame.Parent = ScreenGui
-Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Frame.Position = UDim2.new(0.36, 0, 0.20, 0)
-Frame.Size = UDim2.new(0, 330, 0, 150)
-
-TextLabel.Parent = Frame
-TextLabel.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
-TextLabel.Size = UDim2.new(0, 330, 0, 90)
-TextLabel.Font = Enum.Font.AmaticSC
-TextLabel.Text = "Warning!!! You must disable all Toggles before reload script!!!"
-TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
-TextLabel.TextScaled = true
-TextLabel.TextSize = 35.000
-TextLabel.TextWrapped = true
-
-TextButton.Parent = Frame
-TextButton.BackgroundColor3 = Color3.fromRGB(0, 230, 30)
-TextButton.Position = UDim2.new(0, 0, 0.600000006, 0)
-TextButton.Size = UDim2.new(0, 165, 0, 60)
-TextButton.Font = Enum.Font.AmaticSC
-TextButton.Text = "OK"
-TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
-TextButton.TextScaled = true
-TextButton.TextSize = 40.000
-TextButton.TextWrapped = true
-
-function OK2()
-    for i,v in pairs(player.PlayerGui:GetChildren()) do
-        if v.Name == "ScreenGui" then
-            v:Destroy()
-end
-end
-local player = game.Players.LocalPlayer
-        player.Character:BreakJoints()
-        wait(11)
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain?token=AVNLIIUMQTOSY4FSVZD2BZDBVLJ2C"))()
-end
-TextButton.MouseButton1Click:connect(OK2)
-
-TextButton2.Parent = Frame
-TextButton2.BackgroundColor3 = Color3.fromRGB(260, 30, 30)
-TextButton2.Position = UDim2.new(0.5, 0, 0.600000006, 0)
-TextButton2.Size = UDim2.new(0, 165, 0, 60)
-TextButton2.Font = Enum.Font.AmaticSC
-TextButton2.Text = "cancel"
-TextButton2.TextColor3 = Color3.fromRGB(0, 0, 0)
-TextButton2.TextSize = 40.000
-TextButton2.TextWrapped = true
-
-function OK21()
-    for i,v in pairs(player.PlayerGui:GetChildren()) do
-        if v.Name == "ScreenGui" then
-            v:Destroy()
-end
-end
-end
-TextButton2.MouseButton1Click:connect(OK21)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Shindo%20reset?token=AVNLIIWSZSJADLYMIVWOOU3BVLKJ2"))()
 end)
 wkr:Label("Pls Ignore",{
 	TextSize = 20;
