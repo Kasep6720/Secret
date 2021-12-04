@@ -25,7 +25,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/lerkermer/lua-project
 end
 
 if game.PlaceId == 13822889 then
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Lumber%20Tycoon?token=AVNLIIWD2AOKXCHSSN2UINDBVLFYQ"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Lumber%20Tycoon"))()
 end
 
 if game.PlaceId == 6299805723 then
