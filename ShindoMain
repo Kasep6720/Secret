@@ -172,7 +172,7 @@ end
 local player = game.Players.LocalPlayer
         player.Character:BreakJoints()
         wait(11)
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/E/Kasep6720-patch-2/SLAFonly"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain?token=AVNLIIUMQTOSY4FSVZD2BZDBVLJ2C"))()
 end
 TextButton.MouseButton1Click:connect(OK29)
 
@@ -560,7 +560,7 @@ end
 local player = game.Players.LocalPlayer
         player.Character:BreakJoints()
         wait(11)
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/E/Kasep6720-patch-1/SLAFonly"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain?token=AVNLIIUMQTOSY4FSVZD2BZDBVLJ2C"))()
 end
 TextButton.MouseButton1Click:connect(OK2)
 
@@ -957,7 +957,7 @@ end
 local player = game.Players.LocalPlayer
         player.Character:BreakJoints()
         wait(11)
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/E/Kasep6720-patch-2/SLAFonly"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain?token=AVNLIIUMQTOSY4FSVZD2BZDBVLJ2C"))()
 end
 TextButton.MouseButton1Click:connect(OK2)
 
