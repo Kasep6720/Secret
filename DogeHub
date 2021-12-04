@@ -44,11 +44,11 @@ if game.PlaceId ~= 4616652839 then
 local warplace = game:GetService("Workspace"):FindFirstChild("warmode")
 local allbosses = game:GetService("Workspace"):FindFirstChild("npc"):FindFirstChild("npc1")
     if allbosses then
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/E/Kasep6720-patch-1/ShindoDEVA"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoEventBoss?token=AVNLIIX2SZLNHI7IG5CPNKTBVLGOO"))()
 else
     if warplace then
 if game.PlaceId == 5824792748 then
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoWar?token=AVNLIIUZEH5G73ENLYTNSQTBVLGIO"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Sechttps://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoEventBoss?token=AVNLIIX2SZLNHI7IG5CPNKTBVLGOOret/Shindo/ShindoWar?token=AVNLIIUZEH5G73ENLYTNSQTBVLGIO"))()
 else
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoDF?token=AVNLIIXFHJVO726DG7W6KBDBVLGFS"))()
 end
