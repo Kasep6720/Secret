@@ -129,7 +129,7 @@ sp:Button("Rocket Jump",function(bool)
     end)
 end)
 sp:Button("Add ESP", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/ProjectDolphin's%20ESP?token=AVNLIIQ55WLST5XQ4E4YWSDBVLH4I"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/ProjectDolphin's%20ESP"))()
 end)
 sp:Label("DANGER",{
 	TextSize = 20;
@@ -137,7 +137,7 @@ sp:Label("DANGER",{
     BgColor = Color3.fromRGB(117, 50, 168);
 }) 
 sp:Button("Reset Script", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Shindo%20reset?token=AVNLIIWSZSJADLYMIVWOOU3BVLKJ2"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Shindo%20reset"))()
 end)
 local f = w:CreateFolder("Credits")
 f:Label("Made by K. H.",{
@@ -459,7 +459,7 @@ wkr:Label("DANGER",{
     BgColor = Color3.fromRGB(117, 50, 168);
 }) 
 wkr:Button("Reset Script",function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Shindo%20reset?token=AVNLIIWSZSJADLYMIVWOOU3BVLKJ2"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Shindo%20reset"))()
 end)
 wkr:Label("Pls Ignore",{
 	TextSize = 20;
@@ -790,7 +790,7 @@ wkr:Label("DANGER",{
     BgColor = Color3.fromRGB(117, 50, 168);
 }) 
 wkr:Button("Reset Script",function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Shindo%20reset?token=AVNLIIWSZSJADLYMIVWOOU3BVLKJ2"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Shindo%20reset"))()
 end)
 wkr:Label("Pls Ignore",{
 	TextSize = 20;
