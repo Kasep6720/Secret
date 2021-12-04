@@ -50,7 +50,7 @@ else
 if game.PlaceId == 5824792748 then
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/E/main/ShindoWarScript"))()
 else
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/E/Kasep6720-patch-1/SLDF"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoDF?token=AVNLIIXFHJVO726DG7W6KBDBVLGFS"))()
 end
 else
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/E/Kasep6720-patch-1/ShindoScript"))()
