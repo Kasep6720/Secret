@@ -43,7 +43,7 @@ end
 local player = game.Players.LocalPlayer
         player.Character:BreakJoints()
         wait(11)
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain?token=AVNLIIUMQTOSY4FSVZD2BZDBVLJ2C"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain"))()
 end
 TextButton.MouseButton1Click:connect(OK2)
 
