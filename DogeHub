@@ -42,6 +42,10 @@ end
 
 if game.PlaceId == 4723618670 then
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Vzurxy/Scripts/main/wisteria.lua', 'penisuwucuteface:flushed:'))();
+end 
+
+if game.PlaceId == 4003872968 then
+loadstring(game:HttpGet("https://raw.githubusercontent.com/radjahfromdiscord/giantsurvival/master/gui"))()
 end
  
 if game.PlaceId ~= 4616652839 then
