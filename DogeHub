@@ -47,6 +47,9 @@ end
 if game.PlaceId == 1240123653 then
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/OP%20zombie%20attack%20script"))()
 end
+if game.PlaceId == 1632210982 then
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/OP%20zombie%20attack%20script"))()
+end
 
 if game.PlaceId == 4616652839 then 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/Anti%20Accident%20Spin"))()
