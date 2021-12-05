@@ -276,10 +276,10 @@ local RANKUPP
 b:Toggle("AutoRank",function(bool)
 	RANKUPP = bool
 end)
-local KILL
+--[[local KILL
 b:Toggle("Boss Kill Aura",function(bool)
 	KILL = bool
-end)
+end)]]
 b:Button("Infinite Mode",function()
 	local mode = game.Players.LocalPlayer.Character.combat.mode
     local copy = mode:Clone()
@@ -437,7 +437,7 @@ spawn(function()
 		end
 end)
 
-spawn(function()
+--[[spawn(function()
     while wait() do
         if KILL then
             if  player.currentmission.Value == nil then
@@ -454,7 +454,7 @@ toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Posit
             end
         end
     end
-end)
+end)]]
 				
 game:GetService('RunService').Stepped:connect(function()
     if autofarm then
@@ -653,10 +653,10 @@ local RANKUPP
 b:Toggle("AutoRank",function(bool)
 	RANKUPP = bool
 end)
-local KILL
+--[[local KILL
 b:Toggle("Boss Kill Aura", function(bool)
     KILL = bool
-end)
+end)]]
 b:Toggle("Spam E", function(bool)
     E = bool
 end)
@@ -790,7 +790,7 @@ spawn(function()
 		end
 end)
 
-spawn(function()
+--[[spawn(function()
     while wait() do
         if KILL then
             if  player.currentmission.Value == nil then
@@ -807,7 +807,7 @@ spawn(function()
             end
         end
     end
-end)
+end)]]
 				
 game:GetService('RunService').Stepped:connect(function()
     if autofarm then
