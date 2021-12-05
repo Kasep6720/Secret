@@ -36,10 +36,6 @@ if game.PlaceId == 6846458508 then
 loadstring(game:HttpGet("https://raw.githubusercontent.com/lmmake/jojo-/main/Universal%20time"))()
 end
 
-if game.PlaceId == 4616652839 then 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/Anti%20Accident%20Spin"))()
-end
-
 if game.PlaceId == 4723618670 then
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Vzurxy/Scripts/main/wisteria.lua', 'penisuwucuteface:flushed:'))();
 end 
@@ -47,8 +43,15 @@ end
 if game.PlaceId == 4003872968 then
 loadstring(game:HttpGet("https://raw.githubusercontent.com/radjahfromdiscord/giantsurvival/master/gui"))()
 end
- 
-if game.PlaceId ~= 4616652839 then
+
+if game.PlaceId == 1240123653 then
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/OP%20zombie%20attack%20script"))()
+end
+
+if game.PlaceId == 4616652839 then 
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/Anti%20Accident%20Spin"))()
+end
+ if game.PlaceId ~= 4616652839 then
 local warplace = game:GetService("Workspace"):FindFirstChild("warmode")
 local allbosses = game:GetService("Workspace"):FindFirstChild("npc"):FindFirstChild("npc1")
     if allbosses then
