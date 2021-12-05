@@ -132,7 +132,7 @@ sp:Button("Add ESP", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/ProjectDolphin's%20ESP"))()
 end)
 
-local KILL
+--[[local KILL
 sp:Toggle("Boss Kill Aura",function(bool)
 	KILL = bool
 end)
@@ -153,7 +153,8 @@ toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Posit
             end
         end
     end
-end)
+end)]]
+
 sp:Label("DANGER",{
 	TextSize = 20;
     TextColor = Color3.fromRGB(255,255,255); 
