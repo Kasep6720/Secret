@@ -9,7 +9,7 @@ local OpenB = Instance.new("TextButton")
 local MainF = Instance.new("Frame")
 local Title = Instance.new("TextLabel")
 local AutoFarm = Instance.new("TextButton")
-local Noclip = Instance.new("TextButton")
+--local Noclip = Instance.new("TextButton")
 local WalkSpeed = Instance.new("TextButton")
 local Close = Instance.new("TextButton")
 --Properties:
