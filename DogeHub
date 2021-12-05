@@ -36,8 +36,12 @@ if game.PlaceId == 6846458508 then
 loadstring(game:HttpGet("https://raw.githubusercontent.com/lmmake/jojo-/main/Universal%20time"))()
 end
 
-if game.PlaceId == 4616652839 then
+if game.PlaceId == 4616652839 then 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/Anti%20Accident%20Spin"))()
+end
+
+if game.PlaceId == 4723618670 then
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Vzurxy/Scripts/main/wisteria.lua', 'penisuwucuteface:flushed:'))();
 end
  
 if game.PlaceId ~= 4616652839 then
