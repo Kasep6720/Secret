@@ -133,7 +133,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Othe
 end)
 
 local KILL
-b:Toggle("Boss Kill Aura",function(bool)
+sp:Toggle("Boss Kill Aura",function(bool)
 	KILL = bool
 end)
 spawn(function()
