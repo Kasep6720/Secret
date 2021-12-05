@@ -129,7 +129,7 @@ end
 end
 end)
 
-Noclip.Name = "Noclip"
+--[[Noclip.Name = "Noclip"
 Noclip.Parent = MainF
 Noclip.BackgroundColor3 = Color3.new(0, 0, 0)
 Noclip.BackgroundTransparency = 0.40000000596046
@@ -165,7 +165,7 @@ while wait() do
     end
 end
 
-end)
+end)]]
 
 WalkSpeed.Name = "WalkSpeed"
 WalkSpeed.Parent = MainF
