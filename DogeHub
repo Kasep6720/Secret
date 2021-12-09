@@ -1,12 +1,16 @@
 --setclipboard(tostring(game.PlaceId))
+
+--Islands
 if game.PlaceId == 4872321990 then
 loadstring(game:HttpGet("http://void-scripts.com/Scripts/islands_new.lua"))()
 end
 
+--BABFT
 if game.PlaceId == 537413528 then
 loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Vynixius/main/Build%20A%20Boat%20For%20Treasure/BABFT"))()
 end
 
+--Bloxfruits
 if game.PlaceId == 2753915549 then
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Achitsak/CENTER-HUB/main/Blox%20Fruits"))() 
 end
@@ -17,33 +21,42 @@ if game.PlaceId == 7449423635 then
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Achitsak/CENTER-HUB/main/Blox%20Fruits"))() 
 end
 
+--Ro Ghoul
 if game.PlaceId == 914010731 then
 loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/z4gs/scripts/master/Ro-Ghoul%20Auto%20Farm.lua"))()
 end
+
+--Da Hood
 if game.PlaceId == 2788229376 then
-loadstring(game:HttpGet("https://raw.githubusercontent.com/lerkermer/lua-projects/master/SwagModeV002"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NighterEpic/Faded/main/YesEpic", true))()
 end
 
+--Lumber Tycoon
 if game.PlaceId == 13822889 then
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Lumber%20Tycoon"))()
 end
 
+--Anime Fighting Simulator
 if game.PlaceId == 6299805723 then
 loadstring(game:HttpGet("https://raw.githubusercontent.com/KiJinGaming/FreeScript/main/KJHub.lua"))()
 end
 
+--AUT
 if game.PlaceId == 6846458508 then
 loadstring(game:HttpGet("https://raw.githubusercontent.com/lmmake/jojo-/main/Universal%20time"))()
 end
 
+--Wisteria
 if game.PlaceId == 4723618670 then
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Vzurxy/Scripts/main/wisteria.lua', 'penisuwucuteface:flushed:'))();
 end 
 
+--Giant Survival
 if game.PlaceId == 4003872968 then
 loadstring(game:HttpGet("https://raw.githubusercontent.com/radjahfromdiscord/giantsurvival/master/gui"))()
 end
 
+--Zombie Attack
 if game.PlaceId == 1240123653 then
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/OP%20zombie%20attack%20script"))()
 end
@@ -51,11 +64,17 @@ if game.PlaceId == 1632210982 then
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/OP%20zombie%20attack%20script"))()
 end
 
+--Bedwars
 if game.PlaceId == 6872265039 then
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/BedWars"))()
 end
 if game.PlaceId == 6872274481 then
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/BedWars"))()
+end
+
+--YBA
+if game.PlaceId == 2809202155 then
+loadstring(game:HttpGet("https://raw.githubusercontent.com/kolgie/YBA-GUI/main/yba-gui-obfuscated.lua"))()
 end
 
 if game.PlaceId == 4616652839 then 
