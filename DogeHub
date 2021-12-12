@@ -77,6 +77,17 @@ if game.PlaceId == 2809202155 then
 loadstring(game:HttpGet("https://raw.githubusercontent.com/kolgie/YBA-GUI/main/yba-gui-obfuscated.lua"))()
 end
 
+--Ninja Legends
+if game.PlaceId == 3956818381 then
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/NinjaLegends"))()
+end
+
+--Prison Life 2
+if game.PlaceId == 155615604 then
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/PrisonLife2"))()
+end
+
+
 if game.PlaceId == 4616652839 then 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/Anti%20Accident%20Spin"))()
 end
