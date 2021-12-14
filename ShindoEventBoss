@@ -46,7 +46,7 @@ local autofarm
 b:Toggle("Track Boss",function(bool)
 	autofarm = bool
 end)
-b:Toggle("No Clip", function(bool)
+--[[b:Toggle("No Clip", function(bool)
     NC = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
@@ -55,7 +55,7 @@ game:GetService('RunService').Stepped:connect(function()
 				game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
         end)
     end
-end)
+end)]]
 b:Button("Semi-god Mode",function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/6Wumpus6/SpyHub/main/Autoopen", true))()
 end)
@@ -101,7 +101,7 @@ spawn(function()
                     pcall(function()
                         if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
                             repeat wait()
-                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(0,190,0)))
+                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(0, 190, 9)))
                                 v.Humanoid.Health = 1000
 until v.Humanoid.Health == 0 or not autofarm
                         end
@@ -341,3 +341,5 @@ end
 TextButton.MouseButton1Click:connect(OK)
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/HDTerebi/Shindo-Life/main/No%20CD%20Method"))()
+
+
