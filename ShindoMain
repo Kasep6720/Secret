@@ -224,7 +224,7 @@ TextButton.BackgroundColor3 = Color3.fromRGB(117, 50, 168)
 TextButton.Position = UDim2.new(0, 0, 0.200000006, 0)
 TextButton.Size = UDim2.new(0, 200, 0, 120)
 TextButton.Font = Enum.Font.AmaticSC
-TextButton.Text = "Chi Rod Method             (Hard to operate without good PC and chi rods)"
+TextButton.Text = "Smooth Method             (Hard to operate without good PC and chi rod toss)"
 TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
 TextButton.TextScaled = true
 TextButton.TextSize = 40.000
@@ -472,6 +472,54 @@ game:GetService('RunService').Stepped:connect(function()
 end)
 local amigo,brr = pcall(function()
     game:GetService("RunService"):UnbindFromRenderStep(game.Players.LocalPlayer.Name .. "Main")
+end)
+
+local o9b = w:CreateFolder("Daily Missions")
+o9b:Toggle("M1", function(bool)
+    smehu4 = bool
+end)
+game:GetService('RunService').Stepped:connect(function()
+    if smehu4 then
+        pcall(function()
+			game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
+			wait(.000000000000001)
+        end)
+    end
+end)
+o9b:Toggle("Rush", function(bool)
+    smehu5 = bool
+end)
+game:GetService('RunService').Stepped:connect(function()
+    if smehu5 then
+        pcall(function()
+			game.Players.LocalPlayer.Character.combat.update:FireServer("rushw")
+			wait(.00025)
+        end)
+    end
+end)
+o9b:Toggle("Chi Charge", function(bool)
+    smehu6 = bool
+end)
+game:GetService('RunService').Stepped:connect(function()
+    if smehu6 then
+        pcall(function()
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","c")
+			wait(.01)
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","cend")
+			wait(.05)
+        end)
+    end
+end)
+o9b:Toggle("Tree Jumps", function(bool)
+    smehu7 = bool
+end)
+game:GetService('RunService').Stepped:connect(function()
+    if smehu7 then
+        pcall(function()
+			game.Players.LocalPlayer.Character.combat.update:FireServer("takemovement2")
+			wait(.025)
+        end)
+    end
 end)
 
 local tut = w:CreateFolder("Info")
@@ -825,6 +873,54 @@ game:GetService('RunService').Stepped:connect(function()
 end)
 local amigo,brr = pcall(function()
     game:GetService("RunService"):UnbindFromRenderStep(game.Players.LocalPlayer.Name .. "Main")
+end)
+
+local o9b = w:CreateFolder("Daily Missions")
+o9b:Toggle("M1", function(bool)
+    smehu4 = bool
+end)
+game:GetService('RunService').Stepped:connect(function()
+    if smehu4 then
+        pcall(function()
+			game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
+			wait(.000000000000001)
+        end)
+    end
+end)
+o9b:Toggle("Rush", function(bool)
+    smehu5 = bool
+end)
+game:GetService('RunService').Stepped:connect(function()
+    if smehu5 then
+        pcall(function()
+			game.Players.LocalPlayer.Character.combat.update:FireServer("rushw")
+			wait(.00025)
+        end)
+    end
+end)
+o9b:Toggle("Chi Charge", function(bool)
+    smehu6 = bool
+end)
+game:GetService('RunService').Stepped:connect(function()
+    if smehu6 then
+        pcall(function()
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","c")
+			wait(.01)
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","cend")
+			wait(.05)
+        end)
+    end
+end)
+o9b:Toggle("Tree Jumps", function(bool)
+    smehu7 = bool
+end)
+game:GetService('RunService').Stepped:connect(function()
+    if smehu7 then
+        pcall(function()
+			game.Players.LocalPlayer.Character.combat.update:FireServer("takemovement2")
+			wait(.025)
+        end)
+    end
 end)
 
 local tut = w:CreateFolder("Info")
