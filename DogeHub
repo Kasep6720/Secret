@@ -491,7 +491,6 @@ if game.PlaceId == 6284583030 then
 loadstring(game:HttpGet("https://raw.githubusercontent.com/SandaFrosty/Dino-Script/main/Pet-Sim-X", true))()
 end
 
-
 if game.PlaceId == 4616652839 then 
 loadstring(game:HttpGet("https://bruh.keshsenpai.com/.lua"))()
 end
