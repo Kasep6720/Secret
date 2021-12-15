@@ -346,6 +346,9 @@ LoadButton.MouseButton1Click:Connect(function()
 	if game.PlaceId == 1537690962 then
 		LoadingTXT.Text = "Bee Swarm Simulator"   
     end 
+    if game.PlaceId == 6284583030 then
+		LoadingTXT.Text = "Pet Simulator X"   
+    end
 	if game.PlaceId == 4616652839 then
 		LoadingTXT.Text = "Shindo Life [Main Menu]"
     end
@@ -481,6 +484,11 @@ end
 if game.PlaceId == 1537690962 then
 shared.autoload = false -- change to profile name if you want to autoload (afking/autojoin). eg. shared.autoload = "profile"
  loadstring(game:GetObjects("rbxassetid://4384103988")[0X1].Source)("Pepsi Swarm")
+end
+
+--Pet Sim X
+if game.PlaceId == 6284583030 then
+loadstring(game:HttpGet("https://raw.githubusercontent.com/SandaFrosty/Dino-Script/main/Pet-Sim-X", true))()
 end
 
 
