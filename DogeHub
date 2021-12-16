@@ -381,11 +381,11 @@ LoadButton.MouseButton1Click:Connect(function()
 		end
 	end
 
-	wait(.82)
+	wait(.382)
 
-	LoadingTXT.Text = "Waiting For UI"
+	LoadingTXT.Text = "Waiting For script"
 
-	wait(.461)
+	wait(.0461)
 
 	LoadingTXT.Text = "Done !"
     wait(.5)
