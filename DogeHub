@@ -493,6 +493,8 @@ end
 
 if game.PlaceId == 4616652839 then 
 loadstring(game:HttpGet("https://bruh.keshsenpai.com/.lua"))()
+wait(3)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/Shindo%20Spin%20Tip"))()
 end
 end)
 end
