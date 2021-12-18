@@ -1,6 +1,273 @@
---setclipboard(tostring(game.PlaceId))
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
 
- if game.PlaceId ~= 4616652839 then
+ScreenGui.Name = "ScreenGui"
+ScreenGui.Parent = game.CoreGui
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ScreenGui.ResetOnSpawn = false
+
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame.Position = UDim2.new(0.36, 0, 0.40, 0)
+Frame.Size = UDim2.new(0, 330, 0, 150)
+
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
+TextLabel.Size = UDim2.new(0, 330, 0, 150)
+TextLabel.Font = Enum.Font.AmaticSC
+TextLabel.Text = "Loading.."
+TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 10.000
+TextLabel.TextWrapped = true
+wait(1.9)
+TextLabel.Text = "Checking if game supported"
+if game.PlaceId == 537413528 then
+wait(.3)
+TextLabel.Text = "Game supported!"
+wait(1)
+TextLabel.Text = "Build a Boat for Treasure"
+wait(1)
+TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!"
+wait(1)
+ScreenGui:Destroy()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Vynixius/main/Build%20A%20Boat%20For%20Treasure/BABFT"))()
+elseif game.PlaceId == 4872321990 then
+wait(.3)
+TextLabel.Text = "Game supported!"
+wait(1)
+TextLabel.Text = "Islands"
+wait(1)
+TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!"
+wait(1)
+ScreenGui:Destroy()
+loadstring(game:HttpGet("http://void-scripts.com/Scripts/islands_new.lua"))()
+elseif game.PlaceId == 7449423635 then
+wait(.3)
+TextLabel.Text = "Game supported!"
+wait(1)
+TextLabel.Text = "Blox Fruits [ Sea 3 ]"
+wait(1)
+TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!"
+wait(1)
+ScreenGui:Destroy()
+loadstring(game:HttpGet"https://raw.githubusercontent.com/xDepressionx/Free-Script/main/AllScript.lua")()
+elseif game.PlaceId == 4442272183 then
+wait(.3)
+TextLabel.Text = "Game supported!"
+wait(1)
+TextLabel.Text = "Blox Fruits [ Sea 2 ]"
+wait(1)
+TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!"
+wait(1)
+ScreenGui:Destroy()
+loadstring(game:HttpGet"https://raw.githubusercontent.com/xDepressionx/Free-Script/main/AllScript.lua")()
+elseif game.PlaceId == 2753915549 then
+wait(.3)
+TextLabel.Text = "Game supported!"
+wait(1)
+TextLabel.Text = "Blox Fruits [ Sea 1 ]"
+wait(1)
+TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!"
+wait(1)
+ScreenGui:Destroy()
+loadstring(game:HttpGet"https://raw.githubusercontent.com/xDepressionx/Free-Script/main/AllScript.lua")()
+elseif game.PlaceId == 914010731 then
+wait(.3)
+TextLabel.Text = "Game supported!"
+wait(1)
+TextLabel.Text = "Ro Ghoul"
+wait(1)
+TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!"
+wait(1)
+ScreenGui:Destroy()
+loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/z4gs/scripts/master/Ro-Ghoul%20Auto%20Farm.lua"))()
+elseif game.PlaceId == 2788229376 then
+wait(.3)
+TextLabel.Text = "Game supported!"
+wait(1)
+TextLabel.Text = "Da Hood"
+wait(1)
+TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!"
+wait(1)
+ScreenGui:Destroy()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NighterEpic/Faded/main/YesEpic", true))()
+elseif game.PlaceId == 914010731 then
+wait(.3)
+TextLabel.Text = "Game supported!"
+wait(1)
+TextLabel.Text = "Ro Ghoul"
+wait(1)
+TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!"
+wait(1)
+ScreenGui:Destroy()
+loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/z4gs/scripts/master/Ro-Ghoul%20Auto%20Farm.lua"))()
+elseif game.PlaceId == 13822889 then
+wait(.3)
+TextLabel.Text = "Game supported!"
+wait(1)
+TextLabel.Text = "Lumber Tycoon"
+wait(1)
+TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!"
+wait(1)
+ScreenGui:Destroy()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Lumber%20Tycoon"))()
+elseif game.PlaceId == 6299805723 then
+wait(.3)
+TextLabel.Text = "Game supported!"
+wait(1)
+TextLabel.Text = "Anime Fighters Simulator"
+wait(1)
+TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!"
+wait(1)
+ScreenGui:Destroy()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/KiJinGaming/FreeScript/main/KJHub.lua"))()
+elseif game.PlaceId == 6846458508 then
+wait(.3)
+TextLabel.Text = "Game supported!"
+wait(1)
+TextLabel.Text = "AUT"
+wait(1)
+TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!"
+wait(1)
+ScreenGui:Destroy()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/lmmake/jojo-/main/Universal%20time"))()
+elseif game.PlaceId == 4723618670 then
+wait(.3)
+TextLabel.Text = "Game supported!"
+wait(1)
+TextLabel.Text = "Wisteria"
+wait(1)
+TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!"
+wait(1)
+ScreenGui:Destroy()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Vzurxy/Scripts/main/wisteria.lua', 'penisuwucuteface:flushed:'))();
+elseif game.PlaceId == 4003872968 then
+wait(.3)
+TextLabel.Text = "Game supported!"
+wait(1)
+TextLabel.Text = "Giant Survival!"
+wait(1)
+TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!"
+wait(1)
+ScreenGui:Destroy()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/radjahfromdiscord/giantsurvival/master/gui"))()
+elseif game.PlaceId == 1240123653 then
+wait(.3)
+TextLabel.Text = "Game supported!"
+wait(1)
+TextLabel.Text = "Zombie Attack [EASY]"
+wait(1)
+TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!"
+wait(1)
+ScreenGui:Destroy()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/OP%20zombie%20attack%20script"))()
+elseif game.PlaceId == 1632210982 then
+wait(.3)
+TextLabel.Text = "Game supported!"
+wait(1)
+TextLabel.Text = "Zombie Attack [HARD]"
+wait(1)
+TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!"
+wait(1)
+ScreenGui:Destroy()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/OP%20zombie%20attack%20script"))()
+elseif game.PlaceId == 6872265039 then
+wait(.3)
+TextLabel.Text = "Game supported!"
+wait(1)
+TextLabel.Text = "Bedwars"
+wait(1)
+TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!"
+wait(1)
+ScreenGui:Destroy()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/BedWars"))()
+elseif game.PlaceId == 6872274481 then
+wait(.3)
+TextLabel.Text = "Game supported!"
+wait(1)
+TextLabel.Text = "Bedwars"
+wait(1)
+TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!"
+wait(1)
+ScreenGui:Destroy()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/BedWars"))()
+elseif game.PlaceId == 2809202155 then
+wait(.3)
+TextLabel.Text = "Game supported!"
+wait(1)
+TextLabel.Text = "YBA"
+wait(1)
+TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!"
+wait(1)
+ScreenGui:Destroy()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/kolgie/YBA-GUI/main/yba-gui-obfuscated.lua"))()
+elseif game.PlaceId == 3956818381 then
+wait(.3)
+TextLabel.Text = "Game supported!"
+wait(1)
+TextLabel.Text = "Ninja Legends"
+wait(1)
+TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!"
+wait(1)
+ScreenGui:Destroy()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/NinjaLegends"))()
+elseif game.PlaceId == 155615604 then
+wait(.3)
+TextLabel.Text = "Game supported!"
+wait(1)
+TextLabel.Text = "Prison Life"
+wait(1)
+TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!"
+wait(1)
+ScreenGui:Destroy()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/PrisonLife2"))()
+elseif game.PlaceId == 1537690962 then
+wait(.3)
+TextLabel.Text = "Game supported!"
+wait(1)
+TextLabel.Text = "Bee Swar Simulator"
+wait(1)
+TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!"
+wait(1)
+ScreenGui:Destroy()
+shared.autoload = false -- change to profile name if you want to autoload (afking/autojoin). eg. shared.autoload = "profile"
+ loadstring(game:GetObjects("rbxassetid://4384103988")[0X1].Source)("Pepsi Swarm")
+elseif game.PlaceId == 6284583030 then
+wait(.3)
+TextLabel.Text = "Game supported!"
+wait(1)
+TextLabel.Text = "Pet Simulator X"
+wait(1)
+TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!"
+wait(1)
+ScreenGui:Destroy()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/SandaFrosty/Dino-Script/main/Pet-Sim-X", true))()
+elseif game.PlaceId == 4616652839 then
+wait(.3)
+TextLabel.Text = "Game supported!"
+wait(1)
+TextLabel.Text = "Shindo Life [Main Menu]"
+wait(1)
+TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!"
+wait(1)
+ScreenGui:Destroy()
+loadstring(game:HttpGet("https://bruh.keshsenpai.com/.lua"))()
+wait(3)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/Shindo%20Spin%20Tip"))()
+elseif game.PlaceId == 4042427666 then
+wait(.3)
+TextLabel.Text = "Game supported!"
+wait(1)
+TextLabel.Text = "Anime Fightng Simulator"
+wait(1)
+TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!"
+wait(1)
+ScreenGui:Destroy()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/JRL-lav/Main/main/Anime%20Fighting%20Sim"))()
+elseif game.PlaceId ~= 4616652839 then
 local warplace = game:GetService("Workspace"):FindFirstChild("warmode")
 local allbosses = game:GetService("Workspace"):FindFirstChild("npc"):FindFirstChild("npc1")
     if allbosses then
@@ -16,494 +283,4 @@ else
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain"))()
 end
 end
-else
-local DinoLoadingUI = Instance.new("ScreenGui")
-local DinoWindow = Instance.new("ImageLabel")
-local DinoBackground = Instance.new("Frame")
-local DinoText1 = Instance.new("TextLabel")
-local DinoText2 = Instance.new("TextLabel")
-local DinoText2UIGradient = Instance.new("UIGradient")
-local Outline1 = Instance.new("Frame")
-local Outline1UIGradient = Instance.new("UIGradient")
-local AntiAFKToggle = Instance.new("Frame")
-local AntiAFKToggleTitle = Instance.new("TextLabel")
-local AntiAFKToggleButton = Instance.new("TextButton")
-local AntiAFKToggleButtonUIGradient = Instance.new("UIGradient")
-local LoadButton = Instance.new("TextButton")
-local AntiAFKToggleButtonUIGradient_2 = Instance.new("UIGradient")
-local MobileSupportToggle = Instance.new("Frame")
-local MobileSupportToggleTitle = Instance.new("TextLabel")
-local MobileSupportToggleButton = Instance.new("TextButton")
-local MobileSupportToggleButtonUIGradient = Instance.new("UIGradient")
-local DinoDescription = Instance.new("TextLabel")
-
---Properties:
-
-DinoLoadingUI.Name = "DinoLoadingUI"
-DinoLoadingUI.Parent = game.CoreGui
-DinoLoadingUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-DinoLoadingUI.ResetOnSpawn = false
-
-DinoWindow.Name = "DinoWindow"
-DinoWindow.Parent = DinoLoadingUI
-DinoWindow.AnchorPoint = Vector2.new(0.5, 0.5)
-DinoWindow.BackgroundTransparency = 1.000
-DinoWindow.BorderSizePixel = 0
-DinoWindow.Position = UDim2.new(0.499629349, 0, 0.499404043, 0)
-DinoWindow.Size = UDim2.new(0.229799852, 0, 0.190703213, 0)
-DinoWindow.Image = "rbxassetid://1316045217"
-DinoWindow.ImageColor3 = Color3.fromRGB(0, 0, 0)
-DinoWindow.ImageTransparency = 0.400
-DinoWindow.ScaleType = Enum.ScaleType.Slice
-DinoWindow.SliceCenter = Rect.new(10, 10, 118, 118)
-
-DinoBackground.Name = "DinoBackground"
-DinoBackground.Parent = DinoWindow
-DinoBackground.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-DinoBackground.BorderSizePixel = 0
-DinoBackground.Position = UDim2.new(0.0161290318, 0, 0.03125, 0)
-DinoBackground.Size = UDim2.new(0.967741907, 0, 0.9375, 0)
-
-DinoText1.Name = "DinoText1"
-DinoText1.Parent = DinoBackground
-DinoText1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-DinoText1.BackgroundTransparency = 1.000
-DinoText1.BorderSizePixel = 0
-DinoText1.Position = UDim2.new(0.300000012, 0, 0.0333333351, 0)
-DinoText1.Size = UDim2.new(0.216666669, 0, 0.100000001, 0)
-DinoText1.Visible = true
-DinoText1.Font = Enum.Font.GothamSemibold
-DinoText1.Text = "DogeHub"
-DinoText1.TextColor3 = Color3.fromRGB(180, 180, 180)
-DinoText1.TextSize = 14.000
-DinoText1.TextScaled = true
-
-DinoText2.Name = "DinoText2"
-DinoText2.Parent = DinoBackground
-DinoText2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-DinoText2.BackgroundTransparency = 1.000
-DinoText2.BorderSizePixel = 0
-DinoText2.Position = UDim2.new(0.516666651, 0, 0.0333333351, 0)
-DinoText2.Size = UDim2.new(0.15, 0, 0.100000001, 0)
-DinoText2.Visible = true
-DinoText2.Font = Enum.Font.GothamSemibold
-DinoText2.Text = "Loader"
-DinoText2.TextColor3 = Color3.fromRGB(255, 255, 255)
-DinoText2.TextSize = 14.000
-DinoText2.TextScaled = true
-
-DinoText2UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(69, 153, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(128, 173, 255))}
-DinoText2UIGradient.Name = "DinoText2UIGradient"
-DinoText2UIGradient.Parent = DinoText2
-
-Outline1.Name = "Outline1"
-Outline1.Parent = DinoBackground
-Outline1.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
-Outline1.BorderSizePixel = 0
-Outline1.Position = UDim2.new(0.0333333351, 0, 0.146666661, 0)
-Outline1.Size = UDim2.new(0.933333337, 0, 0.00666666683, 0)
-Outline1.Visible = true
-
-local LocalizationService = game:GetService("LocalizationService")
-local player = game.Players.LocalPlayer
- 
-local result, code = pcall(function()
-    return LocalizationService:GetCountryRegionForPlayerAsync(player)
-end)
-
-Outline1UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(69, 153, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(128, 173, 255))}
-Outline1UIGradient.Name = "Outline1UIGradient"
-Outline1UIGradient.Parent = Outline1
-
-AntiAFKToggle.Name = "AntiAFKToggle"
-AntiAFKToggle.Parent = DinoBackground
-AntiAFKToggle.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-AntiAFKToggle.BorderSizePixel = 0
-AntiAFKToggle.Position = UDim2.new(0.0333333351, 0, 0.166666672, 0)
-AntiAFKToggle.Size = UDim2.new(0.933333337, 0, 0.13333334, 0)
-AntiAFKToggle.Visible = true
-
-AntiAFKToggleTitle.Name = "AntiAFKToggleTitle"
-AntiAFKToggleTitle.Parent = AntiAFKToggle
-AntiAFKToggleTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-AntiAFKToggleTitle.BackgroundTransparency = 1.000
-AntiAFKToggleTitle.BorderSizePixel = 0
-AntiAFKToggleTitle.Position = UDim2.new(0.0714285746, 0, 0, 0)
-AntiAFKToggleTitle.Size = UDim2.new(0.928571403, 0, 0.999999881, 0)
-AntiAFKToggleTitle.Font = Enum.Font.GothamSemibold
-AntiAFKToggleTitle.Text = "AntiAFK | AFK Forever"
-AntiAFKToggleTitle.TextColor3 = Color3.fromRGB(180, 180, 180)
-AntiAFKToggleTitle.TextSize = 14.000
-AntiAFKToggleTitle.TextXAlignment = Enum.TextXAlignment.Left
-AntiAFKToggleTitle.TextScaled = true
-
-AntiAFKToggleButton.Name = "AntiAFKToggleButton"
-AntiAFKToggleButton.Parent = AntiAFKToggle
-AntiAFKToggleButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-AntiAFKToggleButton.BackgroundTransparency = 0.800
-AntiAFKToggleButton.BorderColor3 = Color3.fromRGB(85, 117, 168)
-AntiAFKToggleButton.Position = UDim2.new(0, 0, 0.199999988, 0)
-AntiAFKToggleButton.Size = UDim2.new(0.042857144, 0, 0.599999964, 0)
-AntiAFKToggleButton.AutoButtonColor = true
-AntiAFKToggleButton.Font = Enum.Font.SourceSans
-AntiAFKToggleButton.Text = ""
-AntiAFKToggleButton.TextColor3 = Color3.fromRGB(0, 0, 0)
-AntiAFKToggleButton.TextSize = 14.000
-AntiAFKToggleButton.TextScaled = true
-
-AntiAFKToggleButtonUIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(68, 128, 205)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(73, 141, 223))}
-AntiAFKToggleButtonUIGradient.Rotation = 80
-AntiAFKToggleButtonUIGradient.Name = "AntiAFKToggleButtonUIGradient"
-AntiAFKToggleButtonUIGradient.Parent = AntiAFKToggleButton
-
-LoadButton.Name = "LoadButton"
-LoadButton.Parent = DinoBackground
-LoadButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-LoadButton.BorderColor3 = Color3.fromRGB(85, 117, 168)
-LoadButton.Position = UDim2.new(0.25, 0, 0.779999971, 0)
-LoadButton.Size = UDim2.new(0.5, 0, 0.13333334, 0)
-LoadButton.Visible = true
-LoadButton.AutoButtonColor = false
-LoadButton.Font = Enum.Font.GothamSemibold
-LoadButton.Text = "Load"
-LoadButton.TextColor3 = Color3.fromRGB(20, 20, 20)
-LoadButton.TextSize = 14.000
-LoadButton.TextScaled = true
-
-AntiAFKToggleButtonUIGradient_2.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(68, 128, 205)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(73, 141, 223))}
-AntiAFKToggleButtonUIGradient_2.Rotation = 80
-AntiAFKToggleButtonUIGradient_2.Name = "AntiAFKToggleButtonUIGradient"
-AntiAFKToggleButtonUIGradient_2.Parent = LoadButton
-
-MobileSupportToggle.Name = "MobileSupportToggle"
-MobileSupportToggle.Parent = DinoBackground
-MobileSupportToggle.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-MobileSupportToggle.BorderSizePixel = 0
-MobileSupportToggle.Position = UDim2.new(0.0333333351, 0, 0.300000012, 0)
-MobileSupportToggle.Size = UDim2.new(0.933333337, 0, 0.13333334, 0)
-MobileSupportToggle.Visible = true
-
-MobileSupportToggleTitle.Name = "MobileSupportToggleTitle"
-MobileSupportToggleTitle.Parent = MobileSupportToggle
-MobileSupportToggleTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-MobileSupportToggleTitle.BackgroundTransparency = 1.000
-MobileSupportToggleTitle.BorderSizePixel = 0
-MobileSupportToggleTitle.Position = UDim2.new(0.0714285746, 0, 0, 0)
-MobileSupportToggleTitle.Size = UDim2.new(0.928571403, 0, 0.999999881, 0)
-MobileSupportToggleTitle.Font = Enum.Font.GothamSemibold
-MobileSupportToggleTitle.Text = "Mobile Support | Decrease Lag"
-MobileSupportToggleTitle.TextColor3 = Color3.fromRGB(180, 180, 180)
-MobileSupportToggleTitle.TextSize = 14.000
-MobileSupportToggleTitle.TextXAlignment = Enum.TextXAlignment.Left
-MobileSupportToggleTitle.TextScaled = true
-
-MobileSupportToggleButton.Name = "MobileSupportToggleButton"
-MobileSupportToggleButton.Parent = MobileSupportToggle
-MobileSupportToggleButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-MobileSupportToggleButton.BackgroundTransparency = 0.800
-MobileSupportToggleButton.BorderColor3 = Color3.fromRGB(85, 117, 168)
-MobileSupportToggleButton.Position = UDim2.new(0, 0, 0.199999988, 0)
-MobileSupportToggleButton.Size = UDim2.new(0.042857144, 0, 0.599999964, 0)
-MobileSupportToggleButton.AutoButtonColor = false
-MobileSupportToggleButton.Font = Enum.Font.SourceSans
-MobileSupportToggleButton.Text = ""
-MobileSupportToggleButton.TextColor3 = Color3.fromRGB(0, 0, 0)
-MobileSupportToggleButton.TextSize = 14.000
-MobileSupportToggleButton.TextScaled = true
-
-MobileSupportToggleButtonUIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(68, 128, 205)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(73, 141, 223))}
-MobileSupportToggleButtonUIGradient.Rotation = 80
-MobileSupportToggleButtonUIGradient.Name = "MobileSupportToggleButtonUIGradient"
-MobileSupportToggleButtonUIGradient.Parent = MobileSupportToggleButton
-
-DinoDescription.Name = "DinoDescription"
-DinoDescription.Parent = DinoBackground
-DinoDescription.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-DinoDescription.BackgroundTransparency = 1.000
-DinoDescription.BorderSizePixel = 0
-DinoDescription.Position = UDim2.new(0.0333333351, 0, 0.533333361, 0)
-DinoDescription.Size = UDim2.new(0.933333337, 0, 0.200000003, 0)
-DinoDescription.Visible = true
-DinoDescription.Font = Enum.Font.GothamSemibold
-DinoDescription.Text = "Description : Thank You For Using DogeHub. This is NOT a script hub!!!"
-DinoDescription.TextColor3 = Color3.fromRGB(150, 150, 150)
-DinoDescription.TextSize = 14.000
-DinoDescription.TextWrapped = true
-DinoDescription.TextXAlignment = Enum.TextXAlignment.Left
-DinoDescription.TextScaled = true
-
-local antiafktoggled = false
-local mobilesupported = false
-
-AntiAFKToggleButton.MouseButton1Click:Connect(function()
-	if antiafktoggled then
-		game:GetService("TweenService"):Create(AntiAFKToggleButton, TweenInfo.new(0.08, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {BackgroundTransparency = 0.8}):Play()
-		antiafktoggled = false
-	else
-		game:GetService("TweenService"):Create(AntiAFKToggleButton, TweenInfo.new(0.08, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play()
-		antiafktoggled = true
-	end
-	if antiafktoggled then
-		local AntiAFK = game:GetService("VirtualUser")
-		AntiAFKT = game:GetService("Players").LocalPlayer.Idled:connect(function()
-			AntiAFK:CaptureController()
-			AntiAFK:ClickButton2(Vector2.new())
-		end)
-	else
-		AntiAFKT:Disconnect()
-	end
-end)
-MobileSupportToggleButton.MouseButton1Click:Connect(function()
-	if mobilesupported then
-		game:GetService("TweenService"):Create(MobileSupportToggleButton, TweenInfo.new(0.08, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {BackgroundTransparency = 0.8}):Play()
-		mobilesupported = false
-	else
-		game:GetService("TweenService"):Create(MobileSupportToggleButton, TweenInfo.new(0.08, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play()
-		mobilesupported = true
-	end
-end)
-local gamesupported = false
-LoadButton.MouseButton1Click:Connect(function()
-	for _, sodi in pairs(DinoBackground:GetChildren()) do
-		sodi:Destroy()
-	end
-	local LoadingTXT = Instance.new("TextLabel")
-
-	--Properties:
-
-	LoadingTXT.Name = "LoadingTXT"
-	LoadingTXT.Parent = DinoBackground
-	LoadingTXT.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	LoadingTXT.BackgroundTransparency = 1.000
-	LoadingTXT.BorderSizePixel = 0
-	LoadingTXT.Position = UDim2.new(0.159999996, 0, 0.406666666, 0)
-	LoadingTXT.Size = UDim2.new(0.666666687, 0, 0.166666672, 0)
-	LoadingTXT.Font = Enum.Font.GothamSemibold
-	LoadingTXT.Text = "Checking If Game Supported"
-	LoadingTXT.TextColor3 = Color3.fromRGB(180, 180, 180)
-	LoadingTXT.TextSize = 14.000
-	LoadingTXT.TextScaled = true
-	wait(1)
-
-	LoadingTXT.Text = "Game Supported !"
-	
-	wait(.8)
-    LoadingTXT.Text = "Hello Player From : " .. code
-	wait(1.75)
-	if game.PlaceId == 7449423635 then
-		LoadingTXT.Text = "Blox Fruits [ Sea 3 ]"
-	elseif game.PlaceId == 2753915549 then
-		LoadingTXT.Text = "Blox Fruits [ Sea 1 ]"
-	elseif game.PlaceId == 4442272183 then
-		LoadingTXT.Text = "Blox Fruits [ Sea 2 ]"   
-	end
-	if game.PlaceId == 4872321990 then
-		LoadingTXT.Text = "Islands"   
-    end 
-	if game.PlaceId == 914010731 then
-		LoadingTXT.Text = "Ro Ghoul"   
-    end 
-	if game.PlaceId == 537413528 then
-		LoadingTXT.Text = "Build a Boat for Treasure"   
-	end 
-	if game.PlaceId == 2788229376 then
-		LoadingTXT.Text = "Da Hood"   
-    end 
-	if game.PlaceId == 13822889 then
-		LoadingTXT.Text = "Lumber Tycoon 2"   
-    end  
-	if game.PlaceId == 6299805723 then
-		LoadingTXT.Text = "Anime Fighting Simulator"   
-    end  
-	if game.PlaceId == 6846458508 then
-		LoadingTXT.Text = "AUT"   
-    end 
-	if game.PlaceId == 4723618670 then
-		LoadingTXT.Text = "Wisteria"   
-    end 
-	if game.PlaceId == 4003872968 then
-		LoadingTXT.Text = "Giant Survival!"   
-    end 
-	if game.PlaceId == 1240123653 then
-		LoadingTXT.Text = "Zombie Attack [EASY]"
-	elseif game.PlaceId == 1632210982 then
-		LoadingTXT.Text = "Zombie Attack [HARD]"   
-	end
-	if game.PlaceId == 6872265039 then
-		LoadingTXT.Text = "BedWars"   
-	elseif game.PlaceId == 6872274481 then
-		LoadingTXT.Text = "BedWars" 
-    end 
-	if game.PlaceId == 2809202155 then
-		LoadingTXT.Text = "YBA"   
-    end 
-	if game.PlaceId == 3956818381 then
-		LoadingTXT.Text = "Ninja Legends"   
-    end 
-	if game.PlaceId == 155615604 then
-		LoadingTXT.Text = "Prison Life"   
-    end 
-	if game.PlaceId == 1537690962 then
-		LoadingTXT.Text = "Bee Swarm Simulator"   
-    end 
-    if game.PlaceId == 6284583030 then
-		LoadingTXT.Text = "Pet Simulator X"   
-    end
-	if game.PlaceId == 4616652839 then
-		LoadingTXT.Text = "Shindo Life [Main Menu]"
-    end
-    	if game.PlaceId == 4042427666 then
-		LoadingTXT.Text = "Anime Fighting Simulator"
-    end
-	wait(1.25)
-	LoadingTXT.Text = "Checking Function..."
-
-	if mobilesupported then
-		local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
-		local g = game
-		local w = g.Workspace
-		local l = g.Lighting
-		local t = w.Terrain
-		t.WaterWaveSize = 0
-		t.WaterWaveSpeed = 0
-		t.WaterReflectance = 0
-		t.WaterTransparency = 0
-		l.GlobalShadows = false
-		l.FogEnd = 9e9
-		l.Brightness = 0
-		settings().Rendering.QualityLevel = "Level01"
-		for i,v in pairs(g:GetDescendants()) do
-			if v:IsA("Part") or v:IsA("Union") or v:IsA("MeshPart") then
-				v.Material = "Plastic"
-				v.Reflectance = 0
-			elseif v:IsA("Decal") and decalsyeeted then 
-				v.Transparency = 1
-			elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then 
-				v.Lifetime = NumberRange.new(0)
-			end
-		end
-	end
-
-	wait(.382)
-
-	LoadingTXT.Text = "Waiting For script"
-
-	wait(.0461)
-
-	LoadingTXT.Text = "Done!"
-    wait(.5)
-    DinoLoadingUI:Destroy()
-
-	wait(.02)
-
---Islands
-if game.PlaceId == 4872321990 then
-loadstring(game:HttpGet("http://void-scripts.com/Scripts/islands_new.lua"))()
-end
-
---BABFT
-if game.PlaceId == 537413528 then
-loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Vynixius/main/Build%20A%20Boat%20For%20Treasure/BABFT"))()
-end
-
---Bloxfruits
-if game.PlaceId == 2753915549 then
-loadstring(game:HttpGet"https://raw.githubusercontent.com/xDepressionx/Free-Script/main/AllScript.lua")()
-end
-if game.PlaceId == 4442272183 then
-loadstring(game:HttpGet"https://raw.githubusercontent.com/xDepressionx/Free-Script/main/AllScript.lua")()
-end
-if game.PlaceId == 7449423635 then
-loadstring(game:HttpGet"https://raw.githubusercontent.com/xDepressionx/Free-Script/main/AllScript.lua")()
-end
-
---Ro Ghoul
-if game.PlaceId == 914010731 then
-loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/z4gs/scripts/master/Ro-Ghoul%20Auto%20Farm.lua"))()
-end
-
---Da Hood
-if game.PlaceId == 2788229376 then
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NighterEpic/Faded/main/YesEpic", true))()
-end
-
---Lumber Tycoon
-if game.PlaceId == 13822889 then
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Lumber%20Tycoon"))()
-end
-
---Anime Fighting Simulator
-if game.PlaceId == 6299805723 then
-loadstring(game:HttpGet("https://raw.githubusercontent.com/KiJinGaming/FreeScript/main/KJHub.lua"))()
-end
-
---AUT
-if game.PlaceId == 6846458508 then
-loadstring(game:HttpGet("https://raw.githubusercontent.com/lmmake/jojo-/main/Universal%20time"))()
-end
-
---Wisteria
-if game.PlaceId == 4723618670 then
-loadstring(game:HttpGet('https://raw.githubusercontent.com/Vzurxy/Scripts/main/wisteria.lua', 'penisuwucuteface:flushed:'))();
-end 
-
---Giant Survival
-if game.PlaceId == 4003872968 then
-loadstring(game:HttpGet("https://raw.githubusercontent.com/radjahfromdiscord/giantsurvival/master/gui"))()
-end
-
---Zombie Attack
-if game.PlaceId == 1240123653 then
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/OP%20zombie%20attack%20script"))()
-end
-if game.PlaceId == 1632210982 then
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/OP%20zombie%20attack%20script"))()
-end
-
---Bedwars
-if game.PlaceId == 6872265039 then
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/BedWars"))()
-end
-if game.PlaceId == 6872274481 then
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/BedWars"))()
-end
-
---YBA
-if game.PlaceId == 2809202155 then
-loadstring(game:HttpGet("https://raw.githubusercontent.com/kolgie/YBA-GUI/main/yba-gui-obfuscated.lua"))()
-end
-
---Ninja Legends
-if game.PlaceId == 3956818381 then
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/NinjaLegends"))()
-end
-
---Prison Life 2
-if game.PlaceId == 155615604 then
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/PrisonLife2"))()
-end
-
---Bee Swarm Simulator
-if game.PlaceId == 1537690962 then
-shared.autoload = false -- change to profile name if you want to autoload (afking/autojoin). eg. shared.autoload = "profile"
- loadstring(game:GetObjects("rbxassetid://4384103988")[0X1].Source)("Pepsi Swarm")
-end
-
---Pet Sim X
-if game.PlaceId == 6284583030 then
-loadstring(game:HttpGet("https://raw.githubusercontent.com/SandaFrosty/Dino-Script/main/Pet-Sim-X", true))()
-end
-
---Shindo Auto Spin
-if game.PlaceId == 4616652839 then 
-loadstring(game:HttpGet("https://bruh.keshsenpai.com/.lua"))()
-wait(3)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/Shindo%20Spin%20Tip"))()
-end
-
---Anime Fightng Simulator
-if game.PlaceId == 4042427666 then
-loadstring(game:HttpGet("https://raw.githubusercontent.com/JRL-lav/Main/main/Anime%20Fighting%20Sim"))()
-end
-end)
 end
