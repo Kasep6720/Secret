@@ -278,6 +278,16 @@ TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script
 wait(1)
 ScreenGui:Destroy()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/NaturalDisasterSurvival"))()
+elseif game.PlaceId == 1962086868 then
+wait(.3)
+TextLabel.Text = "Game supported!"
+wait(1)
+TextLabel.Text = "Tower of Hell"
+wait(1)
+TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!"
+wait(1)
+ScreenGui:Destroy()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/EDGYCUNT231231/shiny-waffle/main/Obfusc1ated.txt"))() 
 elseif game.PlaceId ~= 4616652839 then
 local warplace = game:GetService("Workspace"):FindFirstChild("warmode")
 local allbosses = game:GetService("Workspace"):FindFirstChild("npc"):FindFirstChild("npc1")
