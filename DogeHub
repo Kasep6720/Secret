@@ -268,6 +268,16 @@ TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script
 wait(1)
 ScreenGui:Destroy()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/JRL-lav/Main/main/Anime%20Fighting%20Sim"))()
+elseif game.PlaceId == 189707 then
+wait(.3)
+TextLabel.Text = "Game supported!"
+wait(1)
+TextLabel.Text = "Natural Disaster Survival"
+wait(1)
+TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!"
+wait(1)
+ScreenGui:Destroy()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/NaturalDisasterSurvival"))()
 elseif game.PlaceId ~= 4616652839 then
 local warplace = game:GetService("Workspace"):FindFirstChild("warmode")
 local allbosses = game:GetService("Workspace"):FindFirstChild("npc"):FindFirstChild("npc1")
