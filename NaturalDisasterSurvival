@@ -2,7 +2,7 @@ local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/miroe
 local window1 = library:Window("Scripts")
 local window2 = library:Window("LocalPlayer")
 
-library:Keybind("Q")
+library:Keybind("RightControl")
 
 
 
