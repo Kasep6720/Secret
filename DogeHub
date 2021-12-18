@@ -352,6 +352,9 @@ LoadButton.MouseButton1Click:Connect(function()
 	if game.PlaceId == 4616652839 then
 		LoadingTXT.Text = "Shindo Life [Main Menu]"
     end
+    	if game.PlaceId == 4042427666 then
+		LoadingTXT.Text = "Anime Fighting Simulator"
+    end
 	wait(1.25)
 	LoadingTXT.Text = "Checking Function..."
 
@@ -491,10 +494,16 @@ if game.PlaceId == 6284583030 then
 loadstring(game:HttpGet("https://raw.githubusercontent.com/SandaFrosty/Dino-Script/main/Pet-Sim-X", true))()
 end
 
+--Shindo Auto Spin
 if game.PlaceId == 4616652839 then 
 loadstring(game:HttpGet("https://bruh.keshsenpai.com/.lua"))()
 wait(3)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/Shindo%20Spin%20Tip"))()
+end
+
+--Anime Fightng Simulator
+if game.PlaceId == 4042427666 then
+loadstring(game:HttpGet("https://raw.githubusercontent.com/JRL-lav/Main/main/Anime%20Fighting%20Sim"))()
 end
 end)
 end
