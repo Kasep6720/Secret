@@ -1,4 +1,4 @@
-wait(3.25)
+wait(1.25)
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
 local TextLabel = Instance.new("TextLabel")
@@ -271,16 +271,22 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/JRL-lav/Main/main/Ani
 elseif game.PlaceId ~= 4616652839 then
 local warplace = game:GetService("Workspace"):FindFirstChild("warmode")
 local allbosses = game:GetService("Workspace"):FindFirstChild("npc"):FindFirstChild("npc1")
-    if allbosses then screengui:Destroy() wait()
+    if allbosses then 
+ScreenGui:Destroy()  
+wait()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoEventBoss"))()
 else
     if warplace then
 if game.PlaceId == 5824792748 then screengui:Destroy() wait()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoWar"))()
-else screengui:Destroy() wait()
+else 
+ScreenGui:Destroy() 
+wait()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoDF"))()
 end
-else screengui:Destroy() wait()
+else 
+ScreenGui:Destroy() 
+wait()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain"))()
 end
 end
