@@ -181,7 +181,7 @@ game:GetService("Players").LocalPlayer.CharacterAdded:connect(
 end
 end)
 
-window1:Toggle("Free Compass",false,function(vacvsde)
+window1:Toggle("Vote for Map",false,function(vacvsde)
     getgenv().trink545ets = vacvsde
 if getgenv().trink545ets then
     TextLabel = game:GetService("Players").LocalPlayer.PlayerGui.MainGui.MapVotePage
