@@ -36,7 +36,7 @@ end)]]
 
 
 
-window1:Label("Client-Side Copy", Color3.fromRGB(127, 143, 166))
+window1:Label("Summoning Jutsu", Color3.fromRGB(127, 143, 166))
 window1:Button("Copy Green Balloon",function()
     local player = tostring(game.Players.LocalPlayer.Name)
 while true do
@@ -63,7 +63,7 @@ end
 end)
     
 
-window1:Label("Server-Side [FE]", Color3.fromRGB(127, 143, 166))
+window1:Label("Banshō Ten'in [FE]", Color3.fromRGB(127, 143, 166))
 window1:Button("Bring Unanchored Bricks [E]",function()
 local UserInputService = game:GetService("UserInputService")
 local Mouse = game:GetService("Players").LocalPlayer:GetMouse()
