@@ -250,7 +250,7 @@ elseif game.PlaceId == 4616652839 then
 wait(.3)
 TextLabel.Text = "Game supported!"
 wait(1)
-TextLabel.Text = "Shindo Life [Main Menu]"
+TextLabel.Text = "Shindo Life     [Main Menu]"
 wait(1)
 TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!"
 wait(1)
