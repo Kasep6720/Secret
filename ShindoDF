@@ -213,7 +213,7 @@ f:Label("Made by Kaston",{
     TextColor = Color3.fromRGB(255,255,255); 
     BgColor = Color3.fromRGB(117, 50, 168);
 }) 
-f:Button("Copy Kaston's Discord Link",function()
+f:Button("Copy Kaston's Discord link",function()
 	setclipboard("https://discord.gg/2nQBf998")
 end)
 
