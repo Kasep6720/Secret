@@ -48,7 +48,7 @@ function FIGHT()
             v:Destroy()
         end
     end
---loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/E/Kasep6720-patch-1/DogeisGayNew"))()
+--loadstring(game:HttpGet("https://raw.githubusercontent.com/NoobieDoge/DogeHub/main/DogeHub"))()
 repeat wait() until game:IsLoaded()
 --antiafk
 local VirtualUser=game:service'VirtualUser'
@@ -60,18 +60,35 @@ end)
 --variables
 local player = game.Players.LocalPlayer
 local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
---loading wally ui revamped By Aika
-local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/AikaV3rm/UiLib/master/Lib.lua')))()
-local w = library:CreateWindow("COMBAT - Shindo Life")
-_G.ToggleColor = Color3.fromRGB(117, 50, 168)
-_G.ButtonColor = Color3.fromRGB(117, 50, 168)
-_G.ButtonTextColor = Color3.fromRGB(255, 255, 255)
---UTILITIES
-local j = w:CreateFolder("Main")
-j:Button("SuperHuman",function()
+
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/miroeramaa/TurtleLib/main/TurtleUiLib.lua"))()
+local window1 = library:Window("Combat - DogeHub")
+local window2 = library:Window("Credits")
+
+library:Keybind("RightControl")
+
+window1:Label("Basic Function", Color3.fromRGB(127, 143, 166))
+
+window1:Slider("Walkspeed",16,120,5, function(value)
+   game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = value
+end)
+
+
+window1:Slider("JumpPower",50,300,20, function(value)
+   game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = value
+end)
+
+window1:Button("Add ESP GUI",function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/ProjectDolphin's%20ESP"))()
+end)
+
+window1:Label("Character Function", Color3.fromRGB(127, 143, 166))
+
+window1:Button("SuperHuamn",function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/6Wumpus6/SpyHub/main/Autoopen", true))()
 end)
-j:Button("Infinite Mode",function()
+
+window1:Button("Infinite MD",function()
 	local mode = game.Players.LocalPlayer.Character.combat.mode
     local copy = mode:Clone()
     copy.Parent = mode.Parent
@@ -92,86 +109,30 @@ j:Button("Infinite Mode",function()
 		end
 	end)
 end)
-j:Button("Reset when died",function()
+
+window1:Button("Reset after died",function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/6Wumpus6/SpyHub/main/Infmodeclose", true))()
 end)
---[[j:Toggle("No Clip", function(bool)
-    NC = bool
-end)
-game:GetService('RunService').Stepped:connect(function()
-    if NC then
-        pcall(function()
-				game.Players.LocalPlayer.Character.Humanoid:ChangeState(11):toggle()
-        end)
-   end
-end)]]
-local sp = w:CreateFolder("Specials")
-sp:Label("Special Functions",{
-	TextSize = 20;
-    TextColor = Color3.fromRGB(255,255,255); 
-    BgColor = Color3.fromRGB(117, 50, 168);
-})
-sp:Button("Glide Walk",function(bool)
-	spawn(function() 
-		while wait() do
-			--if  then
-				game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 250
-			end
-        
-    end)
-end)
-sp:Button("Rocket Jump",function(bool)
-	spawn(function() 
-		while wait() do
-			--if game.Players.LocalPlayer.Character.Humanoid.WalkSpeed == 0 then
-				game.Players.LocalPlayer.character.Humanoid.JumpPower = 360
-        end
-    end)
-end)
-sp:Button("Add ESP", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/ProjectDolphin's%20ESP"))()
+
+window1:Label("DANGER", Color3.fromRGB(127, 143, 166))
+
+window1:Button("Reset Script",function()
+library:Destroy()
+wait(.3)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain"))()
 end)
 
---[[local KILL
-sp:Toggle("Boss Kill Aura",function(bool)
-	KILL = bool
-end)
-spawn(function()
-    while wait() do
-        if KILL then
-            if  player.currentmission.Value == nil then
-                for i,v in pairs(workspace.npc:GetChildren()) do
-                    pcall(function()
-                        if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-							repeat wait()
-toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(0,2.5,0)))
-                                v.Humanoid.Health = 0
-							until v.Humanoid.Health == 0 or not autofarm
-                        end
-                    end)
-                end
-            end
-        end
-    end
-end)]]
+window2:Label("Made by Kaston", Color3.fromRGB(127, 143, 166))
 
-sp:Label("DANGER",{
-	TextSize = 20;
-    TextColor = Color3.fromRGB(255,255,255); 
-    BgColor = Color3.fromRGB(117, 50, 168);
-}) 
-sp:Button("Reset Script", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Shindo%20reset"))()
+window2:Button("Copy Kaston's Discord server",function()
+	setclipboard("https://discord.gg/2nQBf998")
 end)
-local f = w:CreateFolder("Credits")
-f:Label("Made by K. H.",{
-	TextSize = 15;
-    TextColor = Color3.fromRGB(255,255,255); 
-    BgColor = Color3.fromRGB(117, 50, 168);
-}) 
-f:Button("Copy Kasep's Discord Username",function()
-	setclipboard("Kasep6720#7142")
-end)
+
+--[[window1:Toggle("FE Spam Sounds",false, function(State1)
+        getgenv().hit = State1
+        while wait() do
+            if getgenv().hit then
+end end end)]]
 end
 TextButton.MouseButton1Click:connect(FIGHT)
 
