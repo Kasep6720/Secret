@@ -2051,7 +2051,7 @@ end)
 EspSection.Slider("Render Distance", {Min = 0, Max = 7000, Default = EspOptions.RenderDistance, Step = 10}, function(Callback)
     EspOptions.RenderDistance = Callback
 end)
-EspSection.Dropdown("Team", {"Allies", "Enemies", "All"}, function(Callback)
+EspSection.Dropdown("All", {"Allies", "Enemies", "All"}, function(Callback)
     EspOptions.Team = Callback
 end)
 EspSection.Toggle("Box Esp", EspOptions.BoxEsp, function(Callback)
