@@ -286,13 +286,13 @@ game:GetService('RunService').Stepped:connect(function()
 end)
 
 local f = w:CreateFolder("Credits")
-f:Label("Made by K. H.",{
+f:Label("Made by Kaston",{
 	TextSize = 15;
     TextColor = Color3.fromRGB(255,255,255); 
     BgColor = Color3.fromRGB(117, 50, 168);
 }) 
-f:Button("Copy Kasep's Discord Username",function()
-	setclipboard("Kasep6720#7142")
+f:Button("Copy Kaston's Discord link",function()
+	setclipboard("https://discord.gg/2nQBf998")
 end)
 
 
