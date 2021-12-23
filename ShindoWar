@@ -142,18 +142,18 @@ end)
     game:GetService("RunService"):UnbindFromRenderStep(game.Players.LocalPlayer.Name .. "Main")
 	end)
 	local f = w:CreateFolder("Credits")
-    f:Label("made by reav#2966 | Shindo Life ver 045.3",{
+    f:Label("made by Kaston",{
         TextSize = 15;
         TextColor = Color3.fromRGB(255,255,255); 
         BgColor = Color3.fromRGB(117, 50, 168);
     }) 
-    f:Label("https://discord.gg/aDRStgw",{
+    f:Label("https://discord.gg/2nQBf998",{
         TextSize = 17;
         TextColor = Color3.fromRGB(255,255,255); 
         BgColor = Color3.fromRGB(117, 50, 168); 
     }) 
-    f:Button("Copy Discord Link",function()
-        setclipboard("https://discord.gg/aDRStgw")
+    f:Button("Copy Kaston's Discord link",function()
+	setclipboard("https://discord.gg/2nQBf998")
     end)
 else
     c:Label("YOU MUST RUN THIS IN WAR MODE",{
