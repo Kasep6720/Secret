@@ -124,7 +124,7 @@ end)
 
 window2:Label("Made by Kaston", Color3.fromRGB(127, 143, 166))
 
-window2:Button("Copy Kaston's Discord server",function()
+window2:Button("Copy Kaston's Discord link",function()
 	setclipboard("https://discord.gg/2nQBf998")
 end)
 
@@ -552,7 +552,7 @@ f:Label("Made by Kaston",{
     TextColor = Color3.fromRGB(255,255,255); 
     BgColor = Color3.fromRGB(117, 50, 168);
 }) 
-f:Button("Copy Kaston's Discord server",function()
+f:Button("Copy Kaston's Discord link",function()
 	setclipboard("https://discord.gg/2nQBf998")
 end)
 --tips
@@ -954,7 +954,7 @@ f:Label("Made by Kaston",{
     TextColor = Color3.fromRGB(255,255,255); 
     BgColor = Color3.fromRGB(117, 50, 168);
 }) 
-f:Button("Copy Kaston's Discord server",function()
+f:Button("Copy Kaston's Discord link",function()
 	setclipboard("https://discord.gg/2nQBf998")
 end)
 --tips
