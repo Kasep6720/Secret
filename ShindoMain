@@ -84,7 +84,7 @@ end)
 
 window1:Label("Character Function", Color3.fromRGB(127, 143, 166))
 
-window1:Button("SuperHuamn",function()
+window1:Button("SuperHuman",function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/6Wumpus6/SpyHub/main/Autoopen", true))()
 end)
 
