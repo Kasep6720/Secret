@@ -185,14 +185,14 @@ function library:Window(name)
         listOffset[winCount] = listOffset[winCount] + 32
         Button.Name = "Button"
         Button.Parent = Window
-        Button.BackgroundColor3 = Color3.fromRGB(53, 59, 72)
-        Button.BorderColor3 = Color3.fromRGB(113, 128, 147)
+        Button.BackgroundColor3 = Color3.fromRGB(41, 41, 41)
+        Button.BorderColor3 = Color3.fromRGB(41, 41, 41)
         Button.Position = UDim2.new(0, 12, 0, listOffset[winCount])
         Button.Size = UDim2.new(0, 182, 0, 26)
         Button.ZIndex = 2 + zindex
         Button.Selected = true
         Button.Font = Enum.Font.SourceSans
-        Button.TextColor3 = Color3.fromRGB(245, 246, 250)
+        Button.TextColor3 = Color3.fromRGB(255, 255, 255)
         Button.TextSize = 16.000
         Button.TextStrokeTransparency = 123.000
         Button.TextWrapped = true
@@ -211,9 +211,9 @@ function library:Window(name)
         local Label = Instance.new("TextLabel")
         Label.Name = "Label"
         Label.Parent = Window
-        Label.BackgroundColor3 = Color3.fromRGB(220, 221, 225)
+        Label.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
         Label.BackgroundTransparency = 1.000
-        Label.BorderColor3 = Color3.fromRGB(27, 42, 53)
+        Label.BorderColor3 = Color3.fromRGB(255, 255, 255)
         Label.Position = UDim2.new(0, 0, 0, listOffset[winCount])
         Label.Size = UDim2.new(0, 206, 0, 29)
         Label.Font = Enum.Font.SourceSans
@@ -263,8 +263,8 @@ function library:Window(name)
 
         ToggleButton.Name = "ToggleButton"
         ToggleButton.Parent = ToggleDescription
-        ToggleButton.BackgroundColor3 = Color3.fromRGB(47, 54, 64)
-        ToggleButton.BorderColor3 = Color3.fromRGB(113, 128, 147)
+        ToggleButton.BackgroundColor3 = Color3.fromRGB(41, 41, 41)
+        ToggleButton.BorderColor3 = Color3.fromRGB(128, 128, 128)
         ToggleButton.Position = UDim2.new(1.2061069, 0, 0.0769230798, 0)
         ToggleButton.Size = UDim2.new(0, 22, 0, 22)
         ToggleButton.Font = Enum.Font.SourceSans
@@ -279,8 +279,8 @@ function library:Window(name)
 
         ToggleFiller.Name = "ToggleFiller"
         ToggleFiller.Parent = ToggleButton
-        ToggleFiller.BackgroundColor3 = Color3.fromRGB(68, 189, 50)
-        ToggleFiller.BorderColor3 = Color3.fromRGB(47, 54, 64)
+        ToggleFiller.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+        ToggleFiller.BorderColor3 = Color3.fromRGB(41, 41, 41)
         ToggleFiller.Position = UDim2.new(0, 5, 0, 5)
         ToggleFiller.Size = UDim2.new(0, 12, 0, 12)
         ToggleFiller.Visible = on
@@ -399,8 +399,8 @@ function library:Window(name)
 
         Slider.Name = "Slider"
         Slider.Parent = Window
-        Slider.BackgroundColor3 = Color3.fromRGB(47, 54, 64)
-        Slider.BorderColor3 = Color3.fromRGB(113, 128, 147)
+        Slider.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+        Slider.BorderColor3 = Color3.fromRGB(41, 41, 41)
         Slider.Position = UDim2.new(0, 13, 0, listOffset[winCount])
         Slider.Size = UDim2.new(0, 180, 0, 6)
         Slider.ZIndex = 2 + zindex
@@ -410,8 +410,8 @@ function library:Window(name)
         SliderButton.Position = UDim2.new(0, (Slider.Size.X.Offset - 5) * ((default - min)/(max-min)), -1.333337, 0)
         SliderButton.Name = "SliderButton"
         SliderButton.Parent = Slider
-        SliderButton.BackgroundColor3 = Color3.fromRGB(53, 59, 72)
-        SliderButton.BorderColor3 = Color3.fromRGB(113, 128, 147)
+        SliderButton.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+        SliderButton.BorderColor3 = Color3.fromRGB(41, 41, 41)
         SliderButton.Size = UDim2.new(0, 6, 0, 22)
         SliderButton.ZIndex = 3 + zindex
         SliderButton.InputBegan:Connect(SliderMovement)
@@ -442,8 +442,8 @@ function library:Window(name)
 
         SilderFiller.Name = "SilderFiller"
         SilderFiller.Parent = Slider
-        SilderFiller.BackgroundColor3 = Color3.fromRGB(76, 209, 55)
-        SilderFiller.BorderColor3 = Color3.fromRGB(47, 54, 64)
+        SilderFiller.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        SilderFiller.BorderColor3 = Color3.fromRGB(41, 41, 41)
         SilderFiller.Size = UDim2.new(0, (Slider.Size.X.Offset - 5) * ((default - min)/(max-min)), 0, 6)
         SilderFiller.ZIndex = 2 + zindex
         SilderFiller.BorderMode = Enum.BorderMode.Inset
