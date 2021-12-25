@@ -186,7 +186,7 @@ function library:Window(name)
         Button.Name = "Button"
         Button.Parent = Window
         Button.BackgroundColor3 = Color3.fromRGB(41, 41, 41)
-        Button.BorderColor3 = Color3.fromRGB(41, 41, 41)
+        Button.BorderColor3 = Color3.fromRGB(128, 128, 128)
         Button.Position = UDim2.new(0, 12, 0, listOffset[winCount])
         Button.Size = UDim2.new(0, 182, 0, 26)
         Button.ZIndex = 2 + zindex
@@ -400,7 +400,7 @@ function library:Window(name)
         Slider.Name = "Slider"
         Slider.Parent = Window
         Slider.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
-        Slider.BorderColor3 = Color3.fromRGB(41, 41, 41)
+        Slider.BorderColor3 = Color3.fromRGB(128, 128, 128)
         Slider.Position = UDim2.new(0, 13, 0, listOffset[winCount])
         Slider.Size = UDim2.new(0, 180, 0, 6)
         Slider.ZIndex = 2 + zindex
@@ -411,7 +411,7 @@ function library:Window(name)
         SliderButton.Name = "SliderButton"
         SliderButton.Parent = Slider
         SliderButton.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
-        SliderButton.BorderColor3 = Color3.fromRGB(41, 41, 41)
+        SliderButton.BorderColor3 = Color3.fromRGB(128, 128, 128)
         SliderButton.Size = UDim2.new(0, 6, 0, 22)
         SliderButton.ZIndex = 3 + zindex
         SliderButton.InputBegan:Connect(SliderMovement)
