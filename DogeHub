@@ -35,6 +35,7 @@ TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script
 wait(1)
 ScreenGui:Destroy()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Vynixius/main/Build%20A%20Boat%20For%20Treasure/BABFT"))()
+game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Script",     Text = "This script is NOT made by DogeHub!",Duration = 5, })
 elseif game.PlaceId == 4872321990 then
 wait(.3)
 TextLabel.Text = "Game supported!"
@@ -45,6 +46,7 @@ TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script
 wait(1)
 ScreenGui:Destroy()
 loadstring(game:HttpGet("http://void-scripts.com/Scripts/islands_new.lua"))()
+game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Script",     Text = "This script is NOT made by DogeHub!",Duration = 5, })
 elseif game.PlaceId == 7449423635 then
 wait(.3)
 TextLabel.Text = "Game supported!"
@@ -55,6 +57,7 @@ TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script
 wait(1)
 ScreenGui:Destroy()
 loadstring(game:HttpGet"https://raw.githubusercontent.com/xDepressionx/Free-Script/main/AllScript.lua")()
+game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Script",     Text = "This script is NOT made by DogeHub!",Duration = 5, })
 elseif game.PlaceId == 4442272183 then
 wait(.3)
 TextLabel.Text = "Game supported!"
@@ -65,6 +68,7 @@ TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script
 wait(1)
 ScreenGui:Destroy()
 loadstring(game:HttpGet"https://raw.githubusercontent.com/xDepressionx/Free-Script/main/AllScript.lua")()
+game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Script",     Text = "This script is NOT made by DogeHub!",Duration = 5, })
 elseif game.PlaceId == 2753915549 then
 wait(.3)
 TextLabel.Text = "Game supported!"
@@ -75,6 +79,7 @@ TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script
 wait(1)
 ScreenGui:Destroy()
 loadstring(game:HttpGet"https://raw.githubusercontent.com/xDepressionx/Free-Script/main/AllScript.lua")()
+game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Script",     Text = "This script is NOT made by DogeHub!",Duration = 5, })
 elseif game.PlaceId == 914010731 then
 wait(.3)
 TextLabel.Text = "Game supported!"
@@ -85,6 +90,7 @@ TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script
 wait(1)
 ScreenGui:Destroy()
 loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/z4gs/scripts/master/Ro-Ghoul%20Auto%20Farm.lua"))()
+game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Script",     Text = "This script is NOT made by DogeHub!",Duration = 5, })
 elseif game.PlaceId == 2788229376 then
 wait(.3)
 TextLabel.Text = "Game supported!"
@@ -95,16 +101,7 @@ TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script
 wait(1)
 ScreenGui:Destroy()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NighterEpic/Faded/main/YesEpic", true))()
-elseif game.PlaceId == 914010731 then
-wait(.3)
-TextLabel.Text = "Game supported!"
-wait(1)
-TextLabel.Text = "Ro Ghoul"
-wait(1)
-TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!"
-wait(1)
-ScreenGui:Destroy()
-loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/z4gs/scripts/master/Ro-Ghoul%20Auto%20Farm.lua"))()
+game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Script",     Text = "This script is NOT made by DogeHub!",Duration = 5, })
 elseif game.PlaceId == 13822889 then
 wait(.3)
 TextLabel.Text = "Game supported!"
@@ -125,6 +122,7 @@ TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script
 wait(1)
 ScreenGui:Destroy()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/KiJinGaming/FreeScript/main/KJHub.lua"))()
+game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Script",     Text = "This script is NOT made by DogeHub!",Duration = 5, })
 elseif game.PlaceId == 6846458508 then
 wait(.3)
 TextLabel.Text = "Game supported!"
@@ -135,6 +133,7 @@ TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script
 wait(1)
 ScreenGui:Destroy()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/lmmake/jojo-/main/Universal%20time"))()
+game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Script",     Text = "This script is NOT made by DogeHub!",Duration = 5, })
 elseif game.PlaceId == 4723618670 then
 wait(.3)
 TextLabel.Text = "Game supported!"
@@ -145,6 +144,7 @@ TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script
 wait(1)
 ScreenGui:Destroy()
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Vzurxy/Scripts/main/wisteria.lua', 'penisuwucuteface:flushed:'))();
+game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Script",     Text = "This script is NOT made by DogeHub!",Duration = 5, })
 elseif game.PlaceId == 4003872968 then
 wait(.3)
 TextLabel.Text = "Game supported!"
@@ -155,6 +155,7 @@ TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script
 wait(1)
 ScreenGui:Destroy()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/radjahfromdiscord/giantsurvival/master/gui"))()
+game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Script",     Text = "This script is NOT made by DogeHub!",Duration = 5, })
 elseif game.PlaceId == 1240123653 then
 wait(.3)
 TextLabel.Text = "Game supported!"
@@ -185,6 +186,7 @@ TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script
 wait(1)
 ScreenGui:Destroy()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/BedWars"))()
+game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Script",     Text = "This script is NOT made by DogeHub!",Duration = 5, })
 elseif game.PlaceId == 6872274481 then
 wait(.3)
 TextLabel.Text = "Game supported!"
@@ -195,6 +197,7 @@ TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script
 wait(1)
 ScreenGui:Destroy()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/BedWars"))()
+game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Script",     Text = "This script is NOT made by DogeHub!",Duration = 5, })
 elseif game.PlaceId == 2809202155 then
 wait(.3)
 TextLabel.Text = "Game supported!"
@@ -205,6 +208,7 @@ TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script
 wait(1)
 ScreenGui:Destroy()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/kolgie/YBA-GUI/main/yba-gui-obfuscated.lua"))()
+game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Script",     Text = "This script is NOT made by DogeHub!",Duration = 5, })
 elseif game.PlaceId == 3956818381 then
 wait(.3)
 TextLabel.Text = "Game supported!"
@@ -229,13 +233,14 @@ elseif game.PlaceId == 1537690962 then
 wait(.3)
 TextLabel.Text = "Game supported!"
 wait(1)
-TextLabel.Text = "Bee Swar Simulator"
+TextLabel.Text = "Bee Swarm Simulator"
 wait(1)
 TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!"
 wait(1)
 ScreenGui:Destroy()
 shared.autoload = false -- change to profile name if you want to autoload (afking/autojoin). eg. shared.autoload = "profile"
  loadstring(game:GetObjects("rbxassetid://4384103988")[0X1].Source)("Pepsi Swarm")
+ game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Script",     Text = "This script is NOT made by DogeHub!",Duration = 5, })
 elseif game.PlaceId == 6284583030 then
 wait(.3)
 TextLabel.Text = "Game supported!"
@@ -246,6 +251,7 @@ TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script
 wait(1)
 ScreenGui:Destroy()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/SandaFrosty/Dino-Script/main/Pet-Sim-X", true))()
+game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Script",     Text = "This script is NOT made by DogeHub!",Duration = 5, })
 elseif game.PlaceId == 4616652839 then
 wait(.3)
 TextLabel.Text = "Game supported!"
@@ -258,6 +264,7 @@ ScreenGui:Destroy()
 loadstring(game:HttpGet("https://bruh.keshsenpai.com/.lua"))()
 wait(3)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/Shindo%20Spin%20Tip"))()
+game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Script",     Text = "This script is NOT made by DogeHub!",Duration = 5, })
 elseif game.PlaceId == 4042427666 then
 wait(.3)
 TextLabel.Text = "Game supported!"
@@ -268,6 +275,7 @@ TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script
 wait(1)
 ScreenGui:Destroy()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/JRL-lav/Main/main/Anime%20Fighting%20Sim"))()
+game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Script",     Text = "This script is NOT made by DogeHub!",Duration = 5, })
 elseif game.PlaceId == 189707 then
 wait(.3)
 TextLabel.Text = "Game supported!"
@@ -288,6 +296,7 @@ TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script
 wait(1)
 ScreenGui:Destroy()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/EDGYCUNT231231/shiny-waffle/main/Obfusc1ated.txt"))() 
+game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Script",     Text = "This script is NOT made by DogeHub!",Duration = 5, })
 elseif game.PlaceId == 3582763398 then
 wait(.3)
 TextLabel.Text = "Game supported!"
@@ -298,6 +307,7 @@ TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script
 wait(1)
 ScreenGui:Destroy()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/EDGYCUNT231231/shiny-waffle/main/Obfusc1ated.txt"))() 
+game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Script",     Text = "This script is NOT made by DogeHub!",Duration = 5, })
 elseif game.PlaceId ~= 4616652839 then
 local warplace = game:GetService("Workspace"):FindFirstChild("warmode")
 local allbosses = game:GetService("Workspace"):FindFirstChild("npc"):FindFirstChild("npc1")
