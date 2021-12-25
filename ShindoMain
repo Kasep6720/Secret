@@ -61,7 +61,7 @@ end)
 local player = game.Players.LocalPlayer
 local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
 
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/miroeramaa/TurtleLib/main/TurtleUiLib.lua"))()
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/pornhub%20script%20gui"))()
 local window1 = library:Window("Combat - DogeHub")
 local window2 = library:Window("Credits")
 
