@@ -321,10 +321,10 @@ TextLabelooo.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
 TextLabelooo.Position = UDim2.new(0, 0, 0.62, 0)
 TextLabelooo.Size = UDim2.new(0, 400, 0, 65)
 TextLabelooo.Font = Enum.Font.AmaticSC
-TextLabelooo.Text = "3.Turn on AutoFarm and Inf mode    "
+TextLabelooo.Text = "3.Turn on AutoFarm and Infinite MD  "
 TextLabelooo.TextColor3 = Color3.fromRGB(0, 0, 0)
 TextLabelooo.TextScaled = false
-TextLabelooo.TextSize = 45.000
+TextLabelooo.TextSize = 43.500
 TextLabelooo.TextWrapped = true
 
 TextLabeloooo.Parent = Frame
@@ -854,10 +854,10 @@ TextLabelooo.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
 TextLabelooo.Position = UDim2.new(0, 0, 0.62, 0)
 TextLabelooo.Size = UDim2.new(0, 400, 0, 65)
 TextLabelooo.Font = Enum.Font.AmaticSC
-TextLabelooo.Text = "3.Turn on AutoFarm, Inf mode and Spam E  "
+TextLabelooo.Text = "3.Turn on AutoFarm, Infinite MD and Spam E "
 TextLabelooo.TextColor3 = Color3.fromRGB(0, 0, 0)
 TextLabelooo.TextScaled = false
-TextLabelooo.TextSize = 38.500
+TextLabelooo.TextSize = 37.500
 TextLabelooo.TextWrapped = true
 
 TextLabeloooo.Parent = Frame
