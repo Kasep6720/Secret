@@ -206,42 +206,42 @@ local VirtualUser=game:service'VirtualUser'
 	VirtualUser:CaptureController()
 	VirtualUser:ClickButton2(Vector2.new())
 end)
-
 --variables
 local player = game.Players.LocalPlayer
 local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
---loading wally ui revamped By Aika
-local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/AikaV3rm/UiLib/master/Lib.lua')))()
-local w = library:CreateWindow("AF - Shindo Life")
-_G.ToggleColor = Color3.fromRGB(117, 50, 168)
-_G.ButtonColor = Color3.fromRGB(117, 50, 168)
-_G.ButtonTextColor = Color3.fromRGB(255, 255, 255)
---AUTOFARM
-local b = w:CreateFolder("AutoFarm")
-local daynight = b:Label("NIGHT/DAY",{
-	TextSize = 22;
-	TextColor = Color3.fromRGB(255,255,255); 
-	BgColor = Color3.fromRGB(117, 50, 168);
-}) 
-b:Label("Night = NO QUESTS", {
-TextSize = 22;
-	TextColor = Color3.fromRGB(255,255,255); 
-	BgColor = Color3.fromRGB(117, 50, 168);
-}) 
+
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/pornhub%20script%20gui"))()
+local window1 = library:Window("AutoFarm - DogeHub")
+local window2 = library:Window("Others")
+local window3 = library:Window("Credits")
+
+library:Keybind("RightControl")
+
+window1:Label("AutoFarm Function", Color3.fromRGB(127, 143, 166))
+
+--[[window1:Slider("Walkspeed",16,120,5, function(value)
+   game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = value
+end)
+
+
+window1:Slider("JumpPower",50,300,20, function(value)
+   game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = value
+end)]]
+
+local daynight = window1:Label("NIGHT/DAY", Color3.fromRGB(127, 143, 166))
+window1:Label("NIGHT = NO QUESTS", Color3.fromRGB(127, 143, 166))
 
 local autofarm
-b:Toggle("AutoFarm",function(bool)
-	autofarm = bool
+window1:Toggle("AutoFarm",false, function(bool)
+        autofarm = bool
 end)
+
 local RANKUPP
-b:Toggle("AutoRank",function(bool)
-	RANKUPP = bool
+window1:Toggle("AutoRank",false, function(bool)
+        RANKUPP = bool
 end)
---[[local KILL
-b:Toggle("Boss Kill Aura",function(bool)
-	KILL = bool
-end)]]
-b:Button("Infinite Mode",function()
+
+window1:Button("Infinite MD",function()
 	local mode = game.Players.LocalPlayer.Character.combat.mode
     local copy = mode:Clone()
     copy.Parent = mode.Parent
@@ -262,21 +262,17 @@ b:Button("Infinite Mode",function()
 		end
 	end)
 end)
-local disp = b:Label("QUESTS AMOUNT",{
-	TextSize = 22;
-	TextColor = Color3.fromRGB(255,255,255); 
-	BgColor = Color3.fromRGB(117, 50, 168);
-}) 
-local qdone = b:Label("Completed Quests", {
-TextSize = 22;
-	TextColor = Color3.fromRGB(255,255,255); 
-	BgColor = Color3.fromRGB(117, 50, 168);
-}) 
+
+local disp = window1:Label("QUEST AMOUNT", Color3.fromRGB(127, 143, 166))
+
+local qdone = window1:Label("Completed Quests", Color3.fromRGB(127, 143, 166))
+
 local LEVEL = player.statz.lvl.lvl
 local questdone = 0
 local function QUESTDONE()
 	questdone = questdone + 1
 end
+
 local function QUEST()
     for i,v in pairs(workspace.missiongivers:GetChildren()) do
         if v.Name == "" and v:FindFirstChild("Head") then
@@ -398,25 +394,6 @@ spawn(function()
 		end
 end)
 
---[[spawn(function()
-    while wait() do
-        if KILL then
-            if  player.currentmission.Value == nil then
-                for i,v in pairs(workspace.npc:GetChildren()) do
-                    pcall(function()
-                        if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-							repeat wait()
-toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(0,2.5,0)))
-                                v.Humanoid.Health = 0
-							until v.Humanoid.Health == 0 or not autofarm
-                        end
-                    end)
-                end
-            end
-        end
-    end
-end)]]
-				
 game:GetService('RunService').Stepped:connect(function()
     if autofarm then
 	    pcall(function()
@@ -435,8 +412,8 @@ local amigo,brr = pcall(function()
     game:GetService("RunService"):UnbindFromRenderStep(game.Players.LocalPlayer.Name .. "Main")
 end)
 
-local o9b = w:CreateFolder("Daily Missions")
-o9b:Toggle("M1", function(bool)
+window2:Label("Daily Missions", Color3.fromRGB(127, 143, 166))
+window2:Toggle("M1",false, function(bool)
     smehu4 = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
@@ -447,7 +424,7 @@ game:GetService('RunService').Stepped:connect(function()
         end)
     end
 end)
-o9b:Toggle("Rush", function(bool)
+window2:Toggle("Rush",false, function(bool)
     smehu5 = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
@@ -458,7 +435,7 @@ game:GetService('RunService').Stepped:connect(function()
         end)
     end
 end)
-o9b:Toggle("Chi Charge", function(bool)
+window2:Toggle("Chi Charge",false, function(bool)
     smehu6 = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
@@ -471,7 +448,7 @@ game:GetService('RunService').Stepped:connect(function()
         end)
     end
 end)
-o9b:Toggle("Tree Jumps", function(bool)
+window2:Toggle("Tree Jumps",false, function(bool)
     smehu7 = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
@@ -483,46 +460,8 @@ game:GetService('RunService').Stepped:connect(function()
     end
 end)
 
-local tut = w:CreateFolder("Info")
-tut:Label("To run AutoFarm Script:", {
-TextSize = 24;
-	TextColor = Color3.fromRGB(255,255,255); 
-	BgColor = Color3.fromRGB(117, 50, 168);
-}) 
-
-tut:Label("1. Activate a beast mode (Except Tyn and Rab)", {
-TextSize = 13;
-	TextColor = Color3.fromRGB(255,255,255); 
-	BgColor = Color3.fromRGB(117, 50, 168);
-}) 
-
-tut:Label("2.Type !spirit, Next press ']'", {
-TextSize = 18;
-	TextColor = Color3.fromRGB(255,255,255); 
-	BgColor = Color3.fromRGB(117, 50, 168);
-})
-
-tut:Label("3.Turn on AutoFarm and Inf mode", {
-TextSize = 15.25;
-	TextColor = Color3.fromRGB(255,255,255); 
-	BgColor = Color3.fromRGB(117, 50, 168);
-})
-
-local wkr = w:CreateFolder("Others")
-wkr:Label("DANGER",{
-	TextSize = 20;
-    TextColor = Color3.fromRGB(255,255,255); 
-    BgColor = Color3.fromRGB(117, 50, 168);
-}) 
-wkr:Button("Reset Script",function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Shindo%20reset"))()
-end)
-wkr:Label("Pls Ignore",{
-	TextSize = 20;
-    TextColor = Color3.fromRGB(255,255,255); 
-    BgColor = Color3.fromRGB(117, 50, 168);
-}) 
-wkr:Button("Activate Black Screen",function()
+window2:Label("Pls ignore", Color3.fromRGB(127, 143, 166))
+window2:Button("Activate Black screen",function()
 local player = game.Players.LocalPlayer
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
@@ -538,7 +477,7 @@ Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 Frame.Position = UDim2.new(0, 0, -0.3, 0)
 Frame.Size = UDim2.new(1, 330, 1.3, 150)
 end)
-wkr:Button("Deactivate Black Screen",function()
+window2:Button("Deactivate Black screen",function()
     for i,v in pairs(player.PlayerGui:GetChildren()) do
         if v.Name == "ScreenGui" then
             v:Destroy()
@@ -546,13 +485,82 @@ end
 end
 end)
 
-local f = w:CreateFolder("Credits")
-f:Label("Made by Kaston",{
-	TextSize = 15;
-    TextColor = Color3.fromRGB(255,255,255); 
-    BgColor = Color3.fromRGB(117, 50, 168);
-}) 
-f:Button("Copy Kaston's Discord link",function()
+window2:Label("DANGER", Color3.fromRGB(127, 143, 166))
+window2:Button("Reset Script",function()
+local player = game.Players.LocalPlayer
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local TextButton = Instance.new("TextButton")
+local TextButton2 = Instance.new("TextButton")
+
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame.Position = UDim2.new(0.36, 0, 0.20, 0)
+Frame.Size = UDim2.new(0, 330, 0, 150)
+
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
+TextLabel.Size = UDim2.new(0, 330, 0, 90)
+TextLabel.Font = Enum.Font.AmaticSC
+TextLabel.Text = "Warning!!! You must disable all Toggles before reload script!!!"
+TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 35.000
+TextLabel.TextWrapped = true
+
+TextButton.Parent = Frame
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 230, 30)
+TextButton.Position = UDim2.new(0, 0, 0.600000006, 0)
+TextButton.Size = UDim2.new(0, 165, 0, 60)
+TextButton.Font = Enum.Font.AmaticSC
+TextButton.Text = "OK"
+TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextScaled = true
+TextButton.TextSize = 40.000
+TextButton.TextWrapped = true
+
+function OK2()
+    for i,v in pairs(player.PlayerGui:GetChildren()) do
+        if v.Name == "ScreenGui" then
+            v:Destroy()
+end
+end
+wait()
+library:Destroy()
+local player = game.Players.LocalPlayer
+        player.Character:BreakJoints()
+        wait(11)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain"))()
+end
+TextButton.MouseButton1Click:connect(OK2)
+
+TextButton2.Parent = Frame
+TextButton2.BackgroundColor3 = Color3.fromRGB(260, 30, 30)
+TextButton2.Position = UDim2.new(0.5, 0, 0.600000006, 0)
+TextButton2.Size = UDim2.new(0, 165, 0, 60)
+TextButton2.Font = Enum.Font.AmaticSC
+TextButton2.Text = "cancel"
+TextButton2.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextButton2.TextSize = 40.000
+TextButton2.TextWrapped = true
+
+function OK21()
+    for i,v in pairs(player.PlayerGui:GetChildren()) do
+        if v.Name == "ScreenGui" then
+            v:Destroy()
+end
+end
+end
+TextButton2.MouseButton1Click:connect(OK21)
+end)
+
+window3:Label("Made by Kaston", Color3.fromRGB(127, 143, 166))
+
+window3:Button("Copy Kaston's Discord link",function()
 	setclipboard("https://discord.gg/2nQBf998")
 end)
 --tips
@@ -631,42 +639,41 @@ local VirtualUser=game:service'VirtualUser'
 	VirtualUser:CaptureController()
 	VirtualUser:ClickButton2(Vector2.new())
 end)
-
 --variables
 local player = game.Players.LocalPlayer
 local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
---loading wally ui revamped By Aika
-local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/AikaV3rm/UiLib/master/Lib.lua')))()
-local w = library:CreateWindow("AF - Shindo Life")
-_G.ToggleColor = Color3.fromRGB(117, 50, 168)
-_G.ButtonColor = Color3.fromRGB(117, 50, 168)
-_G.ButtonTextColor = Color3.fromRGB(255, 255, 255)
---AUTOFARM
-local b = w:CreateFolder("AutoFarm")
-local daynight = b:Label("NIGHT/DAY",{
-	TextSize = 22;
-	TextColor = Color3.fromRGB(255,255,255); 
-	BgColor = Color3.fromRGB(117, 50, 168);
-}) 
-b:Label("Night = NO QUESTS", {
-TextSize = 22;
-	TextColor = Color3.fromRGB(255,255,255); 
-	BgColor = Color3.fromRGB(117, 50, 168);
-}) 
+
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/pornhub%20script%20gui"))()
+local window1 = library:Window("AutoFarm - DogeHub")
+local window2 = library:Window("Others")
+local window3 = library:Window("Credits")
+
+library:Keybind("RightControl")
+
+window1:Label("AutoFarm Function", Color3.fromRGB(127, 143, 166))
+
+--[[window1:Slider("Walkspeed",16,120,5, function(value)
+   game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = value
+end)
+
+
+window1:Slider("JumpPower",50,300,20, function(value)
+   game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = value
+end)]]
+
+local daynight = window1:Label("NIGHT/DAY", Color3.fromRGB(127, 143, 166))
+window1:Label("NIGHT = NO QUESTS", Color3.fromRGB(127, 143, 166))
 
 local autofarm
-b:Toggle("AutoFarm",function(bool)
-	autofarm = bool
+window1:Toggle("AutoFarm",false, function(bool)
+        autofarm = bool
 end)
+
 local RANKUPP
-b:Toggle("AutoRank",function(bool)
-	RANKUPP = bool
+window1:Toggle("AutoRank",false, function(bool)
+        RANKUPP = bool
 end)
---[[local KILL
-b:Toggle("Boss Kill Aura", function(bool)
-    KILL = bool
-end)]]
-b:Toggle("Spam E", function(bool)
+window1:Toggle("Spam E",false,function(bool)
     E = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
@@ -679,7 +686,7 @@ game:GetService('RunService').Stepped:connect(function()
         end)
     end
 end)
-b:Button("Infinite Mode",function()
+window1:Button("Infinite MD",function()
 	local mode = game.Players.LocalPlayer.Character.combat.mode
     local copy = mode:Clone()
     copy.Parent = mode.Parent
@@ -700,21 +707,17 @@ b:Button("Infinite Mode",function()
 		end
 	end)
 end)
-local disp = b:Label("QUESTS AMOUNT",{
-	TextSize = 22;
-	TextColor = Color3.fromRGB(255,255,255); 
-	BgColor = Color3.fromRGB(117, 50, 168);
-}) 
-local qdone = b:Label("Completed Quests", {
-TextSize = 22;
-	TextColor = Color3.fromRGB(255,255,255); 
-	BgColor = Color3.fromRGB(117, 50, 168);
-}) 
+
+local disp = window1:Label("QUEST AMOUNT", Color3.fromRGB(127, 143, 166))
+
+local qdone = window1:Label("Completed Quests", Color3.fromRGB(127, 143, 166))
+
 local LEVEL = player.statz.lvl.lvl
 local questdone = 0
 local function QUESTDONE()
 	questdone = questdone + 1
 end
+
 local function QUEST()
     for i,v in pairs(workspace.missiongivers:GetChildren()) do
         if v.Name == "" and v:FindFirstChild("Head") then
@@ -799,25 +802,6 @@ spawn(function()
 		end
 end)
 
---[[spawn(function()
-    while wait() do
-        if KILL then
-            if  player.currentmission.Value == nil then
-                for i,v in pairs(workspace.npc:GetChildren()) do
-                    pcall(function()
-                        if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-							repeat wait()
-								toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(0,2.5,0)))
-                                v.Humanoid.Health = 0
-							until v.Humanoid.Health == 0 or not autofarm
-                        end
-                    end)
-                end
-            end
-        end
-    end
-end)]]
-				
 game:GetService('RunService').Stepped:connect(function()
     if autofarm then
 	    pcall(function()
@@ -836,8 +820,8 @@ local amigo,brr = pcall(function()
     game:GetService("RunService"):UnbindFromRenderStep(game.Players.LocalPlayer.Name .. "Main")
 end)
 
-local o9b = w:CreateFolder("Daily Missions")
-o9b:Toggle("M1", function(bool)
+window2:Label("Daily Missions", Color3.fromRGB(127, 143, 166))
+window2:Toggle("M1",false, function(bool)
     smehu4 = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
@@ -848,7 +832,7 @@ game:GetService('RunService').Stepped:connect(function()
         end)
     end
 end)
-o9b:Toggle("Rush", function(bool)
+window2:Toggle("Rush",false, function(bool)
     smehu5 = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
@@ -859,7 +843,7 @@ game:GetService('RunService').Stepped:connect(function()
         end)
     end
 end)
-o9b:Toggle("Chi Charge", function(bool)
+window2:Toggle("Chi Charge",false, function(bool)
     smehu6 = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
@@ -872,7 +856,7 @@ game:GetService('RunService').Stepped:connect(function()
         end)
     end
 end)
-o9b:Toggle("Tree Jumps", function(bool)
+window2:Toggle("Tree Jumps",false, function(bool)
     smehu7 = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
@@ -884,47 +868,8 @@ game:GetService('RunService').Stepped:connect(function()
     end
 end)
 
-local tut = w:CreateFolder("Info")
-
-tut:Label("To run AutoFarm Script:", {
-TextSize = 24;
-	TextColor = Color3.fromRGB(255,255,255); 
-	BgColor = Color3.fromRGB(117, 50, 168);
-}) 
-
-tut:Label("1. Activate a beast mode (Except Tyn and Rab)", {
-TextSize = 13.8;
-	TextColor = Color3.fromRGB(255,255,255); 
-	BgColor = Color3.fromRGB(117, 50, 168);
-}) 
-
-tut:Label("2.Type !spirit, Next press ']'", {
-TextSize = 18;
-	TextColor = Color3.fromRGB(255,255,255); 
-	BgColor = Color3.fromRGB(117, 50, 168);
-})
-
-tut:Label("3.Turn on AutoFarm, Spam E and Inf mode", {
-TextSize = 14.85;
-	TextColor = Color3.fromRGB(255,255,255); 
-	BgColor = Color3.fromRGB(117, 50, 168);
-})
-
-local wkr = w:CreateFolder("Others")
-wkr:Label("DANGER",{
-	TextSize = 20;
-    TextColor = Color3.fromRGB(255,255,255); 
-    BgColor = Color3.fromRGB(117, 50, 168);
-}) 
-wkr:Button("Reset Script",function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Shindo%20reset"))()
-end)
-wkr:Label("Pls Ignore",{
-	TextSize = 20;
-    TextColor = Color3.fromRGB(255,255,255); 
-    BgColor = Color3.fromRGB(117, 50, 168);
-}) 
-wkr:Button("Activate Black Screen",function()
+window2:Label("Pls ignore", Color3.fromRGB(127, 143, 166))
+window2:Button("Activate Black screen",function()
 local player = game.Players.LocalPlayer
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
@@ -940,7 +885,7 @@ Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 Frame.Position = UDim2.new(0, 0, -0.3, 0)
 Frame.Size = UDim2.new(1, 330, 1.3, 150)
 end)
-wkr:Button("Deactivate Black Screen",function()
+window2:Button("Deactivate Black screen",function()
     for i,v in pairs(player.PlayerGui:GetChildren()) do
         if v.Name == "ScreenGui" then
             v:Destroy()
@@ -948,13 +893,82 @@ end
 end
 end)
 
-local f = w:CreateFolder("Credits")
-f:Label("Made by Kaston",{
-	TextSize = 15;
-    TextColor = Color3.fromRGB(255,255,255); 
-    BgColor = Color3.fromRGB(117, 50, 168);
-}) 
-f:Button("Copy Kaston's Discord link",function()
+window2:Label("DANGER", Color3.fromRGB(127, 143, 166))
+window2:Button("Reset Script",function()
+local player = game.Players.LocalPlayer
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local TextButton = Instance.new("TextButton")
+local TextButton2 = Instance.new("TextButton")
+
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame.Position = UDim2.new(0.36, 0, 0.20, 0)
+Frame.Size = UDim2.new(0, 330, 0, 150)
+
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
+TextLabel.Size = UDim2.new(0, 330, 0, 90)
+TextLabel.Font = Enum.Font.AmaticSC
+TextLabel.Text = "Warning!!! You must disable all Toggles before reload script!!!"
+TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 35.000
+TextLabel.TextWrapped = true
+
+TextButton.Parent = Frame
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 230, 30)
+TextButton.Position = UDim2.new(0, 0, 0.600000006, 0)
+TextButton.Size = UDim2.new(0, 165, 0, 60)
+TextButton.Font = Enum.Font.AmaticSC
+TextButton.Text = "OK"
+TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextScaled = true
+TextButton.TextSize = 40.000
+TextButton.TextWrapped = true
+
+function OK2()
+    for i,v in pairs(player.PlayerGui:GetChildren()) do
+        if v.Name == "ScreenGui" then
+            v:Destroy()
+end
+end
+wait()
+library:Destroy()
+local player = game.Players.LocalPlayer
+        player.Character:BreakJoints()
+        wait(11)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain"))()
+end
+TextButton.MouseButton1Click:connect(OK2)
+
+TextButton2.Parent = Frame
+TextButton2.BackgroundColor3 = Color3.fromRGB(260, 30, 30)
+TextButton2.Position = UDim2.new(0.5, 0, 0.600000006, 0)
+TextButton2.Size = UDim2.new(0, 165, 0, 60)
+TextButton2.Font = Enum.Font.AmaticSC
+TextButton2.Text = "cancel"
+TextButton2.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextButton2.TextSize = 40.000
+TextButton2.TextWrapped = true
+
+function OK21()
+    for i,v in pairs(player.PlayerGui:GetChildren()) do
+        if v.Name == "ScreenGui" then
+            v:Destroy()
+end
+end
+end
+TextButton2.MouseButton1Click:connect(OK21)
+end)
+
+window3:Label("Made by Kaston", Color3.fromRGB(127, 143, 166))
+
+window3:Button("Copy Kaston's Discord link",function()
 	setclipboard("https://discord.gg/2nQBf998")
 end)
 --tips
