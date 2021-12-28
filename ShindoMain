@@ -217,8 +217,6 @@ local window3 = library:Window("Credits")
 
 library:Keybind("RightControl")
 
-window1:Label("AutoFarm Function", Color3.fromRGB(127, 143, 166))
-
 --[[window1:Slider("Walkspeed",16,120,5, function(value)
    game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = value
 end)
@@ -465,10 +463,6 @@ window2:Button("Activate Black screen",function()
 local player = game.Players.LocalPlayer
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
-local TextLabel = Instance.new("TextLabel")
-local TextButton = Instance.new("TextButton")
-local TextButton_2 = Instance.new("TextButton")
-
 
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
@@ -577,14 +571,14 @@ ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
 Frame.Parent = ScreenGui
 Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Frame.Position = UDim2.new(0.36, 0, 0.20, 0)
-Frame.Size = UDim2.new(0, 330, 0, 150)
+Frame.Position = UDim2.new(0.7, 0, 0.25, 0)
+Frame.Size = UDim2.new(0, 120, 0, 100)
 
 TextLabel.Parent = Frame
 TextLabel.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
-TextLabel.Size = UDim2.new(0, 330, 0, 90)
+TextLabel.Size = UDim2.new(0, 200, 0, 90)
 TextLabel.Font = Enum.Font.AmaticSC
-TextLabel.Text = "Do not walk or reset when using AutoFarm Script!"
+TextLabel.Text = "Do not walk or reset while using AutoFarm Script!"
 TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
 TextLabel.TextScaled = true
 TextLabel.TextSize = 35.000
@@ -592,8 +586,8 @@ TextLabel.TextWrapped = true
 
 TextButton.Parent = Frame
 TextButton.BackgroundColor3 = Color3.fromRGB(0, 230, 30)
-TextButton.Position = UDim2.new(0, 0, 0.600000006, 0)
-TextButton.Size = UDim2.new(0, 330, 0, 60)
+TextButton.Position = UDim2.new(0, 0, 0.800000006, 0)
+TextButton.Size = UDim2.new(0, 200, 0, 40)
 TextButton.Font = Enum.Font.AmaticSC
 TextButton.Text = "OK!"
 TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
@@ -649,8 +643,6 @@ local window2 = library:Window("Others")
 local window3 = library:Window("Credits")
 
 library:Keybind("RightControl")
-
-window1:Label("AutoFarm Function", Color3.fromRGB(127, 143, 166))
 
 --[[window1:Slider("Walkspeed",16,120,5, function(value)
    game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = value
@@ -873,10 +865,6 @@ window2:Button("Activate Black screen",function()
 local player = game.Players.LocalPlayer
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
-local TextLabel = Instance.new("TextLabel")
-local TextButton = Instance.new("TextButton")
-local TextButton_2 = Instance.new("TextButton")
-
 
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
@@ -985,14 +973,14 @@ ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
 Frame.Parent = ScreenGui
 Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Frame.Position = UDim2.new(0.36, 0, 0.20, 0)
-Frame.Size = UDim2.new(0, 330, 0, 150)
+Frame.Position = UDim2.new(0.7, 0, 0.25, 0)
+Frame.Size = UDim2.new(0, 120, 0, 100)
 
 TextLabel.Parent = Frame
 TextLabel.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
-TextLabel.Size = UDim2.new(0, 330, 0, 90)
+TextLabel.Size = UDim2.new(0, 200, 0, 90)
 TextLabel.Font = Enum.Font.AmaticSC
-TextLabel.Text = "Do not walk or reset when using AutoFarm Script!"
+TextLabel.Text = "Do not walk or reset while using AutoFarm Script!"
 TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
 TextLabel.TextScaled = true
 TextLabel.TextSize = 35.000
@@ -1000,8 +988,8 @@ TextLabel.TextWrapped = true
 
 TextButton.Parent = Frame
 TextButton.BackgroundColor3 = Color3.fromRGB(0, 230, 30)
-TextButton.Position = UDim2.new(0, 0, 0.600000006, 0)
-TextButton.Size = UDim2.new(0, 330, 0, 60)
+TextButton.Position = UDim2.new(0, 0, 0.800000006, 0)
+TextButton.Size = UDim2.new(0, 200, 0, 40)
 TextButton.Font = Enum.Font.AmaticSC
 TextButton.Text = "OK!"
 TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
@@ -1017,7 +1005,6 @@ end
 end
 end
 TextButton.MouseButton1Click:connect(OK)
-
 end
 TextButton_2.MouseButton1Click:connect(spins)
 end
