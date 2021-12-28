@@ -3,6 +3,20 @@
 -- PLEASE SUBSCRIBE
 --NOTE ALL SCRIPTS ARE NOT MINE
 --CREDIT TO ALL SCRIPT OWNERS
+
+repeat wait() until game:IsLoaded()
+--old-antitp bypass
+if workspace:FindFirstChild("CCoff") then
+    game:GetService("Workspace").CCoff:Destroy()
+end
+--antiafk
+local VirtualUser=game:service'VirtualUser'
+	game:service'Players'.LocalPlayer.Idled:connect(function()
+	warn("anti-afk")
+	VirtualUser:CaptureController()
+	VirtualUser:ClickButton2(Vector2.new())
+end)
+
 local ScreenGui = Instance.new("ScreenGui")
 local OpenF = Instance.new("Frame")
 local OpenB = Instance.new("TextButton")
