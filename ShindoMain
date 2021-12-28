@@ -114,6 +114,20 @@ window1:Button("Reset after died",function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/6Wumpus6/SpyHub/main/Infmodeclose", true))()
 end)
 
+window1:Toggle("Spam E",false,function(bool)
+    E = bool
+end)
+game:GetService('RunService').Stepped:connect(function()
+    if E then
+        pcall(function()
+    game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+    wait()
+    game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+    wait()
+        end)
+    end
+end)
+
 window1:Label("DANGER", Color3.fromRGB(127, 143, 166))
 
 window1:Button("Reset Script",function()
