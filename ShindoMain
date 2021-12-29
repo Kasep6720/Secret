@@ -141,7 +141,7 @@ end
 
 getgenv().speed = 1000000
 
-window1:Toggle("Kill Aura (Close range)",false,function(bool)
+window1:Toggle("NPC Kill Aura",false,function(bool)
     keel = bool
 end)
 spawn(function()
