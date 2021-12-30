@@ -113,7 +113,7 @@ elseif game.PlaceId == 13822889 then
 wait(.3)
 TextLabel.Text = "Game supported!"
 wait(1)
-TextLabel.Text = "Lumber Tycoon"
+TextLabel.Text = "Lumber Tycoon 2"
 wait(1)
 TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!"
 wait(1)
