@@ -733,7 +733,7 @@ game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Script R
 local player = game.Players.LocalPlayer
         player.Character:BreakJoints()
         wait(11)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMainAfterReset"))()
 end
 TextButton.MouseButton1Click:connect(OK2)
 
@@ -1239,7 +1239,7 @@ game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Script R
 local player = game.Players.LocalPlayer
         player.Character:BreakJoints()
         wait(11)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMainAfterReset"))()
 end
 TextButton.MouseButton1Click:connect(OK2)
 
@@ -1713,7 +1713,7 @@ game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Script R
 local player = game.Players.LocalPlayer
         player.Character:BreakJoints()
         wait(11)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMainAfterReset"))()
 end
 TextButton.MouseButton1Click:connect(OK2)
 
