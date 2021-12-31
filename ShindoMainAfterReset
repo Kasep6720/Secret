@@ -172,7 +172,7 @@ keel = false
 E = false
 library:Destroy()
 wait(.3)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMainAfterReset"))()
 end)
 
 window2:Label("Daily Missions", Color3.fromRGB(127, 143, 166))
