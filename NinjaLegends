@@ -1,3 +1,15 @@
+--old-antitp bypass
+if workspace:FindFirstChild("CCoff") then
+    game:GetService("Workspace").CCoff:Destroy()
+end
+--antiafk
+local VirtualUser=game:service'VirtualUser'
+	game:service'Players'.LocalPlayer.Idled:connect(function()
+	warn("anti-afk")
+	VirtualUser:CaptureController()
+	VirtualUser:ClickButton2(Vector2.new())
+end)
+    
     local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
     local Window = Library.CreateLib("Ninja Legends", "Sentinel")
 
