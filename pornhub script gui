@@ -501,7 +501,7 @@ function library:Window(name)
 
         Dropdown.Name = "Dropdown"
         Dropdown.Parent = Window
-        Dropdown.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+        Dropdown.BackgroundColor3 = Color3.fromRGB(41, 41, 41)
         Dropdown.BorderColor3 = Color3.fromRGB(128, 128, 128)
         Dropdown.Position = UDim2.new(0, 12, 0, listOffset[winCount])
         Dropdown.Size = UDim2.new(0, 182, 0, 26)
@@ -563,7 +563,7 @@ function library:Window(name)
             local Button_2 = Instance.new("TextButton")
             Button_2.Name = "Button"
             Button_2.Parent = DropdownFrame
-            Button_2.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+            Button_2.BackgroundColor3 = Color3.fromRGB(41, 41, 41)
             Button_2.BorderColor3 = Color3.fromRGB(128, 128, 128)
             Button_2.Position = UDim2.new(0, 6, 0, canvasSize + 1)
             Button_2.Size = UDim2.new(0, 170, 0, 26)
