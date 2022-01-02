@@ -1,0 +1,131 @@
+--antiafk
+local VirtualUser=game:service'VirtualUser'
+	game:service'Players'.LocalPlayer.Idled:connect(function()
+	warn("anti-afk")
+	VirtualUser:CaptureController()
+	VirtualUser:ClickButton2(Vector2.new())
+end)
+
+local Cooking = game.Players.LocalPlayer.PlayerScripts.CookingNew
+local CookProgress = require(Cooking.CookProgress)
+local MultiClick = require(Cooking.InputDetectors.MultiClick)
+local MouseMovement = require(Cooking.InputDetectors.MouseMovement)
+local MouseSpin = require(Cooking.InputDetectors.MouseSpin)
+
+local run = CookProgress.run
+CookProgress.run = function(...)
+   local ARGS = {...}
+   ARGS[3] = 0
+   return run(unpack(ARGS))
+end
+
+MultiClick.start = function(...)
+   local ARGS = {...}
+   ARGS[3]()
+end
+
+MouseMovement.start = function(...)
+   local ARGS = {...}
+   ARGS[3]()
+end
+
+MouseSpin.start = function(...)
+   local ARGS = {...}
+   ARGS[3]()
+end
+
+local Module = require(game:GetService("Players").LocalPlayer.PlayerScripts.ClientMain.Replications.Workers.WalkDummy)
+setconstant(Module,34,function()
+   game:GetService("RunService").Heartbeat:Wait()
+end)
+
+
+warn("Requiring API")do
+   loadstring(game:HttpGet("https://pastebin.com/raw/KMc6aBky"))();
+end warn("API Loaded")
+ 
+local child = getgenv().object.child
+local descendant = getgenv().object.descendant
+local check = getgenv().object.check
+ 
+local Tycoon = game.Players.LocalPlayer.Tycoon.Value
+descendant.foreach(Tycoon.Items.OftenFiltered.Surface,"Bill",function(Bill)
+   local Settings = {
+           ["name"] = "CollectBill",
+           ["model"] = Bill.Parent
+   }
+ 
+   game.ReplicatedStorage.Events.ClientTycoonInput:FireServer(Tycoon,Settings)
+end)
+ 
+local Connection,Code = descendant.on_add(Tycoon.Items.OftenFiltered.Surface,function(Bill)
+   check.it(Bill.Name == "Bill",function()
+       local Settings = {
+               ["name"] = "CollectBill",
+               ["model"] = Bill.Parent
+       }
+ 
+       game.ReplicatedStorage.Events.ClientTycoonInput:FireServer(Tycoon,Settings)
+   end)
+end)
+
+local PS = game.Players.LocalPlayer.PlayerScripts
+local Worker = require(PS.CookingNew.WorkerComponents.WorkerDefault)
+local M1 = require(PS.ClientMain.Replications.Customers.GetNPCFolder)
+ 
+ 
+Worker.event = function(...)
+   local args = {...}
+   local npc = M1.GetNPCFolder(args[1]).ClientWorkers:FindFirstChild(args[2])
+   local M2 = game.ReplicatedStorage.Resources.NewCookingResources.SharedCharacterComponents:FindFirstChild(args[4])
+   if M2 then
+       local Task = require(M2)
+       Task.finishInteract(npc,args[3],args[4])
+   end
+   return
+end
+
+local player = game.Players.LocalPlayer
+
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/pornhub%20script%20gui"))()
+local window1 = library:Window("Restaurant Tycoon 2 - DogeHub")
+local window2 = library:Window("Credits")
+
+library:Keybind("RightControl")
+
+window1:Label("Basic Functions", Color3.fromRGB(127, 143, 166))
+
+window1:Toggle("Speed",false,function(bool)
+    speed = bool
+end)
+game:GetService('RunService').Stepped:connect(function()
+    if speed then
+        pcall(function()
+   game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = 50
+        end)
+    end
+end)
+
+window1:Label("AutoFarm Functions:", Color3.fromRGB(127, 143, 166))
+window1:Label("Auto collect cash", Color3.fromRGB(127, 143, 166))
+window1:Label("Auto serve customers", Color3.fromRGB(127, 143, 166))
+window1:Label("Speed up cooking process", Color3.fromRGB(127, 143, 166))
+
+--[[window1:Toggle("Spam E",false,function(bool)
+    E = bool
+end)
+game:GetService('RunService').Stepped:connect(function()
+    if E then
+        pcall(function()
+local m = game.Players.LocalPlayer.GetMouse()
+db = true
+m.KeyDown:connect(e)
+    wait()
+        end)
+    end
+end)]]
+
+window2:Button("Made by Kaston",function()
+	setclipboard("Kasep6720#7142")
+end)
+window2:Label("Hide/Show GUI = Right Ctrl", Color3.fromRGB(127, 143, 166))
