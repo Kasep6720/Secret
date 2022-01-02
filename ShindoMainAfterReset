@@ -161,7 +161,7 @@ until v.Humanoid.Health == 0 or not keel
     end
 end)
 
-window1:Dropdown("Custom Ranks",{"RELL", "F 0", "D 1", "D 2", "D 3", "C 1", "C 2", "C 3", "B 1", "B 2", "B 3", "A 1", "A 2", "A 3", "S 1", "S 2", "S 3", "V 1", "V 2", "V 3", "X 1", "X 2", "X 3", "Y 1", "Y 2", "Y 3", "Z 1", "Z 2", "Z 3", "MAX-69", "MAX-420", "MAX-666", "MAX-999", "GOD", "???"},function(rektrank)
+window1:Dropdown("Custom Ranks",{"RELL", "F 0", "D 1", "D 2", "D 3", "C 1", "C 2", "C 3", "B 1", "B 2", "B 3", "A 1", "A 2", "A 3", "S 1", "S 2", "S 3", "V 1", "V 2", "V 3", "X 1", "X 2", "X 3", "Y 1", "Y 2", "Y 3", "Z 1", "Z 2", "Z 3", "MAX-69", "MAX-420", "MAX-666", "MAX-999", "GOD", "Hacker", "???"},function(rektrank)
 game:GetService("Players").LocalPlayer.leaderstats.Rank.Value =  (rektrank)
 end)
 window1:Label("(Only you can see it)", Color3.fromRGB(127, 143, 166))
