@@ -1,4 +1,3 @@
---if game.PlaceId == 6984568732 then
 
 repeat wait() until game:IsLoaded()
 --old-antitp bypass
@@ -23,28 +22,28 @@ local akatsukiplace = 5431069982
 local worldxplace = 5943874201
 local villageplace = game:GetService("Workspace"):FindFirstChild("rank")
 local warplace = game:GetService("Workspace"):FindFirstChild("warmode")
-function toTarget(pos, targetPos, targetCFrame)
-    local tween_s = game:service"TweenService"
-    local info = TweenInfo.new((targetPos - pos).Magnitude/getgenv().speed, Enum.EasingStyle.Linear)
-    local tween, err = pcall(function()
-        local tween = tween_s:Create(game:GetService("Players").LocalPlayer.Character["HumanoidRootPart"], info, {CFrame = targetCFrame * CFrame.fromAxisAngle(Vector3.new(1,0,0), math.rad(90))})
-        tween:Play()
-    end)
-    if not tween then return err end
-end
 
 --loading wally ui revamped By Aika
-local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/AikaV3rm/UiLib/master/Lib.lua')))()
-local w = library:CreateWindow("Boss Farm - Shindo Life")
-_G.ToggleColor = Color3.fromRGB(117, 50, 168)
-_G.ButtonColor = Color3.fromRGB(117, 50, 168)
-_G.ButtonTextColor = Color3.fromRGB(255, 255, 255)
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/pornhub%20script%20gui"))()
+local window1 = library:Window("Utilities - DogeHub")
+local window2 = library:Window("Spam Keys")
+local window3 = library:Window("Credits")
+
+library:Keybind("RightControl")
+
+window1:Label("Boss Functions", Color3.fromRGB(127, 143, 166))
+
 --AUTOFARM
-getgenv().speed = 1000000
-local b = w:CreateFolder("AutoFarm")
+
 local autofarm
-b:Toggle("Track Boss",function(bool)
+window1:Toggle("Track Boss (High)",false,function(bool)
 	autofarm = bool
+end)
+window1:Toggle("Track Boss (Mid)",false, function(bool)
+autoofarm = bool
+end)
+window1:Toggle("Track Boss (Low)",false, function(bool)
+autooofarm = bool
 end)
 --[[b:Toggle("No Clip", function(bool)
     NC = bool
@@ -56,10 +55,11 @@ game:GetService('RunService').Stepped:connect(function()
         end)
     end
 end)]]
-b:Button("Semi-god Mode",function()
+window1:Label("Character Functions", Color3.fromRGB(127, 143, 166))
+window1:Button("SuperHuman",function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/6Wumpus6/SpyHub/main/Autoopen", true))()
 end)
-b:Button("Auto Charge", function(bool)
+window1:Button("Auto Charge Chi", function(bool)
 local chakra = string.split(game.Players.LocalPlayer.PlayerGui.Main.ingamearena.Bar.cha.Text,"CHI: ")[2]
 c = chakra:gsub("CH%: ","")
 local cha
@@ -99,11 +99,13 @@ spawn(function()
             if  player.currentmission.Value == nil then
                 for i,v in pairs(workspace.npc:GetChildren()) do
                     pcall(function()
+autoofarm = false
+autooofarm = false
                         if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
                             repeat wait()
-                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(0, 190, 9)))
-                                v.Humanoid.Health = 1000
-until v.Humanoid.Health == 0 or not autofarm
+                    player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(0,190,0)
+
+until --[[v.Humanoid.Health == 0 or]] not autofarm
                         end
                     end)
                 end
@@ -111,7 +113,50 @@ until v.Humanoid.Health == 0 or not autofarm
         end
     end
 end)
-b:Button("Infinite Mode",function()
+
+spawn(function()
+    while wait() do
+        if autoofarm then
+            if  player.currentmission.Value == nil then
+                for i,v in pairs(workspace.npc:GetChildren()) do
+                    pcall(function()
+autofarm = false
+autooofarm = false
+                        if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+                            repeat wait()
+                    player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(0,50,0)
+
+until --[[v.Humanoid.Health == 0 or]] not autoofarm
+                        end
+                    end)
+                end
+            end
+        end
+    end
+end)
+
+spawn(function()
+    while wait() do
+        if autooofarm then
+            if  player.currentmission.Value == nil then
+                for i,v in pairs(workspace.npc:GetChildren()) do
+                    pcall(function()
+autoofarm = false
+autofarm = false
+                        if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+                            repeat wait()
+                    player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(0,5,0)
+
+until --[[v.Humanoid.Health == 0 or]] not autooofarm
+                        end
+                    end)
+                end
+            end
+        end
+    end
+end)
+
+window1:Button("Infinite MD",function()
 	local mode = game.Players.LocalPlayer.Character.combat.mode
     local copy = mode:Clone()
     copy.Parent = mode.Parent
@@ -136,12 +181,34 @@ b:Button("Infinite Mode",function()
 	end)
 end)
 
-b:Button("Reset when died", function(bool)
+window1:Button("Reset when died", function(bool)
     loadstring(game:HttpGet("https://raw.githubusercontent.com/6Wumpus6/SpyHub/main/Infmodeclose", true))()
     end)
+ local keel
+window1:Toggle("Kill Aura (Bugged)",false, function(bool)
+ keel = bool
+end)
+spawn(function()
+    while wait() do
+        if keel then
+                for i,v in pairs(workspace.npc:GetChildren()) do
+                    pcall(function()
+        if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+wait(.00000009)
+            repeat wait()
+                pcall(function()
+                  wait(.0005)
+                    v.Humanoid.Health = 0
+                end)
+until v.Humanoid.Health == 0 or not keel
+                        end
+                    end)
+                end
+        end
+    end
+end)
 
-local Farm = w:CreateFolder("Spam Keys")
-Farm:Toggle("Spam Q", function(bool)
+window2:Toggle("Spam Q",false,function(bool)
     Q = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
@@ -154,7 +221,7 @@ game:GetService('RunService').Stepped:connect(function()
         end)
     end
 end)
-Farm:Toggle("Spam E", function(bool)
+window2:Toggle("Spam E",false, function(bool)
     E = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
@@ -167,7 +234,7 @@ game:GetService('RunService').Stepped:connect(function()
         end)
     end
 end)
-Farm:Toggle("Spam R", function(bool)
+window2:Toggle("Spam R",false, function(bool)
     R = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
@@ -180,7 +247,7 @@ game:GetService('RunService').Stepped:connect(function()
         end)
     end
 end)
-Farm:Toggle("Spam T", function(bool)
+window2:Toggle("Spam T",false, function(bool)
     T = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
@@ -193,7 +260,7 @@ game:GetService('RunService').Stepped:connect(function()
         end)
     end
 end)
-Farm:Toggle("Spam Y", function(bool)
+window2:Toggle("Spam Y",false, function(bool)
     Y = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
@@ -206,7 +273,7 @@ game:GetService('RunService').Stepped:connect(function()
         end)
     end
 end)
-Farm:Toggle("Spam F", function(bool)
+window2:Toggle("Spam F",false, function(bool)
     F = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
@@ -219,7 +286,7 @@ game:GetService('RunService').Stepped:connect(function()
         end)
     end
 end)
-Farm:Toggle("Spam G", function(bool)
+window2:Toggle("Spam G",false, function(bool)
     G = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
@@ -232,7 +299,7 @@ game:GetService('RunService').Stepped:connect(function()
         end)
     end
 end)
-Farm:Toggle("Spam H", function(bool)
+window2:Toggle("Spam H",false, function(bool)
     H = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
@@ -245,7 +312,7 @@ game:GetService('RunService').Stepped:connect(function()
         end)
     end
 end)
-Farm:Toggle("Spam V", function(bool)
+window2:Toggle("Spam V",false, function(bool)
     V = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
@@ -258,7 +325,7 @@ game:GetService('RunService').Stepped:connect(function()
         end)
     end
 end)
-Farm:Toggle("Spam B", function(bool)
+window2:Toggle("Spam B",false, function(bool)
     B = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
@@ -271,7 +338,7 @@ game:GetService('RunService').Stepped:connect(function()
         end)
     end
 end)
-Farm:Toggle("Spam N", function(bool)
+window2:Toggle("Spam N",false, function(bool)
     N = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
@@ -285,17 +352,10 @@ game:GetService('RunService').Stepped:connect(function()
     end
 end)
 
-local f = w:CreateFolder("Credits")
-f:Label("Made by Kaston",{
-	TextSize = 15;
-    TextColor = Color3.fromRGB(255,255,255); 
-    BgColor = Color3.fromRGB(117, 50, 168);
-}) 
-f:Button("Copy Kaston's Discord link",function()
-	setclipboard("https://discord.gg/2nQBf998")
+window3:Button("Made by Kaston",function()
+	setclipboard("Kasep6720#7142")
 end)
-
-
+window3:Label("Hide/Show GUI = Right Ctrl", Color3.fromRGB(127, 143, 166))
 --tips
 local player = game.Players.LocalPlayer
 local ScreenGui = Instance.new("ScreenGui")
@@ -341,5 +401,3 @@ end
 TextButton.MouseButton1Click:connect(OK)
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/HDTerebi/Shindo-Life/main/No%20CD%20Method"))()
-
-
