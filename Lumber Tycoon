@@ -1,3 +1,6 @@
+game:GetService("Players").LocalPlayer.SuperBlueprint.Value = 1
+game:GetService("Players").LocalPlayer.SuperBlueprint.Gamepass.Value = 1
+
 local shiroshubv2 = Instance.new("ScreenGui")
 local mainframe = Instance.new("Frame")
 local Minimise = Instance.new("TextButton")
