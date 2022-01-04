@@ -250,7 +250,7 @@ until v.Humanoid.Health == 0 or not keel
     end
 end)
 
-window1:Dropdown("Custom Ranks",{"RELL", "F 0", "D 1", "D 2", "D 3", "C 1", "C 2", "C 3", "B 1", "B 2", "B 3", "A 1", "A 2", "A 3", "S 1", "S 2", "S 3", "V 1", "V 2", "V 3", "X 1", "X 2", "X 3", "Y 1", "Y 2", "Y 3", "Z 1", "Z 2", "Z 3", "MAX-69", "MAX-420", "MAX-666", "MAX-999", "GOD", "Hacker", "???"},function(rektrank)
+window1:Dropdown("Custom Display Ranks",{"RELL", "F 0", "D 1", "D 2", "D 3", "C 1", "C 2", "C 3", "B 1", "B 2", "B 3", "A 1", "A 2", "A 3", "S 1", "S 2", "S 3", "V 1", "V 2", "V 3", "X 1", "X 2", "X 3", "Y 1", "Y 2", "Y 3", "Z 1", "Z 2", "Z 3", "MAX-69", "MAX-420", "MAX-666", "MAX-999", "GOD", "Hacker", "???"},function(rektrank)
 game:GetService("Players").LocalPlayer.leaderstats.Rank.Value =  (rektrank)
 end)
 window1:Label("(Only you can see it)", Color3.fromRGB(127, 143, 166))
@@ -319,8 +319,8 @@ end)
 
 window2:Label("Credits", Color3.fromRGB(127, 143, 166))
 
-window2:Button("Made by Kaston",function()
-	setclipboard("Kasep6720#7142")
+window2:Button("Made by NoobieDoge",function()
+	setclipboard("https://discord.gg/P2CeRjvTDt")
 end)
 window2:Label("Hide/Show GUI = Right Ctrl", Color3.fromRGB(127, 143, 166))
 
@@ -841,10 +841,10 @@ end
 TextButton2.MouseButton1Click:connect(OK21)
 end)
 
-window3:Label("Made by Kaston", Color3.fromRGB(127, 143, 166))
+window3:Label("Made by NoobieDoge", Color3.fromRGB(127, 143, 166))
 
-window3:Button("Copy Kaston's Discord",function()
-	setclipboard("Kasep6720#7142")
+window3:Button("Copy Discord Link",function()
+	setclipboard("https://discord.gg/P2CeRjvTDt")
 end)
 --tips
 --tips
@@ -1336,10 +1336,10 @@ end
 TextButton2.MouseButton1Click:connect(OK21)
 end)
 
-window3:Label("Made by Kaston", Color3.fromRGB(127, 143, 166))
+window3:Label("Made by NoobieDoge", Color3.fromRGB(127, 143, 166))
 
-window3:Button("Copy Kaston's Discord",function()
-	setclipboard("Kasep6720#7142")
+window3:Button("Copy Discord Link",function()
+	setclipboard("https://discord.gg/P2CeRjvTDt")
 end)
 --tips
 --tips
@@ -1800,10 +1800,10 @@ end
 TextButton2.MouseButton1Click:connect(OK21)
 end)
 
-window3:Label("Made by Kaston", Color3.fromRGB(127, 143, 166))
+window3:Label("Made by NoobieDoge", Color3.fromRGB(127, 143, 166))
 
-window3:Button("Copy Kaston's Discord",function()
-	setclipboard("Kasep6720#7142")
+window3:Button("Copy Discord Link",function()
+	setclipboard("https://discord.gg/P2CeRjvTDt")
 end)
 --tips
 --tips
