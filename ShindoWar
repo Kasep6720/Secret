@@ -1,7 +1,6 @@
 repeat wait() until game:IsLoaded()
 local player = game.Players.LocalPlayer
 local warplace = game:GetService("Workspace"):FindFirstChild("warmode")
-    if warplace then
 repeat wait() until game:IsLoaded()
 local player = game.Players.LocalPlayer
 local warplace = game:GetService("Workspace"):FindFirstChild("warmode")
@@ -142,25 +141,19 @@ end)
     game:GetService("RunService"):UnbindFromRenderStep(game.Players.LocalPlayer.Name .. "Main")
 	end)
 	local f = w:CreateFolder("Credits")
-    f:Label("made by Kaston",{
+    f:Label("made by NoobieDoge",{
         TextSize = 15;
         TextColor = Color3.fromRGB(255,255,255); 
         BgColor = Color3.fromRGB(117, 50, 168);
     }) 
-    f:Label("https://discord.gg/2nQBf998",{
+    f:Label("https://discord.gg/P2CeRjvTDt",{
         TextSize = 17;
         TextColor = Color3.fromRGB(255,255,255); 
         BgColor = Color3.fromRGB(117, 50, 168); 
     }) 
-    f:Button("Copy Kaston's Discord link",function()
-	setclipboard("https://discord.gg/2nQBf998")
+    f:Button("Copy Discord link",function()
+	setclipboard("https://discord.gg/P2CeRjvTDt")
     end)
-else
-    c:Label("YOU MUST RUN THIS IN WAR MODE",{
-        TextSize = 15;
-        TextColor = Color3.fromRGB(255,255,255); 
-        BgColor = Color3.fromRGB(117, 50, 168);
-    }) 
 end
 loadstring(game:HttpGet("https://raw.githubusercontent.com/HDTerebi/Shindo-Life/main/No%20CD%20Method"))()
 end
