@@ -208,13 +208,13 @@ b:Button("Infinite Mode",function()
 end)
 
 local f = w:CreateFolder("Credits")
-f:Label("Made by Kaston",{
+f:Label("Made by NoobieDoge",{
 	TextSize = 15;
     TextColor = Color3.fromRGB(255,255,255); 
     BgColor = Color3.fromRGB(117, 50, 168);
 }) 
-f:Button("Copy Kaston's Discord link",function()
-	setclipboard("https://discord.gg/2nQBf998")
+f:Button("Copy Discord link",function()
+	setclipboard("https://discord.gg/htqFKQGm")
 end)
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/HDTerebi/Shindo-Life/main/No%20CD%20Method"))()
