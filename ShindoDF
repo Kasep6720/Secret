@@ -214,7 +214,7 @@ f:Label("Made by NoobieDoge",{
     BgColor = Color3.fromRGB(117, 50, 168);
 }) 
 f:Button("Copy Discord link",function()
-	setclipboard("https://discord.gg/htqFKQGm")
+	setclipboard("https://discord.gg/P2CeRjvTDt")
 end)
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/HDTerebi/Shindo-Life/main/No%20CD%20Method"))()
