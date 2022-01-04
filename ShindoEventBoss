@@ -352,8 +352,8 @@ game:GetService('RunService').Stepped:connect(function()
     end
 end)
 
-window3:Button("Made by Kaston",function()
-	setclipboard("Kasep6720#7142")
+window3:Button("Made by NoobieDoge",function()
+	setclipboard("https://discord.gg/P2CeRjvTDt")
 end)
 window3:Label("Hide/Show GUI = Right Ctrl", Color3.fromRGB(127, 143, 166))
 --tips
