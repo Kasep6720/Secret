@@ -125,7 +125,7 @@ m.KeyDown:connect(e)
     end
 end)]]
 
-window2:Button("Made by Kaston",function()
-	setclipboard("Kasep6720#7142")
+	window2:Button("Made by NoobieDoge",function()
+	setclipboard("https://discord.gg/P2CeRjvTDt")
 end)
 window2:Label("Hide/Show GUI = Right Ctrl", Color3.fromRGB(127, 143, 166))
