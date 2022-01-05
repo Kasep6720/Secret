@@ -69,7 +69,7 @@ local Connection,Code = descendant.on_add(Tycoon.Items.OftenFiltered.Surface,fun
    end)
 end)
 
-local PS = game.Players.LocalPlayer.PlayerScripts
+--[[local PS = game.Players.LocalPlayer.PlayerScripts
 local Worker = require(PS.CookingNew.WorkerComponents.WorkerDefault)
 local M1 = require(PS.ClientMain.Replications.Customers.GetNPCFolder)
  
@@ -83,7 +83,7 @@ Worker.event = function(...)
        Task.finishInteract(npc,args[3],args[4])
    end
    return
-end
+end]]
 
 local player = game.Players.LocalPlayer
 
