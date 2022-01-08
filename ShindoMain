@@ -692,7 +692,7 @@ TextButton.BackgroundColor3 = Color3.fromRGB(117, 50, 168)
 TextButton.Position = UDim2.new(0, 0, 0.150000006, 0)
 TextButton.Size = UDim2.new(0, 200, 0, 100)
 TextButton.Font = Enum.Font.AmaticSC
-TextButton.Text = "Smooth Method             (Hard to operate without good PC and chi rod toss)"
+TextButton.Text = "Tailed Beast & Chi Rod Toss"
 TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
 TextButton.TextScaled = true
 TextButton.TextSize = 35.000
@@ -724,16 +724,6 @@ local window3 = library:Window("Credits")
 
 library:Keybind("RightControl")
 
---[[window1:Slider("Walkspeed",16,120,5, function(value)
-   game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = value
-end)
-
-
-window1:Slider("JumpPower",50,300,20, function(value)
-   game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = value
-end)]]
-
-local daynight = window1:Label("NIGHT/DAY", Color3.fromRGB(127, 143, 166))
 window1:Label("NIGHT = NO QUESTS", Color3.fromRGB(127, 143, 166))
 
 local autofarm
@@ -768,9 +758,9 @@ window1:Button("Infinite MD",function()
 	end)
 end)
 
-local disp = window1:Label("QUEST AMOUNT", Color3.fromRGB(127, 143, 166))
-
-local qdone = window1:Label("Completed Quests", Color3.fromRGB(127, 143, 166))
+window1:Label("If autofarm stuck:", Color3.fromRGB(127, 143, 166))
+window1:Label("In village = bugged", Color3.fromRGB(127, 143, 166))
+window1:Label("Outside village = no missions", Color3.fromRGB(127, 143, 166))
 
 window1:Button("Tutorial",function()
 local player = game.Players.LocalPlayer
@@ -866,12 +856,6 @@ end
 TextButton.MouseButton1Click:connect(delete)
 end)
 
-local LEVEL = player.statz.lvl.lvl
-local questdone = 0
-local function QUESTDONE()
-	questdone = questdone + 1
-end
-
 local function QUEST()
     for i,v in pairs(workspace.missiongivers:GetChildren()) do
         if v.Name == "" and v:FindFirstChild("Head") then
@@ -892,7 +876,6 @@ local function QUEST()
             end
         end
     end
-    QUESTDONE()
 end
 
 local function FARM()
@@ -955,30 +938,7 @@ wait(.00000009)
         end
     end
 end
-local count
-local function DISP()
-	count = 0
-	for i,v in pairs(workspace.missiongivers:GetChildren()) do
-		if v.Name == "" and v:FindFirstChild("Head") then
-            if v:FindFirstChild("Head") and v.Head:FindFirstChild("givemission") and v.Head.givemission.Enabled and v.Head.givemission:FindFirstChild("color") and v.Head.givemission.color.Image == "http://www.roblox.com/asset/?id=5459241648" --[[or v.Head.givemission.color.Image == "http://www.roblox.com/asset/?id=5459241799"]] then
-			    count = count + 1
-			end
-		end
-	end
-end
 
-spawn(function()
-    while wait() do
-        if autofarm then
-			DISP()
-			if count > 0 and mission.Visible == false then
-			   QUEST()
-	    	else
-	    	    FARM()
-            end
-        end
-    end
-end)
 local PRES = player.statz.prestige.maxlvlpres
 local RANK = player.statz.prestige.rank
 local RANKNUM = player.statz.prestige.number
@@ -993,23 +953,6 @@ spawn(function()
 		end
 end)
 
-game:GetService('RunService').Stepped:connect(function()
-    if autofarm then
-	    pcall(function()
-		    game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
-		    if game:GetService("Workspace").daynight.Value == true then
-		        daynight:Refresh("NIGHT")
-		    else
-		        daynight:Refresh("DAY")
-		    end
-			disp:Refresh("Availale Quest(s): " .. tostring(count))
-			qdone:Refresh("Completed: " .. tostring(questdone))
-		end)
-	end
-end)
---[[local amigo,brr = pcall(function()
-    game:GetService("RunService"):UnbindFromRenderStep(game.Players.LocalPlayer.Name .. "Main")
-end)]]
 
 window2:Label("Daily Missions", Color3.fromRGB(127, 143, 166))
 window2:Toggle("M1",false, function(bool)
@@ -1222,7 +1165,7 @@ TextButton_2.BackgroundColor3 = Color3.fromRGB(117, 50, 168)
 TextButton_2.Position = UDim2.new(0, 0, 0.400000024, 0)
 TextButton_2.Size = UDim2.new(0, 200, 0, 100)
 TextButton_2.Font = Enum.Font.AmaticSC
-TextButton_2.Text = "Full Spam E Method       (Might have NPC 0 HP stuck bug)"
+TextButton_2.Text = "Only Tailed Beasts"
 TextButton_2.TextColor3 = Color3.fromRGB(0, 0, 0)
 TextButton_2.TextScaled = true
 TextButton_2.TextSize = 35.000
@@ -1254,16 +1197,6 @@ local window3 = library:Window("Credits")
 
 library:Keybind("RightControl")
 
---[[window1:Slider("Walkspeed",16,120,5, function(value)
-   game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = value
-end)
-
-
-window1:Slider("JumpPower",50,300,20, function(value)
-   game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = value
-end)]]
-
-local daynight = window1:Label("NIGHT/DAY", Color3.fromRGB(127, 143, 166))
 window1:Label("NIGHT = NO QUESTS", Color3.fromRGB(127, 143, 166))
 
 local autoofarm
@@ -1310,9 +1243,9 @@ window1:Button("Infinite MD",function()
 	end)
 end)
 
-local disp = window1:Label("QUEST AMOUNT", Color3.fromRGB(127, 143, 166))
-
-local qdone = window1:Label("Completed Quests", Color3.fromRGB(127, 143, 166))
+local disp = window1:Label("If autofarm stuck:", Color3.fromRGB(127, 143, 166))
+local qdone = window1:Label("In village = bugged", Color3.fromRGB(127, 143, 166))
+local qdone = window1:Label("Outside village = no missions", Color3.fromRGB(127, 143, 166))
 
 window1:Button("Tutorial",function()
 local player = game.Players.LocalPlayer
@@ -1408,12 +1341,6 @@ end
 TextButton.MouseButton1Click:connect(delete)
 end)
 
-local LEVEL = player.statz.lvl.lvl
-local questdone = 0
-local function QUESTDONE()
-	questdone = questdone + 1
-end
-
 local function QUEST()
     for i,v in pairs(workspace.missiongivers:GetChildren()) do
         if v.Name == "" and v:FindFirstChild("Head") then
@@ -1434,7 +1361,6 @@ local function QUEST()
             end
         end
     end
-    QUESTDONE()
 end
 
 local function FARM()
@@ -1460,30 +1386,7 @@ wait(.00000009)
         end
     end
 end
-local count
-local function DISP()
-	count = 0
-	for i,v in pairs(workspace.missiongivers:GetChildren()) do
-		if v.Name == "" and v:FindFirstChild("Head") then
-            if v:FindFirstChild("Head") and v.Head:FindFirstChild("givemission") and v.Head.givemission.Enabled and v.Head.givemission:FindFirstChild("color") and v.Head.givemission.color.Image == "http://www.roblox.com/asset/?id=5459241648" --[[or v.Head.givemission.color.Image == "http://www.roblox.com/asset/?id=5459241799"]] then
-			    count = count + 1
-			end
-		end
-	end
-end
 
-spawn(function()
-    while wait() do
-        if autoofarm then
-			DISP()
-			if count > 0 and mission.Visible == false then
-			   QUEST()
-	    	else
-	    	    FARM()
-            end
-        end
-    end
-end)
 local PRES = player.statz.prestige.maxlvlpres
 local RANK = player.statz.prestige.rank
 local RANKNUM = player.statz.prestige.number
@@ -1496,24 +1399,6 @@ spawn(function()
 				until player.statz.lvl:FindFirstChild("lvl").Value == 1 or not RANKUP
 			end
 		end
-end)
-
-game:GetService('RunService').Stepped:connect(function()
-    if autofarm then
-	    pcall(function()
-		    game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
-		    if game:GetService("Workspace").daynight.Value == true then
-		        daynight:Refresh("NIGHT")
-		    else
-		        daynight:Refresh("DAY")
-		    end
-			disp:Refresh("Availale Quest(s): " .. tostring(count))
-			qdone:Refresh("Completed: " .. tostring(questdone))
-		end)
-	end
-end)
-local amigo,brr = pcall(function()
-    game:GetService("RunService"):UnbindFromRenderStep(game.Players.LocalPlayer.Name .. "Main")
 end)
 
 window2:Label("Daily Missions", Color3.fromRGB(127, 143, 166))
@@ -1727,7 +1612,7 @@ TextButton_3.BackgroundColor3 = Color3.fromRGB(117, 50, 168)
 TextButton_3.Position = UDim2.new(0, 0, 0.6500000024, 0)
 TextButton_3.Size = UDim2.new(0, 200, 0, 100)
 TextButton_3.Font = Enum.Font.AmaticSC
-TextButton_3.Text = "Baby Method                 (For people who have nothing)"
+TextButton_3.Text = "None of the above"
 TextButton_3.TextColor3 = Color3.fromRGB(0, 0, 0)
 TextButton_3.TextScaled = true
 TextButton_3.TextSize = 35.000
@@ -1759,16 +1644,6 @@ local window3 = library:Window("Credits")
 
 library:Keybind("RightControl")
 
---[[window1:Slider("Walkspeed",16,120,5, function(value)
-   game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = value
-end)
-
-
-window1:Slider("JumpPower",50,300,20, function(value)
-   game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = value
-end)]]
-
-local daynight = window1:Label("NIGHT/DAY", Color3.fromRGB(127, 143, 166))
 window1:Label("NIGHT = NO QUESTS", Color3.fromRGB(127, 143, 166))
 
 local autoofarm
@@ -1781,9 +1656,9 @@ window1:Toggle("AutoRank",false, function(bool)
         RANKUPP = bool
 end)
 
-local disp = window1:Label("QUEST AMOUNT", Color3.fromRGB(127, 143, 166))
-
-local qdone = window1:Label("Completed Quests", Color3.fromRGB(127, 143, 166))
+window1:Label("If autofarm stuck:", Color3.fromRGB(127, 143, 166))
+window1:Label("In village - bugged", Color3.fromRGB(127, 143, 166))
+window1:Label("Outside village = no missions", Color3.fromRGB(127, 143, 166))
 
 window1:Button("Tutorial",function()
 local player = game.Players.LocalPlayer
@@ -1879,12 +1754,6 @@ end
 TextButton.MouseButton1Click:connect(delete)
 end)
 
-local LEVEL = player.statz.lvl.lvl
-local questdone = 0
-local function QUESTDONE()
-	questdone = questdone + 1
-end
-
 local function QUEST()
     for i,v in pairs(workspace.missiongivers:GetChildren()) do
         if v.Name == "" and v:FindFirstChild("Head") then
@@ -1905,7 +1774,6 @@ local function QUEST()
             end
         end
     end
-    QUESTDONE()
 end
 
 local function FARM()
@@ -1935,30 +1803,7 @@ wait(.00000009)
         end
     end
 end
-local count
-local function DISP()
-	count = 0
-	for i,v in pairs(workspace.missiongivers:GetChildren()) do
-		if v.Name == "" and v:FindFirstChild("Head") then
-            if v:FindFirstChild("Head") and v.Head:FindFirstChild("givemission") and v.Head.givemission.Enabled and v.Head.givemission:FindFirstChild("color") and v.Head.givemission.color.Image == "http://www.roblox.com/asset/?id=5459241648" --[[or v.Head.givemission.color.Image == "http://www.roblox.com/asset/?id=5459241799"]] then
-			    count = count + 1
-			end
-		end
-	end
-end
 
-spawn(function()
-    while wait() do
-        if autoofarm then
-			DISP()
-			if count > 0 and mission.Visible == false then
-			   QUEST()
-	    	else
-	    	    FARM()
-            end
-        end
-    end
-end)
 local PRES = player.statz.prestige.maxlvlpres
 local RANK = player.statz.prestige.rank
 local RANKNUM = player.statz.prestige.number
@@ -1971,24 +1816,6 @@ spawn(function()
 				until player.statz.lvl:FindFirstChild("lvl").Value == 1 or not RANKUP
 			end
 		end
-end)
-
-game:GetService('RunService').Stepped:connect(function()
-    if autofarm then
-	    pcall(function()
-		    game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
-		    if game:GetService("Workspace").daynight.Value == true then
-		        daynight:Refresh("NIGHT")
-		    else
-		        daynight:Refresh("DAY")
-		    end
-			disp:Refresh("Availale Quest(s): " .. tostring(count))
-			qdone:Refresh("Completed: " .. tostring(questdone))
-		end)
-	end
-end)
-local amigo,brr = pcall(function()
-    game:GetService("RunService"):UnbindFromRenderStep(game.Players.LocalPlayer.Name .. "Main")
 end)
 
 window2:Label("Daily Missions", Color3.fromRGB(127, 143, 166))
