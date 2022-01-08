@@ -939,6 +939,18 @@ wait(.00000009)
     end
 end
 
+spawn(function()
+    while wait() do
+        if autofarm then
+			if mission.Visible == false then
+			   QUEST()
+	    	else
+	    	    FARM()
+            end
+        end
+    end
+end)
+
 local PRES = player.statz.prestige.maxlvlpres
 local RANK = player.statz.prestige.rank
 local RANKNUM = player.statz.prestige.number
@@ -1387,6 +1399,18 @@ wait(.00000009)
     end
 end
 
+spawn(function()
+    while wait() do
+        if autofarm then
+			if mission.Visible == false then
+			   QUEST()
+	    	else
+	    	    FARM()
+            end
+        end
+    end
+end)
+
 local PRES = player.statz.prestige.maxlvlpres
 local RANK = player.statz.prestige.rank
 local RANKNUM = player.statz.prestige.number
@@ -1803,6 +1827,18 @@ wait(.00000009)
         end
     end
 end
+
+spawn(function()
+    while wait() do
+        if autofarm then
+			if mission.Visible == false then
+			   QUEST()
+	    	else
+	    	    FARM()
+            end
+        end
+    end
+end)
 
 local PRES = player.statz.prestige.maxlvlpres
 local RANK = player.statz.prestige.rank
