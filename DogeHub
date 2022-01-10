@@ -344,7 +344,7 @@ else
 end
 else
     if warplace then
-if game.PlaceId == 5824792748 then screengui:Destroy() wait()
+if game.PlaceId == 5824792748 then ScreenGui:Destroy() wait()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoWar"))()
 else 
 ScreenGui:Destroy() 
