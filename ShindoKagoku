@@ -30,6 +30,7 @@ local window3 = library:Window("Credits")
 library:Keybind("RightControl")
 
 window1:Label("Boss Functions", Color3.fromRGB(127, 143, 166))
+window1:Label("STILL DEVELOPING", Color3.fromRGB(127, 143, 166))
 
 --AUTOFARM
 
