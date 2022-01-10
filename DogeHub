@@ -337,7 +337,11 @@ local allbosses = game:GetService("Workspace"):FindFirstChild("npc"):FindFirstCh
     if allbosses then 
 ScreenGui:Destroy()  
 wait()
+    if game.PlaceId == 8472733618 then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoKagoku"))()
+else
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoEventBoss"))()
+end
 else
     if warplace then
 if game.PlaceId == 5824792748 then screengui:Destroy() wait()
