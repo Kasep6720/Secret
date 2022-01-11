@@ -754,7 +754,7 @@ function library:Window(name)
         Cursor.BackgroundTransparency = 1.000
         Cursor.Size = UDim2.new(0, 8, 0, 8)
         Cursor.Image = "rbxassetid://5100115962"
-        Cursor.ZIndex = 1 + zindex
+        Cursor.ZIndex = 8 + zindex
 
         local draggingColor = false
         local hue = 0
