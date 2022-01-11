@@ -82,317 +82,8 @@ window1:Button("Add ESP GUI",function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Fate%20ESP"))()
 end)
 
-window1:Toggle("Press P to fly & ESP",false,function()
-
-_G.FRIEND_LIST = {"ROBLOX","builderman"} --Add players you want to ignore
-
-_G.IGNORE_TEAM = false
-_G.MAX_DIST = 30000
-_G.TARGET_PART = "Head"
-
-_G.START_ESP = Enum.KeyCode.P
-_G.PREFIX = "/e " --If you want a space between the command and pref, you need to type a space! Ex: /ehelp . /e help
-
-
-
-local startTime = tick()
-
-local EspEnabled = false
-
-local Players = game:GetService("Players")
-local StarterGui = game:GetService("StarterGui")
-local CoreGui = game:GetService("CoreGui")
-local UIS = game:GetService("UserInputService")
-local RunService = game:GetService("RunService")
-
-local plr = Players.LocalPlayer
-local camera = workspace.CurrentCamera
-local mouse = plr:GetMouse()
-local newray = Ray.new
-
-local function RandomCharacters(length)
-	local STR = ''
-	
-	for i = 1, length do
-		STR = STR .. string.char(math.random(65,90))
-	end
-	
-	return STR
-end
-local faces = {
-	"Back",
-	"Bottom",
-	"Front",
-	"Left",
-	"Right",
-	"Top"
-}
-local EspObjects = Instance.new("Folder")
-EspObjects.Parent = CoreGui
-EspObjects.Name = RandomCharacters(8)
-
-local function SendMessage(txt,title,dur,size,color)
-	print(txt)
-	StarterGui:SetCore("ChatMakeSystemMessage",{
-		Text = txt,
-		Color = color,
-		FontSize = size
-	})
-	StarterGui:SetCore("SendNotification",{
-		Title = title,
-		Text = txt,
-		Duration = dur
-	})
-end
-local function ChangeColor(player, color)
-	if EspObjects:FindFirstChild(player) then
-		for i,v in pairs(EspObjects:FindFirstChild(player):GetChildren()) do
-			if v:IsA("SurfaceGui") then
-				for _,x in pairs(v:GetChildren()) do
-					if x:IsA("Frame") then
-						x.BackgroundColor3 = color
-					end
-				end
-			elseif v:IsA("BillboardGui") then
-				for _,x in pairs(v:GetChildren()) do
-					if x:IsA("TextLabel") then
-						x.TextColor = color
-					end
-				end
-			end
-		end
-	end
-end
-local function GetClosestPlayer(returnPlr,ignoreList)
-	ignoreList = _G.FRIEND_LIST
-	returnPlr = returnPlr or false
-	
-	local ignoreTeam = _G.IGNORE_TEAM
-	local maxdist = _G.MAX_DIST
-	local targetpart = _G.TARGET_PART
-	
-	if ignoreTeam == true then
-		if #game:GetService("Teams"):GetChildren() <= 1 then
-			ignoreTeam = false
-		end
-		if plr.Neutral == true then
-			ignoreTeam = false
-		end
-	end
-	
-	local temp1 = (maxdist)
-	local FoundPlr
-	local FoundPart
-	
-	local Table = game.Players:GetPlayers()
-	for _,v in pairs(Table) do
-		local skip = false
-		for _,i in pairs(ignoreList) do
-			if i:lower() == v.Name:lower() then
-				skip = true
-			end
-		end
-		if ignoreTeam == true then
-			if v.Team == plr.Team then
-				skip = true
-			end
-		end
-		if v.Character == nil or v.Character:FindFirstChild(targetpart) == nil then 
-			skip = true
-		end
-
-		if skip == false then
-			if (temp1 ~= nil and v.Character:FindFirstChild(targetpart) and plr.Character ~= nil and plr.Character:FindFirstChild(targetpart)) then
-				if temp1 > (plr.Character.Head.Position - v.Character:FindFirstChild(targetpart).Position).magnitude then
-					local vChar = v.Character
-					if vChar:FindFirstChild("Humanoid") then
-						local vHuman = vChar:FindFirstChild("Humanoid")
-						if vHuman.Health > 0 then
-							local dist = (plr.Character.Head.Position - vChar:FindFirstChild(targetpart).Position).magnitude
-							if dist <= maxdist then
-								local ray = newray(plr.Character.Head.CFrame.p, (vChar:FindFirstChild(targetpart).CFrame.p - plr.Character.Head.CFrame.p).unit * _G.MAX_DIST)
-								local hitPart,position = workspace:FindPartOnRay(ray,plr.Character)
-									
-								if hitPart then
-									if hitPart:IsDescendantOf(vChar) then
-										temp1 = dist
-										FoundPlr = v
-										FoundPart = vChar:FindFirstChild(targetpart)
-									end
-								end
-							end
-						end	
-					end
-				end
-			end
-		end
-	end
-	if returnPlr == false then
-		return FoundPart
-	elseif returnPlr == true then
-		return FoundPlr
-	end
-end
-local function CreateEspBox(pObj, color)
-	if (pObj:IsA("Part") and pObj.Parent:IsA("Model") and pObj.Parent ~= workspace) then
-		for i,v in pairs(EspObjects:GetChildren()) do 
-			if v.Name == pObj.Parent.Name then
-				return nil
-			end
-		end
-		local newFlder = Instance.new("Folder")
-		newFlder.Parent = EspObjects
-		newFlder.Name = pObj.Parent.Name
-		
-		for i,v in pairs(faces) do
-			local surfGui = Instance.new("SurfaceGui")
-			surfGui.AlwaysOnTop = true
-			surfGui.Adornee = pObj
-			surfGui.Face = v
-			
-			local frme = Instance.new("Frame")
-			frme.Size = UDim2.new(1,0,1,0)
-			frme.BackgroundColor3 = color
-			frme.BackgroundTransparency = .5
-			frme.BorderSizePixel = 0
-			frme.Parent = surfGui
-			
-			surfGui.Parent = newFlder
-		end
-		local bbGui = Instance.new("BillboardGui")
-		bbGui.Adornee = pObj
-		bbGui.Size = UDim2.new(5.5,0,1.75,0)
-		bbGui.ExtentsOffset = Vector3.new(0,2.5,0)
-		bbGui.AlwaysOnTop = true
-		local txtLab = Instance.new("TextLabel")
-		txtLab.Text = pObj.Parent.Name
-		txtLab.TextColor3 = color
-        txtLab.Font = Enum.Font.RobotoCondensed
-		txtLab.TextScaled = false
-		txtLab.TextSize = 17
-		txtLab.Size = UDim2.new(1,0,1,0)
-		txtLab.BackgroundTransparency = 1
-		txtLab.BorderSizePixel = 0
-		txtLab.Parent = bbGui
-		bbGui.Parent = newFlder
-		
-		local objPar = Instance.new("ObjectValue")
-		objPar.Value = pObj
-		objPar.Parent = newFlder
-		objPar.Name = "pObj"
-		
-		return newFlder
-	end
-	return nil
-end
-local function ClearEsp()
-	EspObjects:ClearAllChildren()
-end
-local function ConnectEsp(player)
-	local func1
-	local func2
-	if player.Character ~= nil and player.Character:FindFirstChild("Head") then
-		if plr.Team == nil or player.Team == nil or plr.Neutral == true or player.Neutral == true then
-			local fldr = CreateEspBox(player.Character:FindFirstChild("Head"), Color3.fromRGB(255,0,0))
-			if fldr ~= nil then
-				local func3
-				func3 = fldr.pObj.Changed:Connect(function()
-					if fldr.pObj.Value == nil then
-						if EspObjects:FindFirstChild(player.Name) then
-							EspObjects:FindFirstChild(player.Name):Destroy()
-						end
-						func3:Disconnect()
-					end
-				end)
-			end
-		elseif plr.Team == player.Team then 
-			CreateEspBox(player.Character:FindFirstChild("Head"), Color3.fromRGB(0,255,0))
-		elseif plr.Team ~= player.Team then 
-			CreateEspBox(player.Character:FindFirstChild("Head"), Color3.fromRGB(255,0,0))
-		end
-	end
-	func1 = player.CharacterAdded:Connect(function(char)
-		wait(1)
-		if player.Character ~= nil then
-			func2 = player.Character:WaitForChild("Humanoid").Died:Connect(function()
-				if EspObjects:FindFirstChild(player.Name) then
-					EspObjects:FindFirstChild(player.Name):Destroy()
-				end
-			end)
-		end
-		if EspEnabled == true then
-			if plr.Team == nil or player.Team == nil or plr.Neutral == true or player.Neutral == true then
-				CreateEspBox(char:FindFirstChild("Head"), Color3.fromRGB(255,0,0))
-			elseif plr.Team == player.Team then 
-				CreateEspBox(char:FindFirstChild("Head"), Color3.fromRGB(0,255,0))
-			elseif plr.Team ~= player.Team then 
-				CreateEspBox(char:FindFirstChild("Head"), Color3.fromRGB(255,0,0))
-			end
-		else
-			if EspObjects:FindFirstChild(player.Name) then
-				EspObjects:FindFirstChild(player.Name):Destroy()
-			end
-			func2:Disconnect()
-			func1:Disconnect()
-		end
-	end)
-	if player.Character ~= nil then
-		func2 = player.Character:WaitForChild("Humanoid").Died:Connect(function()
-			if EspObjects:FindFirstChild(player.Name) then
-				EspObjects:FindFirstChild(player.Name):Destroy()
-			end
-		end)
-	end
-	return
-end
-local function EnableEsp()
-	if EspEnabled == true then
-		for i,v in pairs(Players:GetPlayers()) do
-			if v ~= plr then
-				ConnectEsp(v)
-			end
-		end
-	end
-end
-Players.PlayerAdded:Connect(function(player)
-	if EspEnabled == true then
-		ConnectEsp(player)
-	end
-end)
-Players.PlayerRemoving:Connect(function(player)
-	if EspObjects:FindFirstChild(player.Name) then
-		EspObjects:FindFirstChild(player.Name):Destroy()
-	end
-end)
-UIS.InputBegan:Connect(function(KEY, gpe)
-
-	if KEY.KeyCode == _G.START_ESP then
-		if EspEnabled == false then
-			SendMessage("ESP & fly has been enabled.",
-				"ESP & fly enabled;",
-				3,
-				Enum.FontSize.Size28,
-				Color3.fromRGB(200,50,50)
-			)
-			EspEnabled = true
-			EnableEsp()
-			while EspEnabled == true do
-				ClearEsp()
-				EnableEsp()
-				wait(1)
-			end
-		elseif EspEnabled == true then
-			SendMessage("ESP & fly has been disabled.",
-				"ESP & fly disabled;",
-				3,
-				Enum.FontSize.Size28,
-				Color3.fromRGB(200,50,50)
-			)
-			EspEnabled = false
-			ClearEsp()
-		end
-	end
-end)
+window1:Toggle("Press P to fly",false,function(Pnorm)
+Pspeed = false
 
 	repeat wait() 
 	until game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:findFirstChild("Head") and game.Players.LocalPlayer.Character:findFirstChild("Humanoid") 
@@ -404,7 +95,7 @@ end)
 	local deb = true 
 	local ctrl = {f = 0, b = 0, l = 0, r = 0} 
 	local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
-	local maxspeed = 500 
+	local maxspeed = 80 
 	local speed = 0 
 
 	function Fly() 
@@ -419,7 +110,97 @@ end)
 		repeat wait() 
 			plr.Character.Humanoid.PlatformStand = true 
 			if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
-				speed = speed+.5+(speed/maxspeed) 
+				speed = speed+10.5+(speed/maxspeed) 
+				if speed > maxspeed then 
+					speed = maxspeed 
+				end 
+
+			elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
+				speed = speed-1 
+				if speed < 0 then 
+					speed = 0 
+				end 
+			end 
+			if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then 
+				bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+				lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r} 
+			elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then 
+				bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+			else 
+				bv.velocity = Vector3.new(0,0.1,0)
+			end 
+			bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
+		until not flying 
+		ctrl = {f = 0, b = 0, l = 0, r = 0} 
+		lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+		speed = 0 
+		bg:Destroy() 
+		bv:Destroy() 
+		plr.Character.Humanoid.PlatformStand = false 
+	end 
+
+	mouse.KeyDown:connect(function(key) 
+		if key:lower() == "p" then 
+			if flying then flying = false 
+			else 
+				flying = true 
+				Fly() 
+			end 
+		elseif key:lower() == "w" then 
+			ctrl.f = 1 
+		elseif key:lower() == "s" then 
+			ctrl.b = -1 
+		elseif key:lower() == "a" then 
+			ctrl.l = -1 
+		elseif key:lower() == "d" then 
+			ctrl.r = 1 
+		end 
+	end) 
+
+	mouse.KeyUp:connect(function(key) 
+
+
+		if key:lower() == "w" then 
+            ctrl.f = 0 
+		elseif key:lower() == "s" then 
+			ctrl.b = 0 
+		elseif key:lower() == "a" then 
+			ctrl.l = 0 
+		elseif key:lower() == "d" then 
+			ctrl.r = 0 
+		end 
+	end)
+	Fly()
+end)
+window1:Toggle("Press P to fly faster",false,function(Pspeed)
+Pnorm = false
+
+	repeat wait() 
+	until game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:findFirstChild("Head") and game.Players.LocalPlayer.Character:findFirstChild("Humanoid") 
+	local mouse = game.Players.LocalPlayer:GetMouse() 
+	repeat wait() until mouse
+	local plr = game.Players.LocalPlayer 
+	local torso = plr.Character.Head 
+	local flying = false
+	local deb = true 
+	local ctrl = {f = 0, b = 0, l = 0, r = 0} 
+	local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+	local maxspeed = 400 
+	local speed = 0 
+
+	function Fly() 
+		local bg = Instance.new("BodyGyro", torso) 
+		bg.P = 9e4 
+		bg.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
+		bg.cframe = torso.CFrame 
+
+		local bv = Instance.new("BodyVelocity", torso) 
+		bv.velocity = Vector3.new(0,0.1,0) 
+		bv.maxForce = Vector3.new(9e9, 9e9, 9e9) 
+		repeat wait() 
+			plr.Character.Humanoid.PlatformStand = true 
+			if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
+				speed = speed+10.5+(speed/maxspeed) 
 				if speed > maxspeed then 
 					speed = maxspeed 
 				end 
@@ -561,7 +342,7 @@ until v.Humanoid.Health == 0 or not keel
     end
 end)
 
-window1:Dropdown("Custom Display Ranks",{"RELL", "F 0", "D 1", "D 2", "D 3", "C 1", "C 2", "C 3", "B 1", "B 2", "B 3", "A 1", "A 2", "A 3", "S 1", "S 2", "S 3", "V 1", "V 2", "V 3", "X 1", "X 2", "X 3", "Y 1", "Y 2", "Y 3", "Z 1", "Z 2", "Z 3", "MAX-69", "MAX-420", "MAX-666", "MAX-999", "GOD", "Hacker", "???"},function(rektrank)
+window1:Dropdown("Custom Display Ranks",{"RELL", "F 0", "D 1", "D 2", "D 3", "C 1", "C 2", "C 3", "B 1", "B 2", "B 3", "A 1", "A 2", "A 3", "S 1", "S 2", "S 3", "V 1", "V 2", "V 3", "X 1", "X 2", "X 3", "Y 1", "Y 2", "Y 3", "Z 1", "Z 2", "Z 3", "MAX-69", "MAX-420", "MAX-666", "MAX-999", "GOD", "Dragon", "Hacker", "???"},function(rektrank)
 game:GetService("Players").LocalPlayer.leaderstats.Rank.Value =  (rektrank)
 end)
 window1:Label("(Only you can see it)", Color3.fromRGB(127, 143, 166))
