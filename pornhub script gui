@@ -113,7 +113,7 @@ function library:Window(name)
     UiWindow.BorderColor3 = Color3.fromRGB(45, 45, 45)
     UiWindow.Position = UDim2.new(0, xOffset, 0, 20)
     UiWindow.Size = UDim2.new(0, 207, 0, 33)
-    UiWindow.ZIndex = 4 + zindex
+    UiWindow.ZIndex = 4
     UiWindow.Active = true
     Dragify(UiWindow)
 
