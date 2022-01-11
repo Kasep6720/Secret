@@ -54,6 +54,7 @@ end)
 end
 
 -- Instances:
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
 local function protect_gui(obj) 
 if destroyed then
@@ -62,11 +63,11 @@ if destroyed then
 end
 if syn and syn.protect_gui then
 syn.protect_gui(obj)
-obj.Parent = game.CoreGui
+obj.Parent = ScreenGui
 elseif PROTOSMASHER_LOADED then
 obj.Parent = get_hidden_gui()
 else
-obj.Parent = game.CoreGui
+obj.Parent = ScreenGui
 end
 end
 local TurtleUiLib = Instance.new("ScreenGui")
@@ -113,7 +114,7 @@ function library:Window(name)
     UiWindow.BorderColor3 = Color3.fromRGB(45, 45, 45)
     UiWindow.Position = UDim2.new(0, xOffset, 0, 20)
     UiWindow.Size = UDim2.new(0, 207, 0, 33)
-    UiWindow.ZIndex = 2
+    UiWindow.ZIndex = 4 + zindex
     UiWindow.Active = true
     Dragify(UiWindow)
 
