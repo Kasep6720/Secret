@@ -10,8 +10,8 @@ local destroyed
 
 local colorPickers = {}
 
-if ScreenGui:FindFirstChild('TurtleUiLib') then
-    ScreenGui:FindFirstChild('TurtleUiLib'):Destroy()
+if game.CoreGui:FindFirstChild('TurtleUiLib') then
+    game.CoreGui:FindFirstChild('TurtleUiLib'):Destroy()
     destroyed = true
 end
 
@@ -54,20 +54,19 @@ end)
 end
 
 -- Instances:
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
 local function protect_gui(obj) 
 if destroyed then
-   obj.Parent = ScreenGui
+   obj.Parent = game.CoreGui
    return
 end
 if syn and syn.protect_gui then
 syn.protect_gui(obj)
-obj.Parent = ScreenGui
+obj.Parent = game.CoreGui
 elseif PROTOSMASHER_LOADED then
 obj.Parent = get_hidden_gui()
 else
-obj.Parent = ScreenGui
+obj.Parent = game.CoreGui
 end
 end
 local TurtleUiLib = Instance.new("ScreenGui")
@@ -755,7 +754,7 @@ function library:Window(name)
         Cursor.BackgroundTransparency = 1.000
         Cursor.Size = UDim2.new(0, 8, 0, 8)
         Cursor.Image = "rbxassetid://5100115962"
-        Cursor.ZIndex = 5 + zindex
+        Cursor.ZIndex = 1 + zindex
 
         local draggingColor = false
         local hue = 0
