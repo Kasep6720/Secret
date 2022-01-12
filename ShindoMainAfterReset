@@ -63,7 +63,8 @@ local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):Wai
 
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/pornhub%20script%20gui"))()
 local window1 = library:Window("Utilities - DogeHub")
-local window2 = library:Window("Others")
+local window2 = library:Window("Main")
+local window3 = library:Window("Others")
 
 library:Keybind("RightControl")
 
@@ -80,6 +81,19 @@ end)]]
 
 window1:Button("Add ESP GUI",function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Fate%20ESP"))()
+end)
+
+window1:Button("Enable Infinite Jump",function()
+getgenv().dc = false
+local infjump
+infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
+    if dc then infjump:Disconnect() end
+    game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
+end)
+end)
+
+window1:Button("Disable Infinite Jump",function()
+getgenv().dc = true
 end)
 
 window1:Toggle("Press P to fly",false,function(Pnorm)
@@ -263,7 +277,7 @@ Pnorm = false
 	Fly()
 end)
 
-window1:Toggle("Aimbot",false,function(Aimyopr)
+window1:Toggle("Aim Support",false,function(Aimyopr)
 end)
 --FE Simple AimLock Script | Released Nov 2021 | Working.
 local Area = game:GetService("Workspace")
@@ -351,13 +365,13 @@ UIS.InputEnded:Connect(function(Input)
 end)
 window1:Label("(Hold RMB at enemy to aim)", Color3.fromRGB(127, 143, 166))
 
-window1:Label("Character Functions", Color3.fromRGB(127, 143, 166))
+window2:Label("Game Functions", Color3.fromRGB(127, 143, 166))
 
-window1:Button("SuperHuman",function()
+window2:Button("SuperHuman",function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/6Wumpus6/SpyHub/main/Autoopen", true))()
 end)
 
-window1:Button("Infinite MD",function()
+window2:Button("Infinite MD",function()
 	local mode = game.Players.LocalPlayer.Character.combat.mode
     local copy = mode:Clone()
     copy.Parent = mode.Parent
@@ -379,11 +393,11 @@ window1:Button("Infinite MD",function()
 	end)
 end)
 
-window1:Button("Reset after died",function()
+window2:Button("Reset after died",function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/6Wumpus6/SpyHub/main/Infmodeclose", true))()
 end)
 
-window1:Toggle("Spam E",false,function(bool)
+window2:Toggle("Spam E",false,function(bool)
     E = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
@@ -410,7 +424,7 @@ end
 
 getgenv().speed = 1000000
 
-window1:Toggle("NPC Kill Aura",false,function(bool)
+window2:Toggle("NPC Kill Aura",false,function(bool)
     keel = bool
 end)
 spawn(function()
@@ -430,14 +444,14 @@ until v.Humanoid.Health == 0 or not keel
     end
 end)
 
-window1:Dropdown("Custom Display Ranks",{"RELL", "F 0", "D 1", "D 2", "D 3", "C 1", "C 2", "C 3", "B 1", "B 2", "B 3", "A 1", "A 2", "A 3", "S 1", "S 2", "S 3", "V 1", "V 2", "V 3", "X 1", "X 2", "X 3", "Y 1", "Y 2", "Y 3", "Z 1", "Z 2", "Z 3", "MAX-69", "MAX-420", "MAX-666", "MAX-999", "GOD", "Dragon", "Hacker", "???"},function(rektrank)
+window2:Dropdown("Custom Display Ranks",{"RELL", "F 0", "D 1", "D 2", "D 3", "C 1", "C 2", "C 3", "B 1", "B 2", "B 3", "A 1", "A 2", "A 3", "S 1", "S 2", "S 3", "V 1", "V 2", "V 3", "X 1", "X 2", "X 3", "Y 1", "Y 2", "Y 3", "Z 1", "Z 2", "Z 3", "MAX-69", "MAX-420", "MAX-666", "MAX-999", "GOD", "Dragon", "Hacker", "???"},function(rektrank)
 game:GetService("Players").LocalPlayer.leaderstats.Rank.Value =  (rektrank)
 end)
-window1:Label("(Only you can see it)", Color3.fromRGB(127, 143, 166))
+window2:Label("(Only you can see it)", Color3.fromRGB(127, 143, 166))
 
-window2:Label("DANGER", Color3.fromRGB(127, 143, 166))
+window3:Label("DANGER", Color3.fromRGB(127, 143, 166))
 
-window2:Button("Reset Script",function()
+window3:Button("Reset Script",function()
 Pspeed = false
 Pnorm = false
 smeh4u7 = false
@@ -452,8 +466,8 @@ wait(.3)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMainAfterReset"))()
 end)
 
-window2:Label("Daily Missions", Color3.fromRGB(127, 143, 166))
-window2:Toggle("M1",false, function(bool)
+window3:Label("Daily Missions", Color3.fromRGB(127, 143, 166))
+window3:Toggle("M1",false, function(bool)
     smeh4u4 = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
@@ -464,7 +478,7 @@ game:GetService('RunService').Stepped:connect(function()
         end)
     end
 end)
-window2:Toggle("Rush",false, function(bool)
+window3:Toggle("Rush",false, function(bool)
     smeh4u5 = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
@@ -475,7 +489,7 @@ game:GetService('RunService').Stepped:connect(function()
         end)
     end
 end)
-window2:Toggle("Chi Charge",false, function(bool)
+window3:Toggle("Chi Charge",false, function(bool)
     smeh4u6 = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
@@ -488,7 +502,7 @@ game:GetService('RunService').Stepped:connect(function()
         end)
     end
 end)
-window2:Toggle("Tree Jumps",false, function(bool)
+window3:Toggle("Tree Jumps",false, function(bool)
     smeh4u7 = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
@@ -500,12 +514,12 @@ game:GetService('RunService').Stepped:connect(function()
     end
 end)
 
-window2:Label("Credits", Color3.fromRGB(127, 143, 166))
+window3:Label("Credits", Color3.fromRGB(127, 143, 166))
 
-window2:Button("Made by NoobieDoge",function()
+window3:Button("Made by NoobieDoge",function()
 	setclipboard("https://discord.gg/P2CeRjvTDt")
 end)
-window2:Label("Hide/Show GUI = Right Ctrl", Color3.fromRGB(127, 143, 166))
+window3:Label("Hide/Show GUI = Right Ctrl", Color3.fromRGB(127, 143, 166))
 
 --[[window1:Toggle("FE Spam Sounds",false, function(State1)
         getgenv().hit = State1
