@@ -1183,7 +1183,7 @@ end
 
 spawn(function()
     while wait() do
-        if autofarm then
+        if autoofarm then
 			if mission.Visible == false then
 			   QUEST()
 	    	else
@@ -1612,7 +1612,7 @@ end
 
 spawn(function()
     while wait() do
-        if autofarm then
+        if autoofarm then
 			if mission.Visible == false then
 			   QUEST()
 	    	else
