@@ -84,6 +84,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Othe
 end)
 
 window1:Button("Enable Infinite Jump",function()
+getgenv().dc = false
 local infjump
 infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
     if dc then infjump:Disconnect() return end
