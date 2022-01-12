@@ -95,7 +95,7 @@ Pspeed = false
 	local deb = true 
 	local ctrl = {f = 0, b = 0, l = 0, r = 0} 
 	local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
-	local maxspeed = 80 
+	local maxspeed = 101 
 	local speed = 0 
 
 	function Fly() 
@@ -116,7 +116,7 @@ Pspeed = false
 				end 
 
 			elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
-				speed = speed-1 
+				speed = speed-15 
 				if speed < 0 then 
 					speed = 0 
 				end 
@@ -200,13 +200,13 @@ Pnorm = false
 		repeat wait() 
 			plr.Character.Humanoid.PlatformStand = true 
 			if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
-				speed = speed+10.5+(speed/maxspeed) 
+				speed = speed+50.5+(speed/maxspeed) 
 				if speed > maxspeed then 
 					speed = maxspeed 
 				end 
 
 			elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
-				speed = speed-1 
+				speed = speed-50
 				if speed < 0 then 
 					speed = 0 
 				end 
@@ -1171,7 +1171,7 @@ end
 
 spawn(function()
     while wait() do
-        if autofarm then
+        if autoofarm then
 			if mission.Visible == false then
 			   QUEST()
 	    	else
@@ -1589,7 +1589,7 @@ end
 
 spawn(function()
     while wait() do
-        if autofarm then
+        if autoofarm then
 			if mission.Visible == false then
 			   QUEST()
 	    	else
