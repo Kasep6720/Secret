@@ -32,19 +32,19 @@ function toTarget(pos, targetPos, targetCFrame)
 end
 
 --loading wally ui revamped By Aika
-local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/AikaV3rm/UiLib/master/Lib.lua')))()
-local w = library:CreateWindow("DF - Shindo Life")
-_G.ToggleColor = Color3.fromRGB(117, 50, 168)
-_G.ButtonColor = Color3.fromRGB(117, 50, 168)
-_G.ButtonTextColor = Color3.fromRGB(255, 255, 255)
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/pornhub%20script%20gui"))()
+local window1 = library:Window("Dungeon Farm - DogeHub")
+local window2 = library:Window("Others")
+
+library:Keybind("RightControl")
+
 --AUTOFARM
 getgenv().speed = 4000
-local b = w:CreateFolder("AutoFarm")
-local autofarm
-b:Toggle("Dungeon Farm",function(bool)
-	autofarm = bool
+local dfarm
+window1:Toggle("Autofarm",false, function(bool)
+    dfarm = bool
 end)
-b:Toggle("Spam E", function(bool)
+window1:Toggle("Spam E",false, function(bool)
     E = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
@@ -60,121 +60,34 @@ end)
 
 spawn(function()
     while wait() do
-        if autofarm then
+        if dfarm then
             if  player.currentmission.Value == nil then
                 for i,v in pairs(workspace.npc:GetChildren()) do
                     pcall(function()
                         if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-                            repeat wait(.1)
-                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(0,-2.5,-1)))
+                            repeat wait(0.1)
+ game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+ game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+ game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+ game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+                    player.Character.HumanoidRootPart.CFrame=(v.HumanoidRootPart.CFrame * CFrame.new(0, 7, 3))
                                 v.Humanoid.Health = 0
-wait(.004)
-                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(-1,-4.5,0)))
+wait(.2004)
+ game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+ game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+ game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+ game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+                    player.Character.HumanoidRootPart.CFrame=(v.HumanoidRootPart.CFrame * CFrame.new(0, 7, 3))
                                 v.Humanoid.Health = 0
-wait(.004)
-                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(1,-2.5,0)))
+wait(.2004)
+ game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+ game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+ game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+ game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+                    player.Character.HumanoidRootPart.CFrame=(v.HumanoidRootPart.CFrame * CFrame.new(0, 7, 3))
                                 v.Humanoid.Health = 0
-wait(.004)
-                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(0,-4.5,1)))
-                                v.Humanoid.Health = 0
-wait(.004)
-                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(0,-4.5,-1)))
-                                v.Humanoid.Health = 0
-wait(.004)
-                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(-1,-2.5,0)))
-                                v.Humanoid.Health = 0
-wait(.004)
-                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(1,-4.5,0)))
-                                v.Humanoid.Health = 0
-wait(.004)
-                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(0,-2.5,1)))
-                                v.Humanoid.Health = 0
-wait(.004)
-                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(0,-2.5,-1)))
-                                v.Humanoid.Health = 0
-wait(.004)
-                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(0,-2.5,-1)))
-                                v.Humanoid.Health = 0
-wait(.004)
-                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(-1,-4.5,0)))
-                                v.Humanoid.Health = 0
-wait(.004)
-                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(1,-2.5,0)))
-                                v.Humanoid.Health = 0
-wait(.004)
-                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(0,-4.5,1)))
-                                v.Humanoid.Health = 0
-wait(.004)
-                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(0,-4.5,-1)))
-                                v.Humanoid.Health = 0
-wait(.004)
-                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(-1,-2.5,0)))
-                                v.Humanoid.Health = 0
-wait(.004)
-                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(1,-4.5,0)))
-                                v.Humanoid.Health = 0
-wait(.004)
-                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(0,-2.5,1)))
-                                v.Humanoid.Health = 0
-wait(.004)
-                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(0,-2.5,-1)))
-                                v.Humanoid.Health = 0
-wait(.004)
-                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(0,-2.5,-1)))
-                                v.Humanoid.Health = 0
-wait(.004)
-                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(-1,-4.5,0)))
-                                v.Humanoid.Health = 0
-wait(.004)
-                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(1,-2.5,0)))
-                                v.Humanoid.Health = 0
-wait(.004)
-                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(0,-4.5,1)))
-                                v.Humanoid.Health = 0
-wait(.004)
-                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(0,-4.5,-1)))
-                                v.Humanoid.Health = 0
-wait(.004)
-                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(-1,-2.5,0)))
-                                v.Humanoid.Health = 0
-wait(.004)
-                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(1,-4.5,0)))
-                                v.Humanoid.Health = 0
-wait(.004)
-                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(0,-2.5,1)))
-                                v.Humanoid.Health = 0
-wait(.004)
-                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(0,-2.5,-1)))
-                                v.Humanoid.Health = 0
-wait(.004)
-                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(0,-2.5,-1)))
-                                v.Humanoid.Health = 0
-wait(.004)
-                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(-1,-4.5,0)))
-                                v.Humanoid.Health = 0
-wait(.004)
-                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(1,-2.5,0)))
-                                v.Humanoid.Health = 0
-wait(.004)
-                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(0,-4.5,1)))
-                                v.Humanoid.Health = 0
-wait(.004)
-                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(0,-4.5,-1)))
-                                v.Humanoid.Health = 0
-wait(.004)
-                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(-1,-2.5,0)))
-                                v.Humanoid.Health = 0
-wait(.004)
-                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(1,-4.5,0)))
-                                v.Humanoid.Health = 0
-wait(.004)
-                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(0,-2.5,1)))
-                                v.Humanoid.Health = 0
-wait(.004)
-                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v.HumanoidRootPart.Position,CFrame.new(v.HumanoidRootPart.Position+Vector3.new(0,-2.5,-1)))
-                                v.Humanoid.Health = 0
-wait(.004)
-until v.Humanoid.Health == 0 or not autofarm
+wait(.2004)
+until v.Humanoid.Health == 0 or not dfarm
                         end
                     end)
                 end
@@ -182,7 +95,8 @@ until v.Humanoid.Health == 0 or not autofarm
         end
     end
 end)
-b:Button("Infinite Mode",function()
+
+window1:Button("Infinite MD",function()
 	local mode = game.Players.LocalPlayer.Character.combat.mode
     local copy = mode:Clone()
     copy.Parent = mode.Parent
@@ -197,24 +111,11 @@ b:Button("Infinite Mode",function()
 	end
 	halfchi = chakra/1.5
 	print("CHI will recharge at "..halfchi)
-	spawn(function() 
-		while wait() do
-			if game.Players.LocalPlayer.Character.Humanoid.WalkSpeed == 0 then
-				game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 50
-			end
-			chakracheck()
-		end
-	end)
 end)
 
-local f = w:CreateFolder("Credits")
-f:Label("Made by NoobieDoge",{
-	TextSize = 15;
-    TextColor = Color3.fromRGB(255,255,255); 
-    BgColor = Color3.fromRGB(117, 50, 168);
-}) 
-f:Button("Copy Discord link",function()
+window2:Button("Made by NoobieDoge",function()
 	setclipboard("https://discord.gg/P2CeRjvTDt")
 end)
+window2:Label("Show/Hide GUI = Right Ctrl", Color3.fromRGB(127, 143, 166))
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/HDTerebi/Shindo-Life/main/No%20CD%20Method"))()
