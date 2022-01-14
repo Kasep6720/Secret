@@ -1,2 +1,2 @@
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/main/DogeHub"))()
-player:Kick("Imagine need to use hacks to kill a 23 yrs old hentai uncle")
+game.Players.LocalPlayer:Kick("No Exploits.")
