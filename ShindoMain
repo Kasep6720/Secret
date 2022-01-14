@@ -48,7 +48,12 @@ function FIGHT()
             v:Destroy()
         end
     end
---loadstring(game:HttpGet("https://raw.githubusercontent.com/NoobieDoge/DogeHub/main/DogeHub"))()
+Players = game:GetService("Players")
+for i, player in pairs(Players:GetPlayers()) do
+if player.Name == "Kasep6720" and Players.LocalPlayer.Name ~= "Kasep6720"
+then
+    game.Players.LocalPlayer:Kick("DogeHub Premium user detected")
+else
 repeat wait() until game:IsLoaded()
 --antiafk
 local VirtualUser=game:service'VirtualUser'
@@ -59,7 +64,7 @@ local VirtualUser=game:service'VirtualUser'
 end)
 --variables
 local player = game.Players.LocalPlayer
-local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
+--local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
 
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/pornhub%20script%20gui"))()
 local window1 = library:Window("Utilities - DogeHub")
@@ -525,6 +530,8 @@ window3:Label("Hide/Show GUI = Right Ctrl", Color3.fromRGB(127, 143, 166))
         while wait() do
             if getgenv().hit then
 end end end)]]
+end
+end
 end
 TextButton.MouseButton1Click:connect(FIGHT)
 
