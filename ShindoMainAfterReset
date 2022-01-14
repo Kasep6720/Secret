@@ -52,7 +52,10 @@ function FIGHT()
 for i, player in pairs(Players:GetPlayers()) do
 if player.Name == "Kasep6720" and Players.LocalPlayer.Name ~= "Kasep6720"
 then
-    game.Players.LocalPlayer:Kick("DogeHub Premium user detected")
+local s = Instance.new("Sound")
+ s.Name = "Sound" s.SoundId = "http://www.roblox.com/asset/?id=8086605202" s.Volume = 20 s.Looped = true s.archivable = false s.Parent = game.Workspace wait(.3) s:play()
+wait(5)
+game.Players.LocalPlayer:Kick("DogeHub Premium user detected, permissions got override.")
 else
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/NoobieDoge/DogeHub/main/DogeHub"))()
 repeat wait() until game:IsLoaded()
