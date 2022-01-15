@@ -1029,6 +1029,10 @@ smehu7 = false
 smehu6 = false
 smehu5 = false
 smehu4 = false
+aunin = false
+auchi = false
+autai = false 
+auhp = false
 wait()
 library:Destroy()
 game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Script Reset",     Text = "You can only reset autofarm scripts once!",Duration = 10, })
@@ -1490,6 +1494,10 @@ smehu7 = false
 smehu6 = false
 smehu5 = false
 smehu4 = false
+aunin = false
+auchi = false
+autai = false 
+auhp = false
 wait()
 library:Destroy()
 game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Script Reset",     Text = "You can only reset autofarm scripts once!",Duration = 10, })
@@ -1921,6 +1929,10 @@ smehu7 = false
 smehu6 = false
 smehu5 = false
 smehu4 = false
+aunin = false
+auchi = false
+autai = false 
+auhp = false
 wait()
 library:Destroy()
 game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Script Reset",     Text = "You can only reset autofarm scripts once!",Duration = 10, })
