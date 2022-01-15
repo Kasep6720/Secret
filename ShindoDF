@@ -177,6 +177,20 @@ window1:Button("Infinite MD",function()
 	print("CHI will recharge at "..halfchi)
 end)
 
+window2:Label("Pls ignore", Color3.fromRGB(127, 143, 166))
+window2:Button("Activate Black screen",function()
+local player = game.Players.LocalPlayer local ScreenGui = Instance.new("ScreenGui") local Frame = Instance.new("Frame")
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+Frame.Parent = ScreenGui Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0) Frame.Position = UDim2.new(0, 0, -0.3, 0) Frame.Size = UDim2.new(1, 330, 1.3, 150)
+end)
+window2:Button("Deactivate Black screen",function()
+    for i,v in pairs(player.PlayerGui:GetChildren()) do
+        if v.Name == "ScreenGui" then
+            v:Destroy()
+end end end)
+
+window2:Label("Credits", Color3.fromRGB(127, 143, 166))
+
 window2:Button("Made by NoobieDoge",function()
 	setclipboard("https://discord.gg/P2CeRjvTDt")
 end)
