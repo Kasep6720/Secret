@@ -105,7 +105,6 @@ local args = {[1] = "kgbag",[2] = "e4",[3] = "gale"}
 game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 wait()
 end)
-local dfarm
 window1:Toggle("Autofarm",false, function(bool)
     dfarm = bool
 end)
@@ -135,23 +134,23 @@ spawn(function()
  game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
  game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
  game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
-                    player.Character.HumanoidRootPart.CFrame=(v.HumanoidRootPart.CFrame * CFrame.new(0, 7, 3))
+                    player.Character.HumanoidRootPart.CFrame=(v.HumanoidRootPart.CFrame * CFrame.new(0, 7, .3))
                                 v.Humanoid.Health = 0
-wait(.2004)
+wait(.004)
  game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
  game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
  game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
  game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
-                    player.Character.HumanoidRootPart.CFrame=(v.HumanoidRootPart.CFrame * CFrame.new(0, 7, 3))
+                    player.Character.HumanoidRootPart.CFrame=(v.HumanoidRootPart.CFrame * CFrame.new(0, 7, .3))
                                 v.Humanoid.Health = 0
-wait(.2004)
+wait(.004)
  game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
  game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
  game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
  game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
-                    player.Character.HumanoidRootPart.CFrame=(v.HumanoidRootPart.CFrame * CFrame.new(0, 7, 3))
+                    player.Character.HumanoidRootPart.CFrame=(v.HumanoidRootPart.CFrame * CFrame.new(0, 7, .3))
                                 v.Humanoid.Health = 0
-wait(.2004)
+wait(.004)
 until v.Humanoid.Health == 0 or not dfarm
                         end
                     end)
