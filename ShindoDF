@@ -31,6 +31,10 @@ function toTarget(pos, targetPos, targetCFrame)
     if not tween then return err end
 end
 
+local args = {[1] = "easy"}
+workspace.zetsugamemode.get:FireServer(unpack(args))
+wait()
+
 --loading wally ui revamped By Aika
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/pornhub%20script%20gui"))()
 local window1 = library:Window("Dungeon Farm - DogeHub")
