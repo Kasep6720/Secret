@@ -1,0 +1,32 @@
+local args = {[1] = "dungeon11"}
+game:GetService("Players").LocalPlayer.pressplay:FireServer(unpack(args))
+wait()
+local args = {[1] = "dungeon10"}
+game:GetService("Players").LocalPlayer.pressplay:FireServer(unpack(args))
+wait()
+local args = {[1] = "dungeon9"}
+game:GetService("Players").LocalPlayer.pressplay:FireServer(unpack(args))
+wait()
+local args = {[1] = "dungeon8"}
+game:GetService("Players").LocalPlayer.pressplay:FireServer(unpack(args))
+wait()
+local args = {[1] = "dungeon7"}
+game:GetService("Players").LocalPlayer.pressplay:FireServer(unpack(args))
+wait()
+local args = {[1] = "dungeon6"}
+game:GetService("Players").LocalPlayer.pressplay:FireServer(unpack(args))
+wait()
+local args = {[1] = "dungeon5"}
+game:GetService("Players").LocalPlayer.pressplay:FireServer(unpack(args))
+wait()
+local args = {[1] = "dungeon4"}
+game:GetService("Players").LocalPlayer.pressplay:FireServer(unpack(args))
+wait()
+local args = {[1] = "dungeon3"}
+game:GetService("Players").LocalPlayer.pressplay:FireServer(unpack(args))
+wait()
+local args = {[1] = "dungeon2"}
+game:GetService("Players").LocalPlayer.pressplay:FireServer(unpack(args))
+wait()
+local args = {[1] = "dungeon1"}
+game:GetService("Players").LocalPlayer.pressplay:FireServer(unpack(args))
