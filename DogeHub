@@ -128,9 +128,9 @@ elseif game.PlaceId == 6447798030 then
 wait(.3) TextLabel.Text = "Game supported!" wait(1) TextLabel.Text = "Funky Friday" wait(1) TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!" wait(1) ScreenGui:Destroy()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/wally-rblx/funky-friday-autoplay/main/main.lua",true))()
 game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Script",     Text = "This script is NOT made by DogeHub!",Duration = 5, })
-elseif game.PlaceId ~= 4616652839 then
+elseif game.PlaceId == 4616652839 then
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoChooseDungeons"))()
-elseif game.PlaceId == 7524809704 then
+elseif game.PlaceId ~= 7524809704 then
 local warplace = game:GetService("Workspace"):FindFirstChild("warmode")
 local allbosses = game:GetService("Workspace"):FindFirstChild("npc"):FindFirstChild("npc1")
     if allbosses then 
