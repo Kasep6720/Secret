@@ -32,6 +32,68 @@ library:Keybind("RightControl")
 window1:Label("Boss Functions", Color3.fromRGB(127, 143, 166))
 
 --AUTOFARM
+window1:Button("Auto setup",function()
+local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail1,[3] = "tail1"}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+wait()
+local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail1x,[3] = "tail1x"}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+wait()
+local args = {[1] = "key", [2] = "z"}
+game:GetService("Players").LocalPlayer.Character.combat.update:FireServer(unpack(args))
+wait(2.7)
+local args = {[1] = "key", [2] = "zend"}
+game:GetService("Players").LocalPlayer.Character.combat.update:FireServer(unpack(args))
+wait(2)
+local args = {[1] = "key", [2] = "z"}
+game:GetService("Players").LocalPlayer.Character.combat.update:FireServer(unpack(args))
+wait()
+local args = {[1] = "key", [2] = "5"}
+game:GetService("Players").LocalPlayer.Character.combat.update:FireServer(unpack(args))
+wait(2)
+local args = {[1] = "key", [2] = "zend"}
+game:GetService("Players").LocalPlayer.Character.combat.update:FireServer(unpack(args))
+wait(2)
+local args = {[1] = "!spirit",[2] = "All"}
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(args))
+wait()
+local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.senbonhaku}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+wait()
+local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.painrodthrow}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+local args = {[1] = "kgbag",[2] = "kg1",[3] = "sengoku"}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+wait()
+local args = {[1] = "kgbag",[2] = "kg2",[3] = "renshikigold"}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+wait()
+local args = {[1] = "kgbag",[2] = "kg3",[3] = "renshiki"}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+wait()
+local args = {[1] = "kgbag",[2] = "kg4",[3] = "tenseigan"}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+wait()
+local args = {[1] = "kgbag",[2] = "e1",[3] = "fire"}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+wait()
+local args = {[1] = "kgbag",[2] = "e2",[3] = "lightning"}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+wait()
+local args = {[1] = "kgbag",[2] = "e2",[3] = "goldlightning"}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+wait()
+local args = {[1] = "kgbag",[2] = "e3",[3] = "acid"}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+wait()
+local args = {[1] = "kgbag",[2] = "e4",[3] = "water"}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+wait()
+local args = {[1] = "kgbag",[2] = "e4",[3] = "gale"}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+wait()
+end)
+
 window1:Toggle("Camera lock to boss",false,function(bool)
     Aimyom = bool
 end)
