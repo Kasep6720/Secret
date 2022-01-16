@@ -11,6 +11,10 @@ local VirtualUser=game:service'VirtualUser'
 	VirtualUser:ClickButton2(Vector2.new())
 end)
 --variables
+local args = {
+[1] = "stopcutscene"}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+
 local player = game.Players.LocalPlayer
 local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
 local menuplace = 4616652839
@@ -33,65 +37,105 @@ window1:Label("Boss Functions", Color3.fromRGB(127, 143, 166))
 
 --AUTOFARM
 window1:Button("Auto setup",function()
-local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail1,[3] = "tail1"}
+local args = {[1] = "kgbag",[2] = "kg1",[3] = "kagoku"}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+local args = {[1] = "kgbag",[2] = "kg2",[3] = "frost"}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+local args = {[1] = "kgbag",[2] = "kg3",[3] = "narumaki"}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+local args = {[1] = "kgbag",[2] = "kg4",[3] = "azimsenko"}
 game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 wait()
-local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail1x,[3] = "tail1x"}
+local args = {[1] = "equipjutsu",[2] = "v",[3] = game:GetService("ReplicatedStorage").alljutsu.kagoku.kagoku1}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+local args = {[1] = "equipjutsu",[2] = "f",[3] = game:GetService("ReplicatedStorage").alljutsu.frost.frost3}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+local args = {[1] = "equipjutsu",[2] = "b",[3] = game:GetService("ReplicatedStorage").alljutsu.narumaki.narumaki3}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+local args = {[1] = "equipjutsu",[2] = "n",[3] = game:GetService("ReplicatedStorage").alljutsu.azimsenko.azim1}
 game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 wait()
-local args = {[1] = "key", [2] = "z"}
-game:GetService("Players").LocalPlayer.Character.combat.update:FireServer(unpack(args))
-wait(2.7)
-local args = {[1] = "key", [2] = "zend"}
-game:GetService("Players").LocalPlayer.Character.combat.update:FireServer(unpack(args))
-wait(2)
-local args = {[1] = "key", [2] = "z"}
-game:GetService("Players").LocalPlayer.Character.combat.update:FireServer(unpack(args))
-wait()
-local args = {[1] = "key", [2] = "5"}
-game:GetService("Players").LocalPlayer.Character.combat.update:FireServer(unpack(args))
-wait(2)
-local args = {[1] = "key", [2] = "zend"}
-game:GetService("Players").LocalPlayer.Character.combat.update:FireServer(unpack(args))
-wait(2)
-local args = {[1] = "!spirit",[2] = "All"}
-game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(args))
-wait()
-local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.senbonhaku}
+local args = {[1] = "kgbag",[2] = "kg1",[3] = "kagokuplatinum"}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+local args = {[1] = "kgbag",[2] = "kg2",[3] = "scorch"}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+local args = {[1] = "kgbag",[2] = "kg3",[3] = "narumakiyang"}
 game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 wait()
+local args = {[1] = "equipjutsu",[2] = "v",[3] = game:GetService("ReplicatedStorage").alljutsu.kagokuplatinum.kagoku1plat}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+local args = {[1] = "equipjutsu",[2] = "f",[3] = game:GetService("ReplicatedStorage").alljutsu.scorch.scorchdeath}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+local args = {[1] = "equipjutsu",[2] = "b",[3] = game:GetService("ReplicatedStorage").alljutsu.narumakiyang.narumaki3yang}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+local args = {[1] = "equipjutsu",[2] = "n",[3] = game:GetService("ReplicatedStorage").alljutsu.azimsenko.azim1}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.kunaithrow}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+wait()
+local args = {[1] = "kgbag",[2] = "kg3",[3] = "narumakiruby"}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+wait()
+local args = {[1] = "equipjutsu",[2] = "v",[3] = game:GetService("ReplicatedStorage").alljutsu.kagokuplatinum.kagoku1plat}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+local args = {[1] = "equipjutsu",[2] = "f",[3] = game:GetService("ReplicatedStorage").alljutsu.scorch.scorchdeath}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+local args = {[1] = "equipjutsu",[2] = "b",[3] = game:GetService("ReplicatedStorage").alljutsu.narumakiruby.narumaki3ruby}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+local args = {[1] = "equipjutsu",[2] = "n",[3] = game:GetService("ReplicatedStorage").alljutsu.azimsenko.azim1}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.kunaibomb}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.kunai}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+wait()
+local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail9x,[3] = "tail9x"}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail9x2,[3] = "tail9x2"}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail9,[3] = "tail9"}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+local args = {[1] = "equipjutsu",[2] = "r",[3] = game:GetService("ReplicatedStorage").alljutsu.BOSSDROPS.BOSSDROPavalanche}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.painrodthrow}
 game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-local args = {[1] = "kgbag",[2] = "kg1",[3] = "sengoku"}
+local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.BOSSDROPkagokustaff}
 game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 wait()
-local args = {[1] = "kgbag",[2] = "kg2",[3] = "renshikigold"}
+local args = {[1] = "key",[2] = "z"}
+game:GetService("Players").LocalPlayer.Character.combat.update:FireServer(unpack(args))
+wait(2)
+local args = {[1] = "key",[2] = "zend"}
+game:GetService("Players").LocalPlayer.Character.combat.update:FireServer(unpack(args))
+wait(2)
+local args = {[1] = "key",[2] = "z"}
+game:GetService("Players").LocalPlayer.Character.combat.update:FireServer(unpack(args))
+wait()
+local args = {[1] = "key",[2] = "8"}
+game:GetService("Players").LocalPlayer.Character.combat.update:FireServer(unpack(args))
+wait(2)
+local args = {[1] = "key",[2] = "zend"}
+game:GetService("Players").LocalPlayer.Character.combat.update:FireServer(unpack(args))
+wait(2)
+local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.BOSSDROPkagokustaff}
 game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 wait()
-local args = {[1] = "kgbag",[2] = "kg3",[3] = "renshiki"}
-game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local mode = game.Players.LocalPlayer.Character.combat.mode
+    local copy = mode:Clone()
+    copy.Parent = mode.Parent
+    mode:Destroy()
+    local chakra = string.split(game.Players.LocalPlayer.PlayerGui.Main.ingamearena.Bar.cha.Text,"CHI: ")[2]
+    c = chakra:gsub("CH%: ","")
+    local cha
+    local function chakracheck()
+		chakra = string.split(game.Players.LocalPlayer.PlayerGui.Main.ingamearena.Bar.cha.Text,"CHI: ")[2]
+		c = chakra:gsub("CH%: ","")
+		cha = c
+	end
+loadstring(game:HttpGet("https://raw.githubusercontent.com/6Wumpus6/SpyHub/main/Autoopen", true))()
 wait()
-local args = {[1] = "kgbag",[2] = "kg4",[3] = "tenseigan"}
-game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-wait()
-local args = {[1] = "kgbag",[2] = "e1",[3] = "fire"}
-game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-wait()
-local args = {[1] = "kgbag",[2] = "e2",[3] = "lightning"}
-game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-wait()
-local args = {[1] = "kgbag",[2] = "e2",[3] = "goldlightning"}
-game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-wait()
-local args = {[1] = "kgbag",[2] = "e3",[3] = "acid"}
-game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-wait()
-local args = {[1] = "kgbag",[2] = "e4",[3] = "water"}
-game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-wait()
-local args = {[1] = "kgbag",[2] = "e4",[3] = "gale"}
-game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-wait()
+Aimyom = true
+F = true
 end)
 
 window1:Toggle("Camera lock to boss",false,function(bool)
@@ -229,19 +273,11 @@ window1:Button("Infinite MD",function()
 		c = chakra:gsub("CH%: ","")
 		cha = c
 	end
-	halfchi = chakra/1.5
-	print("CHI will recharge at "..halfchi)
-	spawn(function() 
-		while wait() do
-			if game.Players.LocalPlayer.Character.Humanoid.WalkSpeed == 0 then
-				game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 50
-			end
-			chakracheck()
-		end
-	end)
 end)
 
 window1:Button("Reset when died", function(bool)
+Aimyom = false
+F = false
     loadstring(game:HttpGet("https://raw.githubusercontent.com/6Wumpus6/SpyHub/main/Infmodeclose", true))()
     end)
  local keel
