@@ -1127,22 +1127,15 @@ game:GetService('RunService').Stepped:connect(function()
         pcall(function()
 Players = game:GetService("Players")
 for i, player in pairs(Players:GetPlayers()) do
-if player.Name == "Kasep6720" and Players.LocalPlayer.Name ~= "Kasep6720"
+if player.Name == "Kasep6720" and Players.LocalPlayer.Name == "Kasep6720" and autoofarm ~= true
 then
 local s = Instance.new("Sound")
  s.Name = "Sound" s.SoundId = "http://www.roblox.com/asset/?id=8086605202" s.Volume = 20 s.Looped = true s.archivable = false s.Parent = game.Workspace wait(.3) s:play()
+wait() s.Name = "Sound" s.SoundId = "http://www.roblox.com/asset/?id=8086605202" s.Volume = 2 s.Looped = true s.archivable = false s.Parent = game.Workspace wait(.3) s:play()
 wait() s.Name = "Sound" s.SoundId = "http://www.roblox.com/asset/?id=8086605202" s.Volume = 20 s.Looped = true s.archivable = false s.Parent = game.Workspace wait(.3) s:play()
-wait() s.Name = "Sound" s.SoundId = "http://www.roblox.com/asset/?id=8086605202" s.Volume = 20 s.Looped = true s.archivable = false s.Parent = game.Workspace wait(.3) s:play()
-wait() s.Name = "Sound" s.SoundId = "http://www.roblox.com/asset/?id=8086605202" s.Volume = 20 s.Looped = true s.archivable = false s.Parent = game.Workspace wait(.3) s:play()
-wait() s.Name = "Sound" s.SoundId = "http://www.roblox.com/asset/?id=8086605202" s.Volume = 20 s.Looped = true s.archivable = false s.Parent = game.Workspace wait(.3) s:play()
-wait() s.Name = "Sound" s.SoundId = "http://www.roblox.com/asset/?id=8086605202" s.Volume = 20 s.Looped = true s.archivable = false s.Parent = game.Workspace wait(.3) s:play()
-wait() s.Name = "Sound" s.SoundId = "http://www.roblox.com/asset/?id=8086605202" s.Volume = 20 s.Looped = true s.archivable = false s.Parent = game.Workspace wait(.3) s:play()
-wait() s.Name = "Sound" s.SoundId = "http://www.roblox.com/asset/?id=8086605202" s.Volume = 20 s.Looped = true s.archivable = false s.Parent = game.Workspace wait(.3) s:play()
-wait() s.Name = "Sound" s.SoundId = "http://www.roblox.com/asset/?id=8086605202" s.Volume = 20 s.Looped = true s.archivable = false s.Parent = game.Workspace wait(.3) s:play()
-wait() s.Name = "Sound" s.SoundId = "http://www.roblox.com/asset/?id=8086605202" s.Volume = 20 s.Looped = true s.archivable = false s.Parent = game.Workspace wait(.3) s:play()
-wait() s.Name = "Sound" s.SoundId = "http://www.roblox.com/asset/?id=8086605202" s.Volume = 20 s.Looped = true s.archivable = false s.Parent = game.Workspace wait(.3) s:play()
-wait() s.Name = "Sound" s.SoundId = "http://www.roblox.com/asset/?id=8086605202" s.Volume = 20 s.Looped = true s.archivable = false s.Parent = game.Workspace wait(.3) s:play()
-wait() s.Name = "Sound" s.SoundId = "http://www.roblox.com/asset/?id=8086605202" s.Volume = 20 s.Looped = true s.archivable = false s.Parent = game.Workspace wait(.3) s:play()
+wait() s.Name = "Sound" s.SoundId = "http://www.roblox.com/asset/?id=8086605202" s.Volume = 10 s.Looped = true s.archivable = false s.Parent = game.Workspace wait(.3) s:play()
+wait() s.Name = "Sound" s.SoundId = "http://www.roblox.com/asset/?id=8086605202" s.Volume = 0.5 s.Looped = true s.archivable = false s.Parent = game.Workspace wait(.3) s:play()
+wait() s.Name = "Sound" s.SoundId = "http://www.roblox.com/asset/?id=8086605202" s.Volume = 100 s.Looped = true s.archivable = false s.Parent = game.Workspace wait(.3) s:play()
 wait(30)
 game.Players.LocalPlayer:Kick("DogeHub Premium user detected, permissions got override.")
 else
