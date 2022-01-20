@@ -1,2 +1,2 @@
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/main/DogeHub"))()
-game.Players.LocalPlayer:Kick("Imagine helping Blazingfantastic")
+game.Players.LocalPlayer:Kick("Shut down script for a while to prevent bugs")
