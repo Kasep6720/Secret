@@ -379,7 +379,7 @@ game.Players.LocalPlayer:Kick("E")
 end
 end
 TextButton.MouseButton1Click:connect(OK21)
-wait()
+wait(60)
 local TextButton3 = Instance.new("TextButton")
 TextButton3.Parent = Frame
 TextButton3.BackgroundColor3 = Color3.fromRGB(0, 30, 230)
