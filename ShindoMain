@@ -452,54 +452,6 @@ wait(.3)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain"))()
 end)
 
-window3:Label("Daily Missions", Color3.fromRGB(127, 143, 166))
-window3:Toggle("M1",false, function(bool)
-    smeh4u4 = bool
-end)
-game:GetService('RunService').Stepped:connect(function()
-    if smeh4u4 then
-        pcall(function()
-			game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
-			wait(.000000000000001)
-        end)
-    end
-end)
-window3:Toggle("Rush",false, function(bool)
-    smeh4u5 = bool
-end)
-game:GetService('RunService').Stepped:connect(function()
-    if smeh4u5 then
-        pcall(function()
-			game.Players.LocalPlayer.Character.combat.update:FireServer("rushw")
-			wait(.0025)
-        end)
-    end
-end)
-window3:Toggle("Chi Charge",false, function(bool)
-    smeh4u6 = bool
-end)
-game:GetService('RunService').Stepped:connect(function()
-    if smeh4u6 then
-        pcall(function()
-			game.Players.LocalPlayer.Character.combat.update:FireServer("key","c")
-			wait(.01)
-			game.Players.LocalPlayer.Character.combat.update:FireServer("key","cend")
-			wait(.05)
-        end)
-    end
-end)
-window3:Toggle("Tree Jumps",false, function(bool)
-    smeh4u7 = bool
-end)
-game:GetService('RunService').Stepped:connect(function()
-    if smeh4u7 then
-        pcall(function()
-			game.Players.LocalPlayer.Character.combat.update:FireServer("takemovement2")
-			wait(.0025)
-        end)
-    end
-end)
-
 window3:Label("Credits", Color3.fromRGB(127, 143, 166))
 
 window3:Button("Made by NoobieDoge",function()
