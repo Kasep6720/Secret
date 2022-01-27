@@ -1,0 +1,190 @@
+repeat wait() until game:IsLoaded()
+--old-antitp bypass
+if workspace:FindFirstChild("CCoff") then
+    game:GetService("Workspace").CCoff:Destroy()
+end
+--antiafk
+local VirtualUser=game:service'VirtualUser'
+	game:service'Players'.LocalPlayer.Idled:connect(function()
+	warn("anti-afk")
+	VirtualUser:CaptureController()
+	VirtualUser:ClickButton2(Vector2.new())
+end)
+--variables
+local player = game.Players.LocalPlayer
+function toTarget(pos, targetPos, targetCFrame)
+    local tween_s = game:service"TweenService"
+    local info = TweenInfo.new((targetPos - pos).Magnitude/getgenv().speed, Enum.EasingStyle.Linear)
+    local tween, err = pcall(function()
+    local tween = tween_s:Create(game:GetService("Players").LocalPlayer.Character["HumanoidRootPart"], info, {CFrame = targetCFrame * CFrame.fromAxisAngle(Vector3.new(1,0,0), math.rad(90))})
+    tween:Play()
+    end)
+    if not tween then return err end
+end
+
+--loading wally ui revamped By Aika
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/pornhub%20script%20gui"))()
+local window1 = library:Window("Mentor Farm - DogeHub")
+local window2 = library:Window("Credits")
+
+library:Keybind("RightControl")
+
+--AUTOFARM
+getgenv().speed = 4000
+window1:Label("Teleport to Mentors", Color3.fromRGB(127, 143, 166))
+
+window1:Button("Tp to Narumaki Mentor",function()
+if game.PlaceId == 5451398863 then
+player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Narumaki"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
+else
+game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Wrong Map",     Text = "Narumaki mentor is not in this map!",Duration = 5, })
+end
+end)
+window1:Button("Tp to Jiso Mentor",function() 
+if game.PlaceId == 6901575446 then
+player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Jiso Seishin"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
+else
+game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Wrong Map",     Text = "Jiso Seishin mentor is not in this map!",Duration = 5, })
+end
+end)
+window1:Button("Tp to Shindai Mentor",function()
+if game.PlaceId == 5451401540 then
+player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Shindai Akuma"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
+else
+game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Wrong Map",     Text = "Shindai Akuma mentor is not in this map!",Duration = 5, })
+end
+end)
+window1:Button("Tp to Ryuji Mentor",function()
+if game.PlaceId == 5431071837 then
+player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
+else
+game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Wrong Map",     Text = "Ryuji Kenichi mentor is not in this map!",Duration = 5, })
+end
+end)
+
+window1:Label("Quest Proccess", Color3.fromRGB(127, 143, 166))
+
+window1:Toggle("1/5",false, function(bool)
+    punches = bool
+end)
+game:GetService('RunService').Stepped:connect(function()
+    if punches then
+        pcall(function()
+			game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
+			--wait(.000000000000001)
+        end)
+    end
+end)
+window1:Toggle("2/5",false, function(bool)
+    tree = bool
+end)
+game:GetService('RunService').Stepped:connect(function()
+    if tree then
+        pcall(function()
+			game.Players.LocalPlayer.Character.combat.update:FireServer("takemovement2")
+			wait(.0000000000025)
+        end)
+    end
+end)
+
+window1:Toggle("3/5",false, function(bool)
+    shoot = bool
+end)
+
+local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
+
+spawn(function()
+    while wait() do
+        if shoot then
+            --if  player.currentmission.Value == nil then
+               -- for i,v in pairs(workspace.npc:GetChildren()) do
+                    pcall(function()
+                        --if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+                            repeat wait()
+game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace").Terrain["DX_MarcoDawn"].kunaiaim.Position)
+wait()
+game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
+until mission.Visible == false or not shoot
+                        --end
+                    end)
+               -- end
+            --end
+        end
+    end
+end)
+
+window1:Toggle("4/5",false, function(bool)
+    block = bool
+end)
+
+spawn(function()
+    while wait() do
+        if block then
+            --if  player.currentmission.Value == nil then
+               -- for i,v in pairs(workspace.npc:GetChildren()) do
+                    pcall(function()
+                        --if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+                            repeat wait()
+game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace").Terrain["DX_MarcoDawn"].kunaiaim.Position)
+wait()
+until mission.Visible == false or not block
+                        --end
+                    end)
+               -- end
+            --end
+        end
+    end
+end)
+
+window1:Toggle("5/5",false, function(bool)
+    dfarm = bool
+end)
+spawn(function()
+    while wait() do
+        if dfarm then
+            if  player.currentmission.Value == nil then
+                for i,v in pairs(workspace.npc:GetChildren()) do
+                    pcall(function()
+                        if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+                            repeat wait(0.1)
+ game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+ game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+ game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+ game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+                    player.Character.HumanoidRootPart.CFrame=(v.HumanoidRootPart.CFrame * CFrame.new(0, 7, .3))
+                                v.Humanoid.Health = 0
+wait(.004)
+ game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+ game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+ game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+ game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+                    player.Character.HumanoidRootPart.CFrame=(v.HumanoidRootPart.CFrame * CFrame.new(0, 7, .3))
+                                v.Humanoid.Health = 0
+wait(.004)
+ game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+ game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+ game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+ game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+                    player.Character.HumanoidRootPart.CFrame=(v.HumanoidRootPart.CFrame * CFrame.new(0, 7, .3))
+                                v.Humanoid.Health = 0
+wait(.004)
+until v.Humanoid.Health == 0 or not dfarm
+                        end
+                    end)
+                end
+            end
+        end
+    end
+end)
+
+window2:Button("Made by NoobieDoge",function()
+	setclipboard("https://discord.gg/P2CeRjvTDt")
+end)
+window2:Label("Show/Hide GUI = Right Ctrl", Color3.fromRGB(127, 143, 166))
+
+if game:GetService("Workspace"):FindFirstChild("npc"):FindFirstChild("npc1") then
+dfarm = true
+end
+if game:GetService("Workspace"):FindFirstChild("warmode") then
+dfarm = true
+end
