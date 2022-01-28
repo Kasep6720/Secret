@@ -626,7 +626,7 @@ spawn(function()
                     pcall(function()
                         --if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
                             repeat wait()
-game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace").Terrain["DX_MarcoDawn"].kunaiaim.Position)
+game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace").Terrain[game.Players.LocalPlayer.Name].kunaiaim.Position)
 wait()
 game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
 until mission.Visible == false or not shoot
@@ -650,7 +650,7 @@ spawn(function()
                     pcall(function()
                         --if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
                             repeat wait()
-game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace").Terrain["DX_MarcoDawn"].kunaiaim.Position)
+game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace").Terrain[game.Players.LocalPlayer.Name].kunaiaim.Position)
 wait()
 until mission.Visible == false or not block
                         --end
