@@ -5,7 +5,6 @@ local TextLabel = Instance.new("TextLabel")
 local TextButton = Instance.new("TextButton")
 local TextButton_2 = Instance.new("TextButton")
 
-
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
 Frame.Parent = ScreenGui
@@ -38,7 +37,7 @@ function OKdjfbg()
     for i,v in pairs(player.PlayerGui:GetChildren()) do
         if v.Name == "ScreenGui" then
             v:Destroy()
-end
-end
+        end
+    end
 end
 TextButton.MouseButton1Click:connect(OKdjfbg)
