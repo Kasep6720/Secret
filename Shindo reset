@@ -5,7 +5,6 @@ local TextLabel = Instance.new("TextLabel")
 local TextButton = Instance.new("TextButton")
 local TextButton2 = Instance.new("TextButton")
 
-
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
 Frame.Parent = ScreenGui
@@ -38,11 +37,11 @@ function OK2()
     for i,v in pairs(player.PlayerGui:GetChildren()) do
         if v.Name == "ScreenGui" then
             v:Destroy()
-end
-end
-local player = game.Players.LocalPlayer
-        player.Character:BreakJoints()
-        wait(11)
+        end
+    end
+    local player = game.Players.LocalPlayer
+    player.Character:BreakJoints()
+    wait(11)
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain"))()
 end
 TextButton.MouseButton1Click:connect(OK2)
@@ -61,7 +60,7 @@ function OK21()
     for i,v in pairs(player.PlayerGui:GetChildren()) do
         if v.Name == "ScreenGui" then
             v:Destroy()
-end
-end
+        end
+    end
 end
 TextButton2.MouseButton1Click:connect(OK21)
