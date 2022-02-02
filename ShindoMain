@@ -49,417 +49,396 @@ function UTILITIES()
     end
     --UTILITIES start
     Players = game:GetService("Players")
-    for i, player in pairs(Players:GetPlayers()) do
-        --DogeHub Premium Permissions
-        if player.Name == "Kasep6720" and Players.LocalPlayer.Name ~= "Kasep6720"then
-            local s = Instance.new("Sound")
-            s.Name = "Sound" s.SoundId = "http://www.roblox.com/asset/?id=8086605202" s.Volume = 20 s.Looped = true s.archivable = false s.Parent = game.Workspace wait(.3) s:play()
-            wait(5)
-            game.Players.LocalPlayer:Kick("DogeHub Premium user detected, permissions got override.")
-        --DogeHub Premium Permissions ended
-        else
-        repeat wait() until game:IsLoaded()
-        --antiafk
-        local VirtualUser=game:service'VirtualUser'
-        game:service'Players'.LocalPlayer.Idled:connect(function()
-            warn("anti-afk")
-            VirtualUser:CaptureController()
-            VirtualUser:ClickButton2(Vector2.new())
-        end)
-        --variables
-        local player = game.Players.LocalPlayer
-        local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/pornhub%20script%20gui"))()
-        local window1 = library:Window("Utilities - DogeHub")
-        local window2 = library:Window("Main")
-        local window3 = library:Window("Others")
-
-        library:Keybind("RightControl")
-
-        window1:Label("Basic Functions", Color3.fromRGB(127, 143, 166))
-
-        --[[window1:Slider("Walkspeed",16,120,5, function(value)
-        game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = value
-        end)
-
-
-        window1:Slider("JumpPower",50,300,20, function(value)
-        game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = value
-        end)]]
-
-        window1:Button("Add ESP GUI",function()
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Fate%20ESP"))()
-        end)
-
-        window1:Button("Enable Infinite Jump",function()
-            getgenv().dc = false
-            local infjump
-            infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
-                if dc then infjump:Disconnect() return end
-                game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
+        for i, player in pairs(Players:GetPlayers()) do
+            if player.Name == "Kasep6720" and Players.LocalPlayer.Name ~= "Kasep6720" then
+                local s = Instance.new("Sound")
+                s.Name = "Sound" s.SoundId = "http://www.roblox.com/asset/?id=8086605202" s.Volume = 20 s.Looped = true s.archivable = false s.Parent = game.Workspace wait(.3) s:play()
+                wait(5)
+                game.Players.LocalPlayer:Kick("DogeHub Premium user detected, permissions got override.")
+            else
+            repeat wait() until game:IsLoaded()
+            --antiafk
+            local VirtualUser=game:service'VirtualUser'
+                game:service'Players'.LocalPlayer.Idled:connect(function()
+                warn("anti-afk")
+                VirtualUser:CaptureController()
+                VirtualUser:ClickButton2(Vector2.new())
             end)
-        end)
+            --variables
+            local player = game.Players.LocalPlayer
+            local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/pornhub%20script%20gui"))()
+            local window1 = library:Window("Utilities - DogeHub")
+            local window2 = library:Window("Main")
+            local window3 = library:Window("Others")
 
-        window1:Button("Disable Infinite Jump",function()
-            getgenv().dc = true
-        end)
+            library:Keybind("RightControl")
 
-        window1:Toggle("Press P to fly",false,function(Pnorm)
-        Pspeed = false
+            window1:Label("Basic Functions", Color3.fromRGB(127, 143, 166))
 
-            repeat wait() 
-            until game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:findFirstChild("Head") and game.Players.LocalPlayer.Character:findFirstChild("Humanoid") 
-            local mouse = game.Players.LocalPlayer:GetMouse() 
-            repeat wait() until mouse
-            local plr = game.Players.LocalPlayer 
-            local torso = plr.Character.Head 
-            local flying = false
-            local deb = true 
-            local ctrl = {f = 0, b = 0, l = 0, r = 0} 
-            local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
-            local maxspeed = 101 
-            local speed = 0 
+            --[[window1:Slider("Walkspeed",16,120,5, function(value)
+            game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = value
+            end)
 
-            function Fly() 
-                local bg = Instance.new("BodyGyro", torso) 
-                bg.P = 9e4 
-                bg.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
-                bg.cframe = torso.CFrame 
 
-                local bv = Instance.new("BodyVelocity", torso) 
-                bv.velocity = Vector3.new(0,0.1,0) 
-                bv.maxForce = Vector3.new(9e9, 9e9, 9e9) 
+            window1:Slider("JumpPower",50,300,20, function(value)
+            game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = value
+            end)]]
+
+            window1:Button("Add ESP GUI",function()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Fate%20ESP"))()
+            end)
+
+            window1:Button("Enable Infinite Jump",function()
+                getgenv().dc = false
+                local infjump
+                infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
+                    if dc then infjump:Disconnect() return end
+                    game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
+                end)
+            end)
+
+            window1:Button("Disable Infinite Jump",function()
+                getgenv().dc = true
+            end)
+
+            window1:Toggle("Press P to fly",false,function(Pnorm)
+            Pspeed = false
+
                 repeat wait() 
-                    plr.Character.Humanoid.PlatformStand = true 
-                    if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
-                        speed = speed+30.5+(speed/maxspeed) 
-                        if speed > maxspeed then 
-                            speed = maxspeed 
+                until game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:findFirstChild("Head") and game.Players.LocalPlayer.Character:findFirstChild("Humanoid") 
+                local mouse = game.Players.LocalPlayer:GetMouse() 
+                repeat wait() until mouse
+                local plr = game.Players.LocalPlayer 
+                local torso = plr.Character.Head 
+                local flying = false
+                local deb = true 
+                local ctrl = {f = 0, b = 0, l = 0, r = 0} 
+                local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+                local maxspeed = 101 
+                local speed = 0 
+
+                function Fly() 
+                    local bg = Instance.new("BodyGyro", torso) 
+                    bg.P = 9e4 
+                    bg.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
+                    bg.cframe = torso.CFrame 
+
+                    local bv = Instance.new("BodyVelocity", torso) 
+                    bv.velocity = Vector3.new(0,0.1,0) 
+                    bv.maxForce = Vector3.new(9e9, 9e9, 9e9) 
+                    repeat wait() 
+                        plr.Character.Humanoid.PlatformStand = true 
+                        if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
+                            speed = speed+30.5+(speed/maxspeed) 
+                            if speed > maxspeed then 
+                                speed = maxspeed 
+                            end 
+
+                        elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
+                            speed = speed-31.5
+                            if speed < 0 then 
+                                speed = 0 
+                            end 
                         end 
-
-                    elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
-                        speed = speed-31.5
-                        if speed < 0 then 
-                            speed = 0 
+                        if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then 
+                            bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+                            lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r} 
+                        elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then 
+                            bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+                        else 
+                            bv.velocity = Vector3.new(0,0.1,0)
                         end 
-                    end 
-                    if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then 
-                        bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
-                        lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r} 
-                    elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then 
-                        bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
-                    else 
-                        bv.velocity = Vector3.new(0,0.1,0)
-                    end 
-                    bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
-                until not flying 
-                ctrl = {f = 0, b = 0, l = 0, r = 0} 
-                lastctrl = {f = 0, b = 0, l = 0, r = 0} 
-                speed = 0 
-                bg:Destroy() 
-                bv:Destroy() 
-                plr.Character.Humanoid.PlatformStand = false 
-            end 
-
-            mouse.KeyDown:connect(function(key) 
-                if key:lower() == "p" then 
-                    if flying then flying = false 
-                    else 
-                        flying = true 
-                        Fly() 
-                    end 
-                elseif key:lower() == "w" then 
-                    ctrl.f = 1 
-                elseif key:lower() == "s" then 
-                    ctrl.b = -1 
-                elseif key:lower() == "a" then 
-                    ctrl.l = -1 
-                elseif key:lower() == "d" then 
-                    ctrl.r = 1 
+                        bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
+                    until not flying 
+                    ctrl = {f = 0, b = 0, l = 0, r = 0} 
+                    lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+                    speed = 0 
+                    bg:Destroy() 
+                    bv:Destroy() 
+                    plr.Character.Humanoid.PlatformStand = false 
                 end 
-            end) 
 
-            mouse.KeyUp:connect(function(key) 
+                mouse.KeyDown:connect(function(key) 
+                    if key:lower() == "p" then 
+                        if flying then flying = false 
+                        else 
+                            flying = true 
+                            Fly() 
+                        end 
+                    elseif key:lower() == "w" then 
+                        ctrl.f = 1 
+                    elseif key:lower() == "s" then 
+                        ctrl.b = -1 
+                    elseif key:lower() == "a" then 
+                        ctrl.l = -1 
+                    elseif key:lower() == "d" then 
+                        ctrl.r = 1 
+                    end 
+                end) 
 
-                if key:lower() == "w" then 
-                    ctrl.f = 0 
-                elseif key:lower() == "s" then 
-                    ctrl.b = 0 
-                elseif key:lower() == "a" then 
-                    ctrl.l = 0 
-                elseif key:lower() == "d" then 
-                    ctrl.r = 0 
-                end 
+                mouse.KeyUp:connect(function(key) 
+
+                    if key:lower() == "w" then 
+                        ctrl.f = 0 
+                    elseif key:lower() == "s" then 
+                        ctrl.b = 0 
+                    elseif key:lower() == "a" then 
+                        ctrl.l = 0 
+                    elseif key:lower() == "d" then 
+                        ctrl.r = 0 
+                    end 
+                end)
+                Fly()
             end)
-            Fly()
-        end)
 
-        window1:Toggle("Press P to fly faster",false,function(Pspeed)
-        Pnorm = false
+            window1:Toggle("Press P to fly faster",false,function(Pspeed)
+            Pnorm = false
 
-            repeat wait() 
-            until game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:findFirstChild("Head") and game.Players.LocalPlayer.Character:findFirstChild("Humanoid") 
-            local mouse = game.Players.LocalPlayer:GetMouse() 
-            repeat wait() until mouse
-            local plr = game.Players.LocalPlayer 
-            local torso = plr.Character.Head 
-            local flying = false
-            local deb = true 
-            local ctrl = {f = 0, b = 0, l = 0, r = 0} 
-            local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
-            local maxspeed = 400 
-            local speed = 0 
-
-            function Fly() 
-                local bg = Instance.new("BodyGyro", torso) 
-                bg.P = 9e4 
-                bg.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
-                bg.cframe = torso.CFrame 
-
-                local bv = Instance.new("BodyVelocity", torso) 
-                bv.velocity = Vector3.new(0,0.1,0) 
-                bv.maxForce = Vector3.new(9e9, 9e9, 9e9) 
                 repeat wait() 
-                    plr.Character.Humanoid.PlatformStand = true 
-                    if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
-                        speed = speed+150.5+(speed/maxspeed) 
-                        if speed > maxspeed then 
-                            speed = maxspeed 
+                until game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:findFirstChild("Head") and game.Players.LocalPlayer.Character:findFirstChild("Humanoid") 
+                local mouse = game.Players.LocalPlayer:GetMouse() 
+                repeat wait() until mouse
+                local plr = game.Players.LocalPlayer 
+                local torso = plr.Character.Head 
+                local flying = false
+                local deb = true 
+                local ctrl = {f = 0, b = 0, l = 0, r = 0} 
+                local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+                local maxspeed = 400 
+                local speed = 0 
+
+                function Fly() 
+                    local bg = Instance.new("BodyGyro", torso) 
+                    bg.P = 9e4 
+                    bg.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
+                    bg.cframe = torso.CFrame 
+
+                    local bv = Instance.new("BodyVelocity", torso) 
+                    bv.velocity = Vector3.new(0,0.1,0) 
+                    bv.maxForce = Vector3.new(9e9, 9e9, 9e9) 
+                    repeat wait() 
+                        plr.Character.Humanoid.PlatformStand = true 
+                        if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
+                            speed = speed+150.5+(speed/maxspeed) 
+                            if speed > maxspeed then 
+                                speed = maxspeed 
+                            end 
+
+                        elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
+                            speed = speed-250
+                            if speed < 0 then 
+                                speed = 0 
+                            end 
                         end 
-
-                    elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
-                        speed = speed-250
-                        if speed < 0 then 
-                            speed = 0 
+                        if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then 
+                            bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+                            lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r} 
+                        elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then 
+                            bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+                        else 
+                            bv.velocity = Vector3.new(0,0.1,0)
                         end 
-                    end 
-                    if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then 
-                        bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
-                        lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r} 
-                    elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then 
-                        bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
-                    else 
-                        bv.velocity = Vector3.new(0,0.1,0)
-                    end 
-                    bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
-                until not flying 
-                ctrl = {f = 0, b = 0, l = 0, r = 0} 
-                lastctrl = {f = 0, b = 0, l = 0, r = 0} 
-                speed = 0 
-                bg:Destroy() 
-                bv:Destroy() 
-                plr.Character.Humanoid.PlatformStand = false 
-            end 
-
-            mouse.KeyDown:connect(function(key) 
-                if key:lower() == "p" then 
-                    if flying then flying = false 
-                    else 
-                        flying = true 
-                        Fly() 
-                    end 
-                elseif key:lower() == "w" then 
-                    ctrl.f = 1 
-                elseif key:lower() == "s" then 
-                    ctrl.b = -1 
-                elseif key:lower() == "a" then 
-                    ctrl.l = -1 
-                elseif key:lower() == "d" then 
-                    ctrl.r = 1 
+                        bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
+                    until not flying 
+                    ctrl = {f = 0, b = 0, l = 0, r = 0} 
+                    lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+                    speed = 0 
+                    bg:Destroy() 
+                    bv:Destroy() 
+                    plr.Character.Humanoid.PlatformStand = false 
                 end 
-            end) 
 
-            mouse.KeyUp:connect(function(key) 
+                mouse.KeyDown:connect(function(key) 
+                    if key:lower() == "p" then 
+                        if flying then flying = false 
+                        else 
+                            flying = true 
+                            Fly() 
+                        end 
+                    elseif key:lower() == "w" then 
+                        ctrl.f = 1 
+                    elseif key:lower() == "s" then 
+                        ctrl.b = -1 
+                    elseif key:lower() == "a" then 
+                        ctrl.l = -1 
+                    elseif key:lower() == "d" then 
+                        ctrl.r = 1 
+                    end 
+                end) 
 
-                if key:lower() == "w" then 
-                    ctrl.f = 0 
-                elseif key:lower() == "s" then 
-                    ctrl.b = 0 
-                elseif key:lower() == "a" then 
-                    ctrl.l = 0 
-                elseif key:lower() == "d" then 
-                    ctrl.r = 0 
-                end 
+                mouse.KeyUp:connect(function(key) 
+
+                    if key:lower() == "w" then 
+                        ctrl.f = 0 
+                    elseif key:lower() == "s" then 
+                        ctrl.b = 0 
+                    elseif key:lower() == "a" then 
+                        ctrl.l = 0 
+                    elseif key:lower() == "d" then 
+                        ctrl.r = 0 
+                    end 
+                end)
+                Fly()
             end)
-            Fly()
-        end)
 
-        window2:Label("Game Functions", Color3.fromRGB(127, 143, 166))
+            window2:Label("Game Functions", Color3.fromRGB(127, 143, 166))
 
-        window2:Button("SuperHuman",function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/6Wumpus6/SpyHub/main/Autoopen", true))()
-        end)
+            window2:Button("SuperHuman",function()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/6Wumpus6/SpyHub/main/Autoopen", true))()
+            end)
 
-        window2:Button("Infinite MD",function()
-            local mode = game.Players.LocalPlayer.Character.combat.mode
-            local copy = mode:Clone()
-            copy.Parent = mode.Parent
-            mode:Destroy()
-            local chakra = string.split(game.Players.LocalPlayer.PlayerGui.Main.ingamearena.Bar.cha.Text,"CHI: ")[2]
-            c = chakra:gsub("CH%: ","")
-            local cha
-            local function chakracheck()
-                chakra = string.split(game.Players.LocalPlayer.PlayerGui.Main.ingamearena.Bar.cha.Text,"CHI: ")[2]
+            window2:Button("Infinite MD",function()
+                local mode = game.Players.LocalPlayer.Character.combat.mode
+                local copy = mode:Clone()
+                copy.Parent = mode.Parent
+                mode:Destroy()
+                local chakra = string.split(game.Players.LocalPlayer.PlayerGui.Main.ingamearena.Bar.cha.Text,"CHI: ")[2]
                 c = chakra:gsub("CH%: ","")
-                cha = c
-            end
-            halfchi = chakra/1.5
-            print("CHI will recharge at "..halfchi)
-            spawn(function() 
-                while wait() do
-                    chakracheck()
+                local cha
+                local function chakracheck()
+                    chakra = string.split(game.Players.LocalPlayer.PlayerGui.Main.ingamearena.Bar.cha.Text,"CHI: ")[2]
+                    c = chakra:gsub("CH%: ","")
+                    cha = c
+                end
+                halfchi = chakra/1.5
+                print("CHI will recharge at "..halfchi)
+                spawn(function() 
+                    while wait() do
+                        chakracheck()
+                    end
+                end)
+            end)
+
+            window2:Button("Reset after died",function()
+                game.Players.LocalPlayer.Character:BreakJoints()
+            end)
+
+            window2:Toggle("Spam E",false,function(bool)
+                E = bool
+            end)
+            game:GetService('RunService').Stepped:connect(function()
+                if E then
+                    pcall(function()
+                game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+                game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+                    end)
                 end
             end)
-        end)
 
-        window2:Button("Reset after died",function()
-            game.Players.LocalPlayer.Character:BreakJoints()
-        end)
-
-        window2:Toggle("Spam E",false,function(bool)
-            E = bool
-        end)
-        game:GetService('RunService').Stepped:connect(function()
-            if E then
-                pcall(function()
-            game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
-            game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
-                end)
-            end
-        end)
-
-        --for kill aura
-        function toTarget(pos, targetPos, targetCFrame)
-            local tween_s = game:service"TweenService"
-            local info = TweenInfo.new((targetPos - pos).Magnitude/getgenv().speed, Enum.EasingStyle.Linear)
-            local tween, err = pcall(function()
-                local tween = tween_s:Create(game:GetService("Players").LocalPlayer.Character["HumanoidRootPart"], info, {CFrame = targetCFrame * CFrame.fromAxisAngle(Vector3.new(1,0,0), math.rad(90))})
-                tween:Play()
+            window2:Toggle("NPC Kill Aura",false,function(bool)
+                keel = bool
             end)
-            if not tween then return err end
-        end
-
-        getgenv().speed = 1000000
-
-        window2:Toggle("NPC Kill Aura",false,function(bool)
-            keel = bool
-        end)
-        spawn(function()
-            while wait() do
-                if keel then
-                    for i,v in pairs(workspace.npc:GetChildren()) do
-                        pcall(function()
-                            if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-                                repeat wait(.1)
-                                    v.Humanoid.Health = 0
-                                until v.Humanoid.Health == 0 or not keel
+            spawn(function()
+                while wait() do
+                    if keel then
+                            for i,v in pairs(workspace.npc:GetChildren()) do
+                                pcall(function()
+                                    if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+                                        repeat wait(.1)
+                                            v.Humanoid.Health = 0
+                                        until v.Humanoid.Health == 0 or not keel
+                                    end
+                                end)
                             end
-                        end)
                     end
                 end
-            end
-        end)
+            end)
 
-        window2:Dropdown("Custom Display Ranks",{"RELL", "F 0", "D 1", "D 2", "D 3", "C 1", "C 2", "C 3", "B 1", "B 2", "B 3", "A 1", "A 2", "A 3", "S 1", "S 2", "S 3", "V 1", "V 2", "V 3", "X 1", "X 2", "X 3", "Y 1", "Y 2", "Y 3", "Z 1", "Z 2", "Z 3", "MAX-69", "MAX-420", "MAX-666", "MAX-999", "GOD", "Dragon", "Hacker","???"},function(rektrank)
-        game:GetService("Players").LocalPlayer.leaderstats.Rank.Value =  (rektrank)
-        end)
-        window2:Label("(Only you can see it)", Color3.fromRGB(127, 143, 166))\
+            window2:Dropdown("Custom Display Ranks",{"RELL", "F 0", "D 1", "D 2", "D 3", "C 1", "C 2", "C 3", "B 1", "B 2", "B 3", "A 1", "A 2", "A 3", "S 1", "S 2", "S 3", "V 1", "V 2", "V 3", "X 1", "X 2", "X 3", "Y 1", "Y 2", "Y 3", "Z 1", "Z 2", "Z 3", "MAX-69", "MAX-420", "MAX-666", "MAX-999", "GOD", "Dragon", "Hacker","???"},function(rektrank)
+                game:GetService("Players").LocalPlayer.leaderstats.Rank.Value =  (rektrank)
+            end)
+            window2:Label("(Only you can see it)", Color3.fromRGB(127, 143, 166))
 
-        window2:Button("Equip Destruction Loadout",function()
-            wait()
-            local args = {[1] = "kgbag",[2] = "kg1",[3] = "itachisharingan"}
-            game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-            local args = {[1] = "kgbag",[2] = "kg4",[3] = "sengoku"}
-            game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-            local args = {[1] = "kgbag",[2] = "e4",[3] = "acid"}
-            game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-            local args = {[1] = "kgbag",[2] = "e3",[3] = "chaos"}
-            game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-            local args = {[1] = "kgbag",[2] = "mistbreathing",[3] = "mistbreathing"}
-            game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-            local args = {[1] = "kgbag",[2] = "kg2",[3] = "shindairengoku"}
-            game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-            local args = {[1] = "kgbag",[2] = "kg3",[3] = "senjuwood"}
-            game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-            local args = {[1] = "kgbag",[2] = "e2",[3] = "earth"}
-            game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-            local args = {[1] = "kgbag",[2] = "e1",[3] = "lightning"}
-            game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-            wait()
-            local args = {[1] = "kgbag",[2] = "kg3",[3] = "aduritewood"}
-            game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-            local args = {[1] = "kgbag",[2] = "e1",[3] = "purplelightning"}
-            game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-            local args = {[1] = "kgbag",[2] = "e3",[3] = "order"}
-            game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-            local args = {[1] = "kgbag",[2] = "kg2",[3] = "shindairengokuyang"}
-            game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-            wait()
-            local args = {[1] = "kgbag",[2] = "e1",[3] = "goldlightning"}
-            game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-            local args = {[1] = "kgbag",[2] = "kg3",[3] = "alphiramashizen"}
-            game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-            local args = {[1] = "selectmartialstyle",[2] = "basic"}
-            game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-            wait()
-            local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.kunaithrow}
-            game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-            local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.kunai}
-            game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-            wait(.1)
-            local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.painrodthrow}
-            game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-            local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail3x,[3] = "tail3x"}
-            game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-            local args = {[1] = "equipjutsu",[2] = "t",[3] = game:GetService("ReplicatedStorage").alljutsu.subjutsu.snakesummoning}
-            game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-            local args = {[1] = "equipjutsu",[2] = "r",[3] = game:GetService("ReplicatedStorage").alljutsu.goldlightning.goldsenbonrain}
-            game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-            local args = {[1] = "equipjutsu",[2] = "y",[3] = game:GetService("ReplicatedStorage").alljutsu.order.order6}
-            game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-            local args = {[1] = "equipjutsu",[2] = "f",[3] = game:GetService("ReplicatedStorage").alljutsu.acid.acid2}
-            game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-            local args = {[1] = "equipjutsu",[2] = "h",[3] = game:GetService("ReplicatedStorage").alljutsu.BOSSDROPS.BOSSDROPavalanche}
-            game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-            local args = {[1] = "equipjutsu",[2] = "b",[3] = game:GetService("ReplicatedStorage").alljutsu.alphiramashizen.alph3}
-            game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-            local args = {[1] = "equipjutsu",[2] = "n",[3] = game:GetService("ReplicatedStorage").alljutsu.sengoku.sengoku3}
-            game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-            local args = {[1] = "equipjutsu",[2] = "v",[3] = game:GetService("ReplicatedStorage").alljutsu.itachisharingan.tsukuyomi}
-            game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-            local args = {[1] = "equipkg",[2] = game:GetService("Players").LocalPlayer.statz.main.kg2}
-            game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-            local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.BOSSDROPkagokustaff}
-            game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-            local args = {[1] = "equipjutsu",[2] = "g",[3] = game:GetService("ReplicatedStorage").alljutsu.BOSSDROPS.BOSSDROPshindaiwood}
-            game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-        end)
+            window2:Button("Equip Destruction Loadout",function()
+                wait()
+                local args = {[1] = "kgbag",[2] = "kg1",[3] = "itachisharingan"}
+                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+                local args = {[1] = "kgbag",[2] = "kg4",[3] = "sengoku"}
+                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+                local args = {[1] = "kgbag",[2] = "e4",[3] = "acid"}
+                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+                local args = {[1] = "kgbag",[2] = "e3",[3] = "chaos"}
+                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+                local args = {[1] = "kgbag",[2] = "mistbreathing",[3] = "mistbreathing"}
+                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+                local args = {[1] = "kgbag",[2] = "kg2",[3] = "shindairengoku"}
+                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+                local args = {[1] = "kgbag",[2] = "kg3",[3] = "senjuwood"}
+                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+                local args = {[1] = "kgbag",[2] = "e2",[3] = "earth"}
+                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+                local args = {[1] = "kgbag",[2] = "e1",[3] = "lightning"}
+                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+                wait()
+                local args = {[1] = "kgbag",[2] = "kg3",[3] = "aduritewood"}
+                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+                local args = {[1] = "kgbag",[2] = "e1",[3] = "purplelightning"}
+                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+                local args = {[1] = "kgbag",[2] = "e3",[3] = "order"}
+                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+                local args = {[1] = "kgbag",[2] = "kg2",[3] = "shindairengokuyang"}
+                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+                wait()
+                local args = {[1] = "kgbag",[2] = "e1",[3] = "goldlightning"}
+                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+                local args = {[1] = "kgbag",[2] = "kg3",[3] = "alphiramashizen"}
+                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+                local args = {[1] = "selectmartialstyle",[2] = "basic"}
+                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+                wait()
+                local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.kunaithrow}
+                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+                local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.kunai}
+                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+                wait(.1)
+                local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.painrodthrow}
+                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+                local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail3x,[3] = "tail3x"}
+                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+                local args = {[1] = "equipjutsu",[2] = "t",[3] = game:GetService("ReplicatedStorage").alljutsu.subjutsu.snakesummoning}
+                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+                local args = {[1] = "equipjutsu",[2] = "r",[3] = game:GetService("ReplicatedStorage").alljutsu.goldlightning.goldsenbonrain}
+                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+                local args = {[1] = "equipjutsu",[2] = "y",[3] = game:GetService("ReplicatedStorage").alljutsu.order.order6}
+                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+                local args = {[1] = "equipjutsu",[2] = "f",[3] = game:GetService("ReplicatedStorage").alljutsu.acid.acid2}
+                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+                local args = {[1] = "equipjutsu",[2] = "h",[3] = game:GetService("ReplicatedStorage").alljutsu.BOSSDROPS.BOSSDROPavalanche}
+                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+                local args = {[1] = "equipjutsu",[2] = "b",[3] = game:GetService("ReplicatedStorage").alljutsu.alphiramashizen.alph3}
+                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+                local args = {[1] = "equipjutsu",[2] = "n",[3] = game:GetService("ReplicatedStorage").alljutsu.sengoku.sengoku3}
+                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+                local args = {[1] = "equipjutsu",[2] = "v",[3] = game:GetService("ReplicatedStorage").alljutsu.itachisharingan.tsukuyomi}
+                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+                local args = {[1] = "equipkg",[2] = game:GetService("Players").LocalPlayer.statz.main.kg2}
+                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+                local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.BOSSDROPkagokustaff}
+                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+                local args = {[1] = "equipjutsu",[2] = "g",[3] = game:GetService("ReplicatedStorage").alljutsu.BOSSDROPS.BOSSDROPshindaiwood}
+                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+                end)
+            window3:Label("DANGER", Color3.fromRGB(127, 143, 166))
 
-        window3:Label("DANGER", Color3.fromRGB(127, 143, 166))
+            window3:Button("Reset Script",function()
+                Pspeed = false
+                Pnorm = false
+                keel = false
+                E = false
+                library:Destroy()
+                wait(.3)
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMainAfterReset"))()
+            end)
 
-        window3:Button("Reset Script",function()
-            Pnorm = false
-            Pspeed = false
-            smeh4u7 = false
-            smeh4u6 = false
-            smeh4u5 = false
-            smeh4u4 = false
-            keel = false
-            E = false
-            Aimyopr = false
-            library:Destroy()
-            wait(.3)
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain"))()
-        end)
+            window3:Label("Credits", Color3.fromRGB(127, 143, 166))
 
-        window3:Label("Credits", Color3.fromRGB(127, 143, 166))
+            window3:Button("Made by NoobieDoge",function()
+                setclipboard("https://discord.gg/P2CeRjvTDt")
+            end)
+            window3:Label("Hide/Show GUI = Right Ctrl", Color3.fromRGB(127, 143, 166))
 
-        window3:Button("Made by NoobieDoge",function()
-            setclipboard("https://discord.gg/P2CeRjvTDt")
-        end)
-        window3:Label("Hide/Show GUI = Right Ctrl", Color3.fromRGB(127, 143, 166))
         end
     end
-    --UTILITIES ended
 end
 TextButton.MouseButton1Click:connect(UTILITIES)
 
