@@ -451,7 +451,7 @@ function UTILITIES()
                 E = false
                 library:Destroy()
                 wait(.3)
-                loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMainAfterReset"))()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain"))()
             end)
 
             window3:Button("Rejoin Server",function()
