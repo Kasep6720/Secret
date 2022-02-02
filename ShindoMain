@@ -1176,11 +1176,11 @@ function AUTOFARM()
                     auhp = false
                     wait()
                     library:Destroy()
-                    game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Script Reset",     Text = "You can only reset autofarm scripts once!",Duration = 10, })
+                    game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Script Reset",     Text = "Do not reset autofarm script more than once!",Duration = 15, })
                     local player = game.Players.LocalPlayer
                             player.Character:BreakJoints()
                             wait(11)
-                    loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMainAfterReset"))()
+                    loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain"))()
                 end
                 TextButton.MouseButton1Click:connect(ResetYES)
 
@@ -1596,11 +1596,11 @@ function AUTOFARM()
                     auhp = false
                     wait()
                     library:Destroy()
-                    game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Script Reset",     Text = "You can only reset autofarm scripts once!",Duration = 10, })
+                    game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Script Reset",     Text = "Do not reset autofarm script more than once!",Duration = 15, })
                     local player = game.Players.LocalPlayer
                             player.Character:BreakJoints()
                             wait(11)
-                    loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMainAfterReset"))()
+                    loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain"))()
                 end
                 TextButton.MouseButton1Click:connect(ResetYES)
 
@@ -1980,11 +1980,11 @@ function AUTOFARM()
                     auhp = false
                     wait()
                     library:Destroy()
-                    game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Script Reset",     Text = "You can only reset autofarm scripts once!",Duration = 10, })
+                    game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Script Reset",     Text = "Do not reset autofarm script more than once!",Duration = 15, })
                     local player = game.Players.LocalPlayer
                     player.Character:BreakJoints()
                     wait(11)
-                    loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMainAfterReset"))()
+                    loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain"))()
                 end
                 TextButton.MouseButton1Click:connect(ResetYES)
 
