@@ -75,10 +75,10 @@ function UTILITIES()
 
             window1:Label("Basic Functions", Color3.fromRGB(127, 143, 166))
 
-            window1:Slider("Walkspeed",16,200,5, function(value) 
+            window1:Slider("Walkspeed",16,500,16, function(value) 
                 sliderspeed = value
             end)
-            window1:Slider("JumpPower",50,200,20, function(value)
+            window1:Slider("JumpPower",50,500,50, function(value)
                 sliderjump = value
             end)
 
