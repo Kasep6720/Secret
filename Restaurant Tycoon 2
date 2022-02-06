@@ -88,21 +88,29 @@ end]]
 local player = game.Players.LocalPlayer
 
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/pornhub%20script%20gui"))()
-local window1 = library:Window("Restaurant Tycoon 2 - DogeHub")
+local window1 = library:Window("Restaurant Tycoon 2")
 local window2 = library:Window("Credits")
 
 library:Keybind("RightControl")
 
 window1:Label("Basic Functions", Color3.fromRGB(127, 143, 166))
 
-window1:Toggle("Speed",false,function(bool)
-    speed = bool
+window1:Slider("Walkspeed",16,200,16, function(value) 
+    sliderspeed = value
 end)
-game:GetService('RunService').Stepped:connect(function()
-    if speed then
-        pcall(function()
-   game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = 50
-        end)
+window1:Slider("JumpPower",50,200,50, function(value)
+    sliderjump = value
+end)
+window1:Toggle("Enabled",false,function(bool)
+    sliderpowa = bool
+end)
+
+spawn(function() 
+    while wait() do
+        if sliderpowa then
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = sliderspeed
+            game.Players.LocalPlayer.Character.Humanoid.JumpPower = sliderjump
+        end
     end
 end)
 
