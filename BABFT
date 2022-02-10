@@ -75,3 +75,5 @@ game.Players.LocalPlayer.CharacterAdded:Connect(function()
         farm()
     end
 end)
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/BABFT%20Tips"))()
