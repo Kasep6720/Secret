@@ -8,6 +8,7 @@ local TextLabel3 = Instance.new("TextLabel")
 local TextButton = Instance.new("TextButton")
 
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ResetOnSpawn = false
 
 Frame.Parent = ScreenGui
 Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -63,12 +64,13 @@ function closetips()
             v:Destroy()
         end
     end  
-     local player = game.Players.LocalPlayer
+    local player = game.Players.LocalPlayer
     local ScreenGui = Instance.new("ScreenGui")
     local Frame = Instance.new("Frame")
     local opentipsbutton = Instance.new("TextButton")
 
     ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+    ScreenGui.ResetOnSpawn = false
 
     Frame.Parent = ScreenGui
     Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -94,6 +96,6 @@ function closetips()
         end 
         loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/BABFT%20Tips"))()
     end
-    TextButton.MouseButton1Click:connect(opentips)
+    opentipsbutton.MouseButton1Click:connect(opentips)
 end
 TextButton.MouseButton1Click:connect(closetips)
