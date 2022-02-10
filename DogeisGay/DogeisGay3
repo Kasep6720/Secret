@@ -1,0 +1,374 @@
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+ScreenGui.Name = "ScreenGui"
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ScreenGui.ResetOnSpawn = false
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame.Position = UDim2.new(0.36, 0, 0.40, 0)
+Frame.Size = UDim2.new(0, 330, 0, 150)
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
+TextLabel.Size = UDim2.new(0, 330, 0, 150)
+TextLabel.Font = Enum.Font.Code
+TextLabel.Text = "Final Question"
+TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 10.000
+TextLabel.TextWrapped = true
+wait(1)
+TextLabel.Text = "Choose one"
+wait(.1)
+local player = game.Players.LocalPlayer local ScreenGui = Instance.new("ScreenGui") local Frame = Instance.new("Frame")
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") Frame.Parent = ScreenGui Frame.BackgroundColor3 = Color3.fromRGB(255, 55, 255) Frame.Size = UDim2.new(0, 65, 0, 60)
+Frame.Position = UDim2.new(0.66, 0, 0.40, 0)
+local TextButton = Instance.new("TextButton")
+TextButton.Parent = Frame TextButton.BackgroundColor3 = Color3.fromRGB(260, 30, 30) TextButton.Position = UDim2.new(0, 0, 0, 0) TextButton.Size = UDim2.new(0, 65, 0, 60) TextButton.Font = Enum.Font.Code TextButton.Text = "Me" TextButton.TextColor3 = Color3.fromRGB(0, 0, 0) TextButton.TextScaled = true TextButton.TextSize = 40.000 TextButton.TextWrapped = true
+
+function ee1()
+for i,v in pairs(player.PlayerGui:GetChildren()) do if v.Name == "ScreenGui" then v:Destroy()
+end end wait()
+if game.PlaceId == 4616652839 then
+player.statz.spins:Destroy() game.Players.LocalPlayer:Kick("Wrong lol") else game.Players.LocalPlayer:Kick("Wrong lol") end end
+TextButton.MouseButton1Click:connect(ee1)
+wait(.1)
+local player = game.Players.LocalPlayer local ScreenGui = Instance.new("ScreenGui") local Frame = Instance.new("Frame")
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") Frame.Parent = ScreenGui Frame.BackgroundColor3 = Color3.fromRGB(255, 55, 255) Frame.Size = UDim2.new(0, 65, 0, 60)
+Frame.Position = UDim2.new(0.26, 0, 0.90, 0)
+local TextButton = Instance.new("TextButton")
+TextButton.Parent = Frame TextButton.BackgroundColor3 = Color3.fromRGB(260, 30, 30) TextButton.Position = UDim2.new(0, 0, 0, 0) TextButton.Size = UDim2.new(0, 65, 0, 60) TextButton.Font = Enum.Font.Code TextButton.Text = "Me" TextButton.TextColor3 = Color3.fromRGB(0, 0, 0) TextButton.TextScaled = true TextButton.TextSize = 40.000 TextButton.TextWrapped = true
+
+function ee1()
+for i,v in pairs(player.PlayerGui:GetChildren()) do if v.Name == "ScreenGui" then v:Destroy()
+end end wait()
+if game.PlaceId == 4616652839 then
+player.statz.spins:Destroy() game.Players.LocalPlayer:Kick("Wrong lol") else game.Players.LocalPlayer:Kick("Wrong lol") end end
+TextButton.MouseButton1Click:connect(ee1)
+wait(.1)
+local player = game.Players.LocalPlayer local ScreenGui = Instance.new("ScreenGui") local Frame = Instance.new("Frame")
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") Frame.Parent = ScreenGui Frame.BackgroundColor3 = Color3.fromRGB(255, 55, 255) Frame.Size = UDim2.new(0, 65, 0, 60)
+Frame.Position = UDim2.new(0.3427566, 0, 0.1384286, 0)
+local TextButton = Instance.new("TextButton")
+TextButton.Parent = Frame TextButton.BackgroundColor3 = Color3.fromRGB(260, 30, 30) TextButton.Position = UDim2.new(0, 0, 0, 0) TextButton.Size = UDim2.new(0, 65, 0, 60) TextButton.Font = Enum.Font.Code TextButton.Text = "Me" TextButton.TextColor3 = Color3.fromRGB(0, 0, 0) TextButton.TextScaled = true TextButton.TextSize = 40.000 TextButton.TextWrapped = true
+
+function ee1()
+for i,v in pairs(player.PlayerGui:GetChildren()) do if v.Name == "ScreenGui" then v:Destroy()
+end end wait()
+if game.PlaceId == 4616652839 then
+player.statz.spins:Destroy() game.Players.LocalPlayer:Kick("Wrong lol") else game.Players.LocalPlayer:Kick("Wrong lol") end end
+TextButton.MouseButton1Click:connect(ee1)
+wait(.1)
+local player = game.Players.LocalPlayer local ScreenGui = Instance.new("ScreenGui") local Frame = Instance.new("Frame")
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") Frame.Parent = ScreenGui Frame.BackgroundColor3 = Color3.fromRGB(255, 55, 255) Frame.Size = UDim2.new(0, 65, 0, 60)
+Frame.Position = UDim2.new(0.0459, 0, 0.55555, 0)
+local TextButton = Instance.new("TextButton")
+TextButton.Parent = Frame TextButton.BackgroundColor3 = Color3.fromRGB(260, 30, 30) TextButton.Position = UDim2.new(0, 0, 0, 0) TextButton.Size = UDim2.new(0, 65, 0, 60) TextButton.Font = Enum.Font.Code TextButton.Text = "Me" TextButton.TextColor3 = Color3.fromRGB(0, 0, 0) TextButton.TextScaled = true TextButton.TextSize = 40.000 TextButton.TextWrapped = true
+
+function ee1()
+for i,v in pairs(player.PlayerGui:GetChildren()) do if v.Name == "ScreenGui" then v:Destroy()
+end end wait()
+if game.PlaceId == 4616652839 then
+player.statz.spins:Destroy() game.Players.LocalPlayer:Kick("Wrong lol") else game.Players.LocalPlayer:Kick("Wrong lol") end end
+TextButton.MouseButton1Click:connect(ee1)
+wait(.1)
+local player = game.Players.LocalPlayer local ScreenGui = Instance.new("ScreenGui") local Frame = Instance.new("Frame")
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") Frame.Parent = ScreenGui Frame.BackgroundColor3 = Color3.fromRGB(255, 55, 255) Frame.Size = UDim2.new(0, 65, 0, 60)
+Frame.Position = UDim2.new(0.2555, 0, 0.847755, 0)
+local TextButton = Instance.new("TextButton")
+TextButton.Parent = Frame TextButton.BackgroundColor3 = Color3.fromRGB(260, 30, 30) TextButton.Position = UDim2.new(0, 0, 0, 0) TextButton.Size = UDim2.new(0, 65, 0, 60) TextButton.Font = Enum.Font.Code TextButton.Text = "Me" TextButton.TextColor3 = Color3.fromRGB(0, 0, 0) TextButton.TextScaled = true TextButton.TextSize = 40.000 TextButton.TextWrapped = true
+
+function ee1()
+for i,v in pairs(player.PlayerGui:GetChildren()) do if v.Name == "ScreenGui" then v:Destroy()
+end end wait()
+if game.PlaceId == 4616652839 then
+player.statz.spins:Destroy() game.Players.LocalPlayer:Kick("Wrong lol") else game.Players.LocalPlayer:Kick("Wrong lol") end end
+TextButton.MouseButton1Click:connect(ee1)
+wait(.1)
+local player = game.Players.LocalPlayer local ScreenGui = Instance.new("ScreenGui") local Frame = Instance.new("Frame")
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") Frame.Parent = ScreenGui Frame.BackgroundColor3 = Color3.fromRGB(255, 55, 255) Frame.Size = UDim2.new(0, 65, 0, 60)
+Frame.Position = UDim2.new(0.2, 0, 0.4930, 0)
+local TextButton = Instance.new("TextButton")
+TextButton.Parent = Frame TextButton.BackgroundColor3 = Color3.fromRGB(260, 30, 30) TextButton.Position = UDim2.new(0, 0, 0, 0) TextButton.Size = UDim2.new(0, 65, 0, 60) TextButton.Font = Enum.Font.Code TextButton.Text = "Me" TextButton.TextColor3 = Color3.fromRGB(0, 0, 0) TextButton.TextScaled = true TextButton.TextSize = 40.000 TextButton.TextWrapped = true
+
+function ee1()
+for i,v in pairs(player.PlayerGui:GetChildren()) do if v.Name == "ScreenGui" then v:Destroy()
+end end wait()
+if game.PlaceId == 4616652839 then
+player.statz.spins:Destroy() game.Players.LocalPlayer:Kick("Wrong lol") else game.Players.LocalPlayer:Kick("Wrong lol") end end
+TextButton.MouseButton1Click:connect(ee1)
+wait(.1)
+local player = game.Players.LocalPlayer local ScreenGui = Instance.new("ScreenGui") local Frame = Instance.new("Frame")
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") Frame.Parent = ScreenGui Frame.BackgroundColor3 = Color3.fromRGB(255, 55, 255) Frame.Size = UDim2.new(0, 65, 0, 60)
+Frame.Position = UDim2.new(0.1, 0, 0.420, 0)
+local TextButton = Instance.new("TextButton")
+TextButton.Parent = Frame TextButton.BackgroundColor3 = Color3.fromRGB(260, 30, 30) TextButton.Position = UDim2.new(0, 0, 0, 0) TextButton.Size = UDim2.new(0, 65, 0, 60) TextButton.Font = Enum.Font.Code TextButton.Text = "Me" TextButton.TextColor3 = Color3.fromRGB(0, 0, 0) TextButton.TextScaled = true TextButton.TextSize = 40.000 TextButton.TextWrapped = true
+
+function ee1()
+for i,v in pairs(player.PlayerGui:GetChildren()) do if v.Name == "ScreenGui" then v:Destroy()
+end end wait()
+if game.PlaceId == 4616652839 then
+player.statz.spins:Destroy() game.Players.LocalPlayer:Kick("Wrong lol") else game.Players.LocalPlayer:Kick("Wrong lol") end end
+TextButton.MouseButton1Click:connect(ee1)
+wait(.1)
+local player = game.Players.LocalPlayer local ScreenGui = Instance.new("ScreenGui") local Frame = Instance.new("Frame")
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") Frame.Parent = ScreenGui Frame.BackgroundColor3 = Color3.fromRGB(255, 55, 255) Frame.Size = UDim2.new(0, 65, 0, 60)
+Frame.Position = UDim2.new(0.6106, 0, 0.3409247, 0)
+local TextButton = Instance.new("TextButton")
+TextButton.Parent = Frame TextButton.BackgroundColor3 = Color3.fromRGB(260, 30, 30) TextButton.Position = UDim2.new(0, 0, 0, 0) TextButton.Size = UDim2.new(0, 65, 0, 60) TextButton.Font = Enum.Font.Code TextButton.Text = "Me" TextButton.TextColor3 = Color3.fromRGB(0, 0, 0) TextButton.TextScaled = true TextButton.TextSize = 40.000 TextButton.TextWrapped = true
+
+function ee1()
+for i,v in pairs(player.PlayerGui:GetChildren()) do if v.Name == "ScreenGui" then v:Destroy()
+end end wait()
+if game.PlaceId == 4616652839 then
+player.statz.spins:Destroy() game.Players.LocalPlayer:Kick("Wrong lol") else game.Players.LocalPlayer:Kick("Wrong lol") end end
+TextButton.MouseButton1Click:connect(ee1)
+wait(.1)
+local player = game.Players.LocalPlayer local ScreenGui = Instance.new("ScreenGui") local Frame = Instance.new("Frame")
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") Frame.Parent = ScreenGui Frame.BackgroundColor3 = Color3.fromRGB(255, 55, 255) Frame.Size = UDim2.new(0, 65, 0, 60)
+Frame.Position = UDim2.new(0.166, 0, 0.140, 0)
+local TextButton = Instance.new("TextButton")
+TextButton.Parent = Frame TextButton.BackgroundColor3 = Color3.fromRGB(260, 30, 30) TextButton.Position = UDim2.new(0, 0, 0, 0) TextButton.Size = UDim2.new(0, 65, 0, 60) TextButton.Font = Enum.Font.Code TextButton.Text = "Me" TextButton.TextColor3 = Color3.fromRGB(0, 0, 0) TextButton.TextScaled = true TextButton.TextSize = 40.000 TextButton.TextWrapped = true
+
+function ee1()
+for i,v in pairs(player.PlayerGui:GetChildren()) do if v.Name == "ScreenGui" then v:Destroy()
+end end wait()
+if game.PlaceId == 4616652839 then
+player.statz.spins:Destroy() game.Players.LocalPlayer:Kick("Wrong lol") else game.Players.LocalPlayer:Kick("Wrong lol") end end
+TextButton.MouseButton1Click:connect(ee1)
+wait(.1)
+local player = game.Players.LocalPlayer local ScreenGui = Instance.new("ScreenGui") local Frame = Instance.new("Frame")
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") Frame.Parent = ScreenGui Frame.BackgroundColor3 = Color3.fromRGB(255, 55, 255) Frame.Size = UDim2.new(0, 65, 0, 60)
+Frame.Position = UDim2.new(0.766, 0, 0.7450, 0)
+local TextButton = Instance.new("TextButton")
+TextButton.Parent = Frame TextButton.BackgroundColor3 = Color3.fromRGB(260, 30, 30) TextButton.Position = UDim2.new(0, 0, 0, 0) TextButton.Size = UDim2.new(0, 65, 0, 60) TextButton.Font = Enum.Font.Code TextButton.Text = "Me" TextButton.TextColor3 = Color3.fromRGB(0, 0, 0) TextButton.TextScaled = true TextButton.TextSize = 40.000 TextButton.TextWrapped = true
+
+function ee1()
+for i,v in pairs(player.PlayerGui:GetChildren()) do if v.Name == "ScreenGui" then v:Destroy()
+end end wait()
+if game.PlaceId == 4616652839 then
+player.statz.spins:Destroy() game.Players.LocalPlayer:Kick("Wrong lol") else game.Players.LocalPlayer:Kick("Wrong lol") end end
+TextButton.MouseButton1Click:connect(ee1)
+wait(.1)
+local player = game.Players.LocalPlayer local ScreenGui = Instance.new("ScreenGui") local Frame = Instance.new("Frame")
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") Frame.Parent = ScreenGui Frame.BackgroundColor3 = Color3.fromRGB(255, 55, 255) Frame.Size = UDim2.new(0, 65, 0, 60)
+Frame.Position = UDim2.new(0.166, 0, 0.240, 0)
+local TextButton = Instance.new("TextButton")
+TextButton.Parent = Frame TextButton.BackgroundColor3 = Color3.fromRGB(260, 30, 30) TextButton.Position = UDim2.new(0, 0, 0, 0) TextButton.Size = UDim2.new(0, 65, 0, 60) TextButton.Font = Enum.Font.Code TextButton.Text = "Me" TextButton.TextColor3 = Color3.fromRGB(0, 0, 0) TextButton.TextScaled = true TextButton.TextSize = 40.000 TextButton.TextWrapped = true
+
+function ee1()
+for i,v in pairs(player.PlayerGui:GetChildren()) do if v.Name == "ScreenGui" then v:Destroy()
+end end wait()
+if game.PlaceId == 4616652839 then
+player.statz.spins:Destroy() game.Players.LocalPlayer:Kick("Wrong lol") else game.Players.LocalPlayer:Kick("Wrong lol") end end
+TextButton.MouseButton1Click:connect(ee1)
+wait(.1)
+local player = game.Players.LocalPlayer local ScreenGui = Instance.new("ScreenGui") local Frame = Instance.new("Frame")
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") Frame.Parent = ScreenGui Frame.BackgroundColor3 = Color3.fromRGB(255, 55, 255) Frame.Size = UDim2.new(0, 65, 0, 60)
+Frame.Position = UDim2.new(0.0001, 0, 0.90001, 0)
+local TextButton = Instance.new("TextButton")
+TextButton.Parent = Frame TextButton.BackgroundColor3 = Color3.fromRGB(260, 30, 30) TextButton.Position = UDim2.new(0, 0, 0, 0) TextButton.Size = UDim2.new(0, 65, 0, 60) TextButton.Font = Enum.Font.Code TextButton.Text = "Me" TextButton.TextColor3 = Color3.fromRGB(0, 0, 0) TextButton.TextScaled = true TextButton.TextSize = 40.000 TextButton.TextWrapped = true
+
+function ee1()
+for i,v in pairs(player.PlayerGui:GetChildren()) do if v.Name == "ScreenGui" then v:Destroy()
+end end wait()
+if game.PlaceId == 4616652839 then
+player.statz.spins:Destroy() game.Players.LocalPlayer:Kick("Wrong lol") else game.Players.LocalPlayer:Kick("Wrong lol") end end
+TextButton.MouseButton1Click:connect(ee1)
+wait(.1)
+local player = game.Players.LocalPlayer local ScreenGui = Instance.new("ScreenGui") local Frame = Instance.new("Frame")
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") Frame.Parent = ScreenGui Frame.BackgroundColor3 = Color3.fromRGB(255, 55, 255) Frame.Size = UDim2.new(0, 65, 0, 60)
+Frame.Position = UDim2.new(0.66, 0, 0.90, 0)
+local TextButton = Instance.new("TextButton")
+TextButton.Parent = Frame TextButton.BackgroundColor3 = Color3.fromRGB(260, 30, 30) TextButton.Position = UDim2.new(0, 0, 0, 0) TextButton.Size = UDim2.new(0, 65, 0, 60) TextButton.Font = Enum.Font.Code TextButton.Text = "Me" TextButton.TextColor3 = Color3.fromRGB(0, 0, 0) TextButton.TextScaled = true TextButton.TextSize = 40.000 TextButton.TextWrapped = true
+
+function ee1()
+for i,v in pairs(player.PlayerGui:GetChildren()) do if v.Name == "ScreenGui" then v:Destroy()
+end end wait()
+if game.PlaceId == 4616652839 then
+player.statz.spins:Destroy() game.Players.LocalPlayer:Kick("Wrong lol") else game.Players.LocalPlayer:Kick("Wrong lol") end end
+TextButton.MouseButton1Click:connect(ee1)
+wait(.1)
+local player = game.Players.LocalPlayer local ScreenGui = Instance.new("ScreenGui") local Frame = Instance.new("Frame")
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") Frame.Parent = ScreenGui Frame.BackgroundColor3 = Color3.fromRGB(255, 55, 255) Frame.Size = UDim2.new(0, 65, 0, 60)
+Frame.Position = UDim2.new(0.86, 0, 0.740, 0)
+local TextButton = Instance.new("TextButton")
+TextButton.Parent = Frame TextButton.BackgroundColor3 = Color3.fromRGB(260, 30, 30) TextButton.Position = UDim2.new(0, 0, 0, 0) TextButton.Size = UDim2.new(0, 65, 0, 60) TextButton.Font = Enum.Font.Code TextButton.Text = "Me" TextButton.TextColor3 = Color3.fromRGB(0, 0, 0) TextButton.TextScaled = true TextButton.TextSize = 40.000 TextButton.TextWrapped = true
+
+function ee1()
+for i,v in pairs(player.PlayerGui:GetChildren()) do if v.Name == "ScreenGui" then v:Destroy()
+end end wait()
+if game.PlaceId == 4616652839 then
+player.statz.spins:Destroy() game.Players.LocalPlayer:Kick("Wrong lol") else game.Players.LocalPlayer:Kick("Wrong lol") end end
+TextButton.MouseButton1Click:connect(ee1)
+wait(.1)
+local player = game.Players.LocalPlayer local ScreenGui = Instance.new("ScreenGui") local Frame = Instance.new("Frame")
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") Frame.Parent = ScreenGui Frame.BackgroundColor3 = Color3.fromRGB(255, 55, 255) Frame.Size = UDim2.new(0, 65, 0, 60)
+Frame.Position = UDim2.new(0.2045566, 0, 0.99940, 0)
+local TextButton = Instance.new("TextButton")
+TextButton.Parent = Frame TextButton.BackgroundColor3 = Color3.fromRGB(260, 30, 30) TextButton.Position = UDim2.new(0, 0, 0, 0) TextButton.Size = UDim2.new(0, 65, 0, 60) TextButton.Font = Enum.Font.Code TextButton.Text = "Me" TextButton.TextColor3 = Color3.fromRGB(0, 0, 0) TextButton.TextScaled = true TextButton.TextSize = 40.000 TextButton.TextWrapped = true
+
+function ee1()
+for i,v in pairs(player.PlayerGui:GetChildren()) do if v.Name == "ScreenGui" then v:Destroy()
+end end wait()
+if game.PlaceId == 4616652839 then
+player.statz.spins:Destroy() game.Players.LocalPlayer:Kick("Wrong lol") else game.Players.LocalPlayer:Kick("Wrong lol") end end
+TextButton.MouseButton1Click:connect(ee1)
+wait(.1)
+local player = game.Players.LocalPlayer local ScreenGui = Instance.new("ScreenGui") local Frame = Instance.new("Frame")
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") Frame.Parent = ScreenGui Frame.BackgroundColor3 = Color3.fromRGB(255, 55, 255) Frame.Size = UDim2.new(0, 65, 0, 60)
+Frame.Position = UDim2.new(0.966, 0, 0.34454340, 0)
+local TextButton = Instance.new("TextButton")
+TextButton.Parent = Frame TextButton.BackgroundColor3 = Color3.fromRGB(260, 30, 30) TextButton.Position = UDim2.new(0, 0, 0, 0) TextButton.Size = UDim2.new(0, 65, 0, 60) TextButton.Font = Enum.Font.Code TextButton.Text = "Me" TextButton.TextColor3 = Color3.fromRGB(0, 0, 0) TextButton.TextScaled = true TextButton.TextSize = 40.000 TextButton.TextWrapped = true
+
+function ee1()
+for i,v in pairs(player.PlayerGui:GetChildren()) do if v.Name == "ScreenGui" then v:Destroy()
+end end wait()
+if game.PlaceId == 4616652839 then
+player.statz.spins:Destroy() game.Players.LocalPlayer:Kick("Wrong lol") else game.Players.LocalPlayer:Kick("Wrong lol") end end
+TextButton.MouseButton1Click:connect(ee1)
+wait(.1)
+local player = game.Players.LocalPlayer local ScreenGui = Instance.new("ScreenGui") local Frame = Instance.new("Frame")
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") Frame.Parent = ScreenGui Frame.BackgroundColor3 = Color3.fromRGB(255, 55, 255) Frame.Size = UDim2.new(0, 65, 0, 60)
+Frame.Position = UDim2.new(0.8266, 0, 0.22240, 0)
+local TextButton = Instance.new("TextButton")
+TextButton.Parent = Frame TextButton.BackgroundColor3 = Color3.fromRGB(260, 30, 30) TextButton.Position = UDim2.new(0, 0, 0, 0) TextButton.Size = UDim2.new(0, 65, 0, 60) TextButton.Font = Enum.Font.Code TextButton.Text = "Me" TextButton.TextColor3 = Color3.fromRGB(0, 0, 0) TextButton.TextScaled = true TextButton.TextSize = 40.000 TextButton.TextWrapped = true
+
+function ee1()
+for i,v in pairs(player.PlayerGui:GetChildren()) do if v.Name == "ScreenGui" then v:Destroy()
+end end wait()
+if game.PlaceId == 4616652839 then
+player.statz.spins:Destroy() game.Players.LocalPlayer:Kick("Wrong lol") else game.Players.LocalPlayer:Kick("Wrong lol") end end
+TextButton.MouseButton1Click:connect(ee1)
+wait(.1)
+local player = game.Players.LocalPlayer local ScreenGui = Instance.new("ScreenGui") local Frame = Instance.new("Frame")
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") Frame.Parent = ScreenGui Frame.BackgroundColor3 = Color3.fromRGB(255, 55, 255) Frame.Size = UDim2.new(0, 65, 0, 60)
+Frame.Position = UDim2.new(0.8866, 0, 0.540, 0)
+local TextButton = Instance.new("TextButton")
+TextButton.Parent = Frame TextButton.BackgroundColor3 = Color3.fromRGB(260, 30, 30) TextButton.Position = UDim2.new(0, 0, 0, 0) TextButton.Size = UDim2.new(0, 65, 0, 60) TextButton.Font = Enum.Font.Code TextButton.Text = "Me" TextButton.TextColor3 = Color3.fromRGB(0, 0, 0) TextButton.TextScaled = true TextButton.TextSize = 40.000 TextButton.TextWrapped = true
+
+function ee1()
+for i,v in pairs(player.PlayerGui:GetChildren()) do if v.Name == "ScreenGui" then v:Destroy()
+end end wait()
+if game.PlaceId == 4616652839 then
+player.statz.spins:Destroy() game.Players.LocalPlayer:Kick("Wrong lol") else game.Players.LocalPlayer:Kick("Wrong lol") end end
+TextButton.MouseButton1Click:connect(ee1)
+wait(.1)
+local player = game.Players.LocalPlayer local ScreenGui = Instance.new("ScreenGui") local Frame = Instance.new("Frame")
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") Frame.Parent = ScreenGui Frame.BackgroundColor3 = Color3.fromRGB(255, 55, 255) Frame.Size = UDim2.new(0, 65, 0, 60)
+Frame.Position = UDim2.new(0.666666666, 0, 0.5040, 0)
+local TextButton = Instance.new("TextButton")
+TextButton.Parent = Frame TextButton.BackgroundColor3 = Color3.fromRGB(260, 30, 30) TextButton.Position = UDim2.new(0, 0, 0, 0) TextButton.Size = UDim2.new(0, 65, 0, 60) TextButton.Font = Enum.Font.Code TextButton.Text = "Me" TextButton.TextColor3 = Color3.fromRGB(0, 0, 0) TextButton.TextScaled = true TextButton.TextSize = 40.000 TextButton.TextWrapped = true
+
+function ee1()
+for i,v in pairs(player.PlayerGui:GetChildren()) do if v.Name == "ScreenGui" then v:Destroy()
+end end wait()
+if game.PlaceId == 4616652839 then
+player.statz.spins:Destroy() game.Players.LocalPlayer:Kick("Wrong lol") else game.Players.LocalPlayer:Kick("Wrong lol") end end
+TextButton.MouseButton1Click:connect(ee1)
+wait(.1)
+local player = game.Players.LocalPlayer local ScreenGui = Instance.new("ScreenGui") local Frame = Instance.new("Frame")
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") Frame.Parent = ScreenGui Frame.BackgroundColor3 = Color3.fromRGB(255, 55, 255) Frame.Size = UDim2.new(0, 65, 0, 60)
+Frame.Position = UDim2.new(0.5, 0, 0.101, 0)
+local TextButton = Instance.new("TextButton")
+TextButton.Parent = Frame TextButton.BackgroundColor3 = Color3.fromRGB(260, 30, 30) TextButton.Position = UDim2.new(0, 0, 0, 0) TextButton.Size = UDim2.new(0, 65, 0, 60) TextButton.Font = Enum.Font.Code TextButton.Text = "Me" TextButton.TextColor3 = Color3.fromRGB(0, 0, 0) TextButton.TextScaled = true TextButton.TextSize = 40.000 TextButton.TextWrapped = true
+
+function ee1()
+for i,v in pairs(player.PlayerGui:GetChildren()) do if v.Name == "ScreenGui" then v:Destroy()
+end end wait()
+if game.PlaceId == 4616652839 then
+player.statz.spins:Destroy() game.Players.LocalPlayer:Kick("Wrong lol") else game.Players.LocalPlayer:Kick("Wrong lol") end end
+TextButton.MouseButton1Click:connect(ee1)
+wait(.1)
+local player = game.Players.LocalPlayer local ScreenGui = Instance.new("ScreenGui") local Frame = Instance.new("Frame")
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") Frame.Parent = ScreenGui Frame.BackgroundColor3 = Color3.fromRGB(255, 55, 255) Frame.Size = UDim2.new(0, 65, 0, 60)
+Frame.Position = UDim2.new(0.4866, 0, 0.840, 0)
+local TextButton = Instance.new("TextButton")
+TextButton.Parent = Frame TextButton.BackgroundColor3 = Color3.fromRGB(260, 30, 30) TextButton.Position = UDim2.new(0, 0, 0, 0) TextButton.Size = UDim2.new(0, 65, 0, 60) TextButton.Font = Enum.Font.Code TextButton.Text = "Me" TextButton.TextColor3 = Color3.fromRGB(0, 0, 0) TextButton.TextScaled = true TextButton.TextSize = 40.000 TextButton.TextWrapped = true
+
+function ee1()
+for i,v in pairs(player.PlayerGui:GetChildren()) do if v.Name == "ScreenGui" then v:Destroy()
+end end wait()
+if game.PlaceId == 4616652839 then
+player.statz.spins:Destroy() game.Players.LocalPlayer:Kick("Wrong lol") else game.Players.LocalPlayer:Kick("Wrong lol") end end
+TextButton.MouseButton1Click:connect(ee1)
+wait(.1)
+local player = game.Players.LocalPlayer local ScreenGui = Instance.new("ScreenGui") local Frame = Instance.new("Frame")
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") Frame.Parent = ScreenGui Frame.BackgroundColor3 = Color3.fromRGB(255, 55, 255) Frame.Size = UDim2.new(0, 65, 0, 60)
+Frame.Position = UDim2.new(0.42666, 0, 0.3040, 0)
+local TextButton = Instance.new("TextButton")
+TextButton.Parent = Frame TextButton.BackgroundColor3 = Color3.fromRGB(260, 30, 30) TextButton.Position = UDim2.new(0, 0, 0, 0) TextButton.Size = UDim2.new(0, 65, 0, 60) TextButton.Font = Enum.Font.Code TextButton.Text = "Me" TextButton.TextColor3 = Color3.fromRGB(0, 0, 0) TextButton.TextScaled = true TextButton.TextSize = 40.000 TextButton.TextWrapped = true
+
+function ee1()
+for i,v in pairs(player.PlayerGui:GetChildren()) do if v.Name == "ScreenGui" then v:Destroy()
+end end wait()
+if game.PlaceId == 4616652839 then
+player.statz.spins:Destroy() game.Players.LocalPlayer:Kick("Wrong lol") else game.Players.LocalPlayer:Kick("Wrong lol") end end
+TextButton.MouseButton1Click:connect(ee1)
+wait(.1)
+local player = game.Players.LocalPlayer local ScreenGui = Instance.new("ScreenGui") local Frame = Instance.new("Frame")
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") Frame.Parent = ScreenGui Frame.BackgroundColor3 = Color3.fromRGB(255, 55, 255) Frame.Size = UDim2.new(0, 65, 0, 60)
+Frame.Position = UDim2.new(0.58, 0, 0.7401111111111, 0)
+local TextButton = Instance.new("TextButton")
+TextButton.Parent = Frame TextButton.BackgroundColor3 = Color3.fromRGB(260, 30, 30) TextButton.Position = UDim2.new(0, 0, 0, 0) TextButton.Size = UDim2.new(0, 65, 0, 60) TextButton.Font = Enum.Font.Code TextButton.Text = "Me" TextButton.TextColor3 = Color3.fromRGB(0, 0, 0) TextButton.TextScaled = true TextButton.TextSize = 40.000 TextButton.TextWrapped = true
+
+function ee1()
+for i,v in pairs(player.PlayerGui:GetChildren()) do if v.Name == "ScreenGui" then v:Destroy()
+end end wait()
+if game.PlaceId == 4616652839 then
+player.statz.spins:Destroy() game.Players.LocalPlayer:Kick("Wrong lol") else game.Players.LocalPlayer:Kick("Wrong lol") end end
+TextButton.MouseButton1Click:connect(ee1)
+wait(.1)
+local player = game.Players.LocalPlayer local ScreenGui = Instance.new("ScreenGui") local Frame = Instance.new("Frame")
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") Frame.Parent = ScreenGui Frame.BackgroundColor3 = Color3.fromRGB(255, 55, 255) Frame.Size = UDim2.new(0, 65, 0, 60)
+Frame.Position = UDim2.new(0.5, 0, 0.6, 0)
+local TextButton = Instance.new("TextButton")
+TextButton.Parent = Frame TextButton.BackgroundColor3 = Color3.fromRGB(260, 30, 30) TextButton.Position = UDim2.new(0, 0, 0, 0) TextButton.Size = UDim2.new(0, 65, 0, 60) TextButton.Font = Enum.Font.Code TextButton.Text = "Me" TextButton.TextColor3 = Color3.fromRGB(0, 0, 0) TextButton.TextScaled = true TextButton.TextSize = 40.000 TextButton.TextWrapped = true
+
+function ee1()
+for i,v in pairs(player.PlayerGui:GetChildren()) do if v.Name == "ScreenGui" then v:Destroy()
+end end wait()
+if game.PlaceId == 4616652839 then
+player.statz.spins:Destroy() game.Players.LocalPlayer:Kick("Wrong lol") else game.Players.LocalPlayer:Kick("Wrong lol") end end
+TextButton.MouseButton1Click:connect(ee1)
+wait(.1)
+local player = game.Players.LocalPlayer local ScreenGui = Instance.new("ScreenGui") local Frame = Instance.new("Frame")
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") Frame.Parent = ScreenGui Frame.BackgroundColor3 = Color3.fromRGB(255, 55, 255) Frame.Size = UDim2.new(0, 65, 0, 60)
+Frame.Position = UDim2.new(0.4777, 0, 0.75, 0)
+local TextButton2 = Instance.new("TextButton")
+TextButton2.Parent = Frame 
+TextButton2.BackgroundColor3 = Color3.fromRGB(260, 30, 30) 
+TextButton2.Position = UDim2.new(0, 0, 0, 0) 
+TextButton2.Size = UDim2.new(0, 65, 0, 60) 
+TextButton2.Font = Enum.Font.Code 
+TextButton2.Text = "Me" 
+TextButton2.TextColor3 = Color3.fromRGB(0, 0, 0) 
+TextButton2.TextScaled = true 
+TextButton2.TextSize = 40.000 
+TextButton2.TextWrapped = true
+
+function ee11()
+local s = Instance.new("Sound")
+wait() s.Name = "Sound" s.SoundId = "http://www.roblox.com/asset/?id=8086605202" s.Volume = 100 s.Looped = true s.archivable = false s.Parent = game.Workspace wait(.3) s:play()
+wait(10)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Fate%20ESP"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Fate%20ESP"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Fate%20ESP"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Fate%20ESP"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Fate%20ESP"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Fate%20ESP"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Fate%20ESP"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Fate%20ESP"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Fate%20ESP"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Fate%20ESP"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Fate%20ESP"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Fate%20ESP"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Fate%20ESP"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Fate%20ESP"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Fate%20ESP"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Fate%20ESP"))()
+wait()
+game.Players.LocalPlayer:Kick("LOLOLOLOLOLOLLOLOL")
+end
+TextButton2.MouseButton1Click:connect(ee11)
