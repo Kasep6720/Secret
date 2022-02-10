@@ -50,6 +50,7 @@ function Vynixiusscript()
         end
     end
     loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Vynixius/main/Build%20A%20Boat%20For%20Treasure/BABFT"))()
+    game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Script",     Text = "This script is NOT made by DogeHub!",Duration = 5, })
 end
 TextButton.MouseButton1Click:connect(Vynixiusscript)
 
@@ -71,6 +72,7 @@ function mashscript()
         end
     end
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/BABFT"))()
+    game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Script",     Text = "This script is NOT 100% made by DogeHub!",Duration = 5, })
 end
 TextButton_2.MouseButton1Click:connect(mashscript)
 
