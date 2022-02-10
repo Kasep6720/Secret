@@ -95,7 +95,7 @@ function UTILITIES()
             end)
 
             window1:Button("Add ESP GUI",function()
-                loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Fate%20ESP"))()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Fate%20ESP"))()
             end)
 
             window1:Button("Enable Infinite Jump",function()
