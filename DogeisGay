@@ -844,4 +844,4 @@ TextLabel.TextScaled = true
 TextLabel.TextSize = 35.000
 TextLabel.TextWrapped = true
 wait(.5)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/DogeisGay1"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/DogeisGay1"))()
