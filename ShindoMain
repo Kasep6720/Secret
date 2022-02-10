@@ -66,7 +66,7 @@ function UTILITIES()
             end)
             --variables
             local player = game.Players.LocalPlayer
-            local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/pornhub%20script%20gui"))()
+            local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20script%20gui"))()
             local window1 = library:Window("Utilities - DogeHub")
             local window2 = library:Window("Main")
             local window3 = library:Window("Others")
@@ -614,7 +614,7 @@ function AUTOFARM()
         end
 
         --loading GUI
-        local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/pornhub%20script%20gui"))()
+        local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20script%20gui"))()
         local window1 = library:Window("Mentor Farm - DogeHub")
         local window2 = library:Window("Others")
 
@@ -872,7 +872,7 @@ function AUTOFARM()
             local player = game.Players.LocalPlayer
             local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
 
-            local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/pornhub%20script%20gui"))()
+            local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20script%20gui"))()
             local window1 = library:Window("AutoFarm - DogeHub")
             local window2 = library:Window("Others")
             local window3 = library:Window("Credits")
@@ -1305,7 +1305,7 @@ function AUTOFARM()
             --variables
             local player = game.Players.LocalPlayer
             local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
-            local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/pornhub%20script%20gui"))()
+            local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20script%20gui"))()
             local window1 = library:Window("AutoFarm - DogeHub")
             local window2 = library:Window("Others")
             local window3 = library:Window("Credits")
@@ -1725,7 +1725,7 @@ function AUTOFARM()
             --variables
             local player = game.Players.LocalPlayer
             local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
-            local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/pornhub%20script%20gui"))()
+            local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20script%20gui"))()
             local window1 = library:Window("AutoFarm - DogeHub")
             local window2 = library:Window("Others")
             local window3 = library:Window("Credits")
