@@ -368,80 +368,15 @@ function UTILITIES()
                 end
             end)
 
+            window2:Label("(Only you can see it)", Color3.fromRGB(127, 143, 166))
+
             window2:Dropdown("Custom Display Ranks",{"RELL", "F 0", "D 1", "D 2", "D 3", "C 1", "C 2", "C 3", "B 1", "B 2", "B 3", "A 1", "A 2", "A 3", "S 1", "S 2", "S 3", "V 1", "V 2", "V 3", "X 1", "X 2", "X 3", "Y 1", "Y 2", "Y 3", "Z 1", "Z 2", "Z 3", "MAX-69", "MAX-420", "MAX-666", "MAX-999", "GOD", "Dragon", "Hacker","???"},function(rektrank)
                 game:GetService("Players").LocalPlayer.leaderstats.Rank.Value =  (rektrank)
             end)
-            window2:Label("(Only you can see it)", Color3.fromRGB(127, 143, 166))
 
-            window2:Button("Equip Destruction Loadout",function()
-                wait()
-                local args = {[1] = "kgbag",[2] = "kg1",[3] = "itachisharingan"}
-                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-                local args = {[1] = "kgbag",[2] = "kg4",[3] = "sengoku"}
-                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-                local args = {[1] = "kgbag",[2] = "e4",[3] = "acid"}
-                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-                local args = {[1] = "kgbag",[2] = "e3",[3] = "chaos"}
-                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-                local args = {[1] = "kgbag",[2] = "mistbreathing",[3] = "mistbreathing"}
-                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-                local args = {[1] = "kgbag",[2] = "kg2",[3] = "shindairengoku"}
-                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-                local args = {[1] = "kgbag",[2] = "kg3",[3] = "senjuwood"}
-                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-                local args = {[1] = "kgbag",[2] = "e2",[3] = "earth"}
-                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-                local args = {[1] = "kgbag",[2] = "e1",[3] = "lightning"}
-                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-                wait()
-                local args = {[1] = "kgbag",[2] = "kg3",[3] = "aduritewood"}
-                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-                local args = {[1] = "kgbag",[2] = "e1",[3] = "purplelightning"}
-                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-                local args = {[1] = "kgbag",[2] = "e3",[3] = "order"}
-                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-                local args = {[1] = "kgbag",[2] = "kg2",[3] = "shindairengokuyang"}
-                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-                wait()
-                local args = {[1] = "kgbag",[2] = "e1",[3] = "goldlightning"}
-                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-                local args = {[1] = "kgbag",[2] = "kg3",[3] = "alphiramashizen"}
-                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-                local args = {[1] = "selectmartialstyle",[2] = "basic"}
-                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-                wait()
-                local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.kunaithrow}
-                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-                local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.kunai}
-                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-                wait(.1)
-                local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.painrodthrow}
-                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-                local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail3x,[3] = "tail3x"}
-                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-                local args = {[1] = "equipjutsu",[2] = "t",[3] = game:GetService("ReplicatedStorage").alljutsu.subjutsu.snakesummoning}
-                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-                local args = {[1] = "equipjutsu",[2] = "r",[3] = game:GetService("ReplicatedStorage").alljutsu.goldlightning.goldsenbonrain}
-                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-                local args = {[1] = "equipjutsu",[2] = "y",[3] = game:GetService("ReplicatedStorage").alljutsu.order.order6}
-                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-                local args = {[1] = "equipjutsu",[2] = "f",[3] = game:GetService("ReplicatedStorage").alljutsu.acid.acid2}
-                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-                local args = {[1] = "equipjutsu",[2] = "h",[3] = game:GetService("ReplicatedStorage").alljutsu.BOSSDROPS.BOSSDROPavalanche}
-                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-                local args = {[1] = "equipjutsu",[2] = "b",[3] = game:GetService("ReplicatedStorage").alljutsu.alphiramashizen.alph3}
-                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-                local args = {[1] = "equipjutsu",[2] = "n",[3] = game:GetService("ReplicatedStorage").alljutsu.sengoku.sengoku3}
-                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-                local args = {[1] = "equipjutsu",[2] = "v",[3] = game:GetService("ReplicatedStorage").alljutsu.itachisharingan.tsukuyomi}
-                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-                local args = {[1] = "equipkg",[2] = game:GetService("Players").LocalPlayer.statz.main.kg2}
-                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-                local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.BOSSDROPkagokustaff}
-                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-                local args = {[1] = "equipjutsu",[2] = "g",[3] = game:GetService("ReplicatedStorage").alljutsu.BOSSDROPS.BOSSDROPshindaiwood}
-                game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-                end)
+            window2:Button("Loadout Changer",function()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer"))()
+            end)
             window3:Label("DANGER", Color3.fromRGB(127, 143, 166))
 
             window3:Button("Reset Script",function()
