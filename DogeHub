@@ -1,4 +1,4 @@
-wait(.1)
+wait()
 
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
@@ -24,7 +24,7 @@ TextLabel.TextScaled = true
 TextLabel.TextSize = 10.000
 TextLabel.TextWrapped = true
 
-wait(1.5)
+wait(.5)
 TextLabel.Text = "Checking if game supported"
 if game.PlaceId == 537413528 then
     wait(.3) TextLabel.Text = "Game supported!" wait(1) TextLabel.Text = "Build a Boat for Treasure" wait(1) TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!" wait(1) ScreenGui:Destroy() 
