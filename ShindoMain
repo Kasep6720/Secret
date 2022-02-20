@@ -291,6 +291,32 @@ function UTILITIES()
                 Fly()
             end)
 
+            window1:Button("Upgrade Performance",function()
+                local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
+                local g = game
+                local w = g.Workspace
+                local l = g.Lighting
+                local t = w.Terrain
+                t.WaterWaveSize = 0
+                t.WaterWaveSpeed = 0
+                t.WaterReflectance = 0
+                t.WaterTransparency = 0
+                l.GlobalShadows = false
+                l.FogEnd = 9e9
+                l.Brightness = 0
+                settings().Rendering.QualityLevel = "Level01"
+                for i,v in pairs(g:GetDescendants()) do
+                    if v:IsA("Part") or v:IsA("Union") or v:IsA("MeshPart") then
+                        v.Material = "Plastic"
+                        v.Reflectance = 0
+                    elseif v:IsA("Decal") and decalsyeeted then 
+                        v.Transparency = 1
+                    elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then 
+                        v.Lifetime = NumberRange.new(0)
+                    end
+                end
+            end)
+
             window2:Label("Game Functions", Color3.fromRGB(127, 143, 166))
 
             window2:Button("SuperHuman",function()
@@ -945,6 +971,32 @@ function AUTOFARM()
                 TextButton.MouseButton1Click:connect(delete)
             end)
 
+            window1:Button("Upgrade Performance",function()
+                local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
+                local g = game
+                local w = g.Workspace
+                local l = g.Lighting
+                local t = w.Terrain
+                t.WaterWaveSize = 0
+                t.WaterWaveSpeed = 0
+                t.WaterReflectance = 0
+                t.WaterTransparency = 0
+                l.GlobalShadows = false
+                l.FogEnd = 9e9
+                l.Brightness = 0
+                settings().Rendering.QualityLevel = "Level01"
+                for i,v in pairs(g:GetDescendants()) do
+                    if v:IsA("Part") or v:IsA("Union") or v:IsA("MeshPart") then
+                        v.Material = "Plastic"
+                        v.Reflectance = 0
+                    elseif v:IsA("Decal") and decalsyeeted then 
+                        v.Transparency = 1
+                    elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then 
+                        v.Lifetime = NumberRange.new(0)
+                    end
+                end
+            end)
+
             local function QUEST()
                 for i,v in pairs(workspace.missiongivers:GetChildren()) do
                     if v.Name == "" and v:FindFirstChild("Head") then
@@ -1210,7 +1262,7 @@ function AUTOFARM()
                 end
                 TextButton2.MouseButton1Click:connect(ResetNO)
             end)
-
+            
             window3:Label("Made by NoobieDoge", Color3.fromRGB(127, 143, 166))
 
             window3:Button("Copy Discord Link",function()
@@ -1401,6 +1453,32 @@ function AUTOFARM()
                     end
                 end
                 TextButton.MouseButton1Click:connect(delete)
+            end)
+
+            window1:Button("Upgrade Performance",function()
+                local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
+                local g = game
+                local w = g.Workspace
+                local l = g.Lighting
+                local t = w.Terrain
+                t.WaterWaveSize = 0
+                t.WaterWaveSpeed = 0
+                t.WaterReflectance = 0
+                t.WaterTransparency = 0
+                l.GlobalShadows = false
+                l.FogEnd = 9e9
+                l.Brightness = 0
+                settings().Rendering.QualityLevel = "Level01"
+                for i,v in pairs(g:GetDescendants()) do
+                    if v:IsA("Part") or v:IsA("Union") or v:IsA("MeshPart") then
+                        v.Material = "Plastic"
+                        v.Reflectance = 0
+                    elseif v:IsA("Decal") and decalsyeeted then 
+                        v.Transparency = 1
+                    elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then 
+                        v.Lifetime = NumberRange.new(0)
+                    end
+                end
             end)
 
             local function QUEST()
@@ -1775,6 +1853,32 @@ function AUTOFARM()
                     end
                 end
                 TextButton.MouseButton1Click:connect(delete)
+            end)
+
+            window1:Button("Upgrade Performance",function()
+                local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
+                local g = game
+                local w = g.Workspace
+                local l = g.Lighting
+                local t = w.Terrain
+                t.WaterWaveSize = 0
+                t.WaterWaveSpeed = 0
+                t.WaterReflectance = 0
+                t.WaterTransparency = 0
+                l.GlobalShadows = false
+                l.FogEnd = 9e9
+                l.Brightness = 0
+                settings().Rendering.QualityLevel = "Level01"
+                for i,v in pairs(g:GetDescendants()) do
+                    if v:IsA("Part") or v:IsA("Union") or v:IsA("MeshPart") then
+                        v.Material = "Plastic"
+                        v.Reflectance = 0
+                    elseif v:IsA("Decal") and decalsyeeted then 
+                        v.Transparency = 1
+                    elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then 
+                        v.Lifetime = NumberRange.new(0)
+                    end
+                end
             end)
 
             local function QUEST()
