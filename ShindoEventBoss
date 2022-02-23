@@ -262,6 +262,19 @@ end)
 spawn(function()
     while wait() do
         if autofarm then
+        local platform = Instance.new("Part", player.Character)
+        platform.Anchored = true
+        platform.Transparency = 1
+        platform.Size = Vector3.new(6, 1, 6)
+
+        local connection
+        connection = game:GetService("RunService").RenderStepped:connect(function()
+            if player.Character:FindFirstChild("HumanoidRootPart") then
+                platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -5.5, 0)
+            else
+                connection:Disconnect()
+            end
+        end)
             if  player.currentmission.Value == nil then
                 for i,v in pairs(workspace.npc:GetChildren()) do
                     pcall(function()
@@ -282,6 +295,19 @@ end)
 spawn(function()
     while wait() do
         if autoofarm then
+        local platform = Instance.new("Part", player.Character)
+        platform.Anchored = true
+        platform.Transparency = 1
+        platform.Size = Vector3.new(6, 1, 6)
+
+        local connection
+        connection = game:GetService("RunService").RenderStepped:connect(function()
+            if player.Character:FindFirstChild("HumanoidRootPart") then
+                platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -5.5, 0)
+            else
+                connection:Disconnect()
+            end
+        end)
             if  player.currentmission.Value == nil then
                 for i,v in pairs(workspace.npc:GetChildren()) do
                     pcall(function()
