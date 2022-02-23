@@ -297,4 +297,44 @@ end)
 
 window2:Label("Show/Hide GUI = Right Ctrl", Color3.fromRGB(127, 143, 166))
 
+local function SCROLLFARM()
+		for i,v in pairs(game.workspace.GLOBALTIME:GetChildren()) do
+			if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
+				local scrollA = v.sh:FindFirstChild("invoke")
+				print("SCROLL SPAWNED")
+				pcall(function()
+					toTarget(game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position,v.sh.Position,CFrame.new(v.sh.Position))
+				end)
+				scrollA:FireServer(game.Players.LocalPlayer)
+				fireclickdetector(v.sh.ClickDetector)
+			end
+		end
+	end
+	local function SCROLLFARM1()
+		for i,v in pairs(game.workspace:GetChildren()) do
+			if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
+				local scrollA = v.sh:FindFirstChild("invoke")
+				print("SCROLL SPAWNED in workspace")
+				pcall(function()
+					toTarget(game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position,v.sh.Position,CFrame.new(v.sh.Position))
+					scrollA:FireServer(game.Players.LocalPlayer)
+					fireclickdetector(v.sh.ClickDetector)
+				end)
+			end
+		end
+	end
+
+	spawn(function()
+		while wait() do
+			if scrollfarm then
+				repeat wait()
+					SCROLLFARM()
+					SCROLLFARM1()
+				until not scrollfarm
+			end
+		end
+	end)
+
+scrollfarm = true
+
 loadstring(game:HttpGet("https://raw.githubusercontent.com/HDTerebi/Shindo-Life/main/No%20CD%20Method"))()
