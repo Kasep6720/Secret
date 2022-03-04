@@ -375,7 +375,7 @@ function UTILITIES()
             end)
 
             window2:Button("Loadout Changer",function()
-                loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer"))()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%201"))()
             end)
 
             window3:Button("Upgrade Performance",function()
