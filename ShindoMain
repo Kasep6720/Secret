@@ -1101,7 +1101,7 @@ function AUTOFARM()
 
             spawn(function()
                 while wait() do
-                    if RANKUPP and player.statz.lvl:FindFirstChild("lvl").Value >= 500 then
+                    if RANKUPP and player.statz.lvl:FindFirstChild("lvl").Value == 1000 then
                         repeat wait()
                             game.Players.LocalPlayer.startevent:FireServer("rankup")
                         until player.statz.lvl:FindFirstChild("lvl").Value == 1 or not RANKUPP
@@ -1548,7 +1548,7 @@ function AUTOFARM()
 
             spawn(function()
                 while wait() do
-                    if RANKUPP and player.statz.lvl:FindFirstChild("lvl").Value >= 500 then
+                    if RANKUPP and player.statz.lvl:FindFirstChild("lvl").Value == 1000 then
                         repeat wait()
                             game.Players.LocalPlayer.startevent:FireServer("rankup")
                         until player.statz.lvl:FindFirstChild("lvl").Value == 1 or not RANKUP
@@ -1956,7 +1956,7 @@ function AUTOFARM()
 
             spawn(function()
                 while wait() do
-                    if RANKUPP and player.statz.lvl:FindFirstChild("lvl").Value >= 500 then
+                    if RANKUPP and player.statz.lvl:FindFirstChild("lvl").Value == 1000 then
                         repeat wait()
                             game.Players.LocalPlayer.startevent:FireServer("rankup")
                         until player.statz.lvl:FindFirstChild("lvl").Value == 1 or not RANKUP
