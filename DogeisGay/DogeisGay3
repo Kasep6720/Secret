@@ -13,7 +13,7 @@ TextLabel.Parent = Frame
 TextLabel.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
 TextLabel.Size = UDim2.new(0, 330, 0, 150)
 TextLabel.Font = Enum.Font.Code
-TextLabel.Text = "Final Question"
+TextLabel.Text = "Challenging Question"
 TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
 TextLabel.TextScaled = true
 TextLabel.TextSize = 10.000
@@ -372,3 +372,341 @@ wait()
 game.Players.LocalPlayer:Kick("LOLOLOLOLOLOLLOLOL")
 end
 TextButton2.MouseButton1Click:connect(ee11)
+
+wait(.300)
+local Frame = Instance.new("Frame")
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame.Position = UDim2.new(0.36, 0, 0.40, 0)
+Frame.Size = UDim2.new(0, 330, 0, 150)
+local Loadout4PvP = Instance.new("TextButton")
+Loadout4PvP.Parent = Frame
+Loadout4PvP.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
+Loadout4PvP.Size = UDim2.new(0, 330, 0, 150)
+Loadout4PvP.Font = Enum.Font.Code
+Loadout4PvP.Text = "Choose one"
+Loadout4PvP.TextColor3 = Color3.fromRGB(0, 0, 0)
+Loadout4PvP.TextScaled = true
+Loadout4PvP.TextSize = 10.000
+Loadout4PvP.TextWrapped = true
+
+
+function TaijutsuLoadout()
+                for i,v in pairs(player.PlayerGui:GetChildren()) do
+                    if v.Name == "ScreenGui" then
+                        v:Destroy()
+                        wait()
+    game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Loadout Changer",     Text = "Editing Loadout",Duration = 0.1, })
+                    end
+                end
+--NOT MADE BY SCRIPTFINDER!!!!!!!!!!
+-- MADE BY EASY GAMER
+-- PLEASE SUBSCRIBE
+--NOTE ALL SCRIPTS ARE NOT MINE
+--CREDIT TO ALL SCRIPT OWNERS
+
+repeat wait() until game:IsLoaded()
+--old-antitp bypass
+if workspace:FindFirstChild("CCoff") then
+    game:GetService("Workspace").CCoff:Destroy()
+end
+--antiafk
+local VirtualUser=game:service'VirtualUser'
+	game:service'Players'.LocalPlayer.Idled:connect(function()
+	warn("anti-afk")
+	VirtualUser:CaptureController()
+	VirtualUser:ClickButton2(Vector2.new())
+end)
+
+local ScreenGui = Instance.new("ScreenGui")
+local OpenF = Instance.new("Frame")
+local OpenB = Instance.new("TextButton")
+local MainF = Instance.new("Frame")
+local Title = Instance.new("TextLabel")
+local AutoFarm = Instance.new("TextButton")
+local WalkSpeed = Instance.new("TextButton")
+local Close = Instance.new("TextButton")
+--Properties:
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ScreenGui.Parent = game.CoreGui
+
+OpenF.Name = "OpenF"
+OpenF.Parent = ScreenGui
+OpenF.Active = true
+OpenF.BackgroundColor3 = Color3.new(0, 0, 0)
+OpenF.BackgroundTransparency = 0.40000000596046
+OpenF.Position = UDim2.new(0.92768085, 0, 0.626178563, 0)
+OpenF.Size = UDim2.new(0, 98, 0, 28)
+
+OpenB.Name = "OpenB"
+OpenB.Parent = OpenF
+OpenB.BackgroundColor3 = Color3.new(1, 1, 1)
+OpenB.BackgroundTransparency = 1
+OpenB.Position = UDim2.new(0.0102040814, 0, 0.0357142873, 0)
+OpenB.Size = UDim2.new(0, 103, 0, 25)
+OpenB.Font = Enum.Font.Gotham
+OpenB.Text = "Open"
+OpenB.TextColor3 = Color3.new(1, 1, 1)
+OpenB.TextSize = 14
+OpenB.MouseButton1Click:connect(function()
+    OpenF.Visible = false
+    MainF.Visible = true
+end)
+
+MainF.Name = "MainF"
+MainF.Parent = ScreenGui
+MainF.Active = true
+MainF.BackgroundColor3 = Color3.new(0, 0, 0)
+MainF.BackgroundTransparency = 0.40000000596046
+MainF.Position = UDim2.new(0.369627506, 0, 0.30831641, 0)
+MainF.Size = UDim2.new(0, 170, 0, 224)
+MainF.Draggable = True
+
+Title.Name = "Title"
+Title.Parent = MainF
+Title.Active = true
+Title.BackgroundColor3 = Color3.new(0, 0, 0)
+Title.BackgroundTransparency = 0.40000000596046
+Title.Size = UDim2.new(0, 170, 0, 30)
+Title.Font = Enum.Font.GothamBold
+Title.Text = "DogeisGay"
+Title.TextColor3 = Color3.new(1, 1, 1)
+Title.TextSize = 14
+
+Close.Name = "Close"
+Close.Parent = MainF
+Close.BackgroundColor3 = Color3.new(1, 0, 0.0156863)
+Close.BackgroundTransparency = 1
+Close.Position = UDim2.new(0.841176391, 0, -0.0223214328, 0)
+Close.Size = UDim2.new(0, 27, 0, 39)
+Close.Font = Enum.Font.SourceSans
+Close.Text = "X"
+Close.TextColor3 = Color3.new(1, 0, 0.0156863)
+Close.TextSize = 48
+Close.MouseButton1Click:connect(function()
+	MainF.Visible = false
+	OpenF.Visible = true
+end)
+
+AutoFarm.Name = "AutoFarm"
+AutoFarm.Parent = MainF
+AutoFarm.BackgroundColor3 = Color3.new(0, 0, 0)
+AutoFarm.BackgroundTransparency = 0.40000000596046
+AutoFarm.Position = UDim2.new(0.0588235334, 0, 0.214285731, 0)
+AutoFarm.Size = UDim2.new(0, 150, 0, 26)
+AutoFarm.Font = Enum.Font.Gotham
+AutoFarm.Text = "0%"
+AutoFarm.TextColor3 = Color3.new(1, 1, 1)
+AutoFarm.TextSize = 14
+AutoFarm.MouseButton1Click:connect(function()
+game.Players.LocalPlayer:Kick("Be patient, nerd")
+end)
+
+for i=1,4 do
+wait(3)
+AutoFarm.Text = "1%"
+wait(.5)
+AutoFarm.Text = "2%"
+wait(.5)
+AutoFarm.Text = "3%"
+wait(.5)
+AutoFarm.Text = "5%"
+wait(.5)
+AutoFarm.Text = "6%"
+wait(.5)
+AutoFarm.Text = "10%"
+wait(.5)
+AutoFarm.Text = "11%"
+wait(1.5)
+AutoFarm.Text = "20%"
+wait(1.5)
+AutoFarm.Text = "21%"
+wait(1.95)
+AutoFarm.Text = "32%"
+wait(4)
+AutoFarm.Text = "33%"
+wait(.2)
+AutoFarm.Text = "34%"
+wait(.2)
+AutoFarm.Text = "35%"
+wait(.2)
+AutoFarm.Text = "36%"
+wait(.2)
+AutoFarm.Text = "37%"
+wait(.2)
+AutoFarm.Text = "36%"
+wait(.00000000000000000000000000000000000001)
+AutoFarm.Text = "37%"
+wait(.2)
+AutoFarm.Text = "38%"
+wait(10)
+AutoFarm.Text = "39%"
+wait(.09)
+AutoFarm.Text = "40%"
+wait(.09)
+AutoFarm.Text = "41%"
+wait(.09)
+AutoFarm.Text = "42%"
+wait(.09)
+AutoFarm.Text = "43%"
+wait(.09)
+AutoFarm.Text = "44%"
+wait(.09)
+AutoFarm.Text = "45%"
+wait(.09)
+AutoFarm.Text = "46%"
+wait(.09)
+AutoFarm.Text = "47%"
+wait(.09)
+AutoFarm.Text = "48%"
+wait(.7)
+AutoFarm.Text = "50%"
+wait(.03)
+AutoFarm.Text = "51%"
+wait(.03)
+AutoFarm.Text = "52%"
+wait(.03)
+AutoFarm.Text = "53%"
+wait(.03)
+AutoFarm.Text = "54%"
+wait(.03)
+AutoFarm.Text = "55%"
+wait(.03)
+AutoFarm.Text = "56%"
+wait(.03)
+AutoFarm.Text = "57%"
+wait(.03)
+AutoFarm.Text = "58%"
+wait(.03)
+AutoFarm.Text = "59%"
+wait(.03)
+AutoFarm.Text = "51%"
+wait(.9)
+AutoFarm.Text = "59%"
+wait(5)
+AutoFarm.Text = "60%"
+wait(10)
+AutoFarm.Text = "61%"
+wait(1)
+AutoFarm.Text = "62%"
+wait(1)
+AutoFarm.Text = "82%"
+wait(0.3)
+AutoFarm.Text = "89%"
+wait(0.05)
+AutoFarm.Text = "90%"
+wait(0.05)
+AutoFarm.Text = "91%"
+wait(0.05)
+AutoFarm.Text = "92%"
+wait(0.05)
+AutoFarm.Text = "93%"
+wait(0.05)
+AutoFarm.Text = "94%"
+wait(0.5)
+AutoFarm.Text = "95%"
+wait(0.5)
+AutoFarm.Text = "96%"
+wait(1)
+AutoFarm.Text = "97%"
+wait(.81)
+AutoFarm.Text = "98%"
+wait(3)
+AutoFarm.Text = "99%"
+wait(7)
+AutoFarm.Text = "99.5%"
+wait(1)
+AutoFarm.Text = "99.99%"
+wait(9)
+AutoFarm.Text = "99.99999999999%"
+wait(20)
+AutoFarm.Text = "100%"
+wait(2)
+AutoFarm.Text = "Click me NOW"
+wait(0.03)
+AutoFarm.Text = "Too slow"
+wait(0.9)
+AutoFarm.Text = "I give you another chance"
+wait(0.9)
+AutoFarm.Text = "Don't ruin it this time"
+end
+
+
+wait(5)
+AutoFarm.Text = "Bruh you know what"
+wait(2)
+AutoFarm.Text = "I let you pass you slow mf"
+wait(5)
+AutoFarm.Text = "Verification completed"
+wait(1)
+game:GetService("StarterGui"):SetCore("SendNotification",{     
+Title = "DogeisGay",     
+Text = "Verification Proccess completed",
+Button1 = "Ok",Duration = 1, })
+wait(.4)
+WalkSpeed.Name = "0%"
+WalkSpeed.Parent = MainF
+WalkSpeed.BackgroundColor3 = Color3.new(0, 0, 0)
+WalkSpeed.BackgroundTransparency = 0.40000000596046
+WalkSpeed.Position = UDim2.new(0.0588235334, 0, 0.36125, 0)
+WalkSpeed.Size = UDim2.new(0, 150, 0, 26)
+WalkSpeed.Font = Enum.Font.Gotham
+WalkSpeed.Text = "Script"
+WalkSpeed.TextColor3 = Color3.new(1, 1, 1)
+WalkSpeed.TextSize = 14
+WalkSpeed.MouseButton1Click:connect(function()
+game:GetService("StarterGui"):SetCore("SendNotification",{     
+Title = "DogeisGay",     
+Text = "Just be patient bruh",
+Button1 = "Ok",Duration = 1, })
+end)
+wait(1)
+WalkSpeed.Text = "1%"
+wait(.1)
+WalkSpeed.Text = "2%"
+wait(.1)
+WalkSpeed.Text = "3%"
+wait(.1)
+WalkSpeed.Text = "4%"
+wait(.51)
+WalkSpeed.Text = "26%"
+wait(.1)
+WalkSpeed.Text = "27%"
+wait(.1)
+WalkSpeed.Text = "28%"
+wait(.071)
+WalkSpeed.Text = "55%"
+wait(.1)
+WalkSpeed.Text = "78%"
+wait(.1)
+WalkSpeed.Text = "91%"
+wait(.1)
+WalkSpeed.Text = "92%"
+wait(.1)
+WalkSpeed.Text = "93%"
+wait(.06)
+WalkSpeed.Text = "94%"
+wait(.06)
+WalkSpeed.Text = "95%"
+wait(.06)
+WalkSpeed.Text = "96%"
+wait(.06)
+WalkSpeed.Text = "97%"
+wait(.4)
+WalkSpeed.Text = "98%"
+wait(.9)
+WalkSpeed.Text = "99%"
+wait(10)
+WalkSpeed.Text = "100%"
+wait(1)
+WalkSpeed.Text = "0%"
+wait(60)
+game:GetService("StarterGui"):SetCore("SendNotification",{     
+Title = "DogeisGay",     
+Text = "Rejoining server, script bugged",Duration = 3, })
+wait(4)
+game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
+
+end
+Loadout4PvP.MouseButton1Click:connect(TaijutsuLoadout)
