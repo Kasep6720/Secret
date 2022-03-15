@@ -1,15 +1,13 @@
 Players = game:GetService("Players")
-for i, player in pairs(Players:GetPlayers()) do
-    if Players.LocalPlayer.Name == "XxTIGER461717xX" or Players.LocalPlayer.Name == "tgccx123" then
-        if game.PlaceId == 4616652839 then
-            player.statz.spins:Destroy()
-            game.Players.LocalPlayer:Kick([[ 
+if Players.LocalPlayer.Name == "XxTIGER461717xX" or Players.LocalPlayer.Name == "tgccx123" then
+    if game.PlaceId == 4616652839 then
+        player.statz.spins:Destroy()
+        game.Players.LocalPlayer:Kick([[ 
 This account is on DogeHub blacklist lol]]) 
-            else
-            game.Players.LocalPlayer:Kick([[ 
-This account is on DogeHub blacklist lol]])
-        end
         else
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/main/DogeHub"))()
+        game.Players.LocalPlayer:Kick([[ 
+This account is on DogeHub blacklist lol]])
     end
+    else
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/main/DogeHub"))()
 end
