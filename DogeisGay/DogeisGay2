@@ -572,7 +572,7 @@ function wrong()
 ScreenGui:Destroy()
 wait()
 setclipboard("https://nhentai.net/g/177013/")
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/DogeisGay/DogeisGay2"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/DogeisGay/DogeisGay3"))()
 end
 TextButton2.MouseButton1Click:connect(wrong)
 
@@ -580,7 +580,7 @@ function correct()
 ScreenGui:Destroy()
 wait()
 setclipboard("https://nhentai.net/g/228922/")
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/DogeisGay/DogeisGay2"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/DogeisGay/DogeisGay3"))()
 end
 TextButton.MouseButton1Click:connect(correct)
 --end
