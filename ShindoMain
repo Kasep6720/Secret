@@ -1305,6 +1305,19 @@ function AUTOFARM()
             local autoofarm
             window1:Toggle("AutoFarm",false, function(bool)
                     autoofarm = bool
+                    local platform = Instance.new("Part", player.Character)
+                    platform.Anchored = true
+                    platform.Transparency = 1
+                    platform.Size = Vector3.new(6, 1, 6)
+
+                    local connection
+                    connection = game:GetService("RunService").RenderStepped:connect(function()
+                        if player.Character:FindFirstChild("HumanoidRootPart") then
+                            platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -2.5, 0)
+                        else
+                            connection:Disconnect()
+                        end
+                    end)
             end)
 
             local RANKUPP
@@ -1511,18 +1524,17 @@ function AUTOFARM()
                         mobname = string.gsub(mobname,"(s)","")
                     end
                     if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+                                player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(7,15,0)
                         wait(.00000009)
                         repeat wait()
                             pcall(function()
                                 wait(.0005)
                                 game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
-                                player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(7,7,0)
                                 v.Humanoid.Health = 0
                             end)
                             pcall(function()
                             wait(.00035)
                                 game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
-                                player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(0,7,7)
                                 v.Humanoid.Health = 0
                             end)
                         until v.Humanoid.Health == 0 or mission.Visible == false or not autoofarm or not v
@@ -1536,6 +1548,7 @@ function AUTOFARM()
                         if mission.Visible == false then
                             QUEST()
                         else
+                            wait(.5)
                             FARM()
                         end
                     end
@@ -1750,7 +1763,7 @@ function AUTOFARM()
 
             local autooofarm
             window1:Toggle("AutoFarm",false, function(bool)
-                    autoofarm = bool
+                    autooofarm = bool
             end)
 
             local RANKUPP
