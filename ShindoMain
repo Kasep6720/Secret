@@ -1498,6 +1498,7 @@ function AUTOFARM()
             local function QUEST()
                 for i,v in pairs(workspace.missiongivers:GetChildren()) do
                     if v.Name == "" and v:FindFirstChild("Head") then
+                        game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position+Vector3.new(0,350,0))  
                         local TALK = v:FindFirstChild("Talk")
                         if v:FindFirstChild("Head") and v.Head:FindFirstChild("givemission") and v.Head.givemission.Enabled and v.Head.givemission:FindFirstChild("color").Image == "http://www.roblox.com/asset/?id=5459241648" --[[or v.Head.givemission.color.Image == "http://www.roblox.com/asset/?id=5459241799"]] then
                             if v:WaitForChild("Talk"):WaitForChild("mobname") then
@@ -1524,8 +1525,8 @@ function AUTOFARM()
                         mobname = string.gsub(mobname,"(s)","")
                     end
                     if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-                                player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(7,15,0)
-                        wait(.00000009)
+                        player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(7,15,0)
+                        wait(0.48)
                         repeat wait()
                             pcall(function()
                                 wait(.0005)
@@ -1548,7 +1549,7 @@ function AUTOFARM()
                         if mission.Visible == false then
                             QUEST()
                         else
-                            wait(.5)
+                            wait(.101)
                             FARM()
                         end
                     end
