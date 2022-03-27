@@ -35,19 +35,19 @@ TextButton.BackgroundColor3 = Color3.fromRGB(117, 50, 168)
 TextButton.Position = UDim2.new(0, 0, 0.20000006, 0)
 TextButton.Size = UDim2.new(0, 200, 0, 120)
 TextButton.Font = Enum.Font.AmaticSC
-TextButton.Text = "UTILITIES"
+TextButton.Text = "MISC"
 TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
 TextButton.TextScaled = false
 TextButton.TextSize = 85.000
 TextButton.TextWrapped = true
 
-function UTILITIES()
+function MISC()
     for i,v in pairs(player.PlayerGui:GetChildren()) do
         if v.Name == "ScreenGui" then
             v:Destroy()
         end
     end
-    --UTILITIES start
+    --MISC start
     Players = game:GetService("Players")
         for i, player in pairs(Players:GetPlayers()) do
             if player.Name == "Kasep6720" and Players.LocalPlayer.Name ~= "Kasep6720" then
@@ -495,7 +495,7 @@ function UTILITIES()
         end
     end
 end
-TextButton.MouseButton1Click:connect(UTILITIES)
+TextButton.MouseButton1Click:connect(MISC)
 
 TextButton_2.Parent = Frame
 TextButton_2.BackgroundColor3 = Color3.fromRGB(117, 50, 168)
@@ -539,13 +539,13 @@ function AUTOFARM()
     TextButton.Position = UDim2.new(0, 0, 0.20000006, 0)
     TextButton.Size = UDim2.new(0, 200, 0, 120)
     TextButton.Font = Enum.Font.AmaticSC
-    TextButton.Text = "Mentors & dailies"
+    TextButton.Text = "Utilities"
     TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
     TextButton.TextScaled = false
     TextButton.TextSize = 49.99999
     TextButton.TextWrapped = true
 
-    function mentor()
+    function Utilities()
         for i,v in pairs(player.PlayerGui:GetChildren()) do
             if v.Name == "ScreenGui" then
                 v:Destroy()
@@ -767,7 +767,7 @@ function AUTOFARM()
             dfarm = true
         end
     end
-    TextButton.MouseButton1Click:connect(mentor)
+    TextButton.MouseButton1Click:connect(Utilities)
 
     TextButton_2.Parent = Frame
     TextButton_2.BackgroundColor3 = Color3.fromRGB(117, 50, 168)
