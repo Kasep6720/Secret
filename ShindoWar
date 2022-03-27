@@ -33,7 +33,7 @@ end
 
 --loading GUI
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20script%20gui"))()
-local window1 = library:Window("Dungeon Farm - DogeHub")
+local window1 = library:Window("War Farm - DogeHub")
 local window2 = library:Window("Others")
 
 library:Keybind("RightControl")
