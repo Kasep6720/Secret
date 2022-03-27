@@ -37,8 +37,8 @@ TextButton.Size = UDim2.new(0, 200, 0, 120)
 TextButton.Font = Enum.Font.AmaticSC
 TextButton.Text = "MISC"
 TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
-TextButton.TextScaled = false
-TextButton.TextSize = 85.000
+TextButton.TextScaled = true
+TextButton.TextSize = 100.000
 TextButton.TextWrapped = true
 
 function MISC()
@@ -542,7 +542,7 @@ function AUTOFARM()
     TextButton.Text = "Utilities"
     TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
     TextButton.TextScaled = false
-    TextButton.TextSize = 49.99999
+    TextButton.TextSize = 75
     TextButton.TextWrapped = true
 
     function Utilities()
