@@ -171,18 +171,31 @@ Loadout4Hax.Text = ""
 Loadout4Hax.TextColor3 = Color3.new(1, 1, 1)
 Loadout4Hax.TextSize = 40
 
-local Loadout4PvP = Instance.new("TextButton")
-Loadout4PvP.Name = "Loadout4Hax"
-Loadout4PvP.Parent = Main
-Loadout4PvP.BackgroundColor3 = Color3.new(1.020,0.652,0.104)
-Loadout4PvP.BorderSizePixel = 2
-Loadout4PvP.BorderColor3 = Color3.new(0.816,0.435,0.069)
-Loadout4PvP.Position = UDim2.new(0.02, 0, 0.25, 0)
-Loadout4PvP.Size = UDim2.new(0, 40, 0, 20)
-Loadout4PvP.Font = Enum.Font.GothamSemibold
-Loadout4PvP.Text = ""
-Loadout4PvP.TextColor3 = Color3.new(1, 1, 1)
-Loadout4PvP.TextSize = 40
+local Loadout4SpecialUses = Instance.new("TextButton")
+Loadout4SpecialUses.Name = "Loadout4SpecialUses"
+Loadout4SpecialUses.Parent = Main
+Loadout4SpecialUses.BackgroundColor3 = Color3.new(1.020,0.652,0.104)
+Loadout4SpecialUses.BorderSizePixel = 2
+Loadout4SpecialUses.BorderColor3 = Color3.new(0.816,0.435,0.069)
+Loadout4SpecialUses.Position = UDim2.new(0.02, 0, 0.25, 0)
+Loadout4SpecialUses.Size = UDim2.new(0, 40, 0, 20)
+Loadout4SpecialUses.Font = Enum.Font.GothamSemibold
+Loadout4SpecialUses.Text = ""
+Loadout4SpecialUses.TextColor3 = Color3.new(1, 1, 1)
+Loadout4SpecialUses.TextSize = 40
+
+local Loadout4SpecialPvP1 = Instance.new("TextButton")
+Loadout4SpecialPvP1.Name = "Loadout4SpecialPvP1"
+Loadout4SpecialPvP1.Parent = Main
+Loadout4SpecialPvP1.BackgroundColor3 = Color3.new(1.020,0.652,0.104)
+Loadout4SpecialPvP1.BorderSizePixel = 2
+Loadout4SpecialPvP1.BorderColor3 = Color3.new(0.816,0.435,0.069)
+Loadout4SpecialPvP1.Position = UDim2.new(0.02, 0, 0.4, 0)
+Loadout4SpecialPvP1.Size = UDim2.new(0, 40, 0, 20)
+Loadout4SpecialPvP1.Font = Enum.Font.GothamSemibold
+Loadout4SpecialPvP1.Text = ""
+Loadout4SpecialPvP1.TextColor3 = Color3.new(1, 1, 1)
+Loadout4SpecialPvP1.TextSize = 40
 
 function SpamLoadout()
     wait()
@@ -887,4 +900,10 @@ function page2()
 ScreenGui:Destroy()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%202"))()
 end
-Loadout4PvP.MouseButton1Click:connect(page2)
+Loadout4SpecialUses.MouseButton1Click:connect(page2)
+
+function page3()
+ScreenGui:Destroy()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%203"))()
+end
+Loadout4SpecialPvP1.MouseButton1Click:connect(page3)
