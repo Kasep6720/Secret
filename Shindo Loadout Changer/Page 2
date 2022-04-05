@@ -68,7 +68,7 @@ Taijutsu.Parent = Main2
 Taijutsu.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
 Taijutsu.BorderSizePixel = 0
 Taijutsu.Position = UDim2.new(0.188181819, 0, 0.145, 0)
-Taijutsu.Size = UDim2.new(0, 200, 0, 30)
+Taijutsu.Size = UDim2.new(0, 200, 0, 40)
 Taijutsu.Font = Enum.Font.GothamSemibold
 Taijutsu.Text = "Taijutsu"
 Taijutsu.TextColor3 = Color3.new(1, 1, 1)
@@ -80,7 +80,7 @@ TaijutsuDesc.Parent = Main2
 TaijutsuDesc.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
 TaijutsuDesc.BorderSizePixel = 0
 TaijutsuDesc.Position = UDim2.new(0.86, 0, 0.145, 0)
-TaijutsuDesc.Size = UDim2.new(0, 40, 0, 30)
+TaijutsuDesc.Size = UDim2.new(0, 40, 0, 40)
 TaijutsuDesc.Font = Enum.Font.GothamSemibold
 TaijutsuDesc.Text = "+"
 TaijutsuDesc.TextColor3 = Color3.new(1, 1, 1)
@@ -91,8 +91,8 @@ Vampire.Name = "Vampire"
 Vampire.Parent = Main2
 Vampire.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
 Vampire.BorderSizePixel = 0
-Vampire.Position = UDim2.new(0.188181819, 0, 0.310, 0)
-Vampire.Size = UDim2.new(0, 200, 0, 30)
+Vampire.Position = UDim2.new(0.188181819, 0, 0.350, 0)
+Vampire.Size = UDim2.new(0, 200, 0, 40)
 Vampire.Font = Enum.Font.GothamSemibold
 Vampire.Text = "Vampire"
 Vampire.TextColor3 = Color3.new(1, 1, 1)
@@ -103,46 +103,46 @@ VampDesc.Name = "VampDesc"
 VampDesc.Parent = Main2
 VampDesc.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
 VampDesc.BorderSizePixel = 0
-VampDesc.Position = UDim2.new(0.86, 0, 0.310, 0)
-VampDesc.Size = UDim2.new(0, 40, 0, 30)
+VampDesc.Position = UDim2.new(0.86, 0, 0.350, 0)
+VampDesc.Size = UDim2.new(0, 40, 0, 40)
 VampDesc.Font = Enum.Font.GothamSemibold
 VampDesc.Text = "+"
 VampDesc.TextColor3 = Color3.new(1, 1, 1)
 VampDesc.TextSize = 40
 
-local EastWood = Instance.new("TextButton")
-EastWood.Name = "EastWood"
-EastWood.Parent = Main2
-EastWood.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
-EastWood.BorderSizePixel = 0
-EastWood.Position = UDim2.new(0.188181819, 0, 0.485, 0)
-EastWood.Size = UDim2.new(0, 200, 0, 30)
-EastWood.Font = Enum.Font.GothamSemibold
-EastWood.Text = "Eastwood"
-EastWood.TextColor3 = Color3.new(1, 1, 1)
-EastWood.TextSize = 20
+local Teamfights = Instance.new("TextButton")
+Teamfights.Name = "Teamfights"
+Teamfights.Parent = Main2
+Teamfights.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+Teamfights.BorderSizePixel = 0
+Teamfights.Position = UDim2.new(0.188181819, 0, 0.565, 0)
+Teamfights.Size = UDim2.new(0, 200, 0, 40)
+Teamfights.Font = Enum.Font.GothamSemibold
+Teamfights.Text = "Teamfights"
+Teamfights.TextColor3 = Color3.new(1, 1, 1)
+Teamfights.TextSize = 20
 
-local EastWoodDesc = Instance.new("TextButton")
-EastWoodDesc.Name = "EastWoodDesc"
-EastWoodDesc.Parent = Main2
-EastWoodDesc.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
-EastWoodDesc.BorderSizePixel = 0
-EastWoodDesc.Position = UDim2.new(0.86, 0, 0.485, 0)
-EastWoodDesc.Size = UDim2.new(0, 40, 0, 30)
-EastWoodDesc.Font = Enum.Font.GothamSemibold
-EastWoodDesc.Text = "+"
-EastWoodDesc.TextColor3 = Color3.new(1, 1, 1)
-EastWoodDesc.TextSize = 40
+local TeamfightsDesc = Instance.new("TextButton")
+TeamfightsDesc.Name = "TeamfightsDesc"
+TeamfightsDesc.Parent = Main2
+TeamfightsDesc.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+TeamfightsDesc.BorderSizePixel = 0
+TeamfightsDesc.Position = UDim2.new(0.86, 0, 0.565, 0)
+TeamfightsDesc.Size = UDim2.new(0, 40, 0, 40)
+TeamfightsDesc.Font = Enum.Font.GothamSemibold
+TeamfightsDesc.Text = "+"
+TeamfightsDesc.TextColor3 = Color3.new(1, 1, 1)
+TeamfightsDesc.TextSize = 40
 
 local Vengeance = Instance.new("TextButton")
 Vengeance.Name = "Vengeance"
 Vengeance.Parent = Main2
 Vengeance.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
 Vengeance.BorderSizePixel = 0
-Vengeance.Position = UDim2.new(0.188181819, 0, 0.660, 0)
-Vengeance.Size = UDim2.new(0, 200, 0, 30)
+Vengeance.Position = UDim2.new(0.188181819, 0, 0.780, 0)
+Vengeance.Size = UDim2.new(0, 200, 0, 40)
 Vengeance.Font = Enum.Font.GothamSemibold
-Vengeance.Text = "Vengeance"
+Vengeance.Text = ""
 Vengeance.TextColor3 = Color3.new(1, 1, 1)
 Vengeance.TextSize = 20
 
@@ -151,36 +151,12 @@ VengeanceDesc.Name = "VengeanceDesc"
 VengeanceDesc.Parent = Main2
 VengeanceDesc.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
 VengeanceDesc.BorderSizePixel = 0
-VengeanceDesc.Position = UDim2.new(0.86, 0, 0.660, 0)
-VengeanceDesc.Size = UDim2.new(0, 40, 0, 30)
+VengeanceDesc.Position = UDim2.new(0.86, 0, 0.780, 0)
+VengeanceDesc.Size = UDim2.new(0, 40, 0, 40)
 VengeanceDesc.Font = Enum.Font.GothamSemibold
 VengeanceDesc.Text = "+"
 VengeanceDesc.TextColor3 = Color3.new(1, 1, 1)
 VengeanceDesc.TextSize = 40
-
-local Narumaki6Pths = Instance.new("TextButton")
-Narumaki6Pths.Name = "Narumaki6Pths"
-Narumaki6Pths.Parent = Main2
-Narumaki6Pths.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
-Narumaki6Pths.BorderSizePixel = 0
-Narumaki6Pths.Position = UDim2.new(0.188181819, 0, 0.835, 0)
-Narumaki6Pths.Size = UDim2.new(0, 200, 0, 30)
-Narumaki6Pths.Font = Enum.Font.GothamSemibold
-Narumaki6Pths.Text = "Narumaki 6 Paths"
-Narumaki6Pths.TextColor3 = Color3.new(1, 1, 1)
-Narumaki6Pths.TextSize = 20
-
-local Narumaki6PthsDesc = Instance.new("TextButton")
-Narumaki6PthsDesc.Name = "Narumaki6PthsDesc"
-Narumaki6PthsDesc.Parent = Main2
-Narumaki6PthsDesc.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
-Narumaki6PthsDesc.BorderSizePixel = 0
-Narumaki6PthsDesc.Position = UDim2.new(0.86, 0, 0.835, 0)
-Narumaki6PthsDesc.Size = UDim2.new(0, 40, 0, 30)
-Narumaki6PthsDesc.Font = Enum.Font.GothamSemibold
-Narumaki6PthsDesc.Text = "+"
-Narumaki6PthsDesc.TextColor3 = Color3.new(1, 1, 1)
-Narumaki6PthsDesc.TextSize = 40
 
 local Loadout4Hax = Instance.new("TextButton")
 Loadout4Hax.Name = "Loadout4Hax"
@@ -195,18 +171,32 @@ Loadout4Hax.Text = ""
 Loadout4Hax.TextColor3 = Color3.new(1, 1, 1)
 Loadout4Hax.TextSize = 40
 
-local Loadout4PvP = Instance.new("TextButton")
-Loadout4PvP.Name = "Loadout4PvP"
-Loadout4PvP.Parent = Main2
-Loadout4PvP.BackgroundColor3 = Color3.new(1.020,0.652,0.104)
-Loadout4PvP.BorderSizePixel = 2
-Loadout4PvP.BorderColor3 = Color3.new(0.816,0.435,0.069)
-Loadout4PvP.Position = UDim2.new(0.02, 0, 0.25, 0)
-Loadout4PvP.Size = UDim2.new(0, 40, 0, 20)
-Loadout4PvP.Font = Enum.Font.GothamSemibold
-Loadout4PvP.Text = ""
-Loadout4PvP.TextColor3 = Color3.new(1, 1, 1)
-Loadout4PvP.TextSize = 40
+local Loadout4SpecialUses = Instance.new("TextButton")
+Loadout4SpecialUses.Name = "Loadout4SpecialUses"
+Loadout4SpecialUses.Parent = Main2
+Loadout4SpecialUses.BackgroundColor3 = Color3.new(1.020,0.652,0.104)
+Loadout4SpecialUses.BorderSizePixel = 2
+Loadout4SpecialUses.BorderColor3 = Color3.new(0.816,0.435,0.069)
+Loadout4SpecialUses.Position = UDim2.new(0.02, 0, 0.25, 0)
+Loadout4SpecialUses.Size = UDim2.new(0, 40, 0, 20)
+Loadout4SpecialUses.Font = Enum.Font.GothamSemibold
+Loadout4SpecialUses.Text = ""
+Loadout4SpecialUses.TextColor3 = Color3.new(1, 1, 1)
+Loadout4SpecialUses.TextSize = 40
+
+
+local Loadout4SpecialPvP1 = Instance.new("TextButton")
+Loadout4SpecialPvP1.Name = "Loadout4SpecialPvP1"
+Loadout4SpecialPvP1.Parent = Main2
+Loadout4SpecialPvP1.BackgroundColor3 = Color3.new(1.020,0.652,0.104)
+Loadout4SpecialPvP1.BorderSizePixel = 2
+Loadout4SpecialPvP1.BorderColor3 = Color3.new(0.816,0.435,0.069)
+Loadout4SpecialPvP1.Position = UDim2.new(0.02, 0, 0.4, 0)
+Loadout4SpecialPvP1.Size = UDim2.new(0, 40, 0, 20)
+Loadout4SpecialPvP1.Font = Enum.Font.GothamSemibold
+Loadout4SpecialPvP1.Text = ""
+Loadout4SpecialPvP1.TextColor3 = Color3.new(1, 1, 1)
+Loadout4SpecialPvP1.TextSize = 40
 
 function TaijutsuLoadout()
     wait()
@@ -583,89 +573,141 @@ Combo Breaker
 end
 VampDesc.MouseButton1Click:connect(VampireLoadoutDot)
 
-function EastWoodLoadout()
+function TeamfightsLoadout()
     wait()
     game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Loadout Changer",     Text = "Editing Loadout",Duration = 0.1, })
-    local args = {[1] = "kgbag",[2] = "kg1",[3] = "horsemankorashi"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "kgbag",[2] = "kg3",[3] = "uzumaki"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "kgbag",[2] = "kg3",[3] = "namikaze"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "kgbag",[2] = "kg4",[3] = "mechaspirit"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "kgbag",[2] = "kg2",[3] = "itachisharingan"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "kgbag",[2] = "kg2",[3] = "sharingan"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "kgbag",[2] = "kg2",[3] = "riser"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "selectmartialstyle",[2] = "basic"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    wait()
-    local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.kunaithrow}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.kunaiflash}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.batarang}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.painrodthrow}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.katana}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.kunai}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.kunai}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "v",[3] = game:GetService("ReplicatedStorage").alljutsu.horsemankorashi.horseman1}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "n",[3] = game:GetService("ReplicatedStorage").alljutsu.horsemankorashi.horseman2}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "b",[3] = game:GetService("ReplicatedStorage").alljutsu.horsemankorashi.horseman3}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "f",[3] = game:GetService("ReplicatedStorage").alljutsu.uzumaki.sealingchains}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "f",[3] = game:GetService("ReplicatedStorage").alljutsu.namikaze.spacetimeshadow}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "g",[3] = game:GetService("ReplicatedStorage").alljutsu.namikaze.spacetimestep}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "g",[3] = game:GetService("ReplicatedStorage").alljutsu.uzumaki.attackingchains}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "g",[3] = game:GetService("ReplicatedStorage").alljutsu.subjutsu.greatspiralring}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "g",[3] = game:GetService("ReplicatedStorage").alljutsu.mechaspirit.mecha2}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "r",[3] = game:GetService("ReplicatedStorage").alljutsu.taijutsu.dynamicentry}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "r",[3] = game:GetService("ReplicatedStorage").alljutsu.Acharacterpowers.kakashiraikiri}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "y",[3] = game:GetService("ReplicatedStorage").alljutsu.Acharacterpowers.rasenshurikenrun}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "y",[3] = game:GetService("ReplicatedStorage").alljutsu.BOSSDROPS.BOSSDROPrasenrush}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "y",[3] = game:GetService("ReplicatedStorage").alljutsu.BOSSDROPS.BOSSDROParahakicombo}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "t",[3] = game:GetService("ReplicatedStorage").alljutsu.BOSSDROPS.BOSSDROPborumakirashura}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "t",[3] = game:GetService("ReplicatedStorage").alljutsu.purplelightning.purplesenbonrain}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "t",[3] = game:GetService("ReplicatedStorage").alljutsu.goldlightning.goldsenbonrain}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "t",[3] = game:GetService("ReplicatedStorage").alljutsu.lightning.senbonrain}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "h",[3] = game:GetService("ReplicatedStorage").alljutsu.taijutsu.blossomsmash}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "h",[3] = game:GetService("ReplicatedStorage").alljutsu.subjutsu.logsub}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.namikazemode}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipkg",[2] = game:GetService("Players").LocalPlayer.statz.main.kg1}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "kgbag",[2] = "kg1",[3] = "shindairengoku"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "kgbag",[2] = "kg1",[3] = "shindairengokuyang"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "kgbag",[2] = "kg2",[3] = "sengoku"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "kgbag",[2] = "kg2",[3] = "sengokuinferno"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "kgbag",[2] = "kg3",[3] = "ghostazarashi"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "kgbag",[2] = "kg3",[3] = "infernoazarashi"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "kgbag",[2] = "kg3",[3] = "horsemankorashi"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "kgbag",[2] = "kg4",[3] = "shisuisharingan"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "kgbag",[2] = "kg4",[3] = "satorirengoku"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "kgbag",[2] = "kg4",[3] = "satorigold"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "kgbag",[2] = "mistbreathing",[3] = "mistbreathing"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "selectmartialstyle",[2] = game:GetService("ReplicatedStorage").alljutsu.FIGHTINGSTYLES.airbending}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "selectmartialstyle",[2] = game:GetService("ReplicatedStorage").alljutsu.FIGHTINGSTYLES.earthbending}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	wait()
+	local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.healthpot}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.healthshot}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.herowater}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.ricecake}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.supersoldier}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.explosivetag}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.kunaibomb}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.painrodthrow}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.katana}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.kunai}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.kunai}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipkg",[2] = game:GetService("Players").LocalPlayer.statz.main.kg2}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipkg",[2] = game:GetService("Players").LocalPlayer.statz.main.kg1}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "v",[3] = game:GetService("ReplicatedStorage").alljutsu.sengoku.sengoku1}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "v",[3] = game:GetService("ReplicatedStorage").alljutsu.sengokuinferno.sengoku1inferno}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "n",[3] = game:GetService("ReplicatedStorage").alljutsu.ghostazarashi.ghostb}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "n",[3] = game:GetService("ReplicatedStorage").alljutsu.infernoazarashi.ighostb}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "n",[3] = game:GetService("ReplicatedStorage").alljutsu.horsemankorashi.horseman3}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "b",[3] = game:GetService("ReplicatedStorage").alljutsu.shisuisharingan.flickerclonebarrage}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "b",[3] = game:GetService("ReplicatedStorage").alljutsu.shindairengoku.shinren2}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "b",[3] = game:GetService("ReplicatedStorage").alljutsu.shindairengokuyang.shinren2yang}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "h",[3] = game:GetService("ReplicatedStorage").alljutsu.subjutsu.logsub}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "h",[3] = game:GetService("ReplicatedStorage").alljutsu.taijutsu.blossomsmash}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "h",[3] = game:GetService("ReplicatedStorage").alljutsu.satorirengoku.satoriren2}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "h",[3] = game:GetService("ReplicatedStorage").alljutsu.satorigold.satorigold2}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.arenapowerup,[3] = "arenapowerup"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.demonshroud,[3] = "demonshroud"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.rabbit,[3] = "rabbit"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.UltraInstinct,[3] = "UltraInstinct"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.kagokubunneh,[3] = "kagokubunneh"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.slugsage,[3] = "slugsage"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.BOSSDROPwormsage,[3] = "BOSSDROPwormsage"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "r",[3] = game:GetService("ReplicatedStorage").alljutsu.taijutsu.dynamicentry}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "r",[3] = game:GetService("ReplicatedStorage").alljutsu.Acharacterpowers.kakashiraikiri}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "r",[3] = game:GetService("ReplicatedStorage").alljutsu.BOSSDROPS.BOSSDROPshiverthunder}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "r",[3] = game:GetService("ReplicatedStorage").alljutsu.BOSSDROPS.BOSSDROPmagmarasengan}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "g",[3] = game:GetService("ReplicatedStorage").alljutsu.subjutsu.rashomon}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "g",[3] = game:GetService("ReplicatedStorage").alljutsu.BOSSDROPS.BOSSDROPbloodwave}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "g",[3] = game:GetService("ReplicatedStorage").alljutsu.BOSSDROPS.BOSSDROPavalanche}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "t",[3] = game:GetService("ReplicatedStorage").alljutsu.wind.rasengan}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "t",[3] = game:GetService("ReplicatedStorage").alljutsu.Acharacterpowers.rasenshuriken}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "t",[3] = game:GetService("ReplicatedStorage").alljutsu.Acharacterpowers.rasenshurikenrun}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "t",[3] = game:GetService("ReplicatedStorage").alljutsu.BOSSDROPS.BOSSDROPborumakirashura}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "y",[3] = game:GetService("ReplicatedStorage").alljutsu.taijutsu.leafhurricane}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "y",[3] = game:GetService("ReplicatedStorage").alljutsu.BOSSDROPS.BOSSDROPrasentoss}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "y",[3] = game:GetService("ReplicatedStorage").alljutsu.BOSSDROPS.BOSSDROPrasenrush}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "y",[3] = game:GetService("ReplicatedStorage").alljutsu.subjutsu.greatspiralring}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "f",[3] = game:GetService("ReplicatedStorage").alljutsu.BOSSDROPS.BOSSDROPcrows}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "f",[3] = game:GetService("ReplicatedStorage").alljutsu.subjutsu.talknojutsu}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "f",[3] = game:GetService("ReplicatedStorage").alljutsu.BOSSDROPS.BOSSDROPazarashi}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
     game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Loadout Changer",     Text = "Done!",Duration = 0.1, })
 end
-EastWood.MouseButton1Click:connect(EastWoodLoadout)
+Teamfights.MouseButton1Click:connect(TeamfightsLoadout)
 
-function EastWoodLoadoutDot()
+function TeamfightsLoadoutDot()
     local ScreenGui1 = Instance.new("ScreenGui")
     local Main = Instance.new("ImageLabel")
     local Frame = Instance.new("Frame")
@@ -694,15 +736,17 @@ function EastWoodLoadoutDot()
     TextLabel.Text = [[
 
 Bloodlines: 
+Shindai Rengoku, 
+Sengoku,
 Eastwood Korashi, 
-Senko, 
-Mecha Spirit
+Satori Rengoku, 
 
 Other Abilities: 
-Shock Style: Electro Blade
-Shock Style: Thunder Rain
-Arahaki Style: Thousand Air Palms
-Body Replacement
+Magma Spirit Bomb,
+Maki Style: Ashura Buckshot,
+Great Spiraling Spirit Bomb,
+Menza Azarashi: Chains of Bind,
+Earth Style: Winter Avalanche
 ]]
     TextLabel.TextColor3 = Color3.fromRGB(225, 225, 225)
     TextLabel.TextScaled = true
@@ -716,7 +760,7 @@ Body Replacement
     Frame.Transparency = 0.1
 
     TextLabel1.Parent = Frame
-    TextLabel1.BackgroundColor3 = Color3.fromRGB(1, 1, 1)
+    TextLabel1.BackgroundColor3 = Color3.fromRGB(255,163,26)
     TextLabel1.Size = UDim2.new(0, 300, 0, 30)
     TextLabel1.Font = Enum.Font.Ubuntu
     TextLabel1.BackgroundTransparency = 1
@@ -726,282 +770,11 @@ Body Replacement
     TextLabel1.TextSize = 40.000
     TextLabel1.TextWrapped = true
 
-    wait(4)
+    wait(5.3)
 
     ScreenGui1:Destroy()
 end
-EastWoodDesc.MouseButton1Click:connect(EastWoodLoadoutDot)
-
-function VengeanceLoadout()
-    wait()
-    game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Loadout Changer",     Text = "Editing Loadout",Duration = 0.1, })
-    local args = {[1] = "kgbag",[2] = "kg1",[3] = "batman"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "kgbag",[2] = "kg3",[3] = "namikaze"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "kgbag",[2] = "kg4",[3] = "mechaspirit"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "selectmartialstyle",[2] = game:GetService("ReplicatedStorage").alljutsu.FIGHTINGSTYLES.mma}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    wait()
-    local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.kunaithrow}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.kunaiflash}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.batarang}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.painrodthrow}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.katana}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.kunai}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.kunai}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "v",[3] = game:GetService("ReplicatedStorage").alljutsu.batman.batty1}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "b",[3] = game:GetService("ReplicatedStorage").alljutsu.batman.batty2}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "n",[3] = game:GetService("ReplicatedStorage").alljutsu.batman.batty3}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "f",[3] = game:GetService("ReplicatedStorage").alljutsu.namikaze.spacetimeshadow}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "g",[3] = game:GetService("ReplicatedStorage").alljutsu.mechaspirit.mecha2}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "h",[3] = game:GetService("ReplicatedStorage").alljutsu.mechaspirit.mecha1}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "r",[3] = game:GetService("ReplicatedStorage").alljutsu.taijutsu.dynamicentry}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "r",[3] = game:GetService("ReplicatedStorage").alljutsu.Acharacterpowers.kakashiraikiri}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "y",[3] = game:GetService("ReplicatedStorage").alljutsu.subjutsu.greatspiralring}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "y",[3] = game:GetService("ReplicatedStorage").alljutsu.BOSSDROPS.BOSSDROParahakicombo}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipkg",[2] = game:GetService("Players").LocalPlayer.statz.main.kg1}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.lightningmode,[3] = "lightningmode"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.mechaspiritmode}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "t",[3] = game:GetService("ReplicatedStorage").alljutsu.taijutsu.blossomsmash}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "t",[3] = game:GetService("ReplicatedStorage").alljutsu.subjutsu.logsub}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Loadout Changer",     Text = "Done!",Duration = 0.1, })
-end
-Vengeance.MouseButton1Click:connect(VengeanceLoadout)
-
-function VengeanceLoadoutDot()
-    local ScreenGui1 = Instance.new("ScreenGui")
-    local Main = Instance.new("ImageLabel")
-    local Frame = Instance.new("Frame")
-    local TextLabel = Instance.new("TextLabel")
-    local TextLabel1 = Instance.new("TextLabel")
-
-    ScreenGui1.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-
-    Main.Name = "Main"
-    Main.Parent = ScreenGui1
-    Main.BackgroundColor3 = Color3.new(1, 1, 1)
-    Main.BackgroundTransparency = 1
-    Main.Position = UDim2.new(0.765, 0, 0.14, 0)
-    Main.Size = UDim2.new(0, 300, 0, 230)
-    Main.Visible = true
-    Main.Image = "rbxassetid://2260429633"
-    Main.ImageColor3 = Color3.new(0.117647, 0.117647, 0.117647)
-    Main.ScaleType = Enum.ScaleType.Slice
-    Main.SliceCenter = Rect.new(12, 12, 13, 13)
-
-    TextLabel.Parent = Main
-    TextLabel.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
-    TextLabel.Size = UDim2.new(0, 300, 0, 230)
-    TextLabel.Font = Enum.Font.Ubuntu
-    TextLabel.BackgroundTransparency = 1
-    TextLabel.Text = [[
-
-Bloodlines: 
-Vengeance, 
-Senko, 
-Mecha Spirit
-
-Other Abilities: 
-Shock Style: Electro Blade
-Body Replacement
-Arahaki Style: Thousand Air Palms
-]]
-    TextLabel.TextColor3 = Color3.fromRGB(225, 225, 225)
-    TextLabel.TextScaled = true
-    TextLabel.TextSize = 40.000
-    TextLabel.TextWrapped = true
-
-    Frame.Parent = ScreenGui1
-    Frame.BackgroundColor3 = Color3.fromRGB(255,163,26)
-    Frame.Position = UDim2.new(0.765, 0, 0.11, 0)
-    Frame.Size = UDim2.new(0, 300, 0, 30)
-    Frame.Transparency = 0.1
-
-    TextLabel1.Parent = Frame
-    TextLabel1.BackgroundColor3 = Color3.fromRGB(1, 1, 1)
-    TextLabel1.Size = UDim2.new(0, 300, 0, 30)
-    TextLabel1.Font = Enum.Font.Ubuntu
-    TextLabel1.BackgroundTransparency = 1
-    TextLabel1.Text = [[Abilities Required]]
-    TextLabel1.TextColor3 = Color3.fromRGB(1, 1, 1)
-    TextLabel1.TextScaled = true
-    TextLabel1.TextSize = 40.000
-    TextLabel1.TextWrapped = true
-
-    wait(3.8)
-
-    ScreenGui1:Destroy()
-end
-VengeanceDesc.MouseButton1Click:connect(VengeanceLoadoutDot)
-
-function Narumaki6PthsLoadout()
-    wait()
-    game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Loadout Changer",     Text = "Editing Loadout",Duration = 0.1, })
-    local args = {[1] = "kgbag",[2] = "kg1",[3] = "narumakisixpaths"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "kgbag",[2] = "kg3",[3] = "namikaze"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "kgbag",[2] = "kg4",[3] = "frost"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "kgbag",[2] = "kg4",[3] = "scorch"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "selectmartialstyle",[2] = game:GetService("ReplicatedStorage").alljutsu.FIGHTINGSTYLES.clonecombat}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "selectmartialstyle",[2] = game:GetService("ReplicatedStorage").alljutsu.FIGHTINGSTYLES.airbending}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "selectmartialstyle",[2] = game:GetService("ReplicatedStorage").alljutsu.FIGHTINGSTYLES.earthbending}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    wait()
-    local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.kunaithrow}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.kunaiflash}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.batarang}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.painrodthrow}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.katana}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.kunai}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.kunai}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "v",[3] = game:GetService("ReplicatedStorage").alljutsu.narumakisixpaths.narumakisix1}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "b",[3] = game:GetService("ReplicatedStorage").alljutsu.narumakisixpaths.narumakisix2}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "n",[3] = game:GetService("ReplicatedStorage").alljutsu.narumakisixpaths.narumakisix3}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "h",[3] = game:GetService("ReplicatedStorage").alljutsu.Acharacterpowers.vanishingrasengan}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "h",[3] = game:GetService("ReplicatedStorage").alljutsu.frost.frost3}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "h",[3] = game:GetService("ReplicatedStorage").alljutsu.scorch.scorchdeath}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "f",[3] = game:GetService("ReplicatedStorage").alljutsu.namikaze.spacetimeshadow}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "r",[3] = game:GetService("ReplicatedStorage").alljutsu.taijutsu.dynamicentry}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "r",[3] = game:GetService("ReplicatedStorage").alljutsu.Acharacterpowers.kakashiraikiri}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "t",[3] = game:GetService("ReplicatedStorage").alljutsu.taijutsu.risingwind}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "t",[3] = game:GetService("ReplicatedStorage").alljutsu.BOSSDROPS.BOSSDROParahakicombo}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "g",[3] = game:GetService("ReplicatedStorage").alljutsu.Acharacterpowers.rasenshurikenrun}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "g",[3] = game:GetService("ReplicatedStorage").alljutsu.BOSSDROPS.BOSSDROPborumakirashura}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "g",[3] = game:GetService("ReplicatedStorage").alljutsu.BOSSDROPS.BOSSDROPmagmarasengan}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "g",[3] = game:GetService("ReplicatedStorage").alljutsu.BOSSDROPS.BOSSDROPrasenrush}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "y",[3] = game:GetService("ReplicatedStorage").alljutsu.taijutsu.blossomsmash}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "y",[3] = game:GetService("ReplicatedStorage").alljutsu.subjutsu.logsub}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.namikazemode}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipkg",[2] = game:GetService("Players").LocalPlayer.statz.main.kg1}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.sevenheaven,[3] = "sevenheaven"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.slugsage,[3] = "slugsage"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Loadout Changer",     Text = "Done!",Duration = 0.1, })
-end
-Narumaki6Pths.MouseButton1Click:connect(Narumaki6PthsLoadout)
-
-function Narumaki6PthsLoadoutDot()
-    local ScreenGui1 = Instance.new("ScreenGui")
-    local Main = Instance.new("ImageLabel")
-    local Frame = Instance.new("Frame")
-    local TextLabel = Instance.new("TextLabel")
-    local TextLabel1 = Instance.new("TextLabel")
-
-    ScreenGui1.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-
-    Main.Name = "Main"
-    Main.Parent = ScreenGui1
-    Main.BackgroundColor3 = Color3.new(1, 1, 1)
-    Main.BackgroundTransparency = 1
-    Main.Position = UDim2.new(0.765, 0, 0.14, 0)
-    Main.Size = UDim2.new(0, 300, 0, 230)
-    Main.Visible = true
-    Main.Image = "rbxassetid://2260429633"
-    Main.ImageColor3 = Color3.new(0.117647, 0.117647, 0.117647)
-    Main.ScaleType = Enum.ScaleType.Slice
-    Main.SliceCenter = Rect.new(12, 12, 13, 13)
-
-    TextLabel.Parent = Main
-    TextLabel.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
-    TextLabel.Size = UDim2.new(0, 300, 0, 230)
-    TextLabel.Font = Enum.Font.Ubuntu
-    TextLabel.BackgroundTransparency = 1
-    TextLabel.Text = [[
-
-Bloodlines: 
-Six Paths Narumaki, 
-Senko, 
-Scorch
-
-Other Abilities: 
-Shock Style: Electro Blade
-Arahaki Style: Thousand Air Palms
-Body Replacement
-Satori Inferno Bomb Rush
-]]
-    TextLabel.TextColor3 = Color3.fromRGB(225, 225, 225)
-    TextLabel.TextScaled = true
-    TextLabel.TextSize = 40.000
-    TextLabel.TextWrapped = true
-
-    Frame.Parent = ScreenGui1
-    Frame.BackgroundColor3 = Color3.fromRGB(255,163,26)
-    Frame.Position = UDim2.new(0.765, 0, 0.11, 0)
-    Frame.Size = UDim2.new(0, 300, 0, 30)
-    Frame.Transparency = 0.1
-
-    TextLabel1.Parent = Frame
-    TextLabel1.BackgroundColor3 = Color3.fromRGB(1, 1, 1)
-    TextLabel1.Size = UDim2.new(0, 300, 0, 30)
-    TextLabel1.Font = Enum.Font.Ubuntu
-    TextLabel1.BackgroundTransparency = 1
-    TextLabel1.Text = [[Abilities Required]]
-    TextLabel1.TextColor3 = Color3.fromRGB(1, 1, 1)
-    TextLabel1.TextScaled = true
-    TextLabel1.TextSize = 40.000
-    TextLabel1.TextWrapped = true
-
-    wait(3.8)
-
-    ScreenGui1:Destroy()
-end
-Narumaki6PthsDesc.MouseButton1Click:connect(Narumaki6PthsLoadoutDot)
+TeamfightsDesc.MouseButton1Click:connect(TeamfightsLoadoutDot)
 
 function page1()
 ScreenGui:Destroy()
@@ -1019,4 +792,10 @@ s.archivable = false
 s.Parent = game.Workspace wait(.0000000000000000000000000000001) 
 s:play()
 end
-Loadout4PvP.MouseButton1Click:connect(page2)
+Loadout4SpecialUses.MouseButton1Click:connect(page2)
+
+function page3()
+ScreenGui:Destroy()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%203"))()
+end
+Loadout4SpecialPvP1.MouseButton1Click:connect(page3)
