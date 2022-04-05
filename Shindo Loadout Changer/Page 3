@@ -231,6 +231,12 @@ function EastWoodLoadout()
     game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
     local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.kunai}
     game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.healthpot}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.healthshot}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.supersoldier}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
     local args = {[1] = "equipjutsu",[2] = "v",[3] = game:GetService("ReplicatedStorage").alljutsu.horsemankorashi.horseman1}
     game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
     local args = {[1] = "equipjutsu",[2] = "n",[3] = game:GetService("ReplicatedStorage").alljutsu.horsemankorashi.horseman2}
@@ -371,6 +377,12 @@ function VengeanceLoadout()
     game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
     local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.kunai}
     game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.healthpot}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.healthshot}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.supersoldier}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
     local args = {[1] = "equipjutsu",[2] = "v",[3] = game:GetService("ReplicatedStorage").alljutsu.batman.batty1}
     game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
     local args = {[1] = "equipjutsu",[2] = "b",[3] = game:GetService("ReplicatedStorage").alljutsu.batman.batty2}
@@ -503,6 +515,12 @@ function Narumaki6PthsLoadout()
     game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
     local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.kunai}
     game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.healthpot}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.healthshot}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.supersoldier}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
     local args = {[1] = "equipjutsu",[2] = "v",[3] = game:GetService("ReplicatedStorage").alljutsu.narumakisixpaths.narumakisix1}
     game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
     local args = {[1] = "equipjutsu",[2] = "b",[3] = game:GetService("ReplicatedStorage").alljutsu.narumakisixpaths.narumakisix2}
