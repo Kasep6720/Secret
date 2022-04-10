@@ -647,6 +647,8 @@ function RaionGaidenLoadout()
 	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 	local args = {[1] = "kgbag",[2] = "kg2",[3] = "raiongaiden"}
 	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "kgbag",[2] = "kg2",[3] = "sengokugaiden"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 	local args = {[1] = "kgbag",[2] = "kg3",[3] = "raionrengoku"}
 	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 	local args = {[1] = "kgbag",[2] = "kg3",[3] = "raionazure"}
@@ -708,6 +710,8 @@ function RaionGaidenLoadout()
 	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 	local args = {[1] = "equipjutsu",[2] = "b",[3] = game:GetService("ReplicatedStorage").alljutsu.raiongaiden.raiongaiden2}
 	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "b",[3] = game:GetService("ReplicatedStorage").alljutsu.sengokugaiden.sengokugaiden2}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 	local args = {[1] = "equipjutsu",[2] = "n",[3] = game:GetService("ReplicatedStorage").alljutsu.dokutengoku.dokuten2}
 	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 	local args = {[1] = "equipjutsu",[2] = "n",[3] = game:GetService("ReplicatedStorage").alljutsu.dokuscorpion.scor2}
@@ -720,6 +724,8 @@ function RaionGaidenLoadout()
 	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 	local args = {[1] = "equipjutsu",[2] = "n",[3] = game:GetService("ReplicatedStorage").alljutsu.raiongaiden.raiongaiden3}
 	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "n",[3] = game:GetService("ReplicatedStorage").alljutsu.sengokugaiden.sengokugaiden3}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 	local args = {[1] = "equipjutsu",[2] = "g",[3] = game:GetService("ReplicatedStorage").alljutsu.raionrengoku.raionrengoku3}
 	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 	local args = {[1] = "equipjutsu",[2] = "g",[3] = game:GetService("ReplicatedStorage").alljutsu.raionazure.raionazure3}
@@ -727,6 +733,8 @@ function RaionGaidenLoadout()
 	local args = {[1] = "equipjutsu",[2] = "g",[3] = game:GetService("ReplicatedStorage").alljutsu.raionsengoku.raionsengoku3}
 	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 	local args = {[1] = "equipjutsu",[2] = "g",[3] = game:GetService("ReplicatedStorage").alljutsu.raiongaiden.raiongaiden1}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "g",[3] = game:GetService("ReplicatedStorage").alljutsu.sengokugaiden.sengokugaiden1}
 	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 	local args = {[1] = "equipjutsu",[2] = "f",[3] = game:GetService("ReplicatedStorage").alljutsu.raionrengoku.raionrengoku2}
 	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
@@ -782,7 +790,7 @@ function RaionGaidenLoadout()
 	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 	local args = {[1] = "equipjutsu",[2] = "y",[3] = game:GetService("ReplicatedStorage").alljutsu.subjutsu.greatspiralring}
 	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-	local args = {[1] = "equipkg",[2] = game:GetService("Players").LocalPlayer.statz.main.kg1}
+	local args = {[1] = "equipkg",[2] = game:GetService("Players").LocalPlayer.statz.main.kg2}
 	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 	local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.raionsengokumode}
 	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
