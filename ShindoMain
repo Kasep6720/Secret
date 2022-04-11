@@ -19,12 +19,12 @@ ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 Frame.Parent = ScreenGui
 Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Frame.Position = UDim2.new(0.1, 0, 0.25, 0)
-Frame.Size = UDim2.new(0, 200, 0, 300)
+Frame.Size = UDim2.new(0, 200, 0, 280)
 
 TextLabel.Parent = Frame
-TextLabel.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
-TextLabel.Size = UDim2.new(0, 200, 0, 60)
-TextLabel.Font = Enum.Font.AmaticSC
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+TextLabel.Size = UDim2.new(0, 200, 0, 40)
+TextLabel.Font = Enum.Font.TitilliumWeb
 TextLabel.Text = "Shindo Life|DogeHub"
 TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
 TextLabel.TextScaled = true
@@ -32,12 +32,12 @@ TextLabel.TextSize = 35.000
 TextLabel.TextWrapped = true
 
 TextButton.Parent = Frame
-TextButton.BackgroundColor3 = Color3.fromRGB(117, 50, 168)
-TextButton.Position = UDim2.new(0, 0, 0.20000006, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+TextButton.Position = UDim2.new(0, 0, 0.15, 0)
 TextButton.Size = UDim2.new(0, 200, 0, 120)
-TextButton.Font = Enum.Font.AmaticSC
+TextButton.Font = Enum.Font.TitilliumWeb
 TextButton.Text = "MISC"
-TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(200, 200, 200)
 TextButton.TextScaled = true
 TextButton.TextSize = 100.000
 TextButton.TextWrapped = true
@@ -499,12 +499,12 @@ end
 TextButton.MouseButton1Click:connect(MISC)
 
 TextButton_2.Parent = Frame
-TextButton_2.BackgroundColor3 = Color3.fromRGB(117, 50, 168)
-TextButton_2.Position = UDim2.new(0, 0, 0.600000024, 0)
+TextButton_2.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+TextButton_2.Position = UDim2.new(0, 0, 0.581, 0)
 TextButton_2.Size = UDim2.new(0, 200, 0, 120)
-TextButton_2.Font = Enum.Font.AmaticSC
+TextButton_2.Font = Enum.Font.TitilliumWeb
 TextButton_2.Text = "AUTO FARM"
-TextButton_2.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextButton_2.TextColor3 = Color3.fromRGB(200, 200, 200)
 TextButton_2.TextScaled = true
 TextButton_2.TextSize = 40.000
 TextButton_2.TextWrapped = true
@@ -523,12 +523,12 @@ function AUTOFARM()
     Frame.Parent = ScreenGui
     Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     Frame.Position = UDim2.new(0.1, 0, 0.25, 0)
-    Frame.Size = UDim2.new(0, 200, 0, 300)
+    Frame.Size = UDim2.new(0, 200, 0, 280)
 
     TextLabel.Parent = Frame
-    TextLabel.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
-    TextLabel.Size = UDim2.new(0, 200, 0, 60)
-    TextLabel.Font = Enum.Font.AmaticSC
+    TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+    TextLabel.Size = UDim2.new(0, 200, 0, 40)
+    TextLabel.Font = Enum.Font.TitilliumWeb
     TextLabel.Text = "Autofarms"
     TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
     TextLabel.TextScaled = true
@@ -536,12 +536,12 @@ function AUTOFARM()
     TextLabel.TextWrapped = true
 
     TextButton.Parent = Frame
-    TextButton.BackgroundColor3 = Color3.fromRGB(117, 50, 168)
-    TextButton.Position = UDim2.new(0, 0, 0.20000006, 0)
+    TextButton.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+    TextButton.Position = UDim2.new(0, 0, 0.15, 0)
     TextButton.Size = UDim2.new(0, 200, 0, 120)
-    TextButton.Font = Enum.Font.AmaticSC
+    TextButton.Font = Enum.Font.TitilliumWeb
     TextButton.Text = "Utilities"
-    TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+    TextButton.TextColor3 = Color3.fromRGB(200, 200, 200)
     TextButton.TextScaled = false
     TextButton.TextSize = 75
     TextButton.TextWrapped = true
@@ -783,12 +783,12 @@ function AUTOFARM()
     TextButton.MouseButton1Click:connect(Utilities)
 
     TextButton_2.Parent = Frame
-    TextButton_2.BackgroundColor3 = Color3.fromRGB(117, 50, 168)
-    TextButton_2.Position = UDim2.new(0, 0, 0.600000024, 0)
+    TextButton_2.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+    TextButton_2.Position = UDim2.new(0, 0, 0.581, 0)
     TextButton_2.Size = UDim2.new(0, 200, 0, 120)
-    TextButton_2.Font = Enum.Font.AmaticSC
-    TextButton_2.Text = "levels & ranks"
-    TextButton_2.TextColor3 = Color3.fromRGB(0, 0, 0)
+    TextButton_2.Font = Enum.Font.TitilliumWeb
+    TextButton_2.Text = "Levels & Ranks"
+    TextButton_2.TextColor3 = Color3.fromRGB(200, 200, 200)
     TextButton_2.TextScaled = true
     TextButton_2.TextSize = 40.000
     TextButton_2.TextWrapped = true
@@ -813,12 +813,13 @@ function AUTOFARM()
         Frame.Parent = ScreenGui
         Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
         Frame.Position = UDim2.new(0.1, 0, 0.25, 0)
-        Frame.Size = UDim2.new(0, 200, 0, 400)
+        Frame.Size = UDim2.new(0, 200, 0, 380)
+	    Frame.Transparency = 1
 
         TextLabel.Parent = Frame
-        TextLabel.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
-        TextLabel.Size = UDim2.new(0, 200, 0, 60)
-        TextLabel.Font = Enum.Font.AmaticSC
+        TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+        TextLabel.Size = UDim2.new(0, 200, 0, 40)
+        TextLabel.Font = Enum.Font.TitilliumWeb
         TextLabel.Text = "AutoFarms Choose 1"
         TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
         TextLabel.TextScaled = true
@@ -826,13 +827,14 @@ function AUTOFARM()
         TextLabel.TextWrapped = true
 
         TextButton.Parent = Frame
-        TextButton.BackgroundColor3 = Color3.fromRGB(117, 50, 168)
-        TextButton.Position = UDim2.new(0, 0, 0.150000006, 0)
+        TextButton.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+        TextButton.Position = UDim2.new(0, 0, 0.1, 0)
         TextButton.Size = UDim2.new(0, 200, 0, 100)
-        TextButton.Font = Enum.Font.AmaticSC
-        TextButton.Text = "Tailed Beasts & Chi Rod Toss"
-        TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
-        TextButton.TextScaled = true
+        TextButton.Font = Enum.Font.TitilliumWeb
+        TextButton.Text = [[Tailed Beasts & 
+		Chi Rod Toss]]
+        TextButton.TextColor3 = Color3.fromRGB(200, 200, 200)
+        TextButton.TextScaled = false
         TextButton.TextSize = 35.000
         TextButton.TextWrapped = true
 
@@ -1286,12 +1288,12 @@ function AUTOFARM()
         TextButton.MouseButton1Click:connect(BEASTNRODS)
 
         TextButton_2.Parent = Frame
-        TextButton_2.BackgroundColor3 = Color3.fromRGB(117, 50, 168)
-        TextButton_2.Position = UDim2.new(0, 0, 0.400000024, 0)
+        TextButton_2.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+        TextButton_2.Position = UDim2.new(0, 0, 0.35, 0)
         TextButton_2.Size = UDim2.new(0, 200, 0, 100)
-        TextButton_2.Font = Enum.Font.AmaticSC
+        TextButton_2.Font = Enum.Font.TitilliumWeb
         TextButton_2.Text = "Only Tailed Beasts"
-        TextButton_2.TextColor3 = Color3.fromRGB(0, 0, 0)
+        TextButton_2.TextColor3 = Color3.fromRGB(200, 200, 200)
         TextButton_2.TextScaled = true
         TextButton_2.TextSize = 35.000
         TextButton_2.TextWrapped = true
@@ -1746,12 +1748,12 @@ function AUTOFARM()
         TextButton_2.MouseButton1Click:connect(BEASTONLY)
 
         TextButton_3.Parent = Frame
-        TextButton_3.BackgroundColor3 = Color3.fromRGB(117, 50, 168)
-        TextButton_3.Position = UDim2.new(0, 0, 0.6500000024, 0)
+        TextButton_3.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+        TextButton_3.Position = UDim2.new(0, 0, 0.6, 0)
         TextButton_3.Size = UDim2.new(0, 200, 0, 100)
-        TextButton_3.Font = Enum.Font.AmaticSC
+        TextButton_3.Font = Enum.Font.TitilliumWeb
         TextButton_3.Text = "None of the above"
-        TextButton_3.TextColor3 = Color3.fromRGB(0, 0, 0)
+        TextButton_3.TextColor3 = Color3.fromRGB(200, 200, 200)
         TextButton_3.TextScaled = true
         TextButton_3.TextSize = 35.000
         TextButton_3.TextWrapped = true
@@ -2156,12 +2158,12 @@ function AUTOFARM()
         TextButton_3.MouseButton1Click:connect(NOBEASTORRODS)
 
         TextButton_4.Parent = Frame
-        TextButton_4.BackgroundColor3 = Color3.fromRGB(195, 60, 60)
-        TextButton_4.Position = UDim2.new(0, 0, 0.900000024, 0)
+        TextButton_4.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+        TextButton_4.Position = UDim2.new(0, 0, 0.85, 0)
         TextButton_4.Size = UDim2.new(0, 200, 0, 40)
-        TextButton_4.Font = Enum.Font.AmaticSC
+        TextButton_4.Font = Enum.Font.TitilliumWeb
         TextButton_4.Text = "Return"
-        TextButton_4.TextColor3 = Color3.fromRGB(0, 0, 0)
+        TextButton_4.TextColor3 = Color3.fromRGB(200, 200, 200)
         TextButton_4.TextScaled = true
         TextButton_4.TextSize = 35.000
         TextButton_4.TextWrapped = true
@@ -2179,12 +2181,12 @@ function AUTOFARM()
         TextButton_2.MouseButton1Click:connect(LEVELNRANKS)
 
         TextButton_24.Parent = Frame
-        TextButton_24.BackgroundColor3 = Color3.fromRGB(195, 60, 60)
+        TextButton_24.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
         TextButton_24.Position = UDim2.new(0, 0, 1.00000024, 0)
         TextButton_24.Size = UDim2.new(0, 200, 0, 40)
-        TextButton_24.Font = Enum.Font.AmaticSC
+        TextButton_24.Font = Enum.Font.TitilliumWeb
         TextButton_24.Text = "Return"
-        TextButton_24.TextColor3 = Color3.fromRGB(0, 0, 0)
+        TextButton_24.TextColor3 = Color3.fromRGB(200, 200, 200)
         TextButton_24.TextScaled = true
         TextButton_24.TextSize = 35.000
         TextButton_24.TextWrapped = false
