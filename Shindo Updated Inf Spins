@@ -168,11 +168,74 @@ function OKSpinTip()
     TextButton2.TextWrapped = true
 
     function keep()
-        game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
-        wait()
-        game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "You may now enter villages or leave game to save your data",Duration = 3, })
-        wait(1)
-    end
-    TextButton2.MouseButton1Click:connect(keep)
+		local player = game.Players.LocalPlayer
+		local ScreenGuiK = Instance.new("ScreenGui")
+		local FrameK = Instance.new("Frame")
+		local TextLabel = Instance.new("TextLabel")
+		local TextButton = Instance.new("TextButton")
+		local TextButton_2 = Instance.new("TextButton")
+
+		ScreenGuiK.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+		FrameK.Parent = ScreenGuiK
+		FrameK.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		FrameK.Position = UDim2.new(0.36, 0, 0.20, 0)
+		FrameK.Size = UDim2.new(0, 330, 0, 150)
+
+		TextLabel.Parent = FrameK
+		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
+		TextLabel.Size = UDim2.new(0, 330, 0, 90)
+		TextLabel.Font = Enum.Font.AmaticSC
+		TextLabel.Text = "Are you sure you want to keep the current data?"
+		TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabel.TextScaled = true
+		TextLabel.TextSize = 35.000
+		TextLabel.TextWrapped = true
+
+		TextButton.Parent = FrameK
+		TextButton.BackgroundColor3 = Color3.fromRGB(0, 230, 30)
+		TextButton.Position = UDim2.new(0.5, 0, 0.600000006, 0)
+		TextButton.Size = UDim2.new(0, 165, 0, 60)
+		TextButton.Font = Enum.Font.AmaticSC
+		TextButton.Text = "Yes"
+		TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextButton.TextScaled = true
+		TextButton.TextSize = 40.000
+		TextButton.TextWrapped = true
+
+		function OKKeep()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+			game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
+			wait()
+			game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "You may now enter villages or leave game to save your data",Duration = 3, })
+			wait(1)
+		end
+		TextButton.MouseButton1Click:connect(OKKeep)
+
+		TextButton_2.Parent = FrameK
+		TextButton_2.BackgroundColor3 = Color3.fromRGB(230, 30, 30)
+		TextButton_2.Position = UDim2.new(0, 0, 0.600000006, 0)
+		TextButton_2.Size = UDim2.new(0, 165, 0, 60)
+		TextButton_2.Font = Enum.Font.AmaticSC
+		TextButton_2.Text = "No"
+		TextButton_2.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextButton_2.TextScaled = true
+		TextButton_2.TextSize = 40.000
+		TextButton_2.TextWrapped = true
+
+			function cancelKeep()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+		end
+		TextButton_2.MouseButton1Click:connect(cancelKeep)	
+	end
+	TextButton2.MouseButton1Click:connect(keep)
 end
 TextButton.MouseButton1Click:connect(OKSpinTip)
