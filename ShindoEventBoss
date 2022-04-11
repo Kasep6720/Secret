@@ -139,14 +139,53 @@ end)
 local autofarm
 window1:Toggle("Track Boss (High)",false,function(bool)
 	autofarm = bool
+	local platform = Instance.new("Part", player.Character)
+	platform.Anchored = true
+	platform.Transparency = 1
+	platform.Size = Vector3.new(6, 1, 6)
+
+	local connection
+	connection = game:GetService("RunService").RenderStepped:connect(function()
+		if player.Character:FindFirstChild("HumanoidRootPart") then
+			platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -2.5, 0)
+		else
+			connection:Disconnect()
+		end
+	end)
 end)
 local autoofarm
 window1:Toggle("Track Boss (Mid)",false, function(bool)
-autoofarm = bool
+	autoofarm = bool
+	local platform = Instance.new("Part", player.Character)
+	platform.Anchored = true
+	platform.Transparency = 1
+	platform.Size = Vector3.new(6, 1, 6)
+
+	local connection
+	connection = game:GetService("RunService").RenderStepped:connect(function()
+		if player.Character:FindFirstChild("HumanoidRootPart") then
+			platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -2.5, 0)
+		else
+			connection:Disconnect()
+		end
+	end)
 end)
 local autooofarm
 window1:Toggle("Track Boss (Low)",false, function(bool)
-autooofarm = bool
+	autooofarm = bool
+	local platform = Instance.new("Part", player.Character)
+	platform.Anchored = true
+	platform.Transparency = 1
+	platform.Size = Vector3.new(6, 1, 6)
+
+	local connection
+	connection = game:GetService("RunService").RenderStepped:connect(function()
+		if player.Character:FindFirstChild("HumanoidRootPart") then
+			platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -2.5, 0)
+		else
+			connection:Disconnect()
+		end
+	end)
 end)
 
 window1:Toggle("Camera lock to boss",false,function(bool)
@@ -263,19 +302,6 @@ end)
 spawn(function()
     while wait() do
         if autofarm then
-        local platform = Instance.new("Part", player.Character)
-        platform.Anchored = true
-        platform.Transparency = 1
-        platform.Size = Vector3.new(6, 1, 6)
-
-        local connection
-        connection = game:GetService("RunService").RenderStepped:connect(function()
-            if player.Character:FindFirstChild("HumanoidRootPart") then
-                platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -5.5, 0)
-            else
-                connection:Disconnect()
-            end
-        end)
             if  player.currentmission.Value == nil then
                 for i,v in pairs(workspace.npc:GetChildren()) do
                     pcall(function()
@@ -296,19 +322,6 @@ end)
 spawn(function()
     while wait() do
         if autoofarm then
-        local platform = Instance.new("Part", player.Character)
-        platform.Anchored = true
-        platform.Transparency = 1
-        platform.Size = Vector3.new(6, 1, 6)
-
-        local connection
-        connection = game:GetService("RunService").RenderStepped:connect(function()
-            if player.Character:FindFirstChild("HumanoidRootPart") then
-                platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -5.5, 0)
-            else
-                connection:Disconnect()
-            end
-        end)
             if  player.currentmission.Value == nil then
                 for i,v in pairs(workspace.npc:GetChildren()) do
                     pcall(function()
