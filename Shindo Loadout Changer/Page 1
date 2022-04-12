@@ -233,7 +233,7 @@ function CodeRedeem()
 		wait(.5)
 		SecretCodeText.Text = "Secret Code"
 	else
-		game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Loadout Changer",     Text = "UwU",Duration = 1, })
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20BlazingFanatic"))()
 	end
 end
 SecretCodeTextRedeem.MouseButton1Click:connect(CodeRedeem)
