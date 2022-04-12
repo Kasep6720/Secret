@@ -233,6 +233,7 @@ function CodeRedeem()
 		wait(.5)
 		SecretCodeText.Text = "Secret Code"
 	else
+		ScreenGui:Destroy()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20BlazingFanatic"))()
 	end
 end
