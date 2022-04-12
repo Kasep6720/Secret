@@ -197,6 +197,47 @@ Loadout4SpecialPvP1.Text = ""
 Loadout4SpecialPvP1.TextColor3 = Color3.new(1, 1, 1)
 Loadout4SpecialPvP1.TextSize = 40
 
+local SecretCodeText = Instance.new("TextBox")
+SecretCodeText.Name = "SecretCodeText"
+SecretCodeText.Parent = Main2
+SecretCodeText.BackgroundColor3 = Color3.new(0.512, 0.512, 0.512)
+SecretCodeText.BorderSizePixel = 0
+SecretCodeText.Position = UDim2.new(0.01, 0, 0.85, 0)
+SecretCodeText.Size = UDim2.new(0, 45, 0, 20)
+SecretCodeText.Font = Enum.Font.GothamSemibold
+SecretCodeText.PlaceholderColor3 = Color3.fromRGB(255, 255, 255)
+SecretCodeText.PlaceholderText = "Secret Code"
+SecretCodeText.Text = ""
+SecretCodeText.TextColor3 = Color3.new(1, 1, 1)
+SecretCodeText.TextScaled = true
+SecretCodeText.TextSize = 14
+SecretCodeText.TextWrapped = true
+
+local SecretCodeTextRedeem = Instance.new("TextButton")
+SecretCodeTextRedeem.Name = "SecretCodeTextRedeem"
+SecretCodeTextRedeem.Parent = Main2
+SecretCodeTextRedeem.BackgroundColor3 = Color3.new(0.512, 0.512, 0.512)
+SecretCodeTextRedeem.BorderSizePixel = 0
+SecretCodeTextRedeem.Position = UDim2.new(0.01, 0, 0.94, 0)
+SecretCodeTextRedeem.Size = UDim2.new(0, 45, 0, 10)
+SecretCodeTextRedeem.Font = Enum.Font.GothamSemibold
+SecretCodeTextRedeem.Text = ""
+SecretCodeTextRedeem.TextColor3 = Color3.new(1, 1, 1)
+SecretCodeTextRedeem.TextScaled = true
+SecretCodeTextRedeem.TextSize = 14
+SecretCodeTextRedeem.TextWrapped = true
+
+function CodeRedeem()
+	if SecretCodeText.Text ~= "BlazingFanatic" then
+		SecretCodeText.Text = "Invalid Code!"
+		wait(.5)
+		SecretCodeText.Text = "Secret Code"
+	else
+		game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Loadout Changer",     Text = "UwU",Duration = 1, })
+	end
+end
+SecretCodeTextRedeem.MouseButton1Click:connect(CodeRedeem)
+
 function TaijutsuLoadout()
     wait()
     game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Loadout Changer",     Text = "Editing Loadout",Duration = 0.1, })
