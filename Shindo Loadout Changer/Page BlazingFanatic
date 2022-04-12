@@ -449,7 +449,7 @@ function Bl2Loadout()
 	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 	local args = {[1] = "kgbag",[2] = "kg2",[3] = "dokuscorpion"}
 	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-	local args = {[1] = "kgbag",[2] = "kg1",[3] = "golddust"}
+	local args = {[1] = "kgbag",[2] = "kg3",[3] = "golddust"}
 	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 	local args = {[1] = "kgbag",[2] = "kg3",[3] = "senjuwood"}
 	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
