@@ -356,15 +356,14 @@ function MISC()
             spawn(function()
                 while wait() do
                     if keel then
-                            for i,v in pairs(workspace.npc:GetChildren()) do
-                                pcall(function()
-                                    if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-                                        repeat wait(.1)
-                                            v.Humanoid.Health = 0
-                                        until v.Humanoid.Health == 0 or not keel
-                                    end
-                                end)
-                            end
+                        for i,v in pairs(workspace.npc:GetChildren()) do
+                            pcall(function()
+                                if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+                                    repeat v.Humanoid.Health = 0
+                                    until v.Humanoid.Health == 0 or not keel
+                                end
+                            end)
+                        end
                     end
                 end
             end)
@@ -698,8 +697,7 @@ function AUTOFARM()
                     for i,v in pairs(workspace.npc:GetChildren()) do
                         pcall(function()
                             if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-                                repeat wait(.1)
-                                    v.Humanoid.Health = 0
+                                repeat v.Humanoid.Health = 0
                                 until v.Humanoid.Health == 0 or not dfarm
                             end
                         end)
@@ -1042,10 +1040,10 @@ function AUTOFARM()
                         mobname = string.gsub(mobname,"(s)","")
                     end
                     if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-                        wait(.00000009)
-                        repeat wait()
+                        --wait(.00000009)
+                        repeat --wait()
                             pcall(function()
-                                wait(.005)
+                                --wait(.005)
                                 player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(0,-2,0)
                                 v.Humanoid.Health = 0
                                 pcall(function()
@@ -1054,7 +1052,7 @@ function AUTOFARM()
                                 end)
                             end)
                             pcall(function()
-                                wait(.0035)
+                                --wait(.0035)
                                 game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
                                 player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(0,-2,-6.8)
                                 v.Humanoid.Health = 0
@@ -1064,7 +1062,7 @@ function AUTOFARM()
                                 end)
                             end)
                             pcall(function()
-                                wait(.0035)
+                                --wait(.0035)
                                 game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
                                 player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(-6.8,-2,0)
                                 v.Humanoid.Health = 0
@@ -1074,7 +1072,7 @@ function AUTOFARM()
                                 end)
                             end)
                             pcall(function()
-                                wait(.0035)
+                                --wait(.0035)
                                 game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
                                 player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(0,-2,6.8)
                                 v.Humanoid.Health = 0
@@ -1084,7 +1082,7 @@ function AUTOFARM()
                                 end)
                             end)
                             pcall(function()
-                                wait(.0035)
+                                --wait(.0035)
                                 game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
                                 player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(6.8,-2,0)
                                 v.Humanoid.Health = 0
@@ -1541,15 +1539,15 @@ function AUTOFARM()
                     end
                     if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
                         player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(7,15,0)
-                        wait(0.48)
+                        --wait(0.48)
                         repeat wait()
                             pcall(function()
-                                wait(.0005)
+                                --wait(.0005)
                                 game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
                                 v.Humanoid.Health = 0
                             end)
                             pcall(function()
-                            wait(.00035)
+                            --wait(.00035)
                                 game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
                                 v.Humanoid.Health = 0
                             end)
@@ -1564,7 +1562,7 @@ function AUTOFARM()
                         if mission.Visible == false then
                             QUEST()
                         else
-                            wait(.101)
+                            --wait(.101)
                             FARM()
                         end
                     end
@@ -1940,10 +1938,10 @@ function AUTOFARM()
                         mobname = string.gsub(mobname,"(s)","")
                     end
                     if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-                        wait(.00000009)
-                        repeat wait()
+                        --wait(.00000009)
+                        repeat --wait()
                             pcall(function()
-                                wait(.0005)
+                                --wait(.0005)
                                 game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
                                 player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
                                 game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
@@ -1953,7 +1951,7 @@ function AUTOFARM()
                                 v.Humanoid.Health = 0
                             end)
                             pcall(function()
-                                wait(.00035)
+                                --wait(.00035)
                                 game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
                                 player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(0,-3.9,-3.4)
                                 game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
