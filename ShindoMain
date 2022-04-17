@@ -1778,6 +1778,19 @@ function AUTOFARM()
             local autooofarm
             window1:Toggle("AutoFarm",false, function(bool)
                     autooofarm = bool
+					local platform = Instance.new("Part", player.Character)
+                    platform.Anchored = true
+                    platform.Transparency = 1
+                    platform.Size = Vector3.new(6, 1, 6)
+
+                    local connection
+                    connection = game:GetService("RunService").RenderStepped:connect(function()
+                        if player.Character:FindFirstChild("HumanoidRootPart") then
+                            platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -2.5, 0)
+                        else
+                            connection:Disconnect()
+                        end
+                    end)
             end)
 
             local RANKUPP
