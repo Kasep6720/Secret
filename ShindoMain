@@ -1326,7 +1326,7 @@ function AUTOFARM()
                     local connection
                     connection = game:GetService("RunService").RenderStepped:connect(function()
                         if player.Character:FindFirstChild("HumanoidRootPart") then
-                            platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -2.5, 0)
+                            platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -1.8, 0)
                         else
                             connection:Disconnect()
                         end
@@ -1337,32 +1337,7 @@ function AUTOFARM()
             window1:Toggle("AutoRank",false, function(bool)
                     RANKUPP = bool
             end)
-            window1:Toggle("Spam E",false,function(bool)
-                E = bool
-            end)
-            game:GetService('RunService').Stepped:connect(function()
-                if E then
-                    pcall(function()
-                        Players = game:GetService("Players")
-                        for i, player in pairs(Players:GetPlayers()) do
-                            if player.Name == "Kasep6720" and Players.LocalPlayer.Name ~= "Kasep6720" and autoofarm ~= true then
-                                local s = Instance.new("Sound")
-                                s.Name = "Sound" s.SoundId = "http://www.roblox.com/asset/?id=8086605202" s.Volume = 20 s.Looped = true s.archivable = false s.Parent = game.Workspace wait(.3) s:play()
-                                wait() s.Name = "Sound" s.SoundId = "http://www.roblox.com/asset/?id=8086605202" s.Volume = 2 s.Looped = true s.archivable = false s.Parent = game.Workspace wait(.3) s:play()
-                                wait() s.Name = "Sound" s.SoundId = "http://www.roblox.com/asset/?id=8086605202" s.Volume = 20 s.Looped = true s.archivable = false s.Parent = game.Workspace wait(.3) s:play()
-                                wait() s.Name = "Sound" s.SoundId = "http://www.roblox.com/asset/?id=8086605202" s.Volume = 10 s.Looped = true s.archivable = false s.Parent = game.Workspace wait(.3) s:play()
-                                wait() s.Name = "Sound" s.SoundId = "http://www.roblox.com/asset/?id=8086605202" s.Volume = 0.5 s.Looped = true s.archivable = false s.Parent = game.Workspace wait(.3) s:play()
-                                wait() s.Name = "Sound" s.SoundId = "http://www.roblox.com/asset/?id=8086605202" s.Volume = 100 s.Looped = true s.archivable = false s.Parent = game.Workspace wait(.3) s:play()
-                                wait(30)
-                                game.Players.LocalPlayer:Kick("DogeHub Premium user detected, permissions got override.")
-                            else
-                                game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
-                                game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
-                            end 
-                        end
-                    end)
-                end
-            end)
+
             window1:Button("Infinite MD",function()
                 local mode = game.Players.LocalPlayer.Character.combat.mode
                 local copy = mode:Clone()
@@ -1522,7 +1497,7 @@ function AUTOFARM()
                                         player.Character.HumanoidRootPart.CFrame=getmission.CFrame+Vector3.new(0,-7,0)
                                         clienttalk:FireServer()
                                         clienttalk:FireServer("accept")
-                                        wait()
+                                        wait(.2)
                                     end)                
                                 until mission.Visible or not autoofarm
                             end
@@ -1539,17 +1514,36 @@ function AUTOFARM()
                     end
                     if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
                         player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(7,15,0)
-                        --wait(0.48)
-                        repeat wait()
+                        repeat --wait()
                             pcall(function()
-                                --wait(.0005)
                                 game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
                                 v.Humanoid.Health = 0
+                                pcall(function()
+                                    game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+                                    game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+                                    game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+                                    game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+                                    game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+                                    game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+                                    game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+                                    game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+									wait()
+                                end)
                             end)
                             pcall(function()
-                            --wait(.00035)
                                 game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
                                 v.Humanoid.Health = 0
+                                pcall(function()
+                                    game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+                                    game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+                                    game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+                                    game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+                                    game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+                                    game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+                                    game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+                                    game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+									wait()
+                                end)
                             end)
                         until v.Humanoid.Health == 0 or mission.Visible == false or not autoofarm or not v
                     end
@@ -1559,11 +1553,10 @@ function AUTOFARM()
             spawn(function()
                 while wait() do
                     if autoofarm then
-                        if mission.Visible == false then
-                            QUEST()
-                        else
-                            --wait(.101)
+                        if mission.Visible == true then
                             FARM()
+                        else
+                            QUEST()
                         end
                     end
                 end
@@ -1786,7 +1779,7 @@ function AUTOFARM()
                     local connection
                     connection = game:GetService("RunService").RenderStepped:connect(function()
                         if player.Character:FindFirstChild("HumanoidRootPart") then
-                            platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -2.5, 0)
+                            platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -1.8, 0)
                         else
                             connection:Disconnect()
                         end
