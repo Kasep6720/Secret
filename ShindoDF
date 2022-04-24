@@ -35,7 +35,7 @@ local args = {[1] = "easy"}
 workspace.zetsugamemode.get:FireServer(unpack(args))
 wait()
 
-local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
+--[[local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
 local g = game
 local w = g.Workspace
 local l = g.Lighting
@@ -57,7 +57,7 @@ for i,v in pairs(g:GetDescendants()) do
 	elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then 
 		v.Lifetime = NumberRange.new(0)
 	end
-end
+end]]
 
 --loading GUI
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20script%20gui"))()
@@ -139,9 +139,7 @@ game:GetService('RunService').Stepped:connect(function()
     if E then
         pcall(function()
             game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
-            wait(.0008)
             game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
-            wait(.0009)
         end)
     end
 end)
@@ -175,6 +173,28 @@ spawn(function()
                                 player.Character.HumanoidRootPart.CFrame=(v.HumanoidRootPart.CFrame * CFrame.new(0, 7, .3))
                                 v.Humanoid.Health = 0
                                 wait(.004)
+                            until v.Humanoid.Health == 0 or not dfarm
+                        end
+                    end)
+                end
+            end
+        end
+    end
+end)
+
+spawn(function()
+    while wait() do
+        if dfarm then
+            if  player.currentmission.Value == nil then
+                for i,v in pairs(workspace.npc:GetChildren()) do
+                    pcall(function()
+                        if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+                            repeat 
+					    	v.Humanoid.Health = 0
+						    v.Humanoid.Health = 0
+		 			 	    v.Humanoid.Health = 0
+						    v.Humanoid.Health = 0
+						    v.Humanoid.Health = 0
                             until v.Humanoid.Health == 0 or not dfarm
                         end
                     end)
