@@ -697,7 +697,7 @@ function AUTOFARM()
                     for i,v in pairs(workspace.npc:GetChildren()) do
                         pcall(function()
                             if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-                                repeat v.Humanoid.Health = 0
+                                repeat v.Humanoid.Health = 0 v.Humanoid.Health = 0 v.Humanoid.Health = 0 v.Humanoid.Health = 0 v.Humanoid.Health = 0
                                 until v.Humanoid.Health == 0 or not dfarm
                             end
                         end)
