@@ -159,7 +159,10 @@ elseif game.PlaceId ~= 4616652839 then
             if game.PlaceId == 5824792748 then
             wait(.3) TextLabel.Text = "Game supported!" wait(1) TextLabel.Text = "Shindo War" wait(1) TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!" wait(1) ScreenGui:Destroy() 
             loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoWar"))()
-            else  ScreenGui:Destroy() wait()
+            elseif game.PlaceId == 8184506020 then
+		    wait(.18) TextLabel.Text = "Game supported!" wait(.5) TextLabel.Text = "Shindo Mentor Training" wait(1) TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!" wait(1) ScreenGui:Destroy() 
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMentorTrainingMap"))()
+			else  ScreenGui:Destroy() wait()
             loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoDF"))()
             end
         else ScreenGui:Destroy() wait()
