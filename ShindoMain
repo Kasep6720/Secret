@@ -1339,6 +1339,13 @@ function AUTOFARM()
                             connection:Disconnect()
                         end
                     end)
+				spawn(function ()
+					while wait() do
+						if autoofarm ~= true then
+							platform:Destroy()
+						end
+					end
+				end)
             end)
 
             local RANKUPP
@@ -1802,6 +1809,13 @@ function AUTOFARM()
                             connection:Disconnect()
                         end
                     end)
+				spawn(function ()
+					while wait() do
+						if autooofarm ~= true then
+							platform:Destroy()
+						end
+					end
+				end)
             end)
 
             local RANKUPP
