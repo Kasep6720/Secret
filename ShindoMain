@@ -1111,6 +1111,7 @@ function AUTOFARM()
             spawn(function()
                 while wait() do
                     if autofarm then
+					DISP()
                         if mission.Visible == false then
                             QUEST()
                         else
