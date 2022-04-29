@@ -1096,6 +1096,18 @@ function AUTOFARM()
                 end
             end
 
+			local count
+			local function DISP()
+				count = 0
+				for i,v in pairs(workspace.missiongivers:GetChildren()) do
+					if v.Name == "" and v:FindFirstChild("Head") then
+						if v:FindFirstChild("Head") and v.Head:FindFirstChild("givemission") and v.Head.givemission.Enabled and v.Head.givemission:FindFirstChild("color") and v.Head.givemission.color.Image == "http://www.roblox.com/asset/?id=5459241648" then
+							count = count + 1
+						end
+					end
+				end
+			end
+
             spawn(function()
                 while wait() do
                     if autofarm then
@@ -1112,6 +1124,24 @@ function AUTOFARM()
                             	end)
                         	end
                         end
+                    end
+                end
+            end)
+
+            spawn(function()
+                while wait() do
+                    if autofarm then
+					DISP()
+						if count == 0 then
+							if QUEST() or FARM() then
+								wait(5.5)
+							else
+								repeat wait()
+								game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "DogeHub",     Text = "Currently no missions avaliable",Duration = 0.4, })
+								wait(2)
+								until count > 0 or QUEST or FARM or not autofarm
+							end
+						end
                     end
                 end
             end)
@@ -1512,7 +1542,7 @@ function AUTOFARM()
                                         player.Character.HumanoidRootPart.CFrame=getmission.CFrame+Vector3.new(0,-7,0)
                                         clienttalk:FireServer()
                                         clienttalk:FireServer("accept")
-                                        wait(.2)
+                                        wait()
                                     end)                
                                 until mission.Visible or not autoofarm
                             end
@@ -1567,9 +1597,22 @@ function AUTOFARM()
                 end
             end
 
+			local count
+			local function DISP()
+				count = 0
+				for i,v in pairs(workspace.missiongivers:GetChildren()) do
+					if v.Name == "" and v:FindFirstChild("Head") then
+						if v:FindFirstChild("Head") and v.Head:FindFirstChild("givemission") and v.Head.givemission.Enabled and v.Head.givemission:FindFirstChild("color") and v.Head.givemission.color.Image == "http://www.roblox.com/asset/?id=5459241648" then
+							count = count + 1
+						end
+					end
+				end
+			end
+
             spawn(function()
                 while wait() do
                     if autoofarm then
+						DISP()
                         if mission.Visible == true then
                             FARM()
                         else
@@ -1590,6 +1633,23 @@ function AUTOFARM()
             local PRES = player.statz.prestige.maxlvlpres
             local RANK = player.statz.prestige.rank
             local RANKNUM = player.statz.prestige.number
+
+			spawn(function()
+				while wait() do
+					if autoofarm then
+						if count == 0 then
+							if QUEST() or FARM() then
+								wait(5.5)
+							else
+								repeat wait()
+								game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "DogeHub",     Text = "Currently no missions avaliable",Duration = 0.4, })
+								wait(2)
+								until count > 0 or QUEST or FARM or not autoofarm
+							end
+						end
+					end
+				end
+			end)
 
             spawn(function()
                 while wait() do
@@ -2003,9 +2063,22 @@ function AUTOFARM()
                 end
             end
 
+			local count
+			local function DISP()
+				count = 0
+				for i,v in pairs(workspace.missiongivers:GetChildren()) do
+					if v.Name == "" and v:FindFirstChild("Head") then
+						if v:FindFirstChild("Head") and v.Head:FindFirstChild("givemission") and v.Head.givemission.Enabled and v.Head.givemission:FindFirstChild("color") and v.Head.givemission.color.Image == "http://www.roblox.com/asset/?id=5459241648" then
+							count = count + 1
+						end
+					end
+				end
+			end
+
             spawn(function()
                 while wait() do
                     if autooofarm then
+					DISP()
                         if mission.Visible == false then
                             QUEST()
                         else
@@ -2019,6 +2092,23 @@ function AUTOFARM()
 							end
                             FARM()
                         end
+                    end
+                end
+            end)
+
+            spawn(function()
+                while wait() do
+                    if autooofarm then
+						if count == 0 then
+							if QUEST() or FARM() then
+								wait(5.5)
+							else
+								repeat wait()
+								game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "DogeHub",     Text = "Currently no missions avaliable",Duration = 0.4, })
+								wait(2)
+								until count > 0 or QUEST or FARM or not autooofarm
+							end
+						end
                     end
                 end
             end)
