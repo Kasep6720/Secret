@@ -1,0 +1,107 @@
+local player = game.Players.LocalPlayer
+local VirtualUser=game:service'VirtualUser'
+	game:service'Players'.LocalPlayer.Idled:connect(function()
+	warn("anti-afk")
+	VirtualUser:CaptureController()
+	VirtualUser:ClickButton2(Vector2.new())
+end)
+
+local player = game.Players.LocalPlayer
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local TextButton = Instance.new("TextButton")
+local TextButton_2 = Instance.new("TextButton")
+local TextButton_3 = Instance.new("TextButton")
+local TextButton_4 = Instance.new("TextButton")
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame.Position = UDim2.new(0.3, 0, 0.20, 0)
+Frame.Size = UDim2.new(0, 500, 0, 300)
+
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
+TextLabel.Size = UDim2.new(0, 500, 0, 60)
+TextLabel.Font = Enum.Font.AmaticSC
+TextLabel.Text = "Stand Upright: Rebooted script 2 choose 1"
+TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.TextScaled = false
+TextLabel.TextSize = 40.000
+TextLabel.TextWrapped = true
+
+TextButton.Parent = Frame
+TextButton.BackgroundColor3 = Color3.fromRGB(117, 50, 168)
+TextButton.Position = UDim2.new(0, 0, 0.20000006, 0)
+TextButton.Size = UDim2.new(0, 250, 0, 240)
+TextButton.Font = Enum.Font.AmaticSC
+TextButton.Text = "Stand Updown Rebooted"
+TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextScaled = false
+TextButton.TextSize = 85.000
+TextButton.TextWrapped = true
+
+function StandUpdown()
+    for i,v in pairs(player.PlayerGui:GetChildren()) do
+        if v.Name == "ScreenGui" then
+            v:Destroy()
+        end
+    end
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/GodClass/EpicScripts/main/SUR.txt"))()
+end
+TextButton.MouseButton1Click:connect(StandUpdown)
+
+TextButton_2.Parent = Frame
+TextButton_2.BackgroundColor3 = Color3.fromRGB(117, 50, 168)
+TextButton_2.Position = UDim2.new(0.5, 0, 0.200000024, 0)
+TextButton_2.Size = UDim2.new(0, 250, 0, 240)
+TextButton_2.Font = Enum.Font.AmaticSC
+TextButton_2.Text = "Lazy Hub"
+TextButton_2.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextButton_2.TextScaled = true
+TextButton_2.TextSize = 40.000
+TextButton_2.TextWrapped = true
+
+function LazyHub()
+    for i,v in pairs(player.PlayerGui:GetChildren()) do
+        if v.Name == "ScreenGui" then
+            v:Destroy()
+        end
+    end
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/LioK251/Scripts/main/"..game.PlaceId..".lua"))()
+end
+TextButton_2.MouseButton1Click:connect(LazyHub)
+
+TextButton_3.Parent = Frame
+TextButton_3.BackgroundColor3 = Color3.fromRGB(95, 40, 135)
+TextButton_3.Position = UDim2.new(0, 0, 0.865000024, 0)
+TextButton_3.Size = UDim2.new(0, 40, 0, 40)
+TextButton_3.Font = Enum.Font.AmaticSC
+TextButton_3.Text = "..."
+TextButton_3.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextButton_3.TextScaled = true
+TextButton_3.TextSize = 40.000
+TextButton_3.TextWrapped = true
+
+function StandUpdownDesc()
+    game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Stand Updown Description",Text = "This script can autofarm smoothly and less bug than Lazy Hub",Duration = 7, })
+end
+TextButton_3.MouseButton1Click:connect(StandUpdownDesc)
+
+TextButton_4.Parent = Frame
+TextButton_4.BackgroundColor3 = Color3.fromRGB(95, 45, 135)
+TextButton_4.Position = UDim2.new(0.5, 0, 0.865000024, 0)
+TextButton_4.Size = UDim2.new(0, 40, 0, 40)
+TextButton_4.Font = Enum.Font.AmaticSC
+TextButton_4.Text = "..."
+TextButton_4.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextButton_4.TextScaled = true
+TextButton_4.TextSize = 40.000
+TextButton_4.TextWrapped = true
+
+function LazyHubDesc()
+    game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Lazy Hub Description",Text = "This script have better autofarm but requires good stand and a better stand farm",Duration = 7, })
+end
+TextButton_4.MouseButton1Click:connect(LazyHubDesc)
