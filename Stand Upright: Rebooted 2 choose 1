@@ -86,7 +86,7 @@ TextButton_3.TextSize = 40.000
 TextButton_3.TextWrapped = true
 
 function StandUpdownDesc()
-    game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Stand Updown Description",Text = "This script can autofarm smoothly and less bug than Lazy Hub",Duration = 7, })
+    game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Stand Updown Description",Text = "This script can autofarm smoothly and have less bug than Lazy Hub",Duration = 6, })
 end
 TextButton_3.MouseButton1Click:connect(StandUpdownDesc)
 
@@ -102,6 +102,6 @@ TextButton_4.TextSize = 40.000
 TextButton_4.TextWrapped = true
 
 function LazyHubDesc()
-    game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Lazy Hub Description",Text = "This script have better autofarm but requires good stand and a better stand farm",Duration = 7, })
+    game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Lazy Hub Description",Text = "This script have better autofarm but requires good stand and have a better stand farm",Duration = 7.5, })
 end
 TextButton_4.MouseButton1Click:connect(LazyHubDesc)
