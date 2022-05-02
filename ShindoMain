@@ -624,7 +624,11 @@ function AUTOFARM()
         end)
         window1:Button("Tp to Kenjutsu Mentor",function()
             if game.PlaceId == 4601350656 then
-                player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace")["Ken Mentor"].HumanoidRootPart.CFrame+Vector3.new(-6,4,0)
+				for v = 1,8 do
+					wait()
+					game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace")["Ken Mentor"].HumanoidRootPart.Position)
+				end
+				player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace")["Ken Mentor"].HumanoidRootPart.CFrame+Vector3.new(-6,4,0)
             else
                 game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Wrong Map",     Text = "Kenjutsu mentor is not in this map!",Duration = 5, })
             end
@@ -712,7 +716,12 @@ function AUTOFARM()
         end)
 
         window1:Toggle("Kenjutsu Training",false, function(bool)
-            dfarm = bool
+			if game.PlaceId == 4601350656 then
+				local args = {[1] = "trainkenmaster"}
+				game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			else
+            	dfarm = bool
+			end
         end)
 
         spawn(function()
