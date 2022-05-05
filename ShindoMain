@@ -898,12 +898,17 @@ function AUTOFARM()
             window1:Label("NIGHT = NO QUESTS", Color3.fromRGB(127, 143, 166))
 
             local autofarm
-            window1:Toggle("AutoFarm",false, function(bool)
+            window1:Toggle("Auto Farm",false, function(bool)
                     autofarm = bool
             end)
 
+			local boss
+				window1:Toggle("Boss Farm",false, function(bool)
+				boss = bool
+			end)
+
             local RANKUPP
-            window1:Toggle("AutoRank",false, function(bool)
+            window1:Toggle("Auto Rank",false, function(bool)
                     RANKUPP = bool
             end)
 
@@ -1141,6 +1146,22 @@ function AUTOFARM()
                 end
             end
 
+			local function BOSSFARM()
+				for i,v in pairs(workspace.bossdropmission.missions:GetChildren()) do
+					if v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and v.missiongiver.timer.time.time.Text == "00:00" then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
+						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
+						local args = {[1] = game:GetService("Players").LocalPlayer}
+						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
+						wait(.05)
+					elseif v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and v.missiongiver.timer.time.time.Text == "59:59" then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
+						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
+						local args = {[1] = game:GetService("Players").LocalPlayer}
+						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
+						wait(.05)
+					end
+				end
+			end
+
 			local count
 			local function DISP()
 				count = 0
@@ -1191,6 +1212,18 @@ function AUTOFARM()
                     end
                 end
             end)
+
+			spawn(function()
+				while wait() do
+					if boss then
+						if mission.Visible == true then
+							FARM()
+						else
+						    BOSSFARM()
+						end
+					end
+				end
+			end)
 
             local PRES = player.statz.prestige.maxlvlpres
             local RANK = player.statz.prestige.rank
@@ -1400,7 +1433,7 @@ function AUTOFARM()
             window1:Label("NIGHT = NO QUESTS", Color3.fromRGB(127, 143, 166))
 
             local autoofarm
-            window1:Toggle("AutoFarm",false, function(bool)
+            window1:Toggle("Auto Farm",false, function(bool)
                     autoofarm = bool
                     local platform = Instance.new("Part", player.Character)
                     platform.Anchored = true
@@ -1424,8 +1457,13 @@ function AUTOFARM()
 				end)
             end)
 
+			local boss
+				window1:Toggle("Boss Farm",false, function(bool)
+				boss = bool
+			end)
+
             local RANKUPP
-            window1:Toggle("AutoRank",false, function(bool)
+            window1:Toggle("Auto Rank",false, function(bool)
                     RANKUPP = bool
             end)
 
@@ -1647,6 +1685,22 @@ function AUTOFARM()
                 end
             end
 
+			local function BOSSFARM()
+				for i,v in pairs(workspace.bossdropmission.missions:GetChildren()) do
+					if v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and v.missiongiver.timer.time.time.Text == "00:00" then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
+						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
+						local args = {[1] = game:GetService("Players").LocalPlayer}
+						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
+						wait(.05)
+					elseif v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and v.missiongiver.timer.time.time.Text == "59:59" then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
+						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
+						local args = {[1] = game:GetService("Players").LocalPlayer}
+						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
+						wait(.05)
+					end
+				end
+			end
+
 			local count
 			local function DISP()
 				count = 0
@@ -1680,10 +1734,6 @@ function AUTOFARM()
                 end
             end)
 
-            local PRES = player.statz.prestige.maxlvlpres
-            local RANK = player.statz.prestige.rank
-            local RANKNUM = player.statz.prestige.number
-
 			spawn(function()
 				while wait() do
 					if autoofarm then
@@ -1700,6 +1750,22 @@ function AUTOFARM()
 					end
 				end
 			end)
+
+			spawn(function()
+				while wait() do
+					if boss then
+						if mission.Visible == true then
+							FARM()
+						else
+						    BOSSFARM()
+						end
+					end
+				end
+			end)
+
+			local PRES = player.statz.prestige.maxlvlpres
+			local RANK = player.statz.prestige.rank
+			local RANKNUM = player.statz.prestige.number
 
             spawn(function()
                 while wait() do
@@ -1904,21 +1970,21 @@ function AUTOFARM()
             window1:Label("NIGHT = NO QUESTS", Color3.fromRGB(127, 143, 166))
 
             local autooofarm
-            window1:Toggle("AutoFarm",false, function(bool)
-                    autooofarm = bool
-					local platform = Instance.new("Part", player.Character)
-                    platform.Anchored = true
-                    platform.Transparency = 1
-                    platform.Size = Vector3.new(6, 1, 6)
+            window1:Toggle("Auto Farm",false, function(bool)
+                autooofarm = bool
+				local platform = Instance.new("Part", player.Character)
+                platform.Anchored = true
+                platform.Transparency = 1
+                platform.Size = Vector3.new(6, 1, 6)
 
-                    local connection
-                    connection = game:GetService("RunService").RenderStepped:connect(function()
-                        if player.Character:FindFirstChild("HumanoidRootPart") then
-                            platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -1.8, 0)
-                        else
-                            connection:Disconnect()
-                        end
-                    end)
+                local connection
+                connection = game:GetService("RunService").RenderStepped:connect(function()
+                    if player.Character:FindFirstChild("HumanoidRootPart") then
+                        platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -1.8, 0)
+                    else
+                        connection:Disconnect()
+                    end
+                end)
 				spawn(function ()
 					while wait() do
 						if autooofarm ~= true then
@@ -1928,8 +1994,13 @@ function AUTOFARM()
 				end)
             end)
 
+			local boss
+				window1:Toggle("Boss Farm",false, function(bool)
+				boss = bool
+			end)
+
             local RANKUPP
-            window1:Toggle("AutoRank",false, function(bool)
+            window1:Toggle("Auto Rank",false, function(bool)
                     RANKUPP = bool
             end)
 
@@ -2117,6 +2188,22 @@ function AUTOFARM()
                 end
             end
 
+			local function BOSSFARM()
+				for i,v in pairs(workspace.bossdropmission.missions:GetChildren()) do
+					if v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and v.missiongiver.timer.time.time.Text == "00:00" then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
+						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
+						local args = {[1] = game:GetService("Players").LocalPlayer}
+						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
+						wait(.05)
+					elseif v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and v.missiongiver.timer.time.time.Text == "59:59" then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
+						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
+						local args = {[1] = game:GetService("Players").LocalPlayer}
+						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
+						wait(.05)
+					end
+				end
+			end
+
 			local count
 			local function DISP()
 				count = 0
@@ -2166,6 +2253,18 @@ function AUTOFARM()
                     end
                 end
             end)
+
+			spawn(function()
+				while wait() do
+					if boss then
+						if mission.Visible == true then
+							FARM()
+						else
+						    BOSSFARM()
+						end
+					end
+				end
+			end)
 
             local PRES = player.statz.prestige.maxlvlpres
             local RANK = player.statz.prestige.rank
