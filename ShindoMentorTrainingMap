@@ -62,21 +62,6 @@ game:GetService('RunService').Stepped:connect(function()
     end
 end)
 
-game:GetService('RunService').Stepped:connect(function()
-	if E then
-	pcall(function()
-			for i,v in pairs(workspace.npc:GetChildren()) do
-				pcall(function()
-					if v.Name == "fireball" then  --== game:GetService("Workspace").ClientEffects.fireball then
-						v:Destroy() --repeat v:Destroy()
-						--until not E
-					end
-				end)
-			end
-		end)
-	end
-end)
-
 spawn(function()
     while wait() do
         if Legacy then
