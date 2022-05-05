@@ -62,6 +62,21 @@ game:GetService('RunService').Stepped:connect(function()
     end
 end)
 
+game:GetService('RunService').Stepped:connect(function()
+	if E then
+	pcall(function()
+			for i,v in pairs(workspace.npc:GetChildren()) do
+				pcall(function()
+					if v.Name == "fireball" then  --== game:GetService("Workspace").ClientEffects.fireball then
+						v:Destroy() --repeat v:Destroy()
+						--until not E
+					end
+				end)
+			end
+		end)
+	end
+end)
+
 spawn(function()
     while wait() do
         if Legacy then
@@ -250,6 +265,10 @@ window2:Button("Infinite MD",function()
 	print("CHI will recharge at "..halfchi)
 end)
 
+window2:Button("Remove Effects",function()
+	game:GetService("Players").KastonTPG.PlayerScripts.EFFECTS:Destroy()
+end)
+
 spawn(function()
     while wait() do
         if gen3farm then
@@ -258,7 +277,7 @@ spawn(function()
 					if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
 						repeat wait() --v.Humanoid.Health = 0 (DO NOT USE THIS IT WOULD BUG THE BEAST)
 						game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
-						player.Character.HumanoidRootPart.CFrame=(v.HumanoidRootPart.CFrame * CFrame.new(0, 30, .3))
+						player.Character.HumanoidRootPart.CFrame=(v.HumanoidRootPart.CFrame * CFrame.new(0, 75, .3))
 						until v.Humanoid.Health == 0 or not gen3farm
 					end
 				end)
