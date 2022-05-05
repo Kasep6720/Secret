@@ -404,6 +404,10 @@ function MISC()
                 end
             end)
 
+			window3:Button("Remove Effects / Particles",function()
+				game:GetService("Players").LocalPlayer.PlayerScripts.EFFECTS:Destroy()
+			end)
+
             window3:Label("DANGER", Color3.fromRGB(127, 143, 166))
 
             window3:Button("Reset Script",function()
@@ -796,6 +800,10 @@ function AUTOFARM()
             loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain"))()
         end)
 
+		window2:Button("Remove Effects / Particles",function()
+			game:GetService("Players").LocalPlayer.PlayerScripts.EFFECTS:Destroy()
+		end)
+
         window2:Label("Credits", Color3.fromRGB(127, 143, 166))
 
         window2:Button("Made by NoobieDoge",function()
@@ -1065,6 +1073,10 @@ function AUTOFARM()
                     end
                 end
             end
+
+			window1:Button("Remove Effects / Particles",function()
+				game:GetService("Players").LocalPlayer.PlayerScripts.EFFECTS:Destroy()
+			end)
 
             local function FARM()
                 for i,v in pairs(workspace.npc:GetChildren()) do
@@ -1562,6 +1574,10 @@ function AUTOFARM()
                 end
             end)
 
+			window1:Button("Remove Effects / Particles",function()
+				game:GetService("Players").LocalPlayer.PlayerScripts.EFFECTS:Destroy()
+			end)
+
             local function QUEST()
                 for i,v in pairs(workspace.missiongivers:GetChildren()) do
                     if v.Name == "" and v:FindFirstChild("Head") then
@@ -2040,6 +2056,10 @@ function AUTOFARM()
                     end
                 end
             end)
+
+			window1:Button("Remove Effects / Particles",function()
+				game:GetService("Players").LocalPlayer.PlayerScripts.EFFECTS:Destroy()
+			end)
 
             local function QUEST()
                 for i,v in pairs(workspace.missiongivers:GetChildren()) do
