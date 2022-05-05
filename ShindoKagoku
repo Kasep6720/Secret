@@ -423,6 +423,10 @@ window1:Button("Upgrade Performance",false,function()
     end
 end)
 
+window1:Button("Remove Effects / Particles",function()
+	game:GetService("Players").KastonTPG.PlayerScripts.EFFECTS:Destroy()
+end)
+
 window2:Toggle("Spam Q",false,function(bool)
     Q = bool
 end)
