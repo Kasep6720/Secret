@@ -222,7 +222,7 @@ window1:Button("Infinite MD",function()
 end)
 
 window2:Button("Remove Effects / Particles",function()
-	game:GetService("Players").KastonTPG.PlayerScripts.EFFECTS:Destroy()
+	game:GetService("Players").LocalPlayer.PlayerScripts.EFFECTS:Destroy()
 end)
 
 window2:Label("DANGER", Color3.fromRGB(127, 143, 166))
