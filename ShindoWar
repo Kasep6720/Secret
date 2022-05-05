@@ -448,6 +448,11 @@ window2:Button("Upgrade Performance",function()
         end
     end
 end)
+
+window2:Button("Disable Particles / Effects",function()
+	game:GetService("Players").KastonTPG.PlayerScripts.EFFECTS:Destroy()
+end)
+
 window2:Label("------------------------------------------------", Color3.fromRGB(127, 143, 166))
 window2:Button("Made by NoobieDoge",function()
 	setclipboard("https://discord.gg/P2CeRjvTDt")
