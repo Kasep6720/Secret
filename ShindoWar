@@ -450,7 +450,7 @@ window2:Button("Upgrade Performance",function()
 end)
 
 window2:Button("Disable Particles / Effects",function()
-	game:GetService("Players").KastonTPG.PlayerScripts.EFFECTS:Destroy()
+	game:GetService("Players").LocalPlayer.PlayerScripts.EFFECTS:Destroy()
 end)
 
 window2:Label("------------------------------------------------", Color3.fromRGB(127, 143, 166))
