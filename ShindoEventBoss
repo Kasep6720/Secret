@@ -675,7 +675,7 @@ window3:Button("Upgrade Performance",function()
 end)
 
 window3:Button("Remove Effects / Particles",function()
-	game:GetService("Players").KastonTPG.PlayerScripts.EFFECTS:Destroy()
+	game:GetService("Players").LocalPlayer.PlayerScripts.EFFECTS:Destroy()
 end)
 
 window3:Button("Switch to Dungeon script",function()
