@@ -251,7 +251,7 @@ window2:Button("Infinite MD",function()
 end)
 
 window2:Button("Remove Effects",function()
-	game:GetService("Players").KastonTPG.PlayerScripts.EFFECTS:Destroy()
+	game:GetService("Players").LocalPlayer.PlayerScripts.EFFECTS:Destroy()
 end)
 
 spawn(function()
