@@ -26,7 +26,7 @@ local warplace = game:GetService("Workspace"):FindFirstChild("warmode")
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20script%20gui"))()
 local window1 = library:Window("Utilities - DogeHub")
 local window2 = library:Window("Spam Keys")
-local window3 = library:Window("Credits")
+local window3 = library:Window("Misc")
 
 library:Keybind("RightControl")
 
@@ -502,120 +502,6 @@ spawn(function()
     end
 end)
 
-window1:Label("Settings", Color3.fromRGB(127, 143, 166))
-
-window1:Button("Upgrade Performance",function()
-    local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
-    local g = game
-    local w = g.Workspace
-    local l = g.Lighting
-    local t = w.Terrain
-    t.WaterWaveSize = 0
-    t.WaterWaveSpeed = 0
-    t.WaterReflectance = 0
-    t.WaterTransparency = 0
-    l.GlobalShadows = false
-    l.FogEnd = 9e9
-    l.Brightness = 0
-    settings().Rendering.QualityLevel = "Level01"
-    for i,v in pairs(g:GetDescendants()) do
-        if v:IsA("Part") or v:IsA("Union") or v:IsA("MeshPart") then
-            v.Material = "Plastic"
-            v.Reflectance = 0
-        elseif v:IsA("Decal") and decalsyeeted then 
-            v.Transparency = 1
-        elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then 
-            v.Lifetime = NumberRange.new(0)
-        end
-    end
-end)
-
-window1:Button("Switch to Dungeon script",function()
-
-    local player = game.Players.LocalPlayer
-    local ScreenGui = Instance.new("ScreenGui")
-    local Frame = Instance.new("Frame")
-    local TextLabel = Instance.new("TextLabel")
-    local TextButton = Instance.new("TextButton")
-    local TextButton2 = Instance.new("TextButton")
-
-    ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-
-    Frame.Parent = ScreenGui
-    Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    Frame.Position = UDim2.new(0.36, 0, 0.20, 0)
-    Frame.Size = UDim2.new(0, 330, 0, 150)
-
-    TextLabel.Parent = Frame
-    TextLabel.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
-    TextLabel.Size = UDim2.new(0, 330, 0, 90)
-    TextLabel.Font = Enum.Font.AmaticSC
-    TextLabel.Text = "Are you sure you want to switch to dungeon script?"
-    TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
-    TextLabel.TextScaled = true
-    TextLabel.TextSize = 35.000
-    TextLabel.TextWrapped = true
-
-    TextButton.Parent = Frame
-    TextButton.BackgroundColor3 = Color3.fromRGB(0, 230, 30)
-    TextButton.Position = UDim2.new(0, 0, 0.600000006, 0)
-    TextButton.Size = UDim2.new(0, 165, 0, 60)
-    TextButton.Font = Enum.Font.AmaticSC
-    TextButton.Text = "Yes"
-    TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
-    TextButton.TextScaled = true
-    TextButton.TextSize = 40.000
-    TextButton.TextWrapped = true
-
-    function OK2()
-        for i,v in pairs(player.PlayerGui:GetChildren()) do
-            if v.Name == "ScreenGui" then
-                v:Destroy()
-            end 
-        end
-        wait()
-        Q = false 
-        E = false 
-        R = false 
-        T = false 
-        Y = false 
-        F = false 
-        G = false 
-        H = false 
-        V = false  
-        B = false 
-        N = false
-        keel = false
-        autofarm = false
-        autoofarm = false
-        autooofarm = false
-        Aimyom = false
-        wait()
-        library:Destroy()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoDF"))()
-    end
-    TextButton.MouseButton1Click:connect(OK2)
-
-    TextButton2.Parent = Frame
-    TextButton2.BackgroundColor3 = Color3.fromRGB(260, 30, 30)
-    TextButton2.Position = UDim2.new(0.5, 0, 0.600000006, 0)
-    TextButton2.Size = UDim2.new(0, 165, 0, 60)
-    TextButton2.Font = Enum.Font.AmaticSC
-    TextButton2.Text = "no"
-    TextButton2.TextColor3 = Color3.fromRGB(0, 0, 0)
-    TextButton2.TextSize = 40.000
-    TextButton2.TextWrapped = true
-
-    function OK21()
-        for i,v in pairs(player.PlayerGui:GetChildren()) do
-            if v.Name == "ScreenGui" then
-                v:Destroy()
-            end
-        end
-    end
-    TextButton2.MouseButton1Click:connect(OK21)
-end)
-
 window2:Toggle("Spam Q",false,function(bool)
     Q = bool
 end)
@@ -759,6 +645,126 @@ game:GetService('RunService').Stepped:connect(function()
         end)
     end
 end)
+
+window3:Label("Settings", Color3.fromRGB(127, 143, 166))
+
+window3:Button("Upgrade Performance",function()
+    local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
+    local g = game
+    local w = g.Workspace
+    local l = g.Lighting
+    local t = w.Terrain
+    t.WaterWaveSize = 0
+    t.WaterWaveSpeed = 0
+    t.WaterReflectance = 0
+    t.WaterTransparency = 0
+    l.GlobalShadows = false
+    l.FogEnd = 9e9
+    l.Brightness = 0
+    settings().Rendering.QualityLevel = "Level01"
+    for i,v in pairs(g:GetDescendants()) do
+        if v:IsA("Part") or v:IsA("Union") or v:IsA("MeshPart") then
+            v.Material = "Plastic"
+            v.Reflectance = 0
+        elseif v:IsA("Decal") and decalsyeeted then 
+            v.Transparency = 1
+        elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then 
+            v.Lifetime = NumberRange.new(0)
+        end
+    end
+end)
+
+window3:Button("Remove Effects / Particles",function()
+	game:GetService("Players").KastonTPG.PlayerScripts.EFFECTS:Destroy()
+end)
+
+window3:Button("Switch to Dungeon script",function()
+
+    local player = game.Players.LocalPlayer
+    local ScreenGui = Instance.new("ScreenGui")
+    local Frame = Instance.new("Frame")
+    local TextLabel = Instance.new("TextLabel")
+    local TextButton = Instance.new("TextButton")
+    local TextButton2 = Instance.new("TextButton")
+
+    ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+    Frame.Parent = ScreenGui
+    Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Frame.Position = UDim2.new(0.36, 0, 0.20, 0)
+    Frame.Size = UDim2.new(0, 330, 0, 150)
+
+    TextLabel.Parent = Frame
+    TextLabel.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
+    TextLabel.Size = UDim2.new(0, 330, 0, 90)
+    TextLabel.Font = Enum.Font.AmaticSC
+    TextLabel.Text = "Are you sure you want to switch to dungeon script?"
+    TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+    TextLabel.TextScaled = true
+    TextLabel.TextSize = 35.000
+    TextLabel.TextWrapped = true
+
+    TextButton.Parent = Frame
+    TextButton.BackgroundColor3 = Color3.fromRGB(0, 230, 30)
+    TextButton.Position = UDim2.new(0, 0, 0.600000006, 0)
+    TextButton.Size = UDim2.new(0, 165, 0, 60)
+    TextButton.Font = Enum.Font.AmaticSC
+    TextButton.Text = "Yes"
+    TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+    TextButton.TextScaled = true
+    TextButton.TextSize = 40.000
+    TextButton.TextWrapped = true
+
+    function OK2()
+        for i,v in pairs(player.PlayerGui:GetChildren()) do
+            if v.Name == "ScreenGui" then
+                v:Destroy()
+            end 
+        end
+        wait()
+        Q = false 
+        E = false 
+        R = false 
+        T = false 
+        Y = false 
+        F = false 
+        G = false 
+        H = false 
+        V = false  
+        B = false 
+        N = false
+        keel = false
+        autofarm = false
+        autoofarm = false
+        autooofarm = false
+        Aimyom = false
+        wait()
+        library:Destroy()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoDF"))()
+    end
+    TextButton.MouseButton1Click:connect(OK2)
+
+    TextButton2.Parent = Frame
+    TextButton2.BackgroundColor3 = Color3.fromRGB(260, 30, 30)
+    TextButton2.Position = UDim2.new(0.5, 0, 0.600000006, 0)
+    TextButton2.Size = UDim2.new(0, 165, 0, 60)
+    TextButton2.Font = Enum.Font.AmaticSC
+    TextButton2.Text = "no"
+    TextButton2.TextColor3 = Color3.fromRGB(0, 0, 0)
+    TextButton2.TextSize = 40.000
+    TextButton2.TextWrapped = true
+
+    function OK21()
+        for i,v in pairs(player.PlayerGui:GetChildren()) do
+            if v.Name == "ScreenGui" then
+                v:Destroy()
+            end
+        end
+    end
+    TextButton2.MouseButton1Click:connect(OK21)
+end)
+
+window3:Label("Credits", Color3.fromRGB(127, 143, 166))
 
 window3:Button("Made by NoobieDoge",function()
 	setclipboard("https://discord.gg/P2CeRjvTDt")
