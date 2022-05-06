@@ -106,9 +106,10 @@ elseif game.PlaceId == 6284583030 then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/SandaFrosty/Dino-Script/main/Pet-Sim-X", true))()
     game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Script",     Text = "This script is NOT made by DogeHub!",Duration = 5, })
 elseif game.PlaceId == 4616652839 then
+--SHINDO INF SPINS NEED PATCH URGENT
     wait(.3) TextLabel.Text = "Game supported!" wait(1) TextLabel.Text = "Shindo Life     [Main Menu]" wait(1) ScreenGui:Destroy() 
-    loadstring(game:HttpGet("https://bruh.keshsenpai.com/.lua"))() wait(3) loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Updated%20Inf%20Spins"))()
-    game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Script",     Text = "This script is NOT 100% made by DogeHub!",Duration = 5, })
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/6Wumpus6/SpyHub/main/ShindoLife", true))() wait(.3) loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Updated%20Inf%20Spins"))()
+    game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Script",     Text = "Bruhhub fucked up so Imma use SpyHub to replace it for a few days until I made my own inf spins script",Duration = 5, })
 elseif game.PlaceId == 4042427666 then
     wait(.3) TextLabel.Text = "Game supported!" wait(1) TextLabel.Text = "Anime Fighting Simulator" wait(1) TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!" wait(1) ScreenGui:Destroy()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Anime%20Fighting%20Simulator%202%20choose%201"))()
