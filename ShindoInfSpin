@@ -1,0 +1,285 @@
+repeat wait() until game:IsLoaded()
+local player = game.Players.LocalPlayer
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20script%20gui"))()
+local window1 = library:Window("Infinite Spin | DogeHub")
+local window2 = library:Window("Bloodlines")
+local window3 = library:Window("Elements")
+local window4 = library:Window("Credits")
+library:Keybind("RightControl")
+
+	window1:Label("Script still under development!!!", Color3.fromRGB(127, 143, 166)) 
+
+	window1:Button("Reset Spins NOW",function()
+		game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+		wait()
+		game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
+	end)
+
+	window1:Label("-----------------------------------------------", Color3.fromRGB(127, 143, 166)) 
+
+	window1:Button("Save Data",function()
+		local player = game.Players.LocalPlayer
+		local ScreenGuiK = Instance.new("ScreenGui")
+		local FrameK = Instance.new("Frame")
+		local TextLabel = Instance.new("TextLabel")
+		local TextButton = Instance.new("TextButton")
+		local TextButton_2 = Instance.new("TextButton")
+
+		ScreenGuiK.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+		FrameK.Parent = ScreenGuiK
+		FrameK.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		FrameK.Position = UDim2.new(0.005, 0, 0.7, 0)
+		FrameK.Size = UDim2.new(0, 200, 0, 150)
+
+		TextLabel.Parent = FrameK
+		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabel.Size = UDim2.new(0, 220, 0, 90)
+		TextLabel.Font = Enum.Font.TitilliumWeb
+		TextLabel.Text = "Are you sure you want to keep the current data?"
+		TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabel.TextScaled = true
+		TextLabel.TextSize = 35.000
+		TextLabel.TextWrapped = true
+
+		TextButton.Parent = FrameK
+		TextButton.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextButton.Position = UDim2.new(0.55, 0, 0.600000006, 0)
+		TextButton.Size = UDim2.new(0, 110, 0, 60)
+		TextButton.Font = Enum.Font.TitilliumWeb
+		TextButton.Text = "Yes"
+		TextButton.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButton.TextScaled = true
+		TextButton.TextSize = 40.000
+		TextButton.TextWrapped = true
+
+		function OKKeep()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+			game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
+			wait()
+			game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "You may now enter villages or leave game to save your data",Duration = 3, })
+			wait(1)
+		end
+		TextButton.MouseButton1Click:connect(OKKeep)
+
+		TextButton_2.Parent = FrameK
+		TextButton_2.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextButton_2.Position = UDim2.new(0, 0, 0.600000006, 0)
+		TextButton_2.Size = UDim2.new(0, 110, 0, 60)
+		TextButton_2.Font = Enum.Font.TitilliumWeb
+		TextButton_2.Text = "No"
+		TextButton_2.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButton_2.TextScaled = true
+		TextButton_2.TextSize = 40.000
+		TextButton_2.TextWrapped = true
+
+			function cancelKeep()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+		end
+		TextButton_2.MouseButton1Click:connect(cancelKeep)	
+    end)
+
+    local kgs = {}
+    for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
+        if v:FindFirstChild("KG") then
+            table.insert(kgs, v.Name)
+        end
+    end
+    window2:Label("Select the Bloodline slot that", Color3.fromRGB(127, 143, 166)) 
+    window2:Label("you want to change", Color3.fromRGB(127, 143, 166)) 
+    window2:Label("Choose your BL and press SPIN", Color3.fromRGB(127, 143, 166))
+    local b
+    local kgslot
+    local kgvalue
+    window2:Dropdown("BLOODLINE SLOT",{"kg1", "kg2", "kg3", "kg4"},function(kgS)
+        b = kgS
+    	kgslot = game.Players.LocalPlayer.statz.main:FindFirstChild(b)
+    	kgvalue = kgslot.Value
+    	print(kgslot)
+    	print(kgvalue)
+		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "Selected: ".. kgS ,Duration = 7, })
+    end)
+    local a1
+    window2:Dropdown("WHAT DO YOU WANT",kgs,function(KG1)
+        print("Selected: " .. KG1)
+		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "Selected: " .. KG1 ,Duration = 5, })
+    	a1 = KG1
+    end)
+    local a2
+    window2:Dropdown("WHAT DO YOU WANT",kgs,function(KG2)
+        print("Selected: " .. KG2)		
+		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "Selected: " .. KG2 ,Duration = 5, })
+    	a2 = KG2
+    end)
+    local a3
+    window2:Dropdown("WHAT DO YOU WANT",kgs,function(KG3)
+        print("Selected: " .. KG3)
+		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "Selected: " .. KG3 ,Duration = 5, })
+    	a3 = KG3
+    end)
+    local a4
+    window2:Dropdown("WHAT DO YOU WANT",kgs,function(KG4)
+        print("Selected: " .. KG4)
+		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "Selected: " .. KG4 ,Duration = 5, })
+    	a4 = KG4
+    end)
+    local a5
+    window2:Dropdown("WHAT DO YOU WANT",kgs,function(KG5)
+        print("Selected: " .. KG5)
+		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "Selected: " .. KG5 ,Duration = 5, })
+    	a5 = KG5
+    end)
+    window2:Button("Start Spinning",function()
+        game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
+        kgslot.ChildAdded:Connect(function(yes)
+            if yes.Name == "dontspin" then
+                wait(.1)
+                yes:Destroy()
+            end
+        end)
+    	local spins = game.Players.LocalPlayer.statz.spins.Value
+    	local des = game.Players.LocalPlayer.statz.spins
+        spawn(function()
+            for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
+                if v:FindFirstChild("KG") then
+                    local a = Instance.new("StringValue")
+                    a.Name = v.Name
+                    a.Parent = game.Players.LocalPlayer.statz.genkailevel
+                end
+            end
+        end)
+    	spawn(function()
+    	    while wait() do
+    		    if spins > 0 then
+                    spins = game.Players.LocalPlayer.statz.spins.Value
+                	kgvalue = kgslot.Value
+                	print("Rolled: " .. kgvalue)
+                	if kgvalue ~= a1 and kgvalue ~= a2 and kgvalue ~= a3 and kgvalue ~= a4 and kgvalue ~= a5 then
+                	    kgvalue = kgslot.Value
+                		game.Players.LocalPlayer.startevent:FireServer("spin", b)
+                		wait(1)
+                		kgvalue = kgslot.Value
+                	else
+						game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
+                	    print("You have got: " .. kgvalue)
+                	end
+                else
+                    --player.statz.spins:Destroy()
+                    game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+    		    end
+    		end
+    	end)
+    end)
+    window2:Label("It will reset once you have 0 spin left", Color3.fromRGB(127, 143, 166))
+
+    local elm = {}
+    for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
+        if v:FindFirstChild("ELEMENT") then
+            table.insert(elm, v.Name)
+        end
+    end
+    window3:Label("Select the Element slot that", Color3.fromRGB(127, 143, 166)) 
+    window3:Label("you want to change", Color3.fromRGB(127, 143, 166)) 
+    window3:Label("Choose your Element and press SPIN", Color3.fromRGB(127, 143, 166))
+    local b
+    local kgslot
+    local kgvalue
+    window3:Dropdown("ELEMENT SLOT",{"element1", "element2", "element3", "element4"},function(kgS)
+        b = kgS
+    	kgslot = game.Players.LocalPlayer.statz.main:FindFirstChild(b)
+    	kgvalue = kgslot.Value
+    	print(kgslot)
+    	print(kgvalue)
+		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "Selected: ".. kgS ,Duration = 7, })
+    end)
+
+    local a1
+    window3:Dropdown("WHAT DO YOU WANT",elm,function(KG1)
+        print("Selected: " .. KG1)
+		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "Selected: " .. KG1 ,Duration = 5, })
+    	a1 = KG1
+    end)
+    local a2
+    window3:Dropdown("WHAT DO YOU WANT",elm,function(KG2)
+        print("Selected: " .. KG2)
+		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "Selected: " .. KG2 ,Duration = 5, })
+    	a2 = KG2
+    end)
+    local a3
+    window3:Dropdown("WHAT DO YOU WANT",elm,function(KG3)
+        print("Selected: " .. KG3)
+		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "Selected: " .. KG3 ,Duration = 5, })
+    	a3 = KG3
+    end)
+    local a4
+    window3:Dropdown("WHAT DO YOU WANT",elm,function(KG4)
+        print("Selected: " .. KG4)
+		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "Selected: " .. KG4 ,Duration = 5, })
+    	a4 = KG4
+    end)
+    local a5
+    window3:Dropdown("WHAT DO YOU WANT",elm,function(KG5)
+        print("Selected: " .. KG5)
+		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "Selected: " .. KG5 ,Duration = 5, })
+    	a5 = KG5
+    end)
+    window3:Button("Start Spinning",function()
+        game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
+        kgslot.ChildAdded:Connect(function(yes)
+            if yes.Name == "dontspin" then
+                wait(.1)
+                yes:Destroy()
+            end
+        end)
+    	local spins = game.Players.LocalPlayer.statz.spins.Value
+    	local des = game.Players.LocalPlayer.statz.spins
+        spawn(function()
+            for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
+                if v:FindFirstChild("KG") then
+                    local a = Instance.new("StringValue")
+                    a.Name = v.Name
+                    a.Parent = game.Players.LocalPlayer.statz.genkailevel
+                end
+            end
+        end)
+    	spawn(function()
+    	    while wait() do
+    		    if spins > 0 then
+                    spins = game.Players.LocalPlayer.statz.spins.Value
+                	kgvalue = kgslot.Value
+                	print("Rolled: " .. kgvalue)
+                	if kgvalue ~= a1 and kgvalue ~= a2 and kgvalue ~= a3 and kgvalue ~= a4 and kgvalue ~= a5 then
+                	    kgvalue = kgslot.Value
+                		game.Players.LocalPlayer.startevent:FireServer("spin", b)
+                		wait(1)
+                		kgvalue = kgslot.Value
+                	else
+						game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
+                	    print("You have got: " .. kgvalue)
+                	end
+                else
+                    --player.statz.spins:Destroy()
+                    game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+    		    end
+    		end
+    	end)
+    end)
+    window3:Label("It will reset once you have 0 spin left", Color3.fromRGB(127, 143, 166))
+
+    window4:Label("Made by NoobieDoge", Color3.fromRGB(127, 143, 166))
+    window4:Label("https://discord.gg/P2CeRjvTDt", Color3.fromRGB(127, 143, 166))
+    window4:Button("Copy Discord Link",function()
+        setclipboard("https://discord.gg/P2CeRjvTDt")
+		wait()
+		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "Discord link copied!",Duration = 1, })
+    end)
+
+game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
