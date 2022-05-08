@@ -4,7 +4,8 @@ local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep
 local window1 = library:Window("Infinite Spin | DogeHub")
 local window2 = library:Window("Bloodlines")
 local window3 = library:Window("Elements")
-local window4 = library:Window("Credits")
+local window4 = library:Window("Kenjutsu")
+local window5 = library:Window("Credits")
 library:Keybind("RightControl")
 
 	window1:Label("Script still under development!!!", Color3.fromRGB(127, 143, 166)) 
@@ -85,7 +86,17 @@ library:Keybind("RightControl")
 			end
 		end
 		TextButton_2.MouseButton1Click:connect(cancelKeep)	
-    end)
+	end)
+
+	window1:Label("-----------------------------------------------", Color3.fromRGB(127, 143, 166)) 
+
+	window1:Toggle("Auto Save Data",true,function(bool)
+	Autosave = bool
+	end)
+
+	window1:Toggle("Auto Rejoin",true,function(bool)
+	Autorejoin = bool
+	end)
 
     local kgs = {}
     for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
@@ -99,7 +110,7 @@ library:Keybind("RightControl")
     local b
     local kgslot
     local kgvalue
-    window2:Dropdown("BLOODLINE SLOT",{"kg1", "kg2", "kg3", "kg4"},function(kgS)
+    window2:Dropdown("Bloodline Slot",{"kg1", "kg2", "kg3", "kg4"},function(kgS)
         b = kgS
     	kgslot = game.Players.LocalPlayer.statz.main:FindFirstChild(b)
     	kgvalue = kgslot.Value
@@ -107,78 +118,87 @@ library:Keybind("RightControl")
     	print(kgvalue)
 		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "Selected: ".. kgS ,Duration = 7, })
     end)
+
     local a1
-    window2:Dropdown("WHAT DO YOU WANT",kgs,function(KG1)
+    window2:Dropdown("Bloodline Choice 1",kgs,function(KG1)
         print("Selected: " .. KG1)
-		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "Selected: " .. KG1 ,Duration = 5, })
+		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "1st Bloodline Selected: " .. KG1 ,Duration = 5, })
     	a1 = KG1
     end)
     local a2
-    window2:Dropdown("WHAT DO YOU WANT",kgs,function(KG2)
+    window2:Dropdown("Bloodline Choice 2",kgs,function(KG2)
         print("Selected: " .. KG2)		
-		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "Selected: " .. KG2 ,Duration = 5, })
+		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "2nd Bloodline Selected: " .. KG2 ,Duration = 5, })
     	a2 = KG2
     end)
     local a3
-    window2:Dropdown("WHAT DO YOU WANT",kgs,function(KG3)
+    window2:Dropdown("Bloodline Choice 3",kgs,function(KG3)
         print("Selected: " .. KG3)
-		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "Selected: " .. KG3 ,Duration = 5, })
+		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "3rd Bloodline Selected: " .. KG3 ,Duration = 5, })
     	a3 = KG3
     end)
     local a4
-    window2:Dropdown("WHAT DO YOU WANT",kgs,function(KG4)
+    window2:Dropdown("Bloodline Choice 4",kgs,function(KG4)
         print("Selected: " .. KG4)
-		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "Selected: " .. KG4 ,Duration = 5, })
+		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "4th Bloodline Selected: " .. KG4 ,Duration = 5, })
     	a4 = KG4
     end)
     local a5
-    window2:Dropdown("WHAT DO YOU WANT",kgs,function(KG5)
+    window2:Dropdown("Bloodline Choice 5",kgs,function(KG5)
         print("Selected: " .. KG5)
-		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "Selected: " .. KG5 ,Duration = 5, })
+		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "5th Bloodline Selected: " .. KG5 ,Duration = 5, })
     	a5 = KG5
     end)
-    window2:Button("Start Spinning",function()
-        game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
-        kgslot.ChildAdded:Connect(function(yes)
-            if yes.Name == "dontspin" then
-                wait(.1)
-                yes:Destroy()
-            end
-        end)
-    	local spins = game.Players.LocalPlayer.statz.spins.Value
-    	local des = game.Players.LocalPlayer.statz.spins
-        spawn(function()
-            for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
-                if v:FindFirstChild("KG") then
-                    local a = Instance.new("StringValue")
-                    a.Name = v.Name
-                    a.Parent = game.Players.LocalPlayer.statz.genkailevel
-                end
-            end
-        end)
-    	spawn(function()
-    	    while wait() do
-    		    if spins > 0 then
-                    spins = game.Players.LocalPlayer.statz.spins.Value
-                	kgvalue = kgslot.Value
-                	print("Rolled: " .. kgvalue)
-                	if kgvalue ~= a1 and kgvalue ~= a2 and kgvalue ~= a3 and kgvalue ~= a4 and kgvalue ~= a5 then
-                	    kgvalue = kgslot.Value
-                		game.Players.LocalPlayer.startevent:FireServer("spin", b)
-                		wait(1)
-                		kgvalue = kgslot.Value
-                	else
-						game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
-                	    print("You have got: " .. kgvalue)
-                	end
-                else
-                    --player.statz.spins:Destroy()
-                    game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-    		    end
-    		end
-    	end)
-    end)
-    window2:Label("It will reset once you have 0 spin left", Color3.fromRGB(127, 143, 166))
+
+	window2:Toggle("Start Spinning",false,function(bool)
+		AutoSpinBL = bool
+		if AutoSpinBL == true then
+			game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
+			kgslot.ChildAdded:Connect(function(yes)
+				if yes.Name == "dontspin" then
+					wait(.1)
+					yes:Destroy()
+				end
+			end)
+			local spins = game.Players.LocalPlayer.statz.spins.Value
+			local des = game.Players.LocalPlayer.statz.spins
+			spawn(function()
+				for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
+					if v:FindFirstChild("KG") then
+						local a = Instance.new("StringValue")
+						a.Name = v.Name
+						a.Parent = game.Players.LocalPlayer.statz.genkailevel
+					end
+				end
+			end)
+			spawn(function()
+				while wait() do
+					if spins > 0 then
+						spins = game.Players.LocalPlayer.statz.spins.Value
+						kgvalue = kgslot.Value
+						print("Rolled: " .. kgvalue)
+						if kgvalue ~= a1 and kgvalue ~= a2 and kgvalue ~= a3 and kgvalue ~= a4 and kgvalue ~= a5 then
+							kgvalue = kgslot.Value
+							game.Players.LocalPlayer.startevent:FireServer("spin", "kg1")
+							wait(1)
+							kgvalue = kgslot.Value
+						else
+							print("You have got: " .. kgvalue)
+							if Autosave == true then
+								game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
+							end
+						end
+					else
+						if Autorejoin == true then
+							--player.statz.spins:Destroy()
+							game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+						end
+					end
+				end
+			end)
+		else
+		end
+	end)
 
     local elm = {}
     for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
@@ -192,7 +212,7 @@ library:Keybind("RightControl")
     local b
     local kgslot
     local kgvalue
-    window3:Dropdown("ELEMENT SLOT",{"element1", "element2", "element3", "element4"},function(kgS)
+    window3:Dropdown("Element Slot",{"element1", "element2", "element3", "element4"},function(kgS)
         b = kgS
     	kgslot = game.Players.LocalPlayer.statz.main:FindFirstChild(b)
     	kgvalue = kgslot.Value
@@ -202,84 +222,124 @@ library:Keybind("RightControl")
     end)
 
     local a1
-    window3:Dropdown("WHAT DO YOU WANT",elm,function(KG1)
+    window3:Dropdown("Element Choice 1",elm,function(KG1)
         print("Selected: " .. KG1)
-		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "Selected: " .. KG1 ,Duration = 5, })
+		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "1st Element Selected: " .. KG1 ,Duration = 5, })
     	a1 = KG1
     end)
     local a2
-    window3:Dropdown("WHAT DO YOU WANT",elm,function(KG2)
+    window3:Dropdown("Element Choice 2",elm,function(KG2)
         print("Selected: " .. KG2)
-		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "Selected: " .. KG2 ,Duration = 5, })
+		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "2nd Element Selected: " .. KG2 ,Duration = 5, })
     	a2 = KG2
     end)
     local a3
-    window3:Dropdown("WHAT DO YOU WANT",elm,function(KG3)
+    window3:Dropdown("Element Choice 3",elm,function(KG3)
         print("Selected: " .. KG3)
-		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "Selected: " .. KG3 ,Duration = 5, })
+		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "3rd Element Selected: " .. KG3 ,Duration = 5, })
     	a3 = KG3
     end)
     local a4
-    window3:Dropdown("WHAT DO YOU WANT",elm,function(KG4)
+    window3:Dropdown("Element Choice 4",elm,function(KG4)
         print("Selected: " .. KG4)
-		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "Selected: " .. KG4 ,Duration = 5, })
+		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "4th Element Selected: " .. KG4 ,Duration = 5, })
     	a4 = KG4
     end)
     local a5
-    window3:Dropdown("WHAT DO YOU WANT",elm,function(KG5)
+    window3:Dropdown("Element Choice 5",elm,function(KG5)
         print("Selected: " .. KG5)
-		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "Selected: " .. KG5 ,Duration = 5, })
+		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "5th Element Selected: " .. KG5 ,Duration = 5, })
     	a5 = KG5
     end)
-    window3:Button("Start Spinning",function()
-        game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
-        kgslot.ChildAdded:Connect(function(yes)
-            if yes.Name == "dontspin" then
-                wait(.1)
-                yes:Destroy()
-            end
-        end)
-    	local spins = game.Players.LocalPlayer.statz.spins.Value
-    	local des = game.Players.LocalPlayer.statz.spins
-        spawn(function()
-            for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
-                if v:FindFirstChild("KG") then
-                    local a = Instance.new("StringValue")
-                    a.Name = v.Name
-                    a.Parent = game.Players.LocalPlayer.statz.genkailevel
-                end
-            end
-        end)
-    	spawn(function()
-    	    while wait() do
-    		    if spins > 0 then
-                    spins = game.Players.LocalPlayer.statz.spins.Value
-                	kgvalue = kgslot.Value
-                	print("Rolled: " .. kgvalue)
-                	if kgvalue ~= a1 and kgvalue ~= a2 and kgvalue ~= a3 and kgvalue ~= a4 and kgvalue ~= a5 then
-                	    kgvalue = kgslot.Value
-                		game.Players.LocalPlayer.startevent:FireServer("spin", b)
-                		wait(1)
-                		kgvalue = kgslot.Value
-                	else
-						game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
-                	    print("You have got: " .. kgvalue)
-                	end
-                else
-                    --player.statz.spins:Destroy()
-                    game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-    		    end
-    		end
-    	end)
-    end)
-    window3:Label("It will reset once you have 0 spin left", Color3.fromRGB(127, 143, 166))
 
-    window4:Label("Made by NoobieDoge", Color3.fromRGB(127, 143, 166))
-    window4:Label("https://discord.gg/P2CeRjvTDt", Color3.fromRGB(127, 143, 166))
-    window4:Button("Copy Discord Link",function()
-        setclipboard("https://discord.gg/P2CeRjvTDt")
+	window3:Toggle("Start Spinning",false,function(bool)
+		StartSpinElm = bool
+		if StartSpinElm == true then
+	        game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
+			kgslot.ChildAdded:Connect(function(yes)
+				if yes.Name == "dontspin" then
+					wait(.1)
+					yes:Destroy()
+				end
+			end)
+			local spins = game.Players.LocalPlayer.statz.spins.Value
+			local des = game.Players.LocalPlayer.statz.spins
+			spawn(function()
+				for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
+					if v:FindFirstChild("KG") then
+						local a = Instance.new("StringValue")
+						a.Name = v.Name
+						a.Parent = game.Players.LocalPlayer.statz.genkailevel
+					end
+				end
+			end)
+			spawn(function()
+				while wait() do
+					if spins > 0 then
+						spins = game.Players.LocalPlayer.statz.spins.Value
+						kgvalue = kgslot.Value
+						print("Rolled: " .. kgvalue)
+						if kgvalue ~= a1 and kgvalue ~= a2 and kgvalue ~= a3 and kgvalue ~= a4 and kgvalue ~= a5 then
+							kgvalue = kgslot.Value
+							game.Players.LocalPlayer.startevent:FireServer("spin", b)
+							wait(1)
+							kgvalue = kgslot.Value
+						else
+							print("You have got: " .. kgvalue)
+							if Autosave == true then
+								game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
+							end
+						end
+					else
+						if Autorejoin == true then
+							--player.statz.spins:Destroy()
+							game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+						end
+					end
+				end
+			end)
+		else 
+		end
+    end)
+
+	window4:Label("Choose your Kenjutsu and press SPIN", Color3.fromRGB(127, 143, 166))
+
+    local ken = {}
+    for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu.ALLKENSTYLES:GetChildren()) do
+        if v:FindFirstChild("BREATHINGSTYLE") then
+            table.insert(ken, v.Name)
+        end
+    end
+
+	local kenselect1
+		window4:Dropdown("Kenjutsu Choice 1",ken,function(KEN1)
+		print("Selected: " .. KEN1)
+		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "1st Kenjutsu Selected: " .. KEN1 ,Duration = 5, })
+		kenselect1 = KEN1
+	end)
+	local kenselect2
+		window4:Dropdown("Kenjutsu Choice 2",ken,function(KEN2)
+		print("Selected: " .. KEN2)
+		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "2nd Kenjutsu Selected: " .. KEN2 ,Duration = 5, })
+		kenselect2 = KEN2
+	end)
+	local kenselect3
+		window4:Dropdown("Kenjutsu Choice 3",ken,function(KEN3)
+		print("Selected: " .. KEN3)
+		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "3rd Kenjutsu Selected: " .. KEN3 ,Duration = 5, })
+		kenselect2 = KEN3
+	end)
+
+	window4:Label("Coming soon!", Color3.fromRGB(127, 143, 166))
+
+	window5:Label("Made by NoobieDoge", Color3.fromRGB(127, 143, 166))
+	window5:Label("https://discord.gg/P2CeRjvTDt", Color3.fromRGB(127, 143, 166))
+	window5:Button("Copy Discord Link",function()
+		setclipboard("https://discord.gg/P2CeRjvTDt")
 		wait()
 		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "Discord link copied!",Duration = 1, })
-    end)
+	end)
 
+Autosave = true
+Autorejoin = true
 game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
