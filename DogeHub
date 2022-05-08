@@ -108,7 +108,6 @@ elseif game.PlaceId == 6284583030 then
 elseif game.PlaceId == 4616652839 then
     wait(.3) TextLabel.Text = "Game supported!" wait(1) TextLabel.Text = "Shindo Life     [Main Menu]" wait(1) ScreenGui:Destroy() 
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoInfSpin"))()
-    game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Script",     Text = "Bruhhub fucked up so Imma use SpyHub to replace it for a few days until I made my own inf spins script",Duration = 5, })
 elseif game.PlaceId == 4042427666 then
     wait(.3) TextLabel.Text = "Game supported!" wait(1) TextLabel.Text = "Anime Fighting Simulator" wait(1) TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!" wait(1) ScreenGui:Destroy()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Anime%20Fighting%20Simulator%202%20choose%201"))()
