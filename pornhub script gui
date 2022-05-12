@@ -267,7 +267,7 @@ function library:Window(name)
         ToggleButton.BorderColor3 = Color3.fromRGB(128, 128, 128)
         ToggleButton.Position = UDim2.new(1.2061069, 0, 0.0769230798, 0)
         ToggleButton.Size = UDim2.new(0, 22, 0, 22)
-        ToggleButton.Font = Enum.Font.SourceSans
+        ToggleButton.Font = Enum.Font.Gotham
         ToggleButton.Text = ""
         ToggleButton.TextColor3 = Color3.fromRGB(0, 0, 0)
         ToggleButton.TextSize = 14.000
