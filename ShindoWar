@@ -121,6 +121,50 @@ game:GetService('RunService').Stepped:connect(function()
     end
 end)
 
+local scrollfarm
+window1:Toggle("Scroll Snipe",false, function(bool)
+	scrollfarm = bool
+end)
+
+local function SCROLLFARM()
+	for i,v in pairs(game.workspace.GLOBALTIME:GetChildren()) do
+		if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
+			local scrollA = v.sh:FindFirstChild("invoke")
+			print("SCROLL SPAWNED")
+			pcall(function()
+				player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
+				fireclickdetector(v.sh.ClickDetector)
+				scrollA:FireServer(game.Players.LocalPlayer)
+			end)
+		end
+	end
+end
+local function SCROLLFARM1()
+	for i,v in pairs(game.workspace:GetChildren()) do
+		if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
+			local scrollA = v.sh:FindFirstChild("invoke")
+			print("SCROLL SPAWNED in workspace")
+			game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "DogeHub",     Text = "SCROLL SPAWNED in workspace",Duration = 0.000001, })
+			pcall(function()
+				player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
+				fireclickdetector(v.sh.ClickDetector)
+				scrollA:FireServer(game.Players.LocalPlayer)
+			end)
+		end
+	end
+end
+
+spawn(function()
+	while wait() do
+		if scrollfarm then
+			repeat wait()
+				SCROLLFARM()
+				SCROLLFARM1()
+			until not scrollfarm
+		end
+	end
+end)
+
 spawn(function()
     while wait() do
         if dfarm then
@@ -341,16 +385,6 @@ window1:Button("Infinite MD",function()
     local copy = mode:Clone()
     copy.Parent = mode.Parent
     mode:Destroy()
-    local chakra = string.split(game.Players.LocalPlayer.PlayerGui.Main.ingamearena.Bar.cha.Text,"CHI: ")[2]
-    c = chakra:gsub("CH%: ","")
-    local cha
-    local function chakracheck()
-		chakra = string.split(game.Players.LocalPlayer.PlayerGui.Main.ingamearena.Bar.cha.Text,"CHI: ")[2]
-		c = chakra:gsub("CH%: ","")
-		cha = c
-	end
-	halfchi = chakra/1.5
-	print("CHI will recharge at "..halfchi)
 end)
 
 window2:Label("DANGER", Color3.fromRGB(127, 143, 166))
