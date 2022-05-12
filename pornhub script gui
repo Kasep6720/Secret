@@ -193,7 +193,7 @@ function library:Window(name)
         Button.Selected = true
         Button.Font = Enum.Font.Gotham
         Button.TextColor3 = Color3.fromRGB(255, 255, 255)
-        Button.TextSize = 8.500
+        Button.TextSize = 10.000
         Button.TextStrokeTransparency = 123.000
         Button.TextWrapped = true
         Button.Text = name
@@ -218,7 +218,7 @@ function library:Window(name)
         Label.Size = UDim2.new(0, 206, 0, 29)
         Label.Font = Enum.Font.Gotham
         Label.Text = text or "Label"
-        Label.TextSize = 8.500
+        Label.TextSize = 10.000
         Label.ZIndex = 2 + zindex
 
         if type(color) == "boolean" and color then
@@ -256,7 +256,7 @@ function library:Window(name)
         ToggleDescription.Font = Enum.Font.Gotham
         ToggleDescription.Text = text or "Toggle"
         ToggleDescription.TextColor3 = Color3.fromRGB(245, 246, 250)
-        ToggleDescription.TextSize = 10.000
+        ToggleDescription.TextSize = 12.000
         ToggleDescription.TextWrapped = true
         ToggleDescription.TextXAlignment = Enum.TextXAlignment.Left
         ToggleDescription.ZIndex = 2 + zindex
@@ -306,7 +306,7 @@ function library:Window(name)
         TextBox.PlaceholderText = "..."
         TextBox.Text = ""
         TextBox.TextColor3 = Color3.fromRGB(245, 246, 250)
-        TextBox.TextSize = 16.000
+        TextBox.TextSize = 12.000
         TextBox.TextStrokeColor3 = Color3.fromRGB(245, 246, 250)
         TextBox.ZIndex = 2 + zindex
         TextBox:GetPropertyChangedSignal('Text'):connect(function()
@@ -325,7 +325,7 @@ function library:Window(name)
         BoxDescription.Font = Enum.Font.Gotham
         BoxDescription.Text = text or "Box"
         BoxDescription.TextColor3 = Color3.fromRGB(245, 246, 250)
-        BoxDescription.TextSize = 16.000
+        BoxDescription.TextSize = 12.000
         BoxDescription.TextXAlignment = Enum.TextXAlignment.Left
         BoxDescription.ZIndex = 2 + zindex
         pastSliders[winCount] = false
@@ -437,7 +437,7 @@ function library:Window(name)
         Description.Font = Enum.Font.Gotham
         Description.Text = text
         Description.TextColor3 = Color3.fromRGB(245, 246, 250)
-        Description.TextSize = 16.000
+        Description.TextSize = 12.000
         Description.ZIndex = 2 + zindex
 
         SilderFiller.Name = "SilderFiller"
@@ -509,7 +509,7 @@ function library:Window(name)
         Dropdown.Font = Enum.Font.Gotham
         Dropdown.Text = tostring(text)
         Dropdown.TextColor3 = Color3.fromRGB(245, 246, 250)
-        Dropdown.TextSize = 16.000
+        Dropdown.TextSize = 12.000
         Dropdown.TextStrokeTransparency = 123.000
         Dropdown.TextWrapped = true
         Dropdown.ZIndex = 3 + zindex
@@ -570,7 +570,7 @@ function library:Window(name)
             Button_2.Selected = true
             Button_2.Font = Enum.Font.Gotham
             Button_2.TextColor3 = Color3.fromRGB(245, 246, 250)
-            Button_2.TextSize = 16.000
+            Button_2.TextSize = 14.000
             Button_2.TextStrokeTransparency = 123.000
             Button_2.ZIndex = 6 + zindex
             Button_2.Text = name
