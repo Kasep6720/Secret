@@ -193,7 +193,7 @@ function library:Window(name)
         Button.Selected = true
         Button.Font = Enum.Font.Gotham
         Button.TextColor3 = Color3.fromRGB(255, 255, 255)
-        Button.TextSize = 10.000
+        Button.TextSize = 11.000
         Button.TextStrokeTransparency = 123.000
         Button.TextWrapped = true
         Button.Text = name
@@ -204,10 +204,10 @@ function library:Window(name)
     function functions:Label(text, color)
         local color = color or Color3.fromRGB(220, 221, 225)
 
-        sizes[winCount] = sizes[winCount] + 32
+        sizes[winCount] = sizes[winCount] + 20
         Window.Size = UDim2.new(0, 207, 0, sizes[winCount] + 10)
 
-        listOffset[winCount] = listOffset[winCount] + 32
+        listOffset[winCount] = listOffset[winCount] + 20
         local Label = Instance.new("TextLabel")
         Label.Name = "Label"
         Label.Parent = Window
@@ -218,7 +218,7 @@ function library:Window(name)
         Label.Size = UDim2.new(0, 206, 0, 29)
         Label.Font = Enum.Font.Gotham
         Label.Text = text or "Label"
-        Label.TextSize = 10.000
+        Label.TextSize = 11.000
         Label.ZIndex = 2 + zindex
 
         if type(color) == "boolean" and color then
