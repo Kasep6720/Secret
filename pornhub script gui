@@ -151,7 +151,7 @@ function library:Window(name)
     Minimise.Size = UDim2.new(0, 22, 0, 22)
     Minimise.ZIndex = 7 + zindex
     Minimise.Font = Enum.Font.Gotham
-    Minimise.Text = "_"
+    Minimise.Text = "-"
     Minimise.TextColor3 = Color3.fromRGB(0, 0, 0)
     Minimise.TextSize = 20.000
     Minimise.MouseButton1Up:connect(function()
@@ -193,7 +193,7 @@ function library:Window(name)
         Button.Selected = true
         Button.Font = Enum.Font.Gotham
         Button.TextColor3 = Color3.fromRGB(255, 255, 255)
-        Button.TextSize = 7.000
+        Button.TextSize = 8.500
         Button.TextStrokeTransparency = 123.000
         Button.TextWrapped = true
         Button.Text = name
@@ -218,7 +218,7 @@ function library:Window(name)
         Label.Size = UDim2.new(0, 206, 0, 29)
         Label.Font = Enum.Font.Gotham
         Label.Text = text or "Label"
-        Label.TextSize = 7.000
+        Label.TextSize = 8.500
         Label.ZIndex = 2 + zindex
 
         if type(color) == "boolean" and color then
