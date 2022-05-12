@@ -157,7 +157,7 @@ function library:Window(name)
     Minimise.MouseButton1Up:connect(function()
         Window.Visible = not Window.Visible
 	if Window.Visible then
-		Minimise.Text = "_"
+		Minimise.Text = "-"
 	else
 		Minimise.Text = "+"
 	end
@@ -193,7 +193,7 @@ function library:Window(name)
         Button.Selected = true
         Button.Font = Enum.Font.Gotham
         Button.TextColor3 = Color3.fromRGB(255, 255, 255)
-        Button.TextSize = 10.000
+        Button.TextSize = 7.000
         Button.TextStrokeTransparency = 123.000
         Button.TextWrapped = true
         Button.Text = name
@@ -218,7 +218,7 @@ function library:Window(name)
         Label.Size = UDim2.new(0, 206, 0, 29)
         Label.Font = Enum.Font.Gotham
         Label.Text = text or "Label"
-        Label.TextSize = 10.000
+        Label.TextSize = 7.000
         Label.ZIndex = 2 + zindex
 
         if type(color) == "boolean" and color then
@@ -270,7 +270,7 @@ function library:Window(name)
         ToggleButton.Font = Enum.Font.Gotham
         ToggleButton.Text = ""
         ToggleButton.TextColor3 = Color3.fromRGB(0, 0, 0)
-        ToggleButton.TextSize = 8.000
+        ToggleButton.TextSize = 5.000
         ToggleButton.ZIndex = 2 + zindex
         ToggleButton.MouseButton1Up:Connect(function()
             ToggleFiller.Visible = not ToggleFiller.Visible
