@@ -136,7 +136,7 @@ function library:Window(name)
     HeaderText.Position = UDim2.new(0, 0, -0.0020698905, 0)
     HeaderText.Size = UDim2.new(0, 206, 0, 33)
     HeaderText.ZIndex = 6 + zindex
-    HeaderText.Font = Enum.Font.GothamBlack
+    HeaderText.Font = Enum.Font.GothamSemiBold
     HeaderText.Text = name or "Window"
     HeaderText.TextColor3 = Color3.fromRGB(27, 27, 27)
     HeaderText.TextSize = 17.000
@@ -150,7 +150,7 @@ function library:Window(name)
     Minimise.Position = UDim2.new(0, 185, 0, 2)
     Minimise.Size = UDim2.new(0, 22, 0, 22)
     Minimise.ZIndex = 7 + zindex
-    Minimise.Font = Enum.Font.SourceSansLight
+    Minimise.Font = Enum.Font.Gotham
     Minimise.Text = "_"
     Minimise.TextColor3 = Color3.fromRGB(0, 0, 0)
     Minimise.TextSize = 20.000
@@ -191,7 +191,7 @@ function library:Window(name)
         Button.Size = UDim2.new(0, 182, 0, 26)
         Button.ZIndex = 2 + zindex
         Button.Selected = true
-        Button.Font = Enum.Font.SourceSans
+        Button.Font = Enum.Font.Gotham
         Button.TextColor3 = Color3.fromRGB(255, 255, 255)
         Button.TextSize = 16.000
         Button.TextStrokeTransparency = 123.000
@@ -216,7 +216,7 @@ function library:Window(name)
         Label.BorderColor3 = Color3.fromRGB(255, 255, 255)
         Label.Position = UDim2.new(0, 0, 0, listOffset[winCount])
         Label.Size = UDim2.new(0, 206, 0, 29)
-        Label.Font = Enum.Font.SourceSans
+        Label.Font = Enum.Font.Gotham
         Label.Text = text or "Label"
         Label.TextSize = 16.000
         Label.ZIndex = 2 + zindex
@@ -253,7 +253,7 @@ function library:Window(name)
         ToggleDescription.BackgroundTransparency = 1.000
         ToggleDescription.Position = UDim2.new(0, 14, 0, listOffset[winCount])
         ToggleDescription.Size = UDim2.new(0, 131, 0, 26)
-        ToggleDescription.Font = Enum.Font.SourceSans
+        ToggleDescription.Font = Enum.Font.Gotham
         ToggleDescription.Text = text or "Toggle"
         ToggleDescription.TextColor3 = Color3.fromRGB(245, 246, 250)
         ToggleDescription.TextSize = 16.000
@@ -301,7 +301,7 @@ function library:Window(name)
         TextBox.BorderColor3 = Color3.fromRGB(113, 128, 147)
         TextBox.Position = UDim2.new(0, 99, 0, listOffset[winCount])
         TextBox.Size = UDim2.new(0, 95, 0, 26)
-        TextBox.Font = Enum.Font.SourceSans
+        TextBox.Font = Enum.Font.Gotham
         TextBox.PlaceholderColor3 = Color3.fromRGB(220, 221, 225)
         TextBox.PlaceholderText = "..."
         TextBox.Text = ""
@@ -322,7 +322,7 @@ function library:Window(name)
         BoxDescription.BackgroundTransparency = 1.000
         BoxDescription.Position = UDim2.new(-0.894736826, 0, 0, 0)
         BoxDescription.Size = UDim2.new(0, 75, 0, 26)
-        BoxDescription.Font = Enum.Font.SourceSans
+        BoxDescription.Font = Enum.Font.Gotham
         BoxDescription.Text = text or "Box"
         BoxDescription.TextColor3 = Color3.fromRGB(245, 246, 250)
         BoxDescription.TextSize = 16.000
@@ -422,7 +422,7 @@ function library:Window(name)
         Current.BackgroundTransparency = 1.000
         Current.Position = UDim2.new(0, 3, 0, 22   )
         Current.Size = UDim2.new(0, 0, 0, 18)
-        Current.Font = Enum.Font.SourceSans
+        Current.Font = Enum.Font.Gotham
         Current.Text = tostring(default)
         Current.TextColor3 = Color3.fromRGB(220, 221, 225)
         Current.TextSize = 14.000  
@@ -434,7 +434,7 @@ function library:Window(name)
         Description.BackgroundTransparency = 1.000
         Description.Position = UDim2.new(0, -10, 0, -35)
         Description.Size = UDim2.new(0, 200, 0, 21)
-        Description.Font = Enum.Font.SourceSans
+        Description.Font = Enum.Font.Gotham
         Description.Text = text
         Description.TextColor3 = Color3.fromRGB(245, 246, 250)
         Description.TextSize = 16.000
@@ -506,7 +506,7 @@ function library:Window(name)
         Dropdown.Position = UDim2.new(0, 12, 0, listOffset[winCount])
         Dropdown.Size = UDim2.new(0, 182, 0, 26)
         Dropdown.Selected = true
-        Dropdown.Font = Enum.Font.SourceSans
+        Dropdown.Font = Enum.Font.Gotham
         Dropdown.Text = tostring(text)
         Dropdown.TextColor3 = Color3.fromRGB(245, 246, 250)
         Dropdown.TextSize = 16.000
@@ -534,7 +534,7 @@ function library:Window(name)
         DownSign.BackgroundTransparency = 1.000
         DownSign.Position = UDim2.new(0, 155, 0, 2)
         DownSign.Size = UDim2.new(0, 27, 0, 22)
-        DownSign.Font = Enum.Font.SourceSans
+        DownSign.Font = Enum.Font.Gotham
         DownSign.Text = "^"
         DownSign.TextColor3 = Color3.fromRGB(220, 221, 225)
         DownSign.TextSize = 20.000
@@ -568,7 +568,7 @@ function library:Window(name)
             Button_2.Position = UDim2.new(0, 6, 0, canvasSize + 1)
             Button_2.Size = UDim2.new(0, 170, 0, 26)
             Button_2.Selected = true
-            Button_2.Font = Enum.Font.SourceSans
+            Button_2.Font = Enum.Font.Gotham
             Button_2.TextColor3 = Color3.fromRGB(245, 246, 250)
             Button_2.TextSize = 16.000
             Button_2.TextStrokeTransparency = 123.000
