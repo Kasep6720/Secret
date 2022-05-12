@@ -214,7 +214,7 @@ function library:Window(name)
         Label.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
         Label.BackgroundTransparency = 1.000
         Label.BorderColor3 = Color3.fromRGB(255, 255, 255)
-        Label.Position = UDim2.new(0, 0, 0, listOffset[winCount] + 9)
+        Label.Position = UDim2.new(0, 0, 0, listOffset[winCount] + 7.5)
         Label.Size = UDim2.new(0, 206, 0, 29)
         Label.Font = Enum.Font.Gotham
         Label.Text = text or "Label"
@@ -570,7 +570,7 @@ function library:Window(name)
             Button_2.Selected = true
             Button_2.Font = Enum.Font.Gotham
             Button_2.TextColor3 = Color3.fromRGB(245, 246, 250)
-            Button_2.TextSize = 14.000
+            Button_2.TextSize = 12.000
             Button_2.TextStrokeTransparency = 123.000
             Button_2.ZIndex = 6 + zindex
             Button_2.Text = name
