@@ -136,7 +136,7 @@ function library:Window(name)
     HeaderText.Position = UDim2.new(0, 0, -0.0020698905, 0)
     HeaderText.Size = UDim2.new(0, 206, 0, 33)
     HeaderText.ZIndex = 6 + zindex
-    HeaderText.Font = Enum.Font.GothamSemiBold
+    HeaderText.Font = Enum.Font.GothamSemibold
     HeaderText.Text = name or "Window"
     HeaderText.TextColor3 = Color3.fromRGB(27, 27, 27)
     HeaderText.TextSize = 17.000
