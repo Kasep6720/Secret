@@ -205,7 +205,7 @@ function library:Window(name)
         local color = color or Color3.fromRGB(220, 221, 225)
 
         sizes[winCount] = sizes[winCount] + 20
-        Window.Size = UDim2.new(0, 207, 0, sizes[winCount] + 5)
+        Window.Size = UDim2.new(0, 207, 0, sizes[winCount] + 10)
 
         listOffset[winCount] = listOffset[winCount] + 20
         local Label = Instance.new("TextLabel")
@@ -214,7 +214,7 @@ function library:Window(name)
         Label.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
         Label.BackgroundTransparency = 1.000
         Label.BorderColor3 = Color3.fromRGB(255, 255, 255)
-        Label.Position = UDim2.new(0, 0, 0, listOffset[winCount])
+        Label.Position = UDim2.new(0, 0, 0, listOffset[winCount] + 5)
         Label.Size = UDim2.new(0, 206, 0, 29)
         Label.Font = Enum.Font.Gotham
         Label.Text = text or "Label"
