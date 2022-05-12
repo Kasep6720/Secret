@@ -214,7 +214,7 @@ function library:Window(name)
         Label.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
         Label.BackgroundTransparency = 1.000
         Label.BorderColor3 = Color3.fromRGB(255, 255, 255)
-        Label.Position = UDim2.new(0, 0, 0, listOffset[winCount] - 10)
+        Label.Position = UDim2.new(0, 0, 0, listOffset[winCount] + 10)
         Label.Size = UDim2.new(0, 206, 0, 29)
         Label.Font = Enum.Font.Gotham
         Label.Text = text or "Label"
