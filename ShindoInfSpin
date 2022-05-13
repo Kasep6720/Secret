@@ -11,9 +11,80 @@ library:Keybind("RightControl")
 	window1:Label("Utility Functions", Color3.fromRGB(127, 143, 166)) 
 
 	window1:Button("Reset Spins NOW",function()
-		game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
-		wait()
-		game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
+		if datasavedandyoucanredeemcodes == true then
+			local player = game.Players.LocalPlayer
+			local ScreenGuiK = Instance.new("ScreenGui")
+			local FrameK = Instance.new("Frame")
+			local TextLabel = Instance.new("TextLabel")
+			local TextButton = Instance.new("TextButton")
+			local TextButton_2 = Instance.new("TextButton")
+	
+			ScreenGuiK.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+	
+			FrameK.Parent = ScreenGuiK
+			FrameK.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			FrameK.Position = UDim2.new(0.005, 0, 0.7, 0)
+			FrameK.Size = UDim2.new(0, 200, 0, 120)
+	
+			TextLabel.Parent = FrameK
+			TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+			TextLabel.Size = UDim2.new(0, 220, 0, 60)
+			TextLabel.Font = Enum.Font.TitilliumWeb
+			TextLabel.Text = [[Are you sure you want to reset data?
+			(you might lose rewards from 
+			codes that you've redeemed)]]
+			TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+			TextLabel.TextScaled = true
+			TextLabel.TextSize = 25.000
+			TextLabel.TextWrapped = true
+	
+			TextButton.Parent = FrameK
+			TextButton.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+			TextButton.Position = UDim2.new(0.55, 0, 0.500000006, 0)
+			TextButton.Size = UDim2.new(0, 110, 0, 60)
+			TextButton.Font = Enum.Font.TitilliumWeb
+			TextButton.Text = "Yes"
+			TextButton.TextColor3 = Color3.fromRGB(200, 200, 200)
+			TextButton.TextScaled = true
+			TextButton.TextSize = 40.000
+			TextButton.TextWrapped = true
+	
+			function OKReset()
+				for i,v in pairs(player.PlayerGui:GetChildren()) do
+					if v.Name == "ScreenGui" then
+						v:Destroy()
+					end
+				end
+				game:GetService("Players").LocalPlayer.startevent:FireServer("band", "/128")
+				wait()
+				game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
+			end
+			TextButton.MouseButton1Click:connect(OKReset)
+	
+			TextButton_2.Parent = FrameK
+			TextButton_2.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+			TextButton_2.Position = UDim2.new(0, 0, 0.500000006, 0)
+			TextButton_2.Size = UDim2.new(0, 110, 0, 60)
+			TextButton_2.Font = Enum.Font.TitilliumWeb
+			TextButton_2.Text = "No"
+			TextButton_2.TextColor3 = Color3.fromRGB(200, 200, 200)
+			TextButton_2.TextScaled = true
+			TextButton_2.TextSize = 40.000
+			TextButton_2.TextWrapped = true
+	
+				function cancelReset()
+				for i,v in pairs(player.PlayerGui:GetChildren()) do
+					if v.Name == "ScreenGui" then
+						v:Destroy()
+					end
+				end
+			end
+			TextButton_2.MouseButton1Click:connect(cancelReset)	
+		else
+			game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+			wait()
+			game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
+		end
 	end)
 
 	window1:Label("-----------------------------------------------", Color3.fromRGB(127, 143, 166)) 
@@ -63,6 +134,7 @@ library:Keybind("RightControl")
 			game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
 			wait()
 			game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "You may now enter villages or leave game to save your data",Duration = 3, })
+			datasavedandyoucanredeemcodes = true
 			wait(1)
 		end
 		TextButton.MouseButton1Click:connect(OKKeep)
@@ -726,3 +798,13 @@ Autosave = true
 Autorejoin = true
 AutoF9 = true
 game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+spawn(function()
+	while wait() do
+		if datasavedandyoucanredeemcodes == true then
+			
+		else
+			game.Players.LocalPlayer.PlayerGui.Main.Customization.Codes.Text = [[WARNING:
+			DO NOT REDEEM CODES BEFORE SAVING DATA]]
+		end
+	end
+end)
