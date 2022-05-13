@@ -31,34 +31,6 @@ function toTarget(pos, targetPos, targetCFrame)
     if not tween then return err end
 end
 
-local args = {[1] = "easy"}
-workspace.zetsugamemode.get:FireServer(unpack(args))
-wait()
-
-local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
-local g = game
-local w = g.Workspace
-local l = g.Lighting
-local t = w.Terrain
-t.WaterWaveSize = 0
-t.WaterWaveSpeed = 0
-t.WaterReflectance = 0
-t.WaterTransparency = 0
-l.GlobalShadows = false
-l.FogEnd = 9e9
-l.Brightness = 0
-settings().Rendering.QualityLevel = "Level01"
-for i,v in pairs(g:GetDescendants()) do
-	if v:IsA("Part") or v:IsA("Union") or v:IsA("MeshPart") then
-		v.Material = "Plastic"
-		v.Reflectance = 0
-	elseif v:IsA("Decal") and decalsyeeted then 
-		v.Transparency = 1
-	elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then 
-		v.Lifetime = NumberRange.new(0)
-	end
-end
-
 --loading GUI
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20script%20gui"))()
 local window1 = library:Window("Dungeon Farm - DogeHub")
@@ -362,5 +334,33 @@ spawn(function()
 end)
 
 scrollfarm = true
+
+local args = {[1] = "easy"}
+workspace.zetsugamemode.get:FireServer(unpack(args))
+wait()
+
+local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
+local g = game
+local w = g.Workspace
+local l = g.Lighting
+local t = w.Terrain
+t.WaterWaveSize = 0
+t.WaterWaveSpeed = 0
+t.WaterReflectance = 0
+t.WaterTransparency = 0
+l.GlobalShadows = false
+l.FogEnd = 9e9
+l.Brightness = 0
+settings().Rendering.QualityLevel = "Level01"
+for i,v in pairs(g:GetDescendants()) do
+	if v:IsA("Part") or v:IsA("Union") or v:IsA("MeshPart") then
+		v.Material = "Plastic"
+		v.Reflectance = 0
+	elseif v:IsA("Decal") and decalsyeeted then 
+		v.Transparency = 1
+	elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then 
+		v.Lifetime = NumberRange.new(0)
+	end
+end
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/HDTerebi/Shindo-Life/main/No%20CD%20Method"))()
