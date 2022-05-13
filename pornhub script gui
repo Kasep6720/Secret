@@ -153,13 +153,15 @@ function library:Window(name)
     Minimise.Font = Enum.Font.Gotham
     Minimise.Text = "-"
     Minimise.TextColor3 = Color3.fromRGB(0, 0, 0)
-    Minimise.TextSize = 20.000
+    Minimise.TextSize = 25.000
     Minimise.MouseButton1Up:connect(function()
         Window.Visible = not Window.Visible
 	if Window.Visible then
 		Minimise.Text = "-"
+		Minimise.TextSize = 25.000
 	else
 		Minimise.Text = "+"
+		Minimise.TextSize = 20.000
 	end
     end)
 
