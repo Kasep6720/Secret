@@ -597,16 +597,17 @@ function AUTOFARM()
             VirtualUser:ClickButton2(Vector2.new())
         end)
         --variables
-        local player = game.Players.LocalPlayer
-        function toTarget(pos, targetPos, targetCFrame)
-            local tween_s = game:service"TweenService"
-            local info = TweenInfo.new((targetPos - pos).Magnitude/getgenv().speed, Enum.EasingStyle.Linear)
-            local tween, err = pcall(function()
-            local tween = tween_s:Create(game:GetService("Players").LocalPlayer.Character["HumanoidRootPart"], info, {CFrame = targetCFrame * CFrame.fromAxisAngle(Vector3.new(1,0,0), math.rad(90))})
-            tween:Play()
-            end)
-            if not tween then return err end
-        end
+		local player = game.Players.LocalPlayer
+		local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
+		function toTarget(pos, targetPos, targetCFrame)
+			local tween_s = game:service"TweenService"
+			local info = TweenInfo.new((targetPos - pos).Magnitude/getgenv().speed, Enum.EasingStyle.Linear)
+			local tween, err = pcall(function()
+			local tween = tween_s:Create(game:GetService("Players").LocalPlayer.Character["HumanoidRootPart"], info, {CFrame = targetCFrame * CFrame.fromAxisAngle(Vector3.new(1,0,0), math.rad(90))})
+			tween:Play()
+			end)
+			if not tween then return err end
+		end
 
         --loading GUI
         local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20script%20gui"))()
@@ -669,6 +670,45 @@ function AUTOFARM()
 
         window1:Label("Quest Proccess", Color3.fromRGB(127, 143, 166))
 
+        window1:Toggle("Auto Mentor Quests (coming soon)",false, function(bool)
+            EnabledAutoMentor = bool
+        end)
+        
+        spawn(function()
+            while wait() do
+                if EnabledAutoMentor then
+                	if mission.Visible == false then
+						if game.PlaceId == 5451398863 then
+							local args = {[1] = game:GetService("Players").LocalPlayer}
+							workspace.sensei.missions:FindFirstChild("Narumaki").missiongiver.CLIENTTALK:FireServer(unpack(args))
+						elseif game.PlaceId == 6901575446 then
+							local args = {[1] = game:GetService("Players").LocalPlayer}
+							workspace.sensei.missions:FindFirstChild("Jiso Seishin").missiongiver.CLIENTTALK:FireServer(unpack(args))
+						elseif game.PlaceId == 5451401540 then
+							local args = {[1] = game:GetService("Players").LocalPlayer}
+							workspace.sensei.missions:FindFirstChild("Shindai Akuma").missiongiver.CLIENTTALK:FireServer(unpack(args))
+	                		player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Shindai Akuma"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
+						elseif game.PlaceId == 5431071837 then
+							local args = {[1] = game:GetService("Players").LocalPlayer}
+							workspace.sensei.missions:FindFirstChild("Ryuji Kenichi").missiongiver.CLIENTTALK:FireServer(unpack(args))
+						elseif game.PlaceId == 4601350656 then
+							for v = 1,8 do
+								wait()
+								game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace")["Ken Mentor"].HumanoidRootPart.Position)
+							end
+							game.Workspace.HumanoidRootPart.CFrame=game:GetService("Workspace")["Ken Mentor"].HumanoidRootPart.CFrame+Vector3.new(-6,4,0)
+						else
+                			game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Wrong Map",Text = "You cannot do mentors missions in this map!",Duration = 5, })
+						end
+					else
+						if player.PlayerGui.Main.sensei.MAINSCRIPT.missiontypes.currrentmissions.Text == "1/1" then
+							workspace.sensei.missions:FindFirstChild("Narumaki").missiongiver.CLIENTTALK:FireServer(unpack(args))
+						end
+					end
+                end
+            end
+        end)
+        
         window1:Toggle("1/5",false, function(bool)
             punches = bool
         end)
