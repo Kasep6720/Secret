@@ -139,7 +139,7 @@ function library:Window(name)
     HeaderText.Font = Enum.Font.GothamSemibold
     HeaderText.Text = name or "Window"
     HeaderText.TextColor3 = Color3.fromRGB(27, 27, 27)
-    HeaderText.TextSize = 13.000
+    HeaderText.TextSize = 13.500
 
     local Minimise = Instance.new("TextButton")
     local Window = Instance.new("Frame")
@@ -158,7 +158,7 @@ function library:Window(name)
         Window.Visible = not Window.Visible
 	if Window.Visible then
 		Minimise.Text = "-"
-		Minimise.TextSize = 25.000
+		Minimise.TextSize = 30.000
 	else
 		Minimise.Text = "+"
 		Minimise.TextSize = 20.000
