@@ -621,9 +621,9 @@ Frame.Position = UDim2.new(0.70, 0, 0.20, 0)
 Frame.Size = UDim2.new(0, 200, 0, 150)
 
 TextLabel.Parent = Frame
-TextLabel.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
 TextLabel.Size = UDim2.new(0, 330, 0, 90)
-TextLabel.Font = Enum.Font.AmaticSC
+TextLabel.Font = Enum.Font.TitilliumWeb
 TextLabel.Text = "Do not press Inf Mode and Auto Charge at the same time!!!"
 TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
 TextLabel.TextScaled = true
@@ -631,12 +631,12 @@ TextLabel.TextSize = 35.000
 TextLabel.TextWrapped = true
 
 TextButton.Parent = Frame
-TextButton.BackgroundColor3 = Color3.fromRGB(0, 230, 30)
+TextButton.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
 TextButton.Position = UDim2.new(0, 0, 0.600000006, 0)
 TextButton.Size = UDim2.new(0, 330, 0, 60)
-TextButton.Font = Enum.Font.AmaticSC
+TextButton.Font = Enum.Font.TitilliumWeb
 TextButton.Text = "OK"
-TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(200, 200, 200)
 TextButton.TextScaled = true
 TextButton.TextSize = 40.000
 TextButton.TextWrapped = true
