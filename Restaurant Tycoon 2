@@ -6,6 +6,73 @@ local VirtualUser=game:service'VirtualUser'
 	VirtualUser:ClickButton2(Vector2.new())
 end)
 
+local player = game.Players.LocalPlayer
+
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20script%20gui"))()
+local window1 = library:Window("Restaurant Tycoon 2 - DogeHub")
+local window2 = library:Window("Credits")
+
+library:Keybind("RightControl")
+
+window1:Label("Basic Functions", Color3.fromRGB(127, 143, 166))
+
+window1:Slider("Walkspeed",16,200,16, function(value) 
+    sliderspeed = value
+end)
+window1:Slider("JumpPower",50,200,50, function(value)
+    sliderjump = value
+end)
+window1:Toggle("Enabled",false,function(bool)
+    sliderpowa = bool
+end)
+
+spawn(function() 
+    while wait() do
+        if sliderpowa then
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = sliderspeed
+            game.Players.LocalPlayer.Character.Humanoid.JumpPower = sliderjump
+        end
+    end
+end)
+
+window1:Button("Upgrade Performance", function() 
+    local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
+    local g = game
+    local w = g.Workspace
+    local l = g.Lighting
+    local t = w.Terrain
+    t.WaterWaveSize = 0
+    t.WaterWaveSpeed = 0
+    t.WaterReflectance = 0
+    t.WaterTransparency = 0
+    l.GlobalShadows = false
+    l.FogEnd = 9e9
+    l.Brightness = 0
+    settings().Rendering.QualityLevel = "Level01"
+    for i,v in pairs(g:GetDescendants()) do
+        if v:IsA("Part") or v:IsA("Union") or v:IsA("MeshPart") then
+            v.Material = "Plastic"
+            v.Reflectance = 0
+        elseif v:IsA("Decal") and decalsyeeted then 
+            v.Transparency = 1
+        elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then 
+            v.Lifetime = NumberRange.new(0)
+        end
+    end
+end)
+
+window1:Label("AutoFarm Functions:", Color3.fromRGB(127, 143, 166))
+window1:Label("Auto collect cash", Color3.fromRGB(127, 143, 166))
+window1:Label("Auto serve customers", Color3.fromRGB(127, 143, 166))
+window1:Label("Speed up cooking process", Color3.fromRGB(127, 143, 166))
+
+window2:Button("Made by NoobieDoge",function()
+	setclipboard("https://discord.gg/P2CeRjvTDt")
+end)
+window2:Label("Hide/Show GUI = Right Ctrl", Color3.fromRGB(127, 143, 166))
+
+game.CoreGui.TurtleUiLib.UiWindow.Header.HeaderText.TextSize = 11.5
+
 local Cooking = game.Players.LocalPlayer.PlayerScripts.CookingNew
 local CookProgress = require(Cooking.CookProgress)
 local MultiClick = require(Cooking.InputDetectors.MultiClick)
@@ -84,68 +151,3 @@ Worker.event = function(...)
    end
    return
 end]]
-
-local player = game.Players.LocalPlayer
-
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20script%20gui"))()
-local window1 = library:Window("Restaurant Tycoon 2")
-local window2 = library:Window("Credits")
-
-library:Keybind("RightControl")
-
-window1:Label("Basic Functions", Color3.fromRGB(127, 143, 166))
-
-window1:Slider("Walkspeed",16,200,16, function(value) 
-    sliderspeed = value
-end)
-window1:Slider("JumpPower",50,200,50, function(value)
-    sliderjump = value
-end)
-window1:Toggle("Enabled",false,function(bool)
-    sliderpowa = bool
-end)
-
-spawn(function() 
-    while wait() do
-        if sliderpowa then
-            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = sliderspeed
-            game.Players.LocalPlayer.Character.Humanoid.JumpPower = sliderjump
-        end
-    end
-end)
-
-window1:Button("Upgrade Performance", function() 
-    local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
-    local g = game
-    local w = g.Workspace
-    local l = g.Lighting
-    local t = w.Terrain
-    t.WaterWaveSize = 0
-    t.WaterWaveSpeed = 0
-    t.WaterReflectance = 0
-    t.WaterTransparency = 0
-    l.GlobalShadows = false
-    l.FogEnd = 9e9
-    l.Brightness = 0
-    settings().Rendering.QualityLevel = "Level01"
-    for i,v in pairs(g:GetDescendants()) do
-        if v:IsA("Part") or v:IsA("Union") or v:IsA("MeshPart") then
-            v.Material = "Plastic"
-            v.Reflectance = 0
-        elseif v:IsA("Decal") and decalsyeeted then 
-            v.Transparency = 1
-        elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then 
-            v.Lifetime = NumberRange.new(0)
-        end
-    end
-end)
-
-window1:Label("AutoFarm Functions:", Color3.fromRGB(127, 143, 166))
-window1:Label("Auto collect cash", Color3.fromRGB(127, 143, 166))
-window1:Label("Auto serve customers", Color3.fromRGB(127, 143, 166))
-window1:Label("Speed up cooking process", Color3.fromRGB(127, 143, 166))
-
-window2:Button("Made by NoobieDoge",function()
-	setclipboard("https://discord.gg/P2CeRjvTDt")
-end)
-window2:Label("Hide/Show GUI = Right Ctrl", Color3.fromRGB(127, 143, 166))
