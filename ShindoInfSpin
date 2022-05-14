@@ -252,6 +252,7 @@ library:Keybind("RightControl")
 								print("You have got: " .. kgvalue1)
 								game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "You have got: " .. kgvalue1,Duration = 0.00001, })
 								if Autosave == true then
+									datasavedandyoucanredeemcodes = true
 									game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
 								end
 							end
@@ -307,6 +308,7 @@ library:Keybind("RightControl")
 								print("You have got: " .. kgvalue2)
 								game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "You have got: " .. kgvalue2,Duration = 0.00001, })
 								if Autosave == true then
+									datasavedandyoucanredeemcodes = true
 									game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
 								end
 							end
@@ -363,6 +365,7 @@ library:Keybind("RightControl")
 									print("You have got: " .. kgvalue3)
 									game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "You have got: " .. kgvalue3,Duration = 0.00001, })
 									if Autosave == true then
+										datasavedandyoucanredeemcodes = true
 										game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
 									end
 								end
@@ -420,6 +423,7 @@ library:Keybind("RightControl")
 									print("You have got: " .. kgvalue4)
 									game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "You have got: " .. kgvalue4,Duration = 0.00001, })
 									if Autosave == true then
+										datasavedandyoucanredeemcodes = true
 										game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
 									end
 								end
@@ -516,6 +520,7 @@ library:Keybind("RightControl")
 								print("You have got: " .. elmvalue1)
 								game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "You have got: " .. elmvalue1,Duration = 0.00001, })
 								if Autosave == true then
+									datasavedandyoucanredeemcodes = true
 									game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
 								end
 							end
@@ -571,6 +576,7 @@ library:Keybind("RightControl")
 								print("You have got: " .. elmvalue2)
 								game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "You have got: " .. elmvalue2,Duration = 0.00001, })
 								if Autosave == true then
+									datasavedandyoucanredeemcodes = true
 									game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
 								end
 							end
@@ -627,6 +633,7 @@ library:Keybind("RightControl")
 									print("You have got: " .. elmvalue3)
 									game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "You have got: " .. elmvalue3,Duration = 0.00001, })
 									if Autosave == true then
+										datasavedandyoucanredeemcodes = true
 										game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
 									end
 								end
@@ -684,6 +691,7 @@ library:Keybind("RightControl")
 									print("You have got: " .. elmvalue4)
 									game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "You have got: " .. elmvalue4,Duration = 0.00001, })
 									if Autosave == true then
+										datasavedandyoucanredeemcodes = true
 										game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
 									end
 								end
@@ -770,6 +778,7 @@ library:Keybind("RightControl")
 								print("You have got: " .. kenvalue)
 								game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "You have got: " .. kenvalue,Duration = 0.00001, })
 								if Autosave == true then
+									datasavedandyoucanredeemcodes = true
 									game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
 								end
 							end
