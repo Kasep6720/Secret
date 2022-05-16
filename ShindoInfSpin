@@ -170,7 +170,7 @@ library:Keybind("RightControl")
 	Autorejoin = bool
 	end)
 
-	window1:Toggle("Auto Turn on F9",true,function(bool)
+	window1:Toggle("Auto Turn on F9",false,function(bool)
 	AutoF9 = bool
 	end)
 
@@ -260,6 +260,8 @@ library:Keybind("RightControl")
 					else
 						if Autorejoin == true then
 							--player.statz.spins:Destroy()
+							game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+							wait()
 							game:GetService('TeleportService'):Teleport(game.PlaceId, player)
 						end
 					end
@@ -316,6 +318,8 @@ library:Keybind("RightControl")
 					else
 						if Autorejoin == true then
 							--player.statz.spins:Destroy()
+							game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+							wait()
 							game:GetService('TeleportService'):Teleport(game.PlaceId, player)
 						end
 					end
@@ -373,6 +377,8 @@ library:Keybind("RightControl")
 						else
 							if Autorejoin == true then
 								--player.statz.spins:Destroy()
+								game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+								wait()
 								game:GetService('TeleportService'):Teleport(game.PlaceId, player)
 							end
 						end
@@ -431,6 +437,8 @@ library:Keybind("RightControl")
 						else
 							if Autorejoin == true then
 								--player.statz.spins:Destroy()
+								game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+								wait()
 								game:GetService('TeleportService'):Teleport(game.PlaceId, player)
 							end
 						end
@@ -528,6 +536,8 @@ library:Keybind("RightControl")
 					else
 						if Autorejoin == true then
 							--player.statz.spins:Destroy()
+							game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+							wait()
 							game:GetService('TeleportService'):Teleport(game.PlaceId, player)
 						end
 					end
@@ -584,6 +594,8 @@ library:Keybind("RightControl")
 					else
 						if Autorejoin == true then
 							--player.statz.spins:Destroy()
+							game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+							wait()
 							game:GetService('TeleportService'):Teleport(game.PlaceId, player)
 						end
 					end
@@ -641,6 +653,8 @@ library:Keybind("RightControl")
 						else
 							if Autorejoin == true then
 								--player.statz.spins:Destroy()
+								game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+								wait()
 								game:GetService('TeleportService'):Teleport(game.PlaceId, player)
 							end
 						end
@@ -699,6 +713,8 @@ library:Keybind("RightControl")
 						else
 							if Autorejoin == true then
 								--player.statz.spins:Destroy()
+								game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+								wait()
 								game:GetService('TeleportService'):Teleport(game.PlaceId, player)
 							end
 						end
@@ -786,6 +802,8 @@ library:Keybind("RightControl")
 					else
 						if Autorejoin == true then
 							--player.statz.spins:Destroy()
+							game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+							wait()
 							game:GetService('TeleportService'):Teleport(game.PlaceId, player)
 						end
 					end
@@ -803,10 +821,6 @@ library:Keybind("RightControl")
 		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "Discord link copied!",Duration = 1, })
 	end)
 
-Autosave = true
-Autorejoin = true
-AutoF9 = true
-game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
 spawn(function()
 	while wait() do
 		if datasavedandyoucanredeemcodes == true then
@@ -817,3 +831,6 @@ spawn(function()
 		end
 	end
 end)
+Autosave = true
+Autorejoin = true
+game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
