@@ -552,8 +552,8 @@ function library:Window(name)
         DropdownFrame.Size = UDim2.new(0, 182, 0, 0)
         DropdownFrame.Visible = false
         DropdownFrame.CanvasSize = UDim2.new(0, 0, 0, 0)
-        DropdownFrame.ScrollBarThickness = 4
-        DropdownFrame.VerticalScrollBarPosition = Enum.VerticalScrollBarPosition.Left
+        DropdownFrame.ScrollBarThickness = 5
+        DropdownFrame.VerticalScrollBarPosition = Enum.VerticalScrollBarPosition.Right
         DropdownFrame.ZIndex = 5 + zindex
         DropdownFrame.ScrollingDirection = Enum.ScrollingDirection.Y
         DropdownFrame.ScrollBarImageColor3 = Color3.fromRGB(220, 221, 225)
