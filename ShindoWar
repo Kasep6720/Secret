@@ -72,34 +72,24 @@ window1:Button("Auto setup",function()
     game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
     local args = {[1] = "kgbag",[2] = "kg1",[3] = "sengoku"}
     game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    wait()
     local args = {[1] = "kgbag",[2] = "kg2",[3] = "renshikigold"}
     game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    wait()
     local args = {[1] = "kgbag",[2] = "kg3",[3] = "renshiki"}
     game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    wait()
     local args = {[1] = "kgbag",[2] = "kg4",[3] = "tenseigan"}
     game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    wait()
     local args = {[1] = "kgbag",[2] = "e1",[3] = "fire"}
     game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    wait()
     local args = {[1] = "kgbag",[2] = "e2",[3] = "lightning"}
     game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    wait()
     local args = {[1] = "kgbag",[2] = "e2",[3] = "goldlightning"}
     game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    wait()
     local args = {[1] = "kgbag",[2] = "e3",[3] = "acid"}
     game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    wait()
     local args = {[1] = "kgbag",[2] = "e4",[3] = "water"}
     game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    wait()
     local args = {[1] = "kgbag",[2] = "e4",[3] = "gale"}
     game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    wait()
 end)
 
 local dfarm
@@ -194,7 +184,7 @@ spawn(function()
                                 player.Character.HumanoidRootPart.CFrame=(v.HumanoidRootPart.CFrame * CFrame.new(0, 7, .3))
                                 v.Humanoid.Health = 0
                                 wait(.004)
-                            until v.Humanoid.Health == 0 or not dfarm
+                            until not v:FindFirstChild("Humanoid") or not dfarm
                         end
                     end)
                 end
@@ -212,7 +202,7 @@ spawn(function()
                         repeat 
 							v.Humanoid.Health = 0 v.Humanoid.Health = 0 v.Humanoid.Health = 0 v.Humanoid.Health = 0 v.Humanoid.Health = 0
 							game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.Torso.Position)
-                        until v.Humanoid.Health == 0 or not keel
+                        until not v:FindFirstChild("Humanoid") or not keel
                     end
                 end)
 			end
