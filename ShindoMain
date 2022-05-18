@@ -344,7 +344,8 @@ function MISC()
                         for i,v in pairs(workspace.npc:GetChildren()) do
                             pcall(function()
                                 if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-                                    repeat v.Humanoid.Health = 0
+                                    repeat wait()
+                                    	v.Humanoid.Health = 0
                                     until v.Humanoid.Health == 0 or not keel
                                 end
                             end)
@@ -768,8 +769,9 @@ function AUTOFARM()
                     for i,v in pairs(workspace.npc:GetChildren()) do
                         pcall(function()
                             if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-                                repeat v.Humanoid.Health = 0 v.Humanoid.Health = 0 v.Humanoid.Health = 0 v.Humanoid.Health = 0 v.Humanoid.Health = 0
-                                until v.Humanoid.Health == 0 or not dfarm
+                                repeat wait()
+                                	v.Humanoid.Health = 0 v.Humanoid.Health = 0 v.Humanoid.Health = 0 v.Humanoid.Health = 0 v.Humanoid.Health = 0
+                                until not v:FindFirstChild("Humanoid") or not dfarm
                             end
                         end)
                     end
@@ -965,7 +967,7 @@ function AUTOFARM()
         TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
         TextLabel.Size = UDim2.new(0, 200, 0, 40)
         TextLabel.Font = Enum.Font.TitilliumWeb
-        TextLabel.Text = "AutoFarms Choose 1"
+        TextLabel.Text = "Quest Farms Choose 1"
         TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
         TextLabel.TextScaled = true
         TextLabel.TextSize = 35.000
@@ -2405,7 +2407,7 @@ function AUTOFARM()
 								pcall(function()
 									if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
 										repeat v.Humanoid.Health = 0
-										until v.Humanoid.Health == 0 or not keel
+										until v.Humanoid.Health == 0 or not autooofarm
 									end
 								end)
 							end
