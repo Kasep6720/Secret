@@ -53,15 +53,6 @@ window1:Toggle("Legacy Farm Mode",false, function(bool)
     Legacy = bool
 end)
 
-game:GetService('RunService').Stepped:connect(function()
-    if E then
-        pcall(function()
-            game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
-            game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
-        end)
-    end
-end)
-
 spawn(function()
     while wait() do
         if Legacy then
@@ -89,7 +80,7 @@ spawn(function()
                             wait(.000000000000001)
                             v.Humanoid.Health = 0
                         end)
-                    until v.Humanoid.Health == 0 or not dfarm or not v
+                    until not v:FindFirstChild("Humanoid") or not Legacy or not v
                 end
             end
         end
@@ -102,10 +93,10 @@ spawn(function()
 			for i,v in pairs(workspace.npc:GetChildren()) do
 				pcall(function()
 					if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-						repeat v.Humanoid.Health = 0
+						repeat wait() v.Humanoid.Health = 0
 						game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
 						player.Character.HumanoidRootPart.CFrame=(v.HumanoidRootPart.CFrame * CFrame.new(0, 7, .3))
-						until v.Humanoid.Health == 0 or not dfarm
+						until not v:FindFirstChild("Humanoid") or not dfarm
 					end
 				end)
 			end
@@ -116,20 +107,14 @@ end)
 spawn(function()
     while wait() do
         if dfarm then
-            if  player.currentmission.Value == nil then
-                for i,v in pairs(workspace.npc:GetChildren()) do
-                    pcall(function()
-                        if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-                            repeat 
-					    	v.Humanoid.Health = 0
-						    v.Humanoid.Health = 0
-		 			 	    v.Humanoid.Health = 0
-						    v.Humanoid.Health = 0
-						    v.Humanoid.Health = 0
-                            until v.Humanoid.Health == 0 or not dfarm
-                        end
-                    end)
-                end
+			for i,v in pairs(workspace.npc:GetChildren()) do
+				pcall(function()
+					if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+						repeat wait()
+							v.Humanoid.Health = 0
+						until not v:FindFirstChild("Humanoid") or not dfarm
+					end
+				end)
             end
         end
     end
@@ -232,22 +217,20 @@ end)
 window2:Toggle("Spam E",false, function(bool)
     E = bool
 end)
+game:GetService('RunService').Stepped:connect(function()
+    if E then
+        pcall(function()
+            game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+            game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+        end)
+    end
+end)
 
 window2:Button("Infinite MD",function()
 	local mode = game.Players.LocalPlayer.Character.combat.mode
     local copy = mode:Clone()
     copy.Parent = mode.Parent
     mode:Destroy()
-    local chakra = string.split(game.Players.LocalPlayer.PlayerGui.Main.ingamearena.Bar.cha.Text,"CHI: ")[2]
-    c = chakra:gsub("CH%: ","")
-    local cha
-    local function chakracheck()
-		chakra = string.split(game.Players.LocalPlayer.PlayerGui.Main.ingamearena.Bar.cha.Text,"CHI: ")[2]
-		c = chakra:gsub("CH%: ","")
-		cha = c
-	end
-	halfchi = chakra/1.5
-	print("CHI will recharge at "..halfchi)
 end)
 
 window2:Button("Remove Effects",function()
@@ -263,7 +246,7 @@ spawn(function()
 						repeat wait() --v.Humanoid.Health = 0 (DO NOT USE THIS IT WOULD BUG THE BEAST)
 						game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
 						player.Character.HumanoidRootPart.CFrame=(v.HumanoidRootPart.CFrame * CFrame.new(0, 75, .3))
-						until v.Humanoid.Health == 0 or not gen3farm
+						until not v:FindFirstChild("Humanoid") or not gen3farm
 					end
 				end)
 			end
