@@ -67,40 +67,31 @@ window1:Button("Auto setup",function()
     wait()
     local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.senbonhaku}
     game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    wait()
     local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.painrodthrow}
     game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+    wait()
     local args = {[1] = "kgbag",[2] = "kg1",[3] = "sengoku"}
     game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    wait()
     local args = {[1] = "kgbag",[2] = "kg2",[3] = "renshikigold"}
     game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    wait()
     local args = {[1] = "kgbag",[2] = "kg3",[3] = "renshiki"}
     game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    wait()
     local args = {[1] = "kgbag",[2] = "kg4",[3] = "tenseigan"}
     game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    wait()
     local args = {[1] = "kgbag",[2] = "e1",[3] = "fire"}
     game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    wait()
     local args = {[1] = "kgbag",[2] = "e2",[3] = "lightning"}
     game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    wait()
     local args = {[1] = "kgbag",[2] = "e2",[3] = "goldlightning"}
     game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    wait()
     local args = {[1] = "kgbag",[2] = "e3",[3] = "acid"}
     game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    wait()
     local args = {[1] = "kgbag",[2] = "e4",[3] = "water"}
     game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    wait()
     local args = {[1] = "kgbag",[2] = "e4",[3] = "gale"}
     game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    wait()
 end)
+
 window1:Toggle("Autofarm",false, function(bool)
     dfarm = bool
 end)
@@ -119,37 +110,49 @@ end)
 spawn(function()
     while wait() do
         if dfarm then
-            if  player.currentmission.Value == nil then
-                for i,v in pairs(workspace.npc:GetChildren()) do
-                    pcall(function()
-                        if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-                            repeat wait(0.1)
-                                game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
-                                game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
-                                game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
-                                game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
-                                player.Character.HumanoidRootPart.CFrame=(v.HumanoidRootPart.CFrame * CFrame.new(0, 7, .3))
-                                v.Humanoid.Health = 0
-                                wait(.004)
-                                game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
-                                game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
-                                game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
-                                game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
-                                player.Character.HumanoidRootPart.CFrame=(v.HumanoidRootPart.CFrame * CFrame.new(0, 7, .3))
-                                v.Humanoid.Health = 0
-                                wait(.004)
-                                game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
-                                game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
-                                game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
-                                game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
-                                player.Character.HumanoidRootPart.CFrame=(v.HumanoidRootPart.CFrame * CFrame.new(0, 7, .3))
-                                v.Humanoid.Health = 0
-                                wait(.004)
-                            until v.Humanoid.Health == 0 or not dfarm
-                        end
-                    end)
-                end
-            end
+			for i,v in pairs(workspace.npc:GetChildren()) do
+				local mobname = string.split(mission.bg.name.Text,"Defeat ")[1]
+				if(string.find(mobname,"(s)")) then
+					mobname = string.gsub(mobname,"(s)","")
+				end
+				if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+					player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 15, 0)
+					repeat wait()
+						pcall(function()
+							game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+							v.Humanoid.Health = 0
+							pcall(function()
+								player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 17, 10)
+								game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+								game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+								game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+								game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+								game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+								game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+								game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+								game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+								wait(.01)
+							end)
+						end)
+						pcall(function()
+							game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+							v.Humanoid.Health = 0
+							pcall(function()
+								player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 15, 10)
+								game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+								game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+								game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+								game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+								game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+								game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+								game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+								game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+								wait(.01)
+							end)
+						end)
+					until not v:FindFirstChild("Humanoid") or not dfarm or not v
+				end
+			end
         end
     end
 end)
@@ -157,21 +160,14 @@ end)
 spawn(function()
     while wait() do
         if dfarm then
-            if  player.currentmission.Value == nil then
-                for i,v in pairs(workspace.npc:GetChildren()) do
-                    pcall(function()
-                        if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-                            repeat 
-					    	v.Humanoid.Health = 0
-						    v.Humanoid.Health = 0
-		 			 	    v.Humanoid.Health = 0
-						    v.Humanoid.Health = 0
-						    v.Humanoid.Health = 0
-                            until v.Humanoid.Health == 0 or not dfarm
-                        end
-                    end)
-                end
-            end
+			for i,v in pairs(workspace.npc:GetChildren()) do
+				pcall(function()
+					if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+						repeat v.Humanoid.Health = 0
+						until v.Humanoid.Health == 0 or not dfarm
+					end
+				end)
+			end
         end
     end
 end)
@@ -181,16 +177,6 @@ window1:Button("Infinite MD",function()
     local copy = mode:Clone()
     copy.Parent = mode.Parent
     mode:Destroy()
-    local chakra = string.split(game.Players.LocalPlayer.PlayerGui.Main.ingamearena.Bar.cha.Text,"CHI: ")[2]
-    c = chakra:gsub("CH%: ","")
-    local cha
-    local function chakracheck()
-		chakra = string.split(game.Players.LocalPlayer.PlayerGui.Main.ingamearena.Bar.cha.Text,"CHI: ")[2]
-		c = chakra:gsub("CH%: ","")
-		cha = c
-	end
-	halfchi = chakra/1.5
-	print("CHI will recharge at "..halfchi)
 end)
 
 window2:Button("Remove Effects / Particles",function()
