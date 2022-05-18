@@ -825,7 +825,7 @@ function AUTOFARM()
 							shoot = false
 							block = false
 							dfarm = false
-						elseif mission.bg.name.Text == "[Objective: Accuracy Training]" then
+						elseif mission.title.Text == "[Objective: Accuracy Training]" then
 							punches = false
 							tree = false
 							shoot = true
@@ -1213,8 +1213,8 @@ function AUTOFARM()
                                 player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(-6.8,-2,0)
                                 v.Humanoid.Health = 0
                                 pcall(function()
-                                        game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
-                                        wait()
+                                    game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+                                    wait()
                                 end)
                             end)
                             pcall(function()
@@ -1237,7 +1237,7 @@ function AUTOFARM()
                                     wait()
                                 end)
                             end)
-                        until v.Humanoid.Health == 0 or mission.Visible == false or not autofarm or not v
+                        until not v:FindFirstChild("Humanoid") or mission.Visible == false or not autofarm or not v
                     end
                 end
             end
@@ -1771,13 +1771,13 @@ function AUTOFARM()
                         mobname = string.gsub(mobname,"(s)","")
                     end
                     if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-                        player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(7,15,0)
-                        repeat --wait()
+                        player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 15, 0)
+                        repeat wait()
                             pcall(function()
                                 game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
                                 v.Humanoid.Health = 0
                                 pcall(function()
-									player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(-7,15,0)
+									player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 17, 10)
                                     game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
                                     game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
                                     game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
@@ -1786,14 +1786,14 @@ function AUTOFARM()
                                     game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
                                     game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
                                     game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
-									wait()
+									--wait()
                                 end)
                             end)
                             pcall(function()
                                 game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
                                 v.Humanoid.Health = 0
                                 pcall(function()
-									player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(0,15,0)
+									player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 15, 10)
                                     game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
                                     game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
                                     game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
@@ -1802,10 +1802,10 @@ function AUTOFARM()
                                     game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
                                     game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
                                     game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
-									wait()
+									--wait()
                                 end)
                             end)
-                        until v.Humanoid.Health == 0 or mission.Visible == false or not autoofarm or not v
+                        until not v:FindFirstChild("Humanoid") or mission.Visible == false or not autoofarm or not v
                     end
                 end
             end
@@ -2344,7 +2344,7 @@ function AUTOFARM()
                             pcall(function()
                                 --wait(.0005)
                                 game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
-                                player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
+                                player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 0, 10)
                                 game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
                                 game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
                                 game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
@@ -2354,14 +2354,14 @@ function AUTOFARM()
                             pcall(function()
                                 --wait(.00035)
                                 game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
-                                player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(0,-3.9,-3.4)
+								player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 0, 10)
                                 game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
                                 game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
                                 game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
                                 wait(.000000000000001)
                                 v.Humanoid.Health = 0
                             end)
-                        until v.Humanoid.Health == 0 or mission.Visible == false or not autooofarm or not v
+                        until not v:FindFirstChild("Humanoid") or mission.Visible == false or not autooofarm or not v
                     end
                 end
             end
