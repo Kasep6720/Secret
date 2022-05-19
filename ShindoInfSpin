@@ -241,8 +241,11 @@ library:Keybind("RightControl")
 					if spins > 0 then
 						spins = game.Players.LocalPlayer.statz.spins.Value
 						kgvalue1 = game.Players.LocalPlayer.statz.main.kg1.Value
+						kgvalue2 = game.Players.LocalPlayer.statz.main.kg2.Value
+						kgvalue3 = game.Players.LocalPlayer.statz.main.kg3.Value
+						kgvalue4 = game.Players.LocalPlayer.statz.main.kg4.Value
 						if AutoSpinBL1 == true then
-							if kgvalue1 ~= a1 and kgvalue1 ~= a2 and kgvalue1 ~= a3 and kgvalue1 ~= a4 and kgvalue1 ~= a5 then
+							if kgvalue1 ~= a1 and kgvalue1 ~= a2 and kgvalue1 ~= a3 and kgvalue1 ~= a4 and kgvalue1 ~= a5 and kgvalue2 ~= a1 and kgvalue2 ~= a2 and kgvalue2 ~= a3 and kgvalue2 ~= a4 and kgvalue2 ~= a5 and kgvalue3 ~= a1 and kgvalue3 ~= a2 and kgvalue3 ~= a3 and kgvalue3 ~= a4 and kgvalue3 ~= a5 and kgvalue4 ~= a1 and kgvalue4 ~= a2 and kgvalue4 ~= a3 and kgvalue4 ~= a4 and kgvalue4 ~= a5 then
 								kgvalue1 = game.Players.LocalPlayer.statz.main.kg1.Value
 								game.Players.LocalPlayer.startevent:FireServer("spin", "kg1")
 								print("Rolled: " .. kgvalue1)
@@ -298,9 +301,11 @@ library:Keybind("RightControl")
 				while wait() do
 					if spins > 0 then
 						spins = game.Players.LocalPlayer.statz.spins.Value
+						kgvalue1 = game.Players.LocalPlayer.statz.main.kg1.Value
 						kgvalue2 = game.Players.LocalPlayer.statz.main.kg2.Value
-						if AutoSpinBL2 == true then
-							if kgvalue2 ~= a1 and kgvalue2 ~= a2 and kgvalue2 ~= a3 and kgvalue2 ~= a4 and kgvalue2 ~= a5 then
+						kgvalue3 = game.Players.LocalPlayer.statz.main.kg3.Value
+						kgvalue4 = game.Players.LocalPlayer.statz.main.kg4.Value						if AutoSpinBL2 == true then
+							if kgvalue1 ~= a1 and kgvalue1 ~= a2 and kgvalue1 ~= a3 and kgvalue1 ~= a4 and kgvalue1 ~= a5 and kgvalue2 ~= a1 and kgvalue2 ~= a2 and kgvalue2 ~= a3 and kgvalue2 ~= a4 and kgvalue2 ~= a5 and kgvalue3 ~= a1 and kgvalue3 ~= a2 and kgvalue3 ~= a3 and kgvalue3 ~= a4 and kgvalue3 ~= a5 and kgvalue4 ~= a1 and kgvalue4 ~= a2 and kgvalue4 ~= a3 and kgvalue4 ~= a4 and kgvalue4 ~= a5 then
 								kgvalue2 = game.Players.LocalPlayer.statz.main.kg2.Value
 								game.Players.LocalPlayer.startevent:FireServer("spin", "kg2")
 								print("Rolled: " .. kgvalue2)
@@ -357,9 +362,11 @@ library:Keybind("RightControl")
 					while wait() do
 						if spins > 0 then
 							spins = game.Players.LocalPlayer.statz.spins.Value
+							kgvalue1 = game.Players.LocalPlayer.statz.main.kg1.Value
+							kgvalue2 = game.Players.LocalPlayer.statz.main.kg2.Value
 							kgvalue3 = game.Players.LocalPlayer.statz.main.kg3.Value
-								if AutoSpinBL3 == true then
-								if kgvalue3 ~= a1 and kgvalue3 ~= a2 and kgvalue3 ~= a3 and kgvalue3 ~= a4 and kgvalue3 ~= a5 then
+							kgvalue4 = game.Players.LocalPlayer.statz.main.kg4.Value								if AutoSpinBL3 == true then
+								if kgvalue1 ~= a1 and kgvalue1 ~= a2 and kgvalue1 ~= a3 and kgvalue1 ~= a4 and kgvalue1 ~= a5 and kgvalue2 ~= a1 and kgvalue2 ~= a2 and kgvalue2 ~= a3 and kgvalue2 ~= a4 and kgvalue2 ~= a5 and kgvalue3 ~= a1 and kgvalue3 ~= a2 and kgvalue3 ~= a3 and kgvalue3 ~= a4 and kgvalue3 ~= a5 and kgvalue4 ~= a1 and kgvalue4 ~= a2 and kgvalue4 ~= a3 and kgvalue4 ~= a4 and kgvalue4 ~= a5 then
 									kgvalue3 = game.Players.LocalPlayer.statz.main.kg2.Value
 									game.Players.LocalPlayer.startevent:FireServer("spin", "kg3")
 									print("Rolled: " .. kgvalue3)
@@ -417,9 +424,11 @@ library:Keybind("RightControl")
 					while wait() do
 						if spins > 0 then
 							spins = game.Players.LocalPlayer.statz.spins.Value
-							kgvalue4 = game.Players.LocalPlayer.statz.main.kg4.Value
-							if AutoSpinBL4 == true then
-								if kgvalue4 ~= a1 and kgvalue4 ~= a2 and kgvalue4 ~= a3 and kgvalue4 ~= a4 and kgvalue4 ~= a5 then
+							kgvalue1 = game.Players.LocalPlayer.statz.main.kg1.Value
+							kgvalue2 = game.Players.LocalPlayer.statz.main.kg2.Value
+							kgvalue3 = game.Players.LocalPlayer.statz.main.kg3.Value
+							kgvalue4 = game.Players.LocalPlayer.statz.main.kg4.Value							if AutoSpinBL4 == true then
+								if kgvalue1 ~= a1 and kgvalue1 ~= a2 and kgvalue1 ~= a3 and kgvalue1 ~= a4 and kgvalue1 ~= a5 and kgvalue2 ~= a1 and kgvalue2 ~= a2 and kgvalue2 ~= a3 and kgvalue2 ~= a4 and kgvalue2 ~= a5 and kgvalue3 ~= a1 and kgvalue3 ~= a2 and kgvalue3 ~= a3 and kgvalue3 ~= a4 and kgvalue3 ~= a5 and kgvalue4 ~= a1 and kgvalue4 ~= a2 and kgvalue4 ~= a3 and kgvalue4 ~= a4 and kgvalue4 ~= a5 then
 									kgvalue4 = game.Players.LocalPlayer.statz.main.kg4.Value
 									game.Players.LocalPlayer.startevent:FireServer("spin", "kg4")
 									print("Rolled: " .. kgvalue4)
@@ -517,8 +526,11 @@ library:Keybind("RightControl")
 					if spins > 0 then
 						spins = game.Players.LocalPlayer.statz.spins.Value
 						elmvalue1 = game.Players.LocalPlayer.statz.main.element1.Value
+						elmvalue2 = game.Players.LocalPlayer.statz.main.element2.Value
+						elmvalue3 = game.Players.LocalPlayer.statz.main.element3.Value
+						elmvalue4 = game.Players.LocalPlayer.statz.main.element4.Value
 						if StartSpinElm1 == true then
-							if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 then
+							if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
 								elmvalue1 = game.Players.LocalPlayer.statz.main.element1.Value
 								game.Players.LocalPlayer.startevent:FireServer("spin", "element1")
 								print("Rolled: " .. elmvalue1)
@@ -574,9 +586,11 @@ library:Keybind("RightControl")
 				while wait() do
 					if spins > 0 then
 						spins = game.Players.LocalPlayer.statz.spins.Value
+						elmvalue1 = game.Players.LocalPlayer.statz.main.element1.Value
 						elmvalue2 = game.Players.LocalPlayer.statz.main.element2.Value
-						if StartSpinElm2 == true then
-							if elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 then
+						elmvalue3 = game.Players.LocalPlayer.statz.main.element3.Value
+						elmvalue4 = game.Players.LocalPlayer.statz.main.element4.Value						if StartSpinElm2 == true then
+							if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
 								elmvalue2 = game.Players.LocalPlayer.statz.main.element2.Value
 								game.Players.LocalPlayer.startevent:FireServer("spin", "element2")
 								print("Rolled: " .. elmvalue2)
@@ -633,9 +647,11 @@ library:Keybind("RightControl")
 					while wait() do
 						if spins > 0 then
 							spins = game.Players.LocalPlayer.statz.spins.Value
+							elmvalue1 = game.Players.LocalPlayer.statz.main.element1.Value
+							elmvalue2 = game.Players.LocalPlayer.statz.main.element2.Value
 							elmvalue3 = game.Players.LocalPlayer.statz.main.element3.Value
-							if StartSpinElm3 == true then
-								if elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 then
+							elmvalue4 = game.Players.LocalPlayer.statz.main.element4.Value							if StartSpinElm3 == true then
+								if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
 									elmvalue3 = game.Players.LocalPlayer.statz.main.element3.Value
 									game.Players.LocalPlayer.startevent:FireServer("spin", "element3")
 									print("Rolled: " .. elmvalue3)
@@ -693,9 +709,11 @@ library:Keybind("RightControl")
 					while wait() do
 						if spins > 0 then
 							spins = game.Players.LocalPlayer.statz.spins.Value
-							elmvalue4 = game.Players.LocalPlayer.statz.main.element4.Value
-							if StartSpinElm4 == true then
-								if elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
+							elmvalue1 = game.Players.LocalPlayer.statz.main.element1.Value
+							elmvalue2 = game.Players.LocalPlayer.statz.main.element2.Value
+							elmvalue3 = game.Players.LocalPlayer.statz.main.element3.Value
+							elmvalue4 = game.Players.LocalPlayer.statz.main.element4.Value							if StartSpinElm4 == true then
+								if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
 									elmvalue4 = game.Players.LocalPlayer.statz.main.element4.Value
 									game.Players.LocalPlayer.startevent:FireServer("spin", "element4")
 									print("Rolled: " .. elmvalue4)
