@@ -784,18 +784,22 @@ function AUTOFARM()
                 if EnabledAutoMentor then
                 	if mission.Visible == false then
 						if game.PlaceId == 5451398863 then
+							wait(.5)
                 			player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Narumaki"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
 							local args = {[1] = game:GetService("Players").LocalPlayer}
 							workspace.sensei.missions:FindFirstChild("Narumaki").missiongiver.CLIENTTALK:FireServer(unpack(args))
 						elseif game.PlaceId == 6901575446 then
+							wait(.5)
 							player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Jiso Seishin"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(5,0,-1.7)
 							local args = {[1] = game:GetService("Players").LocalPlayer}
 							workspace.sensei.missions:FindFirstChild("Jiso Seishin").missiongiver.CLIENTTALK:FireServer(unpack(args))
 						elseif game.PlaceId == 5451401540 then
+							wait(.5)
 							player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Shindai Akuma"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
 							local args = {[1] = game:GetService("Players").LocalPlayer}
 							workspace.sensei.missions:FindFirstChild("Shindai Akuma").missiongiver.CLIENTTALK:FireServer(unpack(args))
 						elseif game.PlaceId == 5431071837 then
+							wait(.5)
 							player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,4,3)
 							local args = {[1] = game:GetService("Players").LocalPlayer}
 							workspace.sensei.missions:FindFirstChild("Ryuji Kenichi").missiongiver.CLIENTTALK:FireServer(unpack(args))
@@ -1272,52 +1276,45 @@ function AUTOFARM()
 				end
 			end
 
-            spawn(function()
-                while wait() do
-                    if autofarm then
-					DISP()
-                        if mission.Visible == false then
-                            QUEST()
-                        else
-                            FARM()
+			spawn(function()
+				while wait() do
+					if autofarm or boss then
+						if mission.Visible == true then
+							FARM()
 							for i,v in pairs(workspace.npc:GetChildren()) do
-                            	pcall(function()
-                                	if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-                                    	repeat v.Humanoid.Health = 0
-                                    	until v.Humanoid.Health == 0 or not keel
-                                	end
-                            	end)
-                        	end
-                        end
-                    end
-                end
-            end)
+								pcall(function()
+									if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+										repeat wait() v.Humanoid.Health = 0 v.Humanoid.Health = 0
+										until not v:FindFirstChild("Humanoid") or not autofarm or not boss
+									end
+								end)
+							end
+						else
+							if boss then
+								BOSSFARM()
+							end
+							if autofarm then
+								DISP()
+								wait(1)
+								QUEST()
+							end
+						end
+					end
+				end
+			end)
 
-            spawn(function()
-                while wait() do
-                    if autofarm then
-					DISP()
+			spawn(function()
+				while wait() do
+					if autofarm then
 						if count == 0 then
-							if QUEST() or FARM() then
+							if QUEST() or FARM() or BOSSFARM() then
 								wait(5.5)
 							else
 								repeat wait()
 								game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "DogeHub",     Text = "Currently no missions avaliable",Duration = 0.4, })
 								wait(2)
-								until count > 0 or QUEST or FARM or not autofarm
+								until count > 0 or QUEST or FARM or BOSSFARM() or not autofarm
 							end
-						end
-                    end
-                end
-            end)
-
-			spawn(function()
-				while wait() do
-					if boss then
-						if mission.Visible == true then
-							FARM()
-						else
-						    BOSSFARM()
 						end
 					end
 				end
@@ -1818,12 +1815,12 @@ function AUTOFARM()
 						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
 						local args = {[1] = game:GetService("Players").LocalPlayer}
 						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
-						wait(.05)
+						wait(.02)
 					elseif v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and v.missiongiver.timer.time.time.Text == "59:59" then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
 						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
 						local args = {[1] = game:GetService("Players").LocalPlayer}
 						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
-						wait(.05)
+						wait(.02)
 					end
 				end
 			end
@@ -1840,44 +1837,50 @@ function AUTOFARM()
 				end
 			end
 
-            spawn(function()
-                while wait() do
-                    if autoofarm then
-						DISP()
-                        if mission.Visible == true then
-                            FARM()
-                        else
-                            QUEST()
+			spawn(function()
+				while wait() do
+					if autoofarm or boss then
+						if mission.Visible == true then
+							FARM()
 							for i,v in pairs(workspace.npc:GetChildren()) do
-                            	pcall(function()
-                               		if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-										repeat v.Humanoid.Health = 0
-										until v.Humanoid.Health == 0 or not keel
+								pcall(function()
+									if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+										repeat wait() v.Humanoid.Health = 0 v.Humanoid.Health = 0
+										until not v:FindFirstChild("Humanoid") or not autoofarm or not boss
 									end
 								end)
 							end
-                        end
-                    end
-                end
-            end)
-
-			spawn(function()
-				while wait() do
-					if autoofarm then
-						if count == 0 then
-							if QUEST() or FARM() then
-								wait(5.5)
-							else
-								repeat wait()
-								game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "DogeHub",     Text = "Currently no missions avaliable",Duration = 0.4, })
-								wait(2)
-								until count > 0 or QUEST or FARM or not autoofarm
+						else
+							if boss then
+								BOSSFARM()
+							end
+							if autoofarm then
+								DISP()
+								wait(1)
+								QUEST()
 							end
 						end
 					end
 				end
 			end)
 
+			spawn(function()
+				while wait() do
+					if autoofarm then
+						if count == 0 then
+							if QUEST() or FARM() or BOSSFARM() then
+								wait(5.5)
+							else
+								repeat wait()
+								game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "DogeHub",     Text = "Currently no missions avaliable",Duration = 0.4, })
+								wait(2)
+								until count > 0 or QUEST or FARM or BOSSFARM() or not autoofarm
+							end
+						end
+					end
+				end
+			end)
+--[[
 			spawn(function()
 				while wait() do
 					if boss then
@@ -1889,7 +1892,7 @@ function AUTOFARM()
 					end
 				end
 			end)
-
+]]
 			local function SCROLLFARM()
 				for i,v in pairs(game.workspace.GLOBALTIME:GetChildren()) do
 					if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
@@ -2396,30 +2399,36 @@ function AUTOFARM()
 				end
 			end
 
-            spawn(function()
-                while wait() do
-                    if autooofarm then
-					DISP()
-                        if mission.Visible == false then
-                            QUEST()
-                        else
+			spawn(function()
+				while wait() do
+					if autooofarm or boss then
+						if mission.Visible == true then
+							FARM()
 							for i,v in pairs(workspace.npc:GetChildren()) do
 								pcall(function()
 									if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-										repeat v.Humanoid.Health = 0
-										until v.Humanoid.Health == 0 or not autooofarm
+										repeat wait() v.Humanoid.Health = 0 v.Humanoid.Health = 0
+										until not v:FindFirstChild("Humanoid") or not autooofarm or not boss
 									end
 								end)
 							end
-                            FARM()
-                        end
-                    end
-                end
-            end)
+						else
+							if boss then
+								BOSSFARM()
+							end
+							if autooofarm then
+								DISP()
+								wait(1)
+								QUEST()
+							end
+						end
+					end
+				end
+			end)
 
-            spawn(function()
-                while wait() do
-                    if autooofarm then
+	spawn(function()
+		while wait() do
+			if autooofarm then
 						if count == 0 then
 							if QUEST() or FARM() then
 								wait(5.5)
@@ -2429,18 +2438,6 @@ function AUTOFARM()
 								wait(2)
 								until count > 0 or QUEST or FARM or not autooofarm
 							end
-						end
-                    end
-                end
-            end)
-
-			spawn(function()
-				while wait() do
-					if boss then
-						if mission.Visible == true then
-							FARM()
-						else
-						    BOSSFARM()
 						end
 					end
 				end
