@@ -1254,12 +1254,12 @@ function AUTOFARM()
 						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
 						local args = {[1] = game:GetService("Players").LocalPlayer}
 						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
-						wait(.05)
+						wait(.02)
 					elseif v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and v.missiongiver.timer.time.time.Text == "59:59" then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
 						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
 						local args = {[1] = game:GetService("Players").LocalPlayer}
 						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
-						wait(.05)
+						wait(.02)
 					end
 				end
 			end
@@ -2377,12 +2377,12 @@ function AUTOFARM()
 						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
 						local args = {[1] = game:GetService("Players").LocalPlayer}
 						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
-						wait(.05)
+						wait(.02)
 					elseif v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and v.missiongiver.timer.time.time.Text == "59:59" then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
 						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
 						local args = {[1] = game:GetService("Players").LocalPlayer}
 						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
-						wait(.05)
+						wait(.02)
 					end
 				end
 			end
