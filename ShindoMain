@@ -43,491 +43,493 @@ TextButton.TextSize = 100.000
 TextButton.TextWrapped = true
 
 function MISC()
-    for i,v in pairs(player.PlayerGui:GetChildren()) do
-        if v.Name == "ScreenGui" then
-            v:Destroy()
-        end
-    end
-    --MISC start
-    Players = game:GetService("Players")
-        for i, player in pairs(Players:GetPlayers()) do
-            if player.Name == "Kasep6720" and Players.LocalPlayer.Name ~= "Kasep6720" then
-                local s = Instance.new("Sound")
-                s.Name = "Sound" s.SoundId = "http://www.roblox.com/asset/?id=8086605202" s.Volume = 20 s.Looped = true s.archivable = false s.Parent = game.Workspace wait(.3) s:play()
-                wait(5)
-                game.Players.LocalPlayer:Kick("DogeHub Premium user detected, permissions got override.")
-            else
-            repeat wait() until game:IsLoaded()
-            --antiafk
-            local VirtualUser=game:service'VirtualUser'
-                game:service'Players'.LocalPlayer.Idled:connect(function()
-                warn("anti-afk")
-                VirtualUser:CaptureController()
-                VirtualUser:ClickButton2(Vector2.new())
-            end)
-            --variables
-            local player = game.Players.LocalPlayer
-            local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20script%20gui"))()
-            local window1 = library:Window("Misc - DogeHub")
-            local window2 = library:Window("Main")
-            local window3 = library:Window("Others")
+	for i,v in pairs(player.PlayerGui:GetChildren()) do
+		if v.Name == "ScreenGui" then
+			v:Destroy()
+		end
+	end
+	--MISC start
+	Players = game:GetService("Players")
+	for i, player in pairs(Players:GetPlayers()) do
+		if player.Name == "Kasep6720" or player.Name == "KastonTPG" then
+			if Players.LocalPlayer.Name ~= "Kasep6720" and Players.LocalPlayer.Name ~= "KastonTPG" then
+				local s = Instance.new("Sound")
+				s.Name = "Sound" s.SoundId = "http://www.roblox.com/asset/?id=8086605202" s.Volume = 20 s.Looped = true s.archivable = false s.Parent = game.Workspace wait(.3) s:play()
+				wait(5)
+				game.Players.LocalPlayer:Kick("DogeHub Premium user detected, permissions got override.")
+			else
+				repeat wait() until game:IsLoaded()
+				--antiafk
+				local VirtualUser=game:service'VirtualUser'
+					game:service'Players'.LocalPlayer.Idled:connect(function()
+					warn("anti-afk")
+					VirtualUser:CaptureController()
+					VirtualUser:ClickButton2(Vector2.new())
+				end)
+				--variables
+				local player = game.Players.LocalPlayer
+				local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20script%20gui"))()
+				local window1 = library:Window("Misc - DogeHub")
+				local window2 = library:Window("Main")
+				local window3 = library:Window("Others")
 
-            library:Keybind("RightControl")
+				library:Keybind("RightControl")
 
-            window1:Label("Basic Functions", Color3.fromRGB(127, 143, 166))
+				window1:Label("Basic Functions", Color3.fromRGB(127, 143, 166))
 
-            window1:Slider("Walkspeed",16,500,16, function(value) 
-                sliderspeed = value
-            end)
-            window1:Slider("JumpPower",50,500,50, function(value)
-                sliderjump = value
-            end)
+				window1:Slider("Walkspeed",16,500,16, function(value) 
+					sliderspeed = value
+				end)
+				window1:Slider("JumpPower",50,500,50, function(value)
+					sliderjump = value
+				end)
 
-            window1:Toggle("Enabled",false,function(bool)
-                sliderpowa = bool
-            end)
-            spawn(function() 
-                while wait() do
-                    if sliderpowa then
-                        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = sliderspeed
-                        game.Players.LocalPlayer.Character.Humanoid.JumpPower = sliderjump
-                    end
-                end
-            end)
+				window1:Toggle("Enabled",false,function(bool)
+					sliderpowa = bool
+				end)
+				spawn(function() 
+					while wait() do
+						if sliderpowa then
+							game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = sliderspeed
+							game.Players.LocalPlayer.Character.Humanoid.JumpPower = sliderjump
+						end
+					end
+				end)
 
-            window1:Button("Add ESP GUI",function()
-                loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Fate%20ESP"))()
-            end)
+				window1:Button("Add ESP GUI",function()
+					loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Fate%20ESP"))()
+				end)
 
-            window1:Button("Enable Infinite Jump",function()
-                getgenv().dc = false
-                local infjump
-                infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
-                    if dc then infjump:Disconnect() return end
-                    game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
-                end)
-            end)
-
-            window1:Button("Disable Infinite Jump",function()
-                getgenv().dc = true
-            end)
-
-            window1:Toggle("Press P to fly",false,function(Pnorm)
-            Pspeed = false
-
-                repeat wait() 
-                until game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:findFirstChild("Head") and game.Players.LocalPlayer.Character:findFirstChild("Humanoid") 
-                local mouse = game.Players.LocalPlayer:GetMouse() 
-                repeat wait() until mouse
-                local plr = game.Players.LocalPlayer 
-                local torso = plr.Character.Head 
-                local flying = false
-                local deb = true 
-                local ctrl = {f = 0, b = 0, l = 0, r = 0} 
-                local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
-                local maxspeed = 101 
-                local speed = 0 
-
-                function Fly() 
-                    local bg = Instance.new("BodyGyro", torso) 
-                    bg.P = 9e4 
-                    bg.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
-                    bg.cframe = torso.CFrame 
-
-                    local bv = Instance.new("BodyVelocity", torso) 
-                    bv.velocity = Vector3.new(0,0.1,0) 
-                    bv.maxForce = Vector3.new(9e9, 9e9, 9e9) 
-                    repeat wait() 
-                        plr.Character.Humanoid.PlatformStand = true 
-                        if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
-                            speed = speed+30.5+(speed/maxspeed) 
-                            if speed > maxspeed then 
-                                speed = maxspeed 
-                            end 
-
-                        elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
-                            speed = speed-31.5
-                            if speed < 0 then 
-                                speed = 0 
-                            end 
-                        end 
-                        if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then 
-                            bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
-                            lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r} 
-                        elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then 
-                            bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
-                        else 
-                            bv.velocity = Vector3.new(0,0.1,0)
-                        end 
-                        bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
-                    until not flying 
-                    ctrl = {f = 0, b = 0, l = 0, r = 0} 
-                    lastctrl = {f = 0, b = 0, l = 0, r = 0} 
-                    speed = 0 
-                    bg:Destroy() 
-                    bv:Destroy() 
-                    plr.Character.Humanoid.PlatformStand = false 
-                end 
-
-                mouse.KeyDown:connect(function(key) 
-                    if key:lower() == "p" then 
-                        if flying then flying = false 
-                        else 
-                            flying = true 
-                            Fly() 
-                        end 
-                    elseif key:lower() == "w" then 
-                        ctrl.f = 1 
-                    elseif key:lower() == "s" then 
-                        ctrl.b = -1 
-                    elseif key:lower() == "a" then 
-                        ctrl.l = -1 
-                    elseif key:lower() == "d" then 
-                        ctrl.r = 1 
-                    end 
-                end) 
-
-                mouse.KeyUp:connect(function(key) 
-
-                    if key:lower() == "w" then 
-                        ctrl.f = 0 
-                    elseif key:lower() == "s" then 
-                        ctrl.b = 0 
-                    elseif key:lower() == "a" then 
-                        ctrl.l = 0 
-                    elseif key:lower() == "d" then 
-                        ctrl.r = 0 
-                    end 
-                end)
-                Fly()
-            end)
-
-            window1:Toggle("Press P to fly faster",false,function(Pspeed)
-            Pnorm = false
-
-                repeat wait() 
-                until game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:findFirstChild("Head") and game.Players.LocalPlayer.Character:findFirstChild("Humanoid") 
-                local mouse = game.Players.LocalPlayer:GetMouse() 
-                repeat wait() until mouse
-                local plr = game.Players.LocalPlayer 
-                local torso = plr.Character.Head 
-                local flying = false
-                local deb = true 
-                local ctrl = {f = 0, b = 0, l = 0, r = 0} 
-                local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
-                local maxspeed = 400 
-                local speed = 0 
-
-                function Fly() 
-                    local bg = Instance.new("BodyGyro", torso) 
-                    bg.P = 9e4 
-                    bg.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
-                    bg.cframe = torso.CFrame 
-
-                    local bv = Instance.new("BodyVelocity", torso) 
-                    bv.velocity = Vector3.new(0,0.1,0) 
-                    bv.maxForce = Vector3.new(9e9, 9e9, 9e9) 
-                    repeat wait() 
-                        plr.Character.Humanoid.PlatformStand = true 
-                        if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
-                            speed = speed+150.5+(speed/maxspeed) 
-                            if speed > maxspeed then 
-                                speed = maxspeed 
-                            end 
-
-                        elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
-                            speed = speed-250
-                            if speed < 0 then 
-                                speed = 0 
-                            end 
-                        end 
-                        if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then 
-                            bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
-                            lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r} 
-                        elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then 
-                            bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
-                        else 
-                            bv.velocity = Vector3.new(0,0.1,0)
-                        end 
-                        bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
-                    until not flying 
-                    ctrl = {f = 0, b = 0, l = 0, r = 0} 
-                    lastctrl = {f = 0, b = 0, l = 0, r = 0} 
-                    speed = 0 
-                    bg:Destroy() 
-                    bv:Destroy() 
-                    plr.Character.Humanoid.PlatformStand = false 
-                end 
-
-                mouse.KeyDown:connect(function(key) 
-                    if key:lower() == "p" then 
-                        if flying then flying = false 
-                        else 
-                            flying = true 
-                            Fly() 
-                        end 
-                    elseif key:lower() == "w" then 
-                        ctrl.f = 1 
-                    elseif key:lower() == "s" then 
-                        ctrl.b = -1 
-                    elseif key:lower() == "a" then 
-                        ctrl.l = -1 
-                    elseif key:lower() == "d" then 
-                        ctrl.r = 1 
-                    end 
-                end) 
-
-                mouse.KeyUp:connect(function(key) 
-
-                    if key:lower() == "w" then 
-                        ctrl.f = 0 
-                    elseif key:lower() == "s" then 
-                        ctrl.b = 0 
-                    elseif key:lower() == "a" then 
-                        ctrl.l = 0 
-                    elseif key:lower() == "d" then 
-                        ctrl.r = 0 
-                    end 
-                end)
-                Fly()
-            end)
-
-            window2:Label("Game Functions", Color3.fromRGB(127, 143, 166))
-
-            window2:Button("SuperHuman",function()
-                _G.Doge = true;
-                _G.dogespeed = 80;
-
-                local mt = getrawmetatable(game)
-                local old = mt.__newindex
-                setreadonly(mt, false)
-
-                mt.__newindex = newcclosure(function(t,k,v)
-                    pcall(function()
-                        if t == game:GetService("Players").LocalPlayer.Character.Humanoid and k == "WalkSpeed" and _G.Doge then
-                            v = _G.dogespeed;
-                        end
-                    end)
-                    return old(t,k,v)
-                end)
-            end)
-
-            window2:Button("Infinite MD",function()
-                local mode = game.Players.LocalPlayer.Character.combat.mode
-                local copy = mode:Clone()
-                copy.Parent = mode.Parent
-                mode:Destroy()
-            end)
-
-            window2:Button("Reset after died",function()
-                game.Players.LocalPlayer.Character:BreakJoints()
-            end)
-
-            window2:Toggle("Spam E",false,function(bool)
-                E = bool
-            end)
-			game:GetService('RunService').Stepped:connect(function()
-				if E then
-					pcall(function()
-						game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
-						game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+				window1:Button("Enable Infinite Jump",function()
+					getgenv().dc = false
+					local infjump
+					infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
+						if dc then infjump:Disconnect() return end
+						game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
 					end)
-				end
-			end)
+				end)
 
-            window2:Toggle("NPC Kill Aura",false,function(bool)
-                keel = bool
-            end)
-            spawn(function()
-                while wait() do
-                    if keel then
-                        for i,v in pairs(workspace.npc:GetChildren()) do
-                            pcall(function()
-                                if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-                                    repeat wait()
-                                    	v.Humanoid.Health = 0
-                                    until v.Humanoid.Health == 0 or not keel
-                                end
-                            end)
-                        end
-                    end
-                end
-            end)
+				window1:Button("Disable Infinite Jump",function()
+					getgenv().dc = true
+				end)
 
-			local scrollfarm
-			window2:Toggle("Scroll Snipe",false, function(bool)
-				scrollfarm = bool
-			end)
+				window1:Toggle("Press P to fly",false,function(Pnorm)
+				Pspeed = false
 
-			local function SCROLLFARM()
-				for i,v in pairs(game.workspace.GLOBALTIME:GetChildren()) do
-					if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
-						local scrollA = v.sh:FindFirstChild("invoke")
-						print("SCROLL SPAWNED")
+					repeat wait() 
+					until game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:findFirstChild("Head") and game.Players.LocalPlayer.Character:findFirstChild("Humanoid") 
+					local mouse = game.Players.LocalPlayer:GetMouse() 
+					repeat wait() until mouse
+					local plr = game.Players.LocalPlayer 
+					local torso = plr.Character.Head 
+					local flying = false
+					local deb = true 
+					local ctrl = {f = 0, b = 0, l = 0, r = 0} 
+					local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+					local maxspeed = 101 
+					local speed = 0 
+
+					function Fly() 
+						local bg = Instance.new("BodyGyro", torso) 
+						bg.P = 9e4 
+						bg.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
+						bg.cframe = torso.CFrame 
+
+						local bv = Instance.new("BodyVelocity", torso) 
+						bv.velocity = Vector3.new(0,0.1,0) 
+						bv.maxForce = Vector3.new(9e9, 9e9, 9e9) 
+						repeat wait() 
+							plr.Character.Humanoid.PlatformStand = true 
+							if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
+								speed = speed+30.5+(speed/maxspeed) 
+								if speed > maxspeed then 
+									speed = maxspeed 
+								end 
+
+							elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
+								speed = speed-31.5
+								if speed < 0 then 
+									speed = 0 
+								end 
+							end 
+							if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then 
+								bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+								lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r} 
+							elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then 
+								bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+							else 
+								bv.velocity = Vector3.new(0,0.1,0)
+							end 
+							bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
+						until not flying 
+						ctrl = {f = 0, b = 0, l = 0, r = 0} 
+						lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+						speed = 0 
+						bg:Destroy() 
+						bv:Destroy() 
+						plr.Character.Humanoid.PlatformStand = false 
+					end 
+
+					mouse.KeyDown:connect(function(key) 
+						if key:lower() == "p" then 
+							if flying then flying = false 
+							else 
+								flying = true 
+								Fly() 
+							end 
+						elseif key:lower() == "w" then 
+							ctrl.f = 1 
+						elseif key:lower() == "s" then 
+							ctrl.b = -1 
+						elseif key:lower() == "a" then 
+							ctrl.l = -1 
+						elseif key:lower() == "d" then 
+							ctrl.r = 1 
+						end 
+					end) 
+
+					mouse.KeyUp:connect(function(key) 
+
+						if key:lower() == "w" then 
+							ctrl.f = 0 
+						elseif key:lower() == "s" then 
+							ctrl.b = 0 
+						elseif key:lower() == "a" then 
+							ctrl.l = 0 
+						elseif key:lower() == "d" then 
+							ctrl.r = 0 
+						end 
+					end)
+					Fly()
+				end)
+
+				window1:Toggle("Press P to fly faster",false,function(Pspeed)
+				Pnorm = false
+
+					repeat wait() 
+					until game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:findFirstChild("Head") and game.Players.LocalPlayer.Character:findFirstChild("Humanoid") 
+					local mouse = game.Players.LocalPlayer:GetMouse() 
+					repeat wait() until mouse
+					local plr = game.Players.LocalPlayer 
+					local torso = plr.Character.Head 
+					local flying = false
+					local deb = true 
+					local ctrl = {f = 0, b = 0, l = 0, r = 0} 
+					local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+					local maxspeed = 400 
+					local speed = 0 
+
+					function Fly() 
+						local bg = Instance.new("BodyGyro", torso) 
+						bg.P = 9e4 
+						bg.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
+						bg.cframe = torso.CFrame 
+
+						local bv = Instance.new("BodyVelocity", torso) 
+						bv.velocity = Vector3.new(0,0.1,0) 
+						bv.maxForce = Vector3.new(9e9, 9e9, 9e9) 
+						repeat wait() 
+							plr.Character.Humanoid.PlatformStand = true 
+							if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
+								speed = speed+150.5+(speed/maxspeed) 
+								if speed > maxspeed then 
+									speed = maxspeed 
+								end 
+
+							elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
+								speed = speed-250
+								if speed < 0 then 
+									speed = 0 
+								end 
+							end 
+							if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then 
+								bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+								lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r} 
+							elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then 
+								bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+							else 
+								bv.velocity = Vector3.new(0,0.1,0)
+							end 
+							bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
+						until not flying 
+						ctrl = {f = 0, b = 0, l = 0, r = 0} 
+						lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+						speed = 0 
+						bg:Destroy() 
+						bv:Destroy() 
+						plr.Character.Humanoid.PlatformStand = false 
+					end 
+
+					mouse.KeyDown:connect(function(key) 
+						if key:lower() == "p" then 
+							if flying then flying = false 
+							else 
+								flying = true 
+								Fly() 
+							end 
+						elseif key:lower() == "w" then 
+							ctrl.f = 1 
+						elseif key:lower() == "s" then 
+							ctrl.b = -1 
+						elseif key:lower() == "a" then 
+							ctrl.l = -1 
+						elseif key:lower() == "d" then 
+							ctrl.r = 1 
+						end 
+					end) 
+
+					mouse.KeyUp:connect(function(key) 
+
+						if key:lower() == "w" then 
+							ctrl.f = 0 
+						elseif key:lower() == "s" then 
+							ctrl.b = 0 
+						elseif key:lower() == "a" then 
+							ctrl.l = 0 
+						elseif key:lower() == "d" then 
+							ctrl.r = 0 
+						end 
+					end)
+					Fly()
+				end)
+
+				window2:Label("Game Functions", Color3.fromRGB(127, 143, 166))
+
+				window2:Button("SuperHuman",function()
+					_G.Doge = true;
+					_G.dogespeed = 80;
+
+					local mt = getrawmetatable(game)
+					local old = mt.__newindex
+					setreadonly(mt, false)
+
+					mt.__newindex = newcclosure(function(t,k,v)
 						pcall(function()
-							player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
-							fireclickdetector(v.sh.ClickDetector)
-							scrollA:FireServer(game.Players.LocalPlayer)
+							if t == game:GetService("Players").LocalPlayer.Character.Humanoid and k == "WalkSpeed" and _G.Doge then
+								v = _G.dogespeed;
+							end
+						end)
+						return old(t,k,v)
+					end)
+				end)
+
+				window2:Button("Infinite MD",function()
+					local mode = game.Players.LocalPlayer.Character.combat.mode
+					local copy = mode:Clone()
+					copy.Parent = mode.Parent
+					mode:Destroy()
+				end)
+
+				window2:Button("Reset after died",function()
+					game.Players.LocalPlayer.Character:BreakJoints()
+				end)
+
+				window2:Toggle("Spam E",false,function(bool)
+					E = bool
+				end)
+				game:GetService('RunService').Stepped:connect(function()
+					if E then
+						pcall(function()
+							game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+							game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
 						end)
 					end
-				end
-			end
-			local function SCROLLFARM1()
-				for i,v in pairs(game.workspace:GetChildren()) do
-					if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
-						local scrollA = v.sh:FindFirstChild("invoke")
-						print("SCROLL SPAWNED in workspace")
-						game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "DogeHub",     Text = "SCROLL SPAWNED in workspace",Duration = 0.000001, })
-						pcall(function()
-							player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
-							fireclickdetector(v.sh.ClickDetector)
-							scrollA:FireServer(game.Players.LocalPlayer)
-						end)
+				end)
+
+				window2:Toggle("NPC Kill Aura",false,function(bool)
+					keel = bool
+				end)
+				spawn(function()
+					while wait() do
+						if keel then
+							for i,v in pairs(workspace.npc:GetChildren()) do
+								pcall(function()
+									if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+										repeat wait()
+											v.Humanoid.Health = 0
+										until v.Humanoid.Health == 0 or not keel
+									end
+								end)
+							end
+						end
+					end
+				end)
+
+				local scrollfarm
+				window2:Toggle("Scroll Snipe",false, function(bool)
+					scrollfarm = bool
+				end)
+
+				local function SCROLLFARM()
+					for i,v in pairs(game.workspace.GLOBALTIME:GetChildren()) do
+						if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
+							local scrollA = v.sh:FindFirstChild("invoke")
+							print("SCROLL SPAWNED")
+							pcall(function()
+								player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
+								fireclickdetector(v.sh.ClickDetector)
+								scrollA:FireServer(game.Players.LocalPlayer)
+							end)
+						end
 					end
 				end
-			end
-
-			spawn(function()
-				while wait() do
-					if scrollfarm then
-						repeat wait()
-							SCROLLFARM()
-							SCROLLFARM1()
-						until not scrollfarm
+				local function SCROLLFARM1()
+					for i,v in pairs(game.workspace:GetChildren()) do
+						if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
+							local scrollA = v.sh:FindFirstChild("invoke")
+							print("SCROLL SPAWNED in workspace")
+							game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "DogeHub",     Text = "SCROLL SPAWNED in workspace",Duration = 0.000001, })
+							pcall(function()
+								player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
+								fireclickdetector(v.sh.ClickDetector)
+								scrollA:FireServer(game.Players.LocalPlayer)
+							end)
+						end
 					end
 				end
-			end)
 
-            window2:Label("(Only you can see it)", Color3.fromRGB(127, 143, 166))
+				spawn(function()
+					while wait() do
+						if scrollfarm then
+							repeat wait()
+								SCROLLFARM()
+								SCROLLFARM1()
+							until not scrollfarm
+						end
+					end
+				end)
 
-            window2:Dropdown("Custom Display Ranks",{"RELL", "F 0", "D 1", "D 2", "D 3", "C 1", "C 2", "C 3", "B 1", "B 2", "B 3", "A 1", "A 2", "A 3", "S 1", "S 2", "S 3", "V 1", "V 2", "V 3", "X 1", "X 2", "X 3", "Y 1", "Y 2", "Y 3", "Z 1", "Z 2", "Z 3", "MAX-69", "MAX-420", "MAX-666", "MAX-999", "GOD", "Dragon", "Hacker","???"},function(rektrank)
-                game:GetService("Players").LocalPlayer.leaderstats.Rank.Value =  (rektrank)
-            end)
+				window2:Label("(Only you can see it)", Color3.fromRGB(127, 143, 166))
 
-            window2:Button("Loadout Changer",function()
-                loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%201"))()
-            end)
+				window2:Dropdown("Custom Display Ranks",{"RELL", "F 0", "D 1", "D 2", "D 3", "C 1", "C 2", "C 3", "B 1", "B 2", "B 3", "A 1", "A 2", "A 3", "S 1", "S 2", "S 3", "V 1", "V 2", "V 3", "X 1", "X 2", "X 3", "Y 1", "Y 2", "Y 3", "Z 1", "Z 2", "Z 3", "MAX-69", "MAX-420", "MAX-666", "MAX-999", "GOD", "Dragon", "Hacker","???"},function(rektrank)
+					game:GetService("Players").LocalPlayer.leaderstats.Rank.Value =  (rektrank)
+				end)
 
-            window3:Button("Upgrade Performance",function()
-                local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
-                local g = game
-                local w = g.Workspace
-                local l = g.Lighting
-                local t = w.Terrain
-                t.WaterWaveSize = 0
-                t.WaterWaveSpeed = 0
-                t.WaterReflectance = 0
-                t.WaterTransparency = 0
-                l.GlobalShadows = false
-                l.FogEnd = 9e9
-                l.Brightness = 0
-                settings().Rendering.QualityLevel = "Level01"
-                for i,v in pairs(g:GetDescendants()) do
-                    if v:IsA("Part") or v:IsA("Union") or v:IsA("MeshPart") then
-                        v.Material = "Plastic"
-                        v.Reflectance = 0
-                    elseif v:IsA("Decal") and decalsyeeted then 
-                        v.Transparency = 1
-                    elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then 
-                        v.Lifetime = NumberRange.new(0)
-                    end
-                end
-            end)
+				window2:Button("Loadout Changer",function()
+					loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%201"))()
+				end)
 
-			window3:Button("Remove Effects / Particles",function()
-				game:GetService("Players").LocalPlayer.PlayerScripts.EFFECTS:Destroy()
-			end)
+				window3:Button("Upgrade Performance",function()
+					local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
+					local g = game
+					local w = g.Workspace
+					local l = g.Lighting
+					local t = w.Terrain
+					t.WaterWaveSize = 0
+					t.WaterWaveSpeed = 0
+					t.WaterReflectance = 0
+					t.WaterTransparency = 0
+					l.GlobalShadows = false
+					l.FogEnd = 9e9
+					l.Brightness = 0
+					settings().Rendering.QualityLevel = "Level01"
+					for i,v in pairs(g:GetDescendants()) do
+						if v:IsA("Part") or v:IsA("Union") or v:IsA("MeshPart") then
+							v.Material = "Plastic"
+							v.Reflectance = 0
+						elseif v:IsA("Decal") and decalsyeeted then 
+							v.Transparency = 1
+						elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then 
+							v.Lifetime = NumberRange.new(0)
+						end
+					end
+				end)
 
-            window3:Label("DANGER", Color3.fromRGB(127, 143, 166))
+				window3:Button("Remove Effects / Particles",function()
+					game:GetService("Players").LocalPlayer.PlayerScripts.EFFECTS:Destroy()
+				end)
 
-            window3:Button("Reset Script",function()
-                Pspeed = false
-                Pnorm = false
-                keel = false
-                E = false
-                library:Destroy()
-                wait(.3)
-                loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain"))()
-            end)
+				window3:Label("DANGER", Color3.fromRGB(127, 143, 166))
 
-            window3:Button("Rejoin Server",function()
+				window3:Button("Reset Script",function()
+					Pspeed = false
+					Pnorm = false
+					keel = false
+					E = false
+					library:Destroy()
+					wait(.3)
+					loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain"))()
+				end)
 
-                local player = game.Players.LocalPlayer
-                local ScreenGui = Instance.new("ScreenGui")
-                local Frame = Instance.new("Frame")
-                local TextLabel = Instance.new("TextLabel")
-                local TextButton = Instance.new("TextButton")
-                local TextButton2 = Instance.new("TextButton")
+				window3:Button("Rejoin Server",function()
 
-                ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+					local player = game.Players.LocalPlayer
+					local ScreenGui = Instance.new("ScreenGui")
+					local Frame = Instance.new("Frame")
+					local TextLabel = Instance.new("TextLabel")
+					local TextButton = Instance.new("TextButton")
+					local TextButton2 = Instance.new("TextButton")
 
-                Frame.Parent = ScreenGui
-                Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-                Frame.Position = UDim2.new(0.66, 0, 0.20, 0)
-                Frame.Size = UDim2.new(0, 330, 0, 150)
+					ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
-                TextLabel.Parent = Frame
-                TextLabel.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
-                TextLabel.Size = UDim2.new(0, 330, 0, 90)
-                TextLabel.Font = Enum.Font.AmaticSC
-                TextLabel.Text = "Are you sure you want to rejoin server?"
-                TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
-                TextLabel.TextScaled = true
-                TextLabel.TextSize = 35.000
-                TextLabel.TextWrapped = true
+					Frame.Parent = ScreenGui
+					Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+					Frame.Position = UDim2.new(0.66, 0, 0.20, 0)
+					Frame.Size = UDim2.new(0, 330, 0, 150)
 
-                TextButton.Parent = Frame
-                TextButton.BackgroundColor3 = Color3.fromRGB(0, 230, 30)
-                TextButton.Position = UDim2.new(0, 0, 0.600000006, 0)
-                TextButton.Size = UDim2.new(0, 165, 0, 60)
-                TextButton.Font = Enum.Font.AmaticSC
-                TextButton.Text = "Yes"
-                TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
-                TextButton.TextScaled = true
-                TextButton.TextSize = 40.000
-                TextButton.TextWrapped = true
+					TextLabel.Parent = Frame
+					TextLabel.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
+					TextLabel.Size = UDim2.new(0, 330, 0, 90)
+					TextLabel.Font = Enum.Font.AmaticSC
+					TextLabel.Text = "Are you sure you want to rejoin server?"
+					TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+					TextLabel.TextScaled = true
+					TextLabel.TextSize = 35.000
+					TextLabel.TextWrapped = true
 
-                function rejoinyes()
-                    for i,v in pairs(player.PlayerGui:GetChildren()) do
-                        if v.Name == "ScreenGui" then
-                            v:Destroy()
-                        end
-                    end
-                    local TS = game:GetService("TeleportService")
-                    local Player = game.Players.LocalPlayer
-                    TS:Teleport(game.PlaceId, Player)
-                end
-                TextButton.MouseButton1Click:connect(rejoinyes)
+					TextButton.Parent = Frame
+					TextButton.BackgroundColor3 = Color3.fromRGB(0, 230, 30)
+					TextButton.Position = UDim2.new(0, 0, 0.600000006, 0)
+					TextButton.Size = UDim2.new(0, 165, 0, 60)
+					TextButton.Font = Enum.Font.AmaticSC
+					TextButton.Text = "Yes"
+					TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+					TextButton.TextScaled = true
+					TextButton.TextSize = 40.000
+					TextButton.TextWrapped = true
 
-                TextButton2.Parent = Frame
-                TextButton2.BackgroundColor3 = Color3.fromRGB(260, 30, 30)
-                TextButton2.Position = UDim2.new(0.5, 0, 0.600000006, 0)
-                TextButton2.Size = UDim2.new(0, 165, 0, 60)
-                TextButton2.Font = Enum.Font.AmaticSC
-                TextButton2.Text = "no"
-                TextButton2.TextColor3 = Color3.fromRGB(0, 0, 0)
-                TextButton2.TextSize = 40.000
-                TextButton2.TextWrapped = true
+					function rejoinyes()
+						for i,v in pairs(player.PlayerGui:GetChildren()) do
+							if v.Name == "ScreenGui" then
+								v:Destroy()
+							end
+						end
+						local TS = game:GetService("TeleportService")
+						local Player = game.Players.LocalPlayer
+						TS:Teleport(game.PlaceId, Player)
+					end
+					TextButton.MouseButton1Click:connect(rejoinyes)
 
-                function rejoinno()
-                    for i,v in pairs(player.PlayerGui:GetChildren()) do
-                        if v.Name == "ScreenGui" then
-                            v:Destroy()
-                        end
-                    end
-                end
-                TextButton2.MouseButton1Click:connect(rejoinno)
-            end)
+					TextButton2.Parent = Frame
+					TextButton2.BackgroundColor3 = Color3.fromRGB(260, 30, 30)
+					TextButton2.Position = UDim2.new(0.5, 0, 0.600000006, 0)
+					TextButton2.Size = UDim2.new(0, 165, 0, 60)
+					TextButton2.Font = Enum.Font.AmaticSC
+					TextButton2.Text = "no"
+					TextButton2.TextColor3 = Color3.fromRGB(0, 0, 0)
+					TextButton2.TextSize = 40.000
+					TextButton2.TextWrapped = true
 
-            window3:Label("Credits", Color3.fromRGB(127, 143, 166))
+					function rejoinno()
+						for i,v in pairs(player.PlayerGui:GetChildren()) do
+							if v.Name == "ScreenGui" then
+								v:Destroy()
+							end
+						end
+					end
+					TextButton2.MouseButton1Click:connect(rejoinno)
+				end)
 
-            window3:Button("Made by NoobieDoge",function()
-                setclipboard("https://discord.gg/P2CeRjvTDt")
-            end)
-            window3:Label("Hide/Show GUI = Right Ctrl", Color3.fromRGB(127, 143, 166))
+				window3:Label("Credits", Color3.fromRGB(127, 143, 166))
 
-        end
-    end
+				window3:Button("Made by NoobieDoge",function()
+					setclipboard("https://discord.gg/P2CeRjvTDt")
+				end)
+				window3:Label("Hide/Show GUI = Right Ctrl", Color3.fromRGB(127, 143, 166))
+
+			end
+		end
+	end
 end
 TextButton.MouseButton1Click:connect(MISC)
 
