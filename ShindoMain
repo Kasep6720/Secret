@@ -1287,7 +1287,7 @@ function AUTOFARM()
 								pcall(function()
 									if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
 										repeat wait() v.Humanoid.Health = 0 v.Humanoid.Health = 0
-										until not v:FindFirstChild("Humanoid") or not autofarm or not boss
+										until (not autoofarm and not boss) or not v:FindFirstChild("HumanoidRootPart") 
 									end
 								end)
 							end
@@ -1848,7 +1848,7 @@ function AUTOFARM()
 								pcall(function()
 									if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
 										repeat wait() v.Humanoid.Health = 0 v.Humanoid.Health = 0
-										until not v:FindFirstChild("Humanoid") or not autoofarm or not boss
+										until (not autoofarm and not boss) or not v:FindFirstChild("HumanoidRootPart") 
 									end
 								end)
 							end
@@ -2410,7 +2410,7 @@ function AUTOFARM()
 								pcall(function()
 									if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
 										repeat wait() v.Humanoid.Health = 0 v.Humanoid.Health = 0
-										until not v:FindFirstChild("Humanoid") or not autooofarm or not boss
+										until (not autoofarm and not boss) or not v:FindFirstChild("HumanoidRootPart") 
 									end
 								end)
 							end
