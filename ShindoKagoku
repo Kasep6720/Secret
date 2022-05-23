@@ -208,7 +208,7 @@ end)
 window1:Button("Reset when died", function(bool)
 	Aimyom = false
 	F = false
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/6Wumpus6/SpyHub/main/Infmodeclose", true))()
+	game.Players.LocalPlayer.Character:BreakJoints()
 end)
 
 window1:Button("Enable Infinite Jump",function()
