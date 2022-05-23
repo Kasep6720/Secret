@@ -1,7 +1,7 @@
 repeat wait() until game:IsLoaded()
 --old-antitp bypass
 if workspace:FindFirstChild("CCoff") then
-    game:GetService("Workspace").CCoff:Destroy()
+	game:GetService("Workspace").CCoff:Destroy()
 end
 --antiafk
 local VirtualUser=game:service'VirtualUser'
@@ -22,13 +22,13 @@ local worldxplace = 5943874201
 local villageplace = game:GetService("Workspace"):FindFirstChild("rank")
 local warplace = game:GetService("Workspace"):FindFirstChild("warmode")
 function toTarget(pos, targetPos, targetCFrame)
-    local tween_s = game:service"TweenService"
-    local info = TweenInfo.new((targetPos - pos).Magnitude/getgenv().speed, Enum.EasingStyle.Linear)
-    local tween, err = pcall(function()
-        local tween = tween_s:Create(game:GetService("Players").LocalPlayer.Character["HumanoidRootPart"], info, {CFrame = targetCFrame * CFrame.fromAxisAngle(Vector3.new(1,0,0), math.rad(90))})
-        tween:Play()
-    end)
-    if not tween then return err end
+	local tween_s = game:service"TweenService"
+	local info = TweenInfo.new((targetPos - pos).Magnitude/getgenv().speed, Enum.EasingStyle.Linear)
+	local tween, err = pcall(function()
+		local tween = tween_s:Create(game:GetService("Players").LocalPlayer.Character["HumanoidRootPart"], info, {CFrame = targetCFrame * CFrame.fromAxisAngle(Vector3.new(1,0,0), math.rad(90))})
+		tween:Play()
+	end)
+	if not tween then return err end
 end
 
 --loading GUI
@@ -43,53 +43,53 @@ library:Keybind("RightControl")
 getgenv().speed = 4000
 
 window1:Toggle("5/5",false, function(bool)
-    dfarm = bool
+	dfarm = bool
 end)
 window1:Toggle("Kenjutsu Farm",false, function(bool)
-    dfarm = bool
+	dfarm = bool
 end)
 
 window1:Toggle("Legacy Farm Mode",false, function(bool)
-    Legacy = bool
+	Legacy = bool
 end)
 
 spawn(function()
-    while wait() do
-        if Legacy then
+	while wait() do
+		if Legacy then
 			for i,v in pairs(workspace.npc:GetChildren()) do
-                local mobname = string.split(mission.bg.name.Text,"Defeat ")[1]
-                if(string.find(mobname,"(s)")) then
-                    mobname = string.gsub(mobname,"(s)","")
-                end
-                if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-                    repeat
-                        pcall(function()
-                            game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
-                            player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(0,6,0)
-                            game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
-                            game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
-                            game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
-                            wait(.000000000000001)
-                            v.Humanoid.Health = 0
-                        end)
-                            pcall(function()
-                            player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(0,7,.3)
-                            game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
-                            game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
-                            game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
-                            wait(.000000000000001)
-                            v.Humanoid.Health = 0
-                        end)
-                    until not v:FindFirstChild("Humanoid") or not Legacy or not v
-                end
-            end
-        end
-    end
+				local mobname = string.split(mission.bg.name.Text,"Defeat ")[1]
+				if(string.find(mobname,"(s)")) then
+					mobname = string.gsub(mobname,"(s)","")
+				end
+				if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+					repeat
+						pcall(function()
+							game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+							player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(0,6,0)
+							game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+							game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+							game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
+							wait(.000000000000001)
+							v.Humanoid.Health = 0
+						end)
+							pcall(function()
+							player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(0,7,.3)
+							game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+							game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+							game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
+							wait(.000000000000001)
+							v.Humanoid.Health = 0
+						end)
+					until not v:FindFirstChild("Humanoid") or not Legacy or not v
+				end
+			end
+		end
+	end
 end)
 
 spawn(function()
-    while wait() do
-        if dfarm then
+	while wait() do
+		if dfarm then
 			for i,v in pairs(workspace.npc:GetChildren()) do
 				pcall(function()
 					if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
@@ -100,111 +100,109 @@ spawn(function()
 					end
 				end)
 			end
-        end
-    end
+		end
+	end
 end)
 
 spawn(function()
-    while wait() do
-        if dfarm then
+	while wait() do
+		if dfarm or Legacy then
 			for i,v in pairs(workspace.npc:GetChildren()) do
-				pcall(function()
-					if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-						repeat wait()
-							v.Humanoid.Health = 0
-						until not v:FindFirstChild("Humanoid") or not dfarm
-					end
-				end)
-            end
-        end
-    end
+				if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+					repeat
+						v.Humanoid.Health = 0
+					until v.Humanoid.Health == 0 or not dfarm
+				end
+			end
+		end
+	end
 end)
 
 window2:Button("Auto setup",function()
-    local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.senbonhaku}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.painrodthrow}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.senbonhaku}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.painrodthrow}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 	local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.kunaibomb}
 	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 	local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.explosivetag}
 	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 	wait()
-    local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail1,[3] = "tail1"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail1x,[3] = "tail1x"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail2,[3] = "tail2"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail2x,[3] = "tail2x"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail3,[3] = "tail3"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail3x,[3] = "tail3x"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail4,[3] = "tail4"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail4x,[3] = "tail4x"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail5,[3] = "tail5"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail5x,[3] = "tail5x"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail6,[3] = "tail6"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail6x,[3] = "tail6x"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail7,[3] = "tail7"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail7x,[3] = "tail7x"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail8,[3] = "tail8"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail8x,[3] = "tail8x"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail9,[3] = "tail9"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail9x,[3] = "tail9x"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail9x2,[3] = "tail9x2"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    wait()
-    local args = {[1] = "key", [2] = "z"}
-    game:GetService("Players").LocalPlayer.Character.combat.update:FireServer(unpack(args))
-    wait(2.7)
-    local args = {[1] = "key", [2] = "zend"}
-    game:GetService("Players").LocalPlayer.Character.combat.update:FireServer(unpack(args))
-    wait(2)
-    local args = {[1] = "key", [2] = "z"}
-    game:GetService("Players").LocalPlayer.Character.combat.update:FireServer(unpack(args))
-    wait()
-    local args = {[1] = "key", [2] = "5"}
-    game:GetService("Players").LocalPlayer.Character.combat.update:FireServer(unpack(args))
-    wait(2)
-    local args = {[1] = "key", [2] = "zend"}
-    game:GetService("Players").LocalPlayer.Character.combat.update:FireServer(unpack(args))
-    wait(2)
-    local args = {[1] = "!spirit",[2] = "All"}
-    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(args))
-    wait()
+	local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail1,[3] = "tail1"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail1x,[3] = "tail1x"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail2,[3] = "tail2"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail2x,[3] = "tail2x"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail3,[3] = "tail3"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail3x,[3] = "tail3x"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail4,[3] = "tail4"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail4x,[3] = "tail4x"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail5,[3] = "tail5"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail5x,[3] = "tail5x"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail6,[3] = "tail6"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail6x,[3] = "tail6x"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail7,[3] = "tail7"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail7x,[3] = "tail7x"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail8,[3] = "tail8"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail8x,[3] = "tail8x"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail9,[3] = "tail9"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail9x,[3] = "tail9x"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail9x2,[3] = "tail9x2"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	wait()
+	local args = {[1] = "key", [2] = "z"}
+	game:GetService("Players").LocalPlayer.Character.combat.update:FireServer(unpack(args))
+	wait(2.7)
+	local args = {[1] = "key", [2] = "zend"}
+	game:GetService("Players").LocalPlayer.Character.combat.update:FireServer(unpack(args))
+	wait(2)
+	local args = {[1] = "key", [2] = "z"}
+	game:GetService("Players").LocalPlayer.Character.combat.update:FireServer(unpack(args))
+	wait()
+	local args = {[1] = "key", [2] = "5"}
+	game:GetService("Players").LocalPlayer.Character.combat.update:FireServer(unpack(args))
+	wait(2)
+	local args = {[1] = "key", [2] = "zend"}
+	game:GetService("Players").LocalPlayer.Character.combat.update:FireServer(unpack(args))
+	wait(2)
+	local args = {[1] = "!spirit",[2] = "All"}
+	game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(args))
+	wait()
 end)
 
 window2:Toggle("Auto Gen 3 Tentacion",false, function(bool)
-    gen3farm = bool
+	gen3farm = bool
 	--game:GetService("Workspace").ClientEffects:Destroy()
 	local platform = Instance.new("Part", player.Character)
-    platform.Anchored = true
-    platform.Transparency = 1
-    platform.Size = Vector3.new(6, 2, 6)
+	platform.Anchored = true
+	platform.Transparency = 1
+	platform.Size = Vector3.new(6, 2, 6)
 
-    local connection
-    connection = game:GetService("RunService").RenderStepped:connect(function()
-        if player.Character:FindFirstChild("HumanoidRootPart") then
-            platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -2.35, 0)
+	local connection
+	connection = game:GetService("RunService").RenderStepped:connect(function()
+		if player.Character:FindFirstChild("HumanoidRootPart") then
+			platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -2.35, 0)
 		else
-		    connection:Disconnect()
-        end
-    end)
+			connection:Disconnect()
+		end
+	end)
 	spawn(function ()
 		while wait() do
 			if gen3farm ~= true then
@@ -215,22 +213,22 @@ window2:Toggle("Auto Gen 3 Tentacion",false, function(bool)
 end)
 
 window2:Toggle("Spam E",false, function(bool)
-    E = bool
+	E = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
-    if E then
-        pcall(function()
-            game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
-            game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
-        end)
-    end
+	if E then
+		pcall(function()
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+		end)
+	end
 end)
 
 window2:Button("Infinite MD",function()
 	local mode = game.Players.LocalPlayer.Character.combat.mode
-    local copy = mode:Clone()
-    copy.Parent = mode.Parent
-    mode:Destroy()
+	local copy = mode:Clone()
+	copy.Parent = mode.Parent
+	mode:Destroy()
 end)
 
 window2:Button("Remove Effects",function()
@@ -238,8 +236,8 @@ window2:Button("Remove Effects",function()
 end)
 
 spawn(function()
-    while wait() do
-        if gen3farm then
+	while wait() do
+		if gen3farm then
 			for i,v in pairs(workspace.npc:GetChildren()) do
 				pcall(function()
 					if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
@@ -250,8 +248,8 @@ spawn(function()
 					end
 				end)
 			end
-        end
-    end
+		end
+	end
 end)
 
 window3:Button("Upgrade Performance",function()
@@ -282,17 +280,17 @@ end)
 
 window3:Label("Pls ignore", Color3.fromRGB(127, 143, 166))
 window3:Button("Activate Black screen",function()
-    local player = game.Players.LocalPlayer local ScreenGui = Instance.new("ScreenGui") local Frame = Instance.new("Frame")
-    ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-    Frame.Parent = ScreenGui Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0) Frame.Position = UDim2.new(0, 0, -0.3, 0) Frame.Size = UDim2.new(1, 330, 1.3, 150)
+	local player = game.Players.LocalPlayer local ScreenGui = Instance.new("ScreenGui") local Frame = Instance.new("Frame")
+	ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+	Frame.Parent = ScreenGui Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0) Frame.Position = UDim2.new(0, 0, -0.3, 0) Frame.Size = UDim2.new(1, 330, 1.3, 150)
 end)
 
 window3:Button("Deactivate Black screen",function()
-    for i,v in pairs(player.PlayerGui:GetChildren()) do
-        if v.Name == "ScreenGui" then
-            v:Destroy()
-        end 
-    end 
+	for i,v in pairs(player.PlayerGui:GetChildren()) do
+		if v.Name == "ScreenGui" then
+			v:Destroy()
+		end 
+	end 
 end)
 
 window3:Label("Credits", Color3.fromRGB(127, 143, 166))
