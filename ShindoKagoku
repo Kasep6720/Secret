@@ -1,7 +1,7 @@
 repeat wait() until game:IsLoaded()
 --old-antitp bypass
 if workspace:FindFirstChild("CCoff") then
-    game:GetService("Workspace").CCoff:Destroy()
+	game:GetService("Workspace").CCoff:Destroy()
 end
 --antiafk
 local VirtualUser=game:service'VirtualUser'
@@ -11,9 +11,6 @@ local VirtualUser=game:service'VirtualUser'
 	VirtualUser:ClickButton2(Vector2.new())
 end)
 --variables
-local args = {
-[1] = "stopcutscene"}
-game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 
 local player = game.Players.LocalPlayer
 local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
@@ -37,102 +34,102 @@ window1:Label("Boss Functions", Color3.fromRGB(127, 143, 166))
 
 --AUTOFARM
 window1:Button("Auto setup",function()
-    local args = {[1] = "kgbag",[2] = "kg1",[3] = "kagoku"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "kgbag",[2] = "kg2",[3] = "frost"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "kgbag",[2] = "kg3",[3] = "narumaki"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "kgbag",[2] = "kg4",[3] = "azimsenko"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    wait()
-    local args = {[1] = "equipjutsu",[2] = "v",[3] = game:GetService("ReplicatedStorage").alljutsu.kagoku.kagoku1}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "f",[3] = game:GetService("ReplicatedStorage").alljutsu.frost.frost3}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "b",[3] = game:GetService("ReplicatedStorage").alljutsu.narumaki.narumaki3}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "n",[3] = game:GetService("ReplicatedStorage").alljutsu.azimsenko.azim1}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    wait()
-    local args = {[1] = "kgbag",[2] = "kg1",[3] = "kagokuplatinum"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "kgbag",[2] = "kg2",[3] = "scorch"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "kgbag",[2] = "kg3",[3] = "narumakiyang"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    wait()
-    local args = {[1] = "equipjutsu",[2] = "v",[3] = game:GetService("ReplicatedStorage").alljutsu.kagokuplatinum.kagoku1plat}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "f",[3] = game:GetService("ReplicatedStorage").alljutsu.scorch.scorchdeath}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "b",[3] = game:GetService("ReplicatedStorage").alljutsu.narumakiyang.narumaki3yang}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "n",[3] = game:GetService("ReplicatedStorage").alljutsu.azimsenko.azim1}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.kunaithrow}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    wait()
-    local args = {[1] = "kgbag",[2] = "kg3",[3] = "narumakiruby"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    wait()
-    local args = {[1] = "equipjutsu",[2] = "v",[3] = game:GetService("ReplicatedStorage").alljutsu.kagokuplatinum.kagoku1plat}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "f",[3] = game:GetService("ReplicatedStorage").alljutsu.scorch.scorchdeath}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "b",[3] = game:GetService("ReplicatedStorage").alljutsu.narumakiruby.narumaki3ruby}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "n",[3] = game:GetService("ReplicatedStorage").alljutsu.azimsenko.azim1}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.kunaibomb}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.kunai}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    wait()
-    local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail9x,[3] = "tail9x"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail9x2,[3] = "tail9x2"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail9,[3] = "tail9"}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipjutsu",[2] = "r",[3] = game:GetService("ReplicatedStorage").alljutsu.BOSSDROPS.BOSSDROPavalanche}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.painrodthrow}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.BOSSDROPkagokustaff}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    wait()
-    local args = {[1] = "key",[2] = "z"}
-    game:GetService("Players").LocalPlayer.Character.combat.update:FireServer(unpack(args))
-    wait(2)
-    local args = {[1] = "key",[2] = "zend"}
-    game:GetService("Players").LocalPlayer.Character.combat.update:FireServer(unpack(args))
-    wait(2)
-    local args = {[1] = "key",[2] = "z"}
-    game:GetService("Players").LocalPlayer.Character.combat.update:FireServer(unpack(args))
-    wait()
-    local args = {[1] = "key",[2] = "8"}
-    game:GetService("Players").LocalPlayer.Character.combat.update:FireServer(unpack(args))
-    wait(2)
-    local args = {[1] = "key",[2] = "zend"}
-    game:GetService("Players").LocalPlayer.Character.combat.update:FireServer(unpack(args))
-    wait(2)
-    local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.BOSSDROPkagokustaff}
-    game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-    wait()
-        local mode = game.Players.LocalPlayer.Character.combat.mode
-        local copy = mode:Clone()
-        copy.Parent = mode.Parent
-        mode:Destroy()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/6Wumpus6/SpyHub/main/Autoopen", true))()
-    wait()
-    Aimyom = true
-    F = true
-    Pnorm = true
+	local args = {[1] = "kgbag",[2] = "kg1",[3] = "kagoku"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "kgbag",[2] = "kg2",[3] = "frost"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "kgbag",[2] = "kg3",[3] = "narumaki"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "kgbag",[2] = "kg4",[3] = "azimsenko"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	wait()
+	local args = {[1] = "equipjutsu",[2] = "v",[3] = game:GetService("ReplicatedStorage").alljutsu.kagoku.kagoku1}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "f",[3] = game:GetService("ReplicatedStorage").alljutsu.frost.frost3}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "b",[3] = game:GetService("ReplicatedStorage").alljutsu.narumaki.narumaki3}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "n",[3] = game:GetService("ReplicatedStorage").alljutsu.azimsenko.azim1}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	wait()
+	local args = {[1] = "kgbag",[2] = "kg1",[3] = "kagokuplatinum"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "kgbag",[2] = "kg2",[3] = "scorch"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "kgbag",[2] = "kg3",[3] = "narumakiyang"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	wait()
+	local args = {[1] = "equipjutsu",[2] = "v",[3] = game:GetService("ReplicatedStorage").alljutsu.kagokuplatinum.kagoku1plat}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "f",[3] = game:GetService("ReplicatedStorage").alljutsu.scorch.scorchdeath}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "b",[3] = game:GetService("ReplicatedStorage").alljutsu.narumakiyang.narumaki3yang}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "n",[3] = game:GetService("ReplicatedStorage").alljutsu.azimsenko.azim1}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.kunaithrow}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	wait()
+	local args = {[1] = "kgbag",[2] = "kg3",[3] = "narumakiruby"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	wait()
+	local args = {[1] = "equipjutsu",[2] = "v",[3] = game:GetService("ReplicatedStorage").alljutsu.kagokuplatinum.kagoku1plat}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "f",[3] = game:GetService("ReplicatedStorage").alljutsu.scorch.scorchdeath}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "b",[3] = game:GetService("ReplicatedStorage").alljutsu.narumakiruby.narumaki3ruby}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "n",[3] = game:GetService("ReplicatedStorage").alljutsu.azimsenko.azim1}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.kunaibomb}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.kunai}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	wait()
+	local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail9x,[3] = "tail9x"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail9x2,[3] = "tail9x2"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipmode",[2] = game:GetService("ReplicatedStorage").alljutsu.modes.tail9,[3] = "tail9"}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipjutsu",[2] = "r",[3] = game:GetService("ReplicatedStorage").alljutsu.BOSSDROPS.BOSSDROPavalanche}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.painrodthrow}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.BOSSDROPkagokustaff}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	wait()
+	local args = {[1] = "key",[2] = "z"}
+	game:GetService("Players").LocalPlayer.Character.combat.update:FireServer(unpack(args))
+	wait(2)
+	local args = {[1] = "key",[2] = "zend"}
+	game:GetService("Players").LocalPlayer.Character.combat.update:FireServer(unpack(args))
+	wait(2)
+	local args = {[1] = "key",[2] = "z"}
+	game:GetService("Players").LocalPlayer.Character.combat.update:FireServer(unpack(args))
+	wait()
+	local args = {[1] = "key",[2] = "8"}
+	game:GetService("Players").LocalPlayer.Character.combat.update:FireServer(unpack(args))
+	wait(2)
+	local args = {[1] = "key",[2] = "zend"}
+	game:GetService("Players").LocalPlayer.Character.combat.update:FireServer(unpack(args))
+	wait(2)
+	local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.BOSSDROPkagokustaff}
+	game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	wait()
+		local mode = game.Players.LocalPlayer.Character.combat.mode
+		local copy = mode:Clone()
+		copy.Parent = mode.Parent
+		mode:Destroy()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/6Wumpus6/SpyHub/main/Autoopen", true))()
+	wait()
+	Aimyom = true
+	F = true
+	Pnorm = true
 end)
 
 window1:Toggle("Camera lock to boss",false,function(bool)
-    Aimyom = bool
+	Aimyom = bool
 end)
 --FE Simple AimLock Script | Released Nov 2021 | Working.
 local Area = game:GetService("Workspace")
@@ -184,7 +181,7 @@ UIS.InputBegan:Connect(function(Input)
 		Active = true
 		Lock = true
 		if Active then
-        	local The_Enemy = game:GetService("Workspace"):FindFirstChild("npc"):FindFirstChild("npc1")
+			local The_Enemy = game:GetService("Workspace"):FindFirstChild("npc"):FindFirstChild("npc1")
 			while Aimyom do task.wait(.000001)
 				if Lock and The_Enemy ~= nil then
 					local Future = The_Enemy.HumanoidRootPart.CFrame + (The_Enemy.HumanoidRootPart.Velocity * Epitaph + HeadOffset)
@@ -196,9 +193,9 @@ UIS.InputBegan:Connect(function(Input)
 end)
 
 if Aimyom == false then
-    HoldingM2 = false
-    Lock = false
-    Active = false
+	HoldingM2 = false
+	Lock = false
+	Active = false
 	UnLockCursor()
 end
 
@@ -222,163 +219,171 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/6Wumpus6/SpyHub/main/
 end)
 
 window1:Button("Auto Charge Chi", function(bool)
-    local chakra = string.split(game.Players.LocalPlayer.PlayerGui.Main.ingamearena.Bar.cha.Text,"CHI: ")[2]
-    c = chakra:gsub("CH%: ","")
-    local cha
-    local function chakracheck()
-        chakra = string.split(game.Players.LocalPlayer.PlayerGui.Main.ingamearena.Bar.cha.Text,"CHI: ")[2]
-        c = chakra:gsub("CH%: ","")
-        cha = c
-        if game.Players.LocalPlayer.Character.Humanoid.WalkSpeed == 0 then
-            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 50
-        end
-    end
-    halfchi = chakra/1.5
-    print("CHI will recharge at "..halfchi)
-    spawn(function() 
-        while wait() do
-            if game.Players.LocalPlayer.Character.Humanoid.WalkSpeed == 0 then
-                game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 50
-            end
-            chakracheck()
-        end
-    end)
-    spawn(function() 
-        while wait() do
-            if tonumber(cha) < halfchi then
-                game.Players.LocalPlayer.Character.combat.update:FireServer("key","c")
-                wait(3)
-            else
-                game.Players.LocalPlayer.Character.combat.update:FireServer("key","cend")
-            end
-        end
-    end)
+	local chakra = string.split(game.Players.LocalPlayer.PlayerGui.Main.ingamearena.Bar.cha.Text,"CHI: ")[2]
+	c = chakra:gsub("CH%: ","")
+	local cha
+	local function chakracheck()
+		chakra = string.split(game.Players.LocalPlayer.PlayerGui.Main.ingamearena.Bar.cha.Text,"CHI: ")[2]
+		c = chakra:gsub("CH%: ","")
+		cha = c
+		if game.Players.LocalPlayer.Character.Humanoid.WalkSpeed == 0 then
+			game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 50
+		end
+	end
+	halfchi = chakra/1.5
+	print("CHI will recharge at "..halfchi)
+	spawn(function() 
+		while wait() do
+			if game.Players.LocalPlayer.Character.Humanoid.WalkSpeed == 0 then
+				game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 50
+			end
+			chakracheck()
+		end
+	end)
+	spawn(function() 
+		while wait() do
+			if tonumber(cha) < halfchi then
+				game.Players.LocalPlayer.Character.combat.update:FireServer("key","c")
+				wait(3)
+			else
+				game.Players.LocalPlayer.Character.combat.update:FireServer("key","cend")
+			end
+		end
+	end)
 end)
 
 window1:Button("Infinite MD",function()
 	local mode = game.Players.LocalPlayer.Character.combat.mode
-    local copy = mode:Clone()
-    copy.Parent = mode.Parent
-    mode:Destroy()
+	local copy = mode:Clone()
+	copy.Parent = mode.Parent
+	mode:Destroy()
 end)
 
 window1:Button("Reset when died", function(bool)
-    Aimyom = false
-    F = false
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/6Wumpus6/SpyHub/main/Infmodeclose", true))()
+	Aimyom = false
+	F = false
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/6Wumpus6/SpyHub/main/Infmodeclose", true))()
+end)
+
+window1:Button("Enable Infinite Jump",function()
+	getgenv().dc = false
+	local infjump
+	infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
+		if dc then infjump:Disconnect() return end
+		game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
+	end)
+end)
+
+window1:Button("Disable Infinite Jump",function()
+	getgenv().dc = true
 end)
 
 local keel
 window1:Toggle("Kill Aura (Bugged)",false, function(bool)
-    keel = bool
+	keel = bool
 end)
 spawn(function()
-    while wait() do
-        if keel then
-            for i,v in pairs(workspace.npc:GetChildren()) do
-                pcall(function()
-                    if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-                        repeat wait()
-                            pcall(function()
-                                wait(.0000000000000000000000000005)
-                                v.Humanoid.Health = 0
-                            end)
-                        until v.Humanoid.Health == 0 or not keel
-                    end
-                end)
-            end
-        end
-    end
+	while wait() do
+		if keel then
+			for i,v in pairs(workspace.npc:GetChildren()) do
+				if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+					repeat wait()
+						v.Humanoid.Health = 0
+					until v.Humanoid.Health == 0 or not keel
+				end
+			end
+		end
+	end
 end)
 
 window1:Toggle("Press P to fly",false,function(Pnorm)
 
-                repeat wait() 
-                until game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:findFirstChild("Head") and game.Players.LocalPlayer.Character:findFirstChild("Humanoid") 
-                local mouse = game.Players.LocalPlayer:GetMouse() 
-                repeat wait() until mouse
-                local plr = game.Players.LocalPlayer 
-                local torso = plr.Character.Head 
-                local flying = false
-                local deb = true 
-                local ctrl = {f = 0, b = 0, l = 0, r = 0} 
-                local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
-                local maxspeed = 101 
-                local speed = 0 
+	repeat wait() 
+	until game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:findFirstChild("Head") and game.Players.LocalPlayer.Character:findFirstChild("Humanoid") 
+	local mouse = game.Players.LocalPlayer:GetMouse() 
+	repeat wait() until mouse
+	local plr = game.Players.LocalPlayer 
+	local torso = plr.Character.Head 
+	local flying = false
+	local deb = true 
+	local ctrl = {f = 0, b = 0, l = 0, r = 0} 
+	local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+	local maxspeed = 101 
+	local speed = 0 
 
-                function Fly() 
-                    local bg = Instance.new("BodyGyro", torso) 
-                    bg.P = 9e4 
-                    bg.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
-                    bg.cframe = torso.CFrame 
+	function Fly() 
+		local bg = Instance.new("BodyGyro", torso) 
+		bg.P = 9e4 
+		bg.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
+		bg.cframe = torso.CFrame 
 
-                    local bv = Instance.new("BodyVelocity", torso) 
-                    bv.velocity = Vector3.new(0,0.1,0) 
-                    bv.maxForce = Vector3.new(9e9, 9e9, 9e9) 
-                    repeat wait() 
-                        plr.Character.Humanoid.PlatformStand = true 
-                        if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
-                            speed = speed+30.5+(speed/maxspeed) 
-                            if speed > maxspeed then 
-                                speed = maxspeed 
-                            end 
+		local bv = Instance.new("BodyVelocity", torso) 
+		bv.velocity = Vector3.new(0,0.1,0) 
+		bv.maxForce = Vector3.new(9e9, 9e9, 9e9) 
+		repeat wait() 
+			plr.Character.Humanoid.PlatformStand = true 
+			if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
+				speed = speed+30.5+(speed/maxspeed) 
+				if speed > maxspeed then 
+					speed = maxspeed 
+				end 
 
-                        elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
-                            speed = speed-31.5
-                            if speed < 0 then 
-                                speed = 0 
-                            end 
-                        end 
-                        if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then 
-                            bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
-                            lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r} 
-                        elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then 
-                            bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
-                        else 
-                            bv.velocity = Vector3.new(0,0.1,0)
-                        end 
-                        bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
-                    until not flying 
-                    ctrl = {f = 0, b = 0, l = 0, r = 0} 
-                    lastctrl = {f = 0, b = 0, l = 0, r = 0} 
-                    speed = 0 
-                    bg:Destroy() 
-                    bv:Destroy() 
-                    plr.Character.Humanoid.PlatformStand = false 
-                end 
+			elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
+				speed = speed-31.5
+				if speed < 0 then 
+					speed = 0 
+				end 
+			end 
+			if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then 
+				bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+				lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r} 
+			elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then 
+				bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+			else 
+				bv.velocity = Vector3.new(0,0.1,0)
+			end 
+			bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
+		until not flying 
+		ctrl = {f = 0, b = 0, l = 0, r = 0} 
+		lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+		speed = 0 
+		bg:Destroy() 
+		bv:Destroy() 
+		plr.Character.Humanoid.PlatformStand = false 
+	end 
 
-                mouse.KeyDown:connect(function(key) 
-                    if key:lower() == "p" then 
-                        if flying then flying = false 
-                        else 
-                            flying = true 
-                            Fly() 
-                        end 
-                    elseif key:lower() == "w" then 
-                        ctrl.f = 1 
-                    elseif key:lower() == "s" then 
-                        ctrl.b = -1 
-                    elseif key:lower() == "a" then 
-                        ctrl.l = -1 
-                    elseif key:lower() == "d" then 
-                        ctrl.r = 1 
-                    end 
-                end) 
+	mouse.KeyDown:connect(function(key) 
+		if key:lower() == "p" then 
+			if flying then flying = false 
+			else 
+				flying = true 
+				Fly() 
+			end 
+		elseif key:lower() == "w" then 
+			ctrl.f = 1 
+		elseif key:lower() == "s" then 
+			ctrl.b = -1 
+		elseif key:lower() == "a" then 
+			ctrl.l = -1 
+		elseif key:lower() == "d" then 
+			ctrl.r = 1 
+		end 
+	end) 
 
-                mouse.KeyUp:connect(function(key) 
+	mouse.KeyUp:connect(function(key) 
 
-                    if key:lower() == "w" then 
-                        ctrl.f = 0 
-                    elseif key:lower() == "s" then 
-                        ctrl.b = 0 
-                    elseif key:lower() == "a" then 
-                        ctrl.l = 0 
-                    elseif key:lower() == "d" then 
-                        ctrl.r = 0 
-                    end 
-                end)
-                Fly()
-            end)
+		if key:lower() == "w" then 
+			ctrl.f = 0 
+		elseif key:lower() == "s" then 
+			ctrl.b = 0 
+		elseif key:lower() == "a" then 
+			ctrl.l = 0 
+		elseif key:lower() == "d" then 
+			ctrl.r = 0 
+		end 
+	end)
+	Fly()
+end)
 
 local scrollfarm
 window1:Toggle("Scroll Snipe",false, function(bool)
@@ -426,29 +431,29 @@ end)
 
 window1:Label("Settings", Color3.fromRGB(127, 143, 166))
 window1:Button("Upgrade Performance",false,function()
-    local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
-    local g = game
-    local w = g.Workspace
-    local l = g.Lighting
-    local t = w.Terrain
-    t.WaterWaveSize = 0
-    t.WaterWaveSpeed = 0
-    t.WaterReflectance = 0
-    t.WaterTransparency = 0
-    l.GlobalShadows = false
-    l.FogEnd = 9e9
-    l.Brightness = 0
-    settings().Rendering.QualityLevel = "Level01"
-    for i,v in pairs(g:GetDescendants()) do
-        if v:IsA("Part") or v:IsA("Union") or v:IsA("MeshPart") then
-            v.Material = "Plastic"
-            v.Reflectance = 0
-        elseif v:IsA("Decal") and decalsyeeted then 
-            v.Transparency = 1
-        elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then 
-            v.Lifetime = NumberRange.new(0)
-        end
-    end
+	local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
+	local g = game
+	local w = g.Workspace
+	local l = g.Lighting
+	local t = w.Terrain
+	t.WaterWaveSize = 0
+	t.WaterWaveSpeed = 0
+	t.WaterReflectance = 0
+	t.WaterTransparency = 0
+	l.GlobalShadows = false
+	l.FogEnd = 9e9
+	l.Brightness = 0
+	settings().Rendering.QualityLevel = "Level01"
+	for i,v in pairs(g:GetDescendants()) do
+		if v:IsA("Part") or v:IsA("Union") or v:IsA("MeshPart") then
+			v.Material = "Plastic"
+			v.Reflectance = 0
+		elseif v:IsA("Decal") and decalsyeeted then 
+			v.Transparency = 1
+		elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then 
+			v.Lifetime = NumberRange.new(0)
+		end
+	end
 end)
 
 window1:Button("Remove Effects / Particles",function()
@@ -457,147 +462,125 @@ end)
 
 
 window2:Toggle("Spam Q",false,function(bool)
-    Q = bool
+	Q = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
-    if Q then
-        pcall(function()
-    game.Players.LocalPlayer.Character.combat.update:FireServer("key","q")
-    wait(.0008)
-    game.Players.LocalPlayer.Character.combat.update:FireServer("key","qend")
-    wait(.0009)
-        end)
-    end
+	if Q then
+		pcall(function()
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","q")
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","qend")
+		end)
+	end
 end)
 window2:Toggle("Spam E",false, function(bool)
-    E = bool
+	E = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
-    if E then
-        pcall(function()
-    game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
-    wait()
-    game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
-    wait()
-        end)
-    end
+	if E then
+		pcall(function()
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+		end)
+	end
 end)
 window2:Toggle("Spam R",false, function(bool)
-    R = bool
+	R = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
-    if R then
-        pcall(function()
-    game.Players.LocalPlayer.Character.combat.update:FireServer("key","r")
-    wait(.0008)
-    game.Players.LocalPlayer.Character.combat.update:FireServer("key","rend")
-    wait(.0009)
-        end)
-    end
+	if R then
+		pcall(function()
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","r")
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","rend")
+		end)
+	end
 end)
 window2:Toggle("Spam T",false, function(bool)
-    T = bool
+	T = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
-    if T then
-        pcall(function()
-    game.Players.LocalPlayer.Character.combat.update:FireServer("key","t")
-    wait(.0008)
-    game.Players.LocalPlayer.Character.combat.update:FireServer("key","tend")
-    wait(.0009)
-        end)
-    end
+	if T then
+		pcall(function()
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","t")
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","tend")
+		end)
+	end
 end)
 window2:Toggle("Spam Y",false, function(bool)
-    Y = bool
+	Y = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
-    if Y then
-        pcall(function()
-    game.Players.LocalPlayer.Character.combat.update:FireServer("key","y")
-    wait(.0008)
-    game.Players.LocalPlayer.Character.combat.update:FireServer("key","yend")
-    wait(.0009)
-        end)
-    end
+	if Y then
+		pcall(function()
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","y")
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","yend")
+		end)
+	end
 end)
 window2:Toggle("Spam F",false, function(bool)
-    F = bool
+	F = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
-    if F then
-        pcall(function()
-    game.Players.LocalPlayer.Character.combat.update:FireServer("key","f")
-    wait(.0008)
-    game.Players.LocalPlayer.Character.combat.update:FireServer("key","fend")
-    wait(.0009)
-        end)
-    end
+	if F then
+		pcall(function()
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","f")
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","fend")
+		end)
+	end
 end)
 window2:Toggle("Spam G",false, function(bool)
-    G = bool
+	G = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
-    if G then
-        pcall(function()
-    game.Players.LocalPlayer.Character.combat.update:FireServer("key","g")
-    wait(.0008)
-    game.Players.LocalPlayer.Character.combat.update:FireServer("key","gend")
-    wait(.0009)
-        end)
-    end
+	if G then
+		pcall(function()
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","g")
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","gend")
+		end)
+	end
 end)
 window2:Toggle("Spam H",false, function(bool)
-    H = bool
+	H = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
-    if H then
-        pcall(function()
-    game.Players.LocalPlayer.Character.combat.update:FireServer("key","h")
-    wait(.0008)
-    game.Players.LocalPlayer.Character.combat.update:FireServer("key","hend")
-    wait(.0009)
-        end)
-    end
+	if H then
+		pcall(function()
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","h")
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","hend")
+		end)
+	end
 end)
 window2:Toggle("Spam V",false, function(bool)
-    V = bool
+	V = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
-    if V then
-        pcall(function()
-    game.Players.LocalPlayer.Character.combat.update:FireServer("key","v")
-    wait(.0008)
-    game.Players.LocalPlayer.Character.combat.update:FireServer("key","vend")
-    wait(.0009)
-        end)
-    end
+	if V then
+		pcall(function()
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","v")
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","vend")
+		end)
+	end
 end)
 window2:Toggle("Spam B",false, function(bool)
-    B = bool
+	B = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
-    if B then
-        pcall(function()
-    game.Players.LocalPlayer.Character.combat.update:FireServer("key","b")
-    wait(.0008)
-    game.Players.LocalPlayer.Character.combat.update:FireServer("key","bend")
-    wait(.0009)
-        end)
-    end
+	if B then
+		pcall(function()
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","b")
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","bend")
+		end)
+	end
 end)
 window2:Toggle("Spam N",false, function(bool)
-    N = bool
+	N = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
-    if N then
-        pcall(function()
-    game.Players.LocalPlayer.Character.combat.update:FireServer("key","n")
-    wait(.0008)
-    game.Players.LocalPlayer.Character.combat.update:FireServer("key","nend")
-    wait(.0009)
-        end)
-    end
+	if N then
+		pcall(function()
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","n")
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","nend")
+		end)
+	end
 end)
 
 window3:Button("Made by NoobieDoge",function()
@@ -642,12 +625,16 @@ TextButton.TextSize = 40.000
 TextButton.TextWrapped = true
 
 function OK()
-    for i,v in pairs(player.PlayerGui:GetChildren()) do
-        if v.Name == "ScreenGui" then
-            v:Destroy()
-        end
-    end
+	for i,v in pairs(player.PlayerGui:GetChildren()) do
+		if v.Name == "ScreenGui" then
+			v:Destroy()
+		end
+	end
 end
 TextButton.MouseButton1Click:connect(OK)
+
+local args = {
+[1] = "stopcutscene"}
+game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/HDTerebi/Shindo-Life/main/No%20CD%20Method"))()
