@@ -238,11 +238,7 @@ SecretCodeTextRedeem.TextSize = 14
 SecretCodeTextRedeem.TextWrapped = true
 
 function CodeRedeem()
-	if SecretCodeText.Text ~= "BlazingFanatic" and SecretCodeText.Text ~= "Bl" and SecretCodeText.Text ~= "BL" and SecretCodeText.Text ~= "bl" then
-		SecretCodeText.Text = "Invalid Code!"
-		wait(.5)
-		SecretCodeText.Text = "Secret Code"
-	else
+	if SecretCodeText.Text == "BlazingFanatic" or SecretCodeText.Text == "bL" or SecretCodeText.Text == "Bl" or SecretCodeText.Text == "BL" or SecretCodeText.Text == "bl" then
 		game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Loadout Changer",     Text = "UwU",Duration = 1, })
 		local s = Instance.new("Sound")
 		s.Name = "Sound" 
@@ -252,6 +248,10 @@ function CodeRedeem()
 		s.archivable = false 
 		s.Parent = game.Workspace wait(.0000000000000000000000000000001) 
 		s:play()
+	else
+		SecretCodeText.Text = "Invalid Code!"
+		wait(.5)
+		SecretCodeText.Text = "Secret Code"
 	end
 end
 SecretCodeTextRedeem.MouseButton1Click:connect(CodeRedeem)
