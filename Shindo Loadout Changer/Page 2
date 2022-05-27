@@ -228,7 +228,7 @@ SecretCodeTextRedeem.TextSize = 14
 SecretCodeTextRedeem.TextWrapped = true
 
 function CodeRedeem()
-	if SecretCodeText.Text ~= "BlazingFanatic" then
+	if SecretCodeText.Text ~= "BlazingFanatic" and SecretCodeText.Text ~= "Bl" and SecretCodeText.Text ~= "BL" and SecretCodeText.Text ~= "bl" then
 		SecretCodeText.Text = "Invalid Code!"
 		wait(.5)
 		SecretCodeText.Text = "Secret Code"
