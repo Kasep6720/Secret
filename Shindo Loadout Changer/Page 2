@@ -228,13 +228,13 @@ SecretCodeTextRedeem.TextSize = 14
 SecretCodeTextRedeem.TextWrapped = true
 
 function CodeRedeem()
-	if SecretCodeText.Text ~= "BlazingFanatic" and SecretCodeText.Text ~= "Bl" and SecretCodeText.Text ~= "BL" and SecretCodeText.Text ~= "bl" then
+	if SecretCodeText.Text == "BlazingFanatic" or SecretCodeText.Text == "bL" or SecretCodeText.Text == "Bl" or SecretCodeText.Text == "BL" or SecretCodeText.Text == "bl" then
+		ScreenGui:Destroy()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20BlazingFanatic"))()
+	else
 		SecretCodeText.Text = "Invalid Code!"
 		wait(.5)
 		SecretCodeText.Text = "Secret Code"
-	else
-		ScreenGui:Destroy()
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20BlazingFanatic"))()
 	end
 end
 SecretCodeTextRedeem.MouseButton1Click:connect(CodeRedeem)
