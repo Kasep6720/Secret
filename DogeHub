@@ -146,6 +146,9 @@ elseif game.PlaceId == 8540168650 then
 elseif game.PlaceId == 6461766546 then
 	wait(.2) TextLabel.Text = "Game supported!" wait(.5) TextLabel.Text = "A Hero's Destiny" wait(.7) TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!" wait(1) ScreenGui:Destroy()
 	loadstring(game:HttpGet('https://raw.githubusercontent.com/Solx69/Shit-Boy-Hub-Main/main/Master.lua'))()
+elseif game.PlaceId == 9359839118 then
+	wait(.2) TextLabel.Text = "Game supported!" wait(.5) TextLabel.Text = "Gas Station Simulator" wait(.7) TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!" wait(1) ScreenGui:Destroy()
+	loadstring(game:HttpGet('https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Gas%20Station%20Simulator'))()
 elseif game.PlaceId ~= 4616652839 then
 	local warplace = game:GetService("Workspace"):FindFirstChild("warmode")
 	local allbosses = game:GetService("Workspace"):FindFirstChild("cutscene")
