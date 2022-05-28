@@ -1,5 +1,75 @@
 repeat wait() until game:IsLoaded()
 local player = game.Players.LocalPlayer
+if _G.dAAcG3fvBqVoPzVnAFk == nil then 
+	_G.dAAcG3fvBqVoPzVnAFk = "" 
+end 
+function notify(a,b,c)
+	local d=c or function()return end;
+	local e=b or false;
+		if a==_G.dAAcG3fvBqVoPzVnAFk and e==false then return end;
+		spawn(function()
+			for f,g in pairs(game.CoreGui:GetChildren())do 
+				spawn(function()
+					if g.Name=="MNotify"then 
+						pcall(function()
+							g.ImageButton.ZIndex=58;
+							g.ImageButton.TextLabel.ZIndex=59;
+							g.ImageButton:TweenPosition(UDim2.new(0.01,0,1,0),"Out","Quint",.7,true)
+							game:GetService("TweenService"):Create(g.ImageButton.TextLabel,TweenInfo.new(0.8,Enum.EasingStyle.Quint,Enum.EasingDirection.Out,0,false,0),{TextTransparency=1})
+							wait(1)
+							g:Destroy()
+						end)
+					end 
+				end)
+			end;
+			_G.dAAcG3fvBqVoPzVnAFk=a
+			local d=c or function()return end;
+			local function h(i,j)
+				local k=Instance.new(i)
+					for f,g in pairs(j)do 
+						k[f]=g 
+					end;
+				return k end;
+				local l=h('ScreenGui',{DisplayOrder=0,Enabled=true,ResetOnSpawn=true,Name='MNotify',Parent=game.CoreGui})
+				local m=h('ImageButton',{Image='rbxassetid://1051186612',ImageColor3=Color3.new(0.129412,0.129412,0.129412),ImageRectOffset=Vector2.new(0,0),ImageRectSize=Vector2.new(0,0),ImageTransparency=0,ScaleType=Enum.ScaleType.Slice,SliceCenter=Rect.new(20,20,20,20),AutoButtonColor=true,Modal=false,Selected=false,Style=Enum.ButtonStyle.Custom,Active=true,AnchorPoint=Vector2.new(0,0),BackgroundColor3=Color3.new(1,1,1),BackgroundTransparency=1,BorderColor3=Color3.new(0.105882,0.164706,0.207843),BorderSizePixel=1,ClipsDescendants=false,Draggable=false,Position=UDim2.new(0.00999999978,0,1,0),Rotation=0,Selectable=true,Size=UDim2.new(0,234,0,40),SizeConstraint=Enum.SizeConstraint.RelativeXY,Visible=true,ZIndex=60,Name='ImageButton',Parent=l})
+				local n=h('TextLabel',{Font=Enum.Font.TitilliumWeb,FontSize=Enum.FontSize.Size24,Text=a,TextColor3=Color3.new(0.807843,0.807843,0.807843),TextScaled=false,TextSize=24,TextStrokeColor3=Color3.new(0,0,0),TextStrokeTransparency=1,TextTransparency=0,TextWrapped=false,TextXAlignment=Enum.TextXAlignment.Center,TextYAlignment=Enum.TextYAlignment.Center,Active=false,AnchorPoint=Vector2.new(0,0),BackgroundColor3=Color3.new(1,1,1),BackgroundTransparency=1,BorderColor3=Color3.new(0.105882,0.164706,0.207843),BorderSizePixel=1,ClipsDescendants=false,Draggable=false,Position=UDim2.new(0.132478639,0,0,0),Rotation=0,Selectable=false,Size=UDim2.new(0,174,0,40),SizeConstraint=Enum.SizeConstraint.RelativeXY,Visible=true,ZIndex=61,Name='TextLabel',Parent=m})
+				local o=h('UIListLayout',{Padding=UDim.new(0,0),FillDirection=Enum.FillDirection.Vertical,HorizontalAlignment=Enum.HorizontalAlignment.Center,SortOrder=Enum.SortOrder.Name,VerticalAlignment=Enum.VerticalAlignment.Top,Name='UIListLayout',Parent=m})
+				local p=1;
+				if string.len(a)<=49 then 
+					m.Size=UDim2.new(0,game:GetService("TextService"):GetTextSize(a,24,Enum.Font.TitilliumWeb,Vector2.new(500,900)).X+35,0,40)
+				elseif string.len(a)>49 then 
+					p=math.ceil(string.len(string.sub(a,49))/9)
+					m.Size=UDim2.new(0,game:GetService("TextService"):GetTextSize(a,24,Enum.Font.TitilliumWeb,Vector2.new(500+p*100,900)).X+35,0,40)
+				end;
+				m:TweenPosition(UDim2.new(0.01,0,1,-60),"Out","Quint",.7,true)
+				spawn(function()
+					wait(4)
+					pcall(function()
+						m.ZIndex=58;
+						n.ZIndex=59;
+						m:TweenPosition(UDim2.new(0.01,0,1,0),"Out","Quint",.7,true)
+						_G.dAAcG3fvBqVoPzVnAFk=""
+						wait(.3)
+						l:Destroy()
+					end)
+				end)
+				m.MouseButton1Up:Connect(function()if c==nil then return end;
+				spawn(function()
+					pcall(function()
+						m.ZIndex=58;n.ZIndex=59;
+						m:TweenPosition(UDim2.new(0.01,0,1,0),"Out","Quint",.7,true)
+						_G.dAAcG3fvBqVoPzVnAFk=""
+						wait(1)
+						l:Destroy()
+					end)
+				end)
+				d()
+			end)
+		end)
+	end
+	function roundNumber(num, numDecimalPlaces) -- https://devforum.roblox.com/t/rounding-to-1-decimal-point/673504
+	return tonumber(string.format("%." .. (numDecimalPlaces or 0) .. "f", num))
+end
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20script%20gui"))()
 local window1 = library:Window("Infinite Spin - DogeHub")
 local window2 = library:Window("Bloodlines")
@@ -55,6 +125,16 @@ library:Keybind("RightControl")
 						v:Destroy()
 					end
 				end
+				Autosave = false
+				AutoSpinBL1 = false
+				AutoSpinBL2 = false
+				AutoSpinBL3 = false
+				AutoSpinBL4 = false
+				StartSpinElm1 = false
+				StartSpinElm2 = false
+				StartSpinElm3 = false
+				StartSpinElm4 = false
+				StartSpinKen = false
 				game:GetService("Players").LocalPlayer.startevent:FireServer("band", "/128")
 				wait()
 				game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
@@ -133,7 +213,7 @@ library:Keybind("RightControl")
 			end
 			game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
 			wait()
-			game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "You may now enter villages or leave game to save your data",Duration = 3, })
+			notify("You may now enter villages or leave game to save your data")
 			datasavedandyoucanredeemcodes = true
 			wait(1)
 		end
@@ -162,12 +242,12 @@ library:Keybind("RightControl")
 
 	window1:Label("-----------------------------------------------", Color3.fromRGB(127, 143, 166)) 
 
-	window1:Toggle("Auto Save",true,function(bool)
-	Autosave = bool
-	end)
-
 	window1:Toggle("Auto Rejoin",true,function(bool)
 	Autorejoin = bool
+	end)
+
+	window1:Toggle("Auto Save",false,function(bool)
+	Autosave = bool
 	end)
 
 	window1:Toggle("Auto Turn on F9",false,function(bool)
@@ -185,31 +265,31 @@ library:Keybind("RightControl")
     local a1
     window2:Dropdown("Bloodline Choice 1",kgs,function(KG1)
         print("Selected: " .. KG1)
-		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "1st Bloodline Selected: " .. KG1 ,Duration = 5, })
+		notify("1st Bloodline Selected: " .. KG1)
     	a1 = KG1
     end)
     local a2
     window2:Dropdown("Bloodline Choice 2",kgs,function(KG2)
         print("Selected: " .. KG2)		
-		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "2nd Bloodline Selected: " .. KG2 ,Duration = 5, })
+		notify("2nd Bloodline Selected: " .. KG2)
     	a2 = KG2
     end)
     local a3
     window2:Dropdown("Bloodline Choice 3",kgs,function(KG3)
         print("Selected: " .. KG3)
-		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "3rd Bloodline Selected: " .. KG3 ,Duration = 5, })
+		notify("3rd Bloodline Selected: " .. KG3)
     	a3 = KG3
     end)
     local a4
     window2:Dropdown("Bloodline Choice 4",kgs,function(KG4)
         print("Selected: " .. KG4)
-		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "4th Bloodline Selected: " .. KG4 ,Duration = 5, })
+		notify("4th Bloodline Selected: " .. KG4)
     	a4 = KG4
     end)
     local a5
     window2:Dropdown("Bloodline Choice 5",kgs,function(KG5)
         print("Selected: " .. KG5)
-		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "5th Bloodline Selected: " .. KG5 ,Duration = 5, })
+		notify("5th Bloodline Selected: " .. KG5)
     	a5 = KG5
     end)
 
@@ -253,10 +333,11 @@ library:Keybind("RightControl")
 								kgvalue1 = game.Players.LocalPlayer.statz.main.kg1.Value
 							else
 								print("You have got: " .. kgvalue1)
-								game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "You have got: " .. kgvalue1,Duration = 0.00001, })
+								notify("You have got: " .. kgvalue1)
 								if Autosave == true then
 									datasavedandyoucanredeemcodes = true
 									game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
+									wait(3)
 								end
 							end
 						end
@@ -313,10 +394,11 @@ library:Keybind("RightControl")
 								kgvalue2 = game.Players.LocalPlayer.statz.main.kg2.Value
 							else
 								print("You have got: " .. kgvalue2)
-								game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "You have got: " .. kgvalue2,Duration = 0.00001, })
+								notify("You have got: " .. kgvalue2)
 								if Autosave == true then
 									datasavedandyoucanredeemcodes = true
 									game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
+									wait(3)
 								end
 							end
 						end
@@ -374,10 +456,11 @@ library:Keybind("RightControl")
 									kgvalue3 = game.Players.LocalPlayer.statz.main.kg3.Value
 								else
 									print("You have got: " .. kgvalue3)
-									game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "You have got: " .. kgvalue3,Duration = 0.00001, })
+									notify("You have got: " .. kgvalue3)
 									if Autosave == true then
 										datasavedandyoucanredeemcodes = true
 										game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
+										wait(3)
 									end
 								end
 							end
@@ -436,10 +519,11 @@ library:Keybind("RightControl")
 									kgvalue4 = game.Players.LocalPlayer.statz.main.kg4.Value
 								else
 									print("You have got: " .. kgvalue4)
-									game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "You have got: " .. kgvalue4,Duration = 0.00001, })
+									notify("You have got: " .. kgvalue4)
 									if Autosave == true then
 										datasavedandyoucanredeemcodes = true
 										game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
+										wait(3)
 									end
 								end
 							end
@@ -470,31 +554,31 @@ library:Keybind("RightControl")
     local a1
     window3:Dropdown("Element Choice 1",elm,function(KG1)
         print("Selected: " .. KG1)
-		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "1st Element Selected: " .. KG1 ,Duration = 5, })
+		notify("1st Element Selected: " .. KG1)
     	a1 = KG1
     end)
     local a2
     window3:Dropdown("Element Choice 2",elm,function(KG2)
         print("Selected: " .. KG2)
-		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "2nd Element Selected: " .. KG2 ,Duration = 5, })
+		notify("2nd Element Selected: " .. KG2)
     	a2 = KG2
     end)
     local a3
     window3:Dropdown("Element Choice 3",elm,function(KG3)
         print("Selected: " .. KG3)
-		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "3rd Element Selected: " .. KG3 ,Duration = 5, })
+		notify("3rd Element Selected: " .. KG3)
     	a3 = KG3
     end)
     local a4
     window3:Dropdown("Element Choice 4",elm,function(KG4)
         print("Selected: " .. KG4)
-		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "4th Element Selected: " .. KG4 ,Duration = 5, })
+		notify("4th Element Selected: " .. KG4)
     	a4 = KG4
     end)
     local a5
     window3:Dropdown("Element Choice 5",elm,function(KG5)
         print("Selected: " .. KG5)
-		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "5th Element Selected: " .. KG5 ,Duration = 5, })
+		notify("5th Element Selected: " .. KG5)
     	a5 = KG5
     end)
 
@@ -538,10 +622,11 @@ library:Keybind("RightControl")
 								elmvalue1 = game.Players.LocalPlayer.statz.main.element1.Value
 							else
 								print("You have got: " .. elmvalue1)
-								game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "You have got: " .. elmvalue1,Duration = 0.00001, })
+								notify("You have got: " .. elmvalue1)
 								if Autosave == true then
 									datasavedandyoucanredeemcodes = true
 									game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
+									wait(3)
 								end
 							end
 						end
@@ -598,10 +683,11 @@ library:Keybind("RightControl")
 								elmvalue2 = game.Players.LocalPlayer.statz.main.element2.Value
 							else
 								print("You have got: " .. elmvalue2)
-								game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "You have got: " .. elmvalue2,Duration = 0.00001, })
+								notify("You have got: " .. elmvalue2)
 								if Autosave == true then
 									datasavedandyoucanredeemcodes = true
 									game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
+									wait(3)
 								end
 							end
 						end
@@ -659,10 +745,11 @@ library:Keybind("RightControl")
 									elmvalue3 = game.Players.LocalPlayer.statz.main.element3.Value
 								else
 									print("You have got: " .. elmvalue3)
-									game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "You have got: " .. elmvalue3,Duration = 0.00001, })
+									notify("You have got: " .. elmvalue3)
 									if Autosave == true then
 										datasavedandyoucanredeemcodes = true
 										game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
+										wait(3)
 									end
 								end
 							end
@@ -721,10 +808,11 @@ library:Keybind("RightControl")
 									elmvalue4 = game.Players.LocalPlayer.statz.main.element4.Value
 								else
 									print("You have got: " .. elmvalue4)
-									game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "You have got: " .. elmvalue4,Duration = 0.00001, })
+									notify("You have got: " .. elmvalue4)
 									if Autosave == true then
 										datasavedandyoucanredeemcodes = true
 										game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
+										wait(3)
 									end
 								end
 							end
@@ -755,19 +843,19 @@ library:Keybind("RightControl")
 	local kenselect1
 		window4:Dropdown("Kenjutsu Choice 1",ken,function(KEN1)
 		print("Selected: " .. KEN1)
-		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "1st Kenjutsu Selected: " .. KEN1 ,Duration = 5, })
+		notify("Selected: " .. KEN1)
 		kenselect1 = KEN1
 	end)
 	local kenselect2
 		window4:Dropdown("Kenjutsu Choice 2",ken,function(KEN2)
 		print("Selected: " .. KEN2)
-		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "2nd Kenjutsu Selected: " .. KEN2 ,Duration = 5, })
+		notify("Selected: " .. KEN2)
 		kenselect2 = KEN2
 	end)
 	local kenselect3
 		window4:Dropdown("Kenjutsu Choice 3",ken,function(KEN3)
 		print("Selected: " .. KEN3)
-		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "3rd Kenjutsu Selected: " .. KEN3 ,Duration = 5, })
+		notify("Selected: " .. KEN3)
 		kenselect2 = KEN3
 	end)
 
@@ -810,10 +898,11 @@ library:Keybind("RightControl")
 								kenvalue = game.Players.LocalPlayer.statz.breathingstyle.Value
 							else
 								print("You have got: " .. kenvalue)
-								game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "You have got: " .. kenvalue,Duration = 0.00001, })
+								notify("You have got: " .. kenvalue)
 								if Autosave == true then
 									datasavedandyoucanredeemcodes = true
 									game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
+									wait(3)
 								end
 							end
 						end
@@ -849,6 +938,5 @@ spawn(function()
 		end
 	end
 end)
-Autosave = true
 Autorejoin = true
 game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
