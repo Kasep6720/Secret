@@ -12,6 +12,73 @@ local VirtualUser=game:service'VirtualUser'
 end)
 --variables
 local player = game.Players.LocalPlayer
+function notify(a,b,c)
+	local d=c or function()return end;
+	local e=b or false;
+		if a==_G.dAAcG3fvBqVoPzVnAFk and e==false then return end;
+		spawn(function()
+			for f,g in pairs(game.CoreGui:GetChildren())do 
+				spawn(function()
+					if g.Name=="MNotify"then 
+						pcall(function()
+							g.ImageButton.ZIndex=58;
+							g.ImageButton.TextLabel.ZIndex=59;
+							g.ImageButton:TweenPosition(UDim2.new(0.01,0,1,0),"Out","Quint",.7,true)
+							game:GetService("TweenService"):Create(g.ImageButton.TextLabel,TweenInfo.new(0.8,Enum.EasingStyle.Quint,Enum.EasingDirection.Out,0,false,0),{TextTransparency=1})
+							wait(1)
+							g:Destroy()
+						end)
+					end 
+				end)
+			end;
+			_G.dAAcG3fvBqVoPzVnAFk=a
+			local d=c or function()return end;
+			local function h(i,j)
+				local k=Instance.new(i)
+					for f,g in pairs(j)do 
+						k[f]=g 
+					end;
+				return k end;
+				local l=h('ScreenGui',{DisplayOrder=0,Enabled=true,ResetOnSpawn=true,Name='MNotify',Parent=game.CoreGui})
+				local m=h('ImageButton',{Image='rbxassetid://1051186612',ImageColor3=Color3.new(0.129412,0.129412,0.129412),ImageRectOffset=Vector2.new(0,0),ImageRectSize=Vector2.new(0,0),ImageTransparency=0,ScaleType=Enum.ScaleType.Slice,SliceCenter=Rect.new(20,20,20,20),AutoButtonColor=true,Modal=false,Selected=false,Style=Enum.ButtonStyle.Custom,Active=true,AnchorPoint=Vector2.new(0,0),BackgroundColor3=Color3.new(1,1,1),BackgroundTransparency=1,BorderColor3=Color3.new(0.105882,0.164706,0.207843),BorderSizePixel=1,ClipsDescendants=false,Draggable=false,Position=UDim2.new(0.00999999978,0,1,0),Rotation=0,Selectable=true,Size=UDim2.new(0,234,0,40),SizeConstraint=Enum.SizeConstraint.RelativeXY,Visible=true,ZIndex=60,Name='ImageButton',Parent=l})
+				local n=h('TextLabel',{Font=Enum.Font.TitilliumWeb,FontSize=Enum.FontSize.Size24,Text=a,TextColor3=Color3.new(0.807843,0.807843,0.807843),TextScaled=false,TextSize=24,TextStrokeColor3=Color3.new(0,0,0),TextStrokeTransparency=1,TextTransparency=0,TextWrapped=false,TextXAlignment=Enum.TextXAlignment.Center,TextYAlignment=Enum.TextYAlignment.Center,Active=false,AnchorPoint=Vector2.new(0,0),BackgroundColor3=Color3.new(1,1,1),BackgroundTransparency=1,BorderColor3=Color3.new(0.105882,0.164706,0.207843),BorderSizePixel=1,ClipsDescendants=false,Draggable=false,Position=UDim2.new(0.132478639,0,0,0),Rotation=0,Selectable=false,Size=UDim2.new(0,174,0,40),SizeConstraint=Enum.SizeConstraint.RelativeXY,Visible=true,ZIndex=61,Name='TextLabel',Parent=m})
+				local o=h('UIListLayout',{Padding=UDim.new(0,0),FillDirection=Enum.FillDirection.Vertical,HorizontalAlignment=Enum.HorizontalAlignment.Center,SortOrder=Enum.SortOrder.Name,VerticalAlignment=Enum.VerticalAlignment.Top,Name='UIListLayout',Parent=m})
+				local p=1;
+				if string.len(a)<=49 then 
+					m.Size=UDim2.new(0,game:GetService("TextService"):GetTextSize(a,24,Enum.Font.TitilliumWeb,Vector2.new(500,900)).X+35,0,40)
+				elseif string.len(a)>49 then 
+					p=math.ceil(string.len(string.sub(a,49))/9)
+					m.Size=UDim2.new(0,game:GetService("TextService"):GetTextSize(a,24,Enum.Font.TitilliumWeb,Vector2.new(500+p*100,900)).X+35,0,40)
+				end;
+				m:TweenPosition(UDim2.new(0.01,0,0.97,-60),"Out","Quint",.7,true)
+				spawn(function()
+					wait(4)
+					pcall(function()
+						m.ZIndex=58;
+						n.ZIndex=59;
+						m:TweenPosition(UDim2.new(0.01,0,1,0),"Out","Quint",.7,true)
+						_G.dAAcG3fvBqVoPzVnAFk=""
+						wait(.3)
+						l:Destroy()
+					end)
+				end)
+				m.MouseButton1Up:Connect(function()if c==nil then return end;
+				spawn(function()
+					pcall(function()
+						m.ZIndex=58;n.ZIndex=59;
+						m:TweenPosition(UDim2.new(0.01,0,1,0),"Out","Quint",.7,true)
+						_G.dAAcG3fvBqVoPzVnAFk=""
+						wait(1)
+						l:Destroy()
+					end)
+				end)
+				d()
+			end)
+		end)
+	end
+	function roundNumber(num, numDecimalPlaces) -- https://devforum.roblox.com/t/rounding-to-1-decimal-point/673504
+	return tonumber(string.format("%." .. (numDecimalPlaces or 0) .. "f", num))
+end
 local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
 local menuplace = 4616652839
 local forestplace = 5447073001
@@ -228,7 +295,8 @@ window2:Button("Switch to Event Boss script",function()
 		end
 		wait()
 		dfarm = false
-		E = false 
+		E = false
+		scrollfarm = false 
 		wait()
 		library:Destroy()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoEventBoss"))()
@@ -297,7 +365,7 @@ local function SCROLLFARM1()
 		if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
 			local scrollA = v.sh:FindFirstChild("invoke")
 			print("SCROLL SPAWNED in workspace")
-			game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "DogeHub",     Text = "SCROLL SPAWNED in workspace",Duration = 0.000001, })
+			notify("SCROLL SPAWNED in workspace")
 			pcall(function()
 				player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
 				fireclickdetector(v.sh.ClickDetector)
