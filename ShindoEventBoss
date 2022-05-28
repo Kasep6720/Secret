@@ -213,13 +213,28 @@ window1:Toggle("Camera lock to boss",false,function(bool)
 	Aimyom = bool
 end)
 
-spawn(function()
-	while wait() do
-		if Aimyom then
-			for i,v in pairs(workspace.npc:GetChildren()) do
-				if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-					game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+game:GetService('RunService').Stepped:connect(function()
+	if Aimyom then
+		for i,v in pairs(workspace.npc:GetChildren()) do
+			if v.ClassName == "Model" and v:FindFirstChild("timemegaboss") and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+				if autofarm then
+					if v.rest.Value == true then
+						game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.CFrame * CFrame.new(5, 0, -5).Position)
+					else
+						game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.CFrame * CFrame.new(5, 0, -20).Position)
+					end
+				elseif autoofarm then
+					if v.rest.Value == true then
+						game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.CFrame * CFrame.new(0, 0, 0).Position)
+					else
+						game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.CFrame * CFrame.new(5, 0, -20).Position)
+					end
+				elseif autooofarm then
+					game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.CFrame * CFrame.new(5, 0, -10).Position)
+				else
+					game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.CFrame * CFrame.new(0, 0, 0).Position)
 				end
+				--wait(.000000000000001)
 			end
 		end
 	end
@@ -279,62 +294,54 @@ window1:Button("Auto Charge Chi", function(bool)
 	end)
 end)
 
-spawn(function()
-	while wait() do
-		if autofarm then
-			if  player.currentmission.Value == nil then
-				for i,v in pairs(workspace.npc:GetChildren()) do
-					pcall(function()
-						autoofarm = false
-						autooofarm = false
-						if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-							repeat wait()
-								player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(0,190,0)
-							until --[[v.Humanoid.Health == 0 or]] not autofarm
+game:GetService('RunService').Stepped:connect(function()
+	if autofarm then
+		for i,v in pairs(workspace.npc:GetChildren()) do
+			pcall(function()
+				autoofarm = false
+				autooofarm = false
+				if v.ClassName == "Model" and v:FindFirstChild("timemegaboss") and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+					repeat wait()
+						if v.rest.Value == true then
+							player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 50, 40)
+						else
+							player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 190, 50)
 						end
-					end)
+					until --[[v.Humanoid.Health == 0 or]] not autofarm
 				end
-			end
+			end)
 		end
 	end
 end)
 
-spawn(function()
-	while wait() do
-		if autoofarm then
-			if  player.currentmission.Value == nil then
-				for i,v in pairs(workspace.npc:GetChildren()) do
-					pcall(function()
-						autofarm = false
-						autooofarm = false
-						if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-							repeat wait()
-								player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 35, 20)
-							until --[[v.Humanoid.Health == 0 or]] not autoofarm
-						end
-					end)
+game:GetService('RunService').Stepped:connect(function()
+	if autoofarm then
+		for i,v in pairs(workspace.npc:GetChildren()) do
+			pcall(function()
+				autofarm = false
+				autooofarm = false
+				if v.ClassName == "Model" and v:FindFirstChild("timemegaboss") and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+					repeat wait()
+						player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 35, 20)
+					until --[[v.Humanoid.Health == 0 or]] not autoofarm
 				end
-			end
+			end)
 		end
 	end
 end)
 
-spawn(function()
-	while wait() do
-		if autooofarm then
-			if  player.currentmission.Value == nil then
-				for i,v in pairs(workspace.npc:GetChildren()) do
-					pcall(function()
-						autoofarm = false
-						autofarm = false
-						if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-							repeat wait()
-								player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 8, 5)
-							until --[[v.Humanoid.Health == 0 or]] not autooofarm
-						end
-					end)
+game:GetService('RunService').Stepped:connect(function()
+	if autooofarm then
+		for i,v in pairs(workspace.npc:GetChildren()) do
+			pcall(function()
+				autoofarm = false
+				autofarm = false
+				if v.ClassName == "Model" and v:FindFirstChild("timemegaboss") and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+					repeat wait()
+						player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 8, 5)
+					until --[[v.Humanoid.Health == 0 or]] not autooofarm
 				end
-			end
+			end)
 		end
 	end
 end)
