@@ -343,6 +343,7 @@ window2:Label("Credits", Color3.fromRGB(127, 143, 166))
 
 window2:Button("Made by NoobieDoge",function()
 	setclipboard("https://discord.gg/P2CeRjvTDt")
+	notify("Discord link copied to clipboard")
 end)
 
 window2:Label("Show/Hide GUI = Right Ctrl", Color3.fromRGB(127, 143, 166))
