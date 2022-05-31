@@ -1,4 +1,4 @@
-	--setclipboard(tostring(game.PlaceId))
+--setclipboard(tostring(game.PlaceId))
 local player = game.Players.LocalPlayer
 local VirtualUser=game:service'VirtualUser'
 game:service'Players'.LocalPlayer.Idled:connect(function()
@@ -153,12 +153,10 @@ function MISC()
 			window1:Toggle("Enabled",false,function(bool)
 				sliderpowa = bool
 			end)
-			spawn(function() 
-				while wait() do
-					if sliderpowa then
-						game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = sliderspeed
-						game.Players.LocalPlayer.Character.Humanoid.JumpPower = sliderjump
-					end
+			game:GetService('RunService').Stepped:connect(function()
+				if sliderpowa then
+					game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = sliderspeed
+					game.Players.LocalPlayer.Character.Humanoid.JumpPower = sliderjump
 				end
 			end)
 
@@ -405,15 +403,17 @@ function MISC()
 			window2:Toggle("NPC Kill Aura",false,function(bool)
 				keel = bool
 			end)
-			spawn(function()
-				while wait() do
-					if keel then
-						for i,v in pairs(workspace.npc:GetChildren()) do
-							if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-								repeat 
-									v.Humanoid.Health = 0
-								until v.Humanoid.Health == 0 or not keel
-							end
+			game:GetService('RunService').Stepped:connect(function()
+				if keel then
+					for i,v in pairs(workspace.npc:GetChildren()) do
+						if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+							repeat
+								v.Humanoid.Health = 0
+								v.Humanoid.Health = 0
+								v.Humanoid.Health = 0
+								v.Humanoid.Health = 0
+								v.Humanoid.Health = 0
+							until v.Humanoid.Health == 0 or not keel
 						end
 					end
 				end
@@ -813,9 +813,7 @@ function AUTOFARM()
 		end)
 		game:GetService('RunService').Stepped:connect(function()
 			if punches then
-				pcall(function()
-					game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
-				end)
+				game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
 			end
 		end)
 
@@ -824,9 +822,7 @@ function AUTOFARM()
 		end)
 		game:GetService('RunService').Stepped:connect(function()
 			if tree then
-				pcall(function()
-					game.Players.LocalPlayer.Character.combat.update:FireServer("takemovement2")
-				end)
+				game.Players.LocalPlayer.Character.combat.update:FireServer("takemovement2")
 			end
 		end)
 
@@ -834,25 +830,23 @@ function AUTOFARM()
 			shoot = bool
 		end)
 
-		spawn(function()
-			while wait() do
-				if shoot then
-					if game.PlaceId == 5451398863 then
-						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Narumaki"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(-22,0,-45)
-					elseif game.PlaceId == 6901575446 then
-						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Jiso Seishin"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(50,0,10)
-					elseif game.PlaceId == 5451401540 then
-						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Shindai Akuma"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(-100,7,-170)
-					elseif game.PlaceId == 5431071837 then
-						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,320,-300)
-					end
-					pcall(function()
-						repeat wait()
-							game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace").Terrain[game.Players.LocalPlayer.Name].kunaiaim.Position)
-							game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
-						until mission.Visible == false or not shoot
-					end)
+		game:GetService('RunService').Stepped:connect(function()
+			if shoot then
+				if game.PlaceId == 5451398863 then
+					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Narumaki"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(-22,0,-45)
+				elseif game.PlaceId == 6901575446 then
+					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Jiso Seishin"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(50,0,10)
+				elseif game.PlaceId == 5451401540 then
+					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Shindai Akuma"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(-100,7,-170)
+				elseif game.PlaceId == 5431071837 then
+					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,320,-300)
 				end
+				pcall(function()
+					repeat wait()
+						game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace").Terrain[game.Players.LocalPlayer.Name].kunaiaim.Position)
+						game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
+					until mission.Visible == false or not shoot
+				end)
 			end
 		end)
 
@@ -860,24 +854,22 @@ function AUTOFARM()
 			block = bool
 		end)
 
-		spawn(function()
-			while wait() do
-				if block then
-					if game.PlaceId == 5451398863 then
-						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Narumaki"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(-22,0,-45)
-					elseif game.PlaceId == 6901575446 then
-						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Jiso Seishin"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(50,0,10)
-					elseif game.PlaceId == 5451401540 then
-						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Shindai Akuma"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(-100,7,-170)
-					elseif game.PlaceId == 5431071837 then
-						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,320,-300)
-					end
-					pcall(function()
-						repeat wait()
-							game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace").Terrain[game.Players.LocalPlayer.Name].kunaiaim.Position)
-						until mission.Visible == false or not block
-					end)
+		game:GetService('RunService').Stepped:connect(function()
+			if block then
+				if game.PlaceId == 5451398863 then
+					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Narumaki"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(-22,0,-45)
+				elseif game.PlaceId == 6901575446 then
+					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Jiso Seishin"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(50,0,10)
+				elseif game.PlaceId == 5451401540 then
+					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Shindai Akuma"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(-100,7,-170)
+				elseif game.PlaceId == 5431071837 then
+					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,320,-300)
 				end
+				pcall(function()
+					repeat wait()
+						game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace").Terrain[game.Players.LocalPlayer.Name].kunaiaim.Position)
+					until mission.Visible == false or not block
+				end)
 			end
 		end)
 
@@ -894,91 +886,91 @@ function AUTOFARM()
 			end
 		end)
 
-		spawn(function()
-			while wait() do
-				if dfarm then
-					for i,v in pairs(workspace.npc:GetChildren()) do
-						if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-							repeat
-								v.Humanoid.Health = 0 v.Humanoid.Health = 0 v.Humanoid.Health = 0 v.Humanoid.Health = 0 v.Humanoid.Health = 0
-							until v.Humanoid.Health == 0 or not dfarm
-						end
+		game:GetService('RunService').Stepped:connect(function()
+			if dfarm then
+				for i,v in pairs(workspace.npc:GetChildren()) do
+					if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+						repeat
+							v.Humanoid.Health = 0 
+							v.Humanoid.Health = 0 
+							v.Humanoid.Health = 0 
+							v.Humanoid.Health = 0 
+							v.Humanoid.Health = 0
+						until v.Humanoid.Health == 0 or not dfarm
 					end
 				end
 			end
 		end)
 
-		spawn(function()
-			while wait() do
-				if EnabledAutoMentor then
-					if mission.Visible == false then
-						if game.PlaceId == 5451398863 then
-							wait(.5)
-							player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Narumaki"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
-							local args = {[1] = game:GetService("Players").LocalPlayer}
-							workspace.sensei.missions:FindFirstChild("Narumaki").missiongiver.CLIENTTALK:FireServer(unpack(args))
-						elseif game.PlaceId == 6901575446 then
-							wait(.5)
-							player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Jiso Seishin"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(5,0,-1.7)
-							local args = {[1] = game:GetService("Players").LocalPlayer}
-							workspace.sensei.missions:FindFirstChild("Jiso Seishin").missiongiver.CLIENTTALK:FireServer(unpack(args))
-						elseif game.PlaceId == 5451401540 then
-							wait(.5)
-							player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Shindai Akuma"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
-							local args = {[1] = game:GetService("Players").LocalPlayer}
-							workspace.sensei.missions:FindFirstChild("Shindai Akuma").missiongiver.CLIENTTALK:FireServer(unpack(args))
-						elseif game.PlaceId == 5431071837 then
-							wait(.5)
-							player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,4,3)
-							local args = {[1] = game:GetService("Players").LocalPlayer}
-							workspace.sensei.missions:FindFirstChild("Ryuji Kenichi").missiongiver.CLIENTTALK:FireServer(unpack(args))
-						elseif game.PlaceId == 4601350656 then
-							for v = 1,8 do
-								wait()
-								game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace")["Ken Mentor"].HumanoidRootPart.Position)
-							end
-							game.Workspace.HumanoidRootPart.CFrame=game:GetService("Workspace")["Ken Mentor"].HumanoidRootPart.CFrame+Vector3.new(-6,4,0)
-						elseif game.PlaceId == 8184506020 then
-							punches = false
-							tree = false
-							shoot = false
-							block = false
-							dfarm = true
-						else
-							game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Wrong Map",Text = "You cannot do mentors missions in this map!",Duration = 5, })
+		game:GetService('RunService').Stepped:connect(function()
+			if EnabledAutoMentor then
+				if mission.Visible == false then
+					if game.PlaceId == 5451398863 then
+						wait(.5)
+						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Narumaki"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
+						local args = {[1] = game:GetService("Players").LocalPlayer}
+						workspace.sensei.missions:FindFirstChild("Narumaki").missiongiver.CLIENTTALK:FireServer(unpack(args))
+					elseif game.PlaceId == 6901575446 then
+						wait(.5)
+						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Jiso Seishin"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(5,0,-1.7)
+						local args = {[1] = game:GetService("Players").LocalPlayer}
+						workspace.sensei.missions:FindFirstChild("Jiso Seishin").missiongiver.CLIENTTALK:FireServer(unpack(args))
+					elseif game.PlaceId == 5451401540 then
+						wait(.5)
+						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Shindai Akuma"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
+						local args = {[1] = game:GetService("Players").LocalPlayer}
+						workspace.sensei.missions:FindFirstChild("Shindai Akuma").missiongiver.CLIENTTALK:FireServer(unpack(args))
+					elseif game.PlaceId == 5431071837 then
+						wait(.5)
+						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,4,3)
+						local args = {[1] = game:GetService("Players").LocalPlayer}
+						workspace.sensei.missions:FindFirstChild("Ryuji Kenichi").missiongiver.CLIENTTALK:FireServer(unpack(args))
+					elseif game.PlaceId == 4601350656 then
+						for v = 1,8 do
+							wait()
+							game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace")["Ken Mentor"].HumanoidRootPart.Position)
 						end
+						game.Workspace.HumanoidRootPart.CFrame=game:GetService("Workspace")["Ken Mentor"].HumanoidRootPart.CFrame+Vector3.new(-6,4,0)
+					elseif game.PlaceId == 8184506020 then
+						punches = false
+						tree = false
+						shoot = false
+						block = false
+						dfarm = true
 					else
-						if mission.bg.name.Text == "M1 to Pushup." then
-							punches = true
-							tree = false
-							shoot = false
-							block = false
-							dfarm = false
-						elseif mission.bg.name.Text == "Tree-Jump on tree tops." then
-							punches = false
-							tree = true
-							shoot = false
-							block = false
-							dfarm = false
-						elseif mission.title.Text == "[Objective: Accuracy Training]" then
-							punches = false
-							tree = false
-							shoot = true
-							block = false
-							dfarm = false
-						elseif mission.title.Text == "[Objective: Deflecting Training]" then
-							punches = false
-							tree = false
-							shoot = false
-							block = true
-							dfarm = false
-						elseif game.PlaceId == 8184506020 then
-							punches = false
-							tree = false
-							shoot = false
-							block = false
-							dfarm = true
-						end
+						game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Wrong Map",Text = "You cannot do mentors missions in this map!",Duration = 5, })
+					end
+				else
+					if mission.bg.name.Text == "M1 to Pushup." then
+						punches = true
+						tree = false
+						shoot = false
+						block = false
+						dfarm = false
+					elseif mission.bg.name.Text == "Tree-Jump on tree tops." then
+						punches = false
+						tree = true
+						shoot = false
+						block = false
+						dfarm = false
+					elseif mission.title.Text == "[Objective: Accuracy Training]" then
+						punches = false
+						tree = false
+						shoot = true
+						block = false
+						dfarm = false
+					elseif mission.title.Text == "[Objective: Deflecting Training]" then
+						punches = false
+						tree = false
+						shoot = false
+						block = true
+						dfarm = false
+					elseif game.PlaceId == 8184506020 then
+						punches = false
+						tree = false
+						shoot = false
+						block = false
+						dfarm = true
 					end
 				end
 			end
@@ -990,9 +982,7 @@ function AUTOFARM()
 		end)
 		game:GetService('RunService').Stepped:connect(function()
 			if DailyM1 then
-				pcall(function()
-					game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
-				end)
+				game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
 			end
 		end)
 		window2:Toggle("Rush",false, function(bool)
@@ -1000,9 +990,7 @@ function AUTOFARM()
 		end)
 		game:GetService('RunService').Stepped:connect(function()
 			if DailyRush then
-				pcall(function()
-					game.Players.LocalPlayer.Character.combat.update:FireServer("rushw")
-				end)
+				game.Players.LocalPlayer.Character.combat.update:FireServer("rushw")
 			end
 		end)
 		window2:Toggle("Chi Charge",false, function(bool)
@@ -1010,11 +998,9 @@ function AUTOFARM()
 		end)
 		game:GetService('RunService').Stepped:connect(function()
 			if DailyChi then
-				pcall(function()
-					game.Players.LocalPlayer.Character.combat.update:FireServer("key","c")
-					game.Players.LocalPlayer.Character.combat.update:FireServer("key","cend")
-					wait(.05)
-				end)
+				game.Players.LocalPlayer.Character.combat.update:FireServer("key","c")
+				game.Players.LocalPlayer.Character.combat.update:FireServer("key","cend")
+				wait(.05)
 			end
 		end)
 		window2:Toggle("Tree Jumps",false, function(bool)
@@ -1022,9 +1008,7 @@ function AUTOFARM()
 		end)
 		game:GetService('RunService').Stepped:connect(function()
 			if DailyJump then
-				pcall(function()
-					game.Players.LocalPlayer.Character.combat.update:FireServer("takemovement2")
-				end)
+				game.Players.LocalPlayer.Character.combat.update:FireServer("takemovement2")
 			end
 		end)
 		window2:Label("DANGER", Color3.fromRGB(127, 143, 166))
@@ -1356,6 +1340,10 @@ function AUTOFARM()
 				end
 			end)
 
+			window1:Button("Remove Effects / Particles",function()
+				game:GetService("Players").LocalPlayer.PlayerScripts.EFFECTS:Destroy()
+			end)
+
 			local function QUEST()
 				for i,v in pairs(workspace.missiongivers:GetChildren()) do
 					if v.Name == "" and v:FindFirstChild("Head") then
@@ -1365,22 +1353,15 @@ function AUTOFARM()
 								local getmission = v:FindFirstChild("HumanoidRootPart")
 								local clienttalk = v:FindFirstChild("CLIENTTALK")
 								repeat wait()
-									pcall(function()
 										player.Character.HumanoidRootPart.CFrame=getmission.CFrame+Vector3.new(0,7,0)
 										clienttalk:FireServer()
-										clienttalk:FireServer("accept")
-										wait()
-									end)                
+										clienttalk:FireServer("accept")               
 								until mission.Visible or not autofarm
 							end
 						end
 					end
 				end
 			end
-
-			window1:Button("Remove Effects / Particles",function()
-				game:GetService("Players").LocalPlayer.PlayerScripts.EFFECTS:Destroy()
-			end)
 
 			local function FARM()
 				for i,v in pairs(workspace.npc:GetChildren()) do
@@ -1389,56 +1370,40 @@ function AUTOFARM()
 						mobname = string.gsub(mobname,"(s)","")
 					end
 					if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-						--wait(.00000009)
-						repeat --wait()
+						repeat
 							pcall(function()
-								--wait(.005)
 								player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(0,-2,0)
 								v.Humanoid.Health = 0
-								pcall(function()
-									game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
-									game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
-								end)
+								game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+								game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
 							end)
 							pcall(function()
-								--wait(.0035)
 								game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
 								player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(0,-2,-6.8)
 								v.Humanoid.Health = 0
-								pcall(function()
-									game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
-									wait()
-								end)
+								game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+								wait()
 							end)
 							pcall(function()
-								--wait(.0035)
 								game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
 								player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(-6.8,-2,0)
 								v.Humanoid.Health = 0
-								pcall(function()
-									game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
-									wait()
-								end)
+								game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+								wait()
 							end)
 							pcall(function()
-								--wait(.0035)
 								game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
 								player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(0,-2,6.8)
 								v.Humanoid.Health = 0
-								pcall(function()
-									game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
-									wait()
-								end)
+								game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+								wait()
 							end)
 							pcall(function()
-								--wait(.0035)
 								game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
 								player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(6.8,-2,0)
 								v.Humanoid.Health = 0
-								pcall(function()
-									game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
-									wait()
-								end)
+								game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+								wait()
 							end)
 						until not v:FindFirstChild("Humanoid") or mission.Visible == false or not autofarm or not v
 					end
@@ -1447,16 +1412,11 @@ function AUTOFARM()
 
 			local function BOSSFARM()
 				for i,v in pairs(workspace.bossdropmission.missions:GetChildren()) do
-					if v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and v.missiongiver.timer.time.time.Text == "00:00" then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
+					if v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
 						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
 						local args = {[1] = game:GetService("Players").LocalPlayer}
 						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
-						wait(.04)
-					elseif v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and v.missiongiver.timer.time.time.Text == "59:59" then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
-						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
-						local args = {[1] = game:GetService("Players").LocalPlayer}
-						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
-						wait(.04)
+						wait()
 					end
 				end
 			end
@@ -1479,21 +1439,32 @@ function AUTOFARM()
 						if mission.Visible == true then
 							FARM()
 							for i,v in pairs(workspace.npc:GetChildren()) do
-								pcall(function()
-									if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-										repeat v.Humanoid.Health = 0 v.Humanoid.Health = 0
-										until (not autoofarm and not boss) or v.Humanoid.Health == 0
-									end
-								end)
+								if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+									repeat 
+										v.Humanoid.Health = 0 
+										v.Humanoid.Health = 0
+										v.Humanoid.Health = 0
+										v.Humanoid.Health = 0
+										v.Humanoid.Health = 0
+									until (not autoofarm and not boss) or v.Humanoid.Health == 0
+								end
 							end
 						else
 							if boss then
 								BOSSFARM()
 							end
 							if autofarm then
-								DISP()
-								wait(1)
-								QUEST()
+								if boss then
+									BOSSFARM()
+									wait(.1)
+									DISP()
+									wait(.1)
+									QUEST()
+								else
+									DISP()
+									wait(.1)
+									QUEST()
+								end
 							end
 						end
 					end
@@ -1575,15 +1546,17 @@ function AUTOFARM()
 			window2:Toggle("NPC Kill Aura",false,function(bool)
 				keel = bool
 			end)
-			spawn(function()
-				while wait() do
-					if keel then
-						for i,v in pairs(workspace.npc:GetChildren()) do
-							if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-								repeat 
-									v.Humanoid.Health = 0
-								until v.Humanoid.Health == 0 or not keel
-							end
+			game:GetService('RunService').Stepped:connect(function()
+				if keel then
+					for i,v in pairs(workspace.npc:GetChildren()) do
+						if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+							repeat 
+								v.Humanoid.Health = 0
+								v.Humanoid.Health = 0
+								v.Humanoid.Health = 0
+								v.Humanoid.Health = 0
+								v.Humanoid.Health = 0
+							until v.Humanoid.Health == 0 or not keel
 						end
 					end
 				end
@@ -1596,11 +1569,9 @@ function AUTOFARM()
 			end)
 			game:GetService('RunService').Stepped:connect(function()
 				if auchi then
-					pcall(function()
-			local args = {[1] = "addstat",[2] = "chakra",[3] = 18}
-			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-			wait(.25)
-					end)
+					local args = {[1] = "addstat",[2] = "chakra",[3] = 18}
+					game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+					wait(.25)
 				end
 			end)
 			window2:Toggle("Auto Nin",false, function(bool)
@@ -1608,11 +1579,9 @@ function AUTOFARM()
 			end)
 			game:GetService('RunService').Stepped:connect(function()
 				if aunin then
-					pcall(function()
-			local args = {[1] = "addstat",[2] = "ninjutsu",[3] = 18}
-			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-			wait(.25)
-					end)
+					local args = {[1] = "addstat",[2] = "ninjutsu",[3] = 18}
+					game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+					wait(.25)
 				end
 			end)
 			window2:Toggle("Auto Tai",false, function(bool)
@@ -1620,11 +1589,9 @@ function AUTOFARM()
 			end)
 			game:GetService('RunService').Stepped:connect(function()
 				if autai then
-					pcall(function()
-			local args = {[1] = "addstat",[2] = "taijutsu",[3] = 18}
-			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-			wait(.25)
-					end)
+					local args = {[1] = "addstat",[2] = "taijutsu",[3] = 18}
+					game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+					wait(.25)
 				end
 			end)
 			window2:Toggle("Auto Health",false, function(bool)
@@ -1632,11 +1599,9 @@ function AUTOFARM()
 			end)
 			game:GetService('RunService').Stepped:connect(function()
 				if auhp then
-					pcall(function()
-			local args = {[1] = "addstat",[2] = "health",[3] = 18}
-			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-			wait(.25)
-					end)
+					local args = {[1] = "addstat",[2] = "health",[3] = 18}
+					game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+					wait(.25)
 				end
 			end)
 
@@ -1869,11 +1834,9 @@ function AUTOFARM()
 							connection:Disconnect()
 						end
 					end)
-				spawn(function ()
-					while wait() do
-						if autoofarm ~= true then
-							platform:Destroy()
-						end
+				game:GetService('RunService').Stepped:connect(function()
+					if autoofarm ~= true then
+						platform:Destroy()
 					end
 				end)
 			end)
@@ -2037,12 +2000,9 @@ function AUTOFARM()
 								local getmission = v:FindFirstChild("HumanoidRootPart")
 								local clienttalk = v:FindFirstChild("CLIENTTALK")
 								repeat wait()
-									pcall(function()
-										player.Character.HumanoidRootPart.CFrame=getmission.CFrame+Vector3.new(0,-7,0)
-										clienttalk:FireServer()
-										clienttalk:FireServer("accept")
-										wait()
-									end)                
+									player.Character.HumanoidRootPart.CFrame=getmission.CFrame+Vector3.new(0,-7,0)
+									clienttalk:FireServer()
+									clienttalk:FireServer("accept")
 								until mission.Visible or not autoofarm
 							end
 						end
@@ -2072,23 +2032,7 @@ function AUTOFARM()
 									game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
 									game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
 									game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
-									--wait()
-								end)
-							end)
-							pcall(function()
-								game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
-								v.Humanoid.Health = 0
-								pcall(function()
-									player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 15, 10)
-									game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
-									game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
-									game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
-									game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
-									game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
-									game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
-									game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
-									game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
-									--wait()
+									v.Humanoid.Health = 0
 								end)
 							end)
 						until not v:FindFirstChild("Humanoid") or mission.Visible == false or not autoofarm or not v
@@ -2098,16 +2042,11 @@ function AUTOFARM()
 
 			local function BOSSFARM()
 				for i,v in pairs(workspace.bossdropmission.missions:GetChildren()) do
-					if v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and v.missiongiver.timer.time.time.Text == "00:00" then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
+					if v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
 						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
 						local args = {[1] = game:GetService("Players").LocalPlayer}
 						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
-						wait(.04)
-					elseif v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and v.missiongiver.timer.time.time.Text == "59:59" then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
-						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
-						local args = {[1] = game:GetService("Players").LocalPlayer}
-						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
-						wait(.04)
+						wait()
 					end
 				end
 			end
@@ -2131,7 +2070,12 @@ function AUTOFARM()
 							FARM()
 							for i,v in pairs(workspace.npc:GetChildren()) do
 								if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-									repeat v.Humanoid.Health = 0 v.Humanoid.Health = 0
+									repeat 
+										v.Humanoid.Health = 0 
+										v.Humanoid.Health = 0
+										v.Humanoid.Health = 0
+										v.Humanoid.Health = 0
+										v.Humanoid.Health = 0
 									until (not autoofarm and not boss) or v.Humanoid.Health == 0
 								end
 							end
@@ -2140,9 +2084,17 @@ function AUTOFARM()
 								BOSSFARM()
 							end
 							if autoofarm then
-								DISP()
-								wait(1)
-								QUEST()
+								if boss then
+									BOSSFARM()
+									wait(.1)
+									DISP()
+									wait(.1)
+									QUEST()
+								else
+									DISP()
+									wait(.1)
+									QUEST()
+								end
 							end
 						end
 					end
@@ -2224,15 +2176,17 @@ function AUTOFARM()
 			window2:Toggle("NPC Kill Aura",false,function(bool)
 				keel = bool
 			end)
-			spawn(function()
-				while wait() do
-					if keel then
-						for i,v in pairs(workspace.npc:GetChildren()) do
-							if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-								repeat 
-									v.Humanoid.Health = 0
-								until v.Humanoid.Health == 0 or not keel
-							end
+			game:GetService('RunService').Stepped:connect(function()
+				if keel then
+					for i,v in pairs(workspace.npc:GetChildren()) do
+						if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+							repeat 
+								v.Humanoid.Health = 0
+								v.Humanoid.Health = 0
+								v.Humanoid.Health = 0
+								v.Humanoid.Health = 0
+								v.Humanoid.Health = 0
+							until v.Humanoid.Health == 0 or not keel
 						end
 					end
 				end
@@ -2243,13 +2197,14 @@ function AUTOFARM()
 			window2:Toggle("Auto Chi",false, function(bool)
 				auchi = bool
 			end)
+			window2:Toggle("Auto Chi",false, function(bool)
+				auchi = bool
+			end)
 			game:GetService('RunService').Stepped:connect(function()
 				if auchi then
-					pcall(function()
-			local args = {[1] = "addstat",[2] = "chakra",[3] = 18}
-			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-			wait(.25)
-					end)
+					local args = {[1] = "addstat",[2] = "chakra",[3] = 18}
+					game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+					wait(.25)
 				end
 			end)
 			window2:Toggle("Auto Nin",false, function(bool)
@@ -2257,11 +2212,9 @@ function AUTOFARM()
 			end)
 			game:GetService('RunService').Stepped:connect(function()
 				if aunin then
-					pcall(function()
-			local args = {[1] = "addstat",[2] = "ninjutsu",[3] = 18}
-			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-			wait(.25)
-					end)
+					local args = {[1] = "addstat",[2] = "ninjutsu",[3] = 18}
+					game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+					wait(.25)
 				end
 			end)
 			window2:Toggle("Auto Tai",false, function(bool)
@@ -2269,11 +2222,9 @@ function AUTOFARM()
 			end)
 			game:GetService('RunService').Stepped:connect(function()
 				if autai then
-					pcall(function()
-			local args = {[1] = "addstat",[2] = "taijutsu",[3] = 18}
-			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-			wait(.25)
-					end)
+					local args = {[1] = "addstat",[2] = "taijutsu",[3] = 18}
+					game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+					wait(.25)
 				end
 			end)
 			window2:Toggle("Auto Health",false, function(bool)
@@ -2281,11 +2232,9 @@ function AUTOFARM()
 			end)
 			game:GetService('RunService').Stepped:connect(function()
 				if auhp then
-					pcall(function()
-			local args = {[1] = "addstat",[2] = "health",[3] = 18}
-			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-			wait(.25)
-					end)
+					local args = {[1] = "addstat",[2] = "health",[3] = 18}
+					game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+					wait(.25)
 				end
 			end)
 
@@ -2687,12 +2636,9 @@ function AUTOFARM()
 								local getmission = v:FindFirstChild("HumanoidRootPart")
 								local clienttalk = v:FindFirstChild("CLIENTTALK")
 								repeat wait()
-									pcall(function()
 										player.Character.HumanoidRootPart.CFrame=getmission.CFrame+Vector3.new(0,-7,0)
 										clienttalk:FireServer()
 										clienttalk:FireServer("accept")
-										wait()
-									end)                
 								until mission.Visible or not autooofarm
 							end
 						end
@@ -2707,20 +2653,9 @@ function AUTOFARM()
 						mobname = string.gsub(mobname,"(s)","")
 					end
 					if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-						--wait(.00000009)
-						repeat --wait()
+						repeat
 							pcall(function()
-								--wait(.0005)
-								game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
-								player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 0, 10)
-								game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
-								game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
-								game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
-								wait(.000000000000001)
 								v.Humanoid.Health = 0
-							end)
-							pcall(function()
-								--wait(.00035)
 								game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
 								player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 0, 10)
 								game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
@@ -2736,16 +2671,11 @@ function AUTOFARM()
 
 			local function BOSSFARM()
 				for i,v in pairs(workspace.bossdropmission.missions:GetChildren()) do
-					if v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and v.missiongiver.timer.time.time.Text == "00:00" then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
+					if v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
 						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
 						local args = {[1] = game:GetService("Players").LocalPlayer}
 						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
-						wait(.04)
-					elseif v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and v.missiongiver.timer.time.time.Text == "59:59" then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
-						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
-						local args = {[1] = game:GetService("Players").LocalPlayer}
-						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
-						wait(.04)
+						wait()
 					end
 				end
 			end
@@ -2769,7 +2699,12 @@ function AUTOFARM()
 							FARM()
 							for i,v in pairs(workspace.npc:GetChildren()) do
 								if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-									repeat v.Humanoid.Health = 0 v.Humanoid.Health = 0
+									repeat 
+									v.Humanoid.Health = 0 
+									v.Humanoid.Health = 0
+									v.Humanoid.Health = 0
+									v.Humanoid.Health = 0
+									v.Humanoid.Health = 0
 									until (not autoofarm and not boss) or v.Humanoid.Health == 0
 								end
 							end
@@ -2778,9 +2713,17 @@ function AUTOFARM()
 								BOSSFARM()
 							end
 							if autooofarm then
-								DISP()
-								wait(1)
-								QUEST()
+								if boss then
+									BOSSFARM()
+									wait(.1)
+									DISP()
+									wait(.1)
+									QUEST()
+								else
+									DISP()
+									wait(.1)
+									QUEST()
+								end
 							end
 						end
 					end
@@ -2862,15 +2805,17 @@ function AUTOFARM()
 			window2:Toggle("NPC Kill Aura",false,function(bool)
 				keel = bool
 			end)
-			spawn(function()
-				while wait() do
-					if keel then
-						for i,v in pairs(workspace.npc:GetChildren()) do
-							if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-								repeat 
-									v.Humanoid.Health = 0
-								until v.Humanoid.Health == 0 or not keel
-							end
+			game:GetService('RunService').Stepped:connect(function()
+				if keel then
+					for i,v in pairs(workspace.npc:GetChildren()) do
+						if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+							repeat 
+								v.Humanoid.Health = 0
+								v.Humanoid.Health = 0
+								v.Humanoid.Health = 0
+								v.Humanoid.Health = 0
+								v.Humanoid.Health = 0
+							until v.Humanoid.Health == 0 or not keel
 						end
 					end
 				end
@@ -2881,13 +2826,14 @@ function AUTOFARM()
 			window2:Toggle("Auto Chi",false, function(bool)
 				auchi = bool
 			end)
+			window2:Toggle("Auto Chi",false, function(bool)
+				auchi = bool
+			end)
 			game:GetService('RunService').Stepped:connect(function()
 				if auchi then
-					pcall(function()
-			local args = {[1] = "addstat",[2] = "chakra",[3] = 18}
-			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-			wait(.25)
-					end)
+					local args = {[1] = "addstat",[2] = "chakra",[3] = 18}
+					game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+					wait(.25)
 				end
 			end)
 			window2:Toggle("Auto Nin",false, function(bool)
@@ -2895,11 +2841,9 @@ function AUTOFARM()
 			end)
 			game:GetService('RunService').Stepped:connect(function()
 				if aunin then
-					pcall(function()
-			local args = {[1] = "addstat",[2] = "ninjutsu",[3] = 18}
-			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-			wait(.25)
-					end)
+					local args = {[1] = "addstat",[2] = "ninjutsu",[3] = 18}
+					game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+					wait(.25)
 				end
 			end)
 			window2:Toggle("Auto Tai",false, function(bool)
@@ -2907,11 +2851,9 @@ function AUTOFARM()
 			end)
 			game:GetService('RunService').Stepped:connect(function()
 				if autai then
-					pcall(function()
-			local args = {[1] = "addstat",[2] = "taijutsu",[3] = 18}
-			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-			wait(.25)
-					end)
+					local args = {[1] = "addstat",[2] = "taijutsu",[3] = 18}
+					game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+					wait(.25)
 				end
 			end)
 			window2:Toggle("Auto Health",false, function(bool)
@@ -2919,11 +2861,9 @@ function AUTOFARM()
 			end)
 			game:GetService('RunService').Stepped:connect(function()
 				if auhp then
-					pcall(function()
-			local args = {[1] = "addstat",[2] = "health",[3] = 18}
-			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-			wait(.25)
-					end)
+					local args = {[1] = "addstat",[2] = "health",[3] = 18}
+					game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+					wait(.25)
 				end
 			end)
 
@@ -3091,4 +3031,3 @@ end
 TextButton_2.MouseButton1Click:connect(AUTOFARM)
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/HDTerebi/Shindo-Life/main/No%20CD%20Method"))()
-	
