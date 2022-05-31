@@ -1,4 +1,4 @@
---setclipboard(tostring(game.PlaceId))
+	--setclipboard(tostring(game.PlaceId))
 local player = game.Players.LocalPlayer
 local VirtualUser=game:service'VirtualUser'
 game:service'Players'.LocalPlayer.Idled:connect(function()
@@ -2197,9 +2197,6 @@ function AUTOFARM()
 			window2:Toggle("Auto Chi",false, function(bool)
 				auchi = bool
 			end)
-			window2:Toggle("Auto Chi",false, function(bool)
-				auchi = bool
-			end)
 			game:GetService('RunService').Stepped:connect(function()
 				if auchi then
 					local args = {[1] = "addstat",[2] = "chakra",[3] = 18}
@@ -2823,9 +2820,6 @@ function AUTOFARM()
 
 			window2:Label("Auto stats", Color3.fromRGB(127, 143, 166))
 
-			window2:Toggle("Auto Chi",false, function(bool)
-				auchi = bool
-			end)
 			window2:Toggle("Auto Chi",false, function(bool)
 				auchi = bool
 			end)
