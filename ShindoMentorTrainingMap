@@ -267,10 +267,8 @@ window2:Toggle("Spam E",false, function(bool)
 end)
 game:GetService('RunService').Stepped:connect(function()
 	if E then
-		pcall(function()
-			game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
-			game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
-		end)
+		game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+		game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
 	end
 end)
 
