@@ -1,13 +1,115 @@
-	--setclipboard(tostring(game.PlaceId))
+--setclipboard(tostring(game.PlaceId))
+--all on99 variables
 local player = game.Players.LocalPlayer
+local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
 local VirtualUser=game:service'VirtualUser'
 game:service'Players'.LocalPlayer.Idled:connect(function()
 warn("anti-afk")
 VirtualUser:CaptureController()
 VirtualUser:ClickButton2(Vector2.new())
 end)
+if workspace:FindFirstChild("CCoff") then
+	game:GetService("Workspace").CCoff:Destroy()
+end
+--on9 functions that are so damn important
+function toTarget(pos, targetPos, targetCFrame)
+	local tween_s = game:service"TweenService"
+	local info = TweenInfo.new((targetPos - pos).Magnitude/getgenv().speed, Enum.EasingStyle.Linear)
+	local tween, err = pcall(function()
+	local tween = tween_s:Create(game:GetService("Players").LocalPlayer.Character["HumanoidRootPart"], info, {CFrame = targetCFrame * CFrame.fromAxisAngle(Vector3.new(1,0,0), math.rad(90))})
+	tween:Play()
+	end)
+	if not tween then return err end
+end
+function NPCKEELAURA()
+	for i,v in pairs(workspace.npc:GetChildren()) do
+		if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+			repeat
+				v.Humanoid.Health = 0
+				v.Humanoid.Health = 0
+				v.Humanoid.Health = 0
+				v.Humanoid.Health = 0
+				v.Humanoid.Health = 0
+			until v.Humanoid.Health == 0 or not keel
+		end
+	end
+end
+function INFMDON()
+	local mode = game.Players.LocalPlayer.Character.combat.mode
+	local copy = mode:Clone()
+	copy.Parent = mode.Parent
+	mode:Destroy()
+	notify("Do not charge chi til max while inf MD is on!")
+end
+function notify(a,b,c)
+	local d=c or function()return end;
+	local e=b or false;
+		if a==_G.dAAcG3fvBqVoPzVnAFk and e==false then return end;
+		spawn(function()
+			for f,g in pairs(game.CoreGui:GetChildren())do 
+				spawn(function()
+					if g.Name=="MNotify"then 
+						pcall(function()
+							g.ImageButton.ZIndex=58;
+							g.ImageButton.TextLabel.ZIndex=59;
+							g.ImageButton:TweenPosition(UDim2.new(0.01,0,1,0),"Out","Quint",.7,true)
+							game:GetService("TweenService"):Create(g.ImageButton.TextLabel,TweenInfo.new(0.8,Enum.EasingStyle.Quint,Enum.EasingDirection.Out,0,false,0),{TextTransparency=1})
+							wait(1)
+							g:Destroy()
+						end)
+					end 
+				end)
+			end;
+			_G.dAAcG3fvBqVoPzVnAFk=a
+			local d=c or function()return end;
+			local function h(i,j)
+				local k=Instance.new(i)
+					for f,g in pairs(j)do 
+						k[f]=g 
+					end;
+				return k end;
+				local l=h('ScreenGui',{DisplayOrder=0,Enabled=true,ResetOnSpawn=true,Name='MNotify',Parent=game.CoreGui})
+				local m=h('ImageButton',{Image='rbxassetid://1051186612',ImageColor3=Color3.new(0.129412,0.129412,0.129412),ImageRectOffset=Vector2.new(0,0),ImageRectSize=Vector2.new(0,0),ImageTransparency=0,ScaleType=Enum.ScaleType.Slice,SliceCenter=Rect.new(20,20,20,20),AutoButtonColor=true,Modal=false,Selected=false,Style=Enum.ButtonStyle.Custom,Active=true,AnchorPoint=Vector2.new(0,0),BackgroundColor3=Color3.new(1,1,1),BackgroundTransparency=1,BorderColor3=Color3.new(0.105882,0.164706,0.207843),BorderSizePixel=1,ClipsDescendants=false,Draggable=false,Position=UDim2.new(0.00999999978,0,1,0),Rotation=0,Selectable=true,Size=UDim2.new(0,234,0,40),SizeConstraint=Enum.SizeConstraint.RelativeXY,Visible=true,ZIndex=60,Name='ImageButton',Parent=l})
+				local n=h('TextLabel',{Font=Enum.Font.TitilliumWeb,FontSize=Enum.FontSize.Size24,Text=a,TextColor3=Color3.new(0.807843,0.807843,0.807843),TextScaled=false,TextSize=24,TextStrokeColor3=Color3.new(0,0,0),TextStrokeTransparency=1,TextTransparency=0,TextWrapped=false,TextXAlignment=Enum.TextXAlignment.Center,TextYAlignment=Enum.TextYAlignment.Center,Active=false,AnchorPoint=Vector2.new(0,0),BackgroundColor3=Color3.new(1,1,1),BackgroundTransparency=1,BorderColor3=Color3.new(0.105882,0.164706,0.207843),BorderSizePixel=1,ClipsDescendants=false,Draggable=false,Position=UDim2.new(0.132478639,0,0,0),Rotation=0,Selectable=false,Size=UDim2.new(0,174,0,40),SizeConstraint=Enum.SizeConstraint.RelativeXY,Visible=true,ZIndex=61,Name='TextLabel',Parent=m})
+				local o=h('UIListLayout',{Padding=UDim.new(0,0),FillDirection=Enum.FillDirection.Vertical,HorizontalAlignment=Enum.HorizontalAlignment.Center,SortOrder=Enum.SortOrder.Name,VerticalAlignment=Enum.VerticalAlignment.Top,Name='UIListLayout',Parent=m})
+				local p=1;
+				if string.len(a)<=49 then 
+					m.Size=UDim2.new(0,game:GetService("TextService"):GetTextSize(a,24,Enum.Font.TitilliumWeb,Vector2.new(500,900)).X+35,0,40)
+				elseif string.len(a)>49 then 
+					p=math.ceil(string.len(string.sub(a,49))/9)
+					m.Size=UDim2.new(0,game:GetService("TextService"):GetTextSize(a,24,Enum.Font.TitilliumWeb,Vector2.new(500+p*100,900)).X+35,0,40)
+				end;
+				m:TweenPosition(UDim2.new(0.01,0,.97,-60),"Out","Quint",.7,true)
+				spawn(function()
+					wait(4)
+					pcall(function()
+						m.ZIndex=58;
+						n.ZIndex=59;
+						m:TweenPosition(UDim2.new(0.01,0,1,0),"Out","Quint",.7,true)
+						_G.dAAcG3fvBqVoPzVnAFk=""
+						wait(.3)
+						l:Destroy()
+					end)
+				end)
+				m.MouseButton1Up:Connect(function()if c==nil then return end;
+				spawn(function()
+					pcall(function()
+						m.ZIndex=58;n.ZIndex=59;
+						m:TweenPosition(UDim2.new(0.01,0,1,0),"Out","Quint",.7,true)
+						_G.dAAcG3fvBqVoPzVnAFk=""
+						wait(1)
+						l:Destroy()
+					end)
+				end)
+				d()
+			end)
+		end)
+	end
+	function roundNumber(num, numDecimalPlaces) -- https://devforum.roblox.com/t/rounding-to-1-decimal-point/673504
+	return tonumber(string.format("%." .. (numDecimalPlaces or 0) .. "f", num))
+end
 
-local player = game.Players.LocalPlayer
+
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
 local TextLabel = Instance.new("TextLabel")
@@ -58,82 +160,7 @@ function MISC()
 			game.Players.LocalPlayer:Kick("DogeHub Premium user detected, permissions got override.")
 		else
 			repeat wait() until game:IsLoaded()
-			--antiafk
-			local VirtualUser=game:service'VirtualUser'
-				game:service'Players'.LocalPlayer.Idled:connect(function()
-				warn("anti-afk")
-				VirtualUser:CaptureController()
-				VirtualUser:ClickButton2(Vector2.new())
-			end)
-			--variables
-			local player = game.Players.LocalPlayer
-			function notify(a,b,c)
-				local d=c or function()return end;
-				local e=b or false;
-					if a==_G.dAAcG3fvBqVoPzVnAFk and e==false then return end;
-					spawn(function()
-						for f,g in pairs(game.CoreGui:GetChildren())do 
-							spawn(function()
-								if g.Name=="MNotify"then 
-									pcall(function()
-										g.ImageButton.ZIndex=58;
-										g.ImageButton.TextLabel.ZIndex=59;
-										g.ImageButton:TweenPosition(UDim2.new(0.01,0,1,0),"Out","Quint",.7,true)
-										game:GetService("TweenService"):Create(g.ImageButton.TextLabel,TweenInfo.new(0.8,Enum.EasingStyle.Quint,Enum.EasingDirection.Out,0,false,0),{TextTransparency=1})
-										wait(1)
-										g:Destroy()
-									end)
-								end 
-							end)
-						end;
-						_G.dAAcG3fvBqVoPzVnAFk=a
-						local d=c or function()return end;
-						local function h(i,j)
-							local k=Instance.new(i)
-								for f,g in pairs(j)do 
-									k[f]=g 
-								end;
-							return k end;
-							local l=h('ScreenGui',{DisplayOrder=0,Enabled=true,ResetOnSpawn=true,Name='MNotify',Parent=game.CoreGui})
-							local m=h('ImageButton',{Image='rbxassetid://1051186612',ImageColor3=Color3.new(0.129412,0.129412,0.129412),ImageRectOffset=Vector2.new(0,0),ImageRectSize=Vector2.new(0,0),ImageTransparency=0,ScaleType=Enum.ScaleType.Slice,SliceCenter=Rect.new(20,20,20,20),AutoButtonColor=true,Modal=false,Selected=false,Style=Enum.ButtonStyle.Custom,Active=true,AnchorPoint=Vector2.new(0,0),BackgroundColor3=Color3.new(1,1,1),BackgroundTransparency=1,BorderColor3=Color3.new(0.105882,0.164706,0.207843),BorderSizePixel=1,ClipsDescendants=false,Draggable=false,Position=UDim2.new(0.00999999978,0,1,0),Rotation=0,Selectable=true,Size=UDim2.new(0,234,0,40),SizeConstraint=Enum.SizeConstraint.RelativeXY,Visible=true,ZIndex=60,Name='ImageButton',Parent=l})
-							local n=h('TextLabel',{Font=Enum.Font.TitilliumWeb,FontSize=Enum.FontSize.Size24,Text=a,TextColor3=Color3.new(0.807843,0.807843,0.807843),TextScaled=false,TextSize=24,TextStrokeColor3=Color3.new(0,0,0),TextStrokeTransparency=1,TextTransparency=0,TextWrapped=false,TextXAlignment=Enum.TextXAlignment.Center,TextYAlignment=Enum.TextYAlignment.Center,Active=false,AnchorPoint=Vector2.new(0,0),BackgroundColor3=Color3.new(1,1,1),BackgroundTransparency=1,BorderColor3=Color3.new(0.105882,0.164706,0.207843),BorderSizePixel=1,ClipsDescendants=false,Draggable=false,Position=UDim2.new(0.132478639,0,0,0),Rotation=0,Selectable=false,Size=UDim2.new(0,174,0,40),SizeConstraint=Enum.SizeConstraint.RelativeXY,Visible=true,ZIndex=61,Name='TextLabel',Parent=m})
-							local o=h('UIListLayout',{Padding=UDim.new(0,0),FillDirection=Enum.FillDirection.Vertical,HorizontalAlignment=Enum.HorizontalAlignment.Center,SortOrder=Enum.SortOrder.Name,VerticalAlignment=Enum.VerticalAlignment.Top,Name='UIListLayout',Parent=m})
-							local p=1;
-							if string.len(a)<=49 then 
-								m.Size=UDim2.new(0,game:GetService("TextService"):GetTextSize(a,24,Enum.Font.TitilliumWeb,Vector2.new(500,900)).X+35,0,40)
-							elseif string.len(a)>49 then 
-								p=math.ceil(string.len(string.sub(a,49))/9)
-								m.Size=UDim2.new(0,game:GetService("TextService"):GetTextSize(a,24,Enum.Font.TitilliumWeb,Vector2.new(500+p*100,900)).X+35,0,40)
-							end;
-							m:TweenPosition(UDim2.new(0.01,0,.97,-60),"Out","Quint",.7,true)
-							spawn(function()
-								wait(4)
-								pcall(function()
-									m.ZIndex=58;
-									n.ZIndex=59;
-									m:TweenPosition(UDim2.new(0.01,0,1,0),"Out","Quint",.7,true)
-									_G.dAAcG3fvBqVoPzVnAFk=""
-									wait(.3)
-									l:Destroy()
-								end)
-							end)
-							m.MouseButton1Up:Connect(function()if c==nil then return end;
-							spawn(function()
-								pcall(function()
-									m.ZIndex=58;n.ZIndex=59;
-									m:TweenPosition(UDim2.new(0.01,0,1,0),"Out","Quint",.7,true)
-									_G.dAAcG3fvBqVoPzVnAFk=""
-									wait(1)
-									l:Destroy()
-								end)
-							end)
-							d()
-						end)
-					end)
-				end
-				function roundNumber(num, numDecimalPlaces) -- https://devforum.roblox.com/t/rounding-to-1-decimal-point/673504
-				return tonumber(string.format("%." .. (numDecimalPlaces or 0) .. "f", num))
-			end
+			--Loading GUI
 			local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20script%20gui"))()
 			local window1 = library:Window("Misc - DogeHub")
 			local window2 = library:Window("Main")
@@ -171,10 +198,12 @@ function MISC()
 					if dc then infjump:Disconnect() return end
 					game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
 				end)
+				notify("Enabled Infinute Jump")
 			end)
 
 			window1:Button("Disable Infinite Jump",function()
 				getgenv().dc = true
+				notify("Disabled Infinite Jump")
 			end)
 
 			window1:Toggle("Press P to fly",false,function(Pnorm)
@@ -265,6 +294,7 @@ function MISC()
 					end 
 				end)
 				Fly()
+				notify("Press P to fly: "..tostring(Pnorm),true)
 			end)
 
 			window1:Toggle("Press P to fly faster",false,function(Pspeed)
@@ -355,6 +385,7 @@ function MISC()
 					end 
 				end)
 				Fly()
+				notify("Press P to fly faster: "..tostring(Pspeed),true)
 			end)
 
 			window2:Label("Game Functions", Color3.fromRGB(127, 143, 166))
@@ -375,13 +406,12 @@ function MISC()
 					end)
 					return old(t,k,v)
 				end)
+				notify("SuperHuman activated")
+				wait(1)
 			end)
 
 			window2:Button("Infinite MD",function()
-				local mode = game.Players.LocalPlayer.Character.combat.mode
-				local copy = mode:Clone()
-				copy.Parent = mode.Parent
-				mode:Destroy()
+				INFMDON()
 			end)
 
 			window2:Button("Reset after died",function()
@@ -393,10 +423,8 @@ function MISC()
 			end)
 			game:GetService('RunService').Stepped:connect(function()
 				if E then
-					pcall(function()
-						game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
-						game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
-					end)
+					game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+					game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
 				end
 			end)
 
@@ -405,17 +433,7 @@ function MISC()
 			end)
 			game:GetService('RunService').Stepped:connect(function()
 				if keel then
-					for i,v in pairs(workspace.npc:GetChildren()) do
-						if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-							repeat
-								v.Humanoid.Health = 0
-								v.Humanoid.Health = 0
-								v.Humanoid.Health = 0
-								v.Humanoid.Health = 0
-								v.Humanoid.Health = 0
-							until v.Humanoid.Health == 0 or not keel
-						end
-					end
+					NPCKEELAURA()
 				end
 			end)
 
@@ -652,96 +670,6 @@ function AUTOFARM()
 			end
 		end
 		repeat wait() until game:IsLoaded()
-		--old-antitp bypass
-		if workspace:FindFirstChild("CCoff") then
-			game:GetService("Workspace").CCoff:Destroy()
-		end
-		--antiafk
-		local VirtualUser=game:service'VirtualUser'
-			game:service'Players'.LocalPlayer.Idled:connect(function()
-			warn("anti-afk")
-			VirtualUser:CaptureController()
-			VirtualUser:ClickButton2(Vector2.new())
-		end)
-		--variables
-		local player = game.Players.LocalPlayer
-		function notify(a,b,c)
-			local d=c or function()return end;
-			local e=b or false;
-				if a==_G.dAAcG3fvBqVoPzVnAFk and e==false then return end;
-				spawn(function()
-					for f,g in pairs(game.CoreGui:GetChildren())do 
-						spawn(function()
-							if g.Name=="MNotify"then 
-								pcall(function()
-									g.ImageButton.ZIndex=58;
-									g.ImageButton.TextLabel.ZIndex=59;
-									g.ImageButton:TweenPosition(UDim2.new(0.01,0,1,0),"Out","Quint",.7,true)
-									game:GetService("TweenService"):Create(g.ImageButton.TextLabel,TweenInfo.new(0.8,Enum.EasingStyle.Quint,Enum.EasingDirection.Out,0,false,0),{TextTransparency=1})
-									wait(1)
-									g:Destroy()
-								end)
-							end 
-						end)
-					end;
-					_G.dAAcG3fvBqVoPzVnAFk=a
-					local d=c or function()return end;
-					local function h(i,j)
-						local k=Instance.new(i)
-							for f,g in pairs(j)do 
-								k[f]=g 
-							end;
-						return k end;
-						local l=h('ScreenGui',{DisplayOrder=0,Enabled=true,ResetOnSpawn=true,Name='MNotify',Parent=game.CoreGui})
-						local m=h('ImageButton',{Image='rbxassetid://1051186612',ImageColor3=Color3.new(0.129412,0.129412,0.129412),ImageRectOffset=Vector2.new(0,0),ImageRectSize=Vector2.new(0,0),ImageTransparency=0,ScaleType=Enum.ScaleType.Slice,SliceCenter=Rect.new(20,20,20,20),AutoButtonColor=true,Modal=false,Selected=false,Style=Enum.ButtonStyle.Custom,Active=true,AnchorPoint=Vector2.new(0,0),BackgroundColor3=Color3.new(1,1,1),BackgroundTransparency=1,BorderColor3=Color3.new(0.105882,0.164706,0.207843),BorderSizePixel=1,ClipsDescendants=false,Draggable=false,Position=UDim2.new(0.00999999978,0,1,0),Rotation=0,Selectable=true,Size=UDim2.new(0,234,0,40),SizeConstraint=Enum.SizeConstraint.RelativeXY,Visible=true,ZIndex=60,Name='ImageButton',Parent=l})
-						local n=h('TextLabel',{Font=Enum.Font.TitilliumWeb,FontSize=Enum.FontSize.Size24,Text=a,TextColor3=Color3.new(0.807843,0.807843,0.807843),TextScaled=false,TextSize=24,TextStrokeColor3=Color3.new(0,0,0),TextStrokeTransparency=1,TextTransparency=0,TextWrapped=false,TextXAlignment=Enum.TextXAlignment.Center,TextYAlignment=Enum.TextYAlignment.Center,Active=false,AnchorPoint=Vector2.new(0,0),BackgroundColor3=Color3.new(1,1,1),BackgroundTransparency=1,BorderColor3=Color3.new(0.105882,0.164706,0.207843),BorderSizePixel=1,ClipsDescendants=false,Draggable=false,Position=UDim2.new(0.132478639,0,0,0),Rotation=0,Selectable=false,Size=UDim2.new(0,174,0,40),SizeConstraint=Enum.SizeConstraint.RelativeXY,Visible=true,ZIndex=61,Name='TextLabel',Parent=m})
-						local o=h('UIListLayout',{Padding=UDim.new(0,0),FillDirection=Enum.FillDirection.Vertical,HorizontalAlignment=Enum.HorizontalAlignment.Center,SortOrder=Enum.SortOrder.Name,VerticalAlignment=Enum.VerticalAlignment.Top,Name='UIListLayout',Parent=m})
-						local p=1;
-						if string.len(a)<=49 then 
-							m.Size=UDim2.new(0,game:GetService("TextService"):GetTextSize(a,24,Enum.Font.TitilliumWeb,Vector2.new(500,900)).X+35,0,40)
-						elseif string.len(a)>49 then 
-							p=math.ceil(string.len(string.sub(a,49))/9)
-							m.Size=UDim2.new(0,game:GetService("TextService"):GetTextSize(a,24,Enum.Font.TitilliumWeb,Vector2.new(500+p*100,900)).X+35,0,40)
-						end;
-						m:TweenPosition(UDim2.new(0.01,0,.97,-60),"Out","Quint",.7,true)
-						spawn(function()
-							wait(4)
-							pcall(function()
-								m.ZIndex=58;
-								n.ZIndex=59;
-								m:TweenPosition(UDim2.new(0.01,0,1,0),"Out","Quint",.7,true)
-								_G.dAAcG3fvBqVoPzVnAFk=""
-								wait(.3)
-								l:Destroy()
-							end)
-						end)
-						m.MouseButton1Up:Connect(function()if c==nil then return end;
-						spawn(function()
-							pcall(function()
-								m.ZIndex=58;n.ZIndex=59;
-								m:TweenPosition(UDim2.new(0.01,0,1,0),"Out","Quint",.7,true)
-								_G.dAAcG3fvBqVoPzVnAFk=""
-								wait(1)
-								l:Destroy()
-							end)
-						end)
-						d()
-					end)
-				end)
-			end
-			function roundNumber(num, numDecimalPlaces) -- https://devforum.roblox.com/t/rounding-to-1-decimal-point/673504
-			return tonumber(string.format("%." .. (numDecimalPlaces or 0) .. "f", num))
-		end
-		local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
-		function toTarget(pos, targetPos, targetCFrame)
-			local tween_s = game:service"TweenService"
-			local info = TweenInfo.new((targetPos - pos).Magnitude/getgenv().speed, Enum.EasingStyle.Linear)
-			local tween, err = pcall(function()
-			local tween = tween_s:Create(game:GetService("Players").LocalPlayer.Character["HumanoidRootPart"], info, {CFrame = targetCFrame * CFrame.fromAxisAngle(Vector3.new(1,0,0), math.rad(90))})
-			tween:Play()
-			end)
-			if not tween then return err end
-		end
 
 		--loading GUI
 		local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20script%20gui"))()
@@ -804,12 +732,14 @@ function AUTOFARM()
 
 		window1:Label("Quest Proccess", Color3.fromRGB(127, 143, 166))
 
-		window1:Toggle("Auto Mentor Quests (coming soon)",false, function(bool)
+		window1:Toggle("Auto Mentor Quests",false, function(bool)
 			EnabledAutoMentor = bool
+			notify("Auto Mentor Quests: "..tostring(EnabledAutoMentor),true)
 		end)
 		
 		window1:Toggle("1/5",false, function(bool)
 			punches = bool
+			notify("1/5: "..tostring(punches),true)
 		end)
 		game:GetService('RunService').Stepped:connect(function()
 			if punches then
@@ -819,6 +749,7 @@ function AUTOFARM()
 
 		window1:Toggle("2/5",false, function(bool)
 			tree = bool
+			notify("2/5: "..tostring(tree),true)
 		end)
 		game:GetService('RunService').Stepped:connect(function()
 			if tree then
@@ -828,157 +759,171 @@ function AUTOFARM()
 
 		window1:Toggle("3/5",false, function(bool)
 			shoot = bool
+			notify("3/5: "..tostring(shoot),true)
 		end)
 
+		spawn(function()
+			while wait(5) do
+				if shoot then
+					if game.PlaceId == 5451398863 then
+						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Narumaki"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(-22,0,-45)
+					elseif game.PlaceId == 6901575446 then
+						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Jiso Seishin"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(50,0,10)
+					elseif game.PlaceId == 5451401540 then
+						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Shindai Akuma"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(-100,7,-170)
+					elseif game.PlaceId == 5431071837 then
+						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,320,-300)
+					end
+				end
+			end
+		end)
 		game:GetService('RunService').Stepped:connect(function()
 			if shoot then
-				if game.PlaceId == 5451398863 then
-					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Narumaki"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(-22,0,-45)
-				elseif game.PlaceId == 6901575446 then
-					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Jiso Seishin"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(50,0,10)
-				elseif game.PlaceId == 5451401540 then
-					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Shindai Akuma"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(-100,7,-170)
-				elseif game.PlaceId == 5431071837 then
-					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,320,-300)
-				end
-				pcall(function()
-					repeat wait()
-						game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace").Terrain[game.Players.LocalPlayer.Name].kunaiaim.Position)
-						game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
-					until mission.Visible == false or not shoot
-				end)
+				repeat wait()
+					game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace").Terrain[game.Players.LocalPlayer.Name].kunaiaim.Position)
+					game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
+				until mission.Visible == false or not shoot
 			end
 		end)
 
 		window1:Toggle("4/5",false, function(bool)
 			block = bool
+			notify("4/5: "..tostring(block),true)
 		end)
 
+		spawn(function()
+			while wait(5) do
+				if block then
+					if game.PlaceId == 5451398863 then
+						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Narumaki"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(-22,0,-45)
+					elseif game.PlaceId == 6901575446 then
+						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Jiso Seishin"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(50,0,10)
+					elseif game.PlaceId == 5451401540 then
+						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Shindai Akuma"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(-100,7,-170)
+					elseif game.PlaceId == 5431071837 then
+						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,320,-300)
+					end
+				end
+			end
+		end)
 		game:GetService('RunService').Stepped:connect(function()
 			if block then
-				if game.PlaceId == 5451398863 then
-					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Narumaki"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(-22,0,-45)
-				elseif game.PlaceId == 6901575446 then
-					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Jiso Seishin"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(50,0,10)
-				elseif game.PlaceId == 5451401540 then
-					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Shindai Akuma"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(-100,7,-170)
-				elseif game.PlaceId == 5431071837 then
-					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,320,-300)
-				end
-				pcall(function()
-					repeat wait()
-						game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace").Terrain[game.Players.LocalPlayer.Name].kunaiaim.Position)
-					until mission.Visible == false or not block
-				end)
+				repeat wait()
+					game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace").Terrain[game.Players.LocalPlayer.Name].kunaiaim.Position)
+				until mission.Visible == false or not block
 			end
 		end)
 
 		window1:Toggle("5/5",false, function(bool)
-			dfarm = bool
+			keel = bool
+			notify("5/5: "..tostring(keel),true)
 		end)
 
 		window1:Toggle("Kenjutsu Training",false, function(bool)
-			if game.PlaceId == 4601350656 then
+			if game.PlaceId ~= 4601350656 then
+				keel = bool
+				notify("Kenjutsu Training: "..tostring(keel),true)
+			else
 				local args = {[1] = "trainkenmaster"}
 				game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-			else
-				dfarm = bool
 			end
 		end)
 
 		game:GetService('RunService').Stepped:connect(function()
-			if dfarm then
-				for i,v in pairs(workspace.npc:GetChildren()) do
-					if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-						repeat
-							v.Humanoid.Health = 0 
-							v.Humanoid.Health = 0 
-							v.Humanoid.Health = 0 
-							v.Humanoid.Health = 0 
-							v.Humanoid.Health = 0
-						until v.Humanoid.Health == 0 or not dfarm
-					end
-				end
+			if keel then
+				NPCKEELAURA()
 			end
 		end)
 
-		game:GetService('RunService').Stepped:connect(function()
-			if EnabledAutoMentor then
-				if mission.Visible == false then
-					if game.PlaceId == 5451398863 then
-						wait(.5)
-						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Narumaki"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
-						local args = {[1] = game:GetService("Players").LocalPlayer}
-						workspace.sensei.missions:FindFirstChild("Narumaki").missiongiver.CLIENTTALK:FireServer(unpack(args))
-					elseif game.PlaceId == 6901575446 then
-						wait(.5)
-						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Jiso Seishin"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(5,0,-1.7)
-						local args = {[1] = game:GetService("Players").LocalPlayer}
-						workspace.sensei.missions:FindFirstChild("Jiso Seishin").missiongiver.CLIENTTALK:FireServer(unpack(args))
-					elseif game.PlaceId == 5451401540 then
-						wait(.5)
-						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Shindai Akuma"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
-						local args = {[1] = game:GetService("Players").LocalPlayer}
-						workspace.sensei.missions:FindFirstChild("Shindai Akuma").missiongiver.CLIENTTALK:FireServer(unpack(args))
-					elseif game.PlaceId == 5431071837 then
-						wait(.5)
-						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,4,3)
-						local args = {[1] = game:GetService("Players").LocalPlayer}
-						workspace.sensei.missions:FindFirstChild("Ryuji Kenichi").missiongiver.CLIENTTALK:FireServer(unpack(args))
-					elseif game.PlaceId == 4601350656 then
-						for v = 1,8 do
-							wait()
-							game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace")["Ken Mentor"].HumanoidRootPart.Position)
+		spawn(function()
+			while wait() do
+				if EnabledAutoMentor then
+					if mission.Visible == false then
+						if game.PlaceId == 5451398863 then
+							wait(.5)
+							player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Narumaki"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
+							local args = {[1] = game:GetService("Players").LocalPlayer}
+							workspace.sensei.missions:FindFirstChild("Narumaki").missiongiver.CLIENTTALK:FireServer(unpack(args))
+							wait(2)
+						elseif game.PlaceId == 6901575446 then
+							wait(.5)
+							player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Jiso Seishin"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(5,0,-1.7)
+							local args = {[1] = game:GetService("Players").LocalPlayer}
+							workspace.sensei.missions:FindFirstChild("Jiso Seishin").missiongiver.CLIENTTALK:FireServer(unpack(args))
+							wait(2)
+						elseif game.PlaceId == 5451401540 then
+							wait(.5)
+							player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Shindai Akuma"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
+							local args = {[1] = game:GetService("Players").LocalPlayer}
+							workspace.sensei.missions:FindFirstChild("Shindai Akuma").missiongiver.CLIENTTALK:FireServer(unpack(args))
+							wait(2)
+						elseif game.PlaceId == 5431071837 then
+							wait(.5)
+							player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,4,3)
+							local args = {[1] = game:GetService("Players").LocalPlayer}
+							workspace.sensei.missions:FindFirstChild("Ryuji Kenichi").missiongiver.CLIENTTALK:FireServer(unpack(args))
+							wait(2)
+						elseif game.PlaceId == 4601350656 then
+							for v = 1,8 do
+								wait()
+								game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace")["Ken Mentor"].HumanoidRootPart.Position)
+							end
+							game.Workspace.HumanoidRootPart.CFrame=game:GetService("Workspace")["Ken Mentor"].HumanoidRootPart.CFrame+Vector3.new(-6,4,0)
+						elseif game.PlaceId == 8184506020 then
+							punches = false
+							tree = false
+							shoot = false
+							block = false
+							dfarm = true
+						else
+							notify("You cannot do mentor missions in this map!")
+							punches = false
+							tree = false
+							shoot = false
+							block = false
+							dfarm = false
 						end
-						game.Workspace.HumanoidRootPart.CFrame=game:GetService("Workspace")["Ken Mentor"].HumanoidRootPart.CFrame+Vector3.new(-6,4,0)
-					elseif game.PlaceId == 8184506020 then
-						punches = false
-						tree = false
-						shoot = false
-						block = false
-						dfarm = true
 					else
-						game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Wrong Map",Text = "You cannot do mentors missions in this map!",Duration = 5, })
-					end
-				else
-					if mission.bg.name.Text == "M1 to Pushup." then
-						punches = true
-						tree = false
-						shoot = false
-						block = false
-						dfarm = false
-					elseif mission.bg.name.Text == "Tree-Jump on tree tops." then
-						punches = false
-						tree = true
-						shoot = false
-						block = false
-						dfarm = false
-					elseif mission.title.Text == "[Objective: Accuracy Training]" then
-						punches = false
-						tree = false
-						shoot = true
-						block = false
-						dfarm = false
-					elseif mission.title.Text == "[Objective: Deflecting Training]" then
-						punches = false
-						tree = false
-						shoot = false
-						block = true
-						dfarm = false
-					elseif game.PlaceId == 8184506020 then
-						punches = false
-						tree = false
-						shoot = false
-						block = false
-						dfarm = true
+						if mission.title.Text == "[Objective: Push-Up Training]" then
+							punches = true
+							tree = false
+							shoot = false
+							block = false
+							dfarm = false
+						elseif mission.title.Text == "[Objective: Tree-Jump Training]" then
+							punches = false
+							tree = true
+							shoot = false
+							block = false
+							dfarm = false
+						elseif mission.title.Text == "[Objective: Accuracy Training]" then
+							punches = false
+							tree = false
+							shoot = true
+							block = false
+							dfarm = false
+						elseif mission.title.Text == "[Objective: Deflecting Training]" then
+							punches = false
+							tree = false
+							shoot = false
+							block = true
+							dfarm = false
+						elseif game.PlaceId == 8184506020 then
+							punches = false
+							tree = false
+							shoot = false
+							block = false
+							dfarm = true
+						end
 					end
 				end
-			end
+			end	
 		end)
 		
 		window2:Label("Daily Missions", Color3.fromRGB(127, 143, 166))
 		window2:Toggle("M1",false, function(bool)
 			DailyM1 = bool
+			notify("M1: "..tostring(DailyM1),true)
 		end)
 		game:GetService('RunService').Stepped:connect(function()
 			if DailyM1 then
@@ -987,6 +932,7 @@ function AUTOFARM()
 		end)
 		window2:Toggle("Rush",false, function(bool)
 			DailyRush = bool
+			notify("Rush: "..tostring(DailyRush),true)
 		end)
 		game:GetService('RunService').Stepped:connect(function()
 			if DailyRush then
@@ -995,6 +941,7 @@ function AUTOFARM()
 		end)
 		window2:Toggle("Chi Charge",false, function(bool)
 			DailyChi = bool
+			notify("Chi Charge: "..tostring(DailyChi),true)
 		end)
 		game:GetService('RunService').Stepped:connect(function()
 			if DailyChi then
@@ -1005,6 +952,7 @@ function AUTOFARM()
 		end)
 		window2:Toggle("Tree Jumps",false, function(bool)
 			DailyJump = bool
+			notify("Tree Jumps: "..tostring(DailyJump),true)
 		end)
 		game:GetService('RunService').Stepped:connect(function()
 			if DailyJump then
@@ -1045,6 +993,14 @@ function AUTOFARM()
 		if game:GetService("Workspace"):FindFirstChild("warmode") then
 			dfarm = true
 		end
+
+		for i,v in pairs(workspace.Terrain:GetChildren()) do
+			if v.Name(player.Name) then
+				v:Destroy()
+				wait(30)
+			end
+		end
+
 	end
 	TextButton.MouseButton1Click:connect(Utilities)
 
@@ -1111,76 +1067,7 @@ function AUTOFARM()
 				end
 			end
 			repeat wait() until game:IsLoaded()
-			--variables
-			local player = game.Players.LocalPlayer
-			function notify(a,b,c)
-				local d=c or function()return end;
-				local e=b or false;
-					if a==_G.dAAcG3fvBqVoPzVnAFk and e==false then return end;
-					spawn(function()
-						for f,g in pairs(game.CoreGui:GetChildren())do 
-							spawn(function()
-								if g.Name=="MNotify"then 
-									pcall(function()
-										g.ImageButton.ZIndex=58;
-										g.ImageButton.TextLabel.ZIndex=59;
-										g.ImageButton:TweenPosition(UDim2.new(0.01,0,1,0),"Out","Quint",.7,true)
-										game:GetService("TweenService"):Create(g.ImageButton.TextLabel,TweenInfo.new(0.8,Enum.EasingStyle.Quint,Enum.EasingDirection.Out,0,false,0),{TextTransparency=1})
-										wait(1)
-										g:Destroy()
-									end)
-								end 
-							end)
-						end;
-						_G.dAAcG3fvBqVoPzVnAFk=a
-						local d=c or function()return end;
-						local function h(i,j)
-							local k=Instance.new(i)
-								for f,g in pairs(j)do 
-									k[f]=g 
-								end;
-							return k end;
-							local l=h('ScreenGui',{DisplayOrder=0,Enabled=true,ResetOnSpawn=true,Name='MNotify',Parent=game.CoreGui})
-							local m=h('ImageButton',{Image='rbxassetid://1051186612',ImageColor3=Color3.new(0.129412,0.129412,0.129412),ImageRectOffset=Vector2.new(0,0),ImageRectSize=Vector2.new(0,0),ImageTransparency=0,ScaleType=Enum.ScaleType.Slice,SliceCenter=Rect.new(20,20,20,20),AutoButtonColor=true,Modal=false,Selected=false,Style=Enum.ButtonStyle.Custom,Active=true,AnchorPoint=Vector2.new(0,0),BackgroundColor3=Color3.new(1,1,1),BackgroundTransparency=1,BorderColor3=Color3.new(0.105882,0.164706,0.207843),BorderSizePixel=1,ClipsDescendants=false,Draggable=false,Position=UDim2.new(0.00999999978,0,1,0),Rotation=0,Selectable=true,Size=UDim2.new(0,234,0,40),SizeConstraint=Enum.SizeConstraint.RelativeXY,Visible=true,ZIndex=60,Name='ImageButton',Parent=l})
-							local n=h('TextLabel',{Font=Enum.Font.TitilliumWeb,FontSize=Enum.FontSize.Size24,Text=a,TextColor3=Color3.new(0.807843,0.807843,0.807843),TextScaled=false,TextSize=24,TextStrokeColor3=Color3.new(0,0,0),TextStrokeTransparency=1,TextTransparency=0,TextWrapped=false,TextXAlignment=Enum.TextXAlignment.Center,TextYAlignment=Enum.TextYAlignment.Center,Active=false,AnchorPoint=Vector2.new(0,0),BackgroundColor3=Color3.new(1,1,1),BackgroundTransparency=1,BorderColor3=Color3.new(0.105882,0.164706,0.207843),BorderSizePixel=1,ClipsDescendants=false,Draggable=false,Position=UDim2.new(0.132478639,0,0,0),Rotation=0,Selectable=false,Size=UDim2.new(0,174,0,40),SizeConstraint=Enum.SizeConstraint.RelativeXY,Visible=true,ZIndex=61,Name='TextLabel',Parent=m})
-							local o=h('UIListLayout',{Padding=UDim.new(0,0),FillDirection=Enum.FillDirection.Vertical,HorizontalAlignment=Enum.HorizontalAlignment.Center,SortOrder=Enum.SortOrder.Name,VerticalAlignment=Enum.VerticalAlignment.Top,Name='UIListLayout',Parent=m})
-							local p=1;
-							if string.len(a)<=49 then 
-								m.Size=UDim2.new(0,game:GetService("TextService"):GetTextSize(a,24,Enum.Font.TitilliumWeb,Vector2.new(500,900)).X+35,0,40)
-							elseif string.len(a)>49 then 
-								p=math.ceil(string.len(string.sub(a,49))/9)
-								m.Size=UDim2.new(0,game:GetService("TextService"):GetTextSize(a,24,Enum.Font.TitilliumWeb,Vector2.new(500+p*100,900)).X+35,0,40)
-							end;
-							m:TweenPosition(UDim2.new(0.01,0,.97,-60),"Out","Quint",.7,true)
-							spawn(function()
-								wait(4)
-								pcall(function()
-									m.ZIndex=58;
-									n.ZIndex=59;
-									m:TweenPosition(UDim2.new(0.01,0,1,0),"Out","Quint",.7,true)
-									_G.dAAcG3fvBqVoPzVnAFk=""
-									wait(.3)
-									l:Destroy()
-								end)
-							end)
-							m.MouseButton1Up:Connect(function()if c==nil then return end;
-							spawn(function()
-								pcall(function()
-									m.ZIndex=58;n.ZIndex=59;
-									m:TweenPosition(UDim2.new(0.01,0,1,0),"Out","Quint",.7,true)
-									_G.dAAcG3fvBqVoPzVnAFk=""
-									wait(1)
-									l:Destroy()
-								end)
-							end)
-							d()
-						end)
-					end)
-				end
-				function roundNumber(num, numDecimalPlaces) -- https://devforum.roblox.com/t/rounding-to-1-decimal-point/673504
-				return tonumber(string.format("%." .. (numDecimalPlaces or 0) .. "f", num))
-			end
-			local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
+			--Loading GUI
 			local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20script%20gui"))()
 			local window1 = library:Window("AutoFarm - DogeHub")
 			local window2 = library:Window("Others")
@@ -1192,17 +1079,17 @@ function AUTOFARM()
 
 			local autofarm
 			window1:Toggle("Auto Farm",false, function(bool)
-					autofarm = bool
+				autofarm = bool
 			end)
 
 			local boss
-				window1:Toggle("Boss Farm",false, function(bool)
+			window1:Toggle("Boss Farm",false, function(bool)
 				boss = bool
 			end)
 
 			local RANKUPP
 			window1:Toggle("Auto Rank",false, function(bool)
-					RANKUPP = bool
+				RANKUPP = bool
 			end)
 
 			local scrollfarm
@@ -1211,10 +1098,7 @@ function AUTOFARM()
 			end)
 
 			window1:Button("Infinite MD",function()
-				local mode = game.Players.LocalPlayer.Character.combat.mode
-				local copy = mode:Clone()
-				copy.Parent = mode.Parent
-				mode:Destroy()
+				INFMDON()
 			end)
 
 			window1:Label("If autofarm stuck:", Color3.fromRGB(127, 143, 166))
@@ -1548,17 +1432,7 @@ function AUTOFARM()
 			end)
 			game:GetService('RunService').Stepped:connect(function()
 				if keel then
-					for i,v in pairs(workspace.npc:GetChildren()) do
-						if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-							repeat 
-								v.Humanoid.Health = 0
-								v.Humanoid.Health = 0
-								v.Humanoid.Health = 0
-								v.Humanoid.Health = 0
-								v.Humanoid.Health = 0
-							until v.Humanoid.Health == 0 or not keel
-						end
-					end
+					NPCKEELAURA()
 				end
 			end)
 
@@ -1739,76 +1613,7 @@ function AUTOFARM()
 				end
 			end
 			repeat wait() until game:IsLoaded()
-			--variables
-			local player = game.Players.LocalPlayer
-			function notify(a,b,c)
-				local d=c or function()return end;
-				local e=b or false;
-					if a==_G.dAAcG3fvBqVoPzVnAFk and e==false then return end;
-					spawn(function()
-						for f,g in pairs(game.CoreGui:GetChildren())do 
-							spawn(function()
-								if g.Name=="MNotify"then 
-									pcall(function()
-										g.ImageButton.ZIndex=58;
-										g.ImageButton.TextLabel.ZIndex=59;
-										g.ImageButton:TweenPosition(UDim2.new(0.01,0,1,0),"Out","Quint",.7,true)
-										game:GetService("TweenService"):Create(g.ImageButton.TextLabel,TweenInfo.new(0.8,Enum.EasingStyle.Quint,Enum.EasingDirection.Out,0,false,0),{TextTransparency=1})
-										wait(1)
-										g:Destroy()
-									end)
-								end 
-							end)
-						end;
-						_G.dAAcG3fvBqVoPzVnAFk=a
-						local d=c or function()return end;
-						local function h(i,j)
-							local k=Instance.new(i)
-								for f,g in pairs(j)do 
-									k[f]=g 
-								end;
-							return k end;
-							local l=h('ScreenGui',{DisplayOrder=0,Enabled=true,ResetOnSpawn=true,Name='MNotify',Parent=game.CoreGui})
-							local m=h('ImageButton',{Image='rbxassetid://1051186612',ImageColor3=Color3.new(0.129412,0.129412,0.129412),ImageRectOffset=Vector2.new(0,0),ImageRectSize=Vector2.new(0,0),ImageTransparency=0,ScaleType=Enum.ScaleType.Slice,SliceCenter=Rect.new(20,20,20,20),AutoButtonColor=true,Modal=false,Selected=false,Style=Enum.ButtonStyle.Custom,Active=true,AnchorPoint=Vector2.new(0,0),BackgroundColor3=Color3.new(1,1,1),BackgroundTransparency=1,BorderColor3=Color3.new(0.105882,0.164706,0.207843),BorderSizePixel=1,ClipsDescendants=false,Draggable=false,Position=UDim2.new(0.00999999978,0,1,0),Rotation=0,Selectable=true,Size=UDim2.new(0,234,0,40),SizeConstraint=Enum.SizeConstraint.RelativeXY,Visible=true,ZIndex=60,Name='ImageButton',Parent=l})
-							local n=h('TextLabel',{Font=Enum.Font.TitilliumWeb,FontSize=Enum.FontSize.Size24,Text=a,TextColor3=Color3.new(0.807843,0.807843,0.807843),TextScaled=false,TextSize=24,TextStrokeColor3=Color3.new(0,0,0),TextStrokeTransparency=1,TextTransparency=0,TextWrapped=false,TextXAlignment=Enum.TextXAlignment.Center,TextYAlignment=Enum.TextYAlignment.Center,Active=false,AnchorPoint=Vector2.new(0,0),BackgroundColor3=Color3.new(1,1,1),BackgroundTransparency=1,BorderColor3=Color3.new(0.105882,0.164706,0.207843),BorderSizePixel=1,ClipsDescendants=false,Draggable=false,Position=UDim2.new(0.132478639,0,0,0),Rotation=0,Selectable=false,Size=UDim2.new(0,174,0,40),SizeConstraint=Enum.SizeConstraint.RelativeXY,Visible=true,ZIndex=61,Name='TextLabel',Parent=m})
-							local o=h('UIListLayout',{Padding=UDim.new(0,0),FillDirection=Enum.FillDirection.Vertical,HorizontalAlignment=Enum.HorizontalAlignment.Center,SortOrder=Enum.SortOrder.Name,VerticalAlignment=Enum.VerticalAlignment.Top,Name='UIListLayout',Parent=m})
-							local p=1;
-							if string.len(a)<=49 then 
-								m.Size=UDim2.new(0,game:GetService("TextService"):GetTextSize(a,24,Enum.Font.TitilliumWeb,Vector2.new(500,900)).X+35,0,40)
-							elseif string.len(a)>49 then 
-								p=math.ceil(string.len(string.sub(a,49))/9)
-								m.Size=UDim2.new(0,game:GetService("TextService"):GetTextSize(a,24,Enum.Font.TitilliumWeb,Vector2.new(500+p*100,900)).X+35,0,40)
-							end;
-							m:TweenPosition(UDim2.new(0.01,0,.97,-60),"Out","Quint",.7,true)
-							spawn(function()
-								wait(4)
-								pcall(function()
-									m.ZIndex=58;
-									n.ZIndex=59;
-									m:TweenPosition(UDim2.new(0.01,0,1,0),"Out","Quint",.7,true)
-									_G.dAAcG3fvBqVoPzVnAFk=""
-									wait(.3)
-									l:Destroy()
-								end)
-							end)
-							m.MouseButton1Up:Connect(function()if c==nil then return end;
-							spawn(function()
-								pcall(function()
-									m.ZIndex=58;n.ZIndex=59;
-									m:TweenPosition(UDim2.new(0.01,0,1,0),"Out","Quint",.7,true)
-									_G.dAAcG3fvBqVoPzVnAFk=""
-									wait(1)
-									l:Destroy()
-								end)
-							end)
-							d()
-						end)
-					end)
-				end
-				function roundNumber(num, numDecimalPlaces) -- https://devforum.roblox.com/t/rounding-to-1-decimal-point/673504
-				return tonumber(string.format("%." .. (numDecimalPlaces or 0) .. "f", num))
-			end
-			local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
+			--Loading GUI
 			local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20script%20gui"))()
 			local window1 = library:Window("AutoFarm - DogeHub")
 			local window2 = library:Window("Others")
@@ -1820,20 +1625,20 @@ function AUTOFARM()
 
 			local autoofarm
 			window1:Toggle("Auto Farm",false, function(bool)
-					autoofarm = bool
-					local platform = Instance.new("Part", player.Character)
-					platform.Anchored = true
-					platform.Transparency = 1
-					platform.Size = Vector3.new(6, 1, 6)
+				autoofarm = bool
+				local platform = Instance.new("Part", player.Character)
+				platform.Anchored = true
+				platform.Transparency = 1
+				platform.Size = Vector3.new(6, 1, 6)
 
-					local connection
-					connection = game:GetService("RunService").RenderStepped:connect(function()
-						if player.Character:FindFirstChild("HumanoidRootPart") then
-							platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -1.8, 0)
-						else
-							connection:Disconnect()
-						end
-					end)
+				local connection
+				connection = game:GetService("RunService").RenderStepped:connect(function()
+					if player.Character:FindFirstChild("HumanoidRootPart") then
+						platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -1.8, 0)
+					else
+						connection:Disconnect()
+					end
+				end)
 				game:GetService('RunService').Stepped:connect(function()
 					if autoofarm ~= true then
 						platform:Destroy()
@@ -1842,13 +1647,13 @@ function AUTOFARM()
 			end)
 
 			local boss
-				window1:Toggle("Boss Farm",false, function(bool)
+			window1:Toggle("Boss Farm",false, function(bool)
 				boss = bool
 			end)
 
 			local RANKUPP
 			window1:Toggle("Auto Rank",false, function(bool)
-					RANKUPP = bool
+				RANKUPP = bool
 			end)
 
 			local scrollfarm
@@ -1857,10 +1662,7 @@ function AUTOFARM()
 			end)
 
 			window1:Button("Infinite MD",function()
-				local mode = game.Players.LocalPlayer.Character.combat.mode
-				local copy = mode:Clone()
-				copy.Parent = mode.Parent
-				mode:Destroy()
+			INFMDON()
 			end)
 
 			local disp = window1:Label("If autofarm stuck:", Color3.fromRGB(127, 143, 166))
@@ -2178,17 +1980,7 @@ function AUTOFARM()
 			end)
 			game:GetService('RunService').Stepped:connect(function()
 				if keel then
-					for i,v in pairs(workspace.npc:GetChildren()) do
-						if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-							repeat 
-								v.Humanoid.Health = 0
-								v.Humanoid.Health = 0
-								v.Humanoid.Health = 0
-								v.Humanoid.Health = 0
-								v.Humanoid.Health = 0
-							until v.Humanoid.Health == 0 or not keel
-						end
-					end
+					NPCKEELAURA()
 				end
 			end)
 
@@ -2368,89 +2160,11 @@ function AUTOFARM()
 				end
 			end
 			repeat wait() until game:IsLoaded()
-			--variables
-			local player = game.Players.LocalPlayer
-			function notify(a,b,c)
-				local d=c or function()return end;
-				local e=b or false;
-					if a==_G.dAAcG3fvBqVoPzVnAFk and e==false then return end;
-					spawn(function()
-						for f,g in pairs(game.CoreGui:GetChildren())do 
-							spawn(function()
-								if g.Name=="MNotify"then 
-									pcall(function()
-										g.ImageButton.ZIndex=58;
-										g.ImageButton.TextLabel.ZIndex=59;
-										g.ImageButton:TweenPosition(UDim2.new(0.01,0,1,0),"Out","Quint",.7,true)
-										game:GetService("TweenService"):Create(g.ImageButton.TextLabel,TweenInfo.new(0.8,Enum.EasingStyle.Quint,Enum.EasingDirection.Out,0,false,0),{TextTransparency=1})
-										wait(1)
-										g:Destroy()
-									end)
-								end 
-							end)
-						end;
-						_G.dAAcG3fvBqVoPzVnAFk=a
-						local d=c or function()return end;
-						local function h(i,j)
-							local k=Instance.new(i)
-								for f,g in pairs(j)do 
-									k[f]=g 
-								end;
-							return k end;
-							local l=h('ScreenGui',{DisplayOrder=0,Enabled=true,ResetOnSpawn=true,Name='MNotify',Parent=game.CoreGui})
-							local m=h('ImageButton',{Image='rbxassetid://1051186612',ImageColor3=Color3.new(0.129412,0.129412,0.129412),ImageRectOffset=Vector2.new(0,0),ImageRectSize=Vector2.new(0,0),ImageTransparency=0,ScaleType=Enum.ScaleType.Slice,SliceCenter=Rect.new(20,20,20,20),AutoButtonColor=true,Modal=false,Selected=false,Style=Enum.ButtonStyle.Custom,Active=true,AnchorPoint=Vector2.new(0,0),BackgroundColor3=Color3.new(1,1,1),BackgroundTransparency=1,BorderColor3=Color3.new(0.105882,0.164706,0.207843),BorderSizePixel=1,ClipsDescendants=false,Draggable=false,Position=UDim2.new(0.00999999978,0,1,0),Rotation=0,Selectable=true,Size=UDim2.new(0,234,0,40),SizeConstraint=Enum.SizeConstraint.RelativeXY,Visible=true,ZIndex=60,Name='ImageButton',Parent=l})
-							local n=h('TextLabel',{Font=Enum.Font.TitilliumWeb,FontSize=Enum.FontSize.Size24,Text=a,TextColor3=Color3.new(0.807843,0.807843,0.807843),TextScaled=false,TextSize=24,TextStrokeColor3=Color3.new(0,0,0),TextStrokeTransparency=1,TextTransparency=0,TextWrapped=false,TextXAlignment=Enum.TextXAlignment.Center,TextYAlignment=Enum.TextYAlignment.Center,Active=false,AnchorPoint=Vector2.new(0,0),BackgroundColor3=Color3.new(1,1,1),BackgroundTransparency=1,BorderColor3=Color3.new(0.105882,0.164706,0.207843),BorderSizePixel=1,ClipsDescendants=false,Draggable=false,Position=UDim2.new(0.132478639,0,0,0),Rotation=0,Selectable=false,Size=UDim2.new(0,174,0,40),SizeConstraint=Enum.SizeConstraint.RelativeXY,Visible=true,ZIndex=61,Name='TextLabel',Parent=m})
-							local o=h('UIListLayout',{Padding=UDim.new(0,0),FillDirection=Enum.FillDirection.Vertical,HorizontalAlignment=Enum.HorizontalAlignment.Center,SortOrder=Enum.SortOrder.Name,VerticalAlignment=Enum.VerticalAlignment.Top,Name='UIListLayout',Parent=m})
-							local p=1;
-							if string.len(a)<=49 then 
-								m.Size=UDim2.new(0,game:GetService("TextService"):GetTextSize(a,24,Enum.Font.TitilliumWeb,Vector2.new(500,900)).X+35,0,40)
-							elseif string.len(a)>49 then 
-								p=math.ceil(string.len(string.sub(a,49))/9)
-								m.Size=UDim2.new(0,game:GetService("TextService"):GetTextSize(a,24,Enum.Font.TitilliumWeb,Vector2.new(500+p*100,900)).X+35,0,40)
-							end;
-							m:TweenPosition(UDim2.new(0.01,0,.97,-60),"Out","Quint",.7,true)
-							spawn(function()
-								wait(4)
-								pcall(function()
-									m.ZIndex=58;
-									n.ZIndex=59;
-									m:TweenPosition(UDim2.new(0.01,0,1,0),"Out","Quint",.7,true)
-									_G.dAAcG3fvBqVoPzVnAFk=""
-									wait(.3)
-									l:Destroy()
-								end)
-							end)
-							m.MouseButton1Up:Connect(function()if c==nil then return end;
-							spawn(function()
-								pcall(function()
-									m.ZIndex=58;n.ZIndex=59;
-									m:TweenPosition(UDim2.new(0.01,0,1,0),"Out","Quint",.7,true)
-									_G.dAAcG3fvBqVoPzVnAFk=""
-									wait(1)
-									l:Destroy()
-								end)
-							end)
-							d()
-						end)
-					end)
-				end
-				function roundNumber(num, numDecimalPlaces) -- https://devforum.roblox.com/t/rounding-to-1-decimal-point/673504
-				return tonumber(string.format("%." .. (numDecimalPlaces or 0) .. "f", num))
-			end
-			local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
+			--Loading GUI
 			local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20script%20gui"))()
 			local window1 = library:Window("AutoFarm - DogeHub")
 			local window2 = library:Window("Others")
 			local window3 = library:Window("Credits")
-			function toTarget(pos, targetPos, targetCFrame)
-				local tween_s = game:service"TweenService"
-				local info = TweenInfo.new((targetPos - pos).Magnitude/getgenv().speed, Enum.EasingStyle.Linear)
-				local tween, err = pcall(function()
-					local tween = tween_s:Create(game:GetService("Players").LocalPlayer.Character["HumanoidRootPart"], info, {CFrame = targetCFrame * CFrame.fromAxisAngle(Vector3.new(1,0,0), math.rad(90))})
-					tween:Play()
-				end)
-				if not tween then return err end
-			end
 
 			library:Keybind("RightControl")
 
@@ -2482,13 +2196,13 @@ function AUTOFARM()
 			end)
 
 			local boss
-				window1:Toggle("Boss Farm",false, function(bool)
+			window1:Toggle("Boss Farm",false, function(bool)
 				boss = bool
 			end)
 
 			local RANKUPP
 			window1:Toggle("Auto Rank",false, function(bool)
-					RANKUPP = bool
+				RANKUPP = bool
 			end)
 
 			local scrollfarm
@@ -2804,17 +2518,7 @@ function AUTOFARM()
 			end)
 			game:GetService('RunService').Stepped:connect(function()
 				if keel then
-					for i,v in pairs(workspace.npc:GetChildren()) do
-						if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-							repeat 
-								v.Humanoid.Health = 0
-								v.Humanoid.Health = 0
-								v.Humanoid.Health = 0
-								v.Humanoid.Health = 0
-								v.Humanoid.Health = 0
-							until v.Humanoid.Health == 0 or not keel
-						end
-					end
+					NPCKEELAURA()
 				end
 			end)
 
@@ -2827,6 +2531,8 @@ function AUTOFARM()
 				if auchi then
 					local args = {[1] = "addstat",[2] = "chakra",[3] = 18}
 					game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+					local args = {[1] = "addstat",[2] = "chakra",[3] = 1}
+					game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 					wait(.25)
 				end
 			end)
@@ -2836,6 +2542,8 @@ function AUTOFARM()
 			game:GetService('RunService').Stepped:connect(function()
 				if aunin then
 					local args = {[1] = "addstat",[2] = "ninjutsu",[3] = 18}
+					game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+					local args = {[1] = "addstat",[2] = "ninjutsu",[3] = 1}
 					game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 					wait(.25)
 				end
@@ -2847,6 +2555,8 @@ function AUTOFARM()
 				if autai then
 					local args = {[1] = "addstat",[2] = "taijutsu",[3] = 18}
 					game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+					local args = {[1] = "addstat",[2] = "taijutsu",[3] = 1}
+					game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 					wait(.25)
 				end
 			end)
@@ -2856,6 +2566,8 @@ function AUTOFARM()
 			game:GetService('RunService').Stepped:connect(function()
 				if auhp then
 					local args = {[1] = "addstat",[2] = "health",[3] = 18}
+					game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+					local args = {[1] = "addstat",[2] = "health",[3] = 1}
 					game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 					wait(.25)
 				end
