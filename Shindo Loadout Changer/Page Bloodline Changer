@@ -1,0 +1,578 @@
+--Properties:
+local ScreenGui = Instance.new("ScreenGui")
+--LoadoutChanger.Name = "LoadoutChanger"
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+local BLChangerMain = Instance.new("ImageLabel")
+BLChangerMain.Name = "BLChangerMain"
+BLChangerMain.Parent = ScreenGui
+BLChangerMain.BackgroundColor3 = Color3.new(1, 1, 1)
+BLChangerMain.BackgroundTransparency = 1
+BLChangerMain.Position = UDim2.new(0.765, 0, 0.52, 0)
+BLChangerMain.Size = UDim2.new(0, 300, 0, 280)
+BLChangerMain.Visible = true
+BLChangerMain.Active = true
+BLChangerMain.Image = "rbxassetid://2260429633"
+BLChangerMain.ImageColor3 = Color3.new(0.117647, 0.117647, 0.117647)
+BLChangerMain.ScaleType = Enum.ScaleType.Slice
+BLChangerMain.SliceCenter = Rect.new(12, 12, 13, 13)
+BLChangerMain.Draggable = true
+
+local X = Instance.new("TextButton")
+X.Name = "X"
+X.Parent = BLChangerMain
+X.BackgroundColor3 = Color3.new(0.0588235, 0.0588235, 0.0588235)
+X.BorderSizePixel = 0
+X.Position = UDim2.new(0.85, 0, 0, 0)
+X.Size = UDim2.new(0, 31, 0, 20)
+X.Font = Enum.Font.Cartoon
+X.Text = "X"
+X.TextColor3 = Color3.new(1, 1, 1)
+X.TextScaled = true
+X.TextSize = 14
+X.TextWrapped = true
+
+function DeleteGui() -- X.LocalScript 
+	local script = Instance.new('LocalScript')
+	script.Parent = X
+	function OnClicked()
+		script.Parent.Parent.Parent.BLChangerMain:Destroy()
+	end
+	script.Parent.MouseButton1Down:Connect(OnClicked)
+end
+coroutine.resume(coroutine.create(DeleteGui))
+
+local Title = Instance.new("TextLabel")
+Title.Name = "Title"
+Title.Parent = BLChangerMain
+Title.BackgroundColor3 = Color3.new(1, 1, 1)
+Title.BackgroundTransparency = 1
+Title.Position = UDim2.new(0.1, 0, 0.000547006086, 0)
+Title.Size = UDim2.new(0, 200, 0, 20)
+Title.Font = Enum.Font.GothamSemibold
+Title.Text = "           Shindo Bloodline Changer"
+Title.TextColor3 = Color3.new(1, 1, 1)
+Title.TextScaled = false
+Title.TextSize = 16.5
+Title.TextWrapped = false
+
+local Border = Instance.new("Frame")
+Border.Name = "Border"
+Border.Parent = BLChangerMain
+Border.BackgroundColor3 = Color3.new(0.419608, 0.419608, 0.419608)
+Border.BorderColor3 = Color3.new(0.419608, 0.419608, 0.419608)
+Border.Position = UDim2.new(0.17, 0, -0.000385761261, 0)
+Border.Size = UDim2.new(0, 3, 0, 280)
+
+local ElmLabel = Instance.new("TextLabel")
+ElmLabel.Name = "ElmLabel"
+ElmLabel.Parent = BLChangerMain
+ElmLabel.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+ElmLabel.BackgroundTransparency = 1
+ElmLabel.BorderSizePixel = 0
+ElmLabel.Position = UDim2.new(0.188181819, 0, 0.1, 0)
+ElmLabel.Size = UDim2.new(0, 243, 0, 20)
+ElmLabel.Font = Enum.Font.GothamSemibold
+ElmLabel.Text = "Elements"
+ElmLabel.TextColor3 = Color3.new(1, 1, 1)
+ElmLabel.TextSize = 15
+ElmLabel.TextWrapped = false
+ElmLabel.Transparency = 0
+
+local elmslotstextbox = Instance.new("TextBox")
+elmslotstextbox.Name = "elmslotstextbox"
+elmslotstextbox.Parent = BLChangerMain
+elmslotstextbox.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+elmslotstextbox.BorderSizePixel = 0
+elmslotstextbox.Position = UDim2.new(0.188181819 + 0.415, 0, 0.19, 0)
+elmslotstextbox.Size = UDim2.new(0, 119, 0, 82)
+elmslotstextbox.Font = Enum.Font.GothamSemibold
+elmslotstextbox.Text = "Insert your \nelement"
+elmslotstextbox.TextColor3 = Color3.new(1, 1, 1)
+elmslotstextbox.TextSize = 20
+elmslotstextbox.TextWrapped = true
+
+local elmslot1 = Instance.new("TextButton")
+elmslot1.Name = "elmslot1"
+elmslot1.Parent = BLChangerMain
+elmslot1.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+elmslot1.BorderSizePixel = 0
+elmslot1.Position = UDim2.new(0.188181819, 0, 0.19, 0)
+elmslot1.Size = UDim2.new(0, 60, 0, 40)
+elmslot1.Font = Enum.Font.GothamSemibold
+elmslot1.Text = "Slot 1"
+elmslot1.TextColor3 = Color3.new(1, 1, 1)
+elmslot1.TextSize = 18
+elmslot1.MouseButton1Click:connect(function()
+	elmslot1.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
+	game.Players.LocalPlayer.statz.main.element1.Value = elmslotstextbox.Text
+	wait(.5)
+	elmslot1.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+end)
+
+local elmslot2 = Instance.new("TextButton")
+elmslot2.Name = "elmslot2"
+elmslot2.Parent = BLChangerMain
+elmslot2.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+elmslot2.BorderSizePixel = 0
+elmslot2.Position = UDim2.new(0.188181819 + 0.205, 0, 0.19, 0)
+elmslot2.Size = UDim2.new(0, 60, 0, 40)
+elmslot2.Font = Enum.Font.GothamSemibold
+elmslot2.Text = "Slot 2"
+elmslot2.TextColor3 = Color3.new(1, 1, 1)
+elmslot2.TextSize = 18
+elmslot2.MouseButton1Click:connect(function()
+	elmslot2.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
+	game.Players.LocalPlayer.statz.main.element2.Value = elmslotstextbox.Text
+	wait(.5)
+	elmslot2.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+end)
+
+local elmslot3 = Instance.new("TextButton")
+elmslot3.Name = "elmslot3"
+elmslot3.Parent = BLChangerMain
+elmslot3.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+elmslot3.BorderSizePixel = 0
+elmslot3.Position = UDim2.new(0.188181819, 0, 0.19 + 0.15, 0)
+elmslot3.Size = UDim2.new(0, 60, 0, 40)
+elmslot3.Font = Enum.Font.GothamSemibold
+elmslot3.Text = "Slot 3"
+elmslot3.TextColor3 = Color3.new(1, 1, 1)
+elmslot3.TextSize = 18
+elmslot3.MouseButton1Click:connect(function()
+	elmslot3.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
+	game.Players.LocalPlayer.statz.main.element3.Value = elmslotstextbox.Text
+	wait(.5)
+	elmslot3.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+end)
+
+local elmslot4 = Instance.new("TextButton")
+elmslot4.Name = "elmslot4"
+elmslot4.Parent = BLChangerMain
+elmslot4.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+elmslot4.BorderSizePixel = 0
+elmslot4.Position = UDim2.new(0.188181819 + 0.205, 0, 0.19 + 0.15, 0)
+elmslot4.Size = UDim2.new(0, 60, 0, 40)
+elmslot4.Font = Enum.Font.GothamSemibold
+elmslot4.Text = "Slot 4"
+elmslot4.TextColor3 = Color3.new(1, 1, 1)
+elmslot4.TextSize = 18
+elmslot4.MouseButton1Click:connect(function()
+	elmslot4.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
+	game.Players.LocalPlayer.statz.main.element4.Value = elmslotstextbox.Text
+	wait(.5)
+	elmslot4.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+end)
+
+local BLLabel = Instance.new("TextLabel")
+BLLabel.Name = "BLLabel"
+BLLabel.Parent = BLChangerMain
+BLLabel.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+BLLabel.BackgroundTransparency = 1
+BLLabel.BorderSizePixel = 0
+BLLabel.Position = UDim2.new(0.188181819, 0, 0.5, 0)
+BLLabel.Size = UDim2.new(0, 243, 0, 20)
+BLLabel.Font = Enum.Font.GothamSemibold
+BLLabel.Text = "Bloodlines"
+BLLabel.TextColor3 = Color3.new(1, 1, 1)
+BLLabel.TextSize = 15
+BLLabel.TextWrapped = false
+BLLabel.Transparency = 0
+
+local blslotstextbox = Instance.new("TextBox")
+blslotstextbox.Name = "blslotstextbox"
+blslotstextbox.Parent = BLChangerMain
+blslotstextbox.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+blslotstextbox.BorderSizePixel = 0
+blslotstextbox.Position = UDim2.new(0.188181819 + 0.415, 0, 0.59, 0)
+blslotstextbox.Size = UDim2.new(0, 119, 0, 82)
+blslotstextbox.Font = Enum.Font.GothamSemibold
+blslotstextbox.Text = "Insert your \nbloodline"
+blslotstextbox.TextColor3 = Color3.new(1, 1, 1)
+blslotstextbox.TextSize = 20
+blslotstextbox.TextWrapped = true
+
+local blslot1 = Instance.new("TextButton")
+blslot1.Name = "blslot1"
+blslot1.Parent = BLChangerMain
+blslot1.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+blslot1.BorderSizePixel = 0
+blslot1.Position = UDim2.new(0.188181819, 0, 0.59, 0)
+blslot1.Size = UDim2.new(0, 60, 0, 40)
+blslot1.Font = Enum.Font.GothamSemibold
+blslot1.Text = "Slot 1"
+blslot1.TextColor3 = Color3.new(1, 1, 1)
+blslot1.TextSize = 18
+blslot1.MouseButton1Click:connect(function()
+	blslot1.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
+	game.Players.LocalPlayer.statz.main.kg1.Value = blslotstextbox.Text
+	wait(.5)
+	blslot1.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+end)
+
+local blslot2 = Instance.new("TextButton")
+blslot2.Name = "blslot2"
+blslot2.Parent = BLChangerMain
+blslot2.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+blslot2.BorderSizePixel = 0
+blslot2.Position = UDim2.new(0.188181819 + 0.205, 0, 0.59, 0)
+blslot2.Size = UDim2.new(0, 60, 0, 40)
+blslot2.Font = Enum.Font.GothamSemibold
+blslot2.Text = "Slot 2"
+blslot2.TextColor3 = Color3.new(1, 1, 1)
+blslot2.TextSize = 18
+blslot2.MouseButton1Click:connect(function()
+	blslot2.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
+	game.Players.LocalPlayer.statz.main.kg2.Value = blslotstextbox.Text
+	wait(.5)
+	blslot2.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+end)
+
+local blslot3 = Instance.new("TextButton")
+blslot3.Name = "blslot3"
+blslot3.Parent = BLChangerMain
+blslot3.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+blslot3.BorderSizePixel = 0
+blslot3.Position = UDim2.new(0.188181819, 0, 0.59 + 0.15, 0)
+blslot3.Size = UDim2.new(0, 60, 0, 40)
+blslot3.Font = Enum.Font.GothamSemibold
+blslot3.Text = "Slot 3"
+blslot3.TextColor3 = Color3.new(1, 1, 1)
+blslot3.TextSize = 18
+blslot3.MouseButton1Click:connect(function()
+	blslot3.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
+	game.Players.LocalPlayer.statz.main.kg3.Value = blslotstextbox.Text
+	wait(.5)
+	blslot3.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+end)
+
+local blslot4 = Instance.new("TextButton")
+blslot4.Name = "blslot4"
+blslot4.Parent = BLChangerMain
+blslot4.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+blslot4.BorderSizePixel = 0
+blslot4.Position = UDim2.new(0.188181819 + 0.205, 0, 0.59 + 0.15, 0)
+blslot4.Size = UDim2.new(0, 60, 0, 40)
+blslot4.Font = Enum.Font.GothamSemibold
+blslot4.Text = "Slot 4"
+blslot4.TextColor3 = Color3.new(1, 1, 1)
+blslot4.TextSize = 18
+blslot4.MouseButton1Click:connect(function()
+	blslot4.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
+	game.Players.LocalPlayer.statz.main.kg4.Value = blslotstextbox.Text
+	wait(.5)
+	blslot4.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+end)
+
+local kentextbox = Instance.new("TextBox")
+kentextbox.Name = "kentextbox"
+kentextbox.Parent = BLChangerMain
+kentextbox.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+kentextbox.BorderSizePixel = 0
+kentextbox.Position = UDim2.new(0.188181819, 0, 0.9, 0)
+kentextbox.Size = UDim2.new(0, 243, 0, 20)
+kentextbox.Font = Enum.Font.GothamSemibold
+kentextbox.Text = "Insert your kenjutsu (coming soon!)"
+kentextbox.TextColor3 = Color3.new(1, 1, 1)
+kentextbox.TextSize = 13
+kentextbox.TextWrapped = true
+
+local Info = Instance.new("TextButton")
+Info.Name = "Info"
+Info.Parent = BLChangerMain
+Info.BackgroundColor3 = Color3.new(0.3,0.3,1.2)
+Info.BorderSizePixel = 2
+Info.BorderColor3 = Color3.new(0.1,0.1,0.9)
+Info.Position = UDim2.new(0.02, 0, 0.1, 0)
+Info.Size = UDim2.new(0, 40, 0, 20)
+Info.Font = Enum.Font.GothamSemibold
+Info.Text = "!"
+Info.TextColor3 = Color3.new(1, 1, 1)
+Info.TextSize = 20
+
+local Help = Instance.new("TextButton")
+Help.Name = "Help"
+Help.Parent = BLChangerMain
+Help.BackgroundColor3 = Color3.new(1.020,0.652,0.104)
+Help.BorderSizePixel = 2
+Help.BorderColor3 = Color3.new(0.816,0.435,0.069)
+Help.Position = UDim2.new(0.02, 0, 0.25, 0)
+Help.Size = UDim2.new(0, 40, 0, 20)
+Help.Font = Enum.Font.GothamSemibold
+Help.Text = "?"
+Help.TextColor3 = Color3.new(1, 1, 1)
+Help.TextSize = 20
+
+local Loadout4SpecialPvP1 = Instance.new("TextButton")
+Loadout4SpecialPvP1.Name = "Loadout4SpecialPvP1"
+Loadout4SpecialPvP1.Parent = BLChangerMain
+Loadout4SpecialPvP1.BackgroundColor3 = Color3.new(0.07, 0.07, 0.07)
+Loadout4SpecialPvP1.BorderSizePixel = 2
+Loadout4SpecialPvP1.BorderColor3 = Color3.new(0.01, 0.01, 0.01)
+Loadout4SpecialPvP1.Position = UDim2.new(0.02, 0, 0.4, 0)
+Loadout4SpecialPvP1.Size = UDim2.new(0, 40, 0, 20)
+Loadout4SpecialPvP1.Font = Enum.Font.GothamSemibold
+Loadout4SpecialPvP1.Text = ""
+Loadout4SpecialPvP1.TextColor3 = Color3.new(1, 1, 1)
+Loadout4SpecialPvP1.TextSize = 20
+
+local SecretCodeText = Instance.new("TextBox")
+SecretCodeText.Name = "SecretCodeText"
+SecretCodeText.Parent = BLChangerMain
+SecretCodeText.BackgroundColor3 = Color3.new(0.512, 0.512, 0.512)
+SecretCodeText.BorderSizePixel = 0
+SecretCodeText.Position = UDim2.new(0.01, 0, 0.85, 0)
+SecretCodeText.Size = UDim2.new(0, 45, 0, 20)
+SecretCodeText.Font = Enum.Font.GothamSemibold
+SecretCodeText.PlaceholderColor3 = Color3.fromRGB(255, 255, 255)
+SecretCodeText.PlaceholderText = "Secret Code"
+SecretCodeText.Text = ""
+SecretCodeText.TextColor3 = Color3.new(1, 1, 1)
+SecretCodeText.TextScaled = true
+SecretCodeText.TextSize = 14
+SecretCodeText.TextWrapped = true
+
+local SecretCodeTextRedeem = Instance.new("TextButton")
+SecretCodeTextRedeem.Name = "SecretCodeTextRedeem"
+SecretCodeTextRedeem.Parent = BLChangerMain
+SecretCodeTextRedeem.BackgroundColor3 = Color3.new(0.512, 0.512, 0.512)
+SecretCodeTextRedeem.BorderSizePixel = 0
+SecretCodeTextRedeem.Position = UDim2.new(0.01, 0, 0.94, 0)
+SecretCodeTextRedeem.Size = UDim2.new(0, 45, 0, 10)
+SecretCodeTextRedeem.Font = Enum.Font.GothamSemibold
+SecretCodeTextRedeem.Text = ""
+SecretCodeTextRedeem.TextColor3 = Color3.new(1, 1, 1)
+SecretCodeTextRedeem.TextScaled = true
+SecretCodeTextRedeem.TextSize = 14
+SecretCodeTextRedeem.TextWrapped = true
+
+local Main2 = Instance.new("ImageLabel")
+Main2.Name = "Main2"
+Main2.Parent = BLChangerMain
+Main2.BackgroundColor3 = Color3.new(1, 1, 1)
+Main2.BackgroundTransparency = 1
+Main2.Position = UDim2.new(0, 0, -0.835, 0)
+Main2.Size = UDim2.new(0, 300, 0, 230)
+Main2.Visible = false
+Main2.Image = "rbxassetid://2260429633"
+Main2.ImageColor3 = Color3.new(0.117647, 0.117647, 0.117647)
+Main2.ScaleType = Enum.ScaleType.Slice
+Main2.SliceCenter = Rect.new(12, 12, 13, 13)
+
+local ScrollingFrameforTextLabel2 = Instance.new("ScrollingFrame")
+ScrollingFrameforTextLabel2.Name = "ScrollingFrameforTextLabel2"
+ScrollingFrameforTextLabel2.Parent = Main2
+ScrollingFrameforTextLabel2.BackgroundColor3 = Color3.new(1, 1, 1)
+ScrollingFrameforTextLabel2.BackgroundTransparency = 1
+ScrollingFrameforTextLabel2.BorderSizePixel = 0
+ScrollingFrameforTextLabel2.Position = UDim2.new(0, 20, 0, 60)
+ScrollingFrameforTextLabel2.Size = UDim2.new(1, -40, 1, -70)
+ScrollingFrameforTextLabel2.CanvasSize = UDim2.new(5, 0, 5, 0)
+ScrollingFrameforTextLabel2.ScrollBarThickness = 5
+
+local TextLabel2 = Instance.new("TextLabel")
+TextLabel2.Parent = ScrollingFrameforTextLabel2
+TextLabel2.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
+TextLabel2.Size = UDim2.new(1, -20, 1, 0)
+TextLabel2.Font = Enum.Font.Ubuntu
+TextLabel2.BackgroundTransparency = 1
+TextLabel2.Text = [[
+
+Information or Help or List whatever.
+]]
+TextLabel2.TextSize = 40
+TextLabel2.TextColor3 = Color3.fromRGB(225, 225, 225)
+TextLabel2.TextScaled = false
+TextLabel2.TextSize = 40.000
+TextLabel2.TextWrapped = true
+TextLabel2.TextXAlignment = Enum.TextXAlignment.Left
+TextLabel2.TextYAlignment = Enum.TextYAlignment.Top
+
+local Frame2 = Instance.new("Frame")
+Frame2.Parent = BLChangerMain
+Frame2.BackgroundColor3 = Color3.fromRGB(60,60,255)
+Frame2.Position = UDim2.new(0, 0, -0.835, 0)
+Frame2.Size = UDim2.new(0, 300, 0, 30)
+Frame2.Transparency = 0.1
+Frame2.Visible = false
+
+local TextLabel3 = Instance.new("TextLabel")
+TextLabel3.Parent = Frame2
+TextLabel3.BackgroundColor3 = Color3.fromRGB(1, 1, 1)
+TextLabel3.Size = UDim2.new(0, 300, 0, 30)
+TextLabel3.Font = Enum.Font.Ubuntu
+TextLabel3.BackgroundTransparency = 1
+TextLabel3.Text = [[OwO]]
+TextLabel3.TextColor3 = Color3.fromRGB(1, 1, 1)
+TextLabel3.TextScaled = true
+TextLabel3.TextSize = 40.000
+TextLabel3.TextWrapped = true
+
+function CodeRedeem()
+	if SecretCodeText.Text == "BlazingFanatic" or SecretCodeText.Text == "bL" or SecretCodeText.Text == "Bl" or SecretCodeText.Text == "BL" or SecretCodeText.Text == "bl" then
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20BlazingFanatic"))()
+	else
+		SecretCodeText.Text = "Invalid Code!"
+		wait(.5)
+		SecretCodeText.Text = "Secret Code"
+	end
+end
+SecretCodeTextRedeem.MouseButton1Click:connect(CodeRedeem)
+
+Info.MouseButton1Click:connect(function()
+	InfoEnabled = not InfoEnabled
+	if InfoEnabled then
+		HelpEnabled = false
+		Help.BackgroundColor3 = Color3.new(1.020,0.652,0.104)
+		Info.BackgroundColor3 = Color3.new(0.5,0.5,1.5)
+		Main2.Visible = true
+		Frame2.BackgroundColor3 = Color3.fromRGB(60,60,255)
+		Frame2.Visible = true
+		TextLabel3.Text = [[Information]]
+		TextLabel2.TextSize = 15
+		TextLabel2.Text = [[
+		Script made by NoobieDoge
+
+		Type the name of the bloodline or element or kenjutsu into the textbox, then press the slot that you want to change
+		
+		Do not type the display name, it won't work. 
+		
+		If you don't know the code names for the bloodline or element or kenjutsu, press the orange "?" button
+		
+		The bloodline and element and kenjutsu that you changed won't keep forever. but the moves that you equippd will stay forever unless you changed it
+		
+		You cannot level up the bloodlines or elements or kenjutsus that you change by this changer. Don't be dumb and autofarm with this]]
+	else
+		Info.BackgroundColor3 = Color3.new(0.3,0.3,1.2)
+		Main2.Visible = false
+		Frame2.Visible = false
+	end
+end)
+
+Help.MouseButton1Click:connect(function()
+	HelpEnabled = not HelpEnabled
+	if HelpEnabled then
+		InfoEnabled = false
+		Info.BackgroundColor3 = Color3.new(0.3,0.3,1.2)
+		Help.BackgroundColor3 = Color3.new(1.2,0.8,0.3)
+		Main2.Visible = true
+		Frame2.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+		Frame2.Visible = true
+		TextLabel3.Text = [[Help]]
+		TextLabel2.TextSize = 15
+		print([[
+		
+		
+		
+		
+		
+		
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		]])
+		for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
+			if v:FindFirstChild("KG") then
+				print("")
+				print(v.REALNAME.Value)
+				print(v.Name)
+			end
+		end
+		TextLabel2.Text = "If you don't know the code names for \nthe bloodline or element that you want \nto change,\nPress F9 and scroll down."
+		
+	else
+		Help.BackgroundColor3 = Color3.new(1.020,0.652,0.104)
+		Main2.Visible = false
+		Frame2.Visible = false
+	end
+end)
