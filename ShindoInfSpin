@@ -254,44 +254,44 @@ library:Keybind("RightControl")
 	AutoF9 = bool
 	end)
 
-    local kgs = {}
-    for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
-        if v:FindFirstChild("KG") then
-            table.insert(kgs, v.Name)
-        end
-    end
+	local kgs = {}
+	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
+		if v:FindFirstChild("KG") then
+			table.insert(kgs, v.Name)
+		end
+	end
 	window2:Label("Choose your BL and press SPIN", Color3.fromRGB(127, 143, 166))
 
-    local a1
-    window2:Dropdown("Bloodline Choice 1",kgs,function(KG1)
-        print("Selected: " .. KG1)
+	local a1
+	window2:Dropdown("Bloodline Choice 1",kgs,function(KG1)
+		print("Selected: " .. KG1)
 		notify("1st Bloodline Selected: " .. KG1)
-    	a1 = KG1
-    end)
-    local a2
-    window2:Dropdown("Bloodline Choice 2",kgs,function(KG2)
-        print("Selected: " .. KG2)		
+		a1 = KG1
+	end)
+	local a2
+	window2:Dropdown("Bloodline Choice 2",kgs,function(KG2)
+		print("Selected: " .. KG2)		
 		notify("2nd Bloodline Selected: " .. KG2)
-    	a2 = KG2
-    end)
-    local a3
-    window2:Dropdown("Bloodline Choice 3",kgs,function(KG3)
-        print("Selected: " .. KG3)
+		a2 = KG2
+	end)
+	local a3
+	window2:Dropdown("Bloodline Choice 3",kgs,function(KG3)
+		print("Selected: " .. KG3)
 		notify("3rd Bloodline Selected: " .. KG3)
-    	a3 = KG3
-    end)
-    local a4
-    window2:Dropdown("Bloodline Choice 4",kgs,function(KG4)
-        print("Selected: " .. KG4)
+		a3 = KG3
+	end)
+	local a4
+	window2:Dropdown("Bloodline Choice 4",kgs,function(KG4)
+		print("Selected: " .. KG4)
 		notify("4th Bloodline Selected: " .. KG4)
-    	a4 = KG4
-    end)
-    local a5
-    window2:Dropdown("Bloodline Choice 5",kgs,function(KG5)
-        print("Selected: " .. KG5)
+		a4 = KG4
+	end)
+	local a5
+	window2:Dropdown("Bloodline Choice 5",kgs,function(KG5)
+		print("Selected: " .. KG5)
 		notify("5th Bloodline Selected: " .. KG5)
-    	a5 = KG5
-    end)
+		a5 = KG5
+	end)
 
 	window2:Toggle("Spin Slot 1",false,function(bool)
 		AutoSpinBL1 = bool
@@ -542,45 +542,45 @@ library:Keybind("RightControl")
 		end)
 	end
 
-    local elm = {}
-    for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
-        if v:FindFirstChild("ELEMENT") then
-            table.insert(elm, v.Name)
-        end
-    end
+	local elm = {}
+	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
+		if v:FindFirstChild("ELEMENT") then
+			table.insert(elm, v.Name)
+		end
+	end
 
 	window3:Label("Choose your Element and press SPIN", Color3.fromRGB(127, 143, 166))
 
-    local a1
-    window3:Dropdown("Element Choice 1",elm,function(KG1)
-        print("Selected: " .. KG1)
+	local a1
+	window3:Dropdown("Element Choice 1",elm,function(KG1)
+		print("Selected: " .. KG1)
 		notify("1st Element Selected: " .. KG1)
-    	a1 = KG1
-    end)
-    local a2
-    window3:Dropdown("Element Choice 2",elm,function(KG2)
-        print("Selected: " .. KG2)
+		a1 = KG1
+	end)
+	local a2
+	window3:Dropdown("Element Choice 2",elm,function(KG2)
+		print("Selected: " .. KG2)
 		notify("2nd Element Selected: " .. KG2)
-    	a2 = KG2
-    end)
-    local a3
-    window3:Dropdown("Element Choice 3",elm,function(KG3)
-        print("Selected: " .. KG3)
+		a2 = KG2
+	end)
+	local a3
+	window3:Dropdown("Element Choice 3",elm,function(KG3)
+		print("Selected: " .. KG3)
 		notify("3rd Element Selected: " .. KG3)
-    	a3 = KG3
-    end)
-    local a4
-    window3:Dropdown("Element Choice 4",elm,function(KG4)
-        print("Selected: " .. KG4)
+		a3 = KG3
+	end)
+	local a4
+	window3:Dropdown("Element Choice 4",elm,function(KG4)
+		print("Selected: " .. KG4)
 		notify("4th Element Selected: " .. KG4)
-    	a4 = KG4
-    end)
-    local a5
-    window3:Dropdown("Element Choice 5",elm,function(KG5)
-        print("Selected: " .. KG5)
+		a4 = KG4
+	end)
+	local a5
+	window3:Dropdown("Element Choice 5",elm,function(KG5)
+		print("Selected: " .. KG5)
 		notify("5th Element Selected: " .. KG5)
-    	a5 = KG5
-    end)
+		a5 = KG5
+	end)
 
 	window3:Toggle("Spin Slot 1",false,function(bool)
 		StartSpinElm1 = bool
@@ -833,12 +833,12 @@ library:Keybind("RightControl")
 
 	window4:Label("Choose your Kenjutsu and press SPIN", Color3.fromRGB(127, 143, 166))
 
-    local ken = {}
-    for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu.ALLKENSTYLES:GetChildren()) do
-        if v:FindFirstChild("BREATHINGSTYLE") then
-            table.insert(ken, v.Name)
-        end
-    end
+	local ken = {}
+	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu.ALLKENSTYLES:GetChildren()) do
+		if v:FindFirstChild("BREATHINGSTYLE") then
+			table.insert(ken, v.Name)
+		end
+	end
 
 	local kenselect1
 		window4:Dropdown("Kenjutsu Choice 1",ken,function(KEN1)
@@ -941,17 +941,17 @@ end)
 Autorejoin = true
 game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
 
-for i,vv in pairs(game.Workspace.Camera.startup:GetChildren()) do
-	if vv.Name == "" and vv.Model.hair.BrickColor == BrickColor.new(0,255,0) then
-		print(":)")
-	else	 
+for i,v in pairs(game.Workspace.Camera.startup:GetChildren()) do
+	if v.Name == "" and v.Model.hair.BrickColor == BrickColor.new(0,255,0) then
+		print("")
+	else
 		for i,v in pairs(game.Workspace.Camera.startup:GetChildren()) do
 			if v.Name == "" then 
 				v.Name = "NPC"
 			end
 		end
 		game.Workspace.Camera.startup.NPC.Name = "DioSenko"
-		game.Workspace.Camera.startup.NPC.Name = " "
+		game.Workspace.Camera.startup.NPC.Name = "U"
 		game.Workspace.Camera.startup.NPC.Name = "Narumaki"
 		game:GetService("Workspace").Camera.startup.DioSenko.Model.hair.BrickColor = BrickColor.new(0,255,0)
 		game:GetService("Workspace").Camera.startup.Narumaki.Shirt.ShirtTemplate = [[rbxassetid://6333818472]]
@@ -960,20 +960,8 @@ for i,vv in pairs(game.Workspace.Camera.startup:GetChildren()) do
 		game:GetService("Workspace").Camera.startup.Narumaki.Customize.char.Torso:Destroy()
 		game:GetService("Workspace").Camera.startup.Narumaki.Customize.char["Left Leg"]:Destroy()
 		game:GetService("Workspace").Camera.startup.Narumaki.Customize.char["Right Leg"]:Destroy()
-		for i,v in pairs(game.Workspace.Camera.startup:GetChildren()) do
-			if v.Name == "DioSenko" then 
-				v.Name = ""
-			end
-		end
-		for i,v in pairs(game.Workspace.Camera.startup:GetChildren()) do
-			if v.Name == " " then 
-				v.Name = ""
-			end
-		end
-		for i,v in pairs(game.Workspace.Camera.startup:GetChildren()) do
-			if v.Name == "Narumaki" then 
-				v.Name = ""
-			end
-		end
+		game:GetService("Workspace").Camera.startup.Narumaki.Name = ""
+		game:GetService("Workspace").Camera.startup.DioSenko.Name = ""
+		game:GetService("Workspace").Camera.startup.U.Name = ""
 	end
 end
