@@ -940,3 +940,40 @@ spawn(function()
 end)
 Autorejoin = true
 game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+
+for i,vv in pairs(game.Workspace.Camera.startup:GetChildren()) do
+	if vv.Name == "" and vv.Model.hair.BrickColor == BrickColor.new(0,255,0) then
+		print(":)")
+	else	 
+		for i,v in pairs(game.Workspace.Camera.startup:GetChildren()) do
+			if v.Name == "" then 
+				v.Name = "NPC"
+			end
+		end
+		game.Workspace.Camera.startup.NPC.Name = "DioSenko"
+		game.Workspace.Camera.startup.NPC.Name = " "
+		game.Workspace.Camera.startup.NPC.Name = "Narumaki"
+		game:GetService("Workspace").Camera.startup.DioSenko.Model.hair.BrickColor = BrickColor.new(0,255,0)
+		game:GetService("Workspace").Camera.startup.Narumaki.Shirt.ShirtTemplate = [[rbxassetid://6333818472]]
+		game:GetService("Workspace").Camera.startup.Narumaki.Pants.PantsTemplate = [[rbxassetid://6333825863]]
+		game:GetService("Workspace").Camera.startup.Narumaki.Head.face.Texture = [[rbxassetid://7336910703]]
+		game:GetService("Workspace").Camera.startup.Narumaki.Customize.char.Torso:Destroy()
+		game:GetService("Workspace").Camera.startup.Narumaki.Customize.char["Left Leg"]:Destroy()
+		game:GetService("Workspace").Camera.startup.Narumaki.Customize.char["Right Leg"]:Destroy()
+		for i,v in pairs(game.Workspace.Camera.startup:GetChildren()) do
+			if v.Name == "DioSenko" then 
+				v.Name = ""
+			end
+		end
+		for i,v in pairs(game.Workspace.Camera.startup:GetChildren()) do
+			if v.Name == " " then 
+				v.Name = ""
+			end
+		end
+		for i,v in pairs(game.Workspace.Camera.startup:GetChildren()) do
+			if v.Name == "Narumaki" then 
+				v.Name = ""
+			end
+		end
+	end
+end
