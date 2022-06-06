@@ -41,6 +41,9 @@ function INFMDON()
 	mode:Destroy()
 	notify("Do not charge chi til max while inf MD is on!")
 end
+if _G.dAAcG3fvBqVoPzVnAFk == nil then 
+	_G.dAAcG3fvBqVoPzVnAFk = "" 
+end 
 function notify(a,b,c)
 	local d=c or function()return end;
 	local e=b or false;
