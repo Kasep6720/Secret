@@ -213,8 +213,8 @@ library:Keybind("RightControl")
 			end
 			game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
 			wait()
-			notify("You may now enter villages or leave game to save your data")
 			datasavedandyoucanredeemcodes = true
+			notify("You may now enter villages or leave game to save your data")
 			wait(1)
 		end
 		TextButton.MouseButton1Click:connect(OKKeep)
@@ -299,55 +299,37 @@ library:Keybind("RightControl")
 			if AutoF9 == true then
 				game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
 			end
-			game.Players.LocalPlayer.statz.main.kg1.ChildAdded:Connect(function(yes)
-				if yes.Name == "dontspin" then
-					wait(.1)
-					yes:Destroy()
-				end
-			end)
 			local spins = game.Players.LocalPlayer.statz.spins.Value
-			local des = game.Players.LocalPlayer.statz.spins
-			spawn(function()
-				for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
-					if v:FindFirstChild("KG") then
-						local a = Instance.new("StringValue")
-						a.Name = v.Name
-						a.Parent = game.Players.LocalPlayer.statz.genkailevel
-					end
-				end
-			end)
-			spawn(function()
-				while wait() do
-					if spins > 0 then
-						spins = game.Players.LocalPlayer.statz.spins.Value
-						kgvalue1 = game.Players.LocalPlayer.statz.main.kg1.Value
-						kgvalue2 = game.Players.LocalPlayer.statz.main.kg2.Value
-						kgvalue3 = game.Players.LocalPlayer.statz.main.kg3.Value
-						kgvalue4 = game.Players.LocalPlayer.statz.main.kg4.Value
-						if AutoSpinBL1 == true then
-							if kgvalue1 ~= a1 and kgvalue1 ~= a2 and kgvalue1 ~= a3 and kgvalue1 ~= a4 and kgvalue1 ~= a5 and kgvalue2 ~= a1 and kgvalue2 ~= a2 and kgvalue2 ~= a3 and kgvalue2 ~= a4 and kgvalue2 ~= a5 and kgvalue3 ~= a1 and kgvalue3 ~= a2 and kgvalue3 ~= a3 and kgvalue3 ~= a4 and kgvalue3 ~= a5 and kgvalue4 ~= a1 and kgvalue4 ~= a2 and kgvalue4 ~= a3 and kgvalue4 ~= a4 and kgvalue4 ~= a5 then
-								kgvalue1 = game.Players.LocalPlayer.statz.main.kg1.Value
-								game.Players.LocalPlayer.startevent:FireServer("spin", "kg1")
-								print("Rolled: " .. kgvalue1)
-								wait(1)
-								kgvalue1 = game.Players.LocalPlayer.statz.main.kg1.Value
-							else
-								print("You have got: " .. kgvalue1)
-								notify("You have got: " .. kgvalue1)
-								if Autosave == true then
-									datasavedandyoucanredeemcodes = true
-									game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
-									wait(3)
-								end
+			game:GetService('RunService').Stepped:connect(function()
+				if spins > 0 then
+					spins = game.Players.LocalPlayer.statz.spins.Value
+					kgvalue1 = game.Players.LocalPlayer.statz.main.kg1.Value
+					kgvalue2 = game.Players.LocalPlayer.statz.main.kg2.Value
+					kgvalue3 = game.Players.LocalPlayer.statz.main.kg3.Value
+					kgvalue4 = game.Players.LocalPlayer.statz.main.kg4.Value
+					if AutoSpinBL1 == true then
+						if kgvalue1 ~= a1 and kgvalue1 ~= a2 and kgvalue1 ~= a3 and kgvalue1 ~= a4 and kgvalue1 ~= a5 and kgvalue2 ~= a1 and kgvalue2 ~= a2 and kgvalue2 ~= a3 and kgvalue2 ~= a4 and kgvalue2 ~= a5 and kgvalue3 ~= a1 and kgvalue3 ~= a2 and kgvalue3 ~= a3 and kgvalue3 ~= a4 and kgvalue3 ~= a5 and kgvalue4 ~= a1 and kgvalue4 ~= a2 and kgvalue4 ~= a3 and kgvalue4 ~= a4 and kgvalue4 ~= a5 then
+							game.Players.LocalPlayer.startevent:FireServer("spin", "kg1")
+							print("Rolled: " .. kgvalue1)
+							wait(1)
+						elseif kgvalue1 ~= a1 and kgvalue1 ~= a2 and kgvalue1 ~= a3 and kgvalue1 ~= a4 and kgvalue1 ~= a5 then
+
+						else
+							print("You have got: " .. kgvalue1)
+							notify("You have got: " .. kgvalue1)
+							if Autosave == true then
+								datasavedandyoucanredeemcodes = true
+								game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
+								wait(3)
 							end
 						end
-					else
-						if Autorejoin == true then
-							--player.statz.spins:Destroy()
-							game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
-							wait()
-							game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-						end
+					end
+				else
+					if Autorejoin == true then
+						--player.statz.spins:Destroy()
+						game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+						wait()
+						game:GetService('TeleportService'):Teleport(game.PlaceId, player)
 					end
 				end
 			end)
@@ -361,54 +343,37 @@ library:Keybind("RightControl")
 			if AutoF9 == true then
 				game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
 			end
-			game.Players.LocalPlayer.statz.main.kg2.ChildAdded:Connect(function(yes)
-				if yes.Name == "dontspin" then
-					wait(.1)
-					yes:Destroy()
-				end
-			end)
 			local spins = game.Players.LocalPlayer.statz.spins.Value
-			local des = game.Players.LocalPlayer.statz.spins
-			spawn(function()
-				for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
-					if v:FindFirstChild("KG") then
-						local a = Instance.new("StringValue")
-						a.Name = v.Name
-						a.Parent = game.Players.LocalPlayer.statz.genkailevel
-					end
-				end
-			end)
-			spawn(function()
-				while wait() do
-					if spins > 0 then
-						spins = game.Players.LocalPlayer.statz.spins.Value
-						kgvalue1 = game.Players.LocalPlayer.statz.main.kg1.Value
-						kgvalue2 = game.Players.LocalPlayer.statz.main.kg2.Value
-						kgvalue3 = game.Players.LocalPlayer.statz.main.kg3.Value
-						kgvalue4 = game.Players.LocalPlayer.statz.main.kg4.Value						if AutoSpinBL2 == true then
-							if kgvalue1 ~= a1 and kgvalue1 ~= a2 and kgvalue1 ~= a3 and kgvalue1 ~= a4 and kgvalue1 ~= a5 and kgvalue2 ~= a1 and kgvalue2 ~= a2 and kgvalue2 ~= a3 and kgvalue2 ~= a4 and kgvalue2 ~= a5 and kgvalue3 ~= a1 and kgvalue3 ~= a2 and kgvalue3 ~= a3 and kgvalue3 ~= a4 and kgvalue3 ~= a5 and kgvalue4 ~= a1 and kgvalue4 ~= a2 and kgvalue4 ~= a3 and kgvalue4 ~= a4 and kgvalue4 ~= a5 then
-								kgvalue2 = game.Players.LocalPlayer.statz.main.kg2.Value
-								game.Players.LocalPlayer.startevent:FireServer("spin", "kg2")
-								print("Rolled: " .. kgvalue2)
-								wait(1)
-								kgvalue2 = game.Players.LocalPlayer.statz.main.kg2.Value
-							else
-								print("You have got: " .. kgvalue2)
-								notify("You have got: " .. kgvalue2)
-								if Autosave == true then
-									datasavedandyoucanredeemcodes = true
-									game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
-									wait(3)
-								end
+			game:GetService('RunService').Stepped:connect(function()
+				if spins > 0 then
+					spins = game.Players.LocalPlayer.statz.spins.Value
+					kgvalue1 = game.Players.LocalPlayer.statz.main.kg1.Value
+					kgvalue2 = game.Players.LocalPlayer.statz.main.kg2.Value
+					kgvalue3 = game.Players.LocalPlayer.statz.main.kg3.Value
+					kgvalue4 = game.Players.LocalPlayer.statz.main.kg4.Value						
+					if AutoSpinBL2 == true then
+						if kgvalue1 ~= a1 and kgvalue1 ~= a2 and kgvalue1 ~= a3 and kgvalue1 ~= a4 and kgvalue1 ~= a5 and kgvalue2 ~= a1 and kgvalue2 ~= a2 and kgvalue2 ~= a3 and kgvalue2 ~= a4 and kgvalue2 ~= a5 and kgvalue3 ~= a1 and kgvalue3 ~= a2 and kgvalue3 ~= a3 and kgvalue3 ~= a4 and kgvalue3 ~= a5 and kgvalue4 ~= a1 and kgvalue4 ~= a2 and kgvalue4 ~= a3 and kgvalue4 ~= a4 and kgvalue4 ~= a5 then
+							game.Players.LocalPlayer.startevent:FireServer("spin", "kg2")
+							print("Rolled: " .. kgvalue2)
+							wait(1)
+						elseif kgvalue2 ~= a1 and kgvalue2 ~= a2 and kgvalue2 ~= a3 and kgvalue2 ~= a4 and kgvalue2 ~= a5 then
+
+						else
+							print("You have got: " .. kgvalue2)
+							notify("You have got: " .. kgvalue2)
+							if Autosave == true then
+								datasavedandyoucanredeemcodes = true
+								game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
+								wait(3)
 							end
 						end
-					else
-						if Autorejoin == true then
-							--player.statz.spins:Destroy()
-							game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
-							wait()
-							game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-						end
+					end
+				else
+					if Autorejoin == true then
+						--player.statz.spins:Destroy()
+						game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+						wait()
+						game:GetService('TeleportService'):Teleport(game.PlaceId, player)
 					end
 				end
 			end)
@@ -423,54 +388,37 @@ library:Keybind("RightControl")
 				if AutoF9 == true then
 					game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
 				end
-				game.Players.LocalPlayer.statz.main.kg3.ChildAdded:Connect(function(yes)
-					if yes.Name == "dontspin" then
-						wait(.1)
-						yes:Destroy()
-					end
-				end)
 				local spins = game.Players.LocalPlayer.statz.spins.Value
-				local des = game.Players.LocalPlayer.statz.spins
-				spawn(function()
-					for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
-						if v:FindFirstChild("KG") then
-							local a = Instance.new("StringValue")
-							a.Name = v.Name
-							a.Parent = game.Players.LocalPlayer.statz.genkailevel
-						end
-					end
-				end)
-				spawn(function()
-					while wait() do
-						if spins > 0 then
-							spins = game.Players.LocalPlayer.statz.spins.Value
-							kgvalue1 = game.Players.LocalPlayer.statz.main.kg1.Value
-							kgvalue2 = game.Players.LocalPlayer.statz.main.kg2.Value
-							kgvalue3 = game.Players.LocalPlayer.statz.main.kg3.Value
-							kgvalue4 = game.Players.LocalPlayer.statz.main.kg4.Value								if AutoSpinBL3 == true then
-								if kgvalue1 ~= a1 and kgvalue1 ~= a2 and kgvalue1 ~= a3 and kgvalue1 ~= a4 and kgvalue1 ~= a5 and kgvalue2 ~= a1 and kgvalue2 ~= a2 and kgvalue2 ~= a3 and kgvalue2 ~= a4 and kgvalue2 ~= a5 and kgvalue3 ~= a1 and kgvalue3 ~= a2 and kgvalue3 ~= a3 and kgvalue3 ~= a4 and kgvalue3 ~= a5 and kgvalue4 ~= a1 and kgvalue4 ~= a2 and kgvalue4 ~= a3 and kgvalue4 ~= a4 and kgvalue4 ~= a5 then
-									kgvalue3 = game.Players.LocalPlayer.statz.main.kg2.Value
-									game.Players.LocalPlayer.startevent:FireServer("spin", "kg3")
-									print("Rolled: " .. kgvalue3)
-									wait(1)
-									kgvalue3 = game.Players.LocalPlayer.statz.main.kg3.Value
-								else
-									print("You have got: " .. kgvalue3)
-									notify("You have got: " .. kgvalue3)
-									if Autosave == true then
-										datasavedandyoucanredeemcodes = true
-										game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
-										wait(3)
-									end
+				game:GetService('RunService').Stepped:connect(function()
+					if spins > 0 then
+						spins = game.Players.LocalPlayer.statz.spins.Value
+						kgvalue1 = game.Players.LocalPlayer.statz.main.kg1.Value
+						kgvalue2 = game.Players.LocalPlayer.statz.main.kg2.Value
+						kgvalue3 = game.Players.LocalPlayer.statz.main.kg3.Value
+						kgvalue4 = game.Players.LocalPlayer.statz.main.kg4.Value								
+						if AutoSpinBL3 == true then
+							if kgvalue1 ~= a1 and kgvalue1 ~= a2 and kgvalue1 ~= a3 and kgvalue1 ~= a4 and kgvalue1 ~= a5 and kgvalue2 ~= a1 and kgvalue2 ~= a2 and kgvalue2 ~= a3 and kgvalue2 ~= a4 and kgvalue2 ~= a5 and kgvalue3 ~= a1 and kgvalue3 ~= a2 and kgvalue3 ~= a3 and kgvalue3 ~= a4 and kgvalue3 ~= a5 and kgvalue4 ~= a1 and kgvalue4 ~= a2 and kgvalue4 ~= a3 and kgvalue4 ~= a4 and kgvalue4 ~= a5 then
+								game.Players.LocalPlayer.startevent:FireServer("spin", "kg3")
+								print("Rolled: " .. kgvalue3)
+								wait(1)
+							elseif kgvalue3 ~= a1 and kgvalue3 ~= a2 and kgvalue3 ~= a3 and kgvalue3 ~= a4 and kgvalue3 ~= a5 then
+
+							else
+								print("You have got: " .. kgvalue3)
+								notify("You have got: " .. kgvalue3)
+								if Autosave == true then
+									datasavedandyoucanredeemcodes = true
+									game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
+									wait(3)
 								end
 							end
-						else
-							if Autorejoin == true then
-								--player.statz.spins:Destroy()
-								game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
-								wait()
-								game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-							end
+						end
+					else
+						if Autorejoin == true then
+							--player.statz.spins:Destroy()
+							game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+							wait()
+							game:GetService('TeleportService'):Teleport(game.PlaceId, player)
 						end
 					end
 				end)
@@ -486,54 +434,37 @@ library:Keybind("RightControl")
 				if AutoF9 == true then
 					game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
 				end
-				game.Players.LocalPlayer.statz.main.kg4.ChildAdded:Connect(function(yes)
-					if yes.Name == "dontspin" then
-						wait(.1)
-						yes:Destroy()
-					end
-				end)
 				local spins = game.Players.LocalPlayer.statz.spins.Value
-				local des = game.Players.LocalPlayer.statz.spins
-				spawn(function()
-					for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
-						if v:FindFirstChild("KG") then
-							local a = Instance.new("StringValue")
-							a.Name = v.Name
-							a.Parent = game.Players.LocalPlayer.statz.genkailevel
-						end
-					end
-				end)
-				spawn(function()
-					while wait() do
-						if spins > 0 then
-							spins = game.Players.LocalPlayer.statz.spins.Value
-							kgvalue1 = game.Players.LocalPlayer.statz.main.kg1.Value
-							kgvalue2 = game.Players.LocalPlayer.statz.main.kg2.Value
-							kgvalue3 = game.Players.LocalPlayer.statz.main.kg3.Value
-							kgvalue4 = game.Players.LocalPlayer.statz.main.kg4.Value							if AutoSpinBL4 == true then
-								if kgvalue1 ~= a1 and kgvalue1 ~= a2 and kgvalue1 ~= a3 and kgvalue1 ~= a4 and kgvalue1 ~= a5 and kgvalue2 ~= a1 and kgvalue2 ~= a2 and kgvalue2 ~= a3 and kgvalue2 ~= a4 and kgvalue2 ~= a5 and kgvalue3 ~= a1 and kgvalue3 ~= a2 and kgvalue3 ~= a3 and kgvalue3 ~= a4 and kgvalue3 ~= a5 and kgvalue4 ~= a1 and kgvalue4 ~= a2 and kgvalue4 ~= a3 and kgvalue4 ~= a4 and kgvalue4 ~= a5 then
-									kgvalue4 = game.Players.LocalPlayer.statz.main.kg4.Value
-									game.Players.LocalPlayer.startevent:FireServer("spin", "kg4")
-									print("Rolled: " .. kgvalue4)
-									wait(1)
-									kgvalue4 = game.Players.LocalPlayer.statz.main.kg4.Value
-								else
-									print("You have got: " .. kgvalue4)
-									notify("You have got: " .. kgvalue4)
-									if Autosave == true then
-										datasavedandyoucanredeemcodes = true
-										game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
-										wait(3)
-									end
+				game:GetService('RunService').Stepped:connect(function()
+					if spins > 0 then
+						spins = game.Players.LocalPlayer.statz.spins.Value
+						kgvalue1 = game.Players.LocalPlayer.statz.main.kg1.Value
+						kgvalue2 = game.Players.LocalPlayer.statz.main.kg2.Value
+						kgvalue3 = game.Players.LocalPlayer.statz.main.kg3.Value
+						kgvalue4 = game.Players.LocalPlayer.statz.main.kg4.Value							
+						if AutoSpinBL4 == true then
+							if kgvalue1 ~= a1 and kgvalue1 ~= a2 and kgvalue1 ~= a3 and kgvalue1 ~= a4 and kgvalue1 ~= a5 and kgvalue2 ~= a1 and kgvalue2 ~= a2 and kgvalue2 ~= a3 and kgvalue2 ~= a4 and kgvalue2 ~= a5 and kgvalue3 ~= a1 and kgvalue3 ~= a2 and kgvalue3 ~= a3 and kgvalue3 ~= a4 and kgvalue3 ~= a5 and kgvalue4 ~= a1 and kgvalue4 ~= a2 and kgvalue4 ~= a3 and kgvalue4 ~= a4 and kgvalue4 ~= a5 then
+								game.Players.LocalPlayer.startevent:FireServer("spin", "kg4")
+								print("Rolled: " .. kgvalue4)
+								wait(1)
+							elseif kgvalue4 ~= a1 and kgvalue4 ~= a2 and kgvalue4 ~= a3 and kgvalue4 ~= a4 and kgvalue4 ~= a5 then
+
+							else
+								print("You have got: " .. kgvalue4)
+								notify("You have got: " .. kgvalue4)
+								if Autosave == true then
+									datasavedandyoucanredeemcodes = true
+									game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
+									wait(3)
 								end
 							end
-						else
-							if Autorejoin == true then
-								--player.statz.spins:Destroy()
-								game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
-								wait()
-								game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-							end
+						end
+					else
+						if Autorejoin == true then
+							--player.statz.spins:Destroy()
+							game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+							wait()
+							game:GetService('TeleportService'):Teleport(game.PlaceId, player)
 						end
 					end
 				end)
@@ -588,55 +519,37 @@ library:Keybind("RightControl")
 			if AutoF9 == true then
 				game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
 			end
-			game.Players.LocalPlayer.statz.main.element1.ChildAdded:Connect(function(yes)
-				if yes.Name == "dontspin" then
-					wait(.1)
-					yes:Destroy()
-				end
-			end)
 			local spins = game.Players.LocalPlayer.statz.spins.Value
-			local des = game.Players.LocalPlayer.statz.spins
-			spawn(function()
-				for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
-					if v:FindFirstChild("KG") then
-						local a = Instance.new("StringValue")
-						a.Name = v.Name
-						a.Parent = game.Players.LocalPlayer.statz.genkailevel
-					end
-				end
-			end)
-			spawn(function()
-				while wait() do
-					if spins > 0 then
-						spins = game.Players.LocalPlayer.statz.spins.Value
-						elmvalue1 = game.Players.LocalPlayer.statz.main.element1.Value
-						elmvalue2 = game.Players.LocalPlayer.statz.main.element2.Value
-						elmvalue3 = game.Players.LocalPlayer.statz.main.element3.Value
-						elmvalue4 = game.Players.LocalPlayer.statz.main.element4.Value
-						if StartSpinElm1 == true then
-							if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
-								elmvalue1 = game.Players.LocalPlayer.statz.main.element1.Value
-								game.Players.LocalPlayer.startevent:FireServer("spin", "element1")
-								print("Rolled: " .. elmvalue1)
-								wait(1)
-								elmvalue1 = game.Players.LocalPlayer.statz.main.element1.Value
-							else
-								print("You have got: " .. elmvalue1)
-								notify("You have got: " .. elmvalue1)
-								if Autosave == true then
-									datasavedandyoucanredeemcodes = true
-									game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
-									wait(3)
-								end
+			game:GetService('RunService').Stepped:connect(function()
+				if spins > 0 then
+					spins = game.Players.LocalPlayer.statz.spins.Value
+					elmvalue1 = game.Players.LocalPlayer.statz.main.element1.Value
+					elmvalue2 = game.Players.LocalPlayer.statz.main.element2.Value
+					elmvalue3 = game.Players.LocalPlayer.statz.main.element3.Value
+					elmvalue4 = game.Players.LocalPlayer.statz.main.element4.Value
+					if StartSpinElm1 == true then
+						if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
+							game.Players.LocalPlayer.startevent:FireServer("spin", "element1")
+							print("Rolled: " .. elmvalue1)
+							wait(1)
+						elseif elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 then
+
+						else
+							print("You have got: " .. elmvalue1)
+							notify("You have got: " .. elmvalue1)
+							if Autosave == true then
+								datasavedandyoucanredeemcodes = true
+								game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
+								wait(3)
 							end
 						end
-					else
-						if Autorejoin == true then
-							--player.statz.spins:Destroy()
-							game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
-							wait()
-							game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-						end
+					end
+				else
+					if Autorejoin == true then
+						--player.statz.spins:Destroy()
+						game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+						wait()
+						game:GetService('TeleportService'):Teleport(game.PlaceId, player)
 					end
 				end
 			end)
@@ -650,54 +563,37 @@ library:Keybind("RightControl")
 			if AutoF9 == true then
 				game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
 			end
-			game.Players.LocalPlayer.statz.main.element2.ChildAdded:Connect(function(yes)
-				if yes.Name == "dontspin" then
-					wait(.1)
-					yes:Destroy()
-				end
-			end)
 			local spins = game.Players.LocalPlayer.statz.spins.Value
-			local des = game.Players.LocalPlayer.statz.spins
-			spawn(function()
-				for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
-					if v:FindFirstChild("KG") then
-						local a = Instance.new("StringValue")
-						a.Name = v.Name
-						a.Parent = game.Players.LocalPlayer.statz.genkailevel
-					end
-				end
-			end)
-			spawn(function()
-				while wait() do
-					if spins > 0 then
-						spins = game.Players.LocalPlayer.statz.spins.Value
-						elmvalue1 = game.Players.LocalPlayer.statz.main.element1.Value
-						elmvalue2 = game.Players.LocalPlayer.statz.main.element2.Value
-						elmvalue3 = game.Players.LocalPlayer.statz.main.element3.Value
-						elmvalue4 = game.Players.LocalPlayer.statz.main.element4.Value						if StartSpinElm2 == true then
-							if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
-								elmvalue2 = game.Players.LocalPlayer.statz.main.element2.Value
-								game.Players.LocalPlayer.startevent:FireServer("spin", "element2")
-								print("Rolled: " .. elmvalue2)
-								wait(1)
-								elmvalue2 = game.Players.LocalPlayer.statz.main.element2.Value
-							else
-								print("You have got: " .. elmvalue2)
-								notify("You have got: " .. elmvalue2)
-								if Autosave == true then
-									datasavedandyoucanredeemcodes = true
-									game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
-									wait(3)
-								end
+			game:GetService('RunService').Stepped:connect(function()
+				if spins > 0 then
+					spins = game.Players.LocalPlayer.statz.spins.Value
+					elmvalue1 = game.Players.LocalPlayer.statz.main.element1.Value
+					elmvalue2 = game.Players.LocalPlayer.statz.main.element2.Value
+					elmvalue3 = game.Players.LocalPlayer.statz.main.element3.Value
+					elmvalue4 = game.Players.LocalPlayer.statz.main.element4.Value						
+					if StartSpinElm2 == true then
+						if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
+							game.Players.LocalPlayer.startevent:FireServer("spin", "element2")
+							print("Rolled: " .. elmvalue2)
+							wait(1)
+						elseif elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 then
+
+						else
+							print("You have got: " .. elmvalue2)
+							notify("You have got: " .. elmvalue2)
+							if Autosave == true then
+								datasavedandyoucanredeemcodes = true
+								game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
+								wait(3)
 							end
 						end
-					else
-						if Autorejoin == true then
-							--player.statz.spins:Destroy()
-							game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
-							wait()
-							game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-						end
+					end
+				else
+					if Autorejoin == true then
+						--player.statz.spins:Destroy()
+						game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+						wait()
+						game:GetService('TeleportService'):Teleport(game.PlaceId, player)
 					end
 				end
 			end)
@@ -712,54 +608,37 @@ library:Keybind("RightControl")
 				if AutoF9 == true then
 					game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
 				end
-				game.Players.LocalPlayer.statz.main.element3.ChildAdded:Connect(function(yes)
-					if yes.Name == "dontspin" then
-						wait(.1)
-						yes:Destroy()
-					end
-				end)
 				local spins = game.Players.LocalPlayer.statz.spins.Value
-				local des = game.Players.LocalPlayer.statz.spins
-				spawn(function()
-					for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
-						if v:FindFirstChild("KG") then
-							local a = Instance.new("StringValue")
-							a.Name = v.Name
-							a.Parent = game.Players.LocalPlayer.statz.genkailevel
-						end
-					end
-				end)
-				spawn(function()
-					while wait() do
-						if spins > 0 then
-							spins = game.Players.LocalPlayer.statz.spins.Value
-							elmvalue1 = game.Players.LocalPlayer.statz.main.element1.Value
-							elmvalue2 = game.Players.LocalPlayer.statz.main.element2.Value
-							elmvalue3 = game.Players.LocalPlayer.statz.main.element3.Value
-							elmvalue4 = game.Players.LocalPlayer.statz.main.element4.Value							if StartSpinElm3 == true then
-								if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
-									elmvalue3 = game.Players.LocalPlayer.statz.main.element3.Value
-									game.Players.LocalPlayer.startevent:FireServer("spin", "element3")
-									print("Rolled: " .. elmvalue3)
-									wait(1)
-									elmvalue3 = game.Players.LocalPlayer.statz.main.element3.Value
-								else
-									print("You have got: " .. elmvalue3)
-									notify("You have got: " .. elmvalue3)
-									if Autosave == true then
-										datasavedandyoucanredeemcodes = true
-										game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
-										wait(3)
-									end
+				game:GetService('RunService').Stepped:connect(function()
+					if spins > 0 then
+						spins = game.Players.LocalPlayer.statz.spins.Value
+						elmvalue1 = game.Players.LocalPlayer.statz.main.element1.Value
+						elmvalue2 = game.Players.LocalPlayer.statz.main.element2.Value
+						elmvalue3 = game.Players.LocalPlayer.statz.main.element3.Value
+						elmvalue4 = game.Players.LocalPlayer.statz.main.element4.Value							
+						if StartSpinElm3 == true then
+							if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
+								game.Players.LocalPlayer.startevent:FireServer("spin", "element3")
+								print("Rolled: " .. elmvalue3)
+								wait(1)
+							elseif elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 then
+
+							else
+								print("You have got: " .. elmvalue3)
+								notify("You have got: " .. elmvalue3)
+								if Autosave == true then
+									datasavedandyoucanredeemcodes = true
+									game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
+									wait(3)
 								end
 							end
-						else
-							if Autorejoin == true then
-								--player.statz.spins:Destroy()
-								game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
-								wait()
-								game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-							end
+						end
+					else
+						if Autorejoin == true then
+							--player.statz.spins:Destroy()
+							game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+							wait()
+							game:GetService('TeleportService'):Teleport(game.PlaceId, player)
 						end
 					end
 				end)
@@ -775,54 +654,37 @@ library:Keybind("RightControl")
 				if AutoF9 == true then
 					game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
 				end
-				game.Players.LocalPlayer.statz.main.element4.ChildAdded:Connect(function(yes)
-					if yes.Name == "dontspin" then
-						wait(.1)
-						yes:Destroy()
-					end
-				end)
 				local spins = game.Players.LocalPlayer.statz.spins.Value
-				local des = game.Players.LocalPlayer.statz.spins
-				spawn(function()
-					for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
-						if v:FindFirstChild("KG") then
-							local a = Instance.new("StringValue")
-							a.Name = v.Name
-							a.Parent = game.Players.LocalPlayer.statz.genkailevel
-						end
-					end
-				end)
-				spawn(function()
-					while wait() do
-						if spins > 0 then
-							spins = game.Players.LocalPlayer.statz.spins.Value
-							elmvalue1 = game.Players.LocalPlayer.statz.main.element1.Value
-							elmvalue2 = game.Players.LocalPlayer.statz.main.element2.Value
-							elmvalue3 = game.Players.LocalPlayer.statz.main.element3.Value
-							elmvalue4 = game.Players.LocalPlayer.statz.main.element4.Value							if StartSpinElm4 == true then
-								if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
-									elmvalue4 = game.Players.LocalPlayer.statz.main.element4.Value
-									game.Players.LocalPlayer.startevent:FireServer("spin", "element4")
-									print("Rolled: " .. elmvalue4)
-									wait(1)
-									elmvalue4 = game.Players.LocalPlayer.statz.main.element4.Value
-								else
-									print("You have got: " .. elmvalue4)
-									notify("You have got: " .. elmvalue4)
-									if Autosave == true then
-										datasavedandyoucanredeemcodes = true
-										game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
-										wait(3)
-									end
+				game:GetService('RunService').Stepped:connect(function()
+					if spins > 0 then
+						spins = game.Players.LocalPlayer.statz.spins.Value
+						elmvalue1 = game.Players.LocalPlayer.statz.main.element1.Value
+						elmvalue2 = game.Players.LocalPlayer.statz.main.element2.Value
+						elmvalue3 = game.Players.LocalPlayer.statz.main.element3.Value
+						elmvalue4 = game.Players.LocalPlayer.statz.main.element4.Value							
+						if StartSpinElm4 == true then
+							if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
+								game.Players.LocalPlayer.startevent:FireServer("spin", "element4")
+								print("Rolled: " .. elmvalue4)
+								wait(1)
+							elseif elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
+
+							else
+								print("You have got: " .. elmvalue4)
+								notify("You have got: " .. elmvalue4)
+								if Autosave == true then
+									datasavedandyoucanredeemcodes = true
+									game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
+									wait(3)
 								end
 							end
-						else
-							if Autorejoin == true then
-								--player.statz.spins:Destroy()
-								game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
-								wait()
-								game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-							end
+						end
+					else
+						if Autorejoin == true then
+							--player.statz.spins:Destroy()
+							game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+							wait()
+							game:GetService('TeleportService'):Teleport(game.PlaceId, player)
 						end
 					end
 				end)
@@ -865,54 +727,34 @@ library:Keybind("RightControl")
 			if AutoF9 == true then
 				game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
 			end
-			game.Players.LocalPlayer.statz.breathingstyle.ChildAdded:Connect(function(yes)
-				if yes.Name == "dontspin" then
-					wait(.1)
-					yes:Destroy()
-				end
-			end)
 			local spins = game.Players.LocalPlayer.statz.spins.Value
-			local des = game.Players.LocalPlayer.statz.spins
-			spawn(function()
-				for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
-					if v:FindFirstChild("KG") then
-						local a = Instance.new("StringValue")
-						a.Name = v.Name
-						a.Parent = game.Players.LocalPlayer.statz.genkailevel
-					end
-				end
-			end)
-			spawn(function()
-				while wait() do
-					if spins > 0 then
-						spins = game.Players.LocalPlayer.statz.spins.Value
-						kenvalue = game.Players.LocalPlayer.statz.breathingstyle.Value
-						if StartSpinKen == true then
-							if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 then
-								kenvalue = game.Players.LocalPlayer.statz.breathingstyle.Value
-								local args = {[1] = "spinBREATHING"}
-								game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-								print("Rolled: " .. kenvalue)
-								game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "Rolled: " .. kenvalue,Duration = 0.00001, })
-								wait(1)
-								kenvalue = game.Players.LocalPlayer.statz.breathingstyle.Value
-							else
-								print("You have got: " .. kenvalue)
-								notify("You have got: " .. kenvalue)
-								if Autosave == true then
-									datasavedandyoucanredeemcodes = true
-									game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
-									wait(3)
-								end
+			game:GetService('RunService').Stepped:connect(function()
+				if spins > 0 then
+					spins = game.Players.LocalPlayer.statz.spins.Value
+					kenvalue = game.Players.LocalPlayer.statz.breathingstyle.Value
+					if StartSpinKen == true then
+						if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 then
+							local args = {[1] = "spinBREATHING"}
+							game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+							print("Rolled: " .. kenvalue)
+							game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "Rolled: " .. kenvalue,Duration = 0.00001, })
+							wait(1)
+						else
+							print("You have got: " .. kenvalue)
+							notify("You have got: " .. kenvalue)
+							if Autosave == true then
+								datasavedandyoucanredeemcodes = true
+								game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
+								wait(3)
 							end
 						end
-					else
-						if Autorejoin == true then
-							--player.statz.spins:Destroy()
-							game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
-							wait()
-							game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-						end
+					end
+				else
+					if Autorejoin == true then
+						--player.statz.spins:Destroy()
+						game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+						wait()
+						game:GetService('TeleportService'):Teleport(game.PlaceId, player)
 					end
 				end
 			end)
@@ -928,14 +770,20 @@ library:Keybind("RightControl")
 		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "Discord link copied!",Duration = 1, })
 	end)
 
-spawn(function()
-	while wait() do
-		if datasavedandyoucanredeemcodes == true then
-			
-		else
-			game.Players.LocalPlayer.PlayerGui.Main.Customization.Codes.Text = [[WARNING:
-			DO NOT REDEEM CODES BEFORE SAVING DATA]]
-		end
+game:GetService('RunService').Stepped:connect(function()
+	if datasavedandyoucanredeemcodes == true then
+		AutoSpinBL1 = false
+		AutoSpinBL2 = false
+		AutoSpinBL3 = false
+		AutoSpinBL4 = false
+		StartSpinElm1 = false
+		StartSpinElm2 = false
+		StartSpinElm3 = false
+		StartSpinElm4 = false
+		StartSpinKen = false
+	else
+		game.Players.LocalPlayer.PlayerGui.Main.Customization.Codes.Text = [[WARNING:
+		DO NOT REDEEM CODES BEFORE SAVING DATA]]
 	end
 end)
 Autorejoin = true
@@ -951,7 +799,7 @@ for i,v in pairs(game.Workspace.Camera.startup:GetChildren()) do
 			end
 		end
 		game.Workspace.Camera.startup.NPC.Name = "DioSenko"
-		game.Workspace.Camera.startup.NPC.Name = "U"
+		game.Workspace.Camera.startup.NPC.Name = ""
 		game.Workspace.Camera.startup.NPC.Name = "Narumaki"
 		game:GetService("Workspace").Camera.startup.DioSenko.Model.hair.BrickColor = BrickColor.new(0,255,0)
 		game:GetService("Workspace").Camera.startup.Narumaki.Shirt.ShirtTemplate = [[rbxassetid://6333818472]]
@@ -962,6 +810,5 @@ for i,v in pairs(game.Workspace.Camera.startup:GetChildren()) do
 		game:GetService("Workspace").Camera.startup.Narumaki.Customize.char["Right Leg"]:Destroy()
 		game:GetService("Workspace").Camera.startup.Narumaki.Name = ""
 		game:GetService("Workspace").Camera.startup.DioSenko.Name = ""
-		game:GetService("Workspace").Camera.startup.U.Name = ""
 	end
 end
