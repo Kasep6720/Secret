@@ -112,19 +112,35 @@ function notify(a,b,c)
 	return tonumber(string.format("%." .. (numDecimalPlaces or 0) .. "f", num))
 end
 
-
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
 local TextLabel = Instance.new("TextLabel")
 local TextButton = Instance.new("TextButton")
 local TextButton_2 = Instance.new("TextButton")
 
+local Frame2 = Instance.new("Frame")
+local TextLabel2 = Instance.new("TextLabel")
+local TextButton_3 = Instance.new("TextButton")
+local TextButton_4 = Instance.new("TextButton")
+local TextButton_5 = Instance.new("TextButton")
+
+local Frame3 = Instance.new("Frame")
+local TextLabel3 = Instance.new("TextLabel")
+local TextButton_6 = Instance.new("TextButton")
+local TextButton_7 = Instance.new("TextButton")
+local TextButton_8 = Instance.new("TextButton")
+local TextButton_9 = Instance.new("TextButton")
+
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
+Frame.Name = "DogeHub Shindo UI Frame"
 Frame.Parent = ScreenGui
+Frame.Active = true
 Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Frame.Position = UDim2.new(0.1, 0, 0.25, 0)
 Frame.Size = UDim2.new(0, 200, 0, 280)
+Frame.Draggable = true
+Frame.Visible = true
 
 TextLabel.Parent = Frame
 TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
@@ -147,7 +163,134 @@ TextButton.TextScaled = true
 TextButton.TextSize = 100.000
 TextButton.TextWrapped = true
 
-function MISC()
+TextButton_2.Parent = Frame
+TextButton_2.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+TextButton_2.Position = UDim2.new(0, 0, 0.581, 0)
+TextButton_2.Size = UDim2.new(0, 200, 0, 120)
+TextButton_2.Font = Enum.Font.TitilliumWeb
+TextButton_2.Text = "AUTO FARM"
+TextButton_2.TextColor3 = Color3.fromRGB(200, 200, 200)
+TextButton_2.TextScaled = true
+TextButton_2.TextSize = 40.000
+TextButton_2.TextWrapped = true
+
+Frame2.Name = "DogeHub Shindo UI Frame 2.0"
+Frame2.Parent = ScreenGui
+Frame2.Active = true
+Frame2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame2.Position = UDim2.new(0.1, 0, 0.25, 0)
+Frame2.Size = UDim2.new(0, 200, 0, 280)
+Frame2.Draggable = true
+Frame2.Visible = false
+
+TextLabel2.Parent = Frame2
+TextLabel2.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+TextLabel2.Size = UDim2.new(0, 200, 0, 40)
+TextLabel2.Font = Enum.Font.TitilliumWeb
+TextLabel2.Text = "Autofarms"
+TextLabel2.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel2.TextScaled = true
+TextLabel2.TextSize = 35.000
+TextLabel2.TextWrapped = true
+
+TextButton_3.Parent = Frame2
+TextButton_3.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+TextButton_3.Position = UDim2.new(0, 0, 0.15, 0)
+TextButton_3.Size = UDim2.new(0, 200, 0, 120)
+TextButton_3.Font = Enum.Font.TitilliumWeb
+TextButton_3.Text = "Utilities"
+TextButton_3.TextColor3 = Color3.fromRGB(200, 200, 200)
+TextButton_3.TextScaled = false
+TextButton_3.TextSize = 75
+TextButton_3.TextWrapped = true
+
+TextButton_4.Parent = Frame2
+TextButton_4.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+TextButton_4.Position = UDim2.new(0, 0, 0.581, 0)
+TextButton_4.Size = UDim2.new(0, 200, 0, 120)
+TextButton_4.Font = Enum.Font.TitilliumWeb
+TextButton_4.Text = "Quests"
+TextButton_4.TextColor3 = Color3.fromRGB(200, 200, 200)
+TextButton_4.TextScaled = false
+TextButton_4.TextSize = 75.000
+TextButton_4.TextWrapped = true
+
+TextButton_5.Parent = Frame2
+TextButton_5.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+TextButton_5.Position = UDim2.new(0, 0, 1.00000024, 0)
+TextButton_5.Size = UDim2.new(0, 200, 0, 40)
+TextButton_5.Font = Enum.Font.TitilliumWeb
+TextButton_5.Text = "Return"
+TextButton_5.TextColor3 = Color3.fromRGB(200, 200, 200)
+TextButton_5.TextScaled = true
+TextButton_5.TextSize = 35.000
+TextButton_5.TextWrapped = false
+
+Frame3.Name = "DogeHub Shindo UI Frame 3.0"
+Frame3.Parent = ScreenGui
+Frame3.Active = true
+Frame3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame3.Position = UDim2.new(0.1, 0, 0.25, 0)
+Frame3.Size = UDim2.new(0, 200, 0, 380)
+Frame3.Transparency = 1
+Frame3.Draggable = true
+Frame3.Visible = false
+
+TextLabel3.Parent = Frame3
+TextLabel3.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+TextLabel3.Size = UDim2.new(0, 200, 0, 40)
+TextLabel3.Font = Enum.Font.TitilliumWeb
+TextLabel3.Text = "Quest Farms Choose 1"
+TextLabel3.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel3.TextScaled = true
+TextLabel3.TextSize = 35.000
+TextLabel3.TextWrapped = true
+
+TextButton_6.Parent = Frame3
+TextButton_6.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+TextButton_6.Position = UDim2.new(0, 0, 0.1, 0)
+TextButton_6.Size = UDim2.new(0, 200, 0, 100)
+TextButton_6.Font = Enum.Font.TitilliumWeb
+TextButton_6.Text = "Tailed Beasts & \nChi Rod Toss"
+TextButton_6.TextColor3 = Color3.fromRGB(200, 200, 200)
+TextButton_6.TextScaled = false
+TextButton_6.TextSize = 35.000
+TextButton_6.TextWrapped = true
+
+TextButton_7.Parent = Frame3
+TextButton_7.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+TextButton_7.Position = UDim2.new(0, 0, 0.35, 0)
+TextButton_7.Size = UDim2.new(0, 200, 0, 100)
+TextButton_7.Font = Enum.Font.TitilliumWeb
+TextButton_7.Text = "Only Tailed Beasts"
+TextButton_7.TextColor3 = Color3.fromRGB(200, 200, 200)
+TextButton_7.TextScaled = true
+TextButton_7.TextSize = 35.000
+TextButton_7.TextWrapped = true
+
+TextButton_8.Parent = Frame3
+TextButton_8.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+TextButton_8.Position = UDim2.new(0, 0, 0.6, 0)
+TextButton_8.Size = UDim2.new(0, 200, 0, 100)
+TextButton_8.Font = Enum.Font.TitilliumWeb
+TextButton_8.Text = "None of the above"
+TextButton_8.TextColor3 = Color3.fromRGB(200, 200, 200)
+TextButton_8.TextScaled = true
+TextButton_8.TextSize = 35.000
+TextButton_8.TextWrapped = true
+
+TextButton_9.Parent = Frame3
+TextButton_9.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+TextButton_9.Position = UDim2.new(0, 0, 0.85, 0)
+TextButton_9.Size = UDim2.new(0, 200, 0, 40)
+TextButton_9.Font = Enum.Font.TitilliumWeb
+TextButton_9.Text = "Return"
+TextButton_9.TextColor3 = Color3.fromRGB(200, 200, 200)
+TextButton_9.TextScaled = true
+TextButton_9.TextSize = 35.000
+TextButton_9.TextWrapped = true
+
+TextButton.MouseButton1Click:connect(function()
 	for i,v in pairs(player.PlayerGui:GetChildren()) do
 		if v.Name == "ScreenGui" then
 			v:Destroy()
@@ -615,2128 +758,1971 @@ function MISC()
 			window3:Label("Hide/Show GUI = Right Ctrl", Color3.fromRGB(127, 143, 166))
 		end
 	end
-end
-TextButton.MouseButton1Click:connect(MISC)
+end)
 
-TextButton_2.Parent = Frame
-TextButton_2.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
-TextButton_2.Position = UDim2.new(0, 0, 0.581, 0)
-TextButton_2.Size = UDim2.new(0, 200, 0, 120)
-TextButton_2.Font = Enum.Font.TitilliumWeb
-TextButton_2.Text = "AUTO FARM"
-TextButton_2.TextColor3 = Color3.fromRGB(200, 200, 200)
-TextButton_2.TextScaled = true
-TextButton_2.TextSize = 40.000
-TextButton_2.TextWrapped = true
+TextButton_2.MouseButton1Click:connect(function()
+	Frame.Visible = false
+	Frame2.Visible = true
+end)
 
-function AUTOFARM()
-	local player = game.Players.LocalPlayer
-	local ScreenGui = Instance.new("ScreenGui")
-	local Frame = Instance.new("Frame")
-	local TextLabel = Instance.new("TextLabel")
-	local TextButton = Instance.new("TextButton")
-	local TextButton_2 = Instance.new("TextButton")
-	local TextButton_24 = Instance.new("TextButton")
-
-	ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-
-	Frame.Parent = ScreenGui
-	Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Frame.Position = UDim2.new(0.1, 0, 0.25, 0)
-	Frame.Size = UDim2.new(0, 200, 0, 280)
-
-	TextLabel.Parent = Frame
-	TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
-	TextLabel.Size = UDim2.new(0, 200, 0, 40)
-	TextLabel.Font = Enum.Font.TitilliumWeb
-	TextLabel.Text = "Autofarms"
-	TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
-	TextLabel.TextScaled = true
-	TextLabel.TextSize = 35.000
-	TextLabel.TextWrapped = true
-
-	TextButton.Parent = Frame
-	TextButton.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
-	TextButton.Position = UDim2.new(0, 0, 0.15, 0)
-	TextButton.Size = UDim2.new(0, 200, 0, 120)
-	TextButton.Font = Enum.Font.TitilliumWeb
-	TextButton.Text = "Utilities"
-	TextButton.TextColor3 = Color3.fromRGB(200, 200, 200)
-	TextButton.TextScaled = false
-	TextButton.TextSize = 75
-	TextButton.TextWrapped = true
-
-	function Utilities()
-		for i,v in pairs(player.PlayerGui:GetChildren()) do
-			if v.Name == "ScreenGui" then
-				v:Destroy()
-			end
+TextButton_3.MouseButton1Click:connect(function()
+	for i,v in pairs(player.PlayerGui:GetChildren()) do
+		if v.Name == "ScreenGui" then
+			v:Destroy()
 		end
-		repeat wait() until game:IsLoaded()
-
-		--loading GUI
-		local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20script%20gui"))()
-		local window1 = library:Window("Mentor Farm - DogeHub")
-		local window2 = library:Window("Others")
-
-		library:Keybind("RightControl")
-
-		--MENTORFARM
-		getgenv().speed = 4000
-		window1:Label("Teleport to Mentors", Color3.fromRGB(127, 143, 166))
-
-		window1:Button("Tp to Narumaki Mentor",function()
-			if game.PlaceId == 5451398863 then
-				player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Narumaki"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
-				local args = {[1] = game:GetService("Players").LocalPlayer}
-				workspace.sensei.missions.Narumaki.missiongiver.CLIENTTALK:FireServer(unpack(args))
-			else
-				notify("Narumaki Mentor is not in this map!")
-			end
-		end)
-		window1:Button("Tp to Jiso Mentor",function() 
-			if game.PlaceId == 6901575446 then
-				local args = {[1] = game:GetService("Players").LocalPlayer}
-				workspace.sensei.missions:FindFirstChild("Jiso Seishin").missiongiver.CLIENTTALK:FireServer(unpack(args))
-				player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Jiso Seishin"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(5,0,-1.7)
-			else
-				notify("Jiso Seishin Mentor is not in this map!")
-			end
-		end)
-		window1:Button("Tp to Shindai Mentor",function()
-			if game.PlaceId == 5451401540 then
-				local args = {[1] = game:GetService("Players").LocalPlayer}
-				workspace.sensei.missions:FindFirstChild("Shindai Akuma").missiongiver.CLIENTTALK:FireServer(unpack(args))
-				player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Shindai Akuma"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
-			else
-				notify("Shindai Akuma Mentor is not in this map!")
-			end
-		end)
-		window1:Button("Tp to Ryuji Mentor",function()
-			if game.PlaceId == 5431071837 then
-				local args = {[1] = game:GetService("Players").LocalPlayer}
-				workspace.sensei.missions:FindFirstChild("Ryuji Kenichi").missiongiver.CLIENTTALK:FireServer(unpack(args))
-				player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,4,3)
-			else
-				notify("Ryuji Kenichi Mentor is not in this map!")
-			end
-		end)
-		window1:Button("Tp to Kenjutsu Mentor",function()
-			if game.PlaceId == 4601350656 then
-				for v = 1,8 do
-					wait()
-					game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace")["Ken Mentor"].HumanoidRootPart.Position)
-				end
-				player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace")["Ken Mentor"].HumanoidRootPart.CFrame+Vector3.new(-6,4,0)
-			else
-				notify("Kenjutsu Mentor is not in this map!")
-			end
-		end)
-
-		window1:Label("Quest Proccess", Color3.fromRGB(127, 143, 166))
-
-		window1:Toggle("Auto Mentor Quests",false, function(bool)
-			EnabledAutoMentor = bool
-			notify("Auto Mentor Quests: "..tostring(EnabledAutoMentor),true)
-		end)
-		
-		window1:Toggle("1/5",false, function(bool)
-			punches = bool
-			notify("1/5: "..tostring(punches),true)
-		end)
-		game:GetService('RunService').Stepped:connect(function()
-			if punches then
-				game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
-			end
-		end)
-
-		window1:Toggle("2/5",false, function(bool)
-			tree = bool
-			notify("2/5: "..tostring(tree),true)
-		end)
-		game:GetService('RunService').Stepped:connect(function()
-			if tree then
-				game.Players.LocalPlayer.Character.combat.update:FireServer("takemovement2")
-			end
-		end)
-
-		window1:Toggle("3/5",false, function(bool)
-			shoot = bool
-			notify("3/5: "..tostring(shoot),true)
-		end)
-
-		spawn(function()
-			while wait(5) do
-				if shoot then
-					if game.PlaceId == 5451398863 then
-						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Narumaki"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(-22,0,-45)
-					elseif game.PlaceId == 6901575446 then
-						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Jiso Seishin"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(50,0,10)
-					elseif game.PlaceId == 5451401540 then
-						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Shindai Akuma"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(-100,7,-170)
-					elseif game.PlaceId == 5431071837 then
-						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,320,-300)
-					end
-				end
-			end
-		end)
-		game:GetService('RunService').Stepped:connect(function()
-			if shoot then
-				repeat wait()
-					game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace").Terrain[game.Players.LocalPlayer.Name].kunaiaim.Position)
-					game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
-				until mission.Visible == false or not shoot
-			end
-		end)
-
-		window1:Toggle("4/5",false, function(bool)
-			block = bool
-			notify("4/5: "..tostring(block),true)
-		end)
-
-		spawn(function()
-			while wait(5) do
-				if block then
-					if game.PlaceId == 5451398863 then
-						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Narumaki"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(-22,0,-45)
-					elseif game.PlaceId == 6901575446 then
-						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Jiso Seishin"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(50,0,10)
-					elseif game.PlaceId == 5451401540 then
-						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Shindai Akuma"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(-100,7,-170)
-					elseif game.PlaceId == 5431071837 then
-						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,320,-300)
-					end
-				end
-			end
-		end)
-		game:GetService('RunService').Stepped:connect(function()
-			if block then
-				repeat wait()
-					game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace").Terrain[game.Players.LocalPlayer.Name].kunaiaim.Position)
-				until mission.Visible == false or not block
-			end
-		end)
-
-		window1:Toggle("5/5",false, function(bool)
-			keel = bool
-			notify("5/5: "..tostring(keel),true)
-		end)
-
-		window1:Toggle("Kenjutsu Training",false, function(bool)
-			if game.PlaceId ~= 4601350656 then
-				keel = bool
-				notify("Kenjutsu Training: "..tostring(keel),true)
-			else
-				local args = {[1] = "trainkenmaster"}
-				game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-			end
-		end)
-
-		game:GetService('RunService').Stepped:connect(function()
-			if keel then
-				NPCKEELAURA()
-			end
-		end)
-
-		spawn(function()
-			while wait() do
-				if EnabledAutoMentor then
-					if mission.Visible == false then
-						if game.PlaceId == 5451398863 then
-							wait(.5)
-							player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Narumaki"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
-							local args = {[1] = game:GetService("Players").LocalPlayer}
-							workspace.sensei.missions:FindFirstChild("Narumaki").missiongiver.CLIENTTALK:FireServer(unpack(args))
-							wait(2)
-						elseif game.PlaceId == 6901575446 then
-							wait(.5)
-							player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Jiso Seishin"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(5,0,-1.7)
-							local args = {[1] = game:GetService("Players").LocalPlayer}
-							workspace.sensei.missions:FindFirstChild("Jiso Seishin").missiongiver.CLIENTTALK:FireServer(unpack(args))
-							wait(2)
-						elseif game.PlaceId == 5451401540 then
-							wait(.5)
-							player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Shindai Akuma"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
-							local args = {[1] = game:GetService("Players").LocalPlayer}
-							workspace.sensei.missions:FindFirstChild("Shindai Akuma").missiongiver.CLIENTTALK:FireServer(unpack(args))
-							wait(2)
-						elseif game.PlaceId == 5431071837 then
-							wait(.5)
-							player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,4,3)
-							local args = {[1] = game:GetService("Players").LocalPlayer}
-							workspace.sensei.missions:FindFirstChild("Ryuji Kenichi").missiongiver.CLIENTTALK:FireServer(unpack(args))
-							wait(2)
-						elseif game.PlaceId == 4601350656 then
-							for v = 1,8 do
-								wait()
-								game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace")["Ken Mentor"].HumanoidRootPart.Position)
-							end
-							game.Workspace.HumanoidRootPart.CFrame=game:GetService("Workspace")["Ken Mentor"].HumanoidRootPart.CFrame+Vector3.new(-6,4,0)
-						elseif game.PlaceId == 8184506020 then
-							punches = false
-							tree = false
-							shoot = false
-							block = false
-							dfarm = true
-						else
-							notify("You cannot do mentor missions in this map!")
-							punches = false
-							tree = false
-							shoot = false
-							block = false
-							dfarm = false
-						end
-					else
-						if mission.title.Text == "[Objective: Push-Up Training]" then
-							punches = true
-							tree = false
-							shoot = false
-							block = false
-							dfarm = false
-						elseif mission.title.Text == "[Objective: Tree-Jump Training]" then
-							punches = false
-							tree = true
-							shoot = false
-							block = false
-							dfarm = false
-						elseif mission.title.Text == "[Objective: Accuracy Training]" then
-							punches = false
-							tree = false
-							shoot = true
-							block = false
-							dfarm = false
-						elseif mission.title.Text == "[Objective: Deflecting Training]" then
-							punches = false
-							tree = false
-							shoot = false
-							block = true
-							dfarm = false
-						elseif game.PlaceId == 8184506020 then
-							punches = false
-							tree = false
-							shoot = false
-							block = false
-							dfarm = true
-						end
-					end
-				end
-			end	
-		end)
-		
-		window2:Label("Daily Missions", Color3.fromRGB(127, 143, 166))
-		window2:Toggle("M1",false, function(bool)
-			DailyM1 = bool
-			notify("M1: "..tostring(DailyM1),true)
-		end)
-		game:GetService('RunService').Stepped:connect(function()
-			if DailyM1 then
-				game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
-			end
-		end)
-		window2:Toggle("Rush",false, function(bool)
-			DailyRush = bool
-			notify("Rush: "..tostring(DailyRush),true)
-		end)
-		game:GetService('RunService').Stepped:connect(function()
-			if DailyRush then
-				game.Players.LocalPlayer.Character.combat.update:FireServer("rushw")
-			end
-		end)
-		window2:Toggle("Chi Charge",false, function(bool)
-			DailyChi = bool
-			notify("Chi Charge: "..tostring(DailyChi),true)
-		end)
-		game:GetService('RunService').Stepped:connect(function()
-			if DailyChi then
-				game.Players.LocalPlayer.Character.combat.update:FireServer("key","c")
-				game.Players.LocalPlayer.Character.combat.update:FireServer("key","cend")
-				wait(.05)
-			end
-		end)
-		window2:Toggle("Tree Jumps",false, function(bool)
-			DailyJump = bool
-			notify("Tree Jumps: "..tostring(DailyJump),true)
-		end)
-		game:GetService('RunService').Stepped:connect(function()
-			if DailyJump then
-				game.Players.LocalPlayer.Character.combat.update:FireServer("takemovement2")
-			end
-		end)
-		window2:Label("DANGER", Color3.fromRGB(127, 143, 166))
-		window2:Button("Reset Script",function()
-			DailyChi = false
-			DailyJump = false
-			DailyJump = false
-			DailyM1 = false
-			punches = false
-			shoot = false
-			block = false
-			tree = false
-			EnabledAutoMentor = false
-			library:Destroy()
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain"))()
-		end)
-
-		window2:Button("Remove Effects / Particles",function()
-			game:GetService("Players").LocalPlayer.PlayerScripts.EFFECTS:Destroy()
-		end)
-
-		window2:Label("Credits", Color3.fromRGB(127, 143, 166))
-
-		window2:Button("Made by NoobieDoge",function()
-			setclipboard("https://discord.gg/P2CeRjvTDt")
-			notify("Discord link copied to clipboard")
-		end)
-
-		window2:Label("Show/Hide GUI = Right Ctrl", Color3.fromRGB(127, 143, 166))
-
-		if game:GetService("Workspace"):FindFirstChild("npc"):FindFirstChild("npc1") then
-			dfarm = true
-		end
-		if game:GetService("Workspace"):FindFirstChild("warmode") then
-			dfarm = true
-		end
-
-		for i,v in pairs(workspace.Terrain:GetChildren()) do
-			if v.Name(player.Name) then
-				v:Destroy()
-				wait(30)
-			end
-		end
-
 	end
-	TextButton.MouseButton1Click:connect(Utilities)
+	repeat wait() until game:IsLoaded()
 
-	TextButton_2.Parent = Frame
-	TextButton_2.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
-	TextButton_2.Position = UDim2.new(0, 0, 0.581, 0)
-	TextButton_2.Size = UDim2.new(0, 200, 0, 120)
-	TextButton_2.Font = Enum.Font.TitilliumWeb
-	TextButton_2.Text = "Quests"
-	TextButton_2.TextColor3 = Color3.fromRGB(200, 200, 200)
-	TextButton_2.TextScaled = false
-	TextButton_2.TextSize = 75.000
-	TextButton_2.TextWrapped = true
+	--loading GUI
+	local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20script%20gui"))()
+	local window1 = library:Window("Mentor Farm - DogeHub")
+	local window2 = library:Window("Others")
 
-	function LEVELNRANKS()
-		for i,v in pairs(player.PlayerGui:GetChildren()) do
-			if v.Name == "ScreenGui" then
-				v:Destroy()
+	library:Keybind("RightControl")
+
+	--MENTORFARM
+	getgenv().speed = 4000
+	window1:Label("Teleport to Mentors", Color3.fromRGB(127, 143, 166))
+
+	window1:Button("Tp to Narumaki Mentor",function()
+		if game.PlaceId == 5451398863 then
+			player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Narumaki"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
+			local args = {[1] = game:GetService("Players").LocalPlayer}
+			workspace.sensei.missions.Narumaki.missiongiver.CLIENTTALK:FireServer(unpack(args))
+		else
+			notify("Narumaki Mentor is not in this map!")
+		end
+	end)
+	window1:Button("Tp to Jiso Mentor",function() 
+		if game.PlaceId == 6901575446 then
+			local args = {[1] = game:GetService("Players").LocalPlayer}
+			workspace.sensei.missions:FindFirstChild("Jiso Seishin").missiongiver.CLIENTTALK:FireServer(unpack(args))
+			player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Jiso Seishin"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(5,0,-1.7)
+		else
+			notify("Jiso Seishin Mentor is not in this map!")
+		end
+	end)
+	window1:Button("Tp to Shindai Mentor",function()
+		if game.PlaceId == 5451401540 then
+			local args = {[1] = game:GetService("Players").LocalPlayer}
+			workspace.sensei.missions:FindFirstChild("Shindai Akuma").missiongiver.CLIENTTALK:FireServer(unpack(args))
+			player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Shindai Akuma"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
+		else
+			notify("Shindai Akuma Mentor is not in this map!")
+		end
+	end)
+	window1:Button("Tp to Ryuji Mentor",function()
+		if game.PlaceId == 5431071837 then
+			local args = {[1] = game:GetService("Players").LocalPlayer}
+			workspace.sensei.missions:FindFirstChild("Ryuji Kenichi").missiongiver.CLIENTTALK:FireServer(unpack(args))
+			player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,4,3)
+		else
+			notify("Ryuji Kenichi Mentor is not in this map!")
+		end
+	end)
+	window1:Button("Tp to Kenjutsu Mentor",function()
+		if game.PlaceId == 4601350656 then
+			for v = 1,8 do
+				wait()
+				game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace")["Ken Mentor"].HumanoidRootPart.Position)
+			end
+			player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace")["Ken Mentor"].HumanoidRootPart.CFrame+Vector3.new(-6,4,0)
+		else
+			notify("Kenjutsu Mentor is not in this map!")
+		end
+	end)
+
+	window1:Label("Quest Proccess", Color3.fromRGB(127, 143, 166))
+
+	window1:Toggle("Auto Mentor Quests",false, function(bool)
+		EnabledAutoMentor = bool
+		notify("Auto Mentor Quests: "..tostring(EnabledAutoMentor),true)
+	end)
+	
+	window1:Toggle("1/5",false, function(bool)
+		punches = bool
+		notify("1/5: "..tostring(punches),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if punches then
+			game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
+		end
+	end)
+
+	window1:Toggle("2/5",false, function(bool)
+		tree = bool
+		notify("2/5: "..tostring(tree),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if tree then
+			game.Players.LocalPlayer.Character.combat.update:FireServer("takemovement2")
+		end
+	end)
+
+	window1:Toggle("3/5",false, function(bool)
+		shoot = bool
+		notify("3/5: "..tostring(shoot),true)
+	end)
+
+	spawn(function()
+		while wait(5) do
+			if shoot then
+				if game.PlaceId == 5451398863 then
+					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Narumaki"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(-22,0,-45)
+				elseif game.PlaceId == 6901575446 then
+					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Jiso Seishin"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(50,0,10)
+				elseif game.PlaceId == 5451401540 then
+					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Shindai Akuma"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(-100,7,-170)
+				elseif game.PlaceId == 5431071837 then
+					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,320,-300)
+				end
 			end
 		end
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if shoot then
+			repeat wait()
+				game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace").Terrain[game.Players.LocalPlayer.Name].kunaiaim.Position)
+				game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
+			until mission.Visible == false or not shoot
+		end
+	end)
+
+	window1:Toggle("4/5",false, function(bool)
+		block = bool
+		notify("4/5: "..tostring(block),true)
+	end)
+
+	spawn(function()
+		while wait(5) do
+			if block then
+				if game.PlaceId == 5451398863 then
+					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Narumaki"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(-22,0,-45)
+				elseif game.PlaceId == 6901575446 then
+					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Jiso Seishin"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(50,0,10)
+				elseif game.PlaceId == 5451401540 then
+					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Shindai Akuma"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(-100,7,-170)
+				elseif game.PlaceId == 5431071837 then
+					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,320,-300)
+				end
+			end
+		end
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if block then
+			repeat wait()
+				game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace").Terrain[game.Players.LocalPlayer.Name].kunaiaim.Position)
+			until mission.Visible == false or not block
+		end
+	end)
+
+	window1:Toggle("5/5",false, function(bool)
+		keel = bool
+		notify("5/5: "..tostring(keel),true)
+	end)
+
+	window1:Toggle("Kenjutsu Training",false, function(bool)
+		if game.PlaceId ~= 4601350656 then
+			keel = bool
+			notify("Kenjutsu Training: "..tostring(keel),true)
+		else
+			local args = {[1] = "trainkenmaster"}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+		end
+	end)
+
+	game:GetService('RunService').Stepped:connect(function()
+		if keel then
+			NPCKEELAURA()
+		end
+	end)
+
+	spawn(function()
+		while wait() do
+			if EnabledAutoMentor then
+				if mission.Visible == false then
+					if game.PlaceId == 5451398863 then
+						wait(.5)
+						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Narumaki"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
+						local args = {[1] = game:GetService("Players").LocalPlayer}
+						workspace.sensei.missions:FindFirstChild("Narumaki").missiongiver.CLIENTTALK:FireServer(unpack(args))
+						wait(2)
+					elseif game.PlaceId == 6901575446 then
+						wait(.5)
+						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Jiso Seishin"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(5,0,-1.7)
+						local args = {[1] = game:GetService("Players").LocalPlayer}
+						workspace.sensei.missions:FindFirstChild("Jiso Seishin").missiongiver.CLIENTTALK:FireServer(unpack(args))
+						wait(2)
+					elseif game.PlaceId == 5451401540 then
+						wait(.5)
+						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Shindai Akuma"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
+						local args = {[1] = game:GetService("Players").LocalPlayer}
+						workspace.sensei.missions:FindFirstChild("Shindai Akuma").missiongiver.CLIENTTALK:FireServer(unpack(args))
+						wait(2)
+					elseif game.PlaceId == 5431071837 then
+						wait(.5)
+						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,4,3)
+						local args = {[1] = game:GetService("Players").LocalPlayer}
+						workspace.sensei.missions:FindFirstChild("Ryuji Kenichi").missiongiver.CLIENTTALK:FireServer(unpack(args))
+						wait(2)
+					elseif game.PlaceId == 4601350656 then
+						for v = 1,8 do
+							wait()
+							game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace")["Ken Mentor"].HumanoidRootPart.Position)
+						end
+						game.Workspace.HumanoidRootPart.CFrame=game:GetService("Workspace")["Ken Mentor"].HumanoidRootPart.CFrame+Vector3.new(-6,4,0)
+					elseif game.PlaceId == 8184506020 then
+						punches = false
+						tree = false
+						shoot = false
+						block = false
+						dfarm = true
+					else
+						notify("You cannot do mentor missions in this map!")
+						punches = false
+						tree = false
+						shoot = false
+						block = false
+						dfarm = false
+					end
+				else
+					if mission.title.Text == "[Objective: Push-Up Training]" then
+						punches = true
+						tree = false
+						shoot = false
+						block = false
+						dfarm = false
+					elseif mission.title.Text == "[Objective: Tree-Jump Training]" then
+						punches = false
+						tree = true
+						shoot = false
+						block = false
+						dfarm = false
+					elseif mission.title.Text == "[Objective: Accuracy Training]" then
+						punches = false
+						tree = false
+						shoot = true
+						block = false
+						dfarm = false
+					elseif mission.title.Text == "[Objective: Deflecting Training]" then
+						punches = false
+						tree = false
+						shoot = false
+						block = true
+						dfarm = false
+					elseif game.PlaceId == 8184506020 then
+						punches = false
+						tree = false
+						shoot = false
+						block = false
+						dfarm = true
+					end
+				end
+			end
+		end	
+	end)
+	
+	window2:Label("Daily Missions", Color3.fromRGB(127, 143, 166))
+	window2:Toggle("M1",false, function(bool)
+		DailyM1 = bool
+		notify("M1: "..tostring(DailyM1),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if DailyM1 then
+			game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
+		end
+	end)
+	window2:Toggle("Rush",false, function(bool)
+		DailyRush = bool
+		notify("Rush: "..tostring(DailyRush),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if DailyRush then
+			game.Players.LocalPlayer.Character.combat.update:FireServer("rushw")
+		end
+	end)
+	window2:Toggle("Chi Charge",false, function(bool)
+		DailyChi = bool
+		notify("Chi Charge: "..tostring(DailyChi),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if DailyChi then
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","c")
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","cend")
+			wait(.05)
+		end
+	end)
+	window2:Toggle("Tree Jumps",false, function(bool)
+		DailyJump = bool
+		notify("Tree Jumps: "..tostring(DailyJump),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if DailyJump then
+			game.Players.LocalPlayer.Character.combat.update:FireServer("takemovement2")
+		end
+	end)
+	window2:Label("DANGER", Color3.fromRGB(127, 143, 166))
+	window2:Button("Reset Script",function()
+		DailyChi = false
+		DailyJump = false
+		DailyJump = false
+		DailyM1 = false
+		punches = false
+		shoot = false
+		block = false
+		tree = false
+		EnabledAutoMentor = false
+		library:Destroy()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain"))()
+	end)
+
+	window2:Button("Remove Effects / Particles",function()
+		game:GetService("Players").LocalPlayer.PlayerScripts.EFFECTS:Destroy()
+	end)
+
+	window2:Label("Credits", Color3.fromRGB(127, 143, 166))
+
+	window2:Button("Made by NoobieDoge",function()
+		setclipboard("https://discord.gg/P2CeRjvTDt")
+		notify("Discord link copied to clipboard")
+	end)
+
+	window2:Label("Show/Hide GUI = Right Ctrl", Color3.fromRGB(127, 143, 166))
+
+	if game:GetService("Workspace"):FindFirstChild("npc"):FindFirstChild("npc1") then
+		dfarm = true
+	end
+	if game:GetService("Workspace"):FindFirstChild("warmode") then
+		dfarm = true
+	end
+
+	for i,v in pairs(workspace.Terrain:GetChildren()) do
+		if v.Name(player.Name) then
+			v:Destroy()
+			wait(30)
+		end
+	end
+
+end)
+
+TextButton_4.MouseButton1Click:connect(function()
+	Frame2.Visible = false
+	Frame3.Visible = true
+end)
+
+TextButton_5.MouseButton1Click:connect(function()
+	Frame.Visible = true
+	Frame2.Visible = false
+end)
+
+TextButton_6.MouseButton1Click:connect(function()
+	for i,v in pairs(player.PlayerGui:GetChildren()) do
+		if v.Name == "ScreenGui" then
+			v:Destroy()
+		end
+	end
+	repeat wait() until game:IsLoaded()
+	--Loading GUI
+	local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20script%20gui"))()
+	local window1 = library:Window("AutoFarm - DogeHub")
+	local window2 = library:Window("Others")
+	local window3 = library:Window("Credits")
+
+	library:Keybind("RightControl")
+
+	window1:Label("NIGHT = NO QUESTS", Color3.fromRGB(127, 143, 166))
+
+	local autofarm
+	window1:Toggle("Auto Farm",false, function(bool)
+		autofarm = bool
+	end)
+
+	local boss
+	window1:Toggle("Boss Farm",false, function(bool)
+		boss = bool
+	end)
+
+	local RANKUPP
+	window1:Toggle("Auto Rank",false, function(bool)
+		RANKUPP = bool
+	end)
+
+	local scrollfarm
+	window1:Toggle("Scroll Snipe",false, function(bool)
+		scrollfarm = bool
+	end)
+
+	window1:Button("Infinite MD",function()
+		INFMDON()
+	end)
+
+	window1:Label("If autofarm stuck:", Color3.fromRGB(127, 143, 166))
+	window1:Label("In village = bugged", Color3.fromRGB(127, 143, 166))
+	window1:Label("Outside village = no missions", Color3.fromRGB(127, 143, 166))
+
+	window1:Button("Tutorial",function()
 		local player = game.Players.LocalPlayer
 		local ScreenGui = Instance.new("ScreenGui")
 		local Frame = Instance.new("Frame")
 		local TextLabel = Instance.new("TextLabel")
+		local TextLabelo = Instance.new("TextLabel")
+		local TextLabeloo = Instance.new("TextLabel")
+		local TextLabelooo = Instance.new("TextLabel")
+		local TextLabeloooo = Instance.new("TextLabel")
 		local TextButton = Instance.new("TextButton")
-		local TextButton_2 = Instance.new("TextButton")
-		local TextButton_3 = Instance.new("TextButton")
-		local TextButton_4 = Instance.new("TextButton")
 
 		ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
 		Frame.Parent = ScreenGui
 		Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		Frame.Position = UDim2.new(0.1, 0, 0.25, 0)
-		Frame.Size = UDim2.new(0, 200, 0, 380)
-		Frame.Transparency = 1
+		Frame.Position = UDim2.new(0.5, 0, 0.25, 0)
+		Frame.Size = UDim2.new(0, 400, 0, 350)
 
 		TextLabel.Parent = Frame
-		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
-		TextLabel.Size = UDim2.new(0, 200, 0, 40)
-		TextLabel.Font = Enum.Font.TitilliumWeb
-		TextLabel.Text = "Quest Farms Choose 1"
+		TextLabel.BackgroundColor3 = Color3.fromRGB(217, 112, 217)
+		TextLabel.Size = UDim2.new(0, 400, 0, 90)
+		TextLabel.Font = Enum.Font.AmaticSC
+		TextLabel.Text = "To run AutoFarm Script:        "
+		TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabel.TextScaled = false
+		TextLabel.TextSize = 60.000
+		TextLabel.TextWrapped = true
+
+		TextLabelo.Parent = Frame
+		TextLabelo.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
+		TextLabelo.Position = UDim2.new(0, 0, 0.25, 0)
+		TextLabelo.Size = UDim2.new(0, 400, 0, 65)
+		TextLabelo.Font = Enum.Font.AmaticSC
+		TextLabelo.Text = "1. Activate a beast mode (Except Tyn and Rab) "
+		TextLabelo.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabelo.TextScaled = true
+		TextLabelo.TextSize = 40.000
+		TextLabelo.TextWrapped = true
+
+		TextLabeloo.Parent = Frame
+		TextLabeloo.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
+		TextLabeloo.Position = UDim2.new(0, 0, 0.44, 0)
+		TextLabeloo.Size = UDim2.new(0, 400, 0, 65)
+		TextLabeloo.Font = Enum.Font.AmaticSC
+		TextLabeloo.Text = "2.Type '!spirit', Next press ']'                 "
+		TextLabeloo.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabeloo.TextScaled = false
+		TextLabeloo.TextSize = 45.000
+		TextLabeloo.TextWrapped = true
+
+		TextLabelooo.Parent = Frame
+		TextLabelooo.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
+		TextLabelooo.Position = UDim2.new(0, 0, 0.62, 0)
+		TextLabelooo.Size = UDim2.new(0, 400, 0, 65)
+		TextLabelooo.Font = Enum.Font.AmaticSC
+		TextLabelooo.Text = "3.Turn on AutoFarm and Infinite MD  "
+		TextLabelooo.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabelooo.TextScaled = false
+		TextLabelooo.TextSize = 43.500
+		TextLabelooo.TextWrapped = true
+
+		TextLabeloooo.Parent = Frame
+		TextLabeloooo.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
+		TextLabeloooo.Position = UDim2.new(0, 0, 0.8, 0)
+		TextLabeloooo.Size = UDim2.new(0, 400, 0, 70)
+		TextLabeloooo.Font = Enum.Font.AmaticSC
+		TextLabeloooo.Text = "4.DONE!                                                    "
+		TextLabeloooo.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabeloooo.TextScaled = false
+		TextLabeloooo.TextSize = 45.000
+		TextLabeloooo.TextWrapped = true
+
+		TextButton.Parent = Frame
+		TextButton.BackgroundColor3 = Color3.fromRGB(255, 30, 30)
+		TextButton.Position = UDim2.new(0, 350, 0, 0)
+		TextButton.Size = UDim2.new(0, 50, 0, 50)
+		TextButton.Font = Enum.Font.AmaticSC
+		TextButton.Text = "X"
+		TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextButton.TextScaled = true
+		TextButton.TextSize = 40.000
+		TextButton.TextWrapped = true
+
+		function delete()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+		end
+		TextButton.MouseButton1Click:connect(delete)
+	end)
+
+	window1:Button("Upgrade Performance",function()
+		local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
+		local g = game
+		local w = g.Workspace
+		local l = g.Lighting
+		local t = w.Terrain
+		t.WaterWaveSize = 0
+		t.WaterWaveSpeed = 0
+		t.WaterReflectance = 0
+		t.WaterTransparency = 0
+		l.GlobalShadows = false
+		l.FogEnd = 9e9
+		l.Brightness = 0
+		settings().Rendering.QualityLevel = "Level01"
+		for i,v in pairs(g:GetDescendants()) do
+			if v:IsA("Part") or v:IsA("Union") or v:IsA("MeshPart") then
+				v.Material = "Plastic"
+				v.Reflectance = 0
+			elseif v:IsA("Decal") and decalsyeeted then 
+				v.Transparency = 1
+			elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then 
+				v.Lifetime = NumberRange.new(0)
+			end
+		end
+	end)
+
+	window1:Button("Remove Effects / Particles",function()
+		game:GetService("Players").LocalPlayer.PlayerScripts.EFFECTS:Destroy()
+	end)
+
+	local function QUEST()
+		for i,v in pairs(workspace.missiongivers:GetChildren()) do
+			if v.Name == "" and v:FindFirstChild("Head") then
+				local TALK = v:FindFirstChild("Talk")
+				if v:FindFirstChild("Head") and v.Head:FindFirstChild("givemission") and v.Head.givemission.Enabled and v.Head.givemission:FindFirstChild("color").Image == "http://www.roblox.com/asset/?id=5459241648" --[[or v.Head.givemission.color.Image == "http://www.roblox.com/asset/?id=5459241799"]] then
+					if v:WaitForChild("Talk"):WaitForChild("mobname") then
+						local getmission = v:FindFirstChild("HumanoidRootPart")
+						local clienttalk = v:FindFirstChild("CLIENTTALK")
+						repeat wait()
+								player.Character.HumanoidRootPart.CFrame=getmission.CFrame+Vector3.new(0,7,0)
+								clienttalk:FireServer()
+								clienttalk:FireServer("accept")               
+						until mission.Visible or not autofarm
+					end
+				end
+			end
+		end
+	end
+
+	local function FARM()
+		for i,v in pairs(workspace.npc:GetChildren()) do
+			local mobname = string.split(mission.bg.name.Text,"Defeat ")[1]
+			if(string.find(mobname,"(s)")) then
+				mobname = string.gsub(mobname,"(s)","")
+			end
+			if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+				repeat
+					pcall(function()
+						player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(0,-2,0)
+						v.Humanoid.Health = 0
+						game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+						game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+					end)
+					pcall(function()
+						game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+						player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(0,-2,-6.8)
+						v.Humanoid.Health = 0
+						game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+						wait()
+					end)
+					pcall(function()
+						game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+						player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(-6.8,-2,0)
+						v.Humanoid.Health = 0
+						game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+						wait()
+					end)
+					pcall(function()
+						game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+						player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(0,-2,6.8)
+						v.Humanoid.Health = 0
+						game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+						wait()
+					end)
+					pcall(function()
+						game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+						player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(6.8,-2,0)
+						v.Humanoid.Health = 0
+						game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+						wait()
+					end)
+				until not v:FindFirstChild("Humanoid") or mission.Visible == false or not autofarm or not v
+			end
+		end
+	end
+
+	local function BOSSFARM()
+		for i,v in pairs(workspace.bossdropmission.missions:GetChildren()) do
+			if v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
+				player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
+				local args = {[1] = game:GetService("Players").LocalPlayer}
+				v.missiongiver.CLIENTTALK:FireServer(unpack(args))
+				wait()
+			end
+		end
+	end
+
+	local count
+	local function DISP()
+		count = 0
+		for i,v in pairs(workspace.missiongivers:GetChildren()) do
+			if v.Name == "" and v:FindFirstChild("Head") then
+				if v:FindFirstChild("Head") and v.Head:FindFirstChild("givemission") and v.Head.givemission.Enabled and v.Head.givemission:FindFirstChild("color") and v.Head.givemission.color.Image == "http://www.roblox.com/asset/?id=5459241648" then
+					count = count + 1
+				end
+			end
+		end
+	end
+
+	spawn(function()
+		while wait() do
+			if autofarm or boss then
+				if mission.Visible == true then
+					FARM()
+					for i,v in pairs(workspace.npc:GetChildren()) do
+						if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+							repeat 
+								v.Humanoid.Health = 0 
+								v.Humanoid.Health = 0
+								v.Humanoid.Health = 0
+								v.Humanoid.Health = 0
+								v.Humanoid.Health = 0
+							until (not autoofarm and not boss) or v.Humanoid.Health == 0
+						end
+					end
+				else
+					if boss then
+						BOSSFARM()
+					end
+					if autofarm then
+						if boss then
+							BOSSFARM()
+							wait(.1)
+							DISP()
+							wait(.1)
+							QUEST()
+						else
+							DISP()
+							wait(.1)
+							QUEST()
+						end
+					end
+				end
+			end
+		end
+	end)
+
+	spawn(function()
+		while wait() do
+			if autofarm then
+				if count == 0 then
+					if QUEST() or FARM() or BOSSFARM() then
+						wait(5.5)
+					else
+						repeat wait()
+							notify("Currently no missions avaliable")
+							wait(2)
+						until count > 0 or QUEST or FARM or BOSSFARM() or not autofarm
+					end
+				end
+			end
+		end
+	end)
+
+	local function SCROLLFARM()
+		for i,v in pairs(game.workspace.GLOBALTIME:GetChildren()) do
+			if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
+				local scrollA = v.sh:FindFirstChild("invoke")
+				print("SCROLL SPAWNED")
+				pcall(function()
+					player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
+					fireclickdetector(v.sh.ClickDetector)
+					scrollA:FireServer(game.Players.LocalPlayer)
+				end)
+			end
+		end
+	end
+	local function SCROLLFARM1()
+		for i,v in pairs(game.workspace:GetChildren()) do
+			if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
+				local scrollA = v.sh:FindFirstChild("invoke")
+				print("SCROLL SPAWNED in workspace")
+				notify("SCROLL SPAWNED in workspace")
+				pcall(function()
+					player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
+					fireclickdetector(v.sh.ClickDetector)
+					scrollA:FireServer(game.Players.LocalPlayer)
+				end)
+			end
+		end
+	end
+
+	spawn(function()
+		while wait() do
+			if scrollfarm then
+				repeat wait()
+					SCROLLFARM()
+					SCROLLFARM1()
+				until not scrollfarm
+			end
+		end
+	end)
+
+	local PRES = player.statz.prestige.maxlvlpres
+	local RANK = player.statz.prestige.rank
+	local RANKNUM = player.statz.prestige.number
+
+	spawn(function()
+		while wait() do
+			if RANKUPP and player.statz.lvl:FindFirstChild("lvl").Value == 1000 then
+				repeat wait()
+					game.Players.LocalPlayer.startevent:FireServer("rankup")
+				until player.statz.lvl:FindFirstChild("lvl").Value == 1 or not RANKUPP
+			end
+		end
+	end)
+
+	window2:Label("Misc", Color3.fromRGB(127, 143, 166))
+
+	window2:Toggle("NPC Kill Aura",false,function(bool)
+		keel = bool
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if keel then
+			NPCKEELAURA()
+		end
+	end)
+
+	window2:Label("Auto stats", Color3.fromRGB(127, 143, 166))
+
+	window2:Toggle("Auto Chi",false, function(bool)
+		auchi = bool
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if auchi then
+			local args = {[1] = "addstat",[2] = "chakra",[3] = 18}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			wait(.25)
+		end
+	end)
+	window2:Toggle("Auto Nin",false, function(bool)
+		aunin = bool
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if aunin then
+			local args = {[1] = "addstat",[2] = "ninjutsu",[3] = 18}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			wait(.25)
+		end
+	end)
+	window2:Toggle("Auto Tai",false, function(bool)
+		autai = bool
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if autai then
+			local args = {[1] = "addstat",[2] = "taijutsu",[3] = 18}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			wait(.25)
+		end
+	end)
+	window2:Toggle("Auto Health",false, function(bool)
+		auhp = bool
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if auhp then
+			local args = {[1] = "addstat",[2] = "health",[3] = 18}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			wait(.25)
+		end
+	end)
+
+	window2:Label("Pls ignore", Color3.fromRGB(127, 143, 166))
+	window2:Button("Activate Black screen",function()
+		local player = game.Players.LocalPlayer
+		local ScreenGui = Instance.new("ScreenGui")
+		local Frame = Instance.new("Frame")
+
+		ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+		Frame.Parent = ScreenGui
+		Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+		Frame.Position = UDim2.new(0, 0, -0.3, 0)
+		Frame.Size = UDim2.new(1, 330, 1.3, 150)
+	end)
+
+	window2:Button("Deactivate Black screen",function()
+		for i,v in pairs(player.PlayerGui:GetChildren()) do
+			if v.Name == "ScreenGui" then
+				v:Destroy()
+			end
+		end
+	end)
+
+	window2:Label("DANGER", Color3.fromRGB(127, 143, 166))
+	window2:Button("Reset Script",function()
+
+		local player = game.Players.LocalPlayer
+		local ScreenGui = Instance.new("ScreenGui")
+		local Frame = Instance.new("Frame")
+		local TextLabel = Instance.new("TextLabel")
+		local TextButton = Instance.new("TextButton")
+		local TextButton2 = Instance.new("TextButton")
+
+
+		ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+		Frame.Parent = ScreenGui
+		Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Frame.Position = UDim2.new(0.36, 0, 0.20, 0)
+		Frame.Size = UDim2.new(0, 330, 0, 150)
+
+		TextLabel.Parent = Frame
+		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
+		TextLabel.Size = UDim2.new(0, 330, 0, 90)
+		TextLabel.Font = Enum.Font.AmaticSC
+		TextLabel.Text = "Are you sure you want to reset script?"
 		TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
 		TextLabel.TextScaled = true
 		TextLabel.TextSize = 35.000
 		TextLabel.TextWrapped = true
 
 		TextButton.Parent = Frame
-		TextButton.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
-		TextButton.Position = UDim2.new(0, 0, 0.1, 0)
-		TextButton.Size = UDim2.new(0, 200, 0, 100)
-		TextButton.Font = Enum.Font.TitilliumWeb
-		TextButton.Text = [[Tailed Beasts & 
-		Chi Rod Toss]]
-		TextButton.TextColor3 = Color3.fromRGB(200, 200, 200)
-		TextButton.TextScaled = false
-		TextButton.TextSize = 35.000
+		TextButton.BackgroundColor3 = Color3.fromRGB(0, 230, 30)
+		TextButton.Position = UDim2.new(0, 0, 0.600000006, 0)
+		TextButton.Size = UDim2.new(0, 165, 0, 60)
+		TextButton.Font = Enum.Font.AmaticSC
+		TextButton.Text = "Yes"
+		TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextButton.TextScaled = true
+		TextButton.TextSize = 40.000
 		TextButton.TextWrapped = true
 
-		function BEASTNRODS()
+		function ResetYES()
 			for i,v in pairs(player.PlayerGui:GetChildren()) do
 				if v.Name == "ScreenGui" then
 					v:Destroy()
 				end
 			end
-			repeat wait() until game:IsLoaded()
-			--Loading GUI
-			local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20script%20gui"))()
-			local window1 = library:Window("AutoFarm - DogeHub")
-			local window2 = library:Window("Others")
-			local window3 = library:Window("Credits")
-
-			library:Keybind("RightControl")
-
-			window1:Label("NIGHT = NO QUESTS", Color3.fromRGB(127, 143, 166))
-
-			local autofarm
-			window1:Toggle("Auto Farm",false, function(bool)
-				autofarm = bool
-			end)
-
-			local boss
-			window1:Toggle("Boss Farm",false, function(bool)
-				boss = bool
-			end)
-
-			local RANKUPP
-			window1:Toggle("Auto Rank",false, function(bool)
-				RANKUPP = bool
-			end)
-
-			local scrollfarm
-			window1:Toggle("Scroll Snipe",false, function(bool)
-				scrollfarm = bool
-			end)
-
-			window1:Button("Infinite MD",function()
-				INFMDON()
-			end)
-
-			window1:Label("If autofarm stuck:", Color3.fromRGB(127, 143, 166))
-			window1:Label("In village = bugged", Color3.fromRGB(127, 143, 166))
-			window1:Label("Outside village = no missions", Color3.fromRGB(127, 143, 166))
-
-			window1:Button("Tutorial",function()
-				local player = game.Players.LocalPlayer
-				local ScreenGui = Instance.new("ScreenGui")
-				local Frame = Instance.new("Frame")
-				local TextLabel = Instance.new("TextLabel")
-				local TextLabelo = Instance.new("TextLabel")
-				local TextLabeloo = Instance.new("TextLabel")
-				local TextLabelooo = Instance.new("TextLabel")
-				local TextLabeloooo = Instance.new("TextLabel")
-				local TextButton = Instance.new("TextButton")
-
-				ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-
-				Frame.Parent = ScreenGui
-				Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-				Frame.Position = UDim2.new(0.5, 0, 0.25, 0)
-				Frame.Size = UDim2.new(0, 400, 0, 350)
-
-				TextLabel.Parent = Frame
-				TextLabel.BackgroundColor3 = Color3.fromRGB(217, 112, 217)
-				TextLabel.Size = UDim2.new(0, 400, 0, 90)
-				TextLabel.Font = Enum.Font.AmaticSC
-				TextLabel.Text = "To run AutoFarm Script:        "
-				TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
-				TextLabel.TextScaled = false
-				TextLabel.TextSize = 60.000
-				TextLabel.TextWrapped = true
-
-				TextLabelo.Parent = Frame
-				TextLabelo.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
-				TextLabelo.Position = UDim2.new(0, 0, 0.25, 0)
-				TextLabelo.Size = UDim2.new(0, 400, 0, 65)
-				TextLabelo.Font = Enum.Font.AmaticSC
-				TextLabelo.Text = "1. Activate a beast mode (Except Tyn and Rab) "
-				TextLabelo.TextColor3 = Color3.fromRGB(0, 0, 0)
-				TextLabelo.TextScaled = true
-				TextLabelo.TextSize = 40.000
-				TextLabelo.TextWrapped = true
-
-				TextLabeloo.Parent = Frame
-				TextLabeloo.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
-				TextLabeloo.Position = UDim2.new(0, 0, 0.44, 0)
-				TextLabeloo.Size = UDim2.new(0, 400, 0, 65)
-				TextLabeloo.Font = Enum.Font.AmaticSC
-				TextLabeloo.Text = "2.Type '!spirit', Next press ']'                 "
-				TextLabeloo.TextColor3 = Color3.fromRGB(0, 0, 0)
-				TextLabeloo.TextScaled = false
-				TextLabeloo.TextSize = 45.000
-				TextLabeloo.TextWrapped = true
-
-				TextLabelooo.Parent = Frame
-				TextLabelooo.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
-				TextLabelooo.Position = UDim2.new(0, 0, 0.62, 0)
-				TextLabelooo.Size = UDim2.new(0, 400, 0, 65)
-				TextLabelooo.Font = Enum.Font.AmaticSC
-				TextLabelooo.Text = "3.Turn on AutoFarm and Infinite MD  "
-				TextLabelooo.TextColor3 = Color3.fromRGB(0, 0, 0)
-				TextLabelooo.TextScaled = false
-				TextLabelooo.TextSize = 43.500
-				TextLabelooo.TextWrapped = true
-
-				TextLabeloooo.Parent = Frame
-				TextLabeloooo.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
-				TextLabeloooo.Position = UDim2.new(0, 0, 0.8, 0)
-				TextLabeloooo.Size = UDim2.new(0, 400, 0, 70)
-				TextLabeloooo.Font = Enum.Font.AmaticSC
-				TextLabeloooo.Text = "4.DONE!                                                    "
-				TextLabeloooo.TextColor3 = Color3.fromRGB(0, 0, 0)
-				TextLabeloooo.TextScaled = false
-				TextLabeloooo.TextSize = 45.000
-				TextLabeloooo.TextWrapped = true
-
-				TextButton.Parent = Frame
-				TextButton.BackgroundColor3 = Color3.fromRGB(255, 30, 30)
-				TextButton.Position = UDim2.new(0, 350, 0, 0)
-				TextButton.Size = UDim2.new(0, 50, 0, 50)
-				TextButton.Font = Enum.Font.AmaticSC
-				TextButton.Text = "X"
-				TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
-				TextButton.TextScaled = true
-				TextButton.TextSize = 40.000
-				TextButton.TextWrapped = true
-
-				function delete()
-					for i,v in pairs(player.PlayerGui:GetChildren()) do
-						if v.Name == "ScreenGui" then
-							v:Destroy()
-						end
-					end
-				end
-				TextButton.MouseButton1Click:connect(delete)
-			end)
-
-			window1:Button("Upgrade Performance",function()
-				local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
-				local g = game
-				local w = g.Workspace
-				local l = g.Lighting
-				local t = w.Terrain
-				t.WaterWaveSize = 0
-				t.WaterWaveSpeed = 0
-				t.WaterReflectance = 0
-				t.WaterTransparency = 0
-				l.GlobalShadows = false
-				l.FogEnd = 9e9
-				l.Brightness = 0
-				settings().Rendering.QualityLevel = "Level01"
-				for i,v in pairs(g:GetDescendants()) do
-					if v:IsA("Part") or v:IsA("Union") or v:IsA("MeshPart") then
-						v.Material = "Plastic"
-						v.Reflectance = 0
-					elseif v:IsA("Decal") and decalsyeeted then 
-						v.Transparency = 1
-					elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then 
-						v.Lifetime = NumberRange.new(0)
-					end
-				end
-			end)
-
-			window1:Button("Remove Effects / Particles",function()
-				game:GetService("Players").LocalPlayer.PlayerScripts.EFFECTS:Destroy()
-			end)
-
-			local function QUEST()
-				for i,v in pairs(workspace.missiongivers:GetChildren()) do
-					if v.Name == "" and v:FindFirstChild("Head") then
-						local TALK = v:FindFirstChild("Talk")
-						if v:FindFirstChild("Head") and v.Head:FindFirstChild("givemission") and v.Head.givemission.Enabled and v.Head.givemission:FindFirstChild("color").Image == "http://www.roblox.com/asset/?id=5459241648" --[[or v.Head.givemission.color.Image == "http://www.roblox.com/asset/?id=5459241799"]] then
-							if v:WaitForChild("Talk"):WaitForChild("mobname") then
-								local getmission = v:FindFirstChild("HumanoidRootPart")
-								local clienttalk = v:FindFirstChild("CLIENTTALK")
-								repeat wait()
-										player.Character.HumanoidRootPart.CFrame=getmission.CFrame+Vector3.new(0,7,0)
-										clienttalk:FireServer()
-										clienttalk:FireServer("accept")               
-								until mission.Visible or not autofarm
-							end
-						end
-					end
-				end
-			end
-
-			local function FARM()
-				for i,v in pairs(workspace.npc:GetChildren()) do
-					local mobname = string.split(mission.bg.name.Text,"Defeat ")[1]
-					if(string.find(mobname,"(s)")) then
-						mobname = string.gsub(mobname,"(s)","")
-					end
-					if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-						repeat
-							pcall(function()
-								player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(0,-2,0)
-								v.Humanoid.Health = 0
-								game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
-								game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
-							end)
-							pcall(function()
-								game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
-								player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(0,-2,-6.8)
-								v.Humanoid.Health = 0
-								game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
-								wait()
-							end)
-							pcall(function()
-								game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
-								player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(-6.8,-2,0)
-								v.Humanoid.Health = 0
-								game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
-								wait()
-							end)
-							pcall(function()
-								game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
-								player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(0,-2,6.8)
-								v.Humanoid.Health = 0
-								game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
-								wait()
-							end)
-							pcall(function()
-								game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
-								player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(6.8,-2,0)
-								v.Humanoid.Health = 0
-								game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
-								wait()
-							end)
-						until not v:FindFirstChild("Humanoid") or mission.Visible == false or not autofarm or not v
-					end
-				end
-			end
-
-			local function BOSSFARM()
-				for i,v in pairs(workspace.bossdropmission.missions:GetChildren()) do
-					if v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
-						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
-						local args = {[1] = game:GetService("Players").LocalPlayer}
-						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
-						wait()
-					end
-				end
-			end
-
-			local count
-			local function DISP()
-				count = 0
-				for i,v in pairs(workspace.missiongivers:GetChildren()) do
-					if v.Name == "" and v:FindFirstChild("Head") then
-						if v:FindFirstChild("Head") and v.Head:FindFirstChild("givemission") and v.Head.givemission.Enabled and v.Head.givemission:FindFirstChild("color") and v.Head.givemission.color.Image == "http://www.roblox.com/asset/?id=5459241648" then
-							count = count + 1
-						end
-					end
-				end
-			end
-
-			spawn(function()
-				while wait() do
-					if autofarm or boss then
-						if mission.Visible == true then
-							FARM()
-							for i,v in pairs(workspace.npc:GetChildren()) do
-								if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-									repeat 
-										v.Humanoid.Health = 0 
-										v.Humanoid.Health = 0
-										v.Humanoid.Health = 0
-										v.Humanoid.Health = 0
-										v.Humanoid.Health = 0
-									until (not autoofarm and not boss) or v.Humanoid.Health == 0
-								end
-							end
-						else
-							if boss then
-								BOSSFARM()
-							end
-							if autofarm then
-								if boss then
-									BOSSFARM()
-									wait(.1)
-									DISP()
-									wait(.1)
-									QUEST()
-								else
-									DISP()
-									wait(.1)
-									QUEST()
-								end
-							end
-						end
-					end
-				end
-			end)
-
-			spawn(function()
-				while wait() do
-					if autofarm then
-						if count == 0 then
-							if QUEST() or FARM() or BOSSFARM() then
-								wait(5.5)
-							else
-								repeat wait()
-									notify("Currently no missions avaliable")
-									wait(2)
-								until count > 0 or QUEST or FARM or BOSSFARM() or not autofarm
-							end
-						end
-					end
-				end
-			end)
-
-			local function SCROLLFARM()
-				for i,v in pairs(game.workspace.GLOBALTIME:GetChildren()) do
-					if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
-						local scrollA = v.sh:FindFirstChild("invoke")
-						print("SCROLL SPAWNED")
-						pcall(function()
-							player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
-							fireclickdetector(v.sh.ClickDetector)
-							scrollA:FireServer(game.Players.LocalPlayer)
-						end)
-					end
-				end
-			end
-			local function SCROLLFARM1()
-				for i,v in pairs(game.workspace:GetChildren()) do
-					if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
-						local scrollA = v.sh:FindFirstChild("invoke")
-						print("SCROLL SPAWNED in workspace")
-						notify("SCROLL SPAWNED in workspace")
-						pcall(function()
-							player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
-							fireclickdetector(v.sh.ClickDetector)
-							scrollA:FireServer(game.Players.LocalPlayer)
-						end)
-					end
-				end
-			end
-
-			spawn(function()
-				while wait() do
-					if scrollfarm then
-						repeat wait()
-							SCROLLFARM()
-							SCROLLFARM1()
-						until not scrollfarm
-					end
-				end
-			end)
-
-			local PRES = player.statz.prestige.maxlvlpres
-			local RANK = player.statz.prestige.rank
-			local RANKNUM = player.statz.prestige.number
-
-			spawn(function()
-				while wait() do
-					if RANKUPP and player.statz.lvl:FindFirstChild("lvl").Value == 1000 then
-						repeat wait()
-							game.Players.LocalPlayer.startevent:FireServer("rankup")
-						until player.statz.lvl:FindFirstChild("lvl").Value == 1 or not RANKUPP
-					end
-				end
-			end)
-
-			window2:Label("Misc", Color3.fromRGB(127, 143, 166))
-
-			window2:Toggle("NPC Kill Aura",false,function(bool)
-				keel = bool
-			end)
-			game:GetService('RunService').Stepped:connect(function()
-				if keel then
-					NPCKEELAURA()
-				end
-			end)
-
-			window2:Label("Auto stats", Color3.fromRGB(127, 143, 166))
-
-			window2:Toggle("Auto Chi",false, function(bool)
-				auchi = bool
-			end)
-			game:GetService('RunService').Stepped:connect(function()
-				if auchi then
-					local args = {[1] = "addstat",[2] = "chakra",[3] = 18}
-					game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-					wait(.25)
-				end
-			end)
-			window2:Toggle("Auto Nin",false, function(bool)
-				aunin = bool
-			end)
-			game:GetService('RunService').Stepped:connect(function()
-				if aunin then
-					local args = {[1] = "addstat",[2] = "ninjutsu",[3] = 18}
-					game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-					wait(.25)
-				end
-			end)
-			window2:Toggle("Auto Tai",false, function(bool)
-				autai = bool
-			end)
-			game:GetService('RunService').Stepped:connect(function()
-				if autai then
-					local args = {[1] = "addstat",[2] = "taijutsu",[3] = 18}
-					game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-					wait(.25)
-				end
-			end)
-			window2:Toggle("Auto Health",false, function(bool)
-				auhp = bool
-			end)
-			game:GetService('RunService').Stepped:connect(function()
-				if auhp then
-					local args = {[1] = "addstat",[2] = "health",[3] = 18}
-					game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-					wait(.25)
-				end
-			end)
-
-			window2:Label("Pls ignore", Color3.fromRGB(127, 143, 166))
-			window2:Button("Activate Black screen",function()
-				local player = game.Players.LocalPlayer
-				local ScreenGui = Instance.new("ScreenGui")
-				local Frame = Instance.new("Frame")
-
-				ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-
-				Frame.Parent = ScreenGui
-				Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-				Frame.Position = UDim2.new(0, 0, -0.3, 0)
-				Frame.Size = UDim2.new(1, 330, 1.3, 150)
-			end)
-
-			window2:Button("Deactivate Black screen",function()
-				for i,v in pairs(player.PlayerGui:GetChildren()) do
-					if v.Name == "ScreenGui" then
-						v:Destroy()
-					end
-				end
-			end)
-
-			window2:Label("DANGER", Color3.fromRGB(127, 143, 166))
-			window2:Button("Reset Script",function()
-
-				local player = game.Players.LocalPlayer
-				local ScreenGui = Instance.new("ScreenGui")
-				local Frame = Instance.new("Frame")
-				local TextLabel = Instance.new("TextLabel")
-				local TextButton = Instance.new("TextButton")
-				local TextButton2 = Instance.new("TextButton")
-
-
-				ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-
-				Frame.Parent = ScreenGui
-				Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-				Frame.Position = UDim2.new(0.36, 0, 0.20, 0)
-				Frame.Size = UDim2.new(0, 330, 0, 150)
-
-				TextLabel.Parent = Frame
-				TextLabel.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
-				TextLabel.Size = UDim2.new(0, 330, 0, 90)
-				TextLabel.Font = Enum.Font.AmaticSC
-				TextLabel.Text = "Are you sure you want to reset script?"
-				TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
-				TextLabel.TextScaled = true
-				TextLabel.TextSize = 35.000
-				TextLabel.TextWrapped = true
-
-				TextButton.Parent = Frame
-				TextButton.BackgroundColor3 = Color3.fromRGB(0, 230, 30)
-				TextButton.Position = UDim2.new(0, 0, 0.600000006, 0)
-				TextButton.Size = UDim2.new(0, 165, 0, 60)
-				TextButton.Font = Enum.Font.AmaticSC
-				TextButton.Text = "Yes"
-				TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
-				TextButton.TextScaled = true
-				TextButton.TextSize = 40.000
-				TextButton.TextWrapped = true
-
-				function ResetYES()
-					for i,v in pairs(player.PlayerGui:GetChildren()) do
-						if v.Name == "ScreenGui" then
-							v:Destroy()
-						end
-					end
-					wait()
-					RANKUPP = false
-					autofarm = false
-					boss = false
-					scrollfarm = false
-					keel = false
-					aunin = false
-					auchi = false
-					autai = false 
-					auhp = false
-					wait()
-					library:Destroy()
-					notify("Do not reset autofarm script more than once!")
-					local player = game.Players.LocalPlayer
-							player.Character:BreakJoints()
-							wait(11)
-					loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain"))()
-				end
-				TextButton.MouseButton1Click:connect(ResetYES)
-
-				TextButton2.Parent = Frame
-				TextButton2.BackgroundColor3 = Color3.fromRGB(260, 30, 30)
-				TextButton2.Position = UDim2.new(0.5, 0, 0.600000006, 0)
-				TextButton2.Size = UDim2.new(0, 165, 0, 60)
-				TextButton2.Font = Enum.Font.AmaticSC
-				TextButton2.Text = "no"
-				TextButton2.TextColor3 = Color3.fromRGB(0, 0, 0)
-				TextButton2.TextSize = 40.000
-				TextButton2.TextWrapped = true
-
-				function ResetNO()
-					for i,v in pairs(player.PlayerGui:GetChildren()) do
-						if v.Name == "ScreenGui" then
-							v:Destroy()
-						end
-					end
-				end
-				TextButton2.MouseButton1Click:connect(ResetNO)
-			end)
-			
-			window3:Label("Made by NoobieDoge", Color3.fromRGB(127, 143, 166))
-
-			window3:Button("Copy Discord Link",function()
-				setclipboard("https://discord.gg/P2CeRjvTDt")
-				notify("Discord link copied to clipboard")
-			end)
-		end
-		TextButton.MouseButton1Click:connect(BEASTNRODS)
-
-		TextButton_2.Parent = Frame
-		TextButton_2.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
-		TextButton_2.Position = UDim2.new(0, 0, 0.35, 0)
-		TextButton_2.Size = UDim2.new(0, 200, 0, 100)
-		TextButton_2.Font = Enum.Font.TitilliumWeb
-		TextButton_2.Text = "Only Tailed Beasts"
-		TextButton_2.TextColor3 = Color3.fromRGB(200, 200, 200)
-		TextButton_2.TextScaled = true
-		TextButton_2.TextSize = 35.000
-		TextButton_2.TextWrapped = true
-
-		function BEASTONLY()
-			for i,v in pairs(player.PlayerGui:GetChildren()) do
-				if v.Name == "ScreenGui" then
-					v:Destroy()
-				end
-			end
-			repeat wait() until game:IsLoaded()
-			--Loading GUI
-			local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20script%20gui"))()
-			local window1 = library:Window("AutoFarm - DogeHub")
-			local window2 = library:Window("Others")
-			local window3 = library:Window("Credits")
-
-			library:Keybind("RightControl")
-
-			window1:Label("NIGHT = NO QUESTS", Color3.fromRGB(127, 143, 166))
-
-			local autoofarm
-			window1:Toggle("Auto Farm",false, function(bool)
-				autoofarm = bool
-				local platform = Instance.new("Part", player.Character)
-				platform.Anchored = true
-				platform.Transparency = 1
-				platform.Size = Vector3.new(6, 1, 6)
-
-				local connection
-				connection = game:GetService("RunService").RenderStepped:connect(function()
-					if player.Character:FindFirstChild("HumanoidRootPart") then
-						platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -1.8, 0)
-					else
-						connection:Disconnect()
-					end
-				end)
-				game:GetService('RunService').Stepped:connect(function()
-					if autoofarm ~= true then
-						platform:Destroy()
-					end
-				end)
-			end)
-
-			local boss
-			window1:Toggle("Boss Farm",false, function(bool)
-				boss = bool
-			end)
-
-			local RANKUPP
-			window1:Toggle("Auto Rank",false, function(bool)
-				RANKUPP = bool
-			end)
-
-			local scrollfarm
-			window1:Toggle("Scroll Snipe",false, function(bool)
-				scrollfarm = bool
-			end)
-
-			window1:Button("Infinite MD",function()
-			INFMDON()
-			end)
-
-			local disp = window1:Label("If autofarm stuck:", Color3.fromRGB(127, 143, 166))
-			local qdone = window1:Label("In village = bugged", Color3.fromRGB(127, 143, 166))
-			local qdone = window1:Label("Outside village = no missions", Color3.fromRGB(127, 143, 166))
-
-			window1:Button("Tutorial",function()
-				local player = game.Players.LocalPlayer
-				local ScreenGui = Instance.new("ScreenGui")
-				local Frame = Instance.new("Frame")
-				local TextLabel = Instance.new("TextLabel")
-				local TextLabelo = Instance.new("TextLabel")
-				local TextLabeloo = Instance.new("TextLabel")
-				local TextLabelooo = Instance.new("TextLabel")
-				local TextLabeloooo = Instance.new("TextLabel")
-				local TextButton = Instance.new("TextButton")
-
-				ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-
-				Frame.Parent = ScreenGui
-				Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-				Frame.Position = UDim2.new(0.5, 0, 0.25, 0)
-				Frame.Size = UDim2.new(0, 400, 0, 350)
-
-				TextLabel.Parent = Frame
-				TextLabel.BackgroundColor3 = Color3.fromRGB(217, 112, 217)
-				TextLabel.Size = UDim2.new(0, 400, 0, 90)
-				TextLabel.Font = Enum.Font.AmaticSC
-				TextLabel.Text = "To run AutoFarm Script:        "
-				TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
-				TextLabel.TextScaled = false
-				TextLabel.TextSize = 60.000
-				TextLabel.TextWrapped = true
-
-				TextLabelo.Parent = Frame
-				TextLabelo.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
-				TextLabelo.Position = UDim2.new(0, 0, 0.25, 0)
-				TextLabelo.Size = UDim2.new(0, 400, 0, 65)
-				TextLabelo.Font = Enum.Font.AmaticSC
-				TextLabelo.Text = "1. Activate a beast mode (Except Tyn and Rab) "
-				TextLabelo.TextColor3 = Color3.fromRGB(0, 0, 0)
-				TextLabelo.TextScaled = true
-				TextLabelo.TextSize = 40.000
-				TextLabelo.TextWrapped = true
-
-				TextLabeloo.Parent = Frame
-				TextLabeloo.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
-				TextLabeloo.Position = UDim2.new(0, 0, 0.44, 0)
-				TextLabeloo.Size = UDim2.new(0, 400, 0, 65)
-				TextLabeloo.Font = Enum.Font.AmaticSC
-				TextLabeloo.Text = "2.Type '!spirit', Next press ']'                 "
-				TextLabeloo.TextColor3 = Color3.fromRGB(0, 0, 0)
-				TextLabeloo.TextScaled = false
-				TextLabeloo.TextSize = 45.000
-				TextLabeloo.TextWrapped = true
-
-				TextLabelooo.Parent = Frame
-				TextLabelooo.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
-				TextLabelooo.Position = UDim2.new(0, 0, 0.62, 0)
-				TextLabelooo.Size = UDim2.new(0, 400, 0, 65)
-				TextLabelooo.Font = Enum.Font.AmaticSC
-				TextLabelooo.Text = "3.Turn on AutoFarm, Infinite MD and Spam E "
-				TextLabelooo.TextColor3 = Color3.fromRGB(0, 0, 0)
-				TextLabelooo.TextScaled = false
-				TextLabelooo.TextSize = 37.500
-				TextLabelooo.TextWrapped = true
-
-				TextLabeloooo.Parent = Frame
-				TextLabeloooo.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
-				TextLabeloooo.Position = UDim2.new(0, 0, 0.8, 0)
-				TextLabeloooo.Size = UDim2.new(0, 400, 0, 70)
-				TextLabeloooo.Font = Enum.Font.AmaticSC
-				TextLabeloooo.Text = "4.DONE!                                                    "
-				TextLabeloooo.TextColor3 = Color3.fromRGB(0, 0, 0)
-				TextLabeloooo.TextScaled = false
-				TextLabeloooo.TextSize = 45.000
-				TextLabeloooo.TextWrapped = true
-
-				TextButton.Parent = Frame
-				TextButton.BackgroundColor3 = Color3.fromRGB(255, 30, 30)
-				TextButton.Position = UDim2.new(0, 350, 0, 0)
-				TextButton.Size = UDim2.new(0, 50, 0, 50)
-				TextButton.Font = Enum.Font.AmaticSC
-				TextButton.Text = "X"
-				TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
-				TextButton.TextScaled = true
-				TextButton.TextSize = 40.000
-				TextButton.TextWrapped = true
-
-				function delete()
-					for i,v in pairs(player.PlayerGui:GetChildren()) do
-						if v.Name == "ScreenGui" then
-							v:Destroy()
-						end
-					end
-				end
-				TextButton.MouseButton1Click:connect(delete)
-			end)
-
-			window1:Button("Upgrade Performance",function()
-				local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
-				local g = game
-				local w = g.Workspace
-				local l = g.Lighting
-				local t = w.Terrain
-				t.WaterWaveSize = 0
-				t.WaterWaveSpeed = 0
-				t.WaterReflectance = 0
-				t.WaterTransparency = 0
-				l.GlobalShadows = false
-				l.FogEnd = 9e9
-				l.Brightness = 0
-				settings().Rendering.QualityLevel = "Level01"
-				for i,v in pairs(g:GetDescendants()) do
-					if v:IsA("Part") or v:IsA("Union") or v:IsA("MeshPart") then
-						v.Material = "Plastic"
-						v.Reflectance = 0
-					elseif v:IsA("Decal") and decalsyeeted then 
-						v.Transparency = 1
-					elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then 
-						v.Lifetime = NumberRange.new(0)
-					end
-				end
-			end)
-
-			window1:Button("Remove Effects / Particles",function()
-				game:GetService("Players").LocalPlayer.PlayerScripts.EFFECTS:Destroy()
-			end)
-
-			local function QUEST()
-				for i,v in pairs(workspace.missiongivers:GetChildren()) do
-					if v.Name == "" and v:FindFirstChild("Head") then
-						game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position+Vector3.new(0,350,0))  
-						local TALK = v:FindFirstChild("Talk")
-						if v:FindFirstChild("Head") and v.Head:FindFirstChild("givemission") and v.Head.givemission.Enabled and v.Head.givemission:FindFirstChild("color").Image == "http://www.roblox.com/asset/?id=5459241648" --[[or v.Head.givemission.color.Image == "http://www.roblox.com/asset/?id=5459241799"]] then
-							if v:WaitForChild("Talk"):WaitForChild("mobname") then
-								local getmission = v:FindFirstChild("HumanoidRootPart")
-								local clienttalk = v:FindFirstChild("CLIENTTALK")
-								repeat wait()
-									player.Character.HumanoidRootPart.CFrame=getmission.CFrame+Vector3.new(0,-7,0)
-									clienttalk:FireServer()
-									clienttalk:FireServer("accept")
-								until mission.Visible or not autoofarm
-							end
-						end
-					end
-				end
-			end
-
-			local function FARM()
-				for i,v in pairs(workspace.npc:GetChildren()) do
-					local mobname = string.split(mission.bg.name.Text,"Defeat ")[1]
-					if(string.find(mobname,"(s)")) then
-						mobname = string.gsub(mobname,"(s)","")
-					end
-					if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-						player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 15, 0)
-						repeat wait()
-							pcall(function()
-								game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
-								v.Humanoid.Health = 0
-								pcall(function()
-									player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 17, 10)
-									game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
-									game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
-									game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
-									game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
-									game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
-									game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
-									game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
-									game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
-									v.Humanoid.Health = 0
-								end)
-							end)
-						until not v:FindFirstChild("Humanoid") or mission.Visible == false or not autoofarm or not v
-					end
-				end
-			end
-
-			local function BOSSFARM()
-				for i,v in pairs(workspace.bossdropmission.missions:GetChildren()) do
-					if v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
-						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
-						local args = {[1] = game:GetService("Players").LocalPlayer}
-						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
-						wait()
-					end
-				end
-			end
-
-			local count
-			local function DISP()
-				count = 0
-				for i,v in pairs(workspace.missiongivers:GetChildren()) do
-					if v.Name == "" and v:FindFirstChild("Head") then
-						if v:FindFirstChild("Head") and v.Head:FindFirstChild("givemission") and v.Head.givemission.Enabled and v.Head.givemission:FindFirstChild("color") and v.Head.givemission.color.Image == "http://www.roblox.com/asset/?id=5459241648" then
-							count = count + 1
-						end
-					end
-				end
-			end
-
-			spawn(function()
-				while wait() do
-					if autoofarm or boss then
-						if mission.Visible == true then
-							FARM()
-							for i,v in pairs(workspace.npc:GetChildren()) do
-								if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-									repeat 
-										v.Humanoid.Health = 0 
-										v.Humanoid.Health = 0
-										v.Humanoid.Health = 0
-										v.Humanoid.Health = 0
-										v.Humanoid.Health = 0
-									until (not autoofarm and not boss) or v.Humanoid.Health == 0
-								end
-							end
-						else
-							if boss then
-								BOSSFARM()
-							end
-							if autoofarm then
-								if boss then
-									BOSSFARM()
-									wait(.1)
-									DISP()
-									wait(.1)
-									QUEST()
-								else
-									DISP()
-									wait(.1)
-									QUEST()
-								end
-							end
-						end
-					end
-				end
-			end)
-
-			spawn(function()
-				while wait() do
-					if autoofarm then
-						if count == 0 then
-							if QUEST() or FARM() or BOSSFARM() then
-								wait(5.5)
-							else
-								repeat wait()
-									notify("Currently no missions avaliable")
-									wait(2)
-								until count > 0 or QUEST or FARM or BOSSFARM() or not autoofarm
-							end
-						end
-					end
-				end
-			end)
-
-			local function SCROLLFARM()
-				for i,v in pairs(game.workspace.GLOBALTIME:GetChildren()) do
-					if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
-						local scrollA = v.sh:FindFirstChild("invoke")
-						print("SCROLL SPAWNED")
-						pcall(function()
-							player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
-							fireclickdetector(v.sh.ClickDetector)
-							scrollA:FireServer(game.Players.LocalPlayer)
-						end)
-					end
-				end
-			end
-			local function SCROLLFARM1()
-				for i,v in pairs(game.workspace:GetChildren()) do
-					if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
-						local scrollA = v.sh:FindFirstChild("invoke")
-						print("SCROLL SPAWNED in workspace")
-						notify("SCROLL SPAWNED in workspace")
-						pcall(function()
-							player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
-							fireclickdetector(v.sh.ClickDetector)
-							scrollA:FireServer(game.Players.LocalPlayer)
-						end)
-					end
-				end
-			end
-
-			spawn(function()
-				while wait() do
-					if scrollfarm then
-						repeat wait()
-							SCROLLFARM()
-							SCROLLFARM1()
-						until not scrollfarm
-					end
-				end
-			end)
-
-			local PRES = player.statz.prestige.maxlvlpres
-			local RANK = player.statz.prestige.rank
-			local RANKNUM = player.statz.prestige.number
-
-			spawn(function()
-				while wait() do
-					if RANKUPP and player.statz.lvl:FindFirstChild("lvl").Value == 1000 then
-						repeat wait()
-							game.Players.LocalPlayer.startevent:FireServer("rankup")
-						until player.statz.lvl:FindFirstChild("lvl").Value == 1 or not RANKUP
-					end
-				end
-			end)
-
-			window2:Label("Misc", Color3.fromRGB(127, 143, 166))
-
-			window2:Toggle("NPC Kill Aura",false,function(bool)
-				keel = bool
-			end)
-			game:GetService('RunService').Stepped:connect(function()
-				if keel then
-					NPCKEELAURA()
-				end
-			end)
-
-			window2:Label("Auto stats", Color3.fromRGB(127, 143, 166))
-
-			window2:Toggle("Auto Chi",false, function(bool)
-				auchi = bool
-			end)
-			game:GetService('RunService').Stepped:connect(function()
-				if auchi then
-					local args = {[1] = "addstat",[2] = "chakra",[3] = 18}
-					game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-					wait(.25)
-				end
-			end)
-			window2:Toggle("Auto Nin",false, function(bool)
-				aunin = bool
-			end)
-			game:GetService('RunService').Stepped:connect(function()
-				if aunin then
-					local args = {[1] = "addstat",[2] = "ninjutsu",[3] = 18}
-					game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-					wait(.25)
-				end
-			end)
-			window2:Toggle("Auto Tai",false, function(bool)
-				autai = bool
-			end)
-			game:GetService('RunService').Stepped:connect(function()
-				if autai then
-					local args = {[1] = "addstat",[2] = "taijutsu",[3] = 18}
-					game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-					wait(.25)
-				end
-			end)
-			window2:Toggle("Auto Health",false, function(bool)
-				auhp = bool
-			end)
-			game:GetService('RunService').Stepped:connect(function()
-				if auhp then
-					local args = {[1] = "addstat",[2] = "health",[3] = 18}
-					game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-					wait(.25)
-				end
-			end)
-
-			window2:Label("Pls ignore", Color3.fromRGB(127, 143, 166))
-			window2:Button("Activate Black screen",function()
-				local player = game.Players.LocalPlayer
-				local ScreenGui = Instance.new("ScreenGui")
-				local Frame = Instance.new("Frame")
-
-				ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-
-				Frame.Parent = ScreenGui
-				Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-				Frame.Position = UDim2.new(0, 0, -0.3, 0)
-				Frame.Size = UDim2.new(1, 330, 1.3, 150)
-			end)
-			window2:Button("Deactivate Black screen",function()
-				for i,v in pairs(player.PlayerGui:GetChildren()) do
-					if v.Name == "ScreenGui" then
-						v:Destroy()
-					end
-				end
-			end)
-
-			window2:Label("DANGER", Color3.fromRGB(127, 143, 166))
-			window2:Button("Reset Script",function()
-
-				local player = game.Players.LocalPlayer
-				local ScreenGui = Instance.new("ScreenGui")
-				local Frame = Instance.new("Frame")
-				local TextLabel = Instance.new("TextLabel")
-				local TextButton = Instance.new("TextButton")
-				local TextButton2 = Instance.new("TextButton")
-
-				ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-
-				Frame.Parent = ScreenGui
-				Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-				Frame.Position = UDim2.new(0.36, 0, 0.20, 0)
-				Frame.Size = UDim2.new(0, 330, 0, 150)
-
-				TextLabel.Parent = Frame
-				TextLabel.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
-				TextLabel.Size = UDim2.new(0, 330, 0, 90)
-				TextLabel.Font = Enum.Font.AmaticSC
-				TextLabel.Text = "Are you sure you want to reset script?"
-				TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
-				TextLabel.TextScaled = true
-				TextLabel.TextSize = 35.000
-				TextLabel.TextWrapped = true
-
-				TextButton.Parent = Frame
-				TextButton.BackgroundColor3 = Color3.fromRGB(0, 230, 30)
-				TextButton.Position = UDim2.new(0, 0, 0.600000006, 0)
-				TextButton.Size = UDim2.new(0, 165, 0, 60)
-				TextButton.Font = Enum.Font.AmaticSC
-				TextButton.Text = "Yes"
-				TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
-				TextButton.TextScaled = true
-				TextButton.TextSize = 40.000
-				TextButton.TextWrapped = true
-
-				function ResetYES()
-					for i,v in pairs(player.PlayerGui:GetChildren()) do
-						if v.Name == "ScreenGui" then
-							v:Destroy()
-						end
-					end
-					wait()
-					E = false
-					RANKUPP = false
-					autoofarm = false
-					boss = false
-					scrollfarm = false
-					keel = false
-					aunin = false
-					auchi = false
-					autai = false 
-					auhp = false
-					wait()
-					library:Destroy()
-					notify("Do not reset autofarm script more than once!")
-					local player = game.Players.LocalPlayer
-							player.Character:BreakJoints()
-							wait(11)
-					loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain"))()
-				end
-				TextButton.MouseButton1Click:connect(ResetYES)
-
-				TextButton2.Parent = Frame
-				TextButton2.BackgroundColor3 = Color3.fromRGB(260, 30, 30)
-				TextButton2.Position = UDim2.new(0.5, 0, 0.600000006, 0)
-				TextButton2.Size = UDim2.new(0, 165, 0, 60)
-				TextButton2.Font = Enum.Font.AmaticSC
-				TextButton2.Text = "no"
-				TextButton2.TextColor3 = Color3.fromRGB(0, 0, 0)
-				TextButton2.TextSize = 40.000
-				TextButton2.TextWrapped = true
-
-				function ResetNO()
-					for i,v in pairs(player.PlayerGui:GetChildren()) do
-						if v.Name == "ScreenGui" then
-							v:Destroy()
-						end
-					end
-				end
-				TextButton2.MouseButton1Click:connect(ResetNO)
-			end)
-
-			window3:Label("Made by NoobieDoge", Color3.fromRGB(127, 143, 166))
-
-			window3:Button("Copy Discord Link",function()
-				setclipboard("https://discord.gg/P2CeRjvTDt")
-				notify("Discord link copied to clipboard")
-			end)
-		end
-		TextButton_2.MouseButton1Click:connect(BEASTONLY)
-
-		TextButton_3.Parent = Frame
-		TextButton_3.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
-		TextButton_3.Position = UDim2.new(0, 0, 0.6, 0)
-		TextButton_3.Size = UDim2.new(0, 200, 0, 100)
-		TextButton_3.Font = Enum.Font.TitilliumWeb
-		TextButton_3.Text = "None of the above"
-		TextButton_3.TextColor3 = Color3.fromRGB(200, 200, 200)
-		TextButton_3.TextScaled = true
-		TextButton_3.TextSize = 35.000
-		TextButton_3.TextWrapped = true
-
-		function NOBEASTORRODS()
-			for i,v in pairs(player.PlayerGui:GetChildren()) do
-				if v.Name == "ScreenGui" then
-					v:Destroy()
-				end
-			end
-			repeat wait() until game:IsLoaded()
-			--Loading GUI
-			local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20script%20gui"))()
-			local window1 = library:Window("AutoFarm - DogeHub")
-			local window2 = library:Window("Others")
-			local window3 = library:Window("Credits")
-
-			library:Keybind("RightControl")
-
-			window1:Label("NIGHT = NO QUESTS", Color3.fromRGB(127, 143, 166))
-
-			local autooofarm
-			window1:Toggle("Auto Farm",false, function(bool)
-				autooofarm = bool
-				local platform = Instance.new("Part", player.Character)
-				platform.Anchored = true
-				platform.Transparency = 1
-				platform.Size = Vector3.new(6, 1, 6)
-
-				local connection
-				connection = game:GetService("RunService").RenderStepped:connect(function()
-					if player.Character:FindFirstChild("HumanoidRootPart") then
-						platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -1.8, 0)
-					else
-						connection:Disconnect()
-					end
-				end)
-				spawn(function ()
-					while wait() do
-						if autooofarm ~= true then
-							platform:Destroy()
-						end
-					end
-				end)
-			end)
-
-			local boss
-			window1:Toggle("Boss Farm",false, function(bool)
-				boss = bool
-			end)
-
-			local RANKUPP
-			window1:Toggle("Auto Rank",false, function(bool)
-				RANKUPP = bool
-			end)
-
-			local scrollfarm
-			window1:Toggle("Scroll Snipe",false, function(bool)
-				scrollfarm = bool
-			end)
-
-			window1:Label("If autofarm stuck:", Color3.fromRGB(127, 143, 166))
-			window1:Label("In village - bugged", Color3.fromRGB(127, 143, 166))
-			window1:Label("Outside village = no missions", Color3.fromRGB(127, 143, 166))
-
-			window1:Button("Tutorial",function()
-				local player = game.Players.LocalPlayer
-				local ScreenGui = Instance.new("ScreenGui")
-				local Frame = Instance.new("Frame")
-				local TextLabel = Instance.new("TextLabel")
-				local TextLabelo = Instance.new("TextLabel")
-				local TextLabeloo = Instance.new("TextLabel")
-				local TextLabelooo = Instance.new("TextLabel")
-				local TextLabeloooo = Instance.new("TextLabel")
-				local TextButton = Instance.new("TextButton")
-
-
-				ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-
-				Frame.Parent = ScreenGui
-				Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-				Frame.Position = UDim2.new(0.5, 0, 0.25, 0)
-				Frame.Size = UDim2.new(0, 400, 0, 350)
-
-				TextLabel.Parent = Frame
-				TextLabel.BackgroundColor3 = Color3.fromRGB(217, 112, 217)
-				TextLabel.Size = UDim2.new(0, 400, 0, 90)
-				TextLabel.Font = Enum.Font.AmaticSC
-				TextLabel.Text = "To run AutoFarm Script:        "
-				TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
-				TextLabel.TextScaled = false
-				TextLabel.TextSize = 60.000
-				TextLabel.TextWrapped = true
-
-				TextLabelo.Parent = Frame
-				TextLabelo.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
-				TextLabelo.Position = UDim2.new(0, 0, 0.25, 0)
-				TextLabelo.Size = UDim2.new(0, 400, 0, 65)
-				TextLabelo.Font = Enum.Font.AmaticSC
-				TextLabelo.Text = "1. Stand still                     "
-				TextLabelo.TextColor3 = Color3.fromRGB(0, 0, 0)
-				TextLabelo.TextScaled = true
-				TextLabelo.TextSize = 40.000
-				TextLabelo.TextWrapped = true
-
-				TextLabeloo.Parent = Frame
-				TextLabeloo.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
-				TextLabeloo.Position = UDim2.new(0, 0, 0.44, 0)
-				TextLabeloo.Size = UDim2.new(0, 400, 0, 65)
-				TextLabeloo.Font = Enum.Font.AmaticSC
-				TextLabeloo.Text = "2.Press AutoFarm                "
-				TextLabeloo.TextColor3 = Color3.fromRGB(0, 0, 0)
-				TextLabeloo.TextScaled = true
-				TextLabeloo.TextSize = 45.000
-				TextLabeloo.TextWrapped = true
-
-				TextLabelooo.Parent = Frame
-				TextLabelooo.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
-				TextLabelooo.Position = UDim2.new(0, 0, 0.62, 0)
-				TextLabelooo.Size = UDim2.new(0, 400, 0, 65)
-				TextLabelooo.Font = Enum.Font.AmaticSC
-				TextLabelooo.Text = "3.Wait                                 "
-				TextLabelooo.TextColor3 = Color3.fromRGB(0, 0, 0)
-				TextLabelooo.TextScaled = true
-				TextLabelooo.TextSize = 37.500
-				TextLabelooo.TextWrapped = true
-
-				TextLabeloooo.Parent = Frame
-				TextLabeloooo.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
-				TextLabeloooo.Position = UDim2.new(0, 0, 0.8, 0)
-				TextLabeloooo.Size = UDim2.new(0, 400, 0, 70)
-				TextLabeloooo.Font = Enum.Font.AmaticSC
-				TextLabeloooo.Text = "4.done!                           "
-				TextLabeloooo.TextColor3 = Color3.fromRGB(0, 0, 0)
-				TextLabeloooo.TextScaled = true
-				TextLabeloooo.TextSize = 37.500
-				TextLabeloooo.TextWrapped = true
-
-				TextButton.Parent = Frame
-				TextButton.BackgroundColor3 = Color3.fromRGB(255, 30, 30)
-				TextButton.Position = UDim2.new(0, 350, 0, 0)
-				TextButton.Size = UDim2.new(0, 50, 0, 50)
-				TextButton.Font = Enum.Font.AmaticSC
-				TextButton.Text = "X"
-				TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
-				TextButton.TextScaled = true
-				TextButton.TextSize = 40.000
-				TextButton.TextWrapped = true
-
-				function delete()
-					for i,v in pairs(player.PlayerGui:GetChildren()) do
-						if v.Name == "ScreenGui" then
-							v:Destroy()
-						end
-					end
-				end
-				TextButton.MouseButton1Click:connect(delete)
-			end)
-
-			window1:Button("Upgrade Performance",function()
-				local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
-				local g = game
-				local w = g.Workspace
-				local l = g.Lighting
-				local t = w.Terrain
-				t.WaterWaveSize = 0
-				t.WaterWaveSpeed = 0
-				t.WaterReflectance = 0
-				t.WaterTransparency = 0
-				l.GlobalShadows = false
-				l.FogEnd = 9e9
-				l.Brightness = 0
-				settings().Rendering.QualityLevel = "Level01"
-				for i,v in pairs(g:GetDescendants()) do
-					if v:IsA("Part") or v:IsA("Union") or v:IsA("MeshPart") then
-						v.Material = "Plastic"
-						v.Reflectance = 0
-					elseif v:IsA("Decal") and decalsyeeted then 
-						v.Transparency = 1
-					elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then 
-						v.Lifetime = NumberRange.new(0)
-					end
-				end
-			end)
-
-			window1:Button("Remove Effects / Particles",function()
-				game:GetService("Players").LocalPlayer.PlayerScripts.EFFECTS:Destroy()
-			end)
-
-			local function QUEST()
-				for i,v in pairs(workspace.missiongivers:GetChildren()) do
-					if v.Name == "" and v:FindFirstChild("Head") then
-						local TALK = v:FindFirstChild("Talk")
-						if v:FindFirstChild("Head") and v.Head:FindFirstChild("givemission") and v.Head.givemission.Enabled and v.Head.givemission:FindFirstChild("color").Image == "http://www.roblox.com/asset/?id=5459241648" --[[or v.Head.givemission.color.Image == "http://www.roblox.com/asset/?id=5459241799"]] then
-							if v:WaitForChild("Talk"):WaitForChild("mobname") then
-								local getmission = v:FindFirstChild("HumanoidRootPart")
-								local clienttalk = v:FindFirstChild("CLIENTTALK")
-								repeat wait()
-										player.Character.HumanoidRootPart.CFrame=getmission.CFrame+Vector3.new(0,-7,0)
-										clienttalk:FireServer()
-										clienttalk:FireServer("accept")
-								until mission.Visible or not autooofarm
-							end
-						end
-					end
-				end
-			end
-
-			local function FARM()
-				for i,v in pairs(workspace.npc:GetChildren()) do
-					local mobname = string.split(mission.bg.name.Text,"Defeat ")[1]
-					if(string.find(mobname,"(s)")) then
-						mobname = string.gsub(mobname,"(s)","")
-					end
-					if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-						repeat
-							pcall(function()
-								v.Humanoid.Health = 0
-								game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
-								player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 0, 10)
-								game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
-								game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
-								game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
-								wait(.000000000000001)
-								v.Humanoid.Health = 0
-							end)
-						until not v:FindFirstChild("Humanoid") or mission.Visible == false or not autooofarm or not v
-					end
-				end
-			end
-
-			local function BOSSFARM()
-				for i,v in pairs(workspace.bossdropmission.missions:GetChildren()) do
-					if v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
-						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
-						local args = {[1] = game:GetService("Players").LocalPlayer}
-						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
-						wait()
-					end
-				end
-			end
-
-			local count
-			local function DISP()
-				count = 0
-				for i,v in pairs(workspace.missiongivers:GetChildren()) do
-					if v.Name == "" and v:FindFirstChild("Head") then
-						if v:FindFirstChild("Head") and v.Head:FindFirstChild("givemission") and v.Head.givemission.Enabled and v.Head.givemission:FindFirstChild("color") and v.Head.givemission.color.Image == "http://www.roblox.com/asset/?id=5459241648" then
-							count = count + 1
-						end
-					end
-				end
-			end
-
-			spawn(function()
-				while wait() do
-					if autooofarm or boss then
-						if mission.Visible == true then
-							FARM()
-							for i,v in pairs(workspace.npc:GetChildren()) do
-								if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-									repeat 
-									v.Humanoid.Health = 0 
-									v.Humanoid.Health = 0
-									v.Humanoid.Health = 0
-									v.Humanoid.Health = 0
-									v.Humanoid.Health = 0
-									until (not autoofarm and not boss) or v.Humanoid.Health == 0
-								end
-							end
-						else
-							if boss then
-								BOSSFARM()
-							end
-							if autooofarm then
-								if boss then
-									BOSSFARM()
-									wait(.1)
-									DISP()
-									wait(.1)
-									QUEST()
-								else
-									DISP()
-									wait(.1)
-									QUEST()
-								end
-							end
-						end
-					end
-				end
-			end)
-
-			spawn(function()
-				while wait() do
-					if autooofarm then
-						if count == 0 then
-							if QUEST() or FARM() then
-								wait(5.5)
-							else
-								repeat wait()
-									notify("Currently no missions avaliable")
-									wait(2)
-								until count > 0 or QUEST or FARM or not autooofarm
-							end
-						end
-					end
-				end
-			end)
-
-			local function SCROLLFARM()
-				for i,v in pairs(game.workspace.GLOBALTIME:GetChildren()) do
-					if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
-						local scrollA = v.sh:FindFirstChild("invoke")
-						print("SCROLL SPAWNED")
-						pcall(function()
-							player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
-							fireclickdetector(v.sh.ClickDetector)
-							scrollA:FireServer(game.Players.LocalPlayer)
-						end)
-					end
-				end
-			end
-			local function SCROLLFARM1()
-				for i,v in pairs(game.workspace:GetChildren()) do
-					if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
-						local scrollA = v.sh:FindFirstChild("invoke")
-						print("SCROLL SPAWNED in workspace")
-						notify("SCROLL SPAWNED in workspace")
-						pcall(function()
-							player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
-							fireclickdetector(v.sh.ClickDetector)
-							scrollA:FireServer(game.Players.LocalPlayer)
-						end)
-					end
-				end
-			end
-
-			spawn(function()
-				while wait() do
-					if scrollfarm then
-						repeat wait()
-							SCROLLFARM()
-							SCROLLFARM1()
-						until not scrollfarm
-					end
-				end
-			end)
-
-			local PRES = player.statz.prestige.maxlvlpres
-			local RANK = player.statz.prestige.rank
-			local RANKNUM = player.statz.prestige.number
-
-			spawn(function()
-				while wait() do
-					if RANKUPP and player.statz.lvl:FindFirstChild("lvl").Value == 1000 then
-						repeat wait()
-							game.Players.LocalPlayer.startevent:FireServer("rankup")
-						until player.statz.lvl:FindFirstChild("lvl").Value == 1 or not RANKUP
-					end
-				end
-			end)
-
-			window2:Label("Misc", Color3.fromRGB(127, 143, 166))
-
-			window2:Toggle("NPC Kill Aura",false,function(bool)
-				keel = bool
-			end)
-			game:GetService('RunService').Stepped:connect(function()
-				if keel then
-					NPCKEELAURA()
-				end
-			end)
-
-			window2:Label("Auto stats", Color3.fromRGB(127, 143, 166))
-
-			window2:Toggle("Auto Chi",false, function(bool)
-				auchi = bool
-			end)
-			game:GetService('RunService').Stepped:connect(function()
-				if auchi then
-					local args = {[1] = "addstat",[2] = "chakra",[3] = 18}
-					game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-					local args = {[1] = "addstat",[2] = "chakra",[3] = 1}
-					game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-					wait(.25)
-				end
-			end)
-			window2:Toggle("Auto Nin",false, function(bool)
-				aunin = bool
-			end)
-			game:GetService('RunService').Stepped:connect(function()
-				if aunin then
-					local args = {[1] = "addstat",[2] = "ninjutsu",[3] = 18}
-					game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-					local args = {[1] = "addstat",[2] = "ninjutsu",[3] = 1}
-					game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-					wait(.25)
-				end
-			end)
-			window2:Toggle("Auto Tai",false, function(bool)
-				autai = bool
-			end)
-			game:GetService('RunService').Stepped:connect(function()
-				if autai then
-					local args = {[1] = "addstat",[2] = "taijutsu",[3] = 18}
-					game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-					local args = {[1] = "addstat",[2] = "taijutsu",[3] = 1}
-					game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-					wait(.25)
-				end
-			end)
-			window2:Toggle("Auto Health",false, function(bool)
-				auhp = bool
-			end)
-			game:GetService('RunService').Stepped:connect(function()
-				if auhp then
-					local args = {[1] = "addstat",[2] = "health",[3] = 18}
-					game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-					local args = {[1] = "addstat",[2] = "health",[3] = 1}
-					game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-					wait(.25)
-				end
-			end)
-
-			window2:Label("Pls ignore", Color3.fromRGB(127, 143, 166))
-
-			window2:Button("Activate Black screen",function()
-				local player = game.Players.LocalPlayer
-				local ScreenGui = Instance.new("ScreenGui")
-				local Frame = Instance.new("Frame")
-
-				ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-
-				Frame.Parent = ScreenGui
-				Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-				Frame.Position = UDim2.new(0, 0, -0.3, 0)
-				Frame.Size = UDim2.new(1, 330, 1.3, 150)
-			end)
-
-			window2:Button("Deactivate Black screen",function()
-				for i,v in pairs(player.PlayerGui:GetChildren()) do
-					if v.Name == "ScreenGui" then
-						v:Destroy()
-					end
-				end
-			end)
-
-			window2:Label("DANGER", Color3.fromRGB(127, 143, 166))
-			window2:Button("Reset Script",function()
-
-				local player = game.Players.LocalPlayer
-				local ScreenGui = Instance.new("ScreenGui")
-				local Frame = Instance.new("Frame")
-				local TextLabel = Instance.new("TextLabel")
-				local TextButton = Instance.new("TextButton")
-				local TextButton2 = Instance.new("TextButton")
-
-
-				ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-
-				Frame.Parent = ScreenGui
-				Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-				Frame.Position = UDim2.new(0.36, 0, 0.20, 0)
-				Frame.Size = UDim2.new(0, 330, 0, 150)
-
-				TextLabel.Parent = Frame
-				TextLabel.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
-				TextLabel.Size = UDim2.new(0, 330, 0, 90)
-				TextLabel.Font = Enum.Font.AmaticSC
-				TextLabel.Text = "Are you sure you want to reset script?"
-				TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
-				TextLabel.TextScaled = true
-				TextLabel.TextSize = 35.000
-				TextLabel.TextWrapped = true
-
-				TextButton.Parent = Frame
-				TextButton.BackgroundColor3 = Color3.fromRGB(0, 230, 30)
-				TextButton.Position = UDim2.new(0, 0, 0.600000006, 0)
-				TextButton.Size = UDim2.new(0, 165, 0, 60)
-				TextButton.Font = Enum.Font.AmaticSC
-				TextButton.Text = "Yes"
-				TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
-				TextButton.TextScaled = true
-				TextButton.TextSize = 40.000
-				TextButton.TextWrapped = true
-
-				function ResetYES()
-					for i,v in pairs(player.PlayerGui:GetChildren()) do
-						if v.Name == "ScreenGui" then
-							v:Destroy()
-						end
-					end
-					wait()
-					RANKUPP = false
-					autoofarm = false
-					boss = false
-					scrollfarm = false
-					keel = false
-					aunin = false
-					auchi = false
-					autai = false 
-					auhp = false
-					wait()
-					library:Destroy()
-					notify("Do not reset autofarm script more than once!")
-					local player = game.Players.LocalPlayer
+			wait()
+			RANKUPP = false
+			autofarm = false
+			boss = false
+			scrollfarm = false
+			keel = false
+			aunin = false
+			auchi = false
+			autai = false 
+			auhp = false
+			wait()
+			library:Destroy()
+			notify("Do not reset autofarm script more than once!")
+			local player = game.Players.LocalPlayer
 					player.Character:BreakJoints()
 					wait(11)
-					loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain"))()
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain"))()
+		end
+		TextButton.MouseButton1Click:connect(ResetYES)
+
+		TextButton2.Parent = Frame
+		TextButton2.BackgroundColor3 = Color3.fromRGB(260, 30, 30)
+		TextButton2.Position = UDim2.new(0.5, 0, 0.600000006, 0)
+		TextButton2.Size = UDim2.new(0, 165, 0, 60)
+		TextButton2.Font = Enum.Font.AmaticSC
+		TextButton2.Text = "no"
+		TextButton2.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextButton2.TextSize = 40.000
+		TextButton2.TextWrapped = true
+
+		function ResetNO()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
 				end
-				TextButton.MouseButton1Click:connect(ResetYES)
+			end
+		end
+		TextButton2.MouseButton1Click:connect(ResetNO)
+	end)
+	
+	window3:Label("Made by NoobieDoge", Color3.fromRGB(127, 143, 166))
 
-				TextButton2.Parent = Frame
-				TextButton2.BackgroundColor3 = Color3.fromRGB(260, 30, 30)
-				TextButton2.Position = UDim2.new(0.5, 0, 0.600000006, 0)
-				TextButton2.Size = UDim2.new(0, 165, 0, 60)
-				TextButton2.Font = Enum.Font.AmaticSC
-				TextButton2.Text = "no"
-				TextButton2.TextColor3 = Color3.fromRGB(0, 0, 0)
-				TextButton2.TextSize = 40.000
-				TextButton2.TextWrapped = true
+	window3:Button("Copy Discord Link",function()
+		setclipboard("https://discord.gg/P2CeRjvTDt")
+		notify("Discord link copied to clipboard")
+	end)
+end)
 
-				function ResetNO()
-					for i,v in pairs(player.PlayerGui:GetChildren()) do
-						if v.Name == "ScreenGui" then
-							v:Destroy()
+TextButton_7.MouseButton1Click:connect(function()
+	for i,v in pairs(player.PlayerGui:GetChildren()) do
+		if v.Name == "ScreenGui" then
+			v:Destroy()
+		end
+	end
+	repeat wait() until game:IsLoaded()
+	--Loading GUI
+	local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20script%20gui"))()
+	local window1 = library:Window("AutoFarm - DogeHub")
+	local window2 = library:Window("Others")
+	local window3 = library:Window("Credits")
+
+	library:Keybind("RightControl")
+
+	window1:Label("NIGHT = NO QUESTS", Color3.fromRGB(127, 143, 166))
+
+	local autoofarm
+	window1:Toggle("Auto Farm",false, function(bool)
+		autoofarm = bool
+		local platform = Instance.new("Part", player.Character)
+		platform.Anchored = true
+		platform.Transparency = 1
+		platform.Size = Vector3.new(6, 1, 6)
+
+		local connection
+		connection = game:GetService("RunService").RenderStepped:connect(function()
+			if player.Character:FindFirstChild("HumanoidRootPart") then
+				platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -1.8, 0)
+			else
+				connection:Disconnect()
+			end
+		end)
+		game:GetService('RunService').Stepped:connect(function()
+			if autoofarm ~= true then
+				platform:Destroy()
+			end
+		end)
+	end)
+
+	local boss
+	window1:Toggle("Boss Farm",false, function(bool)
+		boss = bool
+	end)
+
+	local RANKUPP
+	window1:Toggle("Auto Rank",false, function(bool)
+		RANKUPP = bool
+	end)
+
+	local scrollfarm
+	window1:Toggle("Scroll Snipe",false, function(bool)
+		scrollfarm = bool
+	end)
+
+	window1:Button("Infinite MD",function()
+	INFMDON()
+	end)
+
+	local disp = window1:Label("If autofarm stuck:", Color3.fromRGB(127, 143, 166))
+	local qdone = window1:Label("In village = bugged", Color3.fromRGB(127, 143, 166))
+	local qdone = window1:Label("Outside village = no missions", Color3.fromRGB(127, 143, 166))
+
+	window1:Button("Tutorial",function()
+		local player = game.Players.LocalPlayer
+		local ScreenGui = Instance.new("ScreenGui")
+		local Frame = Instance.new("Frame")
+		local TextLabel = Instance.new("TextLabel")
+		local TextLabelo = Instance.new("TextLabel")
+		local TextLabeloo = Instance.new("TextLabel")
+		local TextLabelooo = Instance.new("TextLabel")
+		local TextLabeloooo = Instance.new("TextLabel")
+		local TextButton = Instance.new("TextButton")
+
+		ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+		Frame.Parent = ScreenGui
+		Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Frame.Position = UDim2.new(0.5, 0, 0.25, 0)
+		Frame.Size = UDim2.new(0, 400, 0, 350)
+
+		TextLabel.Parent = Frame
+		TextLabel.BackgroundColor3 = Color3.fromRGB(217, 112, 217)
+		TextLabel.Size = UDim2.new(0, 400, 0, 90)
+		TextLabel.Font = Enum.Font.AmaticSC
+		TextLabel.Text = "To run AutoFarm Script:        "
+		TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabel.TextScaled = false
+		TextLabel.TextSize = 60.000
+		TextLabel.TextWrapped = true
+
+		TextLabelo.Parent = Frame
+		TextLabelo.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
+		TextLabelo.Position = UDim2.new(0, 0, 0.25, 0)
+		TextLabelo.Size = UDim2.new(0, 400, 0, 65)
+		TextLabelo.Font = Enum.Font.AmaticSC
+		TextLabelo.Text = "1. Activate a beast mode (Except Tyn and Rab) "
+		TextLabelo.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabelo.TextScaled = true
+		TextLabelo.TextSize = 40.000
+		TextLabelo.TextWrapped = true
+
+		TextLabeloo.Parent = Frame
+		TextLabeloo.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
+		TextLabeloo.Position = UDim2.new(0, 0, 0.44, 0)
+		TextLabeloo.Size = UDim2.new(0, 400, 0, 65)
+		TextLabeloo.Font = Enum.Font.AmaticSC
+		TextLabeloo.Text = "2.Type '!spirit', Next press ']'                 "
+		TextLabeloo.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabeloo.TextScaled = false
+		TextLabeloo.TextSize = 45.000
+		TextLabeloo.TextWrapped = true
+
+		TextLabelooo.Parent = Frame
+		TextLabelooo.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
+		TextLabelooo.Position = UDim2.new(0, 0, 0.62, 0)
+		TextLabelooo.Size = UDim2.new(0, 400, 0, 65)
+		TextLabelooo.Font = Enum.Font.AmaticSC
+		TextLabelooo.Text = "3.Turn on AutoFarm, Infinite MD and Spam E "
+		TextLabelooo.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabelooo.TextScaled = false
+		TextLabelooo.TextSize = 37.500
+		TextLabelooo.TextWrapped = true
+
+		TextLabeloooo.Parent = Frame
+		TextLabeloooo.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
+		TextLabeloooo.Position = UDim2.new(0, 0, 0.8, 0)
+		TextLabeloooo.Size = UDim2.new(0, 400, 0, 70)
+		TextLabeloooo.Font = Enum.Font.AmaticSC
+		TextLabeloooo.Text = "4.DONE!                                                    "
+		TextLabeloooo.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabeloooo.TextScaled = false
+		TextLabeloooo.TextSize = 45.000
+		TextLabeloooo.TextWrapped = true
+
+		TextButton.Parent = Frame
+		TextButton.BackgroundColor3 = Color3.fromRGB(255, 30, 30)
+		TextButton.Position = UDim2.new(0, 350, 0, 0)
+		TextButton.Size = UDim2.new(0, 50, 0, 50)
+		TextButton.Font = Enum.Font.AmaticSC
+		TextButton.Text = "X"
+		TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextButton.TextScaled = true
+		TextButton.TextSize = 40.000
+		TextButton.TextWrapped = true
+
+		function delete()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+		end
+		TextButton.MouseButton1Click:connect(delete)
+	end)
+
+	window1:Button("Upgrade Performance",function()
+		local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
+		local g = game
+		local w = g.Workspace
+		local l = g.Lighting
+		local t = w.Terrain
+		t.WaterWaveSize = 0
+		t.WaterWaveSpeed = 0
+		t.WaterReflectance = 0
+		t.WaterTransparency = 0
+		l.GlobalShadows = false
+		l.FogEnd = 9e9
+		l.Brightness = 0
+		settings().Rendering.QualityLevel = "Level01"
+		for i,v in pairs(g:GetDescendants()) do
+			if v:IsA("Part") or v:IsA("Union") or v:IsA("MeshPart") then
+				v.Material = "Plastic"
+				v.Reflectance = 0
+			elseif v:IsA("Decal") and decalsyeeted then 
+				v.Transparency = 1
+			elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then 
+				v.Lifetime = NumberRange.new(0)
+			end
+		end
+	end)
+
+	window1:Button("Remove Effects / Particles",function()
+		game:GetService("Players").LocalPlayer.PlayerScripts.EFFECTS:Destroy()
+	end)
+
+	local function QUEST()
+		for i,v in pairs(workspace.missiongivers:GetChildren()) do
+			if v.Name == "" and v:FindFirstChild("Head") then
+				game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position+Vector3.new(0,350,0))  
+				local TALK = v:FindFirstChild("Talk")
+				if v:FindFirstChild("Head") and v.Head:FindFirstChild("givemission") and v.Head.givemission.Enabled and v.Head.givemission:FindFirstChild("color").Image == "http://www.roblox.com/asset/?id=5459241648" --[[or v.Head.givemission.color.Image == "http://www.roblox.com/asset/?id=5459241799"]] then
+					if v:WaitForChild("Talk"):WaitForChild("mobname") then
+						local getmission = v:FindFirstChild("HumanoidRootPart")
+						local clienttalk = v:FindFirstChild("CLIENTTALK")
+						repeat wait()
+							player.Character.HumanoidRootPart.CFrame=getmission.CFrame+Vector3.new(0,-7,0)
+							clienttalk:FireServer()
+							clienttalk:FireServer("accept")
+						until mission.Visible or not autoofarm
+					end
+				end
+			end
+		end
+	end
+
+	local function FARM()
+		for i,v in pairs(workspace.npc:GetChildren()) do
+			local mobname = string.split(mission.bg.name.Text,"Defeat ")[1]
+			if(string.find(mobname,"(s)")) then
+				mobname = string.gsub(mobname,"(s)","")
+			end
+			if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+				player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 15, 0)
+				repeat wait()
+					pcall(function()
+						game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+						v.Humanoid.Health = 0
+						pcall(function()
+							player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 17, 10)
+							game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+							game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+							game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+							game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+							game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+							game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+							game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+							game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+							v.Humanoid.Health = 0
+						end)
+					end)
+				until not v:FindFirstChild("Humanoid") or mission.Visible == false or not autoofarm or not v
+			end
+		end
+	end
+
+	local function BOSSFARM()
+		for i,v in pairs(workspace.bossdropmission.missions:GetChildren()) do
+			if v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
+				player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
+				local args = {[1] = game:GetService("Players").LocalPlayer}
+				v.missiongiver.CLIENTTALK:FireServer(unpack(args))
+				wait()
+			end
+		end
+	end
+
+	local count
+	local function DISP()
+		count = 0
+		for i,v in pairs(workspace.missiongivers:GetChildren()) do
+			if v.Name == "" and v:FindFirstChild("Head") then
+				if v:FindFirstChild("Head") and v.Head:FindFirstChild("givemission") and v.Head.givemission.Enabled and v.Head.givemission:FindFirstChild("color") and v.Head.givemission.color.Image == "http://www.roblox.com/asset/?id=5459241648" then
+					count = count + 1
+				end
+			end
+		end
+	end
+
+	spawn(function()
+		while wait() do
+			if autoofarm or boss then
+				if mission.Visible == true then
+					FARM()
+					for i,v in pairs(workspace.npc:GetChildren()) do
+						if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+							repeat 
+								v.Humanoid.Health = 0 
+								v.Humanoid.Health = 0
+								v.Humanoid.Health = 0
+								v.Humanoid.Health = 0
+								v.Humanoid.Health = 0
+							until (not autoofarm and not boss) or v.Humanoid.Health == 0
+						end
+					end
+				else
+					if boss then
+						BOSSFARM()
+					end
+					if autoofarm then
+						if boss then
+							BOSSFARM()
+							wait(.1)
+							DISP()
+							wait(.1)
+							QUEST()
+						else
+							DISP()
+							wait(.1)
+							QUEST()
 						end
 					end
 				end
-				TextButton2.MouseButton1Click:connect(ResetNO)
-			end)
-
-			window3:Label("Made by NoobieDoge", Color3.fromRGB(127, 143, 166))
-
-			window3:Button("Copy Discord Link",function()
-				notify("Discord link copied to clipboard")
-				setclipboard("https://discord.gg/P2CeRjvTDt")
-			end)
+			end
 		end
-		TextButton_3.MouseButton1Click:connect(NOBEASTORRODS)
+	end)
 
-		TextButton_4.Parent = Frame
-		TextButton_4.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
-		TextButton_4.Position = UDim2.new(0, 0, 0.85, 0)
-		TextButton_4.Size = UDim2.new(0, 200, 0, 40)
-		TextButton_4.Font = Enum.Font.TitilliumWeb
-		TextButton_4.Text = "Return"
-		TextButton_4.TextColor3 = Color3.fromRGB(200, 200, 200)
-		TextButton_4.TextScaled = true
-		TextButton_4.TextSize = 35.000
-		TextButton_4.TextWrapped = true
-
-		function RETURN()
-			for i,v in pairs(player.PlayerGui:GetChildren()) do
-				if v.Name == "ScreenGui" then
-					v:Destroy()
+	spawn(function()
+		while wait() do
+			if autoofarm then
+				if count == 0 then
+					if QUEST() or FARM() or BOSSFARM() then
+						wait(5.5)
+					else
+						repeat wait()
+							notify("Currently no missions avaliable")
+							wait(2)
+						until count > 0 or QUEST or FARM or BOSSFARM() or not autoofarm
+					end
 				end
 			end
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain"))()
 		end
-		TextButton_4.MouseButton1Click:connect(RETURN)
-		end
-		TextButton_2.MouseButton1Click:connect(LEVELNRANKS)
+	end)
 
-		TextButton_24.Parent = Frame
-		TextButton_24.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
-		TextButton_24.Position = UDim2.new(0, 0, 1.00000024, 0)
-		TextButton_24.Size = UDim2.new(0, 200, 0, 40)
-		TextButton_24.Font = Enum.Font.TitilliumWeb
-		TextButton_24.Text = "Return"
-		TextButton_24.TextColor3 = Color3.fromRGB(200, 200, 200)
-		TextButton_24.TextScaled = true
-		TextButton_24.TextSize = 35.000
-		TextButton_24.TextWrapped = false
-
-		function Return()
-			for i,v in pairs(player.PlayerGui:GetChildren()) do
-				if v.Name == "ScreenGui" then
-					v:Destroy()
-				end
+	local function SCROLLFARM()
+		for i,v in pairs(game.workspace.GLOBALTIME:GetChildren()) do
+			if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
+				local scrollA = v.sh:FindFirstChild("invoke")
+				print("SCROLL SPAWNED")
+				pcall(function()
+					player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
+					fireclickdetector(v.sh.ClickDetector)
+					scrollA:FireServer(game.Players.LocalPlayer)
+				end)
 			end
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain"))()
+		end
 	end
-	TextButton_24.MouseButton1Click:connect(Return)
-end
-TextButton_2.MouseButton1Click:connect(AUTOFARM)
+	local function SCROLLFARM1()
+		for i,v in pairs(game.workspace:GetChildren()) do
+			if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
+				local scrollA = v.sh:FindFirstChild("invoke")
+				print("SCROLL SPAWNED in workspace")
+				notify("SCROLL SPAWNED in workspace")
+				pcall(function()
+					player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
+					fireclickdetector(v.sh.ClickDetector)
+					scrollA:FireServer(game.Players.LocalPlayer)
+				end)
+			end
+		end
+	end
+
+	spawn(function()
+		while wait() do
+			if scrollfarm then
+				repeat wait()
+					SCROLLFARM()
+					SCROLLFARM1()
+				until not scrollfarm
+			end
+		end
+	end)
+
+	local PRES = player.statz.prestige.maxlvlpres
+	local RANK = player.statz.prestige.rank
+	local RANKNUM = player.statz.prestige.number
+
+	spawn(function()
+		while wait() do
+			if RANKUPP and player.statz.lvl:FindFirstChild("lvl").Value == 1000 then
+				repeat wait()
+					game.Players.LocalPlayer.startevent:FireServer("rankup")
+				until player.statz.lvl:FindFirstChild("lvl").Value == 1 or not RANKUP
+			end
+		end
+	end)
+
+	window2:Label("Misc", Color3.fromRGB(127, 143, 166))
+
+	window2:Toggle("NPC Kill Aura",false,function(bool)
+		keel = bool
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if keel then
+			NPCKEELAURA()
+		end
+	end)
+
+	window2:Label("Auto stats", Color3.fromRGB(127, 143, 166))
+
+	window2:Toggle("Auto Chi",false, function(bool)
+		auchi = bool
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if auchi then
+			local args = {[1] = "addstat",[2] = "chakra",[3] = 18}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			wait(.25)
+		end
+	end)
+	window2:Toggle("Auto Nin",false, function(bool)
+		aunin = bool
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if aunin then
+			local args = {[1] = "addstat",[2] = "ninjutsu",[3] = 18}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			wait(.25)
+		end
+	end)
+	window2:Toggle("Auto Tai",false, function(bool)
+		autai = bool
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if autai then
+			local args = {[1] = "addstat",[2] = "taijutsu",[3] = 18}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			wait(.25)
+		end
+	end)
+	window2:Toggle("Auto Health",false, function(bool)
+		auhp = bool
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if auhp then
+			local args = {[1] = "addstat",[2] = "health",[3] = 18}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			wait(.25)
+		end
+	end)
+
+	window2:Label("Pls ignore", Color3.fromRGB(127, 143, 166))
+	window2:Button("Activate Black screen",function()
+		local player = game.Players.LocalPlayer
+		local ScreenGui = Instance.new("ScreenGui")
+		local Frame = Instance.new("Frame")
+
+		ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+		Frame.Parent = ScreenGui
+		Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+		Frame.Position = UDim2.new(0, 0, -0.3, 0)
+		Frame.Size = UDim2.new(1, 330, 1.3, 150)
+	end)
+	window2:Button("Deactivate Black screen",function()
+		for i,v in pairs(player.PlayerGui:GetChildren()) do
+			if v.Name == "ScreenGui" then
+				v:Destroy()
+			end
+		end
+	end)
+
+	window2:Label("DANGER", Color3.fromRGB(127, 143, 166))
+	window2:Button("Reset Script",function()
+
+		local player = game.Players.LocalPlayer
+		local ScreenGui = Instance.new("ScreenGui")
+		local Frame = Instance.new("Frame")
+		local TextLabel = Instance.new("TextLabel")
+		local TextButton = Instance.new("TextButton")
+		local TextButton2 = Instance.new("TextButton")
+
+		ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+		Frame.Parent = ScreenGui
+		Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Frame.Position = UDim2.new(0.36, 0, 0.20, 0)
+		Frame.Size = UDim2.new(0, 330, 0, 150)
+
+		TextLabel.Parent = Frame
+		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
+		TextLabel.Size = UDim2.new(0, 330, 0, 90)
+		TextLabel.Font = Enum.Font.AmaticSC
+		TextLabel.Text = "Are you sure you want to reset script?"
+		TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabel.TextScaled = true
+		TextLabel.TextSize = 35.000
+		TextLabel.TextWrapped = true
+
+		TextButton.Parent = Frame
+		TextButton.BackgroundColor3 = Color3.fromRGB(0, 230, 30)
+		TextButton.Position = UDim2.new(0, 0, 0.600000006, 0)
+		TextButton.Size = UDim2.new(0, 165, 0, 60)
+		TextButton.Font = Enum.Font.AmaticSC
+		TextButton.Text = "Yes"
+		TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextButton.TextScaled = true
+		TextButton.TextSize = 40.000
+		TextButton.TextWrapped = true
+
+		function ResetYES()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+			wait()
+			E = false
+			RANKUPP = false
+			autoofarm = false
+			boss = false
+			scrollfarm = false
+			keel = false
+			aunin = false
+			auchi = false
+			autai = false 
+			auhp = false
+			wait()
+			library:Destroy()
+			notify("Do not reset autofarm script more than once!")
+			local player = game.Players.LocalPlayer
+					player.Character:BreakJoints()
+					wait(11)
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain"))()
+		end
+		TextButton.MouseButton1Click:connect(ResetYES)
+
+		TextButton2.Parent = Frame
+		TextButton2.BackgroundColor3 = Color3.fromRGB(260, 30, 30)
+		TextButton2.Position = UDim2.new(0.5, 0, 0.600000006, 0)
+		TextButton2.Size = UDim2.new(0, 165, 0, 60)
+		TextButton2.Font = Enum.Font.AmaticSC
+		TextButton2.Text = "no"
+		TextButton2.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextButton2.TextSize = 40.000
+		TextButton2.TextWrapped = true
+
+		function ResetNO()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+		end
+		TextButton2.MouseButton1Click:connect(ResetNO)
+	end)
+
+	window3:Label("Made by NoobieDoge", Color3.fromRGB(127, 143, 166))
+
+	window3:Button("Copy Discord Link",function()
+		setclipboard("https://discord.gg/P2CeRjvTDt")
+		notify("Discord link copied to clipboard")
+	end)
+end)
+
+TextButton_8.MouseButton1Click:connect(function()
+	for i,v in pairs(player.PlayerGui:GetChildren()) do
+		if v.Name == "ScreenGui" then
+			v:Destroy()
+		end
+	end
+	repeat wait() until game:IsLoaded()
+	--Loading GUI
+	local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20script%20gui"))()
+	local window1 = library:Window("AutoFarm - DogeHub")
+	local window2 = library:Window("Others")
+	local window3 = library:Window("Credits")
+
+	library:Keybind("RightControl")
+
+	window1:Label("NIGHT = NO QUESTS", Color3.fromRGB(127, 143, 166))
+
+	local autooofarm
+	window1:Toggle("Auto Farm",false, function(bool)
+		autooofarm = bool
+		local platform = Instance.new("Part", player.Character)
+		platform.Anchored = true
+		platform.Transparency = 1
+		platform.Size = Vector3.new(6, 1, 6)
+
+		local connection
+		connection = game:GetService("RunService").RenderStepped:connect(function()
+			if player.Character:FindFirstChild("HumanoidRootPart") then
+				platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -1.8, 0)
+			else
+				connection:Disconnect()
+			end
+		end)
+		spawn(function ()
+			while wait() do
+				if autooofarm ~= true then
+					platform:Destroy()
+				end
+			end
+		end)
+	end)
+
+	local boss
+	window1:Toggle("Boss Farm",false, function(bool)
+		boss = bool
+	end)
+
+	local RANKUPP
+	window1:Toggle("Auto Rank",false, function(bool)
+		RANKUPP = bool
+	end)
+
+	local scrollfarm
+	window1:Toggle("Scroll Snipe",false, function(bool)
+		scrollfarm = bool
+	end)
+
+	window1:Label("If autofarm stuck:", Color3.fromRGB(127, 143, 166))
+	window1:Label("In village - bugged", Color3.fromRGB(127, 143, 166))
+	window1:Label("Outside village = no missions", Color3.fromRGB(127, 143, 166))
+
+	window1:Button("Tutorial",function()
+		local player = game.Players.LocalPlayer
+		local ScreenGui = Instance.new("ScreenGui")
+		local Frame = Instance.new("Frame")
+		local TextLabel = Instance.new("TextLabel")
+		local TextLabelo = Instance.new("TextLabel")
+		local TextLabeloo = Instance.new("TextLabel")
+		local TextLabelooo = Instance.new("TextLabel")
+		local TextLabeloooo = Instance.new("TextLabel")
+		local TextButton = Instance.new("TextButton")
+
+
+		ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+		Frame.Parent = ScreenGui
+		Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Frame.Position = UDim2.new(0.5, 0, 0.25, 0)
+		Frame.Size = UDim2.new(0, 400, 0, 350)
+
+		TextLabel.Parent = Frame
+		TextLabel.BackgroundColor3 = Color3.fromRGB(217, 112, 217)
+		TextLabel.Size = UDim2.new(0, 400, 0, 90)
+		TextLabel.Font = Enum.Font.AmaticSC
+		TextLabel.Text = "To run AutoFarm Script:        "
+		TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabel.TextScaled = false
+		TextLabel.TextSize = 60.000
+		TextLabel.TextWrapped = true
+
+		TextLabelo.Parent = Frame
+		TextLabelo.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
+		TextLabelo.Position = UDim2.new(0, 0, 0.25, 0)
+		TextLabelo.Size = UDim2.new(0, 400, 0, 65)
+		TextLabelo.Font = Enum.Font.AmaticSC
+		TextLabelo.Text = "1. Stand still                     "
+		TextLabelo.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabelo.TextScaled = true
+		TextLabelo.TextSize = 40.000
+		TextLabelo.TextWrapped = true
+
+		TextLabeloo.Parent = Frame
+		TextLabeloo.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
+		TextLabeloo.Position = UDim2.new(0, 0, 0.44, 0)
+		TextLabeloo.Size = UDim2.new(0, 400, 0, 65)
+		TextLabeloo.Font = Enum.Font.AmaticSC
+		TextLabeloo.Text = "2.Press AutoFarm                "
+		TextLabeloo.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabeloo.TextScaled = true
+		TextLabeloo.TextSize = 45.000
+		TextLabeloo.TextWrapped = true
+
+		TextLabelooo.Parent = Frame
+		TextLabelooo.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
+		TextLabelooo.Position = UDim2.new(0, 0, 0.62, 0)
+		TextLabelooo.Size = UDim2.new(0, 400, 0, 65)
+		TextLabelooo.Font = Enum.Font.AmaticSC
+		TextLabelooo.Text = "3.Wait                                 "
+		TextLabelooo.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabelooo.TextScaled = true
+		TextLabelooo.TextSize = 37.500
+		TextLabelooo.TextWrapped = true
+
+		TextLabeloooo.Parent = Frame
+		TextLabeloooo.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
+		TextLabeloooo.Position = UDim2.new(0, 0, 0.8, 0)
+		TextLabeloooo.Size = UDim2.new(0, 400, 0, 70)
+		TextLabeloooo.Font = Enum.Font.AmaticSC
+		TextLabeloooo.Text = "4.done!                           "
+		TextLabeloooo.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabeloooo.TextScaled = true
+		TextLabeloooo.TextSize = 37.500
+		TextLabeloooo.TextWrapped = true
+
+		TextButton.Parent = Frame
+		TextButton.BackgroundColor3 = Color3.fromRGB(255, 30, 30)
+		TextButton.Position = UDim2.new(0, 350, 0, 0)
+		TextButton.Size = UDim2.new(0, 50, 0, 50)
+		TextButton.Font = Enum.Font.AmaticSC
+		TextButton.Text = "X"
+		TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextButton.TextScaled = true
+		TextButton.TextSize = 40.000
+		TextButton.TextWrapped = true
+
+		function delete()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+		end
+		TextButton.MouseButton1Click:connect(delete)
+	end)
+
+	window1:Button("Upgrade Performance",function()
+		local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
+		local g = game
+		local w = g.Workspace
+		local l = g.Lighting
+		local t = w.Terrain
+		t.WaterWaveSize = 0
+		t.WaterWaveSpeed = 0
+		t.WaterReflectance = 0
+		t.WaterTransparency = 0
+		l.GlobalShadows = false
+		l.FogEnd = 9e9
+		l.Brightness = 0
+		settings().Rendering.QualityLevel = "Level01"
+		for i,v in pairs(g:GetDescendants()) do
+			if v:IsA("Part") or v:IsA("Union") or v:IsA("MeshPart") then
+				v.Material = "Plastic"
+				v.Reflectance = 0
+			elseif v:IsA("Decal") and decalsyeeted then 
+				v.Transparency = 1
+			elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then 
+				v.Lifetime = NumberRange.new(0)
+			end
+		end
+	end)
+
+	window1:Button("Remove Effects / Particles",function()
+		game:GetService("Players").LocalPlayer.PlayerScripts.EFFECTS:Destroy()
+	end)
+
+	local function QUEST()
+		for i,v in pairs(workspace.missiongivers:GetChildren()) do
+			if v.Name == "" and v:FindFirstChild("Head") then
+				local TALK = v:FindFirstChild("Talk")
+				if v:FindFirstChild("Head") and v.Head:FindFirstChild("givemission") and v.Head.givemission.Enabled and v.Head.givemission:FindFirstChild("color").Image == "http://www.roblox.com/asset/?id=5459241648" --[[or v.Head.givemission.color.Image == "http://www.roblox.com/asset/?id=5459241799"]] then
+					if v:WaitForChild("Talk"):WaitForChild("mobname") then
+						local getmission = v:FindFirstChild("HumanoidRootPart")
+						local clienttalk = v:FindFirstChild("CLIENTTALK")
+						repeat wait()
+								player.Character.HumanoidRootPart.CFrame=getmission.CFrame+Vector3.new(0,-7,0)
+								clienttalk:FireServer()
+								clienttalk:FireServer("accept")
+						until mission.Visible or not autooofarm
+					end
+				end
+			end
+		end
+	end
+
+	local function FARM()
+		for i,v in pairs(workspace.npc:GetChildren()) do
+			local mobname = string.split(mission.bg.name.Text,"Defeat ")[1]
+			if(string.find(mobname,"(s)")) then
+				mobname = string.gsub(mobname,"(s)","")
+			end
+			if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+				repeat
+					pcall(function()
+						v.Humanoid.Health = 0
+						game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+						player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 0, 10)
+						game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+						game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+						game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
+						wait(.000000000000001)
+						v.Humanoid.Health = 0
+					end)
+				until not v:FindFirstChild("Humanoid") or mission.Visible == false or not autooofarm or not v
+			end
+		end
+	end
+
+	local function BOSSFARM()
+		for i,v in pairs(workspace.bossdropmission.missions:GetChildren()) do
+			if v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
+				player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
+				local args = {[1] = game:GetService("Players").LocalPlayer}
+				v.missiongiver.CLIENTTALK:FireServer(unpack(args))
+				wait()
+			end
+		end
+	end
+
+	local count
+	local function DISP()
+		count = 0
+		for i,v in pairs(workspace.missiongivers:GetChildren()) do
+			if v.Name == "" and v:FindFirstChild("Head") then
+				if v:FindFirstChild("Head") and v.Head:FindFirstChild("givemission") and v.Head.givemission.Enabled and v.Head.givemission:FindFirstChild("color") and v.Head.givemission.color.Image == "http://www.roblox.com/asset/?id=5459241648" then
+					count = count + 1
+				end
+			end
+		end
+	end
+
+	spawn(function()
+		while wait() do
+			if autooofarm or boss then
+				if mission.Visible == true then
+					FARM()
+					for i,v in pairs(workspace.npc:GetChildren()) do
+						if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+							repeat 
+							v.Humanoid.Health = 0 
+							v.Humanoid.Health = 0
+							v.Humanoid.Health = 0
+							v.Humanoid.Health = 0
+							v.Humanoid.Health = 0
+							until (not autoofarm and not boss) or v.Humanoid.Health == 0
+						end
+					end
+				else
+					if boss then
+						BOSSFARM()
+					end
+					if autooofarm then
+						if boss then
+							BOSSFARM()
+							wait(.1)
+							DISP()
+							wait(.1)
+							QUEST()
+						else
+							DISP()
+							wait(.1)
+							QUEST()
+						end
+					end
+				end
+			end
+		end
+	end)
+
+	spawn(function()
+		while wait() do
+			if autooofarm then
+				if count == 0 then
+					if QUEST() or FARM() then
+						wait(5.5)
+					else
+						repeat wait()
+							notify("Currently no missions avaliable")
+							wait(2)
+						until count > 0 or QUEST or FARM or not autooofarm
+					end
+				end
+			end
+		end
+	end)
+
+	local function SCROLLFARM()
+		for i,v in pairs(game.workspace.GLOBALTIME:GetChildren()) do
+			if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
+				local scrollA = v.sh:FindFirstChild("invoke")
+				print("SCROLL SPAWNED")
+				pcall(function()
+					player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
+					fireclickdetector(v.sh.ClickDetector)
+					scrollA:FireServer(game.Players.LocalPlayer)
+				end)
+			end
+		end
+	end
+	local function SCROLLFARM1()
+		for i,v in pairs(game.workspace:GetChildren()) do
+			if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
+				local scrollA = v.sh:FindFirstChild("invoke")
+				print("SCROLL SPAWNED in workspace")
+				notify("SCROLL SPAWNED in workspace")
+				pcall(function()
+					player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
+					fireclickdetector(v.sh.ClickDetector)
+					scrollA:FireServer(game.Players.LocalPlayer)
+				end)
+			end
+		end
+	end
+
+	spawn(function()
+		while wait() do
+			if scrollfarm then
+				repeat wait()
+					SCROLLFARM()
+					SCROLLFARM1()
+				until not scrollfarm
+			end
+		end
+	end)
+
+	local PRES = player.statz.prestige.maxlvlpres
+	local RANK = player.statz.prestige.rank
+	local RANKNUM = player.statz.prestige.number
+
+	spawn(function()
+		while wait() do
+			if RANKUPP and player.statz.lvl:FindFirstChild("lvl").Value == 1000 then
+				repeat wait()
+					game.Players.LocalPlayer.startevent:FireServer("rankup")
+				until player.statz.lvl:FindFirstChild("lvl").Value == 1 or not RANKUP
+			end
+		end
+	end)
+
+	window2:Label("Misc", Color3.fromRGB(127, 143, 166))
+
+	window2:Toggle("NPC Kill Aura",false,function(bool)
+		keel = bool
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if keel then
+			NPCKEELAURA()
+		end
+	end)
+
+	window2:Label("Auto stats", Color3.fromRGB(127, 143, 166))
+
+	window2:Toggle("Auto Chi",false, function(bool)
+		auchi = bool
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if auchi then
+			local args = {[1] = "addstat",[2] = "chakra",[3] = 18}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			local args = {[1] = "addstat",[2] = "chakra",[3] = 1}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			wait(.25)
+		end
+	end)
+	window2:Toggle("Auto Nin",false, function(bool)
+		aunin = bool
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if aunin then
+			local args = {[1] = "addstat",[2] = "ninjutsu",[3] = 18}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			local args = {[1] = "addstat",[2] = "ninjutsu",[3] = 1}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			wait(.25)
+		end
+	end)
+	window2:Toggle("Auto Tai",false, function(bool)
+		autai = bool
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if autai then
+			local args = {[1] = "addstat",[2] = "taijutsu",[3] = 18}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			local args = {[1] = "addstat",[2] = "taijutsu",[3] = 1}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			wait(.25)
+		end
+	end)
+	window2:Toggle("Auto Health",false, function(bool)
+		auhp = bool
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if auhp then
+			local args = {[1] = "addstat",[2] = "health",[3] = 18}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			local args = {[1] = "addstat",[2] = "health",[3] = 1}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			wait(.25)
+		end
+	end)
+
+	window2:Label("Pls ignore", Color3.fromRGB(127, 143, 166))
+
+	window2:Button("Activate Black screen",function()
+		local player = game.Players.LocalPlayer
+		local ScreenGui = Instance.new("ScreenGui")
+		local Frame = Instance.new("Frame")
+
+		ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+		Frame.Parent = ScreenGui
+		Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+		Frame.Position = UDim2.new(0, 0, -0.3, 0)
+		Frame.Size = UDim2.new(1, 330, 1.3, 150)
+	end)
+
+	window2:Button("Deactivate Black screen",function()
+		for i,v in pairs(player.PlayerGui:GetChildren()) do
+			if v.Name == "ScreenGui" then
+				v:Destroy()
+			end
+		end
+	end)
+
+	window2:Label("DANGER", Color3.fromRGB(127, 143, 166))
+	window2:Button("Reset Script",function()
+
+		local player = game.Players.LocalPlayer
+		local ScreenGui = Instance.new("ScreenGui")
+		local Frame = Instance.new("Frame")
+		local TextLabel = Instance.new("TextLabel")
+		local TextButton = Instance.new("TextButton")
+		local TextButton2 = Instance.new("TextButton")
+
+
+		ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+		Frame.Parent = ScreenGui
+		Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Frame.Position = UDim2.new(0.36, 0, 0.20, 0)
+		Frame.Size = UDim2.new(0, 330, 0, 150)
+
+		TextLabel.Parent = Frame
+		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
+		TextLabel.Size = UDim2.new(0, 330, 0, 90)
+		TextLabel.Font = Enum.Font.AmaticSC
+		TextLabel.Text = "Are you sure you want to reset script?"
+		TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabel.TextScaled = true
+		TextLabel.TextSize = 35.000
+		TextLabel.TextWrapped = true
+
+		TextButton.Parent = Frame
+		TextButton.BackgroundColor3 = Color3.fromRGB(0, 230, 30)
+		TextButton.Position = UDim2.new(0, 0, 0.600000006, 0)
+		TextButton.Size = UDim2.new(0, 165, 0, 60)
+		TextButton.Font = Enum.Font.AmaticSC
+		TextButton.Text = "Yes"
+		TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextButton.TextScaled = true
+		TextButton.TextSize = 40.000
+		TextButton.TextWrapped = true
+
+		function ResetYES()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+			wait()
+			RANKUPP = false
+			autoofarm = false
+			boss = false
+			scrollfarm = false
+			keel = false
+			aunin = false
+			auchi = false
+			autai = false 
+			auhp = false
+			wait()
+			library:Destroy()
+			notify("Do not reset autofarm script more than once!")
+			local player = game.Players.LocalPlayer
+			player.Character:BreakJoints()
+			wait(11)
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain"))()
+		end
+		TextButton.MouseButton1Click:connect(ResetYES)
+
+		TextButton2.Parent = Frame
+		TextButton2.BackgroundColor3 = Color3.fromRGB(260, 30, 30)
+		TextButton2.Position = UDim2.new(0.5, 0, 0.600000006, 0)
+		TextButton2.Size = UDim2.new(0, 165, 0, 60)
+		TextButton2.Font = Enum.Font.AmaticSC
+		TextButton2.Text = "no"
+		TextButton2.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextButton2.TextSize = 40.000
+		TextButton2.TextWrapped = true
+
+		function ResetNO()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+		end
+		TextButton2.MouseButton1Click:connect(ResetNO)
+	end)
+
+	window3:Label("Made by NoobieDoge", Color3.fromRGB(127, 143, 166))
+
+	window3:Button("Copy Discord Link",function()
+		notify("Discord link copied to clipboard")
+		setclipboard("https://discord.gg/P2CeRjvTDt")
+	end)
+end)
+
+TextButton_9.MouseButton1Click:connect(function()
+	Frame2.Visible = true
+	Frame3.Visible = false
+end)
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/HDTerebi/Shindo-Life/main/No%20CD%20Method"))()
