@@ -269,13 +269,32 @@ kentextbox.Name = "kentextbox"
 kentextbox.Parent = BLChangerMain
 kentextbox.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
 kentextbox.BorderSizePixel = 0
-kentextbox.Position = UDim2.new(0.188181819, 0, 0.9, 0)
-kentextbox.Size = UDim2.new(0, 243, 0, 20)
+kentextbox.Position = UDim2.new(0.188181819 + 0.415, 0, 0.9, 0)
+kentextbox.Size = UDim2.new(0, 120, 0, 20)
 kentextbox.Font = Enum.Font.GothamSemibold
 kentextbox.Text = "Insert your kenjutsu (coming soon!)"
 kentextbox.TextColor3 = Color3.new(1, 1, 1)
+kentextbox.TextSize = 10
+kentextbox.TextWrapped = true
+
+local kentextbox = Instance.new("TextButton")
+kentextbox.Name = "kentextbox"
+kentextbox.Parent = BLChangerMain
+kentextbox.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+kentextbox.BorderSizePixel = 0
+kentextbox.Position = UDim2.new(0.188181819, 0, 0.9, 0)
+kentextbox.Size = UDim2.new(0, 120, 0, 20)
+kentextbox.Font = Enum.Font.GothamSemibold
+kentextbox.Text = "Equip Kenjutsu"
+kentextbox.TextColor3 = Color3.new(1, 1, 1)
 kentextbox.TextSize = 13
 kentextbox.TextWrapped = true
+kentextbox.MouseButton1Click:connect(function()
+	kentextbox.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
+	game.Players.LocalPlayer.statz.breathingstyle.Value = kentextbox.Text
+	wait(.5)
+	kentextbox.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+end)
 
 local Info = Instance.new("TextButton")
 Info.Name = "Info"
@@ -561,8 +580,29 @@ Help.MouseButton1Click:connect(function()
 
 
 		]])
+		print("Elements:")
+		for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
+			if v:FindFirstChild("ELEMENT") then
+				print("")
+				print(v.REALNAME.Value)
+				print(v.Name)
+			end
+		end
+		print("")
+		print("")
+		print("Bloodlines:")
 		for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
 			if v:FindFirstChild("KG") then
+				print("")
+				print(v.REALNAME.Value)
+				print(v.Name)
+			end
+		end
+		print("")
+		print("")
+		print("Kenjutsu:")
+		for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu.ALLKENSTYLES:GetChildren()) do
+			if v:FindFirstChild("BREATHINGSTYLE") then
 				print("")
 				print(v.REALNAME.Value)
 				print(v.Name)
