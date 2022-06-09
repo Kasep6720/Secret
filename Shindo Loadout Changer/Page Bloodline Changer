@@ -598,11 +598,29 @@ Help.MouseButton1Click:connect(function()
 				print(v.Name)
 			end
 		end
+		for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
+			if v:FindFirstChild("KGg") then
+				print("")
+				print("???")
+				print(v.REALNAME.Value)
+				print(v.Name)
+			end
+		end
 		print("")
 		print("")
 		print("Kenjutsu:")
 		for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu.ALLKENSTYLES:GetChildren()) do
 			if v:FindFirstChild("BREATHINGSTYLE") then
+				print("")
+				print(v.REALNAME.Value)
+				print(v.Name)
+			end
+		end
+		print("")
+		print("")
+		print("Fighting Styles:")
+		for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu.FIGHTINGSTYLES:GetChildren()) do
+			if v:FindFirstChild("spins") then
 				print("")
 				print(v.REALNAME.Value)
 				print(v.Name)
