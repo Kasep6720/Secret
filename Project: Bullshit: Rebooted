@@ -1240,6 +1240,7 @@ function InitMain()
 	local AddToWhitelist = Instance.new("TextButton")
 	local RemoveToWhitelist = Instance.new("TextButton")
 	local SaveWhitelist = Instance.new("TextButton")
+	local _button = Instance.new("TextButton")
 	local Xbutton = Instance.new("TextButton")
 	-- Properties
 	
@@ -1697,6 +1698,9 @@ function InitMain()
 	A: Blame bullet spread, try and control how often you fire. (Murder Mystery 2 = trash) (Why the fuck does a single shot pistol have bullet spread? lol wtf?)
 
 	Change Log:
+	6/10/2022:
+	+ Added minimize button
+
 	5/30/2022:
 	+ Added X button
 	+ Removed crosshair since useless
@@ -2155,6 +2159,19 @@ function InitMain()
 	Xbutton.TextScaled = true
 	Xbutton.TextSize = 100.000
 	Xbutton.TextWrapped = true
+
+	_button.Parent = MainFrame
+	_button.BackgroundColor3 = Color3.new(0.176471, 0.176471, 0.176471)
+	_button.Position = UDim2.new(0.86, 0, 0, 0)
+	_button.BorderSizePixel = 0
+	_button.Size = UDim2.new(0, 25, 0, 25)
+	_button.Transparency = 0
+	_button.Font = Enum.Font.TitilliumWeb
+	_button.Text = "-"
+	_button.TextColor3 = Color3.fromRGB(180, 0, 0)
+	_button.TextScaled = false
+	_button.TextSize = 42.000
+	_button.TextWrapped = true
 
 	function CreatePlayerLabel(Str, frame)
 		local n = #frame:GetChildren()
@@ -2840,7 +2857,10 @@ function InitMain()
 		end
 	end)
 
-	function X()
+	_button.MouseButton1Click:connect(function()
+		MainFrame.Visible = not MainFrame.Visible
+	end)
+	Xbutton.MouseButton1Click:connect(function()
 		for i,v in pairs(game.CoreGui:GetChildren()) do
 			if v.Name == "Bullshit 3.0" then
 				v:Destroy()
@@ -2873,9 +2893,10 @@ function InitMain()
 		Light.ColorShift_Bottom = Bullshit.ColorShiftBotBackup
 		Light.ColorShift_Top = Bullshit.ColorShiftTopBackup
 		Bullshit.AimbotEnabled = false
+		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Project: Bullshit: Rebooted",Text = "Do not open this page too many times.",Button1 = "Ok",Duration = 20, })
 
-	end
-	Xbutton.MouseButton1Click:connect(X)
+	end)
+
 	wait(5)
 	Title.Text = "Project: Bullshit: Rebooted\nEdited by: NoobieDoge\nVersion 3.6 (Doge Style: Ultra Rework)"
 end
