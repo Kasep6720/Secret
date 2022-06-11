@@ -335,36 +335,6 @@ Loadout4SpecialPvP1.Text = ""
 Loadout4SpecialPvP1.TextColor3 = Color3.new(1, 1, 1)
 Loadout4SpecialPvP1.TextSize = 20
 
-local SecretCodeText = Instance.new("TextBox")
-SecretCodeText.Name = "SecretCodeText"
-SecretCodeText.Parent = BLChangerMain
-SecretCodeText.BackgroundColor3 = Color3.new(0.512, 0.512, 0.512)
-SecretCodeText.BorderSizePixel = 0
-SecretCodeText.Position = UDim2.new(0.01, 0, 0.85, 0)
-SecretCodeText.Size = UDim2.new(0, 45, 0, 20)
-SecretCodeText.Font = Enum.Font.GothamSemibold
-SecretCodeText.PlaceholderColor3 = Color3.fromRGB(255, 255, 255)
-SecretCodeText.PlaceholderText = "Secret Code"
-SecretCodeText.Text = ""
-SecretCodeText.TextColor3 = Color3.new(1, 1, 1)
-SecretCodeText.TextScaled = true
-SecretCodeText.TextSize = 14
-SecretCodeText.TextWrapped = true
-
-local SecretCodeTextRedeem = Instance.new("TextButton")
-SecretCodeTextRedeem.Name = "SecretCodeTextRedeem"
-SecretCodeTextRedeem.Parent = BLChangerMain
-SecretCodeTextRedeem.BackgroundColor3 = Color3.new(0.512, 0.512, 0.512)
-SecretCodeTextRedeem.BorderSizePixel = 0
-SecretCodeTextRedeem.Position = UDim2.new(0.01, 0, 0.94, 0)
-SecretCodeTextRedeem.Size = UDim2.new(0, 45, 0, 10)
-SecretCodeTextRedeem.Font = Enum.Font.GothamSemibold
-SecretCodeTextRedeem.Text = ""
-SecretCodeTextRedeem.TextColor3 = Color3.new(1, 1, 1)
-SecretCodeTextRedeem.TextScaled = true
-SecretCodeTextRedeem.TextSize = 14
-SecretCodeTextRedeem.TextWrapped = true
-
 local Main2 = Instance.new("ImageLabel")
 Main2.Name = "Main2"
 Main2.Parent = BLChangerMain
@@ -396,13 +366,23 @@ TextLabel2.Size = UDim2.new(1, -20, 1, 0)
 TextLabel2.Font = Enum.Font.Ubuntu
 TextLabel2.BackgroundTransparency = 1
 TextLabel2.Text = [[
+Script made by NoobieDoge
 
-Information or Help or List whatever.
-]]
+Type the name of the bloodline or element or kenjutsu into the textbox, then press the slot that you want to change
+
+Do not type the display name, it won't work. 
+
+If you don't know the code names for the bloodline or element or kenjutsu, press the orange "?" button
+
+The bloodline and element and kenjutsu that you changed won't keep forever. but the moves that you equippd will stay forever unless you changed it
+
+If you haven't got the kenjutsu before, you cannot change it through this bloodline changer.
+
+You cannot level up the bloodlines or elements or kenjutsus that you change by this changer. Don't be dumb and autofarm with this]]
 TextLabel2.TextSize = 40
 TextLabel2.TextColor3 = Color3.fromRGB(225, 225, 225)
 TextLabel2.TextScaled = false
-TextLabel2.TextSize = 40.000
+TextLabel2.TextSize = 15
 TextLabel2.TextWrapped = true
 TextLabel2.TextXAlignment = Enum.TextXAlignment.Left
 TextLabel2.TextYAlignment = Enum.TextYAlignment.Top
@@ -421,11 +401,129 @@ TextLabel3.BackgroundColor3 = Color3.fromRGB(1, 1, 1)
 TextLabel3.Size = UDim2.new(0, 300, 0, 30)
 TextLabel3.Font = Enum.Font.Ubuntu
 TextLabel3.BackgroundTransparency = 1
-TextLabel3.Text = [[OwO]]
+TextLabel3.Text = "Information"
 TextLabel3.TextColor3 = Color3.fromRGB(1, 1, 1)
 TextLabel3.TextScaled = true
 TextLabel3.TextSize = 40.000
 TextLabel3.TextWrapped = true
+
+local Main3 = Instance.new("ImageLabel")
+Main3.Name = "Main3"
+Main3.Parent = BLChangerMain
+Main3.BackgroundColor3 = Color3.new(1, 1, 1)
+Main3.BackgroundTransparency = 1
+Main3.Position = UDim2.new(0, 0, -0.835, 0)
+Main3.Size = UDim2.new(0, 300, 0, 230)
+Main3.Visible = false
+Main3.Image = "rbxassetid://2260429633"
+Main3.ImageColor3 = Color3.new(0.117647, 0.117647, 0.117647)
+Main3.ScaleType = Enum.ScaleType.Slice
+Main3.SliceCenter = Rect.new(12, 12, 13, 13)
+
+local TextLabel4 = Instance.new("TextLabel")
+TextLabel4.Parent = Main3
+TextLabel4.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
+TextLabel4.Position = UDim2.new(0.025, 0, 0.15, 0)
+TextLabel4.Size = UDim2.new(1, -20, 1, 0)
+TextLabel4.Font = Enum.Font.Ubuntu
+TextLabel4.BackgroundTransparency = 1
+TextLabel4.Text = "If you don't know the code names for the \nbloodline or element that you want to change,\n\nPress these buttons and scroll to the bottom."
+TextLabel4.TextSize = 40
+TextLabel4.TextColor3 = Color3.fromRGB(225, 225, 225)
+TextLabel4.TextScaled = false
+TextLabel4.TextSize = 15
+TextLabel4.TextWrapped = true
+TextLabel4.TextXAlignment = Enum.TextXAlignment.Left
+TextLabel4.TextYAlignment = Enum.TextYAlignment.Top
+
+local Frame3 = Instance.new("Frame")
+Frame3.Parent = BLChangerMain
+Frame3.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+Frame3.Position = UDim2.new(0, 0, -0.835, 0)
+Frame3.Size = UDim2.new(0, 300, 0, 30)
+Frame3.Transparency = 0.1
+Frame3.Visible = false
+
+local TextLabel5 = Instance.new("TextLabel")
+TextLabel5.Parent = Frame3
+TextLabel5.BackgroundColor3 = Color3.fromRGB(1, 1, 1)
+TextLabel5.Size = UDim2.new(0, 300, 0, 30)
+TextLabel5.Font = Enum.Font.Ubuntu
+TextLabel5.BackgroundTransparency = 1
+TextLabel5.Text = "Help"
+TextLabel5.TextColor3 = Color3.fromRGB(1, 1, 1)
+TextLabel5.TextScaled = true
+TextLabel5.TextSize = 40.000
+TextLabel5.TextWrapped = true
+
+local ElmnamesButton = Instance.new("TextButton")
+ElmnamesButton.Name = "ElmnamesButton"
+ElmnamesButton.Parent = Main3
+ElmnamesButton.BackgroundColor3 = Color3.new(1.020,0.652,0.104)
+ElmnamesButton.BorderSizePixel = 1
+ElmnamesButton.BorderColor3 = Color3.new(0.816,0.435,0.069)
+ElmnamesButton.Position = UDim2.new(0.05, 0, 0.55, 0)
+ElmnamesButton.Size = UDim2.new(0, 80, 0, 40)
+ElmnamesButton.Font = Enum.Font.GothamSemibold
+ElmnamesButton.Text = "Elements"
+ElmnamesButton.TextColor3 = Color3.new(0, 0, 0)
+ElmnamesButton.TextSize = 17
+
+local BLnamesButton = Instance.new("TextButton")
+BLnamesButton.Name = "BLnamesButton"
+BLnamesButton.Parent = Main3
+BLnamesButton.BackgroundColor3 = Color3.new(1.020,0.652,0.104)
+BLnamesButton.BorderSizePixel = 1
+BLnamesButton.BorderColor3 = Color3.new(0.816,0.435,0.069)
+BLnamesButton.Position = UDim2.new(0.375, 0, 0.55, 0)
+BLnamesButton.Size = UDim2.new(0, 80, 0, 40)
+BLnamesButton.Font = Enum.Font.GothamSemibold
+BLnamesButton.Text = "Bloodlines"
+BLnamesButton.TextColor3 = Color3.new(0, 0, 0)
+BLnamesButton.TextSize = 17
+
+local KennamesButton = Instance.new("TextButton")
+KennamesButton.Name = "KennamesButton"
+KennamesButton.Parent = Main3
+KennamesButton.BackgroundColor3 = Color3.new(1.020,0.652,0.104)
+KennamesButton.BorderSizePixel = 1
+KennamesButton.BorderColor3 = Color3.new(0.816,0.435,0.069)
+KennamesButton.Position = UDim2.new(0.7, 0, 0.55, 0)
+KennamesButton.Size = UDim2.new(0, 80, 0, 40)
+KennamesButton.Font = Enum.Font.GothamSemibold
+KennamesButton.Text = "Kenjutsu"
+KennamesButton.TextColor3 = Color3.new(0, 0, 0)
+KennamesButton.TextSize = 17
+
+local SecretCodeText = Instance.new("TextBox")
+SecretCodeText.Name = "SecretCodeText"
+SecretCodeText.Parent = BLChangerMain
+SecretCodeText.BackgroundColor3 = Color3.new(0.512, 0.512, 0.512)
+SecretCodeText.BorderSizePixel = 0
+SecretCodeText.Position = UDim2.new(0.01, 0, 0.85, 0)
+SecretCodeText.Size = UDim2.new(0, 45, 0, 20)
+SecretCodeText.Font = Enum.Font.GothamSemibold
+SecretCodeText.PlaceholderColor3 = Color3.fromRGB(255, 255, 255)
+SecretCodeText.PlaceholderText = "Secret Code"
+SecretCodeText.Text = ""
+SecretCodeText.TextColor3 = Color3.new(1, 1, 1)
+SecretCodeText.TextScaled = true
+SecretCodeText.TextSize = 14
+SecretCodeText.TextWrapped = true
+
+local SecretCodeTextRedeem = Instance.new("TextButton")
+SecretCodeTextRedeem.Name = "SecretCodeTextRedeem"
+SecretCodeTextRedeem.Parent = BLChangerMain
+SecretCodeTextRedeem.BackgroundColor3 = Color3.new(0.512, 0.512, 0.512)
+SecretCodeTextRedeem.BorderSizePixel = 0
+SecretCodeTextRedeem.Position = UDim2.new(0.01, 0, 0.94, 0)
+SecretCodeTextRedeem.Size = UDim2.new(0, 45, 0, 10)
+SecretCodeTextRedeem.Font = Enum.Font.GothamSemibold
+SecretCodeTextRedeem.Text = ""
+SecretCodeTextRedeem.TextColor3 = Color3.new(1, 1, 1)
+SecretCodeTextRedeem.TextScaled = true
+SecretCodeTextRedeem.TextSize = 14
+SecretCodeTextRedeem.TextWrapped = true
 
 function CodeRedeem()
 	if SecretCodeText.Text == "BlazingFanatic" or SecretCodeText.Text == "bL" or SecretCodeText.Text == "Bl" or SecretCodeText.Text == "BL" or SecretCodeText.Text == "bl" then
@@ -445,22 +543,9 @@ Info.MouseButton1Click:connect(function()
 		Help.BackgroundColor3 = Color3.new(1.020,0.652,0.104)
 		Info.BackgroundColor3 = Color3.new(0.5,0.5,1.5)
 		Main2.Visible = true
-		Frame2.BackgroundColor3 = Color3.fromRGB(60,60,255)
 		Frame2.Visible = true
-		TextLabel3.Text = [[Information]]
-		TextLabel2.TextSize = 15
-		TextLabel2.Text = [[
-		Script made by NoobieDoge
-
-		Type the name of the bloodline or element or kenjutsu into the textbox, then press the slot that you want to change
-		
-		Do not type the display name, it won't work. 
-		
-		If you don't know the code names for the bloodline or element or kenjutsu, press the orange "?" button
-		
-		The bloodline and element and kenjutsu that you changed won't keep forever. but the moves that you equippd will stay forever unless you changed it
-		
-		You cannot level up the bloodlines or elements or kenjutsus that you change by this changer. Don't be dumb and autofarm with this]]
+		Main3.Visible = false
+		Frame3.Visible = false
 	else
 		Info.BackgroundColor3 = Color3.new(0.3,0.3,1.2)
 		Main2.Visible = false
@@ -474,163 +559,361 @@ Help.MouseButton1Click:connect(function()
 		InfoEnabled = false
 		Info.BackgroundColor3 = Color3.new(0.3,0.3,1.2)
 		Help.BackgroundColor3 = Color3.new(1.2,0.8,0.3)
-		Main2.Visible = true
-		Frame2.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
-		Frame2.Visible = true
-		TextLabel3.Text = [[Help]]
-		TextLabel2.TextSize = 15
-		print([[
-		
-		
-		
-		
-		
-		
-		
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		]])
-		print("Elements:")
-		for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
-			if v:FindFirstChild("ELEMENT") then
-				print("")
-				print(v.REALNAME.Value)
-				print(v.Name)
-			end
-		end
-		print("")
-		print("")
-		print("Bloodlines:")
-		for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
-			if v:FindFirstChild("KG") then
-				print("")
-				print(v.REALNAME.Value)
-				print(v.Name)
-			end
-		end
-		for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
-			if v:FindFirstChild("KGg") then
-				print("")
-				print("???")
-				print(v.REALNAME.Value)
-				print(v.Name)
-			end
-		end
-		print("")
-		print("")
-		print("Kenjutsu:")
-		for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu.ALLKENSTYLES:GetChildren()) do
-			if v:FindFirstChild("BREATHINGSTYLE") then
-				print("")
-				print(v.REALNAME.Value)
-				print(v.Name)
-			end
-		end
-		print("")
-		print("")
-		print("Fighting Styles:")
-		for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu.FIGHTINGSTYLES:GetChildren()) do
-			if v:FindFirstChild("spins") then
-				print("")
-				print(v.REALNAME.Value)
-				print(v.Name)
-			end
-		end
-		TextLabel2.Text = "If you don't know the code names for \nthe bloodline or element that you want \nto change,\nPress F9 and scroll down."
-		
-	else
-		Help.BackgroundColor3 = Color3.new(1.020,0.652,0.104)
 		Main2.Visible = false
 		Frame2.Visible = false
+		Main3.Visible = true
+		Frame3.Visible = true
+		TextLabel2.TextSize = 15	
+	else
+		Help.BackgroundColor3 = Color3.new(1.020,0.652,0.104)
+		Main3.Visible = false
+		Frame3.Visible = false
+	end
+end)
+
+ElmnamesButton.MouseButton1Click:connect(function()
+	game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
+	print([[
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	]])
+	print("Elements:")
+	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
+		if v:FindFirstChild("ELEMENT") then
+			print("")
+			print(v.REALNAME.Value)
+			print(v.Name)
+		end
+	end
+end)
+
+BLnamesButton.MouseButton1Click:connect(function()
+	game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
+	print([[
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	]])
+	print("Bloodlines:")
+	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
+		if v:FindFirstChild("KG") then
+			print("")
+			print(v.REALNAME.Value)
+			print(v.Name)
+		end
+	end
+	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
+		if v:FindFirstChild("KGg") then
+			print("")
+			print("???")
+			print(v.REALNAME.Value)
+			print(v.Name)
+		end
+	end
+end)
+
+KennamesButton.MouseButton1Click:connect(function()
+	game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
+	print([[
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	]])
+	print("Kenjutsu:")
+	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu.ALLKENSTYLES:GetChildren()) do
+		if v:FindFirstChild("BREATHINGSTYLE") then
+			print("")
+			print(v.REALNAME.Value)
+			print(v.Name)
+		end
 	end
 end)
