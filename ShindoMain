@@ -591,12 +591,11 @@ TextButton.MouseButton1Click:connect(function()
 			local function SCROLLFARM()
 				for i,v in pairs(game.workspace.GLOBALTIME:GetChildren()) do
 					if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
-						local scrollA = v.sh:FindFirstChild("invoke")
 						print("SCROLL SPAWNED")
 						pcall(function()
 							player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
 							fireclickdetector(v.sh.ClickDetector)
-							scrollA:FireServer(game.Players.LocalPlayer)
+							v:Destroy()
 						end)
 					end
 				end
@@ -604,13 +603,12 @@ TextButton.MouseButton1Click:connect(function()
 			local function SCROLLFARM1()
 				for i,v in pairs(game.workspace:GetChildren()) do
 					if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
-						local scrollA = v.sh:FindFirstChild("invoke")
 						print("SCROLL SPAWNED in workspace")
 						notify("SCROLL SPAWNED in workspace")
 						pcall(function()
 							player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
 							fireclickdetector(v.sh.ClickDetector)
-							scrollA:FireServer(game.Players.LocalPlayer)
+							v:Destroy()
 						end)
 					end
 				end
@@ -1430,12 +1428,11 @@ TextButton_6.MouseButton1Click:connect(function()
 	local function SCROLLFARM()
 		for i,v in pairs(game.workspace.GLOBALTIME:GetChildren()) do
 			if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
-				local scrollA = v.sh:FindFirstChild("invoke")
 				print("SCROLL SPAWNED")
 				pcall(function()
 					player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
 					fireclickdetector(v.sh.ClickDetector)
-					scrollA:FireServer(game.Players.LocalPlayer)
+					v:Destroy()
 				end)
 			end
 		end
@@ -1443,13 +1440,12 @@ TextButton_6.MouseButton1Click:connect(function()
 	local function SCROLLFARM1()
 		for i,v in pairs(game.workspace:GetChildren()) do
 			if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
-				local scrollA = v.sh:FindFirstChild("invoke")
 				print("SCROLL SPAWNED in workspace")
 				notify("SCROLL SPAWNED in workspace")
 				pcall(function()
 					player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
 					fireclickdetector(v.sh.ClickDetector)
-					scrollA:FireServer(game.Players.LocalPlayer)
+					v:Destroy()
 				end)
 			end
 		end
@@ -1966,12 +1962,11 @@ TextButton_7.MouseButton1Click:connect(function()
 	local function SCROLLFARM()
 		for i,v in pairs(game.workspace.GLOBALTIME:GetChildren()) do
 			if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
-				local scrollA = v.sh:FindFirstChild("invoke")
 				print("SCROLL SPAWNED")
 				pcall(function()
 					player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
 					fireclickdetector(v.sh.ClickDetector)
-					scrollA:FireServer(game.Players.LocalPlayer)
+					v:Destroy()
 				end)
 			end
 		end
@@ -1979,13 +1974,12 @@ TextButton_7.MouseButton1Click:connect(function()
 	local function SCROLLFARM1()
 		for i,v in pairs(game.workspace:GetChildren()) do
 			if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
-				local scrollA = v.sh:FindFirstChild("invoke")
 				print("SCROLL SPAWNED in workspace")
 				notify("SCROLL SPAWNED in workspace")
 				pcall(function()
 					player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
 					fireclickdetector(v.sh.ClickDetector)
-					scrollA:FireServer(game.Players.LocalPlayer)
+					v:Destroy()
 				end)
 			end
 		end
