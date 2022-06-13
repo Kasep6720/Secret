@@ -1306,7 +1306,7 @@ TextButton_6.MouseButton1Click:connect(function()
 			if(string.find(mobname,"(s)")) then
 				mobname = string.gsub(mobname,"(s)","")
 			end
-			if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+			if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and not v:FindFirstChild("fullsusanoo") and v.Head.CFrame.Y > -1000 then
 				repeat
 					pcall(function()
 						player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(0,-2,0)
@@ -1857,7 +1857,7 @@ TextButton_7.MouseButton1Click:connect(function()
 			if(string.find(mobname,"(s)")) then
 				mobname = string.gsub(mobname,"(s)","")
 			end
-			if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+			if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and not v:FindFirstChild("fullsusanoo") and v.Head.CFrame.Y > -1000 then
 				player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 15, 0)
 				repeat wait()
 					pcall(function()
@@ -2388,7 +2388,7 @@ TextButton_8.MouseButton1Click:connect(function()
 			if(string.find(mobname,"(s)")) then
 				mobname = string.gsub(mobname,"(s)","")
 			end
-			if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+			if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and not v:FindFirstChild("fullsusanoo") and v.Head.CFrame.Y > -1000 then
 				repeat
 					pcall(function()
 						v.Humanoid.Health = 0
