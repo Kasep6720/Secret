@@ -171,9 +171,10 @@ elseif game.PlaceId == 9359839118 then
 	wait(.2) TextLabel.Text = "Game supported!" wait(.5) TextLabel.Text = "Gas Station Simulator" wait(.7) TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!" wait(1) ScreenGui:Destroy()
 	loadstring(game:HttpGet('https://raw.githubusercontent.com/Kasep6720/Secret/Other-games/Gas%20Station%20Simulator'))()
 elseif game.PlaceId ~= 4616652839 then
-	local warplace = game:GetService("Workspace"):FindFirstChild("warmode")
-	local allbosses = game:GetService("Workspace"):FindFirstChild("cutscene")
-	if allbosses then 
+	local warplace = game:GetService("Workspace"):FindFirstChild("warmode") --Deleted gamemode
+	local dungeonplace = game:GetService("Workspace"):FindFirstChild("dungeons")
+	local allbossesplace = game:GetService("Workspace"):FindFirstChild("cutscene")
+	if allbossesplace then 
 		if game.PlaceId == 8472733618 then
 			wait(.3) TextLabel.Text = "Game supported!" wait(1) TextLabel.Text = "Shindo Kagoku Event Boss" wait(1) TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!" wait(1) ScreenGui:Destroy() 
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoKagoku"))()
@@ -182,17 +183,16 @@ elseif game.PlaceId ~= 4616652839 then
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoEventBoss"))()
 		end 
 	else 
-		if warplace then
-			if game.PlaceId == 5824792748 then
-				wait(.3) TextLabel.Text = "Game supported!" wait(1) TextLabel.Text = "Shindo War" wait(1) TextLabel.Text = "Loading Script..." wait(.07)  TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Loading Script..." wait(.07) TextLabel.Text = "Loading Script.." wait(.07) TextLabel.Text = "Loading Script." wait(.07) TextLabel.Text = "Done!" wait(1) ScreenGui:Destroy() 
-				loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoWar"))()
-			elseif game.PlaceId == 8184506020 then
+		if dungeonplace or warmode then
+			if game.PlaceId == 8184506020 then
 				wait(.18) TextLabel.Text = "Game supported!" wait(.5) TextLabel.Text = "Shindo Mentor Training" wait(.8) ScreenGui:Destroy() 
 				loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMentorTrainingMap"))()
-			else  ScreenGui:Destroy() wait()
+			else
+				wait(.15) TextLabel.Text = "Game supported!" wait(.8) TextLabel.Text = "Shindo Dungeons" wait(1) TextLabel.Text = "Loading Script..." wait(.05)  TextLabel.Text = "Loading Script.." wait(.05) TextLabel.Text = "Loading Script." wait(.05) TextLabel.Text = "Loading Script..." wait(.05) TextLabel.Text = "Loading Script.." wait(.05) TextLabel.Text = "Loading Script." wait(.05) TextLabel.Text = "Loading Script..." wait(.05) TextLabel.Text = "Loading Script.." wait(.05) TextLabel.Text = "Loading Script." wait(.02) TextLabel.Text = "Done!" wait(.85) ScreenGui:Destroy() 
 				loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoDF"))()
 			end
-		else ScreenGui:Destroy() wait()
+		else
+			ScreenGui:Destroy() wait()
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMain"))()
 		end 
 	end 
