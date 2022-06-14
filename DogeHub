@@ -183,7 +183,7 @@ elseif game.PlaceId ~= 4616652839 then
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoEventBoss"))()
 		end 
 	else 
-		if dungeonplace or warmode then
+		if dungeonplace or warplace then
 			if game.PlaceId == 8184506020 then
 				wait(.18) TextLabel.Text = "Game supported!" wait(.5) TextLabel.Text = "Shindo Mentor Training" wait(.8) ScreenGui:Destroy() 
 				loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMentorTrainingMap"))()
