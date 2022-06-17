@@ -41,6 +41,31 @@ function INFMDON()
 	mode:Destroy()
 	notify("Do not charge chi til max while inf MD is on!")
 end
+local function SCROLLFARM()
+	for i,v in pairs(game.workspace.GLOBALTIME:GetChildren()) do
+		if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
+			print("SCROLL SPAWNED")
+			pcall(function()
+				player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
+				fireclickdetector(v.sh.ClickDetector)
+				v:Destroy()
+			end)
+		end
+	end
+end
+local function SCROLLFARM1()
+	for i,v in pairs(game.workspace:GetChildren()) do
+		if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
+			print("SCROLL SPAWNED in workspace")
+			notify("SCROLL SPAWNED in workspace")
+			pcall(function()
+				player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
+				fireclickdetector(v.sh.ClickDetector)
+				v:Destroy()
+			end)
+		end
+	end
+end
 if _G.dAAcG3fvBqVoPzVnAFk == nil then 
 	_G.dAAcG3fvBqVoPzVnAFk = "" 
 end 
@@ -566,6 +591,7 @@ TextButton.MouseButton1Click:connect(function()
 
 			window2:Toggle("Spam E",false,function(bool)
 				E = bool
+				notify("Spam E: "..tostring(E),true)
 			end)
 			game:GetService('RunService').Stepped:connect(function()
 				if E then
@@ -576,6 +602,7 @@ TextButton.MouseButton1Click:connect(function()
 
 			window2:Toggle("NPC Kill Aura",false,function(bool)
 				keel = bool
+				notify("NPC Kill Aura: "..tostring(keel),true)
 			end)
 			game:GetService('RunService').Stepped:connect(function()
 				if keel then
@@ -587,32 +614,6 @@ TextButton.MouseButton1Click:connect(function()
 			window2:Toggle("Scroll Snipe",false, function(bool)
 				scrollfarm = bool
 			end)
-
-			local function SCROLLFARM()
-				for i,v in pairs(game.workspace.GLOBALTIME:GetChildren()) do
-					if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
-						print("SCROLL SPAWNED")
-						pcall(function()
-							player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
-							fireclickdetector(v.sh.ClickDetector)
-							v:Destroy()
-						end)
-					end
-				end
-			end
-			local function SCROLLFARM1()
-				for i,v in pairs(game.workspace:GetChildren()) do
-					if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
-						print("SCROLL SPAWNED in workspace")
-						notify("SCROLL SPAWNED in workspace")
-						pcall(function()
-							player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
-							fireclickdetector(v.sh.ClickDetector)
-							v:Destroy()
-						end)
-					end
-				end
-			end
 
 			spawn(function()
 				while wait() do
@@ -629,6 +630,7 @@ TextButton.MouseButton1Click:connect(function()
 
 			window2:Dropdown("Custom Display Ranks",{"RELL", "F 0", "D 1", "D 2", "D 3", "C 1", "C 2", "C 3", "B 1", "B 2", "B 3", "A 1", "A 2", "A 3", "S 1", "S 2", "S 3", "V 1", "V 2", "V 3", "X 1", "X 2", "X 3", "Y 1", "Y 2", "Y 3", "Z 1", "Z 2", "Z 3", "MAX-69", "MAX-420", "MAX-666", "MAX-999", "GOD", "Dragon", "Hacker","???"},function(rektrank)
 				game:GetService("Players").LocalPlayer.leaderstats.Rank.Value =  (rektrank)
+				notify("Rank Displayed: " .. rektrank)
 			end)
 
 			window2:Button("Bloodline Changer",function()
@@ -1386,13 +1388,14 @@ TextButton_6.MouseButton1Click:connect(function()
 				local TALK = v:FindFirstChild("Talk")
 				if v:FindFirstChild("Head") and v.Head:FindFirstChild("givemission") and v.Head.givemission.Enabled and v.Head.givemission:FindFirstChild("color").Image == "http://www.roblox.com/asset/?id=5459241648" --[[or v.Head.givemission.color.Image == "http://www.roblox.com/asset/?id=5459241799"]] then
 					if v:WaitForChild("Talk"):WaitForChild("mobname") then
-						local getmission = v:FindFirstChild("HumanoidRootPart")
-						local clienttalk = v:FindFirstChild("CLIENTTALK")
-						repeat wait()
-								player.Character.HumanoidRootPart.CFrame=getmission.CFrame+Vector3.new(0,7,0)
-								clienttalk:FireServer()
-								clienttalk:FireServer("accept")               
-						until mission.Visible or not autofarm
+						repeat
+							local getmission = v:FindFirstChild("HumanoidRootPart")
+							local clienttalk = v:FindFirstChild("CLIENTTALK")
+							player.Character.HumanoidRootPart.CFrame=getmission.CFrame+Vector3.new(0,3,0)
+							clienttalk:FireServer()
+							clienttalk:FireServer("accept")  
+							wait()
+						until mission.Visible or mission.title.text == "[Objective: Mission]" or not autofarm
 					end
 				end
 			end
@@ -1482,25 +1485,22 @@ TextButton_6.MouseButton1Click:connect(function()
 								v.Humanoid.Health = 0
 								v.Humanoid.Health = 0
 								v.Humanoid.Health = 0
-							until (not autoofarm and not boss) or v.Humanoid.Health == 0
+							until (not autofarm and not boss) or v.Humanoid.Health == 0
 						end
 					end
 				else
-					if boss then
+					if boss and autofarm then
 						BOSSFARM()
-					end
-					if autofarm then
-						if boss then
-							BOSSFARM()
-							wait(.1)
-							DISP()
-							wait(.1)
-							QUEST()
-						else
-							DISP()
-							wait(.1)
-							QUEST()
-						end
+						wait(.1)
+						DISP()
+						wait(.1)
+						QUEST()
+					elseif boss then
+						BOSSFARM()
+					elseif autofarm then
+						DISP()
+						wait(.1)
+						QUEST()
 					end
 				end
 			end
@@ -1523,32 +1523,6 @@ TextButton_6.MouseButton1Click:connect(function()
 			end
 		end
 	end)
-
-	local function SCROLLFARM()
-		for i,v in pairs(game.workspace.GLOBALTIME:GetChildren()) do
-			if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
-				print("SCROLL SPAWNED")
-				pcall(function()
-					player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
-					fireclickdetector(v.sh.ClickDetector)
-					v:Destroy()
-				end)
-			end
-		end
-	end
-	local function SCROLLFARM1()
-		for i,v in pairs(game.workspace:GetChildren()) do
-			if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
-				print("SCROLL SPAWNED in workspace")
-				notify("SCROLL SPAWNED in workspace")
-				pcall(function()
-					player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
-					fireclickdetector(v.sh.ClickDetector)
-					v:Destroy()
-				end)
-			end
-		end
-	end
 
 	spawn(function()
 		while wait() do
@@ -1933,17 +1907,17 @@ TextButton_7.MouseButton1Click:connect(function()
 	local function QUEST()
 		for i,v in pairs(workspace.missiongivers:GetChildren()) do
 			if v.Name == "" and v:FindFirstChild("Head") then
-				game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position+Vector3.new(0,350,0))  
 				local TALK = v:FindFirstChild("Talk")
 				if v:FindFirstChild("Head") and v.Head:FindFirstChild("givemission") and v.Head.givemission.Enabled and v.Head.givemission:FindFirstChild("color").Image == "http://www.roblox.com/asset/?id=5459241648" --[[or v.Head.givemission.color.Image == "http://www.roblox.com/asset/?id=5459241799"]] then
 					if v:WaitForChild("Talk"):WaitForChild("mobname") then
-						local getmission = v:FindFirstChild("HumanoidRootPart")
-						local clienttalk = v:FindFirstChild("CLIENTTALK")
-						repeat wait()
-							player.Character.HumanoidRootPart.CFrame=getmission.CFrame+Vector3.new(0,-7,0)
+						repeat
+							local getmission = v:FindFirstChild("HumanoidRootPart")
+							local clienttalk = v:FindFirstChild("CLIENTTALK")
+							player.Character.HumanoidRootPart.CFrame=getmission.CFrame+Vector3.new(0,3,0)
 							clienttalk:FireServer()
-							clienttalk:FireServer("accept")
-						until mission.Visible or not autoofarm
+							clienttalk:FireServer("accept")  
+							wait()
+						until mission.Visible or mission.title.text == "[Objective: Mission]" or not autoofarm
 					end
 				end
 			end
@@ -2020,21 +1994,18 @@ TextButton_7.MouseButton1Click:connect(function()
 						end
 					end
 				else
-					if boss then
+					if boss and autoofarm then
 						BOSSFARM()
-					end
-					if autoofarm then
-						if boss then
-							BOSSFARM()
-							wait(.1)
-							DISP()
-							wait(.1)
-							QUEST()
-						else
-							DISP()
-							wait(.1)
-							QUEST()
-						end
+						wait(.1)
+						DISP()
+						wait(.1)
+						QUEST()
+					elseif boss then
+						BOSSFARM()
+					elseif autoofarm then
+						DISP()
+						wait(.1)
+						QUEST()
 					end
 				end
 			end
@@ -2057,32 +2028,6 @@ TextButton_7.MouseButton1Click:connect(function()
 			end
 		end
 	end)
-
-	local function SCROLLFARM()
-		for i,v in pairs(game.workspace.GLOBALTIME:GetChildren()) do
-			if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
-				print("SCROLL SPAWNED")
-				pcall(function()
-					player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
-					fireclickdetector(v.sh.ClickDetector)
-					v:Destroy()
-				end)
-			end
-		end
-	end
-	local function SCROLLFARM1()
-		for i,v in pairs(game.workspace:GetChildren()) do
-			if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
-				print("SCROLL SPAWNED in workspace")
-				notify("SCROLL SPAWNED in workspace")
-				pcall(function()
-					player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
-					fireclickdetector(v.sh.ClickDetector)
-					v:Destroy()
-				end)
-			end
-		end
-	end
 
 	spawn(function()
 		while wait() do
@@ -2468,13 +2413,14 @@ TextButton_8.MouseButton1Click:connect(function()
 				local TALK = v:FindFirstChild("Talk")
 				if v:FindFirstChild("Head") and v.Head:FindFirstChild("givemission") and v.Head.givemission.Enabled and v.Head.givemission:FindFirstChild("color").Image == "http://www.roblox.com/asset/?id=5459241648" --[[or v.Head.givemission.color.Image == "http://www.roblox.com/asset/?id=5459241799"]] then
 					if v:WaitForChild("Talk"):WaitForChild("mobname") then
-						local getmission = v:FindFirstChild("HumanoidRootPart")
-						local clienttalk = v:FindFirstChild("CLIENTTALK")
-						repeat wait()
-								player.Character.HumanoidRootPart.CFrame=getmission.CFrame+Vector3.new(0,-7,0)
-								clienttalk:FireServer()
-								clienttalk:FireServer("accept")
-						until mission.Visible or not autooofarm
+						repeat
+							local getmission = v:FindFirstChild("HumanoidRootPart")
+							local clienttalk = v:FindFirstChild("CLIENTTALK")
+							player.Character.HumanoidRootPart.CFrame=getmission.CFrame+Vector3.new(0,3,0)
+							clienttalk:FireServer()
+							clienttalk:FireServer("accept")  
+							wait()
+						until mission.Visible or mission.title.text == "[Objective: Mission]" or not autooofarm
 					end
 				end
 			end
@@ -2535,30 +2481,27 @@ TextButton_8.MouseButton1Click:connect(function()
 					for i,v in pairs(workspace.npc:GetChildren()) do
 						if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
 							repeat 
-							v.Humanoid.Health = 0 
-							v.Humanoid.Health = 0
-							v.Humanoid.Health = 0
-							v.Humanoid.Health = 0
-							v.Humanoid.Health = 0
-							until (not autoofarm and not boss) or v.Humanoid.Health == 0
+								v.Humanoid.Health = 0 
+								v.Humanoid.Health = 0
+								v.Humanoid.Health = 0
+								v.Humanoid.Health = 0
+								v.Humanoid.Health = 0
+							until (not autooofarm and not boss) or v.Humanoid.Health == 0
 						end
 					end
 				else
-					if boss then
+					if boss and autooofarm then
 						BOSSFARM()
-					end
-					if autooofarm then
-						if boss then
-							BOSSFARM()
-							wait(.1)
-							DISP()
-							wait(.1)
-							QUEST()
-						else
-							DISP()
-							wait(.1)
-							QUEST()
-						end
+						wait(.1)
+						DISP()
+						wait(.1)
+						QUEST()
+					elseif boss then
+						BOSSFARM()
+					elseif autooofarm then
+						DISP()
+						wait(.1)
+						QUEST()
 					end
 				end
 			end
@@ -2581,32 +2524,6 @@ TextButton_8.MouseButton1Click:connect(function()
 			end
 		end
 	end)
-
-	local function SCROLLFARM()
-		for i,v in pairs(game.workspace.GLOBALTIME:GetChildren()) do
-			if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
-				print("SCROLL SPAWNED")
-				pcall(function()
-					player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
-					fireclickdetector(v.sh.ClickDetector)
-					v:Destroy()
-				end)
-			end
-		end
-	end
-	local function SCROLLFARM1()
-		for i,v in pairs(game.workspace:GetChildren()) do
-			if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
-				print("SCROLL SPAWNED in workspace")
-				notify("SCROLL SPAWNED in workspace")
-				pcall(function()
-					player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
-					fireclickdetector(v.sh.ClickDetector)
-					v:Destroy()
-				end)
-			end
-		end
-	end
 
 	spawn(function()
 		while wait() do
