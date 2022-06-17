@@ -12,6 +12,9 @@ local VirtualUser=game:service'VirtualUser'
 end)
 --variables
 local player = game.Players.LocalPlayer
+if _G.dAAcG3fvBqVoPzVnAFk == nil then 
+	_G.dAAcG3fvBqVoPzVnAFk = "" 
+end 
 function notify(a,b,c)
 	local d=c or function()return end;
 	local e=b or false;
@@ -111,13 +114,37 @@ getgenv().speed = 4000
 
 window1:Toggle("5/5",false, function(bool)
 	dfarm = bool
+	notify("5/5: "..tostring(dfarm),true)
 end)
 window1:Toggle("Kenjutsu Farm",false, function(bool)
 	dfarm = bool
+	notify("Kenjutsu Farm: "..tostring(dfarm),true)
 end)
 
 window1:Toggle("Legacy Farm Mode",false, function(bool)
 	Legacy = bool
+	notify("Legacy Farm Mode: "..tostring(Legacy),true)
+end)
+
+window1:Toggle("NPC Kill Aura",false, function(bool)
+	keel = bool
+	notify("NPC Kill Aura: "..tostring(keel),true)
+end)
+
+game:GetService('RunService').Stepped:connect(function()
+	if keel then
+		for i,v in pairs(workspace.npc:GetChildren()) do
+			if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+				repeat
+					v.Humanoid.Health = 0
+					v.Humanoid.Health = 0
+					v.Humanoid.Health = 0
+					v.Humanoid.Health = 0
+					v.Humanoid.Health = 0
+				until v.Humanoid.Health == 0 or not keel
+			end
+		end
+	end
 end)
 
 game:GetService('RunService').Stepped:connect(function()
@@ -264,6 +291,7 @@ end)
 
 window2:Toggle("Spam E",false, function(bool)
 	E = bool
+	notify("Spam E: "..tostring(E),true)
 end)
 game:GetService('RunService').Stepped:connect(function()
 	if E then
@@ -277,6 +305,7 @@ window2:Button("Infinite MD",function()
 	local copy = mode:Clone()
 	copy.Parent = mode.Parent
 	mode:Destroy()
+	notify("Do not charge chi til max while inf MD is on!")
 end)
 
 window2:Button("Remove Effects",function()
