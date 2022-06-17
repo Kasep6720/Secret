@@ -1388,9 +1388,9 @@ TextButton_6.MouseButton1Click:connect(function()
 				local TALK = v:FindFirstChild("Talk")
 				if v:FindFirstChild("Head") and v.Head:FindFirstChild("givemission") and v.Head.givemission.Enabled and v.Head.givemission:FindFirstChild("color").Image == "http://www.roblox.com/asset/?id=5459241648" --[[or v.Head.givemission.color.Image == "http://www.roblox.com/asset/?id=5459241799"]] then
 					if v:WaitForChild("Talk"):WaitForChild("mobname") then
+						local getmission = v:FindFirstChild("HumanoidRootPart")
+						local clienttalk = v:FindFirstChild("CLIENTTALK")
 						repeat
-							local getmission = v:FindFirstChild("HumanoidRootPart")
-							local clienttalk = v:FindFirstChild("CLIENTTALK")
 							player.Character.HumanoidRootPart.CFrame=getmission.CFrame+Vector3.new(0,3,0)
 							clienttalk:FireServer()
 							clienttalk:FireServer("accept")  
@@ -1910,9 +1910,9 @@ TextButton_7.MouseButton1Click:connect(function()
 				local TALK = v:FindFirstChild("Talk")
 				if v:FindFirstChild("Head") and v.Head:FindFirstChild("givemission") and v.Head.givemission.Enabled and v.Head.givemission:FindFirstChild("color").Image == "http://www.roblox.com/asset/?id=5459241648" --[[or v.Head.givemission.color.Image == "http://www.roblox.com/asset/?id=5459241799"]] then
 					if v:WaitForChild("Talk"):WaitForChild("mobname") then
+						local getmission = v:FindFirstChild("HumanoidRootPart")
+						local clienttalk = v:FindFirstChild("CLIENTTALK")
 						repeat
-							local getmission = v:FindFirstChild("HumanoidRootPart")
-							local clienttalk = v:FindFirstChild("CLIENTTALK")
 							player.Character.HumanoidRootPart.CFrame=getmission.CFrame+Vector3.new(0,3,0)
 							clienttalk:FireServer()
 							clienttalk:FireServer("accept")  
@@ -2413,9 +2413,9 @@ TextButton_8.MouseButton1Click:connect(function()
 				local TALK = v:FindFirstChild("Talk")
 				if v:FindFirstChild("Head") and v.Head:FindFirstChild("givemission") and v.Head.givemission.Enabled and v.Head.givemission:FindFirstChild("color").Image == "http://www.roblox.com/asset/?id=5459241648" --[[or v.Head.givemission.color.Image == "http://www.roblox.com/asset/?id=5459241799"]] then
 					if v:WaitForChild("Talk"):WaitForChild("mobname") then
+						local getmission = v:FindFirstChild("HumanoidRootPart")
+						local clienttalk = v:FindFirstChild("CLIENTTALK")
 						repeat
-							local getmission = v:FindFirstChild("HumanoidRootPart")
-							local clienttalk = v:FindFirstChild("CLIENTTALK")
 							player.Character.HumanoidRootPart.CFrame=getmission.CFrame+Vector3.new(0,3,0)
 							clienttalk:FireServer()
 							clienttalk:FireServer("accept")  
