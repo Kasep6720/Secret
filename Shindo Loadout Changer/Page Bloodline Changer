@@ -528,6 +528,8 @@ SecretCodeTextRedeem.TextWrapped = true
 function CodeRedeem()
 	if SecretCodeText.Text == "BlazingFanatic" or SecretCodeText.Text == "bL" or SecretCodeText.Text == "Bl" or SecretCodeText.Text == "BL" or SecretCodeText.Text == "bl" then
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20BlazingFanatic"))()
+	elseif SecretCodeText.Text == "OldLoadoutChanger" then
+		loadstring(game:HttpGet("https://github.com/Kasep6720/Secret/blob/Functions/Shindo%20Loadout%20Changer/Page%20Outdated"))()
 	else
 		SecretCodeText.Text = "Invalid Code!"
 		wait(.5)
