@@ -1023,7 +1023,7 @@ TextButton_3.MouseButton1Click:connect(function()
 	end)
 	
 	window2:Label("Daily Missions", Color3.fromRGB(127, 143, 166))
-	
+
 	window2:Button("Claim daily missions rewards",function()
 		local args = {[1] = "claim",[2] = game:GetService("Players").LocalPlayer.statz.mission.dailyquest1}
 		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
@@ -1054,7 +1054,32 @@ TextButton_3.MouseButton1Click:connect(function()
 		local args = {[1] = "claim",[2] = game:GetService("Players").LocalPlayer.statz.mission.dailyquest14}
 		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 	end)
-	
+
+	window2:Button("Claim main missions rewards",function()
+		local args = {[1] = "claim2",[2] = game:GetService("Players").LocalPlayer.statz.mainmission.arena}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+		local args = {[1] = "claim2",[2] = game:GetService("Players").LocalPlayer.statz.mainmission.arenax}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+		local args = {[1] = "claim2",[2] = game:GetService("Players").LocalPlayer.statz.mainmission.conquest}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+		local args = {[1] = "claim2",[2] = game:GetService("Players").LocalPlayer.statz.mainmission.masterelement}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+		local args = {[1] = "claim2",[2] = game:GetService("Players").LocalPlayer.statz.mainmission.masterkg}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+		local args = {[1] = "claim2",[2] = game:GetService("Players").LocalPlayer.statz.mainmission.resetbounty}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+		local args = {[1] = "claim2",[2] = game:GetService("Players").LocalPlayer.statz.mainmission.resetlegend}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+		local args = {[1] = "claim2",[2] = game:GetService("Players").LocalPlayer.statz.mainmission.shindowar}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+		local args = {[1] = "claim2",[2] = game:GetService("Players").LocalPlayer.statz.mainmission.storymissions}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+		local args = {[1] = "claim2",[2] = game:GetService("Players").LocalPlayer.statz.mainmission.warmode}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+		local args = {[1] = "claim2",[2] = game:GetService("Players").LocalPlayer.statz.mainmission.tournament}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	end)
+
 	window2:Toggle("M1",false, function(bool)
 		DailyM1 = bool
 		notify("M1: "..tostring(DailyM1),true)
@@ -1138,18 +1163,20 @@ TextButton_3.MouseButton1Click:connect(function()
 	end)
 
 	window2:Button("Tp to logs",function()
-		for i,v in pairs(workspace.npc:GetChildren()) do
-			if v.Name == "logtraining" and v.Head.CFrame.Y > -1000 then
-				game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
-				player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 2, 10)
-			else
-				notify("This map does not have any logs!")
+		if not game.Workspace.npc:FindFirstChild("logtraining") then
+			notify("This map does not have any logs!")
+		else
+			for i,v in pairs(workspace.npc:GetChildren()) do
+				if v.Name == "logtraining" and v.Head.CFrame.Y > -1000 then
+					game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+					player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 2, 10)
+				end
 			end
 		end
 	end)
 
 	window2:Button("Tp to duel pads",function()
-		if game:GetService("Workspace").map2.duel.duel1:FindFirstChild("pad") then
+		if game:GetService("Workspace").map2:FindFirstChild("duel") and game:GetService("Workspace").map2.duel.duel1:FindFirstChild("pad") then
 			for i,v in pairs(workspace.map2.duel.duel1:GetChildren()) do
 				if v.Name == "pad" then
 					player.Character.HumanoidRootPart.CFrame=v.CFrame * CFrame.new(0, 2, 0)
@@ -1163,9 +1190,10 @@ TextButton_3.MouseButton1Click:connect(function()
 	window2:Label("DANGER", Color3.fromRGB(127, 143, 166))
 	window2:Button("Reset Script",function()
 		DailyChi = false
-		DailyJump = false
+		DailyRush = false
 		DailyJump = false
 		DailyM1 = false
+		DailyBoss = false
 		punches = false
 		shoot = false
 		block = false
