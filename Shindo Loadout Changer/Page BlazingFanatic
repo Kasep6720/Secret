@@ -304,7 +304,8 @@ function CodeRedeem()
 		s.Parent = game.Workspace wait(.0000000000000000000000000000001) 
 		s:play()
 	elseif SecretCodeText.Text == "OldLoadoutChanger" then
-		loadstring(game:HttpGet("https://github.com/Kasep6720/Secret/blob/Functions/Shindo%20Loadout%20Changer/Page%20Outdated"))()
+		ScreenGui:Destroy()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20Outdated"))()
 	else
 		SecretCodeText.Text = "Invalid Code!"
 		wait(.5)
