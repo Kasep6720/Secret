@@ -361,31 +361,27 @@ RaionGaidenDesc.Text = "+"
 RaionGaidenDesc.TextColor3 = Color3.new(1, 1, 1)
 RaionGaidenDesc.TextSize = 40
 
-local Loadout4Hax = Instance.new("TextButton")
-Loadout4Hax.Name = "Loadout4Hax"
-Loadout4Hax.Parent = Main
-Loadout4Hax.BackgroundColor3 = Color3.new(1.020,0.652,0.104)
-Loadout4Hax.BorderSizePixel = 2
-Loadout4Hax.BorderColor3 = Color3.new(0.816,0.435,0.069)
-Loadout4Hax.Position = UDim2.new(0.02, 0, 0.1, 0)
-Loadout4Hax.Size = UDim2.new(0, 40, 0, 20)
-Loadout4Hax.Font = Enum.Font.GothamSemibold
-Loadout4Hax.Text = ""
-Loadout4Hax.TextColor3 = Color3.new(1, 1, 1)
-Loadout4Hax.TextSize = 40
+local BLChangerScript = Instance.new("ImageButton")
+BLChangerScript.Name = "BLChangerScript"
+BLChangerScript.Parent = Main
+BLChangerScript.BackgroundColor3 = Color3.new(0.008,0.868,1.020)
+BLChangerScript.BorderSizePixel = 2
+BLChangerScript.BorderColor3 = Color3.new(0.004,0.434,0.510)
+BLChangerScript.Position = UDim2.new(0.02, 0, 0.1, 0)
+BLChangerScript.Size = UDim2.new(0, 40, 0, 20)
+BLChangerScript.Image = "rbxassetid://6963735886"
+BLChangerScript.ImageColor3 = Color3.new(0.008,0.868,1.020)
 
-local Loadout4SpecialUses = Instance.new("TextButton")
-Loadout4SpecialUses.Name = "Loadout4SpecialUses"
-Loadout4SpecialUses.Parent = Main
-Loadout4SpecialUses.BackgroundColor3 = Color3.new(1.020,0.652,0.104)
-Loadout4SpecialUses.BorderSizePixel = 2
-Loadout4SpecialUses.BorderColor3 = Color3.new(0.816,0.435,0.069)
-Loadout4SpecialUses.Position = UDim2.new(0.02, 0, 0.25, 0)
-Loadout4SpecialUses.Size = UDim2.new(0, 40, 0, 20)
-Loadout4SpecialUses.Font = Enum.Font.GothamSemibold
-Loadout4SpecialUses.Text = ""
-Loadout4SpecialUses.TextColor3 = Color3.new(1, 1, 1)
-Loadout4SpecialUses.TextSize = 40
+local RCChangerScript = Instance.new("ImageButton")
+RCChangerScript.Name = "RCChangerScript"
+RCChangerScript.Parent = Main
+RCChangerScript.BackgroundColor3 = Color3.new(0.008,0.868,1.020)
+RCChangerScript.BorderSizePixel = 2
+RCChangerScript.BorderColor3 = Color3.new(0.004,0.434,0.510)
+RCChangerScript.Position = UDim2.new(0.02, 0, 0.25, 0)
+RCChangerScript.Size = UDim2.new(0, 40, 0, 20)
+RCChangerScript.Image = "rbxassetid://6963735886"
+RCChangerScript.ImageColor3 = Color3.new(0.008,0.868,1.020)
 
 local Loadout4SpecialPvP1 = Instance.new("TextButton")
 Loadout4SpecialPvP1.Name = "Loadout4SpecialPvP1"
@@ -434,6 +430,15 @@ function CodeRedeem()
 	if SecretCodeText.Text == "BlazingFanatic" or SecretCodeText.Text == "bL" or SecretCodeText.Text == "Bl" or SecretCodeText.Text == "BL" or SecretCodeText.Text == "bl" then
 		ScreenGui:Destroy()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20BlazingFanatic"))()
+	elseif SecretCodeText.Text == "OldLoadoutChanger" then
+		local s = Instance.new("Sound")
+		s.Name = "Sound" 
+		s.SoundId = "http://www.roblox.com/asset/?id=550209561" 
+		s.Volume = 99999999999999
+		s.Looped = false
+		s.archivable = false 
+		s.Parent = game.Workspace wait(.0000000000000000000000000000001) 
+		s:play()
 	else
 		SecretCodeText.Text = "Invalid Code!"
 		wait(.5)
@@ -2580,15 +2585,15 @@ RaionGaidenDesc.MouseButton1Click:connect(RaionGaidenLoadoutDot)
 
 function page1()
 ScreenGui:Destroy()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%201"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20Bloodline%20Changer"))()
 end
-Loadout4Hax.MouseButton1Click:connect(page1)
+BLChangerScript.MouseButton1Click:connect(page1)
 
 function page2()
 ScreenGui:Destroy()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%202"))()
 end
-Loadout4SpecialUses.MouseButton1Click:connect(page2)
+RCChangerScript.MouseButton1Click:connect(page2)
 
 function page3()
 local s = Instance.new("Sound")
