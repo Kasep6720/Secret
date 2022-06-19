@@ -173,6 +173,7 @@ elseif game.PlaceId == 9359839118 then
 elseif game.PlaceId ~= 4616652839 then
 	local warplace = game:GetService("Workspace"):FindFirstChild("warmode") --Deleted gamemode
 	local dungeonplace = game:GetService("Workspace"):FindFirstChild("dungeons")
+	local mentortrainingbossplace = game:GetService("Workspace"):FindFirstChild("bossbattle")
 	local allbossesplace = game:GetService("Workspace"):FindFirstChild("cutscene")
 	if allbossesplace then 
 		if game.PlaceId == 8472733618 then
@@ -183,7 +184,7 @@ elseif game.PlaceId ~= 4616652839 then
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoEventBoss"))()
 		end 
 	else 
-		if dungeonplace or warplace then
+		if dungeonplace or warplace or mentortrainingbossplace then
 			if game.PlaceId == 8184506020 then
 				wait(.18) TextLabel.Text = "Game supported!" wait(.5) TextLabel.Text = "Shindo Mentor Training" wait(.8) ScreenGui:Destroy() 
 				loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Shindo/ShindoMentorTrainingMap"))()
