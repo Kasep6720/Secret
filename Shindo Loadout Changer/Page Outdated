@@ -385,18 +385,18 @@ RCChangerScript.Size = UDim2.new(0, 40, 0, 30)
 RCChangerScript.Image = "rbxassetid://6963735886"
 RCChangerScript.ImageColor3 = Color3.new(0.008,0.868,1.020)
 
-local Loadout4SpecialPvP1 = Instance.new("TextButton")
-Loadout4SpecialPvP1.Name = "Loadout4SpecialPvP1"
-Loadout4SpecialPvP1.Parent = Main
-Loadout4SpecialPvP1.BackgroundColor3 = Color3.new(1.020,0.652,0.104)
-Loadout4SpecialPvP1.BorderSizePixel = 2
-Loadout4SpecialPvP1.BorderColor3 = Color3.new(0.816,0.435,0.069)
-Loadout4SpecialPvP1.Position = UDim2.new(0.02, 0, 0.4, 0)
-Loadout4SpecialPvP1.Size = UDim2.new(0, 40, 0, 30)
-Loadout4SpecialPvP1.Font = Enum.Font.GothamSemibold
-Loadout4SpecialPvP1.Text = ""
-Loadout4SpecialPvP1.TextColor3 = Color3.new(1, 1, 1)
-Loadout4SpecialPvP1.TextSize = 40
+local IdentifyScriptButton = Instance.new("TextButton")
+IdentifyScriptButton.Name = "IdentifyScriptButton"
+IdentifyScriptButton.Parent = Main
+IdentifyScriptButton.BackgroundColor3 = Color3.new(1.020,0.652,0.104)
+IdentifyScriptButton.BorderSizePixel = 2
+IdentifyScriptButton.BorderColor3 = Color3.new(0.816,0.435,0.069)
+IdentifyScriptButton.Position = UDim2.new(0.02, 0, 0.4, 0)
+IdentifyScriptButton.Size = UDim2.new(0, 40, 0, 20)
+IdentifyScriptButton.Font = Enum.Font.GothamSemibold
+IdentifyScriptButton.Text = ""
+IdentifyScriptButton.TextColor3 = Color3.new(1, 1, 1)
+IdentifyScriptButton.TextSize = 20
 
 local SecretCodeText = Instance.new("TextBox")
 SecretCodeText.Name = "SecretCodeText"
@@ -2592,25 +2592,17 @@ end
 RaionGaidenDesc.MouseButton1Click:connect(RaionGaidenLoadoutDot)
 
 function page1()
-	ScreenGui:Destroy()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20Bloodline%20Changer"))()
+ScreenGui:Destroy()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20Bloodline%20Changer"))()
 end
 BLChangerScript.MouseButton1Click:connect(page1)
 
 function page2()
-	ScreenGui:Destroy()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%202"))()
+ScreenGui:Destroy()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%202"))()
 end
 RCChangerScript.MouseButton1Click:connect(page2)
 
-function page3()
-	local s = Instance.new("Sound")
-	s.Name = "Sound" 
-	s.SoundId = "http://www.roblox.com/asset/?id=9107247643" 
-	s.Volume = 99999999999999
-	s.Looped = false
-	s.archivable = false 
-	s.Parent = game.Workspace wait(.0000000000000000000000000000001) 
-	s:play()
-end
-Loadout4SpecialPvP1.MouseButton1Click:connect(page3)
+IdentifyScriptButton.MouseButton1Click:connect(function()
+	game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Script:",Text = "Old Shindo Loadout Changer\n(Outdated)",Duration = 2, })
+end)
