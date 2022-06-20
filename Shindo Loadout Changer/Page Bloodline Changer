@@ -322,18 +322,29 @@ Help.Text = "?"
 Help.TextColor3 = Color3.new(1, 1, 1)
 Help.TextSize = 20
 
-local Loadout4SpecialPvP1 = Instance.new("TextButton")
-Loadout4SpecialPvP1.Name = "Loadout4SpecialPvP1"
-Loadout4SpecialPvP1.Parent = BLChangerMain
-Loadout4SpecialPvP1.BackgroundColor3 = Color3.new(0.07, 0.07, 0.07)
-Loadout4SpecialPvP1.BorderSizePixel = 2
-Loadout4SpecialPvP1.BorderColor3 = Color3.new(0.01, 0.01, 0.01)
-Loadout4SpecialPvP1.Position = UDim2.new(0.02, 0, 0.4, 0)
-Loadout4SpecialPvP1.Size = UDim2.new(0, 40, 0, 20)
-Loadout4SpecialPvP1.Font = Enum.Font.GothamSemibold
-Loadout4SpecialPvP1.Text = ""
-Loadout4SpecialPvP1.TextColor3 = Color3.new(1, 1, 1)
-Loadout4SpecialPvP1.TextSize = 20
+local IdentifyScriptButton = Instance.new("TextButton")
+IdentifyScriptButton.Name = "IdentifyScriptButton"
+IdentifyScriptButton.Parent = BLChangerMain
+IdentifyScriptButton.BackgroundColor3 = Color3.new(1.020,0.652,0.104)
+IdentifyScriptButton.BorderSizePixel = 2
+IdentifyScriptButton.BorderColor3 = Color3.new(0.1,0.1,0.9)
+IdentifyScriptButton.Position = UDim2.new(0.02, 0, 0.4, 0)
+IdentifyScriptButton.Size = UDim2.new(0, 40, 0, 20)
+IdentifyScriptButton.Font = Enum.Font.GothamSemibold
+IdentifyScriptButton.Text = ""
+IdentifyScriptButton.TextColor3 = Color3.new(1, 1, 1)
+IdentifyScriptButton.TextSize = 20
+
+local RCChangerScript = Instance.new("ImageButton")
+RCChangerScript.Name = "RCChangerScript"
+RCChangerScript.Parent = BLChangerMain
+RCChangerScript.BackgroundColor3 = Color3.new(0.008,0.868,1.020)
+RCChangerScript.BorderSizePixel = 2
+RCChangerScript.BorderColor3 = Color3.new(0.004,0.434,0.510)
+RCChangerScript.Position = UDim2.new(0.02, 0, 0.55, 0)
+RCChangerScript.Size = UDim2.new(0, 40, 0, 30)
+RCChangerScript.Image = "rbxassetid://6963735886"
+RCChangerScript.ImageColor3 = Color3.new(0.008,0.868,1.020)
 
 local Main2 = Instance.new("ImageLabel")
 Main2.Name = "Main2"
@@ -573,6 +584,15 @@ Help.MouseButton1Click:connect(function()
 		Main3.Visible = false
 		Frame3.Visible = false
 	end
+end)
+
+IdentifyScriptButton.MouseButton1Click:connect(function()
+	game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Script:",Text = "Shindo Bloodline Changer",Duration = 2, })
+end)
+
+RCChangerScript.MouseButton1Click:connect(function()
+	ScreenGui:Destroy()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%202"))()	
 end)
 
 ElmnamesButton.MouseButton1Click:connect(function()
