@@ -192,18 +192,18 @@ RCChangerScript.Size = UDim2.new(0, 40, 0, 30)
 RCChangerScript.Image = "rbxassetid://6963735886"
 RCChangerScript.ImageColor3 = Color3.new(0.008,0.868,1.020)
 
-local Loadout4SpecialPvP1 = Instance.new("TextButton")
-Loadout4SpecialPvP1.Name = "Loadout4SpecialPvP1"
-Loadout4SpecialPvP1.Parent = MainBL
-Loadout4SpecialPvP1.BackgroundColor3 = Color3.new(0.3,0.3,1.2)
-Loadout4SpecialPvP1.BorderSizePixel = 2
-Loadout4SpecialPvP1.BorderColor3 = Color3.new(0.1,0.1,0.9)
-Loadout4SpecialPvP1.Position = UDim2.new(0.02, 0, 0.4, 0)
-Loadout4SpecialPvP1.Size = UDim2.new(0, 40, 0, 20)
-Loadout4SpecialPvP1.Font = Enum.Font.GothamSemibold
-Loadout4SpecialPvP1.Text = ""
-Loadout4SpecialPvP1.TextColor3 = Color3.new(1, 1, 1)
-Loadout4SpecialPvP1.TextSize = 40
+local IdentifyScriptButton = Instance.new("TextButton")
+IdentifyScriptButton.Name = "IdentifyScriptButton"
+IdentifyScriptButton.Parent = MainBL
+IdentifyScriptButton.BackgroundColor3 = Color3.new(0.3,0.3,1.2)
+IdentifyScriptButton.BorderSizePixel = 2
+IdentifyScriptButton.BorderColor3 = Color3.new(0.1,0.1,0.9)
+IdentifyScriptButton.Position = UDim2.new(0.02, 0, 0.4, 0)
+IdentifyScriptButton.Size = UDim2.new(0, 40, 0, 20)
+IdentifyScriptButton.Font = Enum.Font.GothamSemibold
+IdentifyScriptButton.Text = ""
+IdentifyScriptButton.TextColor3 = Color3.new(1, 1, 1)
+IdentifyScriptButton.TextSize = 20
 
 local SecretCodeText = Instance.new("TextBox")
 SecretCodeText.Name = "SecretCodeText"
@@ -1015,8 +1015,6 @@ function page2()
 end
 RCChangerScript.MouseButton1Click:connect(page2)
 
-function page3()
-	ScreenGui:Destroy()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%203"))()
-end
-Loadout4SpecialPvP1.MouseButton1Click:connect(page3)
+IdentifyScriptButton.MouseButton1Click:connect(function()
+	game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Script:",Text = "Shindo Loadout Changer\n(BlazingFanatic)",Duration = 2, })
+end)
