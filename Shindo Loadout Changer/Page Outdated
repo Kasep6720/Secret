@@ -2592,25 +2592,25 @@ end
 RaionGaidenDesc.MouseButton1Click:connect(RaionGaidenLoadoutDot)
 
 function page1()
-ScreenGui:Destroy()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20Bloodline%20Changer"))()
+	ScreenGui:Destroy()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20Bloodline%20Changer"))()
 end
 BLChangerScript.MouseButton1Click:connect(page1)
 
 function page2()
-ScreenGui:Destroy()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%202"))()
+	ScreenGui:Destroy()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%202"))()
 end
 RCChangerScript.MouseButton1Click:connect(page2)
 
 function page3()
-local s = Instance.new("Sound")
-s.Name = "Sound" 
-s.SoundId = "http://www.roblox.com/asset/?id=9107247643" 
-s.Volume = 99999999999999
-s.Looped = false
-s.archivable = false 
-s.Parent = game.Workspace wait(.0000000000000000000000000000001) 
-s:play()
+	local s = Instance.new("Sound")
+	s.Name = "Sound" 
+	s.SoundId = "http://www.roblox.com/asset/?id=9107247643" 
+	s.Volume = 99999999999999
+	s.Looped = false
+	s.archivable = false 
+	s.Parent = game.Workspace wait(.0000000000000000000000000000001) 
+	s:play()
 end
 Loadout4SpecialPvP1.MouseButton1Click:connect(page3)
