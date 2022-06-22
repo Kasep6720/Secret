@@ -1003,17 +1003,15 @@ function Bl3LoadoutDot()
 end
 Bl3Desc.MouseButton1Click:connect(Bl3LoadoutDot)
 
-function page1()
+BLChangerScript.MouseButton1Click:connect(function()
 	ScreenGui:Destroy()
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20Bloodline%20Changer"))()
-end
-BLChangerScript.MouseButton1Click:connect(page1)
+end)
 
-function page2()
+RCChangerScript.MouseButton1Click:connect(function()
 	ScreenGui:Destroy()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%202"))()
-end
-RCChangerScript.MouseButton1Click:connect(page2)
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20RC%20Shop%20Changer"))()
+end)
 
 IdentifyScriptButton.MouseButton1Click:connect(function()
 	game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Script:",Text = "Shindo Loadout Changer\n(BlazingFanatic)",Duration = 2, })
