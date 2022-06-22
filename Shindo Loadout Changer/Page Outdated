@@ -388,9 +388,9 @@ RCChangerScript.ImageColor3 = Color3.new(0.008,0.868,1.020)
 local IdentifyScriptButton = Instance.new("TextButton")
 IdentifyScriptButton.Name = "IdentifyScriptButton"
 IdentifyScriptButton.Parent = Main
-IdentifyScriptButton.BackgroundColor3 = Color3.new(1.020,0.652,0.104)
+IdentifyScriptButton.BackgroundColor3 = Color3.new(0.1,0.1,0.1)
 IdentifyScriptButton.BorderSizePixel = 2
-IdentifyScriptButton.BorderColor3 = Color3.new(0.816,0.435,0.069)
+IdentifyScriptButton.BorderColor3 = Color3.new(0.005,0.005,0.005)
 IdentifyScriptButton.Position = UDim2.new(0.02, 0, 0.4, 0)
 IdentifyScriptButton.Size = UDim2.new(0, 40, 0, 20)
 IdentifyScriptButton.Font = Enum.Font.GothamSemibold
@@ -2591,17 +2591,15 @@ function RaionGaidenLoadoutDot()
 end
 RaionGaidenDesc.MouseButton1Click:connect(RaionGaidenLoadoutDot)
 
-function page1()
-ScreenGui:Destroy()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20Bloodline%20Changer"))()
-end
-BLChangerScript.MouseButton1Click:connect(page1)
+BLChangerScript.MouseButton1Click:connect(function()
+	ScreenGui:Destroy()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20Bloodline%20Changer"))()
+end)
 
-function page2()
-ScreenGui:Destroy()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%202"))()
-end
-RCChangerScript.MouseButton1Click:connect(page2)
+RCChangerScript.MouseButton1Click:connect(function()
+	ScreenGui:Destroy()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20RC%20Shop%20Changer"))()
+end)
 
 IdentifyScriptButton.MouseButton1Click:connect(function()
 	game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Script:",Text = "Old Shindo Loadout Changer\n(Outdated)",Duration = 2, })
