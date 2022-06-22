@@ -676,6 +676,10 @@ TextButton.MouseButton1Click:connect(function()
 				loadstring(game:HttpGet("https://raw.githubusercontent.com/NoobieDoge/DogeHub/Separated/ShindoBloodlineChanger"))()
 			end)
 
+			window2:Button("RC Shop Changer",function()
+				loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20RC%20Shop%20Changer"))()
+			end)
+
 			window3:Button("Upgrade Performance",function()
 				local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
 				local g = game
