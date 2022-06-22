@@ -1,0 +1,578 @@
+--Properties:
+local ScreenGui = Instance.new("ScreenGui")
+--LoadoutChanger.Name = "LoadoutChanger"
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+local RCChangerMain = Instance.new("ImageLabel")
+RCChangerMain.Name = "RCChangerMain"
+RCChangerMain.Parent = ScreenGui
+RCChangerMain.BackgroundColor3 = Color3.new(1, 1, 1)
+RCChangerMain.BackgroundTransparency = 1
+RCChangerMain.Position = UDim2.new(0.765, 0, 0.52, 0)
+RCChangerMain.Size = UDim2.new(0, 300, 0, 280)
+RCChangerMain.Visible = true
+RCChangerMain.Active = true
+RCChangerMain.Image = "rbxassetid://2260429633"
+RCChangerMain.ImageColor3 = Color3.new(0.117647, 0.117647, 0.117647)
+RCChangerMain.ScaleType = Enum.ScaleType.Slice
+RCChangerMain.SliceCenter = Rect.new(12, 12, 13, 13)
+RCChangerMain.Draggable = true
+
+local X = Instance.new("TextButton")
+X.Name = "X"
+X.Parent = RCChangerMain
+X.BackgroundColor3 = Color3.new(0.0588235, 0.0588235, 0.0588235)
+X.BorderSizePixel = 0
+X.Position = UDim2.new(0.85, 0, 0, 0)
+X.Size = UDim2.new(0, 31, 0, 20)
+X.Font = Enum.Font.Cartoon
+X.Text = "X"
+X.TextColor3 = Color3.new(1, 1, 1)
+X.TextScaled = true
+X.TextSize = 14
+X.TextWrapped = true
+
+function DeleteGui() -- X.LocalScript 
+	local script = Instance.new('LocalScript')
+	script.Parent = X
+	function OnClicked()
+		script.Parent.Parent.Parent.RCChangerMain:Destroy()
+	end
+	script.Parent.MouseButton1Down:Connect(OnClicked)
+end
+coroutine.resume(coroutine.create(DeleteGui))
+
+local Title = Instance.new("TextLabel")
+Title.Name = "Title"
+Title.Parent = RCChangerMain
+Title.BackgroundColor3 = Color3.new(1, 1, 1)
+Title.BackgroundTransparency = 1
+Title.Position = UDim2.new(0.1, 0, 0.000547006086, 0)
+Title.Size = UDim2.new(0, 200, 0, 20)
+Title.Font = Enum.Font.GothamSemibold
+Title.Text = "           Shindo RC Shop Changer"
+Title.TextColor3 = Color3.new(1, 1, 1)
+Title.TextScaled = false
+Title.TextSize = 16.5
+Title.TextWrapped = false
+
+local Border = Instance.new("Frame")
+Border.Name = "Border"
+Border.Parent = RCChangerMain
+Border.BackgroundColor3 = Color3.new(0.419608, 0.419608, 0.419608)
+Border.BorderColor3 = Color3.new(0.419608, 0.419608, 0.419608)
+Border.Position = UDim2.new(0.17, 0, -0.000385761261, 0)
+Border.Size = UDim2.new(0, 3, 0, 280)
+
+local ShowRCUIButton = Instance.new("TextButton")
+ShowRCUIButton.Name = "ShowRCUIButton"
+ShowRCUIButton.Parent = RCChangerMain
+ShowRCUIButton.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+ShowRCUIButton.BackgroundTransparency = 1
+ShowRCUIButton.BorderSizePixel = 0
+ShowRCUIButton.Position = UDim2.new(0.188181819, 0, 0.1, 0)
+ShowRCUIButton.Size = UDim2.new(0, 243, 0, 20)
+ShowRCUIButton.Font = Enum.Font.GothamSemibold
+ShowRCUIButton.Text = "Show RC Shop"
+ShowRCUIButton.TextColor3 = Color3.new(1, 1, 1)
+ShowRCUIButton.TextSize = 15
+ShowRCUIButton.TextWrapped = false
+ShowRCUIButton.Transparency = 0
+ShowRCUIButton.MouseButton1Click:connect(function()
+game:GetService("Players").LocalPlayer.PlayerGui.Main.RYOshop.Visible = true
+game:GetService("Players").LocalPlayer.PlayerGui.Main.Blur.Visible = false
+game:GetService("Players").LocalPlayer.PlayerGui.Main.ingame.Menu.Visible = false
+end)
+
+local ClothingsText = Instance.new("TextLabel")
+ClothingsText.Name = "ClothingsText"
+ClothingsText.Parent = RCChangerMain
+ClothingsText.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+ClothingsText.BackgroundTransparency = 1
+ClothingsText.BorderSizePixel = 0
+ClothingsText.Position = UDim2.new(0.188181819, 0, 0.19, 0)
+ClothingsText.Size = UDim2.new(0, 243, 0, 20)
+ClothingsText.Font = Enum.Font.GothamSemibold
+ClothingsText.Text = "Clothings"
+ClothingsText.TextColor3 = Color3.new(1, 1, 1)
+ClothingsText.TextSize = 15
+ClothingsText.TextWrapped = false
+ClothingsText.Transparency = 0
+
+local Clothslotstextbox = Instance.new("TextBox")
+Clothslotstextbox.Name = "Clothslotstextbox"
+Clothslotstextbox.Parent = RCChangerMain
+Clothslotstextbox.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+Clothslotstextbox.BorderSizePixel = 0
+Clothslotstextbox.Position = UDim2.new(0.188181819 + 0.415, 0, 0.27, 0)
+Clothslotstextbox.Size = UDim2.new(0, 119, 0, 82)
+Clothslotstextbox.Font = Enum.Font.GothamSemibold
+Clothslotstextbox.Text = "Insert your \nClothings"
+Clothslotstextbox.TextColor3 = Color3.new(1, 1, 1)
+Clothslotstextbox.TextSize = 20
+Clothslotstextbox.TextWrapped = true
+
+local clothslot1 = Instance.new("TextButton")
+clothslot1.Name = "clothslot1"
+clothslot1.Parent = RCChangerMain
+clothslot1.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+clothslot1.BorderSizePixel = 0
+clothslot1.Position = UDim2.new(0.188181819, 0, 0.27, 0)
+clothslot1.Size = UDim2.new(0, 60, 0, 40)
+clothslot1.Font = Enum.Font.GothamSemibold
+clothslot1.Text = "Slot 1"
+clothslot1.TextColor3 = Color3.new(1, 1, 1)
+clothslot1.TextSize = 18
+clothslot1.MouseButton1Click:connect(function()
+	clothslot1.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
+	game:GetService("Workspace")["4hourshop"].item1.Value = Clothslotstextbox.Text
+	wait(.5)
+	clothslot1.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+end)
+
+local clothslot2 = Instance.new("TextButton")
+clothslot2.Name = "clothslot2"
+clothslot2.Parent = RCChangerMain
+clothslot2.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+clothslot2.BorderSizePixel = 0
+clothslot2.Position = UDim2.new(0.188181819 + 0.205, 0, 0.27, 0)
+clothslot2.Size = UDim2.new(0, 60, 0, 40)
+clothslot2.Font = Enum.Font.GothamSemibold
+clothslot2.Text = "Slot 2"
+clothslot2.TextColor3 = Color3.new(1, 1, 1)
+clothslot2.TextSize = 18
+clothslot2.MouseButton1Click:connect(function()
+	clothslot2.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
+	game:GetService("Workspace")["4hourshop"].item2.Value = Clothslotstextbox.Text
+	wait(.5)
+	clothslot2.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+end)
+
+local clothslot3 = Instance.new("TextButton")
+clothslot3.Name = "clothslot3"
+clothslot3.Parent = RCChangerMain
+clothslot3.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+clothslot3.BorderSizePixel = 0
+clothslot3.Position = UDim2.new(0.188181819, 0, 0.27 + 0.15, 0)
+clothslot3.Size = UDim2.new(0, 60, 0, 40)
+clothslot3.Font = Enum.Font.GothamSemibold
+clothslot3.Text = "Slot 3"
+clothslot3.TextColor3 = Color3.new(1, 1, 1)
+clothslot3.TextSize = 18
+clothslot3.MouseButton1Click:connect(function()
+	clothslot3.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
+	game:GetService("Workspace")["4hourshop"].item3.Value = Clothslotstextbox.Text
+	wait(.5)
+	clothslot3.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+end)
+
+local clothslot4 = Instance.new("TextButton")
+clothslot4.Name = "elmslot4"
+clothslot4.Parent = RCChangerMain
+clothslot4.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+clothslot4.BorderSizePixel = 0
+clothslot4.Position = UDim2.new(0.188181819 + 0.205, 0, 0.27 + 0.15, 0)
+clothslot4.Size = UDim2.new(0, 60, 0, 40)
+clothslot4.Font = Enum.Font.GothamSemibold
+clothslot4.Text = "Slot 4"
+clothslot4.TextColor3 = Color3.new(1, 1, 1)
+clothslot4.TextSize = 18
+clothslot4.MouseButton1Click:connect(function()
+	clothslot4.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
+	game:GetService("Workspace")["4hourshop"].item4.Value = Clothslotstextbox.Text
+	wait(.5)
+	clothslot4.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+end)
+
+local RareBLLabel = Instance.new("TextLabel")
+RareBLLabel.Name = "RareBLLabel"
+RareBLLabel.Parent = RCChangerMain
+RareBLLabel.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+RareBLLabel.BackgroundTransparency = 1
+RareBLLabel.BorderSizePixel = 0
+RareBLLabel.Position = UDim2.new(0.188181819, 0, 0.59, 0)
+RareBLLabel.Size = UDim2.new(0, 243, 0, 20)
+RareBLLabel.Font = Enum.Font.GothamSemibold
+RareBLLabel.Text = "	Limited Bloodlines"
+RareBLLabel.TextColor3 = Color3.new(1, 1, 1)
+RareBLLabel.TextSize = 15
+RareBLLabel.TextWrapped = false
+RareBLLabel.Transparency = 0
+
+local rareblslotstextbox = Instance.new("TextBox")
+rareblslotstextbox.Name = "rareblslotstextbox"
+rareblslotstextbox.Parent = RCChangerMain
+rareblslotstextbox.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+rareblslotstextbox.BorderSizePixel = 0
+rareblslotstextbox.Position = UDim2.new(0.188181819 + 0.415, 0, 0.68, 0)
+rareblslotstextbox.Size = UDim2.new(0, 119, 0, 82)
+rareblslotstextbox.Font = Enum.Font.GothamSemibold
+rareblslotstextbox.Text = "Insert your \nlimited bloodline"
+rareblslotstextbox.TextColor3 = Color3.new(1, 1, 1)
+rareblslotstextbox.TextSize = 20
+rareblslotstextbox.TextWrapped = true
+
+local rareblslot1 = Instance.new("TextButton")
+rareblslot1.Name = "rareblslot1"
+rareblslot1.Parent = RCChangerMain
+rareblslot1.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+rareblslot1.BorderSizePixel = 0
+rareblslot1.Position = UDim2.new(0.188181819, 0, 0.68, 0)
+rareblslot1.Size = UDim2.new(0, 39.5, 0, 82)
+rareblslot1.Font = Enum.Font.GothamSemibold
+rareblslot1.Text = "Slot \n1"
+rareblslot1.TextColor3 = Color3.new(1, 1, 1)
+rareblslot1.TextSize = 18
+rareblslot1.MouseButton1Click:connect(function()
+	rareblslot1.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
+	game:GetService("Workspace").RCGENKAI.item1.Value = rareblslotstextbox.Text
+	wait(.5)
+	rareblslot1.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+end)
+
+local rareblslot2 = Instance.new("TextButton")
+rareblslot2.Name = "rareblslot2"
+rareblslot2.Parent = RCChangerMain
+rareblslot2.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+rareblslot2.BorderSizePixel = 0
+rareblslot2.Position = UDim2.new(0.188181819 + 0.14, 0, 0.68, 0)
+rareblslot2.Size = UDim2.new(0, 39.5, 0, 82)
+rareblslot2.Font = Enum.Font.GothamSemibold
+rareblslot2.Text = "Slot \n2"
+rareblslot2.TextColor3 = Color3.new(1, 1, 1)
+rareblslot2.TextSize = 18
+rareblslot2.MouseButton1Click:connect(function()
+	rareblslot2.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
+	game:GetService("Workspace").RCGENKAI.item2.Value = rareblslotstextbox.Text
+	wait(.5)
+	rareblslot2.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+end)
+
+local rareblslot3 = Instance.new("TextButton")
+rareblslot3.Name = "rareblslot3"
+rareblslot3.Parent = RCChangerMain
+rareblslot3.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+rareblslot3.BorderSizePixel = 0
+rareblslot3.Position = UDim2.new(0.188181819 + 0.28, 0, 0.68, 0)
+rareblslot3.Size = UDim2.new(0, 39.5, 0, 82)
+rareblslot3.Font = Enum.Font.GothamSemibold
+rareblslot3.Text = "Slot \n3"
+rareblslot3.TextColor3 = Color3.new(1, 1, 1)
+rareblslot3.TextSize = 18
+rareblslot3.MouseButton1Click:connect(function()
+	rareblslot3.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
+	game:GetService("Workspace").RCGENKAI.item3.Value = rareblslotstextbox.Text
+	wait(.5)
+	rareblslot3.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+end)
+
+local Info = Instance.new("TextButton")
+Info.Name = "Info"
+Info.Parent = RCChangerMain
+Info.BackgroundColor3 = Color3.new(1,0.2,0.2)
+Info.BorderSizePixel = 2
+Info.BorderColor3 = Color3.new(0.7,0.1,0.1)
+Info.Position = UDim2.new(0.02, 0, 0.1, 0)
+Info.Size = UDim2.new(0, 40, 0, 20)
+Info.Font = Enum.Font.GothamSemibold
+Info.Text = "!"
+Info.TextColor3 = Color3.new(1, 1, 1)
+Info.TextSize = 20
+
+local Help = Instance.new("TextButton")
+Help.Name = "Help"
+Help.Parent = RCChangerMain
+Help.BackgroundColor3 = Color3.new(0.3,0.8,0.3)
+Help.BorderSizePixel = 2
+Help.BorderColor3 = Color3.new(0.1,0.5,0.1)
+Help.Position = UDim2.new(0.02, 0, 0.25, 0)
+Help.Size = UDim2.new(0, 40, 0, 20)
+Help.Font = Enum.Font.GothamSemibold
+Help.Text = "?"
+Help.TextColor3 = Color3.new(1, 1, 1)
+Help.TextSize = 20
+
+local IdentifyScriptButton = Instance.new("TextButton")
+IdentifyScriptButton.Name = "IdentifyScriptButton"
+IdentifyScriptButton.Parent = RCChangerMain
+IdentifyScriptButton.BackgroundColor3 = Color3.new(0.3,0.8,0.3)
+IdentifyScriptButton.BorderSizePixel = 2
+IdentifyScriptButton.BorderColor3 = Color3.new(0.7,0.1,0.1)
+IdentifyScriptButton.Position = UDim2.new(0.02, 0, 0.4, 0)
+IdentifyScriptButton.Size = UDim2.new(0, 40, 0, 20)
+IdentifyScriptButton.Font = Enum.Font.GothamSemibold
+IdentifyScriptButton.Text = ""
+IdentifyScriptButton.TextColor3 = Color3.new(1, 1, 1)
+IdentifyScriptButton.TextSize = 20
+
+local BLChangerScript = Instance.new("ImageButton")
+BLChangerScript.Name = "BLChangerScript"
+BLChangerScript.Parent = RCChangerMain
+BLChangerScript.BackgroundColor3 = Color3.new(0.568, 0.264, 0.532)
+BLChangerScript.BorderSizePixel = 2
+BLChangerScript.BorderColor3 = Color3.new(0.4, 0.15, 0.4)
+BLChangerScript.Position = UDim2.new(0.02, 0, 0.55, 0)
+BLChangerScript.Size = UDim2.new(0, 40, 0, 30)
+BLChangerScript.Image = "rbxassetid://6009060308"
+BLChangerScript.ImageColor3 = Color3.new(1.020,1.020,1.020)
+
+local Main2 = Instance.new("ImageLabel")
+Main2.Name = "Main2"
+Main2.Parent = RCChangerMain
+Main2.BackgroundColor3 = Color3.new(1, 1, 1)
+Main2.BackgroundTransparency = 1
+Main2.Position = UDim2.new(0, 0, -0.835, 0)
+Main2.Size = UDim2.new(0, 300, 0, 230)
+Main2.Visible = false
+Main2.Image = "rbxassetid://2260429633"
+Main2.ImageColor3 = Color3.new(0.117647, 0.117647, 0.117647)
+Main2.ScaleType = Enum.ScaleType.Slice
+Main2.SliceCenter = Rect.new(12, 12, 13, 13)
+
+local ScrollingFrameforTextLabel2 = Instance.new("ScrollingFrame")
+ScrollingFrameforTextLabel2.Name = "ScrollingFrameforTextLabel2"
+ScrollingFrameforTextLabel2.Parent = Main2
+ScrollingFrameforTextLabel2.BackgroundColor3 = Color3.new(1, 1, 1)
+ScrollingFrameforTextLabel2.BackgroundTransparency = 1
+ScrollingFrameforTextLabel2.BorderSizePixel = 0
+ScrollingFrameforTextLabel2.Position = UDim2.new(0, 20, 0, 60)
+ScrollingFrameforTextLabel2.Size = UDim2.new(1, -40, 1, -70)
+ScrollingFrameforTextLabel2.CanvasSize = UDim2.new(0, 0, 3, 0)
+ScrollingFrameforTextLabel2.ScrollBarThickness = 5
+
+local TextLabel2 = Instance.new("TextLabel")
+TextLabel2.Parent = ScrollingFrameforTextLabel2
+TextLabel2.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
+TextLabel2.Size = UDim2.new(1, -20, 1, 0)
+TextLabel2.Font = Enum.Font.Ubuntu
+TextLabel2.BackgroundTransparency = 1
+TextLabel2.Text = [[
+Script made by NoobieDoge
+
+Type the name of the clothing or limited elements or bloodlines into the textbox, then press the slot that you want to change
+
+Do not type the display name, it won't work. 
+
+If you don't know the code names for the clothing or element or bloodline, press the green "?" button
+
+You still need enough RC to purchase the stuff you've changed.]]
+TextLabel2.TextSize = 40
+TextLabel2.TextColor3 = Color3.fromRGB(225, 225, 225)
+TextLabel2.TextScaled = false
+TextLabel2.TextSize = 15
+TextLabel2.TextWrapped = true
+TextLabel2.TextXAlignment = Enum.TextXAlignment.Left
+TextLabel2.TextYAlignment = Enum.TextYAlignment.Top
+
+local Frame2 = Instance.new("Frame")
+Frame2.Parent = RCChangerMain
+Frame2.BackgroundColor3 = Color3.fromRGB(255,60,60)
+Frame2.Position = UDim2.new(0, 0, -0.835, 0)
+Frame2.Size = UDim2.new(0, 300, 0, 30)
+Frame2.Transparency = 0.1
+Frame2.Visible = false
+
+local TextLabel3 = Instance.new("TextLabel")
+TextLabel3.Parent = Frame2
+TextLabel3.BackgroundColor3 = Color3.fromRGB(1, 1, 1)
+TextLabel3.Size = UDim2.new(0, 300, 0, 30)
+TextLabel3.Font = Enum.Font.Ubuntu
+TextLabel3.BackgroundTransparency = 1
+TextLabel3.Text = "Information"
+TextLabel3.TextColor3 = Color3.fromRGB(1, 1, 1)
+TextLabel3.TextScaled = true
+TextLabel3.TextSize = 40.000
+TextLabel3.TextWrapped = true
+
+local Main3 = Instance.new("ImageLabel")
+Main3.Name = "Main3"
+Main3.Parent = RCChangerMain
+Main3.BackgroundColor3 = Color3.new(1, 1, 1)
+Main3.BackgroundTransparency = 1
+Main3.Position = UDim2.new(0, 0, -0.835, 0)
+Main3.Size = UDim2.new(0, 300, 0, 230)
+Main3.Visible = false
+Main3.Image = "rbxassetid://2260429633"
+Main3.ImageColor3 = Color3.new(0.117647, 0.117647, 0.117647)
+Main3.ScaleType = Enum.ScaleType.Slice
+Main3.SliceCenter = Rect.new(12, 12, 13, 13)
+
+local TextLabel4 = Instance.new("TextLabel")
+TextLabel4.Parent = Main3
+TextLabel4.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
+TextLabel4.Position = UDim2.new(0.025, 0, 0.15, 0)
+TextLabel4.Size = UDim2.new(1, -20, 1, 0)
+TextLabel4.Font = Enum.Font.Ubuntu
+TextLabel4.BackgroundTransparency = 1
+TextLabel4.Text = "If you don't know the code names for the \nclothing or limited bloodline or element that you want to change,\n\nPress these buttons and scroll to the bottom."
+TextLabel4.TextSize = 40
+TextLabel4.TextColor3 = Color3.fromRGB(225, 225, 225)
+TextLabel4.TextScaled = false
+TextLabel4.TextSize = 15
+TextLabel4.TextWrapped = true
+TextLabel4.TextXAlignment = Enum.TextXAlignment.Left
+TextLabel4.TextYAlignment = Enum.TextYAlignment.Top
+
+local Frame3 = Instance.new("Frame")
+Frame3.Parent = RCChangerMain
+Frame3.BackgroundColor3 = Color3.fromRGB(40, 200, 40)
+Frame3.Position = UDim2.new(0, 0, -0.835, 0)
+Frame3.Size = UDim2.new(0, 300, 0, 30)
+Frame3.Transparency = 0.1
+Frame3.Visible = false
+
+local TextLabel5 = Instance.new("TextLabel")
+TextLabel5.Parent = Frame3
+TextLabel5.BackgroundColor3 = Color3.fromRGB(1, 1, 1)
+TextLabel5.Size = UDim2.new(0, 300, 0, 30)
+TextLabel5.Font = Enum.Font.Ubuntu
+TextLabel5.BackgroundTransparency = 1
+TextLabel5.Text = "Help"
+TextLabel5.TextColor3 = Color3.fromRGB(1, 1, 1)
+TextLabel5.TextScaled = true
+TextLabel5.TextSize = 40.000
+TextLabel5.TextWrapped = true
+
+local ClothnamesButton = Instance.new("TextButton")
+ClothnamesButton.Name = "ClothnamesButton"
+ClothnamesButton.Parent = Main3
+ClothnamesButton.BackgroundColor3 = Color3.new(0.3,0.8,0.3)
+ClothnamesButton.BorderSizePixel = 1
+ClothnamesButton.BorderColor3 = Color3.new(0.1,0.5,0.1)
+ClothnamesButton.Position = UDim2.new(0.05, 0, 0.55, 0)
+ClothnamesButton.Size = UDim2.new(0, 120, 0, 80)
+ClothnamesButton.Font = Enum.Font.GothamSemibold
+ClothnamesButton.Text = "Clothings"
+ClothnamesButton.TextColor3 = Color3.new(0, 0, 0)
+ClothnamesButton.TextSize = 17
+
+local RAREKGnamesButton = Instance.new("TextButton")
+RAREKGnamesButton.Name = "RAREKGnamesButton"
+RAREKGnamesButton.Parent = Main3
+RAREKGnamesButton.BackgroundColor3 = Color3.new(0.3,0.8,0.3)
+RAREKGnamesButton.BorderSizePixel = 1
+RAREKGnamesButton.BorderColor3 = Color3.new(0.1,0.5,0.1)
+RAREKGnamesButton.Position = UDim2.new(0.55, 0, 0.55, 0)
+RAREKGnamesButton.Size = UDim2.new(0, 120, 0, 80)
+RAREKGnamesButton.Font = Enum.Font.GothamSemibold
+RAREKGnamesButton.Text = "Limiteds"
+RAREKGnamesButton.TextColor3 = Color3.new(0, 0, 0)
+RAREKGnamesButton.TextSize = 17
+
+local SecretCodeText = Instance.new("TextBox")
+SecretCodeText.Name = "SecretCodeText"
+SecretCodeText.Parent = RCChangerMain
+SecretCodeText.BackgroundColor3 = Color3.new(0.512, 0.512, 0.512)
+SecretCodeText.BorderSizePixel = 0
+SecretCodeText.Position = UDim2.new(0.01, 0, 0.85, 0)
+SecretCodeText.Size = UDim2.new(0, 45, 0, 20)
+SecretCodeText.Font = Enum.Font.GothamSemibold
+SecretCodeText.PlaceholderColor3 = Color3.fromRGB(255, 255, 255)
+SecretCodeText.PlaceholderText = "Secret Code"
+SecretCodeText.Text = ""
+SecretCodeText.TextColor3 = Color3.new(1, 1, 1)
+SecretCodeText.TextScaled = true
+SecretCodeText.TextSize = 14
+SecretCodeText.TextWrapped = true
+
+local SecretCodeTextRedeem = Instance.new("TextButton")
+SecretCodeTextRedeem.Name = "SecretCodeTextRedeem"
+SecretCodeTextRedeem.Parent = RCChangerMain
+SecretCodeTextRedeem.BackgroundColor3 = Color3.new(0.512, 0.512, 0.512)
+SecretCodeTextRedeem.BorderSizePixel = 0
+SecretCodeTextRedeem.Position = UDim2.new(0.01, 0, 0.94, 0)
+SecretCodeTextRedeem.Size = UDim2.new(0, 45, 0, 10)
+SecretCodeTextRedeem.Font = Enum.Font.GothamSemibold
+SecretCodeTextRedeem.Text = ""
+SecretCodeTextRedeem.TextColor3 = Color3.new(1, 1, 1)
+SecretCodeTextRedeem.TextScaled = true
+SecretCodeTextRedeem.TextSize = 14
+SecretCodeTextRedeem.TextWrapped = true
+
+function CodeRedeem()
+	if SecretCodeText.Text == "BlazingFanatic" or SecretCodeText.Text == "bL" or SecretCodeText.Text == "Bl" or SecretCodeText.Text == "BL" or SecretCodeText.Text == "bl" then
+		ScreenGui:Destroy()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20BlazingFanatic"))()
+	elseif SecretCodeText.Text == "OldLoadoutChanger" then
+		ScreenGui:Destroy()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20Outdated"))()
+	else
+		SecretCodeText.Text = "Invalid Code!"
+		wait(.5)
+		SecretCodeText.Text = "Secret Code"
+	end
+end
+SecretCodeTextRedeem.MouseButton1Click:connect(CodeRedeem)
+
+Info.MouseButton1Click:connect(function()
+	InfoEnabled = not InfoEnabled
+	if InfoEnabled then
+		HelpEnabled = false
+		Help.BackgroundColor3 = Color3.new(0.3,0.8,0.3)
+		Info.BackgroundColor3 = Color3.new(1.2,0.4,0.4)
+		Main2.Visible = true
+		Frame2.Visible = true
+		Main3.Visible = false
+		Frame3.Visible = false
+	else
+		Info.BackgroundColor3 = Color3.new(1,0.2,0.2)
+		Main2.Visible = false
+		Frame2.Visible = false
+	end
+end)
+
+Help.MouseButton1Click:connect(function()
+	HelpEnabled = not HelpEnabled
+	if HelpEnabled then
+		InfoEnabled = false
+		Info.BackgroundColor3 = Color3.new(1,0.2,0.2)
+		Help.BackgroundColor3 = Color3.new(0.4,1,0.4)
+		Main2.Visible = false
+		Frame2.Visible = false
+		Main3.Visible = true
+		Frame3.Visible = true
+		TextLabel2.TextSize = 15	
+	else
+		Help.BackgroundColor3 = Color3.new(0.3,0.8,0.3)
+		Main3.Visible = false
+		Frame3.Visible = false
+	end
+end)
+
+IdentifyScriptButton.MouseButton1Click:connect(function()
+	game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Script:",Text = "Shindo RC Shop Changer",Duration = 2, })
+end)
+
+BLChangerScript.MouseButton1Click:connect(function()
+	ScreenGui:Destroy()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20Bloodline%20Changer"))()
+end)
+
+ClothnamesButton.MouseButton1Click:connect(function()
+	game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
+	warn("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+	warn("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+	warn("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+	print("Clothings:")
+	for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Main.RYOshop.ShopItems.bigshop:GetChildren()) do
+		if v:FindFirstChild("purchase") then
+			print("")
+			print(v.Name)
+		end
+	end
+end)
+
+RAREKGnamesButton.MouseButton1Click:connect(function()
+	game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
+	warn("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+	warn("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+	warn("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+	print("Limiteds:")
+	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
+		if not v:FindFirstChild("truelimited") and v:FindFirstChild("limited") then
+			print("")
+			print(v.REALNAME.Value)
+			print(v.Name)
+		end
+	end
+end)
