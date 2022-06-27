@@ -78,6 +78,83 @@ local window4 = library:Window("Kenjutsu")
 local window5 = library:Window("Credits")
 library:Keybind("RightControl")
 
+	window1:Button("Instructions",function()
+		local player = game.Players.LocalPlayer
+		local ScreenGuiK = Instance.new("ScreenGui")
+		local FrameK = Instance.new("Frame")
+		local ScrollingFrame = Instance.new("ScrollingFrame")
+		local TextLabel = Instance.new("TextLabel")
+		local TextButton = Instance.new("TextButton")
+
+		ScreenGuiK.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+		FrameK.Parent = ScreenGuiK
+		FrameK.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+		FrameK.Position = UDim2.new(0.005, 0, 0.7, 0)
+		FrameK.Size = UDim2.new(0, 200, 0, 180)
+		FrameK.Active = true
+		FrameK.Draggable = true
+
+		ScrollingFrame.Parent = FrameK
+		ScrollingFrame.BackgroundColor3 = Color3.new(0.27, 0.27, 0.27)
+		ScrollingFrame.BackgroundTransparency = 0
+		ScrollingFrame.BorderSizePixel = 0
+		ScrollingFrame.Position = UDim2.new(0.025, 0, 0.15, 0)
+		ScrollingFrame.Size = UDim2.new(0, 192, 0, 150)
+		ScrollingFrame.CanvasSize = UDim2.new(0, 0, 5, 0)
+		ScrollingFrame.ScrollBarThickness = 5
+
+		TextLabel.Parent = ScrollingFrame
+		TextLabel.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextLabel.Size = UDim2.new(0, 190, 0, 900)
+		TextLabel.Font = Enum.Font.TitilliumWeb
+		TextLabel.Text = [[To use this inf spins script:
+
+		1.Choose the bloodline or element or kenjutsu that you want to get, you can choose no more than 5 choices for bloodlines and elements and no more than 3 choices for kenjutsu.
+		
+		2.Press spin the slots that you want to have the bloodline or element or kenjutsu.
+
+		3.Wait patiently and DO NOT change anything until you got the stuff that you want.
+		
+		4.When you got the bloodline or element or kenjutsu that you want, you may press save data then leave this server to save it.
+		
+		5.I've already put all spinnable limiteds on top of the dropdown, please don't be stupid and try to spin a limited bloodline in element slots or whatever.
+		
+		6.DO NOT redeem codes before pressing save data
+
+		7.If you are unsatisfied about the results, you may always press Reset Spins NOW to reset, unless you pressed save spins data or turned on auto save.
+
+		8.Press Right Ctrl to show/hide GUI]]
+		TextLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextLabel.TextScaled = true
+		TextLabel.TextSize = 20.000
+		TextLabel.TextWrapped = true
+		TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+		TextLabel.TextYAlignment = Enum.TextYAlignment.Top
+
+		TextButton.Parent = FrameK
+		TextButton.BackgroundColor3 = Color3.new(0.255, 0.163, 0.26)
+		TextButton.BackgroundTransparency = 1
+		TextButton.BorderSizePixel = 0
+		TextButton.Position = UDim2.new(0.85, 0, 0, 0)
+		TextButton.Size = UDim2.new(0, 31, 0, 20)
+		TextButton.Font = Enum.Font.Cartoon
+		TextButton.Text = "X"
+		TextButton.TextColor3 = Color3.new(0, 0, 0)
+		TextButton.TextScaled = true
+		TextButton.TextSize = 14
+		TextButton.TextWrapped = true
+		TextButton.MouseButton1Click:connect(function()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+		end)
+	end)
+
+	window1:Label("-----------------------------------------------", Color3.fromRGB(127, 143, 166)) 
+	
 	window1:Label("Utility Functions", Color3.fromRGB(127, 143, 166)) 
 
 	window1:Button("RC Shop Changer",function()
@@ -236,7 +313,7 @@ library:Keybind("RightControl")
 		TextButton_2.TextSize = 40.000
 		TextButton_2.TextWrapped = true
 
-			function cancelKeep()
+		function cancelKeep()
 			for i,v in pairs(player.PlayerGui:GetChildren()) do
 				if v.Name == "ScreenGui" then
 					v:Destroy()
@@ -249,23 +326,29 @@ library:Keybind("RightControl")
 	window1:Label("-----------------------------------------------", Color3.fromRGB(127, 143, 166)) 
 
 	window1:Toggle("Auto Rejoin",true,function(bool)
-	Autorejoin = bool
+		Autorejoin = bool
 	end)
 
 	window1:Toggle("Auto Save",false,function(bool)
-	Autosave = bool
+		Autosave = bool
 	end)
 
 	window1:Toggle("Auto Turn on F9",false,function(bool)
-	AutoF9 = bool
+		AutoF9 = bool
 	end)
 
 	local kgs = {}
-	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
-		if v:FindFirstChild("KG") then
+	for i,v in pairs(game:GetService("Workspace").RAREKGS:GetChildren()) do
+		if v.tim.Value ~= "N/A" then
 			table.insert(kgs, v.Name)
 		end
 	end
+	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
+		if (v:FindFirstChild("KG") and not v:FindFirstChild("cantspin") and not v:FindFirstChild("limited")) then
+			table.insert(kgs, v.Name)
+		end
+	end
+
 	window2:Label("Choose your BL and press SPIN", Color3.fromRGB(127, 143, 166))
 
 	local a1
@@ -480,8 +563,13 @@ library:Keybind("RightControl")
 	end
 
 	local elm = {}
+	for i,v in pairs(game:GetService("Workspace").RAREKGS:GetChildren()) do
+		if v.tim.Value ~= "N/A" then
+			table.insert(elm, v.Name)
+		end
+	end
 	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
-		if v:FindFirstChild("ELEMENT") then
+		if v:FindFirstChild("ELEMENT") and not v:FindFirstChild("limited") then
 			table.insert(elm, v.Name)
 		end
 	end
@@ -703,7 +791,7 @@ library:Keybind("RightControl")
 
 	local ken = {}
 	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu.ALLKENSTYLES:GetChildren()) do
-		if v:FindFirstChild("BREATHINGSTYLE") then
+		if v:FindFirstChild("BREATHINGSTYLE") and not v:FindFirstChild("limited") then
 			table.insert(ken, v.Name)
 		end
 	end
@@ -743,7 +831,7 @@ library:Keybind("RightControl")
 							local args = {[1] = "spinBREATHING"}
 							game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 							print("Rolled: " .. kenvalue)
-							game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "Rolled: " .. kenvalue,Duration = 0.00001, })
+							notify("Rolled: " .. kenvalue)
 							wait(1)
 						else
 							print("You have got: " .. kenvalue)
@@ -767,6 +855,8 @@ library:Keybind("RightControl")
 		else 
 		end
 	end)
+
+	window5:Label("Show/Hide GUI: Right Ctrl", Color3.fromRGB(127, 143, 166))
 
 	window5:Label("Made by NoobieDoge", Color3.fromRGB(127, 143, 166))
 	window5:Label("https://discord.gg/P2CeRjvTDt", Color3.fromRGB(127, 143, 166))
