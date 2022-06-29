@@ -898,8 +898,13 @@ for i,v in pairs(game.Workspace.Camera.startup:GetChildren()) do
 		game.Workspace.Camera.startup.NPC.Name = ""
 		game.Workspace.Camera.startup.NPC.Name = "Narumaki"
 		game:GetService("Workspace").Camera.startup.DioSenko.Model.hair.BrickColor = BrickColor.new(0,255,0)
-		game:GetService("Workspace").Camera.startup.Narumaki.Shirt.ShirtTemplate = [[rbxassetid://6333818472]]
-		game:GetService("Workspace").Camera.startup.Narumaki.Pants.PantsTemplate = [[rbxassetid://6333825863]]
+		game:GetService("Workspace").Camera.startup.DioSenko.Model.hair.Material = Enum.Material.Neon
+		game:GetService("Workspace").Camera.startup.DioSenko.Head.Decal.Texture = [[rbxassetid://9792123944]]
+		game:GetService("Workspace").Camera.startup.DioSenko.Head.Mesh:Destroy()
+		game:GetService("Workspace").Camera.startup.DioSenko.Head.Shape = Enum.PartType.Ball
+		game:GetService("Workspace").Camera.startup.DioSenko.Head.Size = Vector3.new(2, 1.5, 2)
+		game:GetService("Workspace").Camera.startup.Narumaki.Shirt.ShirtTemplate = [[rbxassetid://7384140987]]
+		game:GetService("Workspace").Camera.startup.Narumaki.Pants.PantsTemplate = [[rbxassetid://7384140866]]
 		game:GetService("Workspace").Camera.startup.Narumaki.Head.face.Texture = [[rbxassetid://7336910703]]
 		game:GetService("Workspace").Camera.startup.Narumaki.Customize.char.Torso:Destroy()
 		game:GetService("Workspace").Camera.startup.Narumaki.Customize.char["Left Leg"]:Destroy()
