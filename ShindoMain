@@ -1646,7 +1646,9 @@ TextButton_6.MouseButton1Click:connect(function()
 	end)
 	game:GetService('RunService').Stepped:connect(function()
 		if auchi then
-			local args = {[1] = "addstat",[2] = "chakra",[3] = 18}
+			local args = {[1] = "addstat",[2] = "chakra",[3] = 1}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			local args = {[1] = "addstat",[2] = "chakra",[3] = 17}
 			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 			wait(.25)
 		end
@@ -1656,7 +1658,9 @@ TextButton_6.MouseButton1Click:connect(function()
 	end)
 	game:GetService('RunService').Stepped:connect(function()
 		if aunin then
-			local args = {[1] = "addstat",[2] = "ninjutsu",[3] = 18}
+			local args = {[1] = "addstat",[2] = "ninjutsu",[3] = 1}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			local args = {[1] = "addstat",[2] = "ninjutsu",[3] = 17}
 			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 			wait(.25)
 		end
@@ -1666,7 +1670,9 @@ TextButton_6.MouseButton1Click:connect(function()
 	end)
 	game:GetService('RunService').Stepped:connect(function()
 		if autai then
-			local args = {[1] = "addstat",[2] = "taijutsu",[3] = 18}
+			local args = {[1] = "addstat",[2] = "taijutsu",[3] = 1}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			local args = {[1] = "addstat",[2] = "taijutsu",[3] = 17}
 			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 			wait(.25)
 		end
@@ -1676,7 +1682,9 @@ TextButton_6.MouseButton1Click:connect(function()
 	end)
 	game:GetService('RunService').Stepped:connect(function()
 		if auhp then
-			local args = {[1] = "addstat",[2] = "health",[3] = 18}
+			local args = {[1] = "addstat",[2] = "health",[3] = 11}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			local args = {[1] = "addstat",[2] = "health",[3] = 17}
 			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 			wait(.25)
 		end
@@ -2151,7 +2159,9 @@ TextButton_7.MouseButton1Click:connect(function()
 	end)
 	game:GetService('RunService').Stepped:connect(function()
 		if auchi then
-			local args = {[1] = "addstat",[2] = "chakra",[3] = 18}
+			local args = {[1] = "addstat",[2] = "chakra",[3] = 1}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			local args = {[1] = "addstat",[2] = "chakra",[3] = 17}
 			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 			wait(.25)
 		end
@@ -2161,7 +2171,9 @@ TextButton_7.MouseButton1Click:connect(function()
 	end)
 	game:GetService('RunService').Stepped:connect(function()
 		if aunin then
-			local args = {[1] = "addstat",[2] = "ninjutsu",[3] = 18}
+			local args = {[1] = "addstat",[2] = "ninjutsu",[3] = 1}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			local args = {[1] = "addstat",[2] = "ninjutsu",[3] = 17}
 			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 			wait(.25)
 		end
@@ -2171,7 +2183,9 @@ TextButton_7.MouseButton1Click:connect(function()
 	end)
 	game:GetService('RunService').Stepped:connect(function()
 		if autai then
-			local args = {[1] = "addstat",[2] = "taijutsu",[3] = 18}
+			local args = {[1] = "addstat",[2] = "taijutsu",[3] = 1}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			local args = {[1] = "addstat",[2] = "taijutsu",[3] = 17}
 			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 			wait(.25)
 		end
@@ -2181,7 +2195,9 @@ TextButton_7.MouseButton1Click:connect(function()
 	end)
 	game:GetService('RunService').Stepped:connect(function()
 		if auhp then
-			local args = {[1] = "addstat",[2] = "health",[3] = 18}
+			local args = {[1] = "addstat",[2] = "health",[3] = 11}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			local args = {[1] = "addstat",[2] = "health",[3] = 17}
 			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 			wait(.25)
 		end
@@ -2647,9 +2663,9 @@ TextButton_8.MouseButton1Click:connect(function()
 	end)
 	game:GetService('RunService').Stepped:connect(function()
 		if auchi then
-			local args = {[1] = "addstat",[2] = "chakra",[3] = 18}
-			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 			local args = {[1] = "addstat",[2] = "chakra",[3] = 1}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			local args = {[1] = "addstat",[2] = "chakra",[3] = 17}
 			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 			wait(.25)
 		end
@@ -2659,9 +2675,9 @@ TextButton_8.MouseButton1Click:connect(function()
 	end)
 	game:GetService('RunService').Stepped:connect(function()
 		if aunin then
-			local args = {[1] = "addstat",[2] = "ninjutsu",[3] = 18}
-			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 			local args = {[1] = "addstat",[2] = "ninjutsu",[3] = 1}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			local args = {[1] = "addstat",[2] = "ninjutsu",[3] = 17}
 			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 			wait(.25)
 		end
@@ -2671,9 +2687,9 @@ TextButton_8.MouseButton1Click:connect(function()
 	end)
 	game:GetService('RunService').Stepped:connect(function()
 		if autai then
-			local args = {[1] = "addstat",[2] = "taijutsu",[3] = 18}
-			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 			local args = {[1] = "addstat",[2] = "taijutsu",[3] = 1}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			local args = {[1] = "addstat",[2] = "taijutsu",[3] = 17}
 			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 			wait(.25)
 		end
@@ -2683,14 +2699,14 @@ TextButton_8.MouseButton1Click:connect(function()
 	end)
 	game:GetService('RunService').Stepped:connect(function()
 		if auhp then
-			local args = {[1] = "addstat",[2] = "health",[3] = 18}
+			local args = {[1] = "addstat",[2] = "health",[3] = 11}
 			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-			local args = {[1] = "addstat",[2] = "health",[3] = 1}
+			local args = {[1] = "addstat",[2] = "health",[3] = 17}
 			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 			wait(.25)
 		end
 	end)
-
+	
 	window2:Label("Pls ignore", Color3.fromRGB(127, 143, 166))
 
 	window2:Button("Activate Black screen",function()
