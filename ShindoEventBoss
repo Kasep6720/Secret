@@ -12,6 +12,9 @@ local VirtualUser=game:service'VirtualUser'
 end)
 --variables
 local player = game.Players.LocalPlayer
+if _G.dAAcG3fvBqVoPzVnAFk == nil then 
+	_G.dAAcG3fvBqVoPzVnAFk = "" 
+end 
 function notify(a,b,c)
 	local d=c or function()return end;
 	local e=b or false;
@@ -92,12 +95,13 @@ local warplace = game:GetService("Workspace"):FindFirstChild("warmode")
 --loading GUI
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20script%20gui"))()
 local window1 = library:Window("Event Boss - DogeHub")
-local window2 = library:Window("Spam Keys")
-local window3 = library:Window("Misc")
+local window2 = library:Window("Character Functions")
+local window3 = library:Window("Spam Keys")
+local window4 = library:Window("Misc")
 
 library:Keybind("RightControl")
 
-window1:Label("Boss Functions", Color3.fromRGB(127, 143, 166))
+window1:Label("Event Boss Map Functions", Color3.fromRGB(127, 143, 166))
 
 --AUTOFARM
 window1:Button("Auto setup",function()
@@ -203,9 +207,8 @@ window1:Button("Auto setup",function()
 	Pnorm = true
 end)
 
-local autofarm
-window1:Toggle("Track Boss (High)",false,function(bool)
-	autofarm = bool
+window1:Toggle("Auto Farm",false,function(bool)
+	EventBossUded = bool
 	local platform = Instance.new("Part", player.Character)
 	platform.Anchored = true
 	platform.Transparency = 1
@@ -219,59 +222,9 @@ window1:Toggle("Track Boss (High)",false,function(bool)
 			connection:Disconnect()
 		end
 	end)
-	spawn(function()
-		while wait() do
-			if autofarm ~= true then
-				platform:Destroy()
-			end
-		end
-	end)
-end)
-local autoofarm
-window1:Toggle("Track Boss (Mid)",false, function(bool)
-	autoofarm = bool
-	local platform = Instance.new("Part", player.Character)
-	platform.Anchored = true
-	platform.Transparency = 1
-	platform.Size = Vector3.new(6, 1, 6)
-
-	local connection
-	connection = game:GetService("RunService").RenderStepped:connect(function()
-		if player.Character:FindFirstChild("HumanoidRootPart") then
-			platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -1.8, 0)
-		else
-			connection:Disconnect()
-		end
-	end)
-	spawn(function()
-		while wait() do
-			if autoofarm ~= true then
-				platform:Destroy()
-			end
-		end
-	end)
-end)
-local autooofarm
-window1:Toggle("Track Boss (Low)",false, function(bool)
-	autooofarm = bool
-	local platform = Instance.new("Part", player.Character)
-	platform.Anchored = true
-	platform.Transparency = 1
-	platform.Size = Vector3.new(6, 1, 6)
-
-	local connection
-	connection = game:GetService("RunService").RenderStepped:connect(function()
-		if player.Character:FindFirstChild("HumanoidRootPart") then
-			platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -1.8, 0)
-		else
-			connection:Disconnect()
-		end
-	end)
-	spawn(function()
-		while wait() do
-			if autooofarm ~= true then
-				platform:Destroy()
-			end
+	game:GetService('RunService').Stepped:connect(function()
+		if EventBossUded ~= true then
+			platform:Destroy()
 		end
 	end)
 end)
@@ -280,36 +233,68 @@ window1:Toggle("Camera lock to boss",false,function(bool)
 	Aimyom = bool
 end)
 
+window1:Button("Tp to spawn point",function()
+	player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").SpawnLocation.CFrame
+end)
+
 game:GetService('RunService').Stepped:connect(function()
 	if Aimyom then
 		for i,v in pairs(workspace.npc:GetChildren()) do
 			if v.ClassName == "Model" and v:FindFirstChild("timemegaboss") and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-				if autofarm then
-					if v.rest.Value == true then
-						game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.CFrame * CFrame.new(5, 0, -5).Position)
-					else
-						game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.CFrame * CFrame.new(5, 0, -20).Position)
-					end
-				elseif autoofarm then
-					if v.rest.Value == true then
-						game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.CFrame * CFrame.new(0, 0, 0).Position)
-					else
-						game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.CFrame * CFrame.new(5, 0, -20).Position)
-					end
-				elseif autooofarm then
-					game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.CFrame * CFrame.new(5, 0, -10).Position)
-				else
-					game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.CFrame * CFrame.new(0, 0, 0).Position)
-				end
-				--wait(.000000000000001)
+				game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.CFrame * CFrame.new(0, 0, 0).Position)
 			end
 		end
 	end
 end)
 
-window1:Label("Character Functions", Color3.fromRGB(127, 143, 166))
+window1:Label("Farming Positions", Color3.fromRGB(127, 143, 166))
 
-window1:Button("SuperHuman",function()
+window1:Toggle("High",false,function(bool)
+	High = bool
+end)
+
+window1:Toggle("Mid",false, function(bool)
+	Mid = bool
+end)
+
+window1:Toggle("Low",false, function(bool)
+	Low = bool
+end)
+
+window1:Toggle("Really Low",false, function(bool)
+	RLow = bool
+end)
+
+game:GetService('RunService').Stepped:connect(function()
+	if EventBossUded then
+		if High or Mid or Low or RLow then
+			for i,v in pairs(workspace.npc:GetChildren()) do
+				if v.ClassName == "Model" and v:FindFirstChild("timemegaboss") and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+					repeat wait()
+						if v.rest.Value == true then
+							if High then
+								player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 100, 50)
+							elseif Mid then
+								player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 50, 30)
+							elseif Low then
+								player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 15, 14)
+							elseif RLow then	
+								player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 8, 5)
+							end
+						end
+					until not EventBossUded
+				end
+			end
+		else
+			notify("Please select a farming position!")
+		end
+	end
+end)
+
+window1:Label("You'll only gets teleported to boss", Color3.fromRGB(127, 143, 166))
+window1:Label("When the boss is down", Color3.fromRGB(127, 143, 166))
+
+window2:Button("SuperHuman",function()
 	_G.Doge = true;
 	_G.dogespeed = 80;
 
@@ -327,7 +312,15 @@ window1:Button("SuperHuman",function()
 	end)
 end)
 
-window1:Button("Auto Charge Chi", function(bool)
+window2:Button("Unbreakable Blocks",function()
+	for i,v in pairs(game.workspace:GetChildren()) do
+		if v.Name == game.Players.LocalPlayer.Name then
+			v.blockbreaker:Destroy()
+		end
+	end
+end)
+
+window2:Button("Auto Charge Chi", function(bool)
 	local chakra = string.split(game.Players.LocalPlayer.PlayerGui.Main.ingamearena.Bar.cha.Text,"CHI: ")[2]
 	c = chakra:gsub("CH%: ","")
 	local cha
@@ -361,72 +354,20 @@ window1:Button("Auto Charge Chi", function(bool)
 	end)
 end)
 
-game:GetService('RunService').Stepped:connect(function()
-	if autofarm then
-		for i,v in pairs(workspace.npc:GetChildren()) do
-			pcall(function()
-				autoofarm = false
-				autooofarm = false
-				if v.ClassName == "Model" and v:FindFirstChild("timemegaboss") and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-					repeat wait()
-						if v.rest.Value == true then
-							player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 50, 40)
-						else
-							player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 190, 50)
-						end
-					until --[[v.Humanoid.Health == 0 or]] not autofarm
-				end
-			end)
-		end
-	end
-end)
-
-game:GetService('RunService').Stepped:connect(function()
-	if autoofarm then
-		for i,v in pairs(workspace.npc:GetChildren()) do
-			pcall(function()
-				autofarm = false
-				autooofarm = false
-				if v.ClassName == "Model" and v:FindFirstChild("timemegaboss") and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-					repeat wait()
-						player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 35, 20)
-					until --[[v.Humanoid.Health == 0 or]] not autoofarm
-				end
-			end)
-		end
-	end
-end)
-
-game:GetService('RunService').Stepped:connect(function()
-	if autooofarm then
-		for i,v in pairs(workspace.npc:GetChildren()) do
-			pcall(function()
-				autoofarm = false
-				autofarm = false
-				if v.ClassName == "Model" and v:FindFirstChild("timemegaboss") and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-					repeat wait()
-						player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 8, 5)
-					until --[[v.Humanoid.Health == 0 or]] not autooofarm
-				end
-			end)
-		end
-	end
-end)
-
-window1:Button("Infinite MD",function()
+window2:Button("Infinite MD",function()
 	local mode = game.Players.LocalPlayer.Character.combat.mode
 	local copy = mode:Clone()
 	copy.Parent = mode.Parent
 	mode:Destroy()
 end)
 
-window1:Button("Reset when died", function(bool)
+window2:Button("Reset when died", function(bool)
 	Aimyom = false
 	F = false
 	game.Players.LocalPlayer.Character:BreakJoints()
 	end)
 
-window1:Button("Enable Infinite Jump",function()
+window2:Button("Enable Infinite Jump",function()
 	getgenv().dc = false
 	local infjump
 	infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
@@ -435,29 +376,26 @@ window1:Button("Enable Infinite Jump",function()
 	end)
 end)
 
-window1:Button("Disable Infinite Jump",function()
+window2:Button("Disable Infinite Jump",function()
 	getgenv().dc = true
 end)
 
-local keel
-window1:Toggle("Kill Aura (Bugged)",false, function(bool)
+window2:Toggle("Kill Aura (Bugged)",false, function(bool)
 	keel = bool
 end)
-spawn(function()
-	while wait() do
-		if keel then
-			for i,v in pairs(workspace.npc:GetChildren()) do
-				if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-					repeat
-						v.Humanoid.Health = 0
-					until v.Humanoid.Health == 0 or not keel
-				end
+game:GetService('RunService').Stepped:connect(function()
+	if keel then
+		for i,v in pairs(workspace.npc:GetChildren()) do
+			if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+				repeat
+					v.Humanoid.Health = 0
+				until v.Humanoid.Health == 0 or not keel
 			end
 		end
 	end
 end)
 
-window1:Toggle("Press P to fly",false,function(Pnorm)
+window2:Toggle("Press P to fly",false,function(Pnorm)
 
 	repeat wait() 
 	until game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:findFirstChild("Head") and game.Players.LocalPlayer.Character:findFirstChild("Humanoid") 
@@ -547,7 +485,7 @@ window1:Toggle("Press P to fly",false,function(Pnorm)
 end)
 
 local scrollfarm
-window1:Toggle("Scroll Snipe",false, function(bool)
+window2:Toggle("Scroll Snipe (Disabled)",false, function(bool)
 	scrollfarm = bool
 end)
 
@@ -590,7 +528,7 @@ spawn(function()
 	end
 end)
 
-window2:Toggle("Spam Q",false,function(bool)
+window3:Toggle("Spam Q",false,function(bool)
 	Q = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
@@ -601,7 +539,7 @@ game:GetService('RunService').Stepped:connect(function()
 		end)
 	end
 end)
-window2:Toggle("Spam E",false, function(bool)
+window3:Toggle("Spam E",false, function(bool)
 	E = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
@@ -612,7 +550,7 @@ game:GetService('RunService').Stepped:connect(function()
 		end)
 	end
 end)
-window2:Toggle("Spam R",false, function(bool)
+window3:Toggle("Spam R",false, function(bool)
 	R = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
@@ -623,7 +561,7 @@ game:GetService('RunService').Stepped:connect(function()
 		end)
 	end
 end)
-window2:Toggle("Spam T",false, function(bool)
+window3:Toggle("Spam T",false, function(bool)
 	T = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
@@ -634,7 +572,7 @@ game:GetService('RunService').Stepped:connect(function()
 		end)
 	end
 end)
-window2:Toggle("Spam Y",false, function(bool)
+window3:Toggle("Spam Y",false, function(bool)
 	Y = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
@@ -645,7 +583,7 @@ game:GetService('RunService').Stepped:connect(function()
 		end)
 	end
 end)
-window2:Toggle("Spam F",false, function(bool)
+window3:Toggle("Spam F",false, function(bool)
 	F = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
@@ -656,7 +594,7 @@ game:GetService('RunService').Stepped:connect(function()
 		end)
 	end
 end)
-window2:Toggle("Spam G",false, function(bool)
+window3:Toggle("Spam G",false, function(bool)
 	G = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
@@ -667,7 +605,7 @@ game:GetService('RunService').Stepped:connect(function()
 		end)
 	end
 end)
-window2:Toggle("Spam H",false, function(bool)
+window3:Toggle("Spam H",false, function(bool)
 	H = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
@@ -678,7 +616,7 @@ game:GetService('RunService').Stepped:connect(function()
 		end)
 	end
 end)
-window2:Toggle("Spam V",false, function(bool)
+window3:Toggle("Spam V",false, function(bool)
 	V = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
@@ -689,7 +627,7 @@ game:GetService('RunService').Stepped:connect(function()
 		end)
 	end
 end)
-window2:Toggle("Spam B",false, function(bool)
+window3:Toggle("Spam B",false, function(bool)
 	B = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
@@ -700,7 +638,7 @@ game:GetService('RunService').Stepped:connect(function()
 		end)
 	end
 end)
-window2:Toggle("Spam N",false, function(bool)
+window3:Toggle("Spam N",false, function(bool)
 	N = bool
 end)
 game:GetService('RunService').Stepped:connect(function()
@@ -711,10 +649,32 @@ game:GetService('RunService').Stepped:connect(function()
 		end)
 	end
 end)
+window3:Toggle("Spam Z",false, function(bool)
+	Z = bool
+end)
+game:GetService('RunService').Stepped:connect(function()
+	if Z then
+		pcall(function()
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","z")
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","zend")
+		end)
+	end
+end)
+window3:Toggle("Spam C",false, function(bool)
+	C = bool
+end)
+game:GetService('RunService').Stepped:connect(function()
+	if C then
+		pcall(function()
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","c")
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","cend")
+		end)
+	end
+end)
 
-window3:Label("Settings", Color3.fromRGB(127, 143, 166))
+window4:Label("Settings", Color3.fromRGB(127, 143, 166))
 
-window3:Button("Upgrade Performance",function()
+window4:Button("Upgrade Performance",function()
 	local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
 	local g = game
 	local w = g.Workspace
@@ -740,11 +700,11 @@ window3:Button("Upgrade Performance",function()
 	end
 end)
 
-window3:Button("Remove Effects / Particles",function()
+window4:Button("Remove Effects / Particles",function()
 	game:GetService("Players").LocalPlayer.PlayerScripts.EFFECTS:Destroy()
 end)
 
-window3:Button("Switch to Dungeon script",function()
+window4:Button("Switch to Dungeon script",function()
 
 	local player = game.Players.LocalPlayer
 	local ScreenGui = Instance.new("ScreenGui")
@@ -757,7 +717,7 @@ window3:Button("Switch to Dungeon script",function()
 
 	Frame.Parent = ScreenGui
 	Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Frame.Position = UDim2.new(0.37, 0, 0.425, 0)
+	Frame.Position = UDim2.new(0.55, 0, 0.425, 0)
 	Frame.Size = UDim2.new(0, 220, 0, 120)
 
 	TextLabel.Parent = Frame
@@ -819,10 +779,14 @@ window3:Button("Switch to Dungeon script",function()
 		V = false  
 		B = false 
 		N = false
+		Z = false
+		C = false
 		keel = false
-		autofarm = false
-		autoofarm = false
-		autooofarm = false
+		EventBossUded = false
+		High = false
+		Mid = false
+		Low = false
+		RLow = false
 		Aimyom = false
 		scrollfarm = false
 		Pnorm = false
@@ -834,13 +798,13 @@ window3:Button("Switch to Dungeon script",function()
 
 end)
 
-window3:Label("Credits", Color3.fromRGB(127, 143, 166))
+window4:Label("Credits", Color3.fromRGB(127, 143, 166))
 
-window3:Button("Made by NoobieDoge",function()
+window4:Button("Made by NoobieDoge",function()
 	setclipboard("https://discord.gg/P2CeRjvTDt")
 	notify("Discord link copied to clipboard")
 end)
-window3:Label("Hide/Show GUI = Right Ctrl", Color3.fromRGB(127, 143, 166))
+window4:Label("Hide/Show GUI = Right Ctrl", Color3.fromRGB(127, 143, 166))
 --tips
 local player = game.Players.LocalPlayer
 local ScreenGui = Instance.new("ScreenGui")
@@ -852,7 +816,7 @@ ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
 Frame.Parent = ScreenGui
 Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Frame.Position = UDim2.new(0.70, 0, 0.20, 0)
+Frame.Position = UDim2.new(0.73, 0, 0.20, 0)
 Frame.Size = UDim2.new(0, 200, 0, 150)
 
 TextLabel.Parent = Frame
