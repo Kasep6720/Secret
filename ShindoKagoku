@@ -212,6 +212,13 @@ game:GetService('RunService').Stepped:connect(function()
 	end
 end)
 
+window1:Button("Tp to spawn point",function()
+	player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").SpawnLocation.CFrame
+end)
+
+window1:Label("Disabled boss tracking", Color3.fromRGB(127, 143, 166))
+window1:Label("to prevent game crashing", Color3.fromRGB(127, 143, 166))
+
 window2:Button("SuperHuman",function()
 	_G.Doge = true;
 	_G.dogespeed = 80;
