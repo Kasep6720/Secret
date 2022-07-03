@@ -12,6 +12,8 @@ local TextButton = Instance.new("TextButton")
 local TextButton_2 = Instance.new("TextButton")
 local TextButton_3 = Instance.new("TextButton")
 local TextButton_4 = Instance.new("TextButton")
+local TextButton_5 = Instance.new("TextButton")
+local TextButton_6 = Instance.new("TextButton")
 
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
@@ -26,7 +28,7 @@ TextLabel.Parent = Frame
 TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
 TextLabel.Size = UDim2.new(0, 500, 0, 60)
 TextLabel.Font = Enum.Font.TitilliumWeb
-TextLabel.Text = "Blox Fruits script 2 choose 1"
+TextLabel.Text = "Blox Fruits script 3 choose 1"
 TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
 TextLabel.TextScaled = false
 TextLabel.TextSize = 40.000
@@ -35,12 +37,12 @@ TextLabel.TextWrapped = true
 TextButton.Parent = Frame
 TextButton.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
 TextButton.Position = UDim2.new(0, 0, 0.20000006, 0)
-TextButton.Size = UDim2.new(0, 250, 0, 240)
+TextButton.Size = UDim2.new(0, 166.66, 0, 240)
 TextButton.Font = Enum.Font.TitilliumWeb
 TextButton.Text = "Quartyz\nX\nMukuro"
 TextButton.TextColor3 = Color3.fromRGB(200, 200, 200)
 TextButton.TextScaled = false
-TextButton.TextSize = 70.000
+TextButton.TextSize = 50.000
 TextButton.TextWrapped = true
 
 TextButton.MouseButton1Click:connect(function()
@@ -54,13 +56,13 @@ end)
 
 TextButton_2.Parent = Frame
 TextButton_2.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
-TextButton_2.Position = UDim2.new(0.5, 0, 0.200000024, 0)
-TextButton_2.Size = UDim2.new(0, 250, 0, 240)
+TextButton_2.Position = UDim2.new(0.333333, 0, 0.200000024, 0)
+TextButton_2.Size = UDim2.new(0, 166.66, 0, 240)
 TextButton_2.Font = Enum.Font.TitilliumWeb
 TextButton_2.Text = "HoHo Hub"
 TextButton_2.TextColor3 = Color3.fromRGB(200, 200, 200)
-TextButton_2.TextScaled = true
-TextButton_2.TextSize = 40.000
+TextButton_2.TextScaled = false
+TextButton_2.TextSize = 65.000
 TextButton_2.TextWrapped = true
 
 TextButton_2.MouseButton1Click:connect(function()
@@ -73,23 +75,28 @@ TextButton_2.MouseButton1Click:connect(function()
 end)
 
 TextButton_3.Parent = Frame
-TextButton_3.BackgroundColor3 = Color3.fromRGB(41, 41, 41)
-TextButton_3.Position = UDim2.new(0, 0, 0.865000024, 0)
-TextButton_3.Size = UDim2.new(0, 40, 0, 40)
+TextButton_3.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+TextButton_3.Position = UDim2.new(0.666666, 0, 0.200000024, 0)
+TextButton_3.Size = UDim2.new(0, 166.66, 0, 240)
 TextButton_3.Font = Enum.Font.TitilliumWeb
-TextButton_3.Text = "..."
+TextButton_3.Text = "hxllow Hub"
 TextButton_3.TextColor3 = Color3.fromRGB(200, 200, 200)
-TextButton_3.TextScaled = true
-TextButton_3.TextSize = 40.000
+TextButton_3.TextScaled = false
+TextButton_3.TextSize = 60.000
 TextButton_3.TextWrapped = true
 
 TextButton_3.MouseButton1Click:connect(function()
-	game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Quartyz X Mukuro Description",Text = "All Blox Fruits scripts are the same anyway :/",Duration = 7, })
+	for i,v in pairs(player.PlayerGui:GetChildren()) do
+		if v.Name == "ScreenGui" then
+			v:Destroy()
+		end
+	end
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/1f0yt/community/master/hxllow"))()
 end)
 
 TextButton_4.Parent = Frame
 TextButton_4.BackgroundColor3 = Color3.fromRGB(41, 41, 41)
-TextButton_4.Position = UDim2.new(0.5, 0, 0.865000024, 0)
+TextButton_4.Position = UDim2.new(0, 0, 0.865000024, 0)
 TextButton_4.Size = UDim2.new(0, 40, 0, 40)
 TextButton_4.Font = Enum.Font.TitilliumWeb
 TextButton_4.Text = "..."
@@ -99,5 +106,35 @@ TextButton_4.TextSize = 40.000
 TextButton_4.TextWrapped = true
 
 TextButton_4.MouseButton1Click:connect(function()
+	game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Quartyz X Mukuro Description",Text = "All Blox Fruits scripts are the same anyway :/",Duration = 7, })
+end)
+
+TextButton_5.Parent = Frame
+TextButton_5.BackgroundColor3 = Color3.fromRGB(41, 41, 41)
+TextButton_5.Position = UDim2.new(0.333333, 0, 0.865000024, 0)
+TextButton_5.Size = UDim2.new(0, 40, 0, 40)
+TextButton_5.Font = Enum.Font.TitilliumWeb
+TextButton_5.Text = "..."
+TextButton_5.TextColor3 = Color3.fromRGB(200, 200, 200)
+TextButton_5.TextScaled = true
+TextButton_5.TextSize = 40.000
+TextButton_5.TextWrapped = true
+
+TextButton_5.MouseButton1Click:connect(function()
 	game:GetService("StarterGui"):SetCore("SendNotification",{Title = "HoHo Hub Description",Text = "All Blox Fruits scripts are the same anyway :/",Duration = 7, })
+end)
+
+TextButton_6.Parent = Frame
+TextButton_6.BackgroundColor3 = Color3.fromRGB(41, 41, 41)
+TextButton_6.Position = UDim2.new(0.666666, 0, 0.865000024, 0)
+TextButton_6.Size = UDim2.new(0, 40, 0, 40)
+TextButton_6.Font = Enum.Font.TitilliumWeb
+TextButton_6.Text = "..."
+TextButton_6.TextColor3 = Color3.fromRGB(200, 200, 200)
+TextButton_6.TextScaled = true
+TextButton_6.TextSize = 40.000
+TextButton_6.TextWrapped = true
+
+TextButton_6.MouseButton1Click:connect(function()
+	game:GetService("StarterGui"):SetCore("SendNotification",{Title = "hxllow Hub Description",Text = "All Blox Fruits scripts are the same anyway :/",Duration = 7, })
 end)
