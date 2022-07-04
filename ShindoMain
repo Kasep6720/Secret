@@ -1652,7 +1652,7 @@ TextButton_6.MouseButton1Click:connect(function()
 	end)
 	game:GetService('RunService').Stepped:connect(function()
 		if auhp then
-			local args = {[1] = "addstat",[2] = "health",[3] = 11}
+			local args = {[1] = "addstat",[2] = "health",[3] = 1}
 			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 			local args = {[1] = "addstat",[2] = "health",[3] = 17}
 			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
@@ -2214,7 +2214,7 @@ TextButton_7.MouseButton1Click:connect(function()
 	end)
 	game:GetService('RunService').Stepped:connect(function()
 		if auhp then
-			local args = {[1] = "addstat",[2] = "health",[3] = 11}
+			local args = {[1] = "addstat",[2] = "health",[3] = 1}
 			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 			local args = {[1] = "addstat",[2] = "health",[3] = 17}
 			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
@@ -2767,7 +2767,7 @@ TextButton_8.MouseButton1Click:connect(function()
 	end)
 	game:GetService('RunService').Stepped:connect(function()
 		if auhp then
-			local args = {[1] = "addstat",[2] = "health",[3] = 11}
+			local args = {[1] = "addstat",[2] = "health",[3] = 1}
 			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 			local args = {[1] = "addstat",[2] = "health",[3] = 17}
 			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
