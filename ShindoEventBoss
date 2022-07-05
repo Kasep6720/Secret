@@ -253,7 +253,7 @@ window1:Toggle("High",false,function(bool)
 	High = bool
 end)
 
-window1:Toggle("Mid",false, function(bool)
+window1:Toggle("Mid",true, function(bool)
 	Mid = bool
 end)
 
@@ -264,6 +264,7 @@ end)
 window1:Toggle("Really Low",false, function(bool)
 	RLow = bool
 end)
+Mid = true
 
 game:GetService('RunService').Stepped:connect(function()
 	if EventBossUded then
