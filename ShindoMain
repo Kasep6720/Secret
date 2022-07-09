@@ -1829,6 +1829,11 @@ game:GetService('RunService').Stepped:connect(function()
 			end)
 
 			window2:Button("SuperHuman",function()
+				local chanceofaudioquote = math.random(1, 100)
+				if chanceofaudioquote <= 10 then
+					local s = Instance.new("Sound")
+					s.Name = "Sound" s.SoundId = "http://www.roblox.com/asset/?id=1169755927" s.Volume = 20 s.Looped = false s.archivable = false s.Parent = game.Workspace wait(.3) s:play()
+				end
 				_G.Doge = true;
 				_G.dogespeed = 80;
 
