@@ -286,7 +286,7 @@ window2:Button("Infinite MD",function()
 	mode:Destroy()
 end)
 
-window2:Button("Reset when died", function(bool)
+window2:Button("Reset Character", function(bool)
 	Aimyom = false
 	F = false
 	game.Players.LocalPlayer.Character:BreakJoints()
