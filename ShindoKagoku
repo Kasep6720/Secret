@@ -220,6 +220,12 @@ window1:Label("Disabled boss tracking", Color3.fromRGB(127, 143, 166))
 window1:Label("to prevent game crashing", Color3.fromRGB(127, 143, 166))
 
 window2:Button("SuperHuman",function()
+	local chanceofaudioquote = math.random(1, 100)
+	if chanceofaudioquote <= 10 then
+		local s = Instance.new("Sound")
+		s.Name = "Sound" s.SoundId = "http://www.roblox.com/asset/?id=1169755927" s.Volume = 20 s.Looped = false s.archivable = false s.Parent = game.Workspace wait(.3) s:play()
+	end
+				
 	_G.Doge = true;
 	_G.dogespeed = 80;
 
@@ -238,6 +244,19 @@ window2:Button("SuperHuman",function()
 end)
 
 window2:Button("Unbreakable Blocks",function()
+	local chanceofaudioquote = math.random(1, 100)
+	if chanceofaudioquote <= 30 then
+		local s = Instance.new("Sound")
+		s.Name = "Sound" s.SoundId = "http://www.roblox.com/asset/?id=10163532591" s.Volume = 20 s.Looped = false s.archivable = false s.Parent = game.Workspace wait(.3) s:play()
+	else
+		local chanceofnotifyquote = math.random(1, 100)
+		if chanceofnotifyquote <= 25 then
+			notify("Making the mother of all omelettes here, Jack")
+			wait(1.2)
+			notify("Can't fret over every egg.")
+		end
+	end
+			
 	for i,v in pairs(game.workspace:GetChildren()) do
 		if v.Name == game.Players.LocalPlayer.Name then
 			v.blockbreaker:Destroy()
