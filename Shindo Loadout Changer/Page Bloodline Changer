@@ -8,13 +8,12 @@ BLChangerMain.Name = "BLChangerMain"
 BLChangerMain.Parent = ScreenGui
 BLChangerMain.BackgroundColor3 = Color3.new(1, 1, 1)
 BLChangerMain.BackgroundTransparency = 1
-BLChangerMain.Position = UDim2.new(0.765, 0, 0.52, 0)
-BLChangerMain.Size = UDim2.new(0, 300, 0, 280)
+BLChangerMain.Position = UDim2.new(0.72, 0, 0.44, 0)
+BLChangerMain.Size = UDim2.new(0, 350, 0, 350)
 BLChangerMain.Visible = true
 BLChangerMain.Active = true
-BLChangerMain.Image = "rbxassetid://2260429633"
-BLChangerMain.ImageColor3 = Color3.new(0.117647, 0.117647, 0.117647)
-BLChangerMain.ScaleType = Enum.ScaleType.Slice
+BLChangerMain.Image = "rbxassetid://5089201291"
+BLChangerMain.ImageColor3 = Color3.new(0.93,0.93,0.93)
 BLChangerMain.SliceCenter = Rect.new(12, 12, 13, 13)
 BLChangerMain.Draggable = true
 
@@ -23,7 +22,7 @@ X.Name = "X"
 X.Parent = BLChangerMain
 X.BackgroundColor3 = Color3.new(0.0588235, 0.0588235, 0.0588235)
 X.BorderSizePixel = 0
-X.Position = UDim2.new(0.85, 0, 0, 0)
+X.Position = UDim2.new(0.81, 0, 0.075, 0)
 X.Size = UDim2.new(0, 31, 0, 20)
 X.Font = Enum.Font.Cartoon
 X.Text = "X"
@@ -42,322 +41,497 @@ function DeleteGui() -- X.LocalScript
 end
 coroutine.resume(coroutine.create(DeleteGui))
 
-local Title = Instance.new("TextLabel")
+local Title = Instance.new("ImageLabel")
 Title.Name = "Title"
 Title.Parent = BLChangerMain
 Title.BackgroundColor3 = Color3.new(1, 1, 1)
 Title.BackgroundTransparency = 1
-Title.Position = UDim2.new(0.1, 0, 0.000547006086, 0)
-Title.Size = UDim2.new(0, 200, 0, 20)
-Title.Font = Enum.Font.GothamSemibold
-Title.Text = "           Shindo Bloodline Changer"
-Title.TextColor3 = Color3.new(1, 1, 1)
-Title.TextScaled = false
-Title.TextSize = 16.5
-Title.TextWrapped = false
+Title.Position = UDim2.new(0.125, 0, 0.075, 0)
+Title.Size = UDim2.new(0, 30, 0, 30)
+Title.Image = "rbxassetid://6009060308"
+Title.ImageColor3 = Color3.new(1.020,1.020,1.020)
+Title.ZIndex = 3
+
+local bg = Instance.new("ImageLabel")
+bg.Name = "bg"
+bg.Parent = Title
+bg.BackgroundColor3 = Color3.new(1, 1, 1)
+bg.BackgroundTransparency = 1
+bg.Position = UDim2.new(0, 0, 0, 0)
+bg.Size = UDim2.new(0, 30, 0, 30)
+bg.Image = "rbxassetid://434411343"
+bg.ImageColor3 = Color3.new(1.020,1.020,1.020)
+bg.ZIndex = 2
+
+local amt = Instance.new("TextLabel")
+amt.Name = "amt"
+amt.Parent = Title
+amt.BackgroundColor3 = Color3.new(1, 1, 1)
+amt.BackgroundTransparency = 1
+amt.Position = UDim2.new(1.1, 0, 0.15, 0)
+amt.Size = UDim2.new(0, 200, 0, 20)
+amt.Font = Enum.Font.SourceSansBold
+amt.Text = "Shindo Bloodline Changer"
+amt.TextColor3 = Color3.new(0, 0, 0)
+amt.TextScaled = false
+amt.TextSize = 22
+amt.TextWrapped = false
+amt.ZIndex = 2
+
+local line = Instance.new("TextLabel")
+line.Name = "line"
+line.Parent = Title
+line.BackgroundColor3 = Color3.new(0, 0, 0)
+line.BackgroundTransparency = 0
+line.Position = UDim2.new(0.74, 0, 0.93, 0)
+line.Size = UDim2.new(7.25, 0, 0.02, 0)
+line.Font = Enum.Font.SourceSansBold
+line.Text = ""
+line.TextColor3 = Color3.new(0, 0, 0)
+line.TextScaled = false
+line.TextSize = 22
+line.TextWrapped = false
+line.ZIndex = 2
 
 local Border = Instance.new("Frame")
 Border.Name = "Border"
 Border.Parent = BLChangerMain
-Border.BackgroundColor3 = Color3.new(0.419608, 0.419608, 0.419608)
-Border.BorderColor3 = Color3.new(0.419608, 0.419608, 0.419608)
-Border.Position = UDim2.new(0.17, 0, -0.000385761261, 0)
-Border.Size = UDim2.new(0, 3, 0, 280)
+Border.BackgroundColor3 = Color3.new(0, 0, 0)
+Border.BorderColor3 = Color3.new(0, 0, 0)
+Border.Position = UDim2.new(0.3, 0, 0.22, 0)
+Border.Size = UDim2.new(0, 1.5, 0, 220)
+
+local ElementsL = Instance.new("ImageLabel")
+ElementsL.Name = "ElementsL"
+ElementsL.Parent = BLChangerMain
+ElementsL.BackgroundColor3 = Color3.new(1, 1, 1)
+ElementsL.BackgroundTransparency = 1
+ElementsL.Position = UDim2.new(0, 110, 0.2, 0)
+ElementsL.Size = UDim2.new(0, 200, 0, 20)
+ElementsL.Image = "rbxassetid://4823762651"
+ElementsL.ImageColor3 = Color3.new(0, 0, 0)
+ElementsL.ZIndex = 2
 
 local ElmLabel = Instance.new("TextLabel")
 ElmLabel.Name = "ElmLabel"
-ElmLabel.Parent = BLChangerMain
-ElmLabel.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+ElmLabel.Parent = ElementsL
+ElmLabel.BackgroundColor3 = Color3.new(1, 1, 1)
 ElmLabel.BackgroundTransparency = 1
-ElmLabel.BorderSizePixel = 0
-ElmLabel.Position = UDim2.new(0.188181819, 0, 0.1, 0)
-ElmLabel.Size = UDim2.new(0, 243, 0, 20)
-ElmLabel.Font = Enum.Font.GothamSemibold
-ElmLabel.Text = "Elements"
+ElmLabel.Position = UDim2.new(0, 0, 0, 0)
+ElmLabel.Size = UDim2.new(0, 200, 0, 20)
+ElmLabel.Font = Enum.Font.GothamBlack
+ElmLabel.Text = "Element"
 ElmLabel.TextColor3 = Color3.new(1, 1, 1)
 ElmLabel.TextSize = 15
 ElmLabel.TextWrapped = false
-ElmLabel.Transparency = 0
+ElmLabel.TextStrokeColor3 = Color3.new(0, 0, 0)
+ElmLabel.ZIndex = 3
 
 local elmslotstextbox = Instance.new("TextBox")
 elmslotstextbox.Name = "elmslotstextbox"
 elmslotstextbox.Parent = BLChangerMain
 elmslotstextbox.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
 elmslotstextbox.BorderSizePixel = 0
-elmslotstextbox.Position = UDim2.new(0.188181819 + 0.415, 0, 0.19, 0)
-elmslotstextbox.Size = UDim2.new(0, 119, 0, 82)
-elmslotstextbox.Font = Enum.Font.GothamSemibold
-elmslotstextbox.Text = "Insert your \nelement"
-elmslotstextbox.TextColor3 = Color3.new(1, 1, 1)
-elmslotstextbox.TextSize = 20
+elmslotstextbox.BackgroundTransparency = 1
+elmslotstextbox.Position = UDim2.new(0.32, 0, 0.27, 0)
+elmslotstextbox.Size = UDim2.new(0, 80, 0, 60)
+elmslotstextbox.Font = Enum.Font.GothamBlack
+elmslotstextbox.Text = "[Insert your \nelement]"
+elmslotstextbox.TextColor3 = Color3.new(2, 2, 2)
+elmslotstextbox.TextSize = 16
 elmslotstextbox.TextWrapped = true
+elmslotstextbox.PlaceholderColor3 = Color3.new(0.445, 0.445, 0.445)
+elmslotstextbox.PlaceholderText = "[TYPE ELEMENT]"
 
 local elmslot1 = Instance.new("TextButton")
 elmslot1.Name = "elmslot1"
 elmslot1.Parent = BLChangerMain
-elmslot1.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
-elmslot1.BorderSizePixel = 0
-elmslot1.Position = UDim2.new(0.188181819, 0, 0.19, 0)
-elmslot1.Size = UDim2.new(0, 60, 0, 40)
-elmslot1.Font = Enum.Font.GothamSemibold
+elmslot1.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+elmslot1.BorderColor3 = Color3.new(0,0,0)
+elmslot1.BorderSizePixel = 2
+elmslot1.Position = UDim2.new(0.575, 0, 0.27, 0)
+elmslot1.Size = UDim2.new(0, 45, 0, 25)
+elmslot1.Font = Enum.Font.SourceSansBold
 elmslot1.Text = "Slot 1"
 elmslot1.TextColor3 = Color3.new(1, 1, 1)
-elmslot1.TextSize = 18
+elmslot1.TextSize = 15
 elmslot1.MouseButton1Click:connect(function()
 	elmslot1.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
 	game.Players.LocalPlayer.statz.main.element1.Value = elmslotstextbox.Text
 	wait(.5)
-	elmslot1.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+	elmslot1.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
 end)
 
 local elmslot2 = Instance.new("TextButton")
 elmslot2.Name = "elmslot2"
 elmslot2.Parent = BLChangerMain
-elmslot2.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
-elmslot2.BorderSizePixel = 0
-elmslot2.Position = UDim2.new(0.188181819 + 0.205, 0, 0.19, 0)
-elmslot2.Size = UDim2.new(0, 60, 0, 40)
-elmslot2.Font = Enum.Font.GothamSemibold
+elmslot2.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+elmslot2.BorderColor3 = Color3.new(0,0,0)
+elmslot2.BorderSizePixel = 2
+elmslot2.Position = UDim2.new(0.575+0.15, 0, 0.27, 0)
+elmslot2.Size = UDim2.new(0, 45, 0, 25)
+elmslot2.Font = Enum.Font.SourceSansBold
 elmslot2.Text = "Slot 2"
 elmslot2.TextColor3 = Color3.new(1, 1, 1)
-elmslot2.TextSize = 18
+elmslot2.TextSize = 15
 elmslot2.MouseButton1Click:connect(function()
 	elmslot2.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
 	game.Players.LocalPlayer.statz.main.element2.Value = elmslotstextbox.Text
 	wait(.5)
-	elmslot2.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+	elmslot2.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
 end)
 
 local elmslot3 = Instance.new("TextButton")
 elmslot3.Name = "elmslot3"
 elmslot3.Parent = BLChangerMain
-elmslot3.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
-elmslot3.BorderSizePixel = 0
-elmslot3.Position = UDim2.new(0.188181819, 0, 0.19 + 0.15, 0)
-elmslot3.Size = UDim2.new(0, 60, 0, 40)
-elmslot3.Font = Enum.Font.GothamSemibold
+elmslot3.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+elmslot3.BorderColor3 = Color3.new(0,0,0)
+elmslot3.BorderSizePixel = 2
+elmslot3.Position = UDim2.new(0.575, 0, 0.27+0.1, 0)
+elmslot3.Size = UDim2.new(0, 45, 0, 25)
+elmslot3.Font = Enum.Font.SourceSansBold
 elmslot3.Text = "Slot 3"
 elmslot3.TextColor3 = Color3.new(1, 1, 1)
-elmslot3.TextSize = 18
+elmslot3.TextSize = 15
 elmslot3.MouseButton1Click:connect(function()
 	elmslot3.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
 	game.Players.LocalPlayer.statz.main.element3.Value = elmslotstextbox.Text
 	wait(.5)
-	elmslot3.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+	elmslot3.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
 end)
 
 local elmslot4 = Instance.new("TextButton")
 elmslot4.Name = "elmslot4"
 elmslot4.Parent = BLChangerMain
-elmslot4.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
-elmslot4.BorderSizePixel = 0
-elmslot4.Position = UDim2.new(0.188181819 + 0.205, 0, 0.19 + 0.15, 0)
-elmslot4.Size = UDim2.new(0, 60, 0, 40)
-elmslot4.Font = Enum.Font.GothamSemibold
+elmslot4.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+elmslot4.BorderColor3 = Color3.new(0,0,0)
+elmslot4.BorderSizePixel = 2
+elmslot4.Position = UDim2.new(0.575+0.15, 0, 0.27+0.1, 0)
+elmslot4.Size = UDim2.new(0, 45, 0, 25)
+elmslot4.Font = Enum.Font.SourceSansBold
 elmslot4.Text = "Slot 4"
 elmslot4.TextColor3 = Color3.new(1, 1, 1)
-elmslot4.TextSize = 18
+elmslot4.TextSize = 15
 elmslot4.MouseButton1Click:connect(function()
 	elmslot4.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
 	game.Players.LocalPlayer.statz.main.element4.Value = elmslotstextbox.Text
 	wait(.5)
-	elmslot4.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+	elmslot4.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
 end)
+
+local BLL = Instance.new("ImageLabel")
+BLL.Name = "BLL"
+BLL.Parent = BLChangerMain
+BLL.BackgroundColor3 = Color3.new(1, 1, 1)
+BLL.BackgroundTransparency = 1
+BLL.Position = UDim2.new(0, 110, 0.46, 0)
+BLL.Size = UDim2.new(0, 200, 0, 20)
+BLL.Image = "rbxassetid://4823762651"
+BLL.ImageColor3 = Color3.new(0, 0, 0)
+BLL.ZIndex = 2
 
 local BLLabel = Instance.new("TextLabel")
 BLLabel.Name = "BLLabel"
-BLLabel.Parent = BLChangerMain
+BLLabel.Parent = BLL
 BLLabel.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
 BLLabel.BackgroundTransparency = 1
 BLLabel.BorderSizePixel = 0
-BLLabel.Position = UDim2.new(0.188181819, 0, 0.5, 0)
-BLLabel.Size = UDim2.new(0, 243, 0, 20)
-BLLabel.Font = Enum.Font.GothamSemibold
-BLLabel.Text = "Bloodlines"
+BLLabel.Position = UDim2.new(0, 0, 0, 0)
+BLLabel.Size = UDim2.new(0, 200, 0, 20)
+BLLabel.Font = Enum.Font.GothamBlack
+BLLabel.Text = "Bloodline"
 BLLabel.TextColor3 = Color3.new(1, 1, 1)
 BLLabel.TextSize = 15
 BLLabel.TextWrapped = false
-BLLabel.Transparency = 0
+BLLabel.TextStrokeColor3 = Color3.new(0, 0, 0)
+BLLabel.ZIndex = 3
 
 local blslotstextbox = Instance.new("TextBox")
 blslotstextbox.Name = "blslotstextbox"
 blslotstextbox.Parent = BLChangerMain
 blslotstextbox.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
 blslotstextbox.BorderSizePixel = 0
-blslotstextbox.Position = UDim2.new(0.188181819 + 0.415, 0, 0.59, 0)
-blslotstextbox.Size = UDim2.new(0, 119, 0, 82)
-blslotstextbox.Font = Enum.Font.GothamSemibold
-blslotstextbox.Text = "Insert your \nbloodline"
-blslotstextbox.TextColor3 = Color3.new(1, 1, 1)
-blslotstextbox.TextSize = 20
+blslotstextbox.BackgroundTransparency = 1
+blslotstextbox.Position = UDim2.new(0.32, 0, 0.53, 0)
+blslotstextbox.Size = UDim2.new(0, 80, 0, 60)
+blslotstextbox.Font = Enum.Font.GothamBlack
+blslotstextbox.Text = "[Insert your \nbloodline]"
+blslotstextbox.TextColor3 = Color3.new(2, 2, 2)
+blslotstextbox.TextSize = 16
 blslotstextbox.TextWrapped = true
+blslotstextbox.PlaceholderColor3 = Color3.new(0.445, 0.445, 0.445)
+blslotstextbox.PlaceholderText = "[TYPE BLOODLINE]"
 
 local blslot1 = Instance.new("TextButton")
 blslot1.Name = "blslot1"
 blslot1.Parent = BLChangerMain
-blslot1.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
-blslot1.BorderSizePixel = 0
-blslot1.Position = UDim2.new(0.188181819, 0, 0.59, 0)
-blslot1.Size = UDim2.new(0, 60, 0, 40)
-blslot1.Font = Enum.Font.GothamSemibold
+blslot1.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+blslot1.BorderColor3 = Color3.new(0,0,0)
+blslot1.BorderSizePixel = 2
+blslot1.Position = UDim2.new(0.575, 0, 0.53, 0)
+blslot1.Size = UDim2.new(0, 45, 0, 25)
+blslot1.Font = Enum.Font.SourceSansBold
 blslot1.Text = "Slot 1"
 blslot1.TextColor3 = Color3.new(1, 1, 1)
-blslot1.TextSize = 18
+blslot1.TextSize = 15
 blslot1.MouseButton1Click:connect(function()
 	blslot1.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
 	game.Players.LocalPlayer.statz.main.kg1.Value = blslotstextbox.Text
 	wait(.5)
-	blslot1.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+	blslot1.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
 end)
 
 local blslot2 = Instance.new("TextButton")
 blslot2.Name = "blslot2"
 blslot2.Parent = BLChangerMain
-blslot2.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
-blslot2.BorderSizePixel = 0
-blslot2.Position = UDim2.new(0.188181819 + 0.205, 0, 0.59, 0)
-blslot2.Size = UDim2.new(0, 60, 0, 40)
-blslot2.Font = Enum.Font.GothamSemibold
+blslot2.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+blslot2.BorderColor3 = Color3.new(0,0,0)
+blslot2.BorderSizePixel = 2
+blslot2.Position = UDim2.new(0.575+0.15, 0, 0.53, 0)
+blslot2.Size = UDim2.new(0, 45, 0, 25)
+blslot2.Font = Enum.Font.SourceSansBold
 blslot2.Text = "Slot 2"
 blslot2.TextColor3 = Color3.new(1, 1, 1)
-blslot2.TextSize = 18
+blslot2.TextSize = 15
 blslot2.MouseButton1Click:connect(function()
 	blslot2.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
 	game.Players.LocalPlayer.statz.main.kg2.Value = blslotstextbox.Text
 	wait(.5)
-	blslot2.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+	blslot2.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
 end)
 
 local blslot3 = Instance.new("TextButton")
 blslot3.Name = "blslot3"
 blslot3.Parent = BLChangerMain
-blslot3.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
-blslot3.BorderSizePixel = 0
-blslot3.Position = UDim2.new(0.188181819, 0, 0.59 + 0.15, 0)
-blslot3.Size = UDim2.new(0, 60, 0, 40)
-blslot3.Font = Enum.Font.GothamSemibold
+blslot3.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+blslot3.BorderColor3 = Color3.new(0,0,0)
+blslot3.BorderSizePixel = 2
+blslot3.Position = UDim2.new(0.575, 0, 0.53+0.1, 0)
+blslot3.Size = UDim2.new(0, 45, 0, 25)
+blslot3.Font = Enum.Font.SourceSansBold
 blslot3.Text = "Slot 3"
 blslot3.TextColor3 = Color3.new(1, 1, 1)
-blslot3.TextSize = 18
+blslot3.TextSize = 15
 blslot3.MouseButton1Click:connect(function()
 	blslot3.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
 	game.Players.LocalPlayer.statz.main.kg3.Value = blslotstextbox.Text
 	wait(.5)
-	blslot3.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+	blslot3.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
 end)
 
 local blslot4 = Instance.new("TextButton")
 blslot4.Name = "blslot4"
 blslot4.Parent = BLChangerMain
-blslot4.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
-blslot4.BorderSizePixel = 0
-blslot4.Position = UDim2.new(0.188181819 + 0.205, 0, 0.59 + 0.15, 0)
-blslot4.Size = UDim2.new(0, 60, 0, 40)
-blslot4.Font = Enum.Font.GothamSemibold
+blslot4.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+blslot4.BorderColor3 = Color3.new(0,0,0)
+blslot4.BorderSizePixel = 2
+blslot4.Position = UDim2.new(0.575+0.15, 0, 0.53+0.1, 0)
+blslot4.Size = UDim2.new(0, 45, 0, 25)
+blslot4.Font = Enum.Font.SourceSansBold
 blslot4.Text = "Slot 4"
 blslot4.TextColor3 = Color3.new(1, 1, 1)
-blslot4.TextSize = 18
+blslot4.TextSize = 15
 blslot4.MouseButton1Click:connect(function()
 	blslot4.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
 	game.Players.LocalPlayer.statz.main.kg4.Value = blslotstextbox.Text
 	wait(.5)
-	blslot4.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+	blslot4.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
 end)
+
+local KenL = Instance.new("ImageLabel")
+KenL.Name = "KenL"
+KenL.Parent = BLChangerMain
+KenL.BackgroundColor3 = Color3.new(1, 1, 1)
+KenL.BackgroundTransparency = 1
+KenL.Position = UDim2.new(0, 110, 0.72, 0)
+KenL.Size = UDim2.new(0, 200, 0, 20)
+KenL.Image = "rbxassetid://4823762651"
+KenL.ImageColor3 = Color3.new(0, 0, 0)
+KenL.ZIndex = 2
+
+local KenLabel = Instance.new("TextLabel")
+KenLabel.Name = "KenLabel"
+KenLabel.Parent = KenL
+KenLabel.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+KenLabel.BackgroundTransparency = 1
+KenLabel.BorderSizePixel = 0
+KenLabel.Position = UDim2.new(0, 0, 0, 0)
+KenLabel.Size = UDim2.new(0, 200, 0, 20)
+KenLabel.Font = Enum.Font.GothamBlack
+KenLabel.Text = "Kenjutsu"
+KenLabel.TextColor3 = Color3.new(1, 1, 1)
+KenLabel.TextSize = 15
+KenLabel.TextWrapped = false
+KenLabel.TextStrokeColor3 = Color3.new(0, 0, 0)
+KenLabel.ZIndex = 3
 
 local kentextbox = Instance.new("TextBox")
 kentextbox.Name = "kentextbox"
 kentextbox.Parent = BLChangerMain
 kentextbox.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
 kentextbox.BorderSizePixel = 0
-kentextbox.Position = UDim2.new(0.188181819 + 0.415, 0, 0.9, 0)
-kentextbox.Size = UDim2.new(0, 120, 0, 20)
-kentextbox.Font = Enum.Font.GothamSemibold
-kentextbox.Text = "Insert your kenjutsu"
-kentextbox.TextColor3 = Color3.new(1, 1, 1)
-kentextbox.TextSize = 10
+kentextbox.BackgroundTransparency = 1
+kentextbox.Position = UDim2.new(0.31, 0, 0.77, 0)
+kentextbox.Size = UDim2.new(0, 200, 0, 20)
+kentextbox.Font = Enum.Font.GothamBlack
+kentextbox.Text = "[Insert your kenjutsu]"
+kentextbox.TextColor3 = Color3.new(2, 2, 2)
+kentextbox.TextSize = 15
 kentextbox.TextWrapped = true
+kentextbox.PlaceholderColor3 = Color3.new(0.445, 0.445, 0.445)
+kentextbox.PlaceholderText = "[TYPE KENJUTSU]"
+kentextbox.ZIndex = 3
 
 local equipken = Instance.new("TextButton")
 equipken.Name = "equipken"
 equipken.Parent = BLChangerMain
-equipken.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
-equipken.BorderSizePixel = 0
-equipken.Position = UDim2.new(0.188181819, 0, 0.9, 0)
-equipken.Size = UDim2.new(0, 120, 0, 20)
-equipken.Font = Enum.Font.GothamSemibold
+equipken.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+equipken.BorderColor3 = Color3.new(0,0,0)
+equipken.BorderSizePixel = 2
+equipken.Position = UDim2.new(0.34, 0, 0.83, 0)
+equipken.Size = UDim2.new(0, 180, 0, 15)
+equipken.Font = Enum.Font.SourceSansBold
 equipken.Text = "Equip Kenjutsu"
 equipken.TextColor3 = Color3.new(1, 1, 1)
-equipken.TextSize = 13
-equipken.TextWrapped = true
+equipken.TextSize = 17
 equipken.MouseButton1Click:connect(function()
 	equipken.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
 	game.Players.LocalPlayer.statz.breathingstyle.Value = kentextbox.Text
 	wait(.5)
-	equipken.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+	equipken.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
 end)
+
+local InfoL = Instance.new("ImageLabel")
+InfoL.Name = "InfoL"
+InfoL.Parent = BLChangerMain
+InfoL.BackgroundColor3 = Color3.new(1, 1, 1)
+InfoL.BackgroundTransparency = 1
+InfoL.Position = UDim2.new(0, 40, 0.2, 0)
+InfoL.Size = UDim2.new(0, 60, 0, 20)
+InfoL.Image = "rbxassetid://4823762582"
+InfoL.ImageColor3 = Color3.new(0, 0, 0)
+InfoL.ZIndex = 2
 
 local Info = Instance.new("TextButton")
 Info.Name = "Info"
-Info.Parent = BLChangerMain
-Info.BackgroundColor3 = Color3.new(0.3,0.3,1.2)
-Info.BorderSizePixel = 2
-Info.BorderColor3 = Color3.new(0.1,0.1,0.9)
-Info.Position = UDim2.new(0.02, 0, 0.1, 0)
-Info.Size = UDim2.new(0, 40, 0, 20)
-Info.Font = Enum.Font.GothamSemibold
-Info.Text = "!"
+Info.Parent = InfoL
+Info.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+Info.BackgroundTransparency = 1
+Info.BorderSizePixel = 0
+Info.Position = UDim2.new(0, 0, 0, 0)
+Info.Size = UDim2.new(0, 60, 0, 20)
+Info.Font = Enum.Font.GothamBlack
+Info.Text = "Info"
 Info.TextColor3 = Color3.new(1, 1, 1)
-Info.TextSize = 20
+Info.TextSize = 15
+Info.TextWrapped = false
+Info.TextStrokeColor3 = Color3.new(0, 0, 0)
+Info.ZIndex = 3
+
+local HelpL = Instance.new("ImageLabel")
+HelpL.Name = "HelpL"
+HelpL.Parent = BLChangerMain
+HelpL.BackgroundColor3 = Color3.new(1, 1, 1)
+HelpL.BackgroundTransparency = 1
+HelpL.Position = UDim2.new(0, 40, 0.3, 0)
+HelpL.Size = UDim2.new(0, 60, 0, 20)
+HelpL.Image = "rbxassetid://4823762582"
+HelpL.ImageColor3 = Color3.new(0, 0, 0)
+HelpL.ZIndex = 2
 
 local Help = Instance.new("TextButton")
 Help.Name = "Help"
-Help.Parent = BLChangerMain
-Help.BackgroundColor3 = Color3.new(1.020,0.652,0.104)
-Help.BorderSizePixel = 2
-Help.BorderColor3 = Color3.new(0.816,0.435,0.069)
-Help.Position = UDim2.new(0.02, 0, 0.25, 0)
-Help.Size = UDim2.new(0, 40, 0, 20)
-Help.Font = Enum.Font.GothamSemibold
-Help.Text = "?"
+Help.Parent = HelpL
+Help.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+Help.BackgroundTransparency = 1
+Help.BorderSizePixel = 0
+Help.Position = UDim2.new(0, 0, 0, 0)
+Help.Size = UDim2.new(0, 60, 0, 20)
+Help.Font = Enum.Font.GothamBlack
+Help.Text = "Help"
 Help.TextColor3 = Color3.new(1, 1, 1)
-Help.TextSize = 20
+Help.TextSize = 15
+Help.TextWrapped = false
+Help.TextStrokeColor3 = Color3.new(0, 0, 0)
+Help.ZIndex = 3
 
-local IdentifyScriptButton = Instance.new("TextButton")
+local IdentifyScriptL = Instance.new("ImageLabel")
+IdentifyScriptL.Name = "IdentifyScriptL"
+IdentifyScriptL.Parent = BLChangerMain
+IdentifyScriptL.BackgroundColor3 = Color3.new(1,1,1)
+IdentifyScriptL.BackgroundTransparency = 1
+IdentifyScriptL.Size = UDim2.new(0, 60, 0, 35)
+IdentifyScriptL.Position = UDim2.new(0, 40, 0.385, 0)
+IdentifyScriptL.Image = "rbxassetid://3108304521"
+IdentifyScriptL.ImageColor3 = Color3.new(0.83,0.7766666,0.51)
+IdentifyScriptL.ZIndex = 2
+
+local IdentifyScriptButton = Instance.new("ImageButton")
 IdentifyScriptButton.Name = "IdentifyScriptButton"
-IdentifyScriptButton.Parent = BLChangerMain
-IdentifyScriptButton.BackgroundColor3 = Color3.new(1.020,0.652,0.104)
-IdentifyScriptButton.BorderSizePixel = 2
-IdentifyScriptButton.BorderColor3 = Color3.new(0.1,0.1,0.9)
-IdentifyScriptButton.Position = UDim2.new(0.02, 0, 0.4, 0)
-IdentifyScriptButton.Size = UDim2.new(0, 40, 0, 20)
-IdentifyScriptButton.Font = Enum.Font.GothamSemibold
-IdentifyScriptButton.Text = ""
-IdentifyScriptButton.TextColor3 = Color3.new(1, 1, 1)
-IdentifyScriptButton.TextSize = 20
+IdentifyScriptButton.Parent = IdentifyScriptL
+IdentifyScriptButton.BackgroundColor3 = Color3.new(1,1,1)
+IdentifyScriptButton.BackgroundTransparency = 1
+IdentifyScriptButton.Size = UDim2.new(0, 60, 0, 35)
+IdentifyScriptButton.Image = "rbxassetid://7291851569"
+IdentifyScriptButton.ImageColor3 = Color3.new(1, 1, 1)
+IdentifyScriptButton.ZIndex = 3
 
 local RCChangerScript = Instance.new("ImageButton")
 RCChangerScript.Name = "RCChangerScript"
 RCChangerScript.Parent = BLChangerMain
-RCChangerScript.BackgroundColor3 = Color3.new(0.008,0.868,1.020)
-RCChangerScript.BorderSizePixel = 2
-RCChangerScript.BorderColor3 = Color3.new(0.004,0.434,0.510)
-RCChangerScript.Position = UDim2.new(0.02, 0, 0.55, 0)
-RCChangerScript.Size = UDim2.new(0, 40, 0, 30)
+RCChangerScript.BackgroundColor3 = Color3.new(1, 1, 1)
+RCChangerScript.BackgroundTransparency = 1
+RCChangerScript.Position = UDim2.new(0.14, 0, 0.51, 0)
+RCChangerScript.Size = UDim2.new(0, 40, 0, 40)
 RCChangerScript.Image = "rbxassetid://6963735886"
 RCChangerScript.ImageColor3 = Color3.new(0.008,0.868,1.020)
+RCChangerScript.ZIndex = 3
+
+local bg1 = Instance.new("ImageLabel")
+bg1.Name = "bg1"
+bg1.Parent = RCChangerScript
+bg1.BackgroundColor3 = Color3.new(1, 1, 1)
+bg1.BackgroundTransparency = 1
+bg1.Position = UDim2.new(0, 0, 0, 0)
+bg1.Size = UDim2.new(0, 40, 0, 40)
+bg1.Image = "rbxassetid://434411343"
+bg1.ImageColor3 = Color3.new(1.020,1.020,1.020)
+bg1.ZIndex = 2
 
 local Main2 = Instance.new("ImageLabel")
 Main2.Name = "Main2"
 Main2.Parent = BLChangerMain
 Main2.BackgroundColor3 = Color3.new(1, 1, 1)
 Main2.BackgroundTransparency = 1
-Main2.Position = UDim2.new(0, 0, -0.835, 0)
-Main2.Size = UDim2.new(0, 300, 0, 230)
+Main2.Position = UDim2.new(0, 0, -0.65, 0)
+Main2.Size = UDim2.new(0, 350, 0, 230)
 Main2.Visible = false
-Main2.Image = "rbxassetid://2260429633"
-Main2.ImageColor3 = Color3.new(0.117647, 0.117647, 0.117647)
-Main2.ScaleType = Enum.ScaleType.Slice
+Main2.Image = "rbxassetid://5088253643"
+Main2.ImageColor3 = Color3.new(1,1,1)
 Main2.SliceCenter = Rect.new(12, 12, 13, 13)
+Main2.ZIndex = 2
+
+local Main2top = Instance.new("ImageLabel")
+Main2top.Name = "Main2top"
+Main2top.Parent = Main2
+Main2top.BackgroundColor3 = Color3.new(1, 1, 1)
+Main2top.BackgroundTransparency = 1
+Main2top.Position = UDim2.new(0, 0, 0, 0)
+Main2top.Size = UDim2.new(0, 350, 0, 230)
+Main2top.Image = "rbxassetid://5088253380"
+Main2top.ImageColor3 = Color3.new(1,1,1)
+Main2top.ZIndex = 3
+
+local Main2bottom = Instance.new("ImageLabel")
+Main2bottom.Name = "Main2bottom"
+Main2bottom.Parent = Main2
+Main2bottom.BackgroundColor3 = Color3.new(1, 1, 1)
+Main2bottom.BackgroundTransparency = 1
+Main2bottom.Position = UDim2.new(0, 0, 0, 0)
+Main2bottom.Size = UDim2.new(0, 350, 0, 230)
+Main2bottom.Image = "rbxassetid://5088253518"
+Main2bottom.ImageColor3 = Color3.new(1,1,1)
+Main2bottom.ZIndex = 3
 
 local ScrollingFrameforTextLabel2 = Instance.new("ScrollingFrame")
 ScrollingFrameforTextLabel2.Name = "ScrollingFrameforTextLabel2"
@@ -365,178 +539,197 @@ ScrollingFrameforTextLabel2.Parent = Main2
 ScrollingFrameforTextLabel2.BackgroundColor3 = Color3.new(1, 1, 1)
 ScrollingFrameforTextLabel2.BackgroundTransparency = 1
 ScrollingFrameforTextLabel2.BorderSizePixel = 0
-ScrollingFrameforTextLabel2.Position = UDim2.new(0, 20, 0, 60)
-ScrollingFrameforTextLabel2.Size = UDim2.new(1, -40, 1, -70)
+ScrollingFrameforTextLabel2.Position = UDim2.new(0, 40, 0, 25)
+ScrollingFrameforTextLabel2.Size = UDim2.new(1, -81, 1, -50)
+ScrollingFrameforTextLabel2.TopImage = "rbxassetid://4823274219"
+ScrollingFrameforTextLabel2.BottomImage = "rbxassetid://4823274125"
 ScrollingFrameforTextLabel2.CanvasSize = UDim2.new(0, 0, 3, 0)
-ScrollingFrameforTextLabel2.ScrollBarThickness = 5
+ScrollingFrameforTextLabel2.ScrollBarThickness = 10
+ScrollingFrameforTextLabel2.ZIndex = 3
 
 local TextLabel2 = Instance.new("TextLabel")
 TextLabel2.Parent = ScrollingFrameforTextLabel2
 TextLabel2.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
 TextLabel2.Size = UDim2.new(1, -20, 1, 0)
-TextLabel2.Font = Enum.Font.Ubuntu
+TextLabel2.Font = Enum.Font.SourceSansSemibold
 TextLabel2.BackgroundTransparency = 1
 TextLabel2.Text = [[
-Script made by NoobieDoge
+	Script made by NoobieDoge
 
-Type the name of the bloodline or element or kenjutsu into the textbox, then press the slot that you want to change
+	Type the name of the bloodline or element or kenjutsu into the textbox, then press the slot that you want to change
 
-Do not type the display name, it won't work. 
+	Do not type the display name, it won't work. 
 
-If you don't know the code names for the bloodline or element or kenjutsu, press the orange "?" button
+	If you don't know the code names for the bloodline or element or kenjutsu, press the "Help" button
 
-The bloodline and element and kenjutsu that you changed won't keep forever. but the moves that you equippd will stay forever unless you changed it
+	The bloodline and element and kenjutsu that you changed won't keep forever. but the moves that you equippd will stay forever unless you changed it
 
-If you haven't got the kenjutsu before, you cannot change it through this bloodline changer.
+	If you haven't got the kenjutsu before, you cannot change it through this bloodline changer.
 
-You cannot equip bloodlines into EKG slots if you change them with this Bloodline Changer
+	You cannot equip bloodlines into EKG slots if you change them with this Bloodline Changer
 
-You cannot level up the bloodlines or elements or kenjutsus that you change by this changer. Don't be dumb and autofarm with this]]
+	You cannot level up the bloodlines or elements or kenjutsus that you change by this script. Don't be dumb and autofarm with this]]
 TextLabel2.TextSize = 40
-TextLabel2.TextColor3 = Color3.fromRGB(225, 225, 225)
+TextLabel2.TextColor3 = Color3.fromRGB(0, 0, 0)
 TextLabel2.TextScaled = false
 TextLabel2.TextSize = 15
 TextLabel2.TextWrapped = true
 TextLabel2.TextXAlignment = Enum.TextXAlignment.Left
 TextLabel2.TextYAlignment = Enum.TextYAlignment.Top
-
-local Frame2 = Instance.new("Frame")
-Frame2.Parent = BLChangerMain
-Frame2.BackgroundColor3 = Color3.fromRGB(60,60,255)
-Frame2.Position = UDim2.new(0, 0, -0.835, 0)
-Frame2.Size = UDim2.new(0, 300, 0, 30)
-Frame2.Transparency = 0.1
-Frame2.Visible = false
+TextLabel2.ZIndex = 4
 
 local TextLabel3 = Instance.new("TextLabel")
-TextLabel3.Parent = Frame2
+TextLabel3.Parent = Main2top
 TextLabel3.BackgroundColor3 = Color3.fromRGB(1, 1, 1)
-TextLabel3.Size = UDim2.new(0, 300, 0, 30)
-TextLabel3.Font = Enum.Font.Ubuntu
+TextLabel3.Size = UDim2.new(0, 350, 0, 20)
+TextLabel3.Font = Enum.Font.SourceSansBold
 TextLabel3.BackgroundTransparency = 1
 TextLabel3.Text = "Information"
 TextLabel3.TextColor3 = Color3.fromRGB(1, 1, 1)
 TextLabel3.TextScaled = true
 TextLabel3.TextSize = 40.000
 TextLabel3.TextWrapped = true
+TextLabel3.ZIndex = 4
 
 local Main3 = Instance.new("ImageLabel")
 Main3.Name = "Main3"
 Main3.Parent = BLChangerMain
 Main3.BackgroundColor3 = Color3.new(1, 1, 1)
 Main3.BackgroundTransparency = 1
-Main3.Position = UDim2.new(0, 0, -0.835, 0)
-Main3.Size = UDim2.new(0, 300, 0, 230)
+Main3.Position = UDim2.new(0, 0, -0.65, 0)
+Main3.Size = UDim2.new(0, 350, 0, 230)
 Main3.Visible = false
-Main3.Image = "rbxassetid://2260429633"
-Main3.ImageColor3 = Color3.new(0.117647, 0.117647, 0.117647)
-Main3.ScaleType = Enum.ScaleType.Slice
+Main3.Image = "rbxassetid://5088253643"
+Main3.ImageColor3 = Color3.new(1,1,1)
 Main3.SliceCenter = Rect.new(12, 12, 13, 13)
+Main3.ZIndex = 2
+
+local Main3top = Instance.new("ImageLabel")
+Main3top.Name = "Main3top"
+Main3top.Parent = Main3
+Main3top.BackgroundColor3 = Color3.new(1, 1, 1)
+Main3top.BackgroundTransparency = 1
+Main3top.Position = UDim2.new(0, 0, 0, 0)
+Main3top.Size = UDim2.new(0, 350, 0, 230)
+Main3top.Image = "rbxassetid://5088253380"
+Main3top.ImageColor3 = Color3.new(1,1,1)
+Main3top.ZIndex = 3
+
+local Main3bottom = Instance.new("ImageLabel")
+Main3bottom.Name = "Main3bottom"
+Main3bottom.Parent = Main3
+Main3bottom.BackgroundColor3 = Color3.new(1, 1, 1)
+Main3bottom.BackgroundTransparency = 1
+Main3bottom.Position = UDim2.new(0, 0, 0, 0)
+Main3bottom.Size = UDim2.new(0, 350, 0, 230)
+Main3bottom.Image = "rbxassetid://5088253518"
+Main3bottom.ImageColor3 = Color3.new(1,1,1)
+Main3bottom.ZIndex = 3
 
 local TextLabel4 = Instance.new("TextLabel")
 TextLabel4.Parent = Main3
 TextLabel4.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
-TextLabel4.Position = UDim2.new(0.025, 0, 0.15, 0)
+TextLabel4.Position = UDim2.new(0.12, 0, 0.1, 0)
 TextLabel4.Size = UDim2.new(1, -20, 1, 0)
-TextLabel4.Font = Enum.Font.Ubuntu
+TextLabel4.Font = Enum.Font.SourceSansSemibold
 TextLabel4.BackgroundTransparency = 1
 TextLabel4.Text = "If you don't know the code names for the \nbloodline or element that you want to change,\n\nPress these buttons and scroll to the bottom."
 TextLabel4.TextSize = 40
-TextLabel4.TextColor3 = Color3.fromRGB(225, 225, 225)
+TextLabel4.TextColor3 = Color3.fromRGB(0,0,0)
 TextLabel4.TextScaled = false
 TextLabel4.TextSize = 15
 TextLabel4.TextWrapped = true
 TextLabel4.TextXAlignment = Enum.TextXAlignment.Left
 TextLabel4.TextYAlignment = Enum.TextYAlignment.Top
-
-local Frame3 = Instance.new("Frame")
-Frame3.Parent = BLChangerMain
-Frame3.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
-Frame3.Position = UDim2.new(0, 0, -0.835, 0)
-Frame3.Size = UDim2.new(0, 300, 0, 30)
-Frame3.Transparency = 0.1
-Frame3.Visible = false
+TextLabel4.ZIndex = 3
 
 local TextLabel5 = Instance.new("TextLabel")
-TextLabel5.Parent = Frame3
+TextLabel5.Parent = Main3top
 TextLabel5.BackgroundColor3 = Color3.fromRGB(1, 1, 1)
-TextLabel5.Size = UDim2.new(0, 300, 0, 30)
-TextLabel5.Font = Enum.Font.Ubuntu
+TextLabel5.Size = UDim2.new(0, 350, 0, 20)
+TextLabel5.Font = Enum.Font.SourceSansBold
 TextLabel5.BackgroundTransparency = 1
 TextLabel5.Text = "Help"
-TextLabel5.TextColor3 = Color3.fromRGB(1, 1, 1)
+TextLabel5.TextColor3 = Color3.fromRGB(0,0,0)
 TextLabel5.TextScaled = true
 TextLabel5.TextSize = 40.000
 TextLabel5.TextWrapped = true
+TextLabel5.ZIndex = 4
 
 local ElmnamesButton = Instance.new("TextButton")
 ElmnamesButton.Name = "ElmnamesButton"
 ElmnamesButton.Parent = Main3
-ElmnamesButton.BackgroundColor3 = Color3.new(1.020,0.652,0.104)
-ElmnamesButton.BorderSizePixel = 1
-ElmnamesButton.BorderColor3 = Color3.new(0.816,0.435,0.069)
-ElmnamesButton.Position = UDim2.new(0.05, 0, 0.55, 0)
-ElmnamesButton.Size = UDim2.new(0, 80, 0, 40)
-ElmnamesButton.Font = Enum.Font.GothamSemibold
+ElmnamesButton.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+ElmnamesButton.BorderColor3 = Color3.new(0,0,0)
+ElmnamesButton.BorderSizePixel = 2
+ElmnamesButton.Position = UDim2.new(0.15, 0, 0.55, 0)
+ElmnamesButton.Size = UDim2.new(0, 70, 0, 40)
+ElmnamesButton.Font = Enum.Font.SourceSansBold
 ElmnamesButton.Text = "Elements"
-ElmnamesButton.TextColor3 = Color3.new(0, 0, 0)
-ElmnamesButton.TextSize = 17
+ElmnamesButton.TextColor3 = Color3.new(1, 1, 1)
+ElmnamesButton.TextSize = 18
+ElmnamesButton.ZIndex = 3
 
 local BLnamesButton = Instance.new("TextButton")
 BLnamesButton.Name = "BLnamesButton"
 BLnamesButton.Parent = Main3
-BLnamesButton.BackgroundColor3 = Color3.new(1.020,0.652,0.104)
-BLnamesButton.BorderSizePixel = 1
-BLnamesButton.BorderColor3 = Color3.new(0.816,0.435,0.069)
-BLnamesButton.Position = UDim2.new(0.375, 0, 0.55, 0)
-BLnamesButton.Size = UDim2.new(0, 80, 0, 40)
-BLnamesButton.Font = Enum.Font.GothamSemibold
+BLnamesButton.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+BLnamesButton.BorderColor3 = Color3.new(0,0,0)
+BLnamesButton.BorderSizePixel = 2
+BLnamesButton.Position = UDim2.new(0.4, 0, 0.55, 0)
+BLnamesButton.Size = UDim2.new(0, 70, 0, 40)
+BLnamesButton.Font = Enum.Font.SourceSansBold
 BLnamesButton.Text = "Bloodlines"
-BLnamesButton.TextColor3 = Color3.new(0, 0, 0)
-BLnamesButton.TextSize = 17
+BLnamesButton.TextColor3 = Color3.new(1, 1, 1)
+BLnamesButton.TextSize = 18
+BLnamesButton.ZIndex = 3
 
 local KennamesButton = Instance.new("TextButton")
 KennamesButton.Name = "KennamesButton"
 KennamesButton.Parent = Main3
-KennamesButton.BackgroundColor3 = Color3.new(1.020,0.652,0.104)
-KennamesButton.BorderSizePixel = 1
-KennamesButton.BorderColor3 = Color3.new(0.816,0.435,0.069)
-KennamesButton.Position = UDim2.new(0.7, 0, 0.55, 0)
-KennamesButton.Size = UDim2.new(0, 80, 0, 40)
-KennamesButton.Font = Enum.Font.GothamSemibold
+KennamesButton.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+KennamesButton.BorderColor3 = Color3.new(0,0,0)
+KennamesButton.BorderSizePixel = 2
+KennamesButton.Position = UDim2.new(0.65, 0, 0.55, 0)
+KennamesButton.Size = UDim2.new(0, 70, 0, 40)
+KennamesButton.Font = Enum.Font.SourceSansBold
 KennamesButton.Text = "Kenjutsu"
-KennamesButton.TextColor3 = Color3.new(0, 0, 0)
-KennamesButton.TextSize = 17
+KennamesButton.TextColor3 = Color3.new(1, 1, 1)
+KennamesButton.TextSize = 18
+KennamesButton.ZIndex = 3
 
 local SecretCodeText = Instance.new("TextBox")
 SecretCodeText.Name = "SecretCodeText"
 SecretCodeText.Parent = BLChangerMain
-SecretCodeText.BackgroundColor3 = Color3.new(0.512, 0.512, 0.512)
+SecretCodeText.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
 SecretCodeText.BorderSizePixel = 0
-SecretCodeText.Position = UDim2.new(0.01, 0, 0.85, 0)
-SecretCodeText.Size = UDim2.new(0, 45, 0, 20)
-SecretCodeText.Font = Enum.Font.GothamSemibold
-SecretCodeText.PlaceholderColor3 = Color3.fromRGB(255, 255, 255)
-SecretCodeText.PlaceholderText = "Secret Code"
-SecretCodeText.Text = ""
-SecretCodeText.TextColor3 = Color3.new(1, 1, 1)
-SecretCodeText.TextScaled = true
-SecretCodeText.TextSize = 14
+SecretCodeText.BackgroundTransparency = 1
+SecretCodeText.Position = UDim2.new(0.1, 0, 0.75, 0)
+SecretCodeText.Size = UDim2.new(0, 70, 0, 45)
+SecretCodeText.Font = Enum.Font.GothamBlack
+SecretCodeText.Text = "[Secret Code]"
+SecretCodeText.TextColor3 = Color3.new(2, 2, 2)
+SecretCodeText.TextSize = 17
 SecretCodeText.TextWrapped = true
+SecretCodeText.PlaceholderColor3 = Color3.new(0.445, 0.445, 0.445)
+SecretCodeText.PlaceholderText = "[INSERT CODE]"
+SecretCodeText.ZIndex = 3
 
 local SecretCodeTextRedeem = Instance.new("TextButton")
 SecretCodeTextRedeem.Name = "SecretCodeTextRedeem"
 SecretCodeTextRedeem.Parent = BLChangerMain
-SecretCodeTextRedeem.BackgroundColor3 = Color3.new(0.512, 0.512, 0.512)
-SecretCodeTextRedeem.BorderSizePixel = 0
-SecretCodeTextRedeem.Position = UDim2.new(0.01, 0, 0.94, 0)
-SecretCodeTextRedeem.Size = UDim2.new(0, 45, 0, 10)
-SecretCodeTextRedeem.Font = Enum.Font.GothamSemibold
+SecretCodeTextRedeem.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+SecretCodeTextRedeem.BorderColor3 = Color3.new(0,0,0)
+SecretCodeTextRedeem.BorderSizePixel = 2
+SecretCodeTextRedeem.Position = UDim2.new(0.115, 0, 0.87, 0)
+SecretCodeTextRedeem.Size = UDim2.new(0, 60, 0, 10)
+SecretCodeTextRedeem.Font = Enum.Font.SourceSansBold
 SecretCodeTextRedeem.Text = ""
 SecretCodeTextRedeem.TextColor3 = Color3.new(1, 1, 1)
 SecretCodeTextRedeem.TextScaled = true
 SecretCodeTextRedeem.TextSize = 14
 SecretCodeTextRedeem.TextWrapped = true
+SecretCodeTextRedeem.ZIndex = 3
 
 function CodeRedeem()
 	if SecretCodeText.Text == "BlazingFanatic" or SecretCodeText.Text == "bL" or SecretCodeText.Text == "Bl" or SecretCodeText.Text == "BL" or SecretCodeText.Text == "bl" then
@@ -560,13 +753,10 @@ Info.MouseButton1Click:connect(function()
 		Help.BackgroundColor3 = Color3.new(1.020,0.652,0.104)
 		Info.BackgroundColor3 = Color3.new(0.5,0.5,1.5)
 		Main2.Visible = true
-		Frame2.Visible = true
 		Main3.Visible = false
-		Frame3.Visible = false
 	else
 		Info.BackgroundColor3 = Color3.new(0.3,0.3,1.2)
 		Main2.Visible = false
-		Frame2.Visible = false
 	end
 end)
 
@@ -577,14 +767,11 @@ Help.MouseButton1Click:connect(function()
 		Info.BackgroundColor3 = Color3.new(0.3,0.3,1.2)
 		Help.BackgroundColor3 = Color3.new(1.2,0.8,0.3)
 		Main2.Visible = false
-		Frame2.Visible = false
 		Main3.Visible = true
-		Frame3.Visible = true
 		TextLabel2.TextSize = 15	
 	else
 		Help.BackgroundColor3 = Color3.new(1.020,0.652,0.104)
 		Main3.Visible = false
-		Frame3.Visible = false
 	end
 end)
 
