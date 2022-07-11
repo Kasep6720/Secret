@@ -8,13 +8,12 @@ RCChangerMain.Name = "RCChangerMain"
 RCChangerMain.Parent = ScreenGui
 RCChangerMain.BackgroundColor3 = Color3.new(1, 1, 1)
 RCChangerMain.BackgroundTransparency = 1
-RCChangerMain.Position = UDim2.new(0.765, 0, 0.52, 0)
-RCChangerMain.Size = UDim2.new(0, 300, 0, 280)
+RCChangerMain.Position = UDim2.new(0.72, 0, 0.44, 0)
+RCChangerMain.Size = UDim2.new(0, 350, 0, 350)
 RCChangerMain.Visible = true
 RCChangerMain.Active = true
-RCChangerMain.Image = "rbxassetid://2260429633"
-RCChangerMain.ImageColor3 = Color3.new(0.117647, 0.117647, 0.117647)
-RCChangerMain.ScaleType = Enum.ScaleType.Slice
+RCChangerMain.Image = "rbxassetid://5089201291"
+RCChangerMain.ImageColor3 = Color3.new(0.93,0.93,0.93)
 RCChangerMain.SliceCenter = Rect.new(12, 12, 13, 13)
 RCChangerMain.Draggable = true
 
@@ -23,7 +22,7 @@ X.Name = "X"
 X.Parent = RCChangerMain
 X.BackgroundColor3 = Color3.new(0.0588235, 0.0588235, 0.0588235)
 X.BorderSizePixel = 0
-X.Position = UDim2.new(0.85, 0, 0, 0)
+X.Position = UDim2.new(0.81, 0, 0.075, 0)
 X.Size = UDim2.new(0, 31, 0, 20)
 X.Font = Enum.Font.Cartoon
 X.Text = "X"
@@ -42,292 +41,467 @@ function DeleteGui() -- X.LocalScript
 end
 coroutine.resume(coroutine.create(DeleteGui))
 
-local Title = Instance.new("TextLabel")
+local Title = Instance.new("ImageLabel")
 Title.Name = "Title"
 Title.Parent = RCChangerMain
 Title.BackgroundColor3 = Color3.new(1, 1, 1)
 Title.BackgroundTransparency = 1
-Title.Position = UDim2.new(0.1, 0, 0.000547006086, 0)
-Title.Size = UDim2.new(0, 200, 0, 20)
-Title.Font = Enum.Font.GothamSemibold
-Title.Text = "           Shindo RC Shop Changer"
-Title.TextColor3 = Color3.new(1, 1, 1)
-Title.TextScaled = false
-Title.TextSize = 16.5
-Title.TextWrapped = false
+Title.Position = UDim2.new(0.125, 0, 0.075, 0)
+Title.Size = UDim2.new(0, 30, 0, 30)
+Title.Image = "rbxassetid://6963735886"
+Title.ImageColor3 = Color3.new(0.008,0.868,1.020)
+Title.ZIndex = 3
+
+local bg = Instance.new("ImageLabel")
+bg.Name = "bg"
+bg.Parent = Title
+bg.BackgroundColor3 = Color3.new(1, 1, 1)
+bg.BackgroundTransparency = 1
+bg.Position = UDim2.new(0, 0, 0, 0)
+bg.Size = UDim2.new(0, 30, 0, 30)
+bg.Image = "rbxassetid://434411343"
+bg.ImageColor3 = Color3.new(1.020,1.020,1.020)
+bg.ZIndex = 2
+
+local amt = Instance.new("TextLabel")
+amt.Name = "amt"
+amt.Parent = Title
+amt.BackgroundColor3 = Color3.new(1, 1, 1)
+amt.BackgroundTransparency = 1
+amt.Position = UDim2.new(1.1, 0, 0.15, 0)
+amt.Size = UDim2.new(0, 200, 0, 20)
+amt.Font = Enum.Font.SourceSansBold
+amt.Text = "Shindo RC Shop Changer"
+amt.TextColor3 = Color3.new(0, 0, 0)
+amt.TextScaled = false
+amt.TextSize = 22
+amt.TextWrapped = false
+amt.ZIndex = 2
+
+local line = Instance.new("TextLabel")
+line.Name = "line"
+line.Parent = Title
+line.BackgroundColor3 = Color3.new(0, 0, 0)
+line.BackgroundTransparency = 0
+line.Position = UDim2.new(0.74, 0, 0.93, 0)
+line.Size = UDim2.new(7.25, 0, 0.02, 0)
+line.Font = Enum.Font.SourceSansBold
+line.Text = ""
+line.TextColor3 = Color3.new(0, 0, 0)
+line.TextScaled = false
+line.TextSize = 22
+line.TextWrapped = false
+line.ZIndex = 2
 
 local Border = Instance.new("Frame")
 Border.Name = "Border"
 Border.Parent = RCChangerMain
-Border.BackgroundColor3 = Color3.new(0.419608, 0.419608, 0.419608)
-Border.BorderColor3 = Color3.new(0.419608, 0.419608, 0.419608)
-Border.Position = UDim2.new(0.17, 0, -0.000385761261, 0)
-Border.Size = UDim2.new(0, 3, 0, 280)
+Border.BackgroundColor3 = Color3.new(0, 0, 0)
+Border.BorderColor3 = Color3.new(0, 0, 0)
+Border.Position = UDim2.new(0.3, 0, 0.22, 0)
+Border.Size = UDim2.new(0, 1.5, 0, 220)
+
+local ShowRCUIL = Instance.new("ImageLabel")
+ShowRCUIL.Name = "InfoL"
+ShowRCUIL.Parent = RCChangerMain
+ShowRCUIL.BackgroundColor3 = Color3.new(1, 1, 1)
+ShowRCUIL.BackgroundTransparency = 1
+ShowRCUIL.Position = UDim2.new(0, 120, 0.2, 0)
+ShowRCUIL.Size = UDim2.new(0, 180, 0, 20)
+ShowRCUIL.Image = "rbxassetid://4823762582"
+ShowRCUIL.ImageColor3 = Color3.new(0, 0, 0)
+ShowRCUIL.ZIndex = 2
 
 local ShowRCUIButton = Instance.new("TextButton")
 ShowRCUIButton.Name = "ShowRCUIButton"
-ShowRCUIButton.Parent = RCChangerMain
+ShowRCUIButton.Parent = ShowRCUIL
 ShowRCUIButton.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
 ShowRCUIButton.BackgroundTransparency = 1
 ShowRCUIButton.BorderSizePixel = 0
-ShowRCUIButton.Position = UDim2.new(0.188181819, 0, 0.1, 0)
-ShowRCUIButton.Size = UDim2.new(0, 243, 0, 20)
-ShowRCUIButton.Font = Enum.Font.GothamSemibold
+ShowRCUIButton.Position = UDim2.new(0.25, 0, 0, 0)
+ShowRCUIButton.Size = UDim2.new(0, 60, 0, 20)
+ShowRCUIButton.Font = Enum.Font.GothamBlack
 ShowRCUIButton.Text = "Show RC Shop"
 ShowRCUIButton.TextColor3 = Color3.new(1, 1, 1)
 ShowRCUIButton.TextSize = 15
 ShowRCUIButton.TextWrapped = false
-ShowRCUIButton.Transparency = 0
+ShowRCUIButton.TextStrokeColor3 = Color3.new(0, 0, 0)
+ShowRCUIButton.ZIndex = 3
 ShowRCUIButton.MouseButton1Click:connect(function()
-game:GetService("Players").LocalPlayer.PlayerGui.Main.RYOshop.Visible = true
-game:GetService("Players").LocalPlayer.PlayerGui.Main.Blur.Visible = false
-game:GetService("Players").LocalPlayer.PlayerGui.Main.ingame.Menu.Visible = false
+	if game:GetService("Players").LocalPlayer.PlayerGui.Main.RYOshop.Visible == true then
+		game:GetService("Players").LocalPlayer.PlayerGui.Main.RYOshop.Visible = false
+		game:GetService("Players").LocalPlayer.PlayerGui.Main.Blur.Visible = true
+		game:GetService("Players").LocalPlayer.PlayerGui.Main.ingame.Menu.Visible = true
+	else
+		game:GetService("Players").LocalPlayer.PlayerGui.Main.RYOshop.Visible = true
+		game:GetService("Players").LocalPlayer.PlayerGui.Main.Blur.Visible = false
+		game:GetService("Players").LocalPlayer.PlayerGui.Main.ingame.Menu.Visible = false
+	end
 end)
+
+local line1 = Instance.new("TextLabel")
+line1.Name = "line1"
+line1.Parent = RCChangerMain
+line1.BackgroundColor3 = Color3.new(0, 0, 0)
+line1.BackgroundTransparency = 0
+line1.Position = UDim2.new(0.33, 0, 0.27, 0)
+line1.Size = UDim2.new(0.53, 0, 0.001, 0)
+line1.Font = Enum.Font.SourceSansBold
+line1.Text = ""
+line1.TextColor3 = Color3.new(0, 0, 0)
+line1.TextScaled = false
+line1.TextSize = 22
+line1.TextWrapped = false
+line1.ZIndex = 2
+
+local ClothingsTextL = Instance.new("ImageLabel")
+ClothingsTextL.Name = "ClothingsTextL"
+ClothingsTextL.Parent = RCChangerMain
+ClothingsTextL.BackgroundColor3 = Color3.new(1, 1, 1)
+ClothingsTextL.BackgroundTransparency = 1
+ClothingsTextL.Position = UDim2.new(0, 110, 0.3, 0)
+ClothingsTextL.Size = UDim2.new(0, 200, 0, 20)
+ClothingsTextL.Image = "rbxassetid://4823762651"
+ClothingsTextL.ImageColor3 = Color3.new(0, 0, 0)
+ClothingsTextL.ZIndex = 2
 
 local ClothingsText = Instance.new("TextLabel")
 ClothingsText.Name = "ClothingsText"
-ClothingsText.Parent = RCChangerMain
-ClothingsText.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+ClothingsText.Parent = ClothingsTextL
+ClothingsText.BackgroundColor3 = Color3.new(1, 1, 1)
 ClothingsText.BackgroundTransparency = 1
-ClothingsText.BorderSizePixel = 0
-ClothingsText.Position = UDim2.new(0.188181819, 0, 0.19, 0)
-ClothingsText.Size = UDim2.new(0, 243, 0, 20)
-ClothingsText.Font = Enum.Font.GothamSemibold
+ClothingsText.Position = UDim2.new(0, 0, 0, 0)
+ClothingsText.Size = UDim2.new(0, 200, 0, 20)
+ClothingsText.Font = Enum.Font.GothamBlack
 ClothingsText.Text = "Clothings"
 ClothingsText.TextColor3 = Color3.new(1, 1, 1)
 ClothingsText.TextSize = 15
 ClothingsText.TextWrapped = false
-ClothingsText.Transparency = 0
+ClothingsText.TextStrokeColor3 = Color3.new(0, 0, 0)
+ClothingsText.ZIndex = 3
 
 local Clothslotstextbox = Instance.new("TextBox")
 Clothslotstextbox.Name = "Clothslotstextbox"
 Clothslotstextbox.Parent = RCChangerMain
 Clothslotstextbox.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
 Clothslotstextbox.BorderSizePixel = 0
-Clothslotstextbox.Position = UDim2.new(0.188181819 + 0.415, 0, 0.27, 0)
-Clothslotstextbox.Size = UDim2.new(0, 119, 0, 82)
-Clothslotstextbox.Font = Enum.Font.GothamSemibold
-Clothslotstextbox.Text = "Insert your \nClothings"
-Clothslotstextbox.TextColor3 = Color3.new(1, 1, 1)
-Clothslotstextbox.TextSize = 20
+Clothslotstextbox.BackgroundTransparency = 1
+Clothslotstextbox.Position = UDim2.new(0.32, 0, 0.37, 0)
+Clothslotstextbox.Size = UDim2.new(0, 80, 0, 60)
+Clothslotstextbox.Font = Enum.Font.GothamBlack
+Clothslotstextbox.Text = "[Insert your \nclothings]"
+Clothslotstextbox.TextColor3 = Color3.new(2, 2, 2)
+Clothslotstextbox.TextSize = 16
 Clothslotstextbox.TextWrapped = true
+Clothslotstextbox.PlaceholderColor3 = Color3.new(0.445, 0.445, 0.445)
+Clothslotstextbox.PlaceholderText = "[TYPE CLOTHING]"
 
 local clothslot1 = Instance.new("TextButton")
 clothslot1.Name = "clothslot1"
 clothslot1.Parent = RCChangerMain
-clothslot1.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
-clothslot1.BorderSizePixel = 0
-clothslot1.Position = UDim2.new(0.188181819, 0, 0.27, 0)
-clothslot1.Size = UDim2.new(0, 60, 0, 40)
-clothslot1.Font = Enum.Font.GothamSemibold
+clothslot1.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+clothslot1.BorderColor3 = Color3.new(0,0,0)
+clothslot1.BorderSizePixel = 2
+clothslot1.Position = UDim2.new(0.575, 0, 0.37, 0)
+clothslot1.Size = UDim2.new(0, 45, 0, 25)
+clothslot1.Font = Enum.Font.SourceSansBold
 clothslot1.Text = "Slot 1"
 clothslot1.TextColor3 = Color3.new(1, 1, 1)
-clothslot1.TextSize = 18
+clothslot1.TextSize = 15
 clothslot1.MouseButton1Click:connect(function()
 	clothslot1.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
 	game:GetService("Workspace")["4hourshop"].item1.Value = Clothslotstextbox.Text
 	wait(.5)
-	clothslot1.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+	clothslot1.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
 end)
 
 local clothslot2 = Instance.new("TextButton")
 clothslot2.Name = "clothslot2"
 clothslot2.Parent = RCChangerMain
-clothslot2.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
-clothslot2.BorderSizePixel = 0
-clothslot2.Position = UDim2.new(0.188181819 + 0.205, 0, 0.27, 0)
-clothslot2.Size = UDim2.new(0, 60, 0, 40)
-clothslot2.Font = Enum.Font.GothamSemibold
+clothslot2.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+clothslot2.BorderColor3 = Color3.new(0,0,0)
+clothslot2.BorderSizePixel = 2
+clothslot2.Position = UDim2.new(0.575+0.15, 0, 0.37, 0)
+clothslot2.Size = UDim2.new(0, 45, 0, 25)
+clothslot2.Font = Enum.Font.SourceSansBold
 clothslot2.Text = "Slot 2"
 clothslot2.TextColor3 = Color3.new(1, 1, 1)
-clothslot2.TextSize = 18
+clothslot2.TextSize = 15
 clothslot2.MouseButton1Click:connect(function()
 	clothslot2.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
 	game:GetService("Workspace")["4hourshop"].item2.Value = Clothslotstextbox.Text
 	wait(.5)
-	clothslot2.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+	clothslot2.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
 end)
 
 local clothslot3 = Instance.new("TextButton")
 clothslot3.Name = "clothslot3"
 clothslot3.Parent = RCChangerMain
-clothslot3.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
-clothslot3.BorderSizePixel = 0
-clothslot3.Position = UDim2.new(0.188181819, 0, 0.27 + 0.15, 0)
-clothslot3.Size = UDim2.new(0, 60, 0, 40)
-clothslot3.Font = Enum.Font.GothamSemibold
+clothslot3.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+clothslot3.BorderColor3 = Color3.new(0,0,0)
+clothslot3.BorderSizePixel = 2
+clothslot3.Position = UDim2.new(0.575, 0, 0.37+0.1, 0)
+clothslot3.Size = UDim2.new(0, 45, 0, 25)
+clothslot3.Font = Enum.Font.SourceSansBold
 clothslot3.Text = "Slot 3"
 clothslot3.TextColor3 = Color3.new(1, 1, 1)
-clothslot3.TextSize = 18
+clothslot3.TextSize = 15
 clothslot3.MouseButton1Click:connect(function()
 	clothslot3.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
 	game:GetService("Workspace")["4hourshop"].item3.Value = Clothslotstextbox.Text
 	wait(.5)
-	clothslot3.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+	clothslot3.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
 end)
 
 local clothslot4 = Instance.new("TextButton")
 clothslot4.Name = "elmslot4"
 clothslot4.Parent = RCChangerMain
-clothslot4.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
-clothslot4.BorderSizePixel = 0
-clothslot4.Position = UDim2.new(0.188181819 + 0.205, 0, 0.27 + 0.15, 0)
-clothslot4.Size = UDim2.new(0, 60, 0, 40)
-clothslot4.Font = Enum.Font.GothamSemibold
+clothslot4.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+clothslot4.BorderColor3 = Color3.new(0,0,0)
+clothslot4.BorderSizePixel = 2
+clothslot4.Position = UDim2.new(0.575+0.15, 0, 0.37+0.1, 0)
+clothslot4.Size = UDim2.new(0, 45, 0, 25)
+clothslot4.Font = Enum.Font.SourceSansBold
 clothslot4.Text = "Slot 4"
 clothslot4.TextColor3 = Color3.new(1, 1, 1)
-clothslot4.TextSize = 18
+clothslot4.TextSize = 15
 clothslot4.MouseButton1Click:connect(function()
 	clothslot4.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
 	game:GetService("Workspace")["4hourshop"].item4.Value = Clothslotstextbox.Text
 	wait(.5)
-	clothslot4.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+	clothslot4.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
 end)
+
+local RareBLLabelL = Instance.new("ImageLabel")
+RareBLLabelL.Name = "RareBLLabelL"
+RareBLLabelL.Parent = RCChangerMain
+RareBLLabelL.BackgroundColor3 = Color3.new(1, 1, 1)
+RareBLLabelL.BackgroundTransparency = 1
+RareBLLabelL.Position = UDim2.new(0, 110, 0.56, 0)
+RareBLLabelL.Size = UDim2.new(0, 200, 0, 20)
+RareBLLabelL.Image = "rbxassetid://4823762651"
+RareBLLabelL.ImageColor3 = Color3.new(0, 0, 0)
+RareBLLabelL.ZIndex = 2
 
 local RareBLLabel = Instance.new("TextLabel")
 RareBLLabel.Name = "RareBLLabel"
-RareBLLabel.Parent = RCChangerMain
-RareBLLabel.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+RareBLLabel.Parent = RareBLLabelL
+RareBLLabel.BackgroundColor3 = Color3.new(1, 1, 1)
 RareBLLabel.BackgroundTransparency = 1
-RareBLLabel.BorderSizePixel = 0
-RareBLLabel.Position = UDim2.new(0.188181819, 0, 0.59, 0)
-RareBLLabel.Size = UDim2.new(0, 243, 0, 20)
-RareBLLabel.Font = Enum.Font.GothamSemibold
-RareBLLabel.Text = "	Limited Bloodlines"
+RareBLLabel.Position = UDim2.new(0, 0, 0, 0)
+RareBLLabel.Size = UDim2.new(0, 200, 0, 20)
+RareBLLabel.Font = Enum.Font.GothamBlack
+RareBLLabel.Text = "Limited Bloodlines"
 RareBLLabel.TextColor3 = Color3.new(1, 1, 1)
 RareBLLabel.TextSize = 15
 RareBLLabel.TextWrapped = false
-RareBLLabel.Transparency = 0
+RareBLLabel.TextStrokeColor3 = Color3.new(0, 0, 0)
+RareBLLabel.ZIndex = 3
 
 local rareblslotstextbox = Instance.new("TextBox")
 rareblslotstextbox.Name = "rareblslotstextbox"
 rareblslotstextbox.Parent = RCChangerMain
 rareblslotstextbox.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
 rareblslotstextbox.BorderSizePixel = 0
-rareblslotstextbox.Position = UDim2.new(0.188181819 + 0.415, 0, 0.68, 0)
-rareblslotstextbox.Size = UDim2.new(0, 119, 0, 82)
-rareblslotstextbox.Font = Enum.Font.GothamSemibold
-rareblslotstextbox.Text = "Insert your \nlimited bloodline"
-rareblslotstextbox.TextColor3 = Color3.new(1, 1, 1)
-rareblslotstextbox.TextSize = 20
+rareblslotstextbox.BackgroundTransparency = 1
+rareblslotstextbox.Position = UDim2.new(0.32, 0, 0.63, 0)
+rareblslotstextbox.Size = UDim2.new(0, 80, 0, 85)
+rareblslotstextbox.Font = Enum.Font.GothamBlack
+rareblslotstextbox.Text = "[Insert your \nlimited bloodline]"
+rareblslotstextbox.TextColor3 = Color3.new(2, 2, 2)
+rareblslotstextbox.TextSize = 13
 rareblslotstextbox.TextWrapped = true
+rareblslotstextbox.PlaceholderColor3 = Color3.new(0.445, 0.445, 0.445)
+rareblslotstextbox.PlaceholderText = "[TYPE LIMITED BLOODLINE]"
 
 local rareblslot1 = Instance.new("TextButton")
 rareblslot1.Name = "rareblslot1"
 rareblslot1.Parent = RCChangerMain
-rareblslot1.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
-rareblslot1.BorderSizePixel = 0
-rareblslot1.Position = UDim2.new(0.188181819, 0, 0.68, 0)
-rareblslot1.Size = UDim2.new(0, 39.5, 0, 82)
+rareblslot1.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+rareblslot1.BorderColor3 = Color3.new(0,0,0)
+rareblslot1.BorderSizePixel = 2
+rareblslot1.Position = UDim2.new(0.57, 0, 0.63, 0)
+rareblslot1.Size = UDim2.new(0, 100, 0, 20)
 rareblslot1.Font = Enum.Font.GothamSemibold
-rareblslot1.Text = "Slot \n1"
+rareblslot1.Text = "Slot 1"
 rareblslot1.TextColor3 = Color3.new(1, 1, 1)
-rareblslot1.TextSize = 18
+rareblslot1.TextSize = 16
 rareblslot1.MouseButton1Click:connect(function()
 	rareblslot1.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
 	game:GetService("Workspace").RCGENKAI.item1.Value = rareblslotstextbox.Text
 	wait(.5)
-	rareblslot1.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+	rareblslot1.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
 end)
 
 local rareblslot2 = Instance.new("TextButton")
 rareblslot2.Name = "rareblslot2"
 rareblslot2.Parent = RCChangerMain
-rareblslot2.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
-rareblslot2.BorderSizePixel = 0
-rareblslot2.Position = UDim2.new(0.188181819 + 0.14, 0, 0.68, 0)
-rareblslot2.Size = UDim2.new(0, 39.5, 0, 82)
+rareblslot2.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+rareblslot2.BorderColor3 = Color3.new(0,0,0)
+rareblslot2.BorderSizePixel = 2
+rareblslot2.Position = UDim2.new(0.57, 0, 0.63+0.09, 0)
+rareblslot2.Size = UDim2.new(0, 100, 0, 20)
 rareblslot2.Font = Enum.Font.GothamSemibold
-rareblslot2.Text = "Slot \n2"
+rareblslot2.Text = "Slot 2"
 rareblslot2.TextColor3 = Color3.new(1, 1, 1)
-rareblslot2.TextSize = 18
+rareblslot2.TextSize = 16
 rareblslot2.MouseButton1Click:connect(function()
 	rareblslot2.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
 	game:GetService("Workspace").RCGENKAI.item2.Value = rareblslotstextbox.Text
 	wait(.5)
-	rareblslot2.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+	rareblslot2.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
 end)
 
 local rareblslot3 = Instance.new("TextButton")
 rareblslot3.Name = "rareblslot3"
 rareblslot3.Parent = RCChangerMain
-rareblslot3.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
-rareblslot3.BorderSizePixel = 0
-rareblslot3.Position = UDim2.new(0.188181819 + 0.28, 0, 0.68, 0)
-rareblslot3.Size = UDim2.new(0, 39.5, 0, 82)
+rareblslot3.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+rareblslot3.BorderColor3 = Color3.new(0,0,0)
+rareblslot3.BorderSizePixel = 2
+rareblslot3.Position = UDim2.new(0.57, 0, 0.63+0.09+0.09, 0)
+rareblslot3.Size = UDim2.new(0, 100, 0, 20)
 rareblslot3.Font = Enum.Font.GothamSemibold
-rareblslot3.Text = "Slot \n3"
+rareblslot3.Text = "Slot 3"
 rareblslot3.TextColor3 = Color3.new(1, 1, 1)
-rareblslot3.TextSize = 18
+rareblslot3.TextSize = 16
 rareblslot3.MouseButton1Click:connect(function()
 	rareblslot3.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
 	game:GetService("Workspace").RCGENKAI.item3.Value = rareblslotstextbox.Text
 	wait(.5)
-	rareblslot3.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+	rareblslot3.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
 end)
+
+local InfoL = Instance.new("ImageLabel")
+InfoL.Name = "InfoL"
+InfoL.Parent = RCChangerMain
+InfoL.BackgroundColor3 = Color3.new(1, 1, 1)
+InfoL.BackgroundTransparency = 1
+InfoL.Position = UDim2.new(0, 40, 0.2, 0)
+InfoL.Size = UDim2.new(0, 60, 0, 20)
+InfoL.Image = "rbxassetid://4823762582"
+InfoL.ImageColor3 = Color3.new(0, 0, 0)
+InfoL.ZIndex = 2
 
 local Info = Instance.new("TextButton")
 Info.Name = "Info"
-Info.Parent = RCChangerMain
-Info.BackgroundColor3 = Color3.new(1,0.2,0.2)
-Info.BorderSizePixel = 2
-Info.BorderColor3 = Color3.new(0.7,0.1,0.1)
-Info.Position = UDim2.new(0.02, 0, 0.1, 0)
-Info.Size = UDim2.new(0, 40, 0, 20)
-Info.Font = Enum.Font.GothamSemibold
-Info.Text = "!"
+Info.Parent = InfoL
+Info.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+Info.BackgroundTransparency = 1
+Info.BorderSizePixel = 0
+Info.Position = UDim2.new(0, 0, 0, 0)
+Info.Size = UDim2.new(0, 60, 0, 20)
+Info.Font = Enum.Font.GothamBlack
+Info.Text = "Info"
 Info.TextColor3 = Color3.new(1, 1, 1)
-Info.TextSize = 20
+Info.TextSize = 15
+Info.TextWrapped = false
+Info.TextStrokeColor3 = Color3.new(0, 0, 0)
+Info.ZIndex = 3
+
+local HelpL = Instance.new("ImageLabel")
+HelpL.Name = "HelpL"
+HelpL.Parent = RCChangerMain
+HelpL.BackgroundColor3 = Color3.new(1, 1, 1)
+HelpL.BackgroundTransparency = 1
+HelpL.Position = UDim2.new(0, 40, 0.3, 0)
+HelpL.Size = UDim2.new(0, 60, 0, 20)
+HelpL.Image = "rbxassetid://4823762582"
+HelpL.ImageColor3 = Color3.new(0, 0, 0)
+HelpL.ZIndex = 2
 
 local Help = Instance.new("TextButton")
 Help.Name = "Help"
-Help.Parent = RCChangerMain
-Help.BackgroundColor3 = Color3.new(0.3,0.8,0.3)
-Help.BorderSizePixel = 2
-Help.BorderColor3 = Color3.new(0.1,0.5,0.1)
-Help.Position = UDim2.new(0.02, 0, 0.25, 0)
-Help.Size = UDim2.new(0, 40, 0, 20)
-Help.Font = Enum.Font.GothamSemibold
-Help.Text = "?"
+Help.Parent = HelpL
+Help.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+Help.BackgroundTransparency = 1
+Help.BorderSizePixel = 0
+Help.Position = UDim2.new(0, 0, 0, 0)
+Help.Size = UDim2.new(0, 60, 0, 20)
+Help.Font = Enum.Font.GothamBlack
+Help.Text = "Help"
 Help.TextColor3 = Color3.new(1, 1, 1)
-Help.TextSize = 20
+Help.TextSize = 15
+Help.TextWrapped = false
+Help.TextStrokeColor3 = Color3.new(0, 0, 0)
+Help.ZIndex = 3
 
-local IdentifyScriptButton = Instance.new("TextButton")
+local IdentifyScriptL = Instance.new("ImageLabel")
+IdentifyScriptL.Name = "IdentifyScriptL"
+IdentifyScriptL.Parent = RCChangerMain
+IdentifyScriptL.BackgroundColor3 = Color3.new(1,1,1)
+IdentifyScriptL.BackgroundTransparency = 1
+IdentifyScriptL.Size = UDim2.new(0, 60, 0, 35)
+IdentifyScriptL.Position = UDim2.new(0, 40, 0.385, 0)
+IdentifyScriptL.Image = "rbxassetid://3108304521"
+IdentifyScriptL.ImageColor3 = Color3.new(0.83,0.7766666,0.51)
+IdentifyScriptL.ZIndex = 2
+
+local IdentifyScriptButton = Instance.new("ImageButton")
 IdentifyScriptButton.Name = "IdentifyScriptButton"
-IdentifyScriptButton.Parent = RCChangerMain
-IdentifyScriptButton.BackgroundColor3 = Color3.new(0.3,0.8,0.3)
-IdentifyScriptButton.BorderSizePixel = 2
-IdentifyScriptButton.BorderColor3 = Color3.new(0.7,0.1,0.1)
-IdentifyScriptButton.Position = UDim2.new(0.02, 0, 0.4, 0)
-IdentifyScriptButton.Size = UDim2.new(0, 40, 0, 20)
-IdentifyScriptButton.Font = Enum.Font.GothamSemibold
-IdentifyScriptButton.Text = ""
-IdentifyScriptButton.TextColor3 = Color3.new(1, 1, 1)
-IdentifyScriptButton.TextSize = 20
+IdentifyScriptButton.Parent = IdentifyScriptL
+IdentifyScriptButton.BackgroundColor3 = Color3.new(1,1,1)
+IdentifyScriptButton.BackgroundTransparency = 1
+IdentifyScriptButton.Size = UDim2.new(0, 60, 0, 35)
+IdentifyScriptButton.Image = "rbxassetid://7291851569"
+IdentifyScriptButton.ImageColor3 = Color3.new(1, 1, 1)
+IdentifyScriptButton.ZIndex = 3
 
 local BLChangerScript = Instance.new("ImageButton")
 BLChangerScript.Name = "BLChangerScript"
 BLChangerScript.Parent = RCChangerMain
-BLChangerScript.BackgroundColor3 = Color3.new(0.568, 0.264, 0.532)
-BLChangerScript.BorderSizePixel = 2
-BLChangerScript.BorderColor3 = Color3.new(0.4, 0.15, 0.4)
-BLChangerScript.Position = UDim2.new(0.02, 0, 0.55, 0)
-BLChangerScript.Size = UDim2.new(0, 40, 0, 30)
+BLChangerScript.BackgroundColor3 = Color3.new(1, 1, 1)
+BLChangerScript.BackgroundTransparency = 1
+BLChangerScript.Position = UDim2.new(0.14, 0, 0.51, 0)
+BLChangerScript.Size = UDim2.new(0, 40, 0, 40)
 BLChangerScript.Image = "rbxassetid://6009060308"
 BLChangerScript.ImageColor3 = Color3.new(1.020,1.020,1.020)
+BLChangerScript.ZIndex = 3
+
+local bg1 = Instance.new("ImageLabel")
+bg1.Name = "bg1"
+bg1.Parent = BLChangerScript
+bg1.BackgroundColor3 = Color3.new(1, 1, 1)
+bg1.BackgroundTransparency = 1
+bg1.Position = UDim2.new(0, 0, 0, 0)
+bg1.Size = UDim2.new(0, 40, 0, 40)
+bg1.Image = "rbxassetid://434411343"
+bg1.ImageColor3 = Color3.new(1.020,1.020,1.020)
+bg1.ZIndex = 2
 
 local Main2 = Instance.new("ImageLabel")
 Main2.Name = "Main2"
 Main2.Parent = RCChangerMain
 Main2.BackgroundColor3 = Color3.new(1, 1, 1)
 Main2.BackgroundTransparency = 1
-Main2.Position = UDim2.new(0, 0, -0.835, 0)
-Main2.Size = UDim2.new(0, 300, 0, 230)
+Main2.Position = UDim2.new(0, 0, -0.65, 0)
+Main2.Size = UDim2.new(0, 350, 0, 230)
 Main2.Visible = false
-Main2.Image = "rbxassetid://2260429633"
-Main2.ImageColor3 = Color3.new(0.117647, 0.117647, 0.117647)
-Main2.ScaleType = Enum.ScaleType.Slice
+Main2.Image = "rbxassetid://5088253643"
+Main2.ImageColor3 = Color3.new(1,1,1)
 Main2.SliceCenter = Rect.new(12, 12, 13, 13)
+Main2.ZIndex = 2
+
+local Main2top = Instance.new("ImageLabel")
+Main2top.Name = "Main2top"
+Main2top.Parent = Main2
+Main2top.BackgroundColor3 = Color3.new(1, 1, 1)
+Main2top.BackgroundTransparency = 1
+Main2top.Position = UDim2.new(0, 0, 0, 0)
+Main2top.Size = UDim2.new(0, 350, 0, 230)
+Main2top.Image = "rbxassetid://5088253380"
+Main2top.ImageColor3 = Color3.new(1,1,1)
+Main2top.ZIndex = 3
+
+local Main2bottom = Instance.new("ImageLabel")
+Main2bottom.Name = "Main2bottom"
+Main2bottom.Parent = Main2
+Main2bottom.BackgroundColor3 = Color3.new(1, 1, 1)
+Main2bottom.BackgroundTransparency = 1
+Main2bottom.Position = UDim2.new(0, 0, 0, 0)
+Main2bottom.Size = UDim2.new(0, 350, 0, 230)
+Main2bottom.Image = "rbxassetid://5088253518"
+Main2bottom.ImageColor3 = Color3.new(1,1,1)
+Main2bottom.ZIndex = 3
 
 local ScrollingFrameforTextLabel2 = Instance.new("ScrollingFrame")
 ScrollingFrameforTextLabel2.Name = "ScrollingFrameforTextLabel2"
@@ -335,159 +509,177 @@ ScrollingFrameforTextLabel2.Parent = Main2
 ScrollingFrameforTextLabel2.BackgroundColor3 = Color3.new(1, 1, 1)
 ScrollingFrameforTextLabel2.BackgroundTransparency = 1
 ScrollingFrameforTextLabel2.BorderSizePixel = 0
-ScrollingFrameforTextLabel2.Position = UDim2.new(0, 20, 0, 60)
-ScrollingFrameforTextLabel2.Size = UDim2.new(1, -40, 1, -70)
-ScrollingFrameforTextLabel2.CanvasSize = UDim2.new(0, 0, 3, 0)
-ScrollingFrameforTextLabel2.ScrollBarThickness = 5
+ScrollingFrameforTextLabel2.Position = UDim2.new(0, 40, 0, 25)
+ScrollingFrameforTextLabel2.Size = UDim2.new(1, -81, 1, -50)
+ScrollingFrameforTextLabel2.TopImage = "rbxassetid://4823274219"
+ScrollingFrameforTextLabel2.BottomImage = "rbxassetid://4823274125"
+ScrollingFrameforTextLabel2.CanvasSize = UDim2.new(0, 0, 1.5, 0)
+ScrollingFrameforTextLabel2.ScrollBarThickness = 10
+ScrollingFrameforTextLabel2.ZIndex = 3
 
 local TextLabel2 = Instance.new("TextLabel")
 TextLabel2.Parent = ScrollingFrameforTextLabel2
 TextLabel2.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
 TextLabel2.Size = UDim2.new(1, -20, 1, 0)
-TextLabel2.Font = Enum.Font.Ubuntu
+TextLabel2.Font = Enum.Font.SourceSansSemibold
 TextLabel2.BackgroundTransparency = 1
 TextLabel2.Text = [[
-Script made by NoobieDoge
+	Script made by NoobieDoge
 
-Type the name of the clothing or limited elements or bloodlines into the textbox, then press the slot that you want to change
+	Type the name of the clothing or limited elements or bloodlines into the textbox, then press the slot that you want to change
 
-Do not type the display name, it won't work. 
+	Do not type the display name, it won't work. 
 
-If you don't know the code names for the clothing or element or bloodline, press the green "?" button
+	If you don't know the code names for the clothing or element or bloodline, press the green "?" button
 
-You still need enough RC to purchase the stuff you've changed.]]
+	You still need enough RC to purchase the stuff you've changed.]]
 TextLabel2.TextSize = 40
-TextLabel2.TextColor3 = Color3.fromRGB(225, 225, 225)
+TextLabel2.TextColor3 = Color3.fromRGB(0, 0, 0)
 TextLabel2.TextScaled = false
 TextLabel2.TextSize = 15
 TextLabel2.TextWrapped = true
 TextLabel2.TextXAlignment = Enum.TextXAlignment.Left
 TextLabel2.TextYAlignment = Enum.TextYAlignment.Top
-
-local Frame2 = Instance.new("Frame")
-Frame2.Parent = RCChangerMain
-Frame2.BackgroundColor3 = Color3.fromRGB(255,60,60)
-Frame2.Position = UDim2.new(0, 0, -0.835, 0)
-Frame2.Size = UDim2.new(0, 300, 0, 30)
-Frame2.Transparency = 0.1
-Frame2.Visible = false
+TextLabel2.ZIndex = 4
 
 local TextLabel3 = Instance.new("TextLabel")
-TextLabel3.Parent = Frame2
+TextLabel3.Parent = Main2top
 TextLabel3.BackgroundColor3 = Color3.fromRGB(1, 1, 1)
-TextLabel3.Size = UDim2.new(0, 300, 0, 30)
-TextLabel3.Font = Enum.Font.Ubuntu
+TextLabel3.Size = UDim2.new(0, 350, 0, 20)
+TextLabel3.Font = Enum.Font.SourceSansBold
 TextLabel3.BackgroundTransparency = 1
 TextLabel3.Text = "Information"
 TextLabel3.TextColor3 = Color3.fromRGB(1, 1, 1)
 TextLabel3.TextScaled = true
 TextLabel3.TextSize = 40.000
 TextLabel3.TextWrapped = true
+TextLabel3.ZIndex = 4
 
 local Main3 = Instance.new("ImageLabel")
 Main3.Name = "Main3"
 Main3.Parent = RCChangerMain
 Main3.BackgroundColor3 = Color3.new(1, 1, 1)
 Main3.BackgroundTransparency = 1
-Main3.Position = UDim2.new(0, 0, -0.835, 0)
-Main3.Size = UDim2.new(0, 300, 0, 230)
+Main3.Position = UDim2.new(0, 0, -0.65, 0)
+Main3.Size = UDim2.new(0, 350, 0, 230)
 Main3.Visible = false
-Main3.Image = "rbxassetid://2260429633"
-Main3.ImageColor3 = Color3.new(0.117647, 0.117647, 0.117647)
-Main3.ScaleType = Enum.ScaleType.Slice
+Main3.Image = "rbxassetid://5088253643"
+Main3.ImageColor3 = Color3.new(1,1,1)
 Main3.SliceCenter = Rect.new(12, 12, 13, 13)
+Main3.ZIndex = 2
+
+local Main3top = Instance.new("ImageLabel")
+Main3top.Name = "Main3top"
+Main3top.Parent = Main3
+Main3top.BackgroundColor3 = Color3.new(1, 1, 1)
+Main3top.BackgroundTransparency = 1
+Main3top.Position = UDim2.new(0, 0, 0, 0)
+Main3top.Size = UDim2.new(0, 350, 0, 230)
+Main3top.Image = "rbxassetid://5088253380"
+Main3top.ImageColor3 = Color3.new(1,1,1)
+Main3top.ZIndex = 3
+
+local Main3bottom = Instance.new("ImageLabel")
+Main3bottom.Name = "Main3bottom"
+Main3bottom.Parent = Main3
+Main3bottom.BackgroundColor3 = Color3.new(1, 1, 1)
+Main3bottom.BackgroundTransparency = 1
+Main3bottom.Position = UDim2.new(0, 0, 0, 0)
+Main3bottom.Size = UDim2.new(0, 350, 0, 230)
+Main3bottom.Image = "rbxassetid://5088253518"
+Main3bottom.ImageColor3 = Color3.new(1,1,1)
+Main3bottom.ZIndex = 3
 
 local TextLabel4 = Instance.new("TextLabel")
 TextLabel4.Parent = Main3
 TextLabel4.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
-TextLabel4.Position = UDim2.new(0.025, 0, 0.15, 0)
-TextLabel4.Size = UDim2.new(1, -20, 1, 0)
-TextLabel4.Font = Enum.Font.Ubuntu
+TextLabel4.Position = UDim2.new(0.12, 0, 0.1, 0)
+TextLabel4.Size = UDim2.new(1, -85, 1, -50)
+TextLabel4.Font = Enum.Font.SourceSansSemibold
 TextLabel4.BackgroundTransparency = 1
-TextLabel4.Text = "If you don't know the code names for the \nclothing or limited bloodline or element that you want to change,\n\nPress these buttons and scroll to the bottom."
+TextLabel4.Text = "If you don't know the code names for the clothing or limited bloodline or element that you want to change,\n\nPress these buttons and scroll to the bottom."
 TextLabel4.TextSize = 40
-TextLabel4.TextColor3 = Color3.fromRGB(225, 225, 225)
+TextLabel4.TextColor3 = Color3.fromRGB(0,0,0)
 TextLabel4.TextScaled = false
 TextLabel4.TextSize = 15
 TextLabel4.TextWrapped = true
 TextLabel4.TextXAlignment = Enum.TextXAlignment.Left
 TextLabel4.TextYAlignment = Enum.TextYAlignment.Top
-
-local Frame3 = Instance.new("Frame")
-Frame3.Parent = RCChangerMain
-Frame3.BackgroundColor3 = Color3.fromRGB(40, 200, 40)
-Frame3.Position = UDim2.new(0, 0, -0.835, 0)
-Frame3.Size = UDim2.new(0, 300, 0, 30)
-Frame3.Transparency = 0.1
-Frame3.Visible = false
+TextLabel4.ZIndex = 3
 
 local TextLabel5 = Instance.new("TextLabel")
-TextLabel5.Parent = Frame3
+TextLabel5.Parent = Main3top
 TextLabel5.BackgroundColor3 = Color3.fromRGB(1, 1, 1)
-TextLabel5.Size = UDim2.new(0, 300, 0, 30)
-TextLabel5.Font = Enum.Font.Ubuntu
+TextLabel5.Size = UDim2.new(0, 350, 0, 20)
+TextLabel5.Font = Enum.Font.SourceSansBold
 TextLabel5.BackgroundTransparency = 1
 TextLabel5.Text = "Help"
-TextLabel5.TextColor3 = Color3.fromRGB(1, 1, 1)
+TextLabel5.TextColor3 = Color3.fromRGB(0,0,0)
 TextLabel5.TextScaled = true
 TextLabel5.TextSize = 40.000
 TextLabel5.TextWrapped = true
+TextLabel5.ZIndex = 4
 
 local ClothnamesButton = Instance.new("TextButton")
 ClothnamesButton.Name = "ClothnamesButton"
 ClothnamesButton.Parent = Main3
-ClothnamesButton.BackgroundColor3 = Color3.new(0.3,0.8,0.3)
-ClothnamesButton.BorderSizePixel = 1
-ClothnamesButton.BorderColor3 = Color3.new(0.1,0.5,0.1)
-ClothnamesButton.Position = UDim2.new(0.05, 0, 0.55, 0)
-ClothnamesButton.Size = UDim2.new(0, 120, 0, 80)
+ClothnamesButton.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+ClothnamesButton.BorderColor3 = Color3.new(0,0,0)
+ClothnamesButton.BorderSizePixel = 2
+ClothnamesButton.Position = UDim2.new(0.2, 0, 0.55, 0)
+ClothnamesButton.Size = UDim2.new(0, 80, 0, 40)
 ClothnamesButton.Font = Enum.Font.GothamSemibold
 ClothnamesButton.Text = "Clothings"
-ClothnamesButton.TextColor3 = Color3.new(0, 0, 0)
-ClothnamesButton.TextSize = 17
+ClothnamesButton.TextColor3 = Color3.new(1,1,1)
+ClothnamesButton.TextSize = 18
+ClothnamesButton.ZIndex = 3
 
 local RAREKGnamesButton = Instance.new("TextButton")
 RAREKGnamesButton.Name = "RAREKGnamesButton"
 RAREKGnamesButton.Parent = Main3
-RAREKGnamesButton.BackgroundColor3 = Color3.new(0.3,0.8,0.3)
-RAREKGnamesButton.BorderSizePixel = 1
-RAREKGnamesButton.BorderColor3 = Color3.new(0.1,0.5,0.1)
+RAREKGnamesButton.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+RAREKGnamesButton.BorderColor3 = Color3.new(0,0,0)
+RAREKGnamesButton.BorderSizePixel = 2
 RAREKGnamesButton.Position = UDim2.new(0.55, 0, 0.55, 0)
-RAREKGnamesButton.Size = UDim2.new(0, 120, 0, 80)
+RAREKGnamesButton.Size = UDim2.new(0, 80, 0, 40)
 RAREKGnamesButton.Font = Enum.Font.GothamSemibold
 RAREKGnamesButton.Text = "Limiteds"
-RAREKGnamesButton.TextColor3 = Color3.new(0, 0, 0)
-RAREKGnamesButton.TextSize = 17
+RAREKGnamesButton.TextColor3 = Color3.new(1,1,1)
+RAREKGnamesButton.TextSize = 18
+RAREKGnamesButton.ZIndex = 3
 
 local SecretCodeText = Instance.new("TextBox")
 SecretCodeText.Name = "SecretCodeText"
 SecretCodeText.Parent = RCChangerMain
-SecretCodeText.BackgroundColor3 = Color3.new(0.512, 0.512, 0.512)
+SecretCodeText.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
 SecretCodeText.BorderSizePixel = 0
-SecretCodeText.Position = UDim2.new(0.01, 0, 0.85, 0)
-SecretCodeText.Size = UDim2.new(0, 45, 0, 20)
-SecretCodeText.Font = Enum.Font.GothamSemibold
-SecretCodeText.PlaceholderColor3 = Color3.fromRGB(255, 255, 255)
-SecretCodeText.PlaceholderText = "Secret Code"
-SecretCodeText.Text = ""
-SecretCodeText.TextColor3 = Color3.new(1, 1, 1)
-SecretCodeText.TextScaled = true
-SecretCodeText.TextSize = 14
+SecretCodeText.BackgroundTransparency = 1
+SecretCodeText.Position = UDim2.new(0.1, 0, 0.75, 0)
+SecretCodeText.Size = UDim2.new(0, 70, 0, 45)
+SecretCodeText.Font = Enum.Font.GothamBlack
+SecretCodeText.Text = "[Secret Code]"
+SecretCodeText.TextColor3 = Color3.new(2, 2, 2)
+SecretCodeText.TextSize = 17
 SecretCodeText.TextWrapped = true
+SecretCodeText.PlaceholderColor3 = Color3.new(0.445, 0.445, 0.445)
+SecretCodeText.PlaceholderText = "[INSERT CODE]"
+SecretCodeText.ZIndex = 3
 
 local SecretCodeTextRedeem = Instance.new("TextButton")
 SecretCodeTextRedeem.Name = "SecretCodeTextRedeem"
 SecretCodeTextRedeem.Parent = RCChangerMain
-SecretCodeTextRedeem.BackgroundColor3 = Color3.new(0.512, 0.512, 0.512)
-SecretCodeTextRedeem.BorderSizePixel = 0
-SecretCodeTextRedeem.Position = UDim2.new(0.01, 0, 0.94, 0)
-SecretCodeTextRedeem.Size = UDim2.new(0, 45, 0, 10)
-SecretCodeTextRedeem.Font = Enum.Font.GothamSemibold
+SecretCodeTextRedeem.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+SecretCodeTextRedeem.BorderColor3 = Color3.new(0,0,0)
+SecretCodeTextRedeem.BorderSizePixel = 2
+SecretCodeTextRedeem.Position = UDim2.new(0.115, 0, 0.87, 0)
+SecretCodeTextRedeem.Size = UDim2.new(0, 60, 0, 10)
+SecretCodeTextRedeem.Font = Enum.Font.SourceSansBold
 SecretCodeTextRedeem.Text = ""
 SecretCodeTextRedeem.TextColor3 = Color3.new(1, 1, 1)
 SecretCodeTextRedeem.TextScaled = true
 SecretCodeTextRedeem.TextSize = 14
 SecretCodeTextRedeem.TextWrapped = true
+SecretCodeTextRedeem.ZIndex = 3
 
 function CodeRedeem()
 	if SecretCodeText.Text == "BlazingFanatic" or SecretCodeText.Text == "bL" or SecretCodeText.Text == "Bl" or SecretCodeText.Text == "BL" or SecretCodeText.Text == "bl" then
@@ -511,13 +703,10 @@ Info.MouseButton1Click:connect(function()
 		Help.BackgroundColor3 = Color3.new(0.3,0.8,0.3)
 		Info.BackgroundColor3 = Color3.new(1.2,0.4,0.4)
 		Main2.Visible = true
-		Frame2.Visible = true
 		Main3.Visible = false
-		Frame3.Visible = false
 	else
 		Info.BackgroundColor3 = Color3.new(1,0.2,0.2)
 		Main2.Visible = false
-		Frame2.Visible = false
 	end
 end)
 
@@ -528,14 +717,11 @@ Help.MouseButton1Click:connect(function()
 		Info.BackgroundColor3 = Color3.new(1,0.2,0.2)
 		Help.BackgroundColor3 = Color3.new(0.4,1,0.4)
 		Main2.Visible = false
-		Frame2.Visible = false
 		Main3.Visible = true
 		Frame3.Visible = true
-		TextLabel2.TextSize = 15	
 	else
 		Help.BackgroundColor3 = Color3.new(0.3,0.8,0.3)
 		Main3.Visible = false
-		Frame3.Visible = false
 	end
 end)
 
