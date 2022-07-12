@@ -17,25 +17,35 @@ RCChangerMain.ImageColor3 = Color3.new(0.93,0.93,0.93)
 RCChangerMain.SliceCenter = Rect.new(12, 12, 13, 13)
 RCChangerMain.Draggable = true
 
+local XL = Instance.new("ImageButton")
+XL.Name = "XL"
+XL.Parent = RCChangerMain
+XL.BackgroundColor3 = Color3.new(0.0588235, 0.0588235, 0.0588235)
+XL.BackgroundTransparency = 1
+XL.Position = UDim2.new(0.845, 0, 0.075, 0)
+XL.Size = UDim2.new(0, 20, 0, 20)
+XL.Image = "rbxassetid://5652699630"
+XL.ImageColor3 = Color3.new(0.765,0.228,0.051)
+
 local X = Instance.new("TextButton")
 X.Name = "X"
-X.Parent = RCChangerMain
+X.Parent = XL
 X.BackgroundColor3 = Color3.new(0.0588235, 0.0588235, 0.0588235)
+X.BackgroundTransparency = 1
 X.BorderSizePixel = 0
-X.Position = UDim2.new(0.81, 0, 0.075, 0)
-X.Size = UDim2.new(0, 31, 0, 20)
-X.Font = Enum.Font.Cartoon
+X.Size = UDim2.new(0, 20, 0, 20)
+X.Font = Enum.Font.GothamBlack
 X.Text = "X"
 X.TextColor3 = Color3.new(1, 1, 1)
-X.TextScaled = true
-X.TextSize = 14
+X.TextScaled = false
+X.TextSize = 13
 X.TextWrapped = true
 
 function DeleteGui() -- X.LocalScript 
 	local script = Instance.new('LocalScript')
 	script.Parent = X
 	function OnClicked()
-		script.Parent.Parent.Parent.RCChangerMain:Destroy()
+		script.Parent.Parent.Parent.Parent.RCChangerMain:Destroy()
 	end
 	script.Parent.MouseButton1Down:Connect(OnClicked)
 end
