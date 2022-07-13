@@ -332,7 +332,7 @@ rareblslot1.BorderColor3 = Color3.new(0,0,0)
 rareblslot1.BorderSizePixel = 2
 rareblslot1.Position = UDim2.new(0.57, 0, 0.63, 0)
 rareblslot1.Size = UDim2.new(0, 100, 0, 20)
-rareblslot1.Font = Enum.Font.GothamSemibold
+rareblslot1.Font = Enum.Font.SourceSansBold
 rareblslot1.Text = "Slot 1"
 rareblslot1.TextColor3 = Color3.new(1, 1, 1)
 rareblslot1.TextSize = 16
@@ -351,7 +351,7 @@ rareblslot2.BorderColor3 = Color3.new(0,0,0)
 rareblslot2.BorderSizePixel = 2
 rareblslot2.Position = UDim2.new(0.57, 0, 0.63+0.09, 0)
 rareblslot2.Size = UDim2.new(0, 100, 0, 20)
-rareblslot2.Font = Enum.Font.GothamSemibold
+rareblslot2.Font = Enum.Font.SourceSansBold
 rareblslot2.Text = "Slot 2"
 rareblslot2.TextColor3 = Color3.new(1, 1, 1)
 rareblslot2.TextSize = 16
@@ -370,7 +370,7 @@ rareblslot3.BorderColor3 = Color3.new(0,0,0)
 rareblslot3.BorderSizePixel = 2
 rareblslot3.Position = UDim2.new(0.57, 0, 0.63+0.09+0.09, 0)
 rareblslot3.Size = UDim2.new(0, 100, 0, 20)
-rareblslot3.Font = Enum.Font.GothamSemibold
+rareblslot3.Font = Enum.Font.SourceSansBold
 rareblslot3.Text = "Slot 3"
 rareblslot3.TextColor3 = Color3.new(1, 1, 1)
 rareblslot3.TextSize = 16
@@ -607,7 +607,7 @@ TextLabel4.Position = UDim2.new(0.12, 0, 0.1, 0)
 TextLabel4.Size = UDim2.new(1, -85, 1, -50)
 TextLabel4.Font = Enum.Font.SourceSansSemibold
 TextLabel4.BackgroundTransparency = 1
-TextLabel4.Text = "If you don't know the code names for the clothing or limited bloodline or element that you want to change,\n\nPress these buttons and scroll to the bottom."
+TextLabel4.Text = "If you don't know the code names for the clothing or limited bloodline or element that you want to change,\n\nPress this button and look at your RC Shop tab. The code names are shown."
 TextLabel4.TextSize = 40
 TextLabel4.TextColor3 = Color3.fromRGB(0,0,0)
 TextLabel4.TextScaled = false
@@ -630,33 +630,19 @@ TextLabel5.TextSize = 40.000
 TextLabel5.TextWrapped = true
 TextLabel5.ZIndex = 4
 
-local ClothnamesButton = Instance.new("TextButton")
-ClothnamesButton.Name = "ClothnamesButton"
-ClothnamesButton.Parent = Main3
-ClothnamesButton.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
-ClothnamesButton.BorderColor3 = Color3.new(0,0,0)
-ClothnamesButton.BorderSizePixel = 2
-ClothnamesButton.Position = UDim2.new(0.2, 0, 0.55, 0)
-ClothnamesButton.Size = UDim2.new(0, 80, 0, 40)
-ClothnamesButton.Font = Enum.Font.GothamSemibold
-ClothnamesButton.Text = "Clothings"
-ClothnamesButton.TextColor3 = Color3.new(1,1,1)
-ClothnamesButton.TextSize = 18
-ClothnamesButton.ZIndex = 3
-
-local RAREKGnamesButton = Instance.new("TextButton")
-RAREKGnamesButton.Name = "RAREKGnamesButton"
-RAREKGnamesButton.Parent = Main3
-RAREKGnamesButton.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
-RAREKGnamesButton.BorderColor3 = Color3.new(0,0,0)
-RAREKGnamesButton.BorderSizePixel = 2
-RAREKGnamesButton.Position = UDim2.new(0.55, 0, 0.55, 0)
-RAREKGnamesButton.Size = UDim2.new(0, 80, 0, 40)
-RAREKGnamesButton.Font = Enum.Font.GothamSemibold
-RAREKGnamesButton.Text = "Limiteds"
-RAREKGnamesButton.TextColor3 = Color3.new(1,1,1)
-RAREKGnamesButton.TextSize = 18
-RAREKGnamesButton.ZIndex = 3
+local RevealYourselfON99 = Instance.new("TextButton")
+RevealYourselfON99.Name = "RevealYourselfON99"
+RevealYourselfON99.Parent = Main3
+RevealYourselfON99.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+RevealYourselfON99.BorderColor3 = Color3.new(0,0,0)
+RevealYourselfON99.BorderSizePixel = 2
+RevealYourselfON99.Position = UDim2.new(0.325, 0, 0.51, 0)
+RevealYourselfON99.Size = UDim2.new(0, 120, 0, 30)
+RevealYourselfON99.Font = Enum.Font.SourceSansBold
+RevealYourselfON99.Text = "Show code names"
+RevealYourselfON99.TextColor3 = Color3.new(1,1,1)
+RevealYourselfON99.TextSize = 18
+RevealYourselfON99.ZIndex = 3
 
 local SecretCodeText = Instance.new("TextBox")
 SecretCodeText.Name = "SecretCodeText"
@@ -744,31 +730,18 @@ BLChangerScript.MouseButton1Click:connect(function()
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20Bloodline%20Changer"))()
 end)
 
-ClothnamesButton.MouseButton1Click:connect(function()
-	game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
-	warn("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-	warn("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-	warn("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-	print("Clothings:")
+RevealYourselfON99.MouseButton1Click:connect(function()
 	for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Main.RYOshop.ShopItems.bigshop:GetChildren()) do
 		if v:FindFirstChild("purchase") then
-			print("")
-			print(v.Name)
+			v.purchase.Text = v.Name
 		end
 	end
-end)
-
-RAREKGnamesButton.MouseButton1Click:connect(function()
-	game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
-	warn("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-	warn("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-	warn("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-	print("Limiteds:")
-	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
-		if not v:FindFirstChild("truelimited") and v:FindFirstChild("limited") then
-			print("")
-			print(v.REALNAME.Value)
-			print(v.Name)
+	for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Main.RYOshop.ShopItems.limitedshop:GetChildren()) do
+		if v:FindFirstChild("kg") then
+			v.kg.ryo2.Text = v.Name
 		end
 	end
+	game:GetService("Players").LocalPlayer.PlayerGui.Main.RYOshop.Shoplimited.BossTabb.bg1.kg.name.Text = game:GetService("Workspace").RCGENKAI.item1.Value
+	game:GetService("Players").LocalPlayer.PlayerGui.Main.RYOshop.Shoplimited.BossTabb.bg2.kg.name.Text = game:GetService("Workspace").RCGENKAI.item2.Value
+	game:GetService("Players").LocalPlayer.PlayerGui.Main.RYOshop.Shoplimited.BossTabb.bg3.kg.name.Text = game:GetService("Workspace").RCGENKAI.item3.Value
 end)
