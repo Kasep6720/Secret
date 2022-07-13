@@ -566,19 +566,19 @@ TextLabel2.BackgroundTransparency = 1
 TextLabel2.Text = [[
 	Script made by NoobieDoge
 
-	Type the name of the bloodline or element or kenjutsu into the textbox, then press the slot that you want to change
+	Type the name of the bloodline or element or kenjutsu into the textbox, then press the slot that you want to change.
 
-	Do not type the display name, it won't work. 
+	Do not type the display name, it won't work.
 
-	If you don't know the code names for the bloodline or element or kenjutsu, press the "Help" button
+	If you don't know the code names for the bloodline or element or kenjutsu, press the "Help" button.
 
-	The bloodline and element and kenjutsu that you changed won't keep forever. but the moves that you equippd will stay forever unless you changed it
+	The bloodline and element and kenjutsu that you changed won't keep forever. But the moves that you equippd will stay forever unless you changed it.
 
-	If you haven't got the kenjutsu before, you cannot change it through this bloodline changer.
+	If you haven't got the kenjutsu before, you cannot change it through this script.
 
-	You cannot equip bloodlines into EKG slots if you change them with this Bloodline Changer
+	You cannot equip bloodlines into EKG slots if you change them with this script.
 
-	You cannot level up the bloodlines or elements or kenjutsus that you change by this script. Don't be dumb and autofarm with this]]
+	You cannot level up the bloodlines or elements or kenjutsus that you change by this script. Don't be dumb and autofarm with this.]]
 TextLabel2.TextSize = 40
 TextLabel2.TextColor3 = Color3.fromRGB(0, 0, 0)
 TextLabel2.TextScaled = false
@@ -643,7 +643,7 @@ TextLabel4.Position = UDim2.new(0.12, 0, 0.1, 0)
 TextLabel4.Size = UDim2.new(1, -20, 1, 0)
 TextLabel4.Font = Enum.Font.SourceSansSemibold
 TextLabel4.BackgroundTransparency = 1
-TextLabel4.Text = "If you don't know the code names for the \nbloodline or element that you want to change,\n\nPress these buttons and scroll to the bottom."
+TextLabel4.Text = "If you don't know the code names for the \nbloodline or element that you want to change,\n\nPress this button and look at your bloodline bag tab."
 TextLabel4.TextSize = 40
 TextLabel4.TextColor3 = Color3.fromRGB(0,0,0)
 TextLabel4.TextScaled = false
@@ -666,47 +666,19 @@ TextLabel5.TextSize = 40.000
 TextLabel5.TextWrapped = true
 TextLabel5.ZIndex = 4
 
-local ElmnamesButton = Instance.new("TextButton")
-ElmnamesButton.Name = "ElmnamesButton"
-ElmnamesButton.Parent = Main3
-ElmnamesButton.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
-ElmnamesButton.BorderColor3 = Color3.new(0,0,0)
-ElmnamesButton.BorderSizePixel = 2
-ElmnamesButton.Position = UDim2.new(0.15, 0, 0.55, 0)
-ElmnamesButton.Size = UDim2.new(0, 70, 0, 40)
-ElmnamesButton.Font = Enum.Font.SourceSansBold
-ElmnamesButton.Text = "Elements"
-ElmnamesButton.TextColor3 = Color3.new(1, 1, 1)
-ElmnamesButton.TextSize = 18
-ElmnamesButton.ZIndex = 3
-
-local BLnamesButton = Instance.new("TextButton")
-BLnamesButton.Name = "BLnamesButton"
-BLnamesButton.Parent = Main3
-BLnamesButton.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
-BLnamesButton.BorderColor3 = Color3.new(0,0,0)
-BLnamesButton.BorderSizePixel = 2
-BLnamesButton.Position = UDim2.new(0.4, 0, 0.55, 0)
-BLnamesButton.Size = UDim2.new(0, 70, 0, 40)
-BLnamesButton.Font = Enum.Font.SourceSansBold
-BLnamesButton.Text = "Bloodlines"
-BLnamesButton.TextColor3 = Color3.new(1, 1, 1)
-BLnamesButton.TextSize = 18
-BLnamesButton.ZIndex = 3
-
-local KennamesButton = Instance.new("TextButton")
-KennamesButton.Name = "KennamesButton"
-KennamesButton.Parent = Main3
-KennamesButton.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
-KennamesButton.BorderColor3 = Color3.new(0,0,0)
-KennamesButton.BorderSizePixel = 2
-KennamesButton.Position = UDim2.new(0.65, 0, 0.55, 0)
-KennamesButton.Size = UDim2.new(0, 70, 0, 40)
-KennamesButton.Font = Enum.Font.SourceSansBold
-KennamesButton.Text = "Kenjutsu"
-KennamesButton.TextColor3 = Color3.new(1, 1, 1)
-KennamesButton.TextSize = 18
-KennamesButton.ZIndex = 3
+local RevealYourselfON9 = Instance.new("TextButton")
+RevealYourselfON9.Name = "RevealYourselfON9"
+RevealYourselfON9.Parent = Main3
+RevealYourselfON9.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+RevealYourselfON9.BorderColor3 = Color3.new(0,0,0)
+RevealYourselfON9.BorderSizePixel = 2
+RevealYourselfON9.Position = UDim2.new(0.325, 0, 0.4, 0)
+RevealYourselfON9.Size = UDim2.new(0, 120, 0, 30)
+RevealYourselfON9.Font = Enum.Font.SourceSansBold
+RevealYourselfON9.Text = "Show code names"
+RevealYourselfON9.TextColor3 = Color3.new(1, 1, 1)
+RevealYourselfON9.TextSize = 18
+RevealYourselfON9.ZIndex = 3
 
 local SecretCodeText = Instance.new("TextBox")
 SecretCodeText.Name = "SecretCodeText"
@@ -794,55 +766,17 @@ RCChangerScript.MouseButton1Click:connect(function()
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20RC%20Shop%20Changer"))()	
 end)
 
-ElmnamesButton.MouseButton1Click:connect(function()
-	game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
-	warn("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-	warn("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-	warn("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-	print("Elements:")
-	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
-		if v:FindFirstChild("ELEMENT") then
-			print("")
-			print(v.REALNAME.Value)
-			print(v.Name)
+RevealYourselfON9.MouseButton1Click:connect(function()
+	for i,v in pairs(game:GetService("Players").KastonTPG.PlayerGui.Main.Customization.Genkaibag.Frame2.BossTab:GetChildren()) do
+		if v:FindFirstChild("name") then
+			v.name.Text = v.Name
+			v.rarity.Text = "Please enter these names"
 		end
 	end
-end)
-
-BLnamesButton.MouseButton1Click:connect(function()
-	game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
-	warn("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-	warn("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-	warn("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-	print("Bloodlines:")
-	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
-		if v:FindFirstChild("KG") then
-			print("")
-			print(v.REALNAME.Value)
-			print(v.Name)
-		end
-	end
-	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
-		if v:FindFirstChild("KGg") then
-			print("")
-			print("???")
-			print(v.REALNAME.Value)
-			print(v.Name)
-		end
-	end
-end)
-
-KennamesButton.MouseButton1Click:connect(function()
-	game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
-	warn("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-	warn("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-	warn("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-	print("Kenjutsu:")
-	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu.ALLKENSTYLES:GetChildren()) do
-		if v:FindFirstChild("BREATHINGSTYLE") then
-			print("")
-			print(v.REALNAME.Value)
-			print(v.Name)
+	for i,v in pairs(game:GetService("Players").KastonTPG.PlayerGui.Main.ingame.Menu.BossTab:GetChildren()) do
+		if v:FindFirstChild("name") then
+			v.name.Text = v.Name
+			v.rarity.Text = "Please enter these names"
 		end
 	end
 end)
