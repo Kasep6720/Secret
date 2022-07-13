@@ -767,13 +767,13 @@ RCChangerScript.MouseButton1Click:connect(function()
 end)
 
 RevealYourselfON9.MouseButton1Click:connect(function()
-	for i,v in pairs(game:GetService("Players").KastonTPG.PlayerGui.Main.Customization.Genkaibag.Frame2.BossTab:GetChildren()) do
+	for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.Genkaibag.Frame2.BossTab:GetChildren()) do
 		if v:FindFirstChild("name") then
 			v.name.Text = v.Name
 			v.rarity.Text = "Please enter these names"
 		end
 	end
-	for i,v in pairs(game:GetService("Players").KastonTPG.PlayerGui.Main.ingame.Menu.BossTab:GetChildren()) do
+	for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Main.ingame.Menu.BossTab:GetChildren()) do
 		if v:FindFirstChild("name") then
 			v.name.Text = v.Name
 			v.rarity.Text = "Please enter these names"
