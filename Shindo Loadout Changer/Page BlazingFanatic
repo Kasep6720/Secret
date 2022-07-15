@@ -293,13 +293,13 @@ function CodeRedeem()
 		game:GetService("StarterGui"):SetCore("SendNotification",{     Title = "Loadout Changer",     Text = "UwU",Duration = 1, })
 		local s = Instance.new("Sound")
 		s.Name = "Sound" 
-		s.SoundId = "http://www.roblox.com/asset/?id=550209561" 
+		s.SoundId = "http://www.roblox.com/asset/?id=298181829" 
 		s.Volume = 99999999999999
 		s.Looped = false
 		s.archivable = false 
 		s.Parent = game.Workspace wait(.0000000000000000000000000000001) 
 		s:play()
-	elseif SecretCodeText.Text == "OldLoadoutChanger" then
+	elseif SecretCodeText.Text == "OldLoadoutChanger" or SecretCodeText.Text == "OLC" then
 		ScreenGui:Destroy()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20Outdated"))()
 	else
