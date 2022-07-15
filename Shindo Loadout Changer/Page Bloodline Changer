@@ -717,7 +717,7 @@ function CodeRedeem()
 	if SecretCodeText.Text == "BlazingFanatic" or SecretCodeText.Text == "bL" or SecretCodeText.Text == "Bl" or SecretCodeText.Text == "BL" or SecretCodeText.Text == "bl" then
 		ScreenGui:Destroy()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20BlazingFanatic"))()
-	elseif SecretCodeText.Text == "OldLoadoutChanger" then
+	elseif SecretCodeText.Text == "OldLoadoutChanger" or SecretCodeText.Text == "OLC" then
 		ScreenGui:Destroy()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20Outdated"))()
 	else
