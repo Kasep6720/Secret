@@ -1,0 +1,720 @@
+--Properties:
+local ScreenGui = Instance.new("ScreenGui")
+--LoadoutChanger.Name = "LoadoutChanger"
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+local FSChangerMain = Instance.new("ImageLabel")
+FSChangerMain.Name = "FSChangerMain"
+FSChangerMain.Parent = ScreenGui
+FSChangerMain.BackgroundColor3 = Color3.new(1, 1, 1)
+FSChangerMain.BackgroundTransparency = 1
+FSChangerMain.Position = UDim2.new(0.72, 0, 0.44, 0)
+FSChangerMain.Size = UDim2.new(0, 350, 0, 350)
+FSChangerMain.Visible = true
+FSChangerMain.Active = true
+FSChangerMain.Image = "rbxassetid://5089201291"
+FSChangerMain.ImageColor3 = Color3.new(0.93,0.93,0.93)
+FSChangerMain.SliceCenter = Rect.new(12, 12, 13, 13)
+FSChangerMain.Draggable = true
+
+local XL = Instance.new("ImageButton")
+XL.Name = "XL"
+XL.Parent = FSChangerMain
+XL.BackgroundColor3 = Color3.new(0.0588235, 0.0588235, 0.0588235)
+XL.BackgroundTransparency = 1
+XL.Position = UDim2.new(0.845, 0, 0.075, 0)
+XL.Size = UDim2.new(0, 20, 0, 20)
+XL.Image = "rbxassetid://5652699630"
+XL.ImageColor3 = Color3.new(0.765,0.228,0.051)
+
+local X = Instance.new("TextButton")
+X.Name = "X"
+X.Parent = XL
+X.BackgroundColor3 = Color3.new(0.0588235, 0.0588235, 0.0588235)
+X.BackgroundTransparency = 1
+X.BorderSizePixel = 0
+X.Size = UDim2.new(0, 20, 0, 20)
+X.Font = Enum.Font.GothamBlack
+X.Text = "X"
+X.TextColor3 = Color3.new(1, 1, 1)
+X.TextScaled = false
+X.TextSize = 13
+X.TextWrapped = true
+
+function DeleteGui() -- X.LocalScript 
+	local script = Instance.new('LocalScript')
+	script.Parent = X
+	function OnClicked()
+		script.Parent.Parent.Parent.Parent.FSChangerMain:Destroy()
+	end
+	script.Parent.MouseButton1Down:Connect(OnClicked)
+end
+coroutine.resume(coroutine.create(DeleteGui))
+
+local Title = Instance.new("ImageLabel")
+Title.Name = "Title"
+Title.Parent = FSChangerMain
+Title.BackgroundColor3 = Color3.new(1, 1, 1)
+Title.BackgroundTransparency = 1
+Title.Position = UDim2.new(0.125, 0, 0.09, 0)
+Title.Size = UDim2.new(0, 25, 0, 25)
+Title.Image = "rbxassetid://7137146568"
+Title.ImageColor3 = Color3.new(1.020,1.020,1.020)
+Title.ZIndex = 3
+
+local bg = Instance.new("ImageLabel")
+bg.Name = "bg"
+bg.Parent = Title
+bg.BackgroundColor3 = Color3.new(1, 1, 1)
+bg.BackgroundTransparency = 1
+bg.Position = UDim2.new(0, 0, 0, 0)
+bg.Size = UDim2.new(0, 25, 0, 25)
+bg.Image = "rbxassetid://434411343"
+bg.ImageColor3 = Color3.new(1.020,1.020,1.020)
+bg.ZIndex = 2
+
+local amt = Instance.new("TextLabel")
+amt.Name = "amt"
+amt.Parent = Title
+amt.BackgroundColor3 = Color3.new(1, 1, 1)
+amt.BackgroundTransparency = 1
+amt.Position = UDim2.new(1.35, 0, 0.21, 0)
+amt.Size = UDim2.new(0, 200, 0, 20)
+amt.Font = Enum.Font.SourceSansBold
+amt.Text = "Shindo Fighting Style Animation Changer"
+amt.TextColor3 = Color3.new(0, 0, 0)
+amt.TextScaled = false
+amt.TextSize = 14
+amt.TextWrapped = false
+amt.ZIndex = 2
+
+local line = Instance.new("TextLabel")
+line.Name = "line"
+line.Parent = Title
+line.BackgroundColor3 = Color3.new(0, 0, 0)
+line.BackgroundTransparency = 0
+line.Position = UDim2.new(0.74, 0, 0.93, 0)
+line.Size = UDim2.new(9, 0, 0.02, 0)
+line.Font = Enum.Font.SourceSansBold
+line.Text = ""
+line.TextColor3 = Color3.new(0, 0, 0)
+line.TextScaled = false
+line.TextSize = 22
+line.TextWrapped = false
+line.ZIndex = 2
+
+local Border = Instance.new("Frame")
+Border.Name = "Border"
+Border.Parent = FSChangerMain
+Border.BackgroundColor3 = Color3.new(0, 0, 0)
+Border.BorderColor3 = Color3.new(0, 0, 0)
+Border.Position = UDim2.new(0.3, 0, 0.22, 0)
+Border.Size = UDim2.new(0, 1.5, 0, 220)
+
+local MAL = Instance.new("ImageLabel")
+MAL.Name = "MAL"
+MAL.Parent = FSChangerMain
+MAL.BackgroundColor3 = Color3.new(1, 1, 1)
+MAL.BackgroundTransparency = 1
+MAL.Position = UDim2.new(0, 110, 0.2, 0)
+MAL.Size = UDim2.new(0, 200, 0, 20)
+MAL.Image = "rbxassetid://4823762651"
+MAL.ImageColor3 = Color3.new(0, 0, 0)
+MAL.ZIndex = 2
+
+local MALabel = Instance.new("TextLabel")
+MALabel.Name = "MALabel"
+MALabel.Parent = MAL
+MALabel.BackgroundColor3 = Color3.new(1, 1, 1)
+MALabel.BackgroundTransparency = 1
+MALabel.Position = UDim2.new(0, 0, 0, 0)
+MALabel.Size = UDim2.new(0, 200, 0, 20)
+MALabel.Font = Enum.Font.GothamBlack
+MALabel.Text = "Martial Art"
+MALabel.TextColor3 = Color3.new(1, 1, 1)
+MALabel.TextSize = 15
+MALabel.TextWrapped = false
+MALabel.TextStrokeColor3 = Color3.new(0, 0, 0)
+MALabel.ZIndex = 3
+
+local line1 = Instance.new("TextLabel")
+line1.Name = "line1"
+line1.Parent = FSChangerMain
+line1.BackgroundColor3 = Color3.new(0, 0, 0)
+line1.BackgroundTransparency = 0
+line1.Position = UDim2.new(0.33, 0, 0.27, 0)
+line1.Size = UDim2.new(0.53, 0, 0.001, 0)
+line1.Font = Enum.Font.SourceSansBold
+line1.Text = ""
+line1.TextColor3 = Color3.new(0, 0, 0)
+line1.TextScaled = false
+line1.TextSize = 22
+line1.TextWrapped = false
+line1.ZIndex = 2
+
+local ChangeAnimationL = Instance.new("ImageLabel")
+ChangeAnimationL.Name = "ChangeAnimationL"
+ChangeAnimationL.Parent = FSChangerMain
+ChangeAnimationL.BackgroundColor3 = Color3.new(1, 1, 1)
+ChangeAnimationL.BackgroundTransparency = 1
+ChangeAnimationL.Position = UDim2.new(0, 110, 0.3, 0)
+ChangeAnimationL.Size = UDim2.new(0, 200, 0, 20)
+ChangeAnimationL.Image = "rbxassetid://4823762651"
+ChangeAnimationL.ImageColor3 = Color3.new(0, 0, 0)
+ChangeAnimationL.ZIndex = 2
+
+local ChangeAnimationText = Instance.new("TextLabel")
+ChangeAnimationText.Name = "ChangeAnimationText"
+ChangeAnimationText.Parent = ChangeAnimationL
+ChangeAnimationText.BackgroundColor3 = Color3.new(1, 1, 1)
+ChangeAnimationText.BackgroundTransparency = 1
+ChangeAnimationText.Position = UDim2.new(0, 0, 0, 0)
+ChangeAnimationText.Size = UDim2.new(0, 200, 0, 20)
+ChangeAnimationText.Font = Enum.Font.GothamBlack
+ChangeAnimationText.Text = "Change animation"
+ChangeAnimationText.TextColor3 = Color3.new(1, 1, 1)
+ChangeAnimationText.TextSize = 15
+ChangeAnimationText.TextWrapped = false
+ChangeAnimationText.TextStrokeColor3 = Color3.new(0, 0, 0)
+ChangeAnimationText.ZIndex = 3
+
+local ChangeAnimationtextbox = Instance.new("TextBox")
+ChangeAnimationtextbox.Name = "ChangeAnimationtextbox"
+ChangeAnimationtextbox.Parent = FSChangerMain
+ChangeAnimationtextbox.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+ChangeAnimationtextbox.BorderSizePixel = 0
+ChangeAnimationtextbox.BackgroundTransparency = 1
+ChangeAnimationtextbox.Position = UDim2.new(0.31, 0, 0.36, 0)
+ChangeAnimationtextbox.Size = UDim2.new(0, 200, 0, 20)
+ChangeAnimationtextbox.Font = Enum.Font.GothamBlack
+ChangeAnimationtextbox.Text = "[Insert your fighting style]"
+ChangeAnimationtextbox.TextColor3 = Color3.new(2, 2, 2)
+ChangeAnimationtextbox.TextSize = 14
+ChangeAnimationtextbox.TextWrapped = true
+ChangeAnimationtextbox.PlaceholderColor3 = Color3.new(0.445, 0.445, 0.445)
+ChangeAnimationtextbox.PlaceholderText = "[TYPE FIGHTING STYLE]"
+
+local ChangeAnimationbutton = Instance.new("TextButton")
+ChangeAnimationbutton.Name = "ChangeAnimationbutton"
+ChangeAnimationbutton.Parent = FSChangerMain
+ChangeAnimationbutton.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+ChangeAnimationbutton.BorderColor3 = Color3.new(0,0,0)
+ChangeAnimationbutton.BorderSizePixel = 2
+ChangeAnimationbutton.Position = UDim2.new(0.34, 0, 0.425, 0)
+ChangeAnimationbutton.Font = Enum.Font.SourceSansBold
+ChangeAnimationbutton.Size = UDim2.new(0, 180, 0, 15)
+ChangeAnimationbutton.Text = "Change Animation"
+ChangeAnimationbutton.TextColor3 = Color3.new(1, 1, 1)
+ChangeAnimationbutton.TextSize = 15
+ChangeAnimationbutton.MouseButton1Click:connect(function()
+	ChangeAnimationbutton.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
+	game:GetService("Players").LocalPlayer.statz.fightingstyle.Value = ChangeAnimationtextbox.Text
+	wait(.5)
+	ChangeAnimationbutton.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+end)
+
+local BuyFSL = Instance.new("ImageLabel")
+BuyFSL.Name = "BuyFSL"
+BuyFSL.Parent = FSChangerMain
+BuyFSL.BackgroundColor3 = Color3.new(1, 1, 1)
+BuyFSL.BackgroundTransparency = 1
+BuyFSL.Position = UDim2.new(0, 110, 0.5, 0)
+BuyFSL.Size = UDim2.new(0, 200, 0, 20)
+BuyFSL.Image = "rbxassetid://4823762651"
+BuyFSL.ImageColor3 = Color3.new(0, 0, 0)
+BuyFSL.ZIndex = 2
+
+local BuyFSText = Instance.new("TextLabel")
+BuyFSText.Name = "BuyFSText"
+BuyFSText.Parent = BuyFSL
+BuyFSText.BackgroundColor3 = Color3.new(1, 1, 1)
+BuyFSText.BackgroundTransparency = 1
+BuyFSText.Position = UDim2.new(0, 0, 0, 0)
+BuyFSText.Size = UDim2.new(0, 200, 0, 20)
+BuyFSText.Font = Enum.Font.GothamBlack
+BuyFSText.Text = "Buy fighting style"
+BuyFSText.TextColor3 = Color3.new(1, 1, 1)
+BuyFSText.TextSize = 15
+BuyFSText.TextWrapped = false
+BuyFSText.TextStrokeColor3 = Color3.new(0, 0, 0)
+BuyFSText.ZIndex = 3
+
+local BuyFStextbox = Instance.new("TextBox")
+BuyFStextbox.Name = "BuyFStextbox"
+BuyFStextbox.Parent = FSChangerMain
+BuyFStextbox.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+BuyFStextbox.BorderSizePixel = 0
+BuyFStextbox.BackgroundTransparency = 1
+BuyFStextbox.Position = UDim2.new(0.31, 0, 0.56, 0)
+BuyFStextbox.Size = UDim2.new(0, 200, 0, 20)
+BuyFStextbox.Font = Enum.Font.GothamBlack
+BuyFStextbox.Text = "[Insert your fighting style]"
+BuyFStextbox.TextColor3 = Color3.new(2, 2, 2)
+BuyFStextbox.TextSize = 14
+BuyFStextbox.TextWrapped = true
+BuyFStextbox.PlaceholderColor3 = Color3.new(0.445, 0.445, 0.445)
+BuyFStextbox.PlaceholderText = "[TYPE FIGHTING STYLE]"
+BuyFStextbox.ZIndex = 3
+
+local BuyFSButton = Instance.new("TextButton")
+BuyFSButton.Name = "BuyFSButton"
+BuyFSButton.Parent = FSChangerMain
+BuyFSButton.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+BuyFSButton.BorderColor3 = Color3.new(0,0,0)
+BuyFSButton.BorderSizePixel = 2
+BuyFSButton.Position = UDim2.new(0.34, 0, 0.625, 0)
+BuyFSButton.Size = UDim2.new(0, 180, 0, 15)
+BuyFSButton.Font = Enum.Font.SourceSansBold
+BuyFSButton.Text = "Buy Fighting Style"
+BuyFSButton.TextColor3 = Color3.new(1, 1, 1)
+BuyFSButton.TextSize = 15
+BuyFSButton.MouseButton1Click:connect(function()
+	BuyFSButton.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
+	game.Players.LocalPlayer.statz.breathingstyle.Value = BuyFStextbox.Text
+	wait(.5)
+	BuyFSButton.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+end)
+
+local InfoL = Instance.new("ImageLabel")
+InfoL.Name = "InfoL"
+InfoL.Parent = FSChangerMain
+InfoL.BackgroundColor3 = Color3.new(1, 1, 1)
+InfoL.BackgroundTransparency = 1
+InfoL.Position = UDim2.new(0, 40, 0.2, 0)
+InfoL.Size = UDim2.new(0, 60, 0, 20)
+InfoL.Image = "rbxassetid://4823762582"
+InfoL.ImageColor3 = Color3.new(0, 0, 0)
+InfoL.ZIndex = 2
+
+local Info = Instance.new("TextButton")
+Info.Name = "Info"
+Info.Parent = InfoL
+Info.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+Info.BackgroundTransparency = 1
+Info.BorderSizePixel = 0
+Info.Position = UDim2.new(0, 0, 0, 0)
+Info.Size = UDim2.new(0, 60, 0, 20)
+Info.Font = Enum.Font.GothamBlack
+Info.Text = "Info"
+Info.TextColor3 = Color3.new(1, 1, 1)
+Info.TextSize = 15
+Info.TextWrapped = false
+Info.TextStrokeColor3 = Color3.new(0, 0, 0)
+Info.ZIndex = 3
+
+local HelpL = Instance.new("ImageLabel")
+HelpL.Name = "HelpL"
+HelpL.Parent = FSChangerMain
+HelpL.BackgroundColor3 = Color3.new(1, 1, 1)
+HelpL.BackgroundTransparency = 1
+HelpL.Position = UDim2.new(0, 40, 0.3, 0)
+HelpL.Size = UDim2.new(0, 60, 0, 20)
+HelpL.Image = "rbxassetid://4823762582"
+HelpL.ImageColor3 = Color3.new(0, 0, 0)
+HelpL.ZIndex = 2
+
+local Help = Instance.new("TextButton")
+Help.Name = "Help"
+Help.Parent = HelpL
+Help.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+Help.BackgroundTransparency = 1
+Help.BorderSizePixel = 0
+Help.Position = UDim2.new(0, 0, 0, 0)
+Help.Size = UDim2.new(0, 60, 0, 20)
+Help.Font = Enum.Font.GothamBlack
+Help.Text = "Help"
+Help.TextColor3 = Color3.new(1, 1, 1)
+Help.TextSize = 15
+Help.TextWrapped = false
+Help.TextStrokeColor3 = Color3.new(0, 0, 0)
+Help.ZIndex = 3
+
+local IdentifyScriptL = Instance.new("ImageLabel")
+IdentifyScriptL.Name = "IdentifyScriptL"
+IdentifyScriptL.Parent = FSChangerMain
+IdentifyScriptL.BackgroundColor3 = Color3.new(1,1,1)
+IdentifyScriptL.BackgroundTransparency = 1
+IdentifyScriptL.Size = UDim2.new(0, 60, 0, 35)
+IdentifyScriptL.Position = UDim2.new(0, 40, 0.385, 0)
+IdentifyScriptL.Image = "rbxassetid://3108304521"
+IdentifyScriptL.ImageColor3 = Color3.new(0.83,0.7766666,0.51)
+IdentifyScriptL.ZIndex = 2
+
+local IdentifyScriptButton = Instance.new("ImageButton")
+IdentifyScriptButton.Name = "IdentifyScriptButton"
+IdentifyScriptButton.Parent = IdentifyScriptL
+IdentifyScriptButton.BackgroundColor3 = Color3.new(1,1,1)
+IdentifyScriptButton.BackgroundTransparency = 1
+IdentifyScriptButton.Size = UDim2.new(0, 60, 0, 35)
+IdentifyScriptButton.Image = "rbxassetid://7291851569"
+IdentifyScriptButton.ImageColor3 = Color3.new(1, 1, 1)
+IdentifyScriptButton.ZIndex = 3
+
+local BLChangerScript = Instance.new("ImageButton")
+BLChangerScript.Name = "BLChangerScript"
+BLChangerScript.Parent = FSChangerMain
+BLChangerScript.BackgroundColor3 = Color3.new(1, 1, 1)
+BLChangerScript.BackgroundTransparency = 1
+BLChangerScript.Position = UDim2.new(0.12, 0, 0.51, 0)
+BLChangerScript.Size = UDim2.new(0, 25, 0, 25)
+BLChangerScript.Image = "rbxassetid://6009060308"
+BLChangerScript.ImageColor3 = Color3.new(1.020,1.020,1.020)
+BLChangerScript.ZIndex = 3
+
+local bg1 = Instance.new("ImageLabel")
+bg1.Name = "bg1"
+bg1.Parent = BLChangerScript
+bg1.BackgroundColor3 = Color3.new(1, 1, 1)
+bg1.BackgroundTransparency = 1
+bg1.Position = UDim2.new(0, 0, 0, 0)
+bg1.Size = UDim2.new(0, 25, 0, 25)
+bg1.Image = "rbxassetid://434411343"
+bg1.ImageColor3 = Color3.new(1.020,1.020,1.020)
+bg1.ZIndex = 2
+
+local RCChangerScript = Instance.new("ImageButton")
+RCChangerScript.Name = "RCChangerScript"
+RCChangerScript.Parent = FSChangerMain
+RCChangerScript.BackgroundColor3 = Color3.new(1, 1, 1)
+RCChangerScript.BackgroundTransparency = 1
+RCChangerScript.Position = UDim2.new(0.21, 0, 0.51, 0)
+RCChangerScript.Size = UDim2.new(0, 25, 0, 25)
+RCChangerScript.Image = "rbxassetid://6963735886"
+RCChangerScript.ImageColor3 = Color3.new(0.008,0.868,1.020)
+RCChangerScript.ZIndex = 3
+
+local bg2 = Instance.new("ImageLabel")
+bg2.Name = "bg2"
+bg2.Parent = RCChangerScript
+bg2.BackgroundColor3 = Color3.new(1, 1, 1)
+bg2.BackgroundTransparency = 1
+bg2.Position = UDim2.new(0, 0, 0, 0)
+bg2.Size = UDim2.new(0, 25, 0, 25)
+bg2.Image = "rbxassetid://434411343"
+bg2.ImageColor3 = Color3.new(1.020,1.020,1.020)
+bg2.ZIndex = 2
+
+local Main2 = Instance.new("ImageLabel")
+Main2.Name = "Main2"
+Main2.Parent = FSChangerMain
+Main2.BackgroundColor3 = Color3.new(1, 1, 1)
+Main2.BackgroundTransparency = 1
+Main2.Position = UDim2.new(0, 0, -0.65, 0)
+Main2.Size = UDim2.new(0, 350, 0, 230)
+Main2.Visible = false
+Main2.Image = "rbxassetid://5088253643"
+Main2.ImageColor3 = Color3.new(1,1,1)
+Main2.SliceCenter = Rect.new(12, 12, 13, 13)
+Main2.ZIndex = 2
+
+local Main2top = Instance.new("ImageLabel")
+Main2top.Name = "Main2top"
+Main2top.Parent = Main2
+Main2top.BackgroundColor3 = Color3.new(1, 1, 1)
+Main2top.BackgroundTransparency = 1
+Main2top.Position = UDim2.new(0, 0, 0, 0)
+Main2top.Size = UDim2.new(0, 350, 0, 230)
+Main2top.Image = "rbxassetid://5088253380"
+Main2top.ImageColor3 = Color3.new(1,1,1)
+Main2top.ZIndex = 3
+
+local Main2bottom = Instance.new("ImageLabel")
+Main2bottom.Name = "Main2bottom"
+Main2bottom.Parent = Main2
+Main2bottom.BackgroundColor3 = Color3.new(1, 1, 1)
+Main2bottom.BackgroundTransparency = 1
+Main2bottom.Position = UDim2.new(0, 0, 0, 0)
+Main2bottom.Size = UDim2.new(0, 350, 0, 230)
+Main2bottom.Image = "rbxassetid://5088253518"
+Main2bottom.ImageColor3 = Color3.new(1,1,1)
+Main2bottom.ZIndex = 3
+
+local ScrollingFrameforTextLabel2 = Instance.new("ScrollingFrame")
+ScrollingFrameforTextLabel2.Name = "ScrollingFrameforTextLabel2"
+ScrollingFrameforTextLabel2.Parent = Main2
+ScrollingFrameforTextLabel2.BackgroundColor3 = Color3.new(1, 1, 1)
+ScrollingFrameforTextLabel2.BackgroundTransparency = 1
+ScrollingFrameforTextLabel2.BorderSizePixel = 0
+ScrollingFrameforTextLabel2.Position = UDim2.new(0, 40, 0, 25)
+ScrollingFrameforTextLabel2.Size = UDim2.new(1, -81, 1, -50)
+ScrollingFrameforTextLabel2.TopImage = "rbxassetid://4823274219"
+ScrollingFrameforTextLabel2.BottomImage = "rbxassetid://4823274125"
+ScrollingFrameforTextLabel2.CanvasSize = UDim2.new(0, 0, 1.5, 0)
+ScrollingFrameforTextLabel2.ScrollBarThickness = 10
+ScrollingFrameforTextLabel2.ZIndex = 3
+
+local TextLabel2 = Instance.new("TextLabel")
+TextLabel2.Parent = ScrollingFrameforTextLabel2
+TextLabel2.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
+TextLabel2.Size = UDim2.new(1, -20, 1, 0)
+TextLabel2.Font = Enum.Font.SourceSansSemibold
+TextLabel2.BackgroundTransparency = 1
+TextLabel2.Text = [[
+	Script made by NoobieDoge
+
+	Type the name of the martial art into the textbox, then press change to change the animation.
+
+	Do not type the display name, it won't work.
+
+	If you don't know the code names for the martial art, press the "Help" button.
+
+	The martial art animation that you changed won't keep forever.
+
+	You only changed the martial art animation of your character. Your original martial art will remain the same.
+	
+	You still need required amount of RC to buy martial arts.]]
+TextLabel2.TextSize = 40
+TextLabel2.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel2.TextScaled = false
+TextLabel2.TextSize = 15
+TextLabel2.TextWrapped = true
+TextLabel2.TextXAlignment = Enum.TextXAlignment.Left
+TextLabel2.TextYAlignment = Enum.TextYAlignment.Top
+TextLabel2.ZIndex = 4
+
+local TextLabel3 = Instance.new("TextLabel")
+TextLabel3.Parent = Main2top
+TextLabel3.BackgroundColor3 = Color3.fromRGB(1, 1, 1)
+TextLabel3.Size = UDim2.new(0, 350, 0, 20)
+TextLabel3.Font = Enum.Font.SourceSansBold
+TextLabel3.BackgroundTransparency = 1
+TextLabel3.Text = "Information"
+TextLabel3.TextColor3 = Color3.fromRGB(1, 1, 1)
+TextLabel3.TextScaled = true
+TextLabel3.TextSize = 40.000
+TextLabel3.TextWrapped = true
+TextLabel3.ZIndex = 4
+
+local Main3 = Instance.new("ImageLabel")
+Main3.Name = "Main3"
+Main3.Parent = FSChangerMain
+Main3.BackgroundColor3 = Color3.new(1, 1, 1)
+Main3.BackgroundTransparency = 1
+Main3.Position = UDim2.new(0, 0, -0.65, 0)
+Main3.Size = UDim2.new(0, 350, 0, 230)
+Main3.Visible = false
+Main3.Image = "rbxassetid://5088253643"
+Main3.ImageColor3 = Color3.new(1,1,1)
+Main3.SliceCenter = Rect.new(12, 12, 13, 13)
+Main3.ZIndex = 2
+
+local Main3top = Instance.new("ImageLabel")
+Main3top.Name = "Main3top"
+Main3top.Parent = Main3
+Main3top.BackgroundColor3 = Color3.new(1, 1, 1)
+Main3top.BackgroundTransparency = 1
+Main3top.Position = UDim2.new(0, 0, 0, 0)
+Main3top.Size = UDim2.new(0, 350, 0, 230)
+Main3top.Image = "rbxassetid://5088253380"
+Main3top.ImageColor3 = Color3.new(1,1,1)
+Main3top.ZIndex = 3
+
+local Main3bottom = Instance.new("ImageLabel")
+Main3bottom.Name = "Main3bottom"
+Main3bottom.Parent = Main3
+Main3bottom.BackgroundColor3 = Color3.new(1, 1, 1)
+Main3bottom.BackgroundTransparency = 1
+Main3bottom.Position = UDim2.new(0, 0, 0, 0)
+Main3bottom.Size = UDim2.new(0, 350, 0, 230)
+Main3bottom.Image = "rbxassetid://5088253518"
+Main3bottom.ImageColor3 = Color3.new(1,1,1)
+Main3bottom.ZIndex = 3
+
+local TextLabel4 = Instance.new("TextLabel")
+TextLabel4.Parent = Main3
+TextLabel4.BackgroundColor3 = Color3.fromRGB(255, 232, 117)
+TextLabel4.Position = UDim2.new(0.12, 0, 0.1, 0)
+TextLabel4.Size = UDim2.new(1, -20, 1, 0)
+TextLabel4.Font = Enum.Font.SourceSansSemibold
+TextLabel4.BackgroundTransparency = 1
+TextLabel4.Text = "If you don't know the code names for the martial \nart animation that you want to change,\n\nPress this button and look at your martial art tab."
+TextLabel4.TextSize = 40
+TextLabel4.TextColor3 = Color3.fromRGB(0,0,0)
+TextLabel4.TextScaled = false
+TextLabel4.TextSize = 15
+TextLabel4.TextWrapped = true
+TextLabel4.TextXAlignment = Enum.TextXAlignment.Left
+TextLabel4.TextYAlignment = Enum.TextYAlignment.Top
+TextLabel4.ZIndex = 3
+
+local TextLabel5 = Instance.new("TextLabel")
+TextLabel5.Parent = Main3top
+TextLabel5.BackgroundColor3 = Color3.fromRGB(1, 1, 1)
+TextLabel5.Size = UDim2.new(0, 350, 0, 20)
+TextLabel5.Font = Enum.Font.SourceSansBold
+TextLabel5.BackgroundTransparency = 1
+TextLabel5.Text = "Help"
+TextLabel5.TextColor3 = Color3.fromRGB(0,0,0)
+TextLabel5.TextScaled = true
+TextLabel5.TextSize = 40.000
+TextLabel5.TextWrapped = true
+TextLabel5.ZIndex = 4
+
+local RevealYourselfON9ZAI = Instance.new("TextButton")
+RevealYourselfON9ZAI.Name = "RevealYourselfON9ZAI"
+RevealYourselfON9ZAI.Parent = Main3
+RevealYourselfON9ZAI.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+RevealYourselfON9ZAI.BorderColor3 = Color3.new(0,0,0)
+RevealYourselfON9ZAI.BorderSizePixel = 2
+RevealYourselfON9ZAI.Position = UDim2.new(0.325, 0, 0.4, 0)
+RevealYourselfON9ZAI.Size = UDim2.new(0, 120, 0, 30)
+RevealYourselfON9ZAI.Font = Enum.Font.SourceSansBold
+RevealYourselfON9ZAI.Text = "Show code names"
+RevealYourselfON9ZAI.TextColor3 = Color3.new(1, 1, 1)
+RevealYourselfON9ZAI.TextSize = 18
+RevealYourselfON9ZAI.ZIndex = 3
+
+local SecretCodeText = Instance.new("TextBox")
+SecretCodeText.Name = "SecretCodeText"
+SecretCodeText.Parent = FSChangerMain
+SecretCodeText.BackgroundColor3 = Color3.new(0.0745098, 0.0745098, 0.0745098)
+SecretCodeText.BorderSizePixel = 0
+SecretCodeText.BackgroundTransparency = 1
+SecretCodeText.Position = UDim2.new(0.1, 0, 0.75, 0)
+SecretCodeText.Size = UDim2.new(0, 70, 0, 45)
+SecretCodeText.Font = Enum.Font.GothamBlack
+SecretCodeText.Text = "[Secret Code]"
+SecretCodeText.TextColor3 = Color3.new(2, 2, 2)
+SecretCodeText.TextSize = 17
+SecretCodeText.TextWrapped = true
+SecretCodeText.PlaceholderColor3 = Color3.new(0.445, 0.445, 0.445)
+SecretCodeText.PlaceholderText = "[INSERT CODE]"
+SecretCodeText.ZIndex = 3
+
+local SecretCodeTextRedeem = Instance.new("TextButton")
+SecretCodeTextRedeem.Name = "SecretCodeTextRedeem"
+SecretCodeTextRedeem.Parent = FSChangerMain
+SecretCodeTextRedeem.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+SecretCodeTextRedeem.BorderColor3 = Color3.new(0,0,0)
+SecretCodeTextRedeem.BorderSizePixel = 2
+SecretCodeTextRedeem.Position = UDim2.new(0.115, 0, 0.87, 0)
+SecretCodeTextRedeem.Size = UDim2.new(0, 60, 0, 10)
+SecretCodeTextRedeem.Font = Enum.Font.SourceSansBold
+SecretCodeTextRedeem.Text = ""
+SecretCodeTextRedeem.TextColor3 = Color3.new(1, 1, 1)
+SecretCodeTextRedeem.TextScaled = true
+SecretCodeTextRedeem.TextSize = 14
+SecretCodeTextRedeem.TextWrapped = true
+SecretCodeTextRedeem.ZIndex = 3
+
+function CodeRedeem()
+	if SecretCodeText.Text == "BlazingFanatic" or SecretCodeText.Text == "bL" or SecretCodeText.Text == "Bl" or SecretCodeText.Text == "BL" or SecretCodeText.Text == "bl" then
+		ScreenGui:Destroy()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20BlazingFanatic"))()
+	elseif SecretCodeText.Text == "OldLoadoutChanger" or SecretCodeText.Text == "OLC" then
+		ScreenGui:Destroy()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20Outdated"))()
+	elseif SecretCodeText.Text == "ShindoFightingStyleAnimationChanger" or SecretCodeText.Text == "ShindoMartialArtAnimationChanger" or SecretCodeText.Text == "SFSAC" or SecretCodeText.Text == "SMAAC" or SecretCodeText.Text == "ORA" then
+		game:GetService("StarterGui"):SetCore("SendNotification",{Title = ":O",Text = "Shindo Fighting Style Animation Changer",Duration = 0.0001, })
+		local s = Instance.new("Sound")
+		s.Name = "Sound" 
+		s.SoundId = "http://www.roblox.com/asset/?id=8701825353" 
+		s.Volume = 99999999999999
+		s.Looped = false
+		s.archivable = false 
+		s.Parent = game.Workspace wait(.0000000000000000000000000000001) 
+		s:play()
+		wait(0.8)
+		local s = Instance.new("Sound")
+		s.Name = "Sound" 
+		s.SoundId = "http://www.roblox.com/asset/?id=6968100828" 
+		s.Volume = 99999999999999
+		s.Looped = false
+		s.archivable = false 
+		s.Parent = game.Workspace wait(.0000000000000000000000000000001) 
+		s:play()
+		wait(.15)
+		local s = Instance.new("Sound")
+		s.Name = "Sound" 
+		s.SoundId = "http://www.roblox.com/asset/?id=6968100828" 
+		s.Volume = 99999999999999
+		s.Looped = false
+		s.archivable = false 
+		s.Parent = game.Workspace wait(.0000000000000000000000000000001) 
+		s:play()
+		wait(.15)
+		local s = Instance.new("Sound")
+		s.Name = "Sound" 
+		s.SoundId = "http://www.roblox.com/asset/?id=6968100828" 
+		s.Volume = 99999999999999
+		s.Looped = false
+		s.archivable = false 
+		s.Parent = game.Workspace wait(.0000000000000000000000000000001) 
+		s:play()
+		wait(.15)
+		local s = Instance.new("Sound")
+		s.Name = "Sound" 
+		s.SoundId = "http://www.roblox.com/asset/?id=6968100828" 
+		s.Volume = 99999999999999
+		s.Looped = false
+		s.archivable = false 
+		s.Parent = game.Workspace wait(.0000000000000000000000000000001) 
+		s:play()
+		wait(.15)
+		local s = Instance.new("Sound")
+		s.Name = "Sound" 
+		s.SoundId = "http://www.roblox.com/asset/?id=6968100828" 
+		s.Volume = 99999999999999
+		s.Looped = false
+		s.archivable = false 
+		s.Parent = game.Workspace wait(.0000000000000000000000000000001) 
+		s:play()
+	else
+		SecretCodeText.Text = "Invalid Code!"
+		wait(.5)
+		SecretCodeText.Text = "Secret Code"
+	end
+end
+SecretCodeTextRedeem.MouseButton1Click:connect(CodeRedeem)
+
+Info.MouseButton1Click:connect(function()
+	InfoEnabled = not InfoEnabled
+	if InfoEnabled then
+		HelpEnabled = false
+		Help.BackgroundColor3 = Color3.new(1.020,0.652,0.104)
+		Info.BackgroundColor3 = Color3.new(0.5,0.5,1.5)
+		Main2.Visible = true
+		Main3.Visible = false
+	else
+		Info.BackgroundColor3 = Color3.new(0.3,0.3,1.2)
+		Main2.Visible = false
+	end
+end)
+
+Help.MouseButton1Click:connect(function()
+	HelpEnabled = not HelpEnabled
+	if HelpEnabled then
+		InfoEnabled = false
+		Info.BackgroundColor3 = Color3.new(0.3,0.3,1.2)
+		Help.BackgroundColor3 = Color3.new(1.2,0.8,0.3)
+		Main2.Visible = false
+		Main3.Visible = true
+		TextLabel2.TextSize = 15	
+	else
+		Help.BackgroundColor3 = Color3.new(1.020,0.652,0.104)
+		Main3.Visible = false
+	end
+end)
+
+IdentifyScriptButton.MouseButton1Click:connect(function()
+	game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Script:",Text = "Shindo Fighting Style Animation Changer",Duration = 2, })
+end)
+
+BLChangerScript.MouseButton1Click:connect(function()
+	ScreenGui:Destroy()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20Bloodline%20Changer"))()
+end)
+
+RCChangerScript.MouseButton1Click:connect(function()
+	ScreenGui:Destroy()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20RC%20Shop%20Changer"))()	
+end)
+
+RevealYourselfON9ZAI.MouseButton1Click:connect(function()
+	game:GetService("Players").LocalPlayer.PlayerGui.Main.ingame.Menu.CombatTab.Element1.amt.Text = "Please enter these names"
+	for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Main.ingame.Menu.CombatTab.Element1:GetChildren()) do
+		if v:FindFirstChild("level") then
+			v.level.title.Text = v.Name
+		end
+	end
+end)
