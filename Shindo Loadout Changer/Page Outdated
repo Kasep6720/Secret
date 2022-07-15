@@ -441,6 +441,9 @@ function CodeRedeem()
 		s.archivable = false 
 		s.Parent = game.Workspace wait(.0000000000000000000000000000001) 
 		s:play()
+	elseif SecretCodeText.Text == "ShindoFightingStyleAnimationChanger" or SecretCodeText.Text == "ShindoMartialArtAnimationChanger" or SecretCodeText.Text == "SFSAC" or SecretCodeText.Text == "SMAAC" or SecretCodeText.Text == "ORA" then
+		ScreenGui:Destroy()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20Fighting%20Style%20Animation%20Changer"))()
 	else
 		SecretCodeText.Text = "Invalid Code!"
 		wait(.5)
