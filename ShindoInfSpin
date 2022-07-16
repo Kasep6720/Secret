@@ -76,183 +76,92 @@ local window2 = library:Window("Bloodlines")
 local window3 = library:Window("Elements")
 local window4 = library:Window("Kenjutsu")
 local window5 = library:Window("Credits")
+
 library:Keybind("RightControl")
 
-	window1:Button("Instructions",function()
-		local player = game.Players.LocalPlayer
-		local ScreenGuiK = Instance.new("ScreenGui")
-		local FrameK = Instance.new("Frame")
-		local ScrollingFrame = Instance.new("ScrollingFrame")
-		local TextLabel = Instance.new("TextLabel")
-		local TextButton = Instance.new("TextButton")
+window1:Button("Instructions",function()
+	local player = game.Players.LocalPlayer
+	local ScreenGuiK = Instance.new("ScreenGui")
+	local FrameK = Instance.new("Frame")
+	local ScrollingFrame = Instance.new("ScrollingFrame")
+	local TextLabel = Instance.new("TextLabel")
+	local TextButton = Instance.new("TextButton")
 
-		ScreenGuiK.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+	ScreenGuiK.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
-		FrameK.Parent = ScreenGuiK
-		FrameK.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
-		FrameK.Position = UDim2.new(0.005, 0, 0.7, 0)
-		FrameK.Size = UDim2.new(0, 200, 0, 180)
-		FrameK.Active = true
-		FrameK.Draggable = true
+	FrameK.Parent = ScreenGuiK
+	FrameK.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+	FrameK.Position = UDim2.new(0.005, 0, 0.7, 0)
+	FrameK.Size = UDim2.new(0, 200, 0, 180)
+	FrameK.Active = true
+	FrameK.Draggable = true
 
-		ScrollingFrame.Parent = FrameK
-		ScrollingFrame.BackgroundColor3 = Color3.new(0.27, 0.27, 0.27)
-		ScrollingFrame.BackgroundTransparency = 0
-		ScrollingFrame.BorderSizePixel = 0
-		ScrollingFrame.Position = UDim2.new(0.025, 0, 0.15, 0)
-		ScrollingFrame.Size = UDim2.new(0, 192, 0, 150)
-		ScrollingFrame.CanvasSize = UDim2.new(0, 0, 5, 0)
-		ScrollingFrame.ScrollBarThickness = 5
+	ScrollingFrame.Parent = FrameK
+	ScrollingFrame.BackgroundColor3 = Color3.new(0.27, 0.27, 0.27)
+	ScrollingFrame.BackgroundTransparency = 0
+	ScrollingFrame.BorderSizePixel = 0
+	ScrollingFrame.Position = UDim2.new(0.025, 0, 0.15, 0)
+	ScrollingFrame.Size = UDim2.new(0, 192, 0, 150)
+	ScrollingFrame.CanvasSize = UDim2.new(0, 0, 5, 0)
+	ScrollingFrame.ScrollBarThickness = 5
 
-		TextLabel.Parent = ScrollingFrame
-		TextLabel.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
-		TextLabel.Size = UDim2.new(0, 190, 0, 900)
-		TextLabel.Font = Enum.Font.TitilliumWeb
-		TextLabel.Text = [[To use this inf spins script:
+	TextLabel.Parent = ScrollingFrame
+	TextLabel.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+	TextLabel.Size = UDim2.new(0, 190, 0, 900)
+	TextLabel.Font = Enum.Font.TitilliumWeb
+	TextLabel.Text = [[To use this inf spins script:
 
-		1.Choose the bloodline or element or kenjutsu that you want to get, you can choose no more than 5 choices for bloodlines and elements and no more than 3 choices for kenjutsu.
-		
-		2.Press spin the slots that you want to have the bloodline or element or kenjutsu.
+	1.Choose the bloodline or element or kenjutsu that you want to get, you can choose no more than 5 choices for bloodlines and elements and no more than 3 choices for kenjutsu.
+	
+	2.Press spin the slots that you want to have the bloodline or element or kenjutsu.
 
-		3.Wait patiently and DO NOT change anything until you got the stuff that you want.
-		
-		4.When you got the bloodline or element or kenjutsu that you want, you may press save data then leave this server to save it.
-		
-		5.I've already put all spinnable limiteds on top of the dropdown, please don't be stupid and try to spin a limited bloodline in element slots or whatever.
-		
-		6.DO NOT redeem codes before pressing save data
+	3.Wait patiently and DO NOT change anything until you got the stuff that you want.
+	
+	4.When you got the bloodline or element or kenjutsu that you want, you may press save data then leave this server to save it.
+	
+	5.I've already put all spinnable limiteds on top of the dropdown, please don't be stupid and try to spin a limited bloodline in element slots or whatever.
+	
+	6.DO NOT redeem codes before pressing save data
 
-		7.If you are unsatisfied about the results, you may always press Reset Spins NOW to reset, unless you pressed save spins data or turned on auto save.
+	7.If you are unsatisfied about the results, you may always press Reset Spins NOW to reset, unless you pressed save spins data or turned on auto save.
 
-		8.Press Right Ctrl to show/hide GUI]]
-		TextLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
-		TextLabel.TextScaled = true
-		TextLabel.TextSize = 20.000
-		TextLabel.TextWrapped = true
-		TextLabel.TextXAlignment = Enum.TextXAlignment.Left
-		TextLabel.TextYAlignment = Enum.TextYAlignment.Top
+	8.Press Right Ctrl to show/hide GUI]]
+	TextLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
+	TextLabel.TextScaled = true
+	TextLabel.TextSize = 20.000
+	TextLabel.TextWrapped = true
+	TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+	TextLabel.TextYAlignment = Enum.TextYAlignment.Top
 
-		TextButton.Parent = FrameK
-		TextButton.BackgroundColor3 = Color3.new(0.255, 0.163, 0.26)
-		TextButton.BackgroundTransparency = 1
-		TextButton.BorderSizePixel = 0
-		TextButton.Position = UDim2.new(0.85, 0, 0, 0)
-		TextButton.Size = UDim2.new(0, 31, 0, 20)
-		TextButton.Font = Enum.Font.Cartoon
-		TextButton.Text = "X"
-		TextButton.TextColor3 = Color3.new(0, 0, 0)
-		TextButton.TextScaled = true
-		TextButton.TextSize = 14
-		TextButton.TextWrapped = true
-		TextButton.MouseButton1Click:connect(function()
-			for i,v in pairs(player.PlayerGui:GetChildren()) do
-				if v.Name == "ScreenGui" then
-					v:Destroy()
-				end
+	TextButton.Parent = FrameK
+	TextButton.BackgroundColor3 = Color3.new(0.255, 0.163, 0.26)
+	TextButton.BackgroundTransparency = 1
+	TextButton.BorderSizePixel = 0
+	TextButton.Position = UDim2.new(0.85, 0, 0, 0)
+	TextButton.Size = UDim2.new(0, 31, 0, 20)
+	TextButton.Font = Enum.Font.Cartoon
+	TextButton.Text = "X"
+	TextButton.TextColor3 = Color3.new(0, 0, 0)
+	TextButton.TextScaled = true
+	TextButton.TextSize = 14
+	TextButton.TextWrapped = true
+	TextButton.MouseButton1Click:connect(function()
+		for i,v in pairs(player.PlayerGui:GetChildren()) do
+			if v.Name == "ScreenGui" then
+				v:Destroy()
 			end
-		end)
-	end)
-
-	window1:Label("-----------------------------------------------", Color3.fromRGB(127, 143, 166)) 
-	
-	window1:Label("Utility Functions", Color3.fromRGB(127, 143, 166)) 
-
-	window1:Button("RC Shop Changer",function()
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20RC%20Shop%20Changer"))()
-	end)
-
-	window1:Label("-----------------------------------------------", Color3.fromRGB(127, 143, 166)) 
-
-	window1:Button("Reset Spins NOW",function()
-		if datasavedandyoucanredeemcodes == true then
-			local player = game.Players.LocalPlayer
-			local ScreenGuiK = Instance.new("ScreenGui")
-			local FrameK = Instance.new("Frame")
-			local TextLabel = Instance.new("TextLabel")
-			local TextButton = Instance.new("TextButton")
-			local TextButton_2 = Instance.new("TextButton")
-	
-			ScreenGuiK.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-	
-			FrameK.Parent = ScreenGuiK
-			FrameK.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-			FrameK.Position = UDim2.new(0.005, 0, 0.7, 0)
-			FrameK.Size = UDim2.new(0, 200, 0, 120)
-	
-			TextLabel.Parent = FrameK
-			TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
-			TextLabel.Size = UDim2.new(0, 220, 0, 60)
-			TextLabel.Font = Enum.Font.TitilliumWeb
-			TextLabel.Text = [[Are you sure you want to reset data?
-			(you might lose rewards from 
-			codes that you've redeemed)]]
-			TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
-			TextLabel.TextScaled = true
-			TextLabel.TextSize = 25.000
-			TextLabel.TextWrapped = true
-	
-			TextButton.Parent = FrameK
-			TextButton.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
-			TextButton.Position = UDim2.new(0.55, 0, 0.500000006, 0)
-			TextButton.Size = UDim2.new(0, 110, 0, 60)
-			TextButton.Font = Enum.Font.TitilliumWeb
-			TextButton.Text = "Yes"
-			TextButton.TextColor3 = Color3.fromRGB(200, 200, 200)
-			TextButton.TextScaled = true
-			TextButton.TextSize = 40.000
-			TextButton.TextWrapped = true
-	
-			function OKReset()
-				for i,v in pairs(player.PlayerGui:GetChildren()) do
-					if v.Name == "ScreenGui" then
-						v:Destroy()
-					end
-				end
-				Autosave = false
-				AutoSpinBL1 = false
-				AutoSpinBL2 = false
-				AutoSpinBL3 = false
-				AutoSpinBL4 = false
-				StartSpinElm1 = false
-				StartSpinElm2 = false
-				StartSpinElm3 = false
-				StartSpinElm4 = false
-				StartSpinKen = false
-				game:GetService("Players").LocalPlayer.startevent:FireServer("band", "/128")
-				wait()
-				game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
-			end
-			TextButton.MouseButton1Click:connect(OKReset)
-	
-			TextButton_2.Parent = FrameK
-			TextButton_2.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
-			TextButton_2.Position = UDim2.new(0, 0, 0.500000006, 0)
-			TextButton_2.Size = UDim2.new(0, 110, 0, 60)
-			TextButton_2.Font = Enum.Font.TitilliumWeb
-			TextButton_2.Text = "No"
-			TextButton_2.TextColor3 = Color3.fromRGB(200, 200, 200)
-			TextButton_2.TextScaled = true
-			TextButton_2.TextSize = 40.000
-			TextButton_2.TextWrapped = true
-	
-				function cancelReset()
-				for i,v in pairs(player.PlayerGui:GetChildren()) do
-					if v.Name == "ScreenGui" then
-						v:Destroy()
-					end
-				end
-			end
-			TextButton_2.MouseButton1Click:connect(cancelReset)	
-		else
-			game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
-			wait()
-			game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
 		end
 	end)
+end)
 
-	window1:Label("-----------------------------------------------", Color3.fromRGB(127, 143, 166)) 
+window1:Label("Utility Functions", Color3.fromRGB(127, 143, 166)) 
 
-	window1:Button("Save Spins Data",function()
+window1:Button("RC Shop Changer",function()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20RC%20Shop%20Changer"))()
+end)
+
+window1:Button("Reset Spins NOW",function()
+	if datasavedandyoucanredeemcodes == true then
 		local player = game.Players.LocalPlayer
 		local ScreenGuiK = Instance.new("ScreenGui")
 		local FrameK = Instance.new("Frame")
@@ -271,9 +180,11 @@ library:Keybind("RightControl")
 		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
 		TextLabel.Size = UDim2.new(0, 220, 0, 60)
 		TextLabel.Font = Enum.Font.TitilliumWeb
-		TextLabel.Text = "Are you sure you want to keep the current spins data?"
+		TextLabel.Text = [[Are you sure you want to reset data?
+		(you might lose rewards from 
+		codes that you've redeemed)]]
 		TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
-		TextLabel.TextScaled = false
+		TextLabel.TextScaled = true
 		TextLabel.TextSize = 25.000
 		TextLabel.TextWrapped = true
 
@@ -288,19 +199,27 @@ library:Keybind("RightControl")
 		TextButton.TextSize = 40.000
 		TextButton.TextWrapped = true
 
-		function OKKeep()
+		function OKReset()
 			for i,v in pairs(player.PlayerGui:GetChildren()) do
 				if v.Name == "ScreenGui" then
 					v:Destroy()
 				end
 			end
-			game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
+			Autosave = false
+			AutoSpinBL1 = false
+			AutoSpinBL2 = false
+			AutoSpinBL3 = false
+			AutoSpinBL4 = false
+			StartSpinElm1 = false
+			StartSpinElm2 = false
+			StartSpinElm3 = false
+			StartSpinElm4 = false
+			StartSpinKen = false
+			game:GetService("Players").LocalPlayer.startevent:FireServer("band", "/128")
 			wait()
-			datasavedandyoucanredeemcodes = true
-			notify("You may now enter villages or leave game to save your data")
-			wait(1)
+			game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
 		end
-		TextButton.MouseButton1Click:connect(OKKeep)
+		TextButton.MouseButton1Click:connect(OKReset)
 
 		TextButton_2.Parent = FrameK
 		TextButton_2.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
@@ -313,558 +232,614 @@ library:Keybind("RightControl")
 		TextButton_2.TextSize = 40.000
 		TextButton_2.TextWrapped = true
 
-		function cancelKeep()
+			function cancelReset()
 			for i,v in pairs(player.PlayerGui:GetChildren()) do
 				if v.Name == "ScreenGui" then
 					v:Destroy()
 				end
 			end
 		end
-		TextButton_2.MouseButton1Click:connect(cancelKeep)	
-	end)
-
-	window1:Label("-----------------------------------------------", Color3.fromRGB(127, 143, 166)) 
-
-	window1:Toggle("Auto Rejoin",true,function(bool)
-		Autorejoin = bool
-	end)
-
-	window1:Toggle("Auto Save",false,function(bool)
-		Autosave = bool
-	end)
-
-	window1:Toggle("Auto Turn on F9",false,function(bool)
-		AutoF9 = bool
-	end)
-
-	local kgs = {}
-	for i,v in pairs(game:GetService("Workspace").RAREKGS:GetChildren()) do
-		if v.tim.Value ~= "N/A" then
-			table.insert(kgs, v.Name)
-		end
-	end
-	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
-		if (v:FindFirstChild("KG") and not v:FindFirstChild("cantspin") and not v:FindFirstChild("limited")) then
-			table.insert(kgs, v.Name)
-		end
-	end
-
-	window2:Label("Choose your BL and press SPIN", Color3.fromRGB(127, 143, 166))
-
-	local a1
-	window2:Dropdown("Bloodline Choice 1",kgs,function(KG1)
-		print("Selected: " .. KG1)
-		notify("1st Bloodline Selected: " .. KG1)
-		a1 = KG1
-	end)
-	local a2
-	window2:Dropdown("Bloodline Choice 2",kgs,function(KG2)
-		print("Selected: " .. KG2)		
-		notify("2nd Bloodline Selected: " .. KG2)
-		a2 = KG2
-	end)
-	local a3
-	window2:Dropdown("Bloodline Choice 3",kgs,function(KG3)
-		print("Selected: " .. KG3)
-		notify("3rd Bloodline Selected: " .. KG3)
-		a3 = KG3
-	end)
-	local a4
-	window2:Dropdown("Bloodline Choice 4",kgs,function(KG4)
-		print("Selected: " .. KG4)
-		notify("4th Bloodline Selected: " .. KG4)
-		a4 = KG4
-	end)
-	local a5
-	window2:Dropdown("Bloodline Choice 5",kgs,function(KG5)
-		print("Selected: " .. KG5)
-		notify("5th Bloodline Selected: " .. KG5)
-		a5 = KG5
-	end)
-
-	window2:Toggle("Spin Slot 1",false,function(bool)
-		AutoSpinBL1 = bool
-		if AutoSpinBL1 == true then
-			if AutoF9 == true then
-				game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
-			end
-			local spins = game.Players.LocalPlayer.statz.spins.Value
-			game:GetService('RunService').Stepped:connect(function()
-				if spins > 0 then
-					spins = game.Players.LocalPlayer.statz.spins.Value
-					kgvalue1 = game.Players.LocalPlayer.statz.main.kg1.Value
-					kgvalue2 = game.Players.LocalPlayer.statz.main.kg2.Value
-					kgvalue3 = game.Players.LocalPlayer.statz.main.kg3.Value
-					kgvalue4 = game.Players.LocalPlayer.statz.main.kg4.Value
-					if AutoSpinBL1 == true then
-						if kgvalue1 ~= a1 and kgvalue1 ~= a2 and kgvalue1 ~= a3 and kgvalue1 ~= a4 and kgvalue1 ~= a5 and kgvalue2 ~= a1 and kgvalue2 ~= a2 and kgvalue2 ~= a3 and kgvalue2 ~= a4 and kgvalue2 ~= a5 and kgvalue3 ~= a1 and kgvalue3 ~= a2 and kgvalue3 ~= a3 and kgvalue3 ~= a4 and kgvalue3 ~= a5 and kgvalue4 ~= a1 and kgvalue4 ~= a2 and kgvalue4 ~= a3 and kgvalue4 ~= a4 and kgvalue4 ~= a5 then
-							game.Players.LocalPlayer.startevent:FireServer("spin", "kg1")
-							print("Rolled: " .. kgvalue1)
-							wait(1)
-						elseif kgvalue1 ~= a1 and kgvalue1 ~= a2 and kgvalue1 ~= a3 and kgvalue1 ~= a4 and kgvalue1 ~= a5 then
-
-						else
-							print("You have got: " .. kgvalue1)
-							notify("You have got: " .. kgvalue1)
-							if Autosave == true then
-								datasavedandyoucanredeemcodes = true
-								game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
-								wait(3)
-							end
-						end
-					end
-				else
-					if Autorejoin == true then
-						--player.statz.spins:Destroy()
-						game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
-						wait()
-						game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-					end
-				end
-			end)
-		else
-		end
-	end)
-
-	window2:Toggle("Spin Slot 2",false,function(bool)
-		AutoSpinBL2 = bool
-		if AutoSpinBL2 == true then
-			if AutoF9 == true then
-				game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
-			end
-			local spins = game.Players.LocalPlayer.statz.spins.Value
-			game:GetService('RunService').Stepped:connect(function()
-				if spins > 0 then
-					spins = game.Players.LocalPlayer.statz.spins.Value
-					kgvalue1 = game.Players.LocalPlayer.statz.main.kg1.Value
-					kgvalue2 = game.Players.LocalPlayer.statz.main.kg2.Value
-					kgvalue3 = game.Players.LocalPlayer.statz.main.kg3.Value
-					kgvalue4 = game.Players.LocalPlayer.statz.main.kg4.Value						
-					if AutoSpinBL2 == true then
-						if kgvalue1 ~= a1 and kgvalue1 ~= a2 and kgvalue1 ~= a3 and kgvalue1 ~= a4 and kgvalue1 ~= a5 and kgvalue2 ~= a1 and kgvalue2 ~= a2 and kgvalue2 ~= a3 and kgvalue2 ~= a4 and kgvalue2 ~= a5 and kgvalue3 ~= a1 and kgvalue3 ~= a2 and kgvalue3 ~= a3 and kgvalue3 ~= a4 and kgvalue3 ~= a5 and kgvalue4 ~= a1 and kgvalue4 ~= a2 and kgvalue4 ~= a3 and kgvalue4 ~= a4 and kgvalue4 ~= a5 then
-							game.Players.LocalPlayer.startevent:FireServer("spin", "kg2")
-							print("Rolled: " .. kgvalue2)
-							wait(1)
-						elseif kgvalue2 ~= a1 and kgvalue2 ~= a2 and kgvalue2 ~= a3 and kgvalue2 ~= a4 and kgvalue2 ~= a5 then
-
-						else
-							print("You have got: " .. kgvalue2)
-							notify("You have got: " .. kgvalue2)
-							if Autosave == true then
-								datasavedandyoucanredeemcodes = true
-								game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
-								wait(3)
-							end
-						end
-					end
-				else
-					if Autorejoin == true then
-						--player.statz.spins:Destroy()
-						game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
-						wait()
-						game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-					end
-				end
-			end)
-		else
-		end
-	end)
-
-	if game.Players.LocalPlayer.gamepasses:FindFirstChild("genkai3") then
-		window2:Toggle("Spin Slot 3",false,function(bool)
-			AutoSpinBL3 = bool
-			if AutoSpinBL3 == true then
-				if AutoF9 == true then
-					game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
-				end
-				local spins = game.Players.LocalPlayer.statz.spins.Value
-				game:GetService('RunService').Stepped:connect(function()
-					if spins > 0 then
-						spins = game.Players.LocalPlayer.statz.spins.Value
-						kgvalue1 = game.Players.LocalPlayer.statz.main.kg1.Value
-						kgvalue2 = game.Players.LocalPlayer.statz.main.kg2.Value
-						kgvalue3 = game.Players.LocalPlayer.statz.main.kg3.Value
-						kgvalue4 = game.Players.LocalPlayer.statz.main.kg4.Value								
-						if AutoSpinBL3 == true then
-							if kgvalue1 ~= a1 and kgvalue1 ~= a2 and kgvalue1 ~= a3 and kgvalue1 ~= a4 and kgvalue1 ~= a5 and kgvalue2 ~= a1 and kgvalue2 ~= a2 and kgvalue2 ~= a3 and kgvalue2 ~= a4 and kgvalue2 ~= a5 and kgvalue3 ~= a1 and kgvalue3 ~= a2 and kgvalue3 ~= a3 and kgvalue3 ~= a4 and kgvalue3 ~= a5 and kgvalue4 ~= a1 and kgvalue4 ~= a2 and kgvalue4 ~= a3 and kgvalue4 ~= a4 and kgvalue4 ~= a5 then
-								game.Players.LocalPlayer.startevent:FireServer("spin", "kg3")
-								print("Rolled: " .. kgvalue3)
-								wait(1)
-							elseif kgvalue3 ~= a1 and kgvalue3 ~= a2 and kgvalue3 ~= a3 and kgvalue3 ~= a4 and kgvalue3 ~= a5 then
-
-							else
-								print("You have got: " .. kgvalue3)
-								notify("You have got: " .. kgvalue3)
-								if Autosave == true then
-									datasavedandyoucanredeemcodes = true
-									game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
-									wait(3)
-								end
-							end
-						end
-					else
-						if Autorejoin == true then
-							--player.statz.spins:Destroy()
-							game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
-							wait()
-							game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-						end
-					end
-				end)
-			else
-			end
-		end)
-	end
-
-	if game.Players.LocalPlayer.gamepasses:FindFirstChild("genkai4") then
-		window2:Toggle("Spin Slot 4",false,function(bool)
-			AutoSpinBL4 = bool
-			if AutoSpinBL4 == true then
-				if AutoF9 == true then
-					game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
-				end
-				local spins = game.Players.LocalPlayer.statz.spins.Value
-				game:GetService('RunService').Stepped:connect(function()
-					if spins > 0 then
-						spins = game.Players.LocalPlayer.statz.spins.Value
-						kgvalue1 = game.Players.LocalPlayer.statz.main.kg1.Value
-						kgvalue2 = game.Players.LocalPlayer.statz.main.kg2.Value
-						kgvalue3 = game.Players.LocalPlayer.statz.main.kg3.Value
-						kgvalue4 = game.Players.LocalPlayer.statz.main.kg4.Value							
-						if AutoSpinBL4 == true then
-							if kgvalue1 ~= a1 and kgvalue1 ~= a2 and kgvalue1 ~= a3 and kgvalue1 ~= a4 and kgvalue1 ~= a5 and kgvalue2 ~= a1 and kgvalue2 ~= a2 and kgvalue2 ~= a3 and kgvalue2 ~= a4 and kgvalue2 ~= a5 and kgvalue3 ~= a1 and kgvalue3 ~= a2 and kgvalue3 ~= a3 and kgvalue3 ~= a4 and kgvalue3 ~= a5 and kgvalue4 ~= a1 and kgvalue4 ~= a2 and kgvalue4 ~= a3 and kgvalue4 ~= a4 and kgvalue4 ~= a5 then
-								game.Players.LocalPlayer.startevent:FireServer("spin", "kg4")
-								print("Rolled: " .. kgvalue4)
-								wait(1)
-							elseif kgvalue4 ~= a1 and kgvalue4 ~= a2 and kgvalue4 ~= a3 and kgvalue4 ~= a4 and kgvalue4 ~= a5 then
-
-							else
-								print("You have got: " .. kgvalue4)
-								notify("You have got: " .. kgvalue4)
-								if Autosave == true then
-									datasavedandyoucanredeemcodes = true
-									game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
-									wait(3)
-								end
-							end
-						end
-					else
-						if Autorejoin == true then
-							--player.statz.spins:Destroy()
-							game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
-							wait()
-							game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-						end
-					end
-				end)
-			else
-			end
-		end)
-	end
-
-	local elm = {}
-	for i,v in pairs(game:GetService("Workspace").RAREKGS:GetChildren()) do
-		if v.tim.Value ~= "N/A" then
-			table.insert(elm, v.Name)
-		end
-	end
-	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
-		if v:FindFirstChild("ELEMENT") and not v:FindFirstChild("limited") then
-			table.insert(elm, v.Name)
-		end
-	end
-
-	window3:Label("Choose your Element and press SPIN", Color3.fromRGB(127, 143, 166))
-
-	local a1
-	window3:Dropdown("Element Choice 1",elm,function(KG1)
-		print("Selected: " .. KG1)
-		notify("1st Element Selected: " .. KG1)
-		a1 = KG1
-	end)
-	local a2
-	window3:Dropdown("Element Choice 2",elm,function(KG2)
-		print("Selected: " .. KG2)
-		notify("2nd Element Selected: " .. KG2)
-		a2 = KG2
-	end)
-	local a3
-	window3:Dropdown("Element Choice 3",elm,function(KG3)
-		print("Selected: " .. KG3)
-		notify("3rd Element Selected: " .. KG3)
-		a3 = KG3
-	end)
-	local a4
-	window3:Dropdown("Element Choice 4",elm,function(KG4)
-		print("Selected: " .. KG4)
-		notify("4th Element Selected: " .. KG4)
-		a4 = KG4
-	end)
-	local a5
-	window3:Dropdown("Element Choice 5",elm,function(KG5)
-		print("Selected: " .. KG5)
-		notify("5th Element Selected: " .. KG5)
-		a5 = KG5
-	end)
-
-	window3:Toggle("Spin Slot 1",false,function(bool)
-		StartSpinElm1 = bool
-		if StartSpinElm1 == true then
-			if AutoF9 == true then
-				game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
-			end
-			local spins = game.Players.LocalPlayer.statz.spins.Value
-			game:GetService('RunService').Stepped:connect(function()
-				if spins > 0 then
-					spins = game.Players.LocalPlayer.statz.spins.Value
-					elmvalue1 = game.Players.LocalPlayer.statz.main.element1.Value
-					elmvalue2 = game.Players.LocalPlayer.statz.main.element2.Value
-					elmvalue3 = game.Players.LocalPlayer.statz.main.element3.Value
-					elmvalue4 = game.Players.LocalPlayer.statz.main.element4.Value
-					if StartSpinElm1 == true then
-						if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
-							game.Players.LocalPlayer.startevent:FireServer("spin", "element1")
-							print("Rolled: " .. elmvalue1)
-							wait(1)
-						elseif elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 then
-
-						else
-							print("You have got: " .. elmvalue1)
-							notify("You have got: " .. elmvalue1)
-							if Autosave == true then
-								datasavedandyoucanredeemcodes = true
-								game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
-								wait(3)
-							end
-						end
-					end
-				else
-					if Autorejoin == true then
-						--player.statz.spins:Destroy()
-						game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
-						wait()
-						game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-					end
-				end
-			end)
-		else 
-		end
-	end)
-
-	window3:Toggle("Spin Slot 2",false,function(bool)
-		StartSpinElm2 = bool
-		if StartSpinElm2 == true then
-			if AutoF9 == true then
-				game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
-			end
-			local spins = game.Players.LocalPlayer.statz.spins.Value
-			game:GetService('RunService').Stepped:connect(function()
-				if spins > 0 then
-					spins = game.Players.LocalPlayer.statz.spins.Value
-					elmvalue1 = game.Players.LocalPlayer.statz.main.element1.Value
-					elmvalue2 = game.Players.LocalPlayer.statz.main.element2.Value
-					elmvalue3 = game.Players.LocalPlayer.statz.main.element3.Value
-					elmvalue4 = game.Players.LocalPlayer.statz.main.element4.Value						
-					if StartSpinElm2 == true then
-						if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
-							game.Players.LocalPlayer.startevent:FireServer("spin", "element2")
-							print("Rolled: " .. elmvalue2)
-							wait(1)
-						elseif elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 then
-
-						else
-							print("You have got: " .. elmvalue2)
-							notify("You have got: " .. elmvalue2)
-							if Autosave == true then
-								datasavedandyoucanredeemcodes = true
-								game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
-								wait(3)
-							end
-						end
-					end
-				else
-					if Autorejoin == true then
-						--player.statz.spins:Destroy()
-						game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
-						wait()
-						game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-					end
-				end
-			end)
-		else 
-		end
-	end)
-
-	if game.Players.LocalPlayer.gamepasses:FindFirstChild("element3") then
-		window3:Toggle("Spin Slot 3",false,function(bool)
-			StartSpinElm3 = bool
-			if StartSpinElm3 == true then
-				if AutoF9 == true then
-					game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
-				end
-				local spins = game.Players.LocalPlayer.statz.spins.Value
-				game:GetService('RunService').Stepped:connect(function()
-					if spins > 0 then
-						spins = game.Players.LocalPlayer.statz.spins.Value
-						elmvalue1 = game.Players.LocalPlayer.statz.main.element1.Value
-						elmvalue2 = game.Players.LocalPlayer.statz.main.element2.Value
-						elmvalue3 = game.Players.LocalPlayer.statz.main.element3.Value
-						elmvalue4 = game.Players.LocalPlayer.statz.main.element4.Value							
-						if StartSpinElm3 == true then
-							if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
-								game.Players.LocalPlayer.startevent:FireServer("spin", "element3")
-								print("Rolled: " .. elmvalue3)
-								wait(1)
-							elseif elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 then
-
-							else
-								print("You have got: " .. elmvalue3)
-								notify("You have got: " .. elmvalue3)
-								if Autosave == true then
-									datasavedandyoucanredeemcodes = true
-									game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
-									wait(3)
-								end
-							end
-						end
-					else
-						if Autorejoin == true then
-							--player.statz.spins:Destroy()
-							game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
-							wait()
-							game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-						end
-					end
-				end)
-			else 
-			end
-		end)
-	end
-
-	if game.Players.LocalPlayer.gamepasses:FindFirstChild("element4") then
-		window3:Toggle("Spin Slot 4",false,function(bool)
-			StartSpinElm4 = bool
-			if StartSpinElm4 == true then
-				if AutoF9 == true then
-					game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
-				end
-				local spins = game.Players.LocalPlayer.statz.spins.Value
-				game:GetService('RunService').Stepped:connect(function()
-					if spins > 0 then
-						spins = game.Players.LocalPlayer.statz.spins.Value
-						elmvalue1 = game.Players.LocalPlayer.statz.main.element1.Value
-						elmvalue2 = game.Players.LocalPlayer.statz.main.element2.Value
-						elmvalue3 = game.Players.LocalPlayer.statz.main.element3.Value
-						elmvalue4 = game.Players.LocalPlayer.statz.main.element4.Value							
-						if StartSpinElm4 == true then
-							if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
-								game.Players.LocalPlayer.startevent:FireServer("spin", "element4")
-								print("Rolled: " .. elmvalue4)
-								wait(1)
-							elseif elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
-
-							else
-								print("You have got: " .. elmvalue4)
-								notify("You have got: " .. elmvalue4)
-								if Autosave == true then
-									datasavedandyoucanredeemcodes = true
-									game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
-									wait(3)
-								end
-							end
-						end
-					else
-						if Autorejoin == true then
-							--player.statz.spins:Destroy()
-							game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
-							wait()
-							game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-						end
-					end
-				end)
-			else 
-			end
-		end)
-	end
-
-	window4:Label("Choose your Kenjutsu and press SPIN", Color3.fromRGB(127, 143, 166))
-
-	local ken = {}
-	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu.ALLKENSTYLES:GetChildren()) do
-		if v:FindFirstChild("BREATHINGSTYLE") and not v:FindFirstChild("limited") then
-			table.insert(ken, v.Name)
-		end
-	end
-
-	local kenselect1
-		window4:Dropdown("Kenjutsu Choice 1",ken,function(KEN1)
-		print("Selected: " .. KEN1)
-		notify("Selected: " .. KEN1)
-		kenselect1 = KEN1
-	end)
-	local kenselect2
-		window4:Dropdown("Kenjutsu Choice 2",ken,function(KEN2)
-		print("Selected: " .. KEN2)
-		notify("Selected: " .. KEN2)
-		kenselect2 = KEN2
-	end)
-	local kenselect3
-		window4:Dropdown("Kenjutsu Choice 3",ken,function(KEN3)
-		print("Selected: " .. KEN3)
-		notify("Selected: " .. KEN3)
-		kenselect2 = KEN3
-	end)
-
-	window4:Toggle("Spin Kenjutsu",false,function(bool)
-		StartSpinKen = bool
-		if StartSpinKen == true then
-			if AutoF9 == true then
-				game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
-			end
-			local spins = game.Players.LocalPlayer.statz.spins.Value
-			game:GetService('RunService').Stepped:connect(function()
-				if spins > 0 then
-					spins = game.Players.LocalPlayer.statz.spins.Value
-					kenvalue = game.Players.LocalPlayer.statz.breathingstyle.Value
-					if StartSpinKen == true then
-						if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 then
-							local args = {[1] = "spinBREATHING"}
-							game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-							print("Rolled: " .. kenvalue)
-							notify("Rolled: " .. kenvalue)
-							wait(1)
-						else
-							print("You have got: " .. kenvalue)
-							notify("You have got: " .. kenvalue)
-							if Autosave == true then
-								datasavedandyoucanredeemcodes = true
-								game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
-								wait(3)
-							end
-						end
-					end
-				else
-					if Autorejoin == true then
-						--player.statz.spins:Destroy()
-						game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
-						wait()
-						game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-					end
-				end
-			end)
-		else 
-		end
-	end)
-
-	window5:Label("Show/Hide GUI: Right Ctrl", Color3.fromRGB(127, 143, 166))
-
-	window5:Label("Made by NoobieDoge", Color3.fromRGB(127, 143, 166))
-	window5:Label("https://discord.gg/P2CeRjvTDt", Color3.fromRGB(127, 143, 166))
-	window5:Button("Copy Discord Link",function()
-		setclipboard("https://discord.gg/P2CeRjvTDt")
+		TextButton_2.MouseButton1Click:connect(cancelReset)	
+	else
+		game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
 		wait()
-		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "Discord link copied!",Duration = 1, })
+		game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
+	end
+end)
+
+window1:Button("Save Spins Data",function()
+	local player = game.Players.LocalPlayer
+	local ScreenGuiK = Instance.new("ScreenGui")
+	local FrameK = Instance.new("Frame")
+	local TextLabel = Instance.new("TextLabel")
+	local TextButton = Instance.new("TextButton")
+	local TextButton_2 = Instance.new("TextButton")
+
+	ScreenGuiK.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+	FrameK.Parent = ScreenGuiK
+	FrameK.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	FrameK.Position = UDim2.new(0.005, 0, 0.7, 0)
+	FrameK.Size = UDim2.new(0, 200, 0, 120)
+
+	TextLabel.Parent = FrameK
+	TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+	TextLabel.Size = UDim2.new(0, 220, 0, 60)
+	TextLabel.Font = Enum.Font.TitilliumWeb
+	TextLabel.Text = "Are you sure you want to keep the current spins data?"
+	TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+	TextLabel.TextScaled = false
+	TextLabel.TextSize = 25.000
+	TextLabel.TextWrapped = true
+
+	TextButton.Parent = FrameK
+	TextButton.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+	TextButton.Position = UDim2.new(0.55, 0, 0.500000006, 0)
+	TextButton.Size = UDim2.new(0, 110, 0, 60)
+	TextButton.Font = Enum.Font.TitilliumWeb
+	TextButton.Text = "Yes"
+	TextButton.TextColor3 = Color3.fromRGB(200, 200, 200)
+	TextButton.TextScaled = true
+	TextButton.TextSize = 40.000
+	TextButton.TextWrapped = true
+
+	function OKKeep()
+		for i,v in pairs(player.PlayerGui:GetChildren()) do
+			if v.Name == "ScreenGui" then
+				v:Destroy()
+			end
+		end
+		game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
+		wait()
+		datasavedandyoucanredeemcodes = true
+	end
+	TextButton.MouseButton1Click:connect(OKKeep)
+
+	TextButton_2.Parent = FrameK
+	TextButton_2.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+	TextButton_2.Position = UDim2.new(0, 0, 0.500000006, 0)
+	TextButton_2.Size = UDim2.new(0, 110, 0, 60)
+	TextButton_2.Font = Enum.Font.TitilliumWeb
+	TextButton_2.Text = "No"
+	TextButton_2.TextColor3 = Color3.fromRGB(200, 200, 200)
+	TextButton_2.TextScaled = true
+	TextButton_2.TextSize = 40.000
+	TextButton_2.TextWrapped = true
+
+	function cancelKeep()
+		for i,v in pairs(player.PlayerGui:GetChildren()) do
+			if v.Name == "ScreenGui" then
+				v:Destroy()
+			end
+		end
+	end
+	TextButton_2.MouseButton1Click:connect(cancelKeep)	
+end)
+
+window1:Label("-----------------------------------------------", Color3.fromRGB(127, 143, 166)) 
+
+window1:Toggle("Auto Rejoin",true,function(bool)
+	Autorejoin = bool
+end)
+
+window1:Toggle("Auto Save",false,function(bool)
+	Autosave = bool
+end)
+
+window1:Toggle("Auto Turn on F9",false,function(bool)
+	AutoF9 = bool
+end)
+
+local kgs = {}
+for i,v in pairs(game:GetService("Workspace").RAREKGS:GetChildren()) do
+	if v.tim.Value ~= "N/A" then
+		table.insert(kgs, v.Name)
+	end
+end
+for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
+	if (v:FindFirstChild("KG") and not v:FindFirstChild("cantspin") and not v:FindFirstChild("limited")) then
+		table.insert(kgs, v.Name)
+	end
+end
+
+window2:Label("Choose your BL and press SPIN", Color3.fromRGB(127, 143, 166))
+
+local a1
+window2:Dropdown("Bloodline Choice 1",kgs,function(KG1)
+	print("Selected: " .. KG1)
+	notify("1st Bloodline Selected: " .. KG1)
+	a1 = KG1
+end)
+local a2
+window2:Dropdown("Bloodline Choice 2",kgs,function(KG2)
+	print("Selected: " .. KG2)		
+	notify("2nd Bloodline Selected: " .. KG2)
+	a2 = KG2
+end)
+local a3
+window2:Dropdown("Bloodline Choice 3",kgs,function(KG3)
+	print("Selected: " .. KG3)
+	notify("3rd Bloodline Selected: " .. KG3)
+	a3 = KG3
+end)
+local a4
+window2:Dropdown("Bloodline Choice 4",kgs,function(KG4)
+	print("Selected: " .. KG4)
+	notify("4th Bloodline Selected: " .. KG4)
+	a4 = KG4
+end)
+local a5
+window2:Dropdown("Bloodline Choice 5",kgs,function(KG5)
+	print("Selected: " .. KG5)
+	notify("5th Bloodline Selected: " .. KG5)
+	a5 = KG5
+end)
+
+window2:Toggle("Spin Slot 1",false,function(bool)
+	AutoSpinBL1 = bool
+	if AutoSpinBL1 == true then
+		if AutoF9 == true then
+			game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
+		end
+		local spins = game.Players.LocalPlayer.statz.spins.Value
+		game:GetService('RunService').Stepped:connect(function()
+			if spins > 0 then
+				spins = game.Players.LocalPlayer.statz.spins.Value
+				kgvalue1 = game.Players.LocalPlayer.statz.main.kg1.Value
+				kgvalue2 = game.Players.LocalPlayer.statz.main.kg2.Value
+				kgvalue3 = game.Players.LocalPlayer.statz.main.kg3.Value
+				kgvalue4 = game.Players.LocalPlayer.statz.main.kg4.Value
+				if AutoSpinBL1 == true then
+					if kgvalue1 ~= a1 and kgvalue1 ~= a2 and kgvalue1 ~= a3 and kgvalue1 ~= a4 and kgvalue1 ~= a5 and kgvalue2 ~= a1 and kgvalue2 ~= a2 and kgvalue2 ~= a3 and kgvalue2 ~= a4 and kgvalue2 ~= a5 and kgvalue3 ~= a1 and kgvalue3 ~= a2 and kgvalue3 ~= a3 and kgvalue3 ~= a4 and kgvalue3 ~= a5 and kgvalue4 ~= a1 and kgvalue4 ~= a2 and kgvalue4 ~= a3 and kgvalue4 ~= a4 and kgvalue4 ~= a5 then
+						game.Players.LocalPlayer.startevent:FireServer("spin", "kg1")
+						print("Rolled: " .. kgvalue1)
+						wait(1)
+					elseif kgvalue1 ~= a1 and kgvalue1 ~= a2 and kgvalue1 ~= a3 and kgvalue1 ~= a4 and kgvalue1 ~= a5 then
+
+					else
+						print("You have got: " .. kgvalue1)
+						notify("You have got: " .. kgvalue1)
+						if Autosave == true then
+							datasavedandyoucanredeemcodes = true
+						end
+					end
+				end
+			else
+				if Autorejoin == true then
+					--player.statz.spins:Destroy()
+					game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+					wait()
+					game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+				end
+			end
+		end)
+	else
+	end
+end)
+
+window2:Toggle("Spin Slot 2",false,function(bool)
+	AutoSpinBL2 = bool
+	if AutoSpinBL2 == true then
+		if AutoF9 == true then
+			game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
+		end
+		local spins = game.Players.LocalPlayer.statz.spins.Value
+		game:GetService('RunService').Stepped:connect(function()
+			if spins > 0 then
+				spins = game.Players.LocalPlayer.statz.spins.Value
+				kgvalue1 = game.Players.LocalPlayer.statz.main.kg1.Value
+				kgvalue2 = game.Players.LocalPlayer.statz.main.kg2.Value
+				kgvalue3 = game.Players.LocalPlayer.statz.main.kg3.Value
+				kgvalue4 = game.Players.LocalPlayer.statz.main.kg4.Value						
+				if AutoSpinBL2 == true then
+					if kgvalue1 ~= a1 and kgvalue1 ~= a2 and kgvalue1 ~= a3 and kgvalue1 ~= a4 and kgvalue1 ~= a5 and kgvalue2 ~= a1 and kgvalue2 ~= a2 and kgvalue2 ~= a3 and kgvalue2 ~= a4 and kgvalue2 ~= a5 and kgvalue3 ~= a1 and kgvalue3 ~= a2 and kgvalue3 ~= a3 and kgvalue3 ~= a4 and kgvalue3 ~= a5 and kgvalue4 ~= a1 and kgvalue4 ~= a2 and kgvalue4 ~= a3 and kgvalue4 ~= a4 and kgvalue4 ~= a5 then
+						game.Players.LocalPlayer.startevent:FireServer("spin", "kg2")
+						print("Rolled: " .. kgvalue2)
+						wait(1)
+					elseif kgvalue2 ~= a1 and kgvalue2 ~= a2 and kgvalue2 ~= a3 and kgvalue2 ~= a4 and kgvalue2 ~= a5 then
+
+					else
+						print("You have got: " .. kgvalue2)
+						notify("You have got: " .. kgvalue2)
+						if Autosave == true then
+							datasavedandyoucanredeemcodes = true
+						end
+					end
+				end
+			else
+				if Autorejoin == true then
+					--player.statz.spins:Destroy()
+					game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+					wait()
+					game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+				end
+			end
+		end)
+	else
+	end
+end)
+
+if game.Players.LocalPlayer.gamepasses:FindFirstChild("genkai3") then
+	window2:Toggle("Spin Slot 3",false,function(bool)
+		AutoSpinBL3 = bool
+		if AutoSpinBL3 == true then
+			if AutoF9 == true then
+				game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
+			end
+			local spins = game.Players.LocalPlayer.statz.spins.Value
+			game:GetService('RunService').Stepped:connect(function()
+				if spins > 0 then
+					spins = game.Players.LocalPlayer.statz.spins.Value
+					kgvalue1 = game.Players.LocalPlayer.statz.main.kg1.Value
+					kgvalue2 = game.Players.LocalPlayer.statz.main.kg2.Value
+					kgvalue3 = game.Players.LocalPlayer.statz.main.kg3.Value
+					kgvalue4 = game.Players.LocalPlayer.statz.main.kg4.Value								
+					if AutoSpinBL3 == true then
+						if kgvalue1 ~= a1 and kgvalue1 ~= a2 and kgvalue1 ~= a3 and kgvalue1 ~= a4 and kgvalue1 ~= a5 and kgvalue2 ~= a1 and kgvalue2 ~= a2 and kgvalue2 ~= a3 and kgvalue2 ~= a4 and kgvalue2 ~= a5 and kgvalue3 ~= a1 and kgvalue3 ~= a2 and kgvalue3 ~= a3 and kgvalue3 ~= a4 and kgvalue3 ~= a5 and kgvalue4 ~= a1 and kgvalue4 ~= a2 and kgvalue4 ~= a3 and kgvalue4 ~= a4 and kgvalue4 ~= a5 then
+							game.Players.LocalPlayer.startevent:FireServer("spin", "kg3")
+							print("Rolled: " .. kgvalue3)
+							wait(1)
+						elseif kgvalue3 ~= a1 and kgvalue3 ~= a2 and kgvalue3 ~= a3 and kgvalue3 ~= a4 and kgvalue3 ~= a5 then
+
+						else
+							print("You have got: " .. kgvalue3)
+							notify("You have got: " .. kgvalue3)
+							if Autosave == true then
+								datasavedandyoucanredeemcodes = true
+							end
+						end
+					end
+				else
+					if Autorejoin == true then
+						--player.statz.spins:Destroy()
+						game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+						wait()
+						game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+					end
+				end
+			end)
+		else
+		end
 	end)
+end
+
+if game.Players.LocalPlayer.gamepasses:FindFirstChild("genkai4") then
+	window2:Toggle("Spin Slot 4",false,function(bool)
+		AutoSpinBL4 = bool
+		if AutoSpinBL4 == true then
+			if AutoF9 == true then
+				game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
+			end
+			local spins = game.Players.LocalPlayer.statz.spins.Value
+			game:GetService('RunService').Stepped:connect(function()
+				if spins > 0 then
+					spins = game.Players.LocalPlayer.statz.spins.Value
+					kgvalue1 = game.Players.LocalPlayer.statz.main.kg1.Value
+					kgvalue2 = game.Players.LocalPlayer.statz.main.kg2.Value
+					kgvalue3 = game.Players.LocalPlayer.statz.main.kg3.Value
+					kgvalue4 = game.Players.LocalPlayer.statz.main.kg4.Value							
+					if AutoSpinBL4 == true then
+						if kgvalue1 ~= a1 and kgvalue1 ~= a2 and kgvalue1 ~= a3 and kgvalue1 ~= a4 and kgvalue1 ~= a5 and kgvalue2 ~= a1 and kgvalue2 ~= a2 and kgvalue2 ~= a3 and kgvalue2 ~= a4 and kgvalue2 ~= a5 and kgvalue3 ~= a1 and kgvalue3 ~= a2 and kgvalue3 ~= a3 and kgvalue3 ~= a4 and kgvalue3 ~= a5 and kgvalue4 ~= a1 and kgvalue4 ~= a2 and kgvalue4 ~= a3 and kgvalue4 ~= a4 and kgvalue4 ~= a5 then
+							game.Players.LocalPlayer.startevent:FireServer("spin", "kg4")
+							print("Rolled: " .. kgvalue4)
+							wait(1)
+						elseif kgvalue4 ~= a1 and kgvalue4 ~= a2 and kgvalue4 ~= a3 and kgvalue4 ~= a4 and kgvalue4 ~= a5 then
+
+						else
+							print("You have got: " .. kgvalue4)
+							notify("You have got: " .. kgvalue4)
+							if Autosave == true then
+								datasavedandyoucanredeemcodes = true
+							end
+						end
+					end
+				else
+					if Autorejoin == true then
+						--player.statz.spins:Destroy()
+						game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+						wait()
+						game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+					end
+				end
+			end)
+		else
+		end
+	end)
+end
+
+local elm = {}
+for i,v in pairs(game:GetService("Workspace").RAREKGS:GetChildren()) do
+	if v.tim.Value ~= "N/A" then
+		table.insert(elm, v.Name)
+	end
+end
+for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
+	if v:FindFirstChild("ELEMENT") and not v:FindFirstChild("limited") then
+		table.insert(elm, v.Name)
+	end
+end
+
+window3:Label("Choose your Element and press SPIN", Color3.fromRGB(127, 143, 166))
+
+local a1
+window3:Dropdown("Element Choice 1",elm,function(KG1)
+	print("Selected: " .. KG1)
+	notify("1st Element Selected: " .. KG1)
+	a1 = KG1
+end)
+local a2
+window3:Dropdown("Element Choice 2",elm,function(KG2)
+	print("Selected: " .. KG2)
+	notify("2nd Element Selected: " .. KG2)
+	a2 = KG2
+end)
+local a3
+window3:Dropdown("Element Choice 3",elm,function(KG3)
+	print("Selected: " .. KG3)
+	notify("3rd Element Selected: " .. KG3)
+	a3 = KG3
+end)
+local a4
+window3:Dropdown("Element Choice 4",elm,function(KG4)
+	print("Selected: " .. KG4)
+	notify("4th Element Selected: " .. KG4)
+	a4 = KG4
+end)
+local a5
+window3:Dropdown("Element Choice 5",elm,function(KG5)
+	print("Selected: " .. KG5)
+	notify("5th Element Selected: " .. KG5)
+	a5 = KG5
+end)
+
+window3:Toggle("Spin Slot 1",false,function(bool)
+	StartSpinElm1 = bool
+	if StartSpinElm1 == true then
+		if AutoF9 == true then
+			game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
+		end
+		local spins = game.Players.LocalPlayer.statz.spins.Value
+		game:GetService('RunService').Stepped:connect(function()
+			if spins > 0 then
+				spins = game.Players.LocalPlayer.statz.spins.Value
+				elmvalue1 = game.Players.LocalPlayer.statz.main.element1.Value
+				elmvalue2 = game.Players.LocalPlayer.statz.main.element2.Value
+				elmvalue3 = game.Players.LocalPlayer.statz.main.element3.Value
+				elmvalue4 = game.Players.LocalPlayer.statz.main.element4.Value
+				if StartSpinElm1 == true then
+					if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
+						game.Players.LocalPlayer.startevent:FireServer("spin", "element1")
+						print("Rolled: " .. elmvalue1)
+						wait(1)
+					elseif elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 then
+
+					else
+						print("You have got: " .. elmvalue1)
+						notify("You have got: " .. elmvalue1)
+						if Autosave == true then
+							datasavedandyoucanredeemcodes = true
+						end
+					end
+				end
+			else
+				if Autorejoin == true then
+					--player.statz.spins:Destroy()
+					game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+					wait()
+					game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+				end
+			end
+		end)
+	else 
+	end
+end)
+
+window3:Toggle("Spin Slot 2",false,function(bool)
+	StartSpinElm2 = bool
+	if StartSpinElm2 == true then
+		if AutoF9 == true then
+			game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
+		end
+		local spins = game.Players.LocalPlayer.statz.spins.Value
+		game:GetService('RunService').Stepped:connect(function()
+			if spins > 0 then
+				spins = game.Players.LocalPlayer.statz.spins.Value
+				elmvalue1 = game.Players.LocalPlayer.statz.main.element1.Value
+				elmvalue2 = game.Players.LocalPlayer.statz.main.element2.Value
+				elmvalue3 = game.Players.LocalPlayer.statz.main.element3.Value
+				elmvalue4 = game.Players.LocalPlayer.statz.main.element4.Value						
+				if StartSpinElm2 == true then
+					if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
+						game.Players.LocalPlayer.startevent:FireServer("spin", "element2")
+						print("Rolled: " .. elmvalue2)
+						wait(1)
+					elseif elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 then
+
+					else
+						print("You have got: " .. elmvalue2)
+						notify("You have got: " .. elmvalue2)
+						if Autosave == true then
+							datasavedandyoucanredeemcodes = true
+						end
+					end
+				end
+			else
+				if Autorejoin == true then
+					--player.statz.spins:Destroy()
+					game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+					wait()
+					game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+				end
+			end
+		end)
+	else 
+	end
+end)
+
+if game.Players.LocalPlayer.gamepasses:FindFirstChild("element3") then
+	window3:Toggle("Spin Slot 3",false,function(bool)
+		StartSpinElm3 = bool
+		if StartSpinElm3 == true then
+			if AutoF9 == true then
+				game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
+			end
+			local spins = game.Players.LocalPlayer.statz.spins.Value
+			game:GetService('RunService').Stepped:connect(function()
+				if spins > 0 then
+					spins = game.Players.LocalPlayer.statz.spins.Value
+					elmvalue1 = game.Players.LocalPlayer.statz.main.element1.Value
+					elmvalue2 = game.Players.LocalPlayer.statz.main.element2.Value
+					elmvalue3 = game.Players.LocalPlayer.statz.main.element3.Value
+					elmvalue4 = game.Players.LocalPlayer.statz.main.element4.Value							
+					if StartSpinElm3 == true then
+						if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
+							game.Players.LocalPlayer.startevent:FireServer("spin", "element3")
+							print("Rolled: " .. elmvalue3)
+							wait(1)
+						elseif elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 then
+
+						else
+							print("You have got: " .. elmvalue3)
+							notify("You have got: " .. elmvalue3)
+							if Autosave == true then
+								datasavedandyoucanredeemcodes = true
+							end
+						end
+					end
+				else
+					if Autorejoin == true then
+						--player.statz.spins:Destroy()
+						game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+						wait()
+						game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+					end
+				end
+			end)
+		else 
+		end
+	end)
+end
+
+if game.Players.LocalPlayer.gamepasses:FindFirstChild("element4") then
+	window3:Toggle("Spin Slot 4",false,function(bool)
+		StartSpinElm4 = bool
+		if StartSpinElm4 == true then
+			if AutoF9 == true then
+				game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
+			end
+			local spins = game.Players.LocalPlayer.statz.spins.Value
+			game:GetService('RunService').Stepped:connect(function()
+				if spins > 0 then
+					spins = game.Players.LocalPlayer.statz.spins.Value
+					elmvalue1 = game.Players.LocalPlayer.statz.main.element1.Value
+					elmvalue2 = game.Players.LocalPlayer.statz.main.element2.Value
+					elmvalue3 = game.Players.LocalPlayer.statz.main.element3.Value
+					elmvalue4 = game.Players.LocalPlayer.statz.main.element4.Value							
+					if StartSpinElm4 == true then
+						if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
+							game.Players.LocalPlayer.startevent:FireServer("spin", "element4")
+							print("Rolled: " .. elmvalue4)
+							wait(1)
+						elseif elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
+
+						else
+							print("You have got: " .. elmvalue4)
+							notify("You have got: " .. elmvalue4)
+							if Autosave == true then
+								datasavedandyoucanredeemcodes = true
+							end
+						end
+					end
+				else
+					if Autorejoin == true then
+						--player.statz.spins:Destroy()
+						game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+						wait()
+						game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+					end
+				end
+			end)
+		else 
+		end
+	end)
+end
+
+window4:Label("Choose your Kenjutsu and press SPIN", Color3.fromRGB(127, 143, 166))
+
+local ken = {}
+for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu.ALLKENSTYLES:GetChildren()) do
+	if v:FindFirstChild("BREATHINGSTYLE") and not v:FindFirstChild("limited") then
+		table.insert(ken, v.Name)
+	end
+end
+
+local kenselect1
+	window4:Dropdown("Kenjutsu Choice 1",ken,function(KEN1)
+	print("Selected: " .. KEN1)
+	notify("Selected: " .. KEN1)
+	kenselect1 = KEN1
+end)
+local kenselect2
+	window4:Dropdown("Kenjutsu Choice 2",ken,function(KEN2)
+	print("Selected: " .. KEN2)
+	notify("Selected: " .. KEN2)
+	kenselect2 = KEN2
+end)
+local kenselect3
+	window4:Dropdown("Kenjutsu Choice 3",ken,function(KEN3)
+	print("Selected: " .. KEN3)
+	notify("Selected: " .. KEN3)
+	kenselect2 = KEN3
+end)
+
+window4:Toggle("Spin Kenjutsu",false,function(bool)
+	StartSpinKen = bool
+	if StartSpinKen == true then
+		if AutoF9 == true then
+			game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
+		end
+		local spins = game.Players.LocalPlayer.statz.spins.Value
+		game:GetService('RunService').Stepped:connect(function()
+			if spins > 0 then
+				spins = game.Players.LocalPlayer.statz.spins.Value
+				kenvalue = game.Players.LocalPlayer.statz.breathingstyle.Value
+				if StartSpinKen == true then
+					if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 then
+						local args = {[1] = "spinBREATHING"}
+						game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+						print("Rolled: " .. kenvalue)
+						notify("Rolled: " .. kenvalue)
+						wait(1)
+					else
+						print("You have got: " .. kenvalue)
+						notify("You have got: " .. kenvalue)
+						if Autosave == true then
+							datasavedandyoucanredeemcodes = true
+						end
+					end
+				end
+			else
+				if Autorejoin == true then
+					--player.statz.spins:Destroy()
+					game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+					wait()
+					game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+				end
+			end
+		end)
+	else 
+	end
+end)
+
+window5:Label("Show/Hide GUI: Right Ctrl", Color3.fromRGB(127, 143, 166))
+
+window5:Label("Made by NoobieDoge", Color3.fromRGB(127, 143, 166))
+window5:Label("https://discord.gg/P2CeRjvTDt", Color3.fromRGB(127, 143, 166))
+window5:Button("Copy Discord Link",function()
+	setclipboard("https://discord.gg/P2CeRjvTDt")
+	wait()
+	game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "Discord link copied!",Duration = 1, })
+end)
 
 game:GetService('RunService').Stepped:connect(function()
 	if datasavedandyoucanredeemcodes == true then
@@ -877,14 +852,39 @@ game:GetService('RunService').Stepped:connect(function()
 		StartSpinElm3 = false
 		StartSpinElm4 = false
 		StartSpinKen = false
+		datasavedandyoucanredeemcodes = false
+		game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
+		notify("You will be teleported to My Home in order to save data")
+		wait(1)
+		local args = {[1] = "arenateleport",[2] = 5451410109}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
 	else
 		game.Players.LocalPlayer.PlayerGui.Main.Customization.Codes.Text = [[WARNING:
 		DO NOT REDEEM CODES BEFORE SAVING DATA]]
 	end
 end)
+
+--some functions that are important af
 Autorejoin = true
 game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1.hair.color.Visible = false
+game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1.hair.arrowleft.Visible = false
+game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1.hair.arrowright.Visible = false
+game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1.band.Visible = false
+game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1.outfit.Visible = false
+game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1.shoe.Visible = false
+game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1.beard.Visible = false
+game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1.face.Visible = false
+game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame2.Visible = false
+game:GetService('RunService').Stepped:connect(function()
+	for i,v in pairs(game.Players.LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1:GetChildren()) do
+		if v:FindFirstChild("text") then
+			v.text.Text = "You cannot customize character while inf spin"
+		end
+	end
+end)
 
+--Random bullshit lol
 for i,v in pairs(game.Workspace.Camera.startup:GetChildren()) do
 	if v.Name == "" and v.Model.hair.BrickColor == BrickColor.new(0,255,0) then
 		print("")
