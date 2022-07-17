@@ -326,10 +326,6 @@ window1:Toggle("Auto Save",false,function(bool)
 	Autosave = bool
 end)
 
-window1:Toggle("Auto Turn on F9",false,function(bool)
-	AutoF9 = bool
-end)
-
 local kgs = {}
 for i,v in pairs(game:GetService("Workspace").RAREKGS:GetChildren()) do
 	if v.tim.Value ~= "N/A" then
@@ -378,9 +374,6 @@ end)
 window2:Toggle("Spin Slot 1",false,function(bool)
 	AutoSpinBL1 = bool
 	if AutoSpinBL1 == true then
-		if AutoF9 == true then
-			game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
-		end
 		local spins = game.Players.LocalPlayer.statz.spins.Value
 		game:GetService('RunService').Stepped:connect(function()
 			if spins > 0 then
@@ -395,7 +388,9 @@ window2:Toggle("Spin Slot 1",false,function(bool)
 						print("Rolled: " .. kgvalue1)
 						wait(1)
 					elseif kgvalue1 ~= a1 and kgvalue1 ~= a2 and kgvalue1 ~= a3 and kgvalue1 ~= a4 and kgvalue1 ~= a5 then
-
+						if Autosave == true then
+							datasavedandyoucanredeemcodes = true
+						end
 					else
 						print("You have got: " .. kgvalue1)
 						notify("You have got: " .. kgvalue1)
@@ -420,9 +415,6 @@ end)
 window2:Toggle("Spin Slot 2",false,function(bool)
 	AutoSpinBL2 = bool
 	if AutoSpinBL2 == true then
-		if AutoF9 == true then
-			game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
-		end
 		local spins = game.Players.LocalPlayer.statz.spins.Value
 		game:GetService('RunService').Stepped:connect(function()
 			if spins > 0 then
@@ -437,7 +429,9 @@ window2:Toggle("Spin Slot 2",false,function(bool)
 						print("Rolled: " .. kgvalue2)
 						wait(1)
 					elseif kgvalue2 ~= a1 and kgvalue2 ~= a2 and kgvalue2 ~= a3 and kgvalue2 ~= a4 and kgvalue2 ~= a5 then
-
+						if Autosave == true then
+							datasavedandyoucanredeemcodes = true
+						end
 					else
 						print("You have got: " .. kgvalue2)
 						notify("You have got: " .. kgvalue2)
@@ -463,9 +457,6 @@ if game.Players.LocalPlayer.gamepasses:FindFirstChild("genkai3") then
 	window2:Toggle("Spin Slot 3",false,function(bool)
 		AutoSpinBL3 = bool
 		if AutoSpinBL3 == true then
-			if AutoF9 == true then
-				game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
-			end
 			local spins = game.Players.LocalPlayer.statz.spins.Value
 			game:GetService('RunService').Stepped:connect(function()
 				if spins > 0 then
@@ -480,7 +471,9 @@ if game.Players.LocalPlayer.gamepasses:FindFirstChild("genkai3") then
 							print("Rolled: " .. kgvalue3)
 							wait(1)
 						elseif kgvalue3 ~= a1 and kgvalue3 ~= a2 and kgvalue3 ~= a3 and kgvalue3 ~= a4 and kgvalue3 ~= a5 then
-
+							if Autosave == true then
+								datasavedandyoucanredeemcodes = true
+							end
 						else
 							print("You have got: " .. kgvalue3)
 							notify("You have got: " .. kgvalue3)
@@ -507,9 +500,6 @@ if game.Players.LocalPlayer.gamepasses:FindFirstChild("genkai4") then
 	window2:Toggle("Spin Slot 4",false,function(bool)
 		AutoSpinBL4 = bool
 		if AutoSpinBL4 == true then
-			if AutoF9 == true then
-				game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
-			end
 			local spins = game.Players.LocalPlayer.statz.spins.Value
 			game:GetService('RunService').Stepped:connect(function()
 				if spins > 0 then
@@ -524,7 +514,9 @@ if game.Players.LocalPlayer.gamepasses:FindFirstChild("genkai4") then
 							print("Rolled: " .. kgvalue4)
 							wait(1)
 						elseif kgvalue4 ~= a1 and kgvalue4 ~= a2 and kgvalue4 ~= a3 and kgvalue4 ~= a4 and kgvalue4 ~= a5 then
-
+							if Autosave == true then
+								datasavedandyoucanredeemcodes = true
+							end
 						else
 							print("You have got: " .. kgvalue4)
 							notify("You have got: " .. kgvalue4)
@@ -595,9 +587,6 @@ end)
 window3:Toggle("Spin Slot 1",false,function(bool)
 	StartSpinElm1 = bool
 	if StartSpinElm1 == true then
-		if AutoF9 == true then
-			game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
-		end
 		local spins = game.Players.LocalPlayer.statz.spins.Value
 		game:GetService('RunService').Stepped:connect(function()
 			if spins > 0 then
@@ -612,7 +601,9 @@ window3:Toggle("Spin Slot 1",false,function(bool)
 						print("Rolled: " .. elmvalue1)
 						wait(1)
 					elseif elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 then
-
+						if Autosave == true then
+							datasavedandyoucanredeemcodes = true
+						end
 					else
 						print("You have got: " .. elmvalue1)
 						notify("You have got: " .. elmvalue1)
@@ -637,9 +628,6 @@ end)
 window3:Toggle("Spin Slot 2",false,function(bool)
 	StartSpinElm2 = bool
 	if StartSpinElm2 == true then
-		if AutoF9 == true then
-			game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
-		end
 		local spins = game.Players.LocalPlayer.statz.spins.Value
 		game:GetService('RunService').Stepped:connect(function()
 			if spins > 0 then
@@ -654,7 +642,9 @@ window3:Toggle("Spin Slot 2",false,function(bool)
 						print("Rolled: " .. elmvalue2)
 						wait(1)
 					elseif elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 then
-
+						if Autosave == true then
+							datasavedandyoucanredeemcodes = true
+						end
 					else
 						print("You have got: " .. elmvalue2)
 						notify("You have got: " .. elmvalue2)
@@ -680,9 +670,6 @@ if game.Players.LocalPlayer.gamepasses:FindFirstChild("element3") then
 	window3:Toggle("Spin Slot 3",false,function(bool)
 		StartSpinElm3 = bool
 		if StartSpinElm3 == true then
-			if AutoF9 == true then
-				game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
-			end
 			local spins = game.Players.LocalPlayer.statz.spins.Value
 			game:GetService('RunService').Stepped:connect(function()
 				if spins > 0 then
@@ -697,7 +684,9 @@ if game.Players.LocalPlayer.gamepasses:FindFirstChild("element3") then
 							print("Rolled: " .. elmvalue3)
 							wait(1)
 						elseif elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 then
-
+							if Autosave == true then
+								datasavedandyoucanredeemcodes = true
+							end
 						else
 							print("You have got: " .. elmvalue3)
 							notify("You have got: " .. elmvalue3)
@@ -724,9 +713,6 @@ if game.Players.LocalPlayer.gamepasses:FindFirstChild("element4") then
 	window3:Toggle("Spin Slot 4",false,function(bool)
 		StartSpinElm4 = bool
 		if StartSpinElm4 == true then
-			if AutoF9 == true then
-				game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
-			end
 			local spins = game.Players.LocalPlayer.statz.spins.Value
 			game:GetService('RunService').Stepped:connect(function()
 				if spins > 0 then
@@ -741,7 +727,9 @@ if game.Players.LocalPlayer.gamepasses:FindFirstChild("element4") then
 							print("Rolled: " .. elmvalue4)
 							wait(1)
 						elseif elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
-
+							if Autosave == true then
+								datasavedandyoucanredeemcodes = true
+							end
 						else
 							print("You have got: " .. elmvalue4)
 							notify("You have got: " .. elmvalue4)
@@ -795,9 +783,6 @@ end)
 window4:Toggle("Spin Kenjutsu",false,function(bool)
 	StartSpinKen = bool
 	if StartSpinKen == true then
-		if AutoF9 == true then
-			game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
-		end
 		local spins = game.Players.LocalPlayer.statz.spins.Value
 		game:GetService('RunService').Stepped:connect(function()
 			if spins > 0 then
