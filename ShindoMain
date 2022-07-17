@@ -1269,9 +1269,29 @@ TextButton_3.MouseButton1Click:connect(function()
 	end)
 
 	if game.PlaceId == 5255237254 then
-		window2:Button("Tp to training pads",function()
+		window2:Button("Tp to training platform",function()
 			for i,v in pairs(workspace.training:GetChildren()) do
 				if v.Name == "Part" then
+					player.Character.HumanoidRootPart.CFrame=v.CFrame * CFrame.new(0, 1, 0)
+				end
+			end
+		end)
+	end
+
+	if game.PlaceId == 5824792748 then
+		window2:Button("Tp to training seats",function()
+			for i,v in pairs(workspace.training:GetChildren()) do
+				if v.Name == "MeshPart" then
+					player.Character.HumanoidRootPart.CFrame=v.CFrame * CFrame.new(0, 2, 0)
+				end
+			end
+		end)
+	end
+
+	if game.PlaceId == 6602103757 then
+		window2:Button("Tp to training pads",function()
+			for i,v in pairs(workspace.training:GetChildren()) do
+				if v.Name == "Meshes/mounty_Cube.003" then
 					player.Character.HumanoidRootPart.CFrame=v.CFrame * CFrame.new(0, 2, 0)
 				end
 			end
