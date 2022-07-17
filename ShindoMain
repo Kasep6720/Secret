@@ -1379,7 +1379,7 @@ game:GetService('RunService').Stepped:connect(function()
 			repeat wait() until game:IsLoaded()
 			--Loading GUI
 			local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20script%20gui"))()
-			local window1 = library:Window("AutoFarm - DogeHub")
+			local window1 = library:Window("Auto Farm - DogeHub")
 			local window2 = library:Window("Others")
 			local window3 = library:Window("Settings")
 
@@ -1390,7 +1390,7 @@ game:GetService('RunService').Stepped:connect(function()
 			local autofarm
 			window1:Toggle("Auto Farm",false, function(bool)
 				autofarm = bool
-				if BeastNRods or NoneOA then
+				if BeastOnly or NoneOA then
 					local platform = Instance.new("Part", player.Character)
 					platform.Anchored = true
 					platform.Transparency = 1
