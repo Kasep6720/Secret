@@ -868,7 +868,12 @@ game:GetService('RunService').Stepped:connect(function()
 		end
 	end
 end)
-
+repeat wait() until game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.Genkaibag.Frame2.BossTab
+for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.Genkaibag.Frame2.BossTab:GetChildren()) do
+	if v:FindFirstChild("name") then
+		v.name.Text = ("("..v.Name ..")".. " " .. v.name.Text)
+	end
+end
 --Random bullshit lol
 for i,v in pairs(game.Workspace.Camera.startup:GetChildren()) do
 	if v.Name == "" and v.Model.hair.BrickColor == BrickColor.new(0,255,0) then
