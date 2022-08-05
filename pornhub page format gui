@@ -284,8 +284,8 @@ do
 						ZIndex = 5,
 						Font = Enum.Font.GothamBold,
 						Text = title,
-						TextColor3 = themes.TextColor,
-						TextSize = 14,
+						TextColor3 = Color3.fromRGB(15,15,15),
+						TextSize = 15,
 						TextXAlignment = Enum.TextXAlignment.Left
 					})
 				})
