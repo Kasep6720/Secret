@@ -818,12 +818,12 @@ end)
 
 window5:Label("Show/Hide GUI: Right Ctrl", Color3.fromRGB(127, 143, 166))
 
-window5:Label("Made by NoobieDoge", Color3.fromRGB(127, 143, 166))
-window5:Label("https://discord.gg/P2CeRjvTDt", Color3.fromRGB(127, 143, 166))
+window5:Label("Made by NoobieDoge", true)
+window5:Label("https://discord.gg/P2CeRjvTDt", true)
 window5:Button("Copy Discord Link",function()
 	setclipboard("https://discord.gg/P2CeRjvTDt")
 	wait()
-	game:GetService("StarterGui"):SetCore("SendNotification",{Title = "DogeHub",Text = "Discord link copied!",Duration = 1, })
+	notify("Discord link copied to clipboard!")
 end)
 
 game:GetService('RunService').Stepped:connect(function()
@@ -849,57 +849,68 @@ game:GetService('RunService').Stepped:connect(function()
 	end
 end)
 
---some functions that are important af
-Autorejoin = true
-game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
-game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1.hair.color.Visible = false
-game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1.hair.arrowleft.Visible = false
-game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1.hair.arrowright.Visible = false
-game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1.band.Visible = false
-game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1.outfit.Visible = false
-game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1.shoe.Visible = false
-game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1.beard.Visible = false
-game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1.face.Visible = false
-game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame2.Visible = false
-game:GetService('RunService').Stepped:connect(function()
-	for i,v in pairs(game.Players.LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1:GetChildren()) do
-		if v:FindFirstChild("text") then
-			v.text.Text = "You cannot customize character while inf spin"
-		end
-	end
-end)
-repeat wait() until game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.Genkaibag.Frame2.BossTab
-for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.Genkaibag.Frame2.BossTab:GetChildren()) do
-	if v:FindFirstChild("name") then
-		v.name.Text = ("("..v.Name ..")".. " " .. v.name.Text)
-	end
-end
---Random bullshit lol
-for i,v in pairs(game.Workspace.Camera.startup:GetChildren()) do
-	if v.Name == "" and v.Model.hair.BrickColor == BrickColor.new(0,255,0) then
-		print("")
-	else
-		for i,v in pairs(game.Workspace.Camera.startup:GetChildren()) do
-			if v.Name == "" then 
-				v.Name = "NPC"
-			end
-		end
-		game.Workspace.Camera.startup.NPC.Name = "DioSenko"
-		game.Workspace.Camera.startup.NPC.Name = ""
-		game.Workspace.Camera.startup.NPC.Name = "Narumaki"
-		game:GetService("Workspace").Camera.startup.DioSenko.Model.hair.BrickColor = BrickColor.new(0,255,0)
-		game:GetService("Workspace").Camera.startup.DioSenko.Model.hair.Material = Enum.Material.Neon
-		game:GetService("Workspace").Camera.startup.DioSenko.Head.Decal.Texture = [[rbxassetid://9792123944]]
-		game:GetService("Workspace").Camera.startup.DioSenko.Head.Mesh:Destroy()
-		game:GetService("Workspace").Camera.startup.DioSenko.Head.Shape = Enum.PartType.Ball
-		game:GetService("Workspace").Camera.startup.DioSenko.Head.Size = Vector3.new(2, 1.5, 2)
-		game:GetService("Workspace").Camera.startup.Narumaki.Shirt.ShirtTemplate = [[rbxassetid://7384140987]]
-		game:GetService("Workspace").Camera.startup.Narumaki.Pants.PantsTemplate = [[rbxassetid://7384140866]]
-		game:GetService("Workspace").Camera.startup.Narumaki.Head.face.Texture = [[rbxassetid://7336910703]]
-		game:GetService("Workspace").Camera.startup.Narumaki.Customize.char.Torso:Destroy()
-		game:GetService("Workspace").Camera.startup.Narumaki.Customize.char["Left Leg"]:Destroy()
-		game:GetService("Workspace").Camera.startup.Narumaki.Customize.char["Right Leg"]:Destroy()
-		game:GetService("Workspace").Camera.startup.Narumaki.Name = ""
-		game:GetService("Workspace").Camera.startup.DioSenko.Name = ""
-	end
+
+if game:GetService("Workspace").npc:FindFirstChild("DogeHubNPC") then
+    notify("Spam execute won't do anything m8")
+else
+    local DogeHubNPC = Instance.new("Part")
+    DogeHubNPC.Parent = game:GetService("Workspace").npc
+    DogeHubNPC.Name = "DogeHubNPC"
+    DogeHubNPC.Anchored = true
+    DogeHubNPC.Transparency = 1
+    DogeHubNPC.Size = Vector3.new(6, 1, 6)
+    --some functions that are important af
+    Autorejoin = true
+    game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+    game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1.hair.color.Visible = false
+    game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1.hair.arrowleft.Visible = false
+    game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1.hair.arrowright.Visible = false
+    game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1.band.Visible = false
+    game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1.outfit.Visible = false
+    game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1.shoe.Visible = false
+    game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1.beard.Visible = false
+    game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1.face.Visible = false
+    game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame2.Visible = false
+    game:GetService('RunService').Stepped:connect(function()
+        for i,v in pairs(game.Players.LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1:GetChildren()) do
+            if v:FindFirstChild("text") then
+                v.text.Text = "You cannot customize character while inf spin"
+            end
+        end
+    end)
+    repeat wait() until game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.Genkaibag.Frame2.BossTab
+    for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.Genkaibag.Frame2.BossTab:GetChildren()) do
+        if v:FindFirstChild("name") then
+            v.name.Text = ("("..v.Name ..")".. " " .. v.name.Text)
+        end
+    end
+    --Random bullshit lol
+    for i,v in pairs(game.Workspace.Camera.startup:GetChildren()) do
+        if v.Name == "" and v.Model.hair.BrickColor == BrickColor.new(0,255,0) then
+            print("")
+        else
+            for i,v in pairs(game.Workspace.Camera.startup:GetChildren()) do
+                if v.Name == "" then 
+                    v.Name = "NPC"
+                end
+            end
+            game.Workspace.Camera.startup.NPC.Name = "DioSenko"
+            game.Workspace.Camera.startup.NPC.Name = ""
+            game.Workspace.Camera.startup.NPC.Name = "Narumaki"
+            game:GetService("Workspace").Camera.startup.DioSenko.Model.hair.BrickColor = BrickColor.new(0,255,0)
+            game:GetService("Workspace").Camera.startup.DioSenko.Model.hair.Material = Enum.Material.Neon
+            game:GetService("Workspace").Camera.startup.DioSenko.Head.Decal.Texture = [[rbxassetid://9792123944]]
+            game:GetService("Workspace").Camera.startup.DioSenko.Head.Mesh:Destroy()
+            game:GetService("Workspace").Camera.startup.DioSenko.Head.Shape = Enum.PartType.Ball
+            game:GetService("Workspace").Camera.startup.DioSenko.Head.Size = Vector3.new(2, 1.5, 2)
+            game:GetService("Workspace").Camera.startup.Narumaki.Shirt.ShirtTemplate = [[rbxassetid://7384140987]]
+            game:GetService("Workspace").Camera.startup.Narumaki.Pants.PantsTemplate = [[rbxassetid://7384140866]]
+            game:GetService("Workspace").Camera.startup.Narumaki.Head.face.Texture = [[rbxassetid://7336910703]]
+            game:GetService("Workspace").Camera.startup.Narumaki.Customize.char.Torso:Destroy()
+            game:GetService("Workspace").Camera.startup.Narumaki.Customize.char["Left Leg"]:Destroy()
+            game:GetService("Workspace").Camera.startup.Narumaki.Customize.char["Right Leg"]:Destroy()
+            game:GetService("Workspace").Camera.startup.Narumaki.Name = ""
+            game:GetService("Workspace").Camera.startup.DioSenko.Name = ""
+        end
+    end
 end
