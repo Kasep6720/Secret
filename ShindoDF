@@ -102,6 +102,7 @@ end
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20script%20gui"))()
 local window1 = library:Window("Dungeon Farm - DogeHub")
 local window2 = library:Window("Others")
+local window3 = library:Window("Credits")
 
 library:Keybind("RightControl")
 
@@ -365,14 +366,15 @@ window2:Button("Deactivate Black screen",function()
 	end 
 end)
 
-window2:Label("Credits", Color3.fromRGB(127, 143, 166))
+window3:Label("Show/Hide GUI: Right Ctrl", Color3.fromRGB(127, 143, 166))
 
-window2:Button("Made by NoobieDoge",function()
+window3:Label("Made by NoobieDoge", true)
+window3:Label("https://discord.gg/P2CeRjvTDt", true)
+window3:Button("Copy Discord Link",function()
 	setclipboard("https://discord.gg/P2CeRjvTDt")
-	notify("Discord link copied to clipboard")
+	wait()
+	notify("Discord link copied to clipboard!")
 end)
-
-window2:Label("Show/Hide GUI = Right Ctrl", Color3.fromRGB(127, 143, 166))
 
 local function SCROLLFARM()
 	for i,v in pairs(game.workspace.GLOBALTIME:GetChildren()) do
