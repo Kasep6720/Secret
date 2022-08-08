@@ -823,9 +823,12 @@ TextButton.MouseButton1Click:connect(function()
 
 			window3:Label("Credits", Color3.fromRGB(127, 143, 166))
 
-			window3:Button("Made by NoobieDoge",function()
+			window3:Label("Made by NoobieDoge", true)
+			window3:Label("https://discord.gg/P2CeRjvTDt", true)
+			window3:Button("Copy Discord Link",function()
 				setclipboard("https://discord.gg/P2CeRjvTDt")
-				notify("Discord link copied to clipboard")
+				wait()
+				notify("Discord link copied to clipboard!")
 			end)
 			window3:Label("Hide/Show GUI = Right Ctrl", Color3.fromRGB(127, 143, 166))
 		end
@@ -1200,11 +1203,11 @@ TextButton_3.MouseButton1Click:connect(function()
 		notify("Daily Boss Quests: "..tostring(DailyBoss),true)
 	end)
 	game:GetService('RunService').Stepped:connect(function()
-		if DailyBoss then
+		if DailyBoss == true then
 			for i,v in pairs(game.Players.LocalPlayer.statz.mission:GetChildren()) do
 				if v.Value == "fightboss" then
 					for i,v0 in pairs(workspace.bossdropmission.missions:GetChildren()) do
-						if v0.Name == v.objective.Value and v0:FindFirstChild("missiongiver") then
+						if v0.Name == v.objective.Value and v0:FindFirstChild("missiongiver") and DailyBoss == true then
 							if mission.Visible == true then
 								for i,v in pairs(workspace.npc:GetChildren()) do
 									if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and not v:FindFirstChild("fullsusanoo") and v.Head.CFrame.Y > -1000 then
@@ -1233,9 +1236,9 @@ TextButton_3.MouseButton1Click:connect(function()
 								end
 							end
 						else
-							DailyBoss = false
-							wait(4.5)
 							notify("The boss doesn't spawn in this map!")
+							wait()
+							DailyBoss = false
 						end
 					end
 				end
@@ -1324,9 +1327,12 @@ TextButton_3.MouseButton1Click:connect(function()
 
 	window3:Label("Credits", Color3.fromRGB(127, 143, 166))
 
-	window3:Button("Made by NoobieDoge",function()
+	window3:Label("Made by NoobieDoge", true)
+	window3:Label("https://discord.gg/P2CeRjvTDt", true)
+	window3:Button("Copy Discord Link",function()
 		setclipboard("https://discord.gg/P2CeRjvTDt")
-		notify("Discord link copied to clipboard")
+		wait()
+		notify("Discord link copied to clipboard!")
 	end)
 
 	window3:Label("Show/Hide GUI = Right Ctrl", Color3.fromRGB(127, 143, 166))
@@ -2333,11 +2339,12 @@ game:GetService('RunService').Stepped:connect(function()
 				TextButton2.MouseButton1Click:connect(ResetNO)
 			end)
 
-			window3:Label("Made by NoobieDoge", Color3.fromRGB(127, 143, 166))
-
+			window3:Label("Made by NoobieDoge", true)
+			window3:Label("https://discord.gg/P2CeRjvTDt", true)
 			window3:Button("Copy Discord Link",function()
 				setclipboard("https://discord.gg/P2CeRjvTDt")
-				notify("Discord link copied to clipboard")
+				wait()
+				notify("Discord link copied to clipboard!")
 			end)
 
 			window3:Label("Hide/Show GUI = Right Ctrl", Color3.fromRGB(127, 143, 166))
