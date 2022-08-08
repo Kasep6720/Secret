@@ -70,6 +70,61 @@ function notify(a,b,c)
 	function roundNumber(num, numDecimalPlaces) -- https://devforum.roblox.com/t/rounding-to-1-decimal-point/673504
 	return tonumber(string.format("%." .. (numDecimalPlaces or 0) .. "f", num))
 end
+
+local player = game.Players.LocalPlayer
+local ScreenGui4Ken = Instance.new("ScreenGui")
+local FrameK = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local TextLabel2 = Instance.new("TextLabel")
+local TextLabel3 = Instance.new("TextLabel")
+
+ScreenGui4Ken.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+FrameK.Parent = ScreenGui4Ken
+FrameK.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+FrameK.Position = UDim2.new(0.82, 0, 0.4, 0)
+FrameK.Size = UDim2.new(0, 220, 0, 120)
+FrameK.Active = true
+FrameK.Draggable = true
+FrameK.Visible = false
+
+TextLabel.Parent = FrameK
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+TextLabel.Size = UDim2.new(0, 220, 0, 30)
+TextLabel.Font = Enum.Font.TitilliumWeb
+TextLabel.Text = "Current Kenjutsu:"
+TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.TextScaled = false
+TextLabel.TextSize = 25.000
+TextLabel.TextWrapped = true
+
+TextLabel2.Parent = FrameK
+TextLabel2.BackgroundColor3 = Color3.fromRGB(41, 41, 41)
+TextLabel2.Size = UDim2.new(0, 220, 0, 45)
+TextLabel2.Position = UDim2.new(0, 0, 0.25, 0)
+TextLabel2.Font = Enum.Font.TitilliumWeb
+TextLabel2.Text = "Kenjutsu Slot 1:" .. " " .. game.Players.LocalPlayer.statz.breathingstyle.Value
+TextLabel2.TextColor3 = Color3.fromRGB(999,999,999)
+TextLabel2.TextScaled = true
+TextLabel2.TextSize = 25.000
+TextLabel2.TextWrapped = true
+
+TextLabel3.Parent = FrameK
+TextLabel3.BackgroundColor3 = Color3.fromRGB(41, 41, 41)
+TextLabel3.Size = UDim2.new(0, 220, 0, 45)
+TextLabel3.Position = UDim2.new(0, 0, 0.615, 0)
+TextLabel3.Font = Enum.Font.TitilliumWeb
+TextLabel3.Text = "Kenjutsu Slot 2:" .. " " .. game.Players.LocalPlayer.statz.breathingstyle2.Value
+TextLabel3.TextColor3 = Color3.fromRGB(999,999,999)
+TextLabel3.TextScaled = true
+TextLabel3.TextSize = 25.000
+TextLabel3.TextWrapped = true
+
+game:GetService('RunService').Stepped:connect(function()
+	TextLabel2.Text = "Kenjutsu Slot 1:" .. " " .. game.Players.LocalPlayer.statz.breathingstyle.Value
+	TextLabel3.Text = "Kenjutsu Slot 2:" .. " " .. game.Players.LocalPlayer.statz.breathingstyle2.Value
+end)
+
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20script%20gui"))()
 local window1 = library:Window("Infinite Spin - DogeHub")
 local window2 = library:Window("Bloodlines")
@@ -111,7 +166,7 @@ window1:Button("Instructions",function()
 	TextLabel.Font = Enum.Font.TitilliumWeb
 	TextLabel.Text = [[To use this inf spins script:
 
-	1.Choose the bloodline or element or kenjutsu that you want to get, you can choose no more than 5 choices for bloodlines and elements and no more than 3 choices for kenjutsu.
+	1.Choose the bloodline or element or kenjutsu that you want to get, you can choose no more than 5 choices for bloodlines and elements and no more than 3 choices for kenjutsu (5 choices when purchased 2nd slot).
 	
 	2.Press spin the slots that you want to have the bloodline or element or kenjutsu.
 
@@ -761,60 +816,178 @@ for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu.ALLKENSTYLES:GetC
 	end
 end
 
-local kenselect1
-	window4:Dropdown("Kenjutsu Choice 1",ken,function(KEN1)
-	print("Selected: " .. KEN1)
-	notify("Selected: " .. KEN1)
-	kenselect1 = KEN1
-end)
-local kenselect2
-	window4:Dropdown("Kenjutsu Choice 2",ken,function(KEN2)
-	print("Selected: " .. KEN2)
-	notify("Selected: " .. KEN2)
-	kenselect2 = KEN2
-end)
-local kenselect3
-	window4:Dropdown("Kenjutsu Choice 3",ken,function(KEN3)
-	print("Selected: " .. KEN3)
-	notify("Selected: " .. KEN3)
-	kenselect2 = KEN3
-end)
+if game:GetService("Players").LocalPlayer.statz.unlocked:FindFirstChild("kenjutsuslot2") then
+	local kenselect1
+		window4:Dropdown("Kenjutsu Choice 1",ken,function(KEN1)
+		print("Selected: " .. KEN1)
+		notify("Selected: " .. KEN1)
+		FrameK.Visible = true
+		kenselect1 = KEN1
+	end)
+	local kenselect2
+		window4:Dropdown("Kenjutsu Choice 2",ken,function(KEN2)
+		print("Selected: " .. KEN2)
+		notify("Selected: " .. KEN2)
+		FrameK.Visible = true
+		kenselect2 = KEN2
+	end)
+	local kenselect3
+		window4:Dropdown("Kenjutsu Choice 3",ken,function(KEN3)
+		print("Selected: " .. KEN3)
+		notify("Selected: " .. KEN3)
+		FrameK.Visible = true
+		kenselect3 = KEN3
+	end)
+	local kenselect4
+		window4:Dropdown("Kenjutsu Choice 4",ken,function(KEN4)
+		print("Selected: " .. KEN4)
+		notify("Selected: " .. KEN4)
+		FrameK.Visible = true
+		kenselect4 = KEN4
+	end)
+	local kenselect5
+		window4:Dropdown("Kenjutsu Choice 3",ken,function(KEN5)
+		print("Selected: " .. KEN5)
+		notify("Selected: " .. KEN5)
+		FrameK.Visible = true
+		kenselect5 = KEN5
+	end)
 
-window4:Toggle("Spin Kenjutsu",false,function(bool)
-	StartSpinKen = bool
-	if StartSpinKen == true then
-		local spins = game.Players.LocalPlayer.statz.spins.Value
-		game:GetService('RunService').Stepped:connect(function()
-			if spins > 0 then
-				spins = game.Players.LocalPlayer.statz.spins.Value
-				kenvalue = game.Players.LocalPlayer.statz.breathingstyle.Value
-				if StartSpinKen == true then
-					if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 then
-						local args = {[1] = "spinBREATHING"}
-						game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-						print("Rolled: " .. kenvalue)
-						notify("Rolled: " .. kenvalue)
-						wait(1)
-					else
-						print("You have got: " .. kenvalue)
-						notify("You have got: " .. kenvalue)
-						if Autosave == true then
-							datasavedandyoucanredeemcodes = true
+	window4:Toggle("Spin Slot 1",false,function(bool)
+		StartSpinKen = bool
+		if StartSpinKen == true then
+			local spins = game.Players.LocalPlayer.statz.spins.Value
+			game:GetService('RunService').Stepped:connect(function()
+				if spins > 9 then
+					spins = game.Players.LocalPlayer.statz.spins.Value
+					kenvalue = game.Players.LocalPlayer.statz.breathingstyle.Value
+					kenvalue2 = game.Players.LocalPlayer.statz.breathingstyle2.Value
+					if StartSpinKen == true then
+						if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 and kenvalue ~= kenselect4 and kenvalue ~= kenselect5 and kenvalue2 ~= kenselect1 and kenvalue2 ~= kenselect2 and kenvalue2 ~= kenselect3 and kenvalue2 ~= kenselect4 and kenvalue2 ~= kenselect5 then
+							local args = {[1] = "spinBREATHING"}
+							game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+							print("Rolled: " .. kenvalue)
+							wait(1)
+						elseif kenvalue2 ~= kenselect1 and kenvalue2 ~= kenselect2 and kenvalue2 ~= kenselect3 and kenvalue2 ~= kenselect4 and kenvalue2 ~= kenselect5 then
+							if Autosave == true then
+								datasavedandyoucanredeemcodes = true
+							end
+						else
+							print("You have got: " .. kenvalue)
+							notify("You have got " .. kenvalue .. " in slot 1")
+							if Autosave == true then
+								datasavedandyoucanredeemcodes = true
+							end
 						end
 					end
+				else
+					if Autorejoin == true then
+						--player.statz.spins:Destroy()
+						game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+						wait()
+						game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+					end
 				end
-			else
-				if Autorejoin == true then
-					--player.statz.spins:Destroy()
-					game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
-					wait()
-					game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+			end)
+		else 
+		end
+	end)
+
+	window4:Toggle("Spin Slot 2",false,function(bool)
+		StartSpinKen2 = bool
+		if StartSpinKen2 == true then
+			local spins = game.Players.LocalPlayer.statz.spins.Value
+			game:GetService('RunService').Stepped:connect(function()
+				if spins > 9 then
+					spins = game.Players.LocalPlayer.statz.spins.Value
+					kenvalue = game.Players.LocalPlayer.statz.breathingstyle.Value
+					kenvalue2 = game.Players.LocalPlayer.statz.breathingstyle2.Value
+					if StartSpinKen2 == true then
+						if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 and kenvalue ~= kenselect4 and kenvalue ~= kenselect5 and kenvalue2 ~= kenselect1 and kenvalue2 ~= kenselect2 and kenvalue2 ~= kenselect3 and kenvalue2 ~= kenselect4 and kenvalue2 ~= kenselect5 then
+							local args = {[1] = "spinBREATHING",[2] = "breathingstyle2"}
+							game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+							print("Rolled: " .. kenvalue2)
+							wait(1)
+						elseif kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 and kenvalue ~= kenselect4 and kenvalue ~= kenselect5 then
+							if Autosave == true then
+								datasavedandyoucanredeemcodes = true
+							end
+						else
+							print("You have got: " .. kenvalue2)
+							notify("You have got " .. kenvalue2 .. " in slot 2")
+							if Autosave == true then
+								datasavedandyoucanredeemcodes = true
+							end
+						end
+					end
+				else
+					if Autorejoin == true then
+						--player.statz.spins:Destroy()
+						game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+						wait()
+						game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+					end
 				end
-			end
-		end)
-	else 
-	end
-end)
+			end)
+		else 
+		end
+	end)
+else
+	local kenselect1
+		window4:Dropdown("Kenjutsu Choice 1",ken,function(KEN1)
+		print("Selected: " .. KEN1)
+		notify("Selected: " .. KEN1)
+		kenselect1 = KEN1
+	end)
+	local kenselect2
+		window4:Dropdown("Kenjutsu Choice 2",ken,function(KEN2)
+		print("Selected: " .. KEN2)
+		notify("Selected: " .. KEN2)
+		kenselect2 = KEN2
+	end)
+	local kenselect3
+		window4:Dropdown("Kenjutsu Choice 3",ken,function(KEN3)
+		print("Selected: " .. KEN3)
+		notify("Selected: " .. KEN3)
+		kenselect3 = KEN3
+	end)
+
+	window4:Toggle("Spin Kenjutsu",false,function(bool)
+		StartSpinKen = bool
+		if StartSpinKen == true then
+			local spins = game.Players.LocalPlayer.statz.spins.Value
+			game:GetService('RunService').Stepped:connect(function()
+				if spins > 0 then
+					spins = game.Players.LocalPlayer.statz.spins.Value
+					kenvalue = game.Players.LocalPlayer.statz.breathingstyle.Value
+					if StartSpinKen == true then
+						if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 then
+							local args = {[1] = "spinBREATHING"}
+							game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+							print("Rolled: " .. kenvalue)
+							notify("Rolled: " .. kenvalue)
+							wait(1)
+						else
+							print("You have got: " .. kenvalue)
+							notify("You have got: " .. kenvalue)
+							if Autosave == true then
+								datasavedandyoucanredeemcodes = true
+							end
+						end
+					end
+				else
+					if Autorejoin == true then
+						--player.statz.spins:Destroy()
+						game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+						wait()
+						game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+					end
+				end
+			end)
+		else 
+		end
+	end)
+end
 
 window5:Label("Show/Hide GUI: Right Ctrl", Color3.fromRGB(127, 143, 166))
 
@@ -825,6 +998,8 @@ window5:Button("Copy Discord Link",function()
 	wait()
 	notify("Discord link copied to clipboard!")
 end)
+
+
 
 game:GetService('RunService').Stepped:connect(function()
 	if datasavedandyoucanredeemcodes == true then
@@ -837,6 +1012,7 @@ game:GetService('RunService').Stepped:connect(function()
 		StartSpinElm3 = false
 		StartSpinElm4 = false
 		StartSpinKen = false
+		StartSpinKen2 = false
 		datasavedandyoucanredeemcodes = false
 		game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
 		notify("You will be teleported to My Home in order to save data")
