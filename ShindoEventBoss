@@ -811,9 +811,12 @@ end)
 
 window4:Label("Credits", Color3.fromRGB(127, 143, 166))
 
-window4:Button("Made by NoobieDoge",function()
+window4:Label("Made by NoobieDoge", true)
+window4:Label("https://discord.gg/P2CeRjvTDt", true)
+window4:Button("Copy Discord Link",function()
 	setclipboard("https://discord.gg/P2CeRjvTDt")
-	notify("Discord link copied to clipboard")
+	wait()
+	notify("Discord link copied to clipboard!")
 end)
 window4:Label("Hide/Show GUI = Right Ctrl", Color3.fromRGB(127, 143, 166))
 
