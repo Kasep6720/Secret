@@ -1,0 +1,3125 @@
+--setclipboard(tostring(game.PlaceId))
+--all on99 variables
+local player = game.Players.LocalPlayer
+local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
+local VirtualUser=game:service'VirtualUser'
+game:service'Players'.LocalPlayer.Idled:connect(function()
+warn("anti-afk")
+VirtualUser:CaptureController()
+VirtualUser:ClickButton2(Vector2.new())
+end)
+if workspace:FindFirstChild("CCoff") then
+	game:GetService("Workspace").CCoff:Destroy()
+end
+--on9 functions that are so damn important
+function toTarget(pos, targetPos, targetCFrame)
+	local tween_s = game:service"TweenService"
+	local info = TweenInfo.new((targetPos - pos).Magnitude/getgenv().speed, Enum.EasingStyle.Linear)
+	local tween, err = pcall(function()
+	local tween = tween_s:Create(game:GetService("Players").LocalPlayer.Character["HumanoidRootPart"], info, {CFrame = targetCFrame * CFrame.fromAxisAngle(Vector3.new(1,0,0), math.rad(90))})
+	tween:Play()
+	end)
+	if not tween then return err end
+end
+function NPCKEELAURA()
+	for i,v in pairs(workspace.npc:GetChildren()) do
+		if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+			repeat
+				v.Humanoid.Health = 0
+				v.Humanoid.Health = 0
+				v.Humanoid.Health = 0
+				v.Humanoid.Health = 0
+				v.Humanoid.Health = 0
+			until v.Humanoid.Health == 0 or (not keel and not keel2)
+		end
+	end
+end
+function INFMDON()
+	local mode = game.Players.LocalPlayer.Character.combat.mode
+	local copy = mode:Clone()
+	copy.Parent = mode.Parent
+	mode:Destroy()
+	notify("Do not charge chi til max while inf MD is on!")
+end
+function UPPERFORMANCE()
+	local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
+	local g = game
+	local w = g.Workspace
+	local l = g.Lighting
+	local t = w.Terrain
+	t.WaterWaveSize = 0
+	t.WaterWaveSpeed = 0
+	t.WaterReflectance = 0
+	t.WaterTransparency = 0
+	l.GlobalShadows = false
+	l.FogEnd = 9e9
+	l.Brightness = 0
+	settings().Rendering.QualityLevel = "Level01"
+	for i,v in pairs(g:GetDescendants()) do
+		if v:IsA("Part") or v:IsA("Union") or v:IsA("MeshPart") then
+			v.Material = "Plastic"
+			v.Reflectance = 0
+		elseif v:IsA("Decal") and decalsyeeted then 
+			v.Transparency = 1
+		elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then 
+			v.Lifetime = NumberRange.new(0)
+		end
+	end
+end
+local function SCROLLFARM()
+	for i,v in pairs(game.workspace.GLOBALTIME:GetChildren()) do
+		if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
+			print("SCROLL SPAWNED")
+			pcall(function()
+				player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
+				fireclickdetector(v.sh.ClickDetector)
+				v:Destroy()
+			end)
+		end
+	end
+end
+local function SCROLLFARM1()
+	for i,v in pairs(game.workspace:GetChildren()) do
+		if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
+			print("SCROLL SPAWNED in workspace")
+			notify("SCROLL SPAWNED in workspace")
+			pcall(function()
+				player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
+				fireclickdetector(v.sh.ClickDetector)
+				v:Destroy()
+			end)
+		end
+	end
+end
+if _G.dAAcG3fvBqVoPzVnAFk == nil then 
+	_G.dAAcG3fvBqVoPzVnAFk = "" 
+end 
+function notify(a,b,c)
+	local d=c or function()return end;
+	local e=b or false;
+		if a==_G.dAAcG3fvBqVoPzVnAFk and e==false then return end;
+		spawn(function()
+			for f,g in pairs(game.CoreGui:GetChildren())do 
+				spawn(function()
+					if g.Name=="MNotify"then 
+						pcall(function()
+							g.ImageButton.ZIndex=58;
+							g.ImageButton.TextLabel.ZIndex=59;
+							g.ImageButton:TweenPosition(UDim2.new(0.01,0,1,0),"Out","Quint",.7,true)
+							game:GetService("TweenService"):Create(g.ImageButton.TextLabel,TweenInfo.new(0.8,Enum.EasingStyle.Quint,Enum.EasingDirection.Out,0,false,0),{TextTransparency=1})
+							wait(1)
+							g:Destroy()
+						end)
+					end 
+				end)
+			end;
+			_G.dAAcG3fvBqVoPzVnAFk=a
+			local d=c or function()return end;
+			local function h(i,j)
+				local k=Instance.new(i)
+					for f,g in pairs(j)do 
+						k[f]=g 
+					end;
+				return k end;
+				local l=h('ScreenGui',{DisplayOrder=0,Enabled=true,ResetOnSpawn=true,Name='MNotify',Parent=game.CoreGui})
+				local m=h('ImageButton',{Image='rbxassetid://1051186612',ImageColor3=Color3.new(0.129412,0.129412,0.129412),ImageRectOffset=Vector2.new(0,0),ImageRectSize=Vector2.new(0,0),ImageTransparency=0,ScaleType=Enum.ScaleType.Slice,SliceCenter=Rect.new(20,20,20,20),AutoButtonColor=true,Modal=false,Selected=false,Style=Enum.ButtonStyle.Custom,Active=true,AnchorPoint=Vector2.new(0,0),BackgroundColor3=Color3.new(1,1,1),BackgroundTransparency=1,BorderColor3=Color3.new(0.105882,0.164706,0.207843),BorderSizePixel=1,ClipsDescendants=false,Draggable=false,Position=UDim2.new(0.00999999978,0,1,0),Rotation=0,Selectable=true,Size=UDim2.new(0,234,0,40),SizeConstraint=Enum.SizeConstraint.RelativeXY,Visible=true,ZIndex=60,Name='ImageButton',Parent=l})
+				local n=h('TextLabel',{Font=Enum.Font.TitilliumWeb,FontSize=Enum.FontSize.Size24,Text=a,TextColor3=Color3.new(0.807843,0.807843,0.807843),TextScaled=false,TextSize=24,TextStrokeColor3=Color3.new(0,0,0),TextStrokeTransparency=1,TextTransparency=0,TextWrapped=false,TextXAlignment=Enum.TextXAlignment.Center,TextYAlignment=Enum.TextYAlignment.Center,Active=false,AnchorPoint=Vector2.new(0,0),BackgroundColor3=Color3.new(1,1,1),BackgroundTransparency=1,BorderColor3=Color3.new(0.105882,0.164706,0.207843),BorderSizePixel=1,ClipsDescendants=false,Draggable=false,Position=UDim2.new(0.132478639,0,0,0),Rotation=0,Selectable=false,Size=UDim2.new(0,174,0,40),SizeConstraint=Enum.SizeConstraint.RelativeXY,Visible=true,ZIndex=61,Name='TextLabel',Parent=m})
+				local o=h('UIListLayout',{Padding=UDim.new(0,0),FillDirection=Enum.FillDirection.Vertical,HorizontalAlignment=Enum.HorizontalAlignment.Center,SortOrder=Enum.SortOrder.Name,VerticalAlignment=Enum.VerticalAlignment.Top,Name='UIListLayout',Parent=m})
+				local p=1;
+				if string.len(a)<=49 then 
+					m.Size=UDim2.new(0,game:GetService("TextService"):GetTextSize(a,24,Enum.Font.TitilliumWeb,Vector2.new(500,900)).X+35,0,40)
+				elseif string.len(a)>49 then 
+					p=math.ceil(string.len(string.sub(a,49))/9)
+					m.Size=UDim2.new(0,game:GetService("TextService"):GetTextSize(a,24,Enum.Font.TitilliumWeb,Vector2.new(500+p*100,900)).X+35,0,40)
+				end;
+				m:TweenPosition(UDim2.new(0.01,0,.97,-60),"Out","Quint",.7,true)
+				spawn(function()
+					wait(4)
+					pcall(function()
+						m.ZIndex=58;
+						n.ZIndex=59;
+						m:TweenPosition(UDim2.new(0.01,0,1,0),"Out","Quint",.7,true)
+						_G.dAAcG3fvBqVoPzVnAFk=""
+						wait(.3)
+						l:Destroy()
+					end)
+				end)
+				m.MouseButton1Up:Connect(function()if c==nil then return end;
+				spawn(function()
+					pcall(function()
+						m.ZIndex=58;n.ZIndex=59;
+						m:TweenPosition(UDim2.new(0.01,0,1,0),"Out","Quint",.7,true)
+						_G.dAAcG3fvBqVoPzVnAFk=""
+						wait(1)
+						l:Destroy()
+					end)
+				end)
+				d()
+			end)
+		end)
+	end
+	function roundNumber(num, numDecimalPlaces) -- https://devforum.roblox.com/t/rounding-to-1-decimal-point/673504
+	return tonumber(string.format("%." .. (numDecimalPlaces or 0) .. "f", num))
+end
+-- init
+
+--Shindo Inf Spin
+local function ShindoInfSpin()
+	--Kenjutsu GUI
+	local player = game.Players.LocalPlayer
+	local ScreenGui4Ken = Instance.new("ScreenGui")
+	local FrameK = Instance.new("Frame")
+	local TextLabel = Instance.new("TextLabel")
+	local TextLabel2 = Instance.new("TextLabel")
+	local TextLabel3 = Instance.new("TextLabel")
+
+	ScreenGui4Ken.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+	FrameK.Parent = ScreenGui4Ken
+	FrameK.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	FrameK.Position = UDim2.new(0.82, 0, 0.4, 0)
+	FrameK.Size = UDim2.new(0, 220, 0, 120)
+	FrameK.Active = true
+	FrameK.Draggable = true
+	FrameK.Visible = false
+
+	TextLabel.Parent = FrameK
+	TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+	TextLabel.Size = UDim2.new(0, 220, 0, 30)
+	TextLabel.Font = Enum.Font.TitilliumWeb
+	TextLabel.Text = "Current Kenjutsu:"
+	TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+	TextLabel.TextScaled = false
+	TextLabel.TextSize = 25.000
+	TextLabel.TextWrapped = true
+
+	TextLabel2.Parent = FrameK
+	TextLabel2.BackgroundColor3 = Color3.fromRGB(41, 41, 41)
+	TextLabel2.Size = UDim2.new(0, 220, 0, 45)
+	TextLabel2.Position = UDim2.new(0, 0, 0.25, 0)
+	TextLabel2.Font = Enum.Font.TitilliumWeb
+	TextLabel2.Text = "Kenjutsu Slot 1:" .. " " .. game.Players.LocalPlayer.statz.breathingstyle.Value
+	TextLabel2.TextColor3 = Color3.fromRGB(999,999,999)
+	TextLabel2.TextScaled = true
+	TextLabel2.TextSize = 25.000
+	TextLabel2.TextWrapped = true
+
+	TextLabel3.Parent = FrameK
+	TextLabel3.BackgroundColor3 = Color3.fromRGB(41, 41, 41)
+	TextLabel3.Size = UDim2.new(0, 220, 0, 45)
+	TextLabel3.Position = UDim2.new(0, 0, 0.615, 0)
+	TextLabel3.Font = Enum.Font.TitilliumWeb
+	TextLabel3.Text = "Kenjutsu Slot 2:" .. " " .. game.Players.LocalPlayer.statz.breathingstyle2.Value
+	TextLabel3.TextColor3 = Color3.fromRGB(999,999,999)
+	TextLabel3.TextScaled = true
+	TextLabel3.TextSize = 25.000
+	TextLabel3.TextWrapped = true
+
+	game:GetService('RunService').Stepped:connect(function()
+		TextLabel2.Text = "Kenjutsu Slot 1:" .. " " .. game.Players.LocalPlayer.statz.breathingstyle.Value
+		TextLabel3.Text = "Kenjutsu Slot 2:" .. " " .. game.Players.LocalPlayer.statz.breathingstyle2.Value
+	end)
+
+	--DogeHub V2 GUI
+	local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20page%20format%20gui"))()
+	local NoobieDoge = library.new("DogeHub V2", 5013109572)
+
+	-- themes
+	local themes = {
+	Background = Color3.fromRGB(24, 24, 24),
+	Glow = Color3.fromRGB(0, 0, 0),
+	Accent = Color3.fromRGB(10, 10, 10),
+	LightContrast = Color3.fromRGB(20, 20, 20),
+	DarkContrast = Color3.fromRGB(14, 14, 14),  
+	TextColor = Color3.fromRGB(255, 255, 255)
+	}
+
+	-- first page
+	local page1 = NoobieDoge:addPage("Infinite Spin", 5012544693)
+	local section1 = page1:addSection("Instructions")
+	local section2 = page1:addSection("Utility Functions")
+	local section3 = page1:addSection("Inf Spin Functions")
+	local section4 = page1:addSection("Inf Spin Settings")
+	
+	section1:addButton("Instructions",function()
+		local player = game.Players.LocalPlayer
+		local ScreenGuiK = Instance.new("ScreenGui")
+		local FrameK = Instance.new("Frame")
+		local ScrollingFrame = Instance.new("ScrollingFrame")
+		local TextLabel = Instance.new("TextLabel")
+		local TextButton = Instance.new("TextButton")
+
+		ScreenGuiK.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+		FrameK.Parent = ScreenGuiK
+		FrameK.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+		FrameK.Position = UDim2.new(0.005, 0, 0.7, 0)
+		FrameK.Size = UDim2.new(0, 200, 0, 180)
+		FrameK.Active = true
+		FrameK.Draggable = true
+
+		ScrollingFrame.Parent = FrameK
+		ScrollingFrame.BackgroundColor3 = Color3.new(0.27, 0.27, 0.27)
+		ScrollingFrame.BackgroundTransparency = 0
+		ScrollingFrame.BorderSizePixel = 0
+		ScrollingFrame.Position = UDim2.new(0.025, 0, 0.15, 0)
+		ScrollingFrame.Size = UDim2.new(0, 192, 0, 150)
+		ScrollingFrame.CanvasSize = UDim2.new(0, 0, 5, 0)
+		ScrollingFrame.ScrollBarThickness = 5
+
+		TextLabel.Parent = ScrollingFrame
+		TextLabel.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextLabel.Size = UDim2.new(0, 190, 0, 900)
+		TextLabel.Font = Enum.Font.TitilliumWeb
+		TextLabel.Text = [[To use this inf spins script:
+
+		1.Choose the bloodline or element or kenjutsu that you want to get, you can choose no more than 5 choices for bloodlines and elements and no more than 3 choices for kenjutsu (5 choices when purchased 2nd slot).
+		
+		2.Press spin the slots that you want to have the bloodline or element or kenjutsu.
+
+		3.Wait patiently and DO NOT change anything until you got the stuff that you want.
+		
+		4.When you got the bloodline or element or kenjutsu that you want, you may press save data then leave this server to save it.
+		
+		5.I've already put all spinnable limiteds on top of the dropdown, please don't be stupid and try to spin a limited bloodline in element slots or whatever.
+		
+		6.DO NOT redeem codes before pressing save data
+
+		7.If you are unsatisfied about the results, you may always press Reset Spins NOW to reset, unless you pressed save spins data or turned on auto save.
+
+		8.Press Right Ctrl to show/hide GUI]]
+		TextLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextLabel.TextScaled = true
+		TextLabel.TextSize = 20.000
+		TextLabel.TextWrapped = true
+		TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+		TextLabel.TextYAlignment = Enum.TextYAlignment.Top
+
+		TextButton.Parent = FrameK
+		TextButton.BackgroundColor3 = Color3.new(0.255, 0.163, 0.26)
+		TextButton.BackgroundTransparency = 1
+		TextButton.BorderSizePixel = 0
+		TextButton.Position = UDim2.new(0.85, 0, 0, 0)
+		TextButton.Size = UDim2.new(0, 31, 0, 20)
+		TextButton.Font = Enum.Font.Cartoon
+		TextButton.Text = "X"
+		TextButton.TextColor3 = Color3.new(0, 0, 0)
+		TextButton.TextScaled = true
+		TextButton.TextSize = 14
+		TextButton.TextWrapped = true
+		TextButton.MouseButton1Click:connect(function()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+		end)
+	end)
+
+	section2:addButton("RC Shop Changer",function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20RC%20Shop%20Changer"))()
+	end)
+
+	section3:addButton("Reset Spins NOW",function()	
+		game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+		wait()
+		game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
+	end)
+
+	section3:addButton("Save Spins Data",function()
+		local player = game.Players.LocalPlayer
+		local ScreenGuiK = Instance.new("ScreenGui")
+		local FrameK = Instance.new("Frame")
+		local TextLabel = Instance.new("TextLabel")
+		local TextButton = Instance.new("TextButton")
+		local TextButton_2 = Instance.new("TextButton")
+
+		ScreenGuiK.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+		FrameK.Parent = ScreenGuiK
+		FrameK.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		FrameK.Position = UDim2.new(0.005, 0, 0.7, 0)
+		FrameK.Size = UDim2.new(0, 200, 0, 120)
+
+		TextLabel.Parent = FrameK
+		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabel.Size = UDim2.new(0, 220, 0, 60)
+		TextLabel.Font = Enum.Font.TitilliumWeb
+		TextLabel.Text = "Are you sure you want to keep the current spins data?"
+		TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabel.TextScaled = false
+		TextLabel.TextSize = 25.000
+		TextLabel.TextWrapped = true
+
+		TextButton.Parent = FrameK
+		TextButton.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextButton.Position = UDim2.new(0.55, 0, 0.500000006, 0)
+		TextButton.Size = UDim2.new(0, 110, 0, 60)
+		TextButton.Font = Enum.Font.TitilliumWeb
+		TextButton.Text = "Yes"
+		TextButton.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButton.TextScaled = true
+		TextButton.TextSize = 40.000
+		TextButton.TextWrapped = true
+
+		function OKKeep()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+			game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
+			wait()
+			datasavedandyoucanredeemcodes = true
+		end
+		TextButton.MouseButton1Click:connect(OKKeep)
+
+		TextButton_2.Parent = FrameK
+		TextButton_2.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextButton_2.Position = UDim2.new(0, 0, 0.500000006, 0)
+		TextButton_2.Size = UDim2.new(0, 110, 0, 60)
+		TextButton_2.Font = Enum.Font.TitilliumWeb
+		TextButton_2.Text = "No"
+		TextButton_2.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButton_2.TextScaled = true
+		TextButton_2.TextSize = 40.000
+		TextButton_2.TextWrapped = true
+
+		function cancelKeep()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+		end
+		TextButton_2.MouseButton1Click:connect(cancelKeep)	
+	end)
+
+	section4:addToggle("Auto Rejoin",true,function(bool)
+		Autorejoin = bool
+	end)
+
+	section4:addToggle("Auto Save",false,function(bool)
+		Autosave = bool
+	end)
+
+	local elm = {}
+	for i,v in pairs(game:GetService("Workspace").RAREKGS:GetChildren()) do
+		if v.tim.Value ~= "N/A" then
+			table.insert(elm, v.Name)
+		end
+	end
+	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
+		if v:FindFirstChild("ELEMENT") and not v:FindFirstChild("limited") then
+			table.insert(elm, v.Name)
+		end
+	end
+
+	local kgs = {}
+	for i,v in pairs(game:GetService("Workspace").RAREKGS:GetChildren()) do
+		if v.tim.Value ~= "N/A" then
+			table.insert(kgs, v.Name)
+		end
+	end
+	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
+		if (v:FindFirstChild("KG") and not v:FindFirstChild("cantspin") and not v:FindFirstChild("limited")) then
+			table.insert(kgs, v.Name)
+		end
+	end
+
+	local ken = {}
+	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu.ALLKENSTYLES:GetChildren()) do
+		if v:FindFirstChild("BREATHINGSTYLE") and not v:FindFirstChild("limited") then
+			table.insert(ken, v.Name)
+		end
+	end
+
+	-- second page
+	local page2 = NoobieDoge:addPage("Elements", 5012544693)
+	local section1 = page2:addSection("Choose wanted elements")
+	local section2 = page2:addSection("Start Spinning")
+
+	local a1
+	section1:addDropdown("Element Choice 1",elm,function(KG1)
+		print("Selected: " .. KG1)
+		notify("1st Element Selected: " .. KG1)
+		a1 = KG1
+	end)
+	local a2
+	section1:addDropdown("Element Choice 2",elm,function(KG2)
+		print("Selected: " .. KG2)
+		notify("2nd Element Selected: " .. KG2)
+		a2 = KG2
+	end)
+	local a3
+	section1:addDropdown("Element Choice 3",elm,function(KG3)
+		print("Selected: " .. KG3)
+		notify("3rd Element Selected: " .. KG3)
+		a3 = KG3
+	end)
+	local a4
+	section1:addDropdown("Element Choice 4",elm,function(KG4)
+		print("Selected: " .. KG4)
+		notify("4th Element Selected: " .. KG4)
+		a4 = KG4
+	end)
+	local a5
+	section1:addDropdown("Element Choice 5",elm,function(KG5)
+		print("Selected: " .. KG5)
+		notify("5th Element Selected: " .. KG5)
+		a5 = KG5
+	end)
+
+	section2:addToggle("Spin Slot 1",false,function(bool)
+		StartSpinElm1 = bool
+		if StartSpinElm1 == true then
+			local spins = game.Players.LocalPlayer.statz.spins.Value
+			game:GetService('RunService').Stepped:connect(function()
+				if spins > 0 then
+					spins = game.Players.LocalPlayer.statz.spins.Value
+					elmvalue1 = game.Players.LocalPlayer.statz.main.element1.Value
+					elmvalue2 = game.Players.LocalPlayer.statz.main.element2.Value
+					elmvalue3 = game.Players.LocalPlayer.statz.main.element3.Value
+					elmvalue4 = game.Players.LocalPlayer.statz.main.element4.Value
+					if StartSpinElm1 == true then
+						if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
+							game.Players.LocalPlayer.startevent:FireServer("spin", "element1")
+							print("Rolled: " .. elmvalue1)
+							wait(1)
+						elseif elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 then
+							if Autosave == true then
+								datasavedandyoucanredeemcodes = true
+							end
+						else
+							print("You have got: " .. elmvalue1)
+							notify("You have got: " .. elmvalue1)
+							if Autosave == true then
+								datasavedandyoucanredeemcodes = true
+							end
+						end
+					end
+				else
+					if Autorejoin == true then
+						--player.statz.spins:Destroy()
+						game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+						wait()
+						game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+					end
+				end
+			end)
+		else 
+		end
+	end)
+
+	section2:addToggle("Spin Slot 2",false,function(bool)
+		StartSpinElm2 = bool
+		if StartSpinElm2 == true then
+			local spins = game.Players.LocalPlayer.statz.spins.Value
+			game:GetService('RunService').Stepped:connect(function()
+				if spins > 0 then
+					spins = game.Players.LocalPlayer.statz.spins.Value
+					elmvalue1 = game.Players.LocalPlayer.statz.main.element1.Value
+					elmvalue2 = game.Players.LocalPlayer.statz.main.element2.Value
+					elmvalue3 = game.Players.LocalPlayer.statz.main.element3.Value
+					elmvalue4 = game.Players.LocalPlayer.statz.main.element4.Value						
+					if StartSpinElm2 == true then
+						if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
+							game.Players.LocalPlayer.startevent:FireServer("spin", "element2")
+							print("Rolled: " .. elmvalue2)
+							wait(1)
+						elseif elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 then
+							if Autosave == true then
+								datasavedandyoucanredeemcodes = true
+							end
+						else
+							print("You have got: " .. elmvalue2)
+							notify("You have got: " .. elmvalue2)
+							if Autosave == true then
+								datasavedandyoucanredeemcodes = true
+							end
+						end
+					end
+				else
+					if Autorejoin == true then
+						--player.statz.spins:Destroy()
+						game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+						wait()
+						game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+					end
+				end
+			end)
+		else 
+		end
+	end)
+
+	if game.Players.LocalPlayer.gamepasses:FindFirstChild("element3") then
+		section2:addToggle("Spin Slot 3",false,function(bool)
+			StartSpinElm3 = bool
+			if StartSpinElm3 == true then
+				local spins = game.Players.LocalPlayer.statz.spins.Value
+				game:GetService('RunService').Stepped:connect(function()
+					if spins > 0 then
+						spins = game.Players.LocalPlayer.statz.spins.Value
+						elmvalue1 = game.Players.LocalPlayer.statz.main.element1.Value
+						elmvalue2 = game.Players.LocalPlayer.statz.main.element2.Value
+						elmvalue3 = game.Players.LocalPlayer.statz.main.element3.Value
+						elmvalue4 = game.Players.LocalPlayer.statz.main.element4.Value							
+						if StartSpinElm3 == true then
+							if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
+								game.Players.LocalPlayer.startevent:FireServer("spin", "element3")
+								print("Rolled: " .. elmvalue3)
+								wait(1)
+							elseif elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 then
+								if Autosave == true then
+									datasavedandyoucanredeemcodes = true
+								end
+							else
+								print("You have got: " .. elmvalue3)
+								notify("You have got: " .. elmvalue3)
+								if Autosave == true then
+									datasavedandyoucanredeemcodes = true
+								end
+							end
+						end
+					else
+						if Autorejoin == true then
+							--player.statz.spins:Destroy()
+							game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+							wait()
+							game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+						end
+					end
+				end)
+			else 
+			end
+		end)
+	end
+
+	if game.Players.LocalPlayer.gamepasses:FindFirstChild("element4") then
+		section2:addToggle("Spin Slot 4",false,function(bool)
+			StartSpinElm4 = bool
+			if StartSpinElm4 == true then
+				local spins = game.Players.LocalPlayer.statz.spins.Value
+				game:GetService('RunService').Stepped:connect(function()
+					if spins > 0 then
+						spins = game.Players.LocalPlayer.statz.spins.Value
+						elmvalue1 = game.Players.LocalPlayer.statz.main.element1.Value
+						elmvalue2 = game.Players.LocalPlayer.statz.main.element2.Value
+						elmvalue3 = game.Players.LocalPlayer.statz.main.element3.Value
+						elmvalue4 = game.Players.LocalPlayer.statz.main.element4.Value							
+						if StartSpinElm4 == true then
+							if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
+								game.Players.LocalPlayer.startevent:FireServer("spin", "element4")
+								print("Rolled: " .. elmvalue4)
+								wait(1)
+							elseif elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
+								if Autosave == true then
+									datasavedandyoucanredeemcodes = true
+								end
+							else
+								print("You have got: " .. elmvalue4)
+								notify("You have got: " .. elmvalue4)
+								if Autosave == true then
+									datasavedandyoucanredeemcodes = true
+								end
+							end
+						end
+					else
+						if Autorejoin == true then
+							--player.statz.spins:Destroy()
+							game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+							wait()
+							game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+						end
+					end
+				end)
+			else 
+			end
+		end)
+	end
+
+	-- third page
+	local page3 = NoobieDoge:addPage("Bloodlines", 5012544693)
+	local section1 = page3:addSection("Choose wanted bloodlines")
+	local section2 = page3:addSection("Start Spinning")
+
+	local a1
+	section1:addDropdown("Bloodline Choice 1",kgs,function(KG1)
+		print("Selected: " .. KG1)
+		notify("1st Bloodline Selected: " .. KG1)
+		a1 = KG1
+	end)
+	local a2
+	section1:addDropdown("Bloodline Choice 2",kgs,function(KG2)
+		print("Selected: " .. KG2)		
+		notify("2nd Bloodline Selected: " .. KG2)
+		a2 = KG2
+	end)
+	local a3
+	section1:addDropdown("Bloodline Choice 3",kgs,function(KG3)
+		print("Selected: " .. KG3)
+		notify("3rd Bloodline Selected: " .. KG3)
+		a3 = KG3
+	end)
+	local a4
+	section1:addDropdown("Bloodline Choice 4",kgs,function(KG4)
+		print("Selected: " .. KG4)
+		notify("4th Bloodline Selected: " .. KG4)
+		a4 = KG4
+	end)
+	local a5
+	section1:addDropdown("Bloodline Choice 5",kgs,function(KG5)
+		print("Selected: " .. KG5)
+		notify("5th Bloodline Selected: " .. KG5)
+		a5 = KG5
+	end)
+
+	section2:addToggle("Spin Slot 1",false,function(bool)
+		AutoSpinBL1 = bool
+		if AutoSpinBL1 == true then
+			local spins = game.Players.LocalPlayer.statz.spins.Value
+			game:GetService('RunService').Stepped:connect(function()
+				if spins > 0 then
+					spins = game.Players.LocalPlayer.statz.spins.Value
+					kgvalue1 = game.Players.LocalPlayer.statz.main.kg1.Value
+					kgvalue2 = game.Players.LocalPlayer.statz.main.kg2.Value
+					kgvalue3 = game.Players.LocalPlayer.statz.main.kg3.Value
+					kgvalue4 = game.Players.LocalPlayer.statz.main.kg4.Value
+					if AutoSpinBL1 == true then
+						if kgvalue1 ~= a1 and kgvalue1 ~= a2 and kgvalue1 ~= a3 and kgvalue1 ~= a4 and kgvalue1 ~= a5 and kgvalue2 ~= a1 and kgvalue2 ~= a2 and kgvalue2 ~= a3 and kgvalue2 ~= a4 and kgvalue2 ~= a5 and kgvalue3 ~= a1 and kgvalue3 ~= a2 and kgvalue3 ~= a3 and kgvalue3 ~= a4 and kgvalue3 ~= a5 and kgvalue4 ~= a1 and kgvalue4 ~= a2 and kgvalue4 ~= a3 and kgvalue4 ~= a4 and kgvalue4 ~= a5 then
+							game.Players.LocalPlayer.startevent:FireServer("spin", "kg1")
+							print("Rolled: " .. kgvalue1)
+							wait(1)
+						elseif kgvalue1 ~= a1 and kgvalue1 ~= a2 and kgvalue1 ~= a3 and kgvalue1 ~= a4 and kgvalue1 ~= a5 then
+							if Autosave == true then
+								datasavedandyoucanredeemcodes = true
+							end
+						else
+							print("You have got: " .. kgvalue1)
+							notify("You have got: " .. kgvalue1)
+							if Autosave == true then
+								datasavedandyoucanredeemcodes = true
+							end
+						end
+					end
+				else
+					if Autorejoin == true then
+						--player.statz.spins:Destroy()
+						game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+						wait()
+						game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+					end
+				end
+			end)
+		else
+		end
+	end)
+
+	section2:addToggle("Spin Slot 2",false,function(bool)
+		AutoSpinBL2 = bool
+		if AutoSpinBL2 == true then
+			local spins = game.Players.LocalPlayer.statz.spins.Value
+			game:GetService('RunService').Stepped:connect(function()
+				if spins > 0 then
+					spins = game.Players.LocalPlayer.statz.spins.Value
+					kgvalue1 = game.Players.LocalPlayer.statz.main.kg1.Value
+					kgvalue2 = game.Players.LocalPlayer.statz.main.kg2.Value
+					kgvalue3 = game.Players.LocalPlayer.statz.main.kg3.Value
+					kgvalue4 = game.Players.LocalPlayer.statz.main.kg4.Value						
+					if AutoSpinBL2 == true then
+						if kgvalue1 ~= a1 and kgvalue1 ~= a2 and kgvalue1 ~= a3 and kgvalue1 ~= a4 and kgvalue1 ~= a5 and kgvalue2 ~= a1 and kgvalue2 ~= a2 and kgvalue2 ~= a3 and kgvalue2 ~= a4 and kgvalue2 ~= a5 and kgvalue3 ~= a1 and kgvalue3 ~= a2 and kgvalue3 ~= a3 and kgvalue3 ~= a4 and kgvalue3 ~= a5 and kgvalue4 ~= a1 and kgvalue4 ~= a2 and kgvalue4 ~= a3 and kgvalue4 ~= a4 and kgvalue4 ~= a5 then
+							game.Players.LocalPlayer.startevent:FireServer("spin", "kg2")
+							print("Rolled: " .. kgvalue2)
+							wait(1)
+						elseif kgvalue2 ~= a1 and kgvalue2 ~= a2 and kgvalue2 ~= a3 and kgvalue2 ~= a4 and kgvalue2 ~= a5 then
+							if Autosave == true then
+								datasavedandyoucanredeemcodes = true
+							end
+						else
+							print("You have got: " .. kgvalue2)
+							notify("You have got: " .. kgvalue2)
+							if Autosave == true then
+								datasavedandyoucanredeemcodes = true
+							end
+						end
+					end
+				else
+					if Autorejoin == true then
+						--player.statz.spins:Destroy()
+						game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+						wait()
+						game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+					end
+				end
+			end)
+		else
+		end
+	end)
+
+	if game.Players.LocalPlayer.gamepasses:FindFirstChild("genkai3") then
+		section2:addToggle("Spin Slot 3",false,function(bool)
+			AutoSpinBL3 = bool
+			if AutoSpinBL3 == true then
+				local spins = game.Players.LocalPlayer.statz.spins.Value
+				game:GetService('RunService').Stepped:connect(function()
+					if spins > 0 then
+						spins = game.Players.LocalPlayer.statz.spins.Value
+						kgvalue1 = game.Players.LocalPlayer.statz.main.kg1.Value
+						kgvalue2 = game.Players.LocalPlayer.statz.main.kg2.Value
+						kgvalue3 = game.Players.LocalPlayer.statz.main.kg3.Value
+						kgvalue4 = game.Players.LocalPlayer.statz.main.kg4.Value								
+						if AutoSpinBL3 == true then
+							if kgvalue1 ~= a1 and kgvalue1 ~= a2 and kgvalue1 ~= a3 and kgvalue1 ~= a4 and kgvalue1 ~= a5 and kgvalue2 ~= a1 and kgvalue2 ~= a2 and kgvalue2 ~= a3 and kgvalue2 ~= a4 and kgvalue2 ~= a5 and kgvalue3 ~= a1 and kgvalue3 ~= a2 and kgvalue3 ~= a3 and kgvalue3 ~= a4 and kgvalue3 ~= a5 and kgvalue4 ~= a1 and kgvalue4 ~= a2 and kgvalue4 ~= a3 and kgvalue4 ~= a4 and kgvalue4 ~= a5 then
+								game.Players.LocalPlayer.startevent:FireServer("spin", "kg3")
+								print("Rolled: " .. kgvalue3)
+								wait(1)
+							elseif kgvalue3 ~= a1 and kgvalue3 ~= a2 and kgvalue3 ~= a3 and kgvalue3 ~= a4 and kgvalue3 ~= a5 then
+								if Autosave == true then
+									datasavedandyoucanredeemcodes = true
+								end
+							else
+								print("You have got: " .. kgvalue3)
+								notify("You have got: " .. kgvalue3)
+								if Autosave == true then
+									datasavedandyoucanredeemcodes = true
+								end
+							end
+						end
+					else
+						if Autorejoin == true then
+							--player.statz.spins:Destroy()
+							game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+							wait()
+							game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+						end
+					end
+				end)
+			else
+			end
+		end)
+	end
+
+	if game.Players.LocalPlayer.gamepasses:FindFirstChild("genkai4") then
+		section2:addToggle("Spin Slot 4",false,function(bool)
+			AutoSpinBL4 = bool
+			if AutoSpinBL4 == true then
+				local spins = game.Players.LocalPlayer.statz.spins.Value
+				game:GetService('RunService').Stepped:connect(function()
+					if spins > 0 then
+						spins = game.Players.LocalPlayer.statz.spins.Value
+						kgvalue1 = game.Players.LocalPlayer.statz.main.kg1.Value
+						kgvalue2 = game.Players.LocalPlayer.statz.main.kg2.Value
+						kgvalue3 = game.Players.LocalPlayer.statz.main.kg3.Value
+						kgvalue4 = game.Players.LocalPlayer.statz.main.kg4.Value							
+						if AutoSpinBL4 == true then
+							if kgvalue1 ~= a1 and kgvalue1 ~= a2 and kgvalue1 ~= a3 and kgvalue1 ~= a4 and kgvalue1 ~= a5 and kgvalue2 ~= a1 and kgvalue2 ~= a2 and kgvalue2 ~= a3 and kgvalue2 ~= a4 and kgvalue2 ~= a5 and kgvalue3 ~= a1 and kgvalue3 ~= a2 and kgvalue3 ~= a3 and kgvalue3 ~= a4 and kgvalue3 ~= a5 and kgvalue4 ~= a1 and kgvalue4 ~= a2 and kgvalue4 ~= a3 and kgvalue4 ~= a4 and kgvalue4 ~= a5 then
+								game.Players.LocalPlayer.startevent:FireServer("spin", "kg4")
+								print("Rolled: " .. kgvalue4)
+								wait(1)
+							elseif kgvalue4 ~= a1 and kgvalue4 ~= a2 and kgvalue4 ~= a3 and kgvalue4 ~= a4 and kgvalue4 ~= a5 then
+								if Autosave == true then
+									datasavedandyoucanredeemcodes = true
+								end
+							else
+								print("You have got: " .. kgvalue4)
+								notify("You have got: " .. kgvalue4)
+								if Autosave == true then
+									datasavedandyoucanredeemcodes = true
+								end
+							end
+						end
+					else
+						if Autorejoin == true then
+							--player.statz.spins:Destroy()
+							game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+							wait()
+							game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+						end
+					end
+				end)
+			else
+			end
+		end)
+	end
+
+	-- forth page
+	local page4 = NoobieDoge:addPage("Kenjutsu", 5012544693)
+	local section1 = page4:addSection("Choose wanted kenjutsu")
+	local section2 = page4:addSection("Start Spinning")
+
+	if game:GetService("Players").LocalPlayer.statz.unlocked:FindFirstChild("kenjutsuslot2") then
+		local kenselect1
+		section1:addDropdown("Kenjutsu Choice 1",ken,function(KEN1)
+			print("Selected: " .. KEN1)
+			notify("Selected: " .. KEN1)
+			FrameK.Visible = true
+			kenselect1 = KEN1
+		end)
+		local kenselect2
+		section1:addDropdown("Kenjutsu Choice 2",ken,function(KEN2)
+			print("Selected: " .. KEN2)
+			notify("Selected: " .. KEN2)
+			FrameK.Visible = true
+			kenselect2 = KEN2
+		end)
+		local kenselect3
+		section1:addDropdown("Kenjutsu Choice 3",ken,function(KEN3)
+			print("Selected: " .. KEN3)
+			notify("Selected: " .. KEN3)
+			FrameK.Visible = true
+			kenselect3 = KEN3
+		end)
+		local kenselect4
+		section1:addDropdown("Kenjutsu Choice 4",ken,function(KEN4)
+			print("Selected: " .. KEN4)
+			notify("Selected: " .. KEN4)
+			FrameK.Visible = true
+			kenselect4 = KEN4
+		end)
+		local kenselect5
+		section1:addDropdown("Kenjutsu Choice 3",ken,function(KEN5)
+			print("Selected: " .. KEN5)
+			notify("Selected: " .. KEN5)
+			FrameK.Visible = true
+			kenselect5 = KEN5
+		end)
+
+		section2:addToggle("Spin Slot 1",false,function(bool)
+			StartSpinKen = bool
+			if StartSpinKen == true then
+				local spins = game.Players.LocalPlayer.statz.spins.Value
+				game:GetService('RunService').Stepped:connect(function()
+					if spins > 9 then
+						spins = game.Players.LocalPlayer.statz.spins.Value
+						kenvalue = game.Players.LocalPlayer.statz.breathingstyle.Value
+						kenvalue2 = game.Players.LocalPlayer.statz.breathingstyle2.Value
+						if StartSpinKen == true then
+							if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 and kenvalue ~= kenselect4 and kenvalue ~= kenselect5 and kenvalue2 ~= kenselect1 and kenvalue2 ~= kenselect2 and kenvalue2 ~= kenselect3 and kenvalue2 ~= kenselect4 and kenvalue2 ~= kenselect5 then
+								local args = {[1] = "spinBREATHING"}
+								game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+								print("Rolled: " .. kenvalue)
+								wait(1)
+							elseif kenvalue2 ~= kenselect1 and kenvalue2 ~= kenselect2 and kenvalue2 ~= kenselect3 and kenvalue2 ~= kenselect4 and kenvalue2 ~= kenselect5 then
+								if Autosave == true then
+									datasavedandyoucanredeemcodes = true
+								end
+							else
+								print("You have got: " .. kenvalue)
+								notify("You have got " .. kenvalue .. " in slot 1")
+								if Autosave == true then
+									datasavedandyoucanredeemcodes = true
+								end
+							end
+						end
+					else
+						if Autorejoin == true then
+							--player.statz.spins:Destroy()
+							game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+							wait()
+							game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+						end
+					end
+				end)
+			else 
+			end
+		end)
+
+		section2:addToggle("Spin Slot 2",false,function(bool)
+			StartSpinKen2 = bool
+			if StartSpinKen2 == true then
+				local spins = game.Players.LocalPlayer.statz.spins.Value
+				game:GetService('RunService').Stepped:connect(function()
+					if spins > 9 then
+						spins = game.Players.LocalPlayer.statz.spins.Value
+						kenvalue = game.Players.LocalPlayer.statz.breathingstyle.Value
+						kenvalue2 = game.Players.LocalPlayer.statz.breathingstyle2.Value
+						if StartSpinKen2 == true then
+							if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 and kenvalue ~= kenselect4 and kenvalue ~= kenselect5 and kenvalue2 ~= kenselect1 and kenvalue2 ~= kenselect2 and kenvalue2 ~= kenselect3 and kenvalue2 ~= kenselect4 and kenvalue2 ~= kenselect5 then
+								local args = {[1] = "spinBREATHING",[2] = "breathingstyle2"}
+								game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+								print("Rolled: " .. kenvalue2)
+								wait(1)
+							elseif kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 and kenvalue ~= kenselect4 and kenvalue ~= kenselect5 then
+								if Autosave == true then
+									datasavedandyoucanredeemcodes = true
+								end
+							else
+								print("You have got: " .. kenvalue2)
+								notify("You have got " .. kenvalue2 .. " in slot 2")
+								if Autosave == true then
+									datasavedandyoucanredeemcodes = true
+								end
+							end
+						end
+					else
+						if Autorejoin == true then
+							--player.statz.spins:Destroy()
+							game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+							wait()
+							game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+						end
+					end
+				end)
+			else 
+			end
+		end)
+	else
+		local kenselect1
+		section1:addDropdown("Kenjutsu Choice 1",ken,function(KEN1)
+			print("Selected: " .. KEN1)
+			notify("Selected: " .. KEN1)
+			kenselect1 = KEN1
+		end)
+		local kenselect2
+		section1:addDropdown("Kenjutsu Choice 2",ken,function(KEN2)
+			print("Selected: " .. KEN2)
+			notify("Selected: " .. KEN2)
+			kenselect2 = KEN2
+		end)
+		local kenselect3
+		section1:addDropdown("Kenjutsu Choice 3",ken,function(KEN3)
+			print("Selected: " .. KEN3)
+			notify("Selected: " .. KEN3)
+			kenselect3 = KEN3
+		end)
+
+		section2:addToggle("Spin Kenjutsu",false,function(bool)
+			StartSpinKen = bool
+			if StartSpinKen == true then
+				local spins = game.Players.LocalPlayer.statz.spins.Value
+				game:GetService('RunService').Stepped:connect(function()
+					if spins > 0 then
+						spins = game.Players.LocalPlayer.statz.spins.Value
+						kenvalue = game.Players.LocalPlayer.statz.breathingstyle.Value
+						if StartSpinKen == true then
+							if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 then
+								local args = {[1] = "spinBREATHING"}
+								game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+								print("Rolled: " .. kenvalue)
+								notify("Rolled: " .. kenvalue)
+								wait(1)
+							else
+								print("You have got: " .. kenvalue)
+								notify("You have got: " .. kenvalue)
+								if Autosave == true then
+									datasavedandyoucanredeemcodes = true
+								end
+							end
+						end
+					else
+						if Autorejoin == true then
+							--player.statz.spins:Destroy()
+							game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+							wait()
+							game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+						end
+					end
+				end)
+			else 
+			end
+		end)
+	end
+	
+	-- last page
+	local pagelast = NoobieDoge:addPage("Settings", 5012544693)
+	local settings = pagelast:addSection("Settings")
+	local colors = pagelast:addSection("Colors")
+	local credits = pagelast:addSection("Credits")
+
+	settings:addButton("Upgrade Performance",function()
+		UPPERFORMANCE()
+	end)
+
+	settings:addKeybind("Toggle Keybind", Enum.KeyCode.RightControl, function()
+	print("Activated Keybind")
+	NoobieDoge:toggle()
+	end, function()
+	print("Changed Keybind")
+	end)
+
+	for theme, color in pairs(themes) do -- all in one theme changer, i know, im cool
+		colors:addColorPicker(theme, color, function(color3)
+			NoobieDoge:setTheme(theme, color3)
+		end)
+	end
+
+	credits:addButton("Made by NoobieDoge")
+	credits:addButton("https://discord.gg/P2CeRjvTDt")
+	credits:addButton("Copy Discord Link",function()
+		setclipboard("https://discord.gg/P2CeRjvTDt")
+		wait()
+		notify("Discord link copied to clipboard!")
+	end)
+
+	game:GetService('RunService').Stepped:connect(function()
+		if datasavedandyoucanredeemcodes == true then
+			AutoSpinBL1 = false
+			AutoSpinBL2 = false
+			AutoSpinBL3 = false
+			AutoSpinBL4 = false
+			StartSpinElm1 = false
+			StartSpinElm2 = false
+			StartSpinElm3 = false
+			StartSpinElm4 = false
+			StartSpinKen = false
+			StartSpinKen2 = false
+			datasavedandyoucanredeemcodes = false
+			game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
+			notify("You will be teleported to My Home in order to save data")
+			wait(1)
+			local args = {[1] = "arenateleport",[2] = 5451410109}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+		else
+			game.Players.LocalPlayer.PlayerGui.Main.Customization.Codes.Text = [[WARNING:
+			DO NOT REDEEM CODES BEFORE SAVING DATA]]
+		end
+	end)
+
+	if game:GetService("Workspace").npc:FindFirstChild("DogeHubNPC") then
+		notify("Spam execute won't do anything m8")
+	else
+		local DogeHubNPC = Instance.new("Part")
+		DogeHubNPC.Parent = game:GetService("Workspace").npc
+		DogeHubNPC.Name = "DogeHubNPC"
+		DogeHubNPC.Anchored = true
+		DogeHubNPC.Transparency = 1
+		DogeHubNPC.Size = Vector3.new(6, 1, 6)
+		--some functions that are important af
+		Autorejoin = true
+		game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+		game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1.hair.color.Visible = false
+		game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1.hair.arrowleft.Visible = false
+		game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1.hair.arrowright.Visible = false
+		game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1.hair.custom.Visible = false
+		game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1.band.Visible = false
+		game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1.outfit.Visible = false
+		game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1.shoe.Visible = false
+		game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1.beard.Visible = false
+		game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1.face.Visible = false
+		game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame2.Visible = false
+		game:GetService('RunService').Stepped:connect(function()
+			for i,v in pairs(game.Players.LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1:GetChildren()) do
+				if v:FindFirstChild("text") then
+					v.text.Text = "You cannot customize character while inf spin"
+				end
+			end
+		end)
+		repeat wait() until game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.Genkaibag.Frame2.BossTab
+		for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.Genkaibag.Frame2.BossTab:GetChildren()) do
+			if v:FindFirstChild("name") then
+				v.name.Text = ("("..v.Name ..")".. " " .. v.name.Text)
+			end
+		end
+		--Random bullshit lol
+		for i,v in pairs(game.Workspace.Camera.startup:GetChildren()) do
+			if v.Name == "" and v.Model.hair.BrickColor == BrickColor.new(0,255,0) then
+				print("")
+			else
+				for i,v in pairs(game.Workspace.Camera.startup:GetChildren()) do
+					if v.Name == "" then 
+						v.Name = "NPC"
+					end
+				end
+				game.Workspace.Camera.startup.NPC.Name = "DioSenko"
+				game.Workspace.Camera.startup.NPC.Name = ""
+				game.Workspace.Camera.startup.NPC.Name = "Narumaki"
+				game:GetService("Workspace").Camera.startup.DioSenko.Model.hair.BrickColor = BrickColor.new(0,255,0)
+				game:GetService("Workspace").Camera.startup.DioSenko.Model.hair.Material = Enum.Material.Neon
+				game:GetService("Workspace").Camera.startup.DioSenko.Head.Decal.Texture = [[rbxassetid://9792123944]]
+				game:GetService("Workspace").Camera.startup.DioSenko.Head.Mesh:Destroy()
+				game:GetService("Workspace").Camera.startup.DioSenko.Head.Shape = Enum.PartType.Ball
+				game:GetService("Workspace").Camera.startup.DioSenko.Head.Size = Vector3.new(2, 1.5, 2)
+				game:GetService("Workspace").Camera.startup.Narumaki.Shirt.ShirtTemplate = [[rbxassetid://7384140987]]
+				game:GetService("Workspace").Camera.startup.Narumaki.Pants.PantsTemplate = [[rbxassetid://7384140866]]
+				game:GetService("Workspace").Camera.startup.Narumaki.Head.face.Texture = [[rbxassetid://7336910703]]
+				game:GetService("Workspace").Camera.startup.Narumaki.Customize.char.Torso:Destroy()
+				game:GetService("Workspace").Camera.startup.Narumaki.Customize.char["Left Leg"]:Destroy()
+				game:GetService("Workspace").Camera.startup.Narumaki.Customize.char["Right Leg"]:Destroy()
+				game:GetService("Workspace").Camera.startup.Narumaki.Name = ""
+				game:GetService("Workspace").Camera.startup.DioSenko.Name = ""
+			end
+		end
+	end
+
+	-- load
+	NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
+
+end
+--Shindo Main
+local function ShindoMain()
+	--DogeHub V2 GUI
+	local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20page%20format%20gui"))()
+	local NoobieDoge = library.new("DogeHub V2", 5013109572)
+
+	-- themes
+	local themes = {
+	Background = Color3.fromRGB(24, 24, 24),
+	Glow = Color3.fromRGB(0, 0, 0),
+	Accent = Color3.fromRGB(10, 10, 10),
+	LightContrast = Color3.fromRGB(20, 20, 20),
+	DarkContrast = Color3.fromRGB(14, 14, 14),  
+	TextColor = Color3.fromRGB(255, 255, 255)
+	}
+
+	-- first page
+	local page1 = NoobieDoge:addPage("Universal", 5012544693)
+	local section1 = page1:addSection("Walk Speed & Jump Power")
+	local section2 = page1:addSection("Other Functions")
+
+	section1:addSlider("Walk Speed", 16, 0, 400, function(value)
+		sliderspeed = value
+	end)
+	section1:addSlider("Jump Power", 50, 0, 400, function(value)
+		sliderjump = value
+	end)
+
+	section1:addToggle("Enabled", nil, function(value)
+		sliderpowa = value
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if sliderpowa then
+			game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = sliderspeed
+			game.Players.LocalPlayer.Character.Humanoid.JumpPower = sliderjump
+		end
+	end)
+
+	section2:addButton("Add ESP GUI", function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Project%3A%20Bullshit%3A%20Rebooted"))()
+	end)
+
+	section2:addButton("Reset Character",function()
+		game.Players.LocalPlayer.Character:BreakJoints()
+	end)
+
+	section2:addButton("Enable Infinite Jump",function()
+		getgenv().dc = false
+		local infjump
+		infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
+			if dc then infjump:Disconnect() return end
+			game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
+		end)
+		notify("Enabled Infinute Jump")
+	end)
+
+	section2:addButton("Disable Infinite Jump",function()
+		getgenv().dc = true
+		notify("Disabled Infinite Jump")
+	end)
+
+	section2:addToggle("Press P to fly",false,function(Pnorm)
+		Pspeed = false
+
+		repeat wait() 
+		until game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:findFirstChild("Head") and game.Players.LocalPlayer.Character:findFirstChild("Humanoid") 
+		local mouse = game.Players.LocalPlayer:GetMouse() 
+		repeat wait() until mouse
+		local plr = game.Players.LocalPlayer 
+		local torso = plr.Character.Head 
+		local flying = false
+		local deb = true 
+		local ctrl = {f = 0, b = 0, l = 0, r = 0} 
+		local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+		local maxspeed = 101 
+		local speed = 0 
+
+		function Fly() 
+			local bg = Instance.new("BodyGyro", torso) 
+			bg.P = 9e4 
+			bg.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
+			bg.cframe = torso.CFrame 
+
+			local bv = Instance.new("BodyVelocity", torso) 
+			bv.velocity = Vector3.new(0,0.1,0) 
+			bv.maxForce = Vector3.new(9e9, 9e9, 9e9) 
+			repeat wait() 
+				plr.Character.Humanoid.PlatformStand = true 
+				if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
+					speed = speed+30.5+(speed/maxspeed) 
+					if speed > maxspeed then 
+						speed = maxspeed 
+					end 
+
+				elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
+					speed = speed-31.5
+					if speed < 0 then 
+						speed = 0 
+					end 
+				end 
+				if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then 
+					bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+					lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r} 
+				elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then 
+					bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+				else 
+					bv.velocity = Vector3.new(0,0.1,0)
+				end 
+				bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
+			until not flying 
+			ctrl = {f = 0, b = 0, l = 0, r = 0} 
+			lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+			speed = 0 
+			bg:Destroy() 
+			bv:Destroy() 
+			plr.Character.Humanoid.PlatformStand = false 
+		end 
+
+		mouse.KeyDown:connect(function(key) 
+			if key:lower() == "p" then 
+				if flying then flying = false 
+				else 
+					flying = true 
+					Fly() 
+				end 
+			elseif key:lower() == "w" then 
+				ctrl.f = 1 
+			elseif key:lower() == "s" then 
+				ctrl.b = -1 
+			elseif key:lower() == "a" then 
+				ctrl.l = -1 
+			elseif key:lower() == "d" then 
+				ctrl.r = 1 
+			end 
+		end) 
+
+		mouse.KeyUp:connect(function(key) 
+
+			if key:lower() == "w" then 
+				ctrl.f = 0 
+			elseif key:lower() == "s" then 
+				ctrl.b = 0 
+			elseif key:lower() == "a" then 
+				ctrl.l = 0 
+			elseif key:lower() == "d" then 
+				ctrl.r = 0 
+			end 
+		end)
+		Fly()
+		notify("Press P to fly: "..tostring(Pnorm),true)
+	end)
+
+	section2:addToggle("Press P to fly faster",false,function(Pspeed)
+		Pnorm = false
+
+		repeat wait() 
+		until game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:findFirstChild("Head") and game.Players.LocalPlayer.Character:findFirstChild("Humanoid") 
+		local mouse = game.Players.LocalPlayer:GetMouse() 
+		repeat wait() until mouse
+		local plr = game.Players.LocalPlayer 
+		local torso = plr.Character.Head 
+		local flying = false
+		local deb = true 
+		local ctrl = {f = 0, b = 0, l = 0, r = 0} 
+		local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+		local maxspeed = 400 
+		local speed = 0 
+
+		function Fly() 
+			local bg = Instance.new("BodyGyro", torso) 
+			bg.P = 9e4 
+			bg.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
+			bg.cframe = torso.CFrame 
+
+			local bv = Instance.new("BodyVelocity", torso) 
+			bv.velocity = Vector3.new(0,0.1,0) 
+			bv.maxForce = Vector3.new(9e9, 9e9, 9e9) 
+			repeat wait() 
+				plr.Character.Humanoid.PlatformStand = true 
+				if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
+					speed = speed+150.5+(speed/maxspeed) 
+					if speed > maxspeed then 
+						speed = maxspeed 
+					end 
+
+				elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
+					speed = speed-250
+					if speed < 0 then 
+						speed = 0 
+					end 
+				end 
+				if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then 
+					bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+					lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r} 
+				elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then 
+					bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+				else 
+					bv.velocity = Vector3.new(0,0.1,0)
+				end 
+				bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
+			until not flying 
+			ctrl = {f = 0, b = 0, l = 0, r = 0} 
+			lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+			speed = 0 
+			bg:Destroy() 
+			bv:Destroy() 
+			plr.Character.Humanoid.PlatformStand = false 
+		end 
+
+		mouse.KeyDown:connect(function(key) 
+			if key:lower() == "p" then 
+				if flying then flying = false 
+				else 
+					flying = true 
+					Fly() 
+				end 
+			elseif key:lower() == "w" then 
+				ctrl.f = 1 
+			elseif key:lower() == "s" then 
+				ctrl.b = -1 
+			elseif key:lower() == "a" then 
+				ctrl.l = -1 
+			elseif key:lower() == "d" then 
+				ctrl.r = 1 
+			end 
+		end) 
+
+		mouse.KeyUp:connect(function(key) 
+
+			if key:lower() == "w" then 
+				ctrl.f = 0 
+			elseif key:lower() == "s" then 
+				ctrl.b = 0 
+			elseif key:lower() == "a" then 
+				ctrl.l = 0 
+			elseif key:lower() == "d" then 
+				ctrl.r = 0 
+			end 
+		end)
+		Fly()
+		notify("Press P to fly faster: "..tostring(Pspeed),true)
+	end)
+
+
+	local playerlist = {}
+	for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+		if v.Name ~= game.Players.LocalPlayer.Name then
+			table.insert(playerlist, v.Name)
+		end
+	end
+	section2:addDropdown("Track selected player",playerlist,function(ripthatguy)
+		notify("Player Selected: " .. ripthatguy)
+		T = ripthatguy
+	end)
+
+	section2:addToggle("Track Player",false,function(bool)
+		trackthatguy = bool
+		local platform = Instance.new("Part", player.Character)
+		platform.Anchored = true
+		platform.Transparency = 1
+		platform.Size = Vector3.new(6, 1, 6)
+
+		local connection
+		connection = game:GetService("RunService").RenderStepped:connect(function()
+			if player.Character:FindFirstChild("HumanoidRootPart") then
+				platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -1.8, 0)
+			else
+				connection:Disconnect()
+			end
+		end)
+		game:GetService('RunService').Stepped:connect(function()
+			if trackthatguy ~= true then
+				platform:Destroy()
+			end
+		end)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if trackthatguy == true then
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[T].Character.HumanoidRootPart.CFrame * CFrame.new(0, 5, 10)
+			game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game.Players[T].Character.HumanoidRootPart.Position)
+		end
+	end)
+
+	section2:addButton("Old No CD Method",function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/HDTerebi/Shindo-Life/main/No%20CD%20Method"))()
+		wait()
+		notify("Equip a beast mode, mode up, type '!spirit', press the ']' button, done!")
+	end)
+
+	-- second page
+	local page2 = NoobieDoge:addPage("Misc", 5012544693)
+	local section1 = page2:addSection("Game Functions")
+	local section2 = page2:addSection("Customs")
+	local section3 = page2:addSection("Spam Keys")
+	local section4 = page2:addSection("Kenjutsu Spin")
+
+	section1:addButton("SuperHuman",function()
+		local chanceofaudioquote = math.random(1, 100)
+		if chanceofaudioquote <= 10 then
+			local s = Instance.new("Sound")
+			s.Name = "Sound" s.SoundId = "http://www.roblox.com/asset/?id=1169755927" s.Volume = 20 s.Looped = false s.archivable = false s.Parent = game.Workspace wait(.3) s:play()
+		end
+		_G.Doge = true;
+		_G.dogespeed = 80;
+
+		local mt = getrawmetatable(game)
+		local old = mt.__newindex
+		setreadonly(mt, false)
+
+		mt.__newindex = newcclosure(function(t,k,v)
+			pcall(function()
+				if t == game:GetService("Players").LocalPlayer.Character.Humanoid and k == "WalkSpeed" and _G.Doge then
+					v = _G.dogespeed;
+				end
+			end)
+			return old(t,k,v)
+		end)
+		notify("SuperHuman activated")
+		wait(1)
+	end)
+
+	section1:addButton("Unbreakable Blocks",function()
+	local chanceofaudioquote = math.random(1, 100)
+	if chanceofaudioquote <= 30 then
+		local s = Instance.new("Sound")
+		s.Name = "Sound" s.SoundId = "http://www.roblox.com/asset/?id=10163532591" s.Volume = 20 s.Looped = false s.archivable = false s.Parent = game.Workspace wait(.3) s:play()
+	else
+		local chanceofnotifyquote = math.random(1, 100)
+		if chanceofnotifyquote <= 25 then
+			notify("Making the mother of all omelettes here, Jack")
+			wait(1.2)
+			notify("Can't fret over every egg.")
+		end
+	end
+		for i,v in pairs(game.workspace:GetChildren()) do
+			if v.Name == game.Players.LocalPlayer.Name and v:FindFirstChild("blockbreaker") then
+				v.blockbreaker:Destroy()
+			end
+		end
+	end)
+
+	section1:addButton("Infinite MD",function()
+		INFMDON()
+	end)
+
+	section1:addToggle("NPC Kill Aura",false,function(bool)
+		keel = bool
+		notify("NPC Kill Aura: "..tostring(keel),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if keel then
+			NPCKEELAURA()
+		end
+	end)
+
+	local scrollfarm
+	section1:addToggle("Scroll Snipe",false, function(bool)
+		scrollfarm = bool
+	end)
+
+	spawn(function()
+		while wait() do
+			if scrollfarm then
+				repeat wait()
+					SCROLLFARM()
+					SCROLLFARM1()
+				until not scrollfarm
+			end
+		end
+	end)
+
+	section2:addDropdown("Custom Display Ranks",{"RELL", "F 0", "D 1", "D 2", "D 3", "C 1", "C 2", "C 3", "B 1", "B 2", "B 3", "A 1", "A 2", "A 3", "S 1", "S 2", "S 3", "V 1", "V 2", "V 3", "X 1", "X 2", "X 3", "Y 1", "Y 2", "Y 3", "Z 1", "Z 2", "Z 3", "MAX-69", "MAX-420", "MAX-666", "MAX-999", "GOD", "Dragon", "Hacker","???"},function(rektrank)
+		game:GetService("Players").LocalPlayer.leaderstats.Rank.Value =  (rektrank)
+		notify("Rank Displayed: " .. rektrank)
+	end)
+
+	section2:addButton("Bloodline Changer",function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/NoobieDoge/DogeHub/Separated/ShindoBloodlineChanger"))()
+	end)
+
+	section2:addButton("RC Shop Changer",function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20RC%20Shop%20Changer"))()
+	end)
+
+	section3:addToggle("Spam Q",false,function(bool)
+		Q = bool
+		notify("Spam Q: "..tostring(Q),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if Q then
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","q")
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","qend")
+		end
+	end)
+	section3:addToggle("Spam E",false, function(bool)
+		E = bool
+		notify("Spam E: "..tostring(E),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if E then
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+		end
+	end)
+	section3:addToggle("Spam R",false, function(bool)
+		R = bool
+		notify("Spam R: "..tostring(R),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if R then
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","r")
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","rend")
+		end
+	end)
+	section3:addToggle("Spam T",false, function(bool)
+		T = bool
+		notify("Spam T: "..tostring(T),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if T then
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","t")
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","tend")
+		end
+	end)
+	section3:addToggle("Spam Y",false, function(bool)
+		Y = bool
+		notify("Spam Y: "..tostring(Y),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if Y then
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","y")
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","yend")
+		end
+	end)
+	section3:addToggle("Spam F",false, function(bool)
+		F = bool
+		notify("Spam F: "..tostring(F),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if F then
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","f")
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","fend")
+		end
+	end)
+	section3:addToggle("Spam G",false, function(bool)
+		G = bool
+		notify("Spam G: "..tostring(G),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if G then
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","g")
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","gend")
+		end
+	end)
+	section3:addToggle("Spam H",false, function(bool)
+		H = bool
+		notify("Spam H: "..tostring(H),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if H then
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","h")
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","hend")
+		end
+	end)
+	section3:addToggle("Spam V",false, function(bool)
+		V = bool
+		notify("Spam V: "..tostring(V),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if V then
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","v")
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","vend")
+		end
+	end)
+	section3:addToggle("Spam B",false, function(bool)
+		B = bool
+		notify("Spam B: "..tostring(B),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if B then
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","b")
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","bend")
+		end
+	end)
+	section3:addToggle("Spam N",false, function(bool)
+		N = bool
+		notify("Spam N: "..tostring(N),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if N then
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","n")
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","nend")
+		end
+	end)
+	section3:addToggle("Spam Z",false, function(bool)
+		Z = bool
+		notify("Spam Z: "..tostring(Z),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if Z then
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","z")
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","zend")
+		end
+	end)
+	section3:addToggle("Spam C",false, function(bool)
+		C = bool
+		notify("Spam C: "..tostring(C),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if C then
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","c")
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","cend")
+		end
+	end)
+
+	section4:addButton("Reset Spins NOW",function()
+		game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+		wait()
+		game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
+	end)
+
+	section4:addButton("Save Spins Data",function()
+		local player = game.Players.LocalPlayer
+		local ScreenGuiK = Instance.new("ScreenGui")
+		local FrameK = Instance.new("Frame")
+		local TextLabel = Instance.new("TextLabel")
+		local TextButton = Instance.new("TextButton")
+		local TextButton_2 = Instance.new("TextButton")
+
+		ScreenGuiK.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+		FrameK.Parent = ScreenGuiK
+		FrameK.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		FrameK.Position = UDim2.new(0.005, 0, 0.7, 0)
+		FrameK.Size = UDim2.new(0, 200, 0, 120)
+
+		TextLabel.Parent = FrameK
+		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabel.Size = UDim2.new(0, 220, 0, 60)
+		TextLabel.Font = Enum.Font.TitilliumWeb
+		TextLabel.Text = "Are you sure you want to keep the current spins data?"
+		TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabel.TextScaled = false
+		TextLabel.TextSize = 25.000
+		TextLabel.TextWrapped = true
+
+		TextButton.Parent = FrameK
+		TextButton.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextButton.Position = UDim2.new(0.55, 0, 0.500000006, 0)
+		TextButton.Size = UDim2.new(0, 110, 0, 60)
+		TextButton.Font = Enum.Font.TitilliumWeb
+		TextButton.Text = "Yes"
+		TextButton.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButton.TextScaled = true
+		TextButton.TextSize = 40.000
+		TextButton.TextWrapped = true
+
+		function OKKeep()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+			game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
+			wait()
+			datasavedandyoucanredeemcodes = true
+		end
+		TextButton.MouseButton1Click:connect(OKKeep)
+
+		TextButton_2.Parent = FrameK
+		TextButton_2.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextButton_2.Position = UDim2.new(0, 0, 0.500000006, 0)
+		TextButton_2.Size = UDim2.new(0, 110, 0, 60)
+		TextButton_2.Font = Enum.Font.TitilliumWeb
+		TextButton_2.Text = "No"
+		TextButton_2.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButton_2.TextScaled = true
+		TextButton_2.TextSize = 40.000
+		TextButton_2.TextWrapped = true
+
+		function cancelKeep()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+		end
+		TextButton_2.MouseButton1Click:connect(cancelKeep)	
+	end)
+
+	section4:addToggle("Auto Rejoin",true,function(bool)
+		Autorejoin = bool
+	end)
+
+	section4:addToggle("Auto Save",false,function(bool)
+		Autosave = bool
+	end)
+
+	local ken = {}
+	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu.ALLKENSTYLES:GetChildren()) do
+		if v:FindFirstChild("BREATHINGSTYLE") and not v:FindFirstChild("limited") then
+			table.insert(ken, v.Name)
+		end
+	end
+
+	if game:GetService("Players").LocalPlayer.statz.unlocked:FindFirstChild("kenjutsuslot2") then
+		local kenselect1
+			section4:addDropdown("Kenjutsu Choice 1",ken,function(KEN1)
+			print("Selected: " .. KEN1)
+			notify("Selected: " .. KEN1)
+			FrameK.Visible = true
+			kenselect1 = KEN1
+		end)
+		local kenselect2
+			section4:addDropdown("Kenjutsu Choice 2",ken,function(KEN2)
+			print("Selected: " .. KEN2)
+			notify("Selected: " .. KEN2)
+			FrameK.Visible = true
+			kenselect2 = KEN2
+		end)
+		local kenselect3
+			section4:addDropdown("Kenjutsu Choice 3",ken,function(KEN3)
+			print("Selected: " .. KEN3)
+			notify("Selected: " .. KEN3)
+			FrameK.Visible = true
+			kenselect3 = KEN3
+		end)
+		local kenselect4
+			section4:addDropdown("Kenjutsu Choice 4",ken,function(KEN4)
+			print("Selected: " .. KEN4)
+			notify("Selected: " .. KEN4)
+			FrameK.Visible = true
+			kenselect4 = KEN4
+		end)
+		local kenselect5
+			section4:addDropdown("Kenjutsu Choice 3",ken,function(KEN5)
+			print("Selected: " .. KEN5)
+			notify("Selected: " .. KEN5)
+			FrameK.Visible = true
+			kenselect5 = KEN5
+		end)
+
+		section4:addToggle("Spin Slot 1",false,function(bool)
+			game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+			StartSpinKen = bool
+			if StartSpinKen == true then
+				local spins = game.Players.LocalPlayer.statz.spins.Value
+				game:GetService('RunService').Stepped:connect(function()
+					if spins > 9 then
+						spins = game.Players.LocalPlayer.statz.spins.Value
+						kenvalue = game.Players.LocalPlayer.statz.breathingstyle.Value
+						kenvalue2 = game.Players.LocalPlayer.statz.breathingstyle2.Value
+						if StartSpinKen == true then
+							if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 and kenvalue ~= kenselect4 and kenvalue ~= kenselect5 and kenvalue2 ~= kenselect1 and kenvalue2 ~= kenselect2 and kenvalue2 ~= kenselect3 and kenvalue2 ~= kenselect4 and kenvalue2 ~= kenselect5 then
+								local args = {[1] = "spinBREATHING"}
+								game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+								print("Rolled: " .. kenvalue)
+								wait(1)
+							elseif kenvalue2 ~= kenselect1 and kenvalue2 ~= kenselect2 and kenvalue2 ~= kenselect3 and kenvalue2 ~= kenselect4 and kenvalue2 ~= kenselect5 then
+								if Autosave == true then
+									datasavedandyoucanredeemcodes = true
+								end
+							else
+								print("You have got: " .. kenvalue)
+								notify("You have got " .. kenvalue .. " in slot 1")
+								if Autosave == true then
+									datasavedandyoucanredeemcodes = true
+								end
+							end
+						end
+					else
+						if Autorejoin == true then
+							--player.statz.spins:Destroy()
+							game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+							wait()
+							game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+						end
+					end
+				end)
+			else 
+			end
+		end)
+
+		section4:addToggle("Spin Slot 2",false,function(bool)
+			game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+			StartSpinKen2 = bool
+			if StartSpinKen2 == true then
+				local spins = game.Players.LocalPlayer.statz.spins.Value
+				game:GetService('RunService').Stepped:connect(function()
+					if spins > 9 then
+						spins = game.Players.LocalPlayer.statz.spins.Value
+						kenvalue = game.Players.LocalPlayer.statz.breathingstyle.Value
+						kenvalue2 = game.Players.LocalPlayer.statz.breathingstyle2.Value
+						if StartSpinKen2 == true then
+							if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 and kenvalue ~= kenselect4 and kenvalue ~= kenselect5 and kenvalue2 ~= kenselect1 and kenvalue2 ~= kenselect2 and kenvalue2 ~= kenselect3 and kenvalue2 ~= kenselect4 and kenvalue2 ~= kenselect5 then
+								local args = {[1] = "spinBREATHING",[2] = "breathingstyle2"}
+								game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+								print("Rolled: " .. kenvalue2)
+								wait(1)
+							elseif kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 and kenvalue ~= kenselect4 and kenvalue ~= kenselect5 then
+								if Autosave == true then
+									datasavedandyoucanredeemcodes = true
+								end
+							else
+								print("You have got: " .. kenvalue2)
+								notify("You have got " .. kenvalue2 .. " in slot 2")
+								if Autosave == true then
+									datasavedandyoucanredeemcodes = true
+								end
+							end
+						end
+					else
+						if Autorejoin == true then
+							--player.statz.spins:Destroy()
+							game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+							wait()
+							game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+						end
+					end
+				end)
+			else 
+			end
+		end)
+	else
+		local kenselect1
+			section4:addDropdown("Kenjutsu Choice 1",ken,function(KEN1)
+			print("Selected: " .. KEN1)
+			notify("Selected: " .. KEN1)
+			kenselect1 = KEN1
+		end)
+		local kenselect2
+			section4:addDropdown("Kenjutsu Choice 2",ken,function(KEN2)
+			print("Selected: " .. KEN2)
+			notify("Selected: " .. KEN2)
+			kenselect2 = KEN2
+		end)
+		local kenselect3
+			section4:addDropdown("Kenjutsu Choice 3",ken,function(KEN3)
+			print("Selected: " .. KEN3)
+			notify("Selected: " .. KEN3)
+			kenselect3 = KEN3
+		end)
+
+		section4:addToggle("Spin Kenjutsu",false,function(bool)
+			game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+			StartSpinKen = bool
+			if StartSpinKen == true then
+				local spins = game.Players.LocalPlayer.statz.spins.Value
+				game:GetService('RunService').Stepped:connect(function()
+					if spins > 0 then
+						spins = game.Players.LocalPlayer.statz.spins.Value
+						kenvalue = game.Players.LocalPlayer.statz.breathingstyle.Value
+						if StartSpinKen == true then
+							if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 then
+								local args = {[1] = "spinBREATHING"}
+								game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+								print("Rolled: " .. kenvalue)
+								notify("Rolled: " .. kenvalue)
+								wait(1)
+							else
+								print("You have got: " .. kenvalue)
+								notify("You have got: " .. kenvalue)
+								if Autosave == true then
+									datasavedandyoucanredeemcodes = true
+								end
+							end
+						end
+					else
+						if Autorejoin == true then
+							--player.statz.spins:Destroy()
+							game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+							wait()
+							game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+						end
+					end
+				end)
+			else 
+			end
+		end)
+	end
+
+	game:GetService('RunService').Stepped:connect(function()
+		if datasavedandyoucanredeemcodes == true then
+			StartSpinKen = false
+			StartSpinKen2 = false
+			datasavedandyoucanredeemcodes = false
+			game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
+			notify("You will be teleported to My Home in order to save data")
+			wait(1)
+			local args = {[1] = "arenateleport",[2] = 5451410109}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+		end
+	end)
+
+	-- third page
+	local page3 = NoobieDoge:addPage("Mentor Farm", 5012544693)
+	local section1 = page3:addSection("Teleport to mentors")
+	local section2 = page3:addSection("Mission Process")
+
+	section1:addButton("Tp to Narumaki Mentor",function()
+		if game.PlaceId == 5451398863 then
+			player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Narumaki"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
+			local args = {[1] = game:GetService("Players").LocalPlayer}
+			workspace.sensei.missions.Narumaki.missiongiver.CLIENTTALK:FireServer(unpack(args))
+		else
+			notify("Narumaki Mentor is not in this map!")
+		end
+	end)
+	section1:addButton("Tp to Jiso Mentor",function() 
+		if game.PlaceId == 6901575446 then
+			local args = {[1] = game:GetService("Players").LocalPlayer}
+			workspace.sensei.missions:FindFirstChild("Jiso Seishin").missiongiver.CLIENTTALK:FireServer(unpack(args))
+			player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Jiso Seishin"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(5,0,-1.7)
+		else
+			notify("Jiso Seishin Mentor is not in this map!")
+		end
+	end)
+	section1:addButton("Tp to Shindai Mentor",function()
+		if game.PlaceId == 5451401540 then
+			local args = {[1] = game:GetService("Players").LocalPlayer}
+			workspace.sensei.missions:FindFirstChild("Shindai Akuma").missiongiver.CLIENTTALK:FireServer(unpack(args))
+			player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Shindai Akuma"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
+		else
+			notify("Shindai Akuma Mentor is not in this map!")
+		end
+	end)
+	section1:addButton("Tp to Ryuji Mentor",function()
+		if game.PlaceId == 5431071837 then
+			local args = {[1] = game:GetService("Players").LocalPlayer}
+			workspace.sensei.missions:FindFirstChild("Ryuji Kenichi").missiongiver.CLIENTTALK:FireServer(unpack(args))
+			player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,4,3)
+		else
+			notify("Ryuji Kenichi Mentor is not in this map!")
+		end
+	end)
+	section1:addButton("Tp to Kenjutsu Mentor",function()
+		if game.PlaceId == 4601350656 then
+			for v = 1,8 do
+				wait()
+				game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace")["Ken Mentor"].HumanoidRootPart.Position)
+			end
+			player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace")["Ken Mentor"].HumanoidRootPart.CFrame+Vector3.new(-6,4,0)
+		else
+			notify("Kenjutsu Mentor is not in this map!")
+		end
+	end)
+
+	section2:addToggle("Auto Mentor Quests",false, function(bool)
+		EnabledAutoMentor = bool
+		notify("Auto Mentor Quests: "..tostring(EnabledAutoMentor),true)
+	end)
+
+	section2:addToggle("1/5",false, function(bool)
+		punches = bool
+		notify("1/5: "..tostring(punches),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if punches then
+			game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
+		end
+	end)
+
+	section2:addToggle("2/5",false, function(bool)
+		tree = bool
+		notify("2/5: "..tostring(tree),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if tree then
+			game.Players.LocalPlayer.Character.combat.update:FireServer("takemovement2")
+		end
+	end)
+
+	section2:addToggle("3/5",false, function(bool)
+		shoot = bool
+		notify("3/5: "..tostring(shoot),true)
+	end)
+
+	spawn(function()
+		while wait(5) do
+			if shoot then
+				if game.PlaceId == 5451398863 then
+					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Narumaki"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(-22,0,-45)
+				elseif game.PlaceId == 6901575446 then
+					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Jiso Seishin"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(50,0,10)
+				elseif game.PlaceId == 5451401540 then
+					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Shindai Akuma"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(-100,7,-170)
+				elseif game.PlaceId == 5431071837 then
+					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,320,-300)
+				end
+			end
+		end
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if shoot then
+			repeat wait()
+				game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace").Terrain[game.Players.LocalPlayer.Name].kunaiaim.Position)
+				game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
+			until mission.Visible == false or not shoot
+		end
+	end)
+
+	section2:addToggle("4/5",false, function(bool)
+		block = bool
+		notify("4/5: "..tostring(block),true)
+	end)
+
+	spawn(function()
+		while wait(5) do
+			if block then
+				if game.PlaceId == 5451398863 then
+					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Narumaki"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(-22,0,-45)
+				elseif game.PlaceId == 6901575446 then
+					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Jiso Seishin"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(50,0,10)
+				elseif game.PlaceId == 5451401540 then
+					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Shindai Akuma"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(-100,7,-170)
+				elseif game.PlaceId == 5431071837 then
+					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,320,-300)
+				end
+			end
+		end
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if block then
+			repeat wait()
+				game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace").Terrain[game.Players.LocalPlayer.Name].kunaiaim.Position)
+			until mission.Visible == false or not block
+		end
+	end)
+
+	section2:addToggle("5/5",false, function(bool)
+		keel = bool
+		notify("5/5: "..tostring(keel),true)
+	end)
+
+	section2:addToggle("Kenjutsu Training",false, function(bool)
+		if game.PlaceId ~= 4601350656 then
+			keel = bool
+			notify("Kenjutsu Training: "..tostring(keel),true)
+		else
+			local args = {[1] = "trainkenmaster"}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+		end
+	end)
+
+	game:GetService('RunService').Stepped:connect(function()
+		if keel or DailyBoss then
+			NPCKEELAURA()
+		end
+	end)
+
+	spawn(function()
+		while wait() do
+			if EnabledAutoMentor then
+				if mission.Visible == false then
+					if game.PlaceId == 5451398863 then
+						wait(.5)
+						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Narumaki"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
+						local args = {[1] = game:GetService("Players").LocalPlayer}
+						workspace.sensei.missions:FindFirstChild("Narumaki").missiongiver.CLIENTTALK:FireServer(unpack(args))
+						wait(1)
+					elseif game.PlaceId == 6901575446 then
+						wait(.5)
+						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Jiso Seishin"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(5,0,-1.7)
+						local args = {[1] = game:GetService("Players").LocalPlayer}
+						workspace.sensei.missions:FindFirstChild("Jiso Seishin").missiongiver.CLIENTTALK:FireServer(unpack(args))
+						wait(1)
+					elseif game.PlaceId == 5451401540 then
+						wait(.5)
+						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Shindai Akuma"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
+						local args = {[1] = game:GetService("Players").LocalPlayer}
+						workspace.sensei.missions:FindFirstChild("Shindai Akuma").missiongiver.CLIENTTALK:FireServer(unpack(args))
+						wait(1)
+					elseif game.PlaceId == 5431071837 then
+						wait(.5)
+						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,4,3)
+						local args = {[1] = game:GetService("Players").LocalPlayer}
+						workspace.sensei.missions:FindFirstChild("Ryuji Kenichi").missiongiver.CLIENTTALK:FireServer(unpack(args))
+						wait(1)
+					elseif game.PlaceId == 4601350656 then
+						for v = 1,8 do
+							wait()
+							game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace")["Ken Mentor"].HumanoidRootPart.Position)
+						end
+						game.Workspace.HumanoidRootPart.CFrame=game:GetService("Workspace")["Ken Mentor"].HumanoidRootPart.CFrame+Vector3.new(-6,4,0)
+					elseif game.PlaceId == 8184506020 then
+						punches = false
+						tree = false
+						shoot = false
+						block = false
+						dfarm = true
+					else
+						notify("You cannot do mentor missions in this map!")
+						punches = false
+						tree = false
+						shoot = false
+						block = false
+						dfarm = false
+					end
+				else
+					if mission.title.Text == "[Objective: Push-Up Training]" then
+						punches = true
+						tree = false
+						shoot = false
+						block = false
+						dfarm = false
+					elseif mission.title.Text == "[Objective: Tree-Jump Training]" then
+						punches = false
+						tree = true
+						shoot = false
+						block = false
+						dfarm = false
+					elseif mission.title.Text == "[Objective: Accuracy Training]" then
+						punches = false
+						tree = false
+						shoot = true
+						block = false
+						dfarm = false
+					elseif mission.title.Text == "[Objective: Deflecting Training]" then
+						punches = false
+						tree = false
+						shoot = false
+						block = true
+						dfarm = false
+					elseif game.PlaceId == 8184506020 then
+						punches = false
+						tree = false
+						shoot = false
+						block = false
+						dfarm = true
+					end
+				end
+			end
+		end	
+	end)
+
+	-- forth page
+	local page4 = NoobieDoge:addPage("Daily Missions", 5012544693)
+	local section1 = page4:addSection("Claim Missions")
+	local section2 = page4:addSection("Auto Daily Missions")
+	local section3 = page4:addSection("Teleports")
+
+	section1:addButton("Claim daily missions rewards",function()
+		local args = {[1] = "claim",[2] = game:GetService("Players").LocalPlayer.statz.mission.dailyquest1}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+		local args = {[1] = "claim",[2] = game:GetService("Players").LocalPlayer.statz.mission.dailyquest2}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+		local args = {[1] = "claim",[2] = game:GetService("Players").LocalPlayer.statz.mission.dailyquest3}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+		local args = {[1] = "claim",[2] = game:GetService("Players").LocalPlayer.statz.mission.dailyquest4}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+		local args = {[1] = "claim",[2] = game:GetService("Players").LocalPlayer.statz.mission.dailyquest5}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+		local args = {[1] = "claim",[2] = game:GetService("Players").LocalPlayer.statz.mission.dailyquest6}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+		local args = {[1] = "claim",[2] = game:GetService("Players").LocalPlayer.statz.mission.dailyquest7}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+		local args = {[1] = "claim",[2] = game:GetService("Players").LocalPlayer.statz.mission.dailyquest8}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+		local args = {[1] = "claim",[2] = game:GetService("Players").LocalPlayer.statz.mission.dailyquest9}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+		local args = {[1] = "claim",[2] = game:GetService("Players").LocalPlayer.statz.mission.dailyquest10}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+		local args = {[1] = "claim",[2] = game:GetService("Players").LocalPlayer.statz.mission.dailyquest11}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+		local args = {[1] = "claim",[2] = game:GetService("Players").LocalPlayer.statz.mission.dailyquest12}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+		local args = {[1] = "claim",[2] = game:GetService("Players").LocalPlayer.statz.mission.dailyquest13}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+		local args = {[1] = "claim",[2] = game:GetService("Players").LocalPlayer.statz.mission.dailyquest14}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	end)
+
+	section1:addButton("Claim main missions rewards",function()
+		local args = {[1] = "claim2",[2] = game:GetService("Players").LocalPlayer.statz.mainmission.arena}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+		local args = {[1] = "claim2",[2] = game:GetService("Players").LocalPlayer.statz.mainmission.arenax}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+		local args = {[1] = "claim2",[2] = game:GetService("Players").LocalPlayer.statz.mainmission.conquest}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+		local args = {[1] = "claim2",[2] = game:GetService("Players").LocalPlayer.statz.mainmission.masterelement}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+		local args = {[1] = "claim2",[2] = game:GetService("Players").LocalPlayer.statz.mainmission.masterkg}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+		local args = {[1] = "claim2",[2] = game:GetService("Players").LocalPlayer.statz.mainmission.resetbounty}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+		local args = {[1] = "claim2",[2] = game:GetService("Players").LocalPlayer.statz.mainmission.resetlegend}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+		local args = {[1] = "claim2",[2] = game:GetService("Players").LocalPlayer.statz.mainmission.shindowar}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+		local args = {[1] = "claim2",[2] = game:GetService("Players").LocalPlayer.statz.mainmission.storymissions}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+		local args = {[1] = "claim2",[2] = game:GetService("Players").LocalPlayer.statz.mainmission.warmode}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+		local args = {[1] = "claim2",[2] = game:GetService("Players").LocalPlayer.statz.mainmission.tournament}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	end)
+
+	section2:addToggle("M1",false, function(bool)
+		DailyM1 = bool
+		notify("M1: "..tostring(DailyM1),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if DailyM1 then
+			game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
+		end
+	end)
+
+	section2:addToggle("Rush",false, function(bool)
+		DailyRush = bool
+		notify("Rush: "..tostring(DailyRush),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if DailyRush then
+			game.Players.LocalPlayer.Character.combat.update:FireServer("rushw")
+		end
+	end)
+
+	section2:addToggle("Chi Charge",false, function(bool)
+		DailyChi = bool
+		notify("Chi Charge: "..tostring(DailyChi),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if DailyChi then
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","c")
+			game.Players.LocalPlayer.Character.combat.update:FireServer("key","cend")
+			wait(.05)
+		end
+	end)
+
+	section2:addToggle("Tree Jumps",false, function(bool)
+		DailyJump = bool
+		notify("Tree Jumps: "..tostring(DailyJump),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if DailyJump then
+			game.Players.LocalPlayer.Character.combat.update:FireServer("takemovement2")
+		end
+	end)
+	section2:addToggle("Daily Boss Quests",false, function(bool)
+		DailyBoss = bool
+		notify("Daily Boss Quests: "..tostring(DailyBoss),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if DailyBoss then
+			for i,v in pairs(game.Players.LocalPlayer.statz.mission:GetChildren()) do
+				if v.Value == "fightboss" then
+					if game.Workspace:FindFirstChild("bossdropmission") then
+						for i,v0 in pairs(workspace.bossdropmission.missions:GetChildren()) do
+							if v0.Name == v.objective.Value and v0:FindFirstChild("missiongiver") then
+								if mission.Visible == true then
+									for i,v in pairs(workspace.npc:GetChildren()) do
+										if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and not v:FindFirstChild("fullsusanoo") and v.Head.CFrame.Y > -1000 then
+											repeat
+												pcall(function()
+													v.Humanoid.Health = 0
+													game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+													player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 0, 10)
+													game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+													game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+													game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
+													wait(.000000000000001)
+													v.Humanoid.Health = 0
+												end)
+											until not v:FindFirstChild("Humanoid") or mission.Visible == false or not autooofarm or not v
+										end
+									end
+								else
+									for i,v1 in pairs(workspace.bossdropmission.missions:GetChildren()) do
+										if v1.Name == v.objective.Value and (v1.missiongiver.timer.time.time.Text == "00:00" or v1.missiongiver.timer.time.time.Text == "59:59") then
+											player.Character.HumanoidRootPart.CFrame=v1.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
+											local args = {[1] = game:GetService("Players").LocalPlayer}
+											v1.missiongiver.CLIENTTALK:FireServer(unpack(args))
+											wait()
+										end
+									end
+								end
+							else
+								notify("The boss doesn't spawn in this map!")
+								wait()
+								DailyBoss = false
+							end
+						end
+					else
+						notify("The boss doesn't spawn in this map!")
+						wait()
+						DailyBoss = false
+					end		
+				end
+			end
+		end
+	end)
+
+	section3:addButton("Tp to logs",function()
+		if not game.Workspace.npc:FindFirstChild("logtraining") then
+			notify("This map does not have any logs!")
+		else
+			for i,v in pairs(workspace.npc:GetChildren()) do
+				if v.Name == "logtraining" and v.Head.CFrame.Y > -1000 then
+					game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+					player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 2, 10)
+				end
+			end
+		end
+	end)
+
+	section3:addButton("Tp to duel pads",function()
+		if game:GetService("Workspace").map2:FindFirstChild("duel") and game:GetService("Workspace").map2.duel.duel1:FindFirstChild("pad") then
+			for i,v in pairs(workspace.map2.duel.duel1:GetChildren()) do
+				if v.Name == "pad" then
+					player.Character.HumanoidRootPart.CFrame=v.CFrame * CFrame.new(0, 2, 0)
+				end
+			end
+		else
+			notify("This map does not have any duel pads!")
+		end
+	end)
+
+	if game.PlaceId == 5255237254 then
+		section3:addButton("Tp to training platform",function()
+			for i,v in pairs(workspace.training:GetChildren()) do
+				if v.Name == "Part" then
+					player.Character.HumanoidRootPart.CFrame=v.CFrame * CFrame.new(0, 1, 0)
+				end
+			end
+		end)
+	end
+
+	if game.PlaceId == 5824792748 then
+		section3:addButton("Tp to training seats",function()
+			for i,v in pairs(workspace.training:GetChildren()) do
+				if v.Name == "MeshPart" then
+					player.Character.HumanoidRootPart.CFrame=v.CFrame * CFrame.new(0, 2, 0)
+				end
+			end
+		end)
+	end
+
+	if game.PlaceId == 6602103757 then
+		section3:addButton("Tp to training pads",function()
+			for i,v in pairs(workspace.training:GetChildren()) do
+				if v.Name == "Meshes/mounty_Cube.003" then
+					player.Character.HumanoidRootPart.CFrame=v.CFrame * CFrame.new(0, 2, 0)
+				end
+			end
+		end)
+	end
+
+	-- fifth page
+	local page5 = NoobieDoge:addPage("Quests", 5012544693)
+	local section1 = page5:addSection("Auto Farm")
+	local section2 = page5:addSection("Configurations")
+	local section3 = page5:addSection("Boss Farm Settings")
+	local section4 = page5:addSection("Auto Stats")
+
+	local autofarm
+	section1:addToggle("Auto Farm",false, function(bool)
+		autofarm = bool
+		local platform = Instance.new("Part", player.Character)
+		platform.Anchored = true
+		platform.Transparency = 1
+		platform.Size = Vector3.new(6, 1, 6)
+
+		local connection
+		connection = game:GetService("RunService").RenderStepped:connect(function()
+			if player.Character:FindFirstChild("HumanoidRootPart") then
+				platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -1.8, 0)
+			else
+				connection:Disconnect()
+			end
+		end)
+		game:GetService('RunService').Stepped:connect(function()
+			if autofarm ~= true then
+				platform:Destroy()
+			end
+		end)
+	end)
+
+	local boss
+	section1:addToggle("Boss Farm",false, function(bool)
+		boss = bool
+	end)
+
+	local RANKUPP
+	section1:addToggle("Auto Rank",false, function(bool)
+		RANKUPP = bool
+	end)
+
+	section2:addToggle("NPC Kill Aura",false,function(bool)
+		keel2 = bool
+		notify("NPC Kill Aura: "..tostring(keel2),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if keel2 then
+			NPCKEELAURA()
+		end
+	end)
+
+	section2:addToggle("Legacy Farm Mode",false,function(bool)
+		NOCDed = bool
+		wait()
+		notify("Legacy Farm Mode: "..tostring(NOCDed),true)
+	end)
+
+	local bosslist = {}
+	if game.PlaceId == 7923764447 then
+		for i,v in pairs(workspace.sengokubossfight.missions:GetChildren()) do
+			if v:FindFirstChild("missiongiver") then
+				table.insert(bosslist, v.Name)
+			end
+		end
+	end
+	for i,v in pairs(game:GetService("Workspace").bossdropmission.missions:GetChildren()) do
+		if v:FindFirstChild("missiongiver") then
+			table.insert(bosslist, v.Name)
+		end
+	end
+
+	local beastsbosslist = {}
+	for i,v in pairs(game:GetService("Workspace").tailbeastbossmission.missions:GetChildren()) do
+		if v:FindFirstChild("missiongiver") then
+			table.insert(beastsbosslist, v.Name)
+		end
+	end
+
+	local specific_boss
+	section3:addToggle("Specific Boss",false, function(bool)
+		specific_boss = bool
+	end)
+
+	local selected_boss
+	section3:addDropdown("Specific boss to kill",bosslist,function(B)
+		print("Selected: " .. B)
+		notify("Boss Selected: " .. B)
+		selected_boss = B
+	end)
+
+	local random_boss
+	section3:addToggle("Random Bosses",true, function(bool)
+		random_boss = bool
+	end)
+	random_boss = true
+
+	section4:addToggle("Auto Chi",false, function(bool)
+		auchi = bool
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if auchi then
+			local args = {[1] = "addstat",[2] = "chakra",[3] = 1}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			local args = {[1] = "addstat",[2] = "chakra",[3] = 17}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			local args = {[1] = "addstat",[2] = "chakra",[3] = 288}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			wait(.25)
+		end
+	end)
+	section4:addToggle("Auto Nin",false, function(bool)
+		aunin = bool
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if aunin then
+			local args = {[1] = "addstat",[2] = "ninjutsu",[3] = 1}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			local args = {[1] = "addstat",[2] = "ninjutsu",[3] = 17}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			local args = {[1] = "addstat",[2] = "ninjutsu",[3] = 288}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			wait(.25)
+		end
+	end)
+	section4:addToggle("Auto Tai",false, function(bool)
+		autai = bool
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if autai then
+			local args = {[1] = "addstat",[2] = "taijutsu",[3] = 1}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			local args = {[1] = "addstat",[2] = "taijutsu",[3] = 17}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			local args = {[1] = "addstat",[2] = "taijutsu",[3] = 288}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			wait(.25)
+		end
+	end)
+	section4:addToggle("Auto Health",false, function(bool)
+		auhp = bool
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if auhp then
+			local args = {[1] = "addstat",[2] = "health",[3] = 1}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			local args = {[1] = "addstat",[2] = "health",[3] = 17}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			local args = {[1] = "addstat",[2] = "health",[3] = 288}
+			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			wait(.25)
+		end
+	end)
+
+	local function QUEST()
+		for i,v in pairs(workspace.missiongivers:GetChildren()) do
+			if v.Name == "" and v:FindFirstChild("Head") then
+				local TALK = v:FindFirstChild("Talk")
+				if v:FindFirstChild("Head") and v.Head:FindFirstChild("givemission") and v.Head.givemission.Enabled and v.Head.givemission:FindFirstChild("color").Image == "http://www.roblox.com/asset/?id=5459241648" --[[or v.Head.givemission.color.Image == "http://www.roblox.com/asset/?id=5459241799"]] then
+					if v:WaitForChild("Talk"):WaitForChild("mobname") then
+						local getmission = v:FindFirstChild("HumanoidRootPart")
+						local clienttalk = v:FindFirstChild("CLIENTTALK")
+						repeat
+							player.Character.HumanoidRootPart.CFrame=getmission.CFrame+Vector3.new(0,3,0)
+							clienttalk:FireServer()
+							clienttalk:FireServer("accept")  
+							wait()
+						until mission.Visible or mission.title.text == "[Objective: Mission]" or not autofarm
+					end
+				end
+			end
+		end
+	end
+
+	local function BOSSFARM()
+		if random_boss then
+			if game.PlaceId == 7923764447 then
+				for i,v in pairs(workspace.sengokubossfight.missions:GetChildren()) do
+					if v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
+						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
+						local args = {[1] = game:GetService("Players").LocalPlayer}
+						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
+						wait()
+					end
+				end
+			end
+			for i,v in pairs(workspace.bossdropmission.missions:GetChildren()) do
+				if v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
+					player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
+					local args = {[1] = game:GetService("Players").LocalPlayer}
+					v.missiongiver.CLIENTTALK:FireServer(unpack(args))
+					wait()
+				end
+			end
+		elseif specific_boss then
+			if game.PlaceId == 7923764447 then
+				for i,v in pairs(workspace.sengokubossfight.missions:GetChildren()) do
+					if v.Name == selected_boss and v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
+						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
+						local args = {[1] = game:GetService("Players").LocalPlayer}
+						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
+						wait()
+					end
+				end
+			end
+			for i,v in pairs(workspace.bossdropmission.missions:GetChildren()) do
+				if v.Name == selected_boss and v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
+					player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
+					local args = {[1] = game:GetService("Players").LocalPlayer}
+					v.missiongiver.CLIENTTALK:FireServer(unpack(args))
+					wait()
+				end
+			end
+		else
+			wait(10)
+			notify("Bruh.")
+		end
+	end
+
+	local function FARM()
+		if game:GetService("Players").LocalPlayer.statz.sword.throwable.Value == "BOSSDROPazimftg" or game:GetService("Players").LocalPlayer.statz.sword.throwable.Value == "kunaiwire" or game:GetService("Players").LocalPlayer.statz.sword.throwable.Value == "kunaiflash" then
+			notify("Please change the throwable weapon!")
+			autofarm = false
+			boss = false
+		else
+			if NOCDed then
+				for i,v in pairs(workspace.npc:GetChildren()) do
+					local mobname = string.split(mission.bg.name.Text,"Defeat ")[1]
+					if(string.find(mobname,"(s)")) then
+						mobname = string.gsub(mobname,"(s)","")
+					end
+					if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and not v:FindFirstChild("fullsusanoo") and v.Head.CFrame.Y > -1000 then
+						player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 15, 0)
+						repeat wait()
+							pcall(function()
+								game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+								v.Humanoid.Health = 0
+								pcall(function()
+									player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 17, 10)
+									game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+									game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+									game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+									game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+									game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+									game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+									game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+									game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+									v.Humanoid.Health = 0
+								end)
+							end)
+						until not v:FindFirstChild("Humanoid") or mission.Visible == false or not autofarm or not v
+					end
+				end
+			else
+				for i,v in pairs(workspace.npc:GetChildren()) do
+					local mobname = string.split(mission.bg.name.Text,"Defeat ")[1]
+					if(string.find(mobname,"(s)")) then
+						mobname = string.gsub(mobname,"(s)","")
+					end
+					if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and not v:FindFirstChild("fullsusanoo") and v.Head.CFrame.Y > -1000 then
+						repeat
+							pcall(function()
+								v.Humanoid.Health = 0
+								game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+								player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 0, 10)
+								game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+								game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+								game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
+								wait(.000000000000001)
+								v.Humanoid.Health = 0
+							end)
+						until not v:FindFirstChild("Humanoid") or mission.Visible == false or not autofarm or not v
+					end
+				end
+			end
+		end
+	end
+
+	local count
+	local function DISP()
+		count = 0
+		for i,v in pairs(workspace.missiongivers:GetChildren()) do
+			if v.Name == "" and v:FindFirstChild("Head") then
+				if v:FindFirstChild("Head") and v.Head:FindFirstChild("givemission") and v.Head.givemission.Enabled and v.Head.givemission:FindFirstChild("color") and v.Head.givemission.color.Image == "http://www.roblox.com/asset/?id=5459241648" then
+					count = count + 1
+				end
+			end
+		end
+	end
+
+	spawn(function()
+		while wait() do
+			if autofarm or boss then
+				if mission.Visible == true then
+					FARM()
+					for i,v in pairs(workspace.npc:GetChildren()) do
+						if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+							repeat 
+								v.Humanoid.Health = 0 
+								v.Humanoid.Health = 0
+								v.Humanoid.Health = 0
+								v.Humanoid.Health = 0
+								v.Humanoid.Health = 0
+							until (not autofarm and not boss) or v.Humanoid.Health == 0
+						end
+					end
+				else
+					if boss and autofarm then
+						BOSSFARM()
+						wait(.1)
+						DISP()
+						wait(.1)
+						QUEST()
+					elseif boss then
+						BOSSFARM()
+					elseif autofarm then
+						DISP()
+						wait(.1)
+						QUEST()
+					end
+				end
+			end
+		end
+	end)
+
+	spawn(function()
+		while wait() do
+			if autofarm then
+				if count == 0 then
+					if QUEST() or FARM() or BOSSFARM() then
+						wait(5.5)
+					else
+						repeat wait()
+							notify("Currently no missions avaliable")
+							wait(2)
+						until count > 0 or QUEST or FARM or BOSSFARM() or not autofarm
+					end
+				end
+			end
+		end
+	end)
+
+	local PRES = player.statz.prestige.maxlvlpres
+	local RANK = player.statz.prestige.rank
+	local RANKNUM = player.statz.prestige.number
+
+	spawn(function()
+		while wait() do
+			if RANKUPP and player.statz.lvl:FindFirstChild("lvl").Value == 1000 then
+				repeat wait()
+					game.Players.LocalPlayer.startevent:FireServer("rankup")
+				until player.statz.lvl:FindFirstChild("lvl").Value == 1 or not RANKUPP
+			end
+		end
+	end)
+
+	-- sixth page
+	local page6 = NoobieDoge:addPage("Teleports", 5012544693)
+	local section1 = page6:addSection("Map Teleports")
+	local section2 = page6:addSection("Server Teleports")
+
+	section1:addButton("Spawn Point",function()
+		player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").SpawnLocation.CFrame
+	end)
+
+	if game:GetService("Workspace"):FindFirstChild("EAT") then
+		section1:addButton("Ramen Shop",function()
+			player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").EAT.Ramen.CFrame
+		end)
+	end
+
+	if game:GetService("Workspace"):FindFirstChild("sensei") then
+		if game:GetService("Workspace").sensei.missions:FindFirstChild("Narumaki") then
+			section1:addButton("Tp to Narumaki Mentor",function()
+				player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Narumaki"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
+			end)
+		elseif game:GetService("Workspace").sensei.missions:FindFirstChild("Jiso Seishin") then
+			section1:addButton("Tp to Jiso Mentor",function() 
+				player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Jiso Seishin"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(5,0,-1.7)
+			end)
+		elseif game:GetService("Workspace").sensei.missions:FindFirstChild("Shindai Akuma") then
+			section1:addButton("Tp to Shindai Mentor",function()
+				player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Shindai Akuma"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
+			end)
+		elseif game:GetService("Workspace").sensei.missions:FindFirstChild("Ryuji Kenichi") then
+			section1:addButton("Tp to Ryuji Mentor",function()
+				player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,4,3)
+			end)
+		end
+	end
+	if game:GetService("Workspace"):FindFirstChild("Ken Mentor") then
+		section1:addButton("Tp to Kenjutsu Mentor",function()
+			for v = 1,8 do
+				wait()
+				game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace")["Ken Mentor"].HumanoidRootPart.Position)
+			end
+			player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace")["Ken Mentor"].HumanoidRootPart.CFrame+Vector3.new(-6,4,0)
+		end)
+	end
+
+	if game:GetService("Workspace"):FindFirstChild("Susanoo Customizer") then
+		section1:addButton("Susanoo Customizer",function()
+			player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace")["Susanoo Customizer"].Part.CFrame
+		end)
+	end
+
+	if game:GetService("Workspace"):FindFirstChild("map2") and game:GetService("Workspace").map2:FindFirstChild("duel") then
+		section1:addButton("Duel Pads",function()
+			if game:GetService("Workspace").map2:FindFirstChild("duel") and game:GetService("Workspace").map2.duel.duel1:FindFirstChild("pad") then
+				for i,v in pairs(workspace.map2.duel.duel1:GetChildren()) do
+					if v.Name == "pad" then
+						player.Character.HumanoidRootPart.CFrame=v.CFrame * CFrame.new(0, 2, 0)
+					end
+				end
+			end
+		end)
+	end
+
+	local allbosslist = {}
+	if game.PlaceId == 7923764447 then
+		for i,v in pairs(workspace.sengokubossfight.missions:GetChildren()) do
+			if v:FindFirstChild("missiongiver") then
+				table.insert(allbosslist, v.Name)
+			end
+		end
+	end
+	for i,v in pairs(game:GetService("Workspace").bossdropmission.missions:GetChildren()) do
+		if v:FindFirstChild("missiongiver") then
+			table.insert(allbosslist, v.Name)
+		end
+	end
+	for i,v in pairs(game:GetService("Workspace").tailbeastbossmission.missions:GetChildren()) do
+		if v:FindFirstChild("missiongiver") then
+			table.insert(allbosslist, v.Name)
+		end
+	end
+
+	section1:addDropdown("Boss Missions Location",allbosslist,function(B1)
+		notify("Teleported to: " .. B1 .. " Boss Mission Location")
+		bossmissionlocation = B1
+		wait()
+		if game.PlaceId == 7923764447 then
+			for i,v in pairs(workspace.sengokubossfight.missions:GetChildren()) do
+				if v.Name == bossmissionlocation and v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
+					player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
+				end
+			end
+		end
+		for i,v in pairs(workspace.bossdropmission.missions:GetChildren()) do
+			if v.Name == bossmissionlocation and v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
+				player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
+			end
+		end
+		for i,v in pairs(workspace.tailbeastbossmission.missions:GetChildren()) do
+			if v.Name == bossmissionlocation and v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
+				player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
+			end
+		end
+	end)
+	
+	local maps = {}
+	for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Main.ingame.Menu.ArenaTab.List:GetChildren()) do
+		if v:FindFirstChild("place") then
+			table.insert(maps, v.Name)
+		end
+	end
+	local mapselect
+	section2:addDropdown("Map Selection",maps,function(MAPSed)
+		print("Selected: " .. MAPSed)
+		notify("Selected: " .. MAPSed)
+		mapselect = MAPSed
+	end)
+
+	section2:addButton("Teleport",function()
+		local args = {[1] = "rpgteleport",[2] = game:GetService("Players").LocalPlayer.PlayerGui.Main.ingame.Menu.ArenaTab.List[mapselect].place.Value}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	end)
+
+	section2:addTextbox("Private Server Code", "DDrugs", function(PScodevalue, focusLost)
+		print("Input", PScodevalue)
+		if focusLost then
+			notify("Private Server Code: " .. PScodevalue)
+			PScodevalue1 = PScodevalue
+		end
+	end)
+
+	section2:addButton("Private Server Teleport",function()
+		local args = {[1] = "teleporttoprivate",[2] = PScodevalue1}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	end)
+
+	-- last page
+	local pagelast = NoobieDoge:addPage("Settings", 5012544693)
+	local settings = pagelast:addSection("Settings")
+	local colors = pagelast:addSection("Colors")
+	local credits = pagelast:addSection("Credits")
+
+	settings:addButton("Upgrade Performance",function()
+		UPPERFORMANCE()
+	end)
+
+	settings:addButton("Remove Effects / Particles",function()
+		game:GetService("Players").LocalPlayer.PlayerScripts.EFFECTS:Destroy()
+	end)
+
+	settings:addButton("Reset Script",function()
+
+		local player = game.Players.LocalPlayer
+		local ScreenGui = Instance.new("ScreenGui")
+		local Frame = Instance.new("Frame")
+		local TextLabel = Instance.new("TextLabel")
+		local TextButton = Instance.new("TextButton")
+		local TextButton2 = Instance.new("TextButton")
+
+
+		ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+		Frame.Parent = ScreenGui
+		Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Frame.Position = UDim2.new(0.66, 0, 0.20, 0)
+		Frame.Size = UDim2.new(0, 220, 0, 120)
+		Frame.Active = true
+		Frame.Draggable = true
+
+		TextLabel.Parent = Frame
+		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabel.Size = UDim2.new(0, 220, 0, 90)
+		TextLabel.Font = Enum.Font.TitilliumWeb
+		TextLabel.Text = "Are you sure that you want to reset script?"
+		TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabel.TextScaled = true
+		TextLabel.TextSize = 35.000
+		TextLabel.TextWrapped = true
+
+		TextButton.Parent = Frame
+		TextButton.BackgroundColor3 = Color3.fromRGB(41,41,41)
+		TextButton.Position = UDim2.new(0, 0, 0.750000006, 0)
+		TextButton.Size = UDim2.new(0, 110, 0, 60)
+		TextButton.Font = Enum.Font.TitilliumWeb
+		TextButton.Text = "Yes"
+		TextButton.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButton.TextScaled = true
+		TextButton.TextSize = 40.000
+		TextButton.TextWrapped = true
+
+		function ResetYES()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+			wait()
+			Pspeed = false
+			Pnorm = false
+			keel = false
+			Q = false
+			E = false
+			R = false
+			T = false
+			Y = false
+			F = false
+			G = false
+			H = false
+			V = false
+			B = false
+			N = false
+			Z = false
+			C = false
+			scrollfarm = false
+			DailyChi = false
+			DailyRush = false
+			DailyJump = false
+			DailyM1 = false
+			DailyBoss = false
+			punches = false
+			shoot = false
+			block = false
+			tree = false
+			EnabledAutoMentor = false
+			RANKUPP = false
+			autofarm = false
+			boss = false
+			NOCDed = false
+			keel2 = false
+			specific_boss = false
+			aunin = false
+			auchi = false
+			autai = false 
+			auhp = false
+			wait()
+			for i,library in pairs(game:GetService("CoreGui"):GetChildren()) do
+				if library.Name == "DogeHub V2" then
+					library:Destroy()
+				end
+			end
+			notify("Do not reset script too many times!")
+			wait(.1)
+			ShindoMain()
+		end
+		TextButton.MouseButton1Click:connect(ResetYES)
+
+		TextButton2.Parent = Frame
+		TextButton2.BackgroundColor3 = Color3.fromRGB(41,41,41)
+		TextButton2.Position = UDim2.new(0.5, 0, 0.750000006, 0)
+		TextButton2.Size = UDim2.new(0, 110, 0, 60)
+		TextButton2.Font = Enum.Font.TitilliumWeb
+		TextButton2.Text = "No"
+		TextButton2.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButton2.TextScaled = true
+		TextButton2.TextSize = 40.000
+		TextButton2.TextWrapped = true
+
+		function ResetNO()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+		end
+		TextButton2.MouseButton1Click:connect(ResetNO)
+	end)
+
+	settings:addButton("Rejoin Server",function()
+		local player = game.Players.LocalPlayer
+		local ScreenGui = Instance.new("ScreenGui")
+		local Frame = Instance.new("Frame")
+		local TextLabel = Instance.new("TextLabel")
+		local TextButton = Instance.new("TextButton")
+		local TextButton2 = Instance.new("TextButton")
+
+		ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+		Frame.Parent = ScreenGui
+		Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Frame.Position = UDim2.new(0.66, 0, 0.20, 0)
+		Frame.Size = UDim2.new(0, 200, 0, 150)
+		Frame.Active = true
+		Frame.Draggable = true
+
+		TextLabel.Parent = Frame
+		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabel.Size = UDim2.new(0, 200, 0, 90)
+		TextLabel.Font = Enum.Font.TitilliumWeb
+		TextLabel.Text = "Are you sure you want to rejoin server?"
+		TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabel.TextScaled = true
+		TextLabel.TextSize = 35.000
+		TextLabel.TextWrapped = true
+
+		TextButton.Parent = Frame
+		TextButton.BackgroundColor3 = Color3.fromRGB(41, 41, 41)
+		TextButton.Position = UDim2.new(0, 0, 0.600000006, 0)
+		TextButton.Size = UDim2.new(0, 100, 0, 60)
+		TextButton.Font = Enum.Font.TitilliumWeb
+		TextButton.Text = "Yes"
+		TextButton.TextColor3 = Color3.fromRGB(255,255,255)
+		TextButton.TextScaled = true
+		TextButton.TextSize = 40.000
+		TextButton.TextWrapped = true
+
+		function rejoinyes()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+			local TS = game:GetService("TeleportService")
+			local Player = game.Players.LocalPlayer
+			TS:Teleport(game.PlaceId, Player)
+		end
+		TextButton.MouseButton1Click:connect(rejoinyes)
+
+		TextButton2.Parent = Frame
+		TextButton2.BackgroundColor3 = Color3.fromRGB(41, 41, 41)
+		TextButton2.Position = UDim2.new(0.5, 0, 0.600000006, 0)
+		TextButton2.Size = UDim2.new(0, 100, 0, 60)
+		TextButton2.Font = Enum.Font.TitilliumWeb
+		TextButton2.Text = "No"
+		TextButton2.TextColor3 = Color3.fromRGB(255,255,255)
+		TextButton2.TextSize = 40.000
+		TextButton2.TextScaled = true
+		TextButton2.TextSize = 40.000
+		TextButton2.TextWrapped = true
+
+		function rejoinno()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+		end
+		TextButton2.MouseButton1Click:connect(rejoinno)
+	end)
+
+	settings:addKeybind("Toggle Keybind", Enum.KeyCode.RightControl, function()
+	print("Activated Keybind")
+	NoobieDoge:toggle()
+	end, function()
+	print("Changed Keybind")
+	end)
+
+	for theme, color in pairs(themes) do -- all in one theme changer, i know, im cool
+		colors:addColorPicker(theme, color, function(color3)
+			NoobieDoge:setTheme(theme, color3)
+		end)
+	end
+
+	credits:addButton("Made by NoobieDoge")
+	credits:addButton("https://discord.gg/P2CeRjvTDt")
+	credits:addButton("Copy Discord Link",function()
+		setclipboard("https://discord.gg/P2CeRjvTDt")
+		wait()
+		notify("Discord link copied to clipboard!")
+	end)
+
+	-- load
+	NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
+
+	for i, player in pairs(Players:GetPlayers()) do
+		if (player.Name == "Kasep6720" or player.Name == "KastonTPG") and (Players.LocalPlayer.Name ~= "Kasep6720" and Players.LocalPlayer.Name ~= "KastonTPG") then
+			local s = Instance.new("Sound")
+			s.Name = "Sound" s.SoundId = "http://www.roblox.com/asset/?id=8086605202" s.Volume = 20 s.Looped = true s.archivable = false s.Parent = game.Workspace wait(.3) s:play()
+			wait(5)
+			game.Players.LocalPlayer:Kick("\nDogeHub Premium user detected, permissions got override.")
+		end
+	end
+end
+
+if game.PlaceId == 4616652839 then
+	ShindoInfSpin()
+else
+	ShindoMain()
+end
