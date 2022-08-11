@@ -2463,12 +2463,20 @@ local function ShindoMain()
 	end
 
 	local beastsbosslist = {}
-	for i,v in pairs(game:GetService("Workspace").tailbeastbossmission.missions:GetChildren()) do
-		if v:FindFirstChild("missiongiver") then
-			table.insert(beastsbosslist, v.Name)
+	if game:GetService("Workspace"):FindFirstChild("tailbeastbossmission") then
+		for i,v in pairs(game:GetService("Workspace").tailbeastbossmission.missions:GetChildren()) do
+			if v:FindFirstChild("missiongiver") then
+				table.insert(beastsbosslist, v.Name)
+			end
 		end
 	end
-
+	if game.PlaceId == 5451405681 then
+		for i,v in pairs(workspace.tentailBOSS.missions:GetChildren()) do
+			if v:FindFirstChild("missiongiver") then
+				table.insert(beastsbosslist, v.Name)
+			end
+		end
+	end
 	local specific_boss
 	section3:addToggle("Specific Boss",false, function(bool)
 		specific_boss = bool
@@ -2816,14 +2824,23 @@ local function ShindoMain()
 			end
 		end
 	end
+	if game.PlaceId == 5451405681 then
+		for i,v in pairs(workspace.tentailBOSS.missions:GetChildren()) do
+			if v:FindFirstChild("missiongiver") then
+				table.insert(allbosslist, v.Name)
+			end
+		end
+	end
 	for i,v in pairs(game:GetService("Workspace").bossdropmission.missions:GetChildren()) do
 		if v:FindFirstChild("missiongiver") then
 			table.insert(allbosslist, v.Name)
 		end
 	end
-	for i,v in pairs(game:GetService("Workspace").tailbeastbossmission.missions:GetChildren()) do
-		if v:FindFirstChild("missiongiver") then
-			table.insert(allbosslist, v.Name)
+	if game:GetService("Workspace"):FindFirstChild("tailbeastbossmission") then
+		for i,v in pairs(game:GetService("Workspace").tailbeastbossmission.missions:GetChildren()) do
+			if v:FindFirstChild("missiongiver") then
+				table.insert(allbosslist, v.Name)
+			end
 		end
 	end
 
@@ -2833,6 +2850,13 @@ local function ShindoMain()
 		wait()
 		if game.PlaceId == 7923764447 then
 			for i,v in pairs(workspace.sengokubossfight.missions:GetChildren()) do
+				if v.Name == bossmissionlocation and v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
+					player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
+				end
+			end
+		end
+		if game.PlaceId == 5451405681 then
+			for i,v in pairs(workspace.tentailBOSS.missions:GetChildren()) do
 				if v.Name == bossmissionlocation and v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
 					player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
 				end
