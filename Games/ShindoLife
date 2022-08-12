@@ -21,6 +21,58 @@ function toTarget(pos, targetPos, targetCFrame)
 	end)
 	if not tween then return err end
 end
+function SpamQ()
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","q")
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","qend")
+end
+function SpamE()
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+end
+function SpamR()
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","r")
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","rend")
+end
+function SpamT()
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","t")
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","tend")
+end
+function SpamY()
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","y")
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","yend")
+end
+function SpamF()
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","f")
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","fend")
+end
+function SpamG()
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","g")
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","gend")
+end
+function SpamH()
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","h")
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","hend")
+end
+function SpamV()
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","v")
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","vend")
+end
+function SpamB()
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","b")
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","bend")
+end
+function SpamN()
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","n")
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","nend")
+end
+function SpamZ()
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","z")
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","zend")
+end
+function SpamC()
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","c")
+	game.Players.LocalPlayer.Character.combat.update:FireServer("key","cend")
+end
 function NPCKEELAURA()
 	for i,v in pairs(workspace.npc:GetChildren()) do
 		if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
@@ -88,6 +140,91 @@ local function SCROLLFARM1()
 				fireclickdetector(v.sh.ClickDetector)
 				v:Destroy()
 			end)
+		end
+	end
+end
+local bosslist = {}
+local beastsbosslist = {}
+local allbosslist = {}
+
+if game.PlaceId == 7923764447 then
+	for i,v in pairs(workspace.sengokubossfight.missions:GetChildren()) do
+		if v:FindFirstChild("missiongiver") then
+			table.insert(bosslist, v.Name)
+			table.insert(allbosslist, v.Name)
+		end
+	end
+end
+if game:GetService("Workspace"):FindFirstChild("bossdropmission") then
+	for i,v in pairs(game:GetService("Workspace").bossdropmission.missions:GetChildren()) do
+		if v:FindFirstChild("missiongiver") then
+			table.insert(bosslist, v.Name)
+			table.insert(allbosslist, v.Name)
+		end
+	end
+end
+
+if game:GetService("Workspace"):FindFirstChild("tailbeastbossmission") then
+	for i,v in pairs(game:GetService("Workspace").tailbeastbossmission.missions:GetChildren()) do
+		if v:FindFirstChild("missiongiver") then
+			table.insert(beastsbosslist, v.Name)
+			table.insert(allbosslist, v.Name)
+		end
+	end
+end
+if game:GetService("Workspace"):FindFirstChild("eventbossmission") then
+	for i,v in pairs(game:GetService("Workspace").eventbossmission.missions:GetChildren()) do
+		if v:FindFirstChild("missiongiver") then
+			table.insert(beastsbosslist, v.Name)
+			table.insert(allbosslist, v.Name)
+		end
+	end
+end
+if game.PlaceId == 5451405681 then
+	for i,v in pairs(workspace.tentailBOSS.missions:GetChildren()) do
+		if v:FindFirstChild("missiongiver") then
+			table.insert(beastsbosslist, v.Name)
+			table.insert(allbosslist, v.Name)
+		end
+	end
+end
+if game:GetService("Workspace"):FindFirstChild("Akumasusanoo") then
+	for i,v in pairs(game:GetService("Workspace").Akumasusanoo.missions:GetChildren()) do
+		if v:FindFirstChild("missiongiver") then
+			table.insert(beastsbosslist, v.Name)
+			table.insert(allbosslist, v.Name)
+		end
+	end
+end
+if game:GetService("Workspace"):FindFirstChild("Toads") then
+	for i,v in pairs(game:GetService("Workspace").Toads.missions:GetChildren()) do
+		if v:FindFirstChild("missiongiver") then
+			table.insert(beastsbosslist, v.Name)
+			table.insert(allbosslist, v.Name)
+		end
+	end
+end
+if game:GetService("Workspace"):FindFirstChild("apolmission") then
+	for i,v in pairs(game:GetService("Workspace").apolmission.missions:GetChildren()) do
+		if v:FindFirstChild("missiongiver") then
+			table.insert(beastsbosslist, v.Name)
+			table.insert(allbosslist, v.Name)
+		end
+	end
+end
+if game:GetService("Workspace"):FindFirstChild("MARUmission") then
+	for i,v in pairs(game:GetService("Workspace").MARUmission.missions:GetChildren()) do
+		if v:FindFirstChild("missiongiver") then
+			table.insert(beastsbosslist, v.Name)
+			table.insert(allbosslist, v.Name)
+		end
+	end
+end
+if game:GetService("Workspace"):FindFirstChild("Sparkymission") then
+	for i,v in pairs(game:GetService("Workspace").Sparkymission.missions:GetChildren()) do
+		if v:FindFirstChild("missiongiver") then
+			table.insert(beastsbosslist, v.Name)
+			table.insert(allbosslist, v.Name)
 		end
 	end
 end
@@ -1428,12 +1565,6 @@ local function ShindoMain()
 		end
 	end)
 
-	section2:addButton("Old No CD Method",function()
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/HDTerebi/Shindo-Life/main/No%20CD%20Method"))()
-		wait()
-		notify("Equip a beast mode, mode up, type '!spirit', press the ']' button, done!")
-	end)
-
 	-- second page
 	local page2 = NoobieDoge:addPage("Misc", 5012544693)
 	local section1 = page2:addSection("Game Functions")
@@ -1516,6 +1647,12 @@ local function ShindoMain()
 		end
 	end)
 
+	section1:addButton("Old No CD Method",function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/HDTerebi/Shindo-Life/main/No%20CD%20Method"))()
+		wait()
+		notify("Equip a beast mode, mode up, type '!spirit', press the ']' button, done!")
+	end)
+
 	section2:addDropdown("Custom Display Ranks",{"RELL", "F 0", "D 1", "D 2", "D 3", "C 1", "C 2", "C 3", "B 1", "B 2", "B 3", "A 1", "A 2", "A 3", "S 1", "S 2", "S 3", "V 1", "V 2", "V 3", "X 1", "X 2", "X 3", "Y 1", "Y 2", "Y 3", "Z 1", "Z 2", "Z 3", "MAX-69", "MAX-420", "MAX-666", "MAX-999", "GOD", "Dragon", "Hacker","???"},function(rektrank)
 		game:GetService("Players").LocalPlayer.leaderstats.Rank.Value =  (rektrank)
 		notify("Rank Displayed: " .. rektrank)
@@ -1529,14 +1666,22 @@ local function ShindoMain()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20RC%20Shop%20Changer"))()
 	end)
 
+	section3:addToggle("Enabled",false,function(bool)
+		SpamGOBRRRRR = bool
+		notify("Spam Keys: "..tostring(SpamGOBRRRRR),true)
+	end)
+
+	section3:addToggle("Missions Only",false,function(bool)
+		SpamOnlyInMissions = bool
+	end)
+
 	section3:addToggle("Spam Q",false,function(bool)
 		Q = bool
 		notify("Spam Q: "..tostring(Q),true)
 	end)
 	game:GetService('RunService').Stepped:connect(function()
-		if Q then
-			game.Players.LocalPlayer.Character.combat.update:FireServer("key","q")
-			game.Players.LocalPlayer.Character.combat.update:FireServer("key","qend")
+		if Q and SpamGOBRRRRR and not SpamOnlyInMissions then
+			SpamQ()
 		end
 	end)
 	section3:addToggle("Spam E",false, function(bool)
@@ -1544,9 +1689,8 @@ local function ShindoMain()
 		notify("Spam E: "..tostring(E),true)
 	end)
 	game:GetService('RunService').Stepped:connect(function()
-		if E then
-			game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
-			game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+		if E and SpamGOBRRRRR and not SpamOnlyInMissions then
+			SpamE()
 		end
 	end)
 	section3:addToggle("Spam R",false, function(bool)
@@ -1554,9 +1698,8 @@ local function ShindoMain()
 		notify("Spam R: "..tostring(R),true)
 	end)
 	game:GetService('RunService').Stepped:connect(function()
-		if R then
-			game.Players.LocalPlayer.Character.combat.update:FireServer("key","r")
-			game.Players.LocalPlayer.Character.combat.update:FireServer("key","rend")
+		if R and SpamGOBRRRRR and not SpamOnlyInMissions then
+			SpamR()
 		end
 	end)
 	section3:addToggle("Spam T",false, function(bool)
@@ -1564,9 +1707,8 @@ local function ShindoMain()
 		notify("Spam T: "..tostring(T),true)
 	end)
 	game:GetService('RunService').Stepped:connect(function()
-		if T then
-			game.Players.LocalPlayer.Character.combat.update:FireServer("key","t")
-			game.Players.LocalPlayer.Character.combat.update:FireServer("key","tend")
+		if T and SpamGOBRRRRR and not SpamOnlyInMissions then
+			SpamT()
 		end
 	end)
 	section3:addToggle("Spam Y",false, function(bool)
@@ -1574,9 +1716,8 @@ local function ShindoMain()
 		notify("Spam Y: "..tostring(Y),true)
 	end)
 	game:GetService('RunService').Stepped:connect(function()
-		if Y then
-			game.Players.LocalPlayer.Character.combat.update:FireServer("key","y")
-			game.Players.LocalPlayer.Character.combat.update:FireServer("key","yend")
+		if Y and SpamGOBRRRRR and not SpamOnlyInMissions then
+			SpamY()
 		end
 	end)
 	section3:addToggle("Spam F",false, function(bool)
@@ -1584,9 +1725,8 @@ local function ShindoMain()
 		notify("Spam F: "..tostring(F),true)
 	end)
 	game:GetService('RunService').Stepped:connect(function()
-		if F then
-			game.Players.LocalPlayer.Character.combat.update:FireServer("key","f")
-			game.Players.LocalPlayer.Character.combat.update:FireServer("key","fend")
+		if F and SpamGOBRRRRR and not SpamOnlyInMissions then
+			SpamF()
 		end
 	end)
 	section3:addToggle("Spam G",false, function(bool)
@@ -1594,9 +1734,8 @@ local function ShindoMain()
 		notify("Spam G: "..tostring(G),true)
 	end)
 	game:GetService('RunService').Stepped:connect(function()
-		if G then
-			game.Players.LocalPlayer.Character.combat.update:FireServer("key","g")
-			game.Players.LocalPlayer.Character.combat.update:FireServer("key","gend")
+		if G and SpamGOBRRRRR and not SpamOnlyInMissions then
+			SpamG()
 		end
 	end)
 	section3:addToggle("Spam H",false, function(bool)
@@ -1604,9 +1743,8 @@ local function ShindoMain()
 		notify("Spam H: "..tostring(H),true)
 	end)
 	game:GetService('RunService').Stepped:connect(function()
-		if H then
-			game.Players.LocalPlayer.Character.combat.update:FireServer("key","h")
-			game.Players.LocalPlayer.Character.combat.update:FireServer("key","hend")
+		if H and SpamGOBRRRRR and not SpamOnlyInMissions then
+			SpamH()
 		end
 	end)
 	section3:addToggle("Spam V",false, function(bool)
@@ -1614,9 +1752,8 @@ local function ShindoMain()
 		notify("Spam V: "..tostring(V),true)
 	end)
 	game:GetService('RunService').Stepped:connect(function()
-		if V then
-			game.Players.LocalPlayer.Character.combat.update:FireServer("key","v")
-			game.Players.LocalPlayer.Character.combat.update:FireServer("key","vend")
+		if V and SpamGOBRRRRR and not SpamOnlyInMissions then
+			SpamV()
 		end
 	end)
 	section3:addToggle("Spam B",false, function(bool)
@@ -1624,9 +1761,8 @@ local function ShindoMain()
 		notify("Spam B: "..tostring(B),true)
 	end)
 	game:GetService('RunService').Stepped:connect(function()
-		if B then
-			game.Players.LocalPlayer.Character.combat.update:FireServer("key","b")
-			game.Players.LocalPlayer.Character.combat.update:FireServer("key","bend")
+		if B and SpamGOBRRRRR and not SpamOnlyInMissions then
+			SpamB()
 		end
 	end)
 	section3:addToggle("Spam N",false, function(bool)
@@ -1634,9 +1770,8 @@ local function ShindoMain()
 		notify("Spam N: "..tostring(N),true)
 	end)
 	game:GetService('RunService').Stepped:connect(function()
-		if N then
-			game.Players.LocalPlayer.Character.combat.update:FireServer("key","n")
-			game.Players.LocalPlayer.Character.combat.update:FireServer("key","nend")
+		if N and SpamGOBRRRRR and not SpamOnlyInMissions then
+			SpamN()
 		end
 	end)
 	section3:addToggle("Spam Z",false, function(bool)
@@ -1644,9 +1779,8 @@ local function ShindoMain()
 		notify("Spam Z: "..tostring(Z),true)
 	end)
 	game:GetService('RunService').Stepped:connect(function()
-		if Z then
-			game.Players.LocalPlayer.Character.combat.update:FireServer("key","z")
-			game.Players.LocalPlayer.Character.combat.update:FireServer("key","zend")
+		if Z and SpamGOBRRRRR and not SpamOnlyInMissions then
+			SpamZ()
 		end
 	end)
 	section3:addToggle("Spam C",false, function(bool)
@@ -1654,9 +1788,8 @@ local function ShindoMain()
 		notify("Spam C: "..tostring(C),true)
 	end)
 	game:GetService('RunService').Stepped:connect(function()
-		if C then
-			game.Players.LocalPlayer.Character.combat.update:FireServer("key","c")
-			game.Players.LocalPlayer.Character.combat.update:FireServer("key","cend")
+		if C and SpamGOBRRRRR and not SpamOnlyInMissions then
+			SpamC()
 		end
 	end)
 
@@ -1941,244 +2074,249 @@ local function ShindoMain()
 
 	-- third page
 	local page3 = NoobieDoge:addPage("Mentor Farm", 5012544693)
-	local section1 = page3:addSection("Teleport to mentors")
-	local section2 = page3:addSection("Mission Process")
+	local MyRank = game:GetService("Players").LocalPlayer.statz.prestige.rank.Value
+	if MyRank == "F" or MyRank == "D" or MyRank == "C" or MyRank == "B" or MyRank == "A" then
+		local section1 = page3:addSection("You need to be at least S rank to achieve this function")
+	else
+		local section1 = page3:addSection("Teleport to mentors")
+		local section2 = page3:addSection("Mission Process")
 
-	section1:addButton("Tp to Narumaki Mentor",function()
-		if game.PlaceId == 5451398863 then
-			player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Narumaki"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
-			local args = {[1] = game:GetService("Players").LocalPlayer}
-			workspace.sensei.missions.Narumaki.missiongiver.CLIENTTALK:FireServer(unpack(args))
-		else
-			notify("Narumaki Mentor is not in this map!")
-		end
-	end)
-	section1:addButton("Tp to Jiso Mentor",function() 
-		if game.PlaceId == 6901575446 then
-			local args = {[1] = game:GetService("Players").LocalPlayer}
-			workspace.sensei.missions:FindFirstChild("Jiso Seishin").missiongiver.CLIENTTALK:FireServer(unpack(args))
-			player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Jiso Seishin"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(5,0,-1.7)
-		else
-			notify("Jiso Seishin Mentor is not in this map!")
-		end
-	end)
-	section1:addButton("Tp to Shindai Mentor",function()
-		if game.PlaceId == 5451401540 then
-			local args = {[1] = game:GetService("Players").LocalPlayer}
-			workspace.sensei.missions:FindFirstChild("Shindai Akuma").missiongiver.CLIENTTALK:FireServer(unpack(args))
-			player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Shindai Akuma"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
-		else
-			notify("Shindai Akuma Mentor is not in this map!")
-		end
-	end)
-	section1:addButton("Tp to Ryuji Mentor",function()
-		if game.PlaceId == 5431071837 then
-			local args = {[1] = game:GetService("Players").LocalPlayer}
-			workspace.sensei.missions:FindFirstChild("Ryuji Kenichi").missiongiver.CLIENTTALK:FireServer(unpack(args))
-			player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,4,3)
-		else
-			notify("Ryuji Kenichi Mentor is not in this map!")
-		end
-	end)
-	section1:addButton("Tp to Kenjutsu Mentor",function()
-		if game.PlaceId == 4601350656 then
-			for v = 1,8 do
-				wait()
-				game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace")["Ken Mentor"].HumanoidRootPart.Position)
+		section1:addButton("Tp to Narumaki Mentor",function()
+			if game.PlaceId == 5451398863 then
+				player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Narumaki"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
+				local args = {[1] = game:GetService("Players").LocalPlayer}
+				workspace.sensei.missions.Narumaki.missiongiver.CLIENTTALK:FireServer(unpack(args))
+			else
+				notify("Narumaki Mentor is not in this map!")
 			end
-			player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace")["Ken Mentor"].HumanoidRootPart.CFrame+Vector3.new(-6,4,0)
-		else
-			notify("Kenjutsu Mentor is not in this map!")
-		end
-	end)
-
-	section2:addToggle("Auto Mentor Quests",false, function(bool)
-		EnabledAutoMentor = bool
-		notify("Auto Mentor Quests: "..tostring(EnabledAutoMentor),true)
-	end)
-
-	section2:addToggle("1/5",false, function(bool)
-		punches = bool
-		notify("1/5: "..tostring(punches),true)
-	end)
-	game:GetService('RunService').Stepped:connect(function()
-		if punches then
-			game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
-		end
-	end)
-
-	section2:addToggle("2/5",false, function(bool)
-		tree = bool
-		notify("2/5: "..tostring(tree),true)
-	end)
-	game:GetService('RunService').Stepped:connect(function()
-		if tree then
-			game.Players.LocalPlayer.Character.combat.update:FireServer("takemovement2")
-		end
-	end)
-
-	section2:addToggle("3/5",false, function(bool)
-		shoot = bool
-		notify("3/5: "..tostring(shoot),true)
-	end)
-
-	spawn(function()
-		while wait(5) do
-			if shoot then
-				if game.PlaceId == 5451398863 then
-					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Narumaki"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(-22,0,-45)
-				elseif game.PlaceId == 6901575446 then
-					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Jiso Seishin"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(50,0,10)
-				elseif game.PlaceId == 5451401540 then
-					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Shindai Akuma"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(-100,7,-170)
-				elseif game.PlaceId == 5431071837 then
-					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,320,-300)
+		end)
+		section1:addButton("Tp to Jiso Mentor",function() 
+			if game.PlaceId == 6901575446 then
+				local args = {[1] = game:GetService("Players").LocalPlayer}
+				workspace.sensei.missions:FindFirstChild("Jiso Seishin").missiongiver.CLIENTTALK:FireServer(unpack(args))
+				player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Jiso Seishin"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(5,0,-1.7)
+			else
+				notify("Jiso Seishin Mentor is not in this map!")
+			end
+		end)
+		section1:addButton("Tp to Shindai Mentor",function()
+			if game.PlaceId == 5451401540 then
+				local args = {[1] = game:GetService("Players").LocalPlayer}
+				workspace.sensei.missions:FindFirstChild("Shindai Akuma").missiongiver.CLIENTTALK:FireServer(unpack(args))
+				player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Shindai Akuma"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
+			else
+				notify("Shindai Akuma Mentor is not in this map!")
+			end
+		end)
+		section1:addButton("Tp to Ryuji Mentor",function()
+			if game.PlaceId == 5431071837 then
+				local args = {[1] = game:GetService("Players").LocalPlayer}
+				workspace.sensei.missions:FindFirstChild("Ryuji Kenichi").missiongiver.CLIENTTALK:FireServer(unpack(args))
+				player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,4,3)
+			else
+				notify("Ryuji Kenichi Mentor is not in this map!")
+			end
+		end)
+		section1:addButton("Tp to Kenjutsu Mentor",function()
+			if game.PlaceId == 4601350656 then
+				for v = 1,8 do
+					wait()
+					game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace")["Ken Mentor"].HumanoidRootPart.Position)
 				end
+				player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace")["Ken Mentor"].HumanoidRootPart.CFrame+Vector3.new(-6,4,0)
+			else
+				notify("Kenjutsu Mentor is not in this map!")
 			end
-		end
-	end)
-	game:GetService('RunService').Stepped:connect(function()
-		if shoot then
-			repeat wait()
-				game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace").Terrain[game.Players.LocalPlayer.Name].kunaiaim.Position)
+		end)
+
+		section2:addToggle("Auto Mentor Quests",false, function(bool)
+			EnabledAutoMentor = bool
+			notify("Auto Mentor Quests: "..tostring(EnabledAutoMentor),true)
+		end)
+
+		section2:addToggle("1/5",false, function(bool)
+			punches = bool
+			notify("1/5: "..tostring(punches),true)
+		end)
+		game:GetService('RunService').Stepped:connect(function()
+			if punches then
 				game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
-			until mission.Visible == false or not shoot
-		end
-	end)
-
-	section2:addToggle("4/5",false, function(bool)
-		block = bool
-		notify("4/5: "..tostring(block),true)
-	end)
-
-	spawn(function()
-		while wait(5) do
-			if block then
-				if game.PlaceId == 5451398863 then
-					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Narumaki"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(-22,0,-45)
-				elseif game.PlaceId == 6901575446 then
-					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Jiso Seishin"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(50,0,10)
-				elseif game.PlaceId == 5451401540 then
-					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Shindai Akuma"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(-100,7,-170)
-				elseif game.PlaceId == 5431071837 then
-					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,320,-300)
-				end
 			end
-		end
-	end)
-	game:GetService('RunService').Stepped:connect(function()
-		if block then
-			repeat wait()
-				game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace").Terrain[game.Players.LocalPlayer.Name].kunaiaim.Position)
-			until mission.Visible == false or not block
-		end
-	end)
+		end)
 
-	section2:addToggle("5/5",false, function(bool)
-		keel = bool
-		notify("5/5: "..tostring(keel),true)
-	end)
+		section2:addToggle("2/5",false, function(bool)
+			tree = bool
+			notify("2/5: "..tostring(tree),true)
+		end)
+		game:GetService('RunService').Stepped:connect(function()
+			if tree then
+				game.Players.LocalPlayer.Character.combat.update:FireServer("takemovement2")
+			end
+		end)
 
-	section2:addToggle("Kenjutsu Training",false, function(bool)
-		if game.PlaceId ~= 4601350656 then
-			keel = bool
-			notify("Kenjutsu Training: "..tostring(keel),true)
-		else
-			local args = {[1] = "trainkenmaster"}
-			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-		end
-	end)
+		section2:addToggle("3/5",false, function(bool)
+			shoot = bool
+			notify("3/5: "..tostring(shoot),true)
+		end)
 
-	game:GetService('RunService').Stepped:connect(function()
-		if keel or DailyBoss then
-			NPCKEELAURA()
-		end
-	end)
-
-	spawn(function()
-		while wait() do
-			if EnabledAutoMentor then
-				if mission.Visible == false then
+		spawn(function()
+			while wait(5) do
+				if shoot then
 					if game.PlaceId == 5451398863 then
-						wait(.5)
-						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Narumaki"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
-						local args = {[1] = game:GetService("Players").LocalPlayer}
-						workspace.sensei.missions:FindFirstChild("Narumaki").missiongiver.CLIENTTALK:FireServer(unpack(args))
-						wait(1)
+						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Narumaki"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(-22,0,-45)
 					elseif game.PlaceId == 6901575446 then
-						wait(.5)
-						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Jiso Seishin"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(5,0,-1.7)
-						local args = {[1] = game:GetService("Players").LocalPlayer}
-						workspace.sensei.missions:FindFirstChild("Jiso Seishin").missiongiver.CLIENTTALK:FireServer(unpack(args))
-						wait(1)
+						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Jiso Seishin"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(50,0,10)
 					elseif game.PlaceId == 5451401540 then
-						wait(.5)
-						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Shindai Akuma"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
-						local args = {[1] = game:GetService("Players").LocalPlayer}
-						workspace.sensei.missions:FindFirstChild("Shindai Akuma").missiongiver.CLIENTTALK:FireServer(unpack(args))
-						wait(1)
+						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Shindai Akuma"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(-100,7,-170)
 					elseif game.PlaceId == 5431071837 then
-						wait(.5)
-						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,4,3)
-						local args = {[1] = game:GetService("Players").LocalPlayer}
-						workspace.sensei.missions:FindFirstChild("Ryuji Kenichi").missiongiver.CLIENTTALK:FireServer(unpack(args))
-						wait(1)
-					elseif game.PlaceId == 4601350656 then
-						for v = 1,8 do
-							wait()
-							game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace")["Ken Mentor"].HumanoidRootPart.Position)
-						end
-						game.Workspace.HumanoidRootPart.CFrame=game:GetService("Workspace")["Ken Mentor"].HumanoidRootPart.CFrame+Vector3.new(-6,4,0)
-					elseif game.PlaceId == 8184506020 then
-						punches = false
-						tree = false
-						shoot = false
-						block = false
-						dfarm = true
-					else
-						notify("You cannot do mentor missions in this map!")
-						punches = false
-						tree = false
-						shoot = false
-						block = false
-						dfarm = false
-					end
-				else
-					if mission.title.Text == "[Objective: Push-Up Training]" then
-						punches = true
-						tree = false
-						shoot = false
-						block = false
-						dfarm = false
-					elseif mission.title.Text == "[Objective: Tree-Jump Training]" then
-						punches = false
-						tree = true
-						shoot = false
-						block = false
-						dfarm = false
-					elseif mission.title.Text == "[Objective: Accuracy Training]" then
-						punches = false
-						tree = false
-						shoot = true
-						block = false
-						dfarm = false
-					elseif mission.title.Text == "[Objective: Deflecting Training]" then
-						punches = false
-						tree = false
-						shoot = false
-						block = true
-						dfarm = false
-					elseif game.PlaceId == 8184506020 then
-						punches = false
-						tree = false
-						shoot = false
-						block = false
-						dfarm = true
+						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,320,-300)
 					end
 				end
 			end
-		end	
-	end)
+		end)
+		game:GetService('RunService').Stepped:connect(function()
+			if shoot then
+				repeat wait()
+					game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace").Terrain[game.Players.LocalPlayer.Name].kunaiaim.Position)
+					game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
+				until mission.Visible == false or not shoot
+			end
+		end)
+
+		section2:addToggle("4/5",false, function(bool)
+			block = bool
+			notify("4/5: "..tostring(block),true)
+		end)
+
+		spawn(function()
+			while wait(5) do
+				if block then
+					if game.PlaceId == 5451398863 then
+						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Narumaki"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(-22,0,-45)
+					elseif game.PlaceId == 6901575446 then
+						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Jiso Seishin"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(50,0,10)
+					elseif game.PlaceId == 5451401540 then
+						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Shindai Akuma"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(-100,7,-170)
+					elseif game.PlaceId == 5431071837 then
+						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,320,-300)
+					end
+				end
+			end
+		end)
+		game:GetService('RunService').Stepped:connect(function()
+			if block then
+				repeat wait()
+					game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace").Terrain[game.Players.LocalPlayer.Name].kunaiaim.Position)
+				until mission.Visible == false or not block
+			end
+		end)
+
+		section2:addToggle("5/5",false, function(bool)
+			keel = bool
+			notify("5/5: "..tostring(keel),true)
+		end)
+
+		section2:addToggle("Kenjutsu Training",false, function(bool)
+			if game.PlaceId ~= 4601350656 then
+				keel = bool
+				notify("Kenjutsu Training: "..tostring(keel),true)
+			else
+				local args = {[1] = "trainkenmaster"}
+				game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			end
+		end)
+
+		game:GetService('RunService').Stepped:connect(function()
+			if keel or DailyBoss then
+				NPCKEELAURA()
+			end
+		end)
+
+		spawn(function()
+			while wait() do
+				if EnabledAutoMentor then
+					if mission.Visible == false then
+						if game.PlaceId == 5451398863 then
+							wait(.5)
+							player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Narumaki"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
+							local args = {[1] = game:GetService("Players").LocalPlayer}
+							workspace.sensei.missions:FindFirstChild("Narumaki").missiongiver.CLIENTTALK:FireServer(unpack(args))
+							wait(1)
+						elseif game.PlaceId == 6901575446 then
+							wait(.5)
+							player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Jiso Seishin"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(5,0,-1.7)
+							local args = {[1] = game:GetService("Players").LocalPlayer}
+							workspace.sensei.missions:FindFirstChild("Jiso Seishin").missiongiver.CLIENTTALK:FireServer(unpack(args))
+							wait(1)
+						elseif game.PlaceId == 5451401540 then
+							wait(.5)
+							player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Shindai Akuma"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
+							local args = {[1] = game:GetService("Players").LocalPlayer}
+							workspace.sensei.missions:FindFirstChild("Shindai Akuma").missiongiver.CLIENTTALK:FireServer(unpack(args))
+							wait(1)
+						elseif game.PlaceId == 5431071837 then
+							wait(.5)
+							player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,4,3)
+							local args = {[1] = game:GetService("Players").LocalPlayer}
+							workspace.sensei.missions:FindFirstChild("Ryuji Kenichi").missiongiver.CLIENTTALK:FireServer(unpack(args))
+							wait(1)
+						elseif game.PlaceId == 4601350656 then
+							for v = 1,8 do
+								wait()
+								game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace")["Ken Mentor"].HumanoidRootPart.Position)
+							end
+							game.Workspace.HumanoidRootPart.CFrame=game:GetService("Workspace")["Ken Mentor"].HumanoidRootPart.CFrame+Vector3.new(-6,4,0)
+						elseif game.PlaceId == 8184506020 then
+							punches = false
+							tree = false
+							shoot = false
+							block = false
+							dfarm = true
+						else
+							notify("You cannot do mentor missions in this map!")
+							punches = false
+							tree = false
+							shoot = false
+							block = false
+							dfarm = false
+						end
+					else
+						if mission.title.Text == "[Objective: Push-Up Training]" then
+							punches = true
+							tree = false
+							shoot = false
+							block = false
+							dfarm = false
+						elseif mission.title.Text == "[Objective: Tree-Jump Training]" then
+							punches = false
+							tree = true
+							shoot = false
+							block = false
+							dfarm = false
+						elseif mission.title.Text == "[Objective: Accuracy Training]" then
+							punches = false
+							tree = false
+							shoot = true
+							block = false
+							dfarm = false
+						elseif mission.title.Text == "[Objective: Deflecting Training]" then
+							punches = false
+							tree = false
+							shoot = false
+							block = true
+							dfarm = false
+						elseif game.PlaceId == 8184506020 then
+							punches = false
+							tree = false
+							shoot = false
+							block = false
+							dfarm = true
+						end
+					end
+				end
+			end	
+		end)
+	end
 
 	-- forth page
 	local page4 = NoobieDoge:addPage("Daily Missions", 5012544693)
@@ -2432,6 +2570,15 @@ local function ShindoMain()
 		RANKUPP = bool
 	end)
 
+	section2:addSlider("Auto Farm Height", 16, -500, 500, function(value)
+		AFHeight = value
+	end)
+	AFHeight = 16
+	section2:addSlider("Auto Farm Distance", 10, -500, 500, function(value)
+		AFDistance = value
+	end)
+	AFDistance = 10
+
 	section2:addToggle("NPC Kill Aura",false,function(bool)
 		keel2 = bool
 		notify("NPC Kill Aura: "..tostring(keel2),true)
@@ -2442,79 +2589,12 @@ local function ShindoMain()
 		end
 	end)
 
-	section2:addToggle("Legacy Farm Mode",false,function(bool)
-		NOCDed = bool
+	section2:addToggle("Legacy Farm Mode",true,function(bool)
+		LFM = bool
 		wait()
-		notify("Legacy Farm Mode: "..tostring(NOCDed),true)
+		notify("Legacy Farm Mode: "..tostring(LFM),true)
 	end)
-
-	local bosslist = {}
-	if game.PlaceId == 7923764447 then
-		for i,v in pairs(workspace.sengokubossfight.missions:GetChildren()) do
-			if v:FindFirstChild("missiongiver") then
-				table.insert(bosslist, v.Name)
-			end
-		end
-	end
-	if game:GetService("Workspace"):FindFirstChild("bossdropmission") then
-		for i,v in pairs(game:GetService("Workspace").bossdropmission.missions:GetChildren()) do
-			if v:FindFirstChild("missiongiver") then
-				table.insert(bosslist, v.Name)
-			end
-		end
-	end
-
-	local beastsbosslist = {}
-	if game:GetService("Workspace"):FindFirstChild("tailbeastbossmission") then
-		for i,v in pairs(game:GetService("Workspace").tailbeastbossmission.missions:GetChildren()) do
-			if v:FindFirstChild("missiongiver") then
-				table.insert(beastsbosslist, v.Name)
-			end
-		end
-	end
-	if game:GetService("Workspace"):FindFirstChild("eventbossmission") then
-		for i,v in pairs(game:GetService("Workspace").eventbossmission.missions:GetChildren()) do
-			if v:FindFirstChild("missiongiver") then
-				table.insert(beastsbosslist, v.Name)
-			end
-		end
-	end
-	if game.PlaceId == 5451405681 then
-		for i,v in pairs(workspace.tentailBOSS.missions:GetChildren()) do
-			if v:FindFirstChild("missiongiver") then
-				table.insert(beastsbosslist, v.Name)
-			end
-		end
-	end
-	if game:GetService("Workspace"):FindFirstChild("Akumasusanoo") then
-		for i,v in pairs(game:GetService("Workspace").Akumasusanoo.missions:GetChildren()) do
-			if v:FindFirstChild("missiongiver") then
-				table.insert(beastsbosslist, v.Name)
-			end
-		end
-	end
-	if game:GetService("Workspace"):FindFirstChild("apolmission") then
-		for i,v in pairs(game:GetService("Workspace").apolmission.missions:GetChildren()) do
-			if v:FindFirstChild("missiongiver") then
-				table.insert(beastsbosslist, v.Name)
-			end
-		end
-	end
-	if game:GetService("Workspace"):FindFirstChild("MARUmission") then
-		for i,v in pairs(game:GetService("Workspace").MARUmission.missions:GetChildren()) do
-			if v:FindFirstChild("missiongiver") then
-				table.insert(beastsbosslist, v.Name)
-			end
-		end
-	end
-	if game:GetService("Workspace"):FindFirstChild("Sparkymission") then
-		for i,v in pairs(game:GetService("Workspace").Sparkymission.missions:GetChildren()) do
-			if v:FindFirstChild("missiongiver") then
-				table.insert(beastsbosslist, v.Name)
-			end
-		end
-	end
-
+	LFM = true
 
 	local specific_boss
 	section3:addToggle("Specific Boss",false, function(bool)
@@ -2662,7 +2742,7 @@ local function ShindoMain()
 			autofarm = false
 			boss = false
 		else
-			if NOCDed then
+			if SpamGOBRRRRR and SpamOnlyInMissions then
 				for i,v in pairs(workspace.npc:GetChildren()) do
 					local mobname = string.split(mission.bg.name.Text,"Defeat ")[1]
 					if(string.find(mobname,"(s)")) then
@@ -2675,22 +2755,27 @@ local function ShindoMain()
 								game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
 								v.Humanoid.Health = 0
 								pcall(function()
-									player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 17, 10)
-									game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
-									game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
-									game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
-									game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
-									game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
-									game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
-									game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
-									game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+									player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, AFHeight, AFDistance)
+									if Q then SpamQ() end
+									if E then SpamE() end
+									if R then SpamR() end
+									if T then SpamT() end
+									if Y then SpamY() end
+									if F then SpamF() end
+									if G then SpamG() end
+									if H then SpamH() end
+									if V then SpamV() end
+									if B then SpamB() end
+									if N then SpamN() end
+									if Z then SpamZ() end
+									if C then SpamC() end
 									v.Humanoid.Health = 0
 								end)
 							end)
 						until not v:FindFirstChild("Humanoid") or mission.Visible == false or not autofarm or not v
 					end
 				end
-			else
+			elseif LFM then
 				for i,v in pairs(workspace.npc:GetChildren()) do
 					local mobname = string.split(mission.bg.name.Text,"Defeat ")[1]
 					if(string.find(mobname,"(s)")) then
@@ -2707,6 +2792,34 @@ local function ShindoMain()
 								game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
 								wait(.000000000000001)
 								v.Humanoid.Health = 0
+							end)
+						until not v:FindFirstChild("Humanoid") or mission.Visible == false or not autofarm or not v
+					end
+				end
+			else
+				for i,v in pairs(workspace.npc:GetChildren()) do
+					local mobname = string.split(mission.bg.name.Text,"Defeat ")[1]
+					if(string.find(mobname,"(s)")) then
+						mobname = string.gsub(mobname,"(s)","")
+					end
+					if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and not v:FindFirstChild("fullsusanoo") and v.Head.CFrame.Y > -1000 then
+						player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 15, 0)
+						repeat wait()
+							pcall(function()
+								game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+								v.Humanoid.Health = 0
+								pcall(function()
+									player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, AFHeight, AFDistance)
+									game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+									game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+									game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+									game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+									game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+									game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+									game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+									game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+									v.Humanoid.Health = 0
+								end)
 							end)
 						until not v:FindFirstChild("Humanoid") or mission.Visible == false or not autofarm or not v
 					end
@@ -2855,71 +2968,6 @@ local function ShindoMain()
 		end)
 	end
 
-	local allbosslist = {}
-	if game.PlaceId == 7923764447 then
-		for i,v in pairs(workspace.sengokubossfight.missions:GetChildren()) do
-			if v:FindFirstChild("missiongiver") then
-				table.insert(allbosslist, v.Name)
-			end
-		end
-	end
-	if game.PlaceId == 5451405681 then
-		for i,v in pairs(workspace.tentailBOSS.missions:GetChildren()) do
-			if v:FindFirstChild("missiongiver") then
-				table.insert(allbosslist, v.Name)
-			end
-		end
-	end
-	if game:GetService("Workspace"):FindFirstChild("eventbossmission") then
-		for i,v in pairs(game:GetService("Workspace").eventbossmission.missions:GetChildren()) do
-			if v:FindFirstChild("missiongiver") then
-				table.insert(allbosslist, v.Name)
-			end
-		end
-	end
-	if game:GetService("Workspace"):FindFirstChild("bossdropmission") then
-		for i,v in pairs(game:GetService("Workspace").bossdropmission.missions:GetChildren()) do
-			if v:FindFirstChild("missiongiver") then
-				table.insert(allbosslist, v.Name)
-			end
-		end
-	end
-	if game:GetService("Workspace"):FindFirstChild("tailbeastbossmission") then
-		for i,v in pairs(game:GetService("Workspace").tailbeastbossmission.missions:GetChildren()) do
-			if v:FindFirstChild("missiongiver") then
-				table.insert(allbosslist, v.Name)
-			end
-		end
-	end
-	if game:GetService("Workspace"):FindFirstChild("Akumasusanoo") then
-		for i,v in pairs(game:GetService("Workspace").Akumasusanoo.missions:GetChildren()) do
-			if v:FindFirstChild("missiongiver") then
-				table.insert(allbosslist, v.Name)
-			end
-		end
-	end
-	if game:GetService("Workspace"):FindFirstChild("apolmission") then
-		for i,v in pairs(game:GetService("Workspace").apolmission.missions:GetChildren()) do
-			if v:FindFirstChild("missiongiver") then
-				table.insert(allbosslist, v.Name)
-			end
-		end
-	end
-	if game:GetService("Workspace"):FindFirstChild("MARUmission") then
-		for i,v in pairs(game:GetService("Workspace").MARUmission.missions:GetChildren()) do
-			if v:FindFirstChild("missiongiver") then
-				table.insert(allbosslist, v.Name)
-			end
-		end
-	end
-	if game:GetService("Workspace"):FindFirstChild("Sparkymission") then
-		for i,v in pairs(game:GetService("Workspace").Sparkymission.missions:GetChildren()) do
-			if v:FindFirstChild("missiongiver") then
-				table.insert(allbosslist, v.Name)
-			end
-		end
-	end
-
 	section1:addDropdown("Boss Missions Location",allbosslist,function(B1)
 		notify("Teleported to: " .. B1 .. " Boss Mission Location")
 		bossmissionlocation = B1
@@ -2982,6 +3030,13 @@ local function ShindoMain()
 		end
 		if game:GetService("Workspace"):FindFirstChild("apolmission") then
 			for i,v in pairs(game:GetService("Workspace").apolmission.missions:GetChildren()) do
+				if v.Name == bossmissionlocation and v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
+					player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
+				end
+			end
+		end
+		if game:GetService("Workspace"):FindFirstChild("Toads") then
+			for i,v in pairs(game:GetService("Workspace").Toads.missions:GetChildren()) do
 				if v.Name == bossmissionlocation and v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
 					player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
 				end
@@ -3084,6 +3139,8 @@ local function ShindoMain()
 			Pspeed = false
 			Pnorm = false
 			keel = false
+			SpamGOBRRRRR = false 
+			SpamOnlyInMissions = false
 			Q = false
 			E = false
 			R = false
