@@ -4059,7 +4059,6 @@ local function ShindoMain()
 								v.Humanoid.Health = 0
 								pcall(function()
 									player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, AFHeight, AFDistance)
-									if Q then SpamQ() end
 									if E then SpamE() end
 									if R then SpamR() end
 									if T then SpamT() end
@@ -4072,6 +4071,7 @@ local function ShindoMain()
 									if N then SpamN() end
 									if Z then SpamZ() end
 									if C then SpamC() end
+									if Q then SpamQ() end
 									v.Humanoid.Health = 0
 								end)
 							end)
