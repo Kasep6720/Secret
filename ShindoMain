@@ -73,7 +73,9 @@ local function SCROLLFARM()
 			pcall(function()
 				player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
 				fireclickdetector(v.sh.ClickDetector)
-				v:Destroy()
+				if game:GetService("Players").LocalPlayer.statz.unlocked:FindFirstChild(v.Name) then
+					v:Destroy()
+				end
 			end)
 		end
 	end
@@ -81,12 +83,14 @@ end
 local function SCROLLFARM1()
 	for i,v in pairs(game.workspace:GetChildren()) do
 		if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
-			print("SCROLL SPAWNED in workspace")
-			notify("SCROLL SPAWNED in workspace")
+			print("SCROLL spawned in workspace")
+			notify("SCROLL spawned in workspace")
 			pcall(function()
 				player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
 				fireclickdetector(v.sh.ClickDetector)
-				v:Destroy()
+				if game:GetService("Players").LocalPlayer.statz.unlocked:FindFirstChild(v.Name) then
+					v:Destroy()
+				end
 			end)
 		end
 	end
