@@ -1392,9 +1392,11 @@ local function ShindoEventBoss()
 		notify("Disabled Infinite Jump")
 	end)
 
-	section2:addToggle("Press P to fly",false,function(Pnorm)
-		Pspeed = false
-
+	section2:addSlider("Fly Speed", 101, 0, 500, function(value)
+		sliderfly = value
+	end)
+	sliderfly = 101
+	section2:addToggle("Press P to fly",false,function(Pfly)
 		repeat wait() 
 		until game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:findFirstChild("Head") and game.Players.LocalPlayer.Character:findFirstChild("Humanoid") 
 		local mouse = game.Players.LocalPlayer:GetMouse() 
@@ -1405,7 +1407,7 @@ local function ShindoEventBoss()
 		local deb = true 
 		local ctrl = {f = 0, b = 0, l = 0, r = 0} 
 		local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
-		local maxspeed = 101 
+		local maxspeed = sliderfly 
 		local speed = 0 
 
 		function Fly() 
@@ -1420,13 +1422,13 @@ local function ShindoEventBoss()
 			repeat wait() 
 				plr.Character.Humanoid.PlatformStand = true 
 				if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
-					speed = speed+30.5+(speed/maxspeed) 
+					speed = speed+(sliderfly/1.7)+(speed/maxspeed) 
 					if speed > maxspeed then 
 						speed = maxspeed 
 					end 
 
 				elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
-					speed = speed-31.5
+					speed = speed-(sliderfly/1.7)
 					if speed < 0 then 
 						speed = 0 
 					end 
@@ -1480,100 +1482,8 @@ local function ShindoEventBoss()
 			end 
 		end)
 		Fly()
-		notify("Press P to fly: "..tostring(Pnorm),true)
+		notify("Press P to fly: "..tostring(Pfly),true)
 	end)
-
-	section2:addToggle("Press P to fly faster",false,function(Pspeed)
-		Pnorm = false
-
-		repeat wait() 
-		until game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:findFirstChild("Head") and game.Players.LocalPlayer.Character:findFirstChild("Humanoid") 
-		local mouse = game.Players.LocalPlayer:GetMouse() 
-		repeat wait() until mouse
-		local plr = game.Players.LocalPlayer 
-		local torso = plr.Character.Head 
-		local flying = false
-		local deb = true 
-		local ctrl = {f = 0, b = 0, l = 0, r = 0} 
-		local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
-		local maxspeed = 400 
-		local speed = 0 
-
-		function Fly() 
-			local bg = Instance.new("BodyGyro", torso) 
-			bg.P = 9e4 
-			bg.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
-			bg.cframe = torso.CFrame 
-
-			local bv = Instance.new("BodyVelocity", torso) 
-			bv.velocity = Vector3.new(0,0.1,0) 
-			bv.maxForce = Vector3.new(9e9, 9e9, 9e9) 
-			repeat wait() 
-				plr.Character.Humanoid.PlatformStand = true 
-				if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
-					speed = speed+150.5+(speed/maxspeed) 
-					if speed > maxspeed then 
-						speed = maxspeed 
-					end 
-
-				elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
-					speed = speed-250
-					if speed < 0 then 
-						speed = 0 
-					end 
-				end 
-				if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then 
-					bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
-					lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r} 
-				elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then 
-					bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
-				else 
-					bv.velocity = Vector3.new(0,0.1,0)
-				end 
-				bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
-			until not flying 
-			ctrl = {f = 0, b = 0, l = 0, r = 0} 
-			lastctrl = {f = 0, b = 0, l = 0, r = 0} 
-			speed = 0 
-			bg:Destroy() 
-			bv:Destroy() 
-			plr.Character.Humanoid.PlatformStand = false 
-		end 
-
-		mouse.KeyDown:connect(function(key) 
-			if key:lower() == "p" then 
-				if flying then flying = false 
-				else 
-					flying = true 
-					Fly() 
-				end 
-			elseif key:lower() == "w" then 
-				ctrl.f = 1 
-			elseif key:lower() == "s" then 
-				ctrl.b = -1 
-			elseif key:lower() == "a" then 
-				ctrl.l = -1 
-			elseif key:lower() == "d" then 
-				ctrl.r = 1 
-			end 
-		end) 
-
-		mouse.KeyUp:connect(function(key) 
-
-			if key:lower() == "w" then 
-				ctrl.f = 0 
-			elseif key:lower() == "s" then 
-				ctrl.b = 0 
-			elseif key:lower() == "a" then 
-				ctrl.l = 0 
-			elseif key:lower() == "d" then 
-				ctrl.r = 0 
-			end 
-		end)
-		Fly()
-		notify("Press P to fly faster: "..tostring(Pspeed),true)
-	end)
-
 
 	local playerlist = {}
 	for i,v in pairs(game:GetService("Players"):GetPlayers()) do
@@ -1618,7 +1528,6 @@ local function ShindoEventBoss()
 	local page2 = NoobieDoge:addPage("Misc", 5012544693)
 	local section1 = page2:addSection("Game Functions")
 	local section2 = page2:addSection("Customs")
-	local section3 = page2:addSection("Spam Keys")
 
 	section1:addButton("SuperHuman",function()
 		SUPERHUMAN()
@@ -1677,137 +1586,142 @@ local function ShindoEventBoss()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20RC%20Shop%20Changer"))()
 	end)
 
-	section3:addToggle("Enabled",false,function(bool)
+	-- third page
+	local page3 = NoobieDoge:addPage("Spam Keys", 5012544693)
+	local section1 = page3:addSection("Configurations")
+	local section2 = page3:addSection("Keys")
+
+	section1:addToggle("Enabled",false,function(bool)
 		SpamGOBRRRRR = bool
 		notify("Spam Keys: "..tostring(SpamGOBRRRRR),true)
 	end)
 
-	section3:addToggle("Farming Only",false,function(bool)
+	section1:addToggle("Missions Only",false,function(bool)
 		SpamOnlyInMissions = bool
 	end)
 
-	section3:addToggle("Spam Q",false,function(bool)
+	section2:addToggle("Spam Q",false,function(bool)
 		Q = bool
 		notify("Spam Q: "..tostring(Q),true)
 	end)
 	game:GetService('RunService').Stepped:connect(function()
-		if (Q and SpamGOBRRRRR and not SpamOnlyInMissions) or (Q and SpamGOBRRRRR and SpamOnlyInMissions and EventBossUded) then
+		if Q and SpamGOBRRRRR and not SpamOnlyInMissions then
 			SpamQ()
 		end
 	end)
-	section3:addToggle("Spam E",false, function(bool)
+	section2:addToggle("Spam E",false, function(bool)
 		E = bool
 		notify("Spam E: "..tostring(E),true)
 	end)
 	game:GetService('RunService').Stepped:connect(function()
-		if (E and SpamGOBRRRRR and not SpamOnlyInMissions) or (E and SpamGOBRRRRR and SpamOnlyInMissions and EventBossUded) then
+		if E and SpamGOBRRRRR and not SpamOnlyInMissions then
 			SpamE()
 		end
 	end)
-	section3:addToggle("Spam R",false, function(bool)
+	section2:addToggle("Spam R",false, function(bool)
 		R = bool
 		notify("Spam R: "..tostring(R),true)
 	end)
 	game:GetService('RunService').Stepped:connect(function()
-		if (R and SpamGOBRRRRR and not SpamOnlyInMissions) or (R and SpamGOBRRRRR and SpamOnlyInMissions and EventBossUded) then
+		if R and SpamGOBRRRRR and not SpamOnlyInMissions then
 			SpamR()
 		end
 	end)
-	section3:addToggle("Spam T",false, function(bool)
+	section2:addToggle("Spam T",false, function(bool)
 		T = bool
 		notify("Spam T: "..tostring(T),true)
 	end)
 	game:GetService('RunService').Stepped:connect(function()
-		if (T and SpamGOBRRRRR and not SpamOnlyInMissions) or (T and SpamGOBRRRRR and SpamOnlyInMissions and EventBossUded) then
+		if T and SpamGOBRRRRR and not SpamOnlyInMissions then
 			SpamT()
 		end
 	end)
-	section3:addToggle("Spam Y",false, function(bool)
+	section2:addToggle("Spam Y",false, function(bool)
 		Y = bool
 		notify("Spam Y: "..tostring(Y),true)
 	end)
 	game:GetService('RunService').Stepped:connect(function()
-		if (Y and SpamGOBRRRRR and not SpamOnlyInMissions) or (Y and SpamGOBRRRRR and SpamOnlyInMissions and EventBossUded) then
+		if Y and SpamGOBRRRRR and not SpamOnlyInMissions then
 			SpamY()
 		end
 	end)
-	section3:addToggle("Spam F",false, function(bool)
+	section2:addToggle("Spam F",false, function(bool)
 		F = bool
 		notify("Spam F: "..tostring(F),true)
 	end)
 	game:GetService('RunService').Stepped:connect(function()
-		if (F and SpamGOBRRRRR and not SpamOnlyInMissions) or (F and SpamGOBRRRRR and SpamOnlyInMissions and EventBossUded) then
+		if F and SpamGOBRRRRR and not SpamOnlyInMissions then
 			SpamF()
 		end
 	end)
-	section3:addToggle("Spam G",false, function(bool)
+	section2:addToggle("Spam G",false, function(bool)
 		G = bool
 		notify("Spam G: "..tostring(G),true)
 	end)
 	game:GetService('RunService').Stepped:connect(function()
-		if (G and SpamGOBRRRRR and not SpamOnlyInMissions) or (G and SpamGOBRRRRR and SpamOnlyInMissions and EventBossUded) then
+		if G and SpamGOBRRRRR and not SpamOnlyInMissions then
 			SpamG()
 		end
 	end)
-	section3:addToggle("Spam H",false, function(bool)
+	section2:addToggle("Spam H",false, function(bool)
 		H = bool
 		notify("Spam H: "..tostring(H),true)
 	end)
 	game:GetService('RunService').Stepped:connect(function()
-		if (H and SpamGOBRRRRR and not SpamOnlyInMissions) or (H and SpamGOBRRRRR and SpamOnlyInMissions and EventBossUded) then
+		if H and SpamGOBRRRRR and not SpamOnlyInMissions then
 			SpamH()
 		end
 	end)
-	section3:addToggle("Spam V",false, function(bool)
+	section2:addToggle("Spam V",false, function(bool)
 		V = bool
 		notify("Spam V: "..tostring(V),true)
 	end)
 	game:GetService('RunService').Stepped:connect(function()
-		if (V and SpamGOBRRRRR and not SpamOnlyInMissions) or (V and SpamGOBRRRRR and SpamOnlyInMissions and EventBossUded) then
+		if V and SpamGOBRRRRR and not SpamOnlyInMissions then
 			SpamV()
 		end
 	end)
-	section3:addToggle("Spam B",false, function(bool)
+	section2:addToggle("Spam B",false, function(bool)
 		B = bool
 		notify("Spam B: "..tostring(B),true)
 	end)
 	game:GetService('RunService').Stepped:connect(function()
-		if (B and SpamGOBRRRRR and not SpamOnlyInMissions) or (B and SpamGOBRRRRR and SpamOnlyInMissions and EventBossUded) then
+		if B and SpamGOBRRRRR and not SpamOnlyInMissions then
 			SpamB()
 		end
 	end)
-	section3:addToggle("Spam N",false, function(bool)
+	section2:addToggle("Spam N",false, function(bool)
 		N = bool
 		notify("Spam N: "..tostring(N),true)
 	end)
 	game:GetService('RunService').Stepped:connect(function()
-		if (N and SpamGOBRRRRR and not SpamOnlyInMissions) or (N and SpamGOBRRRRR and SpamOnlyInMissions and EventBossUded) then
+		if N and SpamGOBRRRRR and not SpamOnlyInMissions then
 			SpamN()
 		end
 	end)
-	section3:addToggle("Spam Z",false, function(bool)
+	section2:addToggle("Spam Z",false, function(bool)
 		Z = bool
 		notify("Spam Z: "..tostring(Z),true)
 	end)
 	game:GetService('RunService').Stepped:connect(function()
-		if (Z and SpamGOBRRRRR and not SpamOnlyInMissions) or (Z and SpamGOBRRRRR and SpamOnlyInMissions and EventBossUded) then
+		if Z and SpamGOBRRRRR and not SpamOnlyInMissions then
 			SpamZ()
 		end
 	end)
-	section3:addToggle("Spam C",false, function(bool)
+	section2:addToggle("Spam C",false, function(bool)
 		C = bool
 		notify("Spam C: "..tostring(C),true)
 	end)
 	game:GetService('RunService').Stepped:connect(function()
-		if (C and SpamGOBRRRRR and not SpamOnlyInMissions) or (C and SpamGOBRRRRR and SpamOnlyInMissions and EventBossUded) then
+		if C and SpamGOBRRRRR and not SpamOnlyInMissions then
 			SpamC()
 		end
 	end)
 
-	-- third page
-	local page3 = NoobieDoge:addPage("Auto Farm", 5012544693)
-	local section1 = page3:addSection("Auto Farm")
-	local section2 = page3:addSection("Farming Configurations")
+	-- forth page
+	local page4 = NoobieDoge:addPage("Auto Farm", 5012544693)
+	local section1 = page4:addSection("Auto Farm")
+	local section2 = page4:addSection("Farming Configurations")
 
 	section1:addToggle("Auto Farm",false,function(bool)
 		EventBossUded = bool
@@ -1890,11 +1804,11 @@ local function ShindoEventBoss()
 		end
 	end)
 
-	-- forth page
-	local page4 = NoobieDoge:addPage("Daily Missions", 5012544693)
-	local section1 = page4:addSection("Claim Missions")
-	local section2 = page4:addSection("Auto Daily Missions")
-	local section3 = page4:addSection("Teleports")
+	-- fifth page
+	local page5 = NoobieDoge:addPage("Daily Missions", 5012544693)
+	local section1 = page5:addSection("Claim Missions")
+	local section2 = page5:addSection("Auto Daily Missions")
+	local section3 = page5:addSection("Teleports")
 
 	section1:addButton("Claim daily missions rewards",function()
 		local args = {[1] = "claim",[2] = game:GetService("Players").LocalPlayer.statz.mission.dailyquest1}
@@ -2102,10 +2016,10 @@ local function ShindoEventBoss()
 		end)
 	end
 
-	-- fifth page
-	local page5 = NoobieDoge:addPage("Teleports", 5012544693)
-	local section1 = page5:addSection("Map Teleports")
-	local section2 = page5:addSection("Server Teleports")
+	-- sixth page
+	local page6 = NoobieDoge:addPage("Teleports", 5012544693)
+	local section1 = page6:addSection("Map Teleports")
+	local section2 = page6:addSection("Server Teleports")
 	
 	if game.PlaceId == 9310522814 then
 		section1:addButton("Spawn Point",function()
@@ -2247,8 +2161,7 @@ local function ShindoEventBoss()
 				end
 			end
 			wait()
-			Pspeed = false
-			Pnorm = false
+			Pfly = false
 			trackthatguy = false
 			keel = false
 			SpamGOBRRRRR = false 
@@ -2471,9 +2384,11 @@ local function ShindoMain()
 		notify("Disabled Infinite Jump")
 	end)
 
-	section2:addToggle("Press P to fly",false,function(Pnorm)
-		Pspeed = false
-
+	section2:addSlider("Fly Speed", 101, 0, 500, function(value)
+		sliderfly = value
+	end)
+	sliderfly = 101
+	section2:addToggle("Press P to fly",false,function(Pfly)
 		repeat wait() 
 		until game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:findFirstChild("Head") and game.Players.LocalPlayer.Character:findFirstChild("Humanoid") 
 		local mouse = game.Players.LocalPlayer:GetMouse() 
@@ -2484,7 +2399,7 @@ local function ShindoMain()
 		local deb = true 
 		local ctrl = {f = 0, b = 0, l = 0, r = 0} 
 		local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
-		local maxspeed = 101 
+		local maxspeed = sliderfly 
 		local speed = 0 
 
 		function Fly() 
@@ -2499,13 +2414,13 @@ local function ShindoMain()
 			repeat wait() 
 				plr.Character.Humanoid.PlatformStand = true 
 				if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
-					speed = speed+30.5+(speed/maxspeed) 
+					speed = speed+(sliderfly/1.7)+(speed/maxspeed) 
 					if speed > maxspeed then 
 						speed = maxspeed 
 					end 
 
 				elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
-					speed = speed-31.5
+					speed = speed-(sliderfly/1.7)
 					if speed < 0 then 
 						speed = 0 
 					end 
@@ -2559,100 +2474,8 @@ local function ShindoMain()
 			end 
 		end)
 		Fly()
-		notify("Press P to fly: "..tostring(Pnorm),true)
+		notify("Press P to fly: "..tostring(Pfly),true)
 	end)
-
-	section2:addToggle("Press P to fly faster",false,function(Pspeed)
-		Pnorm = false
-
-		repeat wait() 
-		until game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:findFirstChild("Head") and game.Players.LocalPlayer.Character:findFirstChild("Humanoid") 
-		local mouse = game.Players.LocalPlayer:GetMouse() 
-		repeat wait() until mouse
-		local plr = game.Players.LocalPlayer 
-		local torso = plr.Character.Head 
-		local flying = false
-		local deb = true 
-		local ctrl = {f = 0, b = 0, l = 0, r = 0} 
-		local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
-		local maxspeed = 400 
-		local speed = 0 
-
-		function Fly() 
-			local bg = Instance.new("BodyGyro", torso) 
-			bg.P = 9e4 
-			bg.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
-			bg.cframe = torso.CFrame 
-
-			local bv = Instance.new("BodyVelocity", torso) 
-			bv.velocity = Vector3.new(0,0.1,0) 
-			bv.maxForce = Vector3.new(9e9, 9e9, 9e9) 
-			repeat wait() 
-				plr.Character.Humanoid.PlatformStand = true 
-				if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
-					speed = speed+150.5+(speed/maxspeed) 
-					if speed > maxspeed then 
-						speed = maxspeed 
-					end 
-
-				elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
-					speed = speed-250
-					if speed < 0 then 
-						speed = 0 
-					end 
-				end 
-				if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then 
-					bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
-					lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r} 
-				elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then 
-					bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
-				else 
-					bv.velocity = Vector3.new(0,0.1,0)
-				end 
-				bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
-			until not flying 
-			ctrl = {f = 0, b = 0, l = 0, r = 0} 
-			lastctrl = {f = 0, b = 0, l = 0, r = 0} 
-			speed = 0 
-			bg:Destroy() 
-			bv:Destroy() 
-			plr.Character.Humanoid.PlatformStand = false 
-		end 
-
-		mouse.KeyDown:connect(function(key) 
-			if key:lower() == "p" then 
-				if flying then flying = false 
-				else 
-					flying = true 
-					Fly() 
-				end 
-			elseif key:lower() == "w" then 
-				ctrl.f = 1 
-			elseif key:lower() == "s" then 
-				ctrl.b = -1 
-			elseif key:lower() == "a" then 
-				ctrl.l = -1 
-			elseif key:lower() == "d" then 
-				ctrl.r = 1 
-			end 
-		end) 
-
-		mouse.KeyUp:connect(function(key) 
-
-			if key:lower() == "w" then 
-				ctrl.f = 0 
-			elseif key:lower() == "s" then 
-				ctrl.b = 0 
-			elseif key:lower() == "a" then 
-				ctrl.l = 0 
-			elseif key:lower() == "d" then 
-				ctrl.r = 0 
-			end 
-		end)
-		Fly()
-		notify("Press P to fly faster: "..tostring(Pspeed),true)
-	end)
-
 
 	local playerlist = {}
 	for i,v in pairs(game:GetService("Players"):GetPlayers()) do
@@ -2697,8 +2520,7 @@ local function ShindoMain()
 	local page2 = NoobieDoge:addPage("Misc", 5012544693)
 	local section1 = page2:addSection("Game Functions")
 	local section2 = page2:addSection("Customs")
-	local section3 = page2:addSection("Spam Keys")
-	local section4 = page2:addSection("Kenjutsu Spin")
+	local section3 = page2:addSection("Kenjutsu Spin")
 
 	section1:addButton("SuperHuman",function()
 		SUPERHUMAN()
@@ -2757,140 +2579,13 @@ local function ShindoMain()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20RC%20Shop%20Changer"))()
 	end)
 
-	section3:addToggle("Enabled",false,function(bool)
-		SpamGOBRRRRR = bool
-		notify("Spam Keys: "..tostring(SpamGOBRRRRR),true)
-	end)
-
-	section3:addToggle("Missions Only",false,function(bool)
-		SpamOnlyInMissions = bool
-	end)
-
-	section3:addToggle("Spam Q",false,function(bool)
-		Q = bool
-		notify("Spam Q: "..tostring(Q),true)
-	end)
-	game:GetService('RunService').Stepped:connect(function()
-		if Q and SpamGOBRRRRR and not SpamOnlyInMissions then
-			SpamQ()
-		end
-	end)
-	section3:addToggle("Spam E",false, function(bool)
-		E = bool
-		notify("Spam E: "..tostring(E),true)
-	end)
-	game:GetService('RunService').Stepped:connect(function()
-		if E and SpamGOBRRRRR and not SpamOnlyInMissions then
-			SpamE()
-		end
-	end)
-	section3:addToggle("Spam R",false, function(bool)
-		R = bool
-		notify("Spam R: "..tostring(R),true)
-	end)
-	game:GetService('RunService').Stepped:connect(function()
-		if R and SpamGOBRRRRR and not SpamOnlyInMissions then
-			SpamR()
-		end
-	end)
-	section3:addToggle("Spam T",false, function(bool)
-		T = bool
-		notify("Spam T: "..tostring(T),true)
-	end)
-	game:GetService('RunService').Stepped:connect(function()
-		if T and SpamGOBRRRRR and not SpamOnlyInMissions then
-			SpamT()
-		end
-	end)
-	section3:addToggle("Spam Y",false, function(bool)
-		Y = bool
-		notify("Spam Y: "..tostring(Y),true)
-	end)
-	game:GetService('RunService').Stepped:connect(function()
-		if Y and SpamGOBRRRRR and not SpamOnlyInMissions then
-			SpamY()
-		end
-	end)
-	section3:addToggle("Spam F",false, function(bool)
-		F = bool
-		notify("Spam F: "..tostring(F),true)
-	end)
-	game:GetService('RunService').Stepped:connect(function()
-		if F and SpamGOBRRRRR and not SpamOnlyInMissions then
-			SpamF()
-		end
-	end)
-	section3:addToggle("Spam G",false, function(bool)
-		G = bool
-		notify("Spam G: "..tostring(G),true)
-	end)
-	game:GetService('RunService').Stepped:connect(function()
-		if G and SpamGOBRRRRR and not SpamOnlyInMissions then
-			SpamG()
-		end
-	end)
-	section3:addToggle("Spam H",false, function(bool)
-		H = bool
-		notify("Spam H: "..tostring(H),true)
-	end)
-	game:GetService('RunService').Stepped:connect(function()
-		if H and SpamGOBRRRRR and not SpamOnlyInMissions then
-			SpamH()
-		end
-	end)
-	section3:addToggle("Spam V",false, function(bool)
-		V = bool
-		notify("Spam V: "..tostring(V),true)
-	end)
-	game:GetService('RunService').Stepped:connect(function()
-		if V and SpamGOBRRRRR and not SpamOnlyInMissions then
-			SpamV()
-		end
-	end)
-	section3:addToggle("Spam B",false, function(bool)
-		B = bool
-		notify("Spam B: "..tostring(B),true)
-	end)
-	game:GetService('RunService').Stepped:connect(function()
-		if B and SpamGOBRRRRR and not SpamOnlyInMissions then
-			SpamB()
-		end
-	end)
-	section3:addToggle("Spam N",false, function(bool)
-		N = bool
-		notify("Spam N: "..tostring(N),true)
-	end)
-	game:GetService('RunService').Stepped:connect(function()
-		if N and SpamGOBRRRRR and not SpamOnlyInMissions then
-			SpamN()
-		end
-	end)
-	section3:addToggle("Spam Z",false, function(bool)
-		Z = bool
-		notify("Spam Z: "..tostring(Z),true)
-	end)
-	game:GetService('RunService').Stepped:connect(function()
-		if Z and SpamGOBRRRRR and not SpamOnlyInMissions then
-			SpamZ()
-		end
-	end)
-	section3:addToggle("Spam C",false, function(bool)
-		C = bool
-		notify("Spam C: "..tostring(C),true)
-	end)
-	game:GetService('RunService').Stepped:connect(function()
-		if C and SpamGOBRRRRR and not SpamOnlyInMissions then
-			SpamC()
-		end
-	end)
-
-	section4:addButton("Reset Spins NOW",function()
+	section3:addButton("Reset Spins NOW",function()
 		game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
 		wait()
 		game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
 	end)
 
-	section4:addButton("Save Spins Data",function()
+	section3:addButton("Save Spins Data",function()
 		local player = game.Players.LocalPlayer
 		local ScreenGuiK = Instance.new("ScreenGui")
 		local FrameK = Instance.new("Frame")
@@ -2959,11 +2654,11 @@ local function ShindoMain()
 		TextButton_2.MouseButton1Click:connect(cancelKeep)	
 	end)
 
-	section4:addToggle("Auto Rejoin",true,function(bool)
+	section3:addToggle("Auto Rejoin",true,function(bool)
 		Autorejoin = bool
 	end)
 
-	section4:addToggle("Auto Save",false,function(bool)
+	section3:addToggle("Auto Save",false,function(bool)
 		Autosave = bool
 	end)
 
@@ -2976,42 +2671,42 @@ local function ShindoMain()
 
 	if game:GetService("Players").LocalPlayer.statz.unlocked:FindFirstChild("kenjutsuslot2") then
 		local kenselect1
-			section4:addDropdown("Kenjutsu Choice 1",ken,function(KEN1)
+			section3:addDropdown("Kenjutsu Choice 1",ken,function(KEN1)
 			print("Selected: " .. KEN1)
 			notify("Selected: " .. KEN1)
 			FrameK.Visible = true
 			kenselect1 = KEN1
 		end)
 		local kenselect2
-			section4:addDropdown("Kenjutsu Choice 2",ken,function(KEN2)
+			section3:addDropdown("Kenjutsu Choice 2",ken,function(KEN2)
 			print("Selected: " .. KEN2)
 			notify("Selected: " .. KEN2)
 			FrameK.Visible = true
 			kenselect2 = KEN2
 		end)
 		local kenselect3
-			section4:addDropdown("Kenjutsu Choice 3",ken,function(KEN3)
+			section3:addDropdown("Kenjutsu Choice 3",ken,function(KEN3)
 			print("Selected: " .. KEN3)
 			notify("Selected: " .. KEN3)
 			FrameK.Visible = true
 			kenselect3 = KEN3
 		end)
 		local kenselect4
-			section4:addDropdown("Kenjutsu Choice 4",ken,function(KEN4)
+			section3:addDropdown("Kenjutsu Choice 4",ken,function(KEN4)
 			print("Selected: " .. KEN4)
 			notify("Selected: " .. KEN4)
 			FrameK.Visible = true
 			kenselect4 = KEN4
 		end)
 		local kenselect5
-			section4:addDropdown("Kenjutsu Choice 3",ken,function(KEN5)
+			section3:addDropdown("Kenjutsu Choice 3",ken,function(KEN5)
 			print("Selected: " .. KEN5)
 			notify("Selected: " .. KEN5)
 			FrameK.Visible = true
 			kenselect5 = KEN5
 		end)
 
-		section4:addToggle("Spin Slot 1",false,function(bool)
+		section3:addToggle("Spin Slot 1",false,function(bool)
 			game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
 			StartSpinKen = bool
 			if StartSpinKen == true then
@@ -3052,7 +2747,7 @@ local function ShindoMain()
 			end
 		end)
 
-		section4:addToggle("Spin Slot 2",false,function(bool)
+		section3:addToggle("Spin Slot 2",false,function(bool)
 			game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
 			StartSpinKen2 = bool
 			if StartSpinKen2 == true then
@@ -3094,25 +2789,25 @@ local function ShindoMain()
 		end)
 	else
 		local kenselect1
-			section4:addDropdown("Kenjutsu Choice 1",ken,function(KEN1)
+			section3:addDropdown("Kenjutsu Choice 1",ken,function(KEN1)
 			print("Selected: " .. KEN1)
 			notify("Selected: " .. KEN1)
 			kenselect1 = KEN1
 		end)
 		local kenselect2
-			section4:addDropdown("Kenjutsu Choice 2",ken,function(KEN2)
+			section3:addDropdown("Kenjutsu Choice 2",ken,function(KEN2)
 			print("Selected: " .. KEN2)
 			notify("Selected: " .. KEN2)
 			kenselect2 = KEN2
 		end)
 		local kenselect3
-			section4:addDropdown("Kenjutsu Choice 3",ken,function(KEN3)
+			section3:addDropdown("Kenjutsu Choice 3",ken,function(KEN3)
 			print("Selected: " .. KEN3)
 			notify("Selected: " .. KEN3)
 			kenselect3 = KEN3
 		end)
 
-		section4:addToggle("Spin Kenjutsu",false,function(bool)
+		section3:addToggle("Spin Kenjutsu",false,function(bool)
 			game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
 			StartSpinKen = bool
 			if StartSpinKen == true then
@@ -3164,13 +2859,145 @@ local function ShindoMain()
 	end)
 
 	-- third page
-	local page3 = NoobieDoge:addPage("Mentor Farm", 5012544693)
+	local page3 = NoobieDoge:addPage("Spam Keys", 5012544693)
+	local section1 = page3:addSection("Configurations")
+	local section2 = page3:addSection("Keys")
+
+	section1:addToggle("Enabled",false,function(bool)
+		SpamGOBRRRRR = bool
+		notify("Spam Keys: "..tostring(SpamGOBRRRRR),true)
+	end)
+
+	section1:addToggle("Missions Only",false,function(bool)
+		SpamOnlyInMissions = bool
+	end)
+
+	section2:addToggle("Spam Q",false,function(bool)
+		Q = bool
+		notify("Spam Q: "..tostring(Q),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if Q and SpamGOBRRRRR and not SpamOnlyInMissions then
+			SpamQ()
+		end
+	end)
+	section2:addToggle("Spam E",false, function(bool)
+		E = bool
+		notify("Spam E: "..tostring(E),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if E and SpamGOBRRRRR and not SpamOnlyInMissions then
+			SpamE()
+		end
+	end)
+	section2:addToggle("Spam R",false, function(bool)
+		R = bool
+		notify("Spam R: "..tostring(R),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if R and SpamGOBRRRRR and not SpamOnlyInMissions then
+			SpamR()
+		end
+	end)
+	section2:addToggle("Spam T",false, function(bool)
+		T = bool
+		notify("Spam T: "..tostring(T),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if T and SpamGOBRRRRR and not SpamOnlyInMissions then
+			SpamT()
+		end
+	end)
+	section2:addToggle("Spam Y",false, function(bool)
+		Y = bool
+		notify("Spam Y: "..tostring(Y),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if Y and SpamGOBRRRRR and not SpamOnlyInMissions then
+			SpamY()
+		end
+	end)
+	section2:addToggle("Spam F",false, function(bool)
+		F = bool
+		notify("Spam F: "..tostring(F),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if F and SpamGOBRRRRR and not SpamOnlyInMissions then
+			SpamF()
+		end
+	end)
+	section2:addToggle("Spam G",false, function(bool)
+		G = bool
+		notify("Spam G: "..tostring(G),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if G and SpamGOBRRRRR and not SpamOnlyInMissions then
+			SpamG()
+		end
+	end)
+	section2:addToggle("Spam H",false, function(bool)
+		H = bool
+		notify("Spam H: "..tostring(H),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if H and SpamGOBRRRRR and not SpamOnlyInMissions then
+			SpamH()
+		end
+	end)
+	section2:addToggle("Spam V",false, function(bool)
+		V = bool
+		notify("Spam V: "..tostring(V),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if V and SpamGOBRRRRR and not SpamOnlyInMissions then
+			SpamV()
+		end
+	end)
+	section2:addToggle("Spam B",false, function(bool)
+		B = bool
+		notify("Spam B: "..tostring(B),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if B and SpamGOBRRRRR and not SpamOnlyInMissions then
+			SpamB()
+		end
+	end)
+	section2:addToggle("Spam N",false, function(bool)
+		N = bool
+		notify("Spam N: "..tostring(N),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if N and SpamGOBRRRRR and not SpamOnlyInMissions then
+			SpamN()
+		end
+	end)
+	section2:addToggle("Spam Z",false, function(bool)
+		Z = bool
+		notify("Spam Z: "..tostring(Z),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if Z and SpamGOBRRRRR and not SpamOnlyInMissions then
+			SpamZ()
+		end
+	end)
+	section2:addToggle("Spam C",false, function(bool)
+		C = bool
+		notify("Spam C: "..tostring(C),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if C and SpamGOBRRRRR and not SpamOnlyInMissions then
+			SpamC()
+		end
+	end)
+
+	-- forth page
+	local page4 = NoobieDoge:addPage("Mentor Farm", 5012544693)
 	local MyRank = game:GetService("Players").LocalPlayer.statz.prestige.rank.Value
 	if MyRank == "F" or MyRank == "D" or MyRank == "C" or MyRank == "B" or MyRank == "A" then
-		local section1 = page3:addSection("You need to be at least S rank to achieve this function")
+		local section1 = page4:addSection("You need to be at least S rank to achieve this function")
 	else
-		local section1 = page3:addSection("Teleport to mentors")
-		local section2 = page3:addSection("Mission Process")
+		local section1 = page4:addSection("Teleport to mentors")
+		local section2 = page4:addSection("Mission Process")
 
 		section1:addButton("Tp to Narumaki Mentor",function()
 			if game.PlaceId == 5451398863 then
@@ -3409,11 +3236,11 @@ local function ShindoMain()
 		end)
 	end
 
-	-- forth page
-	local page4 = NoobieDoge:addPage("Daily Missions", 5012544693)
-	local section1 = page4:addSection("Claim Missions")
-	local section2 = page4:addSection("Auto Daily Missions")
-	local section3 = page4:addSection("Teleports")
+	-- fifth page
+	local page5 = NoobieDoge:addPage("Daily Missions", 5012544693)
+	local section1 = page5:addSection("Claim Missions")
+	local section2 = page5:addSection("Auto Daily Missions")
+	local section3 = page5:addSection("Teleports")
 
 	section1:addButton("Claim daily missions rewards",function()
 		local args = {[1] = "claim",[2] = game:GetService("Players").LocalPlayer.statz.mission.dailyquest1}
@@ -3621,13 +3448,13 @@ local function ShindoMain()
 		end)
 	end
 
-	-- fifth page
-	local page5 = NoobieDoge:addPage("Quests", 5012544693)
-	local section1 = page5:addSection("Auto Farm")
-	local section2 = page5:addSection("Configurations")
-	local section3 = page5:addSection("Boss Farm Settings")
-	local section4 = page5:addSection("Beasts Farm Settings")
-	local section5 = page5:addSection("Auto Stats")
+	-- sixth page
+	local page6 = NoobieDoge:addPage("Quests", 5012544693)
+	local section1 = page6:addSection("Auto Farm")
+	local section2 = page6:addSection("Configurations")
+	local section3 = page6:addSection("Boss Farm Settings")
+	local section4 = page6:addSection("Beasts Farm Settings")
+	local section5 = page6:addSection("Auto Stats")
 
 	local autofarm
 	section1:addToggle("Auto Farm",false, function(bool)
@@ -3694,6 +3521,13 @@ local function ShindoMain()
 	end)
 	AFDistance = 10
 
+	section2:addToggle("Legacy Farm Mode",true,function(bool)
+		LFM = bool
+		wait()
+		notify("Legacy Farm Mode: "..tostring(LFM),true)
+	end)
+	LFM = true
+
 	section2:addToggle("NPC Kill Aura",false,function(bool)
 		keel2 = bool
 		notify("NPC Kill Aura: "..tostring(keel2),true)
@@ -3703,13 +3537,6 @@ local function ShindoMain()
 			NPCKEELAURA()
 		end
 	end)
-
-	section2:addToggle("Legacy Farm Mode",true,function(bool)
-		LFM = bool
-		wait()
-		notify("Legacy Farm Mode: "..tostring(LFM),true)
-	end)
-	LFM = true
 
 	local specific_boss
 	section3:addToggle("Specific Boss",false, function(bool)
@@ -4045,7 +3872,28 @@ local function ShindoMain()
 			boss = false
 			megaboss = false
 		else
-			if SpamGOBRRRRR and SpamOnlyInMissions then
+			if LFM then
+				for i,v in pairs(workspace.npc:GetChildren()) do
+					local mobname = string.split(mission.bg.name.Text,"Defeat ")[1]
+					if(string.find(mobname,"(s)")) then
+						mobname = string.gsub(mobname,"(s)","")
+					end
+					if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and not v:FindFirstChild("fullsusanoo") and v.Head.CFrame.Y > -1000 then
+						repeat
+							pcall(function()
+								v.Humanoid.Health = 0
+								game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+								player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 0, 10)
+								game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+								game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+								game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
+								wait(.000000000000001)
+								v.Humanoid.Health = 0
+							end)
+						until not v:FindFirstChild("Humanoid") or mission.Visible == false or (not autofarm and not boss and not megaboss) or not v
+					end
+				end
+			elseif SpamGOBRRRRR and SpamOnlyInMissions then
 				for i,v in pairs(workspace.npc:GetChildren()) do
 					local mobname = string.split(mission.bg.name.Text,"Defeat ")[1]
 					if(string.find(mobname,"(s)")) then
@@ -4074,27 +3922,6 @@ local function ShindoMain()
 									if Q then SpamQ() end
 									v.Humanoid.Health = 0
 								end)
-							end)
-						until not v:FindFirstChild("Humanoid") or mission.Visible == false or (not autofarm and not boss and not megaboss) or not v
-					end
-				end
-			elseif LFM then
-				for i,v in pairs(workspace.npc:GetChildren()) do
-					local mobname = string.split(mission.bg.name.Text,"Defeat ")[1]
-					if(string.find(mobname,"(s)")) then
-						mobname = string.gsub(mobname,"(s)","")
-					end
-					if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and not v:FindFirstChild("fullsusanoo") and v.Head.CFrame.Y > -1000 then
-						repeat
-							pcall(function()
-								v.Humanoid.Health = 0
-								game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
-								player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 0, 10)
-								game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
-								game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
-								game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
-								wait(.000000000000001)
-								v.Humanoid.Health = 0
 							end)
 						until not v:FindFirstChild("Humanoid") or mission.Visible == false or (not autofarm and not boss and not megaboss) or not v
 					end
@@ -4229,10 +4056,10 @@ local function ShindoMain()
 		end
 	end)
 
-	-- sixth page
-	local page6 = NoobieDoge:addPage("Teleports", 5012544693)
-	local section1 = page6:addSection("Map Teleports")
-	local section2 = page6:addSection("Server Teleports")
+	-- seventh page
+	local page7 = NoobieDoge:addPage("Teleports", 5012544693)
+	local section1 = page7:addSection("Map Teleports")
+	local section2 = page7:addSection("Server Teleports")
 
 	section1:addButton("Spawn Point",function()
 		player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").SpawnLocation.CFrame
@@ -4250,7 +4077,7 @@ local function ShindoMain()
 		end)
 	end
 
-	if game:GetService("Workspace"):FindFirstChild("EAT") then
+	if game:GetService("Workspace"):FindFirstChild("EAT") and game:GetService("Workspace").EAT:FindFirstChild("Ramen") then
 		section1:addButton("Ramen Shop",function()
 			player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").EAT.Ramen.CFrame
 		end)
@@ -4459,8 +4286,7 @@ local function ShindoMain()
 				end
 			end
 			wait()
-			Pspeed = false
-			Pnorm = false
+			Pfly = false
 			trackthatguy = false
 			keel = false
 			SpamGOBRRRRR = false 
