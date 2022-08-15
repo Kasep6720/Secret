@@ -190,6 +190,12 @@ local function SCROLLFARM1()
 		end
 	end
 end
+local ken = {}
+for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu.ALLKENSTYLES:GetChildren()) do
+	if v:FindFirstChild("BREATHINGSTYLE") and not v:FindFirstChild("limited") then
+		table.insert(ken, v.Name)
+	end
+end
 
 local bosslist = {}
 local beastsbosslist = {}
@@ -609,13 +615,6 @@ local function ShindoInfSpin()
 	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
 		if (v:FindFirstChild("KG") and not v:FindFirstChild("cantspin") and not v:FindFirstChild("limited")) then
 			table.insert(kgs, v.Name)
-		end
-	end
-
-	local ken = {}
-	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu.ALLKENSTYLES:GetChildren()) do
-		if v:FindFirstChild("BREATHINGSTYLE") and not v:FindFirstChild("limited") then
-			table.insert(ken, v.Name)
 		end
 	end
 
@@ -1478,13 +1477,6 @@ local function ShindoMyHome()
 		Autosave = bool
 	end)
 
-	local ken = {}
-	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu.ALLKENSTYLES:GetChildren()) do
-		if v:FindFirstChild("BREATHINGSTYLE") and not v:FindFirstChild("limited") then
-			table.insert(ken, v.Name)
-		end
-	end
-
 	if game:GetService("Players").LocalPlayer.statz.unlocked:FindFirstChild("kenjutsuslot2") then
 		local kenselect1
 			section2:addDropdown("Kenjutsu Choice 1",ken,function(KEN1)
@@ -1675,8 +1667,93 @@ local function ShindoMyHome()
 	end)
 
 	-- third page
-	local page3 = NoobieDoge:addPage("Teleports", 5012544693)
-	local section1 = page3:addSection("Server Teleports")
+	local page3 = NoobieDoge:addPage("AFK", 5012544693)
+	local section1 = page3:addSection("AFK Places")
+	local section2 = page3:addSection("Auto Rank")
+
+	for i,v in pairs(game:GetService("Workspace").map:GetChildren()) do
+		if v.Name == (player.Name .. "apartment") then
+			if v:FindFirstChild("Model1") then
+			else
+				v.Model.Name = "Model1"
+				v.Model.Seat.Name = "Seat1"
+				v.Model.Seat.Name = "Seat2"
+				v.Model.Seat.Name = "Seat3"
+				v.Model.Seat.Name = "Seat4"
+			end
+		end
+	end
+
+	section1:addButton("Bed",function()
+		for i,v in pairs(game:GetService("Workspace").map:GetChildren()) do
+			if v.Name == (player.Name .. "apartment") then
+				player.Character.HumanoidRootPart.CFrame=v.afkreward.CFrame
+			end
+		end
+	end)
+
+	section1:addButton("Seat 1 (Left)",function()
+		for i,v in pairs(game:GetService("Workspace").map:GetChildren()) do
+			if v.Name == (player.Name .. "apartment") then
+				player.Character.HumanoidRootPart.CFrame=v.Model.Seat3.CFrame
+			end
+		end
+	end)
+
+	section1:addButton("Seat 1 (Right)",function()
+		for i,v in pairs(game:GetService("Workspace").map:GetChildren()) do
+			if v.Name == (player.Name .. "apartment") then
+				player.Character.HumanoidRootPart.CFrame=v.Model.Seat4.CFrame
+			end
+		end
+	end)
+
+	section1:addButton("Seat 2 (Left)",function()
+		for i,v in pairs(game:GetService("Workspace").map:GetChildren()) do
+			if v.Name == (player.Name .. "apartment") then
+				player.Character.HumanoidRootPart.CFrame=v.Model.Seat1.CFrame
+			end
+		end
+	end)
+
+	section1:addButton("Seat 2 (Right)",function()
+		for i,v in pairs(game:GetService("Workspace").map:GetChildren()) do
+			if v.Name == (player.Name .. "apartment") then
+				player.Character.HumanoidRootPart.CFrame=v.Model.Seat2.CFrame
+			end
+		end
+	end)
+
+	section1:addButton("Ramen",function()
+		for i,v in pairs(game:GetService("Workspace").map:GetChildren()) do
+			if v.Name == (player.Name .. "apartment") then
+				player.Character.HumanoidRootPart.CFrame=v.Ramen.CFrame
+			end
+		end
+	end)
+
+	local RANKUPP
+	section2:addToggle("Auto Rank Up",false, function(bool)
+		RANKUPP = bool
+	end)
+
+	local PRES = player.statz.prestige.maxlvlpres
+	local RANK = player.statz.prestige.rank
+	local RANKNUM = player.statz.prestige.number
+
+	spawn(function()
+		while wait() do
+			if RANKUPP and player.statz.lvl:FindFirstChild("lvl").Value == 1000 then
+				repeat wait()
+					game.Players.LocalPlayer.startevent:FireServer("rankup")
+				until player.statz.lvl:FindFirstChild("lvl").Value == 1 or not RANKUPP
+			end
+		end
+	end)
+
+	-- forth page
+	local page4 = NoobieDoge:addPage("Teleports", 5012544693)
+	local section1 = page4:addSection("Server Teleports")
 
 	local maps = {}
 	for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Main.ingame.Menu.ArenaTab.List:GetChildren()) do
@@ -1898,10 +1975,11 @@ local function ShindoMyHome()
 	end)
 
 	-- load
-	NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
+	NoobieDoge:SelectPage(NoobieDoge.pages[3], true)
 	notify("Turned on anti-AFK")
 
 end
+
 --Shindo Event Boss
 local function ShindoEventBoss()
 	--DogeHub V2 GUI
@@ -3233,13 +3311,6 @@ local function ShindoMain()
 	section3:addToggle("Auto Save",false,function(bool)
 		Autosave = bool
 	end)
-
-	local ken = {}
-	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu.ALLKENSTYLES:GetChildren()) do
-		if v:FindFirstChild("BREATHINGSTYLE") and not v:FindFirstChild("limited") then
-			table.insert(ken, v.Name)
-		end
-	end
 
 	if game:GetService("Players").LocalPlayer.statz.unlocked:FindFirstChild("kenjutsuslot2") then
 		local kenselect1
