@@ -3147,7 +3147,7 @@ local function ShindoMain()
 	end
 	section2:addDropdown("Track selected player",playerlist,function(ripthatguy)
 		notify("Player Selected: " .. ripthatguy)
-		T = ripthatguy
+		Target = ripthatguy
 	end)
 
 	section2:addToggle("Track Player",false,function(bool)
@@ -3174,7 +3174,7 @@ local function ShindoMain()
 	game:GetService('RunService').Stepped:connect(function()
 		if trackthatguy == true then
 			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[T].Character.HumanoidRootPart.CFrame * CFrame.new(0, 5, 10)
-			game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game.Players[T].Character.HumanoidRootPart.Position)
+			game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game.Players[Target].Character.HumanoidRootPart.Position)
 		end
 	end)
 
