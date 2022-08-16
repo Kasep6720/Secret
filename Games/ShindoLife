@@ -21,6 +21,9 @@ function toTarget(pos, targetPos, targetCFrame)
 	end)
 	if not tween then return err end
 end
+function SpamClick()
+	game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
+end
 function SpamQ()
 	game.Players.LocalPlayer.Character.combat.update:FireServer("key","q")
 	game.Players.LocalPlayer.Character.combat.update:FireServer("key","qend")
@@ -2245,10 +2248,19 @@ local function ShindoEventBoss()
 		notify("Spam Keys: "..tostring(SpamGOBRRRRR),true)
 	end)
 
-	section1:addToggle("Missions Only",false,function(bool)
+	section1:addToggle("Farming Only",false,function(bool)
 		SpamOnlyInMissions = bool
 	end)
 
+	section2:addToggle("Spam Click",false,function(bool)
+		ClickRATATA = bool
+		notify("Spam Click: "..tostring(ClickRATATA),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if ClickRATATA and SpamGOBRRRRR and not SpamOnlyInMissions then
+			SpamClick()
+		end
+	end)
 	section2:addToggle("Spam Q",false,function(bool)
 		Q = bool
 		notify("Spam Q: "..tostring(Q),true)
@@ -3515,6 +3527,15 @@ local function ShindoMain()
 		SpamOnlyInMissions = bool
 	end)
 
+	section2:addToggle("Spam Click",false,function(bool)
+		ClickRATATA = bool
+		notify("Spam Click: "..tostring(ClickRATATA),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if ClickRATATA and SpamGOBRRRRR and not SpamOnlyInMissions then
+			SpamClick()
+		end
+	end)
 	section2:addToggle("Spam Q",false,function(bool)
 		Q = bool
 		notify("Spam Q: "..tostring(Q),true)
@@ -4575,6 +4596,7 @@ local function ShindoMain()
 									if Z then SpamZ() end
 									if C then SpamC() end
 									if Q then SpamQ() end
+									if ClickRATATA then SpamClick() end
 									v.Humanoid.Health = 0
 								end)
 							end)
