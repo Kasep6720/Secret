@@ -2166,22 +2166,6 @@ local function ShindoBossBattle()
 		end
 	end)
 
-	local scrollfarm
-	section1:addToggle("Scroll Snipe",false, function(bool)
-		scrollfarm = bool
-	end)
-
-	spawn(function()
-		while wait() do
-			if scrollfarm then
-				repeat wait()
-					SCROLLFARM()
-					SCROLLFARM1()
-				until not scrollfarm
-			end
-		end
-	end)
-
 	section1:addButton("Old No CD Method",function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/HDTerebi/Shindo-Life/main/No%20CD%20Method"))()
 		wait()
@@ -2389,13 +2373,13 @@ local function ShindoBossBattle()
 
 	if game:GetService("Workspace").npc.npc1:FindFirstChild("megaboss") then
 		section2:addToggle("NPC Kill Aura (Hard to trigger)",false, function(bool)
-			keel = bool
-			notify("NPC Kill Aura: "..tostring(keel),true)
+			keel2 = bool
+			notify("NPC Kill Aura: "..tostring(keel2),true)
 		end)	
 	else
 		section2:addToggle("NPC Kill Aura",false, function(bool)
-			keel = bool
-			notify("NPC Kill Aura: "..tostring(keel),true)
+			keel2 = bool
+			notify("NPC Kill Aura: "..tostring(keel2),true)
 		end)
 	end
 
@@ -2562,6 +2546,7 @@ local function ShindoBossBattle()
 			Pfly = false
 			keel = false
 			SpamGOBRRRRR = false 
+			ClickRATATA = false
 			Q = false
 			E = false
 			R = false
@@ -2575,10 +2560,10 @@ local function ShindoBossBattle()
 			N = false
 			Z = false
 			C = false
-			scrollfarm = false
 			dfarm = false
-			Legacy = false
 			gen3farm = false
+			Legacy = false
+			keel = false
 			wait()
 			for i,library in pairs(game:GetService("CoreGui"):GetChildren()) do
 				if library.Name == "DogeHub V2" then
