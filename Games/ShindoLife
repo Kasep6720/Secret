@@ -2374,11 +2374,13 @@ local function ShindoBossBattle()
 	if game:GetService("Workspace").npc.npc1:FindFirstChild("megaboss") then
 		section2:addToggle("NPC Kill Aura (Hard to trigger)",false, function(bool)
 			keel2 = bool
+			NPCKEELAURA()
 			notify("NPC Kill Aura: "..tostring(keel2),true)
 		end)	
 	else
 		section2:addToggle("NPC Kill Aura",false, function(bool)
 			keel2 = bool
+			NPCKEELAURA()
 			notify("NPC Kill Aura: "..tostring(keel2),true)
 		end)
 	end
