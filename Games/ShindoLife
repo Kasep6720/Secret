@@ -1,5 +1,6 @@
 --setclipboard(tostring(game.PlaceId))
 --all on99 variables
+repeat wait() until game:IsLoaded()
 local player = game.Players.LocalPlayer
 local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
 local VirtualUser=game:service'VirtualUser'
@@ -1983,6 +1984,732 @@ local function ShindoMyHome()
 
 end
 
+--Shindo Boss Battle Map
+local function ShindoBossBattle()
+	repeat wait() until game:GetService("Workspace").npc.npc1.Head.mob.fram.name:FindFirstChild("info")
+	--DogeHub V2 GUI
+	local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20page%20format%20gui"))()
+	local NoobieDoge = library.new("DogeHub V2", 5013109572)
+
+	-- themes
+	local themes = {
+	Background = Color3.fromRGB(24, 24, 24),
+	Glow = Color3.fromRGB(0, 0, 0),
+	Accent = Color3.fromRGB(10, 10, 10),
+	LightContrast = Color3.fromRGB(20, 20, 20),
+	DarkContrast = Color3.fromRGB(14, 14, 14),  
+	TextColor = Color3.fromRGB(255, 255, 255)
+	}
+
+	-- first page
+	local page1 = NoobieDoge:addPage("Universal", 5012544693)
+	local section1 = page1:addSection("Walk Speed & Jump Power")
+	local section2 = page1:addSection("Other Functions")
+
+	section1:addSlider("Walk Speed", 16, 0, 400, function(value)
+		sliderspeed = value
+	end)
+	section1:addSlider("Jump Power", 50, 0, 400, function(value)
+		sliderjump = value
+	end)
+
+	section1:addToggle("Enabled", nil, function(value)
+		sliderpowa = value
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if sliderpowa then
+			game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = sliderspeed
+			game.Players.LocalPlayer.Character.Humanoid.JumpPower = sliderjump
+		end
+	end)
+
+	section2:addButton("Add ESP GUI", function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Project%3A%20Bullshit%3A%20Rebooted"))()
+	end)
+
+	section2:addButton("Reset Character",function()
+		game.Players.LocalPlayer.Character:BreakJoints()
+	end)
+
+	section2:addButton("Enable Infinite Jump",function()
+		getgenv().dc = false
+		local infjump
+		infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
+			if dc then infjump:Disconnect() return end
+			game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
+		end)
+		notify("Enabled Infinute Jump")
+	end)
+
+	section2:addButton("Disable Infinite Jump",function()
+		getgenv().dc = true
+		notify("Disabled Infinite Jump")
+	end)
+
+	section2:addSlider("Fly Speed", 101, 0, 500, function(value)
+		sliderfly = value
+	end)
+	sliderfly = 101
+	section2:addToggle("Press P to fly",false,function(Pfly)
+		repeat wait() 
+		until game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:findFirstChild("Head") and game.Players.LocalPlayer.Character:findFirstChild("Humanoid") 
+		local mouse = game.Players.LocalPlayer:GetMouse() 
+		repeat wait() until mouse
+		local plr = game.Players.LocalPlayer 
+		local torso = plr.Character.Head 
+		local flying = false
+		local deb = true 
+		local ctrl = {f = 0, b = 0, l = 0, r = 0} 
+		local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+		local maxspeed = sliderfly 
+		local speed = 0 
+
+		function Fly() 
+			local bg = Instance.new("BodyGyro", torso) 
+			bg.P = 9e4 
+			bg.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
+			bg.cframe = torso.CFrame 
+
+			local bv = Instance.new("BodyVelocity", torso) 
+			bv.velocity = Vector3.new(0,0.1,0) 
+			bv.maxForce = Vector3.new(9e9, 9e9, 9e9) 
+			repeat wait() 
+				plr.Character.Humanoid.PlatformStand = true 
+				if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
+					speed = speed+(sliderfly/1.7)+(speed/maxspeed) 
+					if speed > maxspeed then 
+						speed = maxspeed 
+					end 
+
+				elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
+					speed = speed-(sliderfly/1.7)
+					if speed < 0 then 
+						speed = 0 
+					end 
+				end 
+				if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then 
+					bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+					lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r} 
+				elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then 
+					bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+				else 
+					bv.velocity = Vector3.new(0,0.1,0)
+				end 
+				bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
+			until not flying 
+			ctrl = {f = 0, b = 0, l = 0, r = 0} 
+			lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+			speed = 0 
+			bg:Destroy() 
+			bv:Destroy() 
+			plr.Character.Humanoid.PlatformStand = false 
+		end 
+
+		mouse.KeyDown:connect(function(key) 
+			if key:lower() == "p" then 
+				if flying then flying = false 
+				else 
+					flying = true 
+					Fly() 
+				end 
+			elseif key:lower() == "w" then 
+				ctrl.f = 1 
+			elseif key:lower() == "s" then 
+				ctrl.b = -1 
+			elseif key:lower() == "a" then 
+				ctrl.l = -1 
+			elseif key:lower() == "d" then 
+				ctrl.r = 1 
+			end 
+		end) 
+
+		mouse.KeyUp:connect(function(key) 
+
+			if key:lower() == "w" then 
+				ctrl.f = 0 
+			elseif key:lower() == "s" then 
+				ctrl.b = 0 
+			elseif key:lower() == "a" then 
+				ctrl.l = 0 
+			elseif key:lower() == "d" then 
+				ctrl.r = 0 
+			end 
+		end)
+		Fly()
+		notify("Press P to fly: "..tostring(Pfly),true)
+	end)
+
+	-- second page
+	local page2 = NoobieDoge:addPage("Misc", 5012544693)
+	local section1 = page2:addSection("Game Functions")
+	local section2 = page2:addSection("Customs")
+
+	section1:addButton("SuperHuman",function()
+		SUPERHUMAN()
+	end)
+
+	section1:addButton("Unbreakable Blocks",function()
+		UNBREAKABLE_BLOCKS()
+	end)
+
+	section1:addButton("Infinite MD",function()
+		INFMDON()
+	end)
+
+	section1:addToggle("NPC Kill Aura",false,function(bool)
+		keel = bool
+		notify("NPC Kill Aura: "..tostring(keel),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if keel then
+			NPCKEELAURA()
+		end
+	end)
+
+	local scrollfarm
+	section1:addToggle("Scroll Snipe",false, function(bool)
+		scrollfarm = bool
+	end)
+
+	spawn(function()
+		while wait() do
+			if scrollfarm then
+				repeat wait()
+					SCROLLFARM()
+					SCROLLFARM1()
+				until not scrollfarm
+			end
+		end
+	end)
+
+	section1:addButton("Old No CD Method",function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/HDTerebi/Shindo-Life/main/No%20CD%20Method"))()
+		wait()
+		notify("Equip a beast mode, mode up, type '!spirit', press the ']' button, done!")
+	end)
+
+	section2:addDropdown("Custom Display Ranks",{"RELL", "F 0", "D 1", "D 2", "D 3", "C 1", "C 2", "C 3", "B 1", "B 2", "B 3", "A 1", "A 2", "A 3", "S 1", "S 2", "S 3", "V 1", "V 2", "V 3", "X 1", "X 2", "X 3", "Y 1", "Y 2", "Y 3", "Z 1", "Z 2", "Z 3", "MAX-69", "MAX-420", "MAX-666", "MAX-999", "GOD", "Dragon", "Hacker","???"},function(rektrank)
+		game:GetService("Players").LocalPlayer.leaderstats.Rank.Value =  (rektrank)
+		notify("Rank Displayed: " .. rektrank)
+	end)
+
+	section2:addButton("Bloodline Changer",function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/NoobieDoge/DogeHub/Separated/ShindoBloodlineChanger"))()
+	end)
+
+	section2:addButton("RC Shop Changer",function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20RC%20Shop%20Changer"))()
+	end)
+
+	-- third page
+	local page3 = NoobieDoge:addPage("Spam Keys", 5012544693)
+	local section1 = page3:addSection("Configurations")
+	local section2 = page3:addSection("Keys")
+
+	section1:addToggle("Enabled",false,function(bool)
+		SpamGOBRRRRR = bool
+		notify("Spam Keys: "..tostring(SpamGOBRRRRR),true)
+	end)
+
+	section2:addToggle("Spam Click",false,function(bool)
+		ClickRATATA = bool
+		notify("Spam Click: "..tostring(ClickRATATA),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if ClickRATATA and SpamGOBRRRRR then
+			SpamClick()
+		end
+	end)
+	section2:addToggle("Spam Q",false,function(bool)
+		Q = bool
+		notify("Spam Q: "..tostring(Q),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if Q and SpamGOBRRRRR then
+			SpamQ()
+		end
+	end)
+	section2:addToggle("Spam E",false, function(bool)
+		E = bool
+		notify("Spam E: "..tostring(E),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if E and SpamGOBRRRRR then
+			SpamE()
+		end
+	end)
+	section2:addToggle("Spam R",false, function(bool)
+		R = bool
+		notify("Spam R: "..tostring(R),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if R and SpamGOBRRRRR then
+			SpamR()
+		end
+	end)
+	section2:addToggle("Spam T",false, function(bool)
+		T = bool
+		notify("Spam T: "..tostring(T),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if T and SpamGOBRRRRR then
+			SpamT()
+		end
+	end)
+	section2:addToggle("Spam Y",false, function(bool)
+		Y = bool
+		notify("Spam Y: "..tostring(Y),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if Y and SpamGOBRRRRR then
+			SpamY()
+		end
+	end)
+	section2:addToggle("Spam F",false, function(bool)
+		F = bool
+		notify("Spam F: "..tostring(F),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if F and SpamGOBRRRRR then
+			SpamF()
+		end
+	end)
+	section2:addToggle("Spam G",false, function(bool)
+		G = bool
+		notify("Spam G: "..tostring(G),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if G and SpamGOBRRRRR then
+			SpamG()
+		end
+	end)
+	section2:addToggle("Spam H",false, function(bool)
+		H = bool
+		notify("Spam H: "..tostring(H),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if H and SpamGOBRRRRR then
+			SpamH()
+		end
+	end)
+	section2:addToggle("Spam V",false, function(bool)
+		V = bool
+		notify("Spam V: "..tostring(V),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if V and SpamGOBRRRRR then
+			SpamV()
+		end
+	end)
+	section2:addToggle("Spam B",false, function(bool)
+		B = bool
+		notify("Spam B: "..tostring(B),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if B and SpamGOBRRRRR then
+			SpamB()
+		end
+	end)
+	section2:addToggle("Spam N",false, function(bool)
+		N = bool
+		notify("Spam N: "..tostring(N),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if N and SpamGOBRRRRR then
+			SpamN()
+		end
+	end)
+	section2:addToggle("Spam Z",false, function(bool)
+		Z = bool
+		notify("Spam Z: "..tostring(Z),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if Z and SpamGOBRRRRR then
+			SpamZ()
+		end
+	end)
+	section2:addToggle("Spam C",false, function(bool)
+		C = bool
+		notify("Spam C: "..tostring(C),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if C and SpamGOBRRRRR then
+			SpamC()
+		end
+	end)
+
+	-- forth page
+	local page4 = NoobieDoge:addPage("Auto Farm", 5012544693)
+	local section1 = page4:addSection("Boss Farm")
+	local section2 = page4:addSection("Configurations")
+
+	if game:GetService("Workspace").npc.npc1:FindFirstChild("megaboss") then
+		section1:addToggle("Auto Gen 3 Tentacion",false, function(bool)
+			gen3farm = bool
+			--game:GetService("Workspace").ClientEffects:Destroy()
+			local platform = Instance.new("Part", player.Character)
+			platform.Anchored = true
+			platform.Transparency = 1
+			platform.Size = Vector3.new(6, 2, 6)
+
+			local connection
+			connection = game:GetService("RunService").RenderStepped:connect(function()
+				if player.Character:FindFirstChild("HumanoidRootPart") then
+					platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -2.35, 0)
+				else
+					connection:Disconnect()
+				end
+			end)
+			spawn(function ()
+				while wait() do
+					if gen3farm ~= true then
+						platform:Destroy()
+					end
+				end
+			end)
+		end)
+	else
+		if game:GetService("Workspace").npc.npc1.Head.mob.fram.name.info.Text == "[Lv. 2000][Ken Mentor]" then
+			section1:addToggle("Kenjutsu Mentor Farm",false, function(bool)
+				dfarm = bool
+				notify("Kenjutsu Mentor Farm: "..tostring(dfarm),true)
+			end)
+		else
+			section1:addToggle("5/5",false, function(bool)
+				dfarm = bool
+				notify("5/5: "..tostring(dfarm),true)
+			end)
+		end
+	end
+
+	section2:addToggle("Legacy Farm Mode",false, function(bool)
+		Legacy = bool
+		notify("Legacy Farm Mode: "..tostring(Legacy),true)
+	end)
+
+	if game:GetService("Workspace").npc.npc1:FindFirstChild("megaboss") then
+		section2:addToggle("NPC Kill Aura (Hard to trigger)",false, function(bool)
+			keel = bool
+			notify("NPC Kill Aura: "..tostring(keel),true)
+		end)	
+	else
+		section2:addToggle("NPC Kill Aura",false, function(bool)
+			keel = bool
+			notify("NPC Kill Aura: "..tostring(keel),true)
+		end)
+	end
+
+	game:GetService('RunService').Stepped:connect(function()
+		if Legacy then
+			for i,v in pairs(workspace.npc:GetChildren()) do
+				if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+					repeat
+						game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+						player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(0,6,0)
+						game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+						game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+						game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
+						wait(.000000000000001)
+						v.Humanoid.Health = 0
+						player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(0,7,.3)
+						game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+						game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+						game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
+						wait(.000000000000001)
+						v.Humanoid.Health = 0
+					until not v:FindFirstChild("Humanoid") or not Legacy or not v
+				end
+			end
+		end
+	end)
+
+	game:GetService('RunService').Stepped:connect(function()
+		if dfarm then
+			for i,v in pairs(workspace.npc:GetChildren()) do
+				if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+					repeat wait() v.Humanoid.Health = 0
+					game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+					player.Character.HumanoidRootPart.CFrame=(v.HumanoidRootPart.CFrame * CFrame.new(0, 7, .3))
+					until not v:FindFirstChild("Humanoid") or not dfarm
+				end
+			end
+		end
+	end)
+
+	game:GetService('RunService').Stepped:connect(function()
+		if dfarm or Legacy or gen3farm then
+			for i,v in pairs(workspace.npc:GetChildren()) do
+				if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+					repeat v.Humanoid.Health = 0
+					until v.Humanoid.Health == 0 or (not dfarm and not Legacy and not gen3farm)
+				end
+			end
+		end
+	end)
+
+	game:GetService('RunService').Stepped:connect(function()
+		if gen3farm then
+			for i,v in pairs(workspace.npc:GetChildren()) do
+				if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
+					repeat wait() v.Humanoid.Health = 0
+					game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+					if Legacy == false then
+						player.Character.HumanoidRootPart.CFrame=(v.HumanoidRootPart.CFrame * CFrame.new(0, 75, .3))
+					end
+					until not v:FindFirstChild("Humanoid") or not gen3farm
+				end
+			end
+		end
+	end)
+
+	-- fifth page
+	local page5 = NoobieDoge:addPage("Teleports", 5012544693)
+	local section1 = page5:addSection("Server Teleports")
+
+	local maps = {}
+	for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Main.ingame.Menu.ArenaTab.List:GetChildren()) do
+		if v:FindFirstChild("place") then
+			table.insert(maps, v.Name)
+		end
+	end
+	local mapselect
+	section1:addDropdown("Map Selection",maps,function(MAPSed)
+		print("Selected: " .. MAPSed)
+		notify("Selected: " .. MAPSed)
+		mapselect = MAPSed
+	end)
+
+	section1:addButton("Teleport",function()
+		local args = {[1] = "rpgteleport",[2] = game:GetService("Players").LocalPlayer.PlayerGui.Main.ingame.Menu.ArenaTab.List[mapselect].place.Value}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	end)
+
+	section1:addTextbox("Private Server Code", "DDrugs", function(PScodevalue, focusLost)
+		print("Input", PScodevalue)
+		if focusLost then
+			notify("Private Server Code: " .. PScodevalue)
+			PScodevalue1 = PScodevalue
+		end
+	end)
+
+	section1:addButton("Private Server Teleport",function()
+		local args = {[1] = "teleporttoprivate",[2] = PScodevalue1}
+		game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+	end)
+
+	-- last page
+	local pagelast = NoobieDoge:addPage("Settings", 5012544693)
+	local settings = pagelast:addSection("Settings")
+	local colors = pagelast:addSection("Colors")
+	local credits = pagelast:addSection("Credits")
+
+	settings:addButton("Upgrade Performance",function()
+		UPPERFORMANCE()
+	end)
+
+	settings:addButton("Remove Effects / Particles",function()
+		game:GetService("Players").LocalPlayer.PlayerScripts.EFFECTS:Destroy()
+	end)
+
+	settings:addButton("Reset Script",function()
+
+		local player = game.Players.LocalPlayer
+		local ScreenGui = Instance.new("ScreenGui")
+		local Frame = Instance.new("Frame")
+		local TextLabel = Instance.new("TextLabel")
+		local TextButton = Instance.new("TextButton")
+		local TextButton2 = Instance.new("TextButton")
+
+
+		ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+		Frame.Parent = ScreenGui
+		Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Frame.Position = UDim2.new(0.66, 0, 0.20, 0)
+		Frame.Size = UDim2.new(0, 220, 0, 120)
+		Frame.Active = true
+		Frame.Draggable = true
+
+		TextLabel.Parent = Frame
+		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabel.Size = UDim2.new(0, 220, 0, 90)
+		TextLabel.Font = Enum.Font.TitilliumWeb
+		TextLabel.Text = "Are you sure that you want to reset script?"
+		TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabel.TextScaled = true
+		TextLabel.TextSize = 35.000
+		TextLabel.TextWrapped = true
+
+		TextButton.Parent = Frame
+		TextButton.BackgroundColor3 = Color3.fromRGB(41,41,41)
+		TextButton.Position = UDim2.new(0, 0, 0.750000006, 0)
+		TextButton.Size = UDim2.new(0, 110, 0, 60)
+		TextButton.Font = Enum.Font.TitilliumWeb
+		TextButton.Text = "Yes"
+		TextButton.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButton.TextScaled = true
+		TextButton.TextSize = 40.000
+		TextButton.TextWrapped = true
+
+		function ResetYES()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+			wait()
+			sliderpowa = false
+			Pfly = false
+			keel = false
+			SpamGOBRRRRR = false 
+			Q = false
+			E = false
+			R = false
+			T = false
+			Y = false
+			F = false
+			G = false
+			H = false
+			V = false
+			B = false
+			N = false
+			Z = false
+			C = false
+			scrollfarm = false
+			dfarm = false
+			Legacy = false
+			gen3farm = false
+			wait()
+			for i,library in pairs(game:GetService("CoreGui"):GetChildren()) do
+				if library.Name == "DogeHub V2" then
+					library:Destroy()
+				end
+			end
+			notify("Do not reset script too many times!")
+			wait(.1)
+			ShindoMyHome()
+		end
+		TextButton.MouseButton1Click:connect(ResetYES)
+
+		TextButton2.Parent = Frame
+		TextButton2.BackgroundColor3 = Color3.fromRGB(41,41,41)
+		TextButton2.Position = UDim2.new(0.5, 0, 0.750000006, 0)
+		TextButton2.Size = UDim2.new(0, 110, 0, 60)
+		TextButton2.Font = Enum.Font.TitilliumWeb
+		TextButton2.Text = "No"
+		TextButton2.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButton2.TextScaled = true
+		TextButton2.TextSize = 40.000
+		TextButton2.TextWrapped = true
+
+		function ResetNO()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+		end
+		TextButton2.MouseButton1Click:connect(ResetNO)
+	end)
+
+	settings:addButton("Rejoin Server",function()
+		local player = game.Players.LocalPlayer
+		local ScreenGui = Instance.new("ScreenGui")
+		local Frame = Instance.new("Frame")
+		local TextLabel = Instance.new("TextLabel")
+		local TextButton = Instance.new("TextButton")
+		local TextButton2 = Instance.new("TextButton")
+
+		ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+		Frame.Parent = ScreenGui
+		Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Frame.Position = UDim2.new(0.66, 0, 0.20, 0)
+		Frame.Size = UDim2.new(0, 200, 0, 150)
+		Frame.Active = true
+		Frame.Draggable = true
+
+		TextLabel.Parent = Frame
+		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabel.Size = UDim2.new(0, 200, 0, 90)
+		TextLabel.Font = Enum.Font.TitilliumWeb
+		TextLabel.Text = "Are you sure you want to rejoin server?"
+		TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabel.TextScaled = true
+		TextLabel.TextSize = 35.000
+		TextLabel.TextWrapped = true
+
+		TextButton.Parent = Frame
+		TextButton.BackgroundColor3 = Color3.fromRGB(41, 41, 41)
+		TextButton.Position = UDim2.new(0, 0, 0.600000006, 0)
+		TextButton.Size = UDim2.new(0, 100, 0, 60)
+		TextButton.Font = Enum.Font.TitilliumWeb
+		TextButton.Text = "Yes"
+		TextButton.TextColor3 = Color3.fromRGB(255,255,255)
+		TextButton.TextScaled = true
+		TextButton.TextSize = 40.000
+		TextButton.TextWrapped = true
+
+		function rejoinyes()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+			local TS = game:GetService("TeleportService")
+			local Player = game.Players.LocalPlayer
+			TS:Teleport(game.PlaceId, Player)
+		end
+		TextButton.MouseButton1Click:connect(rejoinyes)
+
+		TextButton2.Parent = Frame
+		TextButton2.BackgroundColor3 = Color3.fromRGB(41, 41, 41)
+		TextButton2.Position = UDim2.new(0.5, 0, 0.600000006, 0)
+		TextButton2.Size = UDim2.new(0, 100, 0, 60)
+		TextButton2.Font = Enum.Font.TitilliumWeb
+		TextButton2.Text = "No"
+		TextButton2.TextColor3 = Color3.fromRGB(255,255,255)
+		TextButton2.TextSize = 40.000
+		TextButton2.TextScaled = true
+		TextButton2.TextSize = 40.000
+		TextButton2.TextWrapped = true
+
+		function rejoinno()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+		end
+		TextButton2.MouseButton1Click:connect(rejoinno)
+	end)
+
+	settings:addKeybind("Toggle Keybind", Enum.KeyCode.RightControl, function()
+	print("Activated Keybind")
+	NoobieDoge:toggle()
+	end, function()
+	print("Changed Keybind")
+	end)
+
+	for theme, color in pairs(themes) do -- all in one theme changer, i know, im cool
+		colors:addColorPicker(theme, color, function(color3)
+			NoobieDoge:setTheme(theme, color3)
+		end)
+	end
+
+	credits:addButton("Made by NoobieDoge")
+	credits:addButton("https://discord.gg/P2CeRjvTDt")
+	credits:addButton("Copy Discord Link",function()
+		setclipboard("https://discord.gg/P2CeRjvTDt")
+		wait()
+		notify("Discord link copied to clipboard!")
+	end)
+
+	-- load
+	NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
+
+end
+
 --Shindo Event Boss
 local function ShindoEventBoss()
 	--DogeHub V2 GUI
@@ -2145,7 +2872,7 @@ local function ShindoEventBoss()
 	end
 	section2:addDropdown("Track selected player",playerlist,function(ripthatguy)
 		notify("Player Selected: " .. ripthatguy)
-		T = ripthatguy
+		Target = ripthatguy
 	end)
 
 	section2:addToggle("Track Player",false,function(bool)
@@ -2171,7 +2898,7 @@ local function ShindoEventBoss()
 	end)
 	game:GetService('RunService').Stepped:connect(function()
 		if trackthatguy == true then
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[T].Character.HumanoidRootPart.CFrame * CFrame.new(0, 5, 10)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame * CFrame.new(0, 5, 10)
 			game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game.Players[T].Character.HumanoidRootPart.Position)
 		end
 	end)
@@ -5143,16 +5870,18 @@ local function ShindoMain()
 end
 
 local dungeonplace = game:GetService("Workspace"):FindFirstChild("dungeons")
-local mentortrainingbossplace = game:GetService("Workspace"):FindFirstChild("bossbattle")
-local allbossesplace = game:GetService("Workspace"):FindFirstChild("cutscene")
+local bossbattleplace = game:GetService("Workspace"):FindFirstChild("bossbattle")
+local alleventbossesplace = game:GetService("Workspace"):FindFirstChild("cutscene")
 
 if game.PlaceId == 4616652839 then
 	ShindoInfSpin()
 elseif game.PlaceId == 5451410109 then
 	ShindoMyHome()	
 else
-	if allbossesplace then
+	if alleventbossesplace then
 		ShindoEventBoss()
+	elseif bossbattleplace then
+		ShindoBossBattle()
 	else
 		ShindoMain()
 	end
