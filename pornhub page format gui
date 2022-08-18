@@ -329,22 +329,33 @@ do
 				TextTransparency = 0.65,
 				TextXAlignment = Enum.TextXAlignment.Left
 			}),
-			icon and utility:Create("ImageLabel", {
-				Name = "Icon", 
-				AnchorPoint = Vector2.new(0, 0.5),
-				BackgroundTransparency = 1,
-				Position = UDim2.new(0, 12, 0.5, 0),
-				Size = UDim2.new(0, 16, 0, 16),
-				ZIndex = 3,
-				if game.PlaceId == 4616652839 then
+			if game.PlaceId == 4616652839 then
+				icon and utility:Create("ImageLabel", {
+					Name = "Icon", 
+					AnchorPoint = Vector2.new(0, 0.5),
+					BackgroundTransparency = 1,
+					Position = UDim2.new(0, 12, 0.5, 0),
+					Size = UDim2.new(0, 16, 0, 16),
+					ZIndex = 3,
 					Image = "rbxassetid://5176336983",
-				else
+					ImageColor3 = themes.TextColor,
+					ImageTransparency = 0.64,
+					ScaleType = Enum.ScaleType.Fit
+				}) or {}
+			else
+				icon and utility:Create("ImageLabel", {
+					Name = "Icon", 
+					AnchorPoint = Vector2.new(0, 0.5),
+					BackgroundTransparency = 1,
+					Position = UDim2.new(0, 12, 0.5, 0),
+					Size = UDim2.new(0, 16, 0, 16),
+					ZIndex = 3,
 					Image = "rbxassetid://" .. tostring(icon),
-				end
-				ImageColor3 = themes.TextColor,
-				ImageTransparency = 0.64,
-				ScaleType = Enum.ScaleType.Fit
-			}) or {}
+					ImageColor3 = themes.TextColor,
+					ImageTransparency = 0.64,
+					ScaleType = Enum.ScaleType.Fit
+				}) or {}
+			end
 		})
 		
 		local container = utility:Create("ScrollingFrame", {
