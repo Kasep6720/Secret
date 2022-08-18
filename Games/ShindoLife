@@ -368,7 +368,9 @@ local function ShindoInfSpin()
 	local FrameK = Instance.new("Frame")
 	local TextLabel = Instance.new("TextLabel")
 	local TextLabel2 = Instance.new("TextLabel")
-	local TextLabel3 = Instance.new("TextLabel")
+	if game:GetService("Players").LocalPlayer.statz.unlocked:FindFirstChild("kenjutsuslot2") then
+		local TextLabel3 = Instance.new("TextLabel")
+	end
 
 	ScreenGui4Ken.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
@@ -392,7 +394,11 @@ local function ShindoInfSpin()
 
 	TextLabel2.Parent = FrameK
 	TextLabel2.BackgroundColor3 = Color3.fromRGB(41, 41, 41)
-	TextLabel2.Size = UDim2.new(0, 220, 0, 45)
+	if game:GetService("Players").LocalPlayer.statz.unlocked:FindFirstChild("kenjutsuslot2") then
+		TextLabel2.Size = UDim2.new(0, 220, 0, 45)
+	else
+		TextLabel2.Size = UDim2.new(0, 220, 0, 90)
+	end
 	TextLabel2.Position = UDim2.new(0, 0, 0.25, 0)
 	TextLabel2.Font = Enum.Font.TitilliumWeb
 	TextLabel2.Text = "Kenjutsu Slot 1:" .. " " .. game.Players.LocalPlayer.statz.breathingstyle.Value
@@ -401,20 +407,24 @@ local function ShindoInfSpin()
 	TextLabel2.TextSize = 25.000
 	TextLabel2.TextWrapped = true
 
-	TextLabel3.Parent = FrameK
-	TextLabel3.BackgroundColor3 = Color3.fromRGB(41, 41, 41)
-	TextLabel3.Size = UDim2.new(0, 220, 0, 45)
-	TextLabel3.Position = UDim2.new(0, 0, 0.615, 0)
-	TextLabel3.Font = Enum.Font.TitilliumWeb
-	TextLabel3.Text = "Kenjutsu Slot 2:" .. " " .. game.Players.LocalPlayer.statz.breathingstyle2.Value
-	TextLabel3.TextColor3 = Color3.fromRGB(999,999,999)
-	TextLabel3.TextScaled = true
-	TextLabel3.TextSize = 25.000
-	TextLabel3.TextWrapped = true
+	if game:GetService("Players").LocalPlayer.statz.unlocked:FindFirstChild("kenjutsuslot2") then
+		TextLabel3.Parent = FrameK
+		TextLabel3.BackgroundColor3 = Color3.fromRGB(41, 41, 41)
+		TextLabel3.Size = UDim2.new(0, 220, 0, 45)
+		TextLabel3.Position = UDim2.new(0, 0, 0.615, 0)
+		TextLabel3.Font = Enum.Font.TitilliumWeb
+		TextLabel3.Text = "Kenjutsu Slot 2:" .. " " .. game.Players.LocalPlayer.statz.breathingstyle2.Value
+		TextLabel3.TextColor3 = Color3.fromRGB(999,999,999)
+		TextLabel3.TextScaled = true
+		TextLabel3.TextSize = 25.000
+		TextLabel3.TextWrapped = true
+	end
 
 	game:GetService('RunService').Stepped:connect(function()
 		TextLabel2.Text = "Kenjutsu Slot 1:" .. " " .. game.Players.LocalPlayer.statz.breathingstyle.Value
-		TextLabel3.Text = "Kenjutsu Slot 2:" .. " " .. game.Players.LocalPlayer.statz.breathingstyle2.Value
+		if game:GetService("Players").LocalPlayer.statz.unlocked:FindFirstChild("kenjutsuslot2") then
+			TextLabel3.Text = "Kenjutsu Slot 2:" .. " " .. game.Players.LocalPlayer.statz.breathingstyle2.Value
+		end
 	end)
 
 	--DogeHub V2 GUI
@@ -1161,18 +1171,21 @@ local function ShindoInfSpin()
 		section1:addDropdown("Kenjutsu Choice 1",ken,function(KEN1)
 			print("Selected: " .. KEN1)
 			notify("Selected: " .. KEN1)
+			FrameK.Visible = true
 			kenselect1 = KEN1
 		end)
 		local kenselect2
 		section1:addDropdown("Kenjutsu Choice 2",ken,function(KEN2)
 			print("Selected: " .. KEN2)
 			notify("Selected: " .. KEN2)
+			FrameK.Visible = true
 			kenselect2 = KEN2
 		end)
 		local kenselect3
 		section1:addDropdown("Kenjutsu Choice 3",ken,function(KEN3)
 			print("Selected: " .. KEN3)
 			notify("Selected: " .. KEN3)
+			FrameK.Visible = true
 			kenselect3 = KEN3
 		end)
 
