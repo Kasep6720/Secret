@@ -336,7 +336,7 @@ do
 				Position = UDim2.new(0, 12, 0.5, 0),
 				Size = UDim2.new(0, 16, 0, 16),
 				ZIndex = 3,
-				Image = "rbxassetid://170940874",
+				Image = "rbxassetid://4562959390",
 				ImageColor3 = themes.TextColor,
 				ImageTransparency = 0.64,
 				ScaleType = Enum.ScaleType.Fit
