@@ -336,7 +336,11 @@ do
 				Position = UDim2.new(0, 12, 0.5, 0),
 				Size = UDim2.new(0, 16, 0, 16),
 				ZIndex = 3,
-				Image = "rbxassetid://" .. tostring(icon),
+				if game.PlaceId == 4616652839 then
+					Image = "rbxassetid://5176336983",
+				else
+					Image = "rbxassetid://" .. tostring(icon),
+				end
 				ImageColor3 = themes.TextColor,
 				ImageTransparency = 0.64,
 				ScaleType = Enum.ScaleType.Fit
