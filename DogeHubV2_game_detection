@@ -1,5 +1,5 @@
 if game.GameId == 1511883870 then
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/DogeHubV2/Games/ShindoLife"))()
-elseif game.GameId == 3258251641 then
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/DogeHubV2/Games/StandUpright%3ARebooted"))()
+elseif game.GameId == 210851291 then
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/DogeHubV2/Games/BABFT"))()
 end
