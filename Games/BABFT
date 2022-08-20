@@ -403,10 +403,28 @@ local function BABFT()
 		infarm = false
 	end
 
-	game.Players.LocalPlayer.CharacterAdded:Connect(function()  
+	local Timer = 0
+	spawn(function()
+		while wait() do
+			if LETSFARM then
+				if Timer < 61 then
+					wait(1)
+					Timer = Timer + 1
+					print("Time: " .. Timer)
+				else
+					player.Character:WaitForChild("Humanoid").Health = 0
+					notify("Automatically reset character due to treasure chest is glitched")
+					Timer = 0
+				end
+			end
+		end
+	end)
+
+	player.CharacterAdded:Connect(function()
 		if LETSFARM then
 			workspace.ClaimRiverResultsGold:FireServer()
-			task.wait(6)
+			task.wait(4)
+			Timer = 0
 			farm()
 		end
 	end)
