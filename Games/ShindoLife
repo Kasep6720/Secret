@@ -5187,7 +5187,7 @@ local function ShindoMain()
 					elseif game.PlaceId == 5451401540 then
 						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Shindai Akuma"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(-100,7,-170)
 					elseif game.PlaceId == 5431071837 then
-						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,320,-300)
+						player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(19300, 935, -12780))
 					end
 				end
 			end
@@ -5216,7 +5216,7 @@ local function ShindoMain()
 					elseif game.PlaceId == 5451401540 then
 						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Shindai Akuma"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(-100,7,-170)
 					elseif game.PlaceId == 5431071837 then
-						player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,320,-300)
+						player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(19300, 935, -12780))
 					end
 				end
 			end
@@ -6175,10 +6175,18 @@ local function ShindoMain()
 	local section2 = page7:addSection("Server Teleports")
 
 	section1:addButton("Spawn Point",function()
-		if game.PlaceId == 4601350809 then
-			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(11465.656, 798, -17152.453))
-		elseif game.PlaceId == 4601350214 then
+		if game:GetService("Workspace"):FindFirstChild("SpawnLocation") then
 			player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").SpawnLocation.CFrame
+		elseif game.PlaceId == 4601350809 then
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(11465.656, 798, -17152.453))
+		elseif game.PlaceId == 4601350656 then
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(17207.344, 790, -18651.334))
+		else
+			for i,v in pairs(workspace.spawns:GetChildren()) do
+				if v.Name ~= "DOGE" then
+					player.Character.HumanoidRootPart.CFrame = v.CFrame
+				end
+			end
 		end
 	end)
 
@@ -6186,6 +6194,24 @@ local function ShindoMain()
 		section1:addButton("Duel Pads",function()
 			if game:GetService("Workspace").map2.duel:FindFirstChild("duel5") then
 				for i,v in pairs(workspace.map2.duel.duel5:GetChildren()) do
+					if v.Name == "pad" then
+						player.Character.HumanoidRootPart.CFrame=v.CFrame * CFrame.new(0, 2, 0)
+					end
+				end
+			elseif game:GetService("Workspace").map2.duel:FindFirstChild("duel4") then
+				for i,v in pairs(workspace.map2.duel.duel4:GetChildren()) do
+					if v.Name == "pad" then
+						player.Character.HumanoidRootPart.CFrame=v.CFrame * CFrame.new(0, 2, 0)
+					end
+				end
+			elseif game:GetService("Workspace").map2.duel:FindFirstChild("duel3") then
+				for i,v in pairs(workspace.map2.duel.duel3:GetChildren()) do
+					if v.Name == "pad" then
+						player.Character.HumanoidRootPart.CFrame=v.CFrame * CFrame.new(0, 2, 0)
+					end
+				end
+			elseif game:GetService("Workspace").map2.duel:FindFirstChild("duel2") then
+				for i,v in pairs(workspace.map2.duel.duel2:GetChildren()) do
 					if v.Name == "pad" then
 						player.Character.HumanoidRootPart.CFrame=v.CFrame * CFrame.new(0, 2, 0)
 					end
@@ -6240,6 +6266,7 @@ local function ShindoMain()
 			player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace")["Susanoo Customizer"].Part.CFrame
 		end)
 	end
+
 	if game.PlaceId == 4601350214 then
 		section1:addButton("Ember Gate 1",function()
 			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(18200, 657, -15810))
@@ -6261,6 +6288,10 @@ local function ShindoMain()
 
 		section1:addButton("Academy Rooftop",function()
 			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(18757, 710, -16130))
+		end)
+
+		section1:addButton("Ember Military Police Force",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(18881, 678, -15995))
 		end)
 
 		section1:addButton("Arena Auditorium",function()
@@ -6328,10 +6359,10 @@ local function ShindoMain()
 			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(13863.5, 713, -17094))
 		end)
 
-		section1:addButton("Ryuji Cave Enterance 1",function()
+		section1:addButton("Ryuji Cave Entrance 1",function()
 			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(13790.7, 526.5, -16774))
 		end)
-		section1:addButton("Ryuji Cave Enterance 2",function()
+		section1:addButton("Ryuji Cave Entrance 2",function()
 			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(13854.7, 518.8, -16967.5))
 		end)
 
@@ -6394,7 +6425,325 @@ local function ShindoMain()
 		section1:addButton("Kage Office",function()
 			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(18020, 944, -19220))
 		end)
-		
+
+		section1:addButton("The Back of Kage Office",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(18085, 884, -19615))
+		end)
+	
+		section1:addButton("Arena Auditorium",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(17255, 668, -18197))
+		end)
+
+		section1:addButton("Nimbus Bridge",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(16660, 724, -18780))
+		end)
+
+		section1:addButton("Samurai Bridge (X)",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(15635, 597, -17740))
+		end)
+
+		section1:addButton("Snow Area",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(14655, 779, -18915))
+		end)
+
+		section1:addButton("Sovereign Summit (X)",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(14047, 633, -19355))
+		end)
+
+		section1:addButton("Sovereign Summit Entrance 1",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(14046, 641, -19162))
+		end)
+		section1:addButton("Sovereign Summit Entrance 2",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(14148, 640, -19404))
+		end)
+
+		section1:addButton("Water Area 1",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(15785, 488, -18645))
+		end)
+		section1:addButton("Water Area 2",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(13690, 618, -18225))
+		end)
+		section1:addButton("Water Area 3",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(15512, 471, -16455))
+		end)
+	elseif game.PlaceId == 4601350760 then
+		section1:addButton("Kage Office",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(16275, 821, -10925))
+		end)
+
+		section1:addButton("Entrance of Haze Village",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(16781, 661, -12080))
+		end)
+
+		section1:addButton("Arena Auditorium",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(17185, 677, -10525))
+		end)
+
+		section1:addButton("Temple Structure",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(16195, 666, -11830))
+		end)
+
+		section1:addButton("Great Narumaki Bridge (X)",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(16230, 661, -13020))
+		end)
+
+		section1:addButton("Tree Top (Kage Office)",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(16260, 968, -10900))
+		end)
+		section1:addButton("Tree Top 1",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(16682, 849, -11226))
+		end)
+		section1:addButton("Tree Top 2",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(17228, 930, -10840))
+		end)
+		section1:addButton("Tree Top 3",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(16867, 812, -12232))
+		end)
+		section1:addButton("Tree Top 4",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(16416, 768, -13180))
+		end)
+		section1:addButton("Tree Top 5",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(16320, 842, -14157))
+		end)
+		section1:addButton("Tree Top 6",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(17972, 907, -13836))
+		end)
+
+		section1:addButton("Zabuza & Haku's Grave Easter Egg",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(16378, 802, -12477))
+		end)
+
+		section1:addButton("Secret Place (Atlantis???)",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(15851, 488, -11598))
+		end)
+	elseif game.PlaceId == 4601350394 then
+		section1:addButton("Kage Office",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(12845, 297, -12945))
+		end)
+
+		section1:addButton("That 1 House that's on the High Ground",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(12910, 321, -13210))
+		end)
+
+		section1:addButton("Arena Auditorium",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(12680, 255, -13930))
+		end)
+
+		section1:addButton("Bridge 1",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(12835, 331, -13735))
+		end)
+		section1:addButton("Bridge 2",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(12885, 370, -14210))
+		end)
+		section1:addButton("Bridge 3",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(13700, 408, -14355))
+		end)
+
+		section1:addButton("Sand Area 1",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(13195, 245, -13840))
+		end)
+		section1:addButton("Sand Area 2",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(13075, 400, -15025))
+		end)
+		section1:addButton("Sand Area 3",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(13690, 400, -14930))
+		end)
+
+		section1:addButton("Grass Area",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(14890, 497, -15760))
+		end)
+
+		section1:addButton("House Outside the Village",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(15410, 498, -16145))
+		end)
+
+		section1:addButton("Summoning Jutsu Easter Egg",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(14415.5, 688, -15799.5))
+		end)
+
+		section1:addButton("Secret Underground Structure",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(13744, 303, -14704))
+		end)
+	elseif game.PlaceId == 5451405681 then
+		section1:addButton("Vinland Gate 1",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(21035, 647, -11490))
+		end)
+		section1:addButton("Vinland Gate 2",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(19436, 647, -12445))
+		end)
+		section1:addButton("Vinland Gate 3",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(18560, 647, -11460))
+		end)
+
+		section1:addButton("Kage Office",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(19705, 1109, -11190))
+		end)
+	
+		section1:addButton("The Top of Kage Office",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(19707.5, 1266, -11175))
+		end)
+
+		section1:addButton("Small Park Under the Kage Office",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(19645, 871, -11265))
+		end)
+
+		section1:addButton("Top of the Mountain",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(19735, 1378, -10115))
+		end)
+
+		section1:addButton("Shikai Forest (X)",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(19164, 659, -13335))
+		end)
+
+		section1:addButton("Main Pipe 1 (head)",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(20725, 722, -13635))
+		end)
+		section1:addButton("Main Pipe 1 (end)",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(20395, 959, -11930))
+		end)
+		section1:addButton("Main Pipe 2 (head)",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(19365, 722, -13647))
+		end)
+		section1:addButton("Main Pipe 2 (end)",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(19368.75, 691, -12205))
+		end)
+	elseif game.PlaceId == 5431071837 then
+		section1:addButton("That 1 Rock in the Middle",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(19688, 698, -11544))
+		end)
+
+		section1:addButton("The River",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(19750, 652, -11910))
+		end)
+
+		section1:addButton("Under the Map 1",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(19750, 652, -11550))
+		end)
+		section1:addButton("Under the Map 2",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(19750, 652, -12250))
+		end)
+
+		section1:addButton("Hill Area 1",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(20450, 772, -10910))
+		end)
+		section1:addButton("Hill Area 2",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(19260, 782, -10865))
+		end)
+		section1:addButton("Hill Area 3",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(19300, 935, -12780))
+		end)
+		section1:addButton("Hill Area 4",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(19630, 837, -12805))
+		end)
+
+		section1:addButton("Outside the Map 1",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(21300, 652, -13600))
+		end)
+		section1:addButton("Outside the Map 2",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(18100, 652, -13600))
+		end)
+		section1:addButton("Outside the Map 3",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(18100, 652, -10300))
+		end)
+		section1:addButton("Outside the Map 4",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(21430, 652, -10300))
+		end)
+	elseif game.PlaceId == 5447073001 then
+		section1:addButton("Top of the Building",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(19930, 963, -12185))
+		end)
+
+		section1:addButton("DES Exams",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(20265, 331, -12347))
+		end)
+
+		section1:addButton("Bridge 1",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(19370, 680, -11907))
+		end)
+		section1:addButton("Bridge 2",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(20730, 680, -12030))
+		end)
+		section1:addButton("Bridge 3",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(20745, 677, -11690))
+		end)
+
+	elseif game.PlaceId == 6901575446 then
+		section1:addButton("Entrance of Tempest",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(19660, 648, -11612))
+		end)
+
+		section1:addButton("Tempest Training Field",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(19275, 662, -11655))
+		end)
+	elseif game.PlaceId == 6986372023 then
+		section1:addButton("Blaze Gate 1",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(19467, 670, -10903))
+		end)
+		section1:addButton("Blaze Gate 2",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(19550, 670, -11360))
+		end)
+		section1:addButton("Blaze Gate 3",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(19824, 670, -11893))
+		end)
+		section1:addButton("Blaze Gate 4",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(19513, 670, -12417))
+		end)
+		section1:addButton("Blaze Gate 5",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(19255, 670, -12818))
+		end)
+
+		section1:addButton("Bridge 1",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(19230, 657, -11283))
+		end)
+		section1:addButton("Bridge 2",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(18950, 657, -11830))
+		end)
+		section1:addButton("Bridge 3",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(19055, 657, -12370))
+		end)
+
+		section1:addButton("Kage Office",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(18280, 741, -12000))
+		end)
+
+		section1:addButton("Small Pond",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(18400, 665, -11490))
+		end)
+
+		section1:addButton("Academy Rooftop",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(18881, 763, -10957))
+		end)
+
+		section1:addButton("Blaze Military Police Force",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(18365, 694, -11750))
+		end)
+
+		section1:addButton("Hospital",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(18860, 670, -12612))
+		end)
+
+		section1:addButton("Arena Auditorium",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(18595, 690, -11532))
+		end)
+
+		section1:addButton("Blaze Hideout",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(18055, 298, -12222))
+		end)
+		section1:addButton("Entrance of Blaze Hideout",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(18309.783, 695, -12153.002))
+		end)
+
+		section1:addButton("Forest of Embers (X)",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(19980, 669, -12640))
+		end)
+
+		section1:addButton("Top of the Building in Forest of Embers",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(20505, 960, -13330))
+		end)
+
+		section1:addButton("DES Exams (X)",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(21203.713, 335, -13461.057))
+		end)
 	end
 
 	section1:addDropdown("Boss Missions Location",allbosslist,function(B1)
