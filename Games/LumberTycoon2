@@ -1,0 +1,1255 @@
+--setclipboard(tostring(game.PlaceId))
+--all on99 variables
+repeat wait() until game:IsLoaded()
+local player = game.Players.LocalPlayer
+local infarm = false
+local cancelled = false
+local VirtualUser=game:service'VirtualUser'
+game:service'Players'.LocalPlayer.Idled:connect(function()
+warn("anti-afk")
+VirtualUser:CaptureController()
+VirtualUser:ClickButton2(Vector2.new())
+end)
+if workspace:FindFirstChild("CCoff") then
+	game:GetService("Workspace").CCoff:Destroy()
+end
+--on9 functions that are so damn important
+function toTarget(pos, targetPos, targetCFrame)
+	local tween_s = game:service"TweenService"
+	local info = TweenInfo.new((targetPos - pos).Magnitude/getgenv().speed, Enum.EasingStyle.Linear)
+	local tween, err = pcall(function()
+	local tween = tween_s:Create(game:GetService("Players").LocalPlayer.Character["HumanoidRootPart"], info, {CFrame = targetCFrame * CFrame.fromAxisAngle(Vector3.new(1,0,0), math.rad(90))})
+	tween:Play()
+	end)
+	if not tween then return err end
+end
+function CTRLCLICKTP()
+	local UIS = game:GetService("UserInputService")
+	local Player = game.Players.LocalPlayer
+	local Mouse = Player:GetMouse()
+	
+	function GetCharacter()
+	return game.Players.LocalPlayer.Character
+	end
+	
+	function Teleport(pos)
+		local Char = GetCharacter()
+		if Char then
+			Char:MoveTo(pos)
+		end
+	end
+	
+	UIS.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 and UIS:IsKeyDown(Enum.KeyCode.LeftControl) then
+			Teleport(Mouse.Hit.p)
+		end
+	end)
+end
+function UPPERFORMANCE()
+	local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
+	local g = game
+	local w = g.Workspace
+	local l = g.Lighting
+	local t = w.Terrain
+	t.WaterWaveSize = 0
+	t.WaterWaveSpeed = 0
+	t.WaterReflectance = 0
+	t.WaterTransparency = 0
+	l.GlobalShadows = false
+	l.FogEnd = 9e9
+	l.Brightness = 0
+	settings().Rendering.QualityLevel = "Level01"
+	for i,v in pairs(g:GetDescendants()) do
+		if v:IsA("Part") or v:IsA("Union") or v:IsA("MeshPart") then
+			v.Material = "Plastic"
+			v.Reflectance = 0
+		elseif v:IsA("Decal") and decalsyeeted then 
+			v.Transparency = 1
+		elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then 
+			v.Lifetime = NumberRange.new(0)
+		end
+	end
+end
+if _G.dAAcG3fvBqVoPzVnAFk == nil then 
+	_G.dAAcG3fvBqVoPzVnAFk = "" 
+end 
+function notify(a,b,c)
+	local d=c or function()return end;
+	local e=b or false;
+		if a==_G.dAAcG3fvBqVoPzVnAFk and e==false then return end;
+		spawn(function()
+			for f,g in pairs(game.CoreGui:GetChildren())do 
+				spawn(function()
+					if g.Name=="MNotify"then 
+						pcall(function()
+							g.ImageButton.ZIndex=58;
+							g.ImageButton.TextLabel.ZIndex=59;
+							g.ImageButton:TweenPosition(UDim2.new(0.01,0,1,0),"Out","Quint",.7,true)
+							game:GetService("TweenService"):Create(g.ImageButton.TextLabel,TweenInfo.new(0.8,Enum.EasingStyle.Quint,Enum.EasingDirection.Out,0,false,0),{TextTransparency=1})
+							wait(1)
+							g:Destroy()
+						end)
+					end 
+				end)
+			end;
+			_G.dAAcG3fvBqVoPzVnAFk=a
+			local d=c or function()return end;
+			local function h(i,j)
+				local k=Instance.new(i)
+					for f,g in pairs(j)do 
+						k[f]=g 
+					end;
+				return k end;
+				local l=h('ScreenGui',{DisplayOrder=0,Enabled=true,ResetOnSpawn=true,Name='MNotify',Parent=game.CoreGui})
+				local m=h('ImageButton',{Image='rbxassetid://1051186612',ImageColor3=Color3.new(0.129412,0.129412,0.129412),ImageRectOffset=Vector2.new(0,0),ImageRectSize=Vector2.new(0,0),ImageTransparency=0,ScaleType=Enum.ScaleType.Slice,SliceCenter=Rect.new(20,20,20,20),AutoButtonColor=true,Modal=false,Selected=false,Style=Enum.ButtonStyle.Custom,Active=true,AnchorPoint=Vector2.new(0,0),BackgroundColor3=Color3.new(1,1,1),BackgroundTransparency=1,BorderColor3=Color3.new(0.105882,0.164706,0.207843),BorderSizePixel=1,ClipsDescendants=false,Draggable=false,Position=UDim2.new(0.00999999978,0,1,0),Rotation=0,Selectable=true,Size=UDim2.new(0,234,0,40),SizeConstraint=Enum.SizeConstraint.RelativeXY,Visible=true,ZIndex=60,Name='ImageButton',Parent=l})
+				local n=h('TextLabel',{Font=Enum.Font.TitilliumWeb,FontSize=Enum.FontSize.Size24,Text=a,TextColor3=Color3.new(0.807843,0.807843,0.807843),TextScaled=false,TextSize=24,TextStrokeColor3=Color3.new(0,0,0),TextStrokeTransparency=1,TextTransparency=0,TextWrapped=false,TextXAlignment=Enum.TextXAlignment.Center,TextYAlignment=Enum.TextYAlignment.Center,Active=false,AnchorPoint=Vector2.new(0,0),BackgroundColor3=Color3.new(1,1,1),BackgroundTransparency=1,BorderColor3=Color3.new(0.105882,0.164706,0.207843),BorderSizePixel=1,ClipsDescendants=false,Draggable=false,Position=UDim2.new(0.132478639,0,0,0),Rotation=0,Selectable=false,Size=UDim2.new(0,174,0,40),SizeConstraint=Enum.SizeConstraint.RelativeXY,Visible=true,ZIndex=61,Name='TextLabel',Parent=m})
+				local o=h('UIListLayout',{Padding=UDim.new(0,0),FillDirection=Enum.FillDirection.Vertical,HorizontalAlignment=Enum.HorizontalAlignment.Center,SortOrder=Enum.SortOrder.Name,VerticalAlignment=Enum.VerticalAlignment.Top,Name='UIListLayout',Parent=m})
+				local p=1;
+				if string.len(a)<=49 then 
+					m.Size=UDim2.new(0,game:GetService("TextService"):GetTextSize(a,24,Enum.Font.TitilliumWeb,Vector2.new(500,900)).X+35,0,40)
+				elseif string.len(a)>49 then 
+					p=math.ceil(string.len(string.sub(a,49))/9)
+					m.Size=UDim2.new(0,game:GetService("TextService"):GetTextSize(a,24,Enum.Font.TitilliumWeb,Vector2.new(500+p*100,900)).X+35,0,40)
+				end;
+				m:TweenPosition(UDim2.new(0.01,0,.97,-60),"Out","Quint",.7,true)
+				spawn(function()
+					wait(4)
+					pcall(function()
+						m.ZIndex=58;
+						n.ZIndex=59;
+						m:TweenPosition(UDim2.new(0.01,0,1,0),"Out","Quint",.7,true)
+						_G.dAAcG3fvBqVoPzVnAFk=""
+						wait(.3)
+						l:Destroy()
+					end)
+				end)
+				m.MouseButton1Up:Connect(function()if c==nil then return end;
+				spawn(function()
+					pcall(function()
+						m.ZIndex=58;n.ZIndex=59;
+						m:TweenPosition(UDim2.new(0.01,0,1,0),"Out","Quint",.7,true)
+						_G.dAAcG3fvBqVoPzVnAFk=""
+						wait(1)
+						l:Destroy()
+					end)
+				end)
+				d()
+			end)
+		end)
+	end
+	function roundNumber(num, numDecimalPlaces) -- https://devforum.roblox.com/t/rounding-to-1-decimal-point/673504
+	return tonumber(string.format("%." .. (numDecimalPlaces or 0) .. "f", num))
+end
+--Join Detecter
+game.Players.ChildAdded:Connect(function(player)
+	if not pcall (function()
+		notify(""..player.Name.." has JOINED the game")
+	end) then
+		print ("Error")
+	end
+end)
+--Leave Detecter
+game.Players.ChildRemoved:Connect(function(player)
+	if not pcall (function()
+		SendNotification(""..player.Name.." has LEFT the game")
+	end) then
+		print ("Error")
+	end
+end)
+-- init
+
+--Lumber Tycoon 2
+game:GetService("Players").LocalPlayer.SuperBlueprint.Value = 1
+game:GetService("Players").LocalPlayer.SuperBlueprint.Gamepass.Value = 1
+local function LumberTycoon2()
+
+	--DogeHub V2 GUI
+	local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20page%20format%20gui"))()
+	local NoobieDoge = library.new("DogeHub V2", 5013109572)
+
+	-- themes
+	local themes = {
+	Background = Color3.fromRGB(24, 24, 24),
+	Glow = Color3.fromRGB(0, 0, 0),
+	Accent = Color3.fromRGB(10, 10, 10),
+	LightContrast = Color3.fromRGB(20, 20, 20),
+	DarkContrast = Color3.fromRGB(14, 14, 14),  
+	TextColor = Color3.fromRGB(255, 255, 255)
+	}
+
+	-- first page
+	local page1 = NoobieDoge:addPage("Universal", 8701455281)
+	local section1 = page1:addSection("Walk Speed & Jump Power")
+	local section2 = page1:addSection("Other Functions")
+
+	section1:addSlider("Walk Speed", 16, 0, 500, function(value)
+		sliderspeed = value
+	end)
+	section1:addSlider("Jump Power", 50, 0, 500, function(value)
+		sliderjump = value
+	end)
+	sliderspeed = 16
+	sliderjump = 50
+
+	section1:addToggle("Enabled", nil, function(value)
+		sliderpowa = value
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if sliderpowa then
+			game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = sliderspeed
+			game.Players.LocalPlayer.Character.Humanoid.JumpPower = sliderjump
+		end
+	end)
+
+	section2:addButton("Add ESP GUI", function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Project%3A%20Bullshit%3A%20Rebooted"))()
+	end)
+
+	section2:addButton("Reset Character",function()
+		game.Players.LocalPlayer.Character:BreakJoints()
+	end)
+
+	section2:addButton("Ctrl + Click TP",function()
+		CTRLCLICKTP()
+	end)
+
+	local infjumptoggle = false
+	section2:addToggle("Infinite Jump",false,function()
+		infjumptoggle = not infjumptoggle
+		notify("Infinite Jump: "..tostring(infjumptoggle),true)
+		game:GetService('RunService').Stepped:connect(function()
+			if infjumptoggle then
+				getgenv().dc = false
+				local infjump
+				infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
+					if dc then infjump:Disconnect() return end
+					game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
+				end)
+			else
+				getgenv().dc = true
+			end
+		end)
+	end)
+
+	noclip = false
+	section2:addToggle("No Clip",false,function()
+		notify("No Clip: "..tostring(noclip),true)
+		noclip = not noclip
+		game:GetService('RunService').Stepped:connect(function()
+			if noclip then
+				game.Players.LocalPlayer.Character.Head.CanCollide = false
+				game.Players.LocalPlayer.Character.Torso.CanCollide = false
+				game.Players.LocalPlayer.Character["Left Arm"].CanCollide = false
+				game.Players.LocalPlayer.Character["Right Arm"].CanCollide = false
+				game.Players.LocalPlayer.Character["Left Leg"].CanCollide = false
+				game.Players.LocalPlayer.Character["Right Leg"].CanCollide = false
+			else
+				game.Players.LocalPlayer.Character.Head.CanCollide = true
+				game.Players.LocalPlayer.Character.Torso.CanCollide = true
+				game.Players.LocalPlayer.Character["Left Arm"].CanCollide = true
+				game.Players.LocalPlayer.Character["Right Arm"].CanCollide = true
+				game.Players.LocalPlayer.Character["Left Leg"].CanCollide = true
+				game.Players.LocalPlayer.Character["Right Leg"].CanCollide = true
+			end
+		end)
+	end)
+	
+	section2:addSlider("Fly Speed", 101, 0, 999, function(value)
+		sliderfly = value
+	end)
+	sliderfly = 101
+	section2:addToggle("Press P to fly",false,function(Pfly)
+		repeat wait() 
+		until game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:findFirstChild("Head") and game.Players.LocalPlayer.Character:findFirstChild("Humanoid") 
+		local mouse = game.Players.LocalPlayer:GetMouse() 
+		repeat wait() until mouse
+		local plr = game.Players.LocalPlayer 
+		local torso = plr.Character.Head 
+		local flying = false
+		local deb = true 
+		local ctrl = {f = 0, b = 0, l = 0, r = 0} 
+		local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+		local maxspeed = sliderfly 
+		local speed = 0 
+
+		function Fly() 
+			local bg = Instance.new("BodyGyro", torso) 
+			bg.P = 9e4 
+			bg.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
+			bg.cframe = torso.CFrame 
+
+			local bv = Instance.new("BodyVelocity", torso) 
+			bv.velocity = Vector3.new(0,0.1,0) 
+			bv.maxForce = Vector3.new(9e9, 9e9, 9e9) 
+			repeat wait() 
+				plr.Character.Humanoid.PlatformStand = true 
+				if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
+					speed = speed+(sliderfly/1.7)+(speed/maxspeed) 
+					if speed > maxspeed then 
+						speed = maxspeed 
+					end 
+
+				elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
+					speed = speed-(sliderfly/1.7)
+					if speed < 0 then 
+						speed = 0 
+					end 
+				end 
+				if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then 
+					bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+					lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r} 
+				elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then 
+					bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+				else 
+					bv.velocity = Vector3.new(0,0.1,0)
+				end 
+				bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
+			until not flying 
+			ctrl = {f = 0, b = 0, l = 0, r = 0} 
+			lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+			speed = 0 
+			bg:Destroy() 
+			bv:Destroy() 
+			plr.Character.Humanoid.PlatformStand = false 
+		end 
+
+		mouse.KeyDown:connect(function(key) 
+			if key:lower() == "p" then 
+				if flying then flying = false 
+				else 
+					flying = true 
+					Fly() 
+				end 
+			elseif key:lower() == "w" then 
+				ctrl.f = 1 
+			elseif key:lower() == "s" then 
+				ctrl.b = -1 
+			elseif key:lower() == "a" then 
+				ctrl.l = -1 
+			elseif key:lower() == "d" then 
+				ctrl.r = 1 
+			end 
+		end) 
+
+		mouse.KeyUp:connect(function(key) 
+
+			if key:lower() == "w" then 
+				ctrl.f = 0 
+			elseif key:lower() == "s" then 
+				ctrl.b = 0 
+			elseif key:lower() == "a" then 
+				ctrl.l = 0 
+			elseif key:lower() == "d" then 
+				ctrl.r = 0 
+			end 
+		end)
+		Fly()
+		notify("Press P to fly: "..tostring(Pfly),true)
+	end)
+
+	local playerlist = {}
+	for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+		if v.Name ~= game.Players.LocalPlayer.Name then
+			table.insert(playerlist, v.Name)
+		end
+	end
+	section2:addDropdown("Track selected player",playerlist,function(ripthatguy)
+		notify("Player Selected: " .. ripthatguy)
+		Target = ripthatguy
+	end)
+
+	section2:addToggle("Track Player",false,function(bool)
+		trackthatguy = bool
+		local platform = Instance.new("Part", player.Character)
+		platform.Anchored = true
+		platform.Transparency = 1
+		platform.Size = Vector3.new(6, 1, 6)
+
+		local connection
+		connection = game:GetService("RunService").RenderStepped:connect(function()
+			if player.Character:FindFirstChild("HumanoidRootPart") then
+				platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -1.8, 0)
+			else
+				connection:Disconnect()
+			end
+		end)
+		game:GetService('RunService').Stepped:connect(function()
+			if trackthatguy ~= true then
+				platform:Destroy()
+			end
+		end)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if trackthatguy == true then
+			player.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame * CFrame.new(0, 5, 10)
+			game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game.Players[Target].Character.HumanoidRootPart.Position)
+		end
+	end)
+
+	-- second page
+	local page2 = NoobieDoge:addPage("Misc", 8701455281)
+	local section1 = page2:addSection("OP Stuff")
+	local section2 = page2:addSection("Game Functions")
+
+	section1:addButton("Get Others Blueprints",function()
+		for i,v in pairs(game:GetService("Players"):GetChildren()) do
+			if v.leaderstats.Money.Value > 10000 then
+				local clone = v.PlayerBlueprints.Blueprints:Clone()
+				clone.Parent = player.PlayerBlueprints.Blueprints
+			end
+		end
+	end)
+
+	section1:addButton("Max Land",function()
+		for i, v in pairs(game:GetService("Workspace").Properties:GetChildren()) do
+			if v:FindFirstChild("Owner") and v.Owner.Value == game.Players.LocalPlayer then
+				base = v
+				square = v.OriginSquare
+			end
+		end
+		function makebase(pos)
+			local Event = game:GetService("ReplicatedStorage").PropertyPurchasing.ClientExpandedProperty
+			Event:FireServer(base, pos)
+		end
+		spos = square.Position
+		makebase(CFrame.new(spos.X + 40, spos.Y, spos.Z))
+		makebase(CFrame.new(spos.X - 40, spos.Y, spos.Z))
+		makebase(CFrame.new(spos.X, spos.Y, spos.Z + 40))
+		makebase(CFrame.new(spos.X, spos.Y, spos.Z - 40))
+		makebase(CFrame.new(spos.X + 40, spos.Y, spos.Z + 40))
+		makebase(CFrame.new(spos.X + 40, spos.Y, spos.Z - 40))
+		makebase(CFrame.new(spos.X - 40, spos.Y, spos.Z + 40))
+		makebase(CFrame.new(spos.X - 40, spos.Y, spos.Z - 40))
+		makebase(CFrame.new(spos.X + 80, spos.Y, spos.Z))
+		makebase(CFrame.new(spos.X - 80, spos.Y, spos.Z))
+		makebase(CFrame.new(spos.X, spos.Y, spos.Z + 80))
+		makebase(CFrame.new(spos.X, spos.Y, spos.Z - 80))
+		--Corners--
+		makebase(CFrame.new(spos.X + 80, spos.Y, spos.Z + 80))
+		makebase(CFrame.new(spos.X + 80, spos.Y, spos.Z - 80))
+		makebase(CFrame.new(spos.X - 80, spos.Y, spos.Z + 80))
+		makebase(CFrame.new(spos.X - 80, spos.Y, spos.Z - 80))
+		--Corners--
+		makebase(CFrame.new(spos.X + 40, spos.Y, spos.Z + 80))
+		makebase(CFrame.new(spos.X - 40, spos.Y, spos.Z + 80))
+		makebase(CFrame.new(spos.X + 80, spos.Y, spos.Z + 40))
+		makebase(CFrame.new(spos.X + 80, spos.Y, spos.Z - 40))
+		makebase(CFrame.new(spos.X - 80, spos.Y, spos.Z + 40))
+		makebase(CFrame.new(spos.X - 80, spos.Y, spos.Z - 40))
+		makebase(CFrame.new(spos.X + 40, spos.Y, spos.Z - 80))
+		makebase(CFrame.new(spos.X - 40, spos.Y, spos.Z - 80))
+	end)
+
+	section1:addButton("Disable Fog",function()
+		game.Lighting.Changed:connect(function()
+			game.Lighting.TimeOfDay = "12:00:00"
+			game.Lighting.FogEnd = 9999
+			game.Lighting.Brightness = 2
+		end)
+	end)
+
+	local Jesustoggle = false
+	section2:addToggle("Jesus",false,function()
+		Jesustoggle = not Jesustoggle
+		if Jesustoggle then
+			for index, water in pairs(game.Workspace.Water:GetChildren()) do
+				water.CanCollide = true
+			end
+			notify("You may now walk on water")
+		else
+			for index, water in pairs(game.Workspace.Water:GetChildren()) do
+				water.CanCollide = false
+			end
+			notify("You are no longer Jesus")
+		end
+	end)
+
+	section2:addToggle("Car Flight",false,function(Zcarfly)
+		repeat wait()
+		until game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:findFirstChild("Torso") and game.Players.LocalPlayer.Character:findFirstChild("Humanoid")
+		local mouse = game.Players.LocalPlayer:GetMouse()
+		repeat wait() until mouse
+		local plr = game.Players.LocalPlayer
+		local torso = plr.Character.Torso
+		local flying = true
+		local deb = true
+		local ctrl = {f = 0, b = 0, l = 0, r = 0}
+		local lastctrl = {f = 0, b = 0, l = 0, r = 0}
+		local maxspeed = 500
+		local speed = 0
+		
+		function Fly()
+			local bg = Instance.new("BodyGyro", torso)
+			bg.P = 9e4
+			bg.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+			bg.cframe = torso.CFrame
+			local bv = Instance.new("BodyVelocity", torso)
+			bv.velocity = Vector3.new(0,0.1,0)
+			bv.maxForce = Vector3.new(9e9, 9e9, 9e9)
+			repeat wait()
+				plr.Character.Humanoid.PlatformStand = false
+				if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then
+					speed = speed+125.0+(speed/maxspeed)
+					if speed > maxspeed then
+						speed = maxspeed
+					end
+				elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then
+					speed = speed-250
+					if speed < 0 then
+						speed = 0
+					end
+				end
+				if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then
+					bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
+					lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r}
+				elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then
+					bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
+				else
+					bv.velocity = Vector3.new(0,0.1,0)
+				end
+				bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0)
+			until not flying
+			ctrl = {f = 0, b = 0, l = 0, r = 0}
+			lastctrl = {f = 0, b = 0, l = 0, r = 0}
+			speed = 0
+			bg:Destroy()
+			bv:Destroy()
+			plr.Character.Humanoid.PlatformStand = false
+		end
+		mouse.KeyDown:connect(function(key)
+			if key:lower() == "z" then
+				if flying then flying = false
+				else
+					flying = true
+					Fly()
+				end
+			elseif key:lower() == "w" then
+				ctrl.f = 1
+			elseif key:lower() == "s" then
+				ctrl.b = -1
+			elseif key:lower() == "a" then
+				ctrl.l = -1
+			elseif key:lower() == "d" then
+				ctrl.r = 1
+			end
+		end)
+		mouse.KeyUp:connect(function(key)
+			if key:lower() == "w" then
+				ctrl.f = 0
+			elseif key:lower() == "s" then
+				ctrl.b = 0
+			elseif key:lower() == "a" then
+				ctrl.l = 0
+			elseif key:lower() == "d" then
+				ctrl.r = 0
+			end
+			wait(5)
+		end)
+		notify("Press Z to fly with your car")
+	end)
+
+	spawn(function()
+		GAxe = false
+		function GetAxe() --Gets your current axe thats equiped when called
+			if player.Character:FindFirstChild("Tool") then
+				return player.Character.Tool --returns the axe when found
+			else
+				return false --returns false when not equiped
+			end
+		end
+	
+		function GetDamage(Axe, TreeClass)-- Gets the right Damage of the axe and returns it if called to prevent killing yourself like gold axe
+			if Axe.ToolTip == "Basic Hatchet" then return 0.2
+			elseif Axe.ToolTip == "Plain Axe" then return 0.55
+			elseif Axe.ToolTip == "Steel Axe" then return 0.93
+			elseif Axe.ToolTip == "Hardened Axe" then return 1.45
+			elseif Axe.ToolTip == "Silver Axe" then return 1.6
+			elseif Axe.ToolTip == "Rukiryaxe" then return 1.68
+			elseif Axe.ToolTip == "Beta Axe of Bosses" then return 1.45
+			elseif Axe.ToolTip == "Alpha Axe of Testing" then return 1.5
+			elseif Axe.ToolTip == "Fire Axe" then
+				if TreeClass ~= "Volcano" then return 0.6 else return 6.35 end
+			elseif Axe.ToolTip == "End Times Axe" then
+				if TreeClass ~= "LoneCave" then return 1.58 else return 10000000 end
+			elseif Axe.ToolTip == "Candy Cane Axe" then return 0
+			elseif Axe.ToolTip == "Johiro" then return 1.8
+			elseif Axe.ToolTip == "Beesaxe" then return 1.4
+			elseif Axe.ToolTip == "CHICKEN AXE" then return 0.9
+			elseif Axe.ToolTip == "Amber Axe" then return 3.39
+			elseif Axe.ToolTip == "The Many Axe" then return 10.2
+			elseif Axe.ToolTip == "Gingerbread Axe" then
+				if TreeClass == "Walnut" then return 8.5
+			elseif TreeClass == "Koa" then return 11 else return 1.2 end
+			elseif Axe.ToolTip == "Bird Axe" then
+				if TreeClass == "Volcano" then return 2.5 elseif TreeClass == "CaveCrawler" then return 3.9 else return 1.65 end
+			end
+		end
+	
+		function GCut(TreePart) --Cuts the tree when called with the tree you want to cut
+			if GetAxe() ~= false then --checks if you have a axe equiped
+				Damage = GetDamage(GetAxe(), TreePart.Parent.TreeClass.Value) --gets the Damage
+				Height = TreePart.CFrame:pointToObjectSpace(mouse.Hit.p).Y + TreePart.Size.Y/2 --Gets the Height
+				local CutArguments = {
+					sectionId = TreePart.ID.Value,
+					faceVector = Vector3.new(0,0,-1),
+					height = Height,
+					hitPoints = Damage,
+					cooldown = 0,
+					cuttingClass = "Axe",
+					tool = GetAxe()
+				}
+				for i=1, 50 do
+					game.ReplicatedStorage.Interaction.RemoteProxy:FireServer(TreePart.Parent.CutEvent, CutArguments)
+				end
+			end
+		end
+	
+		function CutTree(Tree) --Cuts the tree when called with the tree you want to cut
+			if GetAxe() ~= false then --checks if you have a axe equiped
+				Damage = GetDamage(GetAxe(), Tree.TreeClass.Value) --gets the Damage
+				local CutArguments = {
+					sectionId = 1,
+					faceVector = Vector3.new(0,0,-1),
+					height = 0.5,
+					hitPoints = Damage,
+					cooldown = 0,
+					cuttingClass = "Axe",
+					tool = GetAxe()
+				}
+				for i=1, 50 do
+					game.ReplicatedStorage.Interaction.RemoteProxy:FireServer(Tree.CutEvent, CutArguments)
+				end
+			end
+		end
+	
+		TreeList = {} --Creates a table of the trees
+		for a,b in pairs(workspace:GetChildren()) do
+			if b.name == "TreeRegion" then
+				b.ChildAdded:Connect(function(NewTree)--Creates functions that Adds new trees to the list
+					table.insert(TreeList, NewTree)
+				end)
+				for c,d in pairs(b:GetChildren()) do-- Adds the trees when first time starting the script
+					if d.Name == "Model" then
+						table.insert(TreeList, d)
+					end
+				end
+			end
+		end
+	
+		spawn(function() --used spawn so it wont interrupt any of the other things
+			CutEnabled = false
+			while wait(.5) do --Main loop to do the stuff
+				if CutEnabled == true then
+					if GetAxe() ~= false then --Checks if you have a axe equiped
+						for a,b in pairs(TreeList) do
+							if not b:FindFirstChild("RootCut") and b:FindFirstChild("CutEvent") then --Checks if the tree is already cut
+								distance = (game.Players.LocalPlayer.Character.Head.Position - b.WoodSection.Position).magnitude --gets the distance between player and tree
+								if distance < 225 then --if distance lower than 225 then it will cut the tree
+									CutTree(b) --Calls the function with the tree to cut
+								end
+							else
+								table.remove(TreeList, a)--if tree already cut then it gets removed from the list
+							end
+						end
+					end
+				end
+			end
+		end)
+	
+		mouse = game.Players.LocalPlayer:GetMouse() --Gets the Mouse
+		mouse.Button1Down:connect(function()
+			if GAxe == true and GetAxe() ~= false then
+				Target = mouse.Target
+				GCut(Target)
+			end
+		end)
+		--Credits to Johiro, if you decide to skid atleast give credits
+	end)
+
+	section2:addToggle("Golden Axe (Testing)",false,function()
+		if GAxe == true then
+			GAxe = false
+		elseif GAxe == false then
+			GAxe = true
+		end
+	end)
+
+	-- third page
+	local page3 = NoobieDoge:addPage("Wood", 8701455281)
+	local section1 = page3:addSection("Sell")
+	local section2 = page3:addSection("Bring")
+	local section3 = page3:addSection("Others")
+
+	section1:addButton("Sell Wood",function()
+		for _, Log in pairs(workspace.LogModels:GetChildren()) do
+			if Log.Name:sub(1, 6) == "Loose_" and Log:findFirstChild("Owner") then
+				if Log.Owner.Value == game.Players.LocalPlayer then
+					for i,v in pairs(Log:GetChildren()) do
+						if v.Name=="WoodSection" then
+							spawn(function()
+								for i=1,10 do
+									wait()
+									v.CFrame=CFrame.new(Vector3.new(315, -0.296, 85.791))*CFrame.Angles(math.rad(90),0,0)
+								end
+							end)
+						end
+					end
+					spawn(function()
+						for i=1,20 do
+							wait()
+							game.ReplicatedStorage.Interaction.ClientIsDragging:FireServer(Log)
+						end
+					end)
+				end
+			end
+		end
+	end)
+
+	section1:addButton("Sell Planks",function()
+		for _, Plank in pairs(game.Workspace.PlayerModels:GetChildren()) do
+			if Plank.Name=="Plank" and Plank:findFirstChild("Owner") then
+				if Plank.Owner.Value == game.Players.LocalPlayer then
+					for i,v in pairs(Plank:GetChildren()) do
+						if v.Name=="WoodSection" then
+							spawn(function()
+								for i=1,10 do
+									wait()
+									v.CFrame=CFrame.new(Vector3.new(315, -0.296, 85.791))*CFrame.Angles(math.rad(90),0,0)
+								end
+							end)
+						end
+					end
+					spawn(function()
+						for i=1,20 do
+							wait()
+							game.ReplicatedStorage.Interaction.ClientIsDragging:FireServer(Plank)
+						end
+					end)
+				end
+			end
+		end
+	end)
+
+	section2:addButton("Bring Wood",function()
+		for _, Log in pairs(game.Workspace.LogModels:GetChildren()) do
+			if Log.Name:sub(1, 6) == "Loose_" and Log:findFirstChild("Owner") then
+				if Log.Owner.Value == game.Players.LocalPlayer then
+					Log:MoveTo(game.Players.LocalPlayer.Character.HumanoidRootPart.Position + Vector3.new(0, 15, 0))
+					for i=1,100 do
+						game.ReplicatedStorage.Interaction.ClientIsDragging:FireServer(Log)
+					end
+				end
+			end
+		end
+	end)
+	
+	section2:addButton("Bring Planks",function()
+		for _, Plank in pairs(game.Workspace.PlayerModels:GetChildren()) do
+			if Plank.Name=="Plank" and Plank:findFirstChild("Owner") then
+				if Plank.Owner.Value == game.Players.LocalPlayer then
+					sendNotice = game.ReplicatedStorage.Notices.SendUserNotice
+					sendNotice:Fire("Click where you want ALL the Planks to TP to")
+					local ButtonPress
+					ButtonPress = game.Players.LocalPlayer:GetMouse().Button1Down:Connect(function()
+						Square = game.Players.LocalPlayer:GetMouse().Target
+						if (Square.Name == "OriginSquare" or Square.Name == "Square") then
+							ButtonPress:Disconnect()
+							Plank:MoveTo(Square.Position)
+							for i=1,100 do
+								game.ReplicatedStorage.Interaction.ClientIsDragging:FireServer(Plank)
+							end
+						end
+					end)
+				end
+			end
+		end
+	end)
+
+	section3:addButton("Mod Wood",function()
+		for _, Log in pairs(workspace.LogModels:GetChildren()) do
+			if Log.Name:sub(1, 6) == "Loose_" and Log:findFirstChild("Owner") then
+				if Log.Owner.Value == game.Players.LocalPlayer then
+					for i,v in pairs(Log:GetChildren()) do
+						if v.Name=="WoodSection" then
+							spawn(function()
+								for i=1,10 do
+									wait()
+									v.CFrame=CFrame.new(Vector3.new(315, -0.296, 85.791))*CFrame.Angles(math.rad(90),0,0)
+								end
+							end)
+						end
+					end
+					spawn(function()
+						for i=1,20 do
+							wait()
+							game.ReplicatedStorage.Interaction.ClientIsDragging:FireServer(Log.WoodSection)
+							game.ReplicatedStorage.Interaction.ClientRequestOwnership:FireServer(Log.WoodSection)
+						end
+					end)
+				end
+			end
+		end
+		wait(2.0)
+		for _, Log in pairs(game.Workspace.LogModels:GetChildren()) do
+			if Log.Name:sub(1, 6) == "Loose_" and Log:findFirstChild("Owner") then
+				if Log.Owner.Value == game.Players.LocalPlayer then
+					Log:MoveTo(game.Players.LocalPlayer.Character.HumanoidRootPart.Position)
+					for i=1,20 do
+						game.ReplicatedStorage.Interaction.ClientIsDragging:FireServer(Log.WoodSection)
+						game.ReplicatedStorage.Interaction.ClientRequestOwnership:FireServer(Log.WoodSection)
+					end
+				end
+			end
+		end
+	end)
+	
+	section3:addButton("Remove All Trees (DO NOT PRESS)",function()
+		notify("Removing All Trees")
+		wait(1)
+		for i,v in pairs(game.Workspace:GetDescendants()) do
+			if v.Name == "WoodSection" and v.Parent:FindFirstChild("CutEvent") then
+				game.ReplicatedStorage.Interaction.ClientIsDragging:FireServer(v.Parent)
+				game.ReplicatedStorage.Interaction.DestroyStructure:FireServer(v.Parent)
+			end
+		end
+		game.Workspace.DescendantAdded:connect(function(Thing)
+			wait(0.1)
+			if Thing.Name == "WoodSection" and Thing.Parent:FindFirstChild("CutEvent") then
+				game.ReplicatedStorage.Interaction.ClientIsDragging:FireServer(Thing.Parent)
+				game.ReplicatedStorage.Interaction.DestroyStructure:FireServer(Thing.Parent)
+			end
+		end)
+	end)
+
+	-- forth page
+	local page4 = NoobieDoge:addPage("Teleport", 8701455281)
+	local section1 = page4:addSection("Places")
+
+	--Spawn
+	section1:addButton("Spawn",function()
+		function Tlprt(Cframe)
+			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			wait(0.1)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+		end
+		Tlprt(CFrame.new(155, 5, 74))
+	end)
+
+	--Wood R Us
+	section1:addButton("Wood R Us",function()
+		function Tlprt(Cframe)
+			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			wait(0.1)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+		end
+		Tlprt(CFrame.new(265, 5, 57))
+	end)
+	
+	--Land Store
+	section1:addButton("Land Store",function()
+		function Tlprt(Cframe)
+			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			wait(0.1)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+		end
+		Tlprt(CFrame.new(258, 5, -99))
+	end)
+	
+	--Bridge
+	section1:addButton("Bridge",function()
+		function Tlprt(Cframe)
+			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			wait(0.1)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+		end
+		Tlprt(CFrame.new(113, 15, -977))
+	end)
+
+	--Dock
+	section1:addButton("Dock",function()
+		function Tlprt(Cframe)
+			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			wait(0.1)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+		end
+		Tlprt(CFrame.new(1114, 3.2, -197))
+	end)
+
+	--Lodge
+	section1:addButton("Lodge",function()
+		function Tlprt(Cframe)
+			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			wait(0.1)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+		end
+		Tlprt(CFrame.new(1244, 66, 2306))
+	end)
+
+	--Link's Logic
+	section1:addButton("Link's Logic",function()
+		function Tlprt(Cframe)
+			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			wait(0.1)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+		end
+		Tlprt(CFrame.new(4607, 9, -798))
+	end)
+
+	--Boxed Cars
+	section1:addButton("Boxed Cars",function()
+		function Tlprt(Cframe)
+			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			wait(0.1)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+		end
+		Tlprt(CFrame.new(509, 5.2, -1463))
+	end)
+	
+	--Bob's Shack
+	section1:addButton("Bob's Shack",function()
+		function Tlprt(Cframe)
+			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			wait(0.1)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+		end
+		Tlprt(CFrame.new(260, 10, -2542))
+	end)
+
+	--Fine Arts
+	section1:addButton("Fine Arts",function()
+		function Tlprt(Cframe)
+			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			wait(0.1)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+		end
+		Tlprt(CFrame.new(5207, -156, 719))
+	end)
+	
+	
+	--Volcano
+	section1:addButton("Volcano",function()
+		function Tlprt(Cframe)
+			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			wait(0.1)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+		end
+		Tlprt(CFrame.new(-1585, 625, 1140))
+	end)
+
+	--Ice Wood
+	section1:addButton("Ice Wood",function()
+		function Tlprt(Cframe)
+			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			wait(0.1)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+		end
+		Tlprt(CFrame.new(1451.66248, 412.208405, 3183.47607))
+	end)
+
+	--Palm
+	section1:addButton("Palms",function()
+		function Tlprt(Cframe)
+			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			wait(0.1)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+		end
+		Tlprt(CFrame.new(2549, 5, -42))
+	end)
+	
+	--Swamp
+	section1:addButton("Swamp",function()
+		function Tlprt(Cframe)
+			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			wait(0.1)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+		end
+		Tlprt(CFrame.new(-1209, 138, -801))
+	end)
+	
+	--End Times
+	section1:addButton("End Times",function()
+		function Tlprt(Cframe)
+			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			wait(0.1)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+		end
+		Tlprt(CFrame.new(113, -204, -951))
+	end)
+	
+	--Fancy Furnishings
+	section1:addButton("Fancy Furnishings",function()
+		function Tlprt(Cframe)
+			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			wait(0.1)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+		end
+		Tlprt(CFrame.new(491, 13, -1720))
+	end)
+	
+	--Strange Man
+	section1:addButton("Strange Man",function()
+		function Tlprt(Cframe)
+			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			wait(0.1)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+		end
+		Tlprt(CFrame.new(1061, 20, 1131))
+	end)
+	
+	--Yellow Wood
+	section1:addButton("Yellow Wood",function()
+		function Tlprt(Cframe)
+			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			wait(0.1)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+		end
+		Tlprt(CFrame.new(-1124.91565, 1.10021782, -943.932129))
+	end)
+	
+	--Cave
+	section1:addButton("Cave",function()
+		function Tlprt(Cframe)
+			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			wait(0.1)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+		end
+		Tlprt(CFrame.new(3581, -177, 430))
+	end)
+	
+	--Green Box
+	section1:addButton("Green Box",function()
+		function Tlprt(Cframe)
+			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			wait(0.1)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+		end
+		Tlprt(CFrame.new(-1668.39197, 349.601929, 1475.36255))
+	end)
+
+	-- fifth page
+	local page5 = NoobieDoge:addPage("Other scripts", 8701455281)
+	local section1 = page5:addSection("Light Lumber")
+	local section2 = page5:addSection("Johiro's Axe Dupe")
+	local section3 = page5:addSection("Bring Up")
+
+	section1:addButton("Execute Script",function()
+		loadstring(game:GetObjects("rbxassetid://03271460677")[1].Source)()
+	end)
+
+	section1:addButton("Copy Script",function()
+		setclipboard([[loadstring(game:GetObjects("rbxassetid://03271460677")[1].Source)()]])
+	end)
+
+	section2:addButton("Execute Script",function()
+		loadstring(game:HttpGet("https://pastebin.com/raw/fmEYwvqn", true))()
+	end)
+
+	section2:addButton("Copy Script",function()
+		setclipboard([[loadstring(game:HttpGet("https://pastebin.com/raw/fmEYwvqn", true))()]])
+	end)
+
+	section3:addButton("Execute Script",function()
+		loadstring(game:GetObjects("rbxassetid://01925396229")[1].Source)()
+	end)
+
+	section3:addButton("Copy Script",function()
+		setclipboard([[loadstring(game:GetObjects("rbxassetid://01925396229")[1].Source)()]])
+	end)
+
+	-- last page
+	local pagelast = NoobieDoge:addPage("Settings", 8701455281)
+	local settings = pagelast:addSection("Settings")
+	local colors = pagelast:addSection("Colors")
+	local credits = pagelast:addSection("Credits")
+
+	settings:addButton("Upgrade Performance",function()
+		UPPERFORMANCE()
+	end)
+
+	settings:addButton("Reset Script",function()
+
+		local player = game.Players.LocalPlayer
+		local ScreenGui = Instance.new("ScreenGui")
+		local Frame = Instance.new("Frame")
+		local TextLabel = Instance.new("TextLabel")
+		local TextButton = Instance.new("TextButton")
+		local TextButton2 = Instance.new("TextButton")
+
+
+		ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+		Frame.Parent = ScreenGui
+		Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Frame.Position = UDim2.new(0.66, 0, 0.20, 0)
+		Frame.Size = UDim2.new(0, 220, 0, 120)
+		Frame.Active = true
+		Frame.Draggable = true
+
+		TextLabel.Parent = Frame
+		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabel.Size = UDim2.new(0, 220, 0, 90)
+		TextLabel.Font = Enum.Font.TitilliumWeb
+		TextLabel.Text = "Are you sure that you want to reset script?"
+		TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabel.TextScaled = true
+		TextLabel.TextSize = 35.000
+		TextLabel.TextWrapped = true
+
+		TextButton.Parent = Frame
+		TextButton.BackgroundColor3 = Color3.fromRGB(41,41,41)
+		TextButton.Position = UDim2.new(0, 0, 0.750000006, 0)
+		TextButton.Size = UDim2.new(0, 110, 0, 60)
+		TextButton.Font = Enum.Font.TitilliumWeb
+		TextButton.Text = "Yes"
+		TextButton.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButton.TextScaled = true
+		TextButton.TextSize = 40.000
+		TextButton.TextWrapped = true
+
+		function ResetYES()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+			wait()
+			sliderpowa = false
+			Pfly = false
+			trackthatguy = false
+			infjumptoggle = false
+			noclip = false
+			Jesustoggle = false
+			Zcarfly = false
+			GAxe = false
+			wait()
+			for i,library in pairs(game:GetService("CoreGui"):GetChildren()) do
+				if library.Name == "DogeHub V2" then
+					library:Destroy()
+				end
+			end
+			notify("Do not reset script too many times!")
+			wait(.1)
+			LumberTycoon2()
+		end
+		TextButton.MouseButton1Click:connect(ResetYES)
+
+		TextButton2.Parent = Frame
+		TextButton2.BackgroundColor3 = Color3.fromRGB(41,41,41)
+		TextButton2.Position = UDim2.new(0.5, 0, 0.750000006, 0)
+		TextButton2.Size = UDim2.new(0, 110, 0, 60)
+		TextButton2.Font = Enum.Font.TitilliumWeb
+		TextButton2.Text = "No"
+		TextButton2.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButton2.TextScaled = true
+		TextButton2.TextSize = 40.000
+		TextButton2.TextWrapped = true
+
+		function ResetNO()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+		end
+		TextButton2.MouseButton1Click:connect(ResetNO)
+	end)
+
+	settings:addButton("Rejoin Server",function()
+		local player = game.Players.LocalPlayer
+		local ScreenGui = Instance.new("ScreenGui")
+		local Frame = Instance.new("Frame")
+		local TextLabel = Instance.new("TextLabel")
+		local TextButton = Instance.new("TextButton")
+		local TextButton2 = Instance.new("TextButton")
+
+		ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+		Frame.Parent = ScreenGui
+		Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Frame.Position = UDim2.new(0.66, 0, 0.20, 0)
+		Frame.Size = UDim2.new(0, 200, 0, 150)
+		Frame.Active = true
+		Frame.Draggable = true
+
+		TextLabel.Parent = Frame
+		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabel.Size = UDim2.new(0, 200, 0, 90)
+		TextLabel.Font = Enum.Font.TitilliumWeb
+		TextLabel.Text = "Are you sure you want to rejoin server?"
+		TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabel.TextScaled = true
+		TextLabel.TextSize = 35.000
+		TextLabel.TextWrapped = true
+
+		TextButton.Parent = Frame
+		TextButton.BackgroundColor3 = Color3.fromRGB(41, 41, 41)
+		TextButton.Position = UDim2.new(0, 0, 0.600000006, 0)
+		TextButton.Size = UDim2.new(0, 100, 0, 60)
+		TextButton.Font = Enum.Font.TitilliumWeb
+		TextButton.Text = "Yes"
+		TextButton.TextColor3 = Color3.fromRGB(255,255,255)
+		TextButton.TextScaled = true
+		TextButton.TextSize = 40.000
+		TextButton.TextWrapped = true
+
+		function rejoinyes()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+			local TS = game:GetService("TeleportService")
+			local Player = game.Players.LocalPlayer
+			TS:Teleport(game.PlaceId, Player)
+		end
+		TextButton.MouseButton1Click:connect(rejoinyes)
+
+		TextButton2.Parent = Frame
+		TextButton2.BackgroundColor3 = Color3.fromRGB(41, 41, 41)
+		TextButton2.Position = UDim2.new(0.5, 0, 0.600000006, 0)
+		TextButton2.Size = UDim2.new(0, 100, 0, 60)
+		TextButton2.Font = Enum.Font.TitilliumWeb
+		TextButton2.Text = "No"
+		TextButton2.TextColor3 = Color3.fromRGB(255,255,255)
+		TextButton2.TextSize = 40.000
+		TextButton2.TextScaled = true
+		TextButton2.TextSize = 40.000
+		TextButton2.TextWrapped = true
+
+		function rejoinno()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+		end
+		TextButton2.MouseButton1Click:connect(rejoinno)
+	end)
+
+	settings:addKeybind("Toggle Keybind", Enum.KeyCode.RightControl, function()
+	print("Activated Keybind")
+	NoobieDoge:toggle()
+	end, function()
+	print("Changed Keybind")
+	end)
+
+	for theme, color in pairs(themes) do -- all in one theme changer, i know, im cool
+		colors:addColorPicker(theme, color, function(color3)
+			NoobieDoge:setTheme(theme, color3)
+		end)
+	end
+
+	credits:addButton("Made by NoobieDoge")
+	credits:addButton("https://discord.gg/P2CeRjvTDt")
+	credits:addButton("Copy Discord Link",function()
+		setclipboard("https://discord.gg/P2CeRjvTDt")
+		wait()
+		notify("Discord link copied to clipboard!")
+	end)
+
+	-- load
+	NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
+
+end
+
+LumberTycoon2()
