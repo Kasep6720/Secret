@@ -218,18 +218,16 @@ local function LumberTycoon2()
 	section2:addToggle("Infinite Jump",false,function()
 		infjumptoggle = not infjumptoggle
 		notify("Infinite Jump: "..tostring(infjumptoggle),true)
-		game:GetService('RunService').Stepped:connect(function()
-			if infjumptoggle then
-				getgenv().dc = false
-				local infjump
-				infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
-					if dc then infjump:Disconnect() return end
-					game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
-				end)
-			else
-				getgenv().dc = true
-			end
-		end)
+		if infjumptoggle then
+			getgenv().dc = false
+			local infjump
+			infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
+				if dc then infjump:Disconnect() return end
+				game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
+			end)
+		else
+			getgenv().dc = true
+		end
 	end)
 
 	noclip = false
@@ -1113,8 +1111,11 @@ local function LumberTycoon2()
 			sliderpowa = false
 			Pfly = false
 			trackthatguy = false
-			infjumptoggle = false
-			noclip = false
+			getgenv().dc = true
+			game.Players.LocalPlayer.Character.Head.CanCollide = true
+			game.Players.LocalPlayer.Character.Torso.CanCollide = true
+			game.Players.LocalPlayer.Character["Left Leg"].CanCollide = true
+			game.Players.LocalPlayer.Character["Right Leg"].CanCollide = true
 			Jesustoggle = false
 			Zcarfly = false
 			GAxe = false
