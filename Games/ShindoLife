@@ -1,10 +1,7 @@
---setclipboard(tostring(game.PlaceId))
+setclipboard(tostring(game.PlaceId))
 --all on99 variables
 repeat wait() until game:IsLoaded()
 local player = game.Players.LocalPlayer
-if game.PlaceId ~= 7524809704 then
-	local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
-end
 local VirtualUser=game:service'VirtualUser'
 game:service'Players'.LocalPlayer.Idled:connect(function()
 warn("anti-afk")
@@ -78,6 +75,28 @@ end
 function SpamC()
 	game.Players.LocalPlayer.Character.combat.update:FireServer("key","c")
 	game.Players.LocalPlayer.Character.combat.update:FireServer("key","cend")
+end
+function CTRLCLICKTP()
+	local UIS = game:GetService("UserInputService")
+	local Player = game.Players.LocalPlayer
+	local Mouse = Player:GetMouse()
+	
+	function GetCharacter()
+	return game.Players.LocalPlayer.Character
+	end
+	
+	function Teleport(pos)
+		local Char = GetCharacter()
+		if Char then
+			Char:MoveTo(pos)
+		end
+	end
+	
+	UIS.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 and UIS:IsKeyDown(Enum.KeyCode.LeftControl) then
+			Teleport(Mouse.Hit.p)
+		end
+	end)
 end
 function SUPERHUMAN()
 	local chanceofaudioquote = math.random(1, 100)
@@ -2038,12 +2057,14 @@ local function ShindoDungeons()
 	local section1 = page1:addSection("Walk Speed & Jump Power")
 	local section2 = page1:addSection("Other Functions")
 
-	section1:addSlider("Walk Speed", 16, 0, 400, function(value)
+	section1:addSlider("Walk Speed", 16, 0, 500, function(value)
 		sliderspeed = value
 	end)
-	section1:addSlider("Jump Power", 50, 0, 400, function(value)
+	section1:addSlider("Jump Power", 50, 0, 500, function(value)
 		sliderjump = value
 	end)
+	sliderspeed = 16
+	sliderjump = 50
 
 	section1:addToggle("Enabled", nil, function(value)
 		sliderpowa = value
@@ -2063,22 +2084,28 @@ local function ShindoDungeons()
 		game.Players.LocalPlayer.Character:BreakJoints()
 	end)
 
-	section2:addButton("Enable Infinite Jump",function()
-		getgenv().dc = false
-		local infjump
-		infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
-			if dc then infjump:Disconnect() return end
-			game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
-		end)
-		notify("Enabled Infinute Jump")
+	section2:addButton("Ctrl + Click TP",function()
+		CTRLCLICKTP()
+		notify("Press Ctrl + Click to Teleport")
 	end)
 
-	section2:addButton("Disable Infinite Jump",function()
-		getgenv().dc = true
-		notify("Disabled Infinite Jump")
+	local infjumptoggle = false
+	section2:addToggle("Infinite Jump",false,function()
+		infjumptoggle = not infjumptoggle
+		notify("Infinite Jump: "..tostring(infjumptoggle),true)
+		if infjumptoggle then
+			getgenv().dc = false
+			local infjump
+			infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
+				if dc then infjump:Disconnect() return end
+				game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
+			end)
+		else
+			getgenv().dc = true
+		end
 	end)
-
-	section2:addSlider("Fly Speed", 101, 0, 500, function(value)
+	
+	section2:addSlider("Fly Speed", 101, 0, 999, function(value)
 		sliderfly = value
 	end)
 	sliderfly = 101
@@ -2128,7 +2155,7 @@ local function ShindoDungeons()
 					bv.velocity = Vector3.new(0,0.1,0)
 				end 
 				bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
-			until not flying 
+			until not flying or not Pfly
 			ctrl = {f = 0, b = 0, l = 0, r = 0} 
 			lastctrl = {f = 0, b = 0, l = 0, r = 0} 
 			speed = 0 
@@ -2175,6 +2202,8 @@ local function ShindoDungeons()
 	local page2 = NoobieDoge:addPage("Misc", 5012544693)
 	local section1 = page2:addSection("Game Functions")
 	local section2 = page2:addSection("Customs")
+	local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
+
 
 	section1:addButton("SuperHuman",function()
 		SUPERHUMAN()
@@ -2556,6 +2585,7 @@ local function ShindoDungeons()
 			wait()
 			sliderpowa = false
 			Pfly = false
+			getgenv().dc = true
 			keel = false
 			SpamGOBRRRRR = false 
 			ClickRATATA = false
@@ -2727,12 +2757,14 @@ local function ShindoBossBattle()
 	local section1 = page1:addSection("Walk Speed & Jump Power")
 	local section2 = page1:addSection("Other Functions")
 
-	section1:addSlider("Walk Speed", 16, 0, 400, function(value)
+	section1:addSlider("Walk Speed", 16, 0, 500, function(value)
 		sliderspeed = value
 	end)
-	section1:addSlider("Jump Power", 50, 0, 400, function(value)
+	section1:addSlider("Jump Power", 50, 0, 500, function(value)
 		sliderjump = value
 	end)
+	sliderspeed = 16
+	sliderjump = 50
 
 	section1:addToggle("Enabled", nil, function(value)
 		sliderpowa = value
@@ -2752,22 +2784,28 @@ local function ShindoBossBattle()
 		game.Players.LocalPlayer.Character:BreakJoints()
 	end)
 
-	section2:addButton("Enable Infinite Jump",function()
-		getgenv().dc = false
-		local infjump
-		infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
-			if dc then infjump:Disconnect() return end
-			game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
-		end)
-		notify("Enabled Infinute Jump")
+	section2:addButton("Ctrl + Click TP",function()
+		CTRLCLICKTP()
+		notify("Press Ctrl + Click to Teleport")
 	end)
 
-	section2:addButton("Disable Infinite Jump",function()
-		getgenv().dc = true
-		notify("Disabled Infinite Jump")
+	local infjumptoggle = false
+	section2:addToggle("Infinite Jump",false,function()
+		infjumptoggle = not infjumptoggle
+		notify("Infinite Jump: "..tostring(infjumptoggle),true)
+		if infjumptoggle then
+			getgenv().dc = false
+			local infjump
+			infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
+				if dc then infjump:Disconnect() return end
+				game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
+			end)
+		else
+			getgenv().dc = true
+		end
 	end)
-
-	section2:addSlider("Fly Speed", 101, 0, 500, function(value)
+	
+	section2:addSlider("Fly Speed", 101, 0, 999, function(value)
 		sliderfly = value
 	end)
 	sliderfly = 101
@@ -2817,7 +2855,7 @@ local function ShindoBossBattle()
 					bv.velocity = Vector3.new(0,0.1,0)
 				end 
 				bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
-			until not flying 
+			until not flying or not Pfly
 			ctrl = {f = 0, b = 0, l = 0, r = 0} 
 			lastctrl = {f = 0, b = 0, l = 0, r = 0} 
 			speed = 0 
@@ -2864,6 +2902,7 @@ local function ShindoBossBattle()
 	local page2 = NoobieDoge:addPage("Misc", 5012544693)
 	local section1 = page2:addSection("Game Functions")
 	local section2 = page2:addSection("Customs")
+	local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
 
 	section1:addButton("SuperHuman",function()
 		SUPERHUMAN()
@@ -3267,6 +3306,7 @@ local function ShindoBossBattle()
 			wait()
 			sliderpowa = false
 			Pfly = false
+			getgenv().dc = true
 			keel = false
 			SpamGOBRRRRR = false 
 			ClickRATATA = false
@@ -3439,12 +3479,14 @@ local function ShindoEventBoss()
 	local section1 = page1:addSection("Walk Speed & Jump Power")
 	local section2 = page1:addSection("Other Functions")
 
-	section1:addSlider("Walk Speed", 16, 0, 400, function(value)
+	section1:addSlider("Walk Speed", 16, 0, 500, function(value)
 		sliderspeed = value
 	end)
-	section1:addSlider("Jump Power", 50, 0, 400, function(value)
+	section1:addSlider("Jump Power", 50, 0, 500, function(value)
 		sliderjump = value
 	end)
+	sliderspeed = 16
+	sliderjump = 50
 
 	section1:addToggle("Enabled", nil, function(value)
 		sliderpowa = value
@@ -3464,22 +3506,28 @@ local function ShindoEventBoss()
 		game.Players.LocalPlayer.Character:BreakJoints()
 	end)
 
-	section2:addButton("Enable Infinite Jump",function()
-		getgenv().dc = false
-		local infjump
-		infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
-			if dc then infjump:Disconnect() return end
-			game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
-		end)
-		notify("Enabled Infinute Jump")
+	section2:addButton("Ctrl + Click TP",function()
+		CTRLCLICKTP()
+		notify("Press Ctrl + Click to Teleport")
 	end)
 
-	section2:addButton("Disable Infinite Jump",function()
-		getgenv().dc = true
-		notify("Disabled Infinite Jump")
+	local infjumptoggle = false
+	section2:addToggle("Infinite Jump",false,function()
+		infjumptoggle = not infjumptoggle
+		notify("Infinite Jump: "..tostring(infjumptoggle),true)
+		if infjumptoggle then
+			getgenv().dc = false
+			local infjump
+			infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
+				if dc then infjump:Disconnect() return end
+				game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
+			end)
+		else
+			getgenv().dc = true
+		end
 	end)
-
-	section2:addSlider("Fly Speed", 101, 0, 500, function(value)
+	
+	section2:addSlider("Fly Speed", 101, 0, 999, function(value)
 		sliderfly = value
 	end)
 	sliderfly = 101
@@ -3529,7 +3577,7 @@ local function ShindoEventBoss()
 					bv.velocity = Vector3.new(0,0.1,0)
 				end 
 				bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
-			until not flying 
+			until not flying or not Pfly
 			ctrl = {f = 0, b = 0, l = 0, r = 0} 
 			lastctrl = {f = 0, b = 0, l = 0, r = 0} 
 			speed = 0 
@@ -3606,8 +3654,8 @@ local function ShindoEventBoss()
 	end)
 	game:GetService('RunService').Stepped:connect(function()
 		if trackthatguy == true then
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame * CFrame.new(0, 5, 10)
-			game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game.Players[T].Character.HumanoidRootPart.Position)
+			player.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame * CFrame.new(0, 5, 10)
+			game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game.Players[Target].Character.HumanoidRootPart.Position)
 		end
 	end)
 
@@ -3615,6 +3663,7 @@ local function ShindoEventBoss()
 	local page2 = NoobieDoge:addPage("Misc", 5012544693)
 	local section1 = page2:addSection("Game Functions")
 	local section2 = page2:addSection("Customs")
+	local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
 
 	section1:addButton("SuperHuman",function()
 		SUPERHUMAN()
@@ -4261,6 +4310,7 @@ local function ShindoEventBoss()
 			sliderpowa = false
 			Pfly = false
 			trackthatguy = false
+			getgenv().dc = true
 			keel = false
 			SpamGOBRRRRR = false 
 			SpamOnlyInMissions = false
@@ -4442,12 +4492,14 @@ local function ShindoMain()
 	local section1 = page1:addSection("Walk Speed & Jump Power")
 	local section2 = page1:addSection("Other Functions")
 
-	section1:addSlider("Walk Speed", 16, 0, 400, function(value)
+	section1:addSlider("Walk Speed", 16, 0, 500, function(value)
 		sliderspeed = value
 	end)
-	section1:addSlider("Jump Power", 50, 0, 400, function(value)
+	section1:addSlider("Jump Power", 50, 0, 500, function(value)
 		sliderjump = value
 	end)
+	sliderspeed = 16
+	sliderjump = 50
 
 	section1:addToggle("Enabled", nil, function(value)
 		sliderpowa = value
@@ -4467,22 +4519,28 @@ local function ShindoMain()
 		game.Players.LocalPlayer.Character:BreakJoints()
 	end)
 
-	section2:addButton("Enable Infinite Jump",function()
-		getgenv().dc = false
-		local infjump
-		infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
-			if dc then infjump:Disconnect() return end
-			game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
-		end)
-		notify("Enabled Infinute Jump")
+	section2:addButton("Ctrl + Click TP",function()
+		CTRLCLICKTP()
+		notify("Press Ctrl + Click to Teleport")
 	end)
 
-	section2:addButton("Disable Infinite Jump",function()
-		getgenv().dc = true
-		notify("Disabled Infinite Jump")
+	local infjumptoggle = false
+	section2:addToggle("Infinite Jump",false,function()
+		infjumptoggle = not infjumptoggle
+		notify("Infinite Jump: "..tostring(infjumptoggle),true)
+		if infjumptoggle then
+			getgenv().dc = false
+			local infjump
+			infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
+				if dc then infjump:Disconnect() return end
+				game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
+			end)
+		else
+			getgenv().dc = true
+		end
 	end)
-
-	section2:addSlider("Fly Speed", 101, 0, 500, function(value)
+	
+	section2:addSlider("Fly Speed", 101, 0, 999, function(value)
 		sliderfly = value
 	end)
 	sliderfly = 101
@@ -4532,7 +4590,7 @@ local function ShindoMain()
 					bv.velocity = Vector3.new(0,0.1,0)
 				end 
 				bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
-			until not flying 
+			until not flying or not Pfly
 			ctrl = {f = 0, b = 0, l = 0, r = 0} 
 			lastctrl = {f = 0, b = 0, l = 0, r = 0} 
 			speed = 0 
@@ -4609,7 +4667,7 @@ local function ShindoMain()
 	end)
 	game:GetService('RunService').Stepped:connect(function()
 		if trackthatguy == true then
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame * CFrame.new(0, 5, 10)
+			player.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame * CFrame.new(0, 5, 10)
 			game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game.Players[Target].Character.HumanoidRootPart.Position)
 		end
 	end)
@@ -4619,6 +4677,7 @@ local function ShindoMain()
 	local section1 = page2:addSection("Game Functions")
 	local section2 = page2:addSection("Customs")
 	local section3 = page2:addSection("Kenjutsu Spin")
+	local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
 
 	section1:addButton("SuperHuman",function()
 		SUPERHUMAN()
@@ -6744,6 +6803,149 @@ local function ShindoMain()
 		section1:addButton("DES Exams (X)",function()
 			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(21203.713, 335, -13461.057))
 		end)
+	elseif game.PlaceId == 5451398863 then
+		section1:addButton("In Front of The Bridge 1",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(20645, 762, -13250))
+		end)
+		section1:addButton("In Front of The Bridge 2",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(20645, 762, -11050))
+		end)
+
+		section1:addButton("On The Bridge 1",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(20645, 762, -12945))
+		end)
+		section1:addButton("On The Bridge 2",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(20645, 762, -12250))
+		end)
+		section1:addButton("On The Bridge 3",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(20645, 762, -11345))
+		end)
+		section1:addButton("On The Bridge 4",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(20645, 729, -12945))
+		end)
+		section1:addButton("On The Bridge 5",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(20645, 729, -12250))
+		end)
+		section1:addButton("On The Bridge 6",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(20645, 729, -11345))
+		end)
+		section1:addButton("Under The Bridge 1",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(20645, 665, -11300))
+		end)
+		section1:addButton("Under The Bridge 2",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(20645, 656, -12250))
+		end)
+		section1:addButton("Under The Bridge 3",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(20645, 665, -13000))
+		end)
+
+		section1:addButton("Houses",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(20650, 767, -13645))
+		end)
+
+		section1:addButton("Island 1",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(20160, 779, -12000))
+		end)
+		section1:addButton("Island 2",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(21053, 761, -11645))
+		end)
+	elseif game.PlaceId == 5451401540 then
+		section1:addButton("Statue 1",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(19140, 1005, -11073))
+		end)
+		section1:addButton("Statue 2",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(18854, 1006, -11070))
+		end)
+
+		section1:addButton("Under the Waterfall",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(18980, 631, -11065))
+		end)
+
+		section1:addButton("Flat Area 1",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(18170, 643, -13270))
+		end)
+		section1:addButton("Flat Area 2",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(19365, 644, -12890))
+		end)
+		section1:addButton("Flat Area 3",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(18975, 684, -11790))
+		end)
+
+		section1:addButton("Water Area 1",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(19290, 812, -10565))
+		end)
+		section1:addButton("Water Area 2",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(18220, 812, -11125))
+		end)
+		section1:addButton("Water Area 3",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(18865, 631, -13410))
+		end)
+		section1:addButton("Water Area 4",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(18620, 631, -12750))
+		end)
+	elseif game.PlaceId == 7923764447 then
+		section1:addButton("Jejunes Gate 1",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(20390, 627, -11428))
+		end)
+		section1:addButton("Jejunes Gate 2",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(20448, 627, -11037))
+		end)
+		section1:addButton("Jejunes Gate 3",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(20950, 628, -10785))
+		end)
+
+		section1:addButton("Kage Office",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(21385, 857, -11625))
+		end)
+		section1:addButton("The Top of Kage Office",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(21380, 1141, -11623))
+		end)
+
+		section1:addButton("Academy Rooftop",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(21406, 699, -10970))
+		end)
+
+		section1:addButton("Colosseum",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(20920, 679, -11112))
+		end)
+
+		section1:addButton("Tunnel",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(19805, 627, -11930))
+		end)
+	elseif game.PlaceId == 6602103757 then
+		section1:addButton("Pond 1",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(21010, 649, -13075))
+		end)
+		section1:addButton("Pond 2",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(20470, 649, -13540))
+		end)
+		section1:addButton("Pond 3",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(21200, 649, -13667))
+		end)
+	elseif game.PlaceId == 5255237254 then
+		section1:addButton("Bridge 1",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(20345, 661, -12660))
+		end)
+		section1:addButton("Bridge 2",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(20165, 691, -11050))
+		end)
+
+		section1:addButton("Water Pond",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(21010, 670, -10800))
+		end)
+
+		section1:addButton("Oil Pond 1",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(20573, 651, -12328))
+		end)
+		section1:addButton("Oil Pond 2",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(18768, 651, -10870))
+		end)
+
+		section1:addButton("Flat Area Outside the Map",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(21565, 627, -11660))
+		end)
+	elseif game.PlaceId == 5824792748 then
+
 	end
 
 	section1:addDropdown("Boss Missions Location",allbosslist,function(B1)
@@ -6916,6 +7118,7 @@ local function ShindoMain()
 			wait()
 			sliderpowa = false
 			Pfly = false
+			getgenv().dc = true
 			trackthatguy = false
 			keel = false
 			SpamGOBRRRRR = false 
