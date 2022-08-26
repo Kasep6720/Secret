@@ -211,6 +211,7 @@ local function LumberTycoon2()
 
 	section2:addButton("Ctrl + Click TP",function()
 		CTRLCLICKTP()
+		notify("Press Ctrl + Click to Teleport")
 	end)
 
 	local infjumptoggle = false
@@ -232,8 +233,8 @@ local function LumberTycoon2()
 	end)
 
 	noclip = false
-	section2:addToggle("No Clip",false,function()
-		notify("No Clip: "..tostring(noclip),true)
+	section2:addToggle("No Clip",false,function(noclip1)
+		notify("No Clip: "..tostring(noclip1),true)
 		noclip = not noclip
 		game:GetService('RunService').Stepped:connect(function()
 			if noclip then
