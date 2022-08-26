@@ -34,6 +34,28 @@ for i,v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.ShopGui.MainF
 		table.insert(items, v1.Name)
 	end
 end
+function CTRLCLICKTP()
+	local UIS = game:GetService("UserInputService")
+	local Player = game.Players.LocalPlayer
+	local Mouse = Player:GetMouse()
+	
+	function GetCharacter()
+	return game.Players.LocalPlayer.Character
+	end
+	
+	function Teleport(pos)
+		local Char = GetCharacter()
+		if Char then
+			Char:MoveTo(pos)
+		end
+	end
+	
+	UIS.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 and UIS:IsKeyDown(Enum.KeyCode.LeftControl) then
+			Teleport(Mouse.Hit.p)
+		end
+	end)
+end
 function UPPERFORMANCE()
 	local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
 	local g = game
@@ -135,7 +157,7 @@ end
 local function BABFT()
 
 	--DogeHub V2 GUI
-	local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20page%20format%20gui%20(BABFT)"))()
+	local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20page%20format%20gui"))()
 	local NoobieDoge = library.new("DogeHub V2", 5013109572)
 
 	-- themes
@@ -180,19 +202,27 @@ local function BABFT()
 		game.Players.LocalPlayer.Character:BreakJoints()
 	end)
 
-	section2:addButton("Enable Infinite Jump",function()
-		getgenv().dc = false
-		local infjump
-		infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
-			if dc then infjump:Disconnect() return end
-			game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
-		end)
-		notify("Enabled Infinute Jump")
+	section2:addButton("Ctrl + Click TP",function()
+		CTRLCLICKTP()
+		notify("Press Ctrl + Click to Teleport")
 	end)
 
-	section2:addButton("Disable Infinite Jump",function()
-		getgenv().dc = true
-		notify("Disabled Infinite Jump")
+	local infjumptoggle = false
+	section2:addToggle("Infinite Jump",false,function()
+		infjumptoggle = not infjumptoggle
+		notify("Infinite Jump: "..tostring(infjumptoggle),true)
+		game:GetService('RunService').Stepped:connect(function()
+			if infjumptoggle then
+				getgenv().dc = false
+				local infjump
+				infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
+					if dc then infjump:Disconnect() return end
+					game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
+				end)
+			else
+				getgenv().dc = true
+			end
+		end)
 	end)
 
 	section2:addSlider("Fly Speed", 101, 0, 999, function(value)
@@ -245,7 +275,7 @@ local function BABFT()
 					bv.velocity = Vector3.new(0,0.1,0)
 				end 
 				bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
-			until not flying 
+			until not flying or not Pfly
 			ctrl = {f = 0, b = 0, l = 0, r = 0} 
 			lastctrl = {f = 0, b = 0, l = 0, r = 0} 
 			speed = 0 
@@ -322,7 +352,7 @@ local function BABFT()
 	end)
 	game:GetService('RunService').Stepped:connect(function()
 		if trackthatguy == true then
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame * CFrame.new(0, 5, 10)
+			player.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame * CFrame.new(0, 5, 10)
 			game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game.Players[Target].Character.HumanoidRootPart.Position)
 		end
 	end)
@@ -522,6 +552,10 @@ local function BABFT()
 			sliderpowa = false
 			Pfly = false
 			trackthatguy = false
+			sliderpowa = false
+			Pfly = false
+			trackthatguy = false
+			infjumptoggle = false
 			LETSFARM = false
 			ABI = false
 			wait()
