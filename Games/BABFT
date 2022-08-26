@@ -211,18 +211,16 @@ local function BABFT()
 	section2:addToggle("Infinite Jump",false,function()
 		infjumptoggle = not infjumptoggle
 		notify("Infinite Jump: "..tostring(infjumptoggle),true)
-		game:GetService('RunService').Stepped:connect(function()
-			if infjumptoggle then
-				getgenv().dc = false
-				local infjump
-				infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
-					if dc then infjump:Disconnect() return end
-					game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
-				end)
-			else
-				getgenv().dc = true
-			end
-		end)
+		if infjumptoggle then
+			getgenv().dc = false
+			local infjump
+			infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
+				if dc then infjump:Disconnect() return end
+				game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
+			end)
+		else
+			getgenv().dc = true
+		end
 	end)
 
 	section2:addSlider("Fly Speed", 101, 0, 999, function(value)
@@ -429,7 +427,6 @@ local function BABFT()
 		end
 		player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").BoatStages.NormalStages.TheEnd.GoldenChest.Trigger.CFrame
 
-
 		infarm = false
 	end
 
@@ -552,10 +549,7 @@ local function BABFT()
 			sliderpowa = false
 			Pfly = false
 			trackthatguy = false
-			sliderpowa = false
-			Pfly = false
-			trackthatguy = false
-			infjumptoggle = false
+			getgenv().dc = true
 			LETSFARM = false
 			ABI = false
 			wait()
