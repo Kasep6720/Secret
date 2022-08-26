@@ -239,15 +239,11 @@ local function LumberTycoon2()
 			if noclip then
 				game.Players.LocalPlayer.Character.Head.CanCollide = false
 				game.Players.LocalPlayer.Character.Torso.CanCollide = false
-				game.Players.LocalPlayer.Character["Left Arm"].CanCollide = false
-				game.Players.LocalPlayer.Character["Right Arm"].CanCollide = false
 				game.Players.LocalPlayer.Character["Left Leg"].CanCollide = false
 				game.Players.LocalPlayer.Character["Right Leg"].CanCollide = false
 			else
 				game.Players.LocalPlayer.Character.Head.CanCollide = true
 				game.Players.LocalPlayer.Character.Torso.CanCollide = true
-				game.Players.LocalPlayer.Character["Left Arm"].CanCollide = true
-				game.Players.LocalPlayer.Character["Right Arm"].CanCollide = true
 				game.Players.LocalPlayer.Character["Left Leg"].CanCollide = true
 				game.Players.LocalPlayer.Character["Right Leg"].CanCollide = true
 			end
@@ -304,7 +300,7 @@ local function LumberTycoon2()
 					bv.velocity = Vector3.new(0,0.1,0)
 				end 
 				bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
-			until not flying 
+			until not flying or not Pfly
 			ctrl = {f = 0, b = 0, l = 0, r = 0} 
 			lastctrl = {f = 0, b = 0, l = 0, r = 0} 
 			speed = 0 
