@@ -2,4 +2,8 @@ if game.GameId == 1511883870 then
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/DogeHubV2/Games/ShindoLife"))()
 elseif game.GameId == 210851291 then
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/DogeHubV2/Games/BABFT"))()
+elseif game.GameId == 2471084 then
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/DogeHubV2/Games/LumberTycoon2"))()
+else
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/DogeHubV2/DogeHubV2UniversalScript"))()
 end
