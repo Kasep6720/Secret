@@ -6945,7 +6945,31 @@ local function ShindoMain()
 			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(21565, 627, -11660))
 		end)
 	elseif game.PlaceId == 5824792748 then
+		section1:addButton("Ryuji Cave Entrance ",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(18764, 916, -10865))
+		end)
 
+		section1:addButton("Ryuji Cave Laboratory",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(18900, 938, -10560))
+		end)
+
+		section1:addButton("Snake Sage Place",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(18982, 717, -10967))
+		end)
+
+		section1:addButton("Cobra Place",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(18780, 656, -11400))
+		end)
+
+		section1:addButton("Open Area 1",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(18745, 902, -11355))
+		end)
+		section1:addButton("Open Area 2",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(18725, 957, -10390))
+		end)
+		section1:addButton("Open Area 3",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(18737, 1040, -10670))
+		end)
 	end
 
 	section1:addDropdown("Boss Missions Location",allbosslist,function(B1)
