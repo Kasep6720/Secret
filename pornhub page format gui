@@ -2168,5 +2168,5 @@ do
 	end
 end
 
-print("dino was here :\)")
+print("DogeHub V2 GUI Inserted)")
 return library
