@@ -160,7 +160,7 @@ local function ZombieAttack()
 	}
 
 	-- first page
-	local page1 = NoobieDoge:addPage("Universal", 5012544693)
+	local page1 = NoobieDoge:addPage("Universal", 72012902)
 	local section1 = page1:addSection("Walk Speed & Jump Power")
 	local section2 = page1:addSection("Other Functions")
 
@@ -345,7 +345,7 @@ local function ZombieAttack()
 	end)
 
 	-- second page
-	local page2 = NoobieDoge:addPage("Game", 5012544693)
+	local page2 = NoobieDoge:addPage("Game", 72012902)
 	local section1 = page2:addSection("Auto Farm")
 	local section2 = page2:addSection("Other Functions")
 	
@@ -470,7 +470,7 @@ local function ZombieAttack()
 	end)
 
 	-- last page
-	local pagelast = NoobieDoge:addPage("Settings", 5012544693)
+	local pagelast = NoobieDoge:addPage("Settings", 72012902)
 	local settings = pagelast:addSection("Settings")
 	local colors = pagelast:addSection("Colors")
 	local credits = pagelast:addSection("Credits")
