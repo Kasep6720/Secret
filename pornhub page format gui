@@ -2168,5 +2168,5 @@ do
 	end
 end
 
-print("DogeHub V2 GUI Inserted)")
+print("DogeHub V2 GUI Inserted")
 return library
