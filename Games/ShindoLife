@@ -5806,7 +5806,7 @@ local function ShindoMain()
 		for i,v in pairs(workspace.missiongivers:GetChildren()) do
 			if v.Name == "" and v:FindFirstChild("Head") then
 				local TALK = v:FindFirstChild("Talk")
-				if (v:FindFirstChild("Head") and v.Head:FindFirstChild("givemission") and v.Head.givemission.Enabled and v.Head.givemission:FindFirstChild("color").Image == "http://www.roblox.com/asset/?id=5459241648") or v.Talk.typ.Value == "defeat" then
+				if v:FindFirstChild("Head") and v.Head:FindFirstChild("givemission") and v.Head.givemission.Enabled and v.Talk.typ.Value == "defeat" and v.Head.givemission:FindFirstChild("color").Image == "http://www.roblox.com/asset/?id=5459241648" then
 					if v:WaitForChild("Talk"):WaitForChild("mobname") then
 						local getmission = v:FindFirstChild("HumanoidRootPart")
 						local clienttalk = v:FindFirstChild("CLIENTTALK")
