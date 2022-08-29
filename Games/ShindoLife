@@ -632,6 +632,17 @@ local function ShindoInfSpin()
 		Autosave = bool
 	end)
 
+	if player.gamepasses:FindFirstChild("spinsbag") then
+		section4:addSlider("Auto Rejoin when spins lower than", 0, 0, 999, function(value)
+			resetspinswhenthisnumberreached = value
+		end)
+	else
+		section4:addSlider("Auto Rejoin when spins lower than", 0, 0, 499, function(value)
+			resetspinswhenthisnumberreached = value
+		end)
+	end
+	resetspinswhenthisnumberreached = 0
+
 	-- load
 	NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
 	
@@ -700,7 +711,7 @@ local function ShindoInfSpin()
 		if StartSpinElm1 == true then
 			local spins = game.Players.LocalPlayer.statz.spins.Value
 			game:GetService('RunService').Stepped:connect(function()
-				if spins > 0 then
+				if spins > resetspinswhenthisnumberreached then
 					spins = game.Players.LocalPlayer.statz.spins.Value
 					elmvalue1 = game.Players.LocalPlayer.statz.main.element1.Value
 					elmvalue2 = game.Players.LocalPlayer.statz.main.element2.Value
@@ -741,7 +752,7 @@ local function ShindoInfSpin()
 		if StartSpinElm2 == true then
 			local spins = game.Players.LocalPlayer.statz.spins.Value
 			game:GetService('RunService').Stepped:connect(function()
-				if spins > 0 then
+				if spins > resetspinswhenthisnumberreached then
 					spins = game.Players.LocalPlayer.statz.spins.Value
 					elmvalue1 = game.Players.LocalPlayer.statz.main.element1.Value
 					elmvalue2 = game.Players.LocalPlayer.statz.main.element2.Value
@@ -783,7 +794,7 @@ local function ShindoInfSpin()
 			if StartSpinElm3 == true then
 				local spins = game.Players.LocalPlayer.statz.spins.Value
 				game:GetService('RunService').Stepped:connect(function()
-					if spins > 0 then
+					if spins > resetspinswhenthisnumberreached then
 						spins = game.Players.LocalPlayer.statz.spins.Value
 						elmvalue1 = game.Players.LocalPlayer.statz.main.element1.Value
 						elmvalue2 = game.Players.LocalPlayer.statz.main.element2.Value
@@ -826,7 +837,7 @@ local function ShindoInfSpin()
 			if StartSpinElm4 == true then
 				local spins = game.Players.LocalPlayer.statz.spins.Value
 				game:GetService('RunService').Stepped:connect(function()
-					if spins > 0 then
+					if spins > resetspinswhenthisnumberreached then
 						spins = game.Players.LocalPlayer.statz.spins.Value
 						elmvalue1 = game.Players.LocalPlayer.statz.main.element1.Value
 						elmvalue2 = game.Players.LocalPlayer.statz.main.element2.Value
@@ -904,7 +915,7 @@ local function ShindoInfSpin()
 		if AutoSpinBL1 == true then
 			local spins = game.Players.LocalPlayer.statz.spins.Value
 			game:GetService('RunService').Stepped:connect(function()
-				if spins > 0 then
+				if spins > resetspinswhenthisnumberreached then
 					spins = game.Players.LocalPlayer.statz.spins.Value
 					kgvalue1 = game.Players.LocalPlayer.statz.main.kg1.Value
 					kgvalue2 = game.Players.LocalPlayer.statz.main.kg2.Value
@@ -945,7 +956,7 @@ local function ShindoInfSpin()
 		if AutoSpinBL2 == true then
 			local spins = game.Players.LocalPlayer.statz.spins.Value
 			game:GetService('RunService').Stepped:connect(function()
-				if spins > 0 then
+				if spins > resetspinswhenthisnumberreached then
 					spins = game.Players.LocalPlayer.statz.spins.Value
 					kgvalue1 = game.Players.LocalPlayer.statz.main.kg1.Value
 					kgvalue2 = game.Players.LocalPlayer.statz.main.kg2.Value
@@ -987,7 +998,7 @@ local function ShindoInfSpin()
 			if AutoSpinBL3 == true then
 				local spins = game.Players.LocalPlayer.statz.spins.Value
 				game:GetService('RunService').Stepped:connect(function()
-					if spins > 0 then
+					if spins > resetspinswhenthisnumberreached then
 						spins = game.Players.LocalPlayer.statz.spins.Value
 						kgvalue1 = game.Players.LocalPlayer.statz.main.kg1.Value
 						kgvalue2 = game.Players.LocalPlayer.statz.main.kg2.Value
@@ -1030,7 +1041,7 @@ local function ShindoInfSpin()
 			if AutoSpinBL4 == true then
 				local spins = game.Players.LocalPlayer.statz.spins.Value
 				game:GetService('RunService').Stepped:connect(function()
-					if spins > 0 then
+					if spins > resetspinswhenthisnumberreached then
 						spins = game.Players.LocalPlayer.statz.spins.Value
 						kgvalue1 = game.Players.LocalPlayer.statz.main.kg1.Value
 						kgvalue2 = game.Players.LocalPlayer.statz.main.kg2.Value
@@ -1114,7 +1125,7 @@ local function ShindoInfSpin()
 			if StartSpinKen == true then
 				local spins = game.Players.LocalPlayer.statz.spins.Value
 				game:GetService('RunService').Stepped:connect(function()
-					if spins > 9 then
+					if spins > resetspinswhenthisnumberreached+9 then
 						spins = game.Players.LocalPlayer.statz.spins.Value
 						kenvalue = game.Players.LocalPlayer.statz.breathingstyle.Value
 						kenvalue2 = game.Players.LocalPlayer.statz.breathingstyle2.Value
@@ -1154,7 +1165,7 @@ local function ShindoInfSpin()
 			if StartSpinKen2 == true then
 				local spins = game.Players.LocalPlayer.statz.spins.Value
 				game:GetService('RunService').Stepped:connect(function()
-					if spins > 9 then
+					if spins > resetspinswhenthisnumberreached+9 then
 						spins = game.Players.LocalPlayer.statz.spins.Value
 						kenvalue = game.Players.LocalPlayer.statz.breathingstyle.Value
 						kenvalue2 = game.Players.LocalPlayer.statz.breathingstyle2.Value
@@ -1216,7 +1227,7 @@ local function ShindoInfSpin()
 			if StartSpinKen == true then
 				local spins = game.Players.LocalPlayer.statz.spins.Value
 				game:GetService('RunService').Stepped:connect(function()
-					if spins > 0 then
+					if spins > resetspinswhenthisnumberreached+9 then
 						spins = game.Players.LocalPlayer.statz.spins.Value
 						kenvalue = game.Players.LocalPlayer.statz.breathingstyle.Value
 						if StartSpinKen == true then
@@ -6145,7 +6156,7 @@ local function ShindoMain()
 	spawn(function()
 		while wait() do
 			if autofarm or boss or megaboss then
-				if mission.Visible == true then
+				if mission.Visible == true or mission.title.text == "[Objective: Mission]" then
 					FARM()
 					for i,v in pairs(workspace.npc:GetChildren()) do
 						if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
@@ -7147,6 +7158,7 @@ local function ShindoMain()
 			keel = false
 			SpamGOBRRRRR = false 
 			SpamOnlyInMissions = false
+			ClickRATATA = false
 			Q = false
 			E = false
 			R = false
