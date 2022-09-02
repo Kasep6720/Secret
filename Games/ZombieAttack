@@ -383,6 +383,11 @@ local function ZombieAttack()
 			_G.globalTarget = nil
 			game:GetService("RunService").RenderStepped:Connect(function()
 				if(_G.farm2==true)then
+					for i,gun in pairs(player.Backpack:GetChildren()) do
+						if gun:FindFirstChild("GunController") then
+							player.Character.Humanoid:EquipTool(gun)
+						end
+					end
 					local target = getNearest()
 					if(target~=nil)then
 						game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, target.Head.Position)
@@ -395,11 +400,6 @@ local function ZombieAttack()
 				while wait() do
 					Player.Character.HumanoidRootPart.Velocity = Vector3.new(0,0,0)
 					Player.Character.Torso.Velocity = Vector3.new(0,0,0)
-					for i,gun in pairs(player.Backpack:GetChildren()) do
-						if gun:FindFirstChild("GunController") then
-							player.Character.Humanoid:EquipTool(gun)
-						end
-					end
 				end
 			end)
 			while wait() do
