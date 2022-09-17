@@ -435,6 +435,25 @@ local function ZombieAttack()
 		end
 	end)
 
+	section2:addToggle("Auto Upgrade Guns",false,function(bool)
+		upgun = bool
+	end)
+
+	spawn(function()
+		while wait() do
+			if upgun then
+				for i,gotthisgun in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.MenuHolder.Main.ShopMain.ItemHolder.Primary:GetChildren()) do
+					if gotthisgun.owned.Visible == true then
+						print(gotthisgun.Name)
+						local args = {[1] = "UpgradeGun",[2] = gotthisgun.Name}
+						game:GetService("ReplicatedStorage").RemoteEventContainer.CommunicationF:InvokeServer(unpack(args))
+						wait()
+					end
+				end	
+			end
+		end
+	end)
+
 	local crateslist = {}
 	for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.MenuHolder.MainCrates.panels.Crates.ItemHolder:GetChildren()) do
 			table.insert(crateslist, v.Name)
