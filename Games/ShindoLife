@@ -389,40 +389,62 @@ local function ShindoInfSpin()
 	--Kenjutsu GUI
 	local player = game.Players.LocalPlayer
 	local ScreenGui4Ken = Instance.new("ScreenGui")
-	local FrameK = Instance.new("Frame")
-	local TextLabel = Instance.new("TextLabel")
+	local FrameK = Instance.new("ImageLabel")
+	local TextLabel4topFrame = Instance.new("ImageLabel")
+	local TextLabel4top = Instance.new("TextLabel")
 	local TextLabel2 = Instance.new("TextLabel")
+	local TextLabel3 = Instance.new("TextLabel")
 
 	ScreenGui4Ken.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
 	FrameK.Parent = ScreenGui4Ken
-	FrameK.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	FrameK.Name = "Main"
+	FrameK.BackgroundTransparency = 1
 	FrameK.Position = UDim2.new(0.82, 0, 0.4, 0)
-	FrameK.Size = UDim2.new(0, 220, 0, 120)
+	FrameK.Size = UDim2.new(0, 220, 0, 125)
+	FrameK.Image = "rbxassetid://4641149554"
+	FrameK.ImageColor3 = Color3.fromRGB(24, 24, 24)
+	FrameK.ScaleType = Enum.ScaleType.Slice
+	FrameK.SliceCenter = Rect.new(4, 4, 296, 296)
 	FrameK.Active = true
 	FrameK.Draggable = true
 	FrameK.Visible = false
 
-	TextLabel.Parent = FrameK
-	TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
-	TextLabel.Size = UDim2.new(0, 220, 0, 30)
-	TextLabel.Font = Enum.Font.TitilliumWeb
-	TextLabel.Text = "Current Kenjutsu:"
-	TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
-	TextLabel.TextScaled = false
-	TextLabel.TextSize = 25.000
-	TextLabel.TextWrapped = true
+	TextLabel4topFrame.Parent = FrameK
+	TextLabel4topFrame.Name = "TopBar"
+	TextLabel4topFrame.BackgroundTransparency = 1
+	TextLabel4topFrame.ClipsDescendants = true
+	TextLabel4topFrame.Size = UDim2.new(1, 0, 0, 25)
+	TextLabel4topFrame.ZIndex = 2
+	TextLabel4topFrame.Image = "rbxassetid://4595286933"
+	TextLabel4topFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
+	TextLabel4topFrame.ScaleType = Enum.ScaleType.Slice
+	TextLabel4topFrame.SliceCenter = Rect.new(4, 4, 296, 296)
+	
+	TextLabel4top.Parent = FrameK
+	TextLabel4top.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+	TextLabel4top.Position = UDim2.new(0, 0, -0.15, 0)
+	TextLabel4top.BackgroundTransparency = 1
+	TextLabel4top.Size = UDim2.new(0, 220, 0, 60)
+	TextLabel4top.ZIndex = 3
+	TextLabel4top.Font = Enum.Font.TitilliumWeb
+	TextLabel4top.Text = "Current Kenjutsu"
+	TextLabel4top.TextColor3 = Color3.fromRGB(0, 0, 0)
+	TextLabel4top.TextScaled = false
+	TextLabel4top.TextSize = 24.000
+	TextLabel4top.TextWrapped = true
 
 	TextLabel2.Parent = FrameK
 	TextLabel2.BackgroundColor3 = Color3.fromRGB(41, 41, 41)
+	TextLabel2.ZIndex = 2
 	if game:GetService("Players").LocalPlayer.statz.unlocked:FindFirstChild("kenjutsuslot2") then
-		TextLabel2.Size = UDim2.new(0, 220, 0, 45)
+		TextLabel2.Size = UDim2.new(0, 214, 0, 45)
 	else
-		TextLabel2.Size = UDim2.new(0, 220, 0, 90)
+		TextLabel2.Size = UDim2.new(0, 214, 0, 90)
 	end
-	TextLabel2.Position = UDim2.new(0, 0, 0.25, 0)
+	TextLabel2.Position = UDim2.new(0.01, 0, 0.22, 0)
 	TextLabel2.Font = Enum.Font.TitilliumWeb
-	TextLabel2.Text = "Kenjutsu Slot 1:" .. " " .. game.Players.LocalPlayer.statz.breathingstyle.Value
+	TextLabel2.Text = "Kenjutsu Slot 1: " .. game.Players.LocalPlayer.statz.breathingstyle.Value
 	TextLabel2.TextColor3 = Color3.fromRGB(999,999,999)
 	TextLabel2.TextScaled = true
 	TextLabel2.TextSize = 25.000
@@ -432,10 +454,11 @@ local function ShindoInfSpin()
 		local TextLabel3 = Instance.new("TextLabel")
 		TextLabel3.Parent = FrameK
 		TextLabel3.BackgroundColor3 = Color3.fromRGB(41, 41, 41)
-		TextLabel3.Size = UDim2.new(0, 220, 0, 45)
-		TextLabel3.Position = UDim2.new(0, 0, 0.615, 0)
+		TextLabel3.ZIndex = 2
+		TextLabel3.Size = UDim2.new(0, 214, 0, 45)
+		TextLabel3.Position = UDim2.new(0.01, 0, 0.6, 0)
 		TextLabel3.Font = Enum.Font.TitilliumWeb
-		TextLabel3.Text = "Kenjutsu Slot 2:" .. " " .. game.Players.LocalPlayer.statz.breathingstyle2.Value
+		TextLabel3.Text = "Kenjutsu Slot 2: " .. game.Players.LocalPlayer.statz.breathingstyle2.Value
 		TextLabel3.TextColor3 = Color3.fromRGB(999,999,999)
 		TextLabel3.TextScaled = true
 		TextLabel3.TextSize = 25.000
@@ -473,32 +496,64 @@ local function ShindoInfSpin()
 	section1:addButton("Instructions",function()
 		local player = game.Players.LocalPlayer
 		local ScreenGuiK = Instance.new("ScreenGui")
-		local FrameK = Instance.new("Frame")
+		local FrameK = Instance.new("ImageLabel")
+		local TextLabel4topFrame = Instance.new("ImageLabel")
+		local TextLabel4top = Instance.new("TextLabel")
 		local ScrollingFrame = Instance.new("ScrollingFrame")
 		local TextLabel = Instance.new("TextLabel")
-		local TextButton = Instance.new("TextButton")
+		local TextButton = Instance.new("ImageButton")
+		local TextButtonText = Instance.new("TextButton")
+		local TextButton_2 = Instance.new("ImageButton")
+		local TextButton_2Text = Instance.new("TextButton")
 
 		ScreenGuiK.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
 		FrameK.Parent = ScreenGuiK
-		FrameK.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+		FrameK.Name = "Main"
+		FrameK.BackgroundTransparency = 1
 		FrameK.Position = UDim2.new(0.005, 0, 0.7, 0)
-		FrameK.Size = UDim2.new(0, 200, 0, 180)
-		FrameK.Active = true
-		FrameK.Draggable = true
+		FrameK.Size = UDim2.new(0, 220, 0, 180)
+		FrameK.Image = "rbxassetid://4641149554"
+		FrameK.ImageColor3 = Color3.fromRGB(24, 24, 24)
+		FrameK.ScaleType = Enum.ScaleType.Slice
+		FrameK.SliceCenter = Rect.new(4, 4, 296, 296)
+
+		TextLabel4topFrame.Parent = FrameK
+		TextLabel4topFrame.Name = "TopBar"
+		TextLabel4topFrame.BackgroundTransparency = 1
+		TextLabel4topFrame.ClipsDescendants = true
+		TextLabel4topFrame.Size = UDim2.new(1, 0, 0, 25)
+		TextLabel4topFrame.ZIndex = 2
+		TextLabel4topFrame.Image = "rbxassetid://4595286933"
+		TextLabel4topFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabel4topFrame.ScaleType = Enum.ScaleType.Slice
+		TextLabel4topFrame.SliceCenter = Rect.new(4, 4, 296, 296)
+		
+		TextLabel4top.Parent = FrameK
+		TextLabel4top.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabel4top.Position = UDim2.new(0, 0, -0.1, 0)
+		TextLabel4top.BackgroundTransparency = 1
+		TextLabel4top.Size = UDim2.new(0, 220, 0, 60)
+		TextLabel4top.ZIndex = 3
+		TextLabel4top.Font = Enum.Font.TitilliumWeb
+		TextLabel4top.Text = "Instructions"
+		TextLabel4top.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabel4top.TextScaled = false
+		TextLabel4top.TextSize = 20.000
+		TextLabel4top.TextWrapped = true
 
 		ScrollingFrame.Parent = FrameK
 		ScrollingFrame.BackgroundColor3 = Color3.new(0.27, 0.27, 0.27)
 		ScrollingFrame.BackgroundTransparency = 0
 		ScrollingFrame.BorderSizePixel = 0
-		ScrollingFrame.Position = UDim2.new(0.025, 0, 0.15, 0)
-		ScrollingFrame.Size = UDim2.new(0, 192, 0, 150)
-		ScrollingFrame.CanvasSize = UDim2.new(0, 0, 5, 0)
-		ScrollingFrame.ScrollBarThickness = 5
+		ScrollingFrame.Position = UDim2.new(0.025, 0, 0.16, 0)
+		ScrollingFrame.Size = UDim2.new(0, 210, 0, 145)
+		ScrollingFrame.CanvasSize = UDim2.new(0, 0, 3, 0)
+		ScrollingFrame.ScrollBarThickness = 4
 
 		TextLabel.Parent = ScrollingFrame
 		TextLabel.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
-		TextLabel.Size = UDim2.new(0, 190, 0, 900)
+		TextLabel.Size = UDim2.new(0, 208, 0, 900)
 		TextLabel.Font = Enum.Font.TitilliumWeb
 		TextLabel.Text = [[To use this inf spins script:
 
@@ -518,31 +573,45 @@ local function ShindoInfSpin()
 
 		8.Press Right Ctrl to show/hide GUI]]
 		TextLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
-		TextLabel.TextScaled = true
-		TextLabel.TextSize = 20.000
+		TextLabel.TextScaled = false
+		TextLabel.TextSize = 18.000
 		TextLabel.TextWrapped = true
 		TextLabel.TextXAlignment = Enum.TextXAlignment.Left
 		TextLabel.TextYAlignment = Enum.TextYAlignment.Top
 
 		TextButton.Parent = FrameK
-		TextButton.BackgroundColor3 = Color3.new(0.255, 0.163, 0.26)
+		TextButton.Name = "Button"
 		TextButton.BackgroundTransparency = 1
+		TextButton.Position = UDim2.new(0.90, 0, 0.025, 0)
 		TextButton.BorderSizePixel = 0
-		TextButton.Position = UDim2.new(0.85, 0, 0, 0)
-		TextButton.Size = UDim2.new(0, 31, 0, 20)
-		TextButton.Font = Enum.Font.Cartoon
-		TextButton.Text = "X"
-		TextButton.TextColor3 = Color3.new(0, 0, 0)
-		TextButton.TextScaled = true
-		TextButton.TextSize = 14
-		TextButton.TextWrapped = true
-		TextButton.MouseButton1Click:connect(function()
+		TextButton.Size = UDim2.new(0, 15, 0, 15)
+		TextButton.ZIndex = 2
+		TextButton.Image = "rbxassetid://5028857472"
+		TextButton.ImageColor3 = Color3.fromRGB(41, 41, 41)
+		TextButton.ScaleType = Enum.ScaleType.Slice
+		TextButton.SliceCenter = Rect.new(2, 2, 298, 298)
+
+		TextButtonText.Parent = TextButton
+		TextButtonText.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextButtonText.BackgroundTransparency = 1
+		TextButtonText.ZIndex = 3
+		TextButtonText.Size = UDim2.new(0, 15, 0, 15)
+		TextButtonText.Font = Enum.Font.TitilliumWeb
+		TextButtonText.Text = "X"
+		TextButtonText.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButtonText.TextScaled = true
+		TextButtonText.TextSize = 40.000
+		TextButtonText.TextWrapped = true
+
+		function X()
 			for i,v in pairs(player.PlayerGui:GetChildren()) do
 				if v.Name == "ScreenGui" then
 					v:Destroy()
 				end
 			end
-		end)
+		end
+		TextButton.MouseButton1Click:connect(X)
+		TextButtonText.MouseButton1Click:connect(X)
 	end)
 
 	section2:addButton("RC Shop Changer",function()
@@ -558,38 +627,73 @@ local function ShindoInfSpin()
 	section3:addButton("Save Spins Data",function()
 		local player = game.Players.LocalPlayer
 		local ScreenGuiK = Instance.new("ScreenGui")
-		local FrameK = Instance.new("Frame")
+		local FrameK = Instance.new("ImageLabel")
+		local TextLabelFrame = Instance.new("ImageLabel")
 		local TextLabel = Instance.new("TextLabel")
-		local TextButton = Instance.new("TextButton")
-		local TextButton_2 = Instance.new("TextButton")
+		local TextButton = Instance.new("ImageButton")
+		local TextButtonText = Instance.new("TextButton")
+		local TextButton_2 = Instance.new("ImageButton")
+		local TextButton_2Text = Instance.new("TextButton")
 
 		ScreenGuiK.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
 		FrameK.Parent = ScreenGuiK
-		FrameK.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		FrameK.Name = "Main"
+		FrameK.BackgroundTransparency = 1
 		FrameK.Position = UDim2.new(0.005, 0, 0.7, 0)
-		FrameK.Size = UDim2.new(0, 200, 0, 120)
+		FrameK.Size = UDim2.new(0, 220, 0, 120)
+		FrameK.Image = "rbxassetid://4641149554"
+		FrameK.ImageColor3 = Color3.fromRGB(24, 24, 24)
+		FrameK.ScaleType = Enum.ScaleType.Slice
+		FrameK.SliceCenter = Rect.new(4, 4, 296, 296)
 
+		TextLabelFrame.Parent = FrameK
+		TextLabelFrame.Name = "TopBar"
+		TextLabelFrame.BackgroundTransparency = 1
+		TextLabelFrame.ClipsDescendants = true
+		TextLabelFrame.Size = UDim2.new(1, 0, 0, 38)
+		TextLabelFrame.ZIndex = 2
+		TextLabelFrame.Image = "rbxassetid://4595286933"
+		TextLabelFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabelFrame.ScaleType = Enum.ScaleType.Slice
+		TextLabelFrame.SliceCenter = Rect.new(4, 4, 296, 296)
+		
 		TextLabel.Parent = FrameK
 		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabel.Position = UDim2.new(0, 0, -0.1, 0)
+		TextLabel.BackgroundTransparency = 1
 		TextLabel.Size = UDim2.new(0, 220, 0, 60)
+		TextLabel.ZIndex = 3
 		TextLabel.Font = Enum.Font.TitilliumWeb
 		TextLabel.Text = "Are you sure you want to keep the current spins data?"
 		TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
 		TextLabel.TextScaled = false
-		TextLabel.TextSize = 25.000
+		TextLabel.TextSize = 20.000
 		TextLabel.TextWrapped = true
 
 		TextButton.Parent = FrameK
-		TextButton.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextButton.Name = "Button"
+		TextButton.BackgroundTransparency = 1
 		TextButton.Position = UDim2.new(0.55, 0, 0.500000006, 0)
-		TextButton.Size = UDim2.new(0, 110, 0, 60)
-		TextButton.Font = Enum.Font.TitilliumWeb
-		TextButton.Text = "Yes"
-		TextButton.TextColor3 = Color3.fromRGB(200, 200, 200)
-		TextButton.TextScaled = true
-		TextButton.TextSize = 40.000
-		TextButton.TextWrapped = true
+		TextButton.BorderSizePixel = 0
+		TextButton.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton.ZIndex = 2
+		TextButton.Image = "rbxassetid://5028857472"
+		TextButton.ImageColor3 = Color3.fromRGB(41, 41, 41)
+		TextButton.ScaleType = Enum.ScaleType.Slice
+		TextButton.SliceCenter = Rect.new(2, 2, 298, 298)
+
+		TextButtonText.Parent = TextButton
+		TextButtonText.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextButtonText.BackgroundTransparency = 1
+		TextButtonText.ZIndex = 3
+		TextButtonText.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButtonText.Font = Enum.Font.TitilliumWeb
+		TextButtonText.Text = "Yes"
+		TextButtonText.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButtonText.TextScaled = true
+		TextButtonText.TextSize = 40.000
+		TextButtonText.TextWrapped = true
 
 		function OKKeep()
 			for i,v in pairs(player.PlayerGui:GetChildren()) do
@@ -602,17 +706,31 @@ local function ShindoInfSpin()
 			datasavedandyoucanredeemcodes = true
 		end
 		TextButton.MouseButton1Click:connect(OKKeep)
+		TextButtonText.MouseButton1Click:connect(OKKeep)
 
 		TextButton_2.Parent = FrameK
-		TextButton_2.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
-		TextButton_2.Position = UDim2.new(0, 0, 0.500000006, 0)
-		TextButton_2.Size = UDim2.new(0, 110, 0, 60)
-		TextButton_2.Font = Enum.Font.TitilliumWeb
-		TextButton_2.Text = "No"
-		TextButton_2.TextColor3 = Color3.fromRGB(200, 200, 200)
-		TextButton_2.TextScaled = true
-		TextButton_2.TextSize = 40.000
-		TextButton_2.TextWrapped = true
+		TextButton_2.Name = "Button"
+		TextButton_2.BackgroundTransparency = 1
+		TextButton_2.Position = UDim2.new(0.075, 0, 0.500000006, 0)
+		TextButton_2.BorderSizePixel = 0
+		TextButton_2.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton_2.ZIndex = 2
+		TextButton_2.Image = "rbxassetid://5028857472"
+		TextButton_2.ImageColor3 = Color3.fromRGB(41, 41, 41)
+		TextButton_2.ScaleType = Enum.ScaleType.Slice
+		TextButton_2.SliceCenter = Rect.new(2, 2, 298, 298)
+
+		TextButton_2Text.Parent = TextButton_2
+		TextButton_2Text.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextButton_2Text.BackgroundTransparency = 1
+		TextButton_2Text.ZIndex = 3
+		TextButton_2Text.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton_2Text.Font = Enum.Font.TitilliumWeb
+		TextButton_2Text.Text = "No"
+		TextButton_2Text.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButton_2Text.TextScaled = true
+		TextButton_2Text.TextSize = 40.000
+		TextButton_2Text.TextWrapped = true
 
 		function cancelKeep()
 			for i,v in pairs(player.PlayerGui:GetChildren()) do
@@ -622,6 +740,7 @@ local function ShindoInfSpin()
 			end
 		end
 		TextButton_2.MouseButton1Click:connect(cancelKeep)	
+		TextButton_2Text.MouseButton1Click:connect(cancelKeep)		
 	end)
 
 	section4:addToggle("Auto Rejoin",true,function(bool)
@@ -5513,51 +5632,55 @@ local function ShindoMain()
 		DailyBoss = bool
 		notify("Daily Boss Quests: "..tostring(DailyBoss),true)
 	end)
-	game:GetService('RunService').Stepped:connect(function()
-		if DailyBoss then
-			for i,v in pairs(game.Players.LocalPlayer.statz.mission:GetChildren()) do
-				if v.Value == "fightboss" then
-					if game.Workspace:FindFirstChild("bossdropmission") then
-						for i,v0 in pairs(workspace.bossdropmission.missions:GetChildren()) do
-							if v0.Name == v.objective.Value and v0:FindFirstChild("missiongiver") then
-								if mission.Visible == true then
-									for i,v in pairs(workspace.npc:GetChildren()) do
-										if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and not v:FindFirstChild("fullsusanoo") and v.Head.CFrame.Y > -1000 then
-											repeat
-												pcall(function()
-													v.Humanoid.Health = 0
-													game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
-													player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 0, 10)
-													game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
-													game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
-													game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
-													wait(.000000000000001)
-													v.Humanoid.Health = 0
-												end)
-											until not v:FindFirstChild("Humanoid") or mission.Visible == false or not autooofarm or not v
+	spawn(function ()
+		while wait(.2) do
+			if DailyBoss then
+				for i,v in pairs(game.Players.LocalPlayer.statz.mission:GetChildren()) do
+					if v.Value == "fightboss" then
+						if game.Workspace:FindFirstChild("bossdropmission") then
+							for i,v0 in pairs(workspace.bossdropmission.missions:GetChildren()) do
+								if v0.Name == v.objective.Value and v0:FindFirstChild("missiongiver") then
+									if mission.Visible == true then
+										for i,v in pairs(workspace.npc:GetChildren()) do
+											if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and not v:FindFirstChild("fullsusanoo") and v.Head.CFrame.Y > -1000 then
+												repeat
+													pcall(function()
+														v.Humanoid.Health = 0
+														game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+														player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 0, 10)
+														game.Players.LocalPlayer.Character.combat.update:FireServer("key","e")
+														game.Players.LocalPlayer.Character.combat.update:FireServer("key","eend")
+														game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
+														wait(.000000000000001)
+														v.Humanoid.Health = 0
+													end)
+												until not v:FindFirstChild("Humanoid") or mission.Visible == false or not autooofarm or not v
+											end
+										end
+									else
+										for i,v1 in pairs(workspace.bossdropmission.missions:GetChildren()) do
+											if v1.Name == v.objective.Value and (v1.missiongiver.timer.time.time.Text == "00:00" or v1.missiongiver.timer.time.time.Text == "59:59") then
+												player.Character.HumanoidRootPart.CFrame=v1.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
+												local args = {[1] = game:GetService("Players").LocalPlayer}
+												v1.missiongiver.CLIENTTALK:FireServer(unpack(args))
+												wait()
+											end
 										end
 									end
 								else
-									for i,v1 in pairs(workspace.bossdropmission.missions:GetChildren()) do
-										if v1.Name == v.objective.Value and (v1.missiongiver.timer.time.time.Text == "00:00" or v1.missiongiver.timer.time.time.Text == "59:59") then
-											player.Character.HumanoidRootPart.CFrame=v1.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
-											local args = {[1] = game:GetService("Players").LocalPlayer}
-											v1.missiongiver.CLIENTTALK:FireServer(unpack(args))
-											wait()
-										end
-									end
+									section2:updateToggle("Daily Boss Quests",false)
+									notify("The boss doesn't spawn in this map!")
+									wait()
+									DailyBoss = false
 								end
-							else
-								notify("The boss doesn't spawn in this map!")
-								wait()
-								DailyBoss = false
 							end
-						end
-					else
-						notify("The boss doesn't spawn in this map!")
-						wait()
-						DailyBoss = false
-					end		
+						else
+							section2:updateToggle("Daily Boss Quests",false)
+							notify("The boss doesn't spawn in this map!")
+							wait()
+							DailyBoss = false
+						end		
+					end
 				end
 			end
 		end
@@ -5624,7 +5747,8 @@ local function ShindoMain()
 	local section2 = page6:addSection("Configurations")
 	local section3 = page6:addSection("Boss Farm Settings")
 	local section4 = page6:addSection("Beasts Farm Settings")
-	local section5 = page6:addSection("Auto Stats")
+	local section5 = page6:addSection("Auto Rank Up")
+	local section6 = page6:addSection("Auto Stats")
 
 	local autofarm
 	section1:addToggle("Auto Farm",false, function(bool)
@@ -5689,11 +5813,6 @@ local function ShindoMain()
 		end
 	end)
 
-	local RANKUPP
-	section1:addToggle("Auto Rank",false, function(bool)
-		RANKUPP = bool
-	end)
-
 	section2:addSlider("Auto Farm Height", 16, -500, 500, function(value)
 		AFHeight = value
 	end)
@@ -5722,7 +5841,10 @@ local function ShindoMain()
 
 	local specific_boss
 	section3:addToggle("Specific Boss",false, function(bool)
+		random_boss = false
 		specific_boss = bool
+		section3:updateToggle("Random Bosses")
+		notify("Specific Boss: "..tostring(specific_boss),true)
 	end)
 
 	local selected_boss
@@ -5734,13 +5856,19 @@ local function ShindoMain()
 
 	local random_boss
 	section3:addToggle("Random Bosses",true, function(bool)
+		specific_boss = false
 		random_boss = bool
+		section3:updateToggle("Specific Boss")
+		notify("Random Bosses: "..tostring(random_boss),true)
 	end)
 	random_boss = true
 
 	local specific_beast
 	section4:addToggle("Specific Beast",false, function(bool)
+		random_beasts = false
 		specific_beast = bool
+		section4:updateToggle("Random Beasts")
+		notify("Specific Beast: "..tostring(specific_beast),true)
 	end)
 
 	local selected_beast
@@ -5752,11 +5880,30 @@ local function ShindoMain()
 
 	local random_beasts
 	section4:addToggle("Random Beasts",true, function(bool)
+		specific_beast = false
 		random_beasts = bool
+		section4:updateToggle("Specific Beast")
+		notify("Random Beasts: "..tostring(random_beasts),true)
 	end)
 	random_beasts = true
 
-	section5:addToggle("Auto Chi",false, function(bool)
+	local RANKUPP
+	section5:addToggle("Auto Rank",false, function(bool)
+		RANKUPP = bool
+	end)
+
+	if player.gamepasses:FindFirstChild("spinsbag") then
+		section5:addSlider("Stop Auto Rank when spins reached", 1000, 50, 1000, function(value)
+			stopautorankwhenthisnumberreached = value
+		end)
+	else
+		section5:addSlider("Stop Auto Rank when spins reached", 500, 50, 500, function(value)
+			stopautorankwhenthisnumberreached = value
+		end)
+	end
+	stopautorankwhenthisnumberreached = 1000
+
+	section6:addToggle("Auto Chi",false, function(bool)
 		auchi = bool
 	end)
 	game:GetService('RunService').Stepped:connect(function()
@@ -5770,7 +5917,7 @@ local function ShindoMain()
 			wait(.25)
 		end
 	end)
-	section5:addToggle("Auto Nin",false, function(bool)
+	section6:addToggle("Auto Nin",false, function(bool)
 		aunin = bool
 	end)
 	game:GetService('RunService').Stepped:connect(function()
@@ -5784,7 +5931,7 @@ local function ShindoMain()
 			wait(.25)
 		end
 	end)
-	section5:addToggle("Auto Tai",false, function(bool)
+	section6:addToggle("Auto Tai",false, function(bool)
 		autai = bool
 	end)
 	game:GetService('RunService').Stepped:connect(function()
@@ -5798,7 +5945,7 @@ local function ShindoMain()
 			wait(.25)
 		end
 	end)
-	section5:addToggle("Auto Health",false, function(bool)
+	section6:addToggle("Auto Health",false, function(bool)
 		auhp = bool
 	end)
 	game:GetService('RunService').Stepped:connect(function()
@@ -6053,6 +6200,9 @@ local function ShindoMain()
 			autofarm = false
 			boss = false
 			megaboss = false
+			section1:updateToggle("Auto Farm",false)
+			section1:updateToggle("Boss Farm",false)
+			section1:updateToggle("Beasts Farm",false)
 		else
 			if LFM then
 				for i,v in pairs(workspace.npc:GetChildren()) do
@@ -6231,10 +6381,18 @@ local function ShindoMain()
 
 	spawn(function()
 		while wait() do
-			if RANKUPP and player.statz.lvl:FindFirstChild("lvl").Value == 1000 then
-				repeat wait()
-					game.Players.LocalPlayer.startevent:FireServer("rankup")
-				until player.statz.lvl:FindFirstChild("lvl").Value == 1 or not RANKUPP
+			if RANKUPP then
+				if game.Players.LocalPlayer.statz.spins.Value > (stopautorankwhenthisnumberreached - 1) then
+					RANKUPP = false
+					section5:updateToggle("Auto Rank", false)
+					notify("Spins amount has currently reached " .. stopautorankwhenthisnumberreached)
+				else
+					if player.statz.lvl:FindFirstChild("lvl").Value == 1000 then
+						repeat wait()
+							game.Players.LocalPlayer.startevent:FireServer("rankup")
+						until player.statz.lvl:FindFirstChild("lvl").Value == 1 or not RANKUPP
+					end
+				end
 			end
 		end
 	end)
