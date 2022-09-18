@@ -230,6 +230,18 @@ local function LumberTycoon2()
 		end
 	end)
 
+	player.CharacterAdded:Connect(function()
+		if infjumptoggle then
+			wait(1)
+			getgenv().dc = false
+			local infjump
+			infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
+				if dc then infjump:Disconnect() return end
+				game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
+			end)
+		end
+	end)
+	
 	local noclip = false
 	section2:addToggle("No Clip",false,function(noclip1)
 		notify("No Clip: "..tostring(noclip1),true)
