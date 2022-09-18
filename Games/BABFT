@@ -223,6 +223,18 @@ local function BABFT()
 		end
 	end)
 
+	player.CharacterAdded:Connect(function()
+		if infjumptoggle then
+			wait(1)
+			getgenv().dc = false
+			local infjump
+			infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
+				if dc then infjump:Disconnect() return end
+				game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
+			end)
+		end
+	end)
+
 	section2:addSlider("Fly Speed", 101, 0, 999, function(value)
 		sliderfly = value
 	end)
@@ -426,6 +438,7 @@ local function BABFT()
 			task.wait(0.5)
 		end
 		player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").BoatStages.NormalStages.TheEnd.GoldenChest.Trigger.CFrame
+
 
 		infarm = false
 	end
