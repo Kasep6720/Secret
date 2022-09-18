@@ -517,44 +517,77 @@ local function ZombieAttack()
 	end)
 
 	settings:addButton("Reset Script",function()
-
 		local player = game.Players.LocalPlayer
-		local ScreenGui = Instance.new("ScreenGui")
-		local Frame = Instance.new("Frame")
+		local ScreenGuiK = Instance.new("ScreenGui")
+		local Frame = Instance.new("ImageLabel")
+		local TextLabelFrame = Instance.new("ImageLabel")
 		local TextLabel = Instance.new("TextLabel")
-		local TextButton = Instance.new("TextButton")
-		local TextButton2 = Instance.new("TextButton")
+		local TextButton = Instance.new("ImageButton")
+		local TextButtonText = Instance.new("TextButton")
+		local TextButton_2 = Instance.new("ImageButton")
+		local TextButton_2Text = Instance.new("TextButton")
 
+		ScreenGuiK.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
-		ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-
-		Frame.Parent = ScreenGui
-		Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		Frame.Position = UDim2.new(0.66, 0, 0.20, 0)
+		Frame.Parent = ScreenGuiK
+		Frame.Name = "Main"
+		Frame.BackgroundTransparency = 1
+		Frame.Position = UDim2.new(0.66, 0, 0.055, 0)
 		Frame.Size = UDim2.new(0, 220, 0, 120)
+		Frame.Image = "rbxassetid://4641149554"
+		Frame.ImageColor3 = Color3.fromRGB(24, 24, 24)
+		Frame.ScaleType = Enum.ScaleType.Slice
+		Frame.SliceCenter = Rect.new(4, 4, 296, 296)
 		Frame.Active = true
 		Frame.Draggable = true
 
+		TextLabelFrame.Parent = Frame
+		TextLabelFrame.Name = "TopBar"
+		TextLabelFrame.BackgroundTransparency = 1
+		TextLabelFrame.ClipsDescendants = true
+		TextLabelFrame.Size = UDim2.new(1, 0, 0, 38)
+		TextLabelFrame.ZIndex = 2
+		TextLabelFrame.Image = "rbxassetid://4595286933"
+		TextLabelFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabelFrame.ScaleType = Enum.ScaleType.Slice
+		TextLabelFrame.SliceCenter = Rect.new(4, 4, 296, 296)
+		
 		TextLabel.Parent = Frame
 		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
-		TextLabel.Size = UDim2.new(0, 220, 0, 90)
+		TextLabel.Position = UDim2.new(0, 0, -0.1, 0)
+		TextLabel.BackgroundTransparency = 1
+		TextLabel.Size = UDim2.new(0, 220, 0, 60)
+		TextLabel.ZIndex = 3
 		TextLabel.Font = Enum.Font.TitilliumWeb
 		TextLabel.Text = "Are you sure that you want to reset script?"
 		TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
-		TextLabel.TextScaled = true
-		TextLabel.TextSize = 35.000
+		TextLabel.TextScaled = false
+		TextLabel.TextSize = 21.000
 		TextLabel.TextWrapped = true
 
 		TextButton.Parent = Frame
-		TextButton.BackgroundColor3 = Color3.fromRGB(41,41,41)
-		TextButton.Position = UDim2.new(0, 0, 0.750000006, 0)
-		TextButton.Size = UDim2.new(0, 110, 0, 60)
-		TextButton.Font = Enum.Font.TitilliumWeb
-		TextButton.Text = "Yes"
-		TextButton.TextColor3 = Color3.fromRGB(200, 200, 200)
-		TextButton.TextScaled = true
-		TextButton.TextSize = 40.000
-		TextButton.TextWrapped = true
+		TextButton.Name = "Button"
+		TextButton.BackgroundTransparency = 1
+		TextButton.Position = UDim2.new(0.075, 0, 0.500000006, 0)
+		TextButton.BorderSizePixel = 0
+		TextButton.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton.ZIndex = 2
+		TextButton.Image = "rbxassetid://5028857472"
+		TextButton.ImageColor3 = Color3.fromRGB(41, 41, 41)
+		TextButton.ScaleType = Enum.ScaleType.Slice
+		TextButton.SliceCenter = Rect.new(2, 2, 298, 298)
+
+		TextButtonText.Parent = TextButton
+		TextButtonText.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextButtonText.BackgroundTransparency = 1
+		TextButtonText.ZIndex = 3
+		TextButtonText.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButtonText.Font = Enum.Font.TitilliumWeb
+		TextButtonText.Text = "Yes"
+		TextButtonText.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButtonText.TextScaled = true
+		TextButtonText.TextSize = 40.000
+		TextButtonText.TextWrapped = true
 
 		function ResetYES()
 			for i,v in pairs(player.PlayerGui:GetChildren()) do
@@ -562,6 +595,7 @@ local function ZombieAttack()
 					v:Destroy()
 				end
 			end
+			wait()
 			wait()
 			sliderpowa = false
 			Pfly = false
@@ -582,17 +616,31 @@ local function ZombieAttack()
 			ZombieAttack()
 		end
 		TextButton.MouseButton1Click:connect(ResetYES)
+		TextButtonText.MouseButton1Click:connect(ResetYES)
 
-		TextButton2.Parent = Frame
-		TextButton2.BackgroundColor3 = Color3.fromRGB(41,41,41)
-		TextButton2.Position = UDim2.new(0.5, 0, 0.750000006, 0)
-		TextButton2.Size = UDim2.new(0, 110, 0, 60)
-		TextButton2.Font = Enum.Font.TitilliumWeb
-		TextButton2.Text = "No"
-		TextButton2.TextColor3 = Color3.fromRGB(200, 200, 200)
-		TextButton2.TextScaled = true
-		TextButton2.TextSize = 40.000
-		TextButton2.TextWrapped = true
+		TextButton_2.Parent = Frame
+		TextButton_2.Name = "Button"
+		TextButton_2.BackgroundTransparency = 1
+		TextButton_2.Position = UDim2.new(0.55, 0, 0.500000006, 0)
+		TextButton_2.BorderSizePixel = 0
+		TextButton_2.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton_2.ZIndex = 2
+		TextButton_2.Image = "rbxassetid://5028857472"
+		TextButton_2.ImageColor3 = Color3.fromRGB(41, 41, 41)
+		TextButton_2.ScaleType = Enum.ScaleType.Slice
+		TextButton_2.SliceCenter = Rect.new(2, 2, 298, 298)
+
+		TextButton_2Text.Parent = TextButton_2
+		TextButton_2Text.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextButton_2Text.BackgroundTransparency = 1
+		TextButton_2Text.ZIndex = 3
+		TextButton_2Text.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton_2Text.Font = Enum.Font.TitilliumWeb
+		TextButton_2Text.Text = "No"
+		TextButton_2Text.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButton_2Text.TextScaled = true
+		TextButton_2Text.TextSize = 40.000
+		TextButton_2Text.TextWrapped = true
 
 		function ResetNO()
 			for i,v in pairs(player.PlayerGui:GetChildren()) do
@@ -601,48 +649,84 @@ local function ZombieAttack()
 				end
 			end
 		end
-		TextButton2.MouseButton1Click:connect(ResetNO)
+		TextButton_2.MouseButton1Click:connect(ResetNO)	
+		TextButton_2Text.MouseButton1Click:connect(ResetNO)
 	end)
 
 	settings:addButton("Rejoin Server",function()
 		local player = game.Players.LocalPlayer
-		local ScreenGui = Instance.new("ScreenGui")
-		local Frame = Instance.new("Frame")
+		local ScreenGuiK = Instance.new("ScreenGui")
+		local Frame = Instance.new("ImageLabel")
+		local TextLabelFrame = Instance.new("ImageLabel")
 		local TextLabel = Instance.new("TextLabel")
-		local TextButton = Instance.new("TextButton")
-		local TextButton2 = Instance.new("TextButton")
+		local TextButton = Instance.new("ImageButton")
+		local TextButtonText = Instance.new("TextButton")
+		local TextButton_2 = Instance.new("ImageButton")
+		local TextButton_2Text = Instance.new("TextButton")
 
-		ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+		ScreenGuiK.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
-		Frame.Parent = ScreenGui
-		Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		Frame.Position = UDim2.new(0.66, 0, 0.20, 0)
-		Frame.Size = UDim2.new(0, 200, 0, 150)
+		Frame.Parent = ScreenGuiK
+		Frame.Name = "Main"
+		Frame.BackgroundTransparency = 1
+		Frame.Position = UDim2.new(0.66, 0, 0.055, 0)
+		Frame.Size = UDim2.new(0, 220, 0, 120)
+		Frame.Image = "rbxassetid://4641149554"
+		Frame.ImageColor3 = Color3.fromRGB(24, 24, 24)
+		Frame.ScaleType = Enum.ScaleType.Slice
+		Frame.SliceCenter = Rect.new(4, 4, 296, 296)
 		Frame.Active = true
 		Frame.Draggable = true
 
+		TextLabelFrame.Parent = Frame
+		TextLabelFrame.Name = "TopBar"
+		TextLabelFrame.BackgroundTransparency = 1
+		TextLabelFrame.ClipsDescendants = true
+		TextLabelFrame.Size = UDim2.new(1, 0, 0, 38)
+		TextLabelFrame.ZIndex = 2
+		TextLabelFrame.Image = "rbxassetid://4595286933"
+		TextLabelFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabelFrame.ScaleType = Enum.ScaleType.Slice
+		TextLabelFrame.SliceCenter = Rect.new(4, 4, 296, 296)
+		
 		TextLabel.Parent = Frame
 		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
-		TextLabel.Size = UDim2.new(0, 200, 0, 90)
+		TextLabel.Position = UDim2.new(0, 0, -0.1, 0)
+		TextLabel.BackgroundTransparency = 1
+		TextLabel.Size = UDim2.new(0, 220, 0, 60)
+		TextLabel.ZIndex = 3
 		TextLabel.Font = Enum.Font.TitilliumWeb
 		TextLabel.Text = "Are you sure you want to rejoin server?"
 		TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
-		TextLabel.TextScaled = true
-		TextLabel.TextSize = 35.000
+		TextLabel.TextScaled = false
+		TextLabel.TextSize = 24.000
 		TextLabel.TextWrapped = true
 
 		TextButton.Parent = Frame
-		TextButton.BackgroundColor3 = Color3.fromRGB(41, 41, 41)
-		TextButton.Position = UDim2.new(0, 0, 0.600000006, 0)
-		TextButton.Size = UDim2.new(0, 100, 0, 60)
-		TextButton.Font = Enum.Font.TitilliumWeb
-		TextButton.Text = "Yes"
-		TextButton.TextColor3 = Color3.fromRGB(255,255,255)
-		TextButton.TextScaled = true
-		TextButton.TextSize = 40.000
-		TextButton.TextWrapped = true
+		TextButton.Name = "Button"
+		TextButton.BackgroundTransparency = 1
+		TextButton.Position = UDim2.new(0.075, 0, 0.500000006, 0)
+		TextButton.BorderSizePixel = 0
+		TextButton.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton.ZIndex = 2
+		TextButton.Image = "rbxassetid://5028857472"
+		TextButton.ImageColor3 = Color3.fromRGB(41, 41, 41)
+		TextButton.ScaleType = Enum.ScaleType.Slice
+		TextButton.SliceCenter = Rect.new(2, 2, 298, 298)
 
-		function rejoinyes()
+		TextButtonText.Parent = TextButton
+		TextButtonText.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextButtonText.BackgroundTransparency = 1
+		TextButtonText.ZIndex = 3
+		TextButtonText.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButtonText.Font = Enum.Font.TitilliumWeb
+		TextButtonText.Text = "Yes"
+		TextButtonText.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButtonText.TextScaled = true
+		TextButtonText.TextSize = 40.000
+		TextButtonText.TextWrapped = true
+
+		function RejoinYES()
 			for i,v in pairs(player.PlayerGui:GetChildren()) do
 				if v.Name == "ScreenGui" then
 					v:Destroy()
@@ -652,28 +736,42 @@ local function ZombieAttack()
 			local Player = game.Players.LocalPlayer
 			TS:Teleport(game.PlaceId, Player)
 		end
-		TextButton.MouseButton1Click:connect(rejoinyes)
+		TextButton.MouseButton1Click:connect(RejoinYES)
+		TextButtonText.MouseButton1Click:connect(RejoinYES)
 
-		TextButton2.Parent = Frame
-		TextButton2.BackgroundColor3 = Color3.fromRGB(41, 41, 41)
-		TextButton2.Position = UDim2.new(0.5, 0, 0.600000006, 0)
-		TextButton2.Size = UDim2.new(0, 100, 0, 60)
-		TextButton2.Font = Enum.Font.TitilliumWeb
-		TextButton2.Text = "No"
-		TextButton2.TextColor3 = Color3.fromRGB(255,255,255)
-		TextButton2.TextSize = 40.000
-		TextButton2.TextScaled = true
-		TextButton2.TextSize = 40.000
-		TextButton2.TextWrapped = true
+		TextButton_2.Parent = Frame
+		TextButton_2.Name = "Button"
+		TextButton_2.BackgroundTransparency = 1
+		TextButton_2.Position = UDim2.new(0.55, 0, 0.500000006, 0)
+		TextButton_2.BorderSizePixel = 0
+		TextButton_2.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton_2.ZIndex = 2
+		TextButton_2.Image = "rbxassetid://5028857472"
+		TextButton_2.ImageColor3 = Color3.fromRGB(41, 41, 41)
+		TextButton_2.ScaleType = Enum.ScaleType.Slice
+		TextButton_2.SliceCenter = Rect.new(2, 2, 298, 298)
 
-		function rejoinno()
+		TextButton_2Text.Parent = TextButton_2
+		TextButton_2Text.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextButton_2Text.BackgroundTransparency = 1
+		TextButton_2Text.ZIndex = 3
+		TextButton_2Text.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton_2Text.Font = Enum.Font.TitilliumWeb
+		TextButton_2Text.Text = "No"
+		TextButton_2Text.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButton_2Text.TextScaled = true
+		TextButton_2Text.TextSize = 40.000
+		TextButton_2Text.TextWrapped = true
+
+		function RejoinNO()
 			for i,v in pairs(player.PlayerGui:GetChildren()) do
 				if v.Name == "ScreenGui" then
 					v:Destroy()
 				end
 			end
 		end
-		TextButton2.MouseButton1Click:connect(rejoinno)
+		TextButton_2.MouseButton1Click:connect(RejoinNO)	
+		TextButton_2Text.MouseButton1Click:connect(RejoinNO)
 	end)
 
 	settings:addKeybind("Toggle Keybind", Enum.KeyCode.RightControl, function()
