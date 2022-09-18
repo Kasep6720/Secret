@@ -205,6 +205,7 @@ local function BABFT()
 	section2:addButton("Ctrl + Click TP",function()
 		CTRLCLICKTP()
 		notify("Press Ctrl + Click to Teleport")
+		section2:updateButton("Ctrl + Click TP","Ctrl + Click TP (Activated)")
 	end)
 
 	local infjumptoggle = false
@@ -367,6 +368,10 @@ local function BABFT()
 		end
 	end)
 
+	section2:addButton("Refesh Players List",function()
+		section2:updateDropdown("Track selected player","Track selected player",playerlist)
+	end)
+
 	-- second page
 	local page2 = NoobieDoge:addPage("Auto Farm", 6052531413)
 	local section1 = page2:addSection("Gold Farm")
@@ -510,6 +515,7 @@ local function BABFT()
 
 	settings:addButton("Upgrade Performance",function()
 		UPPERFORMANCE()
+		settings:updateButton("Upgrade Performance","Upgraded Performance")
 	end)
 
 	settings:addButton("Reset Script",function()
