@@ -465,7 +465,7 @@ local function Universal()
 			end
 			notify("Do not reset script too many times!")
 			wait(.1)
-			ZombieAttack()
+			Universal()
 		end
 		TextButton.MouseButton1Click:connect(ResetYES)
 		TextButtonText.MouseButton1Click:connect(ResetYES)
