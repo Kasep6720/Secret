@@ -194,6 +194,7 @@ local function ZombieAttack()
 	section2:addButton("Ctrl + Click TP",function()
 		CTRLCLICKTP()
 		notify("Press Ctrl + Click to Teleport")
+		section2:updateButton("Ctrl + Click TP","Ctrl + Click TP (Activated)")
 	end)
 
 	local infjumptoggle = false
@@ -356,6 +357,10 @@ local function ZombieAttack()
 		end
 	end)
 
+	section2:addButton("Refesh Players List",function()
+		section2:updateDropdown("Track selected player","Track selected player",playerlist)
+	end)
+
 	-- second page
 	local page2 = NoobieDoge:addPage("Game", 72012902)
 	local section1 = page2:addSection("Auto Farm")
@@ -508,6 +513,7 @@ local function ZombieAttack()
 
 	settings:addButton("Upgrade Performance",function()
 		UPPERFORMANCE()
+		settings:updateButton("Upgrade Performance","Upgraded Performance")
 	end)
 
 	settings:addButton("Reset Script",function()
