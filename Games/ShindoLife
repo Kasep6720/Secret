@@ -1386,6 +1386,7 @@ local function ShindoInfSpin()
 
 	settings:addButton("Upgrade Performance",function()
 		UPPERFORMANCE()
+		settings:updateButton("Upgrade Performance","Upgraded Performance")
 	end)
 
 	settings:addKeybind("Toggle Keybind", Enum.KeyCode.RightControl, function()
@@ -1968,10 +1969,14 @@ local function ShindoMyHome()
 
 	settings:addButton("Upgrade Performance",function()
 		UPPERFORMANCE()
+		settings:updateButton("Upgrade Performance","Upgraded Performance")
 	end)
 
 	settings:addButton("Remove Effects / Particles",function()
-		game:GetService("Players").LocalPlayer.PlayerScripts.EFFECTS:Destroy()
+		if game:GetService("Players").LocalPlayer.PlayerScripts:FindFirstChild("EFFECTS") and (game:GetService("Players").LocalPlayer.statz.sword.throwable.Value == "explosivetag" or game:GetService("Players").LocalPlayer.statz.sword.throwable.Value == "kunaibomb") then
+			game:GetService("Players").LocalPlayer.PlayerScripts.EFFECTS:Destroy()
+		end
+		settings:updateButton("Remove Effects / Particles","Removed Effects / Particles")
 	end)
 
 	settings:addButton("Reset Script",function()
@@ -2217,6 +2222,7 @@ local function ShindoDungeons()
 	section2:addButton("Ctrl + Click TP",function()
 		CTRLCLICKTP()
 		notify("Press Ctrl + Click to Teleport")
+		section2:updateButton("Ctrl + Click TP","Ctrl + Click TP (Activated)")
 	end)
 
 	local infjumptoggle = false
@@ -2672,10 +2678,14 @@ local function ShindoDungeons()
 
 	settings:addButton("Upgrade Performance",function()
 		UPPERFORMANCE()
+		settings:updateButton("Upgrade Performance","Upgraded Performance")
 	end)
 
 	settings:addButton("Remove Effects / Particles",function()
-		game:GetService("Players").LocalPlayer.PlayerScripts.EFFECTS:Destroy()
+		if game:GetService("Players").LocalPlayer.PlayerScripts:FindFirstChild("EFFECTS") and (game:GetService("Players").LocalPlayer.statz.sword.throwable.Value == "explosivetag" or game:GetService("Players").LocalPlayer.statz.sword.throwable.Value == "kunaibomb") then
+			game:GetService("Players").LocalPlayer.PlayerScripts.EFFECTS:Destroy()
+		end
+		settings:updateButton("Remove Effects / Particles","Removed Effects / Particles")
 	end)
 
 	settings:addButton("Reset Script",function()
@@ -2929,6 +2939,7 @@ local function ShindoBossBattle()
 	section2:addButton("Ctrl + Click TP",function()
 		CTRLCLICKTP()
 		notify("Press Ctrl + Click to Teleport")
+		section2:updateButton("Ctrl + Click TP","Ctrl + Click TP (Activated)")
 	end)
 
 	local infjumptoggle = false
@@ -3405,10 +3416,14 @@ local function ShindoBossBattle()
 
 	settings:addButton("Upgrade Performance",function()
 		UPPERFORMANCE()
+		settings:updateButton("Upgrade Performance","Upgraded Performance")
 	end)
 
 	settings:addButton("Remove Effects / Particles",function()
-		game:GetService("Players").LocalPlayer.PlayerScripts.EFFECTS:Destroy()
+		if game:GetService("Players").LocalPlayer.PlayerScripts:FindFirstChild("EFFECTS") and (game:GetService("Players").LocalPlayer.statz.sword.throwable.Value == "explosivetag" or game:GetService("Players").LocalPlayer.statz.sword.throwable.Value == "kunaibomb") then
+			game:GetService("Players").LocalPlayer.PlayerScripts.EFFECTS:Destroy()
+		end
+		settings:updateButton("Remove Effects / Particles","Removed Effects / Particles")
 	end)
 
 	settings:addButton("Reset Script",function()
@@ -3663,6 +3678,7 @@ local function ShindoEventBoss()
 	section2:addButton("Ctrl + Click TP",function()
 		CTRLCLICKTP()
 		notify("Press Ctrl + Click to Teleport")
+		section2:updateButton("Ctrl + Click TP","Ctrl + Click TP (Activated)")
 	end)
 
 	local infjumptoggle = false
@@ -4420,10 +4436,14 @@ local function ShindoEventBoss()
 
 	settings:addButton("Upgrade Performance",function()
 		UPPERFORMANCE()
+		settings:updateButton("Upgrade Performance","Upgraded Performance")
 	end)
 
 	settings:addButton("Remove Effects / Particles",function()
-		game:GetService("Players").LocalPlayer.PlayerScripts.EFFECTS:Destroy()
+		if game:GetService("Players").LocalPlayer.PlayerScripts:FindFirstChild("EFFECTS") and (game:GetService("Players").LocalPlayer.statz.sword.throwable.Value == "explosivetag" or game:GetService("Players").LocalPlayer.statz.sword.throwable.Value == "kunaibomb") then
+			game:GetService("Players").LocalPlayer.PlayerScripts.EFFECTS:Destroy()
+		end
+		settings:updateButton("Remove Effects / Particles","Removed Effects / Particles")
 	end)
 
 	settings:addButton("Reset Script",function()
@@ -4688,6 +4708,7 @@ local function ShindoMain()
 	section2:addButton("Ctrl + Click TP",function()
 		CTRLCLICKTP()
 		notify("Press Ctrl + Click to Teleport")
+		section2:updateButton("Ctrl + Click TP","Ctrl + Click TP (Activated)")
 	end)
 
 	local infjumptoggle = false
@@ -5941,6 +5962,7 @@ local function ShindoMain()
 		notify("Auto Rank: "..tostring(RANKUPP),true)
 	end)
 
+	local stopautorankwhenthisnumberreached
 	if player.gamepasses:FindFirstChild("spinsbag") then
 		section5:addSlider("Stop Auto Rank when spins reached", 1000, 50, 1000, function(value)
 			stopautorankwhenthisnumberreached = value
@@ -7305,10 +7327,14 @@ local function ShindoMain()
 
 	settings:addButton("Upgrade Performance",function()
 		UPPERFORMANCE()
+		settings:updateButton("Upgrade Performance","Upgraded Performance")
 	end)
 
 	settings:addButton("Remove Effects / Particles",function()
-		game:GetService("Players").LocalPlayer.PlayerScripts.EFFECTS:Destroy()
+		if game:GetService("Players").LocalPlayer.PlayerScripts:FindFirstChild("EFFECTS") and (game:GetService("Players").LocalPlayer.statz.sword.throwable.Value == "explosivetag" or game:GetService("Players").LocalPlayer.statz.sword.throwable.Value == "kunaibomb") then
+			game:GetService("Players").LocalPlayer.PlayerScripts.EFFECTS:Destroy()
+		end
+		settings:updateButton("Remove Effects / Particles","Removed Effects / Particles")
 	end)
 
 	settings:addButton("Reset Script",function()
