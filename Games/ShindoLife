@@ -137,7 +137,14 @@ function UNBREAKABLE_BLOCKS()
 	end
 	for i,v in pairs(game.workspace:GetChildren()) do
 		if v.Name == game.Players.LocalPlayer.Name and v:FindFirstChild("blockbreaker") then
-			v.blockbreaker:Destroy()
+			v.blockbreaker.Parent = game:GetService("Workspace")[game.Players.LocalPlayer.Name].gunfolder
+		end
+	end
+end
+function DISABLE_UNBREAKABLE_BLOCKS()
+	for i,v in pairs(game.workspace:GetChildren()) do
+		if v.Name == game.Players.LocalPlayer.Name and v:FindFirstChild("gunfolder") then
+			v.gunfolder.blockbreaker.Parent = game:GetService("Workspace")[game.Players.LocalPlayer.Name]
 		end
 	end
 end
@@ -190,12 +197,16 @@ local function SCROLLFARM()
 	for i,v in pairs(game.workspace.GLOBALTIME:GetChildren()) do
 		if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
 			print("SCROLL SPAWNED")
+			local scrollA = v.sh:FindFirstChild("invoke")
 			pcall(function()
 				if player.statz.unlocked:FindFirstChild(v.Name) then
 					v:Destroy()
+					notify("Ignored Scroll: " .. v.Name)
 				else
 					player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
+					scrollA:FireServer(game.Players.LocalPlayer)
 					fireclickdetector(v.sh.ClickDetector)
+					notify("Unlocked Scroll: " .. v.Name)
 					player.Character.combat.update:FireServer("mouse1",true)
 				end
 			end)
@@ -207,13 +218,16 @@ local function SCROLLFARM1()
 	for i,v in pairs(game.workspace:GetChildren()) do
 		if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
 			print("SCROLL spawned in workspace")
-			notify("SCROLL spawned in workspace")
+			local scrollA = v.sh:FindFirstChild("invoke")
 			pcall(function()
 				if player.statz.unlocked:FindFirstChild(v.Name) then
 					v:Destroy()
+					notify("Ignored Scroll: " .. v.Name)
 				else
 					player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
+					scrollA:FireServer(game.Players.LocalPlayer)
 					fireclickdetector(v.sh.ClickDetector)
+					notify("Unlocked Scroll: " .. v.Name)
 					player.Character.combat.update:FireServer("mouse1",true)
 				end
 			end)
@@ -2525,14 +2539,28 @@ local function ShindoDungeons()
 		SUPERHUMAN()
 	end)
 
-	section1:addButton("Unbreakable Blocks",function()
-		UNBREAKABLE_BLOCKS()
-	end)
-
 	section1:addButton("Infinite MD",function()
 		INFMDON()
 	end)
 
+	local unbreakableblockstoggle = false
+	section1:addToggle("Unbreakable Blocks",false,function()
+		unbreakableblockstoggle = not unbreakableblockstoggle
+		notify("Unbreakable Blocks: "..tostring(unbreakableblockstoggle),true)
+		if unbreakableblockstoggle then
+			UNBREAKABLE_BLOCKS()
+		else
+			DISABLE_UNBREAKABLE_BLOCKS()
+		end
+	end)
+	
+	player.CharacterAdded:Connect(function()
+		if unbreakableblockstoggle then
+			wait(2.5)
+			UNBREAKABLE_BLOCKS()
+		end
+	end)
+	
 	section1:addToggle("NPC Kill Aura (May cause lag issues)",false,function(bool)
 		keel = bool
 		notify("NPC Kill Aura: "..tostring(keel),true)
@@ -2906,6 +2934,7 @@ local function ShindoDungeons()
 			sliderpowa = false
 			Pfly = false
 			getgenv().dc = true
+			unbreakableblockstoggle = false
 			keel = false
 			SpamGOBRRRRR = false 
 			ClickRATATA = false
@@ -3291,12 +3320,26 @@ local function ShindoBossBattle()
 		SUPERHUMAN()
 	end)
 
-	section1:addButton("Unbreakable Blocks",function()
-		UNBREAKABLE_BLOCKS()
-	end)
-
 	section1:addButton("Infinite MD",function()
 		INFMDON()
+	end)
+
+	local unbreakableblockstoggle = false
+	section1:addToggle("Unbreakable Blocks",false,function()
+		unbreakableblockstoggle = not unbreakableblockstoggle
+		notify("Unbreakable Blocks: "..tostring(unbreakableblockstoggle),true)
+		if unbreakableblockstoggle then
+			UNBREAKABLE_BLOCKS()
+		else
+			DISABLE_UNBREAKABLE_BLOCKS()
+		end
+	end)
+	
+	player.CharacterAdded:Connect(function()
+		if unbreakableblockstoggle then
+			wait(2.5)
+			UNBREAKABLE_BLOCKS()
+		end
 	end)
 
 	section1:addToggle("NPC Kill Aura",false,function(bool)
@@ -3727,6 +3770,7 @@ local function ShindoBossBattle()
 			sliderpowa = false
 			Pfly = false
 			getgenv().dc = true
+			unbreakableblockstoggle = false
 			keel = false
 			SpamGOBRRRRR = false 
 			ClickRATATA = false
@@ -4171,12 +4215,26 @@ local function ShindoEventBoss()
 		SUPERHUMAN()
 	end)
 
-	section1:addButton("Unbreakable Blocks",function()
-		UNBREAKABLE_BLOCKS()
-	end)
-
 	section1:addButton("Infinite MD",function()
 		INFMDON()
+	end)
+
+	local unbreakableblockstoggle = false
+	section1:addToggle("Unbreakable Blocks",false,function()
+		unbreakableblockstoggle = not unbreakableblockstoggle
+		notify("Unbreakable Blocks: "..tostring(unbreakableblockstoggle),true)
+		if unbreakableblockstoggle then
+			UNBREAKABLE_BLOCKS()
+		else
+			DISABLE_UNBREAKABLE_BLOCKS()
+		end
+	end)
+	
+	player.CharacterAdded:Connect(function()
+		if unbreakableblockstoggle then
+			wait(2.5)
+			UNBREAKABLE_BLOCKS()
+		end
 	end)
 
 	section1:addToggle("Kill Aura (bugged)",false,function(bool)
@@ -4850,6 +4908,7 @@ local function ShindoEventBoss()
 			Pfly = false
 			trackthatguy = false
 			getgenv().dc = true
+			unbreakableblockstoggle = false
 			keel = false
 			SpamGOBRRRRR = false 
 			SpamOnlyInMissions = false
@@ -5303,12 +5362,26 @@ local function ShindoMain()
 		SUPERHUMAN()
 	end)
 
-	section1:addButton("Unbreakable Blocks",function()
-		UNBREAKABLE_BLOCKS()
-	end)
-
 	section1:addButton("Infinite MD",function()
 		INFMDON()
+	end)
+
+	local unbreakableblockstoggle = false
+	section1:addToggle("Unbreakable Blocks",false,function()
+		unbreakableblockstoggle = not unbreakableblockstoggle
+		notify("Unbreakable Blocks: "..tostring(unbreakableblockstoggle),true)
+		if unbreakableblockstoggle then
+			UNBREAKABLE_BLOCKS()
+		else
+			DISABLE_UNBREAKABLE_BLOCKS()
+		end
+	end)
+	
+	player.CharacterAdded:Connect(function()
+		if unbreakableblockstoggle then
+			wait(2.5)
+			UNBREAKABLE_BLOCKS()
+		end
 	end)
 
 	section1:addToggle("NPC Kill Aura",false,function(bool)
@@ -7892,6 +7965,7 @@ local function ShindoMain()
 			Pfly = false
 			getgenv().dc = true
 			trackthatguy = false
+			unbreakableblockstoggle = false
 			keel = false
 			SpamGOBRRRRR = false 
 			SpamOnlyInMissions = false
