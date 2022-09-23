@@ -143,7 +143,7 @@ function UNBREAKABLE_BLOCKS()
 end
 function DISABLE_UNBREAKABLE_BLOCKS()
 	for i,v in pairs(game.workspace:GetChildren()) do
-		if v.Name == game.Players.LocalPlayer.Name and v:FindFirstChild("gunfolder") then
+		if v.Name == game.Players.LocalPlayer.Name and v:FindFirstChild("gunfolder") and v.gunfolder:FindFirstChild("blockbreaker") then
 			v.gunfolder.blockbreaker.Parent = game:GetService("Workspace")[game.Players.LocalPlayer.Name]
 		end
 	end
