@@ -124,12 +124,12 @@ function SUPERHUMAN()
 end
 function UNBREAKABLE_BLOCKS()
 	local chanceofaudioquote = math.random(1, 100)
-	if chanceofaudioquote <= 30 then
+	if chanceofaudioquote <= 25 then
 		local s = Instance.new("Sound")
 		s.Name = "Sound" s.SoundId = "http://www.roblox.com/asset/?id=10163532591" s.Volume = 20 s.Looped = false s.archivable = false s.Parent = game.Workspace wait(.3) s:play()
 	else
 		local chanceofnotifyquote = math.random(1, 100)
-		if chanceofnotifyquote <= 25 then
+		if chanceofnotifyquote <= 20 then
 			notify("Making the mother of all omelettes here, Jack")
 			wait(1.2)
 			notify("Can't fret over every egg.")
@@ -199,7 +199,7 @@ local function SCROLLFARM()
 			print("SCROLL SPAWNED")
 			local scrollA = v.sh:FindFirstChild("invoke")
 			pcall(function()
-				if player.statz.unlocked:FindFirstChild(v.Name) then
+				if player.statz.unlocked:FindFirstChild(v.Name) or player.statz.unlocked:FindFirstChild(v.Name .. "scroll") then
 					v:Destroy()
 					notify("Ignored Scroll: " .. v.Name)
 				else
@@ -220,7 +220,7 @@ local function SCROLLFARM1()
 			print("SCROLL spawned in workspace")
 			local scrollA = v.sh:FindFirstChild("invoke")
 			pcall(function()
-				if player.statz.unlocked:FindFirstChild(v.Name) then
+				if player.statz.unlocked:FindFirstChild(v.Name) or player.statz.unlocked:FindFirstChild(v.Name .. "scroll") then
 					v:Destroy()
 					notify("Ignored Scroll: " .. v.Name)
 				else
@@ -562,7 +562,7 @@ local function ShindoInfSpin()
 		ScrollingFrame.BorderSizePixel = 0
 		ScrollingFrame.Position = UDim2.new(0.025, 0, 0.16, 0)
 		ScrollingFrame.Size = UDim2.new(0, 210, 0, 145)
-		ScrollingFrame.CanvasSize = UDim2.new(0, 0, 3, 0)
+		ScrollingFrame.CanvasSize = UDim2.new(0, 0, 4.5, 0)
 		ScrollingFrame.ScrollBarThickness = 4
 
 		TextLabel.Parent = ScrollingFrame
@@ -579,13 +579,15 @@ local function ShindoInfSpin()
 		
 		4.When you got the bloodline or element or kenjutsu that you want, you may press save data then leave this server to save it.
 		
-		5.I've already put all spinnable limiteds on top of the dropdown, please don't be stupid and try to spin a limited bloodline in element slots or whatever.
+		5.If you cannot find the bloodline or element or kenjutsu that you want, you may enter the names of the bloodline or element or kenjutsu in the dropdown's textbox.
 		
-		6.DO NOT redeem codes before pressing save data
+		6.I've already filtered out all unlocked limitedsput and put all spinnable limiteds on top of the dropdown so you don't need to search for 1 specific limiteds for a long time :).
+		
+		7.DO NOT redeem codes while the script is activated.
 
-		7.If you are unsatisfied about the results, you may always press Reset Spins NOW to reset, unless you pressed save spins data or turned on auto save.
+		8.If you are unsatisfied about the results, you may always press Reset Spins NOW to reset, unless you pressed save spins data or turned on auto save.
 
-		8.Press Right Ctrl to show/hide GUI]]
+		9.Press Right Ctrl to show/hide GUI]]
 		TextLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
 		TextLabel.TextScaled = false
 		TextLabel.TextSize = 18.000
@@ -776,12 +778,25 @@ local function ShindoInfSpin()
 	end
 	resetspinswhenthisnumberreached = 0
 
+	local savegomyhome
+	section4:addToggle("Teleport to My Home when saving data",true,function(bool)
+		savegomyhome = bool
+		savegomainmenu = false
+		section4:updateToggle("Teleport back to Main Menu when saving data")
+	end)
+	local savegomainmenu
+	section4:addToggle("Teleport back to Main Menu when saving data",false,function(bool)
+		savegomainmenu = bool
+		savegomyhome = false
+		section4:updateToggle("Teleport to My Home when saving data")
+	end)
+	savegomyhome = true
 	-- load
 	NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
 	
 	local elm = {}
 	for i,v in pairs(game:GetService("Workspace").RAREKGS:GetChildren()) do
-		if v.tim.Value ~= "N/A" then
+		if v.tim.Value ~= "N/A" and not game:GetService("Players").LocalPlayer.statz.genkailevel:FindFirstChild(v.Name) and game:GetService("ReplicatedStorage").alljutsu[v.Name]:FindFirstChild("ELEMENT") then
 			table.insert(elm, v.Name)
 		end
 	end
@@ -793,7 +808,7 @@ local function ShindoInfSpin()
 
 	local kgs = {}
 	for i,v in pairs(game:GetService("Workspace").RAREKGS:GetChildren()) do
-		if v.tim.Value ~= "N/A" then
+		if v.tim.Value ~= "N/A" and not game:GetService("Players").LocalPlayer.statz.genkailevel:FindFirstChild(v.Name) and game:GetService("ReplicatedStorage").alljutsu[v.Name]:FindFirstChild("KG") then
 			table.insert(kgs, v.Name)
 		end
 	end
@@ -1438,10 +1453,16 @@ local function ShindoInfSpin()
 			StartSpinKen2 = false
 			datasavedandyoucanredeemcodes = false
 			game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
-			notify("You will be teleported to My Home in order to save data")
-			wait(1)
-			local args = {[1] = "arenateleport",[2] = 5451410109}
-			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			if savegomyhome then
+				notify("You will be teleported to My Home in order to save data")
+				wait(1)
+				local args = {[1] = "arenateleport",[2] = 5451410109}
+				game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			elseif savegomainmenu then
+				notify("You will rejoin in order to save data")
+				wait(1)
+				game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+			end
 		else
 			game.Players.LocalPlayer.PlayerGui.Main.Customization.Codes.Text = [[WARNING:
 			DO NOT REDEEM CODES BEFORE SAVING DATA]]
