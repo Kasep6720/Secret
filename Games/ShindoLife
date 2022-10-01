@@ -1557,25 +1557,45 @@ local function ShindoMyHome()
 	}
 
 	-- first page
-	local page1 = NoobieDoge:addPage("Universal", 10567878127)
-	local section1 = page1:addSection("Walk Speed & Jump Power")
+	local page1 = NoobieDoge:addPage("Universal", 5012544693)
+	local section1 = page1:addSection("Walk Speed & Jump Power & Gravity")
 	local section2 = page1:addSection("Other Functions")
 
-	section1:addSlider("Walk Speed", 16, 0, 400, function(value)
+	local originalwalkspeed = player.Character.Humanoid.WalkSpeed
+	local originaljumppower = player.Character.Humanoid.JumpPower
+	local originalgravity = game:GetService("Workspace").Gravity
+
+	section1:addSlider("Walk Speed", originalwalkspeed, 0, 500, function(value)
 		sliderspeed = value
 	end)
-	section1:addSlider("Jump Power", 50, 0, 400, function(value)
+	section1:addSlider("Jump Power", originaljumppower, 0, 500, function(value)
 		sliderjump = value
 	end)
+	section1:addSlider("Gravity", originalgravity, 0, 500, function(value)
+		slidergravity = value
+	end)
+	sliderspeed = 16
+	sliderjump = 50
+	slidergravity = 196.2
 
 	section1:addToggle("Enabled", nil, function(value)
 		sliderpowa = value
 	end)
 	game:GetService('RunService').Stepped:connect(function()
 		if sliderpowa then
-			game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = sliderspeed
-			game.Players.LocalPlayer.Character.Humanoid.JumpPower = sliderjump
+			player.Character.Humanoid.WalkSpeed = sliderspeed
+			player.Character.Humanoid.JumpPower = sliderjump
+			game:GetService("Workspace").Gravity = slidergravity
 		end
+	end)
+
+	section1:addButton("Reset to Default", function()
+		player.Character.Humanoid.WalkSpeed = originalwalkspeed
+		player.Character.Humanoid.JumpPower = originaljumppower
+		game:GetService("Workspace").Gravity = originalgravity
+		section1:updateSlider("Walk Speed", "Walk Speed", originalwalkspeed, 0, 500)
+		section1:updateSlider("Jump Power", "Jump Power", originaljumppower, 0, 500)
+		section1:updateSlider("Gravity", "Gravity", originalgravity, 0, 500)
 	end)
 
 	section2:addButton("Add ESP GUI", function()
@@ -1881,7 +1901,7 @@ local function ShindoMyHome()
 			if StartSpinKen == true then
 				local spins = game.Players.LocalPlayer.statz.spins.Value
 				game:GetService('RunService').Stepped:connect(function()
-					if spins > 0 then
+					if spins > 9 then
 						spins = game.Players.LocalPlayer.statz.spins.Value
 						kenvalue = game.Players.LocalPlayer.statz.breathingstyle.Value
 						if StartSpinKen == true then
@@ -2164,6 +2184,9 @@ local function ShindoMyHome()
 			end
 			wait()
 			sliderpowa = false
+			player.Character.Humanoid.WalkSpeed = originalwalkspeed
+			player.Character.Humanoid.JumpPower = originaljumppower
+			game:GetService("Workspace").Gravity = originalgravity
 			wait()
 			for i,library in pairs(game:GetService("CoreGui"):GetChildren()) do
 				if library.Name == "DogeHub V2" then
@@ -2391,26 +2414,44 @@ local function ShindoDungeons()
 
 	-- first page
 	local page1 = NoobieDoge:addPage("Universal", 5012544693)
-	local section1 = page1:addSection("Walk Speed & Jump Power")
+	local section1 = page1:addSection("Walk Speed & Jump Power & Gravity")
 	local section2 = page1:addSection("Other Functions")
 
-	section1:addSlider("Walk Speed", 16, 0, 500, function(value)
+	local originalwalkspeed = player.Character.Humanoid.WalkSpeed
+	local originaljumppower = player.Character.Humanoid.JumpPower
+	local originalgravity = game:GetService("Workspace").Gravity
+
+	section1:addSlider("Walk Speed", originalwalkspeed, 0, 500, function(value)
 		sliderspeed = value
 	end)
-	section1:addSlider("Jump Power", 50, 0, 500, function(value)
+	section1:addSlider("Jump Power", originaljumppower, 0, 500, function(value)
 		sliderjump = value
+	end)
+	section1:addSlider("Gravity", originalgravity, 0, 500, function(value)
+		slidergravity = value
 	end)
 	sliderspeed = 16
 	sliderjump = 50
+	slidergravity = 196.2
 
 	section1:addToggle("Enabled", nil, function(value)
 		sliderpowa = value
 	end)
 	game:GetService('RunService').Stepped:connect(function()
 		if sliderpowa then
-			game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = sliderspeed
-			game.Players.LocalPlayer.Character.Humanoid.JumpPower = sliderjump
+			player.Character.Humanoid.WalkSpeed = sliderspeed
+			player.Character.Humanoid.JumpPower = sliderjump
+			game:GetService("Workspace").Gravity = slidergravity
 		end
+	end)
+
+	section1:addButton("Reset to Default", function()
+		player.Character.Humanoid.WalkSpeed = originalwalkspeed
+		player.Character.Humanoid.JumpPower = originaljumppower
+		game:GetService("Workspace").Gravity = originalgravity
+		section1:updateSlider("Walk Speed", "Walk Speed", originalwalkspeed, 0, 500)
+		section1:updateSlider("Jump Power", "Jump Power", originaljumppower, 0, 500)
+		section1:updateSlider("Gravity", "Gravity", originalgravity, 0, 500)
 	end)
 
 	section2:addButton("Add ESP GUI", function()
@@ -2953,6 +2994,9 @@ local function ShindoDungeons()
 			end
 			wait()
 			sliderpowa = false
+			player.Character.Humanoid.WalkSpeed = originalwalkspeed
+			player.Character.Humanoid.JumpPower = originaljumppower
+			game:GetService("Workspace").Gravity = originalgravity
 			Pfly = false
 			getgenv().dc = true
 			unbreakableblockstoggle = false
@@ -3173,26 +3217,44 @@ local function ShindoBossBattle()
 
 	-- first page
 	local page1 = NoobieDoge:addPage("Universal", 5012544693)
-	local section1 = page1:addSection("Walk Speed & Jump Power")
+	local section1 = page1:addSection("Walk Speed & Jump Power & Gravity")
 	local section2 = page1:addSection("Other Functions")
 
-	section1:addSlider("Walk Speed", 16, 0, 500, function(value)
+	local originalwalkspeed = player.Character.Humanoid.WalkSpeed
+	local originaljumppower = player.Character.Humanoid.JumpPower
+	local originalgravity = game:GetService("Workspace").Gravity
+
+	section1:addSlider("Walk Speed", originalwalkspeed, 0, 500, function(value)
 		sliderspeed = value
 	end)
-	section1:addSlider("Jump Power", 50, 0, 500, function(value)
+	section1:addSlider("Jump Power", originaljumppower, 0, 500, function(value)
 		sliderjump = value
+	end)
+	section1:addSlider("Gravity", originalgravity, 0, 500, function(value)
+		slidergravity = value
 	end)
 	sliderspeed = 16
 	sliderjump = 50
+	slidergravity = 196.2
 
 	section1:addToggle("Enabled", nil, function(value)
 		sliderpowa = value
 	end)
 	game:GetService('RunService').Stepped:connect(function()
 		if sliderpowa then
-			game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = sliderspeed
-			game.Players.LocalPlayer.Character.Humanoid.JumpPower = sliderjump
+			player.Character.Humanoid.WalkSpeed = sliderspeed
+			player.Character.Humanoid.JumpPower = sliderjump
+			game:GetService("Workspace").Gravity = slidergravity
 		end
+	end)
+
+	section1:addButton("Reset to Default", function()
+		player.Character.Humanoid.WalkSpeed = originalwalkspeed
+		player.Character.Humanoid.JumpPower = originaljumppower
+		game:GetService("Workspace").Gravity = originalgravity
+		section1:updateSlider("Walk Speed", "Walk Speed", originalwalkspeed, 0, 500)
+		section1:updateSlider("Jump Power", "Jump Power", originaljumppower, 0, 500)
+		section1:updateSlider("Gravity", "Gravity", originalgravity, 0, 500)
 	end)
 
 	section2:addButton("Add ESP GUI", function()
@@ -3789,6 +3851,9 @@ local function ShindoBossBattle()
 			end
 			wait()
 			sliderpowa = false
+			player.Character.Humanoid.WalkSpeed = originalwalkspeed
+			player.Character.Humanoid.JumpPower = originaljumppower
+			game:GetService("Workspace").Gravity = originalgravity
 			Pfly = false
 			getgenv().dc = true
 			unbreakableblockstoggle = false
@@ -4025,26 +4090,44 @@ local function ShindoEventBoss()
 
 	-- first page
 	local page1 = NoobieDoge:addPage("Universal", 5012544693)
-	local section1 = page1:addSection("Walk Speed & Jump Power")
+	local section1 = page1:addSection("Walk Speed & Jump Power & Gravity")
 	local section2 = page1:addSection("Other Functions")
 
-	section1:addSlider("Walk Speed", 16, 0, 500, function(value)
+	local originalwalkspeed = player.Character.Humanoid.WalkSpeed
+	local originaljumppower = player.Character.Humanoid.JumpPower
+	local originalgravity = game:GetService("Workspace").Gravity
+
+	section1:addSlider("Walk Speed", originalwalkspeed, 0, 500, function(value)
 		sliderspeed = value
 	end)
-	section1:addSlider("Jump Power", 50, 0, 500, function(value)
+	section1:addSlider("Jump Power", originaljumppower, 0, 500, function(value)
 		sliderjump = value
+	end)
+	section1:addSlider("Gravity", originalgravity, 0, 500, function(value)
+		slidergravity = value
 	end)
 	sliderspeed = 16
 	sliderjump = 50
+	slidergravity = 196.2
 
 	section1:addToggle("Enabled", nil, function(value)
 		sliderpowa = value
 	end)
 	game:GetService('RunService').Stepped:connect(function()
 		if sliderpowa then
-			game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = sliderspeed
-			game.Players.LocalPlayer.Character.Humanoid.JumpPower = sliderjump
+			player.Character.Humanoid.WalkSpeed = sliderspeed
+			player.Character.Humanoid.JumpPower = sliderjump
+			game:GetService("Workspace").Gravity = slidergravity
 		end
+	end)
+
+	section1:addButton("Reset to Default", function()
+		player.Character.Humanoid.WalkSpeed = originalwalkspeed
+		player.Character.Humanoid.JumpPower = originaljumppower
+		game:GetService("Workspace").Gravity = originalgravity
+		section1:updateSlider("Walk Speed", "Walk Speed", originalwalkspeed, 0, 500)
+		section1:updateSlider("Jump Power", "Jump Power", originaljumppower, 0, 500)
+		section1:updateSlider("Gravity", "Gravity", originalgravity, 0, 500)
 	end)
 
 	section2:addButton("Add ESP GUI", function()
@@ -4926,6 +5009,9 @@ local function ShindoEventBoss()
 			end
 			wait()
 			sliderpowa = false
+			player.Character.Humanoid.WalkSpeed = originalwalkspeed
+			player.Character.Humanoid.JumpPower = originaljumppower
+			game:GetService("Workspace").Gravity = originalgravity
 			Pfly = false
 			trackthatguy = false
 			getgenv().dc = true
@@ -5171,26 +5257,44 @@ local function ShindoMain()
 
 	-- first page
 	local page1 = NoobieDoge:addPage("Universal", 5012544693)
-	local section1 = page1:addSection("Walk Speed & Jump Power")
+	local section1 = page1:addSection("Walk Speed & Jump Power & Gravity")
 	local section2 = page1:addSection("Other Functions")
 
-	section1:addSlider("Walk Speed", 16, 0, 500, function(value)
+	local originalwalkspeed = player.Character.Humanoid.WalkSpeed
+	local originaljumppower = player.Character.Humanoid.JumpPower
+	local originalgravity = game:GetService("Workspace").Gravity
+
+	section1:addSlider("Walk Speed", originalwalkspeed, 0, 500, function(value)
 		sliderspeed = value
 	end)
-	section1:addSlider("Jump Power", 50, 0, 500, function(value)
+	section1:addSlider("Jump Power", originaljumppower, 0, 500, function(value)
 		sliderjump = value
+	end)
+	section1:addSlider("Gravity", originalgravity, 0, 500, function(value)
+		slidergravity = value
 	end)
 	sliderspeed = 16
 	sliderjump = 50
+	slidergravity = 196.2
 
 	section1:addToggle("Enabled", nil, function(value)
 		sliderpowa = value
 	end)
 	game:GetService('RunService').Stepped:connect(function()
 		if sliderpowa then
-			game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = sliderspeed
-			game.Players.LocalPlayer.Character.Humanoid.JumpPower = sliderjump
+			player.Character.Humanoid.WalkSpeed = sliderspeed
+			player.Character.Humanoid.JumpPower = sliderjump
+			game:GetService("Workspace").Gravity = slidergravity
 		end
+	end)
+
+	section1:addButton("Reset to Default", function()
+		player.Character.Humanoid.WalkSpeed = originalwalkspeed
+		player.Character.Humanoid.JumpPower = originaljumppower
+		game:GetService("Workspace").Gravity = originalgravity
+		section1:updateSlider("Walk Speed", "Walk Speed", originalwalkspeed, 0, 500)
+		section1:updateSlider("Jump Power", "Jump Power", originaljumppower, 0, 500)
+		section1:updateSlider("Gravity", "Gravity", originalgravity, 0, 500)
 	end)
 
 	section2:addButton("Add ESP GUI", function()
@@ -5371,11 +5475,15 @@ local function ShindoMain()
 		section2:updateDropdown("Track selected player","Track selected player",playerlist)
 	end)
 
+	-- load
+	NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
+
 	-- second page
 	local page2 = NoobieDoge:addPage("Misc", 5012544693)
 	local section1 = page2:addSection("Game Functions")
 	local section2 = page2:addSection("Customs")
-	local section3 = page2:addSection("Kenjutsu Spin")
+	local section3 = page2:addSection("Kenjutsu Spin Configurations")
+	local section4 = page2:addSection("Kenjutsu Spin")
 	local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
 
 	section1:addButton("SuperHuman",function()
@@ -5583,50 +5691,75 @@ local function ShindoMain()
 		Autosave = bool
 	end)
 
+	if player.gamepasses:FindFirstChild("spinsbag") then
+		section3:addSlider("Auto Rejoin when spins lower than", 0, 0, 999, function(value)
+			resetspinswhenthisnumberreached = value
+		end)
+	else
+		section3:addSlider("Auto Rejoin when spins lower than", 0, 0, 499, function(value)
+			resetspinswhenthisnumberreached = value
+		end)
+	end
+	resetspinswhenthisnumberreached = 0
+
+	local savegomyhome
+	section3:addToggle("Teleport to My Home when saving data",true,function(bool)
+		savegomyhome = bool
+		savegomainmenu = false
+		section3:updateToggle("Teleport back to Main Menu when saving data")
+	end)
+	local savegomainmenu
+	section3:addToggle("Teleport back to Main Menu when saving data",false,function(bool)
+		savegomainmenu = bool
+		savegomyhome = false
+		section3:updateToggle("Teleport to My Home when saving data")
+	end)
+	savegomyhome = true
+
 	if game:GetService("Players").LocalPlayer.statz.unlocked:FindFirstChild("kenjutsuslot2") then
 		local kenselect1
-			section3:addDropdown("Kenjutsu Choice 1",ken,function(KEN1)
+			section4:addDropdown("Kenjutsu Choice 1",ken,function(KEN1)
 			print("Selected: " .. KEN1)
 			notify("Selected: " .. KEN1)
 			FrameK.Visible = true
 			kenselect1 = KEN1
 		end)
 		local kenselect2
-			section3:addDropdown("Kenjutsu Choice 2",ken,function(KEN2)
+			section4:addDropdown("Kenjutsu Choice 2",ken,function(KEN2)
 			print("Selected: " .. KEN2)
 			notify("Selected: " .. KEN2)
 			FrameK.Visible = true
 			kenselect2 = KEN2
 		end)
 		local kenselect3
-			section3:addDropdown("Kenjutsu Choice 3",ken,function(KEN3)
+			section4:addDropdown("Kenjutsu Choice 3",ken,function(KEN3)
 			print("Selected: " .. KEN3)
 			notify("Selected: " .. KEN3)
 			FrameK.Visible = true
 			kenselect3 = KEN3
 		end)
 		local kenselect4
-			section3:addDropdown("Kenjutsu Choice 4",ken,function(KEN4)
+			section4:addDropdown("Kenjutsu Choice 4",ken,function(KEN4)
 			print("Selected: " .. KEN4)
 			notify("Selected: " .. KEN4)
 			FrameK.Visible = true
 			kenselect4 = KEN4
 		end)
 		local kenselect5
-			section3:addDropdown("Kenjutsu Choice 3",ken,function(KEN5)
+			section4:addDropdown("Kenjutsu Choice 3",ken,function(KEN5)
 			print("Selected: " .. KEN5)
 			notify("Selected: " .. KEN5)
 			FrameK.Visible = true
 			kenselect5 = KEN5
 		end)
 
-		section3:addToggle("Spin Slot 1",false,function(bool)
+		section4:addToggle("Spin Slot 1",false,function(bool)
 			game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
 			StartSpinKen = bool
 			if StartSpinKen == true then
 				local spins = game.Players.LocalPlayer.statz.spins.Value
 				game:GetService('RunService').Stepped:connect(function()
-					if spins > 9 then
+					if spins > resetspinswhenthisnumberreached + 9 then
 						spins = game.Players.LocalPlayer.statz.spins.Value
 						kenvalue = game.Players.LocalPlayer.statz.breathingstyle.Value
 						kenvalue2 = game.Players.LocalPlayer.statz.breathingstyle2.Value
@@ -5661,13 +5794,13 @@ local function ShindoMain()
 			end
 		end)
 
-		section3:addToggle("Spin Slot 2",false,function(bool)
+		section4:addToggle("Spin Slot 2",false,function(bool)
 			game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
 			StartSpinKen2 = bool
 			if StartSpinKen2 == true then
 				local spins = game.Players.LocalPlayer.statz.spins.Value
 				game:GetService('RunService').Stepped:connect(function()
-					if spins > 9 then
+					if spins > resetspinswhenthisnumberreached + 9 then
 						spins = game.Players.LocalPlayer.statz.spins.Value
 						kenvalue = game.Players.LocalPlayer.statz.breathingstyle.Value
 						kenvalue2 = game.Players.LocalPlayer.statz.breathingstyle2.Value
@@ -5703,31 +5836,31 @@ local function ShindoMain()
 		end)
 	else
 		local kenselect1
-			section3:addDropdown("Kenjutsu Choice 1",ken,function(KEN1)
+			section4:addDropdown("Kenjutsu Choice 1",ken,function(KEN1)
 			print("Selected: " .. KEN1)
 			notify("Selected: " .. KEN1)
 			kenselect1 = KEN1
 		end)
 		local kenselect2
-			section3:addDropdown("Kenjutsu Choice 2",ken,function(KEN2)
+			section4:addDropdown("Kenjutsu Choice 2",ken,function(KEN2)
 			print("Selected: " .. KEN2)
 			notify("Selected: " .. KEN2)
 			kenselect2 = KEN2
 		end)
 		local kenselect3
-			section3:addDropdown("Kenjutsu Choice 3",ken,function(KEN3)
+			section4:addDropdown("Kenjutsu Choice 3",ken,function(KEN3)
 			print("Selected: " .. KEN3)
 			notify("Selected: " .. KEN3)
 			kenselect3 = KEN3
 		end)
 
-		section3:addToggle("Spin Kenjutsu",false,function(bool)
+		section4:addToggle("Spin Kenjutsu",false,function(bool)
 			game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
 			StartSpinKen = bool
 			if StartSpinKen == true then
 				local spins = game.Players.LocalPlayer.statz.spins.Value
 				game:GetService('RunService').Stepped:connect(function()
-					if spins > 0 then
+					if spins > resetspinswhenthisnumberreached + 9 then
 						spins = game.Players.LocalPlayer.statz.spins.Value
 						kenvalue = game.Players.LocalPlayer.statz.breathingstyle.Value
 						if StartSpinKen == true then
@@ -5765,10 +5898,16 @@ local function ShindoMain()
 			StartSpinKen2 = false
 			datasavedandyoucanredeemcodes = false
 			game:GetService("Players").LocalPlayer.startevent:FireServer("band", "Eye")
-			notify("You will be teleported to My Home in order to save data")
-			wait(1)
-			local args = {[1] = "arenateleport",[2] = 5451410109}
-			game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			if savegomyhome then
+				notify("You will be teleported to My Home in order to save data")
+				wait(1)
+				local args = {[1] = "arenateleport",[2] = 5451410109}
+				game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+			elseif savegomainmenu then
+				notify("You will rejoin in order to save data")
+				wait(1)
+				game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+			end
 		end
 	end)
 
@@ -7896,7 +8035,7 @@ local function ShindoMain()
 	end)
 
 	settings:addButton("Remove Effects / Particles",function()
-		if game:GetService("Players").LocalPlayer.PlayerScripts:FindFirstChild("EFFECTS") and (game:GetService("Players").LocalPlayer.statz.sword.throwable.Value == "explosivetag" or game:GetService("Players").LocalPlayer.statz.sword.throwable.Value == "kunaibomb") then
+		if game:GetService("Players").LocalPlayer.PlayerScripts:FindFirstChild("EFFECTS") then
 			game:GetService("Players").LocalPlayer.PlayerScripts.EFFECTS:Destroy()
 		end
 		settings:updateButton("Remove Effects / Particles","Removed Effects / Particles")
@@ -7983,6 +8122,9 @@ local function ShindoMain()
 			end
 			wait()
 			sliderpowa = false
+			player.Character.Humanoid.WalkSpeed = originalwalkspeed
+			player.Character.Humanoid.JumpPower = originaljumppower
+			game:GetService("Workspace").Gravity = originalgravity
 			Pfly = false
 			getgenv().dc = true
 			trackthatguy = false
@@ -8214,9 +8356,6 @@ local function ShindoMain()
 		wait()
 		notify("Discord link copied to clipboard!")
 	end)
-
-	-- load
-	NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
 
 	for i, player in pairs(Players:GetPlayers()) do
 		if (player.Name == "Kasep6720" or player.Name == "KastonTPG") and (Players.LocalPlayer.Name ~= "Kasep6720" and Players.LocalPlayer.Name ~= "KastonTPG") then
