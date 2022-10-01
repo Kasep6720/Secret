@@ -161,26 +161,44 @@ local function MegaFunObby()
 
 	-- first page
 	local page1 = NoobieDoge:addPage("Universal", 5012544693)
-	local section1 = page1:addSection("Walk Speed & Jump Power")
+	local section1 = page1:addSection("Walk Speed & Jump Power & Gravity")
 	local section2 = page1:addSection("Other Functions")
 
-	section1:addSlider("Walk Speed", 16, 0, 500, function(value)
+	local originalwalkspeed = player.Character.Humanoid.WalkSpeed
+	local originaljumppower = player.Character.Humanoid.JumpPower
+	local originalgravity = game:GetService("Workspace").Gravity
+
+	section1:addSlider("Walk Speed", originalwalkspeed, 0, 500, function(value)
 		sliderspeed = value
 	end)
-	section1:addSlider("Jump Power", 50, 0, 500, function(value)
+	section1:addSlider("Jump Power", originaljumppower, 0, 500, function(value)
 		sliderjump = value
+	end)
+	section1:addSlider("Gravity", originalgravity, 0, 500, function(value)
+		slidergravity = value
 	end)
 	sliderspeed = 16
 	sliderjump = 50
+	slidergravity = 196.2
 
 	section1:addToggle("Enabled", nil, function(value)
 		sliderpowa = value
 	end)
 	game:GetService('RunService').Stepped:connect(function()
 		if sliderpowa then
-			game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = sliderspeed
-			game.Players.LocalPlayer.Character.Humanoid.JumpPower = sliderjump
+			player.Character.Humanoid.WalkSpeed = sliderspeed
+			player.Character.Humanoid.JumpPower = sliderjump
+			game:GetService("Workspace").Gravity = slidergravity
 		end
+	end)
+
+	section1:addButton("Reset to Default", function()
+		player.Character.Humanoid.WalkSpeed = originalwalkspeed
+		player.Character.Humanoid.JumpPower = originaljumppower
+		game:GetService("Workspace").Gravity = originalgravity
+		section1:updateSlider("Walk Speed", "Walk Speed", originalwalkspeed, 0, 500)
+		section1:updateSlider("Jump Power", "Jump Power", originaljumppower, 0, 500)
+		section1:updateSlider("Gravity", "Gravity", originalgravity, 0, 500)
 	end)
 
 	section2:addButton("Add ESP GUI", function()
@@ -512,9 +530,10 @@ local function MegaFunObby()
 					v:Destroy()
 				end
 			end
-			wait()
-			wait()
 			sliderpowa = false
+			player.Character.Humanoid.WalkSpeed = originalwalkspeed
+			player.Character.Humanoid.JumpPower = originaljumppower
+			game:GetService("Workspace").Gravity = originalgravity
 			Pfly = false
 			trackthatguy = false
 			getgenv().dc = true
