@@ -1481,6 +1481,9 @@ local function ShindoInfSpin()
 		--some functions that are important af
 		Autorejoin = true
 		game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
+		game:GetService("Players").LocalPlayer.PlayerGui.Main.RYOshop.ShopItems.HB.int.Text = "[DO NOT PURCHASE ANY ITEMS WHILE USING THE SCRIPT]"
+		game:GetService("Players").LocalPlayer.PlayerGui.Main.RYOshop.ShopItems.HB.rellcloak.Text = "[DO NOT PURCHASE ANY ITEMS WHILE USING THE SCRIPT]"
+		game:GetService("Players").LocalPlayer.PlayerGui.Main.RYOshop.ShopItems.HB.limited.Text = "[DO NOT PURCHASE ANY ITEMS WHILE USING THE SCRIPT]"
 		game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1.hair.color.Visible = false
 		game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1.hair.arrowleft.Visible = false
 		game:GetService("Players").LocalPlayer.PlayerGui.Main.Customization.CharacterTab.Frame1.hair.arrowright.Visible = false
@@ -2605,6 +2608,12 @@ local function ShindoDungeons()
 		INFMDON()
 	end)
 
+	section1:addButton("Disable In Combat",function()
+		game:GetService("Players").LocalPlayer.incombat.Value = false
+		notify("Disabled In Combat")
+		section1:updateButton("Disable In Combat", "Disabled In Combat")
+	end)
+
 	local unbreakableblockstoggle = false
 	section1:addToggle("Unbreakable Blocks",false,function()
 		unbreakableblockstoggle = not unbreakableblockstoggle
@@ -3405,6 +3414,12 @@ local function ShindoBossBattle()
 
 	section1:addButton("Infinite MD",function()
 		INFMDON()
+	end)
+
+	section1:addButton("Disable In Combat",function()
+		game:GetService("Players").LocalPlayer.incombat.Value = false
+		notify("Disabled In Combat")
+		section1:updateButton("Disable In Combat", "Disabled In Combat")
 	end)
 
 	local unbreakableblockstoggle = false
@@ -4321,6 +4336,12 @@ local function ShindoEventBoss()
 
 	section1:addButton("Infinite MD",function()
 		INFMDON()
+	end)
+
+	section1:addButton("Disable In Combat",function()
+		game:GetService("Players").LocalPlayer.incombat.Value = false
+		notify("Disabled In Combat")
+		section1:updateButton("Disable In Combat", "Disabled In Combat")
 	end)
 
 	local unbreakableblockstoggle = false
@@ -5493,6 +5514,12 @@ local function ShindoMain()
 
 	section1:addButton("Infinite MD",function()
 		INFMDON()
+	end)
+
+	section1:addButton("Disable In Combat",function()
+		game:GetService("Players").LocalPlayer.incombat.Value = false
+		notify("Disabled In Combat")
+		section1:updateButton("Disable In Combat", "Disabled In Combat")
 	end)
 
 	local unbreakableblockstoggle = false
