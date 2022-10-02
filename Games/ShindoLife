@@ -261,71 +261,17 @@ if game:GetService("Workspace"):FindFirstChild("bossdropmission") then
 		end
 	end
 end
+for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+	if v.Name ~= "sensei" and v:FindFirstChild("missions") and v.Name ~= "bossdropmission" and v.Name ~= "sengokubossfight" then
+		for i,v1 in pairs(game:GetService("Workspace")[v.Name].missions:GetChildren()) do
+			if v1:FindFirstChild("missiongiver") then
+				table.insert(beastsbosslist, v1.Name)
+				table.insert(allbosslist, v1.Name)
+			end
+		end
+	end
+end
 
-if game:GetService("Workspace"):FindFirstChild("tailbeastbossmission") then
-	for i,v in pairs(game:GetService("Workspace").tailbeastbossmission.missions:GetChildren()) do
-		if v:FindFirstChild("missiongiver") then
-			table.insert(beastsbosslist, v.Name)
-			table.insert(allbosslist, v.Name)
-		end
-	end
-end
-if game:GetService("Workspace"):FindFirstChild("eventbossmission") then
-	for i,v in pairs(game:GetService("Workspace").eventbossmission.missions:GetChildren()) do
-		if v:FindFirstChild("missiongiver") then
-			table.insert(beastsbosslist, v.Name)
-			table.insert(allbosslist, v.Name)
-		end
-	end
-end
-if game.PlaceId == 5451405681 then
-	for i,v in pairs(workspace.tentailBOSS.missions:GetChildren()) do
-		if v:FindFirstChild("missiongiver") then
-			table.insert(beastsbosslist, v.Name)
-			table.insert(allbosslist, v.Name)
-		end
-	end
-end
-if game:GetService("Workspace"):FindFirstChild("Akumasusanoo") then
-	for i,v in pairs(game:GetService("Workspace").Akumasusanoo.missions:GetChildren()) do
-		if v:FindFirstChild("missiongiver") then
-			table.insert(beastsbosslist, v.Name)
-			table.insert(allbosslist, v.Name)
-		end
-	end
-end
-if game:GetService("Workspace"):FindFirstChild("Toads") then
-	for i,v in pairs(game:GetService("Workspace").Toads.missions:GetChildren()) do
-		if v:FindFirstChild("missiongiver") then
-			table.insert(beastsbosslist, v.Name)
-			table.insert(allbosslist, v.Name)
-		end
-	end
-end
-if game:GetService("Workspace"):FindFirstChild("apolmission") then
-	for i,v in pairs(game:GetService("Workspace").apolmission.missions:GetChildren()) do
-		if v:FindFirstChild("missiongiver") then
-			table.insert(beastsbosslist, v.Name)
-			table.insert(allbosslist, v.Name)
-		end
-	end
-end
-if game:GetService("Workspace"):FindFirstChild("MARUmission") then
-	for i,v in pairs(game:GetService("Workspace").MARUmission.missions:GetChildren()) do
-		if v:FindFirstChild("missiongiver") then
-			table.insert(beastsbosslist, v.Name)
-			table.insert(allbosslist, v.Name)
-		end
-	end
-end
-if game:GetService("Workspace"):FindFirstChild("Sparkymission") then
-	for i,v in pairs(game:GetService("Workspace").Sparkymission.missions:GetChildren()) do
-		if v:FindFirstChild("missiongiver") then
-			table.insert(beastsbosslist, v.Name)
-			table.insert(allbosslist, v.Name)
-		end
-	end
-end
 if _G.dAAcG3fvBqVoPzVnAFk == nil then 
 	_G.dAAcG3fvBqVoPzVnAFk = "" 
 end 
@@ -6829,164 +6775,28 @@ local function ShindoMain()
 
 	local function BEASTFARM()
 		if random_beasts then
-			if game.PlaceId == 5451405681 then
-				for i,v in pairs(workspace.tentailBOSS.missions:GetChildren()) do
-					if v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
-						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
-						local args = {[1] = game:GetService("Players").LocalPlayer}
-						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
-						wait()
-					end
-				end
-			end
-			if game:GetService("Workspace"):FindFirstChild("tailbeastbossmission") then
-				for i,v in pairs(workspace.tailbeastbossmission.missions:GetChildren()) do
-					if v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
-						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
-						local args = {[1] = game:GetService("Players").LocalPlayer}
-						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
-						wait()
-					end
-				end
-			end
-			if game:GetService("Workspace"):FindFirstChild("eventbossmission") then
-				for i,v in pairs(game:GetService("Workspace").eventbossmission.missions:GetChildren()) do
-					if v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
-						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
-						local args = {[1] = game:GetService("Players").LocalPlayer}
-						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
-						wait()
-					end
-				end
-			end
-			if game:GetService("Workspace"):FindFirstChild("Akumasusanoo") then
-				for i,v in pairs(game:GetService("Workspace").Akumasusanoo.missions:GetChildren()) do
-					if v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
-						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
-						local args = {[1] = game:GetService("Players").LocalPlayer}
-						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
-						wait()
-					end
-				end
-			end
-			if game:GetService("Workspace"):FindFirstChild("Sparkymission") then
-				for i,v in pairs(game:GetService("Workspace").Sparkymission.missions:GetChildren()) do
-					if v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
-						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
-						local args = {[1] = game:GetService("Players").LocalPlayer}
-						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
-						wait()
-					end
-				end
-			end
-			if game:GetService("Workspace"):FindFirstChild("MARUmission") then
-				for i,v in pairs(game:GetService("Workspace").MARUmission.missions:GetChildren()) do
-					if v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
-						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
-						local args = {[1] = game:GetService("Players").LocalPlayer}
-						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
-						wait()
-					end
-				end
-			end
-			if game:GetService("Workspace"):FindFirstChild("apolmission") then
-				for i,v in pairs(game:GetService("Workspace").apolmission.missions:GetChildren()) do
-					if v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
-						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
-						local args = {[1] = game:GetService("Players").LocalPlayer}
-						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
-						wait()
-					end
-				end
-			end
-			if game:GetService("Workspace"):FindFirstChild("Toads") then
-				for i,v in pairs(game:GetService("Workspace").Toads.missions:GetChildren()) do
-					if v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
-						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
-						local args = {[1] = game:GetService("Players").LocalPlayer}
-						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
-						wait()
+			for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+				if v:FindFirstChild("missions") and v.Name ~= "bossdropmission" and v.Name ~= "sengokubossfight" then
+					for i,v1 in pairs(game:GetService("Workspace")[v.Name].missions:GetChildren()) do
+						if v1:FindFirstChild("missiongiver") and v1.missiongiver:FindFirstChild("timer") and v1.missiongiver.timer:FindFirstChild("time") and v1.missiongiver.timer.time:FindFirstChild("time") and (v1.missiongiver.timer.time.time.Text == "00:00" or v1.missiongiver.timer.time.time.Text == "59:59") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
+							player.Character.HumanoidRootPart.CFrame=v1.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
+							local args = {[1] = game:GetService("Players").LocalPlayer}
+							v1.missiongiver.CLIENTTALK:FireServer(unpack(args))
+							wait()
+						end
 					end
 				end
 			end
 		elseif specific_beast then
-			if game.PlaceId == 5451405681 then
-				for i,v in pairs(workspace.tentailBOSS.missions:GetChildren()) do
-					if v.Name == selected_beast and v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
-						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
-						local args = {[1] = game:GetService("Players").LocalPlayer}
-						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
-						wait()
-					end
-				end
-			end
-			if game:GetService("Workspace"):FindFirstChild("tailbeastbossmission") then
-				for i,v in pairs(workspace.tentailBOSS.missions:GetChildren()) do
-					if v.Name == selected_beast and v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
-						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
-						local args = {[1] = game:GetService("Players").LocalPlayer}
-						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
-						wait()
-					end
-				end
-			end
-			if game:GetService("Workspace"):FindFirstChild("eventbossmission") then
-				for i,v in pairs(workspace.tentailBOSS.missions:GetChildren()) do
-					if v.Name == selected_beast and v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
-						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
-						local args = {[1] = game:GetService("Players").LocalPlayer}
-						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
-						wait()
-					end
-				end
-			end
-			if game:GetService("Workspace"):FindFirstChild("Akumasusanoo") then
-				for i,v in pairs(workspace.tentailBOSS.missions:GetChildren()) do
-					if v.Name == selected_beast and v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
-						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
-						local args = {[1] = game:GetService("Players").LocalPlayer}
-						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
-						wait()
-					end
-				end
-			end
-			if game:GetService("Workspace"):FindFirstChild("Sparkymission") then
-				for i,v in pairs(workspace.tentailBOSS.missions:GetChildren()) do
-					if v.Name == selected_beast and v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
-						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
-						local args = {[1] = game:GetService("Players").LocalPlayer}
-						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
-						wait()
-					end
-				end
-			end
-			if game:GetService("Workspace"):FindFirstChild("MARUmission") then
-				for i,v in pairs(workspace.tentailBOSS.missions:GetChildren()) do
-					if v.Name == selected_beast and v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
-						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
-						local args = {[1] = game:GetService("Players").LocalPlayer}
-						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
-						wait()
-					end
-				end
-			end
-			if game:GetService("Workspace"):FindFirstChild("apolmission") then
-				for i,v in pairs(workspace.tentailBOSS.missions:GetChildren()) do
-					if v.Name == selected_beast and v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
-						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
-						local args = {[1] = game:GetService("Players").LocalPlayer}
-						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
-						wait()
-					end
-				end
-			end
-			if game:GetService("Workspace"):FindFirstChild("Toads") then
-				for i,v in pairs(workspace.tentailBOSS.missions:GetChildren()) do
-					if v.Name == selected_beast and v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
-						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
-						local args = {[1] = game:GetService("Players").LocalPlayer}
-						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
-						wait()
+			for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+				if v:FindFirstChild("missions") and v.Name ~= "bossdropmission" and v.Name ~= "sengokubossfight" then
+					for i,v1 in pairs(game:GetService("Workspace")[v.Name].missions:GetChildren()) do
+						if v1.Name == selected_beast and v1:FindFirstChild("missiongiver") and v1.missiongiver:FindFirstChild("timer") and v1.missiongiver.timer:FindFirstChild("time") and v1.missiongiver.timer.time:FindFirstChild("time") and (v1.missiongiver.timer.time.time.Text == "00:00" or v1.missiongiver.timer.time.time.Text == "59:59") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
+							player.Character.HumanoidRootPart.CFrame=v1.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
+							local args = {[1] = game:GetService("Players").LocalPlayer}
+							v1.missiongiver.CLIENTTALK:FireServer(unpack(args))
+							wait()
+						end
 					end
 				end
 			end
@@ -7961,59 +7771,12 @@ local function ShindoMain()
 				end
 			end
 		end
-		if game.PlaceId == 5451405681 then
-			for i,v in pairs(workspace.tentailBOSS.missions:GetChildren()) do
-				if v.Name == bossmissionlocation and v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
-					player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
-				end
-			end
-		end
-		if game:GetService("Workspace"):FindFirstChild("tailbeastbossmission") then
-			for i,v in pairs(workspace.tailbeastbossmission.missions:GetChildren()) do
-				if v.Name == bossmissionlocation and v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
-					player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
-				end
-			end
-		end
-		if game:GetService("Workspace"):FindFirstChild("eventbossmission") then
-			for i,v in pairs(game:GetService("Workspace").eventbossmission.missions:GetChildren()) do
-				if v.Name == bossmissionlocation and v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
-					player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
-				end
-			end
-		end
-		if game:GetService("Workspace"):FindFirstChild("Akumasusanoo") then
-			for i,v in pairs(game:GetService("Workspace").Akumasusanoo.missions:GetChildren()) do
-				if v.Name == bossmissionlocation and v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
-					player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
-				end
-			end
-		end
-		if game:GetService("Workspace"):FindFirstChild("Sparkymission") then
-			for i,v in pairs(game:GetService("Workspace").Sparkymission.missions:GetChildren()) do
-				if v.Name == bossmissionlocation and v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
-					player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
-				end
-			end
-		end
-		if game:GetService("Workspace"):FindFirstChild("MARUmission") then
-			for i,v in pairs(game:GetService("Workspace").MARUmission.missions:GetChildren()) do
-				if v.Name == bossmissionlocation and v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
-					player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
-				end
-			end
-		end
-		if game:GetService("Workspace"):FindFirstChild("apolmission") then
-			for i,v in pairs(game:GetService("Workspace").apolmission.missions:GetChildren()) do
-				if v.Name == bossmissionlocation and v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
-					player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
-				end
-			end
-		end
-		if game:GetService("Workspace"):FindFirstChild("Toads") then
-			for i,v in pairs(game:GetService("Workspace").Toads.missions:GetChildren()) do
-				if v.Name == bossmissionlocation and v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
-					player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
+		for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+			if v.Name ~= "sensei" and v:FindFirstChild("missions") and v.Name ~= "bossdropmission" and v.Name ~= "sengokubossfight" then
+				for i,v1 in pairs(game:GetService("Workspace")[v.Name].missions:GetChildren()) do
+					if v1.Name == bossmissionlocation and v1:FindFirstChild("missiongiver") and v1.missiongiver:FindFirstChild("timer") and v1.missiongiver.timer:FindFirstChild("time") and v1.missiongiver.timer.time:FindFirstChild("time") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
+						player.Character.HumanoidRootPart.CFrame=v1.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
+					end
 				end
 			end
 		end
