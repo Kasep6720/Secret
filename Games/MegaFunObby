@@ -401,10 +401,10 @@ local function MegaFunObby()
 					Timer = Timer + 1
 					print("Time: " .. Timer)
 					section1:updateToggle("Auto Complete Stages",false)
-					notify("Please enter the portal in order to continue")
+					notify("Script bugged, please complete this stage manually in order to continue")
 				else
 					ACS = false
-					NoobieDoge:Notify("Auto Farm Stopped","Please enter the portal in order to continue")
+					NoobieDoge:Notify("Auto Farm Stopped","Script bugged, please complete this stage manually in order to continue")
 					Timer = 0
 				end
 			else
@@ -422,12 +422,40 @@ local function MegaFunObby()
 		end
 	end)
 
-	game:GetService('RunService').Stepped:connect(function()
-		if ACS then
-			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Camera.Arrow.CFrame * CFrame.new(0, 10, 0)
+	spawn(function()
+		while wait() do
+			if ACS then
+				if player.leaderstats.Stage.Value == 229 then
+					player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(91, 160, -4.6))
+					wait(4)
+					player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Camera.Arrow.CFrame * CFrame.new(0, 10, 0)
+				elseif player.leaderstats.Stage.Value == 363 then
+					player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-5480, 374, -14478))
+					wait(4)
+					player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Camera.Arrow.CFrame * CFrame.new(0, 10, 0)
+				elseif player.leaderstats.Stage.Value == 489 then
+					player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-8008, 428, 16645))
+					wait(4)
+					player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Camera.Arrow.CFrame * CFrame.new(0, 10, 0)
+				elseif player.leaderstats.Stage.Value == 632 then
+					player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-8090, 329, -1905))
+					wait(4)
+					player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Camera.Arrow.CFrame * CFrame.new(0, 10, 0)
+				elseif player.leaderstats.Stage.Value == 860 then
+					player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(20, 132, -7910))
+					wait(4)
+					player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Camera.Arrow.CFrame * CFrame.new(0, 10, 0)
+				elseif player.leaderstats.Stage.Value == 999 then
+					player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-6268, 132, 6400))
+					wait(4)
+					player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Camera.Arrow.CFrame * CFrame.new(0, 10, 0)
+				else	
+					player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Camera.Arrow.CFrame * CFrame.new(0, 10, 0)
+				end
+			end
 		end
 	end)
-
+	
 	section1:addButton("Teleport to the end",function()
 		player.Character.HumanoidRootPart.CFrame =  CFrame.new(Vector3.new(968.919, 2057, -844.936))
 	end)
