@@ -576,10 +576,6 @@ local function ShindoInfSpin()
 		TextButtonText.MouseButton1Click:connect(X)
 	end)
 
-	section2:addButton("RC Shop Changer",function()
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20RC%20Shop%20Changer"))()
-	end)
-
 	section3:addButton("Reset Spins NOW",function()	
 		game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
 		wait()
@@ -1567,10 +1563,6 @@ local function ShindoMyHome()
 
 	section1:addButton("Bloodline Changer",function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/NoobieDoge/DogeHub/Separated/ShindoBloodlineChanger"))()
-	end)
-
-	section1:addButton("RC Shop Changer",function()
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20RC%20Shop%20Changer"))()
 	end)
 
 	section2:addButton("Reset Spins NOW",function()
@@ -2619,10 +2611,6 @@ local function ShindoDungeons()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/NoobieDoge/DogeHub/Separated/ShindoBloodlineChanger"))()
 	end)
 
-	section2:addButton("RC Shop Changer",function()
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20RC%20Shop%20Changer"))()
-	end)
-
 	-- third page
 	local page3 = NoobieDoge:addPage("Spam Keys", 5012544693)
 	local section1 = page3:addSection("Configurations")
@@ -3409,10 +3397,6 @@ local function ShindoBossBattle()
 
 	section2:addButton("Bloodline Changer",function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/NoobieDoge/DogeHub/Separated/ShindoBloodlineChanger"))()
-	end)
-
-	section2:addButton("RC Shop Changer",function()
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20RC%20Shop%20Changer"))()
 	end)
 
 	-- third page
@@ -4347,10 +4331,6 @@ local function ShindoEventBoss()
 
 	section2:addButton("Bloodline Changer",function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/NoobieDoge/DogeHub/Separated/ShindoBloodlineChanger"))()
-	end)
-
-	section2:addButton("RC Shop Changer",function()
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20RC%20Shop%20Changer"))()
 	end)
 
 	-- third page
@@ -5525,10 +5505,6 @@ local function ShindoMain()
 
 	section2:addButton("Bloodline Changer",function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/NoobieDoge/DogeHub/Separated/ShindoBloodlineChanger"))()
-	end)
-
-	section2:addButton("RC Shop Changer",function()
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Shindo%20Loadout%20Changer/Page%20RC%20Shop%20Changer"))()
 	end)
 
 	section3:addButton("Reset Spins NOW",function()
