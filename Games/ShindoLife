@@ -2546,10 +2546,22 @@ local function ShindoDungeons()
 		INFMDON()
 	end)
 
-	section1:addButton("Disable In Combat",function()
-		game:GetService("Players").LocalPlayer.incombat.Value = false
-		notify("Disabled In Combat")
-		section1:updateButton("Disable In Combat", "Disabled In Combat")
+	local disableincombattoggle = true
+	section1:addToggle("Disable In Combat",true,function(bool)
+		disableincombattoggle = not disableincombattoggle
+		if disableincombattoggle then
+			DisabledInCombat = bool
+			notify("Disabled In Combat")
+		else
+			notify("In Combat will be re-activated after a while")
+		end
+	end)
+	DisabledInCombat = true
+
+	game:GetService('RunService').Stepped:connect(function()
+		if DisabledInCombat then
+			game:GetService("Players").LocalPlayer.incombat.Value = false
+		end
 	end)
 
 	local unbreakableblockstoggle = false
@@ -2943,6 +2955,7 @@ local function ShindoDungeons()
 			Pfly = false
 			getgenv().dc = true
 			unbreakableblockstoggle = false
+			DisabledInCombat = false
 			keel = false
 			SpamGOBRRRRR = false 
 			ClickRATATA = false
@@ -3350,10 +3363,22 @@ local function ShindoBossBattle()
 		INFMDON()
 	end)
 
-	section1:addButton("Disable In Combat",function()
-		game:GetService("Players").LocalPlayer.incombat.Value = false
-		notify("Disabled In Combat")
-		section1:updateButton("Disable In Combat", "Disabled In Combat")
+	local disableincombattoggle = true
+	section1:addToggle("Disable In Combat",true,function(bool)
+		disableincombattoggle = not disableincombattoggle
+		if disableincombattoggle then
+			DisabledInCombat = bool
+			notify("Disabled In Combat")
+		else
+			notify("In Combat will be re-activated after a while")
+		end
+	end)
+	DisabledInCombat = true
+	
+	game:GetService('RunService').Stepped:connect(function()
+		if DisabledInCombat then
+			game:GetService("Players").LocalPlayer.incombat.Value = false
+		end
 	end)
 
 	local unbreakableblockstoggle = false
@@ -3801,6 +3826,7 @@ local function ShindoBossBattle()
 			game:GetService("Workspace").Gravity = originalgravity
 			Pfly = false
 			getgenv().dc = true
+			DisabledInCombat = false
 			unbreakableblockstoggle = false
 			keel = false
 			SpamGOBRRRRR = false 
@@ -4268,10 +4294,22 @@ local function ShindoEventBoss()
 		INFMDON()
 	end)
 
-	section1:addButton("Disable In Combat",function()
-		game:GetService("Players").LocalPlayer.incombat.Value = false
-		notify("Disabled In Combat")
-		section1:updateButton("Disable In Combat", "Disabled In Combat")
+	local disableincombattoggle = true
+	section1:addToggle("Disable In Combat",true,function(bool)
+		disableincombattoggle = not disableincombattoggle
+		if disableincombattoggle then
+			DisabledInCombat = bool
+			notify("Disabled In Combat")
+		else
+			notify("In Combat will be re-activated after a while")
+		end
+	end)
+	DisabledInCombat = true
+	
+	game:GetService('RunService').Stepped:connect(function()
+		if DisabledInCombat then
+			game:GetService("Players").LocalPlayer.incombat.Value = false
+		end
 	end)
 
 	local unbreakableblockstoggle = false
@@ -4962,6 +5000,7 @@ local function ShindoEventBoss()
 			Pfly = false
 			trackthatguy = false
 			getgenv().dc = true
+			DisabledInCombat = false
 			unbreakableblockstoggle = false
 			keel = false
 			SpamGOBRRRRR = false 
@@ -5442,10 +5481,22 @@ local function ShindoMain()
 		INFMDON()
 	end)
 
-	section1:addButton("Disable In Combat",function()
-		game:GetService("Players").LocalPlayer.incombat.Value = false
-		notify("Disabled In Combat")
-		section1:updateButton("Disable In Combat", "Disabled In Combat")
+	local disableincombattoggle = true
+	section1:addToggle("Disable In Combat",true,function(bool)
+		disableincombattoggle = not disableincombattoggle
+		if disableincombattoggle then
+			DisabledInCombat = bool
+			notify("Disabled In Combat")
+		else
+			notify("In Combat will be re-activated after a while")
+		end
+	end)
+	DisabledInCombat = true
+	
+	game:GetService('RunService').Stepped:connect(function()
+		if DisabledInCombat then
+			game:GetService("Players").LocalPlayer.incombat.Value = false
+		end
 	end)
 
 	local unbreakableblockstoggle = false
@@ -7894,6 +7945,7 @@ local function ShindoMain()
 			Pfly = false
 			getgenv().dc = true
 			trackthatguy = false
+			DisabledInCombat = false
 			unbreakableblockstoggle = false
 			keel = false
 			SpamGOBRRRRR = false 
