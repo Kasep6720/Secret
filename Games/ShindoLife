@@ -449,9 +449,8 @@ local function ShindoInfSpin()
 	-- first page
 	local page1 = NoobieDoge:addPage("Infinite Spin", 5176336983)
 	local section1 = page1:addSection("Instructions")
-	local section2 = page1:addSection("Utility Functions")
-	local section3 = page1:addSection("Inf Spin Functions")
-	local section4 = page1:addSection("Inf Spin Settings")
+	local section2 = page1:addSection("Inf Spin Functions")
+	local section3 = page1:addSection("Inf Spin Settings")
 	
 	section1:addButton("Instructions",function()
 		local player = game.Players.LocalPlayer
@@ -576,13 +575,13 @@ local function ShindoInfSpin()
 		TextButtonText.MouseButton1Click:connect(X)
 	end)
 
-	section3:addButton("Reset Spins NOW",function()	
+	section2:addButton("Reset Spins NOW",function()	
 		game:GetService("Players").LocalPlayer.startevent:FireServer("band", "\128")
 		wait()
 		game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
 	end)
 
-	section3:addButton("Save Spins Data",function()
+	section2:addButton("Save Spins Data",function()
 		local player = game.Players.LocalPlayer
 		local ScreenGuiK = Instance.new("ScreenGui")
 		local FrameK = Instance.new("ImageLabel")
@@ -701,36 +700,36 @@ local function ShindoInfSpin()
 		TextButton_2Text.MouseButton1Click:connect(cancelKeep)		
 	end)
 
-	section4:addToggle("Auto Rejoin",true,function(bool)
+	section3:addToggle("Auto Rejoin",true,function(bool)
 		Autorejoin = bool
 	end)
 
-	section4:addToggle("Auto Save",false,function(bool)
+	section3:addToggle("Auto Save",false,function(bool)
 		Autosave = bool
 	end)
 
 	if player.gamepasses:FindFirstChild("spinsbag") then
-		section4:addSlider("Auto Rejoin when spins lower than", 0, 0, 999, function(value)
+		section3:addSlider("Auto Rejoin when spins lower than", 0, 0, 999, function(value)
 			resetspinswhenthisnumberreached = value
 		end)
 	else
-		section4:addSlider("Auto Rejoin when spins lower than", 0, 0, 499, function(value)
+		section3:addSlider("Auto Rejoin when spins lower than", 0, 0, 499, function(value)
 			resetspinswhenthisnumberreached = value
 		end)
 	end
 	resetspinswhenthisnumberreached = 0
 
 	local savegomyhome
-	section4:addToggle("Teleport to My Home when saving data",true,function(bool)
+	section3:addToggle("Teleport to My Home when saving data",true,function(bool)
 		savegomyhome = bool
 		savegomainmenu = false
-		section4:updateToggle("Teleport back to Main Menu when saving data")
+		section3:updateToggle("Teleport back to Main Menu when saving data")
 	end)
 	local savegomainmenu
-	section4:addToggle("Teleport back to Main Menu when saving data",false,function(bool)
+	section3:addToggle("Teleport back to Main Menu when saving data",false,function(bool)
 		savegomainmenu = bool
 		savegomyhome = false
-		section4:updateToggle("Teleport to My Home when saving data")
+		section3:updateToggle("Teleport to My Home when saving data")
 	end)
 	savegomyhome = true
 	-- load
