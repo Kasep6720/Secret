@@ -6096,6 +6096,15 @@ local function ShindoMain()
 				notify("Ryuji Kenichi Mentor is not in this map!")
 			end
 		end)
+		section1:addButton("Tp to Bruce Mentor",function()
+			if game.PlaceId == 5431071837 then
+				local args = {[1] = game:GetService("Players").LocalPlayer}
+				workspace.sensei.missions:FindFirstChild("Bruce Kenichi").missiongiver.CLIENTTALK:FireServer(unpack(args))
+				player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Bruce Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
+			else
+				notify("Bruce Kenichi Mentor is not in this map!")
+			end
+		end)
 		section1:addButton("Tp to Kenjutsu Mentor",function()
 			if game.PlaceId == 4601350656 then
 				for v = 1,8 do
@@ -6234,18 +6243,26 @@ local function ShindoMain()
 							workspace.sensei.missions:FindFirstChild("Shindai Akuma").missiongiver.CLIENTTALK:FireServer(unpack(args))
 							wait(1)
 						elseif game.PlaceId == 5431071837 then
-							wait(.5)
-							player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,4,3)
-							local args = {[1] = game:GetService("Players").LocalPlayer}
-							workspace.sensei.missions:FindFirstChild("Ryuji Kenichi").missiongiver.CLIENTTALK:FireServer(unpack(args))
-							wait(1)
+							if game:GetService("Players").LocalPlayer.statz.currentsensei.Value == "Ryuji Kenichi" then
+								wait(.5)
+								player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,4,3)
+								local args = {[1] = game:GetService("Players").LocalPlayer}
+								workspace.sensei.missions:FindFirstChild("Ryuji Kenichi").missiongiver.CLIENTTALK:FireServer(unpack(args))
+								wait(1)
+							elseif game:GetService("Players").LocalPlayer.statz.currentsensei.Value == "Bruce Kenichi" then
+								wait(.5)
+								player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Bruce Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,4,3)
+								local args = {[1] = game:GetService("Players").LocalPlayer}
+								workspace.sensei.missions:FindFirstChild("Bruce Kenichi").missiongiver.CLIENTTALK:FireServer(unpack(args))
+								wait(1)
+							end
 						elseif game.PlaceId == 4601350656 then
 							for v = 1,8 do
 								wait()
 								game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace")["Ken Mentor"].HumanoidRootPart.Position)
 							end
 							game.Workspace.HumanoidRootPart.CFrame=game:GetService("Workspace")["Ken Mentor"].HumanoidRootPart.CFrame+Vector3.new(-6,4,0)
-						elseif game.PlaceId == 8184506020 then
+						elseif game.PlaceId == 8184506020 then --Mentor Boss Battle Map
 							punches = false
 							tree = false
 							shoot = false
