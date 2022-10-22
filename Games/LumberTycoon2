@@ -29,7 +29,7 @@ function CTRLCLICKTP()
 	local Mouse = Player:GetMouse()
 	
 	function GetCharacter()
-	return game.Players.LocalPlayer.Character
+	return player.Character
 	end
 	
 	function Teleport(pos)
@@ -224,7 +224,7 @@ local function LumberTycoon2()
 	end)
 
 	section2:addButton("Reset Character",function()
-		game.Players.LocalPlayer.Character:BreakJoints()
+		player.Character:BreakJoints()
 	end)
 
 	section2:addButton("Ctrl + Click TP",function()
@@ -242,7 +242,7 @@ local function LumberTycoon2()
 			local infjump
 			infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
 				if dc then infjump:Disconnect() return end
-				game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
+				player.Character.Humanoid:ChangeState("Jumping")
 			end)
 		else
 			getgenv().dc = true
@@ -256,7 +256,7 @@ local function LumberTycoon2()
 			local infjump
 			infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
 				if dc then infjump:Disconnect() return end
-				game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
+				player.Character.Humanoid:ChangeState("Jumping")
 			end)
 		end
 	end)
@@ -267,15 +267,15 @@ local function LumberTycoon2()
 		noclip = not noclip
 		game:GetService('RunService').Stepped:connect(function()
 			if noclip then
-				game.Players.LocalPlayer.Character.Head.CanCollide = false
-				game.Players.LocalPlayer.Character.Torso.CanCollide = false
-				game.Players.LocalPlayer.Character["Left Leg"].CanCollide = false
-				game.Players.LocalPlayer.Character["Right Leg"].CanCollide = false
+				player.Character.Head.CanCollide = false
+				player.Character.Torso.CanCollide = false
+				player.Character["Left Leg"].CanCollide = false
+				player.Character["Right Leg"].CanCollide = false
 			else
-				game.Players.LocalPlayer.Character.Head.CanCollide = true
-				game.Players.LocalPlayer.Character.Torso.CanCollide = true
-				game.Players.LocalPlayer.Character["Left Leg"].CanCollide = true
-				game.Players.LocalPlayer.Character["Right Leg"].CanCollide = true
+				player.Character.Head.CanCollide = true
+				player.Character.Torso.CanCollide = true
+				player.Character["Left Leg"].CanCollide = true
+				player.Character["Right Leg"].CanCollide = true
 			end
 		end)
 	end)
@@ -286,8 +286,8 @@ local function LumberTycoon2()
 	sliderfly = 101
 	section2:addToggle("Press P to fly",false,function(Pfly)
 		repeat wait() 
-		until game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:findFirstChild("Head") and game.Players.LocalPlayer.Character:findFirstChild("Humanoid") 
-		local mouse = game.Players.LocalPlayer:GetMouse() 
+        until player and player.Character:findFirstChild("Head") player.Character:findFirstChild("Humanoid") 
+		local mouse = player:GetMouse() 
 		repeat wait() until mouse
 		local plr = game.Players.LocalPlayer 
 		local torso = plr.Character.Head 
@@ -375,7 +375,7 @@ local function LumberTycoon2()
 
 	local playerlist = {}
 	for i,v in pairs(game:GetService("Players"):GetPlayers()) do
-		if v.Name ~= game.Players.LocalPlayer.Name then
+		if v.Name ~= player.Name then
 			table.insert(playerlist, v.Name)
 		end
 	end
@@ -432,7 +432,7 @@ local function LumberTycoon2()
 
 	section1:addButton("Max Land",function()
 		for i, v in pairs(game:GetService("Workspace").Properties:GetChildren()) do
-			if v:FindFirstChild("Owner") and v.Owner.Value == game.Players.LocalPlayer then
+			if v:FindFirstChild("Owner") and v.Owner.Value == player then
 				base = v
 				square = v.OriginSquare
 			end
@@ -496,8 +496,8 @@ local function LumberTycoon2()
 
 	section2:addToggle("Car Flight",false,function(Zcarfly)
 		repeat wait()
-		until game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:findFirstChild("Torso") and game.Players.LocalPlayer.Character:findFirstChild("Humanoid")
-		local mouse = game.Players.LocalPlayer:GetMouse()
+        until player and player.Character:findFirstChild("Head") player.Character:findFirstChild("Humanoid") 
+		local mouse = player:GetMouse()
 		repeat wait() until mouse
 		local plr = game.Players.LocalPlayer
 		local torso = plr.Character.Torso
@@ -673,7 +673,7 @@ local function LumberTycoon2()
 					if GetAxe() ~= false then --Checks if you have a axe equiped
 						for a,b in pairs(TreeList) do
 							if not b:FindFirstChild("RootCut") and b:FindFirstChild("CutEvent") then --Checks if the tree is already cut
-								distance = (game.Players.LocalPlayer.Character.Head.Position - b.WoodSection.Position).magnitude --gets the distance between player and tree
+								distance = (player.Character.Head.Position - b.WoodSection.Position).magnitude --gets the distance between player and tree
 								if distance < 225 then --if distance lower than 225 then it will cut the tree
 									CutTree(b) --Calls the function with the tree to cut
 								end
@@ -686,7 +686,7 @@ local function LumberTycoon2()
 			end
 		end)
 	
-		mouse = game.Players.LocalPlayer:GetMouse() --Gets the Mouse
+		mouse = player:GetMouse() --Gets the Mouse
 		mouse.Button1Down:connect(function()
 			if GAxe == true and GetAxe() ~= false then
 				Target = mouse.Target
@@ -718,7 +718,7 @@ local function LumberTycoon2()
 		if ASW then
 			for _, Log in pairs(workspace.LogModels:GetChildren()) do
 				if Log.Name:sub(1, 6) == "Loose_" and Log:findFirstChild("Owner") then
-					if Log.Owner.Value == game.Players.LocalPlayer then
+					if Log.Owner.Value == player then
 						for i,v in pairs(Log:GetChildren()) do
 							if v.Name=="WoodSection" then
 								spawn(function()
@@ -744,7 +744,7 @@ local function LumberTycoon2()
 	section1:addButton("Sell Wood",function()
 		for _, Log in pairs(workspace.LogModels:GetChildren()) do
 			if Log.Name:sub(1, 6) == "Loose_" and Log:findFirstChild("Owner") then
-				if Log.Owner.Value == game.Players.LocalPlayer then
+				if Log.Owner.Value == player then
 					for i,v in pairs(Log:GetChildren()) do
 						if v.Name=="WoodSection" then
 							spawn(function()
@@ -769,7 +769,7 @@ local function LumberTycoon2()
 	section1:addButton("Sell Planks",function()
 		for _, Plank in pairs(game.Workspace.PlayerModels:GetChildren()) do
 			if Plank.Name=="Plank" and Plank:findFirstChild("Owner") then
-				if Plank.Owner.Value == game.Players.LocalPlayer then
+				if Plank.Owner.Value == player then
 					for i,v in pairs(Plank:GetChildren()) do
 						if v.Name=="WoodSection" then
 							spawn(function()
@@ -794,8 +794,8 @@ local function LumberTycoon2()
 	section2:addButton("Bring Wood",function()
 		for _, Log in pairs(game.Workspace.LogModels:GetChildren()) do
 			if Log.Name:sub(1, 6) == "Loose_" and Log:findFirstChild("Owner") then
-				if Log.Owner.Value == game.Players.LocalPlayer then
-					Log:MoveTo(game.Players.LocalPlayer.Character.HumanoidRootPart.Position + Vector3.new(0, 15, 0))
+				if Log.Owner.Value == player then
+					Log:MoveTo(player.Character.HumanoidRootPart.Position + Vector3.new(0, 15, 0))
 					for i=1,100 do
 						game.ReplicatedStorage.Interaction.ClientIsDragging:FireServer(Log)
 					end
@@ -807,12 +807,12 @@ local function LumberTycoon2()
 	section2:addButton("Bring Planks",function()
 		for _, Plank in pairs(game.Workspace.PlayerModels:GetChildren()) do
 			if Plank.Name=="Plank" and Plank:findFirstChild("Owner") then
-				if Plank.Owner.Value == game.Players.LocalPlayer then
+				if Plank.Owner.Value == player then
 					sendNotice = game.ReplicatedStorage.Notices.SendUserNotice
 					sendNotice:Fire("Click where you want ALL the Planks to TP to")
 					local ButtonPress
-					ButtonPress = game.Players.LocalPlayer:GetMouse().Button1Down:Connect(function()
-						Square = game.Players.LocalPlayer:GetMouse().Target
+					ButtonPress = player:GetMouse().Button1Down:Connect(function()
+						Square = player:GetMouse().Target
 						if (Square.Name == "OriginSquare" or Square.Name == "Square") then
 							ButtonPress:Disconnect()
 							Plank:MoveTo(Square.Position)
@@ -829,7 +829,7 @@ local function LumberTycoon2()
 	section3:addButton("Mod Wood",function()
 		for _, Log in pairs(workspace.LogModels:GetChildren()) do
 			if Log.Name:sub(1, 6) == "Loose_" and Log:findFirstChild("Owner") then
-				if Log.Owner.Value == game.Players.LocalPlayer then
+				if Log.Owner.Value == player then
 					for i,v in pairs(Log:GetChildren()) do
 						if v.Name=="WoodSection" then
 							spawn(function()
@@ -853,8 +853,8 @@ local function LumberTycoon2()
 		wait(2.0)
 		for _, Log in pairs(game.Workspace.LogModels:GetChildren()) do
 			if Log.Name:sub(1, 6) == "Loose_" and Log:findFirstChild("Owner") then
-				if Log.Owner.Value == game.Players.LocalPlayer then
-					Log:MoveTo(game.Players.LocalPlayer.Character.HumanoidRootPart.Position)
+				if Log.Owner.Value == player then
+					Log:MoveTo(player.Character.HumanoidRootPart.Position)
 					for i=1,20 do
 						game.ReplicatedStorage.Interaction.ClientIsDragging:FireServer(Log.WoodSection)
 						game.ReplicatedStorage.Interaction.ClientRequestOwnership:FireServer(Log.WoodSection)
@@ -889,9 +889,9 @@ local function LumberTycoon2()
 	--Spawn
 	section1:addButton("Spawn",function()
 		function Tlprt(Cframe)
-			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			player.Character.Humanoid.Jump = true
 			wait(0.1)
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+			player.Character.HumanoidRootPart.CFrame = Cframe
 		end
 		Tlprt(CFrame.new(155, 5, 74))
 	end)
@@ -899,9 +899,9 @@ local function LumberTycoon2()
 	--Wood R Us
 	section1:addButton("Wood R Us",function()
 		function Tlprt(Cframe)
-			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			player.Character.Humanoid.Jump = true
 			wait(0.1)
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+			player.Character.HumanoidRootPart.CFrame = Cframe
 		end
 		Tlprt(CFrame.new(265, 5, 57))
 	end)
@@ -909,9 +909,9 @@ local function LumberTycoon2()
 	--Land Store
 	section1:addButton("Land Store",function()
 		function Tlprt(Cframe)
-			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			player.Character.Humanoid.Jump = true
 			wait(0.1)
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+			player.Character.HumanoidRootPart.CFrame = Cframe
 		end
 		Tlprt(CFrame.new(258, 5, -99))
 	end)
@@ -919,9 +919,9 @@ local function LumberTycoon2()
 	--Bridge
 	section1:addButton("Bridge",function()
 		function Tlprt(Cframe)
-			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			player.Character.Humanoid.Jump = true
 			wait(0.1)
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+			player.Character.HumanoidRootPart.CFrame = Cframe
 		end
 		Tlprt(CFrame.new(113, 15, -977))
 	end)
@@ -929,9 +929,9 @@ local function LumberTycoon2()
 	--Dock
 	section1:addButton("Dock",function()
 		function Tlprt(Cframe)
-			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			player.Character.Humanoid.Jump = true
 			wait(0.1)
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+			player.Character.HumanoidRootPart.CFrame = Cframe
 		end
 		Tlprt(CFrame.new(1114, 3.2, -197))
 	end)
@@ -939,9 +939,9 @@ local function LumberTycoon2()
 	--Lodge
 	section1:addButton("Lodge",function()
 		function Tlprt(Cframe)
-			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			player.Character.Humanoid.Jump = true
 			wait(0.1)
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+			player.Character.HumanoidRootPart.CFrame = Cframe
 		end
 		Tlprt(CFrame.new(1244, 66, 2306))
 	end)
@@ -949,9 +949,9 @@ local function LumberTycoon2()
 	--Link's Logic
 	section1:addButton("Link's Logic",function()
 		function Tlprt(Cframe)
-			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			player.Character.Humanoid.Jump = true
 			wait(0.1)
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+			player.Character.HumanoidRootPart.CFrame = Cframe
 		end
 		Tlprt(CFrame.new(4607, 9, -798))
 	end)
@@ -959,9 +959,9 @@ local function LumberTycoon2()
 	--Boxed Cars
 	section1:addButton("Boxed Cars",function()
 		function Tlprt(Cframe)
-			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			player.Character.Humanoid.Jump = true
 			wait(0.1)
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+			player.Character.HumanoidRootPart.CFrame = Cframe
 		end
 		Tlprt(CFrame.new(509, 5.2, -1463))
 	end)
@@ -969,9 +969,9 @@ local function LumberTycoon2()
 	--Bob's Shack
 	section1:addButton("Bob's Shack",function()
 		function Tlprt(Cframe)
-			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			player.Character.Humanoid.Jump = true
 			wait(0.1)
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+			player.Character.HumanoidRootPart.CFrame = Cframe
 		end
 		Tlprt(CFrame.new(260, 10, -2542))
 	end)
@@ -979,9 +979,9 @@ local function LumberTycoon2()
 	--Fine Arts
 	section1:addButton("Fine Arts",function()
 		function Tlprt(Cframe)
-			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			player.Character.Humanoid.Jump = true
 			wait(0.1)
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+			player.Character.HumanoidRootPart.CFrame = Cframe
 		end
 		Tlprt(CFrame.new(5207, -156, 719))
 	end)
@@ -990,9 +990,9 @@ local function LumberTycoon2()
 	--Volcano
 	section1:addButton("Volcano",function()
 		function Tlprt(Cframe)
-			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			player.Character.Humanoid.Jump = true
 			wait(0.1)
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+			player.Character.HumanoidRootPart.CFrame = Cframe
 		end
 		Tlprt(CFrame.new(-1585, 625, 1140))
 	end)
@@ -1000,9 +1000,9 @@ local function LumberTycoon2()
 	--Ice Wood
 	section1:addButton("Ice Wood",function()
 		function Tlprt(Cframe)
-			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			player.Character.Humanoid.Jump = true
 			wait(0.1)
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+			player.Character.HumanoidRootPart.CFrame = Cframe
 		end
 		Tlprt(CFrame.new(1451.66248, 412.208405, 3183.47607))
 	end)
@@ -1010,9 +1010,9 @@ local function LumberTycoon2()
 	--Palm
 	section1:addButton("Palms",function()
 		function Tlprt(Cframe)
-			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			player.Character.Humanoid.Jump = true
 			wait(0.1)
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+			player.Character.HumanoidRootPart.CFrame = Cframe
 		end
 		Tlprt(CFrame.new(2549, 5, -42))
 	end)
@@ -1020,9 +1020,9 @@ local function LumberTycoon2()
 	--Swamp
 	section1:addButton("Swamp",function()
 		function Tlprt(Cframe)
-			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			player.Character.Humanoid.Jump = true
 			wait(0.1)
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+			player.Character.HumanoidRootPart.CFrame = Cframe
 		end
 		Tlprt(CFrame.new(-1209, 138, -801))
 	end)
@@ -1030,9 +1030,9 @@ local function LumberTycoon2()
 	--End Times
 	section1:addButton("End Times",function()
 		function Tlprt(Cframe)
-			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			player.Character.Humanoid.Jump = true
 			wait(0.1)
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+			player.Character.HumanoidRootPart.CFrame = Cframe
 		end
 		Tlprt(CFrame.new(113, -204, -951))
 	end)
@@ -1040,9 +1040,9 @@ local function LumberTycoon2()
 	--Fancy Furnishings
 	section1:addButton("Fancy Furnishings",function()
 		function Tlprt(Cframe)
-			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			player.Character.Humanoid.Jump = true
 			wait(0.1)
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+			player.Character.HumanoidRootPart.CFrame = Cframe
 		end
 		Tlprt(CFrame.new(491, 13, -1720))
 	end)
@@ -1050,9 +1050,9 @@ local function LumberTycoon2()
 	--Strange Man
 	section1:addButton("Strange Man",function()
 		function Tlprt(Cframe)
-			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			player.Character.Humanoid.Jump = true
 			wait(0.1)
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+			player.Character.HumanoidRootPart.CFrame = Cframe
 		end
 		Tlprt(CFrame.new(1061, 20, 1131))
 	end)
@@ -1060,9 +1060,9 @@ local function LumberTycoon2()
 	--Yellow Wood
 	section1:addButton("Yellow Wood",function()
 		function Tlprt(Cframe)
-			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			player.Character.Humanoid.Jump = true
 			wait(0.1)
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+			player.Character.HumanoidRootPart.CFrame = Cframe
 		end
 		Tlprt(CFrame.new(-1124.91565, 1.10021782, -943.932129))
 	end)
@@ -1070,9 +1070,9 @@ local function LumberTycoon2()
 	--Cave
 	section1:addButton("Cave",function()
 		function Tlprt(Cframe)
-			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			player.Character.Humanoid.Jump = true
 			wait(0.1)
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+			player.Character.HumanoidRootPart.CFrame = Cframe
 		end
 		Tlprt(CFrame.new(3581, -177, 430))
 	end)
@@ -1080,9 +1080,9 @@ local function LumberTycoon2()
 	--Green Box
 	section1:addButton("Green Box",function()
 		function Tlprt(Cframe)
-			game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			player.Character.Humanoid.Jump = true
 			wait(0.1)
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Cframe
+			player.Character.HumanoidRootPart.CFrame = Cframe
 		end
 		Tlprt(CFrame.new(-1668.39197, 349.601929, 1475.36255))
 	end)
@@ -1139,7 +1139,7 @@ local function LumberTycoon2()
 		local TextButton_2 = Instance.new("ImageButton")
 		local TextButton_2Text = Instance.new("TextButton")
 
-		ScreenGuiK.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+		ScreenGuiK.Parent = player:WaitForChild("PlayerGui")
 
 		Frame.Parent = ScreenGuiK
 		Frame.Name = "Main"
@@ -1279,7 +1279,7 @@ local function LumberTycoon2()
 		local TextButton_2 = Instance.new("ImageButton")
 		local TextButton_2Text = Instance.new("TextButton")
 
-		ScreenGuiK.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+		ScreenGuiK.Parent = player:WaitForChild("PlayerGui")
 
 		Frame.Parent = ScreenGuiK
 		Frame.Name = "Main"
