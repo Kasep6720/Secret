@@ -249,7 +249,7 @@ local function ZombieAttack()
 	sliderfly = 101
 	section2:addToggle("Press P to fly",false,function(Pfly)
 		repeat wait() 
-		until player and player.Character:fplayerd game.Players.LocalPlayer.Character:findFirstChild("Humplayer
+		until player and player.Character and player.Character:findFirstChild("Head") and player.Character:findFirstChild("Humanoid")
 		local mouse = player:GetMouse() 
 		repeat wait() until mouse
 		local plr = game.Players.LocalPlayer 
