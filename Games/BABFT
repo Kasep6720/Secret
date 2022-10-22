@@ -40,7 +40,7 @@ function CTRLCLICKTP()
 	local Mouse = Player:GetMouse()
 	
 	function GetCharacter()
-	return game.Players.LocalPlayer.Character
+	return player.Character
 	end
 	
 	function Teleport(pos)
@@ -217,7 +217,7 @@ local function BABFT()
 	end)
 
 	section2:addButton("Reset Character",function()
-		game.Players.LocalPlayer.Character:BreakJoints()
+		player.Character:BreakJoints()
 	end)
 
 	section2:addButton("Ctrl + Click TP",function()
@@ -235,7 +235,7 @@ local function BABFT()
 			local infjump
 			infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
 				if dc then infjump:Disconnect() return end
-				game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
+				player.Character.Humanoid:ChangeState("Jumping")
 			end)
 		else
 			getgenv().dc = true
@@ -249,7 +249,7 @@ local function BABFT()
 			local infjump
 			infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
 				if dc then infjump:Disconnect() return end
-				game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
+				player.Character.Humanoid:ChangeState("Jumping")
 			end)
 		end
 	end)
@@ -260,8 +260,8 @@ local function BABFT()
 	sliderfly = 101
 	section2:addToggle("Press P to fly",false,function(Pfly)
 		repeat wait() 
-		until game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:findFirstChild("Head") and game.Players.LocalPlayer.Character:findFirstChild("Humanoid") 
-		local mouse = game.Players.LocalPlayer:GetMouse() 
+        until player and player.Character:findFirstChild("Head") player.Character:findFirstChild("Humanoid") 
+		local mouse = player:GetMouse() 
 		repeat wait() until mouse
 		local plr = game.Players.LocalPlayer 
 		local torso = plr.Character.Head 
@@ -349,7 +349,7 @@ local function BABFT()
 
 	local playerlist = {}
 	for i,v in pairs(game:GetService("Players"):GetPlayers()) do
-		if v.Name ~= game.Players.LocalPlayer.Name then
+		if v.Name ~= player.Name then
 			table.insert(playerlist, v.Name)
 		end
 	end
@@ -547,7 +547,7 @@ local function BABFT()
 		local TextButton_2 = Instance.new("ImageButton")
 		local TextButton_2Text = Instance.new("TextButton")
 
-		ScreenGuiK.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+		ScreenGuiK.Parent = player:WaitForChild("PlayerGui")
 
 		Frame.Parent = ScreenGuiK
 		Frame.Name = "Main"
@@ -681,7 +681,7 @@ local function BABFT()
 		local TextButton_2 = Instance.new("ImageButton")
 		local TextButton_2Text = Instance.new("TextButton")
 
-		ScreenGuiK.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+		ScreenGuiK.Parent = player:WaitForChild("PlayerGui")
 
 		Frame.Parent = ScreenGuiK
 		Frame.Name = "Main"
