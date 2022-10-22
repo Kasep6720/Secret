@@ -2442,7 +2442,7 @@ local function ShindoDungeons()
 	sliderfly = 101
 	section2:addToggle("Press P to fly",false,function(Pfly)
 		repeat wait() 
-		until player and player.Character:fplayerd game.Players.LocalPlayer.Character:findFirstChild("Humplayer
+        until player and player.Character:findFirstChild("Head") player.Character:findFirstChild("Humanoid") 
 		local mouse = player:GetMouse() 
 		repeat wait() until mouse
 		local plr = game.Players.LocalPlayer 
@@ -3260,7 +3260,7 @@ local function ShindoBossBattle()
 	sliderfly = 101
 	section2:addToggle("Press P to fly",false,function(Pfly)
 		repeat wait() 
-		until player and player.Character:fplayerd game.Players.LocalPlayer.Character:findFirstChild("Humplayer
+        until player and player.Character:findFirstChild("Head") player.Character:findFirstChild("Humanoid") 
 		local mouse = player:GetMouse() 
 		repeat wait() until mouse
 		local plr = game.Players.LocalPlayer 
@@ -4148,7 +4148,7 @@ local function ShindoEventBoss()
 	sliderfly = 101
 	section2:addToggle("Press P to fly",false,function(Pfly)
 		repeat wait() 
-		until player and player.Character:fplayerd game.Players.LocalPlayer.Character:findFirstChild("Humplayer
+        until player and player.Character:findFirstChild("Head") player.Character:findFirstChild("Humanoid") 
 		local mouse = player:GetMouse() 
 		repeat wait() until mouse
 		local plr = game.Players.LocalPlayer 
@@ -5330,7 +5330,7 @@ local function ShindoMain()
 	sliderfly = 101
 	section2:addToggle("Press P to fly",false,function(Pfly)
 		repeat wait() 
-		until player and player.Character:fplayerd game.Players.LocalPlayer.Character:findFirstChild("Humplayer
+        until player and player.Character:findFirstChild("Head") player.Character:findFirstChild("Humanoid") 
 		local mouse = player:GetMouse() 
 		repeat wait() until mouse
 		local plr = game.Players.LocalPlayer 
