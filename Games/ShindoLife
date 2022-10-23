@@ -737,7 +737,7 @@ local function ShindoInfSpin()
 	
 	local elm = {}
 	for i,v in pairs(game:GetService("Workspace").RAREKGS:GetChildren()) do
-		if v.tim.Value ~= "N/A" and not player.statz.genkailevel:FindFirstChild(v.Name) and game:GetService("ReplicatedStorage").alljutsu[v.Name]:FindFirstChild("ELEMENT") then
+		if v.Name ~= "KGTEMPLATE" and v.tim.Value ~= "N/A" and not player.statz.genkailevel:FindFirstChild(v.Name) and game:GetService("ReplicatedStorage").alljutsu[v.Name]:FindFirstChild("ELEMENT") then
 			table.insert(elm, v.Name)
 		end
 	end
@@ -749,7 +749,7 @@ local function ShindoInfSpin()
 
 	local kgs = {}
 	for i,v in pairs(game:GetService("Workspace").RAREKGS:GetChildren()) do
-		if v.tim.Value ~= "N/A" and not player.statz.genkailevel:FindFirstChild(v.Name) and game:GetService("ReplicatedStorage").alljutsu[v.Name]:FindFirstChild("KG") then
+		if v.Name ~= "KGTEMPLATE" and v.tim.Value ~= "N/A" and not player.statz.genkailevel:FindFirstChild(v.Name) and game:GetService("ReplicatedStorage").alljutsu[v.Name]:FindFirstChild("KG") then
 			table.insert(kgs, v.Name)
 		end
 	end
