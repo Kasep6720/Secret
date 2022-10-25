@@ -449,6 +449,24 @@ local function ZombieAttack()
 		end
 	end)
 
+	section1:addToggle("Auto Collect Powerups & Drops",false,function(bool)
+		getpowerups = bool
+	end)
+
+	spawn(function()
+		while wait() do
+			if getpowerups then
+				for i,v in pairs(workspace.Powerups:GetChildren()) do
+					if v.Name == "Powerup" then
+						player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Powerups.Powerup.Part.CFrame
+						wait(2)
+						v:Destroy()
+					end
+				end
+			end
+		end
+	end)
+
 	section2:addToggle("Auto Buy Guns",false,function(bool)
 		buygun = bool
 	end)
