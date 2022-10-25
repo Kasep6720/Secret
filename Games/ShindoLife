@@ -432,6 +432,35 @@ local function ShindoInfSpin()
 		end
 	end)
 
+	local a1
+	local a2
+	local a3
+	local a4
+	local a5
+	local A1
+	local A2
+	local A3
+	local A4
+	local A5
+
+	local Doge = {
+		Autorejoin = true, -- Self explanatory. LEAVE ON BY DEFAULT.
+		Autosave = false, -- Self explanatory. LEAVE OFF BY DEFAULT.
+		resetspinswhenthisnumberreached = 0, -- Self explanatory. VALUE 0 BY DEFAULT.
+		savegomyhome = true, -- Self explanatory. LEAVE ON BY DEFAULT.
+		savegomainmenu = false, -- Self explanatory. LEAVE OFF BY DEFAULT.
+		a1,
+		a2,
+		a3,
+		a4,
+		a5,
+		A1,
+		A2,
+		A3,
+		A4,
+		A5,
+	}
+
 	--DogeHub V2 GUI
 	local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20page%20format%20gui"))()
 	local NoobieDoge = library.new("DogeHub V2", 5013109572)
@@ -732,6 +761,7 @@ local function ShindoInfSpin()
 		section3:updateToggle("Teleport to My Home when saving data")
 	end)
 	savegomyhome = true
+
 	-- load
 	NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
 	
@@ -764,35 +794,30 @@ local function ShindoInfSpin()
 	local section1 = page2:addSection("Choose wanted elements")
 	local section2 = page2:addSection("Start Spinning")
 
-	local a1
-	section1:addDropdown("Element Choice 1",elm,function(KG1)
-		print("Selected: " .. KG1)
-		notify("1st Element Selected: " .. KG1)
-		a1 = KG1
+	section1:addDropdown("Element Choice 1",elm,function(ELM1)
+		print("Selected: " .. ELM1)
+		notify("1st Element Selected: " .. ELM1)
+		a1 = ELM1
 	end)
-	local a2
-	section1:addDropdown("Element Choice 2",elm,function(KG2)
-		print("Selected: " .. KG2)
-		notify("2nd Element Selected: " .. KG2)
-		a2 = KG2
+	section1:addDropdown("Element Choice 2",elm,function(ELM2)
+		print("Selected: " .. ELM2)
+		notify("2nd Element Selected: " .. ELM2)
+		a2 = ELM2
 	end)
-	local a3
-	section1:addDropdown("Element Choice 3",elm,function(KG3)
-		print("Selected: " .. KG3)
-		notify("3rd Element Selected: " .. KG3)
-		a3 = KG3
+	section1:addDropdown("Element Choice 3",elm,function(ELM3)
+		print("Selected: " .. ELM3)
+		notify("3rd Element Selected: " .. ELM3)
+		a3 = ELM3
 	end)
-	local a4
-	section1:addDropdown("Element Choice 4",elm,function(KG4)
-		print("Selected: " .. KG4)
-		notify("4th Element Selected: " .. KG4)
-		a4 = KG4
+	section1:addDropdown("Element Choice 4",elm,function(ELM4)
+		print("Selected: " .. ELM4)
+		notify("4th Element Selected: " .. ELM4)
+		a4 = ELM4
 	end)
-	local a5
-	section1:addDropdown("Element Choice 5",elm,function(KG5)
-		print("Selected: " .. KG5)
-		notify("5th Element Selected: " .. KG5)
-		a5 = KG5
+	section1:addDropdown("Element Choice 5",elm,function(ELM5)
+		print("Selected: " .. ELM5)
+		notify("5th Element Selected: " .. ELM5)
+		a5 = ELM5
 	end)
 
 	section2:addToggle("Spin Slot 1",false,function(bool)
@@ -968,35 +993,30 @@ local function ShindoInfSpin()
 	local section1 = page3:addSection("Choose wanted bloodlines")
 	local section2 = page3:addSection("Start Spinning")
 
-	local a1
 	section1:addDropdown("Bloodline Choice 1",kgs,function(KG1)
 		print("Selected: " .. KG1)
 		notify("1st Bloodline Selected: " .. KG1)
-		a1 = KG1
+		A1 = KG1
 	end)
-	local a2
 	section1:addDropdown("Bloodline Choice 2",kgs,function(KG2)
 		print("Selected: " .. KG2)		
 		notify("2nd Bloodline Selected: " .. KG2)
-		a2 = KG2
+		A2 = KG2
 	end)
-	local a3
 	section1:addDropdown("Bloodline Choice 3",kgs,function(KG3)
 		print("Selected: " .. KG3)
 		notify("3rd Bloodline Selected: " .. KG3)
-		a3 = KG3
+		A3 = KG3
 	end)
-	local a4
 	section1:addDropdown("Bloodline Choice 4",kgs,function(KG4)
 		print("Selected: " .. KG4)
 		notify("4th Bloodline Selected: " .. KG4)
-		a4 = KG4
+		A4 = KG4
 	end)
-	local a5
 	section1:addDropdown("Bloodline Choice 5",kgs,function(KG5)
 		print("Selected: " .. KG5)
 		notify("5th Bloodline Selected: " .. KG5)
-		a5 = KG5
+		A5 = KG5
 	end)
 
 	section2:addToggle("Spin Slot 1",false,function(bool)
@@ -1011,11 +1031,11 @@ local function ShindoInfSpin()
 					kgvalue3 = player.statz.main.kg3.Value
 					kgvalue4 = player.statz.main.kg4.Value
 					if AutoSpinBL1 == true then
-						if kgvalue1 ~= a1 and kgvalue1 ~= a2 and kgvalue1 ~= a3 and kgvalue1 ~= a4 and kgvalue1 ~= a5 and kgvalue2 ~= a1 and kgvalue2 ~= a2 and kgvalue2 ~= a3 and kgvalue2 ~= a4 and kgvalue2 ~= a5 and kgvalue3 ~= a1 and kgvalue3 ~= a2 and kgvalue3 ~= a3 and kgvalue3 ~= a4 and kgvalue3 ~= a5 and kgvalue4 ~= a1 and kgvalue4 ~= a2 and kgvalue4 ~= a3 and kgvalue4 ~= a4 and kgvalue4 ~= a5 then
+						if kgvalue1 ~= A1 and kgvalue1 ~= A2 and kgvalue1 ~= A3 and kgvalue1 ~= A4 and kgvalue1 ~= A5 and kgvalue2 ~= A1 and kgvalue2 ~= A2 and kgvalue2 ~= A3 and kgvalue2 ~= A4 and kgvalue2 ~= A5 and kgvalue3 ~= A1 and kgvalue3 ~= A2 and kgvalue3 ~= A3 and kgvalue3 ~= A4 and kgvalue3 ~= A5 and kgvalue4 ~= A1 and kgvalue4 ~= A2 and kgvalue4 ~= A3 and kgvalue4 ~= A4 and kgvalue4 ~= A5 then
 							player.startevent:FireServer("spin", "kg1")
 							print("Rolled: " .. kgvalue1)
 							wait(1)
-						elseif kgvalue1 ~= a1 and kgvalue1 ~= a2 and kgvalue1 ~= a3 and kgvalue1 ~= a4 and kgvalue1 ~= a5 then
+						elseif kgvalue1 ~= A1 and kgvalue1 ~= A2 and kgvalue1 ~= A3 and kgvalue1 ~= A4 and kgvalue1 ~= A5 then
 							if Autosave == true then
 								datasavedandyoucanredeemcodes = true
 							end
@@ -1052,11 +1072,11 @@ local function ShindoInfSpin()
 					kgvalue3 = player.statz.main.kg3.Value
 					kgvalue4 = player.statz.main.kg4.Value						
 					if AutoSpinBL2 == true then
-						if kgvalue1 ~= a1 and kgvalue1 ~= a2 and kgvalue1 ~= a3 and kgvalue1 ~= a4 and kgvalue1 ~= a5 and kgvalue2 ~= a1 and kgvalue2 ~= a2 and kgvalue2 ~= a3 and kgvalue2 ~= a4 and kgvalue2 ~= a5 and kgvalue3 ~= a1 and kgvalue3 ~= a2 and kgvalue3 ~= a3 and kgvalue3 ~= a4 and kgvalue3 ~= a5 and kgvalue4 ~= a1 and kgvalue4 ~= a2 and kgvalue4 ~= a3 and kgvalue4 ~= a4 and kgvalue4 ~= a5 then
+						if kgvalue1 ~= A1 and kgvalue1 ~= A2 and kgvalue1 ~= A3 and kgvalue1 ~= A4 and kgvalue1 ~= A5 and kgvalue2 ~= A1 and kgvalue2 ~= A2 and kgvalue2 ~= A3 and kgvalue2 ~= A4 and kgvalue2 ~= A5 and kgvalue3 ~= A1 and kgvalue3 ~= A2 and kgvalue3 ~= A3 and kgvalue3 ~= A4 and kgvalue3 ~= A5 and kgvalue4 ~= A1 and kgvalue4 ~= A2 and kgvalue4 ~= A3 and kgvalue4 ~= A4 and kgvalue4 ~= A5 then
 							player.startevent:FireServer("spin", "kg2")
 							print("Rolled: " .. kgvalue2)
 							wait(1)
-						elseif kgvalue2 ~= a1 and kgvalue2 ~= a2 and kgvalue2 ~= a3 and kgvalue2 ~= a4 and kgvalue2 ~= a5 then
+						elseif kgvalue2 ~= A1 and kgvalue2 ~= A2 and kgvalue2 ~= A3 and kgvalue2 ~= A4 and kgvalue2 ~= A5 then
 							if Autosave == true then
 								datasavedandyoucanredeemcodes = true
 							end
@@ -1094,11 +1114,11 @@ local function ShindoInfSpin()
 						kgvalue3 = player.statz.main.kg3.Value
 						kgvalue4 = player.statz.main.kg4.Value								
 						if AutoSpinBL3 == true then
-							if kgvalue1 ~= a1 and kgvalue1 ~= a2 and kgvalue1 ~= a3 and kgvalue1 ~= a4 and kgvalue1 ~= a5 and kgvalue2 ~= a1 and kgvalue2 ~= a2 and kgvalue2 ~= a3 and kgvalue2 ~= a4 and kgvalue2 ~= a5 and kgvalue3 ~= a1 and kgvalue3 ~= a2 and kgvalue3 ~= a3 and kgvalue3 ~= a4 and kgvalue3 ~= a5 and kgvalue4 ~= a1 and kgvalue4 ~= a2 and kgvalue4 ~= a3 and kgvalue4 ~= a4 and kgvalue4 ~= a5 then
+							if kgvalue1 ~= A1 and kgvalue1 ~= A2 and kgvalue1 ~= A3 and kgvalue1 ~= A4 and kgvalue1 ~= A5 and kgvalue2 ~= A1 and kgvalue2 ~= A2 and kgvalue2 ~= A3 and kgvalue2 ~= A4 and kgvalue2 ~= A5 and kgvalue3 ~= A1 and kgvalue3 ~= A2 and kgvalue3 ~= A3 and kgvalue3 ~= A4 and kgvalue3 ~= A5 and kgvalue4 ~= A1 and kgvalue4 ~= A2 and kgvalue4 ~= A3 and kgvalue4 ~= A4 and kgvalue4 ~= A5 then
 								player.startevent:FireServer("spin", "kg3")
 								print("Rolled: " .. kgvalue3)
 								wait(1)
-							elseif kgvalue3 ~= a1 and kgvalue3 ~= a2 and kgvalue3 ~= a3 and kgvalue3 ~= a4 and kgvalue3 ~= a5 then
+							elseif kgvalue3 ~= A1 and kgvalue3 ~= A2 and kgvalue3 ~= A3 and kgvalue3 ~= A4 and kgvalue3 ~= A5 then
 								if Autosave == true then
 									datasavedandyoucanredeemcodes = true
 								end
@@ -1137,11 +1157,11 @@ local function ShindoInfSpin()
 						kgvalue3 = player.statz.main.kg3.Value
 						kgvalue4 = player.statz.main.kg4.Value							
 						if AutoSpinBL4 == true then
-							if kgvalue1 ~= a1 and kgvalue1 ~= a2 and kgvalue1 ~= a3 and kgvalue1 ~= a4 and kgvalue1 ~= a5 and kgvalue2 ~= a1 and kgvalue2 ~= a2 and kgvalue2 ~= a3 and kgvalue2 ~= a4 and kgvalue2 ~= a5 and kgvalue3 ~= a1 and kgvalue3 ~= a2 and kgvalue3 ~= a3 and kgvalue3 ~= a4 and kgvalue3 ~= a5 and kgvalue4 ~= a1 and kgvalue4 ~= a2 and kgvalue4 ~= a3 and kgvalue4 ~= a4 and kgvalue4 ~= a5 then
+							if kgvalue1 ~= A1 and kgvalue1 ~= A2 and kgvalue1 ~= A3 and kgvalue1 ~= A4 and kgvalue1 ~= A5 and kgvalue2 ~= A1 and kgvalue2 ~= A2 and kgvalue2 ~= A3 and kgvalue2 ~= A4 and kgvalue2 ~= A5 and kgvalue3 ~= A1 and kgvalue3 ~= A2 and kgvalue3 ~= A3 and kgvalue3 ~= A4 and kgvalue3 ~= A5 and kgvalue4 ~= A1 and kgvalue4 ~= A2 and kgvalue4 ~= A3 and kgvalue4 ~= A4 and kgvalue4 ~= A5 then
 								player.startevent:FireServer("spin", "kg4")
 								print("Rolled: " .. kgvalue4)
 								wait(1)
-							elseif kgvalue4 ~= a1 and kgvalue4 ~= a2 and kgvalue4 ~= a3 and kgvalue4 ~= a4 and kgvalue4 ~= a5 then
+							elseif kgvalue4 ~= A1 and kgvalue4 ~= A2 and kgvalue4 ~= A3 and kgvalue4 ~= A4 and kgvalue4 ~= A5 then
 								if Autosave == true then
 									datasavedandyoucanredeemcodes = true
 								end
@@ -1354,6 +1374,33 @@ local function ShindoInfSpin()
 	local colors = pagelast:addSection("Colors")
 	local credits = pagelast:addSection("Credits")
 
+	settings:addButton("Save Script Data (unfinished)",function()
+		local HTTP = game:GetService("HttpService")
+		local temp = { }
+		local succ, out = pcall(function()
+			temp.Autorejoin = Doge.Autorejoin
+			temp.Autosave = Doge.Autosave
+			temp.resetspinswhenthisnumberreached = Doge.resetspinswhenthisnumberreached
+			temp.savegomyhome = Doge.savegomyhome
+			temp.savegomainmenu = Doge.savegomainmenu
+			temp.a1 = Doge.a1
+			temp.a2 = Doge.a2
+			temp.a3 = Doge.a3
+			temp.a4 = Doge.a4
+			temp.a5 = Doge.a5
+			temp.A1 = Doge.A1
+			temp.A2 = Doge.A2
+			temp.A3 = Doge.A3
+			temp.A4 = Doge.A4
+			temp.A5 = Doge.A5
+			makefolder("DogeHubV2/ShindoLife")
+			writefile("DogeHubV2/ShindoLife/MainMenu.txt", HTTP:JSONEncode(temp))
+		end)
+		if not succ then
+			error(out)
+		end
+	end)
+
 	settings:addButton("Upgrade Performance",function()
 		UPPERFORMANCE()
 		settings:updateButton("Upgrade Performance","Upgraded Performance")
@@ -1469,7 +1516,19 @@ local function ShindoInfSpin()
 				game:GetService("Workspace").Camera.startup.DioSenko.Head.Size = Vector3.new(2, 1.5, 2)
 				game:GetService("Workspace").Camera.startup.Narumaki.Shirt.ShirtTemplate = [[rbxassetid://7384140987]]
 				game:GetService("Workspace").Camera.startup.Narumaki.Pants.PantsTemplate = [[rbxassetid://7384140866]]
-				game:GetService("Workspace").Camera.startup.Narumaki.Head.face.Texture = [[rbxassetid://7336910703]]
+				local leface = math.random(1, 6)
+				if leface == 1 then
+					game:GetService("Workspace").Camera.startup.Narumaki.Head.face.Texture = [[rbxassetid://7336910703]]
+				elseif leface == 2 then
+					game:GetService("Workspace").Camera.startup.Narumaki.Head.face.Texture = [[rbxassetid://7389509483]]
+				elseif leface == 3 then
+					game:GetService("Workspace").Camera.startup.Narumaki.Head.face.Texture = [[rbxassetid://7331429249]]
+				elseif leface == 4 then
+					game:GetService("Workspace").Camera.startup.Narumaki.Head.face.Texture = [[rbxassetid://10993872952]]
+				elseif leface == 5 then
+					game:GetService("Workspace").Camera.startup.Narumaki.Head.face.Texture = [[rbxassetid://9792123944]]
+
+				end
 				game:GetService("Workspace").Camera.startup.Narumaki.Customize.char.Torso:Destroy()
 				game:GetService("Workspace").Camera.startup.Narumaki.Customize.char["Left Leg"]:Destroy()
 				game:GetService("Workspace").Camera.startup.Narumaki.Customize.char["Right Leg"]:Destroy()
@@ -1478,9 +1537,6 @@ local function ShindoInfSpin()
 			end
 		end
 	end
-
-	-- load
-	NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
 
 end
 
@@ -2784,6 +2840,10 @@ local function ShindoDungeons()
 				platform:Destroy()
 			end
 		end)
+		if player.PlayerScripts:FindFirstChild("EFFECTS") and (player.statz.sword.throwable.Value == "explosivetag" or player.statz.sword.throwable.Value == "kunaibomb") then
+			player.PlayerScripts.EFFECTS:Destroy()
+			notify("Automatically removed effects and particles to reduce lag")
+		end
 	end)
 
 	section1:addToggle("Legacy Farm Mode",false, function(bool)
@@ -6540,7 +6600,7 @@ local function ShindoMain()
 	local section6 = page6:addSection("Auto Stats")
 
 	local autofarm
-	section1:addToggle("Auto Farm",false, function(bool)
+	section1:addToggle("Green Scroll Farm",false, function(bool)
 		autofarm = bool
 		local platform = Instance.new("Part", player.Character)
 		platform.Anchored = true
@@ -6687,12 +6747,13 @@ local function ShindoMain()
 		section5:addSlider("Stop Auto Rank when spins reached", 1000, 50, 1000, function(value)
 			stopautorankwhenthisnumberreached = value
 		end)
+		stopautorankwhenthisnumberreached = 500
 	else
 		section5:addSlider("Stop Auto Rank when spins reached", 500, 50, 500, function(value)
 			stopautorankwhenthisnumberreached = value
 		end)
+		stopautorankwhenthisnumberreached = 1000
 	end
-	stopautorankwhenthisnumberreached = 1000
 
 	section6:addToggle("Auto Chi",false, function(bool)
 		auchi = bool
@@ -6851,13 +6912,18 @@ local function ShindoMain()
 
 	local function FARM()
 		if player.statz.sword.throwable.Value == "BOSSDROPazimftg" or player.statz.sword.throwable.Value == "kunaiwire" or player.statz.sword.throwable.Value == "kunaiflash" then
-			notify("Please change the throwable weapon!")
-			autofarm = false
-			boss = false
-			megaboss = false
-			section1:updateToggle("Auto Farm",false)
-			section1:updateToggle("Boss Farm",false)
-			section1:updateToggle("Beasts Farm",false)
+			if player.statz.unlocked:FindFirstChild("painrodthrow") then
+				local args = {[1] = "equipweapon",[2] = game:GetService("ReplicatedStorage").saber.powers.painrodthrow}
+				player.startevent:FireServer(unpack(args))
+			else
+				notify("Please change the throwable weapon!")
+				autofarm = false
+				boss = false
+				megaboss = false
+				section1:updateToggle("Auto Farm",false)
+				section1:updateToggle("Boss Farm",false)
+				section1:updateToggle("Beasts Farm",false)
+			end
 		else
 			if LFM then
 				for i,v in pairs(workspace.npc:GetChildren()) do
