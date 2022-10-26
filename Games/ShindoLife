@@ -234,12 +234,6 @@ local function SCROLLFARM1()
 		end
 	end
 end
-local ken = {}
-for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu.ALLKENSTYLES:GetChildren()) do
-	if v:FindFirstChild("BREATHINGSTYLE") and not v:FindFirstChild("limited") then
-		table.insert(ken, v.Name)
-	end
-end
 
 local bosslist = {}
 local beastsbosslist = {}
@@ -786,6 +780,13 @@ local function ShindoInfSpin()
 	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
 		if (v:FindFirstChild("KG") and not v:FindFirstChild("cantspin") and not v:FindFirstChild("limited")) then
 			table.insert(kgs, v.Name)
+		end
+	end
+
+	local ken = {}
+	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu.ALLKENSTYLES:GetChildren()) do
+		if v:FindFirstChild("BREATHINGSTYLE") and not v:FindFirstChild("limited") then
+			table.insert(ken, v.Name)
 		end
 	end
 
@@ -1619,6 +1620,13 @@ local function ShindoMyHome()
 	section1:addButton("Bloodline Changer",function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/NoobieDoge/DogeHub/Separated/ShindoBloodlineChanger"))()
 	end)
+
+	local ken = {}
+	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu.ALLKENSTYLES:GetChildren()) do
+		if v:FindFirstChild("BREATHINGSTYLE") and not v:FindFirstChild("limited") then
+			table.insert(ken, v.Name)
+		end
+	end
 
 	section2:addButton("Reset Spins NOW",function()
 		player.startevent:FireServer("band", "\128")
@@ -5284,6 +5292,117 @@ local function ShindoEventBoss()
 
 end
 
+--AX/SS Comp Menu
+local function AXSSCompMenu()
+	local player = game.Players.LocalPlayer
+	local ScreenGuiK = Instance.new("ScreenGui")
+	local Frame = Instance.new("ImageLabel")
+	local TextLabelFrame = Instance.new("ImageLabel")
+	local TextLabel = Instance.new("TextLabel")
+	local Frame2 = Instance.new("ImageLabel")
+	local TextLabel2 = Instance.new("TextLabel")
+	local TextButton = Instance.new("ImageButton")
+	local TextButtonText = Instance.new("TextButton")
+
+	ScreenGuiK.Parent = player:WaitForChild("PlayerGui")
+
+	Frame.Parent = ScreenGuiK
+	Frame.Name = "Main"
+	Frame.BackgroundTransparency = 1
+	Frame.Position = UDim2.new(0.25, 0, 0.052435593, 0)
+	Frame.Size = UDim2.new(0, 511, 0, 270)
+	Frame.Image = "rbxassetid://4641149554"
+	Frame.ImageColor3 = Color3.fromRGB(24, 24, 24)
+	Frame.ScaleType = Enum.ScaleType.Slice
+	Frame.SliceCenter = Rect.new(4, 4, 296, 296)
+	Frame.Active = true
+	Frame.Draggable = true
+
+	TextLabelFrame.Parent = Frame
+	TextLabelFrame.Name = "TopBar"
+	TextLabelFrame.BackgroundTransparency = 1
+	TextLabelFrame.ClipsDescendants = true
+	TextLabelFrame.Size = UDim2.new(1, 0, 0, 38)
+	TextLabelFrame.ZIndex = 2
+	TextLabelFrame.Image = "rbxassetid://4595286933"
+	TextLabelFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
+	TextLabelFrame.ScaleType = Enum.ScaleType.Slice
+	TextLabelFrame.SliceCenter = Rect.new(4, 4, 296, 296)
+
+	TextLabel.Parent = Frame
+	TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+	TextLabel.Position = UDim2.new(0, 12, 0, 19)
+	TextLabel.BackgroundTransparency = 1
+	TextLabel.Size = UDim2.new(1, -46, 0, 16)
+	TextLabel.ZIndex = 3
+	TextLabel.Font = Enum.Font.GothamBold
+	TextLabel.Text = "DogeHub V2"
+	TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+	TextLabel.TextScaled = false
+	TextLabel.TextSize = 15.000
+	TextLabel.TextWrapped = true
+	TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+
+	Frame2.Parent = Frame
+	Frame2.Name = "Main"
+	Frame2.BackgroundTransparency = 1
+	Frame2.Position = UDim2.new(0.04, 0, 0.2, 0)
+	Frame2.Size = UDim2.new(0, 471, 0, 120)
+	Frame2.Image = "rbxassetid://4641149554"
+	Frame2.ImageColor3 = Color3.fromRGB(41, 41, 41)
+	Frame2.ScaleType = Enum.ScaleType.Slice
+	Frame2.SliceCenter = Rect.new(4, 4, 296, 296)
+	Frame2.Active = true
+	Frame2.Draggable = true
+
+	TextLabel2.Parent = Frame2
+	TextLabel2.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+	TextLabel2.Position = UDim2.new(0, 12, 0, 0)
+	TextLabel2.BackgroundTransparency = 1
+	TextLabel2.Size = UDim2.new(1, -26, 0, 120)
+	TextLabel2.ZIndex = 3
+	TextLabel2.Font = Enum.Font.GothamBold
+	TextLabel2.Text = "What would you expect to execute here bruh."
+	TextLabel2.TextColor3 = Color3.fromRGB(200, 200, 200)
+	TextLabel2.TextScaled = false
+	TextLabel2.TextSize = 33.000
+	TextLabel2.TextWrapped = true
+
+	TextButton.Parent = Frame
+	TextButton.Name = "Button"
+	TextButton.BackgroundTransparency = 1
+	TextButton.Position = UDim2.new(0.04, 0, 0.725, 0)
+	TextButton.BorderSizePixel = 0
+	TextButton.Size = UDim2.new(0, 471, 0, 45)
+	TextButton.ZIndex = 2
+	TextButton.Image = "rbxassetid://5028857472"
+	TextButton.ImageColor3 = Color3.fromRGB(41, 41, 41)
+	TextButton.ScaleType = Enum.ScaleType.Slice
+	TextButton.SliceCenter = Rect.new(2, 2, 298, 298)
+
+	TextButtonText.Parent = TextButton
+	TextButtonText.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+	TextButtonText.BackgroundTransparency = 1
+	TextButtonText.ZIndex = 3
+	TextButtonText.Size = UDim2.new(0, 471, 0, 45)
+	TextButtonText.Font = Enum.Font.GothamSemibold
+	TextButtonText.Text = "Close"
+	TextButtonText.TextColor3 = Color3.fromRGB(200, 200, 200)
+	TextButtonText.TextScaled = true
+	TextButtonText.TextSize = 40.000
+	TextButtonText.TextWrapped = true
+
+	function DELUI()
+		for i,v in pairs(player.PlayerGui:GetChildren()) do
+			if v.Name == "ScreenGui" then
+				v:Destroy()
+			end
+		end
+	end
+	TextButton.MouseButton1Click:connect(DELUI)
+	TextButtonText.MouseButton1Click:connect(DELUI)
+
+end
 --Shindo Main
 local function ShindoMain()
 	--DogeHub V2 GUI
@@ -5616,6 +5735,13 @@ local function ShindoMain()
 	section2:addButton("Bloodline Changer",function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/NoobieDoge/DogeHub/Separated/ShindoBloodlineChanger"))()
 	end)
+
+	local ken = {}
+	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu.ALLKENSTYLES:GetChildren()) do
+		if v:FindFirstChild("BREATHINGSTYLE") and not v:FindFirstChild("limited") then
+			table.insert(ken, v.Name)
+		end
+	end
 
 	section3:addButton("Reset Spins NOW",function()
 		player.startevent:FireServer("band", "\128")
@@ -8275,6 +8401,8 @@ if game.PlaceId == 4616652839 then
 	ShindoInfSpin()
 elseif game.PlaceId == 5451410109 then
 	ShindoMyHome()	
+elseif game.PlaceId == 5664803952 or game.PlaceId == 6593187011 then 
+	AXSSCompMenu()
 elseif game.PlaceId == 7524809704 then
 	ShindoDungeonSelection()
 elseif game.PlaceId == 6602058266 then
