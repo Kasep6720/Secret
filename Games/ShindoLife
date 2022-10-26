@@ -2081,14 +2081,14 @@ local function ShindoMyHome()
 					if MAXRANKUPP then
 						if RANKUPPBYRC then
 							if player.PlayerGui.Main.Ryo2.amt.text == "500K" or player.PlayerGui.Main.Ryo2.amt.text == "450K" or player.PlayerGui.Main.Ryo2.amt.text == "400K" or player.PlayerGui.Main.Ryo2.amt.text == "350K" or player.PlayerGui.Main.Ryo2.amt.text == "300K" or player.PlayerGui.Main.Ryo2.amt.text == "250K" or player.PlayerGui.Main.Ryo2.amt.text == "200K" or player.PlayerGui.Main.Ryo2.amt.text == "150K" or player.PlayerGui.Main.Ryo2.amt.text == "100K" or player.PlayerGui.Main.Ryo2.amt.text == "50K" then
-								game:GetService("Players").LocalPlayer.startevent:FireServer("maxlvlpres2")
+								player.startevent:FireServer("maxlvlpres2")
 							else
 								loadstring(game:HttpGet('https://raw.githubusercontent.com/KylnDantas/InfRellCoinsSL/main/file.lua',true))()
 							end
 						elseif RANKUPPBYLVL then
 							if player.statz.lvl:FindFirstChild("lvl").Value == 1000 then
 								repeat wait()
-									player.startevent:FireServer("maxlvlpres2")
+									player.startevent:FireServer("maxlvlpres")
 								until player.statz.lvl:FindFirstChild("lvl").Value == 1 or not RANKUPP or not MAXRANKUPP	
 							end
 						else
@@ -2097,7 +2097,7 @@ local function ShindoMyHome()
 					else	
 						if RANKUPPBYRC then
 							if player.PlayerGui.Main.Ryo2.amt.text == "500K" or player.PlayerGui.Main.Ryo2.amt.text == "450K" or player.PlayerGui.Main.Ryo2.amt.text == "400K" or player.PlayerGui.Main.Ryo2.amt.text == "350K" or player.PlayerGui.Main.Ryo2.amt.text == "300K" or player.PlayerGui.Main.Ryo2.amt.text == "250K" or player.PlayerGui.Main.Ryo2.amt.text == "200K" or player.PlayerGui.Main.Ryo2.amt.text == "150K" or player.PlayerGui.Main.Ryo2.amt.text == "100K" or player.PlayerGui.Main.Ryo2.amt.text == "50K" then
-								game:GetService("Players").LocalPlayer.startevent:FireServer("maxlvlpres")
+								player.startevent:FireServer("rankup2")
 							else
 								loadstring(game:HttpGet('https://raw.githubusercontent.com/KylnDantas/InfRellCoinsSL/main/file.lua',true))()
 							end
@@ -7342,14 +7342,14 @@ local function ShindoMain()
 					if MAXRANKUPP then
 						if RANKUPPBYRC then
 							if player.PlayerGui.Main.Ryo2.amt.text == "500K" or player.PlayerGui.Main.Ryo2.amt.text == "450K" or player.PlayerGui.Main.Ryo2.amt.text == "400K" or player.PlayerGui.Main.Ryo2.amt.text == "350K" or player.PlayerGui.Main.Ryo2.amt.text == "300K" or player.PlayerGui.Main.Ryo2.amt.text == "250K" or player.PlayerGui.Main.Ryo2.amt.text == "200K" or player.PlayerGui.Main.Ryo2.amt.text == "150K" or player.PlayerGui.Main.Ryo2.amt.text == "100K" or player.PlayerGui.Main.Ryo2.amt.text == "50K" then
-								game:GetService("Players").LocalPlayer.startevent:FireServer("maxlvlpres2")
+								player.startevent:FireServer("maxlvlpres2")
 							else
 								loadstring(game:HttpGet('https://raw.githubusercontent.com/KylnDantas/InfRellCoinsSL/main/file.lua',true))()
 							end
 						elseif RANKUPPBYLVL then
 							if player.statz.lvl:FindFirstChild("lvl").Value == 1000 then
 								repeat wait()
-									player.startevent:FireServer("maxlvlpres2")
+									player.startevent:FireServer("maxlvlpres")
 								until player.statz.lvl:FindFirstChild("lvl").Value == 1 or not RANKUPP or not MAXRANKUPP	
 							end
 						else
@@ -7358,7 +7358,7 @@ local function ShindoMain()
 					else	
 						if RANKUPPBYRC then
 							if player.PlayerGui.Main.Ryo2.amt.text == "500K" or player.PlayerGui.Main.Ryo2.amt.text == "450K" or player.PlayerGui.Main.Ryo2.amt.text == "400K" or player.PlayerGui.Main.Ryo2.amt.text == "350K" or player.PlayerGui.Main.Ryo2.amt.text == "300K" or player.PlayerGui.Main.Ryo2.amt.text == "250K" or player.PlayerGui.Main.Ryo2.amt.text == "200K" or player.PlayerGui.Main.Ryo2.amt.text == "150K" or player.PlayerGui.Main.Ryo2.amt.text == "100K" or player.PlayerGui.Main.Ryo2.amt.text == "50K" then
-								game:GetService("Players").LocalPlayer.startevent:FireServer("maxlvlpres")
+								player.startevent:FireServer("rankup2")
 							else
 								loadstring(game:HttpGet('https://raw.githubusercontent.com/KylnDantas/InfRellCoinsSL/main/file.lua',true))()
 							end
