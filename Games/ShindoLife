@@ -457,7 +457,7 @@ local function ShindoInfSpin()
 
 	--DogeHub V2 GUI
 	local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20page%20format%20gui"))()
-	local NoobieDoge = library.new("DogeHub V2", 5013109572)
+	local NoobieDoge = library.new("DogeHub V2", 5176336983)
 
 	-- themes
 	local themes = {
@@ -1558,7 +1558,7 @@ local function ShindoMyHome()
 	}
 
 	-- first page
-	local page1 = NoobieDoge:addPage("Universal", 5012544693)
+	local page1 = NoobieDoge:addPage("Universal", 10567878127)
 	local section1 = page1:addSection("Walk Speed & Jump Power & Gravity")
 	local section2 = page1:addSection("Other Functions")
 
@@ -1611,12 +1611,17 @@ local function ShindoMyHome()
 	local page2 = NoobieDoge:addPage("Misc", 10567878127)
 	local section1 = page2:addSection("Customs")
 	local section2 = page2:addSection("Kenjutsu Spin")
-
+	
 	section1:addDropdown("Custom Display Ranks",{"RELL", "F 0", "D 1", "D 2", "D 3", "C 1", "C 2", "C 3", "B 1", "B 2", "B 3", "A 1", "A 2", "A 3", "S 1", "S 2", "S 3", "V 1", "V 2", "V 3", "X 1", "X 2", "X 3", "Y 1", "Y 2", "Y 3", "Z 1", "Z 2", "Z 3", "MAX-69", "MAX-420", "MAX-666", "MAX-999", "GOD", "Dragon", "Hacker","???"},function(rektrank)
 		player.leaderstats.Rank.Value =  (rektrank)
 		notify("Rank Displayed: " .. rektrank)
 	end)
 
+	section1:addButton("Max RELL Coins",function()
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/KylnDantas/InfRellCoinsSL/main/file.lua',true))()
+		notify("If RC glitched just press it again")
+	end)
+	
 	section1:addButton("Bloodline Changer",function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/NoobieDoge/DogeHub/Separated/ShindoBloodlineChanger"))()
 	end)
@@ -1954,6 +1959,7 @@ local function ShindoMyHome()
 	local page3 = NoobieDoge:addPage("AFK", 10567878127)
 	local section1 = page3:addSection("AFK Places")
 	local section2 = page3:addSection("Auto Rank")
+	local section3 = page3:addSection("Auto Rank Settings")
 
 	for i,v in pairs(game:GetService("Workspace").map:GetChildren()) do
 		if v.Name == (player.Name .. "apartment") then
@@ -2017,20 +2023,48 @@ local function ShindoMyHome()
 	end)
 
 	local RANKUPP
-	section2:addToggle("Auto Rank Up",false, function(bool)
+	section2:addToggle("Auto Rank",false, function(bool)
 		RANKUPP = bool
+		notify("Auto Rank: "..tostring(RANKUPP),true)
 	end)
+
+	local MAXRANKUPP
+	section2:addToggle("Rank Up after MAX",false, function(bool)
+		MAXRANKUPP = bool
+		notify("Rank Up after MAX: "..tostring(MAXRANKUPP),true)
+	end)
+
+	local RANKUPPBYLVL
+	section3:addToggle("Rank Up with Levels",true, function(bool)
+		RANKUPPBYLVL = bool
+		notify("Rank Up with levels: "..tostring(RANKUPPBYLVL),true)
+	end)
+	RANKUPPBYLVL = true
+
+	local RANKUPPBYRC
+	section3:addToggle("Rank Up with RELL Coins",false, function(bool)
+		RANKUPPBYRC = bool
+		notify("Rank Up with Rell Coins: "..tostring(RANKUPPBYRC),true)
+	end)
+
+	local NUMTHENSTOPRANKUPP
+	section3:addToggle("Stop when spins reached specific amount",false, function(bool)
+		NUMTHENSTOPRANKUPP = bool
+		notify("Stop when spins reached specific amount: "..tostring(NUMTHENSTOPRANKUPP),true)
+	end)
+
 	local stopautorankwhenthisnumberreached
 	if player.gamepasses:FindFirstChild("spinsbag") then
-		section2:addSlider("Stop Auto Rank when spins reached", 1000, 50, 1000, function(value)
+		section3:addSlider("Stop Auto Rank when spins reached", 1000, 50, 1000, function(value)
 			stopautorankwhenthisnumberreached = value
 		end)
+		stopautorankwhenthisnumberreached = 500
 	else
-		section2:addSlider("Stop Auto Rank when spins reached", 500, 50, 500, function(value)
+		section3:addSlider("Stop Auto Rank when spins reached", 500, 50, 500, function(value)
 			stopautorankwhenthisnumberreached = value
 		end)
+		stopautorankwhenthisnumberreached = 1000
 	end
-	stopautorankwhenthisnumberreached = 1000
 
 	local PRES = player.statz.prestige.maxlvlpres
 	local RANK = player.statz.prestige.rank
@@ -2039,15 +2073,41 @@ local function ShindoMyHome()
 	spawn(function()
 		while wait() do
 			if RANKUPP then
-				if player.statz.spins.Value > (stopautorankwhenthisnumberreached - 1) then
+				if NUMTHENSTOPRANKUPP and player.statz.spins.Value > (stopautorankwhenthisnumberreached - 1) then
 					RANKUPP = false
 					section5:updateToggle("Auto Rank", false)
 					notify("Spins amount has currently reached " .. stopautorankwhenthisnumberreached)
 				else
-					if player.statz.lvl:FindFirstChild("lvl").Value == 1000 then
-						repeat wait()
-							player.startevent:FireServer("rankup")
-						until player.statz.lvl:FindFirstChild("lvl").Value == 1 or not RANKUPP
+					if MAXRANKUPP then
+						if RANKUPPBYRC then
+							if player.PlayerGui.Main.Ryo2.amt.text == "500K" or player.PlayerGui.Main.Ryo2.amt.text == "450K" or player.PlayerGui.Main.Ryo2.amt.text == "400K" or player.PlayerGui.Main.Ryo2.amt.text == "350K" or player.PlayerGui.Main.Ryo2.amt.text == "300K" or player.PlayerGui.Main.Ryo2.amt.text == "250K" or player.PlayerGui.Main.Ryo2.amt.text == "200K" or player.PlayerGui.Main.Ryo2.amt.text == "150K" or player.PlayerGui.Main.Ryo2.amt.text == "100K" or player.PlayerGui.Main.Ryo2.amt.text == "50K" then
+								game:GetService("Players").LocalPlayer.startevent:FireServer("maxlvlpres2")
+							else
+								loadstring(game:HttpGet('https://raw.githubusercontent.com/KylnDantas/InfRellCoinsSL/main/file.lua',true))()
+							end
+						elseif RANKUPPBYLVL then
+							if player.statz.lvl:FindFirstChild("lvl").Value == 1000 then
+								repeat wait()
+									player.startevent:FireServer("maxlvlpres2")
+								until player.statz.lvl:FindFirstChild("lvl").Value == 1 or not RANKUPP or not MAXRANKUPP	
+							end
+						else
+							notify("Bruh.")
+						end
+					else	
+						if RANKUPPBYRC then
+							if player.PlayerGui.Main.Ryo2.amt.text == "500K" or player.PlayerGui.Main.Ryo2.amt.text == "450K" or player.PlayerGui.Main.Ryo2.amt.text == "400K" or player.PlayerGui.Main.Ryo2.amt.text == "350K" or player.PlayerGui.Main.Ryo2.amt.text == "300K" or player.PlayerGui.Main.Ryo2.amt.text == "250K" or player.PlayerGui.Main.Ryo2.amt.text == "200K" or player.PlayerGui.Main.Ryo2.amt.text == "150K" or player.PlayerGui.Main.Ryo2.amt.text == "100K" or player.PlayerGui.Main.Ryo2.amt.text == "50K" then
+								game:GetService("Players").LocalPlayer.startevent:FireServer("maxlvlpres")
+							else
+								loadstring(game:HttpGet('https://raw.githubusercontent.com/KylnDantas/InfRellCoinsSL/main/file.lua',true))()
+							end
+						elseif RANKUPPBYLVL then
+							repeat wait()
+								player.startevent:FireServer("rankup")
+							until player.statz.lvl:FindFirstChild("lvl").Value == 1 or not RANKUPP
+						else 
+							notify("Bruh.")
+						end
 					end
 				end
 			end
@@ -2599,7 +2659,6 @@ local function ShindoDungeons()
 	local section2 = page2:addSection("Customs")
 	local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
 
-
 	section1:addButton("SuperHuman",function()
 		section1:updateButton("SuperHuman","SuperHuman (Activated)")
 		SUPERHUMAN()
@@ -2675,6 +2734,11 @@ local function ShindoDungeons()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/HDTerebi/Shindo-Life/main/No%20CD%20Method"))()
 		wait()
 		notify("Equip a beast mode, mode up, type '!spirit', press the ']' button, done!")
+	end)
+
+	section1:addButton("Max RELL Coins",function()
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/KylnDantas/InfRellCoinsSL/main/file.lua',true))()
+		notify("If RC glitched just press it again")
 	end)
 
 	section2:addDropdown("Custom Display Ranks",{"RELL", "F 0", "D 1", "D 2", "D 3", "C 1", "C 2", "C 3", "B 1", "B 2", "B 3", "A 1", "A 2", "A 3", "S 1", "S 2", "S 3", "V 1", "V 2", "V 3", "X 1", "X 2", "X 3", "Y 1", "Y 2", "Y 3", "Z 1", "Z 2", "Z 3", "MAX-69", "MAX-420", "MAX-666", "MAX-999", "GOD", "Dragon", "Hacker","???"},function(rektrank)
@@ -3474,6 +3538,11 @@ local function ShindoBossBattle()
 		if keel then
 			NPCKEELAURA()
 		end
+	end)
+
+	section1:addButton("Max RELL Coins",function()
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/KylnDantas/InfRellCoinsSL/main/file.lua',true))()
+		notify("If RC glitched just press it again")
 	end)
 
 	section1:addButton("Old No CD Method",function()
@@ -4421,6 +4490,11 @@ local function ShindoEventBoss()
 				until not scrollfarm
 			end
 		end
+	end)
+
+	section1:addButton("Max RELL Coins",function()
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/KylnDantas/InfRellCoinsSL/main/file.lua',true))()
+		notify("If RC glitched just press it again")
 	end)
 
 	section1:addButton("Old No CD Method",function()
@@ -5721,6 +5795,11 @@ local function ShindoMain()
 		end
 	end)
 
+	section1:addButton("Max RELL Coins",function()
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/KylnDantas/InfRellCoinsSL/main/file.lua',true))()
+		notify("If RC glitched just press it again")
+	end)
+
 	section1:addButton("Old No CD Method",function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/HDTerebi/Shindo-Life/main/No%20CD%20Method"))()
 		wait()
@@ -6723,7 +6802,8 @@ local function ShindoMain()
 	local section3 = page6:addSection("Boss Farm Settings")
 	local section4 = page6:addSection("Beasts Farm Settings")
 	local section5 = page6:addSection("Auto Rank Up")
-	local section6 = page6:addSection("Auto Stats")
+	local section6 = page6:addSection("Auto Rank Up Settings")
+	local section7 = page6:addSection("Auto Stats")
 
 	local autofarm
 	section1:addToggle("Green Scroll Farm",false, function(bool)
@@ -6868,20 +6948,45 @@ local function ShindoMain()
 		notify("Auto Rank: "..tostring(RANKUPP),true)
 	end)
 
+	local MAXRANKUPP
+	section5:addToggle("Rank Up after MAX",false, function(bool)
+		MAXRANKUPP = bool
+		notify("Rank Up after MAX: "..tostring(MAXRANKUPP),true)
+	end)
+
+	local RANKUPPBYLVL
+	section6:addToggle("Rank Up with Levels",true, function(bool)
+		RANKUPPBYLVL = bool
+		notify("Rank Up with levels: "..tostring(RANKUPPBYLVL),true)
+	end)
+	RANKUPPBYLVL = true
+
+	local RANKUPPBYRC
+	section6:addToggle("Rank Up with RELL Coins",false, function(bool)
+		RANKUPPBYRC = bool
+		notify("Rank Up with Rell Coins: "..tostring(RANKUPPBYRC),true)
+	end)
+
+	local NUMTHENSTOPRANKUPP
+	section6:addToggle("Stop when spins reached specific amount",false, function(bool)
+		NUMTHENSTOPRANKUPP = bool
+		notify("Stop when spins reached specific amount: "..tostring(NUMTHENSTOPRANKUPP),true)
+	end)
+
 	local stopautorankwhenthisnumberreached
 	if player.gamepasses:FindFirstChild("spinsbag") then
-		section5:addSlider("Stop Auto Rank when spins reached", 1000, 50, 1000, function(value)
+		section6:addSlider("Stop Auto Rank when spins reached", 1000, 50, 1000, function(value)
 			stopautorankwhenthisnumberreached = value
 		end)
 		stopautorankwhenthisnumberreached = 500
 	else
-		section5:addSlider("Stop Auto Rank when spins reached", 500, 50, 500, function(value)
+		section6:addSlider("Stop Auto Rank when spins reached", 500, 50, 500, function(value)
 			stopautorankwhenthisnumberreached = value
 		end)
 		stopautorankwhenthisnumberreached = 1000
 	end
 
-	section6:addToggle("Auto Chi",false, function(bool)
+	section7:addToggle("Auto Chi",false, function(bool)
 		auchi = bool
 	end)
 	game:GetService('RunService').Stepped:connect(function()
@@ -6895,7 +7000,7 @@ local function ShindoMain()
 			wait(.25)
 		end
 	end)
-	section6:addToggle("Auto Nin",false, function(bool)
+	section7:addToggle("Auto Nin",false, function(bool)
 		aunin = bool
 	end)
 	game:GetService('RunService').Stepped:connect(function()
@@ -6909,7 +7014,7 @@ local function ShindoMain()
 			wait(.25)
 		end
 	end)
-	section6:addToggle("Auto Tai",false, function(bool)
+	section7:addToggle("Auto Tai",false, function(bool)
 		autai = bool
 	end)
 	game:GetService('RunService').Stepped:connect(function()
@@ -6923,7 +7028,7 @@ local function ShindoMain()
 			wait(.25)
 		end
 	end)
-	section6:addToggle("Auto Health",false, function(bool)
+	section7:addToggle("Auto Health",false, function(bool)
 		auhp = bool
 	end)
 	game:GetService('RunService').Stepped:connect(function()
@@ -7229,15 +7334,41 @@ local function ShindoMain()
 	spawn(function()
 		while wait() do
 			if RANKUPP then
-				if player.statz.spins.Value > (stopautorankwhenthisnumberreached - 1) then
+				if NUMTHENSTOPRANKUPP and player.statz.spins.Value > (stopautorankwhenthisnumberreached - 1) then
 					RANKUPP = false
 					section5:updateToggle("Auto Rank", false)
 					notify("Spins amount has currently reached " .. stopautorankwhenthisnumberreached)
 				else
-					if player.statz.lvl:FindFirstChild("lvl").Value == 1000 then
-						repeat wait()
-							player.startevent:FireServer("rankup")
-						until player.statz.lvl:FindFirstChild("lvl").Value == 1 or not RANKUPP
+					if MAXRANKUPP then
+						if RANKUPPBYRC then
+							if player.PlayerGui.Main.Ryo2.amt.text == "500K" or player.PlayerGui.Main.Ryo2.amt.text == "450K" or player.PlayerGui.Main.Ryo2.amt.text == "400K" or player.PlayerGui.Main.Ryo2.amt.text == "350K" or player.PlayerGui.Main.Ryo2.amt.text == "300K" or player.PlayerGui.Main.Ryo2.amt.text == "250K" or player.PlayerGui.Main.Ryo2.amt.text == "200K" or player.PlayerGui.Main.Ryo2.amt.text == "150K" or player.PlayerGui.Main.Ryo2.amt.text == "100K" or player.PlayerGui.Main.Ryo2.amt.text == "50K" then
+								game:GetService("Players").LocalPlayer.startevent:FireServer("maxlvlpres2")
+							else
+								loadstring(game:HttpGet('https://raw.githubusercontent.com/KylnDantas/InfRellCoinsSL/main/file.lua',true))()
+							end
+						elseif RANKUPPBYLVL then
+							if player.statz.lvl:FindFirstChild("lvl").Value == 1000 then
+								repeat wait()
+									player.startevent:FireServer("maxlvlpres2")
+								until player.statz.lvl:FindFirstChild("lvl").Value == 1 or not RANKUPP or not MAXRANKUPP	
+							end
+						else
+							notify("Bruh.")
+						end
+					else	
+						if RANKUPPBYRC then
+							if player.PlayerGui.Main.Ryo2.amt.text == "500K" or player.PlayerGui.Main.Ryo2.amt.text == "450K" or player.PlayerGui.Main.Ryo2.amt.text == "400K" or player.PlayerGui.Main.Ryo2.amt.text == "350K" or player.PlayerGui.Main.Ryo2.amt.text == "300K" or player.PlayerGui.Main.Ryo2.amt.text == "250K" or player.PlayerGui.Main.Ryo2.amt.text == "200K" or player.PlayerGui.Main.Ryo2.amt.text == "150K" or player.PlayerGui.Main.Ryo2.amt.text == "100K" or player.PlayerGui.Main.Ryo2.amt.text == "50K" then
+								game:GetService("Players").LocalPlayer.startevent:FireServer("maxlvlpres")
+							else
+								loadstring(game:HttpGet('https://raw.githubusercontent.com/KylnDantas/InfRellCoinsSL/main/file.lua',true))()
+							end
+						elseif RANKUPPBYLVL then
+							repeat wait()
+								player.startevent:FireServer("rankup")
+							until player.statz.lvl:FindFirstChild("lvl").Value == 1 or not RANKUPP
+						else 
+							notify("Bruh.")
+						end
 					end
 				end
 			end
@@ -8184,6 +8315,10 @@ local function ShindoMain()
 			tree = false
 			EnabledAutoMentor = false
 			RANKUPP = false
+			MAXRANKUPP = false
+			NUMTHENSTOPRANKUPP = false
+			RANKUPPBYLVL = true
+			RANKUPPBYRC = false
 			autofarm = false
 			boss = false
 			NOCDed = false
