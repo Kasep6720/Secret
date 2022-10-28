@@ -80,18 +80,18 @@ function CTRLCLICKTP()
 	local UIS = game:GetService("UserInputService")
 	local Player = game.Players.LocalPlayer
 	local Mouse = Player:GetMouse()
-	
+
 	function GetCharacter()
 	return player.Character
 	end
-	
+
 	function Teleport(pos)
 		local Char = GetCharacter()
 		if Char then
 			Char:MoveTo(pos)
 		end
 	end
-	
+
 	UIS.InputBegan:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.MouseButton1 and UIS:IsKeyDown(Enum.KeyCode.LeftControl) then
 			Teleport(Mouse.Hit.p)
@@ -186,9 +186,9 @@ function UPPERFORMANCE()
 		if v:IsA("Part") or v:IsA("Union") or v:IsA("MeshPart") then
 			v.Material = "Plastic"
 			v.Reflectance = 0
-		elseif v:IsA("Decal") and decalsyeeted then 
+		elseif v:IsA("Decal") and decalsyeeted then
 			v.Transparency = 1
-		elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then 
+		elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
 			v.Lifetime = NumberRange.new(0)
 		end
 	end
@@ -266,17 +266,17 @@ for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
 	end
 end
 
-if _G.dAAcG3fvBqVoPzVnAFk == nil then 
-	_G.dAAcG3fvBqVoPzVnAFk = "" 
-end 
+if _G.dAAcG3fvBqVoPzVnAFk == nil then
+	_G.dAAcG3fvBqVoPzVnAFk = ""
+end
 function notify(a,b,c)
 	local d=c or function()return end;
 	local e=b or false;
 		if a==_G.dAAcG3fvBqVoPzVnAFk and e==false then return end;
 		spawn(function()
-			for f,g in pairs(game.CoreGui:GetChildren())do 
+			for f,g in pairs(game.CoreGui:GetChildren())do
 				spawn(function()
-					if g.Name=="MNotify"then 
+					if g.Name=="MNotify"then
 						pcall(function()
 							g.ImageButton.ZIndex=58;
 							g.ImageButton.TextLabel.ZIndex=59;
@@ -285,15 +285,15 @@ function notify(a,b,c)
 							wait(1)
 							g:Destroy()
 						end)
-					end 
+					end
 				end)
 			end;
 			_G.dAAcG3fvBqVoPzVnAFk=a
 			local d=c or function()return end;
 			local function h(i,j)
 				local k=Instance.new(i)
-					for f,g in pairs(j)do 
-						k[f]=g 
+					for f,g in pairs(j)do
+						k[f]=g
 					end;
 				return k end;
 				local l=h('ScreenGui',{DisplayOrder=0,Enabled=true,ResetOnSpawn=true,Name='MNotify',Parent=game.CoreGui})
@@ -301,9 +301,9 @@ function notify(a,b,c)
 				local n=h('TextLabel',{Font=Enum.Font.TitilliumWeb,FontSize=Enum.FontSize.Size24,Text=a,TextColor3=Color3.new(0.807843,0.807843,0.807843),TextScaled=false,TextSize=24,TextStrokeColor3=Color3.new(0,0,0),TextStrokeTransparency=1,TextTransparency=0,TextWrapped=false,TextXAlignment=Enum.TextXAlignment.Center,TextYAlignment=Enum.TextYAlignment.Center,Active=false,AnchorPoint=Vector2.new(0,0),BackgroundColor3=Color3.new(1,1,1),BackgroundTransparency=1,BorderColor3=Color3.new(0.105882,0.164706,0.207843),BorderSizePixel=1,ClipsDescendants=false,Draggable=false,Position=UDim2.new(0.132478639,0,0,0),Rotation=0,Selectable=false,Size=UDim2.new(0,174,0,40),SizeConstraint=Enum.SizeConstraint.RelativeXY,Visible=true,ZIndex=61,Name='TextLabel',Parent=m})
 				local o=h('UIListLayout',{Padding=UDim.new(0,0),FillDirection=Enum.FillDirection.Vertical,HorizontalAlignment=Enum.HorizontalAlignment.Center,SortOrder=Enum.SortOrder.Name,VerticalAlignment=Enum.VerticalAlignment.Top,Name='UIListLayout',Parent=m})
 				local p=1;
-				if string.len(a)<=49 then 
+				if string.len(a)<=49 then
 					m.Size=UDim2.new(0,game:GetService("TextService"):GetTextSize(a,24,Enum.Font.TitilliumWeb,Vector2.new(500,900)).X+35,0,40)
-				elseif string.len(a)>49 then 
+				elseif string.len(a)>49 then
 					p=math.ceil(string.len(string.sub(a,49))/9)
 					m.Size=UDim2.new(0,game:GetService("TextService"):GetTextSize(a,24,Enum.Font.TitilliumWeb,Vector2.new(500+p*100,900)).X+35,0,40)
 				end;
@@ -374,7 +374,7 @@ local function ShindoInfSpin()
 	TextLabel4topFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
 	TextLabel4topFrame.ScaleType = Enum.ScaleType.Slice
 	TextLabel4topFrame.SliceCenter = Rect.new(4, 4, 296, 296)
-	
+
 	TextLabel4top.Parent = FrameK
 	TextLabel4top.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
 	TextLabel4top.Position = UDim2.new(0, 0, -0.15, 0)
@@ -465,7 +465,7 @@ local function ShindoInfSpin()
 	Glow = Color3.fromRGB(0, 0, 0),
 	Accent = Color3.fromRGB(10, 10, 10),
 	LightContrast = Color3.fromRGB(20, 20, 20),
-	DarkContrast = Color3.fromRGB(14, 14, 14),  
+	DarkContrast = Color3.fromRGB(14, 14, 14),
 	TextColor = Color3.fromRGB(255, 255, 255)
 	}
 
@@ -474,7 +474,7 @@ local function ShindoInfSpin()
 	local section1 = page1:addSection("Instructions")
 	local section2 = page1:addSection("Inf Spin Functions")
 	local section3 = page1:addSection("Inf Spin Settings")
-	
+
 	section1:addButton("Instructions",function()
 		local player = game.Players.LocalPlayer
 		local ScreenGuiK = Instance.new("ScreenGui")
@@ -510,7 +510,7 @@ local function ShindoInfSpin()
 		TextLabel4topFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
 		TextLabel4topFrame.ScaleType = Enum.ScaleType.Slice
 		TextLabel4topFrame.SliceCenter = Rect.new(4, 4, 296, 296)
-		
+
 		TextLabel4top.Parent = FrameK
 		TextLabel4top.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
 		TextLabel4top.Position = UDim2.new(0, 0, -0.1, 0)
@@ -540,17 +540,17 @@ local function ShindoInfSpin()
 		TextLabel.Text = [[To use this inf spins script:
 
 		1.Choose the bloodline or element or kenjutsu that you want to get, you can choose no more than 5 choices for bloodlines and elements and no more than 3 choices for kenjutsu (5 choices when purchased 2nd slot).
-		
+
 		2.Press spin the slots that you want to have the bloodline or element or kenjutsu.
 
 		3.Wait patiently and DO NOT change anything until you got the stuff that you want.
-		
+
 		4.When you got the bloodline or element or kenjutsu that you want, you may press save data then leave this server to save it.
-		
+
 		5.If you cannot find the bloodline or element or kenjutsu that you want, you may enter the names of the bloodline or element or kenjutsu in the dropdown's textbox.
-		
+
 		6.I've already filtered out all unlocked limitedsput and put all spinnable limiteds on top of the dropdown so you don't need to search for 1 specific limiteds for a long time :).
-		
+
 		7.DO NOT redeem codes while the script is activated.
 
 		8.If you are unsatisfied about the results, you may always press Reset Spins NOW to reset, unless you pressed save spins data or turned on auto save.
@@ -598,7 +598,7 @@ local function ShindoInfSpin()
 		TextButtonText.MouseButton1Click:connect(X)
 	end)
 
-	section2:addButton("Reset Spins NOW",function()	
+	section2:addButton("Reset Spins NOW",function()
 		player.startevent:FireServer("band", "\128")
 		wait()
 		game:GetService("TeleportService"):Teleport(game.PlaceId, player)
@@ -637,7 +637,7 @@ local function ShindoInfSpin()
 		TextLabelFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
 		TextLabelFrame.ScaleType = Enum.ScaleType.Slice
 		TextLabelFrame.SliceCenter = Rect.new(4, 4, 296, 296)
-		
+
 		TextLabel.Parent = FrameK
 		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
 		TextLabel.Position = UDim2.new(0, 0, -0.1, 0)
@@ -719,8 +719,8 @@ local function ShindoInfSpin()
 				end
 			end
 		end
-		TextButton_2.MouseButton1Click:connect(cancelKeep)	
-		TextButton_2Text.MouseButton1Click:connect(cancelKeep)		
+		TextButton_2.MouseButton1Click:connect(cancelKeep)
+		TextButton_2Text.MouseButton1Click:connect(cancelKeep)
 	end)
 
 	section3:addToggle("Auto Rejoin",true,function(bool)
@@ -758,7 +758,7 @@ local function ShindoInfSpin()
 
 	-- load
 	NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
-	
+
 	local elm = {}
 	for i,v in pairs(game:GetService("Workspace").RAREKGS:GetChildren()) do
 		if v.Name ~= "KGTEMPLATE" and v.tim.Value ~= "N/A" and not player.statz.genkailevel:FindFirstChild(v.Name) and game:GetService("ReplicatedStorage").alljutsu[v.Name]:FindFirstChild("ELEMENT") then
@@ -858,7 +858,7 @@ local function ShindoInfSpin()
 					end
 				end
 			end)
-		else 
+		else
 		end
 	end)
 
@@ -872,7 +872,7 @@ local function ShindoInfSpin()
 					elmvalue1 = player.statz.main.element1.Value
 					elmvalue2 = player.statz.main.element2.Value
 					elmvalue3 = player.statz.main.element3.Value
-					elmvalue4 = player.statz.main.element4.Value						
+					elmvalue4 = player.statz.main.element4.Value
 					if StartSpinElm2 == true then
 						if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
 							player.startevent:FireServer("spin", "element2")
@@ -899,7 +899,7 @@ local function ShindoInfSpin()
 					end
 				end
 			end)
-		else 
+		else
 		end
 	end)
 
@@ -914,7 +914,7 @@ local function ShindoInfSpin()
 						elmvalue1 = player.statz.main.element1.Value
 						elmvalue2 = player.statz.main.element2.Value
 						elmvalue3 = player.statz.main.element3.Value
-						elmvalue4 = player.statz.main.element4.Value							
+						elmvalue4 = player.statz.main.element4.Value
 						if StartSpinElm3 == true then
 							if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
 								player.startevent:FireServer("spin", "element3")
@@ -941,7 +941,7 @@ local function ShindoInfSpin()
 						end
 					end
 				end)
-			else 
+			else
 			end
 		end)
 	end
@@ -957,7 +957,7 @@ local function ShindoInfSpin()
 						elmvalue1 = player.statz.main.element1.Value
 						elmvalue2 = player.statz.main.element2.Value
 						elmvalue3 = player.statz.main.element3.Value
-						elmvalue4 = player.statz.main.element4.Value							
+						elmvalue4 = player.statz.main.element4.Value
 						if StartSpinElm4 == true then
 							if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
 								player.startevent:FireServer("spin", "element4")
@@ -984,7 +984,7 @@ local function ShindoInfSpin()
 						end
 					end
 				end)
-			else 
+			else
 			end
 		end)
 	end
@@ -1000,7 +1000,7 @@ local function ShindoInfSpin()
 		A1 = KG1
 	end)
 	section1:addDropdown("Bloodline Choice 2",kgs,function(KG2)
-		print("Selected: " .. KG2)		
+		print("Selected: " .. KG2)
 		notify("2nd Bloodline Selected: " .. KG2)
 		A2 = KG2
 	end)
@@ -1071,7 +1071,7 @@ local function ShindoInfSpin()
 					kgvalue1 = player.statz.main.kg1.Value
 					kgvalue2 = player.statz.main.kg2.Value
 					kgvalue3 = player.statz.main.kg3.Value
-					kgvalue4 = player.statz.main.kg4.Value						
+					kgvalue4 = player.statz.main.kg4.Value
 					if AutoSpinBL2 == true then
 						if kgvalue1 ~= A1 and kgvalue1 ~= A2 and kgvalue1 ~= A3 and kgvalue1 ~= A4 and kgvalue1 ~= A5 and kgvalue2 ~= A1 and kgvalue2 ~= A2 and kgvalue2 ~= A3 and kgvalue2 ~= A4 and kgvalue2 ~= A5 and kgvalue3 ~= A1 and kgvalue3 ~= A2 and kgvalue3 ~= A3 and kgvalue3 ~= A4 and kgvalue3 ~= A5 and kgvalue4 ~= A1 and kgvalue4 ~= A2 and kgvalue4 ~= A3 and kgvalue4 ~= A4 and kgvalue4 ~= A5 then
 							player.startevent:FireServer("spin", "kg2")
@@ -1113,7 +1113,7 @@ local function ShindoInfSpin()
 						kgvalue1 = player.statz.main.kg1.Value
 						kgvalue2 = player.statz.main.kg2.Value
 						kgvalue3 = player.statz.main.kg3.Value
-						kgvalue4 = player.statz.main.kg4.Value								
+						kgvalue4 = player.statz.main.kg4.Value
 						if AutoSpinBL3 == true then
 							if kgvalue1 ~= A1 and kgvalue1 ~= A2 and kgvalue1 ~= A3 and kgvalue1 ~= A4 and kgvalue1 ~= A5 and kgvalue2 ~= A1 and kgvalue2 ~= A2 and kgvalue2 ~= A3 and kgvalue2 ~= A4 and kgvalue2 ~= A5 and kgvalue3 ~= A1 and kgvalue3 ~= A2 and kgvalue3 ~= A3 and kgvalue3 ~= A4 and kgvalue3 ~= A5 and kgvalue4 ~= A1 and kgvalue4 ~= A2 and kgvalue4 ~= A3 and kgvalue4 ~= A4 and kgvalue4 ~= A5 then
 								player.startevent:FireServer("spin", "kg3")
@@ -1156,7 +1156,7 @@ local function ShindoInfSpin()
 						kgvalue1 = player.statz.main.kg1.Value
 						kgvalue2 = player.statz.main.kg2.Value
 						kgvalue3 = player.statz.main.kg3.Value
-						kgvalue4 = player.statz.main.kg4.Value							
+						kgvalue4 = player.statz.main.kg4.Value
 						if AutoSpinBL4 == true then
 							if kgvalue1 ~= A1 and kgvalue1 ~= A2 and kgvalue1 ~= A3 and kgvalue1 ~= A4 and kgvalue1 ~= A5 and kgvalue2 ~= A1 and kgvalue2 ~= A2 and kgvalue2 ~= A3 and kgvalue2 ~= A4 and kgvalue2 ~= A5 and kgvalue3 ~= A1 and kgvalue3 ~= A2 and kgvalue3 ~= A3 and kgvalue3 ~= A4 and kgvalue3 ~= A5 and kgvalue4 ~= A1 and kgvalue4 ~= A2 and kgvalue4 ~= A3 and kgvalue4 ~= A4 and kgvalue4 ~= A5 then
 								player.startevent:FireServer("spin", "kg4")
@@ -1266,7 +1266,7 @@ local function ShindoInfSpin()
 						end
 					end
 				end)
-			else 
+			else
 			end
 		end)
 
@@ -1306,7 +1306,7 @@ local function ShindoInfSpin()
 						end
 					end
 				end)
-			else 
+			else
 			end
 		end)
 	else
@@ -1364,11 +1364,11 @@ local function ShindoInfSpin()
 						end
 					end
 				end)
-			else 
+			else
 			end
 		end)
 	end
-	
+
 	-- last page
 	local pagelast = NoobieDoge:addPage("Settings", 5176336983)
 	local settings = pagelast:addSection("Settings")
@@ -1502,7 +1502,7 @@ local function ShindoInfSpin()
 				print("")
 			else
 				for i,v in pairs(game.Workspace.Camera.startup:GetChildren()) do
-					if v.Name == "" then 
+					if v.Name == "" then
 						v.Name = "NPC"
 					end
 				end
@@ -1553,7 +1553,7 @@ local function ShindoMyHome()
 	Glow = Color3.fromRGB(0, 0, 0),
 	Accent = Color3.fromRGB(10, 10, 10),
 	LightContrast = Color3.fromRGB(20, 20, 20),
-	DarkContrast = Color3.fromRGB(14, 14, 14),  
+	DarkContrast = Color3.fromRGB(14, 14, 14),
 	TextColor = Color3.fromRGB(255, 255, 255)
 	}
 
@@ -1611,17 +1611,12 @@ local function ShindoMyHome()
 	local page2 = NoobieDoge:addPage("Misc", 10567878127)
 	local section1 = page2:addSection("Customs")
 	local section2 = page2:addSection("Kenjutsu Spin")
-	
+
 	section1:addDropdown("Custom Display Ranks",{"RELL", "F 0", "D 1", "D 2", "D 3", "C 1", "C 2", "C 3", "B 1", "B 2", "B 3", "A 1", "A 2", "A 3", "S 1", "S 2", "S 3", "V 1", "V 2", "V 3", "X 1", "X 2", "X 3", "Y 1", "Y 2", "Y 3", "Z 1", "Z 2", "Z 3", "MAX-69", "MAX-420", "MAX-666", "MAX-999", "GOD", "Dragon", "Hacker","???"},function(rektrank)
 		player.leaderstats.Rank.Value =  (rektrank)
 		notify("Rank Displayed: " .. rektrank)
 	end)
 
-	section1:addButton("Max RELL Coins",function()
-		loadstring(game:HttpGet('https://raw.githubusercontent.com/KylnDantas/InfRellCoinsSL/main/file.lua',true))()
-		notify("If RC glitched just press it again")
-	end)
-	
 	section1:addButton("Bloodline Changer",function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/NoobieDoge/DogeHub/Separated/ShindoBloodlineChanger"))()
 	end)
@@ -1672,7 +1667,7 @@ local function ShindoMyHome()
 		TextLabelFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
 		TextLabelFrame.ScaleType = Enum.ScaleType.Slice
 		TextLabelFrame.SliceCenter = Rect.new(4, 4, 296, 296)
-		
+
 		TextLabel.Parent = FrameK
 		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
 		TextLabel.Position = UDim2.new(0, 0, -0.1, 0)
@@ -1754,8 +1749,8 @@ local function ShindoMyHome()
 				end
 			end
 		end
-		TextButton_2.MouseButton1Click:connect(cancelKeep)	
-		TextButton_2Text.MouseButton1Click:connect(cancelKeep)		
+		TextButton_2.MouseButton1Click:connect(cancelKeep)
+		TextButton_2Text.MouseButton1Click:connect(cancelKeep)
 	end)
 
 	section2:addToggle("Auto Rejoin",true,function(bool)
@@ -1840,7 +1835,7 @@ local function ShindoMyHome()
 						end
 					end
 				end)
-			else 
+			else
 			end
 		end)
 
@@ -1881,7 +1876,7 @@ local function ShindoMyHome()
 						end
 					end
 				end)
-			else 
+			else
 			end
 		end)
 	else
@@ -1937,7 +1932,7 @@ local function ShindoMyHome()
 						end
 					end
 				end)
-			else 
+			else
 			end
 		end)
 	end
@@ -2044,7 +2039,7 @@ local function ShindoMyHome()
 	local RANKUPPBYRC
 	section3:addToggle("Rank Up with RELL Coins",false, function(bool)
 		RANKUPPBYRC = bool
-		notify("Rank Up with Rell Coins: "..tostring(RANKUPPBYRC),true)
+		notify("Rank Up with RELL Coins: "..tostring(RANKUPPBYRC),true)
 	end)
 
 	local NUMTHENSTOPRANKUPP
@@ -2075,37 +2070,55 @@ local function ShindoMyHome()
 			if RANKUPP then
 				if NUMTHENSTOPRANKUPP and player.statz.spins.Value > (stopautorankwhenthisnumberreached - 1) then
 					RANKUPP = false
-					section5:updateToggle("Auto Rank", false)
+					section2:updateToggle("Auto Rank", false)
 					notify("Spins amount has currently reached " .. stopautorankwhenthisnumberreached)
 				else
 					if MAXRANKUPP then
 						if RANKUPPBYRC then
-							if player.PlayerGui.Main.Ryo2.amt.text == "500K" or player.PlayerGui.Main.Ryo2.amt.text == "450K" or player.PlayerGui.Main.Ryo2.amt.text == "400K" or player.PlayerGui.Main.Ryo2.amt.text == "350K" or player.PlayerGui.Main.Ryo2.amt.text == "300K" or player.PlayerGui.Main.Ryo2.amt.text == "250K" or player.PlayerGui.Main.Ryo2.amt.text == "200K" or player.PlayerGui.Main.Ryo2.amt.text == "150K" or player.PlayerGui.Main.Ryo2.amt.text == "100K" or player.PlayerGui.Main.Ryo2.amt.text == "50K" then
-								player.startevent:FireServer("maxlvlpres2")
+							if player.PlayerGui.notifui:FindFirstChild("keymove") and player.PlayerGui.notifui.keymove.Tex.text == "Not Enough RELL Coin." then
+								wait()
+								notify("Out of RELL Coins")
+								wait()
+								RANKUPP = false
+								section2:updateToggle("Auto Rank", false)
+								RANKUPPBYRC = false
+								section3:updateToggle("Rank Up with RELL Coins", false)
+								--patched --loadstring(game:HttpGet('https://raw.githubusercontent.com/KylnDantas/InfRellCoinsSL/main/file.lua',true))()
 							else
-								loadstring(game:HttpGet('https://raw.githubusercontent.com/KylnDantas/InfRellCoinsSL/main/file.lua',true))()
+								player.startevent:FireServer("maxlvlpres2")
 							end
-						elseif RANKUPPBYLVL then
+						end
+						if RANKUPPBYLVL then
 							if player.statz.lvl:FindFirstChild("lvl").Value == 1000 then
 								repeat wait()
 									player.startevent:FireServer("maxlvlpres")
-								until player.statz.lvl:FindFirstChild("lvl").Value == 1 or not RANKUPP or not MAXRANKUPP	
+								until player.statz.lvl:FindFirstChild("lvl").Value == 1 or not RANKUPP or not MAXRANKUPP
 							end
 						else
 							notify("Bruh.")
 						end
-					else	
+					else
 						if RANKUPPBYRC then
-							if player.PlayerGui.Main.Ryo2.amt.text == "500K" or player.PlayerGui.Main.Ryo2.amt.text == "450K" or player.PlayerGui.Main.Ryo2.amt.text == "400K" or player.PlayerGui.Main.Ryo2.amt.text == "350K" or player.PlayerGui.Main.Ryo2.amt.text == "300K" or player.PlayerGui.Main.Ryo2.amt.text == "250K" or player.PlayerGui.Main.Ryo2.amt.text == "200K" or player.PlayerGui.Main.Ryo2.amt.text == "150K" or player.PlayerGui.Main.Ryo2.amt.text == "100K" or player.PlayerGui.Main.Ryo2.amt.text == "50K" then
-								player.startevent:FireServer("rankup2")
+							if player.PlayerGui.notifui:FindFirstChild("keymove") and player.PlayerGui.notifui.keymove.Tex.text == "Not Enough RELL Coin." then
+								wait()
+								notify("Out of RELL Coins")
+								wait()
+								RANKUPP = false
+								section2:updateToggle("Auto Rank", false)
+								RANKUPPBYRC = false
+								section3:updateToggle("Rank Up with RELL Coins", false)
+								--patched --loadstring(game:HttpGet('https://raw.githubusercontent.com/KylnDantas/InfRellCoinsSL/main/file.lua',true))()
 							else
-								loadstring(game:HttpGet('https://raw.githubusercontent.com/KylnDantas/InfRellCoinsSL/main/file.lua',true))()
+								player.startevent:FireServer("maxlvlpres2")
 							end
-						elseif RANKUPPBYLVL then
-							repeat wait()
-								player.startevent:FireServer("rankup")
-							until player.statz.lvl:FindFirstChild("lvl").Value == 1 or not RANKUPP
-						else 
+						end
+						if RANKUPPBYLVL then
+							if player.statz.lvl:FindFirstChild("lvl").Value == 1000 then
+								repeat wait()
+									player.startevent:FireServer("rankup")
+								until player.statz.lvl:FindFirstChild("lvl").Value == 1 or not RANKUPP
+							end
+						else
 							notify("Bruh.")
 						end
 					end
@@ -2202,7 +2215,7 @@ local function ShindoMyHome()
 		TextLabelFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
 		TextLabelFrame.ScaleType = Enum.ScaleType.Slice
 		TextLabelFrame.SliceCenter = Rect.new(4, 4, 296, 296)
-		
+
 		TextLabel.Parent = Frame
 		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
 		TextLabel.Position = UDim2.new(0, 0, -0.1, 0)
@@ -2251,6 +2264,11 @@ local function ShindoMyHome()
 			player.Character.Humanoid.WalkSpeed = originalwalkspeed
 			player.Character.Humanoid.JumpPower = originaljumppower
 			game:GetService("Workspace").Gravity = originalgravity
+			RANKUPP = false
+			MAXRANKUPP = false
+			NUMTHENSTOPRANKUPP = false
+			RANKUPPBYLVL = true
+			RANKUPPBYRC = false
 			wait()
 			for i,library in pairs(game:GetService("CoreGui"):GetChildren()) do
 				if library.Name == "DogeHub V2" then
@@ -2295,7 +2313,7 @@ local function ShindoMyHome()
 				end
 			end
 		end
-		TextButton_2.MouseButton1Click:connect(ResetNO)	
+		TextButton_2.MouseButton1Click:connect(ResetNO)
 		TextButton_2Text.MouseButton1Click:connect(ResetNO)
 	end)
 
@@ -2334,7 +2352,7 @@ local function ShindoMyHome()
 		TextLabelFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
 		TextLabelFrame.ScaleType = Enum.ScaleType.Slice
 		TextLabelFrame.SliceCenter = Rect.new(4, 4, 296, 296)
-		
+
 		TextLabel.Parent = Frame
 		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
 		TextLabel.Position = UDim2.new(0, 0, -0.1, 0)
@@ -2416,7 +2434,7 @@ local function ShindoMyHome()
 				end
 			end
 		end
-		TextButton_2.MouseButton1Click:connect(RejoinNO)	
+		TextButton_2.MouseButton1Click:connect(RejoinNO)
 		TextButton_2Text.MouseButton1Click:connect(RejoinNO)
 	end)
 
@@ -2472,7 +2490,7 @@ local function ShindoDungeons()
 	Glow = Color3.fromRGB(0, 0, 0),
 	Accent = Color3.fromRGB(10, 10, 10),
 	LightContrast = Color3.fromRGB(20, 20, 20),
-	DarkContrast = Color3.fromRGB(14, 14, 14),  
+	DarkContrast = Color3.fromRGB(14, 14, 14),
 	TextColor = Color3.fromRGB(255, 255, 255)
 	}
 
@@ -2547,7 +2565,7 @@ local function ShindoDungeons()
 			getgenv().dc = true
 		end
 	end)
-	
+
 	player.CharacterAdded:Connect(function()
 		if infjumptoggle then
 			wait(2.5)
@@ -2559,95 +2577,95 @@ local function ShindoDungeons()
 			end)
 		end
 	end)
-	
+
 	section2:addSlider("Fly Speed", 101, 0, 999, function(value)
 		sliderfly = value
 	end)
 	sliderfly = 101
 	section2:addToggle("Press P to fly",false,function(Pfly)
-		repeat wait() 
-        until player and player.Character:findFirstChild("Head") player.Character:findFirstChild("Humanoid") 
-		local mouse = player:GetMouse() 
+		repeat wait()
+        until player and player.Character:findFirstChild("Head") player.Character:findFirstChild("Humanoid")
+		local mouse = player:GetMouse()
 		repeat wait() until mouse
-		local plr = game.Players.LocalPlayer 
-		local torso = plr.Character.Head 
+		local plr = game.Players.LocalPlayer
+		local torso = plr.Character.Head
 		local flying = false
-		local deb = true 
-		local ctrl = {f = 0, b = 0, l = 0, r = 0} 
-		local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
-		local maxspeed = sliderfly 
-		local speed = 0 
+		local deb = true
+		local ctrl = {f = 0, b = 0, l = 0, r = 0}
+		local lastctrl = {f = 0, b = 0, l = 0, r = 0}
+		local maxspeed = sliderfly
+		local speed = 0
 
-		function Fly() 
-			local bg = Instance.new("BodyGyro", torso) 
-			bg.P = 9e4 
-			bg.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
-			bg.cframe = torso.CFrame 
+		function Fly()
+			local bg = Instance.new("BodyGyro", torso)
+			bg.P = 9e4
+			bg.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+			bg.cframe = torso.CFrame
 
-			local bv = Instance.new("BodyVelocity", torso) 
-			bv.velocity = Vector3.new(0,0.1,0) 
-			bv.maxForce = Vector3.new(9e9, 9e9, 9e9) 
-			repeat wait() 
-				plr.Character.Humanoid.PlatformStand = true 
-				if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
-					speed = speed+(sliderfly/1.7)+(speed/maxspeed) 
-					if speed > maxspeed then 
-						speed = maxspeed 
-					end 
+			local bv = Instance.new("BodyVelocity", torso)
+			bv.velocity = Vector3.new(0,0.1,0)
+			bv.maxForce = Vector3.new(9e9, 9e9, 9e9)
+			repeat wait()
+				plr.Character.Humanoid.PlatformStand = true
+				if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then
+					speed = speed+(sliderfly/1.7)+(speed/maxspeed)
+					if speed > maxspeed then
+						speed = maxspeed
+					end
 
-				elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
+				elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then
 					speed = speed-(sliderfly/1.7)
-					if speed < 0 then 
-						speed = 0 
-					end 
-				end 
-				if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then 
-					bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
-					lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r} 
-				elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then 
-					bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
-				else 
+					if speed < 0 then
+						speed = 0
+					end
+				end
+				if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then
+					bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
+					lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r}
+				elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then
+					bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
+				else
 					bv.velocity = Vector3.new(0,0.1,0)
-				end 
-				bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
+				end
+				bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0)
 			until not flying or not Pfly
-			ctrl = {f = 0, b = 0, l = 0, r = 0} 
-			lastctrl = {f = 0, b = 0, l = 0, r = 0} 
-			speed = 0 
-			bg:Destroy() 
-			bv:Destroy() 
-			plr.Character.Humanoid.PlatformStand = false 
-		end 
+			ctrl = {f = 0, b = 0, l = 0, r = 0}
+			lastctrl = {f = 0, b = 0, l = 0, r = 0}
+			speed = 0
+			bg:Destroy()
+			bv:Destroy()
+			plr.Character.Humanoid.PlatformStand = false
+		end
 
-		mouse.KeyDown:connect(function(key) 
-			if key:lower() == "p" then 
-				if flying then flying = false 
-				else 
-					flying = true 
-					Fly() 
-				end 
-			elseif key:lower() == "w" then 
-				ctrl.f = 1 
-			elseif key:lower() == "s" then 
-				ctrl.b = -1 
-			elseif key:lower() == "a" then 
-				ctrl.l = -1 
-			elseif key:lower() == "d" then 
-				ctrl.r = 1 
-			end 
-		end) 
+		mouse.KeyDown:connect(function(key)
+			if key:lower() == "p" then
+				if flying then flying = false
+				else
+					flying = true
+					Fly()
+				end
+			elseif key:lower() == "w" then
+				ctrl.f = 1
+			elseif key:lower() == "s" then
+				ctrl.b = -1
+			elseif key:lower() == "a" then
+				ctrl.l = -1
+			elseif key:lower() == "d" then
+				ctrl.r = 1
+			end
+		end)
 
-		mouse.KeyUp:connect(function(key) 
+		mouse.KeyUp:connect(function(key)
 
-			if key:lower() == "w" then 
-				ctrl.f = 0 
-			elseif key:lower() == "s" then 
-				ctrl.b = 0 
-			elseif key:lower() == "a" then 
-				ctrl.l = 0 
-			elseif key:lower() == "d" then 
-				ctrl.r = 0 
-			end 
+			if key:lower() == "w" then
+				ctrl.f = 0
+			elseif key:lower() == "s" then
+				ctrl.b = 0
+			elseif key:lower() == "a" then
+				ctrl.l = 0
+			elseif key:lower() == "d" then
+				ctrl.r = 0
+			end
 		end)
 		Fly()
 		notify("Press P to fly: "..tostring(Pfly),true)
@@ -2696,14 +2714,14 @@ local function ShindoDungeons()
 			DISABLE_UNBREAKABLE_BLOCKS()
 		end
 	end)
-	
+
 	player.CharacterAdded:Connect(function()
 		if unbreakableblockstoggle then
 			wait(2.5)
 			UNBREAKABLE_BLOCKS()
 		end
 	end)
-	
+
 	section1:addToggle("NPC Kill Aura (May cause lag issues)",false,function(bool)
 		keel = bool
 		notify("NPC Kill Aura: "..tostring(keel),true)
@@ -2734,11 +2752,6 @@ local function ShindoDungeons()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/HDTerebi/Shindo-Life/main/No%20CD%20Method"))()
 		wait()
 		notify("Equip a beast mode, mode up, type '!spirit', press the ']' button, done!")
-	end)
-
-	section1:addButton("Max RELL Coins",function()
-		loadstring(game:HttpGet('https://raw.githubusercontent.com/KylnDantas/InfRellCoinsSL/main/file.lua',true))()
-		notify("If RC glitched just press it again")
 	end)
 
 	section2:addDropdown("Custom Display Ranks",{"RELL", "F 0", "D 1", "D 2", "D 3", "C 1", "C 2", "C 3", "B 1", "B 2", "B 3", "A 1", "A 2", "A 3", "S 1", "S 2", "S 3", "V 1", "V 2", "V 3", "X 1", "X 2", "X 3", "Y 1", "Y 2", "Y 3", "Z 1", "Z 2", "Z 3", "MAX-69", "MAX-420", "MAX-666", "MAX-999", "GOD", "Dragon", "Hacker","???"},function(rektrank)
@@ -3088,7 +3101,7 @@ local function ShindoDungeons()
 			unbreakableblockstoggle = false
 			DisabledInCombat = false
 			keel = false
-			SpamGOBRRRRR = false 
+			SpamGOBRRRRR = false
 			ClickRATATA = false
 			Q = false
 			E = false
@@ -3173,7 +3186,7 @@ local function ShindoDungeons()
 		TextLabelFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
 		TextLabelFrame.ScaleType = Enum.ScaleType.Slice
 		TextLabelFrame.SliceCenter = Rect.new(4, 4, 296, 296)
-		
+
 		TextLabel.Parent = Frame
 		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
 		TextLabel.Position = UDim2.new(0, 0, -0.1, 0)
@@ -3255,7 +3268,7 @@ local function ShindoDungeons()
 				end
 			end
 		end
-		TextButton_2.MouseButton1Click:connect(RejoinNO)	
+		TextButton_2.MouseButton1Click:connect(RejoinNO)
 		TextButton_2Text.MouseButton1Click:connect(RejoinNO)
 	end)
 
@@ -3298,7 +3311,7 @@ local function ShindoBossBattle()
 	Glow = Color3.fromRGB(0, 0, 0),
 	Accent = Color3.fromRGB(10, 10, 10),
 	LightContrast = Color3.fromRGB(20, 20, 20),
-	DarkContrast = Color3.fromRGB(14, 14, 14),  
+	DarkContrast = Color3.fromRGB(14, 14, 14),
 	TextColor = Color3.fromRGB(255, 255, 255)
 	}
 
@@ -3373,7 +3386,7 @@ local function ShindoBossBattle()
 			getgenv().dc = true
 		end
 	end)
-	
+
 	player.CharacterAdded:Connect(function()
 		if infjumptoggle then
 			wait(2.5)
@@ -3391,89 +3404,89 @@ local function ShindoBossBattle()
 	end)
 	sliderfly = 101
 	section2:addToggle("Press P to fly",false,function(Pfly)
-		repeat wait() 
-        until player and player.Character:findFirstChild("Head") player.Character:findFirstChild("Humanoid") 
-		local mouse = player:GetMouse() 
+		repeat wait()
+        until player and player.Character:findFirstChild("Head") player.Character:findFirstChild("Humanoid")
+		local mouse = player:GetMouse()
 		repeat wait() until mouse
-		local plr = game.Players.LocalPlayer 
-		local torso = plr.Character.Head 
+		local plr = game.Players.LocalPlayer
+		local torso = plr.Character.Head
 		local flying = false
-		local deb = true 
-		local ctrl = {f = 0, b = 0, l = 0, r = 0} 
-		local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
-		local maxspeed = sliderfly 
-		local speed = 0 
+		local deb = true
+		local ctrl = {f = 0, b = 0, l = 0, r = 0}
+		local lastctrl = {f = 0, b = 0, l = 0, r = 0}
+		local maxspeed = sliderfly
+		local speed = 0
 
-		function Fly() 
-			local bg = Instance.new("BodyGyro", torso) 
-			bg.P = 9e4 
-			bg.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
-			bg.cframe = torso.CFrame 
+		function Fly()
+			local bg = Instance.new("BodyGyro", torso)
+			bg.P = 9e4
+			bg.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+			bg.cframe = torso.CFrame
 
-			local bv = Instance.new("BodyVelocity", torso) 
-			bv.velocity = Vector3.new(0,0.1,0) 
-			bv.maxForce = Vector3.new(9e9, 9e9, 9e9) 
-			repeat wait() 
-				plr.Character.Humanoid.PlatformStand = true 
-				if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
-					speed = speed+(sliderfly/1.7)+(speed/maxspeed) 
-					if speed > maxspeed then 
-						speed = maxspeed 
-					end 
+			local bv = Instance.new("BodyVelocity", torso)
+			bv.velocity = Vector3.new(0,0.1,0)
+			bv.maxForce = Vector3.new(9e9, 9e9, 9e9)
+			repeat wait()
+				plr.Character.Humanoid.PlatformStand = true
+				if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then
+					speed = speed+(sliderfly/1.7)+(speed/maxspeed)
+					if speed > maxspeed then
+						speed = maxspeed
+					end
 
-				elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
+				elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then
 					speed = speed-(sliderfly/1.7)
-					if speed < 0 then 
-						speed = 0 
-					end 
-				end 
-				if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then 
-					bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
-					lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r} 
-				elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then 
-					bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
-				else 
+					if speed < 0 then
+						speed = 0
+					end
+				end
+				if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then
+					bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
+					lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r}
+				elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then
+					bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
+				else
 					bv.velocity = Vector3.new(0,0.1,0)
-				end 
-				bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
+				end
+				bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0)
 			until not flying or not Pfly
-			ctrl = {f = 0, b = 0, l = 0, r = 0} 
-			lastctrl = {f = 0, b = 0, l = 0, r = 0} 
-			speed = 0 
-			bg:Destroy() 
-			bv:Destroy() 
-			plr.Character.Humanoid.PlatformStand = false 
-		end 
+			ctrl = {f = 0, b = 0, l = 0, r = 0}
+			lastctrl = {f = 0, b = 0, l = 0, r = 0}
+			speed = 0
+			bg:Destroy()
+			bv:Destroy()
+			plr.Character.Humanoid.PlatformStand = false
+		end
 
-		mouse.KeyDown:connect(function(key) 
-			if key:lower() == "p" then 
-				if flying then flying = false 
-				else 
-					flying = true 
-					Fly() 
-				end 
-			elseif key:lower() == "w" then 
-				ctrl.f = 1 
-			elseif key:lower() == "s" then 
-				ctrl.b = -1 
-			elseif key:lower() == "a" then 
-				ctrl.l = -1 
-			elseif key:lower() == "d" then 
-				ctrl.r = 1 
-			end 
-		end) 
+		mouse.KeyDown:connect(function(key)
+			if key:lower() == "p" then
+				if flying then flying = false
+				else
+					flying = true
+					Fly()
+				end
+			elseif key:lower() == "w" then
+				ctrl.f = 1
+			elseif key:lower() == "s" then
+				ctrl.b = -1
+			elseif key:lower() == "a" then
+				ctrl.l = -1
+			elseif key:lower() == "d" then
+				ctrl.r = 1
+			end
+		end)
 
-		mouse.KeyUp:connect(function(key) 
+		mouse.KeyUp:connect(function(key)
 
-			if key:lower() == "w" then 
-				ctrl.f = 0 
-			elseif key:lower() == "s" then 
-				ctrl.b = 0 
-			elseif key:lower() == "a" then 
-				ctrl.l = 0 
-			elseif key:lower() == "d" then 
-				ctrl.r = 0 
-			end 
+			if key:lower() == "w" then
+				ctrl.f = 0
+			elseif key:lower() == "s" then
+				ctrl.b = 0
+			elseif key:lower() == "a" then
+				ctrl.l = 0
+			elseif key:lower() == "d" then
+				ctrl.r = 0
+			end
 		end)
 		Fly()
 		notify("Press P to fly: "..tostring(Pfly),true)
@@ -3505,7 +3518,7 @@ local function ShindoBossBattle()
 		end
 	end)
 	DisabledInCombat = true
-	
+
 	game:GetService('RunService').Stepped:connect(function()
 		if DisabledInCombat then
 			player.incombat.Value = false
@@ -3522,7 +3535,7 @@ local function ShindoBossBattle()
 			DISABLE_UNBREAKABLE_BLOCKS()
 		end
 	end)
-	
+
 	player.CharacterAdded:Connect(function()
 		if unbreakableblockstoggle then
 			wait(2.5)
@@ -3538,11 +3551,6 @@ local function ShindoBossBattle()
 		if keel then
 			NPCKEELAURA()
 		end
-	end)
-
-	section1:addButton("Max RELL Coins",function()
-		loadstring(game:HttpGet('https://raw.githubusercontent.com/KylnDantas/InfRellCoinsSL/main/file.lua',true))()
-		notify("If RC glitched just press it again")
 	end)
 
 	section1:addButton("Old No CD Method",function()
@@ -3751,7 +3759,7 @@ local function ShindoBossBattle()
 			keel2 = bool
 			NPCKEELAURA()
 			notify("NPC Kill Aura: "..tostring(keel2),true)
-		end)	
+		end)
 	else
 		section2:addToggle("NPC Kill Aura",false, function(bool)
 			keel2 = bool
@@ -3911,7 +3919,7 @@ local function ShindoBossBattle()
 		TextLabelFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
 		TextLabelFrame.ScaleType = Enum.ScaleType.Slice
 		TextLabelFrame.SliceCenter = Rect.new(4, 4, 296, 296)
-		
+
 		TextLabel.Parent = Frame
 		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
 		TextLabel.Position = UDim2.new(0, 0, -0.1, 0)
@@ -3965,7 +3973,7 @@ local function ShindoBossBattle()
 			DisabledInCombat = false
 			unbreakableblockstoggle = false
 			keel = false
-			SpamGOBRRRRR = false 
+			SpamGOBRRRRR = false
 			ClickRATATA = false
 			Q = false
 			E = false
@@ -4028,7 +4036,7 @@ local function ShindoBossBattle()
 				end
 			end
 		end
-		TextButton_2.MouseButton1Click:connect(ResetNO)	
+		TextButton_2.MouseButton1Click:connect(ResetNO)
 		TextButton_2Text.MouseButton1Click:connect(ResetNO)
 	end)
 
@@ -4067,7 +4075,7 @@ local function ShindoBossBattle()
 		TextLabelFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
 		TextLabelFrame.ScaleType = Enum.ScaleType.Slice
 		TextLabelFrame.SliceCenter = Rect.new(4, 4, 296, 296)
-		
+
 		TextLabel.Parent = Frame
 		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
 		TextLabel.Position = UDim2.new(0, 0, -0.1, 0)
@@ -4149,7 +4157,7 @@ local function ShindoBossBattle()
 				end
 			end
 		end
-		TextButton_2.MouseButton1Click:connect(RejoinNO)	
+		TextButton_2.MouseButton1Click:connect(RejoinNO)
 		TextButton_2Text.MouseButton1Click:connect(RejoinNO)
 	end)
 
@@ -4191,7 +4199,7 @@ local function ShindoEventBoss()
 	Glow = Color3.fromRGB(0, 0, 0),
 	Accent = Color3.fromRGB(10, 10, 10),
 	LightContrast = Color3.fromRGB(20, 20, 20),
-	DarkContrast = Color3.fromRGB(14, 14, 14),  
+	DarkContrast = Color3.fromRGB(14, 14, 14),
 	TextColor = Color3.fromRGB(255, 255, 255)
 	}
 
@@ -4266,7 +4274,7 @@ local function ShindoEventBoss()
 			getgenv().dc = true
 		end
 	end)
-	
+
 	player.CharacterAdded:Connect(function()
 		if infjumptoggle then
 			wait(2.5)
@@ -4284,89 +4292,89 @@ local function ShindoEventBoss()
 	end)
 	sliderfly = 101
 	section2:addToggle("Press P to fly",false,function(Pfly)
-		repeat wait() 
-        until player and player.Character:findFirstChild("Head") player.Character:findFirstChild("Humanoid") 
-		local mouse = player:GetMouse() 
+		repeat wait()
+        until player and player.Character:findFirstChild("Head") player.Character:findFirstChild("Humanoid")
+		local mouse = player:GetMouse()
 		repeat wait() until mouse
-		local plr = game.Players.LocalPlayer 
-		local torso = plr.Character.Head 
+		local plr = game.Players.LocalPlayer
+		local torso = plr.Character.Head
 		local flying = false
-		local deb = true 
-		local ctrl = {f = 0, b = 0, l = 0, r = 0} 
-		local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
-		local maxspeed = sliderfly 
-		local speed = 0 
+		local deb = true
+		local ctrl = {f = 0, b = 0, l = 0, r = 0}
+		local lastctrl = {f = 0, b = 0, l = 0, r = 0}
+		local maxspeed = sliderfly
+		local speed = 0
 
-		function Fly() 
-			local bg = Instance.new("BodyGyro", torso) 
-			bg.P = 9e4 
-			bg.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
-			bg.cframe = torso.CFrame 
+		function Fly()
+			local bg = Instance.new("BodyGyro", torso)
+			bg.P = 9e4
+			bg.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+			bg.cframe = torso.CFrame
 
-			local bv = Instance.new("BodyVelocity", torso) 
-			bv.velocity = Vector3.new(0,0.1,0) 
-			bv.maxForce = Vector3.new(9e9, 9e9, 9e9) 
-			repeat wait() 
-				plr.Character.Humanoid.PlatformStand = true 
-				if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
-					speed = speed+(sliderfly/1.7)+(speed/maxspeed) 
-					if speed > maxspeed then 
-						speed = maxspeed 
-					end 
+			local bv = Instance.new("BodyVelocity", torso)
+			bv.velocity = Vector3.new(0,0.1,0)
+			bv.maxForce = Vector3.new(9e9, 9e9, 9e9)
+			repeat wait()
+				plr.Character.Humanoid.PlatformStand = true
+				if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then
+					speed = speed+(sliderfly/1.7)+(speed/maxspeed)
+					if speed > maxspeed then
+						speed = maxspeed
+					end
 
-				elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
+				elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then
 					speed = speed-(sliderfly/1.7)
-					if speed < 0 then 
-						speed = 0 
-					end 
-				end 
-				if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then 
-					bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
-					lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r} 
-				elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then 
-					bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
-				else 
+					if speed < 0 then
+						speed = 0
+					end
+				end
+				if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then
+					bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
+					lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r}
+				elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then
+					bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
+				else
 					bv.velocity = Vector3.new(0,0.1,0)
-				end 
-				bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
+				end
+				bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0)
 			until not flying or not Pfly
-			ctrl = {f = 0, b = 0, l = 0, r = 0} 
-			lastctrl = {f = 0, b = 0, l = 0, r = 0} 
-			speed = 0 
-			bg:Destroy() 
-			bv:Destroy() 
-			plr.Character.Humanoid.PlatformStand = false 
-		end 
+			ctrl = {f = 0, b = 0, l = 0, r = 0}
+			lastctrl = {f = 0, b = 0, l = 0, r = 0}
+			speed = 0
+			bg:Destroy()
+			bv:Destroy()
+			plr.Character.Humanoid.PlatformStand = false
+		end
 
-		mouse.KeyDown:connect(function(key) 
-			if key:lower() == "p" then 
-				if flying then flying = false 
-				else 
-					flying = true 
-					Fly() 
-				end 
-			elseif key:lower() == "w" then 
-				ctrl.f = 1 
-			elseif key:lower() == "s" then 
-				ctrl.b = -1 
-			elseif key:lower() == "a" then 
-				ctrl.l = -1 
-			elseif key:lower() == "d" then 
-				ctrl.r = 1 
-			end 
-		end) 
+		mouse.KeyDown:connect(function(key)
+			if key:lower() == "p" then
+				if flying then flying = false
+				else
+					flying = true
+					Fly()
+				end
+			elseif key:lower() == "w" then
+				ctrl.f = 1
+			elseif key:lower() == "s" then
+				ctrl.b = -1
+			elseif key:lower() == "a" then
+				ctrl.l = -1
+			elseif key:lower() == "d" then
+				ctrl.r = 1
+			end
+		end)
 
-		mouse.KeyUp:connect(function(key) 
+		mouse.KeyUp:connect(function(key)
 
-			if key:lower() == "w" then 
-				ctrl.f = 0 
-			elseif key:lower() == "s" then 
-				ctrl.b = 0 
-			elseif key:lower() == "a" then 
-				ctrl.l = 0 
-			elseif key:lower() == "d" then 
-				ctrl.r = 0 
-			end 
+			if key:lower() == "w" then
+				ctrl.f = 0
+			elseif key:lower() == "s" then
+				ctrl.b = 0
+			elseif key:lower() == "a" then
+				ctrl.l = 0
+			elseif key:lower() == "d" then
+				ctrl.r = 0
+			end
 		end)
 		Fly()
 		notify("Press P to fly: "..tostring(Pfly),true)
@@ -4441,7 +4449,7 @@ local function ShindoEventBoss()
 		end
 	end)
 	DisabledInCombat = true
-	
+
 	game:GetService('RunService').Stepped:connect(function()
 		if DisabledInCombat then
 			player.incombat.Value = false
@@ -4458,7 +4466,7 @@ local function ShindoEventBoss()
 			DISABLE_UNBREAKABLE_BLOCKS()
 		end
 	end)
-	
+
 	player.CharacterAdded:Connect(function()
 		if unbreakableblockstoggle then
 			wait(2.5)
@@ -4490,11 +4498,6 @@ local function ShindoEventBoss()
 				until not scrollfarm
 			end
 		end
-	end)
-
-	section1:addButton("Max RELL Coins",function()
-		loadstring(game:HttpGet('https://raw.githubusercontent.com/KylnDantas/InfRellCoinsSL/main/file.lua',true))()
-		notify("If RC glitched just press it again")
 	end)
 
 	section1:addButton("Old No CD Method",function()
@@ -4724,7 +4727,7 @@ local function ShindoEventBoss()
 									player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 50, 30)
 								elseif Low then
 									player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 15, 14)
-								elseif RLow then	
+								elseif RLow then
 									player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 8, 5)
 								end
 							else
@@ -4890,7 +4893,7 @@ local function ShindoEventBoss()
 						notify("The boss doesn't spawn in this map!")
 						wait()
 						DailyBoss = false
-					end		
+					end
 				end
 			end
 		end
@@ -4955,7 +4958,7 @@ local function ShindoEventBoss()
 	local page6 = NoobieDoge:addPage("Teleports", 5012544693)
 	local section1 = page6:addSection("Map Teleports")
 	local section2 = page6:addSection("Server Teleports")
-	
+
 	if game.PlaceId == 9310522814 then
 		section1:addButton("Spawn Point",function()
 			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(19088.418, 860.5, -12058.779))
@@ -5089,7 +5092,7 @@ local function ShindoEventBoss()
 		TextLabelFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
 		TextLabelFrame.ScaleType = Enum.ScaleType.Slice
 		TextLabelFrame.SliceCenter = Rect.new(4, 4, 296, 296)
-		
+
 		TextLabel.Parent = Frame
 		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
 		TextLabel.Position = UDim2.new(0, 0, -0.1, 0)
@@ -5144,7 +5147,7 @@ local function ShindoEventBoss()
 			DisabledInCombat = false
 			unbreakableblockstoggle = false
 			keel = false
-			SpamGOBRRRRR = false 
+			SpamGOBRRRRR = false
 			SpamOnlyInMissions = false
 			Q = false
 			E = false
@@ -5215,7 +5218,7 @@ local function ShindoEventBoss()
 				end
 			end
 		end
-		TextButton_2.MouseButton1Click:connect(ResetNO)	
+		TextButton_2.MouseButton1Click:connect(ResetNO)
 		TextButton_2Text.MouseButton1Click:connect(ResetNO)
 	end)
 
@@ -5254,7 +5257,7 @@ local function ShindoEventBoss()
 		TextLabelFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
 		TextLabelFrame.ScaleType = Enum.ScaleType.Slice
 		TextLabelFrame.SliceCenter = Rect.new(4, 4, 296, 296)
-		
+
 		TextLabel.Parent = Frame
 		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
 		TextLabel.Position = UDim2.new(0, 0, -0.1, 0)
@@ -5336,7 +5339,7 @@ local function ShindoEventBoss()
 				end
 			end
 		end
-		TextButton_2.MouseButton1Click:connect(RejoinNO)	
+		TextButton_2.MouseButton1Click:connect(RejoinNO)
 		TextButton_2Text.MouseButton1Click:connect(RejoinNO)
 	end)
 
@@ -5489,7 +5492,7 @@ local function ShindoMain()
 	Glow = Color3.fromRGB(0, 0, 0),
 	Accent = Color3.fromRGB(10, 10, 10),
 	LightContrast = Color3.fromRGB(20, 20, 20),
-	DarkContrast = Color3.fromRGB(14, 14, 14),  
+	DarkContrast = Color3.fromRGB(14, 14, 14),
 	TextColor = Color3.fromRGB(255, 255, 255)
 	}
 
@@ -5564,7 +5567,7 @@ local function ShindoMain()
 			getgenv().dc = true
 		end
 	end)
-	
+
 	player.CharacterAdded:Connect(function()
 		if infjumptoggle then
 			wait(2.5)
@@ -5582,89 +5585,89 @@ local function ShindoMain()
 	end)
 	sliderfly = 101
 	section2:addToggle("Press P to fly",false,function(Pfly)
-		repeat wait() 
-        until player and player.Character:findFirstChild("Head") player.Character:findFirstChild("Humanoid") 
-		local mouse = player:GetMouse() 
+		repeat wait()
+        until player and player.Character:findFirstChild("Head") player.Character:findFirstChild("Humanoid")
+		local mouse = player:GetMouse()
 		repeat wait() until mouse
-		local plr = game.Players.LocalPlayer 
-		local torso = plr.Character.Head 
+		local plr = game.Players.LocalPlayer
+		local torso = plr.Character.Head
 		local flying = false
-		local deb = true 
-		local ctrl = {f = 0, b = 0, l = 0, r = 0} 
-		local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
-		local maxspeed = sliderfly 
-		local speed = 0 
+		local deb = true
+		local ctrl = {f = 0, b = 0, l = 0, r = 0}
+		local lastctrl = {f = 0, b = 0, l = 0, r = 0}
+		local maxspeed = sliderfly
+		local speed = 0
 
-		function Fly() 
-			local bg = Instance.new("BodyGyro", torso) 
-			bg.P = 9e4 
-			bg.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
-			bg.cframe = torso.CFrame 
+		function Fly()
+			local bg = Instance.new("BodyGyro", torso)
+			bg.P = 9e4
+			bg.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+			bg.cframe = torso.CFrame
 
-			local bv = Instance.new("BodyVelocity", torso) 
-			bv.velocity = Vector3.new(0,0.1,0) 
-			bv.maxForce = Vector3.new(9e9, 9e9, 9e9) 
-			repeat wait() 
-				plr.Character.Humanoid.PlatformStand = true 
-				if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
-					speed = speed+(sliderfly/1.7)+(speed/maxspeed) 
-					if speed > maxspeed then 
-						speed = maxspeed 
-					end 
+			local bv = Instance.new("BodyVelocity", torso)
+			bv.velocity = Vector3.new(0,0.1,0)
+			bv.maxForce = Vector3.new(9e9, 9e9, 9e9)
+			repeat wait()
+				plr.Character.Humanoid.PlatformStand = true
+				if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then
+					speed = speed+(sliderfly/1.7)+(speed/maxspeed)
+					if speed > maxspeed then
+						speed = maxspeed
+					end
 
-				elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
+				elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then
 					speed = speed-(sliderfly/1.7)
-					if speed < 0 then 
-						speed = 0 
-					end 
-				end 
-				if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then 
-					bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
-					lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r} 
-				elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then 
-					bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
-				else 
+					if speed < 0 then
+						speed = 0
+					end
+				end
+				if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then
+					bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
+					lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r}
+				elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then
+					bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
+				else
 					bv.velocity = Vector3.new(0,0.1,0)
-				end 
-				bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
+				end
+				bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0)
 			until not flying or not Pfly
-			ctrl = {f = 0, b = 0, l = 0, r = 0} 
-			lastctrl = {f = 0, b = 0, l = 0, r = 0} 
-			speed = 0 
-			bg:Destroy() 
-			bv:Destroy() 
-			plr.Character.Humanoid.PlatformStand = false 
-		end 
+			ctrl = {f = 0, b = 0, l = 0, r = 0}
+			lastctrl = {f = 0, b = 0, l = 0, r = 0}
+			speed = 0
+			bg:Destroy()
+			bv:Destroy()
+			plr.Character.Humanoid.PlatformStand = false
+		end
 
-		mouse.KeyDown:connect(function(key) 
-			if key:lower() == "p" then 
-				if flying then flying = false 
-				else 
-					flying = true 
-					Fly() 
-				end 
-			elseif key:lower() == "w" then 
-				ctrl.f = 1 
-			elseif key:lower() == "s" then 
-				ctrl.b = -1 
-			elseif key:lower() == "a" then 
-				ctrl.l = -1 
-			elseif key:lower() == "d" then 
-				ctrl.r = 1 
-			end 
-		end) 
+		mouse.KeyDown:connect(function(key)
+			if key:lower() == "p" then
+				if flying then flying = false
+				else
+					flying = true
+					Fly()
+				end
+			elseif key:lower() == "w" then
+				ctrl.f = 1
+			elseif key:lower() == "s" then
+				ctrl.b = -1
+			elseif key:lower() == "a" then
+				ctrl.l = -1
+			elseif key:lower() == "d" then
+				ctrl.r = 1
+			end
+		end)
 
-		mouse.KeyUp:connect(function(key) 
+		mouse.KeyUp:connect(function(key)
 
-			if key:lower() == "w" then 
-				ctrl.f = 0 
-			elseif key:lower() == "s" then 
-				ctrl.b = 0 
-			elseif key:lower() == "a" then 
-				ctrl.l = 0 
-			elseif key:lower() == "d" then 
-				ctrl.r = 0 
-			end 
+			if key:lower() == "w" then
+				ctrl.f = 0
+			elseif key:lower() == "s" then
+				ctrl.b = 0
+			elseif key:lower() == "a" then
+				ctrl.l = 0
+			elseif key:lower() == "d" then
+				ctrl.r = 0
+			end
 		end)
 		Fly()
 		notify("Press P to fly: "..tostring(Pfly),true)
@@ -5744,7 +5747,7 @@ local function ShindoMain()
 		end
 	end)
 	DisabledInCombat = true
-	
+
 	game:GetService('RunService').Stepped:connect(function()
 		if DisabledInCombat then
 			player.incombat.Value = false
@@ -5761,7 +5764,7 @@ local function ShindoMain()
 			DISABLE_UNBREAKABLE_BLOCKS()
 		end
 	end)
-	
+
 	player.CharacterAdded:Connect(function()
 		if unbreakableblockstoggle then
 			wait(2.5)
@@ -5793,11 +5796,6 @@ local function ShindoMain()
 				until not scrollfarm
 			end
 		end
-	end)
-
-	section1:addButton("Max RELL Coins",function()
-		loadstring(game:HttpGet('https://raw.githubusercontent.com/KylnDantas/InfRellCoinsSL/main/file.lua',true))()
-		notify("If RC glitched just press it again")
 	end)
 
 	section1:addButton("Old No CD Method",function()
@@ -5861,7 +5859,7 @@ local function ShindoMain()
 		TextLabelFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
 		TextLabelFrame.ScaleType = Enum.ScaleType.Slice
 		TextLabelFrame.SliceCenter = Rect.new(4, 4, 296, 296)
-		
+
 		TextLabel.Parent = FrameK
 		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
 		TextLabel.Position = UDim2.new(0, 0, -0.1, 0)
@@ -5943,8 +5941,8 @@ local function ShindoMain()
 				end
 			end
 		end
-		TextButton_2.MouseButton1Click:connect(cancelKeep)	
-		TextButton_2Text.MouseButton1Click:connect(cancelKeep)		
+		TextButton_2.MouseButton1Click:connect(cancelKeep)
+		TextButton_2Text.MouseButton1Click:connect(cancelKeep)
 	end)
 
 	section3:addToggle("Auto Rejoin",true,function(bool)
@@ -6054,7 +6052,7 @@ local function ShindoMain()
 						end
 					end
 				end)
-			else 
+			else
 			end
 		end)
 
@@ -6095,7 +6093,7 @@ local function ShindoMain()
 						end
 					end
 				end)
-			else 
+			else
 			end
 		end)
 	else
@@ -6151,7 +6149,7 @@ local function ShindoMain()
 						end
 					end
 				end)
-			else 
+			else
 			end
 		end)
 	end
@@ -6334,7 +6332,7 @@ local function ShindoMain()
 				notify("Narumaki Mentor is not in this map!")
 			end
 		end)
-		section1:addButton("Tp to Jiso Mentor",function() 
+		section1:addButton("Tp to Jiso Mentor",function()
 			if game.PlaceId == 6901575446 then
 				local args = {[1] = player}
 				workspace.sensei.missions:FindFirstChild("Jiso Seishin").missiongiver.CLIENTTALK:FireServer(unpack(args))
@@ -6575,7 +6573,7 @@ local function ShindoMain()
 						end
 					end
 				end
-			end	
+			end
 		end)
 	end
 
@@ -6733,7 +6731,7 @@ local function ShindoMain()
 							notify("The boss doesn't spawn in this map!")
 							wait()
 							DailyBoss = false
-						end		
+						end
 					end
 				end
 			end
@@ -6964,7 +6962,7 @@ local function ShindoMain()
 	local RANKUPPBYRC
 	section6:addToggle("Rank Up with RELL Coins",false, function(bool)
 		RANKUPPBYRC = bool
-		notify("Rank Up with Rell Coins: "..tostring(RANKUPPBYRC),true)
+		notify("Rank Up with RELL Coins: "..tostring(RANKUPPBYRC),true)
 	end)
 
 	local NUMTHENSTOPRANKUPP
@@ -7054,7 +7052,7 @@ local function ShindoMain()
 						repeat
 							player.Character.HumanoidRootPart.CFrame=getmission.CFrame+Vector3.new(0,3,0)
 							clienttalk:FireServer()
-							clienttalk:FireServer("accept")  
+							clienttalk:FireServer("accept")
 							wait()
 						until mission.Visible or mission.title.text == "[Objective: Mission]" or not autofarm
 					end
@@ -7262,8 +7260,8 @@ local function ShindoMain()
 					FARM()
 					for i,v in pairs(workspace.npc:GetChildren()) do
 						if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-							repeat 
-								v.Humanoid.Health = 0 
+							repeat
+								v.Humanoid.Health = 0
 								v.Humanoid.Health = 0
 								v.Humanoid.Health = 0
 								v.Humanoid.Health = 0
@@ -7341,32 +7339,50 @@ local function ShindoMain()
 				else
 					if MAXRANKUPP then
 						if RANKUPPBYRC then
-							if player.PlayerGui.Main.Ryo2.amt.text == "500K" or player.PlayerGui.Main.Ryo2.amt.text == "450K" or player.PlayerGui.Main.Ryo2.amt.text == "400K" or player.PlayerGui.Main.Ryo2.amt.text == "350K" or player.PlayerGui.Main.Ryo2.amt.text == "300K" or player.PlayerGui.Main.Ryo2.amt.text == "250K" or player.PlayerGui.Main.Ryo2.amt.text == "200K" or player.PlayerGui.Main.Ryo2.amt.text == "150K" or player.PlayerGui.Main.Ryo2.amt.text == "100K" or player.PlayerGui.Main.Ryo2.amt.text == "50K" then
-								player.startevent:FireServer("maxlvlpres2")
+							if player.PlayerGui.notifui:FindFirstChild("keymove") and player.PlayerGui.notifui.keymove.Tex.text == "Not Enough RELL Coin." then
+								wait()
+								notify("Out of RELL Coins")
+								wait()
+								RANKUPP = false
+								section5:updateToggle("Auto Rank", false)
+								RANKUPPBYRC = false
+								section6:updateToggle("Rank Up with RELL Coins", false)
+								--patched --loadstring(game:HttpGet('https://raw.githubusercontent.com/KylnDantas/InfRellCoinsSL/main/file.lua',true))()
 							else
-								loadstring(game:HttpGet('https://raw.githubusercontent.com/KylnDantas/InfRellCoinsSL/main/file.lua',true))()
+								player.startevent:FireServer("maxlvlpres2")
 							end
-						elseif RANKUPPBYLVL then
+						end
+						if RANKUPPBYLVL then
 							if player.statz.lvl:FindFirstChild("lvl").Value == 1000 then
 								repeat wait()
 									player.startevent:FireServer("maxlvlpres")
-								until player.statz.lvl:FindFirstChild("lvl").Value == 1 or not RANKUPP or not MAXRANKUPP	
+								until player.statz.lvl:FindFirstChild("lvl").Value == 1 or not RANKUPP or not MAXRANKUPP
 							end
 						else
 							notify("Bruh.")
 						end
-					else	
+					else
 						if RANKUPPBYRC then
-							if player.PlayerGui.Main.Ryo2.amt.text == "500K" or player.PlayerGui.Main.Ryo2.amt.text == "450K" or player.PlayerGui.Main.Ryo2.amt.text == "400K" or player.PlayerGui.Main.Ryo2.amt.text == "350K" or player.PlayerGui.Main.Ryo2.amt.text == "300K" or player.PlayerGui.Main.Ryo2.amt.text == "250K" or player.PlayerGui.Main.Ryo2.amt.text == "200K" or player.PlayerGui.Main.Ryo2.amt.text == "150K" or player.PlayerGui.Main.Ryo2.amt.text == "100K" or player.PlayerGui.Main.Ryo2.amt.text == "50K" then
-								player.startevent:FireServer("rankup2")
+							if player.PlayerGui.notifui:FindFirstChild("keymove") and player.PlayerGui.notifui.keymove.Tex.text == "Not Enough RELL Coin." then
+								wait()
+								notify("Out of RELL Coins")
+								wait()
+								RANKUPP = false
+								section5:updateToggle("Auto Rank", false)
+								RANKUPPBYRC = false
+								section6:updateToggle("Rank Up with RELL Coins", false)
+								--patched --loadstring(game:HttpGet('https://raw.githubusercontent.com/KylnDantas/InfRellCoinsSL/main/file.lua',true))()
 							else
-								loadstring(game:HttpGet('https://raw.githubusercontent.com/KylnDantas/InfRellCoinsSL/main/file.lua',true))()
+								player.startevent:FireServer("maxlvlpres2")
 							end
-						elseif RANKUPPBYLVL then
-							repeat wait()
-								player.startevent:FireServer("rankup")
-							until player.statz.lvl:FindFirstChild("lvl").Value == 1 or not RANKUPP
-						else 
+						end
+						if RANKUPPBYLVL then
+							if player.statz.lvl:FindFirstChild("lvl").Value == 1000 then
+								repeat wait()
+									player.startevent:FireServer("rankup")
+								until player.statz.lvl:FindFirstChild("lvl").Value == 1 or not RANKUPP
+							end
+						else
 							notify("Bruh.")
 						end
 					end
@@ -7444,7 +7460,7 @@ local function ShindoMain()
 				player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Narumaki"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
 			end)
 		elseif game:GetService("Workspace").sensei.missions:FindFirstChild("Jiso Seishin") then
-			section1:addButton("Jiso Mentor",function() 
+			section1:addButton("Jiso Mentor",function()
 				player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Jiso Seishin"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(5,0,-1.7)
 			end)
 		elseif game:GetService("Workspace").sensei.missions:FindFirstChild("Shindai Akuma") then
@@ -7635,7 +7651,7 @@ local function ShindoMain()
 		section1:addButton("The Back of Kage Office",function()
 			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(18085, 884, -19615))
 		end)
-	
+
 		section1:addButton("Arena Auditorium",function()
 			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(17255, 668, -18197))
 		end)
@@ -7784,7 +7800,7 @@ local function ShindoMain()
 		section1:addButton("Kage Office",function()
 			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(19705, 1109, -11190))
 		end)
-	
+
 		section1:addButton("The Top of Kage Office",function()
 			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(19707.5, 1266, -11175))
 		end)
@@ -8147,7 +8163,7 @@ local function ShindoMain()
 			end
 		end
 	end)
-	
+
 	local maps = {}
 	for i,v in pairs(player.PlayerGui.Main.ingame.Menu.ArenaTab.List:GetChildren()) do
 		if v:FindFirstChild("place") then
@@ -8232,7 +8248,7 @@ local function ShindoMain()
 		TextLabelFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
 		TextLabelFrame.ScaleType = Enum.ScaleType.Slice
 		TextLabelFrame.SliceCenter = Rect.new(4, 4, 296, 296)
-		
+
 		TextLabel.Parent = Frame
 		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
 		TextLabel.Position = UDim2.new(0, 0, -0.1, 0)
@@ -8287,7 +8303,7 @@ local function ShindoMain()
 			DisabledInCombat = false
 			unbreakableblockstoggle = false
 			keel = false
-			SpamGOBRRRRR = false 
+			SpamGOBRRRRR = false
 			SpamOnlyInMissions = false
 			ClickRATATA = false
 			Q = false
@@ -8326,7 +8342,7 @@ local function ShindoMain()
 			specific_boss = false
 			aunin = false
 			auchi = false
-			autai = false 
+			autai = false
 			auhp = false
 			wait()
 			for i,library in pairs(game:GetService("CoreGui"):GetChildren()) do
@@ -8372,7 +8388,7 @@ local function ShindoMain()
 				end
 			end
 		end
-		TextButton_2.MouseButton1Click:connect(ResetNO)	
+		TextButton_2.MouseButton1Click:connect(ResetNO)
 		TextButton_2Text.MouseButton1Click:connect(ResetNO)
 	end)
 
@@ -8411,7 +8427,7 @@ local function ShindoMain()
 		TextLabelFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
 		TextLabelFrame.ScaleType = Enum.ScaleType.Slice
 		TextLabelFrame.SliceCenter = Rect.new(4, 4, 296, 296)
-		
+
 		TextLabel.Parent = Frame
 		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
 		TextLabel.Position = UDim2.new(0, 0, -0.1, 0)
@@ -8493,7 +8509,7 @@ local function ShindoMain()
 				end
 			end
 		end
-		TextButton_2.MouseButton1Click:connect(RejoinNO)	
+		TextButton_2.MouseButton1Click:connect(RejoinNO)
 		TextButton_2Text.MouseButton1Click:connect(RejoinNO)
 	end)
 
@@ -8535,8 +8551,8 @@ local alleventbossesplace = game:GetService("Workspace"):FindFirstChild("cutscen
 if game.PlaceId == 4616652839 then
 	ShindoInfSpin()
 elseif game.PlaceId == 5451410109 then
-	ShindoMyHome()	
-elseif game.PlaceId == 5664803952 or game.PlaceId == 6593187011 then 
+	ShindoMyHome()
+elseif game.PlaceId == 5664803952 or game.PlaceId == 6593187011 then
 	AXSSCompMenu()
 elseif game.PlaceId == 7524809704 then
 	ShindoDungeonSelection()
