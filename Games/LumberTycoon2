@@ -5,10 +5,10 @@ local player = game.Players.LocalPlayer
 local infarm = false
 local cancelled = false
 local VirtualUser=game:service'VirtualUser'
-game:service'Players'.LocalPlayer.Idled:connect(function()
-warn("anti-afk")
-VirtualUser:CaptureController()
-VirtualUser:ClickButton2(Vector2.new())
+	game:service'Players'.LocalPlayer.Idled:connect(function()
+	warn("anti-afk")
+	VirtualUser:CaptureController()
+	VirtualUser:ClickButton2(Vector2.new())
 end)
 if workspace:FindFirstChild("CCoff") then
 	game:GetService("Workspace").CCoff:Destroy()
@@ -140,6 +140,7 @@ function notify(a,b,c)
 	function roundNumber(num, numDecimalPlaces) -- https://devforum.roblox.com/t/rounding-to-1-decimal-point/673504
 	return tonumber(string.format("%." .. (numDecimalPlaces or 0) .. "f", num))
 end
+notify("Enabled anti-AFK")
 --Join Detecter
 game.Players.ChildAdded:Connect(function(player)
 	if not pcall (function()
