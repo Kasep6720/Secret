@@ -4,9 +4,9 @@ repeat wait() until game:IsLoaded()
 local player = game.Players.LocalPlayer
 local VirtualUser=game:service'VirtualUser'
 game:service'Players'.LocalPlayer.Idled:connect(function()
-warn("anti-afk")
-VirtualUser:CaptureController()
-VirtualUser:ClickButton2(Vector2.new())
+	warn("anti-afk")
+	VirtualUser:CaptureController()
+	VirtualUser:ClickButton2(Vector2.new())
 end)
 if workspace:FindFirstChild("CCoff") then
 	game:GetService("Workspace").CCoff:Destroy()
@@ -336,6 +336,7 @@ function notify(a,b,c)
 	function roundNumber(num, numDecimalPlaces) -- https://devforum.roblox.com/t/rounding-to-1-decimal-point/673504
 	return tonumber(string.format("%." .. (numDecimalPlaces or 0) .. "f", num))
 end
+notify("Enabled anti-AFK")
 -- init
 
 --Shindo Inf Spin
@@ -6803,9 +6804,9 @@ local function ShindoMain()
 	local section6 = page6:addSection("Auto Rank Up Settings")
 	local section7 = page6:addSection("Auto Stats")
 
-	local autofarm
+	local mobs
 	section1:addToggle("Green Scroll Farm",false, function(bool)
-		autofarm = bool
+		mobs = bool
 		local platform = Instance.new("Part", player.Character)
 		platform.Anchored = true
 		platform.Transparency = 1
@@ -6820,7 +6821,7 @@ local function ShindoMain()
 			end
 		end)
 		game:GetService('RunService').Stepped:connect(function()
-			if autofarm ~= true then
+			if mobs ~= true then
 				platform:Destroy()
 			end
 		end)
@@ -7054,7 +7055,7 @@ local function ShindoMain()
 							clienttalk:FireServer()
 							clienttalk:FireServer("accept")
 							wait()
-						until mission.Visible or mission.title.text == "[Objective: Mission]" or not autofarm
+						until mission.Visible or mission.title.text == "[Objective: Mission]" or not mobs
 					end
 				end
 			end
@@ -7255,8 +7256,8 @@ local function ShindoMain()
 
 	spawn(function()
 		while wait() do
-			if autofarm or boss or megaboss then
-				if mission.Visible == true or mission.title.text == "[Objective: Mission]" then
+			if mobs or boss or megaboss then
+				if (mission.Visible == true and mission.title.text == "[Objective: Mission]") then
 					FARM()
 					for i,v in pairs(workspace.npc:GetChildren()) do
 						if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
@@ -7266,11 +7267,11 @@ local function ShindoMain()
 								v.Humanoid.Health = 0
 								v.Humanoid.Health = 0
 								v.Humanoid.Health = 0
-							until (not autofarm and not boss and not megaboss) or v.Humanoid.Health == 0
+							until (not mobs and not boss and not megaboss) or v.Humanoid.Health == 0
 						end
 					end
 				else
-					if megaboss and boss and autofarm then
+					if megaboss and boss and mobs then
 						BEASTFARM()
 						wait(.1)
 						BOSSFARM()
@@ -7282,13 +7283,13 @@ local function ShindoMain()
 						BEASTFARM()
 						wait(.1)
 						BOSSFARM()
-					elseif megaboss and autofarm then
+					elseif megaboss and mobs then
 						BEASTFARM()
 						wait(.1)
 						DISP()
 						wait(.1)
 						QUEST()
-					elseif boss and autofarm then
+					elseif boss and mobs then
 						BOSSFARM()
 						wait(.1)
 						DISP()
@@ -7298,7 +7299,7 @@ local function ShindoMain()
 						BEASTFARM()
 					elseif boss then
 						BOSSFARM()
-					elseif autofarm then
+					elseif mobs then
 						DISP()
 						wait(.1)
 						QUEST()
@@ -7310,15 +7311,15 @@ local function ShindoMain()
 
 	spawn(function()
 		while wait() do
-			if autofarm then
+			if mobs then
 				if count == 0 then
 					if QUEST() or FARM() or BOSSFARM() then
 						wait(5.5)
 					else
 						repeat wait()
-							notify("Currently no missions avaliable")
+							notify("Currently no green scroll quests avaliable")
 							wait(2)
-						until count > 0 or QUEST or FARM or BOSSFARM() or not autofarm
+						until count > 0 or QUEST() or FARM() or BOSSFARM() or not mobs
 					end
 				end
 			end
@@ -8335,7 +8336,7 @@ local function ShindoMain()
 			NUMTHENSTOPRANKUPP = false
 			RANKUPPBYLVL = true
 			RANKUPPBYRC = false
-			autofarm = false
+			mobs = false
 			boss = false
 			NOCDed = false
 			keel2 = false
