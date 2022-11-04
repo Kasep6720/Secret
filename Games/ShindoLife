@@ -76,6 +76,7 @@ function SpamC()
 	player.Character.combat.update:FireServer("key","c")
 	player.Character.combat.update:FireServer("key","cend")
 end
+local CtrlClickTeePee
 function CTRLCLICKTP()
 	local UIS = game:GetService("UserInputService")
 	local Player = game.Players.LocalPlayer
@@ -93,8 +94,10 @@ function CTRLCLICKTP()
 	end
 
 	UIS.InputBegan:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.MouseButton1 and UIS:IsKeyDown(Enum.KeyCode.LeftControl) then
-			Teleport(Mouse.Hit.p)
+		if CtrlClickTeePee == true then
+			if input.UserInputType == Enum.UserInputType.MouseButton1 and UIS:IsKeyDown(Enum.KeyCode.LeftControl) then
+				Teleport(Mouse.Hit.p)
+			end
 		end
 	end)
 end
@@ -2545,10 +2548,12 @@ local function ShindoDungeons()
 		player.Character:BreakJoints()
 	end)
 
-	section2:addButton("Ctrl + Click TP",function()
+	section2:addToggle("Ctrl + Click TP",false,function(bool)
+		CtrlClickTeePee = bool
 		CTRLCLICKTP()
-		notify("Press Ctrl + Click to Teleport")
-		section2:updateButton("Ctrl + Click TP","Ctrl + Click TP (Activated)")
+		if CtrlClickTeePee == true then
+			notify("Press Ctrl + Click to Teleport")
+		end
 	end)
 
 	local infjumptoggle = false
@@ -2685,6 +2690,21 @@ local function ShindoDungeons()
 
 	section1:addButton("Infinite MD",function()
 		INFMDON()
+	end)
+
+	section1:addButton("God Mode",function()
+		player.Character.fakehealth:Destroy()
+		notify("Your character will be broken after activating God Mode")
+		wait(2.1)
+		notify("Do not charge chi or mode up after activating God Mode")
+	end)
+
+	game:GetService('RunService').Stepped:connect(function()
+		if not player.Character:FindFirstChild("fakehealth") then
+			if game:GetService("CoreGui").DevConsoleMaster.DevConsoleWindow.Visible == true then
+				notify("Just ignore the errors lol")
+			end
+		end
 	end)
 
 	local disableincombattoggle = true
@@ -3366,10 +3386,12 @@ local function ShindoBossBattle()
 		player.Character:BreakJoints()
 	end)
 
-	section2:addButton("Ctrl + Click TP",function()
+	section2:addToggle("Ctrl + Click TP",false,function(bool)
+		CtrlClickTeePee = bool
 		CTRLCLICKTP()
-		notify("Press Ctrl + Click to Teleport")
-		section2:updateButton("Ctrl + Click TP","Ctrl + Click TP (Activated)")
+		if CtrlClickTeePee == true then
+			notify("Press Ctrl + Click to Teleport")
+		end
 	end)
 
 	local infjumptoggle = false
@@ -3506,6 +3528,21 @@ local function ShindoBossBattle()
 
 	section1:addButton("Infinite MD",function()
 		INFMDON()
+	end)
+
+	section1:addButton("God Mode",function()
+		player.Character.fakehealth:Destroy()
+		notify("Your character will be broken after activating God Mode")
+		wait(2.1)
+		notify("Do not charge chi or mode up after activating God Mode")
+	end)
+
+	game:GetService('RunService').Stepped:connect(function()
+		if not player.Character:FindFirstChild("fakehealth") then
+			if game:GetService("CoreGui").DevConsoleMaster.DevConsoleWindow.Visible == true then
+				notify("Just ignore the errors lol")
+			end
+		end
 	end)
 
 	local disableincombattoggle = true
@@ -4254,10 +4291,12 @@ local function ShindoEventBoss()
 		player.Character:BreakJoints()
 	end)
 
-	section2:addButton("Ctrl + Click TP",function()
+	section2:addToggle("Ctrl + Click TP",false,function(bool)
+		CtrlClickTeePee = bool
 		CTRLCLICKTP()
-		notify("Press Ctrl + Click to Teleport")
-		section2:updateButton("Ctrl + Click TP","Ctrl + Click TP (Activated)")
+		if CtrlClickTeePee == true then
+			notify("Press Ctrl + Click to Teleport")
+		end
 	end)
 
 	local infjumptoggle = false
@@ -4437,6 +4476,21 @@ local function ShindoEventBoss()
 
 	section1:addButton("Infinite MD",function()
 		INFMDON()
+	end)
+
+	section1:addButton("God Mode",function()
+		player.Character.fakehealth:Destroy()
+		notify("Your character will be broken after activating God Mode")
+		wait(2.1)
+		notify("Do not charge chi or mode up after activating God Mode")
+	end)
+
+	game:GetService('RunService').Stepped:connect(function()
+		if not player.Character:FindFirstChild("fakehealth") then
+			if game:GetService("CoreGui").DevConsoleMaster.DevConsoleWindow.Visible == true then
+				notify("Just ignore the errors lol")
+			end
+		end
 	end)
 
 	local disableincombattoggle = true
@@ -5547,10 +5601,12 @@ local function ShindoMain()
 		player.Character:BreakJoints()
 	end)
 
-	section2:addButton("Ctrl + Click TP",function()
+	section2:addToggle("Ctrl + Click TP",false,function(bool)
+		CtrlClickTeePee = bool
 		CTRLCLICKTP()
-		notify("Press Ctrl + Click to Teleport")
-		section2:updateButton("Ctrl + Click TP","Ctrl + Click TP (Activated)")
+		if CtrlClickTeePee == true then
+			notify("Press Ctrl + Click to Teleport")
+		end
 	end)
 
 	local infjumptoggle = false
@@ -5735,6 +5791,21 @@ local function ShindoMain()
 
 	section1:addButton("Infinite MD",function()
 		INFMDON()
+	end)
+
+	section1:addButton("God Mode",function()
+		player.Character.fakehealth:Destroy()
+		notify("Your character will be broken after activating God Mode")
+		wait(2.1)
+		notify("Do not charge chi or mode up after activating God Mode")
+	end)
+
+	game:GetService('RunService').Stepped:connect(function()
+		if not player.Character:FindFirstChild("fakehealth") then
+			if game:GetService("CoreGui").DevConsoleMaster.DevConsoleWindow.Visible == true then
+				notify("Just ignore the errors lol")
+			end
+		end
 	end)
 
 	local disableincombattoggle = true
@@ -8298,6 +8369,7 @@ local function ShindoMain()
 			player.Character.Humanoid.WalkSpeed = originalwalkspeed
 			player.Character.Humanoid.JumpPower = originaljumppower
 			game:GetService("Workspace").Gravity = originalgravity
+			CtrlClickTeePee = false
 			Pfly = false
 			getgenv().dc = true
 			trackthatguy = false
