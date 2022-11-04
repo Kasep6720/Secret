@@ -3117,6 +3117,7 @@ local function ShindoDungeons()
 			player.Character.Humanoid.WalkSpeed = originalwalkspeed
 			player.Character.Humanoid.JumpPower = originaljumppower
 			game:GetService("Workspace").Gravity = originalgravity
+			CtrlClickTeePee = false
 			Pfly = false
 			getgenv().dc = true
 			unbreakableblockstoggle = false
@@ -4006,6 +4007,7 @@ local function ShindoBossBattle()
 			player.Character.Humanoid.WalkSpeed = originalwalkspeed
 			player.Character.Humanoid.JumpPower = originaljumppower
 			game:GetService("Workspace").Gravity = originalgravity
+			CtrlClickTeePee = false
 			Pfly = false
 			getgenv().dc = true
 			DisabledInCombat = false
@@ -5196,6 +5198,7 @@ local function ShindoEventBoss()
 			player.Character.Humanoid.WalkSpeed = originalwalkspeed
 			player.Character.Humanoid.JumpPower = originaljumppower
 			game:GetService("Workspace").Gravity = originalgravity
+			CtrlClickTeePee = false
 			Pfly = false
 			trackthatguy = false
 			getgenv().dc = true
