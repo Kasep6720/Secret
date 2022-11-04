@@ -23,25 +23,28 @@ function toTarget(pos, targetPos, targetCFrame)
 	end)
 	if not tween then return err end
 end
+local CtrlClickTeePee
 function CTRLCLICKTP()
 	local UIS = game:GetService("UserInputService")
 	local Player = game.Players.LocalPlayer
 	local Mouse = Player:GetMouse()
-	
+
 	function GetCharacter()
 	return player.Character
 	end
-	
+
 	function Teleport(pos)
 		local Char = GetCharacter()
 		if Char then
 			Char:MoveTo(pos)
 		end
 	end
-	
+
 	UIS.InputBegan:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.MouseButton1 and UIS:IsKeyDown(Enum.KeyCode.LeftControl) then
-			Teleport(Mouse.Hit.p)
+		if CtrlClickTeePee == true then
+			if input.UserInputType == Enum.UserInputType.MouseButton1 and UIS:IsKeyDown(Enum.KeyCode.LeftControl) then
+				Teleport(Mouse.Hit.p)
+			end
 		end
 	end)
 end
@@ -210,10 +213,12 @@ local function Universal()
 		player.Character:BreakJoints()
 	end)
 
-	section2:addButton("Ctrl + Click TP",function()
+	section2:addToggle("Ctrl + Click TP",false,function(bool)
+		CtrlClickTeePee = bool
 		CTRLCLICKTP()
-		notify("Press Ctrl + Click to Teleport")
-		section2:updateButton("Ctrl + Click TP","Ctrl + Click TP (Activated)")
+		if CtrlClickTeePee == true then
+			notify("Press Ctrl + Click to Teleport")
+		end
 	end)
 
 	local infjumptoggle = false
@@ -476,6 +481,7 @@ local function Universal()
 			player.Character.Humanoid.WalkSpeed = originalwalkspeed
 			player.Character.Humanoid.JumpPower = originaljumppower
 			game:GetService("Workspace").Gravity = originalgravity
+			CtrlClickTeePee = false
 			Pfly = false
 			trackthatguy = false
 			getgenv().dc = true
