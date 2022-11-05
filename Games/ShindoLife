@@ -101,6 +101,22 @@ function CTRLCLICKTP()
 		end
 	end)
 end
+function GODMODE()
+	if player.Character:FindFirstChild("fakehealth") then
+		if player.statz.mastery.health.Value > 1750 then
+			notify("Your character will be broken after activating God Mode")
+			local UrOriginalHP = player.statz.mastery.health.Value*60
+			repeat wait() until player.Character.fakehealth.Value ~= UrOriginalHP
+			player.Character.fakehealth:Destroy()
+		else
+			player.Character.fakehealth:Destroy()
+		end
+		wait(2.1)
+		notify("Do not charge chi or mode up")
+	else
+		notify("God Mode is already activated")
+	end
+end
 function SUPERHUMAN()
 	local chanceofaudioquote = math.random(1, 100)
 	if chanceofaudioquote <= 10 then
@@ -2693,10 +2709,7 @@ local function ShindoDungeons()
 	end)
 
 	section1:addButton("God Mode",function()
-		player.Character.fakehealth:Destroy()
-		notify("Your character will be broken after activating God Mode")
-		wait(2.1)
-		notify("Do not charge chi or mode up after activating God Mode")
+		GODMODE()
 	end)
 
 	game:GetService('RunService').Stepped:connect(function()
@@ -3532,10 +3545,7 @@ local function ShindoBossBattle()
 	end)
 
 	section1:addButton("God Mode",function()
-		player.Character.fakehealth:Destroy()
-		notify("Your character will be broken after activating God Mode")
-		wait(2.1)
-		notify("Do not charge chi or mode up after activating God Mode")
+		GODMODE()
 	end)
 
 	game:GetService('RunService').Stepped:connect(function()
@@ -4481,10 +4491,7 @@ local function ShindoEventBoss()
 	end)
 
 	section1:addButton("God Mode",function()
-		player.Character.fakehealth:Destroy()
-		notify("Your character will be broken after activating God Mode")
-		wait(2.1)
-		notify("Do not charge chi or mode up after activating God Mode")
+		GODMODE()
 	end)
 
 	game:GetService('RunService').Stepped:connect(function()
@@ -5797,10 +5804,7 @@ local function ShindoMain()
 	end)
 
 	section1:addButton("God Mode",function()
-		player.Character.fakehealth:Destroy()
-		notify("Your character will be broken after activating God Mode")
-		wait(2.1)
-		notify("Do not charge chi or mode up after activating God Mode")
+		GODMODE()
 	end)
 
 	game:GetService('RunService').Stepped:connect(function()
