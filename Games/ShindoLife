@@ -2596,6 +2596,19 @@ local function ShindoDungeons()
 		end
 	end)
 
+	section2:addToggle("Noclip", false, function(bool)
+		noclips = bool
+		game:GetService("RunService").Stepped:connect(function()
+			if noclips then
+				for i, v in pairs(player.Character:GetChildren()) do
+					if v:IsA("BasePart") then
+						v.CanCollide = false
+					end
+				end
+			end
+		end)
+	end)
+
 	section2:addSlider("Fly Speed", 101, 0, 999, function(value)
 		sliderfly = value
 	end)
@@ -3127,6 +3140,7 @@ local function ShindoDungeons()
 			player.Character.Humanoid.JumpPower = originaljumppower
 			game:GetService("Workspace").Gravity = originalgravity
 			CtrlClickTeePee = false
+			noclips = false
 			Pfly = false
 			getgenv().dc = true
 			unbreakableblockstoggle = false
@@ -3426,6 +3440,19 @@ local function ShindoBossBattle()
 				player.Character.Humanoid:ChangeState("Jumping")
 			end)
 		end
+	end)
+
+	section2:addToggle("Noclip", false, function(bool)
+		noclips = bool
+		game:GetService("RunService").Stepped:connect(function()
+			if noclips then
+				for i, v in pairs(player.Character:GetChildren()) do
+					if v:IsA("BasePart") then
+						v.CanCollide = false
+					end
+				end
+			end
+		end)
 	end)
 
 	section2:addSlider("Fly Speed", 101, 0, 999, function(value)
@@ -4010,6 +4037,7 @@ local function ShindoBossBattle()
 			player.Character.Humanoid.JumpPower = originaljumppower
 			game:GetService("Workspace").Gravity = originalgravity
 			CtrlClickTeePee = false
+			noclips = false
 			Pfly = false
 			getgenv().dc = true
 			DisabledInCombat = false
@@ -4325,6 +4353,19 @@ local function ShindoEventBoss()
 				player.Character.Humanoid:ChangeState("Jumping")
 			end)
 		end
+	end)
+
+	section2:addToggle("Noclip", false, function(bool)
+		noclips = bool
+		game:GetService("RunService").Stepped:connect(function()
+			if noclips then
+				for i, v in pairs(player.Character:GetChildren()) do
+					if v:IsA("BasePart") then
+						v.CanCollide = false
+					end
+				end
+			end
+		end)
 	end)
 
 	section2:addSlider("Fly Speed", 101, 0, 999, function(value)
@@ -5194,6 +5235,7 @@ local function ShindoEventBoss()
 			player.Character.Humanoid.JumpPower = originaljumppower
 			game:GetService("Workspace").Gravity = originalgravity
 			CtrlClickTeePee = false
+			noclips = false
 			Pfly = false
 			trackthatguy = false
 			getgenv().dc = true
@@ -5629,6 +5671,19 @@ local function ShindoMain()
 				player.Character.Humanoid:ChangeState("Jumping")
 			end)
 		end
+	end)
+
+	section2:addToggle("Noclip", false, function(bool)
+		noclips = bool
+		game:GetService("RunService").Stepped:connect(function()
+			if noclips then
+				for i, v in pairs(player.Character:GetChildren()) do
+					if v:IsA("BasePart") then
+						v.CanCollide = false
+					end
+				end
+			end
+		end)
 	end)
 
 	section2:addSlider("Fly Speed", 101, 0, 999, function(value)
@@ -8361,6 +8416,7 @@ local function ShindoMain()
 			player.Character.Humanoid.JumpPower = originaljumppower
 			game:GetService("Workspace").Gravity = originalgravity
 			CtrlClickTeePee = false
+			noclips = false
 			Pfly = false
 			getgenv().dc = true
 			trackthatguy = false
