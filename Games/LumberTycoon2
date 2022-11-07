@@ -267,21 +267,15 @@ local function LumberTycoon2()
 		end
 	end)
 	
-	local noclip = false
-	section2:addToggle("No Clip",false,function(noclip1)
-		notify("No Clip: "..tostring(noclip1),true)
-		noclip = not noclip
-		game:GetService('RunService').Stepped:connect(function()
-			if noclip then
-				player.Character.Head.CanCollide = false
-				player.Character.Torso.CanCollide = false
-				player.Character["Left Leg"].CanCollide = false
-				player.Character["Right Leg"].CanCollide = false
-			else
-				player.Character.Head.CanCollide = true
-				player.Character.Torso.CanCollide = true
-				player.Character["Left Leg"].CanCollide = true
-				player.Character["Right Leg"].CanCollide = true
+	section2:addToggle("Noclip", false, function(bool)
+		noclips = bool
+		game:GetService("RunService").Stepped:connect(function()
+			if noclips then
+				for i, v in pairs(player.Character:GetChildren()) do
+					if v:IsA("BasePart") then
+						v.CanCollide = false
+					end
+				end
 			end
 		end)
 	end)
@@ -1221,7 +1215,7 @@ local function LumberTycoon2()
 			CtrlClickTeePee = false
 			Pfly = false
 			trackthatguy = false
-			noclip = false
+			noclips = false
 			getgenv().dc = true
 			Jesustoggle = false
 			Zcarfly = false
