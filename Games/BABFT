@@ -260,6 +260,18 @@ local function BABFT()
 		end
 	end)
 
+	section2:addToggle("Noclip", false, function(bool)
+		noclips = bool
+		game:GetService("RunService").Stepped:connect(function()
+			if noclips then
+				for i, v in pairs(player.Character:GetChildren()) do
+					if v:IsA("BasePart") then
+						v.CanCollide = false
+					end
+				end
+			end
+		end)
+	end)
 	section2:addSlider("Fly Speed", 101, 0, 999, function(value)
 		sliderfly = value
 	end)
@@ -397,9 +409,25 @@ local function BABFT()
 	end)
 
 	-- second page
-	local page2 = NoobieDoge:addPage("Auto Farm", 6052531413)
-	local section1 = page2:addSection("Gold Farm")
-	local section2 = page2:addSection("Items Farm")
+	local page2 = NoobieDoge:addPage("Misc", 6052531413)
+	local section1 = page2:addSection("Utilities")
+
+	section1:addToggle("Water GodMode", false, function(bool)
+		Icanswimlol = bool
+		game:GetService("RunService").Stepped:connect(function()
+			pcall(function()
+				if Icanswimlol and player.Character:FindFirstChild("WaterDetector") then
+					player.Character.WaterDetector:remove()
+				end
+			end)
+		end)
+	end)
+
+
+	-- third page
+	local page3 = NoobieDoge:addPage("Auto Farm", 6052531413)
+	local section1 = page3:addSection("Gold Farm")
+	local section2 = page3:addSection("Items Farm")
 
 	section1:addToggle("Auto Farm",false,function(bool)
 		LETSFARM = bool
@@ -498,9 +526,9 @@ local function BABFT()
 		end
 	end)
 
-	-- third page
-	local page3 = NoobieDoge:addPage("Teleports", 6052531413)
-	local section1 = page3:addSection("Teams")
+	-- forth page
+	local page4 = NoobieDoge:addPage("Teleports", 6052531413)
+	local section1 = page4:addSection("Teams")
 
 	section1:addButton("Black Team",function()
 		wait()
@@ -624,9 +652,11 @@ local function BABFT()
 			wait()
 			sliderpowa = false
 			CtrlClickTeePee = false
+			noclips = false
 			Pfly = false
 			trackthatguy = false
 			getgenv().dc = true
+			Icanswimlol = false
 			LETSFARM = false
 			ABI = false
 			wait()
