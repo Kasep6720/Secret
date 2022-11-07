@@ -285,6 +285,10 @@ for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
 	end
 end
 
+local originalwalkspeed = 16
+local originaljumppower = 50
+local originalgravity = game:GetService("Workspace").Gravity
+
 if _G.dAAcG3fvBqVoPzVnAFk == nil then
 	_G.dAAcG3fvBqVoPzVnAFk = ""
 end
@@ -1582,10 +1586,6 @@ local function ShindoMyHome()
 	local section1 = page1:addSection("Walk Speed & Jump Power & Gravity")
 	local section2 = page1:addSection("Other Functions")
 
-	local originalwalkspeed = player.Character.Humanoid.WalkSpeed
-	local originaljumppower = player.Character.Humanoid.JumpPower
-	local originalgravity = game:GetService("Workspace").Gravity
-
 	section1:addSlider("Walk Speed", originalwalkspeed, 0, 500, function(value)
 		sliderspeed = value
 	end)
@@ -2519,10 +2519,6 @@ local function ShindoDungeons()
 	local section1 = page1:addSection("Walk Speed & Jump Power & Gravity")
 	local section2 = page1:addSection("Other Functions")
 
-	local originalwalkspeed = player.Character.Humanoid.WalkSpeed
-	local originaljumppower = player.Character.Humanoid.JumpPower
-	local originalgravity = game:GetService("Workspace").Gravity
-
 	section1:addSlider("Walk Speed", originalwalkspeed, 0, 500, function(value)
 		sliderspeed = value
 	end)
@@ -3354,10 +3350,6 @@ local function ShindoBossBattle()
 	local page1 = NoobieDoge:addPage("Universal", 5012544693)
 	local section1 = page1:addSection("Walk Speed & Jump Power & Gravity")
 	local section2 = page1:addSection("Other Functions")
-
-	local originalwalkspeed = player.Character.Humanoid.WalkSpeed
-	local originaljumppower = player.Character.Humanoid.JumpPower
-	local originalgravity = game:GetService("Workspace").Gravity
 
 	section1:addSlider("Walk Speed", originalwalkspeed, 0, 500, function(value)
 		sliderspeed = value
@@ -4257,10 +4249,6 @@ local function ShindoEventBoss()
 	local page1 = NoobieDoge:addPage("Universal", 5012544693)
 	local section1 = page1:addSection("Walk Speed & Jump Power & Gravity")
 	local section2 = page1:addSection("Other Functions")
-
-	local originalwalkspeed = player.Character.Humanoid.WalkSpeed
-	local originaljumppower = player.Character.Humanoid.JumpPower
-	local originalgravity = game:GetService("Workspace").Gravity
 
 	section1:addSlider("Walk Speed", originalwalkspeed, 0, 500, function(value)
 		sliderspeed = value
@@ -5565,10 +5553,6 @@ local function ShindoMain()
 	local page1 = NoobieDoge:addPage("Universal", 5012544693)
 	local section1 = page1:addSection("Walk Speed & Jump Power & Gravity")
 	local section2 = page1:addSection("Other Functions")
-
-	local originalwalkspeed = player.Character.Humanoid.WalkSpeed
-	local originaljumppower = player.Character.Humanoid.JumpPower
-	local originalgravity = game:GetService("Workspace").Gravity
 
 	section1:addSlider("Walk Speed", originalwalkspeed, 0, 500, function(value)
 		sliderspeed = value
@@ -7491,7 +7475,7 @@ local function ShindoMain()
 		end
 	end)
 
-	if game:GetService("Workspace"):FindFirstChild("map2") and game:GetService("Workspace").map2.duel:FindFirstChild("duel1") then
+	if game:GetService("Workspace"):FindFirstChild("map2") and game:GetService("Workspace").map2:FindFirstChild("duel") and game:GetService("Workspace").map2.duel:FindFirstChild("duel1") then
 		section1:addButton("Duel Pads",function()
 			if game:GetService("Workspace").map2.duel:FindFirstChild("duel5") then
 				for i,v in pairs(workspace.map2.duel.duel5:GetChildren()) do
