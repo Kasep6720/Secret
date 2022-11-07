@@ -179,8 +179,8 @@ local function BABFT()
 	local section1 = page1:addSection("Walk Speed & Jump Power & Gravity")
 	local section2 = page1:addSection("Other Functions")
 
-	local originalwalkspeed = player.Character.Humanoid.WalkSpeed
-	local originaljumppower = player.Character.Humanoid.JumpPower
+	local originalwalkspeed = 16
+	local originaljumppower = 50
 	local originalgravity = game:GetService("Workspace").Gravity
 
 	section1:addSlider("Walk Speed", originalwalkspeed, 0, 500, function(value)
