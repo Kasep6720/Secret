@@ -215,6 +215,46 @@ end
 local function SCROLLFARM()
 	for i,v in pairs(game.workspace.GLOBALTIME:GetChildren()) do
 		if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
+			print(v.Name .. "spawned")
+			local scrollA = v.sh:FindFirstChild("invoke")
+			pcall(function()
+				if player.statz.unlocked:FindFirstChild(v.Name) or player.statz.unlocked:FindFirstChild(v.Name .. "scroll") then
+					v:Destroy()
+					notify("Ignored Scroll: " .. v.Name)
+				else
+					player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
+                    fireclickdetector(v.sh:FindFirstChildWhichIsA("ClickDetector"))
+					notify("Unlocked Scroll: " .. v.Name)
+					player.Character.combat.update:FireServer("mouse1",true)
+				end
+			end)
+		end
+	end
+end
+
+local function SCROLLFARM1()
+	for i,v in pairs(game.workspace:GetChildren()) do
+		if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
+			print(v.Name .. "spawned in workspace")
+			local scrollA = v.sh:FindFirstChild("invoke")
+			pcall(function()
+				if player.statz.unlocked:FindFirstChild(v.Name) or player.statz.unlocked:FindFirstChild(v.Name .. "scroll") then
+					v:Destroy()
+					notify("Ignored Scroll: " .. v.Name)
+				else
+					player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
+                    fireclickdetector(v.sh:FindFirstChildWhichIsA("ClickDetector"))
+					notify("Unlocked Scroll: " .. v.Name)
+					player.Character.combat.update:FireServer("mouse1",true)
+				end
+			end)
+		end
+	end
+end
+
+local function SCROLLFARM2()
+	for i,v in pairs(game.workspace.GLOBALTIME:GetChildren()) do
+		if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
 			print("SCROLL SPAWNED")
 			local scrollA = v.sh:FindFirstChild("invoke")
 			pcall(function()
@@ -233,7 +273,7 @@ local function SCROLLFARM()
 	end
 end
 
-local function SCROLLFARM1()
+local function SCROLLFARM3()
 	for i,v in pairs(game.workspace:GetChildren()) do
 		if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
 			print("SCROLL spawned in workspace")
@@ -2786,6 +2826,8 @@ local function ShindoDungeons()
 				repeat wait()
 					SCROLLFARM()
 					SCROLLFARM1()
+					SCROLLFARM2()
+					SCROLLFARM3()
 				until not scrollfarm
 			end
 		end
@@ -4588,6 +4630,8 @@ local function ShindoEventBoss()
 				repeat wait()
 					SCROLLFARM()
 					SCROLLFARM1()
+					SCROLLFARM2()
+					SCROLLFARM3()
 				until not scrollfarm
 			end
 		end
@@ -5911,6 +5955,8 @@ local function ShindoMain()
 				repeat wait()
 					SCROLLFARM()
 					SCROLLFARM1()
+					SCROLLFARM2()
+					SCROLLFARM3()
 				until not scrollfarm
 			end
 		end
@@ -7094,12 +7140,12 @@ local function ShindoMain()
 		section6:addSlider("Stop Auto Rank when spins reached", 1000, 50, 1000, function(value)
 			stopautorankwhenthisnumberreached = value
 		end)
-		stopautorankwhenthisnumberreached = 500
+		stopautorankwhenthisnumberreached = 1000
 	else
 		section6:addSlider("Stop Auto Rank when spins reached", 500, 50, 500, function(value)
 			stopautorankwhenthisnumberreached = value
 		end)
-		stopautorankwhenthisnumberreached = 1000
+		stopautorankwhenthisnumberreached = 500
 	end
 
 	section7:addToggle("Auto Chi",false, function(bool)
