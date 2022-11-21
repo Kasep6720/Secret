@@ -1,4 +1,4 @@
---setclipboard(tostring(game.PlaceId))
+setclipboard(tostring(game.PlaceId))
 --all on99 variables
 repeat wait() until game:IsLoaded()
 local player = game.Players.LocalPlayer
@@ -5514,8 +5514,9 @@ local function ShindoEventBoss()
 
 end
 
---SS Comp Menu
-local function SSCompMenu()
+--Shindo AX/SS Competitives
+local function AXSSComps()
+
 	local player = game.Players.LocalPlayer
 	local ScreenGuiK = Instance.new("ScreenGui")
 	local Frame = Instance.new("ImageLabel")
@@ -5525,6 +5526,18 @@ local function SSCompMenu()
 	local TextLabel2 = Instance.new("TextLabel")
 	local TextButton = Instance.new("ImageButton")
 	local TextButtonText = Instance.new("TextButton")
+	local TextButton2 = Instance.new("ImageButton")
+	local TextButtonText2 = Instance.new("TextButton")
+	local TextButton3 = Instance.new("ImageButton")
+	local TextButtonText3 = Instance.new("TextButton")
+	local TextButton4 = Instance.new("ImageButton")
+	local TextButtonText4 = Instance.new("TextButton")
+	local TextButton5 = Instance.new("ImageButton")
+	local TextButtonText5 = Instance.new("TextButton")
+	local TextButton6 = Instance.new("ImageButton")
+	local TextButtonText6 = Instance.new("TextButton")
+	local TextButton7 = Instance.new("ImageButton")
+	local TextButtonText7 = Instance.new("TextButton")
 
 	ScreenGuiK.Parent = player:WaitForChild("PlayerGui")
 
@@ -5568,8 +5581,8 @@ local function SSCompMenu()
 	Frame2.Parent = Frame
 	Frame2.Name = "Main"
 	Frame2.BackgroundTransparency = 1
-	Frame2.Position = UDim2.new(0.04, 0, 0.2, 0)
-	Frame2.Size = UDim2.new(0, 471, 0, 120)
+	Frame2.Position = UDim2.new(0.04, 0, 0.175, 0)
+	Frame2.Size = UDim2.new(0, 471, 0, 100)
 	Frame2.Image = "rbxassetid://4641149554"
 	Frame2.ImageColor3 = Color3.fromRGB(41, 41, 41)
 	Frame2.ScaleType = Enum.ScaleType.Slice
@@ -5579,21 +5592,21 @@ local function SSCompMenu()
 
 	TextLabel2.Parent = Frame2
 	TextLabel2.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
-	TextLabel2.Position = UDim2.new(0, 12, 0, 0)
+	TextLabel2.Position = UDim2.new(0, 12, -0.1, 0)
 	TextLabel2.BackgroundTransparency = 1
 	TextLabel2.Size = UDim2.new(1, -26, 0, 120)
 	TextLabel2.ZIndex = 3
 	TextLabel2.Font = Enum.Font.GothamBold
-	TextLabel2.Text = "What would you expect to execute here bruh."
+	TextLabel2.Text = "Why would you execute here bruh."
 	TextLabel2.TextColor3 = Color3.fromRGB(200, 200, 200)
 	TextLabel2.TextScaled = false
-	TextLabel2.TextSize = 33.000
+	TextLabel2.TextSize = 39.000
 	TextLabel2.TextWrapped = true
 
 	TextButton.Parent = Frame
 	TextButton.Name = "Button"
 	TextButton.BackgroundTransparency = 1
-	TextButton.Position = UDim2.new(0.04, 0, 0.725, 0)
+	TextButton.Position = UDim2.new(0.04, 0, 0.6, 0)
 	TextButton.BorderSizePixel = 0
 	TextButton.Size = UDim2.new(0, 471, 0, 45)
 	TextButton.ZIndex = 2
@@ -5601,6 +5614,7 @@ local function SSCompMenu()
 	TextButton.ImageColor3 = Color3.fromRGB(41, 41, 41)
 	TextButton.ScaleType = Enum.ScaleType.Slice
 	TextButton.SliceCenter = Rect.new(2, 2, 298, 298)
+	TextButton.Visible = true
 
 	TextButtonText.Parent = TextButton
 	TextButtonText.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
@@ -5608,11 +5622,183 @@ local function SSCompMenu()
 	TextButtonText.ZIndex = 3
 	TextButtonText.Size = UDim2.new(0, 471, 0, 45)
 	TextButtonText.Font = Enum.Font.GothamSemibold
-	TextButtonText.Text = "Close"
+	TextButtonText.Text = "Exploit in PvP ofc"
 	TextButtonText.TextColor3 = Color3.fromRGB(200, 200, 200)
-	TextButtonText.TextScaled = true
-	TextButtonText.TextSize = 40.000
+	TextButtonText.TextScaled = false
+	TextButtonText.TextSize = 25.000
 	TextButtonText.TextWrapped = true
+	TextButtonText.Visible = true
+
+	TextButton2.Parent = Frame
+	TextButton2.Name = "Button"
+	TextButton2.BackgroundTransparency = 1
+	TextButton2.Position = UDim2.new(0.04, 0, 0.8, 0)
+	TextButton2.BorderSizePixel = 0
+	TextButton2.Size = UDim2.new(0, 471, 0, 45)
+	TextButton2.ZIndex = 2
+	TextButton2.Image = "rbxassetid://5028857472"
+	TextButton2.ImageColor3 = Color3.fromRGB(41, 41, 41)
+	TextButton2.ScaleType = Enum.ScaleType.Slice
+	TextButton2.SliceCenter = Rect.new(2, 2, 298, 298)
+	TextButton2.Visible = true
+
+	TextButtonText2.Parent = TextButton2
+	TextButtonText2.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+	TextButtonText2.BackgroundTransparency = 1
+	TextButtonText2.ZIndex = 3
+	TextButtonText2.Size = UDim2.new(0, 471, 0, 45)
+	TextButtonText2.Font = Enum.Font.GothamSemibold
+	TextButtonText2.Text = "I accidentally pressed it"
+	TextButtonText2.TextColor3 = Color3.fromRGB(200, 200, 200)
+	TextButtonText2.TextScaled = false
+	TextButtonText2.TextSize = 25.000
+	TextButtonText2.TextWrapped = true
+	TextButtonText2.Visible = true
+
+	TextButton3.Parent = Frame
+	TextButton3.Name = "Button"
+	TextButton3.BackgroundTransparency = 1
+	TextButton3.Position = UDim2.new(0.04, 0, 0.6, 0)
+	TextButton3.BorderSizePixel = 0
+	TextButton3.Size = UDim2.new(0, 471, 0, 45)
+	TextButton3.ZIndex = 2
+	TextButton3.Image = "rbxassetid://5028857472"
+	TextButton3.ImageColor3 = Color3.fromRGB(41, 41, 41)
+	TextButton3.ScaleType = Enum.ScaleType.Slice
+	TextButton3.SliceCenter = Rect.new(2, 2, 298, 298)
+	TextButton3.Visible = false
+
+	TextButtonText3.Parent = TextButton3
+	TextButtonText3.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+	TextButtonText3.BackgroundTransparency = 1
+	TextButtonText3.ZIndex = 3
+	TextButtonText3.Size = UDim2.new(0, 471, 0, 45)
+	TextButtonText3.Font = Enum.Font.GothamSemibold
+	TextButtonText3.Text = "Yes"
+	TextButtonText3.TextColor3 = Color3.fromRGB(200, 200, 200)
+	TextButtonText3.TextScaled = false
+	TextButtonText3.TextSize = 25.000
+	TextButtonText3.TextWrapped = true
+	TextButtonText3.Visible = false
+
+	TextButton4.Parent = Frame
+	TextButton4.Name = "Button"
+	TextButton4.BackgroundTransparency = 1
+	TextButton4.Position = UDim2.new(0.04, 0, 0.8, 0)
+	TextButton4.BorderSizePixel = 0
+	TextButton4.Size = UDim2.new(0, 471, 0, 45)
+	TextButton4.ZIndex = 2
+	TextButton4.Image = "rbxassetid://5028857472"
+	TextButton4.ImageColor3 = Color3.fromRGB(41, 41, 41)
+	TextButton4.ScaleType = Enum.ScaleType.Slice
+	TextButton4.SliceCenter = Rect.new(2, 2, 298, 298)
+	TextButton4.Visible = false
+
+	TextButtonText4.Parent = TextButton4
+	TextButtonText4.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+	TextButtonText4.BackgroundTransparency = 1
+	TextButtonText4.ZIndex = 3
+	TextButtonText4.Size = UDim2.new(0, 471, 0, 45)
+	TextButtonText4.Font = Enum.Font.GothamSemibold
+	TextButtonText4.Text = "No"
+	TextButtonText4.TextColor3 = Color3.fromRGB(200, 200, 200)
+	TextButtonText4.TextScaled = false
+	TextButtonText4.TextSize = 25.000
+	TextButtonText4.TextWrapped = true
+	TextButtonText4.Visible = false
+
+	TextButton5.Parent = Frame
+	TextButton5.Name = "Button"
+	TextButton5.BackgroundTransparency = 1
+	TextButton5.Position = UDim2.new(0.04, 0, 0.6, 0)
+	TextButton5.BorderSizePixel = 0
+	TextButton5.Size = UDim2.new(0, 471, 0, 45)
+	TextButton5.ZIndex = 2
+	TextButton5.Image = "rbxassetid://5028857472"
+	TextButton5.ImageColor3 = Color3.fromRGB(41, 41, 41)
+	TextButton5.ScaleType = Enum.ScaleType.Slice
+	TextButton5.SliceCenter = Rect.new(2, 2, 298, 298)
+	TextButton5.Visible = false
+
+	TextButtonText5.Parent = TextButton5
+	TextButtonText5.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+	TextButtonText5.BackgroundTransparency = 1
+	TextButtonText5.ZIndex = 3
+	TextButtonText5.Size = UDim2.new(0, 471, 0, 45)
+	TextButtonText5.Font = Enum.Font.GothamSemibold
+	TextButtonText5.Text = [[loadstring(game:HttpGet("https://raw.githubusercontent.com/NoobieDoge/DogeHub/Separated/ShindoBloodlineChanger"))()]]
+	TextButtonText5.TextColor3 = Color3.fromRGB(200, 200, 200)
+	TextButtonText5.TextScaled = true
+	TextButtonText5.TextSize = 25.000
+	TextButtonText5.TextWrapped = true
+	TextButtonText5.Visible = false
+
+	TextButton6.Parent = Frame
+	TextButton6.Name = "Button"
+	TextButton6.BackgroundTransparency = 1
+	TextButton6.Position = UDim2.new(0.04, 0, 0.6, 0)
+	TextButton6.BorderSizePixel = 0
+	TextButton6.Size = UDim2.new(0, 471, 0, 45)
+	TextButton6.ZIndex = 2
+	TextButton6.Image = "rbxassetid://5028857472"
+	TextButton6.ImageColor3 = Color3.fromRGB(41, 41, 41)
+	TextButton6.ScaleType = Enum.ScaleType.Slice
+	TextButton6.SliceCenter = Rect.new(2, 2, 298, 298)
+	TextButton6.Visible = false
+
+	TextButtonText6.Parent = TextButton6
+	TextButtonText6.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+	TextButtonText6.BackgroundTransparency = 1
+	TextButtonText6.ZIndex = 3
+	TextButtonText6.Size = UDim2.new(0, 471, 0, 45)
+	TextButtonText6.Font = Enum.Font.GothamSemibold
+	TextButtonText6.Text = "The enemy is using meta stuff and he's toxic"
+	TextButtonText6.TextColor3 = Color3.fromRGB(200, 200, 200)
+	TextButtonText6.TextScaled = false
+	TextButtonText6.TextSize = 20.000
+	TextButtonText6.TextWrapped = true
+	TextButtonText6.Visible = false
+
+	TextButton7.Parent = Frame
+	TextButton7.Name = "Button"
+	TextButton7.BackgroundTransparency = 1
+	TextButton7.Position = UDim2.new(0.04, 0, 0.8, 0)
+	TextButton7.BorderSizePixel = 0
+	TextButton7.Size = UDim2.new(0, 471, 0, 45)
+	TextButton7.ZIndex = 2
+	TextButton7.Image = "rbxassetid://5028857472"
+	TextButton7.ImageColor3 = Color3.fromRGB(41, 41, 41)
+	TextButton7.ScaleType = Enum.ScaleType.Slice
+	TextButton7.SliceCenter = Rect.new(2, 2, 298, 298)
+	TextButton7.Visible = false
+
+	TextButtonText7.Parent = TextButton7
+	TextButtonText7.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+	TextButtonText7.BackgroundTransparency = 1
+	TextButtonText7.ZIndex = 3
+	TextButtonText7.Size = UDim2.new(0, 471, 0, 45)
+	TextButtonText7.Font = Enum.Font.GothamSemibold
+	TextButtonText7.Text = "I'm trash at this game and I can't beat the enemy"
+	TextButtonText7.TextColor3 = Color3.fromRGB(200, 200, 200)
+	TextButtonText7.TextScaled = false
+	TextButtonText7.TextSize = 18.000
+	TextButtonText7.TextWrapped = true
+	TextButtonText7.Visible = false
+
+	function Why1()
+		TextLabel2.Text = "Huh? Is it because you need to change your moveset but you don't have a bloodline bag?"
+		TextLabel2.TextSize = 30.000
+		TextButton.Visible = false
+		TextButtonText.Visible = false
+		TextButton2.Visible = false
+		TextButtonText2.Visible = false
+		TextButton3.Visible = true
+		TextButtonText3.Visible = true
+		TextButton4.Visible = true
+		TextButtonText4.Visible = true
+	end
+	TextButton.MouseButton1Click:connect(Why1)
+	TextButtonText.MouseButton1Click:connect(Why1)
 
 	function DELUI()
 		for i,v in pairs(player.PlayerGui:GetChildren()) do
@@ -5620,11 +5806,1235 @@ local function SSCompMenu()
 				v:Destroy()
 			end
 		end
+		notify("Bruh")
 	end
-	TextButton.MouseButton1Click:connect(DELUI)
-	TextButtonText.MouseButton1Click:connect(DELUI)
+	TextButton2.MouseButton1Click:connect(DELUI)
+	TextButtonText2.MouseButton1Click:connect(DELUI)
 
+	function noblbag1()
+		TextLabel2.Text = "The Script of \nShindo Bloodline Changer \nis copied to clipboard"
+		TextLabel2.TextSize = 30.000
+		TextButton2.Visible = true
+		TextButtonText2.Visible = true
+		TextButtonText2.Text = "Close GUI"
+		TextButton3.Visible = false
+		TextButtonText3.Visible = false
+		TextButton4.Visible = false
+		TextButtonText4.Visible = false
+		TextButton5.Visible = true
+		TextButtonText5.Visible = true
+		notify("Executing Shindo Bloodline Changer")
+		wait(.5)
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/NoobieDoge/DogeHub/Separated/ShindoBloodlineChanger"))()
+	end
+	TextButton3.MouseButton1Click:connect(noblbag1)
+	TextButtonText3.MouseButton1Click:connect(noblbag1)
+
+	function Why2()
+		TextLabel2.Text = "Then why would you execute in a PvP match?"
+		TextLabel2.TextSize = 30.000
+		TextButton3.Visible = false
+		TextButtonText3.Visible = false
+		TextButton4.Visible = false
+		TextButtonText4.Visible = false
+		TextButton6.Visible = true
+		TextButtonText6.Visible = true
+		TextButton7.Visible = true
+		TextButtonText7.Visible = true
+	end
+	TextButton4.MouseButton1Click:connect(Why2)
+	TextButtonText4.MouseButton1Click:connect(Why2)
+
+	function copysblcscript()
+		TextButtonText5.TextScaled = false
+		TextButtonText5.Text = "Script copied to clipboard!"
+		TextButtonText5.TextSize = 20.000
+		setclipboard([[loadstring(game:HttpGet("https://raw.githubusercontent.com/NoobieDoge/DogeHub/Separated/ShindoBloodlineChanger"))()]])
+		wait(.5)
+		TextButtonText5.TextScaled = true
+		TextButtonText5.Text = [[loadstring(game:HttpGet("https://raw.githubusercontent.com/NoobieDoge/DogeHub/Separated/ShindoBloodlineChanger"))()]]
+	end
+	TextButton5.MouseButton1Click:connect(copysblcscript)
+	TextButtonText5.MouseButton1Click:connect(copysblcscript)
+
+	function executescriptanyway()
+		for i,v in pairs(player.PlayerGui:GetChildren()) do
+			if v.Name == "ScreenGui" then
+				v:Destroy()
+			end
+		end
+		--DogeHub V2 GUI
+		local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20page%20format%20gui"))()
+		local NoobieDoge = library.new("DogeHub V2", 5013109572)
+
+		-- themes
+		local themes = {
+		Background = Color3.fromRGB(24, 24, 24),
+		Glow = Color3.fromRGB(0, 0, 0),
+		Accent = Color3.fromRGB(10, 10, 10),
+		LightContrast = Color3.fromRGB(20, 20, 20),
+		DarkContrast = Color3.fromRGB(14, 14, 14),
+		TextColor = Color3.fromRGB(255, 255, 255)
+		}
+
+		-- first page
+		local page1 = NoobieDoge:addPage("Universal", 5012544693)
+		local section1 = page1:addSection("Walk Speed & Jump Power & Gravity")
+		local section2 = page1:addSection("Other Functions")
+
+		section1:addSlider("Walk Speed", originalwalkspeed, 0, 500, function(value)
+			sliderspeed = value
+		end)
+		section1:addSlider("Jump Power", originaljumppower, 0, 500, function(value)
+			sliderjump = value
+		end)
+		section1:addSlider("Gravity", originalgravity, 0, 500, function(value)
+			slidergravity = value
+		end)
+		sliderspeed = 16
+		sliderjump = 50
+		slidergravity = 196.2
+
+		section1:addToggle("Enabled", nil, function(value)
+			sliderpowa = value
+		end)
+		game:GetService('RunService').Stepped:connect(function()
+			if sliderpowa then
+				player.Character.Humanoid.WalkSpeed = sliderspeed
+				player.Character.Humanoid.JumpPower = sliderjump
+				game:GetService("Workspace").Gravity = slidergravity
+			end
+		end)
+
+		section1:addButton("Reset to Default", function()
+			player.Character.Humanoid.WalkSpeed = originalwalkspeed
+			player.Character.Humanoid.JumpPower = originaljumppower
+			game:GetService("Workspace").Gravity = originalgravity
+			section1:updateSlider("Walk Speed", "Walk Speed", originalwalkspeed, 0, 500)
+			section1:updateSlider("Jump Power", "Jump Power", originaljumppower, 0, 500)
+			section1:updateSlider("Gravity", "Gravity", originalgravity, 0, 500)
+		end)
+
+		section2:addButton("Add ESP GUI", function()
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Project%3A%20Bullshit%3A%20Rebooted"))()
+		end)
+
+		section2:addButton("Reset Character",function()
+			player.Character:BreakJoints()
+		end)
+
+		section2:addToggle("Ctrl + Click TP",false,function(bool)
+			CtrlClickTeePee = bool
+			CTRLCLICKTP()
+			if CtrlClickTeePee == true then
+				notify("Press Ctrl + Click to Teleport")
+			end
+		end)
+
+		local infjumptoggle = false
+		section2:addToggle("Infinite Jump",false,function()
+			infjumptoggle = not infjumptoggle
+			notify("Infinite Jump: "..tostring(infjumptoggle),true)
+			if infjumptoggle then
+				getgenv().dc = false
+				local infjump
+				infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
+					if dc then infjump:Disconnect() return end
+					player.Character.Humanoid:ChangeState("Jumping")
+				end)
+			else
+				getgenv().dc = true
+			end
+		end)
+
+		player.CharacterAdded:Connect(function()
+			if infjumptoggle then
+				wait(2.5)
+				getgenv().dc = false
+				local infjump
+				infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
+					if dc then infjump:Disconnect() return end
+					player.Character.Humanoid:ChangeState("Jumping")
+				end)
+			end
+		end)
+
+		section2:addToggle("Noclip", false, function(bool)
+			noclips = bool
+			game:GetService("RunService").Stepped:connect(function()
+				if noclips then
+					for i, v in pairs(player.Character:GetChildren()) do
+						if v:IsA("BasePart") then
+							v.CanCollide = false
+						end
+					end
+				end
+			end)
+		end)
+
+		section2:addSlider("Fly Speed", 101, 0, 999, function(value)
+			sliderfly = value
+		end)
+		sliderfly = 101
+		section2:addToggle("Press P to fly",false,function(Pfly)
+			repeat wait()
+			until player and player.Character:findFirstChild("Head") player.Character:findFirstChild("Humanoid")
+			local mouse = player:GetMouse()
+			repeat wait() until mouse
+			local plr = game.Players.LocalPlayer
+			local torso = plr.Character.Head
+			local flying = false
+			local deb = true
+			local ctrl = {f = 0, b = 0, l = 0, r = 0}
+			local lastctrl = {f = 0, b = 0, l = 0, r = 0}
+			local maxspeed = sliderfly
+			local speed = 0
+
+			function Fly()
+				local bg = Instance.new("BodyGyro", torso)
+				bg.P = 9e4
+				bg.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+				bg.cframe = torso.CFrame
+
+				local bv = Instance.new("BodyVelocity", torso)
+				bv.velocity = Vector3.new(0,0.1,0)
+				bv.maxForce = Vector3.new(9e9, 9e9, 9e9)
+				repeat wait()
+					plr.Character.Humanoid.PlatformStand = true
+					if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then
+						speed = speed+(sliderfly/1.7)+(speed/maxspeed)
+						if speed > maxspeed then
+							speed = maxspeed
+						end
+
+					elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then
+						speed = speed-(sliderfly/1.7)
+						if speed < 0 then
+							speed = 0
+						end
+					end
+					if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then
+						bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
+						lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r}
+					elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then
+						bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
+					else
+						bv.velocity = Vector3.new(0,0.1,0)
+					end
+					bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0)
+				until not flying or not Pfly
+				ctrl = {f = 0, b = 0, l = 0, r = 0}
+				lastctrl = {f = 0, b = 0, l = 0, r = 0}
+				speed = 0
+				bg:Destroy()
+				bv:Destroy()
+				plr.Character.Humanoid.PlatformStand = false
+			end
+
+			mouse.KeyDown:connect(function(key)
+				if key:lower() == "p" then
+					if flying then flying = false
+					else
+						flying = true
+						Fly()
+					end
+				elseif key:lower() == "w" then
+					ctrl.f = 1
+				elseif key:lower() == "s" then
+					ctrl.b = -1
+				elseif key:lower() == "a" then
+					ctrl.l = -1
+				elseif key:lower() == "d" then
+					ctrl.r = 1
+				end
+			end)
+
+			mouse.KeyUp:connect(function(key)
+
+				if key:lower() == "w" then
+					ctrl.f = 0
+				elseif key:lower() == "s" then
+					ctrl.b = 0
+				elseif key:lower() == "a" then
+					ctrl.l = 0
+				elseif key:lower() == "d" then
+					ctrl.r = 0
+				end
+			end)
+			Fly()
+			notify("Press P to fly: "..tostring(Pfly),true)
+		end)
+
+		local playerlist = {}
+		for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+			if v.Name ~= player.Name then
+				table.insert(playerlist, v.Name)
+			end
+		end
+		section2:addDropdown("Track selected player",playerlist,function(ripthatguy)
+			notify("Player Selected: " .. ripthatguy)
+			Target = ripthatguy
+		end)
+
+		section2:addToggle("Track Player",false,function(bool)
+			trackthatguy = bool
+			local platform = Instance.new("Part", player.Character)
+			platform.Anchored = true
+			platform.Transparency = 1
+			platform.Size = Vector3.new(6, 1, 6)
+
+			local connection
+			connection = game:GetService("RunService").RenderStepped:connect(function()
+				if player.Character:FindFirstChild("HumanoidRootPart") then
+					platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -1.8, 0)
+				else
+					connection:Disconnect()
+				end
+			end)
+			game:GetService('RunService').Stepped:connect(function()
+				if trackthatguy ~= true then
+					platform:Destroy()
+				end
+			end)
+		end)
+		game:GetService('RunService').Stepped:connect(function()
+			if trackthatguy == true then
+				player.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame * CFrame.new(0, 5, 10)
+				game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game.Players[Target].Character.HumanoidRootPart.Position)
+			end
+		end)
+
+		section2:addButton("Refesh Players List",function()
+			section2:updateDropdown("Track selected player","Track selected player",playerlist)
+		end)
+
+		-- load
+		NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
+
+		-- second page
+		local page2 = NoobieDoge:addPage("Misc", 5012544693)
+		local section1 = page2:addSection("Game Functions")
+		local section2 = page2:addSection("Customs")
+
+		section1:addButton("SuperHuman",function()
+			section1:updateButton("SuperHuman","SuperHuman (Activated)")
+			SUPERHUMAN()
+		end)
+
+		section1:addButton("Infinite MD",function()
+			INFMDON()
+		end)
+
+		section1:addButton("God Mode",function()
+			GODMODE()
+		end)
+
+		game:GetService('RunService').Stepped:connect(function()
+			if not player.Character:FindFirstChild("fakehealth") then
+				if game:GetService("CoreGui").DevConsoleMaster.DevConsoleWindow.Visible == true then
+					notify("Just ignore the errors lol")
+				end
+			end
+		end)
+
+		local disableincombattoggle = true
+		section1:addToggle("Disable In Combat",true,function(bool)
+			disableincombattoggle = not disableincombattoggle
+			if disableincombattoggle then
+				DisabledInCombat = bool
+				notify("Disabled In Combat")
+			else
+				notify("In Combat will be re-activated after a while")
+			end
+		end)
+		DisabledInCombat = true
+
+		game:GetService('RunService').Stepped:connect(function()
+			if DisabledInCombat then
+				player.incombat.Value = false
+			end
+		end)
+
+		local unbreakableblockstoggle = false
+		section1:addToggle("Unbreakable Blocks",false,function()
+			unbreakableblockstoggle = not unbreakableblockstoggle
+			notify("Unbreakable Blocks: "..tostring(unbreakableblockstoggle),true)
+			if unbreakableblockstoggle then
+				UNBREAKABLE_BLOCKS()
+			else
+				DISABLE_UNBREAKABLE_BLOCKS()
+			end
+		end)
+
+		player.CharacterAdded:Connect(function()
+			if unbreakableblockstoggle then
+				wait(2.5)
+				UNBREAKABLE_BLOCKS()
+			end
+		end)
+
+		section1:addToggle("NPC Kill Aura",false,function(bool)
+			keel = bool
+			notify("NPC Kill Aura: "..tostring(keel),true)
+		end)
+		game:GetService('RunService').Stepped:connect(function()
+			if keel then
+				NPCKEELAURA()
+			end
+		end)
+
+		section1:addButton("Old No CD Method",function()
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/HDTerebi/Shindo-Life/main/No%20CD%20Method"))()
+			wait()
+			notify("Equip a beast mode, mode up, type '!spirit', press the ']' button, done!")
+		end)
+
+		section2:addDropdown("Custom Display Ranks",{"RELL", "F 0", "D 1", "D 2", "D 3", "C 1", "C 2", "C 3", "B 1", "B 2", "B 3", "A 1", "A 2", "A 3", "S 1", "S 2", "S 3", "V 1", "V 2", "V 3", "X 1", "X 2", "X 3", "Y 1", "Y 2", "Y 3", "Z 1", "Z 2", "Z 3", "MAX-69", "MAX-420", "MAX-666", "MAX-999", "GOD", "Dragon", "Hacker","???"},function(rektrank)
+			player.leaderstats.Rank.Value =  (rektrank)
+			notify("Rank Displayed: " .. rektrank)
+		end)
+
+		section2:addButton("Bloodline Changer",function()
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/NoobieDoge/DogeHub/Separated/ShindoBloodlineChanger"))()
+		end)
+
+		-- third page
+		local page3 = NoobieDoge:addPage("Spam Keys", 5012544693)
+		local section1 = page3:addSection("Configurations")
+		local section2 = page3:addSection("Keys")
+
+		section1:addToggle("Enabled",false,function(bool)
+			SpamGOBRRRRR = bool
+			notify("Spam Keys: "..tostring(SpamGOBRRRRR),true)
+		end)
+
+		section1:addToggle("Missions Only",false,function(bool)
+			SpamOnlyInMissions = bool
+		end)
+
+		section2:addToggle("Spam Click",false,function(bool)
+			ClickRATATA = bool
+			notify("Spam Click: "..tostring(ClickRATATA),true)
+		end)
+		game:GetService('RunService').Stepped:connect(function()
+			if ClickRATATA and SpamGOBRRRRR and not SpamOnlyInMissions then
+				SpamClick()
+			end
+		end)
+		section2:addToggle("Spam Q",false,function(bool)
+			Q = bool
+			notify("Spam Q: "..tostring(Q),true)
+		end)
+		game:GetService('RunService').Stepped:connect(function()
+			if Q and SpamGOBRRRRR and not SpamOnlyInMissions then
+				SpamQ()
+			end
+		end)
+		section2:addToggle("Spam E",false, function(bool)
+			E = bool
+			notify("Spam E: "..tostring(E),true)
+		end)
+		game:GetService('RunService').Stepped:connect(function()
+			if E and SpamGOBRRRRR and not SpamOnlyInMissions then
+				SpamE()
+			end
+		end)
+		section2:addToggle("Spam R",false, function(bool)
+			R = bool
+			notify("Spam R: "..tostring(R),true)
+		end)
+		game:GetService('RunService').Stepped:connect(function()
+			if R and SpamGOBRRRRR and not SpamOnlyInMissions then
+				SpamR()
+			end
+		end)
+		section2:addToggle("Spam T",false, function(bool)
+			T = bool
+			notify("Spam T: "..tostring(T),true)
+		end)
+		game:GetService('RunService').Stepped:connect(function()
+			if T and SpamGOBRRRRR and not SpamOnlyInMissions then
+				SpamT()
+			end
+		end)
+		section2:addToggle("Spam Y",false, function(bool)
+			Y = bool
+			notify("Spam Y: "..tostring(Y),true)
+		end)
+		game:GetService('RunService').Stepped:connect(function()
+			if Y and SpamGOBRRRRR and not SpamOnlyInMissions then
+				SpamY()
+			end
+		end)
+		section2:addToggle("Spam F",false, function(bool)
+			F = bool
+			notify("Spam F: "..tostring(F),true)
+		end)
+		game:GetService('RunService').Stepped:connect(function()
+			if F and SpamGOBRRRRR and not SpamOnlyInMissions then
+				SpamF()
+			end
+		end)
+		section2:addToggle("Spam G",false, function(bool)
+			G = bool
+			notify("Spam G: "..tostring(G),true)
+		end)
+		game:GetService('RunService').Stepped:connect(function()
+			if G and SpamGOBRRRRR and not SpamOnlyInMissions then
+				SpamG()
+			end
+		end)
+		section2:addToggle("Spam H",false, function(bool)
+			H = bool
+			notify("Spam H: "..tostring(H),true)
+		end)
+		game:GetService('RunService').Stepped:connect(function()
+			if H and SpamGOBRRRRR and not SpamOnlyInMissions then
+				SpamH()
+			end
+		end)
+		section2:addToggle("Spam V",false, function(bool)
+			V = bool
+			notify("Spam V: "..tostring(V),true)
+		end)
+		game:GetService('RunService').Stepped:connect(function()
+			if V and SpamGOBRRRRR and not SpamOnlyInMissions then
+				SpamV()
+			end
+		end)
+		section2:addToggle("Spam B",false, function(bool)
+			B = bool
+			notify("Spam B: "..tostring(B),true)
+		end)
+		game:GetService('RunService').Stepped:connect(function()
+			if B and SpamGOBRRRRR and not SpamOnlyInMissions then
+				SpamB()
+			end
+		end)
+		section2:addToggle("Spam N",false, function(bool)
+			N = bool
+			notify("Spam N: "..tostring(N),true)
+		end)
+		game:GetService('RunService').Stepped:connect(function()
+			if N and SpamGOBRRRRR and not SpamOnlyInMissions then
+				SpamN()
+			end
+		end)
+		section2:addToggle("Spam Z",false, function(bool)
+			Z = bool
+			notify("Spam Z: "..tostring(Z),true)
+		end)
+		game:GetService('RunService').Stepped:connect(function()
+			if Z and SpamGOBRRRRR and not SpamOnlyInMissions then
+				SpamZ()
+			end
+		end)
+		section2:addToggle("Spam C",false, function(bool)
+			C = bool
+			notify("Spam C: "..tostring(C),true)
+		end)
+		game:GetService('RunService').Stepped:connect(function()
+			if C and SpamGOBRRRRR and not SpamOnlyInMissions then
+				SpamC()
+			end
+		end)
+
+		-- forth page
+		local page4 = NoobieDoge:addPage("Daily Missions", 5012544693)
+		local section1 = page4:addSection("Claim Missions")
+		local section2 = page4:addSection("Auto Daily Missions")
+		local section3 = page4:addSection("Teleports")
+
+		section1:addButton("Claim daily missions rewards",function()
+			local args = {[1] = "claim",[2] = player.statz.mission.dailyquest1}
+			player.startevent:FireServer(unpack(args))
+			local args = {[1] = "claim",[2] = player.statz.mission.dailyquest2}
+			player.startevent:FireServer(unpack(args))
+			local args = {[1] = "claim",[2] = player.statz.mission.dailyquest3}
+			player.startevent:FireServer(unpack(args))
+			local args = {[1] = "claim",[2] = player.statz.mission.dailyquest4}
+			player.startevent:FireServer(unpack(args))
+			local args = {[1] = "claim",[2] = player.statz.mission.dailyquest5}
+			player.startevent:FireServer(unpack(args))
+			local args = {[1] = "claim",[2] = player.statz.mission.dailyquest6}
+			player.startevent:FireServer(unpack(args))
+			local args = {[1] = "claim",[2] = player.statz.mission.dailyquest7}
+			player.startevent:FireServer(unpack(args))
+			local args = {[1] = "claim",[2] = player.statz.mission.dailyquest8}
+			player.startevent:FireServer(unpack(args))
+			local args = {[1] = "claim",[2] = player.statz.mission.dailyquest9}
+			player.startevent:FireServer(unpack(args))
+			local args = {[1] = "claim",[2] = player.statz.mission.dailyquest10}
+			player.startevent:FireServer(unpack(args))
+			local args = {[1] = "claim",[2] = player.statz.mission.dailyquest11}
+			player.startevent:FireServer(unpack(args))
+			local args = {[1] = "claim",[2] = player.statz.mission.dailyquest12}
+			player.startevent:FireServer(unpack(args))
+			local args = {[1] = "claim",[2] = player.statz.mission.dailyquest13}
+			player.startevent:FireServer(unpack(args))
+			local args = {[1] = "claim",[2] = player.statz.mission.dailyquest14}
+			player.startevent:FireServer(unpack(args))
+		end)
+
+		section1:addButton("Claim main missions rewards",function()
+			local args = {[1] = "claim2",[2] = player.statz.mainmission.arena}
+			player.startevent:FireServer(unpack(args))
+			local args = {[1] = "claim2",[2] = player.statz.mainmission.arenax}
+			player.startevent:FireServer(unpack(args))
+			local args = {[1] = "claim2",[2] = player.statz.mainmission.conquest}
+			player.startevent:FireServer(unpack(args))
+			local args = {[1] = "claim2",[2] = player.statz.mainmission.masterelement}
+			player.startevent:FireServer(unpack(args))
+			local args = {[1] = "claim2",[2] = player.statz.mainmission.masterkg}
+			player.startevent:FireServer(unpack(args))
+			local args = {[1] = "claim2",[2] = player.statz.mainmission.resetbounty}
+			player.startevent:FireServer(unpack(args))
+			local args = {[1] = "claim2",[2] = player.statz.mainmission.resetlegend}
+			player.startevent:FireServer(unpack(args))
+			local args = {[1] = "claim2",[2] = player.statz.mainmission.shindowar}
+			player.startevent:FireServer(unpack(args))
+			local args = {[1] = "claim2",[2] = player.statz.mainmission.storymissions}
+			player.startevent:FireServer(unpack(args))
+			local args = {[1] = "claim2",[2] = player.statz.mainmission.warmode}
+			player.startevent:FireServer(unpack(args))
+			local args = {[1] = "claim2",[2] = player.statz.mainmission.tournament}
+			player.startevent:FireServer(unpack(args))
+		end)
+
+		section2:addToggle("M1",false, function(bool)
+			DailyM1 = bool
+			notify("M1: "..tostring(DailyM1),true)
+		end)
+		game:GetService('RunService').Stepped:connect(function()
+			if DailyM1 then
+				player.Character.combat.update:FireServer("mouse1",true)
+			end
+		end)
+
+		section2:addToggle("Rush",false, function(bool)
+			DailyRush = bool
+			notify("Rush: "..tostring(DailyRush),true)
+		end)
+		game:GetService('RunService').Stepped:connect(function()
+			if DailyRush then
+				player.Character.combat.update:FireServer("rushw")
+			end
+		end)
+
+		section2:addToggle("Chi Charge",false, function(bool)
+			DailyChi = bool
+			notify("Chi Charge: "..tostring(DailyChi),true)
+		end)
+		game:GetService('RunService').Stepped:connect(function()
+			if DailyChi then
+				player.Character.combat.update:FireServer("key","c")
+				player.Character.combat.update:FireServer("key","cend")
+				wait(.05)
+			end
+		end)
+
+		section2:addToggle("Tree Jumps",false, function(bool)
+			DailyJump = bool
+			notify("Tree Jumps: "..tostring(DailyJump),true)
+		end)
+		game:GetService('RunService').Stepped:connect(function()
+			if DailyJump then
+				player.Character.combat.update:FireServer("takemovement2")
+			end
+		end)
+		section2:addToggle("Daily Boss Quests",false, function(bool)
+			DailyBoss = bool
+			notify("Daily Boss Quests: "..tostring(DailyBoss),true)
+		end)
+		spawn(function ()
+			while wait(.2) do
+				if DailyBoss then
+					for i,v in pairs(player.statz.mission:GetChildren()) do
+						if v.Value == "fightboss" then
+							if game.Workspace:FindFirstChild("bossdropmission") then
+								for i,v0 in pairs(workspace.bossdropmission.missions:GetChildren()) do
+									if v0.Name == v.objective.Value and v0:FindFirstChild("missiongiver") then
+										if mission.Visible == true then
+											for i,v in pairs(workspace.npc:GetChildren()) do
+												if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and not v:FindFirstChild("fullsusanoo") and v.Head.CFrame.Y > -1000 then
+													repeat
+														pcall(function()
+															v.Humanoid.Health = 0
+															game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+															player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 0, 10)
+															player.Character.combat.update:FireServer("key","e")
+															player.Character.combat.update:FireServer("key","eend")
+															player.Character.combat.update:FireServer("mouse1",true)
+															wait(.000000000000001)
+															v.Humanoid.Health = 0
+														end)
+													until not v:FindFirstChild("Humanoid") or mission.Visible == false or not autooofarm or not v
+												end
+											end
+										else
+											for i,v1 in pairs(workspace.bossdropmission.missions:GetChildren()) do
+												if v1.Name == v.objective.Value and (v1.missiongiver.timer.time.time.Text == "00:00" or v1.missiongiver.timer.time.time.Text == "59:59") then
+													player.Character.HumanoidRootPart.CFrame=v1.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
+													local args = {[1] = player}
+													v1.missiongiver.CLIENTTALK:FireServer(unpack(args))
+													wait()
+												end
+											end
+										end
+									else
+										section2:updateToggle("Daily Boss Quests",false)
+										notify("The boss doesn't spawn in this map!")
+										wait()
+										DailyBoss = false
+									end
+								end
+							else
+								section2:updateToggle("Daily Boss Quests",false)
+								notify("The boss doesn't spawn in this map!")
+								wait()
+								DailyBoss = false
+							end
+						end
+					end
+				end
+			end
+		end)
+
+		section3:addButton("Tp to logs",function()
+			if not game.Workspace.npc:FindFirstChild("logtraining") then
+				notify("This map does not have any logs!")
+			else
+				for i,v in pairs(workspace.npc:GetChildren()) do
+					if v.Name == "logtraining" and v.Head.CFrame.Y > -1000 then
+						game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+						player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 2, 10)
+					end
+				end
+			end
+		end)
+
+		section3:addButton("Tp to duel pads",function()
+			if game:GetService("Workspace").map2:FindFirstChild("duel") and game:GetService("Workspace").map2.duel.duel1:FindFirstChild("pad") then
+				for i,v in pairs(workspace.map2.duel.duel1:GetChildren()) do
+					if v.Name == "pad" then
+						player.Character.HumanoidRootPart.CFrame=v.CFrame * CFrame.new(0, 2, 0)
+					end
+				end
+			else
+				notify("This map does not have any duel pads!")
+			end
+		end)
+
+		if game.PlaceId == 5255237254 then
+			section3:addButton("Tp to training platform",function()
+				for i,v in pairs(workspace.training:GetChildren()) do
+					if v.Name == "Part" then
+						player.Character.HumanoidRootPart.CFrame=v.CFrame * CFrame.new(0, 1, 0)
+					end
+				end
+			end)
+		end
+
+		if game.PlaceId == 5824792748 then
+			section3:addButton("Tp to training seats",function()
+				for i,v in pairs(workspace.training:GetChildren()) do
+					if v.Name == "MeshPart" then
+						player.Character.HumanoidRootPart.CFrame=v.CFrame * CFrame.new(0, 2, 0)
+					end
+				end
+			end)
+		end
+
+		if game.PlaceId == 6602103757 then
+			section3:addButton("Tp to training pads",function()
+				for i,v in pairs(workspace.training:GetChildren()) do
+					if v.Name == "Meshes/mounty_Cube.003" then
+						player.Character.HumanoidRootPart.CFrame=v.CFrame * CFrame.new(0, 2, 0)
+					end
+				end
+			end)
+		end
+
+		-- fifth page
+		local page5 = NoobieDoge:addPage("Teleports", 5012544693)
+		local section1 = page5:addSection("Map Teleports")
+		local section2 = page5:addSection("Server Teleports")
+
+		section1:addButton("Spawn Point",function()
+			if game:GetService("Workspace"):FindFirstChild("SpawnLocation") then
+				player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").SpawnLocation.CFrame
+			elseif game.PlaceId == 4601350809 then
+				player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(11465.656, 798, -17152.453))
+			elseif game.PlaceId == 4601350656 then
+				player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(17207.344, 790, -18651.334))
+			else
+				for i,v in pairs(workspace.spawns:GetChildren()) do
+					if v.Name ~= "DOGE" then
+						player.Character.HumanoidRootPart.CFrame = v.CFrame
+					end
+				end
+			end
+		end)
+
+		if game:GetService("Workspace"):FindFirstChild("map2") and game:GetService("Workspace").map2:FindFirstChild("duel") and game:GetService("Workspace").map2.duel:FindFirstChild("duel1") then
+			section1:addButton("Duel Pads",function()
+				if game:GetService("Workspace").map2.duel:FindFirstChild("duel5") then
+					for i,v in pairs(workspace.map2.duel.duel5:GetChildren()) do
+						if v.Name == "pad" then
+							player.Character.HumanoidRootPart.CFrame=v.CFrame * CFrame.new(0, 2, 0)
+						end
+					end
+				elseif game:GetService("Workspace").map2.duel:FindFirstChild("duel4") then
+					for i,v in pairs(workspace.map2.duel.duel4:GetChildren()) do
+						if v.Name == "pad" then
+							player.Character.HumanoidRootPart.CFrame=v.CFrame * CFrame.new(0, 2, 0)
+						end
+					end
+				elseif game:GetService("Workspace").map2.duel:FindFirstChild("duel3") then
+					for i,v in pairs(workspace.map2.duel.duel3:GetChildren()) do
+						if v.Name == "pad" then
+							player.Character.HumanoidRootPart.CFrame=v.CFrame * CFrame.new(0, 2, 0)
+						end
+					end
+				elseif game:GetService("Workspace").map2.duel:FindFirstChild("duel2") then
+					for i,v in pairs(workspace.map2.duel.duel2:GetChildren()) do
+						if v.Name == "pad" then
+							player.Character.HumanoidRootPart.CFrame=v.CFrame * CFrame.new(0, 2, 0)
+						end
+					end
+				elseif game:GetService("Workspace").map2:FindFirstChild("duel") and game:GetService("Workspace").map2.duel.duel1:FindFirstChild("pad") then
+					for i,v in pairs(workspace.map2.duel.duel1:GetChildren()) do
+						if v.Name == "pad" then
+							player.Character.HumanoidRootPart.CFrame=v.CFrame * CFrame.new(0, 2, 0)
+						end
+					end
+				end
+			end)
+		end
+
+		if game:GetService("Workspace"):FindFirstChild("EAT") and game:GetService("Workspace").EAT:FindFirstChild("Ramen") then
+			section1:addButton("Ramen Shop",function()
+				player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").EAT.Ramen.CFrame
+			end)
+		end
+
+		if game:GetService("Workspace"):FindFirstChild("sensei") then
+			if game:GetService("Workspace").sensei.missions:FindFirstChild("Narumaki") then
+				section1:addButton("Narumaki Mentor",function()
+					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Narumaki"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
+				end)
+			elseif game:GetService("Workspace").sensei.missions:FindFirstChild("Jiso Seishin") then
+				section1:addButton("Jiso Mentor",function()
+					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Jiso Seishin"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(5,0,-1.7)
+				end)
+			elseif game:GetService("Workspace").sensei.missions:FindFirstChild("Shindai Akuma") then
+				section1:addButton("Shindai Mentor",function()
+					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Shindai Akuma"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-4,0)
+				end)
+			elseif game:GetService("Workspace").sensei.missions:FindFirstChild("Ryuji Kenichi") then
+				section1:addButton("Ryuji Mentor",function()
+					player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").sensei.missions["Ryuji Kenichi"].missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,4,3)
+				end)
+			end
+		end
+		if game:GetService("Workspace"):FindFirstChild("Ken Mentor") then
+			section1:addButton("Kenjutsu Mentor",function()
+				for v = 1,8 do
+					wait()
+					game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game:GetService("Workspace")["Ken Mentor"].HumanoidRootPart.Position)
+				end
+				player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace")["Ken Mentor"].HumanoidRootPart.CFrame+Vector3.new(-6,4,0)
+			end)
+		end
+
+		if game:GetService("Workspace"):FindFirstChild("Susanoo Customizer") then
+			section1:addButton("Susanoo Customizer",function()
+				player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace")["Susanoo Customizer"].Part.CFrame
+			end)
+		end
+
+		local maps = {}
+		for i,v in pairs(player.PlayerGui.Main.ingame.Menu.ArenaTab.List:GetChildren()) do
+			if v:FindFirstChild("place") then
+				table.insert(maps, v.Name)
+			end
+		end
+		local mapselect
+		section2:addDropdown("Map Selection",maps,function(MAPSed)
+			print("Selected: " .. MAPSed)
+			notify("Selected: " .. MAPSed)
+			mapselect = MAPSed
+		end)
+
+		section2:addButton("Teleport",function()
+			local args = {[1] = "rpgteleport",[2] = player.PlayerGui.Main.ingame.Menu.ArenaTab.List[mapselect].place.Value}
+			player.startevent:FireServer(unpack(args))
+		end)
+
+		section2:addTextbox("Private Server Code", "DDrugs", function(PScodevalue, focusLost)
+			print("Input", PScodevalue)
+			if focusLost then
+				notify("Private Server Code: " .. PScodevalue)
+				PScodevalue1 = PScodevalue
+			end
+		end)
+
+		section2:addButton("Private Server Teleport",function()
+			local args = {[1] = "teleporttoprivate",[2] = PScodevalue1}
+			player.startevent:FireServer(unpack(args))
+		end)
+
+		-- last page
+		local pagelast = NoobieDoge:addPage("Settings", 5012544693)
+		local settings = pagelast:addSection("Settings")
+		local colors = pagelast:addSection("Colors")
+		local credits = pagelast:addSection("Credits")
+
+		settings:addButton("Upgrade Performance",function()
+			UPPERFORMANCE()
+			settings:updateButton("Upgrade Performance","Upgraded Performance")
+		end)
+
+		settings:addButton("Remove Effects / Particles",function()
+			if player.PlayerScripts:FindFirstChild("EFFECTS") then
+				player.PlayerScripts.EFFECTS:Destroy()
+			end
+			settings:updateButton("Remove Effects / Particles","Removed Effects / Particles")
+		end)
+
+		settings:addButton("Reset Script",function()
+			local player = game.Players.LocalPlayer
+			local ScreenGuiK = Instance.new("ScreenGui")
+			local Frame = Instance.new("ImageLabel")
+			local TextLabelFrame = Instance.new("ImageLabel")
+			local TextLabel = Instance.new("TextLabel")
+			local TextButton = Instance.new("ImageButton")
+			local TextButtonText = Instance.new("TextButton")
+			local TextButton_2 = Instance.new("ImageButton")
+			local TextButton_2Text = Instance.new("TextButton")
+
+			ScreenGuiK.Parent = player:WaitForChild("PlayerGui")
+
+			Frame.Parent = ScreenGuiK
+			Frame.Name = "Main"
+			Frame.BackgroundTransparency = 1
+			Frame.Position = UDim2.new(0.66, 0, 0.055, 0)
+			Frame.Size = UDim2.new(0, 220, 0, 120)
+			Frame.Image = "rbxassetid://4641149554"
+			Frame.ImageColor3 = Color3.fromRGB(24, 24, 24)
+			Frame.ScaleType = Enum.ScaleType.Slice
+			Frame.SliceCenter = Rect.new(4, 4, 296, 296)
+			Frame.Active = true
+			Frame.Draggable = true
+
+			TextLabelFrame.Parent = Frame
+			TextLabelFrame.Name = "TopBar"
+			TextLabelFrame.BackgroundTransparency = 1
+			TextLabelFrame.ClipsDescendants = true
+			TextLabelFrame.Size = UDim2.new(1, 0, 0, 38)
+			TextLabelFrame.ZIndex = 2
+			TextLabelFrame.Image = "rbxassetid://4595286933"
+			TextLabelFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
+			TextLabelFrame.ScaleType = Enum.ScaleType.Slice
+			TextLabelFrame.SliceCenter = Rect.new(4, 4, 296, 296)
+
+			TextLabel.Parent = Frame
+			TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+			TextLabel.Position = UDim2.new(0, 0, -0.1, 0)
+			TextLabel.BackgroundTransparency = 1
+			TextLabel.Size = UDim2.new(0, 220, 0, 60)
+			TextLabel.ZIndex = 3
+			TextLabel.Font = Enum.Font.TitilliumWeb
+			TextLabel.Text = "Are you sure that you want to reset script?"
+			TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+			TextLabel.TextScaled = false
+			TextLabel.TextSize = 21.000
+			TextLabel.TextWrapped = true
+
+			TextButton.Parent = Frame
+			TextButton.Name = "Button"
+			TextButton.BackgroundTransparency = 1
+			TextButton.Position = UDim2.new(0.075, 0, 0.500000006, 0)
+			TextButton.BorderSizePixel = 0
+			TextButton.Size = UDim2.new(0, 82.5, 0, 45)
+			TextButton.ZIndex = 2
+			TextButton.Image = "rbxassetid://5028857472"
+			TextButton.ImageColor3 = Color3.fromRGB(41, 41, 41)
+			TextButton.ScaleType = Enum.ScaleType.Slice
+			TextButton.SliceCenter = Rect.new(2, 2, 298, 298)
+
+			TextButtonText.Parent = TextButton
+			TextButtonText.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+			TextButtonText.BackgroundTransparency = 1
+			TextButtonText.ZIndex = 3
+			TextButtonText.Size = UDim2.new(0, 82.5, 0, 45)
+			TextButtonText.Font = Enum.Font.TitilliumWeb
+			TextButtonText.Text = "Yes"
+			TextButtonText.TextColor3 = Color3.fromRGB(200, 200, 200)
+			TextButtonText.TextScaled = true
+			TextButtonText.TextSize = 40.000
+			TextButtonText.TextWrapped = true
+
+			function ResetYES()
+				for i,v in pairs(player.PlayerGui:GetChildren()) do
+					if v.Name == "ScreenGui" then
+						v:Destroy()
+					end
+				end
+				wait()
+				sliderpowa = false
+				player.Character.Humanoid.WalkSpeed = originalwalkspeed
+				player.Character.Humanoid.JumpPower = originaljumppower
+				game:GetService("Workspace").Gravity = originalgravity
+				CtrlClickTeePee = false
+				noclips = false
+				Pfly = false
+				getgenv().dc = true
+				trackthatguy = false
+				DisabledInCombat = false
+				unbreakableblockstoggle = false
+				keel = false
+				SpamGOBRRRRR = false
+				ClickRATATA = false
+				Q = false
+				E = false
+				R = false
+				T = false
+				Y = false
+				F = false
+				G = false
+				H = false
+				V = false
+				B = false
+				N = false
+				Z = false
+				C = false
+				DailyChi = false
+				DailyRush = false
+				DailyJump = false
+				DailyM1 = false
+				DailyBoss = false
+				NOCDed = false
+				wait()
+				for i,library in pairs(game:GetService("CoreGui"):GetChildren()) do
+					if library.Name == "DogeHub V2" then
+						library:Destroy()
+					end
+				end
+				notify("Do not reset script too many times!")
+				wait(.1)
+				ShindoMain()
+			end
+			TextButton.MouseButton1Click:connect(ResetYES)
+			TextButtonText.MouseButton1Click:connect(ResetYES)
+
+			TextButton_2.Parent = Frame
+			TextButton_2.Name = "Button"
+			TextButton_2.BackgroundTransparency = 1
+			TextButton_2.Position = UDim2.new(0.55, 0, 0.500000006, 0)
+			TextButton_2.BorderSizePixel = 0
+			TextButton_2.Size = UDim2.new(0, 82.5, 0, 45)
+			TextButton_2.ZIndex = 2
+			TextButton_2.Image = "rbxassetid://5028857472"
+			TextButton_2.ImageColor3 = Color3.fromRGB(41, 41, 41)
+			TextButton_2.ScaleType = Enum.ScaleType.Slice
+			TextButton_2.SliceCenter = Rect.new(2, 2, 298, 298)
+
+			TextButton_2Text.Parent = TextButton_2
+			TextButton_2Text.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+			TextButton_2Text.BackgroundTransparency = 1
+			TextButton_2Text.ZIndex = 3
+			TextButton_2Text.Size = UDim2.new(0, 82.5, 0, 45)
+			TextButton_2Text.Font = Enum.Font.TitilliumWeb
+			TextButton_2Text.Text = "No"
+			TextButton_2Text.TextColor3 = Color3.fromRGB(200, 200, 200)
+			TextButton_2Text.TextScaled = true
+			TextButton_2Text.TextSize = 40.000
+			TextButton_2Text.TextWrapped = true
+
+			function ResetNO()
+				for i,v in pairs(player.PlayerGui:GetChildren()) do
+					if v.Name == "ScreenGui" then
+						v:Destroy()
+					end
+				end
+			end
+			TextButton_2.MouseButton1Click:connect(ResetNO)
+			TextButton_2Text.MouseButton1Click:connect(ResetNO)
+		end)
+
+		settings:addButton("Rejoin Server",function()
+			local player = game.Players.LocalPlayer
+			local ScreenGuiK = Instance.new("ScreenGui")
+			local Frame = Instance.new("ImageLabel")
+			local TextLabelFrame = Instance.new("ImageLabel")
+			local TextLabel = Instance.new("TextLabel")
+			local TextButton = Instance.new("ImageButton")
+			local TextButtonText = Instance.new("TextButton")
+			local TextButton_2 = Instance.new("ImageButton")
+			local TextButton_2Text = Instance.new("TextButton")
+
+			ScreenGuiK.Parent = player:WaitForChild("PlayerGui")
+
+			Frame.Parent = ScreenGuiK
+			Frame.Name = "Main"
+			Frame.BackgroundTransparency = 1
+			Frame.Position = UDim2.new(0.66, 0, 0.055, 0)
+			Frame.Size = UDim2.new(0, 220, 0, 120)
+			Frame.Image = "rbxassetid://4641149554"
+			Frame.ImageColor3 = Color3.fromRGB(24, 24, 24)
+			Frame.ScaleType = Enum.ScaleType.Slice
+			Frame.SliceCenter = Rect.new(4, 4, 296, 296)
+			Frame.Active = true
+			Frame.Draggable = true
+
+			TextLabelFrame.Parent = Frame
+			TextLabelFrame.Name = "TopBar"
+			TextLabelFrame.BackgroundTransparency = 1
+			TextLabelFrame.ClipsDescendants = true
+			TextLabelFrame.Size = UDim2.new(1, 0, 0, 38)
+			TextLabelFrame.ZIndex = 2
+			TextLabelFrame.Image = "rbxassetid://4595286933"
+			TextLabelFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
+			TextLabelFrame.ScaleType = Enum.ScaleType.Slice
+			TextLabelFrame.SliceCenter = Rect.new(4, 4, 296, 296)
+
+			TextLabel.Parent = Frame
+			TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+			TextLabel.Position = UDim2.new(0, 0, -0.1, 0)
+			TextLabel.BackgroundTransparency = 1
+			TextLabel.Size = UDim2.new(0, 220, 0, 60)
+			TextLabel.ZIndex = 3
+			TextLabel.Font = Enum.Font.TitilliumWeb
+			TextLabel.Text = "Are you sure you want to rejoin server?"
+			TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+			TextLabel.TextScaled = false
+			TextLabel.TextSize = 24.000
+			TextLabel.TextWrapped = true
+
+			TextButton.Parent = Frame
+			TextButton.Name = "Button"
+			TextButton.BackgroundTransparency = 1
+			TextButton.Position = UDim2.new(0.075, 0, 0.500000006, 0)
+			TextButton.BorderSizePixel = 0
+			TextButton.Size = UDim2.new(0, 82.5, 0, 45)
+			TextButton.ZIndex = 2
+			TextButton.Image = "rbxassetid://5028857472"
+			TextButton.ImageColor3 = Color3.fromRGB(41, 41, 41)
+			TextButton.ScaleType = Enum.ScaleType.Slice
+			TextButton.SliceCenter = Rect.new(2, 2, 298, 298)
+
+			TextButtonText.Parent = TextButton
+			TextButtonText.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+			TextButtonText.BackgroundTransparency = 1
+			TextButtonText.ZIndex = 3
+			TextButtonText.Size = UDim2.new(0, 82.5, 0, 45)
+			TextButtonText.Font = Enum.Font.TitilliumWeb
+			TextButtonText.Text = "Yes"
+			TextButtonText.TextColor3 = Color3.fromRGB(200, 200, 200)
+			TextButtonText.TextScaled = true
+			TextButtonText.TextSize = 40.000
+			TextButtonText.TextWrapped = true
+
+			function RejoinYES()
+				for i,v in pairs(player.PlayerGui:GetChildren()) do
+					if v.Name == "ScreenGui" then
+						v:Destroy()
+					end
+				end
+				local TS = game:GetService("TeleportService")
+				local Player = game.Players.LocalPlayer
+				TS:Teleport(game.PlaceId, Player)
+			end
+			TextButton.MouseButton1Click:connect(RejoinYES)
+			TextButtonText.MouseButton1Click:connect(RejoinYES)
+
+			TextButton_2.Parent = Frame
+			TextButton_2.Name = "Button"
+			TextButton_2.BackgroundTransparency = 1
+			TextButton_2.Position = UDim2.new(0.55, 0, 0.500000006, 0)
+			TextButton_2.BorderSizePixel = 0
+			TextButton_2.Size = UDim2.new(0, 82.5, 0, 45)
+			TextButton_2.ZIndex = 2
+			TextButton_2.Image = "rbxassetid://5028857472"
+			TextButton_2.ImageColor3 = Color3.fromRGB(41, 41, 41)
+			TextButton_2.ScaleType = Enum.ScaleType.Slice
+			TextButton_2.SliceCenter = Rect.new(2, 2, 298, 298)
+
+			TextButton_2Text.Parent = TextButton_2
+			TextButton_2Text.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+			TextButton_2Text.BackgroundTransparency = 1
+			TextButton_2Text.ZIndex = 3
+			TextButton_2Text.Size = UDim2.new(0, 82.5, 0, 45)
+			TextButton_2Text.Font = Enum.Font.TitilliumWeb
+			TextButton_2Text.Text = "No"
+			TextButton_2Text.TextColor3 = Color3.fromRGB(200, 200, 200)
+			TextButton_2Text.TextScaled = true
+			TextButton_2Text.TextSize = 40.000
+			TextButton_2Text.TextWrapped = true
+
+			function RejoinNO()
+				for i,v in pairs(player.PlayerGui:GetChildren()) do
+					if v.Name == "ScreenGui" then
+						v:Destroy()
+					end
+				end
+			end
+			TextButton_2.MouseButton1Click:connect(RejoinNO)
+			TextButton_2Text.MouseButton1Click:connect(RejoinNO)
+		end)
+
+		settings:addKeybind("Toggle Keybind", Enum.KeyCode.RightControl, function()
+		print("Activated Keybind")
+		NoobieDoge:toggle()
+		end, function()
+		print("Changed Keybind")
+		end)
+
+		for theme, color in pairs(themes) do -- all in one theme changer, i know, im cool
+			colors:addColorPicker(theme, color, function(color3)
+				NoobieDoge:setTheme(theme, color3)
+			end)
+		end
+
+		credits:addButton("Made by NoobieDoge")
+		credits:addButton("https://discord.gg/P2CeRjvTDt")
+		credits:addButton("Copy Discord Link",function()
+			setclipboard("https://discord.gg/P2CeRjvTDt")
+			wait()
+			notify("Discord link copied to clipboard!")
+		end)
+
+		for i, player in pairs(Players:GetPlayers()) do
+			if (player.Name == "Kasep6720" or player.Name == "KastonTPG") and (Players.LocalPlayer.Name ~= "Kasep6720" and Players.LocalPlayer.Name ~= "KastonTPG") then
+				local s = Instance.new("Sound")
+				s.Name = "Sound" s.SoundId = "http://www.roblox.com/asset/?id=8086605202" s.Volume = 20 s.Looped = true s.archivable = false s.Parent = game.Workspace wait(.3) s:play()
+				wait(5)
+				player:Kick("\nDogeHub Premium user detected, permissions got override.")
+			end
+		end
+	end
+	TextButton6.MouseButton1Click:connect(executescriptanyway)
+	TextButtonText6.MouseButton1Click:connect(executescriptanyway)
+	TextButton7.MouseButton1Click:connect(executescriptanyway)
+	TextButtonText7.MouseButton1Click:connect(executescriptanyway)
+
+	function ImTrash()
+		if player.Name ~= "Kasep6720" and player.Name ~= "KastonTPG" and player.Name ~= "DX_MarcoDawn" then
+			local args = {[1] = "OMG ITS SO HARD TO FIGHT I WILL USE EXPLOITS AND LOST AND LOST MY ACCOUNT FOR THIS",[2] = "All"}
+			game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(args))
+			wait(.1)
+			local args = {[1] = "YES I AM USING EXPLOITS CUZ IM TRASH",[2] = "All"}
+			game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(args))
+			wait(.1)
+			local args = {[1] = "I'm gay btw",[2] = "All"}
+			game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(args))
+		end
+	end
+	TextButton7.MouseButton1Click:connect(ImTrash)
+	TextButtonText7.MouseButton1Click:connect(ImTrash)
 end
+
 --Shindo Main
 local function ShindoMain()
 	--DogeHub V2 GUI
@@ -8724,8 +10134,8 @@ if game.PlaceId == 4616652839 then
 	ShindoInfSpin()
 elseif game.PlaceId == 5451410109 then
 	ShindoMyHome()
-elseif game.PlaceId == 6593187011 then
-	SSCompMenu()
+elseif game.PlaceId == 5664805984 or game.PlaceId == 5664803952 or game.PlaceId == 6593187011 then
+	AXSSComps()
 elseif game.PlaceId == 7524809704 then
 	ShindoDungeonSelection()
 elseif game.PlaceId == 6602058266 then
