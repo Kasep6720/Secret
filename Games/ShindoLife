@@ -6208,16 +6208,12 @@ local function AXSSComps()
 			notify("Spam Keys: "..tostring(SpamGOBRRRRR),true)
 		end)
 
-		section1:addToggle("Missions Only",false,function(bool)
-			SpamOnlyInMissions = bool
-		end)
-
 		section2:addToggle("Spam Click",false,function(bool)
 			ClickRATATA = bool
 			notify("Spam Click: "..tostring(ClickRATATA),true)
 		end)
 		game:GetService('RunService').Stepped:connect(function()
-			if ClickRATATA and SpamGOBRRRRR and not SpamOnlyInMissions then
+			if ClickRATATA and SpamGOBRRRRR then
 				SpamClick()
 			end
 		end)
@@ -6226,7 +6222,7 @@ local function AXSSComps()
 			notify("Spam Q: "..tostring(Q),true)
 		end)
 		game:GetService('RunService').Stepped:connect(function()
-			if Q and SpamGOBRRRRR and not SpamOnlyInMissions then
+			if Q and SpamGOBRRRRR then
 				SpamQ()
 			end
 		end)
@@ -6235,7 +6231,7 @@ local function AXSSComps()
 			notify("Spam E: "..tostring(E),true)
 		end)
 		game:GetService('RunService').Stepped:connect(function()
-			if E and SpamGOBRRRRR and not SpamOnlyInMissions then
+			if E and SpamGOBRRRRR then
 				SpamE()
 			end
 		end)
@@ -6244,7 +6240,7 @@ local function AXSSComps()
 			notify("Spam R: "..tostring(R),true)
 		end)
 		game:GetService('RunService').Stepped:connect(function()
-			if R and SpamGOBRRRRR and not SpamOnlyInMissions then
+			if R and SpamGOBRRRRR then
 				SpamR()
 			end
 		end)
@@ -6253,7 +6249,7 @@ local function AXSSComps()
 			notify("Spam T: "..tostring(T),true)
 		end)
 		game:GetService('RunService').Stepped:connect(function()
-			if T and SpamGOBRRRRR and not SpamOnlyInMissions then
+			if T and SpamGOBRRRRR then
 				SpamT()
 			end
 		end)
@@ -6262,7 +6258,7 @@ local function AXSSComps()
 			notify("Spam Y: "..tostring(Y),true)
 		end)
 		game:GetService('RunService').Stepped:connect(function()
-			if Y and SpamGOBRRRRR and not SpamOnlyInMissions then
+			if Y and SpamGOBRRRRR then
 				SpamY()
 			end
 		end)
@@ -6271,7 +6267,7 @@ local function AXSSComps()
 			notify("Spam F: "..tostring(F),true)
 		end)
 		game:GetService('RunService').Stepped:connect(function()
-			if F and SpamGOBRRRRR and not SpamOnlyInMissions then
+			if F and SpamGOBRRRRR then
 				SpamF()
 			end
 		end)
@@ -6280,7 +6276,7 @@ local function AXSSComps()
 			notify("Spam G: "..tostring(G),true)
 		end)
 		game:GetService('RunService').Stepped:connect(function()
-			if G and SpamGOBRRRRR and not SpamOnlyInMissions then
+			if G and SpamGOBRRRRR then
 				SpamG()
 			end
 		end)
@@ -6289,7 +6285,7 @@ local function AXSSComps()
 			notify("Spam H: "..tostring(H),true)
 		end)
 		game:GetService('RunService').Stepped:connect(function()
-			if H and SpamGOBRRRRR and not SpamOnlyInMissions then
+			if H and SpamGOBRRRRR then
 				SpamH()
 			end
 		end)
@@ -6298,7 +6294,7 @@ local function AXSSComps()
 			notify("Spam V: "..tostring(V),true)
 		end)
 		game:GetService('RunService').Stepped:connect(function()
-			if V and SpamGOBRRRRR and not SpamOnlyInMissions then
+			if V and SpamGOBRRRRR then
 				SpamV()
 			end
 		end)
@@ -6307,7 +6303,7 @@ local function AXSSComps()
 			notify("Spam B: "..tostring(B),true)
 		end)
 		game:GetService('RunService').Stepped:connect(function()
-			if B and SpamGOBRRRRR and not SpamOnlyInMissions then
+			if B and SpamGOBRRRRR then
 				SpamB()
 			end
 		end)
@@ -6316,7 +6312,7 @@ local function AXSSComps()
 			notify("Spam N: "..tostring(N),true)
 		end)
 		game:GetService('RunService').Stepped:connect(function()
-			if N and SpamGOBRRRRR and not SpamOnlyInMissions then
+			if N and SpamGOBRRRRR then
 				SpamN()
 			end
 		end)
@@ -6325,7 +6321,7 @@ local function AXSSComps()
 			notify("Spam Z: "..tostring(Z),true)
 		end)
 		game:GetService('RunService').Stepped:connect(function()
-			if Z and SpamGOBRRRRR and not SpamOnlyInMissions then
+			if Z and SpamGOBRRRRR then
 				SpamZ()
 			end
 		end)
@@ -6334,7 +6330,7 @@ local function AXSSComps()
 			notify("Spam C: "..tostring(C),true)
 		end)
 		game:GetService('RunService').Stepped:connect(function()
-			if C and SpamGOBRRRRR and not SpamOnlyInMissions then
+			if C and SpamGOBRRRRR then
 				SpamC()
 			end
 		end)
@@ -8836,6 +8832,7 @@ local function ShindoMain()
 	spawn(function()
 		while wait() do
 			if mobs or boss or megaboss then
+				mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
 				if (mission.Visible == true and mission.title.text == "[Objective: Mission]") then
 					FARM()
 					for i,v in pairs(workspace.npc:GetChildren()) do
