@@ -569,8 +569,18 @@ local function BRebirth()
 							until game:GetService("Workspace").beyblades:FindFirstChild(player.Name)
 						end
 					end
-					notify("Do not touch anything and it will be fine")
+					Noti1 = true
 				end
+			end
+		end
+	end)
+
+	spawn(function()
+		while wait() do 
+			if Noti1 == true then
+				notify("Do not touch anything and it will be fine")
+				wait(2419200)
+				notify("Bruh you fucking no life")
 			end
 		end
 	end)
@@ -953,4 +963,3 @@ local function BRebirth()
 end
 
 BRebirth()
-
