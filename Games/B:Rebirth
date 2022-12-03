@@ -515,27 +515,27 @@ local function BRebirth()
 	end)
 	RockSelected = "Rock"
 
-	section1:addToggle("Spam R",false,function(bool)
+	section2:addToggle("Spam R",false,function(bool)
 		SR = bool
 		notify("Spam R while farming: "..tostring(SR),true)
 	end)
 
-	section1:addToggle("Spam T",false,function(bool)
+	section2:addToggle("Spam T",false,function(bool)
 		ST = bool
 		notify("Spam T while farming: "..tostring(ST),true)
 	end)
 
-	section1:addToggle("Spam Y",false,function(bool)
+	section2:addToggle("Spam Y",false,function(bool)
 		SY = bool
 		notify("Spam Y while farming: "..tostring(SY),true)
 	end)
 
-	section1:addToggle("Spam F",false,function(bool)
+	section2:addToggle("Spam F",false,function(bool)
 		SF = bool
 		notify("Spam F while farming: "..tostring(SF),true)
 	end)
 
-	section1:addToggle("Spam Z",false,function(bool)
+	section2:addToggle("Spam Z",false,function(bool)
 		SZ = bool
 		notify("Spam Z while farming: "..tostring(SZ),true)
 	end)
