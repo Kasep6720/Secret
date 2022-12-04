@@ -408,6 +408,7 @@ local function BRebirth()
 	local page2 = NoobieDoge:addPage("Misc", 5012544693)
 	local section1 = page2:addSection("Launch")
 	local section2 = page2:addSection("Auto Stats")
+	local section3 = page2:addSection("Auto Purchase")
 
 	section1:addButton("Launch Beyblade",function()
 		LAUNCH()
@@ -498,6 +499,84 @@ local function BRebirth()
 		end)
 	end)
 
+	section3:addToggle("Auto Buy Skills",false,function(bool)
+		BuySkills = bool
+		game:GetService('RunService').Stepped:connect(function()
+			if BuySkills then
+				for i,v in pairs(player.PlayerGui.ui.menu.skills.list:GetChildren()) do
+					if v.Name ~= "UIListLayout" and not player.stats.unlocked:FindFirstChild(v.Name) then
+						local args = {[1] = "buyskill",[2] = 0,[3] = v.Name}
+						game:GetService("ReplicatedStorage").event:FireServer(unpack(args))
+					end
+				end
+			end
+		end)
+		if BuySkills then
+			notify("Bought all affordable skills!")
+		end
+	end)
+
+	section3:addToggle("Auto Buy Awakenings",false,function(bool)
+		BuyAwakenings = bool
+		game:GetService('RunService').Stepped:connect(function()
+			if BuyAwakenings then
+				for i,v in pairs(player.PlayerGui.ui.shop.awakenings.list:GetChildren()) do
+					if v.Name ~= "UIListLayout" and not player.stats.unlocked:FindFirstChild(v.Name) then
+						local args = {[1] = "buyawakening",[2] = 0,[3] = v.Name}
+						game:GetService("ReplicatedStorage").event:FireServer(unpack(args))
+					end
+				end
+			end
+		end)
+		if BuyAwakenings then
+			notify("Bought all affordable awakenings!")
+		end
+	end)
+
+	section3:addToggle("Auto Buy Victory Dances",false,function(bool)
+		BuyDances = bool
+		game:GetService('RunService').Stepped:connect(function()
+			if BuyDances then
+				for i,v in pairs(player.PlayerGui.ui.shop.dances.list:GetChildren()) do
+					if v.Name ~= "UIListLayout" and not player.stats.unlocked:FindFirstChild(v.Name) then
+						local args = {[1] = "buydance",[2] = 0,[3] = v.Name}
+						game:GetService("ReplicatedStorage").event:FireServer(unpack(args))
+					end
+				end
+			end
+		end)
+		if BuyDances then
+			notify("Bought all affordable victory dances!")
+		end
+	end)
+
+	Launchers = {}
+	for i,v in pairs(player.PlayerGui.ui.shop.launchers.list:GetChildren()) do
+		if v.Name ~= "UIListLayout" then
+			table.insert(Launchers, v.Name)
+		end
+	end
+
+	section3:addDropdown("Select Launchers",Launchers,function(L1)
+		print("Selected: " .. L1)
+		notify("Rock Selected: " .. L1)
+		LauncherSelected = L1
+	end)
+	LauncherSelected = "Common1"
+
+	section3:addToggle("Auto Buy Launchers",false,function(bool)
+		BuyLaunchers = bool
+		notify("Auto Buy Launchers: "..tostring(BuyLaunchers),true)
+		spawn(function()
+			while wait(.5) do
+				if BuyLaunchers then
+					local args = {[1] = "crate",[2] = 0,[3] = LauncherSelected}
+					game:GetService("ReplicatedStorage").func:InvokeServer(unpack(args))
+				end
+			end
+		end)
+	end)
+
 	-- third page
 	local page3 = NoobieDoge:addPage("Auto Farm", 5012544693)
 	local section1 = page3:addSection("Auto Farm")
@@ -508,12 +587,21 @@ local function BRebirth()
 		notify("Auto Farm: "..tostring(FARM),true)
 	end)
 
-	section2:addDropdown("Select Rock",{"Rock","LargeRock","LargerRock","Pillar","GoldRock","SilverPillar","LavaPillar","BeachPillar","FuryPillar"},function(R1)
-		print("Selected: " .. R1)
-		notify("Rock Selected: " .. R1)
-		RockSelected = R1
-	end)
-	RockSelected = "Rock"
+	if game.PlaceId == 1843184166 then
+		section2:addDropdown("Select Rock",{"Rock","LargeRock","LargerRock","Pillar","GoldRock","SilverPillar","LavaPillar","BeachPillar","FuryPillar"},function(R1)
+			print("Selected: " .. R1)
+			notify("Rock Selected: " .. R1)
+			RockSelected = R1
+		end)
+		RockSelected = "Rock"
+	elseif game.PlaceId == 1907744445 then
+		section2:addDropdown("Select Rock",{"LavaPillar","BeachPillar","CrackedPillar"},function(R1)
+			print("Selected: " .. R1)
+			notify("Rock Selected: " .. R1)
+			RockSelected = R1
+		end)
+		RockSelected = "CrackedPillar"
+	end
 
 	section2:addToggle("Spam R",false,function(bool)
 		SR = bool
@@ -543,33 +631,63 @@ local function BRebirth()
 	spawn(function()
 		while wait() do
 			if FARM then
-				if game:GetService("Workspace").beyblades:FindFirstChild(player.Name) then
-					player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").beyblades[player.Name].Torso.CFrame * CFrame.new(0, 1, 10) 
+				if game:GetService("Workspace").beyblades:FindFirstChild(player.Name) and game:GetService("Workspace").beyblades[player.Name]:FindFirstChild("Torso") then
+					repeat wait() until game:GetService("Workspace").beyblades:FindFirstChild(player.Name) and game:GetService("Workspace").beyblades[player.Name]:FindFirstChild("Torso")
+					player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").beyblades[player.Name].Torso.CFrame * CFrame.new(0, 1.5, 3) 
 					for i,v in pairs(game:GetService("Workspace").mobs:GetChildren()) do
 						if v.Name == RockSelected and v:FindFirstChild("Rock") then
 							if v.health.Value == 0 then LAUNCH() else
+								player.Character.HumanoidRootPart.CFrame = v.Rock.CFrame * CFrame.new(0, 6, 2.5)
 								--game:GetService("Workspace").beyblades[player.Name].Torso.CFrame = v.Rock.CFrame
 							end
 						elseif v.Name == RockSelected and v:FindFirstChild("Pillar") then
 							if v.health.Value == 0 then LAUNCH() else
+								player.Character.HumanoidRootPart.CFrame = v.Pillar.CFrame * CFrame.new(0, 11, 2)
 								--game:GetService("Workspace").beyblades[player.Name].Torso.CFrame = v.Pillar.CFrame
 							end
 						end
 					end
 				else
-					LAUNCH()
 					for i,v in pairs(game:GetService("Workspace").mobs:GetChildren()) do
 						if v.Name == RockSelected and v:FindFirstChild("Rock") then
-							repeat wait()
-								player.Character.HumanoidRootPart.CFrame = v.Rock.CFrame * CFrame.new(0, 6, 2.5) 
-							until game:GetService("Workspace").beyblades:FindFirstChild(player.Name)
+							player.Character.HumanoidRootPart.CFrame = v.Rock.CFrame * CFrame.new(0, 6, 2.5) 
 						elseif v.Name == RockSelected and v:FindFirstChild("Pillar") then
-							repeat wait()
-								player.Character.HumanoidRootPart.CFrame = v.Pillar.CFrame * CFrame.new(0, 6, 0) 
-							until game:GetService("Workspace").beyblades:FindFirstChild(player.Name)
+							player.Character.HumanoidRootPart.CFrame = v.Pillar.CFrame * CFrame.new(0, 11, 2) 
 						end
 					end
 					Noti1 = true
+				end
+			end
+		end
+	end)
+
+	spawn(function()
+		while wait() do
+			if FARM then
+				if not game:GetService("Workspace").beyblades:FindFirstChild(player.Name) then
+					repeat LAUNCH() wait(4)
+					until game:GetService("Workspace").beyblades:FindFirstChild(player.Name)
+				else
+					if SR then
+						local args = {[1] = "skill",[2] = 0,[3] = 1}
+						game:GetService("ReplicatedStorage").func:InvokeServer(unpack(args))
+					end
+					if ST then
+						local args = {[1] = "skill",[2] = 0,[3] = 2}
+						game:GetService("ReplicatedStorage").func:InvokeServer(unpack(args))
+					end
+					if SY then
+						local args = {[1] = "skill",[2] = 0,[3] = 3}
+						game:GetService("ReplicatedStorage").func:InvokeServer(unpack(args))
+					end
+					if SF then
+						local args = {[1] = "skill",[2] = 0,[3] = 4}
+						game:GetService("ReplicatedStorage").func:InvokeServer(unpack(args))
+					end
+					if SZ then
+						local args = {[1] = "awaken",[2] = 0}
+						game:GetService("ReplicatedStorage").func:InvokeServer(unpack(args))
+					end
 				end
 			end
 		end
@@ -635,8 +753,50 @@ local function BRebirth()
 		section1:addButton("Fury Pillars",function()
 			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-360, -3, -1280))
 		end)
+	elseif game.PlaceId == 1907744445 then
+		section1:addButton("Gate 1",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-260, 4, -875))
+		end)
+		section1:addButton("Gate 2",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-645, 4, 205))
+		end)
+
+		section1:addButton("WBBA",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(292, 5, -220))
+		end)
+		section1:addButton("Bit Shop",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(6, 5.5, 50))
+		end)
+
+		section1:addButton("Centre of the Map",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-5, 8, -210))
+		end)
+
+		section1:addButton("Statue",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-514, 68, -210))
+		end)
+		section1:addButton("Dumpster",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(493, 4, -538))
+		end)
+		section1:addButton("Beach",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(981, 4, 10))
+		end)
+		section1:addButton("Island",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(2164, 140, -118))
+		end)
+
+		section1:addButton("Lava Pillars",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-967, 3, -417))
+		end)
+		section1:addButton("Cracked Pillars",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(710, 3, -302))
+		end)
+
+		section1:addButton("WBBA Stadium",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(0, 515, -21))
+		end)
+
 	else
-		
 	end
 
 	section2:addButton("Adventure",function()
@@ -764,6 +924,10 @@ local function BRebirth()
 			AWAK = false
 			PIERCE = false
 			LUCK = false
+			BuySkills = false
+			BuyAwakenings = false
+			BuyDances = false
+			BuyLaunchers = false
 			FARM = false
 			SR = false
 			ST = false
