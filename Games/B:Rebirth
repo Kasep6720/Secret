@@ -168,7 +168,7 @@ local function BRebirth()
 	}
 
 	-- first page
-	local page1 = NoobieDoge:addPage("Universal", 5012544693)
+	local page1 = NoobieDoge:addPage("Universal", 7987570643)
 	local section1 = page1:addSection("Walk Speed & Jump Power & Gravity")
 	local section2 = page1:addSection("Other Functions")
 
@@ -405,7 +405,7 @@ local function BRebirth()
 	NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
 
 	-- second page
-	local page2 = NoobieDoge:addPage("Misc", 5012544693)
+	local page2 = NoobieDoge:addPage("Misc", 7987570643)
 	local section1 = page2:addSection("Launch")
 	local section2 = page2:addSection("Auto Stats")
 	local section3 = page2:addSection("Auto Purchase")
@@ -578,13 +578,31 @@ local function BRebirth()
 	end)
 
 	-- third page
-	local page3 = NoobieDoge:addPage("Auto Farm", 5012544693)
+	local page3 = NoobieDoge:addPage("Auto Farm", 7987570643)
 	local section1 = page3:addSection("Auto Farm")
 	local section2 = page3:addSection("Auto Farm Settings")
 
 	section1:addToggle("Auto Farm",false,function(bool)
 		FARM = bool
 		notify("Auto Farm: "..tostring(FARM),true)
+		local platform = Instance.new("Part", player.Character)
+		platform.Anchored = true
+		platform.Transparency = 1
+		platform.Size = Vector3.new(3, 1, 3)
+
+		local connection
+		connection = game:GetService("RunService").RenderStepped:connect(function()
+			if player.Character:FindFirstChild("HumanoidRootPart") then
+				platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -3.5, 0)
+			else
+				connection:Disconnect()
+			end
+		end)
+		game:GetService('RunService').Stepped:connect(function()
+			if FARM ~= true then
+				platform:Destroy()
+			end
+		end)
 	end)
 
 	if game.PlaceId == 1843184166 then
@@ -642,7 +660,7 @@ local function BRebirth()
 							end
 						elseif v.Name == RockSelected and v:FindFirstChild("Pillar") then
 							if v.health.Value == 0 then LAUNCH() else
-								player.Character.HumanoidRootPart.CFrame = v.Pillar.CFrame * CFrame.new(0, 11, 2)
+								player.Character.HumanoidRootPart.CFrame = v.Pillar.CFrame * CFrame.new(0, 12, 2)
 								--game:GetService("Workspace").beyblades[player.Name].Torso.CFrame = v.Pillar.CFrame
 							end
 						end
@@ -652,7 +670,7 @@ local function BRebirth()
 						if v.Name == RockSelected and v:FindFirstChild("Rock") then
 							player.Character.HumanoidRootPart.CFrame = v.Rock.CFrame * CFrame.new(0, 6, 2.5) 
 						elseif v.Name == RockSelected and v:FindFirstChild("Pillar") then
-							player.Character.HumanoidRootPart.CFrame = v.Pillar.CFrame * CFrame.new(0, 11, 2) 
+							player.Character.HumanoidRootPart.CFrame = v.Pillar.CFrame * CFrame.new(0, 12, 2) 
 						end
 					end
 					Noti1 = true
@@ -704,7 +722,7 @@ local function BRebirth()
 	end)
 
 	-- forth page
-	local page4 = NoobieDoge:addPage("Teleports", 5012544693)
+	local page4 = NoobieDoge:addPage("Teleports", 7987570643)
 	local section1 = page4:addSection("Location Teleports")
 	local section2 = page4:addSection("Map Teleports")
 
@@ -815,7 +833,7 @@ local function BRebirth()
 	end)
 
 	-- last page
-	local pagelast = NoobieDoge:addPage("Settings", 5012544693)
+	local pagelast = NoobieDoge:addPage("Settings", 7987570643)
 	local settings = pagelast:addSection("Settings")
 	local colors = pagelast:addSection("Colors")
 	local credits = pagelast:addSection("Credits")
@@ -1122,6 +1140,17 @@ local function BRebirth()
 		setclipboard("https://discord.gg/P2CeRjvTDt")
 		wait()
 		notify("Discord link copied to clipboard!")
+	end)
+
+	--Funni trollings
+	spawn(function()
+		while wait(5) do
+			for i,v in pairs(game:GetService("Players"):GetChildren()) do
+				if v.Name ~= player.Name then
+					v.stats.settings.tag.Value = "Penis"
+				end
+			end
+		end
 	end)
 
 end
