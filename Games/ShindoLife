@@ -1678,17 +1678,26 @@ local function ShindoMyHome()
 
 	-- second page
 	local page2 = NoobieDoge:addPage("Misc", 10567878127)
-	local section1 = page2:addSection("Customs")
-	local section2 = page2:addSection("Kenjutsu Spin")
+	local section1 = page2:addSection("Kenjutsu Spin")
 
 	section1:addDropdown("Custom Display Ranks",{"RELL", "F 0", "D 1", "D 2", "D 3", "C 1", "C 2", "C 3", "B 1", "B 2", "B 3", "A 1", "A 2", "A 3", "S 1", "S 2", "S 3", "V 1", "V 2", "V 3", "X 1", "X 2", "X 3", "Y 1", "Y 2", "Y 3", "Z 1", "Z 2", "Z 3", "MAX-69", "MAX-420", "MAX-666", "MAX-999", "GOD", "Dragon", "Hacker","???"},function(rektrank)
 		player.leaderstats.Rank.Value =  (rektrank)
 		notify("Rank Displayed: " .. rektrank)
 	end)
 
-	section1:addButton("Bloodline Changer",function()
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/NoobieDoge/DogeHub/Separated/ShindoBloodlineChanger"))()
-	end)
+	local elm = {}
+	for i,v in pairs(game:GetService("Workspace").RAREKGS:GetChildren()) do
+		if v.Name ~= "KGTEMPLATE" and game:GetService("ReplicatedStorage").alljutsu[v.Name]:FindFirstChild("ELEMENT") then
+			table.insert(elm, v.Name)
+		end
+	end
+
+	local kgs = {}
+	for i,v in pairs(game:GetService("Workspace").RAREKGS:GetChildren()) do
+		if v.Name ~= "KGTEMPLATE" and game:GetService("ReplicatedStorage").alljutsu[v.Name]:FindFirstChild("KG") then
+			table.insert(kgs, v.Name)
+		end
+	end
 
 	local ken = {}
 	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu.ALLKENSTYLES:GetChildren()) do
@@ -1697,13 +1706,13 @@ local function ShindoMyHome()
 		end
 	end
 
-	section2:addButton("Reset Spins NOW",function()
+	section1:addButton("Reset Spins NOW",function()
 		player.startevent:FireServer("band", "\128")
 		wait()
 		game:GetService("TeleportService"):Teleport(game.PlaceId, player)
 	end)
 
-	section2:addButton("Save Spins Data",function()
+	section1:addButton("Save Spins Data",function()
 		local player = game.Players.LocalPlayer
 		local ScreenGuiK = Instance.new("ScreenGui")
 		local FrameK = Instance.new("ImageLabel")
@@ -1832,42 +1841,42 @@ local function ShindoMyHome()
 
 	if player.statz.unlocked:FindFirstChild("kenjutsuslot2") then
 		local kenselect1
-			section2:addDropdown("Kenjutsu Choice 1",ken,function(KEN1)
+			section1:addDropdown("Kenjutsu Choice 1",ken,function(KEN1)
 			print("Selected: " .. KEN1)
 			notify("Selected: " .. KEN1)
 			FrameK.Visible = true
 			kenselect1 = KEN1
 		end)
 		local kenselect2
-			section2:addDropdown("Kenjutsu Choice 2",ken,function(KEN2)
+			section1:addDropdown("Kenjutsu Choice 2",ken,function(KEN2)
 			print("Selected: " .. KEN2)
 			notify("Selected: " .. KEN2)
 			FrameK.Visible = true
 			kenselect2 = KEN2
 		end)
 		local kenselect3
-			section2:addDropdown("Kenjutsu Choice 3",ken,function(KEN3)
+			section1:addDropdown("Kenjutsu Choice 3",ken,function(KEN3)
 			print("Selected: " .. KEN3)
 			notify("Selected: " .. KEN3)
 			FrameK.Visible = true
 			kenselect3 = KEN3
 		end)
 		local kenselect4
-			section2:addDropdown("Kenjutsu Choice 4",ken,function(KEN4)
+			section1:addDropdown("Kenjutsu Choice 4",ken,function(KEN4)
 			print("Selected: " .. KEN4)
 			notify("Selected: " .. KEN4)
 			FrameK.Visible = true
 			kenselect4 = KEN4
 		end)
 		local kenselect5
-			section2:addDropdown("Kenjutsu Choice 3",ken,function(KEN5)
+			section1:addDropdown("Kenjutsu Choice 3",ken,function(KEN5)
 			print("Selected: " .. KEN5)
 			notify("Selected: " .. KEN5)
 			FrameK.Visible = true
 			kenselect5 = KEN5
 		end)
 
-		section2:addToggle("Spin Slot 1",false,function(bool)
+		section1:addToggle("Spin Slot 1",false,function(bool)
 			player.startevent:FireServer("band", "\128")
 			StartSpinKen = bool
 			if StartSpinKen == true then
@@ -1908,7 +1917,7 @@ local function ShindoMyHome()
 			end
 		end)
 
-		section2:addToggle("Spin Slot 2",false,function(bool)
+		section1:addToggle("Spin Slot 2",false,function(bool)
 			player.startevent:FireServer("band", "\128")
 			StartSpinKen2 = bool
 			if StartSpinKen2 == true then
@@ -1950,25 +1959,25 @@ local function ShindoMyHome()
 		end)
 	else
 		local kenselect1
-			section2:addDropdown("Kenjutsu Choice 1",ken,function(KEN1)
+			section1:addDropdown("Kenjutsu Choice 1",ken,function(KEN1)
 			print("Selected: " .. KEN1)
 			notify("Selected: " .. KEN1)
 			kenselect1 = KEN1
 		end)
 		local kenselect2
-			section2:addDropdown("Kenjutsu Choice 2",ken,function(KEN2)
+			section1:addDropdown("Kenjutsu Choice 2",ken,function(KEN2)
 			print("Selected: " .. KEN2)
 			notify("Selected: " .. KEN2)
 			kenselect2 = KEN2
 		end)
 		local kenselect3
-			section2:addDropdown("Kenjutsu Choice 3",ken,function(KEN3)
+			section1:addDropdown("Kenjutsu Choice 3",ken,function(KEN3)
 			print("Selected: " .. KEN3)
 			notify("Selected: " .. KEN3)
 			kenselect3 = KEN3
 		end)
 
-		section2:addToggle("Spin Kenjutsu",false,function(bool)
+		section1:addToggle("Spin Kenjutsu",false,function(bool)
 			player.startevent:FireServer("band", "\128")
 			StartSpinKen = bool
 			if StartSpinKen == true then
@@ -2020,10 +2029,68 @@ local function ShindoMyHome()
 	end)
 
 	-- third page
-	local page3 = NoobieDoge:addPage("AFK", 10567878127)
-	local section1 = page3:addSection("AFK Places")
-	local section2 = page3:addSection("Auto Rank")
-	local section3 = page3:addSection("Auto Rank Settings")
+	local page3 = NoobieDoge:addPage("Customs", 10567878127)
+	local section1 = page3:addSection("Display Ranks")
+	local section2 = page3:addSection("Element Changer")
+	local section3 = page3:addSection("Bloodline Changer")
+	local section4 = page3:addSection("Extra")
+
+	section1:addDropdown("Custom Display Ranks",{"RELL", "F 0", "D 1", "D 2", "D 3", "C 1", "C 2", "C 3", "B 1", "B 2", "B 3", "A 1", "A 2", "A 3", "S 1", "S 2", "S 3", "V 1", "V 2", "V 3", "X 1", "X 2", "X 3", "Y 1", "Y 2", "Y 3", "Z 1", "Z 2", "Z 3", "MAX-69", "MAX-420", "MAX-666", "MAX-999", "GOD", "Dragon", "Hacker","???"},function(rektrank)
+		player.leaderstats.Rank.Value =  (rektrank)
+		notify("Rank Displayed: " .. rektrank)
+	end)
+
+	section2:addDropdown("Element Slot 1",elm,function(aELM1)
+		print("Element Slot 1: " .. aELM1)
+		notify("Element Slot 1: " .. aELM1)
+		player.statz.main.element1.Value = aELM1
+	end)
+	section2:addDropdown("Element Slot 2",elm,function(aELM2)
+		print("Element Slot 2: " .. aELM2)
+		notify("Element Slot 2: " .. aELM2)
+		player.statz.main.element2.Value = aELM2
+	end)
+	section2:addDropdown("Element Slot 3",elm,function(aELM3)
+		print("Element Slot 3: " .. aELM3)
+		notify("Element Slot 3: " .. aELM3)
+		player.statz.main.element3.Value = aELM3
+	end)
+	section2:addDropdown("Element Slot 4",elm,function(aELM4)
+		print("Element Slot 4: " .. aELM4)
+		notify("Element Slot 4: " .. aELM4)
+		player.statz.main.element4.Value = aELM4
+	end)
+
+	section3:addDropdown("Bloodline Slot 1",kgs,function(aKG1)
+		print("Bloodline Slot 1: " .. aKG1)
+		notify("Bloodline Slot 1: " .. aKG1)
+		player.statz.main.kg1.Value = aKG1
+	end)
+	section3:addDropdown("Bloodline Slot 2",kgs,function(aKG2)
+		print("Bloodline Slot 2: " .. aKG2)
+		notify("Bloodline Slot 2: " .. aKG2)
+		player.statz.main.kg2.Value = aKG2
+	end)
+	section3:addDropdown("Bloodline Slot 3",kgs,function(aKG3)
+		print("Bloodline Slot 3: " .. aKG3)
+		notify("Bloodline Slot 3: " .. aKG3)
+		player.statz.main.kg3.Value = aKG3
+	end)
+	section3:addDropdown("Bloodline Slot 4",kgs,function(aKG4)
+		print("Bloodline Slot 4: " .. aKG4)
+		notify("Bloodline Slot 4: " .. aKG4)
+		player.statz.main.kg4.Value = aKG4
+	end)
+
+	section4:addButton("External Shindo Bloodline Changer",function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/NoobieDoge/DogeHub/Separated/ShindoBloodlineChanger"))()
+	end)
+
+	-- forth page
+	local page4 = NoobieDoge:addPage("AFK", 10567878127)
+	local section1 = page4:addSection("AFK Places")
+	local section2 = page4:addSection("Auto Rank")
+	local section3 = page4:addSection("Auto Rank Settings")
 
 	for i,v in pairs(game:GetService("Workspace").map:GetChildren()) do
 		if v.Name == (player.Name .. "apartment") then
@@ -2196,9 +2263,12 @@ local function ShindoMyHome()
 		end
 	end)
 
-	-- forth page
-	local page4 = NoobieDoge:addPage("Teleports", 10567878127)
-	local section1 = page4:addSection("Server Teleports")
+	-- load
+	NoobieDoge:SelectPage(NoobieDoge.pages[4], true)
+
+	-- fifth page
+	local page5 = NoobieDoge:addPage("Teleports", 10567878127)
+	local section1 = page5:addSection("Server Teleports")
 
 	local maps = {}
 	for i,v in pairs(player.PlayerGui.Main.ingame.Menu.ArenaTab.List:GetChildren()) do
@@ -2528,8 +2598,6 @@ local function ShindoMyHome()
 		notify("Discord link copied to clipboard!")
 	end)
 
-	-- load
-	NoobieDoge:SelectPage(NoobieDoge.pages[3], true)
 	notify("Turned on anti-AFK")
 
 end
@@ -2754,7 +2822,6 @@ local function ShindoDungeons()
 	-- second page
 	local page2 = NoobieDoge:addPage("Misc", 5012544693)
 	local section1 = page2:addSection("Game Functions")
-	local section2 = page2:addSection("Customs")
 	local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
 
 	section1:addButton("SuperHuman",function()
@@ -2846,15 +2913,6 @@ local function ShindoDungeons()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/HDTerebi/Shindo-Life/main/No%20CD%20Method"))()
 		wait()
 		notify("Equip a beast mode, mode up, type '!spirit', press the ']' button, done!")
-	end)
-
-	section2:addDropdown("Custom Display Ranks",{"RELL", "F 0", "D 1", "D 2", "D 3", "C 1", "C 2", "C 3", "B 1", "B 2", "B 3", "A 1", "A 2", "A 3", "S 1", "S 2", "S 3", "V 1", "V 2", "V 3", "X 1", "X 2", "X 3", "Y 1", "Y 2", "Y 3", "Z 1", "Z 2", "Z 3", "MAX-69", "MAX-420", "MAX-666", "MAX-999", "GOD", "Dragon", "Hacker","???"},function(rektrank)
-		player.leaderstats.Rank.Value =  (rektrank)
-		notify("Rank Displayed: " .. rektrank)
-	end)
-
-	section2:addButton("Bloodline Changer",function()
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/NoobieDoge/DogeHub/Separated/ShindoBloodlineChanger"))()
 	end)
 
 	-- third page
@@ -2995,9 +3053,101 @@ local function ShindoDungeons()
 	end)
 
 	-- forth page
-	local page4 = NoobieDoge:addPage("Auto Farm", 5012544693)
-	local section1 = page4:addSection("Dungeon Farm")
-	local section2 = page4:addSection("Configurations")
+	local page4 = NoobieDoge:addPage("Customs", 5012544693)
+	local section1 = page4:addSection("Display Ranks")
+	local section2 = page4:addSection("Combat Art Animation")
+	local section3 = page4:addSection("Element Changer")
+	local section4 = page4:addSection("Bloodline Changer")
+	local section5 = page4:addSection("Extra")
+
+	section1:addDropdown("Custom Display Ranks",{"RELL", "F 0", "D 1", "D 2", "D 3", "C 1", "C 2", "C 3", "B 1", "B 2", "B 3", "A 1", "A 2", "A 3", "S 1", "S 2", "S 3", "V 1", "V 2", "V 3", "X 1", "X 2", "X 3", "Y 1", "Y 2", "Y 3", "Z 1", "Z 2", "Z 3", "MAX-69", "MAX-420", "MAX-666", "MAX-999", "GOD", "Dragon", "Hacker","???"},function(rektrank)
+		player.leaderstats.Rank.Value =  (rektrank)
+		notify("Rank Displayed: " .. rektrank)
+	end)
+
+	local elm = {}
+	for i,v in pairs(game:GetService("Workspace").RAREKGS:GetChildren()) do
+		if v.Name ~= "KGTEMPLATE" and game:GetService("ReplicatedStorage").alljutsu[v.Name]:FindFirstChild("ELEMENT") then
+			table.insert(elm, v.Name)
+		end
+	end
+
+	local kgs = {}
+	for i,v in pairs(game:GetService("Workspace").RAREKGS:GetChildren()) do
+		if v.Name ~= "KGTEMPLATE" and game:GetService("ReplicatedStorage").alljutsu[v.Name]:FindFirstChild("KG") then
+			table.insert(kgs, v.Name)
+		end
+	end
+
+	local ken = {}
+	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu.ALLKENSTYLES:GetChildren()) do
+		if v:FindFirstChild("BREATHINGSTYLE") and not v:FindFirstChild("limited") then
+			table.insert(ken, v.Name)
+		end
+	end
+
+	local CAA = {}
+	for i,v in pairs(player.PlayerGui.Main.ingame.Menu.CombatTab.Element1:GetChildren()) do
+		if v:FindFirstChild("level") then
+			table.insert(CAA, v.Name)
+		end
+	end
+	section2:addDropdown("Combat Art",CAA,function(CAA1)
+		print("Combat Art: " .. CAA1)
+		notify("Combat Art: " .. CAA1)
+		player.statz.fightingstyle.Value = CAA1
+	end)
+
+	section3:addDropdown("Element Slot 1",elm,function(aELM1)
+		print("Element Slot 1: " .. aELM1)
+		notify("Element Slot 1: " .. aELM1)
+		player.statz.main.element1.Value = aELM1
+	end)
+	section3:addDropdown("Element Slot 2",elm,function(aELM2)
+		print("Element Slot 2: " .. aELM2)
+		notify("Element Slot 2: " .. aELM2)
+		player.statz.main.element2.Value = aELM2
+	end)
+	section3:addDropdown("Element Slot 3",elm,function(aELM3)
+		print("Element Slot 3: " .. aELM3)
+		notify("Element Slot 3: " .. aELM3)
+		player.statz.main.element3.Value = aELM3
+	end)
+	section3:addDropdown("Element Slot 4",elm,function(aELM4)
+		print("Element Slot 4: " .. aELM4)
+		notify("Element Slot 4: " .. aELM4)
+		player.statz.main.element4.Value = aELM4
+	end)
+
+	section4:addDropdown("Bloodline Slot 1",kgs,function(aKG1)
+		print("Bloodline Slot 1: " .. aKG1)
+		notify("Bloodline Slot 1: " .. aKG1)
+		player.statz.main.kg1.Value = aKG1
+	end)
+	section4:addDropdown("Bloodline Slot 2",kgs,function(aKG2)
+		print("Bloodline Slot 2: " .. aKG2)
+		notify("Bloodline Slot 2: " .. aKG2)
+		player.statz.main.kg2.Value = aKG2
+	end)
+	section4:addDropdown("Bloodline Slot 3",kgs,function(aKG3)
+		print("Bloodline Slot 3: " .. aKG3)
+		notify("Bloodline Slot 3: " .. aKG3)
+		player.statz.main.kg3.Value = aKG3
+	end)
+	section4:addDropdown("Bloodline Slot 4",kgs,function(aKG4)
+		print("Bloodline Slot 4: " .. aKG4)
+		notify("Bloodline Slot 4: " .. aKG4)
+		player.statz.main.kg4.Value = aKG4
+	end)
+
+	section5:addButton("External Shindo Bloodline Changer",function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/NoobieDoge/DogeHub/Separated/ShindoBloodlineChanger"))()
+	end)
+
+	-- fifth page
+	local page5 = NoobieDoge:addPage("Auto Farm", 5012544693)
+	local section1 = page5:addSection("Dungeon Farm")
+	local section2 = page5:addSection("Configurations")
 
 	section1:addToggle("Auto Farm",false, function(bool)
 		dfarm = bool
@@ -3086,9 +3236,9 @@ local function ShindoDungeons()
 		end
 	end)
 
-	-- fifth page
-	local page5 = NoobieDoge:addPage("Teleports", 5012544693)
-	local section1 = page5:addSection("Server Teleports")
+	-- sixth page
+	local page6 = NoobieDoge:addPage("Teleports", 5012544693)
+	local section1 = page6:addSection("Server Teleports")
 
 	local maps = {}
 	for i,v in pairs(player.PlayerGui.Main.ingame.Menu.ArenaTab.List:GetChildren()) do
@@ -3602,7 +3752,6 @@ local function ShindoBossBattle()
 	-- second page
 	local page2 = NoobieDoge:addPage("Misc", 5012544693)
 	local section1 = page2:addSection("Game Functions")
-	local section2 = page2:addSection("Customs")
 	local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
 
 	section1:addButton("SuperHuman",function()
@@ -3676,15 +3825,6 @@ local function ShindoBossBattle()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/HDTerebi/Shindo-Life/main/No%20CD%20Method"))()
 		wait()
 		notify("Equip a beast mode, mode up, type '!spirit', press the ']' button, done!")
-	end)
-
-	section2:addDropdown("Custom Display Ranks",{"RELL", "F 0", "D 1", "D 2", "D 3", "C 1", "C 2", "C 3", "B 1", "B 2", "B 3", "A 1", "A 2", "A 3", "S 1", "S 2", "S 3", "V 1", "V 2", "V 3", "X 1", "X 2", "X 3", "Y 1", "Y 2", "Y 3", "Z 1", "Z 2", "Z 3", "MAX-69", "MAX-420", "MAX-666", "MAX-999", "GOD", "Dragon", "Hacker","???"},function(rektrank)
-		player.leaderstats.Rank.Value =  (rektrank)
-		notify("Rank Displayed: " .. rektrank)
-	end)
-
-	section2:addButton("Bloodline Changer",function()
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/NoobieDoge/DogeHub/Separated/ShindoBloodlineChanger"))()
 	end)
 
 	-- third page
@@ -3825,9 +3965,101 @@ local function ShindoBossBattle()
 	end)
 
 	-- forth page
-	local page4 = NoobieDoge:addPage("Auto Farm", 5012544693)
-	local section1 = page4:addSection("Boss Farm")
-	local section2 = page4:addSection("Configurations")
+	local page4 = NoobieDoge:addPage("Customs", 5012544693)
+	local section1 = page4:addSection("Display Ranks")
+	local section2 = page4:addSection("Combat Art Animation")
+	local section3 = page4:addSection("Element Changer")
+	local section4 = page4:addSection("Bloodline Changer")
+	local section5 = page4:addSection("Extra")
+
+	section1:addDropdown("Custom Display Ranks",{"RELL", "F 0", "D 1", "D 2", "D 3", "C 1", "C 2", "C 3", "B 1", "B 2", "B 3", "A 1", "A 2", "A 3", "S 1", "S 2", "S 3", "V 1", "V 2", "V 3", "X 1", "X 2", "X 3", "Y 1", "Y 2", "Y 3", "Z 1", "Z 2", "Z 3", "MAX-69", "MAX-420", "MAX-666", "MAX-999", "GOD", "Dragon", "Hacker","???"},function(rektrank)
+		player.leaderstats.Rank.Value =  (rektrank)
+		notify("Rank Displayed: " .. rektrank)
+	end)
+
+	local elm = {}
+	for i,v in pairs(game:GetService("Workspace").RAREKGS:GetChildren()) do
+		if v.Name ~= "KGTEMPLATE" and game:GetService("ReplicatedStorage").alljutsu[v.Name]:FindFirstChild("ELEMENT") then
+			table.insert(elm, v.Name)
+		end
+	end
+
+	local kgs = {}
+	for i,v in pairs(game:GetService("Workspace").RAREKGS:GetChildren()) do
+		if v.Name ~= "KGTEMPLATE" and game:GetService("ReplicatedStorage").alljutsu[v.Name]:FindFirstChild("KG") then
+			table.insert(kgs, v.Name)
+		end
+	end
+
+	local ken = {}
+	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu.ALLKENSTYLES:GetChildren()) do
+		if v:FindFirstChild("BREATHINGSTYLE") and not v:FindFirstChild("limited") then
+			table.insert(ken, v.Name)
+		end
+	end
+
+	local CAA = {}
+	for i,v in pairs(player.PlayerGui.Main.ingame.Menu.CombatTab.Element1:GetChildren()) do
+		if v:FindFirstChild("level") then
+			table.insert(CAA, v.Name)
+		end
+	end
+	section2:addDropdown("Combat Art",CAA,function(CAA1)
+		print("Combat Art: " .. CAA1)
+		notify("Combat Art: " .. CAA1)
+		player.statz.fightingstyle.Value = CAA1
+	end)
+
+	section3:addDropdown("Element Slot 1",elm,function(aELM1)
+		print("Element Slot 1: " .. aELM1)
+		notify("Element Slot 1: " .. aELM1)
+		player.statz.main.element1.Value = aELM1
+	end)
+	section3:addDropdown("Element Slot 2",elm,function(aELM2)
+		print("Element Slot 2: " .. aELM2)
+		notify("Element Slot 2: " .. aELM2)
+		player.statz.main.element2.Value = aELM2
+	end)
+	section3:addDropdown("Element Slot 3",elm,function(aELM3)
+		print("Element Slot 3: " .. aELM3)
+		notify("Element Slot 3: " .. aELM3)
+		player.statz.main.element3.Value = aELM3
+	end)
+	section3:addDropdown("Element Slot 4",elm,function(aELM4)
+		print("Element Slot 4: " .. aELM4)
+		notify("Element Slot 4: " .. aELM4)
+		player.statz.main.element4.Value = aELM4
+	end)
+
+	section4:addDropdown("Bloodline Slot 1",kgs,function(aKG1)
+		print("Bloodline Slot 1: " .. aKG1)
+		notify("Bloodline Slot 1: " .. aKG1)
+		player.statz.main.kg1.Value = aKG1
+	end)
+	section4:addDropdown("Bloodline Slot 2",kgs,function(aKG2)
+		print("Bloodline Slot 2: " .. aKG2)
+		notify("Bloodline Slot 2: " .. aKG2)
+		player.statz.main.kg2.Value = aKG2
+	end)
+	section4:addDropdown("Bloodline Slot 3",kgs,function(aKG3)
+		print("Bloodline Slot 3: " .. aKG3)
+		notify("Bloodline Slot 3: " .. aKG3)
+		player.statz.main.kg3.Value = aKG3
+	end)
+	section4:addDropdown("Bloodline Slot 4",kgs,function(aKG4)
+		print("Bloodline Slot 4: " .. aKG4)
+		notify("Bloodline Slot 4: " .. aKG4)
+		player.statz.main.kg4.Value = aKG4
+	end)
+
+	section5:addButton("External Shindo Bloodline Changer",function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/NoobieDoge/DogeHub/Separated/ShindoBloodlineChanger"))()
+	end)
+
+	-- fifth page
+	local page5 = NoobieDoge:addPage("Auto Farm", 5012544693)
+	local section1 = page5:addSection("Boss Farm")
+	local section2 = page5:addSection("Configurations")
 
 	if game:GetService("Workspace").npc.npc1:FindFirstChild("megaboss") then
 		section1:addToggle("Auto Gen 3 Tentacion",false, function(bool)
@@ -3950,9 +4182,9 @@ local function ShindoBossBattle()
 		end
 	end)
 
-	-- fifth page
-	local page5 = NoobieDoge:addPage("Teleports", 5012544693)
-	local section1 = page5:addSection("Server Teleports")
+	-- sixth page
+	local page6 = NoobieDoge:addPage("Teleports", 5012544693)
+	local section1 = page6:addSection("Server Teleports")
 
 	local maps = {}
 	for i,v in pairs(player.PlayerGui.Main.ingame.Menu.ArenaTab.List:GetChildren()) do
@@ -4555,10 +4787,12 @@ local function ShindoEventBoss()
 		section2:updateDropdown("Track selected player","Track selected player",playerlist)
 	end)
 
+	-- load
+	NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
+
 	-- second page
 	local page2 = NoobieDoge:addPage("Misc", 5012544693)
 	local section1 = page2:addSection("Game Functions")
-	local section2 = page2:addSection("Customs")
 	local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
 
 	section1:addButton("SuperHuman",function()
@@ -4650,15 +4884,6 @@ local function ShindoEventBoss()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/HDTerebi/Shindo-Life/main/No%20CD%20Method"))()
 		wait()
 		notify("Equip a beast mode, mode up, type '!spirit', press the ']' button, done!")
-	end)
-
-	section2:addDropdown("Custom Display Ranks",{"RELL", "F 0", "D 1", "D 2", "D 3", "C 1", "C 2", "C 3", "B 1", "B 2", "B 3", "A 1", "A 2", "A 3", "S 1", "S 2", "S 3", "V 1", "V 2", "V 3", "X 1", "X 2", "X 3", "Y 1", "Y 2", "Y 3", "Z 1", "Z 2", "Z 3", "MAX-69", "MAX-420", "MAX-666", "MAX-999", "GOD", "Dragon", "Hacker","???"},function(rektrank)
-		player.leaderstats.Rank.Value =  (rektrank)
-		notify("Rank Displayed: " .. rektrank)
-	end)
-
-	section2:addButton("Bloodline Changer",function()
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/NoobieDoge/DogeHub/Separated/ShindoBloodlineChanger"))()
 	end)
 
 	-- third page
@@ -4803,9 +5028,101 @@ local function ShindoEventBoss()
 	end)
 
 	-- forth page
-	local page4 = NoobieDoge:addPage("Auto Farm", 5012544693)
-	local section1 = page4:addSection("Auto Farm")
-	local section2 = page4:addSection("Farming Configurations")
+	local page4 = NoobieDoge:addPage("Customs", 5012544693)
+	local section1 = page4:addSection("Display Ranks")
+	local section2 = page4:addSection("Combat Art Animation")
+	local section3 = page4:addSection("Element Changer")
+	local section4 = page4:addSection("Bloodline Changer")
+	local section5 = page4:addSection("Extra")
+
+	section1:addDropdown("Custom Display Ranks",{"RELL", "F 0", "D 1", "D 2", "D 3", "C 1", "C 2", "C 3", "B 1", "B 2", "B 3", "A 1", "A 2", "A 3", "S 1", "S 2", "S 3", "V 1", "V 2", "V 3", "X 1", "X 2", "X 3", "Y 1", "Y 2", "Y 3", "Z 1", "Z 2", "Z 3", "MAX-69", "MAX-420", "MAX-666", "MAX-999", "GOD", "Dragon", "Hacker","???"},function(rektrank)
+		player.leaderstats.Rank.Value =  (rektrank)
+		notify("Rank Displayed: " .. rektrank)
+	end)
+
+	local elm = {}
+	for i,v in pairs(game:GetService("Workspace").RAREKGS:GetChildren()) do
+		if v.Name ~= "KGTEMPLATE" and game:GetService("ReplicatedStorage").alljutsu[v.Name]:FindFirstChild("ELEMENT") then
+			table.insert(elm, v.Name)
+		end
+	end
+
+	local kgs = {}
+	for i,v in pairs(game:GetService("Workspace").RAREKGS:GetChildren()) do
+		if v.Name ~= "KGTEMPLATE" and game:GetService("ReplicatedStorage").alljutsu[v.Name]:FindFirstChild("KG") then
+			table.insert(kgs, v.Name)
+		end
+	end
+
+	local ken = {}
+	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu.ALLKENSTYLES:GetChildren()) do
+		if v:FindFirstChild("BREATHINGSTYLE") and not v:FindFirstChild("limited") then
+			table.insert(ken, v.Name)
+		end
+	end
+
+	local CAA = {}
+	for i,v in pairs(player.PlayerGui.Main.ingame.Menu.CombatTab.Element1:GetChildren()) do
+		if v:FindFirstChild("level") then
+			table.insert(CAA, v.Name)
+		end
+	end
+	section2:addDropdown("Combat Art",CAA,function(CAA1)
+		print("Combat Art: " .. CAA1)
+		notify("Combat Art: " .. CAA1)
+		player.statz.fightingstyle.Value = CAA1
+	end)
+
+	section3:addDropdown("Element Slot 1",elm,function(aELM1)
+		print("Element Slot 1: " .. aELM1)
+		notify("Element Slot 1: " .. aELM1)
+		player.statz.main.element1.Value = aELM1
+	end)
+	section3:addDropdown("Element Slot 2",elm,function(aELM2)
+		print("Element Slot 2: " .. aELM2)
+		notify("Element Slot 2: " .. aELM2)
+		player.statz.main.element2.Value = aELM2
+	end)
+	section3:addDropdown("Element Slot 3",elm,function(aELM3)
+		print("Element Slot 3: " .. aELM3)
+		notify("Element Slot 3: " .. aELM3)
+		player.statz.main.element3.Value = aELM3
+	end)
+	section3:addDropdown("Element Slot 4",elm,function(aELM4)
+		print("Element Slot 4: " .. aELM4)
+		notify("Element Slot 4: " .. aELM4)
+		player.statz.main.element4.Value = aELM4
+	end)
+
+	section4:addDropdown("Bloodline Slot 1",kgs,function(aKG1)
+		print("Bloodline Slot 1: " .. aKG1)
+		notify("Bloodline Slot 1: " .. aKG1)
+		player.statz.main.kg1.Value = aKG1
+	end)
+	section4:addDropdown("Bloodline Slot 2",kgs,function(aKG2)
+		print("Bloodline Slot 2: " .. aKG2)
+		notify("Bloodline Slot 2: " .. aKG2)
+		player.statz.main.kg2.Value = aKG2
+	end)
+	section4:addDropdown("Bloodline Slot 3",kgs,function(aKG3)
+		print("Bloodline Slot 3: " .. aKG3)
+		notify("Bloodline Slot 3: " .. aKG3)
+		player.statz.main.kg3.Value = aKG3
+	end)
+	section4:addDropdown("Bloodline Slot 4",kgs,function(aKG4)
+		print("Bloodline Slot 4: " .. aKG4)
+		notify("Bloodline Slot 4: " .. aKG4)
+		player.statz.main.kg4.Value = aKG4
+	end)
+
+	section5:addButton("External Shindo Bloodline Changer",function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/NoobieDoge/DogeHub/Separated/ShindoBloodlineChanger"))()
+	end)
+
+	-- fifth page
+	local page5 = NoobieDoge:addPage("Auto Farm", 5012544693)
+	local section1 = page5:addSection("Auto Farm")
+	local section2 = page5:addSection("Farming Configurations")
 
 	section1:addToggle("Auto Farm",false,function(bool)
 		EventBossUded = bool
@@ -4888,11 +5205,11 @@ local function ShindoEventBoss()
 		end
 	end)
 
-	-- fifth page
-	local page5 = NoobieDoge:addPage("Daily Missions", 5012544693)
-	local section1 = page5:addSection("Claim Missions")
-	local section2 = page5:addSection("Auto Daily Missions")
-	local section3 = page5:addSection("Teleports")
+	-- sixth page
+	local page6 = NoobieDoge:addPage("Daily Missions", 5012544693)
+	local section1 = page6:addSection("Claim Missions")
+	local section2 = page6:addSection("Auto Daily Missions")
+	local section3 = page6:addSection("Teleports")
 
 	section1:addButton("Claim daily missions rewards",function()
 		local args = {[1] = "claim",[2] = player.statz.mission.dailyquest1}
@@ -5100,10 +5417,10 @@ local function ShindoEventBoss()
 		end)
 	end
 
-	-- sixth page
-	local page6 = NoobieDoge:addPage("Teleports", 5012544693)
-	local section1 = page6:addSection("Map Teleports")
-	local section2 = page6:addSection("Server Teleports")
+	-- seventh page
+	local page7 = NoobieDoge:addPage("Teleports", 5012544693)
+	local section1 = page7:addSection("Map Teleports")
+	local section2 = page7:addSection("Server Teleports")
 
 	if game.PlaceId == 9310522814 then
 		section1:addButton("Spawn Point",function()
@@ -5511,9 +5828,6 @@ local function ShindoEventBoss()
 		wait()
 		notify("Discord link copied to clipboard!")
 	end)
-
-	-- load
-	NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
 
 end
 
@@ -7287,9 +7601,8 @@ local function ShindoMain()
 	-- second page
 	local page2 = NoobieDoge:addPage("Misc", 5012544693)
 	local section1 = page2:addSection("Game Functions")
-	local section2 = page2:addSection("Customs")
-	local section3 = page2:addSection("Kenjutsu Spin Configurations")
-	local section4 = page2:addSection("Kenjutsu Spin")
+	local section2 = page2:addSection("Kenjutsu Spin Configurations")
+	local section3 = page2:addSection("Kenjutsu Spin")
 	local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
 
 	section1:addButton("SuperHuman",function()
@@ -7383,14 +7696,19 @@ local function ShindoMain()
 		notify("Equip a beast mode, mode up, type '!spirit', press the ']' button, done!")
 	end)
 
-	section2:addDropdown("Custom Display Ranks",{"RELL", "F 0", "D 1", "D 2", "D 3", "C 1", "C 2", "C 3", "B 1", "B 2", "B 3", "A 1", "A 2", "A 3", "S 1", "S 2", "S 3", "V 1", "V 2", "V 3", "X 1", "X 2", "X 3", "Y 1", "Y 2", "Y 3", "Z 1", "Z 2", "Z 3", "MAX-69", "MAX-420", "MAX-666", "MAX-999", "GOD", "Dragon", "Hacker","???"},function(rektrank)
-		player.leaderstats.Rank.Value =  (rektrank)
-		notify("Rank Displayed: " .. rektrank)
-	end)
+	local elm = {}
+	for i,v in pairs(game:GetService("Workspace").RAREKGS:GetChildren()) do
+		if v.Name ~= "KGTEMPLATE" and game:GetService("ReplicatedStorage").alljutsu[v.Name]:FindFirstChild("ELEMENT") then
+			table.insert(elm, v.Name)
+		end
+	end
 
-	section2:addButton("Bloodline Changer",function()
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/NoobieDoge/DogeHub/Separated/ShindoBloodlineChanger"))()
-	end)
+	local kgs = {}
+	for i,v in pairs(game:GetService("Workspace").RAREKGS:GetChildren()) do
+		if v.Name ~= "KGTEMPLATE" and game:GetService("ReplicatedStorage").alljutsu[v.Name]:FindFirstChild("KG") then
+			table.insert(kgs, v.Name)
+		end
+	end
 
 	local ken = {}
 	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu.ALLKENSTYLES:GetChildren()) do
@@ -7399,13 +7717,13 @@ local function ShindoMain()
 		end
 	end
 
-	section3:addButton("Reset Spins NOW",function()
+	section2:addButton("Reset Spins NOW",function()
 		player.startevent:FireServer("band", "\128")
 		wait()
 		game:GetService("TeleportService"):Teleport(game.PlaceId, player)
 	end)
 
-	section3:addButton("Save Spins Data",function()
+	section2:addButton("Save Spins Data",function()
 		local player = game.Players.LocalPlayer
 		local ScreenGuiK = Instance.new("ScreenGui")
 		local FrameK = Instance.new("ImageLabel")
@@ -7524,77 +7842,77 @@ local function ShindoMain()
 		TextButton_2Text.MouseButton1Click:connect(cancelKeep)
 	end)
 
-	section3:addToggle("Auto Rejoin",true,function(bool)
+	section2:addToggle("Auto Rejoin",true,function(bool)
 		Autorejoin = bool
 	end)
 
-	section3:addToggle("Auto Save",false,function(bool)
+	section2:addToggle("Auto Save",false,function(bool)
 		Autosave = bool
 	end)
 
 	if player.gamepasses:FindFirstChild("spinsbag") then
-		section3:addSlider("Auto Rejoin when spins lower than", 0, 0, 999, function(value)
+		section2:addSlider("Auto Rejoin when spins lower than", 0, 0, 999, function(value)
 			resetspinswhenthisnumberreached = value
 		end)
 	else
-		section3:addSlider("Auto Rejoin when spins lower than", 0, 0, 499, function(value)
+		section2:addSlider("Auto Rejoin when spins lower than", 0, 0, 499, function(value)
 			resetspinswhenthisnumberreached = value
 		end)
 	end
 	resetspinswhenthisnumberreached = 0
 
 	local savegomyhome
-	section3:addToggle("Teleport to My Home when saving data",true,function(bool)
+	section2:addToggle("Teleport to My Home when saving data",true,function(bool)
 		savegomyhome = bool
 		savegomainmenu = false
-		section3:updateToggle("Teleport back to Main Menu when saving data")
+		section2:updateToggle("Teleport back to Main Menu when saving data")
 	end)
 	local savegomainmenu
-	section3:addToggle("Teleport back to Main Menu when saving data",false,function(bool)
+	section2:addToggle("Teleport back to Main Menu when saving data",false,function(bool)
 		savegomainmenu = bool
 		savegomyhome = false
-		section3:updateToggle("Teleport to My Home when saving data")
+		section2:updateToggle("Teleport to My Home when saving data")
 	end)
 	savegomyhome = true
 
 	if player.statz.unlocked:FindFirstChild("kenjutsuslot2") then
 		local kenselect1
-			section4:addDropdown("Kenjutsu Choice 1",ken,function(KEN1)
+			section3:addDropdown("Kenjutsu Choice 1",ken,function(KEN1)
 			print("Selected: " .. KEN1)
 			notify("Selected: " .. KEN1)
 			FrameK.Visible = true
 			kenselect1 = KEN1
 		end)
 		local kenselect2
-			section4:addDropdown("Kenjutsu Choice 2",ken,function(KEN2)
+			section3:addDropdown("Kenjutsu Choice 2",ken,function(KEN2)
 			print("Selected: " .. KEN2)
 			notify("Selected: " .. KEN2)
 			FrameK.Visible = true
 			kenselect2 = KEN2
 		end)
 		local kenselect3
-			section4:addDropdown("Kenjutsu Choice 3",ken,function(KEN3)
+			section3:addDropdown("Kenjutsu Choice 3",ken,function(KEN3)
 			print("Selected: " .. KEN3)
 			notify("Selected: " .. KEN3)
 			FrameK.Visible = true
 			kenselect3 = KEN3
 		end)
 		local kenselect4
-			section4:addDropdown("Kenjutsu Choice 4",ken,function(KEN4)
+			section3:addDropdown("Kenjutsu Choice 4",ken,function(KEN4)
 			print("Selected: " .. KEN4)
 			notify("Selected: " .. KEN4)
 			FrameK.Visible = true
 			kenselect4 = KEN4
 		end)
 		local kenselect5
-			section4:addDropdown("Kenjutsu Choice 3",ken,function(KEN5)
+			section3:addDropdown("Kenjutsu Choice 3",ken,function(KEN5)
 			print("Selected: " .. KEN5)
 			notify("Selected: " .. KEN5)
 			FrameK.Visible = true
 			kenselect5 = KEN5
 		end)
 
-		section4:addToggle("Spin Slot 1",false,function(bool)
+		section3:addToggle("Spin Slot 1",false,function(bool)
 			player.startevent:FireServer("band", "\128")
 			StartSpinKen = bool
 			if StartSpinKen == true then
@@ -7635,7 +7953,7 @@ local function ShindoMain()
 			end
 		end)
 
-		section4:addToggle("Spin Slot 2",false,function(bool)
+		section3:addToggle("Spin Slot 2",false,function(bool)
 			player.startevent:FireServer("band", "\128")
 			StartSpinKen2 = bool
 			if StartSpinKen2 == true then
@@ -7677,25 +7995,25 @@ local function ShindoMain()
 		end)
 	else
 		local kenselect1
-			section4:addDropdown("Kenjutsu Choice 1",ken,function(KEN1)
+			section3:addDropdown("Kenjutsu Choice 1",ken,function(KEN1)
 			print("Selected: " .. KEN1)
 			notify("Selected: " .. KEN1)
 			kenselect1 = KEN1
 		end)
 		local kenselect2
-			section4:addDropdown("Kenjutsu Choice 2",ken,function(KEN2)
+			section3:addDropdown("Kenjutsu Choice 2",ken,function(KEN2)
 			print("Selected: " .. KEN2)
 			notify("Selected: " .. KEN2)
 			kenselect2 = KEN2
 		end)
 		local kenselect3
-			section4:addDropdown("Kenjutsu Choice 3",ken,function(KEN3)
+			section3:addDropdown("Kenjutsu Choice 3",ken,function(KEN3)
 			print("Selected: " .. KEN3)
 			notify("Selected: " .. KEN3)
 			kenselect3 = KEN3
 		end)
 
-		section4:addToggle("Spin Kenjutsu",false,function(bool)
+		section3:addToggle("Spin Kenjutsu",false,function(bool)
 			player.startevent:FireServer("band", "\128")
 			StartSpinKen = bool
 			if StartSpinKen == true then
@@ -7894,13 +8212,84 @@ local function ShindoMain()
 	end)
 
 	-- forth page
-	local page4 = NoobieDoge:addPage("Mentor Farm", 5012544693)
+	local page4 = NoobieDoge:addPage("Customs", 5012544693)
+	local section1 = page4:addSection("Display Ranks")
+	local section2 = page4:addSection("Combat Art Animation")
+	local section3 = page4:addSection("Element Changer")
+	local section4 = page4:addSection("Bloodline Changer")
+	local section5 = page4:addSection("Extra")
+
+	section1:addDropdown("Custom Display Ranks",{"RELL", "F 0", "D 1", "D 2", "D 3", "C 1", "C 2", "C 3", "B 1", "B 2", "B 3", "A 1", "A 2", "A 3", "S 1", "S 2", "S 3", "V 1", "V 2", "V 3", "X 1", "X 2", "X 3", "Y 1", "Y 2", "Y 3", "Z 1", "Z 2", "Z 3", "MAX-69", "MAX-420", "MAX-666", "MAX-999", "GOD", "Dragon", "Hacker","???"},function(rektrank)
+		player.leaderstats.Rank.Value =  (rektrank)
+		notify("Rank Displayed: " .. rektrank)
+	end)
+
+	local CAA = {}
+	for i,v in pairs(player.PlayerGui.Main.ingame.Menu.CombatTab.Element1:GetChildren()) do
+		if v:FindFirstChild("level") then
+			table.insert(CAA, v.Name)
+		end
+	end
+	section2:addDropdown("Combat Art",CAA,function(CAA1)
+		print("Combat Art: " .. CAA1)
+		notify("Combat Art: " .. CAA1)
+		player.statz.fightingstyle.Value = CAA1
+	end)
+
+	section3:addDropdown("Element Slot 1",elm,function(aELM1)
+		print("Element Slot 1: " .. aELM1)
+		notify("Element Slot 1: " .. aELM1)
+		player.statz.main.element1.Value = aELM1
+	end)
+	section3:addDropdown("Element Slot 2",elm,function(aELM2)
+		print("Element Slot 2: " .. aELM2)
+		notify("Element Slot 2: " .. aELM2)
+		player.statz.main.element2.Value = aELM2
+	end)
+	section3:addDropdown("Element Slot 3",elm,function(aELM3)
+		print("Element Slot 3: " .. aELM3)
+		notify("Element Slot 3: " .. aELM3)
+		player.statz.main.element3.Value = aELM3
+	end)
+	section3:addDropdown("Element Slot 4",elm,function(aELM4)
+		print("Element Slot 4: " .. aELM4)
+		notify("Element Slot 4: " .. aELM4)
+		player.statz.main.element4.Value = aELM4
+	end)
+
+	section4:addDropdown("Bloodline Slot 1",kgs,function(aKG1)
+		print("Bloodline Slot 1: " .. aKG1)
+		notify("Bloodline Slot 1: " .. aKG1)
+		player.statz.main.kg1.Value = aKG1
+	end)
+	section4:addDropdown("Bloodline Slot 2",kgs,function(aKG2)
+		print("Bloodline Slot 2: " .. aKG2)
+		notify("Bloodline Slot 2: " .. aKG2)
+		player.statz.main.kg2.Value = aKG2
+	end)
+	section4:addDropdown("Bloodline Slot 3",kgs,function(aKG3)
+		print("Bloodline Slot 3: " .. aKG3)
+		notify("Bloodline Slot 3: " .. aKG3)
+		player.statz.main.kg3.Value = aKG3
+	end)
+	section4:addDropdown("Bloodline Slot 4",kgs,function(aKG4)
+		print("Bloodline Slot 4: " .. aKG4)
+		notify("Bloodline Slot 4: " .. aKG4)
+		player.statz.main.kg4.Value = aKG4
+	end)
+
+	section5:addButton("External Shindo Bloodline Changer",function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/NoobieDoge/DogeHub/Separated/ShindoBloodlineChanger"))()
+	end)
+
+	-- fifth page
+	local page5 = NoobieDoge:addPage("Mentor Farm", 5012544693)
 	local MyRank = player.statz.prestige.rank.Value
 	if MyRank == "F" or MyRank == "D" or MyRank == "C" or MyRank == "B" or MyRank == "A" then
-		local section1 = page4:addSection("You need to be at least S rank to achieve this function")
+		local section1 = page5:addSection("You need to be at least S rank to achieve this function")
 	else
-		local section1 = page4:addSection("Teleport to mentors")
-		local section2 = page4:addSection("Mission Process")
+		local section1 = page5:addSection("Teleport to mentors")
+		local section2 = page5:addSection("Mission Process")
 
 		section1:addButton("Tp to Narumaki Mentor",function()
 			if game.PlaceId == 5451398863 then
@@ -8156,11 +8545,11 @@ local function ShindoMain()
 		end)
 	end
 
-	-- fifth page
-	local page5 = NoobieDoge:addPage("Daily Missions", 5012544693)
-	local section1 = page5:addSection("Claim Missions")
-	local section2 = page5:addSection("Auto Daily Missions")
-	local section3 = page5:addSection("Teleports")
+	-- sixth page
+	local page6 = NoobieDoge:addPage("Daily Missions", 5012544693)
+	local section1 = page6:addSection("Claim Missions")
+	local section2 = page6:addSection("Auto Daily Missions")
+	local section3 = page6:addSection("Teleports")
 
 	section1:addButton("Claim daily missions rewards",function()
 		local args = {[1] = "claim",[2] = player.statz.mission.dailyquest1}
@@ -8372,15 +8761,15 @@ local function ShindoMain()
 		end)
 	end
 
-	-- sixth page
-	local page6 = NoobieDoge:addPage("Quests", 5012544693)
-	local section1 = page6:addSection("Auto Farm")
-	local section2 = page6:addSection("Configurations")
-	local section3 = page6:addSection("Boss Farm Settings")
-	local section4 = page6:addSection("Beasts Farm Settings")
-	local section5 = page6:addSection("Auto Rank Up")
-	local section6 = page6:addSection("Auto Rank Up Settings")
-	local section7 = page6:addSection("Auto Stats")
+	-- seventh page
+	local page7 = NoobieDoge:addPage("Quests", 5012544693)
+	local section1 = page7:addSection("Auto Farm")
+	local section2 = page7:addSection("Configurations")
+	local section3 = page7:addSection("Boss Farm Settings")
+	local section4 = page7:addSection("Beasts Farm Settings")
+	local section5 = page7:addSection("Auto Rank Up")
+	local section6 = page7:addSection("Auto Rank Up Settings")
+	local section7 = page7:addSection("Auto Stats")
 
 	local mobs
 	section1:addToggle("Green Scroll Farm",false, function(bool)
@@ -8971,10 +9360,10 @@ local function ShindoMain()
 		end
 	end)
 
-	-- seventh page
-	local page7 = NoobieDoge:addPage("Teleports", 5012544693)
-	local section1 = page7:addSection("Map Teleports")
-	local section2 = page7:addSection("Server Teleports")
+	-- eighth page
+	local page8 = NoobieDoge:addPage("Teleports", 5012544693)
+	local section1 = page8:addSection("Map Teleports")
+	local section2 = page8:addSection("Server Teleports")
 
 	section1:addButton("Spawn Point",function()
 		if game:GetService("Workspace"):FindFirstChild("SpawnLocation") then
