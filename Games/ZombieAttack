@@ -10,9 +10,6 @@ game:service'Players'.LocalPlayer.Idled:connect(function()
 	VirtualUser:CaptureController()
 	VirtualUser:ClickButton2(Vector2.new())
 end)
-if workspace:FindFirstChild("CCoff") then
-	game:GetService("Workspace").CCoff:Destroy()
-end
 --on9 functions that are so damn important
 function toTarget(pos, targetPos, targetCFrame)
 	local tween_s = game:service"TweenService"
@@ -398,10 +395,67 @@ local function ZombieAttack()
 		section2:updateDropdown("Track selected player","Track selected player",playerlist)
 	end)
 
+	-- load
+	NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
+
 	-- second page
-	local page2 = NoobieDoge:addPage("Game", 72012902)
-	local section1 = page2:addSection("Auto Farm")
-	local section2 = page2:addSection("Other Functions")
+	local page2 = NoobieDoge:addPage("Misc", 72012902)
+	local section1 = page2:addSection("Select Items")
+	local section2 = page2:addSection("Equip Items (Just for flex)")
+	
+	local gunlist = {}
+	for i,v in pairs(game:GetService("ReplicatedStorage").Guns:GetChildren()) do
+		table.insert(gunlist, v.Name)
+	end
+	local knifelist = {}
+	for i,v in pairs(game:GetService("ReplicatedStorage").Knives:GetChildren()) do
+		table.insert(knifelist, v.Name)
+	end
+
+	section1:addDropdown("Select Gun Model",gunlist,function(SGun1)
+		notify("Player Selected: " .. SGun1)
+		SGun = SGun1
+	end)
+
+	section1:addDropdown("Select Knife Model",knifelist,function(SKnife1)
+		notify("Player Selected: " .. SKnife1)
+		SKnife = SKnife1
+	end)
+
+	section2:addButton("Equip Gun Model",function()
+		for i,v in pairs(game:GetService("ReplicatedStorage").Guns:GetChildren()) do
+			if v.Name == SGun then
+				if not player.Backpack:FindFirstChild(v.Name) then
+					local UrNewGun = v:Clone()
+					local PartM = Instance.new("Part", UrNewGun)
+					PartM.Name = "JustaModel"
+					UrNewGun.Parent = player.Backpack
+				else
+					notify("This gun is already in your backpack!")
+				end
+			end
+		end
+	end)
+
+	section2:addButton("Equip Knife Model",function()
+		for i,v in pairs(game:GetService("ReplicatedStorage").Knives:GetChildren()) do
+			if v.Name == SKnife then
+				if not player.Backpack:FindFirstChild(v.Name) then
+					local UrNewKnife = v:Clone()
+					local PartM = Instance.new("Part", UrNewKnife)
+					PartM.Name = "JustaModel"
+					UrNewKnife.Parent = player.Backpack
+				else
+					notify("This knife is already in your backpack!")
+				end
+			end
+		end
+	end)
+
+	-- third page
+	local page3 = NoobieDoge:addPage("Automatics", 72012902)
+	local section1 = page3:addSection("Auto Farm")
+	local section2 = page3:addSection("Other Functions")
 	
 	_G.farm2 = false
 	local autofarmtoggle = false
@@ -438,7 +492,7 @@ local function ZombieAttack()
 			game:GetService("RunService").RenderStepped:Connect(function()
 				if(_G.farm2==true)then
 					for i,gun in pairs(player.Backpack:GetChildren()) do
-						if gun:FindFirstChild("GunController") then
+						if gun:FindFirstChild("GunController") and not gun:FindFirstChild("JustaModel") then
 							player.Character.Humanoid:EquipTool(gun)
 						end
 					end
@@ -493,7 +547,7 @@ local function ZombieAttack()
 	spawn(function()
 		while wait() do
 			if buygun then
-				for i,newgun in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.MenuHolder.Main.ShopMain.ItemHolder.Primary:GetChildren()) do
+				for i,newgun in pairs(player.PlayerGui.MainInterface.MenuHolder.Main.ShopMain.ItemHolder.Primary:GetChildren()) do
 					if newgun.Price.Visible == true and newgun.owned.Visible == false then
 						print(newgun.Name)
 						local args = {[1] = "BuyItem_Cash",[2] = newgun.Name}
@@ -514,7 +568,7 @@ local function ZombieAttack()
 	spawn(function()
 		while wait() do
 			if upgun then
-				for i,gotthisgun in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.MenuHolder.Main.ShopMain.ItemHolder.Primary:GetChildren()) do
+				for i,gotthisgun in pairs(player.PlayerGui.MainInterface.MenuHolder.Main.ShopMain.ItemHolder.Primary:GetChildren()) do
 					if gotthisgun.owned.Visible == true then
 						print(gotthisgun.Name)
 						local args = {[1] = "UpgradeGun",[2] = gotthisgun.Name}
@@ -527,7 +581,7 @@ local function ZombieAttack()
 	end)
 
 	local crateslist = {}
-	for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.MenuHolder.MainCrates.panels.Crates.ItemHolder:GetChildren()) do
+	for i,v in pairs(player.PlayerGui.MainInterface.MenuHolder.MainCrates.panels.Crates.ItemHolder:GetChildren()) do
 			table.insert(crateslist, v.Name)
 	end
 	section2:addDropdown("Crates to buy",crateslist,function(yocrates)
@@ -855,9 +909,6 @@ local function ZombieAttack()
 		wait()
 		notify("Discord link copied to clipboard!")
 	end)
-
-	-- load
-	NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
 
 end
 
