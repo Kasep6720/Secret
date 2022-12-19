@@ -6676,7 +6676,7 @@ local function AXSSComps()
 				end
 				notify("Do not reset script too many times!")
 				wait(.1)
-				AXSSComps()
+				executescriptanyway()()
 			end
 			TextButton.MouseButton1Click:connect(ResetYES)
 			TextButtonText.MouseButton1Click:connect(ResetYES)
