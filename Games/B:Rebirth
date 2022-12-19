@@ -2,16 +2,31 @@
 --all on99 variables
 repeat wait() until game:IsLoaded()
 local player = game.Players.LocalPlayer
-local infarm = false
-local cancelled = false
 local VirtualUser=game:service'VirtualUser'
+local VirtualInputManager = game:GetService('VirtualInputManager')
 game:service'Players'.LocalPlayer.Idled:connect(function()
 	warn("anti-afk")
 	VirtualUser:CaptureController()
 	VirtualUser:ClickButton2(Vector2.new())
 end)
-if workspace:FindFirstChild("CCoff") then
-	game:GetService("Workspace").CCoff:Destroy()
+--Load all rocks and pillars
+for v = 1,3 do
+    wait()
+    player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(500, -3, -380))
+    wait()
+    player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(960, -3, -585))
+    wait()
+    player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-458, -3, 410))
+    wait()
+    player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(46, -3, 300))
+    wait()
+    player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-97, -3, -1230))
+    wait()
+    player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(110, -3, 1340))
+    wait()
+    player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-1255, -3, -1030))
+    wait()
+    player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-360, -3, 1280))
 end
 --on9 functions that are so damn important
 function toTarget(pos, targetPos, targetCFrame)
@@ -499,6 +514,10 @@ local function BRebirth()
 		end)
 	end)
 
+	section3:addButton("Show Shop UI",function()
+		player.PlayerGui.ui.shop.Visible = true
+	end)
+
 	section3:addToggle("Auto Buy Skills",false,function(bool)
 		BuySkills = bool
 		game:GetService('RunService').Stepped:connect(function()
@@ -581,6 +600,7 @@ local function BRebirth()
 	local page3 = NoobieDoge:addPage("Auto Farm", 7987570643)
 	local section1 = page3:addSection("Auto Farm")
 	local section2 = page3:addSection("Auto Farm Settings")
+	local section3 = page3:addSection("Use Special Moves")
 
 	section1:addToggle("Auto Farm",false,function(bool)
 		FARM = bool
@@ -605,15 +625,20 @@ local function BRebirth()
 		end)
 	end)
 
+	section1:addToggle("Auto Collect Crystals",false,function(bool)
+		CRYSTAL = bool
+		notify("Auto Collect Crystal: "..tostring(CRYSTAL),true)
+	end)
+
 	if game.PlaceId == 1843184166 then
-		section2:addDropdown("Select Rock",{"Rock","LargeRock","LargerRock","Pillar","GoldRock","SilverPillar","LavaPillar","BeachPillar","FuryPillar"},function(R1)
+		section2:addDropdown("Select Rock",{"Rock","LargeRock","LargerRock","Pillar","GoldRock","SilverPillar","CrackedPillar","LavaPillar","BeachPillar","FuryPillar"},function(R1)
 			print("Selected: " .. R1)
 			notify("Rock Selected: " .. R1)
 			RockSelected = R1
 		end)
 		RockSelected = "Rock"
 	elseif game.PlaceId == 1907744445 then
-		section2:addDropdown("Select Rock",{"LavaPillar","BeachPillar","CrackedPillar"},function(R1)
+		section2:addDropdown("Select Rock",{"CrackedPillar","LavaPillar","BeachPillar"},function(R1)
 			print("Selected: " .. R1)
 			notify("Rock Selected: " .. R1)
 			RockSelected = R1
@@ -621,29 +646,61 @@ local function BRebirth()
 		RockSelected = "CrackedPillar"
 	end
 
-	section2:addToggle("Spam R",false,function(bool)
+	section2:addToggle("Stays on Top",true,function(bool)
+		OnTop = bool
+		notify("Stays on top: "..tostring(OnTop),true)
+		AutoTrack = false
+		section2:updateToggle("Auto Tracks", false)
+	end)
+	OnTop = true
+	section2:addToggle("Auto Tracks",false,function(bool)
+		AutoTrack = bool
+		notify("Auto Tracks: "..tostring(AutoTrack),true)
+		OnTop = false
+		section2:updateToggle("Stays on Top", false)
+	end)
+
+	section2:addToggle("Jumping",false,function(bool)
+		Jumping = bool
+		notify("Jumping: "..tostring(Jumping),true)
+	end)
+
+	section3:addToggle("Spam R",false,function(bool)
 		SR = bool
 		notify("Spam R while farming: "..tostring(SR),true)
 	end)
 
-	section2:addToggle("Spam T",false,function(bool)
+	section3:addToggle("Spam T",false,function(bool)
 		ST = bool
 		notify("Spam T while farming: "..tostring(ST),true)
 	end)
 
-	section2:addToggle("Spam Y",false,function(bool)
+	section3:addToggle("Spam Y",false,function(bool)
 		SY = bool
 		notify("Spam Y while farming: "..tostring(SY),true)
 	end)
 
-	section2:addToggle("Spam F",false,function(bool)
+	section3:addToggle("Spam F",false,function(bool)
 		SF = bool
 		notify("Spam F while farming: "..tostring(SF),true)
 	end)
 
-	section2:addToggle("Spam Z",false,function(bool)
+	section3:addToggle("Spam Z",false,function(bool)
 		SZ = bool
 		notify("Spam Z while farming: "..tostring(SZ),true)
+	end)
+
+	spawn(function()
+		while wait() do
+			if CRYSTAL then
+				for i,v in pairs(game:GetService("Workspace").stars:GetChildren()) do
+					if v.Name == "Crystal" then
+						player.Character.HumanoidRootPart.CFrame = v.CFrame
+						CrystalED = true
+					end
+				end
+			end
+		end
 	end)
 
 	spawn(function()
@@ -652,28 +709,67 @@ local function BRebirth()
 				if game:GetService("Workspace").beyblades:FindFirstChild(player.Name) and game:GetService("Workspace").beyblades[player.Name]:FindFirstChild("Torso") then
 					repeat wait() until game:GetService("Workspace").beyblades:FindFirstChild(player.Name) and game:GetService("Workspace").beyblades[player.Name]:FindFirstChild("Torso")
 					player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").beyblades[player.Name].Torso.CFrame * CFrame.new(0, 1.5, 3) 
-					for i,v in pairs(game:GetService("Workspace").mobs:GetChildren()) do
-						if v.Name == RockSelected and v:FindFirstChild("Rock") then
-							if v.health.Value == 0 then LAUNCH() else
+					if OnTop then
+						for i,v in pairs(game:GetService("Workspace").mobs:GetChildren()) do
+							if v.Name == RockSelected and v:FindFirstChild("Rock") then
 								player.Character.HumanoidRootPart.CFrame = v.Rock.CFrame * CFrame.new(0, 6, 2.5)
 								--game:GetService("Workspace").beyblades[player.Name].Torso.CFrame = v.Rock.CFrame
-							end
-						elseif v.Name == RockSelected and v:FindFirstChild("Pillar") then
-							if v.health.Value == 0 then LAUNCH() else
+							elseif v.Name == RockSelected and v:FindFirstChild("Pillar") then
 								player.Character.HumanoidRootPart.CFrame = v.Pillar.CFrame * CFrame.new(0, 12, 2)
 								--game:GetService("Workspace").beyblades[player.Name].Torso.CFrame = v.Pillar.CFrame
 							end
 						end
+					elseif AutoTrack then
+						for i,v in pairs(game:GetService("Workspace").mobs:GetChildren()) do
+							if v.Name == RockSelected and v:FindFirstChild("Rock") then
+								pcall(function()
+									player.Character.HumanoidRootPart.CFrame = v.Rock.CFrame * CFrame.new(0, 3, 15)
+									game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.Rock.Position)
+									VirtualInputManager:SendKeyEvent(true,"W",false,uwu)
+									--game:GetService("Workspace").beyblades[player.Name].Torso.CFrame = v.Rock.CFrame
+								end)
+							elseif v.Name == RockSelected and v:FindFirstChild("Pillar") then
+								pcall(function()
+									player.Character.HumanoidRootPart.CFrame = v.Pillar.CFrame * CFrame.new(0, 5, 12)
+									game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.Pillar.Position)
+									VirtualInputManager:SendKeyEvent(true,"W",false,uwu)
+									--game:GetService("Workspace").beyblades[player.Name].Torso.CFrame = v.Pillar.CFrame
+								end)
+							end
+						end
+					else
+						notify("Bruh.")
 					end
 				else
 					for i,v in pairs(game:GetService("Workspace").mobs:GetChildren()) do
-						if v.Name == RockSelected and v:FindFirstChild("Rock") then
-							player.Character.HumanoidRootPart.CFrame = v.Rock.CFrame * CFrame.new(0, 6, 2.5) 
-						elseif v.Name == RockSelected and v:FindFirstChild("Pillar") then
-							player.Character.HumanoidRootPart.CFrame = v.Pillar.CFrame * CFrame.new(0, 12, 2) 
+						if OnTop then
+							if v.Name == RockSelected and v:FindFirstChild("Rock") then
+								player.Character.HumanoidRootPart.CFrame = v.Rock.CFrame * CFrame.new(0, 6, 2.5) 
+							elseif v.Name == RockSelected and v:FindFirstChild("Pillar") then
+								player.Character.HumanoidRootPart.CFrame = v.Pillar.CFrame * CFrame.new(0, 12, 2) 
+							end
+						elseif AutoTrack then
+							if v.Name == RockSelected and v:FindFirstChild("Rock") then
+								player.Character.HumanoidRootPart.CFrame = v.Rock.CFrame * CFrame.new(0, 3, 15) 
+							elseif v.Name == RockSelected and v:FindFirstChild("Pillar") then
+								player.Character.HumanoidRootPart.CFrame = v.Pillar.CFrame * CFrame.new(0, 5, 12) 
+							end
 						end
 					end
 					Noti1 = true
+				end
+			end
+		end
+	end)
+
+	spawn(function()
+		while wait(1) do
+			if CrystalED then
+				wait(5)
+				for i,v in pairs(game:GetService("Workspace").stars:GetChildren()) do
+					if v.Name == "Crystal" then
+						v:Destroy()
+					end
 				end
 			end
 		end
@@ -707,6 +803,14 @@ local function BRebirth()
 						game:GetService("ReplicatedStorage").func:InvokeServer(unpack(args))
 					end
 				end
+			end
+		end
+	end)
+
+	game:GetService('RunService').Stepped:connect(function()
+		if FARM then
+			if Jumping then
+				VirtualInputManager:SendKeyEvent(true,"Space",false,uwu)
 			end
 		end
 	end)
@@ -762,14 +866,17 @@ local function BRebirth()
 		section1:addButton("Gold Rocks",function()
 			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(46, -3, 300))
 		end)
-		section1:addButton("Lava Pillars",function()
-			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-110, -3, -1340))
+		section1:addButton("Silver Pillars & Cracked Pillars",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-97, -3, -1230))
+		end)		
+        section1:addButton("Lava Pillars",function()
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(110, -3, 1340))
 		end)
 		section1:addButton("Beach Pillars",function()
 			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-1255, -3, -1030))
 		end)
 		section1:addButton("Fury Pillars",function()
-			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-360, -3, -1280))
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-360, -3, 1280))
 		end)
 	elseif game.PlaceId == 1907744445 then
 		section1:addButton("Gate 1",function()
@@ -947,6 +1054,10 @@ local function BRebirth()
 			BuyDances = false
 			BuyLaunchers = false
 			FARM = false
+			CRYSTAL = false
+			OnTop = false
+			AutoTrack = false
+			Jumping = false
 			SR = false
 			ST = false
 			SY = false
