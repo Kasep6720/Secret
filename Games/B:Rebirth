@@ -28,6 +28,8 @@ for v = 1,3 do
     wait()
     player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-360, -3, 1280))
 end
+player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(238, -3, -412))
+
 --on9 functions that are so damn important
 function toTarget(pos, targetPos, targetCFrame)
 	local tween_s = game:service"TweenService"
