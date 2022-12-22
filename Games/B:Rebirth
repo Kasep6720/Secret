@@ -9,26 +9,6 @@ game:service'Players'.LocalPlayer.Idled:connect(function()
 	VirtualUser:CaptureController()
 	VirtualUser:ClickButton2(Vector2.new())
 end)
---Load all rocks and pillars
-for v = 1,3 do
-    wait()
-    player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(500, -3, -380))
-    wait()
-    player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(960, -3, -585))
-    wait()
-    player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-458, -3, 410))
-    wait()
-    player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(46, -3, 300))
-    wait()
-    player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-97, -3, -1230))
-    wait()
-    player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(110, -3, 1340))
-    wait()
-    player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-1255, -3, -1030))
-    wait()
-    player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-360, -3, 1280))
-end
-player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(238, -3, -412))
 
 --on9 functions that are so damn important
 function toTarget(pos, targetPos, targetCFrame)
@@ -1254,6 +1234,39 @@ local function BRebirth()
 		wait()
 		notify("Discord link copied to clipboard!")
 	end)
+
+	-- My Position
+	if player:FindFirstChild("Saved Position") then
+		player["Saved Position"]:Destroy()
+	end
+	local Urpreviousposition = Instance.new("Part", player)
+	Urpreviousposition.Name = "Saved Position"
+	Urpreviousposition.Anchored = true
+	Urpreviousposition.Transparency = 1
+	Urpreviousposition.Size = Vector3.new(.001, .001, .001)
+	Urpreviousposition.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -3.5, 0)
+	--Load all rocks and pillars
+	for v = 1,3 do
+		wait()
+		player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(500, -3, -380))
+		wait()
+		player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(960, -3, -585))
+		wait()
+		player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-458, -3, 410))
+		wait()
+		player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(46, -3, 300))
+		wait()
+		player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-97, -3, -1230))
+		wait()
+		player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(110, -3, 1340))
+		wait()
+		player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-1255, -3, -1030))
+		wait()
+		player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-360, -3, 1280))
+		wait()
+		player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(238, -3, -412))
+	end
+	player.Character.HumanoidRootPart.CFrame = Urpreviousposition.CFrame
 
 	--Funni trollings
 	spawn(function()
