@@ -1814,10 +1814,20 @@ local function ShindoMyHome()
 			table.insert(elm, v.Name)
 		end
 	end
+	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
+		if v:FindFirstChild("ELEMENT") and not v:FindFirstChild("limited") then
+			table.insert(elm, v.Name)
+		end
+	end
 
 	local kgs = {}
 	for i,v in pairs(game:GetService("Workspace").RAREKGS:GetChildren()) do
 		if v.Name ~= "KGTEMPLATE" and game:GetService("ReplicatedStorage").alljutsu[v.Name]:FindFirstChild("KG") then
+			table.insert(kgs, v.Name)
+		end
+	end
+	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
+		if (v:FindFirstChild("KG") and not v:FindFirstChild("cantspin") and not v:FindFirstChild("limited")) then
 			table.insert(kgs, v.Name)
 		end
 	end
@@ -2962,10 +2972,20 @@ local function ShindoDungeons()
 			table.insert(elm, v.Name)
 		end
 	end
+	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
+		if v:FindFirstChild("ELEMENT") and not v:FindFirstChild("limited") then
+			table.insert(elm, v.Name)
+		end
+	end
 
 	local kgs = {}
 	for i,v in pairs(game:GetService("Workspace").RAREKGS:GetChildren()) do
 		if v.Name ~= "KGTEMPLATE" and game:GetService("ReplicatedStorage").alljutsu[v.Name]:FindFirstChild("KG") then
+			table.insert(kgs, v.Name)
+		end
+	end
+	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
+		if (v:FindFirstChild("KG") and not v:FindFirstChild("cantspin") and not v:FindFirstChild("limited")) then
 			table.insert(kgs, v.Name)
 		end
 	end
@@ -3757,10 +3777,20 @@ local function ShindoBossBattle()
 			table.insert(elm, v.Name)
 		end
 	end
+	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
+		if v:FindFirstChild("ELEMENT") and not v:FindFirstChild("limited") then
+			table.insert(elm, v.Name)
+		end
+	end
 
 	local kgs = {}
 	for i,v in pairs(game:GetService("Workspace").RAREKGS:GetChildren()) do
 		if v.Name ~= "KGTEMPLATE" and game:GetService("ReplicatedStorage").alljutsu[v.Name]:FindFirstChild("KG") then
+			table.insert(kgs, v.Name)
+		end
+	end
+	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
+		if (v:FindFirstChild("KG") and not v:FindFirstChild("cantspin") and not v:FindFirstChild("limited")) then
 			table.insert(kgs, v.Name)
 		end
 	end
@@ -4703,10 +4733,20 @@ local function ShindoEventBoss()
 			table.insert(elm, v.Name)
 		end
 	end
+	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
+		if v:FindFirstChild("ELEMENT") and not v:FindFirstChild("limited") then
+			table.insert(elm, v.Name)
+		end
+	end
 
 	local kgs = {}
 	for i,v in pairs(game:GetService("Workspace").RAREKGS:GetChildren()) do
 		if v.Name ~= "KGTEMPLATE" and game:GetService("ReplicatedStorage").alljutsu[v.Name]:FindFirstChild("KG") then
+			table.insert(kgs, v.Name)
+		end
+	end
+	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
+		if (v:FindFirstChild("KG") and not v:FindFirstChild("cantspin") and not v:FindFirstChild("limited")) then
 			table.insert(kgs, v.Name)
 		end
 	end
@@ -7125,10 +7165,20 @@ local function ShindoMain()
 			table.insert(elm, v.Name)
 		end
 	end
+	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
+		if v:FindFirstChild("ELEMENT") and not v:FindFirstChild("limited") then
+			table.insert(elm, v.Name)
+		end
+	end
 
 	local kgs = {}
 	for i,v in pairs(game:GetService("Workspace").RAREKGS:GetChildren()) do
 		if v.Name ~= "KGTEMPLATE" and game:GetService("ReplicatedStorage").alljutsu[v.Name]:FindFirstChild("KG") then
+			table.insert(kgs, v.Name)
+		end
+	end
+	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
+		if (v:FindFirstChild("KG") and not v:FindFirstChild("cantspin") and not v:FindFirstChild("limited")) then
 			table.insert(kgs, v.Name)
 		end
 	end
