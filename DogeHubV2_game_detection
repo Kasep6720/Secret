@@ -10,6 +10,8 @@ elseif game.GameId == 5215344 then
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/DogeHubV2/Games/MegaFunObby"))()
 elseif game.GameId == 671876012 then
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/DogeHubV2/Games/B%3ARebirth"))()
+elseif game.GameId == 563057364 then
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/DogeHubV2/Games/AlienSimulator"))()
 else
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/DogeHubV2/DogeHubV2UniversalScript"))()
 end
