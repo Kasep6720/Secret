@@ -475,17 +475,6 @@ local function AlienSimulator()
 								wait()
 							end
 						end
-						for a,npcs in pairs(game:GetService("Workspace")["NPC"]:GetChildren()) do
-							define()
-							if npcs and _G.on2 == 1 then
-								for i,p1 in pairs(npcs:GetChildren()) do
-									if p1.ClassName == "UnionOperation" or p1.ClassName == "Part" and _G.on2 == 1 then
-										p1.CFrame = collide.CFrame 
-									end
-								end
-								wait()
-							end
-						end
 					end
 				end
 			end
