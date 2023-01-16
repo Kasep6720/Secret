@@ -153,7 +153,7 @@ end
 notify("Enabled anti-AFK")
 -- init
 
---Universal
+--Alien Simulator
 local function AlienSimulator()
 
 	--DogeHub V2 GUI
