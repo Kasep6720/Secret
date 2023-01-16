@@ -424,6 +424,35 @@ local function AlienSimulator()
 		end
 	end)
 
+	section1:addToggle("Teleport Suckable NPCs",false,function()
+		if _G.on1 == 1 then
+			_G.on1 = 0
+		else
+			_G.on1 = 1
+			while _G.on1 == 1 do
+				game:GetService('RunService').Stepped:wait()
+				local ufo = player.Character:FindFirstChildOfClass("Model")
+				if ufo then
+					local collide = ufo:FindFirstChild("Collider")
+					if collide then
+						for a,npcs in pairs(game:GetService("Workspace")["NPC"]:GetChildren()) do
+							define()
+							if npcs and _G.on1 == 1 then
+								for i,p1 in pairs(npcs:GetChildren()) do
+									if p1.ClassName == "UnionOperation" or p1.ClassName == "Part" and _G.on1 == 1 then
+										p1.CFrame = collide.CFrame 
+									end
+								end
+								wait()
+							end
+						end
+					end
+				end
+			end
+			_G.on1 = 0
+		end
+	end)
+
 	section1:addToggle("Teleport Suckable Entities",false,function()
 		if _G.on2 == 1 then
 			_G.on2 = 0
@@ -446,10 +475,46 @@ local function AlienSimulator()
 								wait()
 							end
 						end
+						for a,npcs in pairs(game:GetService("Workspace")["NPC"]:GetChildren()) do
+							define()
+							if npcs and _G.on2 == 1 then
+								for i,p1 in pairs(npcs:GetChildren()) do
+									if p1.ClassName == "UnionOperation" or p1.ClassName == "Part" and _G.on2 == 1 then
+										p1.CFrame = collide.CFrame 
+									end
+								end
+								wait()
+							end
+						end
 					end
 				end
 			end
 			_G.on2 = 0
+		end
+	end)
+
+	player.CharacterAdded:Connect(function()
+		if _G.on1 == 1 then
+			while _G.on1 == 1 do
+				game:GetService('RunService').Stepped:wait()
+				local ufo = player.Character:FindFirstChildOfClass("Model")
+				if ufo then
+					local collide = ufo:FindFirstChild("Collider")
+					if collide then
+						for a,npcs in pairs(game:GetService("Workspace")["NPC"]:GetChildren()) do
+							define()
+							if npcs and _G.on1 == 1 then
+								for i,p1 in pairs(npcs:GetChildren()) do
+									if p1.ClassName == "UnionOperation" or p1.ClassName == "Part" and _G.on2 == 1 then
+										p1.CFrame = collide.CFrame 
+									end
+								end
+								wait()
+							end
+						end
+					end
+				end
+			end
 		end
 	end)
 
@@ -480,13 +545,14 @@ local function AlienSimulator()
 	
 	section1:addToggle("Safe Mode", true, function(bool)
 		SafeMode = bool
-		game:GetService("RunService").Stepped:connect(function()
-			if SafeMode then
-				player.SafeMode.Value = true
-			end
-		end)
 	end)
 	SafeMode = true
+
+	game:GetService("RunService").Stepped:connect(function()
+		if SafeMode then
+			player.SafeMode.Value = true
+		end
+	end)
 
 	-- third page
 	local page3 = NoobieDoge:addPage("Automatics", 1440541447)
