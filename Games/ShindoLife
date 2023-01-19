@@ -8496,7 +8496,11 @@ local function ShindoMain()
 							pcall(function()
 								v.Humanoid.Health = 0
 								game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
-								player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 0, 10)
+								if player.statz.fightingstyle.Value == "" or player.statz.fightingstyle.Value == "boxing" or player.statz.fightingstyle.Value == "jeetkunedo" or player.statz.fightingstyle.Value == "muaythai" or player.statz.fightingstyle.Value == "mma" then
+									player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 0, 7)
+								else
+									player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 0, 10)
+								end
 								player.Character.combat.update:FireServer("key","e")
 								player.Character.combat.update:FireServer("key","eend")
 								player.Character.combat.update:FireServer("mouse1",true)
