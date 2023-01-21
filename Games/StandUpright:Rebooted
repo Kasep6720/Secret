@@ -573,6 +573,11 @@ local function StandUprightRebooted()
 		PickupOrb = bool
 	end)
 
+	local PickupAja = true
+	section3:addToggle("Pick Up Red Stone of Aja Mask",true, function(bool)
+		PickupAja = bool
+	end)
+
 	spawn(function()
 		while wait() do
 			if AutoPickup then
@@ -673,6 +678,12 @@ local function StandUprightRebooted()
 									end
 									if PickupOrb then
 										if v.Name == "Cursed Orb" and v:IsA("Tool") and v:FindFirstChild("Handle") then
+											player.Character.HumanoidRootPart.CFrame = v.Handle.CFrame
+											wait(.5)
+										end
+									end
+									if PickupAja then
+										if v.Name == "Red Stone Of Aja Mask" and v:IsA("Tool") and v:FindFirstChild("Handle") then
 											player.Character.HumanoidRootPart.CFrame = v.Handle.CFrame
 											wait(.5)
 										end
@@ -804,6 +815,14 @@ local function StandUprightRebooted()
 								end
 								if PickupOrb then
 									if v.Name == "Cursed Orb" and v:IsA("Tool") and v:FindFirstChild("Handle") then
+										player.Character.HumanoidRootPart.CFrame = v.Handle.CFrame
+										wait()
+										VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+										wait(1)
+									end
+								end
+								if PickupAja then
+									if v.Name == "Red Stone Of Aja Mask" and v:IsA("Tool") and v:FindFirstChild("Handle") then
 										player.Character.HumanoidRootPart.CFrame = v.Handle.CFrame
 										wait()
 										VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
@@ -2016,7 +2035,7 @@ local function StandUprightRebooted()
 			table.insert(STANDSLIST, v.Name)
 		end
 	end
-	local ATTRIBUTESLIST = {"None","Strong","Powerful","Manic","Tough","Enrage","Sloppy","Lethargic","Godly","Daemon","Invincible","Tragic","Glass Cannon","Hacker","Legendary"}
+	local ATTRIBUTESLIST = {"None","Cheerful","Strong","Powerful","Manic","Tough","Enrage","Sloppy","Lethargic","Godly","Daemon","Invincible","Tragic","Glass Cannon","Hacker","Legendary"}
 
 	section2:addDropdown("Stand Choice 1",STANDSLIST,function(S1)
 		print("Selected: " .. S1)
