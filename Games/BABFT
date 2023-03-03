@@ -272,6 +272,7 @@ local function BABFT()
 			end
 		end)
 	end)
+	
 	section2:addSlider("Fly Speed", 101, 0, 999, function(value)
 		sliderfly = value
 	end)
@@ -482,7 +483,7 @@ local function BABFT()
 		infarm = true
 
 		task.spawn(function()
-			task.wait(2.75)
+			task.wait(2.9)
 			firetouchinterest(player.Character.HumanoidRootPart, workspace.BoatStages.NormalStages.TheEnd.GoldenChest.Trigger, 0)
 		end)
 		
