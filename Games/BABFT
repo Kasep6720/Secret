@@ -452,7 +452,7 @@ local function BABFT()
 		ABIitem = CHOICE
 		notify("Item Selected: " .. ABIitem)
 	end)
-	section2:addSlider("Item Amount", 1, 1, 100, function(value)
+	section2:addSlider("Item Amount", 1, 1, 1000, function(value)
 		ABIamount = value
 	end)
 	ABIamount = 1
