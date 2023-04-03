@@ -2,17 +2,12 @@
 --all on99 variables
 repeat wait() until game:IsLoaded()
 local player = game.Players.LocalPlayer
-local infarm = false
-local cancelled = false
 local VirtualUser=game:service'VirtualUser'
 game:service'Players'.LocalPlayer.Idled:connect(function()
 	warn("anti-afk")
 	VirtualUser:CaptureController()
 	VirtualUser:ClickButton2(Vector2.new())
 end)
-if workspace:FindFirstChild("CCoff") then
-	game:GetService("Workspace").CCoff:Destroy()
-end
 --on9 functions that are so damn important
 function toTarget(pos, targetPos, targetCFrame)
 	local tween_s = game:service"TweenService"
@@ -23,7 +18,7 @@ function toTarget(pos, targetPos, targetCFrame)
 	end)
 	if not tween then return err end
 end
-local CtrlClickTeePee
+local CtrlClickTeePee = false
 function CTRLCLICKTP()
 	local UIS = game:GetService("UserInputService")
 	local Player = game.Players.LocalPlayer
@@ -185,6 +180,7 @@ local function Universal()
 	sliderjump = 50
 	slidergravity = 196.2
 
+	local sliderpowa = false
 	section1:addToggle("Enabled", nil, function(value)
 		sliderpowa = value
 	end)
@@ -222,6 +218,7 @@ local function Universal()
 	end)
 
 	local infjumptoggle = false
+	getgenv().dc = true
 	section2:addToggle("Infinite Jump",false,function()
 		infjumptoggle = not infjumptoggle
 		notify("Infinite Jump: "..tostring(infjumptoggle),true)
@@ -249,6 +246,7 @@ local function Universal()
 		end
 	end)
 
+	local noclips = false
 	section2:addToggle("Noclip", false, function(bool)
 		noclips = bool
 		game:GetService("RunService").Stepped:connect(function()
@@ -266,9 +264,11 @@ local function Universal()
 		sliderfly = value
 	end)
 	sliderfly = 101
+
+	local Pfly = false
 	section2:addToggle("Press P to fly",false,function(Pfly)
 		repeat wait() 
-        until player and player.Character:findFirstChild("Head") player.Character:findFirstChild("Humanoid") 
+		until player and player.Character:findFirstChild("Head") player.Character:findFirstChild("Humanoid") 
 		local mouse = player:GetMouse() 
 		repeat wait() until mouse
 		local plr = game.Players.LocalPlayer 
@@ -366,6 +366,7 @@ local function Universal()
 		Target = ripthatguy
 	end)
 
+	local trackthatguy = false
 	section2:addToggle("Track Player",false,function(bool)
 		trackthatguy = bool
 		local platform = Instance.new("Part", player.Character)
@@ -398,6 +399,9 @@ local function Universal()
 		section2:updateDropdown("Track selected player","Track selected player",playerlist)
 	end)
 
+	-- load
+	NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
+	
 	-- last page
 	local pagelast = NoobieDoge:addPage("Settings", 5012544693)
 	local settings = pagelast:addSection("Settings")
@@ -488,17 +492,6 @@ local function Universal()
 					v:Destroy()
 				end
 			end
-			wait()
-			wait()
-			sliderpowa = false
-			player.Character.Humanoid.WalkSpeed = originalwalkspeed
-			player.Character.Humanoid.JumpPower = originaljumppower
-			game:GetService("Workspace").Gravity = originalgravity
-			CtrlClickTeePee = false
-			noclips = false
-			Pfly = false
-			trackthatguy = false
-			getgenv().dc = true
 			wait()
 			for i,library in pairs(game:GetService("CoreGui"):GetChildren()) do
 				if library.Name == "DogeHub V2" then
@@ -688,9 +681,6 @@ local function Universal()
 		wait()
 		notify("Discord link copied to clipboard!")
 	end)
-
-	-- load
-	NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
 
 end
 
