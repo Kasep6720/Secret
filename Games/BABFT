@@ -428,7 +428,8 @@ local function BABFT()
 	-- third page
 	local page3 = NoobieDoge:addPage("Auto Farm", 6052531413)
 	local section1 = page3:addSection("Gold Farm")
-	local section2 = page3:addSection("Items Farm")
+	local section2 = page3:addSection("Gold Farm Settings")
+	local section3 = page3:addSection("Items Farm")
 
 	section1:addToggle("Auto Farm",false,function(bool)
 		LETSFARM = bool
@@ -443,16 +444,21 @@ local function BABFT()
 		notify("Auto Farm: "..tostring(LETSFARM),true)
 	end)
 
-	section2:addToggle("Auto Buy Items",false,function(bool)
+	section2:addToggle("Not touching the Treasure Chest",false,function(bool)
+		NOGOLDBLOCK = bool
+		notify("Not touching the Treasure Chest: "..tostring(NOGOLDBLOCK),true)
+	end)
+
+	section3:addToggle("Auto Buy Items",false,function(bool)
 		ABI = bool
 	end)
 
-	section2:addDropdown("Item Selection",items,function(CHOICE)
+	section3:addDropdown("Item Selection",items,function(CHOICE)
 		game:GetService("Players").LocalPlayer.PlayerGui.ShopGui.MainFrame.TabFrame.ShopFrame.ScrollingFrameChests.Frame2XXX.Visible = true
 		ABIitem = CHOICE
 		notify("Item Selected: " .. ABIitem)
 	end)
-	section2:addSlider("Item Amount", 1, 1, 1000, function(value)
+	section3:addSlider("Item Amount", 1, 1, 1000, function(value)
 		ABIamount = value
 	end)
 	ABIamount = 1
@@ -483,8 +489,10 @@ local function BABFT()
 		infarm = true
 
 		task.spawn(function()
-			task.wait(2.9)
-			firetouchinterest(player.Character.HumanoidRootPart, workspace.BoatStages.NormalStages.TheEnd.GoldenChest.Trigger, 0)
+			if not NOGOLDBLOCK then
+				task.wait(2.9)
+				firetouchinterest(player.Character.HumanoidRootPart, workspace.BoatStages.NormalStages.TheEnd.GoldenChest.Trigger, 0)
+			end
 		end)
 		
 		for i=1,10 do
@@ -495,8 +503,11 @@ local function BABFT()
 			end
 			task.wait(0.5)
 		end
-		player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").BoatStages.NormalStages.TheEnd.GoldenChest.Trigger.CFrame
-
+		if NOGOLDBLOCK then
+			player.Character:WaitForChild("Humanoid").Health = 0
+		else
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").BoatStages.NormalStages.TheEnd.GoldenChest.Trigger.CFrame
+		end
 
 		infarm = false
 	end
@@ -659,6 +670,7 @@ local function BABFT()
 			getgenv().dc = true
 			Icanswimlol = false
 			LETSFARM = false
+			NOGOLDBLOCK = false
 			ABI = false
 			wait()
 			for i,library in pairs(game:GetService("CoreGui"):GetChildren()) do
