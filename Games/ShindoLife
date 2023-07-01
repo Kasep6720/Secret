@@ -175,10 +175,6 @@ function NPCKEELAURA()
 		if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
 			repeat
 				v.Humanoid.Health = 0
-				v.Humanoid.Health = 0
-				v.Humanoid.Health = 0
-				v.Humanoid.Health = 0
-				v.Humanoid.Health = 0
 			until v.Humanoid.Health == 0 or (not keel and not keel2)
 		end
 	end
@@ -8238,7 +8234,8 @@ local function ShindoMain()
 	local page2 = NoobieDoge:addPage("Misc", 5012544693)
 	local section1 = page2:addSection("Game Functions")
 	local section2 = page2:addSection("Kenjutsu Spin Configurations")
-	local section3 = page2:addSection("Kenjutsu Spin")
+	local section3 = page2:addSection("Kenjutsu Spin")	
+	local section4 = page2:addSection("Spin Race")
 	local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
 
 	section1:addButton("SuperHuman",function()
@@ -8363,6 +8360,11 @@ local function ShindoMain()
 		end
 	end
 
+	local race = {}
+	for i,v in pairs(player.PlayerGui.Main.RaceCustom.Frame.ScrollingFrame:GetChildren()) do
+		table.insert(race, v.Name)
+	end
+	
 	section2:addButton("Reset Spins NOW",function()
 		player.startevent:FireServer("band", "\128")
 		wait()
@@ -8601,6 +8603,67 @@ local function ShindoMain()
 		end
 	end)
 
+	local raceselect1
+		section4:addDropdown("Race Choice 1",race,function(RACE1)
+		print("Selected: " .. RACE1)
+		notify("Selected: " .. RACE1)
+		raceselect1 = RACE1
+	end)
+	local raceselect2
+		section4:addDropdown("Race Choice 2",race,function(RACE2)
+		print("Selected: " .. RACE2)
+		notify("Selected: " .. RACE2)
+		raceselect2 = RACE2
+	end)
+	local raceselect3
+		section4:addDropdown("Race Choice 3",race,function(RACE3)
+		print("Selected: " .. RACE3)
+		notify("Selected: " .. RACE3)
+		raceselect3 = RACE3
+	end)
+
+	section4:addToggle("Spin Race",false,function(bool)
+		StartSpinRace = bool
+		if StartSpinRace == true then
+			local rcamount = player.PlayerGui.Main.Ryo2.amt.text,""
+			if(string.find(rcamount,"(K)")) then
+				rcamount = (string.gsub(rcamount,"(K)",""))
+				rcamount = tonumber(rcamount)*1000
+				print(rcamount)
+			else
+				rcamount = string.gsub(rcamount)	
+				print(rcamount)
+			end
+			game:GetService('RunService').Stepped:connect(function()
+				if rcamount > 20000 then
+					rcamount = player.PlayerGui.Main.Ryo2.amt.text,""
+					if(string.find(rcamount,"(K)")) then
+						rcamount = (string.gsub(rcamount,"(K)",""))
+						rcamount = tonumber(rcamount)*1000
+						print(rcamount)
+					else
+						rcamount = string.gsub(rcamount)	
+						print(rcamount)
+					end
+					racevalue = player.statz.race.Value
+					if StartSpinRace == true then
+						if racevalue ~= raceselect1 and racevalue ~= raceselect2 and racevalue ~= raceselect3 then
+							local args = {[1]="spinrace"}
+							game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+							print("Rolled: " .. racevalue)
+							notify("Rolled: " .. racevalue)
+							wait(1)
+						else
+							print("You have got: " .. racevalue)
+							notify("You have got: " .. racevalue)
+						end
+					end
+				end
+			end)
+		else
+		end
+	end)
+		
 	-- third page
 	local page3 = NoobieDoge:addPage("Spam Keys", 5012544693)
 	local section1 = page3:addSection("Configurations")
@@ -10617,7 +10680,7 @@ local function ShindoMain()
 			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(21565, 627, -11660))
 		end)
 	elseif game.PlaceId == 5824792748 then
-		section1:addButton("Ryuji Cave Entrance ",function()
+		section1:addButton("Ryuji Cave Entrance",function()
 			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(18764, 916, -10865))
 		end)
 
@@ -10631,6 +10694,10 @@ local function ShindoMain()
 
 		section1:addButton("Cobra Place",function()
 			player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(18780, 656, -11400))
+		end)
+		
+		section1:addButton("Kabu Cobra",function()
+			player.Character.HumanoidRootPart.CFrame = Workspace.Kabu.Head.CFrame
 		end)
 
 		section1:addButton("Open Area 1",function()
