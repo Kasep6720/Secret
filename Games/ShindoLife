@@ -2717,7 +2717,6 @@ local function ShindoDungeons()
 	end)
 
 	player.CharacterAdded:Connect(function()
-			notify("Press P to fly: "..tostring(Pfly),true)
 		if Pfly then
 			repeat wait() 
 			until player and player.Character:findFirstChild("Head") player.Character:findFirstChild("Humanoid") 
@@ -3631,7 +3630,6 @@ local function ShindoBossBattle()
 	end)
 
 	player.CharacterAdded:Connect(function()
-			notify("Press P to fly: "..tostring(Pfly),true)
 		if Pfly then
 			repeat wait() 
 			until player and player.Character:findFirstChild("Head") player.Character:findFirstChild("Humanoid") 
@@ -4610,7 +4608,6 @@ local function ShindoEventBoss()
 	end)
 
 	player.CharacterAdded:Connect(function()
-			notify("Press P to fly: "..tostring(Pfly),true)
 		if Pfly then
 			repeat wait() 
 			until player and player.Character:findFirstChild("Head") player.Character:findFirstChild("Humanoid") 
@@ -5885,7 +5882,6 @@ local function ShindoBoruVSKamaki()
 	end)
 
 	player.CharacterAdded:Connect(function()
-			notify("Press P to fly: "..tostring(Pfly),true)
 		if Pfly then
 			repeat wait() 
 			until player and player.Character:findFirstChild("Head") player.Character:findFirstChild("Humanoid") 
@@ -8640,7 +8636,6 @@ local function ShindoMain()
 	end)
 
 	player.CharacterAdded:Connect(function()
-			notify("Press P to fly: "..tostring(Pfly),true)
 		if Pfly then
 			repeat wait() 
 			until player and player.Character:findFirstChild("Head") player.Character:findFirstChild("Humanoid") 
