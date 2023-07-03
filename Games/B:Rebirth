@@ -357,7 +357,6 @@ local function BRebirth()
 	end)
 
 	player.CharacterAdded:Connect(function()
-			notify("Press P to fly: "..tostring(Pfly),true)
 		if Pfly then
 			repeat wait() 
 			until player and player.Character:findFirstChild("Head") player.Character:findFirstChild("Humanoid") 
