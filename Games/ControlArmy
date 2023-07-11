@@ -1,0 +1,3189 @@
+--setclipboard(tostring(game.PlaceId))
+--all on99 variables
+repeat wait() until game:IsLoaded()
+local player = game.Players.LocalPlayer
+local VirtualUser=game:service'VirtualUser'
+local VirtualInputManager = game:GetService('VirtualInputManager')
+game:service'Players'.LocalPlayer.Idled:connect(function()
+	warn("anti-afk")
+	VirtualUser:CaptureController()
+	VirtualUser:ClickButton2(Vector2.new())
+end)
+--on9 functions that are so damn important
+function toTarget(pos, targetPos, targetCFrame)
+	local tween_s = game:service"TweenService"
+	local info = TweenInfo.new((targetPos - pos).Magnitude/getgenv().speed, Enum.EasingStyle.Linear)
+	local tween, err = pcall(function()
+	local tween = tween_s:Create(game:GetService("Players").LocalPlayer.Character["HumanoidRootPart"], info, {CFrame = targetCFrame * CFrame.fromAxisAngle(Vector3.new(1,0,0), math.rad(90))})
+	tween:Play()
+	end)
+	if not tween then return err end
+end
+
+local CtrlClickTeePee = false
+function CTRLCLICKTP()
+	local UIS = game:GetService("UserInputService")
+	local Player = game.Players.LocalPlayer
+	local Mouse = Player:GetMouse()
+
+	function GetCharacter()
+	return player.Character
+	end
+
+	function Teleport(pos)
+		local Char = GetCharacter()
+		if Char then
+			Char:MoveTo(pos)
+		end
+	end
+
+	UIS.InputBegan:Connect(function(input)
+		if CtrlClickTeePee == true then
+			if input.UserInputType == Enum.UserInputType.MouseButton1 and UIS:IsKeyDown(Enum.KeyCode.LeftControl) then
+				Teleport(Mouse.Hit.p)
+			end
+		end
+	end)
+end
+function UPPERFORMANCE()
+	local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
+	local g = game
+	local w = g.Workspace
+	local l = g.Lighting
+	local t = w.Terrain
+	t.WaterWaveSize = 0
+	t.WaterWaveSpeed = 0
+	t.WaterReflectance = 0
+	t.WaterTransparency = 0
+	l.GlobalShadows = false
+	l.FogEnd = 9e9
+	l.Brightness = 0
+	settings().Rendering.QualityLevel = "Level01"
+	for i,v in pairs(g:GetDescendants()) do
+		if v:IsA("Part") or v:IsA("Union") or v:IsA("MeshPart") then
+			v.Material = "Plastic"
+			v.Reflectance = 0
+		elseif v:IsA("Decal") and decalsyeeted then 
+			v.Transparency = 1
+		elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then 
+			v.Lifetime = NumberRange.new(0)
+		end
+	end
+end
+if _G.dAAcG3fvBqVoPzVnAFk == nil then 
+	_G.dAAcG3fvBqVoPzVnAFk = "" 
+end 
+function notify(a,b,c)
+	local d=c or function()return end;
+	local e=b or false;
+		if a==_G.dAAcG3fvBqVoPzVnAFk and e==false then return end;
+		spawn(function()
+			for f,g in pairs(game.CoreGui:GetChildren())do 
+				spawn(function()
+					if g.Name=="MNotify"then 
+						pcall(function()
+							g.ImageButton.ZIndex=58;
+							g.ImageButton.TextLabel.ZIndex=59;
+							g.ImageButton:TweenPosition(UDim2.new(0.01,0,1,0),"Out","Quint",.7,true)
+							game:GetService("TweenService"):Create(g.ImageButton.TextLabel,TweenInfo.new(0.8,Enum.EasingStyle.Quint,Enum.EasingDirection.Out,0,false,0),{TextTransparency=1})
+							wait(1)
+							g:Destroy()
+						end)
+					end 
+				end)
+			end;
+			_G.dAAcG3fvBqVoPzVnAFk=a
+			local d=c or function()return end;
+			local function h(i,j)
+				local k=Instance.new(i)
+					for f,g in pairs(j)do 
+						k[f]=g 
+					end;
+				return k end;
+				local l=h('ScreenGui',{DisplayOrder=0,Enabled=true,ResetOnSpawn=true,Name='MNotify',Parent=game.CoreGui})
+				local m=h('ImageButton',{Image='rbxassetid://1051186612',ImageColor3=Color3.new(0.129412,0.129412,0.129412),ImageRectOffset=Vector2.new(0,0),ImageRectSize=Vector2.new(0,0),ImageTransparency=0,ScaleType=Enum.ScaleType.Slice,SliceCenter=Rect.new(20,20,20,20),AutoButtonColor=true,Modal=false,Selected=false,Style=Enum.ButtonStyle.Custom,Active=true,AnchorPoint=Vector2.new(0,0),BackgroundColor3=Color3.new(1,1,1),BackgroundTransparency=1,BorderColor3=Color3.new(0.105882,0.164706,0.207843),BorderSizePixel=1,ClipsDescendants=false,Draggable=false,Position=UDim2.new(0.00999999978,0,1,0),Rotation=0,Selectable=true,Size=UDim2.new(0,234,0,40),SizeConstraint=Enum.SizeConstraint.RelativeXY,Visible=true,ZIndex=60,Name='ImageButton',Parent=l})
+				local n=h('TextLabel',{Font=Enum.Font.TitilliumWeb,FontSize=Enum.FontSize.Size24,Text=a,TextColor3=Color3.new(0.807843,0.807843,0.807843),TextScaled=false,TextSize=24,TextStrokeColor3=Color3.new(0,0,0),TextStrokeTransparency=1,TextTransparency=0,TextWrapped=false,TextXAlignment=Enum.TextXAlignment.Center,TextYAlignment=Enum.TextYAlignment.Center,Active=false,AnchorPoint=Vector2.new(0,0),BackgroundColor3=Color3.new(1,1,1),BackgroundTransparency=1,BorderColor3=Color3.new(0.105882,0.164706,0.207843),BorderSizePixel=1,ClipsDescendants=false,Draggable=false,Position=UDim2.new(0.132478639,0,0,0),Rotation=0,Selectable=false,Size=UDim2.new(0,174,0,40),SizeConstraint=Enum.SizeConstraint.RelativeXY,Visible=true,ZIndex=61,Name='TextLabel',Parent=m})
+				local o=h('UIListLayout',{Padding=UDim.new(0,0),FillDirection=Enum.FillDirection.Vertical,HorizontalAlignment=Enum.HorizontalAlignment.Center,SortOrder=Enum.SortOrder.Name,VerticalAlignment=Enum.VerticalAlignment.Top,Name='UIListLayout',Parent=m})
+				local p=1;
+				if string.len(a)<=49 then 
+					m.Size=UDim2.new(0,game:GetService("TextService"):GetTextSize(a,24,Enum.Font.TitilliumWeb,Vector2.new(500,900)).X+35,0,40)
+				elseif string.len(a)>49 then 
+					p=math.ceil(string.len(string.sub(a,49))/9)
+					m.Size=UDim2.new(0,game:GetService("TextService"):GetTextSize(a,24,Enum.Font.TitilliumWeb,Vector2.new(500+p*100,900)).X+35,0,40)
+				end;
+				m:TweenPosition(UDim2.new(0.01,0,.97,-60),"Out","Quint",.7,true)
+				spawn(function()
+					wait(4)
+					pcall(function()
+						m.ZIndex=58;
+						n.ZIndex=59;
+						m:TweenPosition(UDim2.new(0.01,0,1,0),"Out","Quint",.7,true)
+						_G.dAAcG3fvBqVoPzVnAFk=""
+						wait(.3)
+						l:Destroy()
+					end)
+				end)
+				m.MouseButton1Up:Connect(function()if c==nil then return end;
+				spawn(function()
+					pcall(function()
+						m.ZIndex=58;n.ZIndex=59;
+						m:TweenPosition(UDim2.new(0.01,0,1,0),"Out","Quint",.7,true)
+						_G.dAAcG3fvBqVoPzVnAFk=""
+						wait(1)
+						l:Destroy()
+					end)
+				end)
+				d()
+			end)
+		end)
+	end
+	function roundNumber(num, numDecimalPlaces) -- https://devforum.roblox.com/t/rounding-to-1-decimal-point/673504
+	return tonumber(string.format("%." .. (numDecimalPlaces or 0) .. "f", num))
+end
+notify("Enabled anti-AFK")
+-- init
+
+--Army Control Main
+local function ArmyControlMain()
+
+	--DogeHub V2 GUI
+	local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20page%20format%20gui"))()
+	local NoobieDoge = library.new("DogeHub V2", 5013109572)
+
+	-- themes
+	local themes = {
+	Background = Color3.fromRGB(24, 24, 24),
+	Glow = Color3.fromRGB(0, 0, 0),
+	Accent = Color3.fromRGB(10, 10, 10),
+	LightContrast = Color3.fromRGB(20, 20, 20),
+	DarkContrast = Color3.fromRGB(14, 14, 14),  
+	TextColor = Color3.fromRGB(255, 255, 255)
+	}
+
+	-- first page
+	local page1 = NoobieDoge:addPage("Universal", 5012544693)
+	local section1 = page1:addSection("Walk Speed & Jump Power & Gravity")
+	local section2 = page1:addSection("Other Functions")
+
+	local originalwalkspeed = 16
+	local originaljumppower = 50
+	local originalgravity = game:GetService("Workspace").Gravity
+
+	section1:addSlider("Walk Speed", originalwalkspeed, 0, 200, function(value)
+		sliderspeed = value
+	end)
+	section1:addSlider("Jump Power", originaljumppower, 0, 500, function(value)
+		sliderjump = value
+	end)
+	section1:addSlider("Gravity", originalgravity, 0, 500, function(value)
+		slidergravity = value
+	end)
+	sliderspeed = 16
+	sliderjump = 50
+	slidergravity = 196.2
+
+	local sliderpowa = false
+	section1:addToggle("Enabled", nil, function(value)
+		sliderpowa = value
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if sliderpowa then
+			player.Character.Humanoid.WalkSpeed = sliderspeed
+			player.Character.Humanoid.JumpPower = sliderjump
+			game:GetService("Workspace").Gravity = slidergravity
+		end
+	end)
+
+	section1:addButton("Reset to Default", function()
+		player.Character.Humanoid.WalkSpeed = originalwalkspeed
+		player.Character.Humanoid.JumpPower = originaljumppower
+		game:GetService("Workspace").Gravity = originalgravity
+		section1:updateSlider("Walk Speed", "Walk Speed", originalwalkspeed, 0, 36)
+		section1:updateSlider("Jump Power", "Jump Power", originaljumppower, 0, 500)
+		section1:updateSlider("Gravity", "Gravity", originalgravity, 0, 500)
+	end)
+
+	section2:addButton("Add ESP GUI", function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Project%3A%20Bullshit%3A%20Rebooted"))()
+	end)
+
+	section2:addButton("Reset Character",function()
+		player.Character:BreakJoints()
+	end)
+
+	section2:addToggle("Ctrl + Click TP",false,function(bool)
+		CtrlClickTeePee = bool
+		CTRLCLICKTP()
+		if CtrlClickTeePee == true then
+			notify("Press Ctrl + Click to Teleport")
+		end
+	end)
+
+	local infjumptoggle = false
+	getgenv().dc = true
+	section2:addToggle("Infinite Jump",false,function()
+		infjumptoggle = not infjumptoggle
+		notify("Infinite Jump: "..tostring(infjumptoggle),true)
+		if infjumptoggle then
+			getgenv().dc = false
+			local infjump
+			infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
+				if dc then infjump:Disconnect() return end
+				player.Character.Humanoid:ChangeState("Jumping")
+			end)
+		else
+			getgenv().dc = true
+		end
+	end)
+
+	player.CharacterAdded:Connect(function()
+		if infjumptoggle then
+			wait(1)
+			getgenv().dc = false
+			local infjump
+			infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
+				if dc then infjump:Disconnect() return end
+				player.Character.Humanoid:ChangeState("Jumping")
+			end)
+		end
+	end)
+
+	local noclips = false
+	section2:addToggle("Noclip", false, function(bool)
+		noclips = bool
+		game:GetService("RunService").Stepped:connect(function()
+			for i, v in pairs(player.Character:GetChildren()) do
+				if v:IsA("BasePart") then
+					if AutoFarm or noclips then
+						v.CanCollide = false
+					else
+						v.CanCollide = true
+					end
+				end
+			end
+		end)
+	end)
+
+	section2:addSlider("Fly Speed", 100, 0, 999, function(value)
+		sliderfly = value
+	end)
+	sliderfly = 101
+
+	local Pfly = false
+	section2:addToggle("Press P to fly",false,function(bool)
+		Pfly = bool
+		repeat wait() 
+		until player and player.Character:findFirstChild("Head") player.Character:findFirstChild("Humanoid") 
+		local mouse = player:GetMouse() 
+		repeat wait() until mouse
+		local torso = player.Character.Head 
+		local flying = false
+		local deb = true 
+		local ctrl = {f = 0, b = 0, l = 0, r = 0} 
+		local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+		local maxspeed = sliderfly 
+		local speed = 0 
+
+		function Fly() 
+			local bg = Instance.new("BodyGyro", torso) 
+			bg.P = 9e4 
+			bg.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
+			bg.cframe = torso.CFrame 
+
+			local bv = Instance.new("BodyVelocity", torso) 
+			bv.velocity = Vector3.new(0,0.1,0) 
+			bv.maxForce = Vector3.new(9e9, 9e9, 9e9) 
+			repeat wait() 
+				player.Character.Humanoid.PlatformStand = true 
+				if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
+					speed = speed+(sliderfly/1.7)+(speed/maxspeed) 
+					if speed > maxspeed then 
+						speed = maxspeed 
+					end 
+
+				elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
+					speed = speed-(sliderfly/1.7)
+					if speed < 0 then 
+						speed = 0 
+					end 
+				end 
+				if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then 
+					bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+					lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r} 
+				elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then 
+					bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+				else 
+					bv.velocity = Vector3.new(0,0.1,0)
+				end 
+				bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
+			until not flying or not Pfly
+			ctrl = {f = 0, b = 0, l = 0, r = 0} 
+			lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+			speed = 0 
+			bg:Destroy() 
+			bv:Destroy() 
+			player.Character.Humanoid.PlatformStand = false 
+		end 
+
+		mouse.KeyDown:connect(function(key) 
+			if key:lower() == "p" then 
+				if flying then flying = false 
+				else 
+					flying = true 
+					Fly() 
+				end 
+			elseif key:lower() == "w" then 
+				ctrl.f = 1 
+			elseif key:lower() == "s" then 
+				ctrl.b = -1 
+			elseif key:lower() == "a" then 
+				ctrl.l = -1 
+			elseif key:lower() == "d" then 
+				ctrl.r = 1 
+			end 
+		end) 
+
+		mouse.KeyUp:connect(function(key) 
+
+			if key:lower() == "w" then 
+				ctrl.f = 0 
+			elseif key:lower() == "s" then 
+				ctrl.b = 0 
+			elseif key:lower() == "a" then 
+				ctrl.l = 0 
+			elseif key:lower() == "d" then 
+				ctrl.r = 0 
+			end 
+		end)
+		Fly()
+		notify("Press P to fly: "..tostring(Pfly),true)
+	end)
+
+	player.CharacterAdded:Connect(function()
+		if Pfly then
+			repeat wait() 
+			until player and player.Character:findFirstChild("Head") player.Character:findFirstChild("Humanoid") 
+			local mouse = player:GetMouse() 
+			repeat wait() until mouse
+			local player = game.Players.LocalPlayer 
+			local torso = player.Character.Head 
+			local flying = false
+			local deb = true 
+			local ctrl = {f = 0, b = 0, l = 0, r = 0} 
+			local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+			local maxspeed = sliderfly 
+			local speed = 0 
+			
+			function Fly() 
+				local bg = Instance.new("BodyGyro", torso) 
+				bg.P = 9e4 
+				bg.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
+				bg.cframe = torso.CFrame 
+	
+				local bv = Instance.new("BodyVelocity", torso) 
+				bv.velocity = Vector3.new(0,0.1,0) 
+				bv.maxForce = Vector3.new(9e9, 9e9, 9e9) 
+				repeat wait() 
+					player.Character.Humanoid.PlatformStand = true 
+					if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
+						speed = speed+(sliderfly/1.7)+(speed/maxspeed) 
+						if speed > maxspeed then 
+							speed = maxspeed 
+						end 
+	
+					elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
+						speed = speed-(sliderfly/1.7)
+						if speed < 0 then 
+							speed = 0 
+						end 
+					end 
+					if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then 
+						bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+						lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r} 
+					elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then 
+						bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+					else 
+						bv.velocity = Vector3.new(0,0.1,0)
+					end 
+					bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
+				until not flying or not Pfly
+				ctrl = {f = 0, b = 0, l = 0, r = 0} 
+				lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+				speed = 0 
+				bg:Destroy() 
+				bv:Destroy() 
+				player.Character.Humanoid.PlatformStand = false 
+			end 
+	
+			mouse.KeyDown:connect(function(key) 
+				if key:lower() == "p" then 
+					if flying then flying = false 
+					else 
+						flying = true 
+						Fly() 
+					end 
+				elseif key:lower() == "w" then 
+					ctrl.f = 1 
+				elseif key:lower() == "s" then 
+					ctrl.b = -1 
+				elseif key:lower() == "a" then 
+					ctrl.l = -1 
+				elseif key:lower() == "d" then 
+					ctrl.r = 1 
+				end 
+			end) 
+	
+			mouse.KeyUp:connect(function(key) 
+	
+				if key:lower() == "w" then 
+					ctrl.f = 0 
+				elseif key:lower() == "s" then 
+					ctrl.b = 0 
+				elseif key:lower() == "a" then 
+					ctrl.l = 0 
+				elseif key:lower() == "d" then 
+					ctrl.r = 0 
+				end 
+			end)
+			Fly()
+		end
+	end)
+
+	local playerlist = {}
+	for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+		if v.Name ~= player.Name then
+			table.insert(playerlist, v.Name)
+		end
+	end
+	section2:addDropdown("Track selected player",playerlist,function(ripthatguy)
+		notify("Player Selected: " .. ripthatguy)
+		Target = ripthatguy
+	end)
+
+	local trackthatguy = false
+	section2:addToggle("Track Player",false,function(bool)
+		trackthatguy = bool
+		local platform = Instance.new("Part", player.Character)
+		platform.Anchored = true
+		platform.Transparency = 1
+		platform.Size = Vector3.new(6, 1, 6)
+
+		local connection
+		connection = game:GetService("RunService").RenderStepped:connect(function()
+			if player.Character:FindFirstChild("HumanoidRootPart") then
+				platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -1.8, 0)
+			else
+				connection:Disconnect()
+			end
+		end)
+		game:GetService('RunService').Stepped:connect(function()
+			if trackthatguy ~= true then
+				platform:Destroy()
+			end
+		end)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if trackthatguy == true then
+			player.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame * CFrame.new(0, 5, 10)
+			game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game.Players[Target].Character.HumanoidRootPart.Position)
+		end
+	end)
+
+	section2:addButton("Refesh Players List",function()
+		section2:updateDropdown("Track selected player","Track selected player",playerlist)
+	end)
+
+	-- load
+	NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
+	
+	-- second page
+	local page2 = NoobieDoge:addPage("Misc", 5012544693)
+	local section1 = page2:addSection("Auto Use Dispensers (Club Members Only)")
+	local section2 = page2:addSection("Auto Use Lucky Wheel (Club Members Only)")
+	local section3 = page2:addSection("Game Functions")
+
+	local AutoUseD = false
+	section1:addToggle("Auto use Dispensers",false, function(bool)
+		AutoUseD = bool
+		notify("Auto use Dispensers: "..tostring(AutoUseD),true)
+	end)
+	
+	local AutoUseLuckyWheel = false
+	section2:addToggle("Auto use Lucky Wheel",false, function(bool)
+		AutoUseLuckyWheel = bool
+		notify("Auto use Lucky Wheel: "..tostring(AutoUseLuckyWheel),true)
+	end)
+	
+	spawn(function()
+		while wait(302) do
+			if AutoUseD then
+				for i,v in pairs(game.Workspace.Dispensers:GetChildren()) do
+					local args = {[1] = "Dispenser", [2] = v.Name}
+					game:GetService("ReplicatedStorage").RemoteEvent:FireServer(unpack(args))
+					wait(.4)
+				end
+			end
+		end
+	end)
+	
+	spawn(function()
+		while wait(1805) do
+			if AutoUseLuckyWheel then
+				for i,v in pairs(game.Workspace.Dispensers:GetChildren()) do
+					local args = {[1] = "LuckyWheel"}
+					game:GetService("ReplicatedStorage").RemoteEvent:FireServer(unpack(args))
+					wait(.4)
+				end
+			end
+		end
+	end)
+	
+	section3:addButton("Sell Resources", function()
+		for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+			if v:FindFirstChild("Baracks") and v.Baracks:FindFirstChild("Slot 5") and v:FindFirstChild("PLAYERNAME") and v.PLAYERNAME:FindFirstChild("SurfaceGui") and v.PLAYERNAME.SurfaceGui:FindFirstChild("TextLabel") and v.PLAYERNAME.SurfaceGui.TextLabel.Text == player.Name then
+				repeat wait()
+					player.Character.HumanoidRootPart.CFrame = v.Baracks["Slot 5"].CFrame * CFrame.new(0, 8, 0)
+				until player.PlayerGui.MainUI.TopSide.Backpack.Meter.BackgroundColor3 == Color3.fromRGB(0, 255, 0)
+			end
+		end
+	end)
+	
+	-- third page
+	local page3 = NoobieDoge:addPage("Auto Farm", 5012544693)
+	local section1 = page3:addSection("Auto Farm")
+	local section2 = page3:addSection("Farming Targets")
+	local section3 = page3:addSection("Boss Farm")
+	local section4 = page3:addSection("Auto Farm Settings")
+
+	local AutoFarm = false
+	section1:addToggle("Auto Farm",false, function(bool)
+		AutoFarm = bool
+		if AutoFarm then
+			notify("Toggle off DogeHub V2 GUI to start farming")
+		end
+	end)
+
+	local AutoSellResources = false
+	section1:addToggle("Auto Sell Resources when Full",false, function(bool)
+		AutoSellResources = bool
+	end)
+
+	local ObjectsList = {}
+	for i,v in pairs(player.PlayerGui.MainUI.Frames.Index.Mobs.Container:GetChildren()) do
+		if v.Name ~= "UIGridLayout" and v:FindFirstChild("Button") and v.Button:FindFirstChild("NAME") then
+			table.insert(ObjectsList, v.Button.NAME.Text)
+		end
+	end
+	for i,v in pairs(game:GetService("Workspace").Objects:GetChildren()) do
+		table.insert(ObjectsList, v.Name)
+	end
+
+	section2:addDropdown("Primary Target 1",ObjectsList,function(R11)
+		print("Primary Target 1: " .. R11)
+		notify("Primary Target 1: " .. R11)
+		PTarget1 = R11
+	end) 
+	
+	section2:addDropdown("Primary Target 2",ObjectsList,function(R12)
+		print("Primary Target 2: " .. R12)
+		notify("Primary Target 2: " .. R12)
+		PTarget2 = R12
+	end) 
+
+	section2:addDropdown("Primary Target 3",ObjectsList,function(R13)
+		print("Primary Target 3: " .. R13)
+		notify("Primary Target 3: " .. R13)
+		PTarget3 = R13
+	end)
+	
+	section2:addDropdown("Secondary Target 1",ObjectsList,function(R21)
+		print("Secondary Target 1: " .. R21)
+		notify("Secondary Target 1: " .. R21)
+		STarget1 = R21
+	end)
+
+	section2:addDropdown("Secondary Target 2",ObjectsList,function(R22)
+		print("Secondary Target 2: " .. R22)
+		notify("Secondary Target 2: " .. R22)
+		STarget2 = R22
+	end)
+
+	section2:addDropdown("Secondary Target 3",ObjectsList,function(R23)
+		print("Secondary Target 3: " .. R23)
+		notify("Secondary Target 3: " .. R23)
+		STarget3 = R23
+	end)
+	
+	local FarmLordOfSands = false
+	section3:addToggle("Farm Lord of Sands",false, function(bool)
+		FarmLordOfSands = bool
+		if FarmLordOfSands then
+			notify("Toggle off DogeHub V2 GUI to start farming")
+		end
+	end)
+	
+	local FarmSirShark = false
+	section3:addToggle("Farm Sir Shark",false, function(bool)
+		FarmSirShark = bool
+		if FarmSirShark then
+			notify("Toggle off DogeHub V2 GUI to start farming")
+		end
+	end)
+	
+	local FarmMinotaur = false
+	section3:addToggle("Farm Minotaur",false, function(bool)
+		FarmMinotaur = bool
+		if FarmMinotaur then
+			notify("Toggle off DogeHub V2 GUI to start farming")
+		end
+	end)
+	
+	local FarmTween = true
+	section4:addToggle("Travel by Tween",true, function(bool)
+		FarmTween = bool
+		FarmTP = false
+		section4:updateToggle("Travel by Teleportation")
+	end)
+
+	local TweenSpeed = 34
+	section4:addSlider("Tween Speed", 35, 1, 500, function(value)
+		getgenv().speed = value
+	end)
+	
+	local FarmTP = false
+	section4:addToggle("Travel by Teleportation",false, function(bool)
+		FarmTP = bool
+		FarmTween = false
+		section4:updateToggle("Travel by Tween")
+	end)
+	
+	function FARM()
+		pcall(function()
+			if (game:GetService("Workspace").Objects:FindFirstChild(PTarget1) and game:GetService("Workspace").Objects:FindFirstChild(PTarget1):FindFirstChildOfClass("Part") and game:GetService("Workspace").Objects:FindFirstChild(PTarget1):FindFirstChild("HP") and game:GetService("Workspace").Objects:FindFirstChild(PTarget1).HP.Value ~= 0) or (game:GetService("Workspace").Objects:FindFirstChild(PTarget2) and game:GetService("Workspace").Objects:FindFirstChild(PTarget2):FindFirstChildOfClass("Part") and game:GetService("Workspace").Objects:FindFirstChild(PTarget2):FindFirstChild("HP") and game:GetService("Workspace").Objects:FindFirstChild(PTarget2).HP.Value ~= 0) or (game:GetService("Workspace").Objects:FindFirstChild(PTarget3) and game:GetService("Workspace").Objects:FindFirstChild(PTarget3):FindFirstChildOfClass("Part") and game:GetService("Workspace").Objects:FindFirstChild(PTarget3):FindFirstChild("HP") and game:GetService("Workspace").Objects:FindFirstChild(PTarget3).HP.Value ~= 0) then
+				local function getNearest()
+				local nearest, dist = nil, 99999
+				for i, v in pairs(game:GetService("Workspace").Objects:GetChildren()) do
+					if (v.Name == PTarget1 or v.Name == PTarget2 or v.Name == PTarget3) and (v:FindFirstChild("BOTTOM") or v:FindFirstChild("HRP") or v:FindFirstChild("Part")) and v:FindFirstChild("HP") and v:FindFirstChild("HP").Value ~= 0 then
+						local m =(player.Character.Head.Position-v:FindFirstChildOfClass("Part").Position).magnitude
+							if(m<dist)then
+								dist = m
+								nearest = v
+							end
+						end
+					end
+				return nearest
+				end
+				local target = getNearest()
+				repeat wait()
+					pcall(function()	
+						if (target:FindFirstChildOfClass("Part") or target:FindFirstChildOfClass("MeshPart")) and AutoFarm then
+							for i,wand in pairs(player.Backpack:GetChildren()) do
+								if wand:FindFirstChild("Handle") and wand:FindFirstChild("SPAWNER") then
+									player.Character.Humanoid:EquipTool(wand)
+								end
+							end
+							for i, v in pairs(player.Character:GetChildren()) do
+								if v:IsA("BasePart") then
+									if AutoFarm or noclips then
+										v.CanCollide = false
+									else
+										v.CanCollide = true
+									end
+								end
+							end
+							if(target~=nil)then
+								for i, v1 in pairs(target:GetChildren()) do
+									if target:FindFirstChild("Location") then
+										if v1.ClassName == "Part" and v1.Name ~= "BOTTOM" then
+											if FarmTween then
+												toTarget(player.Character.HumanoidRootPart.Position,v1.Position,v1.CFrame * CFrame.new(0, 4, 5.5))
+											elseif FarmTP then
+												player.Character.HumanoidRootPart.CFrame = v1.CFrame * CFrame.new(0, 4, 5.5)
+											else
+												wait(10)
+												notify("Bruh.")
+											end
+											game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v1.Position)
+										end
+									else
+										if v1.ClassName == "Part" and v1.Name == "BOTTOM" then
+											if FarmTween then
+												toTarget(player.Character.HumanoidRootPart.Position,v1.Position,v1.CFrame * CFrame.new(0, 4, 5.5))
+											elseif FarmTP then
+												player.Character.HumanoidRootPart.CFrame = v1.CFrame * CFrame.new(0, 4, 5.5)
+											else
+												wait(10)
+												notify("Bruh.")
+											end
+											game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v1.Position)
+										end
+									end
+								end
+								AUCLICK1 = true
+							end
+						else
+							AUCLICK1 = false
+						end
+						player.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
+					end)
+				until target:FindFirstChild("HP").Value == 0 or AutoFarm == false
+			elseif (game:GetService("Workspace").Objects:FindFirstChild(STarget1) and game:GetService("Workspace").Objects:FindFirstChild(STarget1):FindFirstChildOfClass("Part") and game:GetService("Workspace").Objects:FindFirstChild(STarget1):FindFirstChild("HP") and game:GetService("Workspace").Objects:FindFirstChild(STarget1).HP.Value ~= 0) or (game:GetService("Workspace").Objects:FindFirstChild(STarget2) and game:GetService("Workspace").Objects:FindFirstChild(STarget2):FindFirstChildOfClass("Part") and game:GetService("Workspace").Objects:FindFirstChild(STarget2):FindFirstChild("HP") and game:GetService("Workspace").Objects:FindFirstChild(STarget2).HP.Value ~= 0) or (game:GetService("Workspace").Objects:FindFirstChild(STarget3) and game:GetService("Workspace").Objects:FindFirstChild(STarget3):FindFirstChildOfClass("Part") and game:GetService("Workspace").Objects:FindFirstChild(STarget3):FindFirstChild("HP") and game:GetService("Workspace").Objects:FindFirstChild(STarget3).HP.Value ~= 0) then
+				local function getNearest()
+				local nearest, dist = nil, 99999
+				for i, v in pairs(game:GetService("Workspace").Objects:GetChildren()) do
+					if (v.Name == STarget1 or v.Name == STarget2 or v.Name == STarget3) and (v:FindFirstChild("BOTTOM") or v:FindFirstChild("HRP") or v:FindFirstChild("Part")) and v:FindFirstChild("HP") and v:FindFirstChild("HP").Value ~= 0 then
+						local m =(player.Character.Head.Position-v:FindFirstChildOfClass("Part").Position).magnitude
+							if(m<dist)then
+								dist = m
+								nearest = v
+							end
+						end
+					end
+				return nearest
+				end
+				local target = getNearest()
+				repeat wait()
+					pcall(function()	
+						if (target:FindFirstChildOfClass("Part") or target:FindFirstChildOfClass("MeshPart")) and AutoFarm then
+							for i,wand in pairs(player.Backpack:GetChildren()) do
+								if wand:FindFirstChild("Handle") and wand:FindFirstChild("SPAWNER") then
+									player.Character.Humanoid:EquipTool(wand)
+								end
+							end
+							for i, v in pairs(player.Character:GetChildren()) do
+								if v:IsA("BasePart") then
+									if AutoFarm or noclips then
+										v.CanCollide = false
+									else
+										v.CanCollide = true
+									end
+								end
+							end
+							if(target~=nil)then
+								for i, v1 in pairs(target:GetChildren()) do
+									if target:FindFirstChild("Location") then
+										if v1.ClassName == "Part" and v1.Name ~= "BOTTOM" then
+											if FarmTween then
+												toTarget(player.Character.HumanoidRootPart.Position,v1.Position,v1.CFrame * CFrame.new(0, 4, 5.5))
+											elseif FarmTP then
+												player.Character.HumanoidRootPart.CFrame = v1.CFrame * CFrame.new(0, 4, 5.5)
+											else
+												wait(10)
+												notify("Bruh.")
+											end
+											game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v1.Position)
+										end
+									else
+										if v1.ClassName == "Part" and v1.Name == "BOTTOM" then
+											if FarmTween then
+												toTarget(player.Character.HumanoidRootPart.Position,v1.Position,v1.CFrame * CFrame.new(0, 4, 5.5))
+											elseif FarmTP then
+												player.Character.HumanoidRootPart.CFrame = v1.CFrame * CFrame.new(0, 4, 5.5)
+											else
+												wait(10)
+												notify("Bruh.")
+											end
+											game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v1.Position)
+										end
+									end
+								end
+								AUCLICK1 = true
+							end
+						else
+							AUCLICK1 = false
+						end
+						player.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
+					end)
+				until target:FindFirstChild("HP").Value == 0 or AutoFarm == false or (target:FindFirstChild("HP").Value == 0 and (game:GetService("Workspace").Objects:FindFirstChild(PTarget1) or game:GetService("Workspace").Objects:FindFirstChild(PTarget2) or game:GetService("Workspace").Objects:FindFirstChild(PTarget3)) and (game:GetService("Workspace").Objects:FindFirstChild(PTarget1):FindFirstChildOfClass("Part") or game:GetService("Workspace").Objects:FindFirstChild(PTarget2):FindFirstChildOfClass("Part") or game:GetService("Workspace").Objects:FindFirstChild(PTarget3):FindFirstChildOfClass("Part")) and (game:GetService("Workspace").Objects:FindFirstChild(PTarget1).HP.Value ~= 0 or game:GetService("Workspace").Objects:FindFirstChild(PTarget2).HP.Value ~= 0 or game:GetService("Workspace").Objects:FindFirstChild(PTarget3).HP.Value ~= 0))
+			end
+		end)
+	end
+
+	function FARMLOS()
+		pcall(function()
+			for i, v in pairs(game:GetService("Workspace").Objects:GetChildren()) do
+				if v.Name == "Lord of Sands" and v:FindFirstChild("HP").Value ~= 0 then	
+					repeat wait()
+						pcall(function()	
+							if (v:FindFirstChildOfClass("Part") or v:FindFirstChildOfClass("MeshPart")) and FarmLordOfSands then
+								for i,wand in pairs(player.Backpack:GetChildren()) do
+									if wand:FindFirstChild("Handle") and wand:FindFirstChild("SPAWNER") then
+										player.Character.Humanoid:EquipTool(wand)
+									end
+								end
+								for i, v1 in pairs(player.Character:GetChildren()) do
+									if v1:IsA("BasePart") then
+										if FarmLordOfSands or noclips then
+											v1.CanCollide = false
+										else
+											v1.CanCollide = true
+										end
+									end
+								end
+								if(v~=nil)then
+									for i, v1 in pairs(v:GetChildren()) do
+										if v:FindFirstChild("Location") then
+											if v1.ClassName == "Part" and v1.Name ~= "BOTTOM" then
+												if FarmTween then
+													toTarget(player.Character.HumanoidRootPart.Position,v1.Position,v1.CFrame * CFrame.new(0, 4, 5.5))
+												elseif FarmTP then
+													player.Character.HumanoidRootPart.CFrame = v1.CFrame * CFrame.new(0, 4, 5.5)
+												else
+													wait(10)
+													notify("Bruh.")
+												end
+												game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v1.Position)
+											end
+										else
+											if v1.ClassName == "Part" and v1.Name == "BOTTOM" then
+												if FarmTween then
+													toTarget(player.Character.HumanoidRootPart.Position,v1.Position,v1.CFrame * CFrame.new(0, 4, 5.5))
+												elseif FarmTP then
+													player.Character.HumanoidRootPart.CFrame = v1.CFrame * CFrame.new(0, 4, 5.5)
+												else
+													wait(10)
+													notify("Bruh.")
+												end
+												game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v1.Position)
+											end
+										end
+									end
+									AUCLICK1 = true
+								end
+							else
+								AUCLICK1 = false
+							end
+							player.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
+						end)
+					until v == nil or v:FindFirstChild("HP").Value == 0 or FarmLordOfSands == false 
+				else
+					for i, vd in pairs(game:GetService("Workspace").Objects:GetChildren()) do
+						if vd.Name == "Dark Pillar" then	
+							repeat wait()
+								pcall(function()	
+									if (vd:FindFirstChildOfClass("Part") or vd:FindFirstChildOfClass("MeshPart")) and FarmLordOfSands then
+										for i,wand in pairs(player.Backpack:GetChildren()) do
+											if wand:FindFirstChild("Handle") and wand:FindFirstChild("SPAWNER") then
+												player.Character.Humanoid:EquipTool(wand)
+											end
+										end
+										for i, v1 in pairs(player.Character:GetChildren()) do
+											if v1:IsA("BasePart") then
+												if FarmLordOfSands or noclips then
+													v1.CanCollide = false
+												else
+													v1.CanCollide = true
+												end
+											end
+										end
+										if(vd~=nil)then
+											for i, v1 in pairs(vd:GetChildren()) do
+												if vd:FindFirstChild("Location") then
+													if v1.ClassName == "Part" and v1.Name ~= "BOTTOM" then
+														if FarmTween then
+															toTarget(player.Character.HumanoidRootPart.Position,v1.Position,v1.CFrame * CFrame.new(0, 4, 5.5))
+														elseif FarmTP then
+															player.Character.HumanoidRootPart.CFrame = v1.CFrame * CFrame.new(0, 4, 5.5)
+														else
+															wait(10)
+															notify("Bruh.")
+														end
+														game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v1.Position)
+													end
+												else
+													if v1.ClassName == "Part" and v1.Name == "BOTTOM" then
+														if FarmTween then
+															toTarget(player.Character.HumanoidRootPart.Position,v1.Position,v1.CFrame * CFrame.new(0, 4, 5.5))
+														elseif FarmTP then
+															player.Character.HumanoidRootPart.CFrame = v1.CFrame * CFrame.new(0, 4, 5.5)
+														else
+															wait(10)
+															notify("Bruh.")
+														end
+														game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v1.Position)
+													end
+												end
+											end
+											AUCLICK1 = true
+										end
+									else
+										AUCLICK1 = false
+									end
+									player.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
+								end)
+							until vd:FindFirstChild("HP").Value == 0 or FarmLordOfSands == false or (vd:FindFirstChild("HP").Value == 0 and game:GetService("Workspace").Objects:FindFirstChild("Lord of Sands") and game:GetService("Workspace").Objects:FindFirstChild("Lord of Sands"):FindFirstChildOfClass("Part") and (game:GetService("Workspace").Objects:FindFirstChild("Lord of Sands").HP.Value ~= 0))
+						end
+					end
+				end
+			end
+		end)
+	end
+		
+	function FARMSS()
+		pcall(function()
+			for i, v in pairs(game:GetService("Workspace").Objects:GetChildren()) do
+				if v.Name == "Sir Shark" and v:FindFirstChild("HP").Value ~= 0 then	
+					repeat wait()
+						pcall(function()	
+							if (v:FindFirstChildOfClass("Part") or v:FindFirstChildOfClass("MeshPart")) and FarmSirShark then
+								for i,wand in pairs(player.Backpack:GetChildren()) do
+									if wand:FindFirstChild("Handle") and wand:FindFirstChild("SPAWNER") then
+										player.Character.Humanoid:EquipTool(wand)
+									end
+								end
+								for i, v1 in pairs(player.Character:GetChildren()) do
+									if v1:IsA("BasePart") then
+										if FarmSirShark or noclips then
+											v1.CanCollide = false
+										else
+											v1.CanCollide = true
+										end
+									end
+								end
+								if(v~=nil)then
+									for i, v1 in pairs(v:GetChildren()) do
+										if v:FindFirstChild("Location") then
+											if v1.ClassName == "Part" and v1.Name ~= "BOTTOM" then
+												if FarmTween then
+													toTarget(player.Character.HumanoidRootPart.Position,v1.Position,v1.CFrame * CFrame.new(0, 4, 5.5))
+												elseif FarmTP then
+													player.Character.HumanoidRootPart.CFrame = v1.CFrame * CFrame.new(0, 4, 5.5)
+												else
+													wait(10)
+													notify("Bruh.")
+												end
+												game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v1.Position)
+											end
+										else
+											if v1.ClassName == "Part" and v1.Name == "BOTTOM" then
+												if FarmTween then
+													toTarget(player.Character.HumanoidRootPart.Position,v1.Position,v1.CFrame * CFrame.new(0, 4, 5.5))
+												elseif FarmTP then
+													player.Character.HumanoidRootPart.CFrame = v1.CFrame * CFrame.new(0, 4, 5.5)
+												else
+													wait(10)
+													notify("Bruh.")
+												end
+												game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v1.Position)
+											end
+										end
+									end
+									AUCLICK1 = true
+								end
+							else
+								AUCLICK1 = false
+							end
+							player.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
+						end)
+					until v == nil or v:FindFirstChild("HP").Value == 0 or FarmSirShark == false 
+				else
+					for i, vd in pairs(game:GetService("Workspace").Objects:GetChildren()) do
+						if vd.Name == "Shark Figure" then	
+							repeat wait()
+								pcall(function()	
+									if (vd:FindFirstChildOfClass("Part") or vd:FindFirstChildOfClass("MeshPart")) and FarmSirShark then
+										for i,wand in pairs(player.Backpack:GetChildren()) do
+											if wand:FindFirstChild("Handle") and wand:FindFirstChild("SPAWNER") then
+												player.Character.Humanoid:EquipTool(wand)
+											end
+										end
+										for i, v1 in pairs(player.Character:GetChildren()) do
+											if v1:IsA("BasePart") then
+												if FarmSirShark or noclips then
+													v1.CanCollide = false
+												else
+													v1.CanCollide = true
+												end
+											end
+										end
+										if(vd~=nil)then
+											for i, v1 in pairs(vd:GetChildren()) do
+												if vd:FindFirstChild("Location") then
+													if v1.ClassName == "Part" and v1.Name ~= "BOTTOM" then
+														if FarmTween then
+															toTarget(player.Character.HumanoidRootPart.Position,v1.Position,v1.CFrame * CFrame.new(0, 4, 5.5))
+														elseif FarmTP then
+															player.Character.HumanoidRootPart.CFrame = v1.CFrame * CFrame.new(0, 4, 5.5)
+														else
+															wait(10)
+															notify("Bruh.")
+														end
+														game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v1.Position)
+													end
+												else
+													if v1.ClassName == "Part" and v1.Name == "BOTTOM" then
+														if FarmTween then
+															toTarget(player.Character.HumanoidRootPart.Position,v1.Position,v1.CFrame * CFrame.new(0, 4, 5.5))
+														elseif FarmTP then
+															player.Character.HumanoidRootPart.CFrame = v1.CFrame * CFrame.new(0, 4, 5.5)
+														else
+															wait(10)
+															notify("Bruh.")
+														end
+														game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v1.Position)
+													end
+												end
+											end
+											AUCLICK1 = true
+										end
+									else
+										AUCLICK1 = false
+									end
+									player.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
+								end)
+							until vd:FindFirstChild("HP").Value == 0 or FarmSirShark == false or (vd:FindFirstChild("HP").Value == 0 and game:GetService("Workspace").Objects:FindFirstChild("Lord of Sands") and game:GetService("Workspace").Objects:FindFirstChild("Lord of Sands"):FindFirstChildOfClass("Part") and (game:GetService("Workspace").Objects:FindFirstChild("Lord of Sands").HP.Value ~= 0))
+						end
+					end
+				end
+			end
+		end)
+	end
+	
+	function FARMMT()
+		pcall(function()
+			if game:GetService("Workspace").Objects:FindFirstChild("Minotaur") and game:GetService("Workspace").Objects:FindFirstChild("Minotaur"):FindFirstChildOfClass("Part") and game:GetService("Workspace").Objects:FindFirstChild("Minotaur"):FindFirstChild("HP") and game:GetService("Workspace").Objects:FindFirstChild("Minotaur").HP.Value ~= 0 then
+				local function getNearest()
+				local nearest, dist = nil, 99999
+				for i, v in pairs(game:GetService("Workspace").Objects:GetChildren()) do
+					if v.Name == "Minotaur" and (v:FindFirstChild("BOTTOM") or v:FindFirstChild("HRP") or v:FindFirstChild("Part")) and v:FindFirstChild("HP") and v:FindFirstChild("HP").Value ~= 0 then
+						local m =(player.Character.Head.Position-v:FindFirstChildOfClass("Part").Position).magnitude
+							if(m<dist)then
+								dist = m
+								nearest = v
+							end
+						end
+					end
+				return nearest
+				end
+				local target = getNearest()
+				repeat wait()
+					pcall(function()	
+						if (target:FindFirstChildOfClass("Part") or target:FindFirstChildOfClass("MeshPart")) and FarmMinotaur then
+							for i,wand in pairs(player.Backpack:GetChildren()) do
+								if wand:FindFirstChild("Handle") and wand:FindFirstChild("SPAWNER") then
+									player.Character.Humanoid:EquipTool(wand)
+								end
+							end
+							for i, v1 in pairs(player.Character:GetChildren()) do
+								if v1:IsA("BasePart") then
+									if FarmSirShark or noclips then
+										v1.CanCollide = false
+									else
+										v1.CanCollide = true
+									end
+								end
+							end
+							if(target~=nil)then
+								for i, v1 in pairs(target:GetChildren()) do
+									if target:FindFirstChild("Location") then
+										if v1.ClassName == "Part" and v1.Name ~= "BOTTOM" then
+											if FarmTween then
+												toTarget(player.Character.HumanoidRootPart.Position,v1.Position,v1.CFrame * CFrame.new(0, 4, 5.5))
+											elseif FarmTP then
+												player.Character.HumanoidRootPart.CFrame = v1.CFrame * CFrame.new(0, 4, 5.5)
+											else
+												wait(10)
+												notify("Bruh.")
+											end
+											game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v1.Position)
+										end
+									else
+										if v1.ClassName == "Part" and v1.Name == "BOTTOM" then
+											if FarmTween then
+												toTarget(player.Character.HumanoidRootPart.Position,v1.Position,v1.CFrame * CFrame.new(0, 4, 5.5))
+											elseif FarmTP then
+												player.Character.HumanoidRootPart.CFrame = v1.CFrame * CFrame.new(0, 4, 5.5)
+											else
+												wait(10)
+												notify("Bruh.")
+											end
+											game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v1.Position)
+										end
+									end
+								end
+								AUCLICK1 = true
+							end
+						else
+							AUCLICK1 = false
+						end
+						player.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
+					end)
+				until target == nil or target:FindFirstChild("HP").Value == 0 or FarmMinotaur == false 
+			else
+				if FarmMinotaur then
+					for i, vGS in pairs(game.Workspace.GemSpawns:GetChildren()) do
+						for i, v in pairs(vGS:GetChildren()) do
+							if v.Name == "Gem" and v:FindFirstChild("PROXIMITY") and v:FindFirstChild("Sp") then
+								if FarmTween and FarmMinotaur then
+									toTarget(player.Character.HumanoidRootPart.Position,v.Position,v.CFrame * CFrame.new(0, 0, 0))
+									wait(.5)
+									game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.Position)
+									VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+									VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+									wait(.1)
+								elseif FarmTP and FarmMinotaur then
+									player.Character.HumanoidRootPart.CFrame = v.CFrame * CFrame.new(0, 0, 0)
+									wait(.5)
+									game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.Position)
+									VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+									VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+									wait(.1)
+								end
+							end
+						end
+					end
+					if FarmMinotaur then
+						player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-355, 9.5, 1048))
+						wait()
+						VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+						VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+						wait(.1)
+						VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+						wait()
+						player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-359, 12, 1030))
+						wait()
+						VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+						VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+						wait(.1)
+						player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-372, 12, 1021))
+						wait()
+						VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+						VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+						wait(.1)
+						player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-387, 9.5, 1018.7))
+						wait()
+						VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+						VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+						wait(.1)
+						player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-398, 12, 1032))
+						wait()
+						VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+						VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+						wait(.1)
+						player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-397, 12, 1047))
+						wait()
+						VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+						VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+						wait(.1)
+						player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-356.8, 11.7, 1048))
+						wait()
+						VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+						VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+						wait(.1)
+						VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+						VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+						VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+						VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+						VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+					end
+				end
+			end
+		end)
+	end
+	
+	AUCLICK1 = false
+	spawn(function()
+		while wait() do
+			if AUCLICK1 then
+				if game:GetService("CoreGui")["DogeHub V2"].Main.Size == UDim2.new(0, 511, 0, 0) then
+					VirtualInputManager:SendMouseButtonEvent(869, 458, 0, true, game, 1)
+					VirtualInputManager:SendMouseButtonEvent(869, 458, 0, false, game, 1)
+					wait(1)
+				end
+			end
+		end
+	end)
+
+	spawn(function()
+		while wait() do
+			if AutoFarm or FarmLordOfSands or FarmSirShark or FarmMinotaur then
+				if AutoSellResources and player.PlayerGui.MainUI.TopSide.Backpack.Meter.BackgroundColor3 == Color3.fromRGB(255, 0, 0) then
+					for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+						if v:FindFirstChild("Baracks") and v.Baracks:FindFirstChild("Slot 5") and v:FindFirstChild("PLAYERNAME") and v.PLAYERNAME:FindFirstChild("SurfaceGui") and v.PLAYERNAME.SurfaceGui:FindFirstChild("TextLabel") and v.PLAYERNAME.SurfaceGui.TextLabel.Text == player.Name then
+							repeat wait()
+								player.Character.HumanoidRootPart.CFrame = v.Baracks["Slot 5"].CFrame * CFrame.new(0, 8, 0)
+							until player.PlayerGui.MainUI.TopSide.Backpack.Meter.BackgroundColor3 == Color3.fromRGB(0, 255, 0)
+						end
+					end
+				else
+					if AutoFarm then
+						FARM()
+					end
+					if FarmLordOfSands then
+						FARMLOS()
+					end
+					if FarmSirShark then
+						FARMSS()
+					end
+					if FarmMinotaur then
+						FARMMT()
+					end
+				end
+			else
+				AUCLICK1 = false
+			end
+		end
+	end)
+
+	player.CharacterAdded:Connect(function()
+		if AutoFarm or FarmLordOfSands or FarmSirShark or FarmMinotaur then
+			wait(1)
+			if game.Workspace[player.Name]:FindFirstChildOfClass("Tool") then
+				for i,wand in pairs(player.Backpack:GetChildren()) do
+					if wand:FindFirstChild("Handle") and wand:FindFirstChild("SPAWNER") then
+						player.Character.Humanoid:EquipTool(wand)
+					end
+				end
+			else
+				notify("You don't have a wand!")
+				wait(1)
+				player.Character:BreakJoints()
+			end
+		end
+	end)
+
+	spawn(function()
+		while wait() do
+			if AutoSellResources and (not AutoFarm or not FarmLordOfSands or not FarmSirShark or not FarmMinotaur) then
+				if player.PlayerGui.MainUI.TopSide.Backpack.Meter.BackgroundColor3 == Color3.fromRGB(255, 0, 0) then
+					for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+						if v:FindFirstChild("Baracks") and v.Baracks:FindFirstChild("Slot 5") and v:FindFirstChild("PLAYERNAME") and v.PLAYERNAME:FindFirstChild("SurfaceGui") and v.PLAYERNAME.SurfaceGui:FindFirstChild("TextLabel") and v.PLAYERNAME.SurfaceGui.TextLabel.Text == player.Name then
+							repeat wait()
+								player.Character:FindFirstChild("HumanoidRootPart").CFrame = v.Baracks["Slot 5"].CFrame * CFrame.new(0, 8, 0)
+							until player.PlayerGui.MainUI.TopSide.Backpack.Meter.BackgroundColor3 == Color3.fromRGB(0, 255, 0)
+						end
+					end
+				end
+			end
+		end
+	end)
+
+	-- forth page
+	local page4 = NoobieDoge:addPage("Open Shops", 5012544693)
+	local section1 = page4:addSection("Forest")
+	local section2 = page4:addSection("Riverlands")
+	local section3 = page4:addSection("Mountains")
+	local section4 = page4:addSection("Atlantis")
+	local section5 = page4:addSection("Mushroom Forest")
+	local section6 = page4:addSection("Ouroboros")
+	local section7 = page4:addSection("Magic Forest")
+	local section8 = page4:addSection("Wise Bird Lands")
+	local section9 = page4:addSection("Jungle")
+	local section10 = page4:addSection("Alien Realm")
+	local section11 = page4:addSection("Volcano")
+	local section12 = page4:addSection("Shocked Forest")
+
+	section1:addButton("Armor Shop",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").ArmorShop.Part.CFrame* CFrame.new(9, 3, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").ArmorShop.Part.CFrame* CFrame.new(0, 3, 0)
+			wait(.2)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+		end
+	end)
+
+	section1:addButton("Weapon Shop",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").WeaponShop.Part.CFrame* CFrame.new(9, 3, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").WeaponShop.Part.CFrame* CFrame.new(0, 3, 0)
+			wait(.2)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+		end
+	end)
+
+	section1:addButton("Army Shop",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").BarackShop.Part.CFrame* CFrame.new(9, 3, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").BarackShop.Part.CFrame* CFrame.new(0, 3, 0)
+			wait(.2)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+		end
+	end)
+
+	section1:addButton("Tool Shop",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").ToolShop.Part.CFrame* CFrame.new(9, 3, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").ToolShop.Part.CFrame* CFrame.new(0, 3, 0)
+			wait(.2)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+		end
+	end)
+
+	section1:addButton("Bag Shop",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").BagShop.Part.CFrame* CFrame.new(9, 3, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").BagShop.Part.CFrame* CFrame.new(0, 3, 0)
+			wait(.2)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+		end
+	end)
+
+	section1:addButton("Basic Gear Shop",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").BasicGearShop.Part.CFrame* CFrame.new(9, 3, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").BasicGearShop.Part.CFrame* CFrame.new(0, 3, 0)
+			wait(.2)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+		end
+	end)
+
+	section1:addButton("Skin Shop",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").SkinShop.Part.CFrame* CFrame.new(9, 3, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").SkinShop.Part.CFrame* CFrame.new(0, 3, 0)
+			wait(.2)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+		end
+	end)
+
+	section1:addButton("Old Events Shop",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").OldEventsShop.Part.CFrame* CFrame.new(9, 3, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").OldEventsShop.Part.CFrame* CFrame.new(0, 3, 0)
+			wait(.2)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+		end
+	end)
+	
+	section2:addButton("Good Gear Shop",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").GoodGearShop.Part.CFrame* CFrame.new(9, 3, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").GoodGearShop.Part.CFrame* CFrame.new(0, 3, 0)
+			wait(.2)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+		end
+	end)
+
+	section3:addButton("Mountain Shop",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").MountainShop.Part.CFrame* CFrame.new(9, 0, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").MountainShop.Part.CFrame* CFrame.new(0, 3, 0)
+			wait(.2)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+		end
+	end)
+
+	section4:addButton("Aqua Shop",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").AquaShop.Part.CFrame* CFrame.new(9, 0, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").AquaShop.Part.CFrame* CFrame.new(0, 3, 0)
+			wait(.2)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+		end
+	end)
+
+	section5:addButton("Mushroom Shop",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").MushroomShop.Part.CFrame* CFrame.new(9, 0, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").MushroomShop.Part.CFrame* CFrame.new(0, 3, 0)
+			wait(.2)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+		end
+	end)
+
+	section6:addButton("Ouroboros Shop",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").ouroborosshop.Part.CFrame* CFrame.new(9, 3, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").ouroborosshop.Part.CFrame* CFrame.new(0, 3, 0)
+			wait(.2)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+		end
+	end)
+
+	section7:addButton("Magic Forest Shop",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").magicforestshop.Part.CFrame* CFrame.new(9, 3, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").magicforestshop.Part.CFrame* CFrame.new(0, 3, 0)
+			wait(.2)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+		end
+	end)
+
+	section8:addButton("Wise Bird Shop",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").WiseBirdShop.Part.CFrame* CFrame.new(9, 3, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").WiseBirdShop.Part.CFrame* CFrame.new(0, 3, 0)
+			wait(.2)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+		end
+	end)
+	
+	section9:addButton("Jungle Shop",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").JungleShop.Part.CFrame* CFrame.new(9, 3, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").JungleShop.Part.CFrame* CFrame.new(0, 3, 0)
+			wait(.2)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+		end
+	end)
+	
+	section10:addButton("High Tech Shop",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").TechShop.Part.CFrame* CFrame.new(9, 3, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").TechShop.Part.CFrame* CFrame.new(0, 3, 0)
+			wait(.2)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+		end
+	end)
+	
+	section11:addButton("Volcanic Shop",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").VolcanicShop.Part.CFrame* CFrame.new(9, 3, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").VolcanicShop.Part.CFrame* CFrame.new(0, 3, 0)
+			wait(.2)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+		end
+	end)
+	
+	section12:addButton("Electric Shop",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").ElectricShop.Part.CFrame* CFrame.new(9, 3, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").ElectricShop.Part.CFrame* CFrame.new(0, 3, 0)
+			wait(.2)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+		end
+	end)
+	
+	--[[if game:GetService("Workspace"):FindFirstChild("Event") then
+		local sectionEasterEvent = page4:addSection("Easter Event")
+
+		sectionEasterEvent:addButton("Easter Shop",function()
+			for i=1,4 do
+				player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Event.EasterShop.Part.CFrame* CFrame.new(9, 3, 0)
+				player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Event.EasterShop.Part.CFrame* CFrame.new(0, 3, 0)
+				wait(.2)
+				VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+				VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			end
+		end)
+
+		sectionEasterEvent:addButton("Easter Gear Shop",function()
+			for i=1,4 do
+				player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Event.EasterShopGear.Part.CFrame* CFrame.new(9, 3, 0)
+				player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Event.EasterShopGear.Part.CFrame* CFrame.new(0, 3, 0)
+				wait(.2)
+				VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+				VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			end
+		end)
+
+		sectionEasterEvent:addButton("Chocolate Shop",function()
+			for i=1,4 do
+				player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Event.EasterShop2.Part.CFrame* CFrame.new(9, 3, 0)
+				player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Event.EasterShop2.Part.CFrame* CFrame.new(0, 3, 0)
+				wait(.2)
+				VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+				VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			end
+		end)
+
+		sectionEasterEvent:addButton("Moai Shop",function()
+			for i=1,4 do
+				player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Event.MoaiShop.Part.CFrame* CFrame.new(9, 3, 0)
+				player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Event.MoaiShop.Part.CFrame* CFrame.new(0, 3, 0)
+				wait(.2)
+				VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+				VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			end
+		end)
+	end]]
+
+	-- fifth page
+	local page5 = NoobieDoge:addPage("NPCs", 5012544693)
+	local section1 = page5:addSection("Quests")
+	local section2 = page5:addSection("Misc")
+
+	section1:addButton("Bulletin Board (Forest) (Daily Quests)",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["Bulletin Board"].Part.CFrame* CFrame.new(9, 0, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["Bulletin Board"].Part.CFrame* CFrame.new(0, 3, 0)
+			wait(.2)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+		end
+	end)
+
+	section1:addButton("Tom (Forest) (Quests)",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Tom.Part.CFrame* CFrame.new(9, 0, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Tom.Part.CFrame* CFrame.new(0, 3, 0)
+			wait(.2)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+		end
+	end)
+
+	section1:addButton("Emma (Riverlands) (Quests)",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Emma.Part.CFrame* CFrame.new(9, 0, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Emma.Part.CFrame* CFrame.new(0, 3, 0)
+			wait(.2)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+		end
+	end)
+
+	section1:addButton("Mr. File (Mountains) (Quests)",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["Mr. File"].Part.CFrame* CFrame.new(9, 0, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["Mr. File"].Part.CFrame* CFrame.new(0, 3, 0)
+			wait(.2)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+		end
+	end)
+
+	section1:addButton("Unknown Energy (Desert) (Quests)",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["Unknown Energy"].Part.CFrame* CFrame.new(9, 0, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["Unknown Energy"].Part.CFrame* CFrame.new(0, 3, 0)
+			wait(.2)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+		end
+	end)
+
+	section1:addButton("Mushy (Mushroom Forest) (Inf Quests)",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Mushy.Part.CFrame* CFrame.new(9, 0, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Mushy.Part.CFrame* CFrame.new(0, 3, 0)
+			wait(.2)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+		end
+	end)
+
+	section1:addButton("Ruby Golem (Soul Land) (Quests)",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["Ruby Golem"].HumanoidRootPartNPC.CFrame* CFrame.new(9, 0, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["Ruby Golem"].HumanoidRootPartNPC.CFrame* CFrame.new(0, 3, 0)
+			wait(.2)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+		end
+	end)
+	
+	section1:addButton("Alien (Jungle) (Quests)",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Alien.Part.CFrame* CFrame.new(9, 0, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Alien.Part.CFrame* CFrame.new(0, 3, 0)
+			wait(.2)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+		end
+	end)
+	
+	section1:addButton("Apol Weiler (Alien Realm) (Quests)",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CreatePARTS["Apol Weiler"].CFrame* CFrame.new(9, 0, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CreatePARTS["Apol Weiler"].CFrame* CFrame.new(0, 3, 0)
+			wait(.2)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+		end
+	end)
+	
+	section2:addButton("I'll buy your stuff (Forest) (Sell Items)",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["I'll buy your stuff"].HumanoidRootPart.CFrame* CFrame.new(9, -2, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["I'll buy your stuff"].HumanoidRootPart.CFrame* CFrame.new(0, -5, 0)
+			wait(.2)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+		end
+	end)
+
+	section2:addButton("Lucky Wheel (Forest) (Group Members Only)",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").LuckyWheel.ZONE.CFrame* CFrame.new(0, 0, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").LuckyWheel.ZONE.CFrame* CFrame.new(0, 0, 0)
+			wait(.2)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+		end
+	end)
+
+	section2:addButton("Index (Riverlands) (Index)",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Index.Part.CFrame* CFrame.new(9, 0, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Index.Part.CFrame* CFrame.new(0, 3, 0)
+			wait(.2)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+		end
+	end)
+
+	section2:addButton("Scientist (Mountains) (Skin Creator)",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Scientist.Part.CFrame* CFrame.new(9, 0, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Scientist.Part.CFrame* CFrame.new(0, 3, 0)
+			wait(.2)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+		end
+	end)
+	
+	section2:addButton("Bank (Atlantis) (Bank)",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Bank.Part.CFrame* CFrame.new(9, 0, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Bank.Part.CFrame* CFrame.new(0, 3, 0)
+			wait(.2)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+		end
+	end)
+	
+	section2:addButton("Knight (Atlantis) (Teleport to Castle Raid)",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Knight.Part.CFrame* CFrame.new(9, 0, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Knight.Part.CFrame* CFrame.new(0, 3, 0)
+			wait(.2)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+		end
+	end)
+
+	section2:addButton("Crafter (Mushroom Forest) (Craft Items)",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Crafter.Part.CFrame* CFrame.new(9, 0, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Crafter.Part.CFrame* CFrame.new(0, 3, 0)
+			wait(.2)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+		end
+	end)
+
+	section2:addButton("Enchanter (Ouroboros) (Enchant Items)",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enchanter.Part.CFrame* CFrame.new(9, 0, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enchanter.Part.CFrame* CFrame.new(0, 3, 0)
+			wait(.2)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+		end
+	end)
+
+	if game:GetService("Workspace").SoulPortal.Beam.BEAM.Transparency == 0 then
+		section2:addButton("Soul Portal (Mushroom Forest) (Teleport to Soul Land)",function()
+			for i=1,4 do
+				player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").SoulPortal.Part.CFrame* CFrame.new(9, 0, 0)
+				player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").SoulPortal.Part.CFrame* CFrame.new(0, 3, 0)
+				wait(.2)
+			end
+		end)
+	end
+
+	section2:addButton("Overworld Portal (Soul Land) (Teleport to Overworld)",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").OverworldPORTAL.Part.CFrame* CFrame.new(9, 0, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").OverworldPORTAL.Part.CFrame* CFrame.new(0, 3, 0)
+			wait(.2)
+		end
+	end)
+
+	section2:addButton("Wishing Beam (Soul Land) (Sell Items)",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["Wishing Beam"].ZONE.CFrame* CFrame.new(9, -1, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["Wishing Beam"].ZONE.CFrame* CFrame.new(0, -3, 0)
+			wait(.2)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+		end
+	end)
+
+	if game:GetService("Workspace").AlienRealmPORTAL.PRIMARY.Transparency == 0 then
+		section2:addButton("Alien Realm Portal (Jungle) (Teleport to Alien Realm)",function()
+			for i=1,4 do
+				player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").AlienRealmPORTAL.Part.CFrame* CFrame.new(9, 0, 0)
+				player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").AlienRealmPORTAL.Part.CFrame* CFrame.new(0, 3, 0)
+				wait(.2)
+			end
+		end)
+	end
+	
+	section2:addButton("Overworld Portal 2 (Alien Realm) (Teleport to Overworld)",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").OverworldPORTAL2.Part.CFrame* CFrame.new(9, 0, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").OverworldPORTAL2.Part.CFrame* CFrame.new(0, 3, 0)
+			wait(.2)
+		end
+	end)
+	
+	section2:addButton("Mine Guard (The Mine) (Teleport to The Mine Raid)",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").MineNPC.Part.CFrame* CFrame.new(9, 0, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").MineNPC.Part.CFrame* CFrame.new(0, 3, 0)
+			wait(.2)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+		end
+	end)
+	
+	--[[if game:GetService("Workspace"):FindFirstChild("Event") then
+		local sectionEasterEvent = page5:addSection("Easter Event")
+
+		sectionEasterEvent:addButton("Ms Bunny (Daily Quests)",function()
+			for i=1,4 do
+				player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["Ms Bunny"].Part.CFrame* CFrame.new(9, 3, 0)
+				player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["Ms Bunny"].Part.CFrame* CFrame.new(0, 3, 0)
+				wait(.2)
+				VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+				VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			end
+		end)
+
+		sectionEasterEvent:addButton("Sir Bunny (Quests)",function()
+			for i=1,4 do
+				player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["Sir Bunny"].Part.CFrame* CFrame.new(9, 3, 0)
+				player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["Sir Bunny"].Part.CFrame* CFrame.new(0, 3, 0)
+				wait(.2)
+				VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+				VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			end
+		end)
+
+		sectionEasterEvent:addButton("Moai (Quests)",function()
+			for i=1,4 do
+				player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Event.Moai.Part.CFrame* CFrame.new(9, 3, 0)
+				player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Event.Moai.Part.CFrame* CFrame.new(0, 3, 0)
+				wait(.2)
+				VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+				VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			end
+		end)
+
+		sectionEasterEvent:addButton("Moai (Teleport to Chocolate Island)",function()
+			for i=1,4 do
+				player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Event.Moai2.Part.CFrame* CFrame.new(9, 3, 0)
+				player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Event.Moai2.Part.CFrame* CFrame.new(0, 3, 0)
+				wait(.2)
+				VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+				VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			end
+		end)
+	end]]
+
+	-- sixth page
+	local page6 = NoobieDoge:addPage("Teleports", 5012544693)
+	local section1 = page6:addSection("Forest")
+	local section2 = page6:addSection("Riverlands")
+	local section3 = page6:addSection("Mountains")
+	local section4 = page6:addSection("Desert")
+	local section5 = page6:addSection("Atlantis")
+	local section6 = page6:addSection("Mushroom Forest")
+	local section7 = page6:addSection("Ouroboros")
+	local section8 = page6:addSection("Magic Forest")
+	local section9 = page6:addSection("Wise Bird Lands")
+	local section10 = page6:addSection("Soul Land")
+	local section11 = page6:addSection("Jungle")
+	local section12 = page6:addSection("Alien Realm")
+	local section13 = page6:addSection("Volcano")
+	local section14 = page6:addSection("Shocked Forest")
+
+	section1:addButton("Your Base", function()
+		for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+			if v:FindFirstChild("Baracks") and v.Baracks:FindFirstChild("Slot 5") and v:FindFirstChild("PLAYERNAME") and v.PLAYERNAME:FindFirstChild("SurfaceGui") and v.PLAYERNAME.SurfaceGui:FindFirstChild("TextLabel") and v.PLAYERNAME.SurfaceGui.TextLabel.Text == player.Name then
+				player.Character.HumanoidRootPart.CFrame = v.Baracks["Slot 5"].CFrame * CFrame.new(0, 4, 0)
+			end
+		end
+	end)
+	
+	section1:addButton("Forest",function()
+		player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CreatePARTS.Forest.CFrame* CFrame.new(0, .4, 0)
+		wait(.2)
+	end)
+	
+	section1:addButton("Sell Zone",function()
+		player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CreatePARTS.SellZone.CFrame* CFrame.new(0, .4, 0)
+		wait(.2)
+	end)
+	
+	section1:addButton("Event Zone",function()
+		player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CreatePARTS.Easter.CFrame* CFrame.new(0, .4, 0)
+		wait(.2)
+	end)
+	
+	section2:addButton("Riverlands",function()
+		player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CreatePARTS.Riverlands.CFrame* CFrame.new(0, .4, 0)
+		wait(.2)
+	end)
+	
+	section3:addButton("Mountains",function()
+		player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CreatePARTS.Mountains.CFrame* CFrame.new(0, .4, 0)
+		wait(.2)
+	end)
+	
+	section3:addButton("The Mine",function()
+		player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CreatePARTS.TheMine.CFrame* CFrame.new(0, .4, 0)
+		wait(.2)
+	end)
+	
+	section4:addButton("Desert",function()
+		player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CreatePARTS.Desert.CFrame* CFrame.new(0, .4, 0)
+		wait(.2)
+	end)
+	
+	section4:addButton("Oasis",function()
+		player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CreatePARTS.Oasis.CFrame* CFrame.new(0, .4, 0)
+		wait(.2)
+	end)
+	
+	section5:addButton("Atlantis",function()
+		player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CreatePARTS.Atlantis.CFrame* CFrame.new(0, .4, 0)
+		wait(.2)
+	end)
+	
+	section5:addButton("Castle Raid",function()
+		player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CreatePARTS["Castle Raid"].CFrame* CFrame.new(0, .4, 0)
+		wait(.2)
+	end)
+	
+	section6:addButton("Mushroom Forest",function()
+		player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CreatePARTS["Mushroom Forest"].CFrame* CFrame.new(0, .4, 0)
+		wait(.2)
+	end)
+	
+	section6:addButton("Soul Portal",function()
+		player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CreatePARTS.SoulPortal.CFrame* CFrame.new(0, .4, 0)
+		wait(.2)
+	end)
+	
+	section6:addButton("Crafter",function()
+		player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CreatePARTS.Crafter.CFrame* CFrame.new(0, .4, 0)
+		wait(.2)
+	end)
+	
+	section7:addButton("Ouroboros",function()
+		player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CreatePARTS.Ouroboros.CFrame* CFrame.new(0, .4, 0)
+		wait(.2)
+	end)
+	
+	section8:addButton("Magic Forest",function()
+		player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CreatePARTS["Magic Forest"].CFrame* CFrame.new(0, .4, 0)
+		wait(.2)
+	end)
+	
+	section9:addButton("Wise Bird Lands",function()
+		player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CreatePARTS.PhoenixLands.CFrame* CFrame.new(0, .4, 0)
+		wait(.2)
+	end)
+	
+	section10:addButton("Soul Land",function()
+		player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CreatePARTS.Soulland.CFrame* CFrame.new(0, .4, 0)
+		wait(.2)
+	end)
+	
+	section11:addButton("Jungle",function()
+		player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CreatePARTS.Jungle.CFrame* CFrame.new(0, .4, 0)
+		wait(.2)
+	end)
+	
+	section11:addButton("Crater",function()
+		player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CreatePARTS.Crater.CFrame* CFrame.new(0, .4, 0)
+		wait(.2)
+	end)
+	
+	section12:addButton("Alien Realm",function()
+		player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CreatePARTS.AlienRealm.CFrame* CFrame.new(0, .4, 0)
+		wait(.2)
+	end)
+	
+	section12:addButton("Deep Forest",function()
+		player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CreatePARTS.DeepForest.CFrame* CFrame.new(0, .4, 0)
+		wait(.2)
+	end)
+	
+	section12:addButton("Uran HQ",function()
+		player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CreatePARTS.UranHQ.CFrame* CFrame.new(0, .4, 0)
+		wait(.2)
+	end)
+	
+	section13:addButton("Volcano",function()
+		player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CreatePARTS.Volcano.CFrame* CFrame.new(0, .4, 0)
+		wait(.2)
+	end)
+	
+	section13:addButton("Top of Volcano",function()
+		player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CreatePARTS.TopVolcano.CFrame* CFrame.new(0, .4, 0)
+		wait(.2)
+	end)
+	
+	section14:addButton("Shocked Forest",function()
+		player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CreatePARTS.EValley.CFrame* CFrame.new(0, .4, 0)
+		wait(.2)
+	end)
+
+	-- last page
+	local pagelast = NoobieDoge:addPage("Settings", 5012544693)
+	local settings = pagelast:addSection("Settings")
+	local colors = pagelast:addSection("Colors")
+	local credits = pagelast:addSection("Credits")
+
+	settings:addButton("Upgrade Performance",function()
+		UPPERFORMANCE()
+		settings:updateButton("Upgrade Performance","Upgraded Performance")
+	end)
+
+	settings:addButton("Reset Script",function()
+		local player = game.Players.LocalPlayer
+		local ScreenGuiK = Instance.new("ScreenGui")
+		local Frame = Instance.new("ImageLabel")
+		local TextLabelFrame = Instance.new("ImageLabel")
+		local TextLabel = Instance.new("TextLabel")
+		local TextButton = Instance.new("ImageButton")
+		local TextButtonText = Instance.new("TextButton")
+		local TextButton_2 = Instance.new("ImageButton")
+		local TextButton_2Text = Instance.new("TextButton")
+
+		ScreenGuiK.Parent = player:WaitForChild("PlayerGui")
+
+		Frame.Parent = ScreenGuiK
+		Frame.Name = "Main"
+		Frame.BackgroundTransparency = 1
+		Frame.Position = UDim2.new(0.66, 0, 0.055, 0)
+		Frame.Size = UDim2.new(0, 220, 0, 120)
+		Frame.Image = "rbxassetid://4641149554"
+		Frame.ImageColor3 = Color3.fromRGB(24, 24, 24)
+		Frame.ScaleType = Enum.ScaleType.Slice
+		Frame.SliceCenter = Rect.new(4, 4, 296, 296)
+		Frame.Active = true
+		Frame.Draggable = true
+
+		TextLabelFrame.Parent = Frame
+		TextLabelFrame.Name = "TopBar"
+		TextLabelFrame.BackgroundTransparency = 1
+		TextLabelFrame.ClipsDescendants = true
+		TextLabelFrame.Size = UDim2.new(1, 0, 0, 38)
+		TextLabelFrame.ZIndex = 2
+		TextLabelFrame.Image = "rbxassetid://4595286933"
+		TextLabelFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabelFrame.ScaleType = Enum.ScaleType.Slice
+		TextLabelFrame.SliceCenter = Rect.new(4, 4, 296, 296)
+		
+		TextLabel.Parent = Frame
+		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabel.Position = UDim2.new(0, 0, -0.1, 0)
+		TextLabel.BackgroundTransparency = 1
+		TextLabel.Size = UDim2.new(0, 220, 0, 60)
+		TextLabel.ZIndex = 3
+		TextLabel.Font = Enum.Font.TitilliumWeb
+		TextLabel.Text = "Are you sure that you want to reset script?"
+		TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabel.TextScaled = false
+		TextLabel.TextSize = 21.000
+		TextLabel.TextWrapped = true
+
+		TextButton.Parent = Frame
+		TextButton.Name = "Button"
+		TextButton.BackgroundTransparency = 1
+		TextButton.Position = UDim2.new(0.075, 0, 0.500000006, 0)
+		TextButton.BorderSizePixel = 0
+		TextButton.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton.ZIndex = 2
+		TextButton.Image = "rbxassetid://5028857472"
+		TextButton.ImageColor3 = Color3.fromRGB(41, 41, 41)
+		TextButton.ScaleType = Enum.ScaleType.Slice
+		TextButton.SliceCenter = Rect.new(2, 2, 298, 298)
+
+		TextButtonText.Parent = TextButton
+		TextButtonText.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextButtonText.BackgroundTransparency = 1
+		TextButtonText.ZIndex = 3
+		TextButtonText.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButtonText.Font = Enum.Font.TitilliumWeb
+		TextButtonText.Text = "Yes"
+		TextButtonText.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButtonText.TextScaled = true
+		TextButtonText.TextSize = 40.000
+		TextButtonText.TextWrapped = true
+
+		function ResetYES()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+			wait()
+			for i,library in pairs(game:GetService("CoreGui"):GetChildren()) do
+				if library.Name == "DogeHub V2" then
+					library:Destroy()
+				end
+			end
+			notify("Do not reset script too many times!")
+			wait(.1)
+			ArmyControlMain()
+		end
+		TextButton.MouseButton1Click:connect(ResetYES)
+		TextButtonText.MouseButton1Click:connect(ResetYES)
+
+		TextButton_2.Parent = Frame
+		TextButton_2.Name = "Button"
+		TextButton_2.BackgroundTransparency = 1
+		TextButton_2.Position = UDim2.new(0.55, 0, 0.500000006, 0)
+		TextButton_2.BorderSizePixel = 0
+		TextButton_2.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton_2.ZIndex = 2
+		TextButton_2.Image = "rbxassetid://5028857472"
+		TextButton_2.ImageColor3 = Color3.fromRGB(41, 41, 41)
+		TextButton_2.ScaleType = Enum.ScaleType.Slice
+		TextButton_2.SliceCenter = Rect.new(2, 2, 298, 298)
+
+		TextButton_2Text.Parent = TextButton_2
+		TextButton_2Text.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextButton_2Text.BackgroundTransparency = 1
+		TextButton_2Text.ZIndex = 3
+		TextButton_2Text.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton_2Text.Font = Enum.Font.TitilliumWeb
+		TextButton_2Text.Text = "No"
+		TextButton_2Text.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButton_2Text.TextScaled = true
+		TextButton_2Text.TextSize = 40.000
+		TextButton_2Text.TextWrapped = true
+
+		function ResetNO()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+		end
+		TextButton_2.MouseButton1Click:connect(ResetNO)	
+		TextButton_2Text.MouseButton1Click:connect(ResetNO)
+	end)
+
+	settings:addButton("Rejoin Server",function()
+		local player = game.Players.LocalPlayer
+		local ScreenGuiK = Instance.new("ScreenGui")
+		local Frame = Instance.new("ImageLabel")
+		local TextLabelFrame = Instance.new("ImageLabel")
+		local TextLabel = Instance.new("TextLabel")
+		local TextButton = Instance.new("ImageButton")
+		local TextButtonText = Instance.new("TextButton")
+		local TextButton_2 = Instance.new("ImageButton")
+		local TextButton_2Text = Instance.new("TextButton")
+
+		ScreenGuiK.Parent = player:WaitForChild("PlayerGui")
+
+		Frame.Parent = ScreenGuiK
+		Frame.Name = "Main"
+		Frame.BackgroundTransparency = 1
+		Frame.Position = UDim2.new(0.66, 0, 0.055, 0)
+		Frame.Size = UDim2.new(0, 220, 0, 120)
+		Frame.Image = "rbxassetid://4641149554"
+		Frame.ImageColor3 = Color3.fromRGB(24, 24, 24)
+		Frame.ScaleType = Enum.ScaleType.Slice
+		Frame.SliceCenter = Rect.new(4, 4, 296, 296)
+		Frame.Active = true
+		Frame.Draggable = true
+
+		TextLabelFrame.Parent = Frame
+		TextLabelFrame.Name = "TopBar"
+		TextLabelFrame.BackgroundTransparency = 1
+		TextLabelFrame.ClipsDescendants = true
+		TextLabelFrame.Size = UDim2.new(1, 0, 0, 38)
+		TextLabelFrame.ZIndex = 2
+		TextLabelFrame.Image = "rbxassetid://4595286933"
+		TextLabelFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabelFrame.ScaleType = Enum.ScaleType.Slice
+		TextLabelFrame.SliceCenter = Rect.new(4, 4, 296, 296)
+		
+		TextLabel.Parent = Frame
+		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabel.Position = UDim2.new(0, 0, -0.1, 0)
+		TextLabel.BackgroundTransparency = 1
+		TextLabel.Size = UDim2.new(0, 220, 0, 60)
+		TextLabel.ZIndex = 3
+		TextLabel.Font = Enum.Font.TitilliumWeb
+		TextLabel.Text = "Are you sure you want to rejoin server?"
+		TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabel.TextScaled = false
+		TextLabel.TextSize = 24.000
+		TextLabel.TextWrapped = true
+
+		TextButton.Parent = Frame
+		TextButton.Name = "Button"
+		TextButton.BackgroundTransparency = 1
+		TextButton.Position = UDim2.new(0.075, 0, 0.500000006, 0)
+		TextButton.BorderSizePixel = 0
+		TextButton.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton.ZIndex = 2
+		TextButton.Image = "rbxassetid://5028857472"
+		TextButton.ImageColor3 = Color3.fromRGB(41, 41, 41)
+		TextButton.ScaleType = Enum.ScaleType.Slice
+		TextButton.SliceCenter = Rect.new(2, 2, 298, 298)
+
+		TextButtonText.Parent = TextButton
+		TextButtonText.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextButtonText.BackgroundTransparency = 1
+		TextButtonText.ZIndex = 3
+		TextButtonText.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButtonText.Font = Enum.Font.TitilliumWeb
+		TextButtonText.Text = "Yes"
+		TextButtonText.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButtonText.TextScaled = true
+		TextButtonText.TextSize = 40.000
+		TextButtonText.TextWrapped = true
+
+		function RejoinYES()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+			local TS = game:GetService("TeleportService")
+			local Player = game.Players.LocalPlayer
+			TS:Teleport(game.PlaceId, Player)
+		end
+		TextButton.MouseButton1Click:connect(RejoinYES)
+		TextButtonText.MouseButton1Click:connect(RejoinYES)
+
+		TextButton_2.Parent = Frame
+		TextButton_2.Name = "Button"
+		TextButton_2.BackgroundTransparency = 1
+		TextButton_2.Position = UDim2.new(0.55, 0, 0.500000006, 0)
+		TextButton_2.BorderSizePixel = 0
+		TextButton_2.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton_2.ZIndex = 2
+		TextButton_2.Image = "rbxassetid://5028857472"
+		TextButton_2.ImageColor3 = Color3.fromRGB(41, 41, 41)
+		TextButton_2.ScaleType = Enum.ScaleType.Slice
+		TextButton_2.SliceCenter = Rect.new(2, 2, 298, 298)
+
+		TextButton_2Text.Parent = TextButton_2
+		TextButton_2Text.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextButton_2Text.BackgroundTransparency = 1
+		TextButton_2Text.ZIndex = 3
+		TextButton_2Text.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton_2Text.Font = Enum.Font.TitilliumWeb
+		TextButton_2Text.Text = "No"
+		TextButton_2Text.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButton_2Text.TextScaled = true
+		TextButton_2Text.TextSize = 40.000
+		TextButton_2Text.TextWrapped = true
+
+		function RejoinNO()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+		end
+		TextButton_2.MouseButton1Click:connect(RejoinNO)	
+		TextButton_2Text.MouseButton1Click:connect(RejoinNO)
+	end)
+
+	settings:addKeybind("Toggle Keybind", Enum.KeyCode.RightControl, function()
+	print("Activated Keybind")
+	NoobieDoge:toggle()
+	end, function()
+	print("Changed Keybind")
+	end)
+
+	for theme, color in pairs(themes) do -- all in one theme changer, i know, im cool
+		colors:addColorPicker(theme, color, function(color3)
+			NoobieDoge:setTheme(theme, color3)
+		end)
+	end
+
+	credits:addButton("Made by NoobieDoge")
+	credits:addButton("https://discord.gg/P2CeRjvTDt")
+	credits:addButton("Copy Discord Link",function()
+		setclipboard("https://discord.gg/P2CeRjvTDt")
+		wait()
+		notify("Discord link copied to clipboard!")
+	end)
+	
+end
+
+--Army Control Main
+local function ArmyControlRaid()
+
+	--DogeHub V2 GUI
+	local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20page%20format%20gui"))()
+	local NoobieDoge = library.new("DogeHub V2", 5013109572)
+
+	-- themes
+	local themes = {
+	Background = Color3.fromRGB(24, 24, 24),
+	Glow = Color3.fromRGB(0, 0, 0),
+	Accent = Color3.fromRGB(10, 10, 10),
+	LightContrast = Color3.fromRGB(20, 20, 20),
+	DarkContrast = Color3.fromRGB(14, 14, 14),  
+	TextColor = Color3.fromRGB(255, 255, 255)
+	}
+
+	-- first page
+	local page1 = NoobieDoge:addPage("Universal", 5012544693)
+	local section1 = page1:addSection("Walk Speed & Jump Power & Gravity")
+	local section2 = page1:addSection("Other Functions")
+
+	local originalwalkspeed = 16
+	local originaljumppower = 50
+	local originalgravity = game:GetService("Workspace").Gravity
+
+	section1:addSlider("Walk Speed", originalwalkspeed, 0, 200, function(value)
+		sliderspeed = value
+	end)
+	section1:addSlider("Jump Power", originaljumppower, 0, 500, function(value)
+		sliderjump = value
+	end)
+	section1:addSlider("Gravity", originalgravity, 0, 500, function(value)
+		slidergravity = value
+	end)
+	sliderspeed = 16
+	sliderjump = 50
+	slidergravity = 196.2
+
+	local sliderpowa = false
+	section1:addToggle("Enabled", nil, function(value)
+		sliderpowa = value
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if sliderpowa then
+			player.Character.Humanoid.WalkSpeed = sliderspeed
+			player.Character.Humanoid.JumpPower = sliderjump
+			game:GetService("Workspace").Gravity = slidergravity
+		end
+	end)
+
+	section1:addButton("Reset to Default", function()
+		player.Character.Humanoid.WalkSpeed = originalwalkspeed
+		player.Character.Humanoid.JumpPower = originaljumppower
+		game:GetService("Workspace").Gravity = originalgravity
+		section1:updateSlider("Walk Speed", "Walk Speed", originalwalkspeed, 0, 36)
+		section1:updateSlider("Jump Power", "Jump Power", originaljumppower, 0, 500)
+		section1:updateSlider("Gravity", "Gravity", originalgravity, 0, 500)
+	end)
+
+	section2:addButton("Add ESP GUI", function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Project%3A%20Bullshit%3A%20Rebooted"))()
+	end)
+
+	section2:addButton("Reset Character",function()
+		player.Character:BreakJoints()
+	end)
+
+	section2:addToggle("Ctrl + Click TP",false,function(bool)
+		CtrlClickTeePee = bool
+		CTRLCLICKTP()
+		if CtrlClickTeePee == true then
+			notify("Press Ctrl + Click to Teleport")
+		end
+	end)
+
+	local infjumptoggle = false
+	getgenv().dc = true
+	section2:addToggle("Infinite Jump",false,function()
+		infjumptoggle = not infjumptoggle
+		notify("Infinite Jump: "..tostring(infjumptoggle),true)
+		if infjumptoggle then
+			getgenv().dc = false
+			local infjump
+			infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
+				if dc then infjump:Disconnect() return end
+				player.Character.Humanoid:ChangeState("Jumping")
+			end)
+		else
+			getgenv().dc = true
+		end
+	end)
+
+	player.CharacterAdded:Connect(function()
+		if infjumptoggle then
+			wait(1)
+			getgenv().dc = false
+			local infjump
+			infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
+				if dc then infjump:Disconnect() return end
+				player.Character.Humanoid:ChangeState("Jumping")
+			end)
+		end
+	end)
+
+	local noclips = false
+	section2:addToggle("Noclip", false, function(bool)
+		noclips = bool
+		game:GetService("RunService").Stepped:connect(function()
+			for i, v in pairs(player.Character:GetChildren()) do
+				if v:IsA("BasePart") then
+					if AutoFarm or noclips then
+						v.CanCollide = false
+					else
+						v.CanCollide = true
+					end
+				end
+			end
+		end)
+	end)
+
+	section2:addSlider("Fly Speed", 100, 0, 999, function(value)
+		sliderfly = value
+	end)
+	sliderfly = 101
+
+	local Pfly = false
+	section2:addToggle("Press P to fly",false,function(bool)
+		Pfly = bool
+		repeat wait() 
+		until player and player.Character:findFirstChild("Head") player.Character:findFirstChild("Humanoid") 
+		local mouse = player:GetMouse() 
+		repeat wait() until mouse
+		local torso = player.Character.Head 
+		local flying = false
+		local deb = true 
+		local ctrl = {f = 0, b = 0, l = 0, r = 0} 
+		local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+		local maxspeed = sliderfly 
+		local speed = 0 
+
+		function Fly() 
+			local bg = Instance.new("BodyGyro", torso) 
+			bg.P = 9e4 
+			bg.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
+			bg.cframe = torso.CFrame 
+
+			local bv = Instance.new("BodyVelocity", torso) 
+			bv.velocity = Vector3.new(0,0.1,0) 
+			bv.maxForce = Vector3.new(9e9, 9e9, 9e9) 
+			repeat wait() 
+				player.Character.Humanoid.PlatformStand = true 
+				if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
+					speed = speed+(sliderfly/1.7)+(speed/maxspeed) 
+					if speed > maxspeed then 
+						speed = maxspeed 
+					end 
+
+				elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
+					speed = speed-(sliderfly/1.7)
+					if speed < 0 then 
+						speed = 0 
+					end 
+				end 
+				if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then 
+					bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+					lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r} 
+				elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then 
+					bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+				else 
+					bv.velocity = Vector3.new(0,0.1,0)
+				end 
+				bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
+			until not flying or not Pfly
+			ctrl = {f = 0, b = 0, l = 0, r = 0} 
+			lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+			speed = 0 
+			bg:Destroy() 
+			bv:Destroy() 
+			player.Character.Humanoid.PlatformStand = false 
+		end 
+
+		mouse.KeyDown:connect(function(key) 
+			if key:lower() == "p" then 
+				if flying then flying = false 
+				else 
+					flying = true 
+					Fly() 
+				end 
+			elseif key:lower() == "w" then 
+				ctrl.f = 1 
+			elseif key:lower() == "s" then 
+				ctrl.b = -1 
+			elseif key:lower() == "a" then 
+				ctrl.l = -1 
+			elseif key:lower() == "d" then 
+				ctrl.r = 1 
+			end 
+		end) 
+
+		mouse.KeyUp:connect(function(key) 
+
+			if key:lower() == "w" then 
+				ctrl.f = 0 
+			elseif key:lower() == "s" then 
+				ctrl.b = 0 
+			elseif key:lower() == "a" then 
+				ctrl.l = 0 
+			elseif key:lower() == "d" then 
+				ctrl.r = 0 
+			end 
+		end)
+		Fly()
+		notify("Press P to fly: "..tostring(Pfly),true)
+	end)
+
+	player.CharacterAdded:Connect(function()
+		if Pfly then
+			repeat wait() 
+			until player and player.Character:findFirstChild("Head") player.Character:findFirstChild("Humanoid") 
+			local mouse = player:GetMouse() 
+			repeat wait() until mouse
+			local player = game.Players.LocalPlayer 
+			local torso = player.Character.Head 
+			local flying = false
+			local deb = true 
+			local ctrl = {f = 0, b = 0, l = 0, r = 0} 
+			local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+			local maxspeed = sliderfly 
+			local speed = 0 
+			
+			function Fly() 
+				local bg = Instance.new("BodyGyro", torso) 
+				bg.P = 9e4 
+				bg.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
+				bg.cframe = torso.CFrame 
+	
+				local bv = Instance.new("BodyVelocity", torso) 
+				bv.velocity = Vector3.new(0,0.1,0) 
+				bv.maxForce = Vector3.new(9e9, 9e9, 9e9) 
+				repeat wait() 
+					player.Character.Humanoid.PlatformStand = true 
+					if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
+						speed = speed+(sliderfly/1.7)+(speed/maxspeed) 
+						if speed > maxspeed then 
+							speed = maxspeed 
+						end 
+	
+					elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
+						speed = speed-(sliderfly/1.7)
+						if speed < 0 then 
+							speed = 0 
+						end 
+					end 
+					if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then 
+						bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+						lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r} 
+					elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then 
+						bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+					else 
+						bv.velocity = Vector3.new(0,0.1,0)
+					end 
+					bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
+				until not flying or not Pfly
+				ctrl = {f = 0, b = 0, l = 0, r = 0} 
+				lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+				speed = 0 
+				bg:Destroy() 
+				bv:Destroy() 
+				player.Character.Humanoid.PlatformStand = false 
+			end 
+	
+			mouse.KeyDown:connect(function(key) 
+				if key:lower() == "p" then 
+					if flying then flying = false 
+					else 
+						flying = true 
+						Fly() 
+					end 
+				elseif key:lower() == "w" then 
+					ctrl.f = 1 
+				elseif key:lower() == "s" then 
+					ctrl.b = -1 
+				elseif key:lower() == "a" then 
+					ctrl.l = -1 
+				elseif key:lower() == "d" then 
+					ctrl.r = 1 
+				end 
+			end) 
+	
+			mouse.KeyUp:connect(function(key) 
+	
+				if key:lower() == "w" then 
+					ctrl.f = 0 
+				elseif key:lower() == "s" then 
+					ctrl.b = 0 
+				elseif key:lower() == "a" then 
+					ctrl.l = 0 
+				elseif key:lower() == "d" then 
+					ctrl.r = 0 
+				end 
+			end)
+			Fly()
+		end
+	end)
+
+	local playerlist = {}
+	for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+		if v.Name ~= player.Name then
+			table.insert(playerlist, v.Name)
+		end
+	end
+	section2:addDropdown("Track selected player",playerlist,function(ripthatguy)
+		notify("Player Selected: " .. ripthatguy)
+		Target = ripthatguy
+	end)
+
+	local trackthatguy = false
+	section2:addToggle("Track Player",false,function(bool)
+		trackthatguy = bool
+		local platform = Instance.new("Part", player.Character)
+		platform.Anchored = true
+		platform.Transparency = 1
+		platform.Size = Vector3.new(6, 1, 6)
+
+		local connection
+		connection = game:GetService("RunService").RenderStepped:connect(function()
+			if player.Character:FindFirstChild("HumanoidRootPart") then
+				platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -1.8, 0)
+			else
+				connection:Disconnect()
+			end
+		end)
+		game:GetService('RunService').Stepped:connect(function()
+			if trackthatguy ~= true then
+				platform:Destroy()
+			end
+		end)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if trackthatguy == true then
+			player.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame * CFrame.new(0, 5, 10)
+			game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game.Players[Target].Character.HumanoidRootPart.Position)
+		end
+	end)
+
+	section2:addButton("Refesh Players List",function()
+		section2:updateDropdown("Track selected player","Track selected player",playerlist)
+	end)
+
+	-- load
+	NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
+	
+	-- second page
+	local page2 = NoobieDoge:addPage("Misc", 5012544693)
+	local section1 = page2:addSection("Auto Use Dispensers (Club Members Only)")
+	local section2 = page2:addSection("Game Functions")
+
+	local AutoUseD = false
+	section1:addToggle("Auto use Dispensers",false, function(bool)
+		AutoUseD = bool
+		notify("Auto use Dispensers: "..tostring(AutoUseD),true)
+	end)
+	
+	spawn(function()
+		while wait(302) do
+			if AutoUseD then
+				for i,v in pairs(game.Workspace.Dispensers:GetChildren()) do
+					local args = {[1] = "Dispenser", [2] = v.Name}
+					game:GetService("ReplicatedStorage").RemoteEvent:FireServer(unpack(args))
+					wait(.4)
+				end
+			end
+		end
+	end)
+	
+	section2:addButton("Sell Resources", function()
+		for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+			if v:FindFirstChild("Baracks") and v.Baracks:FindFirstChild("Slot 5") and v:FindFirstChild("PLAYERNAME") and v.PLAYERNAME:FindFirstChild("SurfaceGui") and v.PLAYERNAME.SurfaceGui:FindFirstChild("TextLabel") and v.PLAYERNAME.SurfaceGui.TextLabel.Text == player.Name then
+				repeat wait()
+					player.Character.HumanoidRootPart.CFrame = v.Baracks["Slot 5"].CFrame * CFrame.new(0, 8, 0)
+				until player.PlayerGui.MainUI.TopSide.Backpack.Meter.BackgroundColor3 == Color3.fromRGB(0, 255, 0)
+			end
+		end
+	end)
+	
+	-- third page
+	local page3 = NoobieDoge:addPage("Auto Farm", 5012544693)
+	local section1 = page3:addSection("Auto Farm")
+	local section2 = page3:addSection("Auto Farm Settings")
+
+	local AutoFarm = false
+	section1:addToggle("Auto Farm",false, function(bool)
+		AutoFarm = bool
+		if AutoFarm then
+			notify("Toggle off DogeHub V2 GUI to start farming")
+		end
+	end)
+
+	local AutoSellResources = false
+	section1:addToggle("Auto Sell Resources when Full",false, function(bool)
+		AutoSellResources = bool
+	end)
+	
+	local FarmTween = true
+	section2:addToggle("Travel by Tween",true, function(bool)
+		FarmTween = bool
+		FarmTP = false
+		section2:updateToggle("Travel by Teleportation")
+	end)
+
+	local TweenSpeed = 34
+	section2:addSlider("Tween Speed", 35, 1, 500, function(value)
+		getgenv().speed = value
+	end)
+	
+	local FarmTP = false
+	section2:addToggle("Travel by Teleportation",false, function(bool)
+		FarmTP = bool
+		FarmTween = false
+		section2:updateToggle("Travel by Tween")
+	end)
+	
+
+	function FARM()
+		pcall(function()
+			for i, v in pairs(game:GetService("Workspace").Objects:GetChildren()) do
+				if (v.Name == "King" or v.Name == "Spirit of Dust") and v:FindFirstChild("HP").Value ~= 0 then	
+					repeat wait()
+						pcall(function()	
+							if (v:FindFirstChildOfClass("Part") or v:FindFirstChildOfClass("MeshPart")) and AutoFarm then
+								for i,wand in pairs(player.Backpack:GetChildren()) do
+									if wand:FindFirstChild("Handle") and wand:FindFirstChild("SPAWNER") then
+										player.Character.Humanoid:EquipTool(wand)
+									end
+								end
+								for i, v1 in pairs(player.Character:GetChildren()) do
+									if v1:IsA("BasePart") then
+										if FarmLordOfSands or noclips then
+											v1.CanCollide = false
+										else
+											v1.CanCollide = true
+										end
+									end
+								end
+								if(v~=nil)then
+									for i, v1 in pairs(v:GetChildren()) do
+										if v:FindFirstChild("Location") then
+											if v1.ClassName == "Part" and v1.Name ~= "BOTTOM" then
+												if FarmTween then
+													toTarget(player.Character.HumanoidRootPart.Position,v1.Position,v1.CFrame * CFrame.new(0, 4, 5.5))
+												elseif FarmTP then
+													player.Character.HumanoidRootPart.CFrame = v1.CFrame * CFrame.new(0, 4, 5.5)
+												else
+													wait(10)
+													notify("Bruh.")
+												end
+												game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v1.Position)
+											end
+										else
+											if v1.ClassName == "Part" and v1.Name == "BOTTOM" then
+												if FarmTween then
+													toTarget(player.Character.HumanoidRootPart.Position,v1.Position,v1.CFrame * CFrame.new(0, 4, 5.5))
+												elseif FarmTP then
+													player.Character.HumanoidRootPart.CFrame = v1.CFrame * CFrame.new(0, 4, 5.5)
+												else
+													wait(10)
+													notify("Bruh.")
+												end
+												game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v1.Position)
+											end
+										end
+									end
+									AUCLICK1 = true
+								end
+							else
+								AUCLICK1 = false
+							end
+							player.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
+						end)
+					until v == nil or v:FindFirstChild("HP").Value == 0 or AutoFarm == false 
+				else
+					for i, vd in pairs(game:GetService("Workspace").Objects:GetChildren()) do
+						if vd.Name ~= "Tree" and vd.Name ~= "Dummy" then	
+							repeat wait()
+								pcall(function()	
+									if (vd:FindFirstChildOfClass("Part") or vd:FindFirstChildOfClass("MeshPart")) and AutoFarm then
+										for i,wand in pairs(player.Backpack:GetChildren()) do
+											if wand:FindFirstChild("Handle") and wand:FindFirstChild("SPAWNER") then
+												player.Character.Humanoid:EquipTool(wand)
+											end
+										end
+										for i, v1 in pairs(player.Character:GetChildren()) do
+											if v1:IsA("BasePart") then
+												if FarmLordOfSands or noclips then
+													v1.CanCollide = false
+												else
+													v1.CanCollide = true
+												end
+											end
+										end
+										if(vd~=nil)then
+											for i, v1 in pairs(vd:GetChildren()) do
+												if vd:FindFirstChild("Location") then
+													if v1.ClassName == "Part" and v1.Name ~= "BOTTOM" then
+														if FarmTween then
+															toTarget(player.Character.HumanoidRootPart.Position,v1.Position,v1.CFrame * CFrame.new(0, 4, 5.5))
+														elseif FarmTP then
+															player.Character.HumanoidRootPart.CFrame = v1.CFrame * CFrame.new(0, 4, 5.5)
+														else
+															wait(10)
+															notify("Bruh.")
+														end
+														game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v1.Position)
+													end
+												else
+													if v1.ClassName == "Part" and v1.Name == "BOTTOM" then
+														if FarmTween then
+															toTarget(player.Character.HumanoidRootPart.Position,v1.Position,v1.CFrame * CFrame.new(0, 4, 5.5))
+														elseif FarmTP then
+															player.Character.HumanoidRootPart.CFrame = v1.CFrame * CFrame.new(0, 4, 5.5)
+														else
+															wait(10)
+															notify("Bruh.")
+														end
+														game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v1.Position)
+													end
+												end
+											end
+											AUCLICK1 = true
+										end
+									else
+										AUCLICK1 = false
+									end
+									player.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
+								end)
+							until vd:FindFirstChild("HP").Value == 0 or AutoFarm == false or (vd:FindFirstChild("HP").Value == 0 and game:GetService("Workspace").Objects:FindFirstChild("King") and game:GetService("Workspace").Objects:FindFirstChild("King"):FindFirstChildOfClass("Part") and (game:GetService("Workspace").Objects:FindFirstChild("King").HP.Value ~= 0))
+						end
+					end
+				end
+			end
+		end)
+	end
+	
+	AUCLICK1 = false
+	spawn(function()
+		while wait() do
+			if AUCLICK1 then
+				if game:GetService("CoreGui")["DogeHub V2"].Main.Size == UDim2.new(0, 511, 0, 0) then
+					VirtualInputManager:SendMouseButtonEvent(869, 458, 0, true, game, 1)
+					VirtualInputManager:SendMouseButtonEvent(869, 458, 0, false, game, 1)
+					wait(1)
+				end
+			end
+		end
+	end)
+
+	spawn(function()
+		while wait() do
+			if AutoFarm then
+				if AutoSellResources and player.PlayerGui.MainUI.TopSide.Backpack.Meter.BackgroundColor3 == Color3.fromRGB(255, 0, 0) then
+					for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+						if v:FindFirstChild("Baracks") and v.Baracks:FindFirstChild("Slot 5") and v:FindFirstChild("PLAYERNAME") and v.PLAYERNAME:FindFirstChild("SurfaceGui") and v.PLAYERNAME.SurfaceGui:FindFirstChild("TextLabel") and v.PLAYERNAME.SurfaceGui.TextLabel.Text == player.Name then
+							repeat wait()
+								player.Character.HumanoidRootPart.CFrame = v.Baracks["Slot 5"].CFrame * CFrame.new(0, 8, 0)
+							until player.PlayerGui.MainUI.TopSide.Backpack.Meter.BackgroundColor3 == Color3.fromRGB(0, 255, 0)
+						end
+					end
+				else
+					if AutoFarm then
+						FARM()
+					end
+				end
+			else
+				AUCLICK1 = false
+			end
+		end
+	end)
+
+	player.CharacterAdded:Connect(function()
+		if AutoFarm then
+			wait(1)
+			if game.Workspace[player.Name]:FindFirstChildOfClass("Tool") then
+				for i,wand in pairs(player.Backpack:GetChildren()) do
+					if wand:FindFirstChild("Handle") and wand:FindFirstChild("SPAWNER") then
+						player.Character.Humanoid:EquipTool(wand)
+					end
+				end
+			else
+				notify("You don't have a wand!")
+				wait(1)
+				player.Character:BreakJoints()
+			end
+		end
+	end)
+
+	spawn(function()
+		while wait() do
+			if AutoSellResources and not AutoFarm then
+				if player.PlayerGui.MainUI.TopSide.Backpack.Meter.BackgroundColor3 == Color3.fromRGB(255, 0, 0) then
+					for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+						if v:FindFirstChild("Baracks") and v.Baracks:FindFirstChild("Slot 5") and v:FindFirstChild("PLAYERNAME") and v.PLAYERNAME:FindFirstChild("SurfaceGui") and v.PLAYERNAME.SurfaceGui:FindFirstChild("TextLabel") and v.PLAYERNAME.SurfaceGui.TextLabel.Text == player.Name then
+							repeat wait()
+								player.Character:FindFirstChild("HumanoidRootPart").CFrame = v.Baracks["Slot 5"].CFrame * CFrame.new(0, 8, 0)
+							until player.PlayerGui.MainUI.TopSide.Backpack.Meter.BackgroundColor3 == Color3.fromRGB(0, 255, 0)
+						end
+					end
+				end
+			end
+		end
+	end)
+
+	-- forth page
+	local page4 = NoobieDoge:addPage("NPCs", 5012544693)
+	local section1 = page4:addSection("Misc")
+	
+	section1:addButton("I'll buy your stuff (Forest) (Sell Items)",function()
+		for i=1,4 do
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["I'll buy your stuff"].HumanoidRootPart.CFrame* CFrame.new(9, -2, 0)
+			player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["I'll buy your stuff"].HumanoidRootPart.CFrame* CFrame.new(0, -5, 0)
+			wait(.2)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+			VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+		end
+	end)
+
+	-- sixth page
+	local page6 = NoobieDoge:addPage("Teleports", 5012544693)
+	local section1 = page6:addSection("Stage 0")
+	local section2 = page6:addSection("Stages")
+
+	section1:addButton("Your Base", function()
+		for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+			if v:FindFirstChild("Baracks") and v.Baracks:FindFirstChild("Slot 5") and v:FindFirstChild("PLAYERNAME") and v.PLAYERNAME:FindFirstChild("SurfaceGui") and v.PLAYERNAME.SurfaceGui:FindFirstChild("TextLabel") and v.PLAYERNAME.SurfaceGui.TextLabel.Text == player.Name then
+				player.Character.HumanoidRootPart.CFrame = v.Baracks["Slot 5"].CFrame * CFrame.new(0, 4, 0)
+			end
+		end
+	end)
+	
+	section1:addButton("Portal",function()
+		player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CreatePARTS.Portal.CFrame* CFrame.new(0, .4, 0)
+		wait(.2)
+	end)
+	
+	section1:addButton("Stage 0",function()
+		player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CreatePARTS.STAGE0.CFrame* CFrame.new(0, .4, 0)
+		wait(.2)
+	end)
+
+	section2:addButton("Stage 1",function()
+		player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CreatePARTS.STAGE1.CFrame* CFrame.new(0, .4, 0)
+		wait(.2)
+	end)
+	
+	section2:addButton("Stage 2",function()
+		player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CreatePARTS.STAGE2.CFrame* CFrame.new(0, .4, 0)
+		wait(.2)
+	end)
+	
+	section2:addButton("Stage 3",function()
+		player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CreatePARTS.STAGE3.CFrame* CFrame.new(0, .4, 0)
+		wait(.2)
+	end)
+	
+	section2:addButton("Stage 4",function()
+		player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CreatePARTS.STAGE4.CFrame* CFrame.new(0, .4, 0)
+		wait(.2)
+	end)
+	
+	section2:addButton("Stage 5",function()
+		player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CreatePARTS.STAGE5.CFrame* CFrame.new(0, .4, 0)
+		wait(.2)
+	end)
+	
+	section2:addButton("Stage 6",function()
+		player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CreatePARTS.STAGE6.CFrame* CFrame.new(0, .4, 0)
+		wait(.2)
+	end)
+	
+	section2:addButton("Stage 7",function()
+		player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").CreatePARTS.STAGE7.CFrame* CFrame.new(0, .4, 0)
+		wait(.2)
+	end)
+	
+	-- last page
+	local pagelast = NoobieDoge:addPage("Settings", 5012544693)
+	local settings = pagelast:addSection("Settings")
+	local colors = pagelast:addSection("Colors")
+	local credits = pagelast:addSection("Credits")
+
+	settings:addButton("Upgrade Performance",function()
+		UPPERFORMANCE()
+		settings:updateButton("Upgrade Performance","Upgraded Performance")
+	end)
+
+	settings:addButton("Reset Script",function()
+		local player = game.Players.LocalPlayer
+		local ScreenGuiK = Instance.new("ScreenGui")
+		local Frame = Instance.new("ImageLabel")
+		local TextLabelFrame = Instance.new("ImageLabel")
+		local TextLabel = Instance.new("TextLabel")
+		local TextButton = Instance.new("ImageButton")
+		local TextButtonText = Instance.new("TextButton")
+		local TextButton_2 = Instance.new("ImageButton")
+		local TextButton_2Text = Instance.new("TextButton")
+
+		ScreenGuiK.Parent = player:WaitForChild("PlayerGui")
+
+		Frame.Parent = ScreenGuiK
+		Frame.Name = "Main"
+		Frame.BackgroundTransparency = 1
+		Frame.Position = UDim2.new(0.66, 0, 0.055, 0)
+		Frame.Size = UDim2.new(0, 220, 0, 120)
+		Frame.Image = "rbxassetid://4641149554"
+		Frame.ImageColor3 = Color3.fromRGB(24, 24, 24)
+		Frame.ScaleType = Enum.ScaleType.Slice
+		Frame.SliceCenter = Rect.new(4, 4, 296, 296)
+		Frame.Active = true
+		Frame.Draggable = true
+
+		TextLabelFrame.Parent = Frame
+		TextLabelFrame.Name = "TopBar"
+		TextLabelFrame.BackgroundTransparency = 1
+		TextLabelFrame.ClipsDescendants = true
+		TextLabelFrame.Size = UDim2.new(1, 0, 0, 38)
+		TextLabelFrame.ZIndex = 2
+		TextLabelFrame.Image = "rbxassetid://4595286933"
+		TextLabelFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabelFrame.ScaleType = Enum.ScaleType.Slice
+		TextLabelFrame.SliceCenter = Rect.new(4, 4, 296, 296)
+		
+		TextLabel.Parent = Frame
+		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabel.Position = UDim2.new(0, 0, -0.1, 0)
+		TextLabel.BackgroundTransparency = 1
+		TextLabel.Size = UDim2.new(0, 220, 0, 60)
+		TextLabel.ZIndex = 3
+		TextLabel.Font = Enum.Font.TitilliumWeb
+		TextLabel.Text = "Are you sure that you want to reset script?"
+		TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabel.TextScaled = false
+		TextLabel.TextSize = 21.000
+		TextLabel.TextWrapped = true
+
+		TextButton.Parent = Frame
+		TextButton.Name = "Button"
+		TextButton.BackgroundTransparency = 1
+		TextButton.Position = UDim2.new(0.075, 0, 0.500000006, 0)
+		TextButton.BorderSizePixel = 0
+		TextButton.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton.ZIndex = 2
+		TextButton.Image = "rbxassetid://5028857472"
+		TextButton.ImageColor3 = Color3.fromRGB(41, 41, 41)
+		TextButton.ScaleType = Enum.ScaleType.Slice
+		TextButton.SliceCenter = Rect.new(2, 2, 298, 298)
+
+		TextButtonText.Parent = TextButton
+		TextButtonText.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextButtonText.BackgroundTransparency = 1
+		TextButtonText.ZIndex = 3
+		TextButtonText.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButtonText.Font = Enum.Font.TitilliumWeb
+		TextButtonText.Text = "Yes"
+		TextButtonText.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButtonText.TextScaled = true
+		TextButtonText.TextSize = 40.000
+		TextButtonText.TextWrapped = true
+
+		function ResetYES()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+			wait()
+			for i,library in pairs(game:GetService("CoreGui"):GetChildren()) do
+				if library.Name == "DogeHub V2" then
+					library:Destroy()
+				end
+			end
+			notify("Do not reset script too many times!")
+			wait(.1)
+			ArmyControlMain()
+		end
+		TextButton.MouseButton1Click:connect(ResetYES)
+		TextButtonText.MouseButton1Click:connect(ResetYES)
+
+		TextButton_2.Parent = Frame
+		TextButton_2.Name = "Button"
+		TextButton_2.BackgroundTransparency = 1
+		TextButton_2.Position = UDim2.new(0.55, 0, 0.500000006, 0)
+		TextButton_2.BorderSizePixel = 0
+		TextButton_2.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton_2.ZIndex = 2
+		TextButton_2.Image = "rbxassetid://5028857472"
+		TextButton_2.ImageColor3 = Color3.fromRGB(41, 41, 41)
+		TextButton_2.ScaleType = Enum.ScaleType.Slice
+		TextButton_2.SliceCenter = Rect.new(2, 2, 298, 298)
+
+		TextButton_2Text.Parent = TextButton_2
+		TextButton_2Text.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextButton_2Text.BackgroundTransparency = 1
+		TextButton_2Text.ZIndex = 3
+		TextButton_2Text.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton_2Text.Font = Enum.Font.TitilliumWeb
+		TextButton_2Text.Text = "No"
+		TextButton_2Text.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButton_2Text.TextScaled = true
+		TextButton_2Text.TextSize = 40.000
+		TextButton_2Text.TextWrapped = true
+
+		function ResetNO()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+		end
+		TextButton_2.MouseButton1Click:connect(ResetNO)	
+		TextButton_2Text.MouseButton1Click:connect(ResetNO)
+	end)
+
+	settings:addButton("Rejoin Server",function()
+		local player = game.Players.LocalPlayer
+		local ScreenGuiK = Instance.new("ScreenGui")
+		local Frame = Instance.new("ImageLabel")
+		local TextLabelFrame = Instance.new("ImageLabel")
+		local TextLabel = Instance.new("TextLabel")
+		local TextButton = Instance.new("ImageButton")
+		local TextButtonText = Instance.new("TextButton")
+		local TextButton_2 = Instance.new("ImageButton")
+		local TextButton_2Text = Instance.new("TextButton")
+
+		ScreenGuiK.Parent = player:WaitForChild("PlayerGui")
+
+		Frame.Parent = ScreenGuiK
+		Frame.Name = "Main"
+		Frame.BackgroundTransparency = 1
+		Frame.Position = UDim2.new(0.66, 0, 0.055, 0)
+		Frame.Size = UDim2.new(0, 220, 0, 120)
+		Frame.Image = "rbxassetid://4641149554"
+		Frame.ImageColor3 = Color3.fromRGB(24, 24, 24)
+		Frame.ScaleType = Enum.ScaleType.Slice
+		Frame.SliceCenter = Rect.new(4, 4, 296, 296)
+		Frame.Active = true
+		Frame.Draggable = true
+
+		TextLabelFrame.Parent = Frame
+		TextLabelFrame.Name = "TopBar"
+		TextLabelFrame.BackgroundTransparency = 1
+		TextLabelFrame.ClipsDescendants = true
+		TextLabelFrame.Size = UDim2.new(1, 0, 0, 38)
+		TextLabelFrame.ZIndex = 2
+		TextLabelFrame.Image = "rbxassetid://4595286933"
+		TextLabelFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabelFrame.ScaleType = Enum.ScaleType.Slice
+		TextLabelFrame.SliceCenter = Rect.new(4, 4, 296, 296)
+		
+		TextLabel.Parent = Frame
+		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabel.Position = UDim2.new(0, 0, -0.1, 0)
+		TextLabel.BackgroundTransparency = 1
+		TextLabel.Size = UDim2.new(0, 220, 0, 60)
+		TextLabel.ZIndex = 3
+		TextLabel.Font = Enum.Font.TitilliumWeb
+		TextLabel.Text = "Are you sure you want to rejoin server?"
+		TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabel.TextScaled = false
+		TextLabel.TextSize = 24.000
+		TextLabel.TextWrapped = true
+
+		TextButton.Parent = Frame
+		TextButton.Name = "Button"
+		TextButton.BackgroundTransparency = 1
+		TextButton.Position = UDim2.new(0.075, 0, 0.500000006, 0)
+		TextButton.BorderSizePixel = 0
+		TextButton.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton.ZIndex = 2
+		TextButton.Image = "rbxassetid://5028857472"
+		TextButton.ImageColor3 = Color3.fromRGB(41, 41, 41)
+		TextButton.ScaleType = Enum.ScaleType.Slice
+		TextButton.SliceCenter = Rect.new(2, 2, 298, 298)
+
+		TextButtonText.Parent = TextButton
+		TextButtonText.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextButtonText.BackgroundTransparency = 1
+		TextButtonText.ZIndex = 3
+		TextButtonText.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButtonText.Font = Enum.Font.TitilliumWeb
+		TextButtonText.Text = "Yes"
+		TextButtonText.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButtonText.TextScaled = true
+		TextButtonText.TextSize = 40.000
+		TextButtonText.TextWrapped = true
+
+		function RejoinYES()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+			local TS = game:GetService("TeleportService")
+			local Player = game.Players.LocalPlayer
+			TS:Teleport(game.PlaceId, Player)
+		end
+		TextButton.MouseButton1Click:connect(RejoinYES)
+		TextButtonText.MouseButton1Click:connect(RejoinYES)
+
+		TextButton_2.Parent = Frame
+		TextButton_2.Name = "Button"
+		TextButton_2.BackgroundTransparency = 1
+		TextButton_2.Position = UDim2.new(0.55, 0, 0.500000006, 0)
+		TextButton_2.BorderSizePixel = 0
+		TextButton_2.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton_2.ZIndex = 2
+		TextButton_2.Image = "rbxassetid://5028857472"
+		TextButton_2.ImageColor3 = Color3.fromRGB(41, 41, 41)
+		TextButton_2.ScaleType = Enum.ScaleType.Slice
+		TextButton_2.SliceCenter = Rect.new(2, 2, 298, 298)
+
+		TextButton_2Text.Parent = TextButton_2
+		TextButton_2Text.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextButton_2Text.BackgroundTransparency = 1
+		TextButton_2Text.ZIndex = 3
+		TextButton_2Text.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton_2Text.Font = Enum.Font.TitilliumWeb
+		TextButton_2Text.Text = "No"
+		TextButton_2Text.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButton_2Text.TextScaled = true
+		TextButton_2Text.TextSize = 40.000
+		TextButton_2Text.TextWrapped = true
+
+		function RejoinNO()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+		end
+		TextButton_2.MouseButton1Click:connect(RejoinNO)	
+		TextButton_2Text.MouseButton1Click:connect(RejoinNO)
+	end)
+
+	settings:addKeybind("Toggle Keybind", Enum.KeyCode.RightControl, function()
+	print("Activated Keybind")
+	NoobieDoge:toggle()
+	end, function()
+	print("Changed Keybind")
+	end)
+
+	for theme, color in pairs(themes) do -- all in one theme changer, i know, im cool
+		colors:addColorPicker(theme, color, function(color3)
+			NoobieDoge:setTheme(theme, color3)
+		end)
+	end
+
+	credits:addButton("Made by NoobieDoge")
+	credits:addButton("https://discord.gg/P2CeRjvTDt")
+	credits:addButton("Copy Discord Link",function()
+		setclipboard("https://discord.gg/P2CeRjvTDt")
+		wait()
+		notify("Discord link copied to clipboard!")
+	end)
+	
+end
+
+if game.PlaceId == 10700669209 then
+	ArmyControlMain()
+elseif game.PlaceId == 12326810932 then
+	ArmyControlRaid()
+else
+	ArmyControlRaid()
+end
