@@ -507,38 +507,38 @@ local function StandUprightRebooted()
 	end)
 
 	section2:addButton("Use Stand Arrow",function()
-		if player.Backpack:FindFirstChild("Stand Arrow") then
+		if player.Backpack:FindFirstChild("Stand Arrow") and not player.Character:FindFirstChild("Stand Arrow") then
 			player.Character.Humanoid:EquipTool(player.Backpack:FindFirstChild("Stand Arrow"))
-			player.Character:WaitForChild("Stand Arrow").Use:FireServer()
 		end
+		game:GetService("ReplicatedStorage").Events.UseItem:FireServer()
 	end)
 
 	section2:addButton("Use Charged Arrow", function()
-		if player.Backpack:FindFirstChild("Charged Arrow") then
+		if player.Backpack:FindFirstChild("Charged Arrow") and not player.Character:FindFirstChild("Charged Arrow") then
 			player.Character.Humanoid:EquipTool(player.Backpack:FindFirstChild("Charged Arrow"))
-			player.Character:WaitForChild("Charged Arrow").Use:FireServer()
 		end
+		game:GetService("ReplicatedStorage").Events.UseItem:FireServer()
 	end)
 
 	section2:addButton("Use Rokakaka", function()
-		if player.Backpack:FindFirstChild("Rokakaka") then
+		if player.Backpack:FindFirstChild("Rokakaka") and not player.Character:FindFirstChild("Rokakaka") then
 			player.Character.Humanoid:EquipTool(player.Backpack:FindFirstChild("Rokakaka"))
-			player.Character:WaitForChild("Rokakaka").Use:FireServer()
 		end
+		game:GetService("ReplicatedStorage").Events.UseItem:FireServer()
 	end)
 
 	section2:addButton("Use Requiem Arrow", function()
-		if player.Backpack:FindFirstChild("Requiem Arrow") then
+		if player.Backpack:FindFirstChild("Requiem Arrow") and not player.Character:FindFirstChild("Requiem Arrow") then
 			player.Character.Humanoid:EquipTool(player.Backpack:FindFirstChild("Requiem Arrow"))
-			player.Character:WaitForChild("Requiem Arrow").Use:FireServer()
 		end
+		game:GetService("ReplicatedStorage").Events.UseItem:FireServer()
 	end)
 
 	section2:addButton("Use Dio's Diary", function()
-		if player.Backpack:FindFirstChild("Dio's Diary") then
+		if player.Backpack:FindFirstChild("Dio's Diary") and not player.Character:FindFirstChild("Dio's Diary") then
 			player.Character.Humanoid:EquipTool(player.Backpack:FindFirstChild("Dio's Diary"))
-			player.Character:WaitForChild("Dio's Diary").Use:FireServer()
 		end
+		game:GetService("ReplicatedStorage").Events.UseItem:FireServer()
 	end)
 
 	local AutoUmbrella = false
@@ -547,8 +547,8 @@ local function StandUprightRebooted()
 		if AutoUmbrella then
 			while AutoUmbrella and task.wait() do
 				pcall(function()
-					if player.Backpack:FindFirstChild("Umbrella") and not game.Players.LocalPlayer.Character:FindFirstChild("Umbrella") then
-						player.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack:FindFirstChild("Umbrella"))
+					if player.Backpack:FindFirstChild("Umbrella") and not player.Character:FindFirstChild("Umbrella") then
+						player.Character.Humanoid:EquipTool(player.Backpack:FindFirstChild("Umbrella"))
 					end
 				end)
 			end
@@ -956,24 +956,48 @@ local function StandUprightRebooted()
 		if player.Data.Level.Value < 40 then
 			section2:addButton("Rokakaka (2,750c)", function()--lvl 15
 				for i = 1, Amount, 1 do
+					for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
+						if v:FindFirstChild("Head") and v.Head:FindFirstChild("Main") and v.Head.Main:FindFirstChild("Text") and v.Head.Main.Text.Text == "d0ge_316sBrother [Lvl. 15+]" then
+							player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
+						end
+					end
+					wait(.25)
 					game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("Merchant1", "Option2")
 				end
 			end)
 
 			section2:addButton("Stand Arrow (4,000c)", function()--lvl 15
 				for i = 1, Amount, 1 do
+					for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
+						if v:FindFirstChild("Head") and v.Head:FindFirstChild("Main") and v.Head.Main:FindFirstChild("Text") and v.Head.Main.Text.Text == "d0ge_316sBrother [Lvl. 15+]" then
+							player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
+						end
+					end
+					wait(.25)
 					game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("Merchant1", "Option4")
 				end
 			end)
 		else
 			section2:addButton("Rokakaka ( 2,500c )", function()--lvl 40
 				for i = 1, Amount, 1 do
+					for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
+						if v:FindFirstChild("Head") and v.Head:FindFirstChild("Main") and v.Head.Main:FindFirstChild("Text") and v.Head.Main.Text.Text == "d0ge_316sBrother [Lvl. 40+]" then
+							player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
+						end
+					end
+					wait(.25)
 					game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("MerchantAU", "Option2")
 				end
 			end)
 
 			section2:addButton("Stand Arrow ( 3,500c )", function()--lvl 40
 				for i = 1, Amount, 1 do
+					for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
+						if v:FindFirstChild("Head") and v.Head:FindFirstChild("Main") and v.Head.Main:FindFirstChild("Text") and v.Head.Main.Text.Text == "d0ge_316sBrother [Lvl. 40+]" then
+							player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
+						end
+					end
+					wait(.25)
 					game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("MerchantAU", "Option4")
 				end
 			end)
@@ -983,6 +1007,12 @@ local function StandUprightRebooted()
 	if player.Data.Level.Value > 119 then
 		section2:addButton("Charged Arrow ( 50,000c )", function() --lvl 120
 			for i = 1, Amount, 1 do
+				for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
+					if v:FindFirstChild("Head") and v.Head:FindFirstChild("Main") and v.Head.Main:FindFirstChild("Text") and v.Head.Main.Text.Text == "MMLGG_316 [Lvl. 120+]" then
+						player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
+					end
+				end
+				wait(.25)
 				game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("Merchantlvl120", "Option2")
 			end
 		end)
@@ -990,12 +1020,24 @@ local function StandUprightRebooted()
 
 	section2:addButton("Umbrella ( 60,000c )", function()
 		for i = 1, Amount, 1 do
+			for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
+				if v.Name == "Umbrella" and v:FindFirstChild("HumanoidRootPart") then
+					player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
+				end
+			end
+			wait(.25)
 			workspace.Map.NPCs.Umbrella.Done:FireServer()
 		end
 	end)
 
 	section2:addButton("Skull ( 500,000c )", function()
 		for i = 1, Amount, 1 do
+			for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
+				if v.Name == "Homeless" and v:FindFirstChild("HumanoidRootPart") then
+					player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
+				end
+			end
+			wait(.25)
 			game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("MerchantHomeless", "Option1")
 		end
 	end)
@@ -1003,12 +1045,24 @@ local function StandUprightRebooted()
 	if player.Data.Level.Value > 119 then
 		section2:addButton("Dio Diary ( 1,500,000c )", function()--lvl 120
 			for i = 1, Amount, 1 do
+				for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
+					if v:FindFirstChild("Head") and v.Head:FindFirstChild("Main") and v.Head.Main:FindFirstChild("Text") and v.Head.Main.Text.Text == "MMLGG_316 [Lvl. 120+]" then
+						player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
+					end
+				end
+				wait(.25)
 				game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("Merchantlvl120", "Option3")
 			end
 		end)
 
 		section2:addButton("Requiem Arrow ( 1,500,000c )", function()--lvl 120
 			for i = 1, Amount, 1 do
+				for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
+					if v:FindFirstChild("Head") and v.Head:FindFirstChild("Main") and v.Head.Main:FindFirstChild("Text") and v.Head.Main.Text.Text == "MMLGG_316 [Lvl. 120+]" then
+						player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
+					end
+				end
+				wait(.25)
 				game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("Merchantlvl120", "Option4")
 			end
 		end)
@@ -2229,67 +2283,76 @@ local function StandUprightRebooted()
 
 	local function FARMSTANDS()
 		pcall(function()
-			if SFRoka and not player.Backpack:FindFirstChild("Rokakaka") then
+			if SFRoka and not player.Backpack:FindFirstChild("Rokakaka") and not player.Character:FindFirstChild("Rokakaka") then
 				if player.Data.Level.Value < 15 then
 					notify("You cannot use this function yet")
 				else
 					if player.Data.Level.Value < 40 then
-						game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("Merchant1", "Option2")
-						game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("Merchant1", "Option2")
-						game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("Merchant1", "Option2")
-						game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("Merchant1", "Option2")
-						game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("Merchant1", "Option2")
+						for i = 1, 5, 1 do
+							for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
+								if v:FindFirstChild("Head") and v.Head:FindFirstChild("Main") and v.Head.Main:FindFirstChild("Text") and v.Head.Main.Text.Text == "d0ge_316sBrother [Lvl. 15+]" then
+									player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
+								end
+							end
+							wait(.25)
+							game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("Merchant1", "Option2")
+						end
 					else
-						game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("MerchantAU", "Option2")
-						game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("MerchantAU", "Option2")
-						game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("MerchantAU", "Option2")
-						game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("MerchantAU", "Option2")
-						game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("MerchantAU", "Option2")
+						for i = 1, 5, 1 do
+							for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
+								if v:FindFirstChild("Head") and v.Head:FindFirstChild("Main") and v.Head.Main:FindFirstChild("Text") and v.Head.Main.Text.Text == "d0ge_316sBrother [Lvl. 40+]" then
+									player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
+								end
+							end
+							wait(.25)
+							game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("MerchantAU", "Option2")
+						end
 					end
 				end
 			end
 			if player.Data.Stand.Value ~= "None" then
-				local tool =  "Rokakaka"
-				player.Backpack:FindFirstChild(tool).Parent = player.Character
-				wait(0.1)
-				local roka = player.Character.Rokakaka.Use
-				roka:FireServer()
+				if player.Backpack:FindFirstChild("Rokakaka") and not player.Character:FindFirstChild("Rokakaka") then
+					player.Character.Humanoid:EquipTool(player.Backpack:FindFirstChild("Rokakaka"))
+				end
+				game:GetService("ReplicatedStorage").Events.UseItem:FireServer()
 				wait(1)
 			else
 				if SFuseCA and SFuseSA then
 					local CASAprobit = math.random(1, 2)
 					if CASAprobit == 1 then
 						if player.Backpack:FindFirstChild("Stand Arrow") then
-							player.Backpack:FindFirstChild("Stand Arrow").Parent = player.Character
-							wait()
-							local Sarrow = player.Character["Stand Arrow"].Use
-							Sarrow:FireServer()
+							if player.Backpack:FindFirstChild("Stand Arrow") and not player.Character:FindFirstChild("Stand Arrow") then
+								player.Character.Humanoid:EquipTool(player.Backpack:FindFirstChild("Stand Arrow"))
+							end
+							game:GetService("ReplicatedStorage").Events.UseItem:FireServer()
 							wait(4.6)
 						end
 					else
 						if player.Backpack:FindFirstChild("Charged Arrow") then
-							player.Backpack:FindFirstChild("Charged Arrow").Parent = player.Character
-							wait()
-							local Carrow = player.Character["Charged Arrow"].Use
-							Carrow:FireServer()
+							if player.Backpack:FindFirstChild("Charged Arrow") and not player.Character:FindFirstChild("Charged Arrow") then
+								player.Character.Humanoid:EquipTool(player.Backpack:FindFirstChild("Charged Arrow"))
+							end
+							game:GetService("ReplicatedStorage").Events.UseItem:FireServer()
 							wait(4.6)
 						end
 					end
 				elseif SFuseCA then
 					if player.Backpack:FindFirstChild("Charged Arrow") then
-						player.Backpack:FindFirstChild("Charged Arrow").Parent = player.Character
-						wait()
-						local Carrow = player.Character["Charged Arrow"].Use
-						Carrow:FireServer()
+						if player.Backpack:FindFirstChild("Charged Arrow") and not player.Character:FindFirstChild("Charged Arrow") then
+							player.Character.Humanoid:EquipTool(player.Backpack:FindFirstChild("Charged Arrow"))
+						end
+						game:GetService("ReplicatedStorage").Events.UseItem:FireServer()
 						wait(4.6)
 					end
 				elseif SFuseSA then
 					if player.Backpack:FindFirstChild("Stand Arrow") then
-						player.Backpack:FindFirstChild("Stand Arrow").Parent = player.Character
-						wait()
-						local Sarrow = player.Character["Stand Arrow"].Use
-						Sarrow:FireServer()
-						wait(4.6)
+						if player.Backpack:FindFirstChild("Stand Arrow") then
+							if player.Backpack:FindFirstChild("Stand Arrow") and not player.Character:FindFirstChild("Stand Arrow") then
+								player.Character.Humanoid:EquipTool(player.Backpack:FindFirstChild("Stand Arrow"))
+							end
+							game:GetService("ReplicatedStorage").Events.UseItem:FireServer()
+							wait(4.6)
+						end
 					end
 				end
 			end
@@ -2359,6 +2422,10 @@ local function StandUprightRebooted()
 		player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(27865.48, 32, -127.38))
 	end)
 
+	section1:addButton("Hell", function()
+		player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Hell.Spawn.CFrame
+	end)
+	
 	section2:addButton("i_stabman (Storage Room)", function()
 		for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
 			if v:FindFirstChild("Head") and v.Head:FindFirstChild("Sub") and v.Head.Sub:FindFirstChild("Text") and v.Head.Sub.Text.Text == "Storage Room" then
@@ -2391,6 +2458,14 @@ local function StandUprightRebooted()
 		end
 	end)
 
+	section2:addButton("Bulk-Purchase/Sell [Lvl. 200+] (CEO of Nika Industries)", function()
+		for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
+			if v.Name == "StockMarket" and v:FindFirstChild("HumanoidRootPart") then
+				player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
+			end
+		end
+	end)
+	
 	section2:addButton("d0ge_316sBrother [Lvl. 15+] (Shop)", function()
 		for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
 			if v:FindFirstChild("Head") and v.Head:FindFirstChild("Main") and v.Head.Main:FindFirstChild("Text") and v.Head.Main.Text.Text == "d0ge_316sBrother [Lvl. 15+]" then
@@ -2409,7 +2484,7 @@ local function StandUprightRebooted()
 
 	section2:addButton("MMLGG_316 [Lvl. 120+] (Shop)", function()
 		for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
-			if v.Name == "MMLGG_316" and v:FindFirstChild("HumanoidRootPart") then
+			if v:FindFirstChild("Head") and v.Head:FindFirstChild("Main") and v.Head.Main:FindFirstChild("Text") and v.Head.Main.Text.Text == "MMLGG_316 [Lvl. 120+]" then
 				player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
 			end
 		end
@@ -2457,7 +2532,7 @@ local function StandUprightRebooted()
 
 	section2:addButton("Homeless Man (Quest)", function()
 		for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
-			if v.Name == "Homeless NPC" and v:FindFirstChild("HumanoidRootPart") then
+			if v.Name == "Homeless" and v:FindFirstChild("HumanoidRootPart") then
 				player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
 			end
 		end
@@ -2665,9 +2740,9 @@ local function StandUprightRebooted()
 		end
 	end)
 
-	section2:addButton("Hashprown (Silly Goober)", function()
+	section2:addButton("cjhatter ()", function()
 		for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
-			if v.Name == "Hashprown" and v:FindFirstChild("HumanoidRootPart") then
+			if v.Name == "cjhatter" and v:FindFirstChild("HumanoidRootPart") then
 				player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
 			end
 		end
