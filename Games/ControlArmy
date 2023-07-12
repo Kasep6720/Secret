@@ -1228,13 +1228,13 @@ local function ArmyControlMain()
 	player.CharacterAdded:Connect(function()
 		if AutoFarm or FarmLordOfSands or FarmSirShark or FarmMinotaur then
 			wait(1)
-			if game.Workspace[player.Name]:FindFirstChildOfClass("Tool") then
-				for i,wand in pairs(player.Backpack:GetChildren()) do
-					if wand:FindFirstChild("Handle") and wand:FindFirstChild("SPAWNER") then
-						player.Character.Humanoid:EquipTool(wand)
-					end
+			for i,wand in pairs(player.Backpack:GetChildren()) do
+				if wand:FindFirstChild("Handle") and wand:FindFirstChild("SPAWNER") then
+					player.Character.Humanoid:EquipTool(wand)
 				end
-			else
+			end
+			wait(.25)
+			if not game.Workspace[player.Name]:FindFirstChildOfClass("Tool") then
 				notify("You don't have a wand!")
 				wait(1)
 				player.Character:BreakJoints()
