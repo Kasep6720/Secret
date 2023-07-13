@@ -566,10 +566,6 @@ local function StandUprightRebooted()
 			end
 		end
 	end)
-
-	section3:addButton("Goes Invisible",function()
-		player.Character:BreakJoints()
-	end)
 	
 	-- third page
 	local page3 = NoobieDoge:addPage("Auto Pickup", 5927656531)
