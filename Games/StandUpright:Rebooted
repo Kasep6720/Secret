@@ -210,7 +210,7 @@ local function StandUprightRebooted()
 	end)
 
 	section2:addButton("Reset Character",function()
-		player.Character:BreakJoints()
+		player.Character.Humanoid.Health = 0 
 	end)
 
 	section2:addToggle("Ctrl + Click TP",false,function(bool)
@@ -567,6 +567,10 @@ local function StandUprightRebooted()
 		end
 	end)
 
+	section3:addButton("Goes Invisible",function()
+		player.Character:BreakJoints()
+	end)
+	
 	-- third page
 	local page3 = NoobieDoge:addPage("Auto Pickup", 5927656531)
 	local section1 = page3:addSection("Auto Pickup")
@@ -2163,7 +2167,7 @@ local function StandUprightRebooted()
 
 	game:service'Players'.LocalPlayer.Idled:connect(function()
 		if LairFarm and (BadGi or Dio or HomelessMan or Diavolo or Jotaro) then
-			player.Character:BreakJoints()
+			player.Character.Humanoid.Health = 0 
 		end
 	end)
 	
