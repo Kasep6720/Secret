@@ -2161,6 +2161,11 @@ local function StandUprightRebooted()
 		end
 	end)
 
+	game:service'Players'.LocalPlayer.Idled:connect(function()
+		if LairFarm and (BadGi or Dio or HomelessMan or Diavolo or Jotaro) then
+			player.Character:BreakJoints()
+		end
+	end)
 	-- eigth page
 	local page8 = NoobieDoge:addPage("Stand Farm", 5927656531)
 	local section1 = page8:addSection("Stand Farm")
