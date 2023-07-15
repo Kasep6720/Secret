@@ -500,7 +500,8 @@ local function StandUprightRebootedMain()
 	local page2 = NoobieDoge:addPage("Misc", 5927656531)
 	local section1 = page2:addSection("Open Stand Storage")
 	local section2 = page2:addSection("Local Player")
-	local section3 = page2:addSection("Other Functions")
+	local section3 = page2:addSection("Buy Items")
+	local section4 = page2:addSection("Other Functions")
 
 	section1:addButton("Open Stand Storage", function()
 		workspace.Map.NPCs.admpn.Done:FireServer()
@@ -566,6 +567,142 @@ local function StandUprightRebootedMain()
 			end
 		end
 	end)
+
+	section3:addTextbox("How Many To Purchase","(Amount)", function(A)
+		if tonumber(A) then
+			if tonumber(A) >= 1 then
+				Amount = tonumber(A)
+				notify("Amount Set To : "..tostring(Amount), {})
+			else
+				notify("Please Set The Number Above 0+", {})
+			end
+		end
+	end)
+	Amount = 1
+
+	if player.Data.Level.Value < 15 then
+		section3:addButton("Rokakaka", function()--lvl 15
+			notify("You need to be at least lvl 15 to purchase it")
+		end)
+
+		section3:addButton("Stand Arrow", function()--lvl 15
+			notify("You need to be at least lvl 15 to purchase it")
+		end)
+	else
+		if player.Data.Level.Value < 40 then
+			section3:addButton("Rokakaka (2,750c)", function()--lvl 15
+				for i = 1, Amount, 1 do
+					for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
+						if v:FindFirstChild("Head") and v.Head:FindFirstChild("Main") and v.Head.Main:FindFirstChild("Text") and v.Head.Main.Text.Text == "d0ge_316sBrother [Lvl. 15+]" then
+							player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
+						end
+					end
+					wait(.25)
+					game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("Merchant1", "Option2")
+				end
+			end)
+
+			section3:addButton("Stand Arrow (4,000c)", function()--lvl 15
+				for i = 1, Amount, 1 do
+					for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
+						if v:FindFirstChild("Head") and v.Head:FindFirstChild("Main") and v.Head.Main:FindFirstChild("Text") and v.Head.Main.Text.Text == "d0ge_316sBrother [Lvl. 15+]" then
+							player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
+						end
+					end
+					wait(.25)
+					game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("Merchant1", "Option4")
+				end
+			end)
+		else
+			section3:addButton("Rokakaka ( 2,500c )", function()--lvl 40
+				for i = 1, Amount, 1 do
+					for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
+						if v:FindFirstChild("Head") and v.Head:FindFirstChild("Main") and v.Head.Main:FindFirstChild("Text") and v.Head.Main.Text.Text == "d0ge_316sBrother [Lvl. 40+]" then
+							player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
+						end
+					end
+					wait(.25)
+					game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("MerchantAU", "Option2")
+				end
+			end)
+
+			section3:addButton("Stand Arrow ( 3,500c )", function()--lvl 40
+				for i = 1, Amount, 1 do
+					for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
+						if v:FindFirstChild("Head") and v.Head:FindFirstChild("Main") and v.Head.Main:FindFirstChild("Text") and v.Head.Main.Text.Text == "d0ge_316sBrother [Lvl. 40+]" then
+							player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
+						end
+					end
+					wait(.25)
+					game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("MerchantAU", "Option4")
+				end
+			end)
+		end
+	end
+
+	if player.Data.Level.Value > 119 then
+		section3:addButton("Charged Arrow ( 50,000c )", function() --lvl 120
+			for i = 1, Amount, 1 do
+				for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
+					if v:FindFirstChild("Head") and v.Head:FindFirstChild("Main") and v.Head.Main:FindFirstChild("Text") and v.Head.Main.Text.Text == "MMLGG_316 [Lvl. 120+]" then
+						player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
+					end
+				end
+				wait(.25)
+				game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("Merchantlvl120", "Option2")
+			end
+		end)
+	end
+
+	section3:addButton("Umbrella ( 60,000c )", function()
+		for i = 1, Amount, 1 do
+			for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
+				if v.Name == "Umbrella" and v:FindFirstChild("HumanoidRootPart") then
+					player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
+				end
+			end
+			wait(.25)
+			workspace.Map.NPCs.Umbrella.Done:FireServer()
+		end
+	end)
+
+	section3:addButton("Skull ( 500,000c )", function()
+		for i = 1, Amount, 1 do
+			for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
+				if v.Name == "Homeless" and v:FindFirstChild("HumanoidRootPart") then
+					player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
+				end
+			end
+			wait(.25)
+			game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("MerchantHomeless", "Option1")
+		end
+	end)
+
+	if player.Data.Level.Value > 119 then
+		section3:addButton("Dio Diary ( 1,500,000c )", function()--lvl 120
+			for i = 1, Amount, 1 do
+				for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
+					if v:FindFirstChild("Head") and v.Head:FindFirstChild("Main") and v.Head.Main:FindFirstChild("Text") and v.Head.Main.Text.Text == "MMLGG_316 [Lvl. 120+]" then
+						player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
+					end
+				end
+				wait(.25)
+				game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("Merchantlvl120", "Option3")
+			end
+		end)
+
+		section3:addButton("Requiem Arrow ( 1,500,000c )", function()--lvl 120
+			for i = 1, Amount, 1 do
+				for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
+					if v:FindFirstChild("Head") and v.Head:FindFirstChild("Main") and v.Head.Main:FindFirstChild("Text") and v.Head.Main.Text.Text == "MMLGG_316 [Lvl. 120+]" then
+						player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
+					end
+				end
+				wait(.25)
+				game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("Merchantlvl120", "Option4")
+			end
+		end)
+	end
 	
 	-- third page
 	local page3 = NoobieDoge:addPage("Auto Pickup", 5927656531)
@@ -928,151 +1065,10 @@ local function StandUprightRebootedMain()
 	end)
 
 	-- forth page
-	local page4 = NoobieDoge:addPage("Buy Items", 5927656531)
-	local section1 = page4:addSection("Items Amount")
-	local section2 = page4:addSection("Buy Items")
-
-	section1:addTextbox("How Many To Purchase","(Amount)", function(A)
-		if tonumber(A) then
-			if tonumber(A) >= 1 then
-				Amount = tonumber(A)
-				notify("Amount Set To : "..tostring(Amount), {})
-			else
-				notify("Please Set The Number Above 0+", {})
-			end
-		end
-	end)
-	Amount = 1
-
-	if player.Data.Level.Value < 15 then
-		section2:addButton("Rokakaka", function()--lvl 15
-			notify("You need to be at least lvl 15 to purchase it")
-		end)
-
-		section2:addButton("Stand Arrow", function()--lvl 15
-			notify("You need to be at least lvl 15 to purchase it")
-		end)
-	else
-		if player.Data.Level.Value < 40 then
-			section2:addButton("Rokakaka (2,750c)", function()--lvl 15
-				for i = 1, Amount, 1 do
-					for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
-						if v:FindFirstChild("Head") and v.Head:FindFirstChild("Main") and v.Head.Main:FindFirstChild("Text") and v.Head.Main.Text.Text == "d0ge_316sBrother [Lvl. 15+]" then
-							player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
-						end
-					end
-					wait(.25)
-					game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("Merchant1", "Option2")
-				end
-			end)
-
-			section2:addButton("Stand Arrow (4,000c)", function()--lvl 15
-				for i = 1, Amount, 1 do
-					for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
-						if v:FindFirstChild("Head") and v.Head:FindFirstChild("Main") and v.Head.Main:FindFirstChild("Text") and v.Head.Main.Text.Text == "d0ge_316sBrother [Lvl. 15+]" then
-							player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
-						end
-					end
-					wait(.25)
-					game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("Merchant1", "Option4")
-				end
-			end)
-		else
-			section2:addButton("Rokakaka ( 2,500c )", function()--lvl 40
-				for i = 1, Amount, 1 do
-					for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
-						if v:FindFirstChild("Head") and v.Head:FindFirstChild("Main") and v.Head.Main:FindFirstChild("Text") and v.Head.Main.Text.Text == "d0ge_316sBrother [Lvl. 40+]" then
-							player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
-						end
-					end
-					wait(.25)
-					game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("MerchantAU", "Option2")
-				end
-			end)
-
-			section2:addButton("Stand Arrow ( 3,500c )", function()--lvl 40
-				for i = 1, Amount, 1 do
-					for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
-						if v:FindFirstChild("Head") and v.Head:FindFirstChild("Main") and v.Head.Main:FindFirstChild("Text") and v.Head.Main.Text.Text == "d0ge_316sBrother [Lvl. 40+]" then
-							player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
-						end
-					end
-					wait(.25)
-					game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("MerchantAU", "Option4")
-				end
-			end)
-		end
-	end
-
-	if player.Data.Level.Value > 119 then
-		section2:addButton("Charged Arrow ( 50,000c )", function() --lvl 120
-			for i = 1, Amount, 1 do
-				for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
-					if v:FindFirstChild("Head") and v.Head:FindFirstChild("Main") and v.Head.Main:FindFirstChild("Text") and v.Head.Main.Text.Text == "MMLGG_316 [Lvl. 120+]" then
-						player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
-					end
-				end
-				wait(.25)
-				game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("Merchantlvl120", "Option2")
-			end
-		end)
-	end
-
-	section2:addButton("Umbrella ( 60,000c )", function()
-		for i = 1, Amount, 1 do
-			for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
-				if v.Name == "Umbrella" and v:FindFirstChild("HumanoidRootPart") then
-					player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
-				end
-			end
-			wait(.25)
-			workspace.Map.NPCs.Umbrella.Done:FireServer()
-		end
-	end)
-
-	section2:addButton("Skull ( 500,000c )", function()
-		for i = 1, Amount, 1 do
-			for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
-				if v.Name == "Homeless" and v:FindFirstChild("HumanoidRootPart") then
-					player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
-				end
-			end
-			wait(.25)
-			game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("MerchantHomeless", "Option1")
-		end
-	end)
-
-	if player.Data.Level.Value > 119 then
-		section2:addButton("Dio Diary ( 1,500,000c )", function()--lvl 120
-			for i = 1, Amount, 1 do
-				for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
-					if v:FindFirstChild("Head") and v.Head:FindFirstChild("Main") and v.Head.Main:FindFirstChild("Text") and v.Head.Main.Text.Text == "MMLGG_316 [Lvl. 120+]" then
-						player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
-					end
-				end
-				wait(.25)
-				game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("Merchantlvl120", "Option3")
-			end
-		end)
-
-		section2:addButton("Requiem Arrow ( 1,500,000c )", function()--lvl 120
-			for i = 1, Amount, 1 do
-				for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
-					if v:FindFirstChild("Head") and v.Head:FindFirstChild("Main") and v.Head.Main:FindFirstChild("Text") and v.Head.Main.Text.Text == "MMLGG_316 [Lvl. 120+]" then
-						player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
-					end
-				end
-				wait(.25)
-				game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("Merchantlvl120", "Option4")
-			end
-		end)
-	end
-
-	-- fifth page
-	local page5 = NoobieDoge:addPage("Drop Items", 5927656531)
-	local section1 = page5:addSection("Drop Item")
-	local section2 = page5:addSection("Hand Item")
-	local section3 = page5:addSection("Auto Drop")
+	local page4 = NoobieDoge:addPage("Drop Items", 5927656531)
+	local section1 = page4:addSection("Drop Item")
+	local section2 = page4:addSection("Hand Item")
+	local section3 = page4:addSection("Auto Drop")
 
 	section1:addButton("Drop Item", function()
 		player.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar:CaptureFocus()
@@ -1132,11 +1128,11 @@ local function StandUprightRebootedMain()
 		end
 	end)
 
-	-- sixth page
-	local page6 = NoobieDoge:addPage("Quests Farm", 5927656531)
-	local section1 = page6:addSection("Quest Farm")
-	local section2 = page6:addSection("Quest Selection")
-	local section3 = page6:addSection("Quest Farm Settings")
+	-- fifth page
+	local page5 = NoobieDoge:addPage("Quests Farm", 5927656531)
+	local section1 = page5:addSection("Quest Farm")
+	local section2 = page5:addSection("Quest Selection")
+	local section3 = page5:addSection("Quest Farm Settings")
 
 	local AutoFarm = false
 	section1:addToggle("Quest Farm",false, function(bool)
@@ -1939,10 +1935,10 @@ local function StandUprightRebootedMain()
 		end
 	end)
 
-	-- seventh page
-	local page7 = NoobieDoge:addPage("Lair Farm", 5927656531)
-	local section1 = page7:addSection("Lair Farm")
-	local section2 = page7:addSection("Lair Selection")
+	-- sixth page
+	local page6 = NoobieDoge:addPage("Lair Farm", 5927656531)
+	local section1 = page6:addSection("Lair Farm")
+	local section2 = page6:addSection("Lair Selection")
 
 	local LairFarm = false
 	section1:addToggle("Lair Farm",false, function(bool)
@@ -2002,7 +1998,7 @@ local function StandUprightRebootedMain()
 								player.Character.Stand.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
 							end)
 						until Boss.Humanoid.Health == 0 or BadGi == false or player.Character:FindFirstChild("Humanoid").Health == 0
-						player.CharacterAdded:Wait()
+						--player.CharacterAdded:Wait()
 						repeat task.wait() until player.Character:FindFirstChild("HumanoidRootPart")
 					end)
 				end
@@ -2038,7 +2034,7 @@ local function StandUprightRebootedMain()
 								player.Character.Stand.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
 							end)
 						until Boss.Humanoid.Health == 0 or Dio == false or player.Character:FindFirstChild("Humanoid").Health == 0
-						player.CharacterAdded:Wait()
+						--player.CharacterAdded:Wait()
 						repeat task.wait() until player.Character:FindFirstChild("HumanoidRootPart")
 					end)
 				end
@@ -2074,7 +2070,7 @@ local function StandUprightRebootedMain()
 								player.Character.Stand.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
 							end)
 						until Boss.Humanoid.Health == 0 or HomelessMan == false or player.Character:FindFirstChild("Humanoid").Health == 0
-						player.CharacterAdded:Wait()
+						--player.CharacterAdded:Wait()
 						repeat task.wait() until player.Character:FindFirstChild("HumanoidRootPart")
 					end)
 				end
@@ -2110,7 +2106,7 @@ local function StandUprightRebootedMain()
 								player.Character.Stand.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
 							end)
 						until Boss.Humanoid.Health == 0 or Diavolo == false or player.Character:FindFirstChild("Humanoid").Health == 0
-						player.CharacterAdded:Wait()
+						--player.CharacterAdded:Wait()
 						repeat task.wait() until player.Character:FindFirstChild("HumanoidRootPart")
 					end)
 				end
@@ -2146,7 +2142,7 @@ local function StandUprightRebootedMain()
 								player.Character.Stand.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
 							end)
 						until Boss.Humanoid.Health == 0 or Jotaro == false or player.Character:FindFirstChild("Humanoid").Health == 0
-						player.CharacterAdded:Wait()
+						--player.CharacterAdded:Wait()
 						repeat task.wait() until player.Character:FindFirstChild("HumanoidRootPart")
 					end)
 				end
@@ -2192,7 +2188,117 @@ local function StandUprightRebootedMain()
 		end
 	end)
 	
-	-- eigth page
+	-- seventh page
+	local page7 = NoobieDoge:addPage("Boss Farm", 5927656531)
+	local section1 = page7:addSection("Boss Farm")
+	local section2 = page7:addSection("Boss Farm Settings")
+	
+	local FarmOHJotaro = false
+	section1:addToggle("Farm Heaven Ascended Jotaro",false, function(bool)
+		FarmOHJotaro = bool
+	end)
+
+	local FarmJohnny = false
+	section1:addToggle("Farm Johnny Joestar",false, function(bool)
+		FarmJohnny = bool
+	end)
+
+	local UndergroundModeB = true
+	section2:addToggle("Underground Farming Mode", true, function(bool)
+		UndergroundModeB = bool
+	end)
+
+	local TPBackB = true
+	section2:addToggle("Teleport back after boss killed", true, function(bool)
+		TPBackB = bool
+	end)
+	
+	spawn(function()
+		while wait() do
+			if FarmOHJotaro then
+				for i, v in pairs(game:GetService("Workspace").Living:GetChildren()) do
+					if v.Name == "Jotaro Over Heaven" and v:FindFirstChild("Humanoid").Health ~= 0 then
+						local URLASTPOS = player.Character.HumanoidRootPart.CFrame
+						repeat task.wait()
+							pcall(function()
+								if player.Character:FindFirstChild("Stand").Head.Transparency == 1 then
+									player.Character.StandEvents.Summon:FireServer()
+								end									
+								for i, v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
+									if v:IsA("Frame") and v.Textt.Text == "Punch" then
+										--// waiting
+									else
+										game:GetService("Players").LocalPlayer.Character.StandEvents.M1:FireServer()
+									end
+								end
+								if game:GetService("Players").LocalPlayer.Character:FindFirstChild("Stand") then
+									game:GetService("Players").LocalPlayer.Character.Stand:WaitForChild("HumanoidRootPart").CFrame = game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame
+								end
+								if UndergroundModeB == true then
+									game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = v:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, -7, 0, 1, 0, 0, 1) -- -593.952698, 66.6276474, -783.119934, -0.707110405, -5.96460623e-08, -0.707103133, -8.71555841e-08, 1, 2.80376944e-09, 0.707103133, 6.36105568e-08, -0.707110405
+								else
+									game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = v:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, 0, 6)
+								end
+								game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
+								if game:GetService("Players").LocalPlayer.Character:FindFirstChild("Aura").Value == false then
+									game:GetService("Players").LocalPlayer.Character.StandEvents.Summon:FireServer()
+								end
+							end)
+						until v:FindFirstChild("Humanoid").Health == 0 or FarmOHJotaro == false
+						
+						if TPBackB == true and FarmOHJotaro then
+							game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = URLASTPOS
+						end
+						if UndergroundModeB == true and FarmOHJotaro then
+							game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position + Vector3.new(0, 10, 0))
+						end
+					end
+				end
+			end
+			if FarmJohnny then
+				for i, v in pairs(game:GetService("Workspace").Living:GetChildren()) do
+					if v.Name == "JohnnyJoestar" and v:FindFirstChild("Humanoid").Health ~= 0 then
+						local URLASTPOS = player.Character.HumanoidRootPart.CFrame
+						repeat task.wait()
+							pcall(function()
+								if player.Character:FindFirstChild("Stand").Head.Transparency == 1 then
+									player.Character.StandEvents.Summon:FireServer()
+								end									
+								for i, v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
+									if v:IsA("Frame") and v.Textt.Text == "Punch" then
+										--// waiting
+									else
+										game:GetService("Players").LocalPlayer.Character.StandEvents.M1:FireServer()
+									end
+								end
+								if game:GetService("Players").LocalPlayer.Character:FindFirstChild("Stand") then
+									game:GetService("Players").LocalPlayer.Character.Stand:WaitForChild("HumanoidRootPart").CFrame = game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame
+								end
+								if UndergroundModeB == true then
+									game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = v:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, -7, 0, 1, 0, 0, 1) -- -593.952698, 66.6276474, -783.119934, -0.707110405, -5.96460623e-08, -0.707103133, -8.71555841e-08, 1, 2.80376944e-09, 0.707103133, 6.36105568e-08, -0.707110405
+								else
+									game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = v:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, 0, 6)
+								end
+								game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
+								if game:GetService("Players").LocalPlayer.Character:FindFirstChild("Aura").Value == false then
+									game:GetService("Players").LocalPlayer.Character.StandEvents.Summon:FireServer()
+								end
+							end)
+						until v:FindFirstChild("Humanoid").Health == 0 or FarmJohnny == false
+						
+						if TPBackB == true and FarmJohnny then
+							game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = URLASTPOS
+						end
+						if UndergroundModeB == true and FarmJohnny then
+							game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position + Vector3.new(0, 10, 0))
+						end
+					end
+				end
+			end
+		end
+	end)
+	
+	-- eighth page
 	local page8 = NoobieDoge:addPage("Stand Farm", 5927656531)
 	local section1 = page8:addSection("Stand Farm")
 	local section2 = page8:addSection("Stand Selection")
@@ -2424,7 +2530,7 @@ local function StandUprightRebootedMain()
 		end
 	end)
 
-	-- nineth page
+	-- ninth page
 	local page9 = NoobieDoge:addPage("Teleports", 5927656531)
 	local section1 = page9:addSection("Map Locations")
 	local section2 = page9:addSection("NPCs")
