@@ -1970,6 +1970,8 @@ local function StandUprightRebootedMain()
 		Jotaro = bool
 	end)
 
+	local FARMINGBOSSES
+
 	function BadGiLair()
 		pcall(function()
 			for i, v in pairs(game:GetService("Workspace").Map.LairSpawns:GetChildren()) do
@@ -1988,15 +1990,17 @@ local function StandUprightRebootedMain()
 					local Boss = game:GetService("Workspace").Living:WaitForChild("Boss")
 					pcall(function()
 						repeat task.wait()
-							pcall(function()
-								if player.Character:FindFirstChild("Stand").Head.Transparency == 1 then
-									player.Character.StandEvents.Summon:FireServer()
-								end
-								player.Character.HumanoidRootPart.CFrame = Boss:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, -7, 3, 1, 0, 0, 1)
-								player.Character.StandEvents.M1:FireServer()
-								player.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
-								player.Character.Stand.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
-							end)
+							if not FARMINGBOSSES then
+								pcall(function()
+									if player.Character:FindFirstChild("Stand").Head.Transparency == 1 then
+										player.Character.StandEvents.Summon:FireServer()
+									end
+									player.Character.HumanoidRootPart.CFrame = Boss:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, -7, 3, 1, 0, 0, 1)
+									player.Character.StandEvents.M1:FireServer()
+									player.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
+									player.Character.Stand.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
+								end)
+							end
 						until Boss.Humanoid.Health == 0 or BadGi == false or player.Character:FindFirstChild("Humanoid").Health == 0
 						--player.CharacterAdded:Wait()
 						repeat task.wait() until player.Character:FindFirstChild("HumanoidRootPart")
@@ -2024,15 +2028,17 @@ local function StandUprightRebootedMain()
 					local Boss = game:GetService("Workspace").Living:WaitForChild("Boss")
 					pcall(function()
 						repeat task.wait()
-							pcall(function()
-								if player.Character:FindFirstChild("Stand").Head.Transparency == 1 then
-									player.Character.StandEvents.Summon:FireServer()
-								end
-								player.Character.HumanoidRootPart.CFrame = Boss:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, -7, 3, 1, 0, 0, 1)
-								player.Character.StandEvents.M1:FireServer()
-								player.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
-								player.Character.Stand.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
-							end)
+							if not FARMINGBOSSES then
+								pcall(function()
+									if player.Character:FindFirstChild("Stand").Head.Transparency == 1 then
+										player.Character.StandEvents.Summon:FireServer()
+									end
+									player.Character.HumanoidRootPart.CFrame = Boss:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, -7, 3, 1, 0, 0, 1)
+									player.Character.StandEvents.M1:FireServer()
+									player.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
+									player.Character.Stand.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
+								end)
+							end
 						until Boss.Humanoid.Health == 0 or Dio == false or player.Character:FindFirstChild("Humanoid").Health == 0
 						--player.CharacterAdded:Wait()
 						repeat task.wait() until player.Character:FindFirstChild("HumanoidRootPart")
@@ -2060,15 +2066,17 @@ local function StandUprightRebootedMain()
 					local Boss = game:GetService("Workspace").Living:WaitForChild("Boss")
 					pcall(function()
 						repeat task.wait()
-							pcall(function()
-								if player.Character:FindFirstChild("Stand").Head.Transparency == 1 then
-									player.Character.StandEvents.Summon:FireServer()
-								end
-								player.Character.HumanoidRootPart.CFrame = Boss:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, -7, 3, 1, 0, 0, 1)
-								player.Character.StandEvents.M1:FireServer()
-								player.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
-								player.Character.Stand.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
-							end)
+							if not FARMINGBOSSES then
+								pcall(function()
+									if player.Character:FindFirstChild("Stand").Head.Transparency == 1 then
+										player.Character.StandEvents.Summon:FireServer()
+									end
+									player.Character.HumanoidRootPart.CFrame = Boss:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, -7, 3, 1, 0, 0, 1)
+									player.Character.StandEvents.M1:FireServer()
+									player.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
+									player.Character.Stand.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
+								end)
+							end
 						until Boss.Humanoid.Health == 0 or HomelessMan == false or player.Character:FindFirstChild("Humanoid").Health == 0
 						--player.CharacterAdded:Wait()
 						repeat task.wait() until player.Character:FindFirstChild("HumanoidRootPart")
@@ -2096,15 +2104,17 @@ local function StandUprightRebootedMain()
 					local Boss = game:GetService("Workspace").Living:WaitForChild("Boss")
 					pcall(function()
 						repeat task.wait()
-							pcall(function()
-								if player.Character:FindFirstChild("Stand").Head.Transparency == 1 then
-									player.Character.StandEvents.Summon:FireServer()
-								end
-								player.Character.HumanoidRootPart.CFrame = Boss:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, -7, 3, 1, 0, 0, 1)
-								player.Character.StandEvents.M1:FireServer()
-								player.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
-								player.Character.Stand.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
-							end)
+							if not FARMINGBOSSES then
+								pcall(function()
+									if player.Character:FindFirstChild("Stand").Head.Transparency == 1 then
+										player.Character.StandEvents.Summon:FireServer()
+									end
+									player.Character.HumanoidRootPart.CFrame = Boss:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, -7, 3, 1, 0, 0, 1)
+									player.Character.StandEvents.M1:FireServer()
+									player.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
+									player.Character.Stand.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
+								end)
+							end
 						until Boss.Humanoid.Health == 0 or Diavolo == false or player.Character:FindFirstChild("Humanoid").Health == 0
 						--player.CharacterAdded:Wait()
 						repeat task.wait() until player.Character:FindFirstChild("HumanoidRootPart")
@@ -2132,15 +2142,17 @@ local function StandUprightRebootedMain()
 					local Boss = game:GetService("Workspace").Living:WaitForChild("Boss")
 					pcall(function()
 						repeat task.wait()
-							pcall(function()
-								if player.Character:FindFirstChild("Stand").Head.Transparency == 1 then
-									player.Character.StandEvents.Summon:FireServer()
-								end
-								player.Character.HumanoidRootPart.CFrame = Boss:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, -7, 3, 1, 0, 0, 1)
-								player.Character.StandEvents.M1:FireServer()
-								player.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
-								player.Character.Stand.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
-							end)
+							if not FARMINGBOSSES then
+								pcall(function()
+									if player.Character:FindFirstChild("Stand").Head.Transparency == 1 then
+										player.Character.StandEvents.Summon:FireServer()
+									end
+									player.Character.HumanoidRootPart.CFrame = Boss:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, -7, 3, 1, 0, 0, 1)
+									player.Character.StandEvents.M1:FireServer()
+									player.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
+									player.Character.Stand.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
+								end)
+							end
 						until Boss.Humanoid.Health == 0 or Jotaro == false or player.Character:FindFirstChild("Humanoid").Health == 0
 						--player.CharacterAdded:Wait()
 						repeat task.wait() until player.Character:FindFirstChild("HumanoidRootPart")
@@ -2218,6 +2230,7 @@ local function StandUprightRebootedMain()
 			if FarmOHJotaro then
 				for i, v in pairs(game:GetService("Workspace").Living:GetChildren()) do
 					if v.Name == "Jotaro Over Heaven" and v:FindFirstChild("Humanoid").Health ~= 0 then
+						FARMINGJOTAROOH = true
 						local URLASTPOS = player.Character.HumanoidRootPart.CFrame
 						repeat task.wait()
 							pcall(function()
@@ -2253,11 +2266,13 @@ local function StandUprightRebootedMain()
 							game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position + Vector3.new(0, 10, 0))
 						end
 					end
+					FARMINGJOTAROOH = false
 				end
 			end
 			if FarmJohnny then
 				for i, v in pairs(game:GetService("Workspace").Living:GetChildren()) do
 					if v.Name == "JohnnyJoestar" and v:FindFirstChild("Humanoid").Health ~= 0 then
+						FARMINGJOHNNY = true
 						local URLASTPOS = player.Character.HumanoidRootPart.CFrame
 						repeat task.wait()
 							pcall(function()
@@ -2293,11 +2308,20 @@ local function StandUprightRebootedMain()
 							game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position + Vector3.new(0, 10, 0))
 						end
 					end
+					FARMINGJOHNNY = false
 				end
 			end
 		end
 	end)
 	
+	spawn(function()
+		while wait() do
+			if FARMINGJOTAROOH or FARMINGJOHNNY then
+				FARMINGBOSSES = true
+			end
+		end
+	end)
+
 	-- eighth page
 	local page8 = NoobieDoge:addPage("Stand Farm", 5927656531)
 	local section1 = page8:addSection("Stand Farm")
