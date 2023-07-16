@@ -1983,7 +1983,7 @@ local function StandUprightRebootedMain()
 							end
 						end
 					end)
-					wait(.1)
+					wait(.08)
 				else
 					if v:FindFirstChild("Lvl 15 Lair") then
 						for i, fakeboss in pairs(game:GetService("Workspace").Living:GetChildren()) do
@@ -1991,6 +1991,7 @@ local function StandUprightRebootedMain()
 								fakeboss:Destroy()
 							end
 						end
+						wait()
 						local Boss = game:GetService("Workspace").Living:WaitForChild("Boss")
 						pcall(function()
 							repeat task.wait()
@@ -2005,7 +2006,7 @@ local function StandUprightRebootedMain()
 										player.Character.Stand.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
 									end)
 								end
-							until Boss.Humanoid.Health == 0 or BadGi == false or player.Character:FindFirstChild("Humanoid").Health == 0 or not v:FindFirstChild("Lvl 15 Lair")
+							until Boss.Humanoid.Health == 0 or BadGi == false or player.Character:FindFirstChild("Humanoid").Health == 0 or not v:FindFirstChild("Lvl 15 Lair") or FARMINGBOSSES
 							wait()
 							--player.CharacterAdded:Wait()
 							repeat task.wait() until player.Character:FindFirstChild("HumanoidRootPart")
@@ -2027,7 +2028,7 @@ local function StandUprightRebootedMain()
 							end
 						end
 					end)
-					wait(.1)
+					wait(.08)
 				else
 					if v:FindFirstChild("DIODUNGEON") then
 						for i, fakeboss in pairs(game:GetService("Workspace").Living:GetChildren()) do
@@ -2035,6 +2036,7 @@ local function StandUprightRebootedMain()
 								fakeboss:Destroy()
 							end
 						end
+						wait()
 						local Boss = game:GetService("Workspace").Living:WaitForChild("Boss")
 						pcall(function()
 							repeat task.wait()
@@ -2049,7 +2051,7 @@ local function StandUprightRebootedMain()
 										player.Character.Stand.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
 									end)
 								end
-							until Boss.Humanoid.Health == 0 or Dio == false or player.Character:FindFirstChild("Humanoid").Health == 0 or not v:FindFirstChild("DIODUNGEON")
+							until Boss.Humanoid.Health == 0 or Dio == false or player.Character:FindFirstChild("Humanoid").Health == 0 or not v:FindFirstChild("DIODUNGEON") or FARMINGBOSSES
 							--wait()
 							--player.CharacterAdded:Wait()
 							repeat task.wait() until player.Character:FindFirstChild("HumanoidRootPart")
@@ -2071,7 +2073,7 @@ local function StandUprightRebootedMain()
 							end
 						end
 					end)
-					wait(.1)
+					wait(.08)
 				else
 					if v:FindFirstChild("Lvl80Dungeon") then
 						for i, fakeboss in pairs(game:GetService("Workspace").Living:GetChildren()) do
@@ -2079,6 +2081,7 @@ local function StandUprightRebootedMain()
 								fakeboss:Destroy()
 							end
 						end
+						wait()
 						local Boss = game:GetService("Workspace").Living:WaitForChild("Boss")
 						pcall(function()
 							repeat task.wait()
@@ -2093,7 +2096,7 @@ local function StandUprightRebootedMain()
 										player.Character.Stand.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
 									end)
 								end
-							until Boss.Humanoid.Health == 0 or HomelessMan == false or player.Character:FindFirstChild("Humanoid").Health == 0 or not v:FindFirstChild("Lvl80Dungeon")
+							until Boss.Humanoid.Health == 0 or HomelessMan == false or player.Character:FindFirstChild("Humanoid").Health == 0 or not v:FindFirstChild("Lvl80Dungeon") or FARMINGBOSSES
 							--wait()
 							--player.CharacterAdded:Wait()
 							repeat task.wait() until player.Character:FindFirstChild("HumanoidRootPart")
@@ -2115,7 +2118,7 @@ local function StandUprightRebootedMain()
 							end
 						end
 					end)
-					wait(.1)
+					wait(.08)
 				else
 					if v:FindFirstChild("Lvl100Dungeon") then
 						for i, fakeboss in pairs(game:GetService("Workspace").Living:GetChildren()) do
@@ -2123,6 +2126,7 @@ local function StandUprightRebootedMain()
 								fakeboss:Destroy()
 							end
 						end
+						wait()
 						local Boss = game:GetService("Workspace").Living:WaitForChild("Boss")
 						pcall(function()
 							repeat task.wait()
@@ -2137,7 +2141,7 @@ local function StandUprightRebootedMain()
 										player.Character.Stand.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
 									end)
 								end
-							until Boss.Humanoid.Health == 0 or Diavolo == false or player.Character:FindFirstChild("Humanoid").Health == 0 or not v:FindFirstChild("Lvl100Dungeon")
+							until Boss.Humanoid.Health == 0 or Diavolo == false or player.Character:FindFirstChild("Humanoid").Health == 0 or not v:FindFirstChild("Lvl100Dungeon") or FARMINGBOSSES
 							--wait()
 							--player.CharacterAdded:Wait()
 							repeat task.wait() until player.Character:FindFirstChild("HumanoidRootPart")
@@ -2159,7 +2163,7 @@ local function StandUprightRebootedMain()
 							end
 						end
 					end)
-					wait(.1)
+					wait(.08)
 				else
 					if  v:FindFirstChild("Level200Dungeon") then
 						for i, fakeboss in pairs(game:GetService("Workspace").Living:GetChildren()) do
@@ -2167,6 +2171,7 @@ local function StandUprightRebootedMain()
 								fakeboss:Destroy()
 							end
 						end
+						wait()
 						local Boss = game:GetService("Workspace").Living:WaitForChild("Boss")
 						pcall(function()
 							repeat task.wait()
@@ -2181,7 +2186,7 @@ local function StandUprightRebootedMain()
 										player.Character.Stand.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
 									end)
 								end
-							until Boss.Humanoid.Health == 0 or Jotaro == false or player.Character:FindFirstChild("Humanoid").Health == 0 or not v:FindFirstChild("Level200Dungeon")
+							until Boss.Humanoid.Health == 0 or Jotaro == false or player.Character:FindFirstChild("Humanoid").Health == 0 or not v:FindFirstChild("Level200Dungeon") or FARMINGBOSSES
 							--wait()
 							--player.CharacterAdded:Wait()
 							repeat task.wait() until player.Character:FindFirstChild("HumanoidRootPart")
