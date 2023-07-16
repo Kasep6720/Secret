@@ -1976,35 +1976,41 @@ local function StandUprightRebootedMain()
 		pcall(function()
 			for i, v in pairs(game:GetService("Workspace").Map.LairSpawns:GetChildren()) do
 				if not v:FindFirstChild("Lvl 15 Lair") then
-					for i, v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
-						if LairFarm and BadGi and v:FindFirstChild("Head") and v.Head:FindFirstChild("Main") and v.Head.Main:FindFirstChild("Text") and v.Head.Main.Text.Text == "i_stabman [Lvl. 15+]" then
-							v.Done:FireServer()
-						end
-					end
-				else
-					for i, fakeboss in pairs(game:GetService("Workspace").Living:GetChildren()) do
-						if fakeboss.Name == "Boss" and fakeboss.Head.Display.Frame.t.Text ~= "Bad Gi Boss" then
-							fakeboss:Destroy()
-						end
-					end
-					local Boss = game:GetService("Workspace").Living:WaitForChild("Boss")
 					pcall(function()
-						repeat task.wait()
-							if not FARMINGBOSSES then
-								pcall(function()
-									if player.Character:FindFirstChild("Stand").Head.Transparency == 1 then
-										player.Character.StandEvents.Summon:FireServer()
-									end
-									player.Character.HumanoidRootPart.CFrame = Boss:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, -7, 3, 1, 0, 0, 1)
-									player.Character.StandEvents.M1:FireServer()
-									player.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
-									player.Character.Stand.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
-								end)
+						for i, v1 in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
+							if LairFarm and BadGi and v1:FindFirstChild("Head") and v1.Head:FindFirstChild("Main") and v1.Head.Main:FindFirstChild("Text") and v1.Head.Main.Text.Text == "i_stabman [Lvl. 15+]" then
+								v1.Done:FireServer()
 							end
-						until Boss.Humanoid.Health == 0 or BadGi == false or player.Character:FindFirstChild("Humanoid").Health == 0
-						--player.CharacterAdded:Wait()
-						repeat task.wait() until player.Character:FindFirstChild("HumanoidRootPart")
+						end
 					end)
+					wait(.1)
+				else
+					if v:FindFirstChild("Lvl 15 Lair") then
+						for i, fakeboss in pairs(game:GetService("Workspace").Living:GetChildren()) do
+							if fakeboss.Name == "Boss" and fakeboss.Head.Display.Frame.t.Text ~= "Bad Gi Boss" then
+								fakeboss:Destroy()
+							end
+						end
+						local Boss = game:GetService("Workspace").Living:WaitForChild("Boss")
+						pcall(function()
+							repeat task.wait()
+								if not FARMINGBOSSES and v:FindFirstChild("Lvl 15 Lair") then
+									pcall(function()
+										if player.Character:FindFirstChild("Stand").Head.Transparency == 1 then
+											player.Character.StandEvents.Summon:FireServer()
+										end
+										player.Character.HumanoidRootPart.CFrame = Boss:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, -7, 3, 1, 0, 0, 1)
+										player.Character.StandEvents.M1:FireServer()
+										player.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
+										player.Character.Stand.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
+									end)
+								end
+							until Boss.Humanoid.Health == 0 or BadGi == false or player.Character:FindFirstChild("Humanoid").Health == 0 or not v:FindFirstChild("Lvl 15 Lair")
+							wait()
+							--player.CharacterAdded:Wait()
+							repeat task.wait() until player.Character:FindFirstChild("HumanoidRootPart")
+						end)
+					end
 				end
 			end
 		end)
@@ -2014,35 +2020,41 @@ local function StandUprightRebootedMain()
 		pcall(function()
 			for i, v in pairs(game:GetService("Workspace").Map.LairSpawns:GetChildren()) do
 				if not v:FindFirstChild("DIODUNGEON") then
-					for i, v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
-						if LairFarm and Dio and v:FindFirstChild("Head") and v.Head:FindFirstChild("Main") and v.Head.Main:FindFirstChild("Text") and v.Head.Main.Text.Text == "i_stabman [Lvl. 40+]" then
-							v.Done:FireServer()
-						end
-					end
-				else
-					for i, fakeboss in pairs(game:GetService("Workspace").Living:GetChildren()) do
-						if fakeboss.Name == "Boss" and fakeboss.Head.Display.Frame.t.Text ~= "Dio [Dungeon]" then
-							fakeboss:Destroy()
-						end
-					end
-					local Boss = game:GetService("Workspace").Living:WaitForChild("Boss")
 					pcall(function()
-						repeat task.wait()
-							if not FARMINGBOSSES then
-								pcall(function()
-									if player.Character:FindFirstChild("Stand").Head.Transparency == 1 then
-										player.Character.StandEvents.Summon:FireServer()
-									end
-									player.Character.HumanoidRootPart.CFrame = Boss:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, -7, 3, 1, 0, 0, 1)
-									player.Character.StandEvents.M1:FireServer()
-									player.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
-									player.Character.Stand.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
-								end)
+						for i, v1 in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
+							if LairFarm and Dio and v1:FindFirstChild("Head") and v1.Head:FindFirstChild("Main") and v1.Head.Main:FindFirstChild("Text") and v1.Head.Main.Text.Text == "i_stabman [Lvl. 40+]" then
+								v1.Done:FireServer()
 							end
-						until Boss.Humanoid.Health == 0 or Dio == false or player.Character:FindFirstChild("Humanoid").Health == 0
-						--player.CharacterAdded:Wait()
-						repeat task.wait() until player.Character:FindFirstChild("HumanoidRootPart")
+						end
 					end)
+					wait(.1)
+				else
+					if v:FindFirstChild("DIODUNGEON") then
+						for i, fakeboss in pairs(game:GetService("Workspace").Living:GetChildren()) do
+							if fakeboss.Name == "Boss" and fakeboss.Head.Display.Frame.t.Text ~= "Dio [Dungeon]" then
+								fakeboss:Destroy()
+							end
+						end
+						local Boss = game:GetService("Workspace").Living:WaitForChild("Boss")
+						pcall(function()
+							repeat task.wait()
+								if not FARMINGBOSSES and v:FindFirstChild("DIODUNGEON") then
+									pcall(function()
+										if player.Character:FindFirstChild("Stand").Head.Transparency == 1 then
+											player.Character.StandEvents.Summon:FireServer()
+										end
+										player.Character.HumanoidRootPart.CFrame = Boss:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, -7, 3, 1, 0, 0, 1)
+										player.Character.StandEvents.M1:FireServer()
+										player.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
+										player.Character.Stand.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
+									end)
+								end
+							until Boss.Humanoid.Health == 0 or Dio == false or player.Character:FindFirstChild("Humanoid").Health == 0 or not v:FindFirstChild("DIODUNGEON")
+							--wait()
+							--player.CharacterAdded:Wait()
+							repeat task.wait() until player.Character:FindFirstChild("HumanoidRootPart")
+						end)
+					end
 				end
 			end
 		end)
@@ -2052,35 +2064,41 @@ local function StandUprightRebootedMain()
 		pcall(function()
 			for i, v in pairs(game:GetService("Workspace").Map.LairSpawns:GetChildren()) do
 				if not v:FindFirstChild("Lvl80Dungeon") then
-					for i, v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
-						if LairFarm and HomelessMan and v:FindFirstChild("Head") and v.Head:FindFirstChild("Main") and v.Head.Main:FindFirstChild("Text") and v.Head.Main.Text.Text == "i_stabman [Lvl. 80+]" then
-							v.Done:FireServer()
-						end
-					end
-				else
-					for i, fakeboss in pairs(game:GetService("Workspace").Living:GetChildren()) do
-						if fakeboss.Name == "Boss" and fakeboss.Head.Display.Frame.t.Text ~= "Homeless Lord" then
-							fakeboss:Destroy()
-						end
-					end
-					local Boss = game:GetService("Workspace").Living:WaitForChild("Boss")
 					pcall(function()
-						repeat task.wait()
-							if not FARMINGBOSSES then
-								pcall(function()
-									if player.Character:FindFirstChild("Stand").Head.Transparency == 1 then
-										player.Character.StandEvents.Summon:FireServer()
-									end
-									player.Character.HumanoidRootPart.CFrame = Boss:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, -7, 3, 1, 0, 0, 1)
-									player.Character.StandEvents.M1:FireServer()
-									player.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
-									player.Character.Stand.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
-								end)
+						for i, v1 in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
+							if LairFarm and HomelessMan and v1:FindFirstChild("Head") and v1.Head:FindFirstChild("Main") and v1.Head.Main:FindFirstChild("Text") and v1.Head.Main.Text.Text == "i_stabman [Lvl. 80+]" then
+								v1.Done:FireServer()
 							end
-						until Boss.Humanoid.Health == 0 or HomelessMan == false or player.Character:FindFirstChild("Humanoid").Health == 0
-						--player.CharacterAdded:Wait()
-						repeat task.wait() until player.Character:FindFirstChild("HumanoidRootPart")
+						end
 					end)
+					wait(.1)
+				else
+					if v:FindFirstChild("Lvl80Dungeon") then
+						for i, fakeboss in pairs(game:GetService("Workspace").Living:GetChildren()) do
+							if fakeboss.Name == "Boss" and fakeboss.Head.Display.Frame.t.Text ~= "Homeless Lord" then
+								fakeboss:Destroy()
+							end
+						end
+						local Boss = game:GetService("Workspace").Living:WaitForChild("Boss")
+						pcall(function()
+							repeat task.wait()
+								if not FARMINGBOSSES and v:FindFirstChild("Lvl80Dungeon") then
+									pcall(function()
+										if player.Character:FindFirstChild("Stand").Head.Transparency == 1 then
+											player.Character.StandEvents.Summon:FireServer()
+										end
+										player.Character.HumanoidRootPart.CFrame = Boss:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, -7, 3, 1, 0, 0, 1)
+										player.Character.StandEvents.M1:FireServer()
+										player.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
+										player.Character.Stand.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
+									end)
+								end
+							until Boss.Humanoid.Health == 0 or HomelessMan == false or player.Character:FindFirstChild("Humanoid").Health == 0 or not v:FindFirstChild("Lvl80Dungeon")
+							--wait()
+							--player.CharacterAdded:Wait()
+							repeat task.wait() until player.Character:FindFirstChild("HumanoidRootPart")
+						end)
+					end
 				end
 			end
 		end)
@@ -2090,35 +2108,41 @@ local function StandUprightRebootedMain()
 		pcall(function()
 			for i, v in pairs(game:GetService("Workspace").Map.LairSpawns:GetChildren()) do
 				if not v:FindFirstChild("Lvl100Dungeon") then
-					for i, v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
-						if LairFarm and Diavolo and v:FindFirstChild("Head") and v.Head:FindFirstChild("Main") and v.Head.Main:FindFirstChild("Text") and v.Head.Main.Text.Text == "i_stabman [Lvl. 100+]" then
-							v.Done:FireServer()
-						end
-					end
-				else
-					for i, fakeboss in pairs(game:GetService("Workspace").Living:GetChildren()) do
-						if fakeboss.Name == "Boss" and fakeboss.Head.Display.Frame.t.Text ~= "Diavolo [Dungeon]" then
-							fakeboss:Destroy()
-						end
-					end
-					local Boss = game:GetService("Workspace").Living:WaitForChild("Boss")
 					pcall(function()
-						repeat task.wait()
-							if not FARMINGBOSSES then
-								pcall(function()
-									if player.Character:FindFirstChild("Stand").Head.Transparency == 1 then
-										player.Character.StandEvents.Summon:FireServer()
-									end
-									player.Character.HumanoidRootPart.CFrame = Boss:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, -7, 3, 1, 0, 0, 1)
-									player.Character.StandEvents.M1:FireServer()
-									player.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
-									player.Character.Stand.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
-								end)
+						for i, v1 in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
+							if LairFarm and Diavolo and v1:FindFirstChild("Head") and v1.Head:FindFirstChild("Main") and v1.Head.Main:FindFirstChild("Text") and v1.Head.Main.Text.Text == "i_stabman [Lvl. 100+]" then
+								v1.Done:FireServer()
 							end
-						until Boss.Humanoid.Health == 0 or Diavolo == false or player.Character:FindFirstChild("Humanoid").Health == 0
-						--player.CharacterAdded:Wait()
-						repeat task.wait() until player.Character:FindFirstChild("HumanoidRootPart")
+						end
 					end)
+					wait(.1)
+				else
+					if v:FindFirstChild("Lvl100Dungeon") then
+						for i, fakeboss in pairs(game:GetService("Workspace").Living:GetChildren()) do
+							if fakeboss.Name == "Boss" and fakeboss.Head.Display.Frame.t.Text ~= "Diavolo [Dungeon]" then
+								fakeboss:Destroy()
+							end
+						end
+						local Boss = game:GetService("Workspace").Living:WaitForChild("Boss")
+						pcall(function()
+							repeat task.wait()
+								if not FARMINGBOSSES and v:FindFirstChild("Lvl100Dungeon") then
+									pcall(function()
+										if player.Character:FindFirstChild("Stand").Head.Transparency == 1 then
+											player.Character.StandEvents.Summon:FireServer()
+										end
+										player.Character.HumanoidRootPart.CFrame = Boss:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, -7, 3, 1, 0, 0, 1)
+										player.Character.StandEvents.M1:FireServer()
+										player.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
+										player.Character.Stand.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
+									end)
+								end
+							until Boss.Humanoid.Health == 0 or Diavolo == false or player.Character:FindFirstChild("Humanoid").Health == 0 or not v:FindFirstChild("Lvl100Dungeon")
+							--wait()
+							--player.CharacterAdded:Wait()
+							repeat task.wait() until player.Character:FindFirstChild("HumanoidRootPart")
+						end)
+					end
 				end
 			end
 		end)
@@ -2128,35 +2152,41 @@ local function StandUprightRebootedMain()
 		pcall(function()
 			for i, v in pairs(game:GetService("Workspace").Map.LairSpawns:GetChildren()) do
 				if not v:FindFirstChild("Level200Dungeon") then
-					for i, v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
-						if LairFarm and Jotaro and v:FindFirstChild("Head") and v.Head:FindFirstChild("Main") and v.Head.Main:FindFirstChild("Text") and v.Head.Main.Text.Text == "i_stabman [Lvl. 200+]" then
-							v.Done:FireServer()
-						end
-					end
-				else
-					for i, fakeboss in pairs(game:GetService("Workspace").Living:GetChildren()) do
-						if fakeboss.Name == "Boss" and fakeboss.Head.Display.Frame.t.Text ~= "Jotaro P6 [Dungeon]" then
-							fakeboss:Destroy()
-						end
-					end
-					local Boss = game:GetService("Workspace").Living:WaitForChild("Boss")
 					pcall(function()
-						repeat task.wait()
-							if not FARMINGBOSSES then
-								pcall(function()
-									if player.Character:FindFirstChild("Stand").Head.Transparency == 1 then
-										player.Character.StandEvents.Summon:FireServer()
-									end
-									player.Character.HumanoidRootPart.CFrame = Boss:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, -7, 3, 1, 0, 0, 1)
-									player.Character.StandEvents.M1:FireServer()
-									player.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
-									player.Character.Stand.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
-								end)
+						for i, v1 in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
+							if LairFarm and Jotaro and v1:FindFirstChild("Head") and v1.Head:FindFirstChild("Main") and v1.Head.Main:FindFirstChild("Text") and v1.Head.Main.Text.Text == "i_stabman [Lvl. 200+]" then
+								v1.Done:FireServer()
 							end
-						until Boss.Humanoid.Health == 0 or Jotaro == false or player.Character:FindFirstChild("Humanoid").Health == 0
-						--player.CharacterAdded:Wait()
-						repeat task.wait() until player.Character:FindFirstChild("HumanoidRootPart")
+						end
 					end)
+					wait(.1)
+				else
+					if  v:FindFirstChild("Level200Dungeon") then
+						for i, fakeboss in pairs(game:GetService("Workspace").Living:GetChildren()) do
+							if fakeboss.Name == "Boss" and fakeboss.Head.Display.Frame.t.Text ~= "Jotaro P6 [Dungeon]" then
+								fakeboss:Destroy()
+							end
+						end
+						local Boss = game:GetService("Workspace").Living:WaitForChild("Boss")
+						pcall(function()
+							repeat task.wait()
+								if not FARMINGBOSSES and v:FindFirstChild("Level200Dungeon") then
+									pcall(function()
+										if player.Character:FindFirstChild("Stand").Head.Transparency == 1 then
+											player.Character.StandEvents.Summon:FireServer()
+										end
+										player.Character.HumanoidRootPart.CFrame = Boss:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, -7, 3, 1, 0, 0, 1)
+										player.Character.StandEvents.M1:FireServer()
+										player.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
+										player.Character.Stand.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
+									end)
+								end
+							until Boss.Humanoid.Health == 0 or Jotaro == false or player.Character:FindFirstChild("Humanoid").Health == 0 or not v:FindFirstChild("Level200Dungeon")
+							--wait()
+							--player.CharacterAdded:Wait()
+							repeat task.wait() until player.Character:FindFirstChild("HumanoidRootPart")
+						end)
+					end
 				end
 			end
 		end)
@@ -2266,8 +2296,8 @@ local function StandUprightRebootedMain()
 							game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position + Vector3.new(0, 10, 0))
 						end
 					end
-					FARMINGJOTAROOH = false
 				end
+				FARMINGJOTAROOH = false
 			end
 			if FarmJohnny then
 				for i, v in pairs(game:GetService("Workspace").Living:GetChildren()) do
@@ -2308,8 +2338,8 @@ local function StandUprightRebootedMain()
 							game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position + Vector3.new(0, 10, 0))
 						end
 					end
-					FARMINGJOHNNY = false
 				end
+				FARMINGJOHNNY = false
 			end
 		end
 	end)
@@ -2318,6 +2348,8 @@ local function StandUprightRebootedMain()
 		while wait() do
 			if FARMINGJOTAROOH or FARMINGJOHNNY then
 				FARMINGBOSSES = true
+			else
+				FARMINGBOSSES = false
 			end
 		end
 	end)
