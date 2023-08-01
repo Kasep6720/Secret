@@ -348,7 +348,7 @@ LeScriptLabel.BackgroundTransparency = 1
 LeScriptLabel.Position = UDim2.new(0, 0, 0.1, 0)
 LeScriptLabel.Size = UDim2.new(0, 250, 0, 20)
 LeScriptLabel.Font = Enum.Font.GothamBlack
-LeScriptLabel.Text = "[loadstring(game:HttpGet(\n'https://raw.githubusercontent.com/\nKasep6720/Secret/DogeHubV2/Functions/\nShindoAutoSpinRELLBloodline', true))()]"
+LeScriptLabel.Text = "[https://raw.githubusercontent.com/\nNoobieDoge/DogeHubV2/Functions/\nShindoLifeAutoSpinRELLBloodline', true))()]"
 LeScriptLabel.TextColor3 = Color3.new(0, 0, 0)
 LeScriptLabel.TextSize = 10
 LeScriptLabel.TextWrapped = false
@@ -386,7 +386,7 @@ CSTC.MouseButton1Click:connect(function()
 	CSTC.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
 	CSTC.Text = "Script copied to clipboard"
 	wait()
-	setclipboard("loadstring(game:HttpGet('https://raw.githubusercontent.com/Kasep6720/Secret/DogeHubV2/Functions/ShindoAutoSpinRELLBloodline', true))()")
+	setclipboard("loadstring(game:HttpGet('https://raw.githubusercontent.com/NoobieDoge/DogeHubV2/Functions/ShindoLifeAutoSpinRELLBloodline', true))()")
 	wait(1)
 	CSTC.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
 	CSTC.Text = "Copy Script to Clipboard"
