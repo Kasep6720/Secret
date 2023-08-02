@@ -1,523 +1,725 @@
-repeat wait() until game:IsLoaded()
-game.Workspace:WaitForChild("Camera"):WaitForChild("startup")
-local player = game.Players.LocalPlayer
-local VirtualUser=game:service'VirtualUser'
-game:service'Players'.LocalPlayer.Idled:connect(function()
-	warn("anti-afk")
-	VirtualUser:CaptureController()
-	VirtualUser:ClickButton2(Vector2.new())
-end)
-if workspace:FindFirstChild("CCoff") then
-	game:GetService("Workspace").CCoff:Destroy()
-end
-local spins = player.statz.spins.Value
-
---spin slot 1
-game:GetService('RunService').Stepped:connect(function()
-	if spins > 0 then
-		spins = player.statz.spins.Value
-		kgvalue1 = player.statz.main.kg1.Value
-		kgvalue2 = player.statz.main.kg2.Value
-		kgvalue3 = player.statz.main.kg3.Value
-		kgvalue4 = player.statz.main.kg4.Value
-		if kgvalue1 ~= "RELL" and kgvalue2 ~= "RELL" and kgvalue3 ~= "RELL" and kgvalue4 ~= "RELL" then
-			player.startevent:FireServer("spin", "kg1")
-			print("Rolled: " .. kgvalue1)
-			wait(1)
-		elseif kgvalue1 == "RELL" then
-			print("You have got: " .. kgvalue1)
-			player.startevent:FireServer("band", "Eye")
-			wait(1)
+if game.GameId == 1511883870 then
+	repeat wait() until game:IsLoaded()
+	local player = game.Players.LocalPlayer
+	local VirtualUser=game:service'VirtualUser'
+	game:service'Players'.LocalPlayer.Idled:connect(function()
+		warn("anti-afk")
+		VirtualUser:CaptureController()
+		VirtualUser:ClickButton2(Vector2.new())
+	end)
+	if workspace:FindFirstChild("CCoff") then
+		game:GetService("Workspace").CCoff:Destroy()
+	end
+	
+	if game.PlaceId == 4616652839 then
+		game.Workspace:WaitForChild("Camera"):WaitForChild("startup")
+		local spins = player.statz.spins.Value
+		
+		--spin slot 1
+		game:GetService('RunService').Stepped:connect(function()
+			if spins > 0 then
+				spins = player.statz.spins.Value
+				kgvalue1 = player.statz.main.kg1.Value
+				kgvalue2 = player.statz.main.kg2.Value
+				kgvalue3 = player.statz.main.kg3.Value
+				kgvalue4 = player.statz.main.kg4.Value
+				if kgvalue1 ~= "RELL" and kgvalue2 ~= "RELL" and kgvalue3 ~= "RELL" and kgvalue4 ~= "RELL" then
+					player.startevent:FireServer("spin", "kg1")
+					print("Rolled: " .. kgvalue1)
+					wait(1)
+				elseif kgvalue1 == "RELL" then
+					print("You have got: " .. kgvalue1)
+					player.startevent:FireServer("band", "Eye")
+					wait(1)
+					local args = {[1] = "arenateleport",[2] = 5451410109}
+					player.startevent:FireServer(unpack(args))
+				end
+			else
+				player.startevent:FireServer("band", "\128")
+				wait()
+				game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+			end
+		end)
+		
+		--spin slot 2
+		game:GetService('RunService').Stepped:connect(function()
+			if spins > 0 then
+				spins = player.statz.spins.Value
+				kgvalue1 = player.statz.main.kg1.Value
+				kgvalue2 = player.statz.main.kg2.Value
+				kgvalue3 = player.statz.main.kg3.Value
+				kgvalue4 = player.statz.main.kg4.Value
+				if kgvalue1 ~= "RELL" and kgvalue2 ~= "RELL" and kgvalue3 ~= "RELL" and kgvalue4 ~= "RELL" then
+					player.startevent:FireServer("spin", "kg2")
+					print("Rolled: " .. kgvalue2)
+					wait(1)
+				elseif kgvalue2 == "RELL" then
+					print("You have got: " .. kgvalue2)
+					player.startevent:FireServer("band", "Eye")
+					wait(1)
+					local args = {[1] = "arenateleport",[2] = 5451410109}
+					player.startevent:FireServer(unpack(args))
+				end
+			else
+				player.startevent:FireServer("band", "\128")
+				wait()
+				game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+			end
+		end)
+		
+		if player.gamepasses:FindFirstChild("genkai3") then
+			--spin slot 3
+			game:GetService('RunService').Stepped:connect(function()
+				if spins > 0 then
+					spins = player.statz.spins.Value
+					kgvalue1 = player.statz.main.kg1.Value
+					kgvalue2 = player.statz.main.kg2.Value
+					kgvalue3 = player.statz.main.kg3.Value
+					kgvalue4 = player.statz.main.kg4.Value
+					if kgvalue1 ~= "RELL" and kgvalue2 ~= "RELL" and kgvalue3 ~= "RELL" and kgvalue4 ~= "RELL" then
+						player.startevent:FireServer("spin", "kg3")
+						print("Rolled: " .. kgvalue3)
+						wait(1)
+					elseif kgvalue3 == "RELL" then
+						print("You have got: " .. kgvalue3)
+						player.startevent:FireServer("band", "Eye")
+						wait(1)
+						local args = {[1] = "arenateleport",[2] = 5451410109}
+						player.startevent:FireServer(unpack(args))
+					end
+				else
+					player.startevent:FireServer("band", "\128")
+					wait()
+					game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+				end
+			end)
+		end
+		
+		if player.gamepasses:FindFirstChild("genkai3") then
+			--spin slot 4
+			game:GetService('RunService').Stepped:connect(function()
+				if spins > 0 then
+					spins = player.statz.spins.Value
+					kgvalue1 = player.statz.main.kg1.Value
+					kgvalue2 = player.statz.main.kg2.Value
+					kgvalue3 = player.statz.main.kg3.Value
+					kgvalue4 = player.statz.main.kg4.Value
+					if kgvalue1 ~= "RELL" and kgvalue2 ~= "RELL" and kgvalue3 ~= "RELL" and kgvalue4 ~= "RELL" then
+						player.startevent:FireServer("spin", "kg4")
+						print("Rolled: " .. kgvalue4)
+						wait(1)
+					elseif kgvalue4 == "RELL" then
+						print("You have got: " .. kgvalue4)
+						player.startevent:FireServer("band", "Eye")
+						wait(1)
+						local args = {[1] = "arenateleport",[2] = 5451410109}
+						player.startevent:FireServer(unpack(args))
+					end
+				else
+					player.startevent:FireServer("band", "\128")
+					wait()
+					game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+				end
+			end)
+		end
+		
+		--Properties:
+		local ScreenGui = Instance.new("ScreenGui")
+		--LoadoutChanger.Name = "LoadoutChanger"
+		ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+		
+		local BLChangerMain = Instance.new("ImageLabel")
+		BLChangerMain.Name = "BLChangerMain"
+		BLChangerMain.Parent = ScreenGui
+		BLChangerMain.BackgroundColor3 = Color3.new(1, 1, 1)
+		BLChangerMain.BackgroundTransparency = 1
+		BLChangerMain.Position = UDim2.new(0.4, 0, 0.3, 0)
+		BLChangerMain.Size = UDim2.new(0, 350, 0, 350)
+		BLChangerMain.Visible = true
+		BLChangerMain.Active = true
+		BLChangerMain.Image = "rbxassetid://5089201291"
+		BLChangerMain.ImageColor3 = Color3.new(0.93,0.93,0.93)
+		BLChangerMain.SliceCenter = Rect.new(12, 12, 13, 13)
+		BLChangerMain.Draggable = true
+		
+		local XL = Instance.new("ImageButton")
+		XL.Name = "XL"
+		XL.Parent = BLChangerMain
+		XL.BackgroundColor3 = Color3.new(0.0588235, 0.0588235, 0.0588235)
+		XL.BackgroundTransparency = 1
+		XL.Position = UDim2.new(0.845, 0, 0.075, 0)
+		XL.Size = UDim2.new(0, 20, 0, 20)
+		XL.Image = "rbxassetid://5652699630"
+		XL.ImageColor3 = Color3.new(0.765,0.228,0.051)
+		
+		local X = Instance.new("TextButton")
+		X.Name = "X"
+		X.Parent = XL
+		X.BackgroundColor3 = Color3.new(0.0588235, 0.0588235, 0.0588235)
+		X.BackgroundTransparency = 1
+		X.BorderSizePixel = 0
+		X.Size = UDim2.new(0, 20, 0, 20)
+		X.Font = Enum.Font.GothamBlack
+		X.Text = "X"
+		X.TextColor3 = Color3.new(1, 1, 1)
+		X.TextScaled = false
+		X.TextSize = 13
+		X.TextWrapped = true
+		
+		function DeleteGui() -- X.LocalScript 
+			local script = Instance.new('LocalScript')
+			script.Parent = X
+			function OnClicked()
+				script.Parent.Parent.Parent.Parent.BLChangerMain:Destroy()
+			end
+			script.Parent.MouseButton1Down:Connect(OnClicked)
+		end
+		coroutine.resume(coroutine.create(DeleteGui))
+		
+		local Title = Instance.new("ImageLabel")
+		Title.Name = "Title"
+		Title.Parent = BLChangerMain
+		Title.BackgroundColor3 = Color3.new(1, 1, 1)
+		Title.BackgroundTransparency = 1
+		Title.Position = UDim2.new(0.125, 0, 0.075, 0)
+		Title.Size = UDim2.new(0, 30, 0, 30)
+		Title.Image = "rbxassetid://11586954811"
+		Title.ImageColor3 = Color3.new(1.020,1.020,1.020)
+		Title.ZIndex = 3
+		
+		local bg = Instance.new("ImageLabel")
+		bg.Name = "bg"
+		bg.Parent = Title
+		bg.BackgroundColor3 = Color3.new(1, 1, 1)
+		bg.BackgroundTransparency = 1
+		bg.Position = UDim2.new(0, 0, 0, 0)
+		bg.Size = UDim2.new(0, 30, 0, 30)
+		bg.Image = "rbxassetid://434411343"
+		bg.ImageColor3 = Color3.new(1.020,1.020,1.020)
+		bg.ZIndex = 2
+		
+		local amt = Instance.new("TextLabel")
+		amt.Name = "amt"
+		amt.Parent = Title
+		amt.BackgroundColor3 = Color3.new(1, 1, 1)
+		amt.BackgroundTransparency = 1
+		amt.Position = UDim2.new(1.1, 0, 0.25, 0)
+		amt.Size = UDim2.new(0, 200, 0, 20)
+		amt.Font = Enum.Font.SourceSansBold
+		amt.Text = "Shindo Auto Spin RELL Bloodline"
+		amt.TextColor3 = Color3.new(0, 0, 0)
+		amt.TextScaled = false
+		amt.TextSize = 17
+		amt.TextWrapped = false
+		amt.ZIndex = 2
+		
+		local line = Instance.new("TextLabel")
+		line.Name = "line"
+		line.Parent = Title
+		line.BackgroundColor3 = Color3.new(0, 0, 0)
+		line.BackgroundTransparency = 0
+		line.Position = UDim2.new(0.74, 0, 0.93, 0)
+		line.Size = UDim2.new(7.25, 0, 0.02, 0)
+		line.Font = Enum.Font.SourceSansBold
+		line.Text = ""
+		line.TextColor3 = Color3.new(0, 0, 0)
+		line.TextScaled = false
+		line.TextSize = 22
+		line.TextWrapped = false
+		line.ZIndex = 2
+		
+		local ScrollingFrame = Instance.new("ScrollingFrame")
+		ScrollingFrame.Name = "ScrollingFrame"
+		ScrollingFrame.Parent = BLChangerMain
+		ScrollingFrame.BackgroundColor3 = Color3.new(1, 1, 1)
+		ScrollingFrame.BackgroundTransparency = 1
+		ScrollingFrame.BorderSizePixel = 0
+		ScrollingFrame.Position = UDim2.new(0.145, 0, 0.18, 0)
+		ScrollingFrame.Size = UDim2.new(0, 250, 0, 250)
+		ScrollingFrame.CanvasSize = UDim2.new(0, 0, 1.1, 0)
+		ScrollingFrame.ScrollBarThickness = 5
+		
+		local SettingsL = Instance.new("ImageLabel")
+		SettingsL.Name = "SettingsL"
+		SettingsL.Parent = ScrollingFrame
+		SettingsL.BackgroundColor3 = Color3.new(1, 1, 1)
+		SettingsL.BackgroundTransparency = 1
+		SettingsL.Position = UDim2.new(0, 1, 0.005, 0)
+		SettingsL.Size = UDim2.new(0, 230, 0, 30)
+		SettingsL.Image = "rbxassetid://4823762651"
+		SettingsL.ImageColor3 = Color3.new(0, 0, 0)
+		SettingsL.ZIndex = 2
+		
+		local SettingsLabel = Instance.new("TextLabel")
+		SettingsLabel.Name = "SettingsLabel"
+		SettingsLabel.Parent = SettingsL
+		SettingsLabel.BackgroundColor3 = Color3.new(1, 1, 1)
+		SettingsLabel.BackgroundTransparency = 1
+		SettingsLabel.Position = UDim2.new(0, 0, 0.1, 0)
+		SettingsLabel.Size = UDim2.new(0, 250, 0, 20)
+		SettingsLabel.Font = Enum.Font.GothamBlack
+		SettingsLabel.Text = "Settings"
+		SettingsLabel.TextColor3 = Color3.new(1, 1, 1)
+		SettingsLabel.TextSize = 15
+		SettingsLabel.TextWrapped = false
+		SettingsLabel.TextStrokeColor3 = Color3.new(0, 0, 0)
+		SettingsLabel.ZIndex = 3
+		
+		local RSN = Instance.new("TextButton")
+		RSN.Name = "ResetSpinsNow"
+		RSN.Parent = ScrollingFrame
+		RSN.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+		RSN.BorderColor3 = Color3.new(0,0,0)
+		RSN.BorderSizePixel = 2
+		RSN.Position = UDim2.new(0.075, 0, 0.1, 0)
+		RSN.Size = UDim2.new(0, 200, 0, 20)
+		RSN.Font = Enum.Font.SourceSansBold
+		RSN.Text = "Reset Spins NOW"
+		RSN.TextColor3 = Color3.new(1, 1, 1)
+		RSN.TextSize = 18
+		RSN.MouseButton1Click:connect(function()
+			RSN.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
+			game.Players.LocalPlayer.startevent:FireServer("band", "\128")
+			wait()
+			game:GetService("TeleportService"):Teleport(game.PlaceId, player)
+			RSN.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+		end)
+		
+		local SSD = Instance.new("TextButton")
+		SSD.Name = "SaveSpinsData"
+		SSD.Parent = ScrollingFrame
+		SSD.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+		SSD.BorderColor3 = Color3.new(0,0,0)
+		SSD.BorderSizePixel = 2
+		SSD.Position = UDim2.new(0.075, 0, 0.18, 0)
+		SSD.Size = UDim2.new(0, 200, 0, 20)
+		SSD.Font = Enum.Font.SourceSansBold
+		SSD.Text = "Save Spins Data"
+		SSD.TextColor3 = Color3.new(1, 1, 1)
+		SSD.TextSize = 18
+		SSD.MouseButton1Click:connect(function()
+			SSD.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
+			game.Players.LocalPlayer.startevent:FireServer("band", "Eye")
+			wait()
 			local args = {[1] = "arenateleport",[2] = 5451410109}
 			player.startevent:FireServer(unpack(args))
-		end
-	else
-		player.startevent:FireServer("band", "\128")
-		wait()
-		game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-	end
-end)
-
---spin slot 2
-game:GetService('RunService').Stepped:connect(function()
-	if spins > 0 then
-		spins = player.statz.spins.Value
-		kgvalue1 = player.statz.main.kg1.Value
-		kgvalue2 = player.statz.main.kg2.Value
-		kgvalue3 = player.statz.main.kg3.Value
-		kgvalue4 = player.statz.main.kg4.Value
-		if kgvalue1 ~= "RELL" and kgvalue2 ~= "RELL" and kgvalue3 ~= "RELL" and kgvalue4 ~= "RELL" then
-			player.startevent:FireServer("spin", "kg2")
-			print("Rolled: " .. kgvalue2)
-			wait(1)
-		elseif kgvalue2 == "RELL" then
-			print("You have got: " .. kgvalue2)
-			player.startevent:FireServer("band", "Eye")
-			wait(1)
-			local args = {[1] = "arenateleport",[2] = 5451410109}
-			player.startevent:FireServer(unpack(args))
-		end
-	else
-		player.startevent:FireServer("band", "\128")
-		wait()
-		game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-	end
-end)
-
-if player.gamepasses:FindFirstChild("genkai3") then
-	--spin slot 3
-	game:GetService('RunService').Stepped:connect(function()
-		if spins > 0 then
-			spins = player.statz.spins.Value
-			kgvalue1 = player.statz.main.kg1.Value
-			kgvalue2 = player.statz.main.kg2.Value
-			kgvalue3 = player.statz.main.kg3.Value
-			kgvalue4 = player.statz.main.kg4.Value
-			if kgvalue1 ~= "RELL" and kgvalue2 ~= "RELL" and kgvalue3 ~= "RELL" and kgvalue4 ~= "RELL" then
-				player.startevent:FireServer("spin", "kg3")
-				print("Rolled: " .. kgvalue3)
-				wait(1)
-			elseif kgvalue3 == "RELL" then
-				print("You have got: " .. kgvalue3)
-				player.startevent:FireServer("band", "Eye")
-				wait(1)
-				local args = {[1] = "arenateleport",[2] = 5451410109}
-				player.startevent:FireServer(unpack(args))
-			end
-		else
-			player.startevent:FireServer("band", "\128")
+			SSD.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+		end)
+		
+		local OurScriptL = Instance.new("ImageLabel")
+		OurScriptL.Name = "OurScriptL"
+		OurScriptL.Parent = ScrollingFrame
+		OurScriptL.BackgroundColor3 = Color3.new(1, 1, 1)
+		OurScriptL.BackgroundTransparency = 1
+		OurScriptL.Position = UDim2.new(0, 0, 0.27, 0)
+		OurScriptL.Size = UDim2.new(0, 230, 0, 30)
+		OurScriptL.Image = "rbxassetid://4823762651"
+		OurScriptL.ImageColor3 = Color3.new(0, 0, 0)
+		OurScriptL.ZIndex = 2
+		
+		local OurScriptLabel = Instance.new("TextLabel")
+		OurScriptLabel.Name = "OurScriptLabel"
+		OurScriptLabel.Parent = OurScriptL
+		OurScriptLabel.BackgroundColor3 = Color3.new(1, 1, 1)
+		OurScriptLabel.BackgroundTransparency = 1
+		OurScriptLabel.Position = UDim2.new(0, 0, 0.1, 0)
+		OurScriptLabel.Size = UDim2.new(0, 250, 0, 20)
+		OurScriptLabel.Font = Enum.Font.GothamBlack
+		OurScriptLabel.Text = "Script"
+		OurScriptLabel.TextColor3 = Color3.new(1, 1, 1)
+		OurScriptLabel.TextSize = 15
+		OurScriptLabel.TextWrapped = false
+		OurScriptLabel.TextStrokeColor3 = Color3.new(0, 0, 0)
+		OurScriptLabel.ZIndex = 3
+		
+		local LeScriptL = Instance.new("ImageLabel")
+		LeScriptL.Name = "LeScriptL"
+		LeScriptL.Parent = ScrollingFrame
+		LeScriptL.BackgroundColor3 = Color3.new(1, 1, 1)
+		LeScriptL.BackgroundTransparency = 1
+		LeScriptL.Position = UDim2.new(0, 0, 0.37, 0)
+		LeScriptL.Size = UDim2.new(0, 230, 0, 30)
+		
+		LeScriptL.ImageColor3 = Color3.new(0, 0, 0)
+		LeScriptL.ZIndex = 2
+		
+		local LeScriptLabel = Instance.new("TextLabel")
+		LeScriptLabel.Name = "LeScriptLabel"
+		LeScriptLabel.Parent = LeScriptL
+		LeScriptLabel.BackgroundColor3 = Color3.new(1, 1, 1)
+		LeScriptLabel.BackgroundTransparency = 1
+		LeScriptLabel.Position = UDim2.new(0, 0, 0.1, 0)
+		LeScriptLabel.Size = UDim2.new(0, 250, 0, 20)
+		LeScriptLabel.Font = Enum.Font.GothamBlack
+		LeScriptLabel.Text = "[https://raw.githubusercontent.com/\nNoobieDoge/DogeHubV2/Functions/\nShindoLifeAutoSpinRELLBloodline', true))()]"
+		LeScriptLabel.TextColor3 = Color3.new(0, 0, 0)
+		LeScriptLabel.TextSize = 10
+		LeScriptLabel.TextWrapped = false
+		LeScriptLabel.TextStrokeColor3 = Color3.new(0, 0, 0)
+		LeScriptLabel.ZIndex = 3
+		
+		local line1 = Instance.new("TextLabel")
+		line1.Name = "line1"
+		line1.Parent = LeScriptLabel
+		line1.BackgroundColor3 = Color3.new(0, 0, 0)
+		line1.BackgroundTransparency = 0
+		line1.Position = UDim2.new(0.05, 0, 1.6, 0)
+		line1.Size = UDim2.new(0.88, 0, 0.02, 0)
+		line1.Font = Enum.Font.SourceSansBold
+		line1.Text = ""
+		line1.TextColor3 = Color3.new(0, 0, 0)
+		line1.TextScaled = false
+		line1.TextSize = 22
+		line1.TextWrapped = false
+		line1.ZIndex = 2
+		
+		local CSTC = Instance.new("TextButton")
+		CSTC.Name = "CopyScriptToClipboard"
+		CSTC.Parent = ScrollingFrame
+		CSTC.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+		CSTC.BorderColor3 = Color3.new(0,0,0)
+		CSTC.BorderSizePixel = 2
+		CSTC.Position = UDim2.new(0.075, 0, 0.49, 0)
+		CSTC.Size = UDim2.new(0, 200, 0, 20)
+		CSTC.Font = Enum.Font.SourceSansBold
+		CSTC.Text = "Copy Script to Clipboard"
+		CSTC.TextColor3 = Color3.new(1, 1, 1)
+		CSTC.TextSize = 18
+		CSTC.MouseButton1Click:connect(function()
+			CSTC.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
+			CSTC.Text = "Script copied to clipboard"
 			wait()
-			game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-		end
-	end)
-end
-
-if player.gamepasses:FindFirstChild("genkai3") then
-	--spin slot 4
-	game:GetService('RunService').Stepped:connect(function()
-		if spins > 0 then
-			spins = player.statz.spins.Value
-			kgvalue1 = player.statz.main.kg1.Value
-			kgvalue2 = player.statz.main.kg2.Value
-			kgvalue3 = player.statz.main.kg3.Value
-			kgvalue4 = player.statz.main.kg4.Value
-			if kgvalue1 ~= "RELL" and kgvalue2 ~= "RELL" and kgvalue3 ~= "RELL" and kgvalue4 ~= "RELL" then
-				player.startevent:FireServer("spin", "kg4")
-				print("Rolled: " .. kgvalue4)
-				wait(1)
-			elseif kgvalue4 == "RELL" then
-				print("You have got: " .. kgvalue4)
-				player.startevent:FireServer("band", "Eye")
-				wait(1)
-				local args = {[1] = "arenateleport",[2] = 5451410109}
-				player.startevent:FireServer(unpack(args))
-			end
-		else
-			player.startevent:FireServer("band", "\128")
+			setclipboard("loadstring(game:HttpGet('https://raw.githubusercontent.com/NoobieDoge/DogeHubV2/Functions/ShindoLifeAutoSpinRELLBloodline', true))()")
+			wait(1)
+			CSTC.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+			CSTC.Text = "Copy Script to Clipboard"
+		end)
+		
+		local CreditsL = Instance.new("ImageLabel")
+		CreditsL.Name = "CreditsL"
+		CreditsL.Parent = ScrollingFrame
+		CreditsL.BackgroundColor3 = Color3.new(1, 1, 1)
+		CreditsL.BackgroundTransparency = 1
+		CreditsL.Position = UDim2.new(0, 0, 0.58, 0)
+		CreditsL.Size = UDim2.new(0, 230, 0, 30)
+		CreditsL.Image = "rbxassetid://4823762651"
+		CreditsL.ImageColor3 = Color3.new(0, 0, 0)
+		CreditsL.ZIndex = 2
+		
+		local CreditsLabel = Instance.new("TextLabel")
+		CreditsLabel.Name = "CreditsLabel"
+		CreditsLabel.Parent = CreditsL
+		CreditsLabel.BackgroundColor3 = Color3.new(1, 1, 1)
+		CreditsLabel.BackgroundTransparency = 1
+		CreditsLabel.Position = UDim2.new(0, 0, 0.1, 0)
+		CreditsLabel.Size = UDim2.new(0, 250, 0, 20)
+		CreditsLabel.Font = Enum.Font.GothamBlack
+		CreditsLabel.Text = "Credits"
+		CreditsLabel.TextColor3 = Color3.new(1, 1, 1)
+		CreditsLabel.TextSize = 15
+		CreditsLabel.TextWrapped = false
+		CreditsLabel.TextStrokeColor3 = Color3.new(0, 0, 0)
+		CreditsLabel.ZIndex = 3
+		
+		local CreditsL1 = Instance.new("ImageLabel")
+		CreditsL1.Name = "CreditsL1"
+		CreditsL1.Parent = ScrollingFrame
+		CreditsL1.BackgroundColor3 = Color3.new(1, 1, 1)
+		CreditsL1.BackgroundTransparency = 1
+		CreditsL1.Position = UDim2.new(0, 0, 0.65, 0)
+		CreditsL1.Size = UDim2.new(0, 230, 0, 30)
+		
+		CreditsL1.ImageColor3 = Color3.new(0, 0, 0)
+		CreditsL1.ZIndex = 2
+		
+		local CreditsLabel1 = Instance.new("TextLabel")
+		CreditsLabel1.Name = "CreditsLabel1"
+		CreditsLabel1.Parent = CreditsL1
+		CreditsLabel1.BackgroundColor3 = Color3.new(1, 1, 1)
+		CreditsLabel1.BackgroundTransparency = 1
+		CreditsLabel1.Position = UDim2.new(0, 0, 0.1, 0)
+		CreditsLabel1.Size = UDim2.new(0, 250, 0, 20)
+		CreditsLabel1.Font = Enum.Font.GothamBlack
+		CreditsLabel1.Text = "[Made by NoobieDoge]"
+		CreditsLabel1.TextColor3 = Color3.new(0, 0, 0)
+		CreditsLabel1.TextSize = 15
+		CreditsLabel1.TextWrapped = false
+		CreditsLabel1.TextStrokeColor3 = Color3.new(0, 0, 0)
+		CreditsLabel1.ZIndex = 3
+		
+		local line2 = Instance.new("TextLabel")
+		line2.Name = "line2"
+		line2.Parent = CreditsL1
+		line2.BackgroundColor3 = Color3.new(0, 0, 0)
+		line2.BackgroundTransparency = 0
+		line2.Position = UDim2.new(0.17, 0, 0.75, 0)
+		line2.Size = UDim2.new(0.73, 0, 0.02, 0)
+		line2.Font = Enum.Font.SourceSansBold
+		line2.Text = ""
+		line2.TextColor3 = Color3.new(0, 0, 0)
+		line2.TextScaled = false
+		line2.TextSize = 22
+		line2.TextWrapped = false
+		line2.ZIndex = 2
+		
+		local CreditsL2 = Instance.new("ImageLabel")
+		CreditsL2.Name = "CreditsL2"
+		CreditsL2.Parent = ScrollingFrame
+		CreditsL2.BackgroundColor3 = Color3.new(1, 1, 1)
+		CreditsL2.BackgroundTransparency = 1
+		CreditsL2.Position = UDim2.new(0, 0, 0.71, 0)
+		CreditsL2.Size = UDim2.new(0, 230, 0, 30)
+		
+		CreditsL2.ImageColor3 = Color3.new(0, 0, 0)
+		CreditsL2.ZIndex = 2
+		
+		local CreditsLabel2 = Instance.new("TextLabel")
+		CreditsLabel2.Name = "CreditsLabel2"
+		CreditsLabel2.Parent = CreditsL2
+		CreditsLabel2.BackgroundColor3 = Color3.new(1, 1, 1)
+		CreditsLabel2.BackgroundTransparency = 1
+		CreditsLabel2.Position = UDim2.new(0, 0, 0.1, 0)
+		CreditsLabel2.Size = UDim2.new(0, 250, 0, 20)
+		CreditsLabel2.Font = Enum.Font.GothamBlack
+		CreditsLabel2.Text = "[https://discord.gg/P2CeRjvTDt]"
+		CreditsLabel2.TextColor3 = Color3.new(0, 0, 0)
+		CreditsLabel2.TextSize = 15
+		CreditsLabel2.TextWrapped = false
+		CreditsLabel2.TextStrokeColor3 = Color3.new(0, 0, 0)
+		CreditsLabel2.ZIndex = 3
+		
+		local line3 = Instance.new("TextLabel")
+		line3.Name = "line3"
+		line3.Parent = CreditsL2
+		line3.BackgroundColor3 = Color3.new(0, 0, 0)
+		line3.BackgroundTransparency = 0
+		line3.Position = UDim2.new(0.025, 0, 0.75, 0)
+		line3.Size = UDim2.new(1.05, 0, 0.02, 0)
+		line3.Font = Enum.Font.SourceSansBold
+		line3.Text = ""
+		line3.TextColor3 = Color3.new(0, 0, 0)
+		line3.TextScaled = false
+		line3.TextSize = 22
+		line3.TextWrapped = false
+		line3.ZIndex = 2
+		
+		local CDLTC = Instance.new("TextButton")
+		CDLTC.Name = "CopyDiscordLinkToClipboard"
+		CDLTC.Parent = ScrollingFrame
+		CDLTC.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+		CDLTC.BorderColor3 = Color3.new(0,0,0)
+		CDLTC.BorderSizePixel = 2
+		CDLTC.Position = UDim2.new(0.075, 0, 0.81, 0)
+		CDLTC.Size = UDim2.new(0, 200, 0, 20)
+		CDLTC.Font = Enum.Font.SourceSansBold
+		CDLTC.Text = "Copy Discord Link to Clipboard"
+		CDLTC.TextColor3 = Color3.new(1, 1, 1)
+		CDLTC.TextSize = 18
+		CDLTC.MouseButton1Click:connect(function()
+			CDLTC.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
+			CDLTC.Text = "Discord link copied to clipboard"
 			wait()
-			game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+			setclipboard("https://discord.gg/P2CeRjvTDt', true))()")
+			wait(1)
+			CDLTC.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+			CDLTC.Text = "Copy Discord Link to Clipboard"
+		end)
+		
+	elseif game.PlaceId == 5451410109 then
+		--Properties:
+		local ScreenGui = Instance.new("ScreenGui")
+		--LoadoutChanger.Name = "LoadoutChanger"
+		ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+		
+		local BLChangerMain = Instance.new("ImageLabel")
+		BLChangerMain.Name = "BLChangerMain"
+		BLChangerMain.Parent = ScreenGui
+		BLChangerMain.BackgroundColor3 = Color3.new(1, 1, 1)
+		BLChangerMain.BackgroundTransparency = 1
+		BLChangerMain.Position = UDim2.new(0.4, 0, 0.3, 0)
+		BLChangerMain.Size = UDim2.new(0, 350, 0, 350)
+		BLChangerMain.Visible = true
+		BLChangerMain.Active = true
+		BLChangerMain.Image = "rbxassetid://5089201291"
+		BLChangerMain.ImageColor3 = Color3.new(0.93,0.93,0.93)
+		BLChangerMain.SliceCenter = Rect.new(12, 12, 13, 13)
+		BLChangerMain.Draggable = true
+		
+		local XL = Instance.new("ImageButton")
+		XL.Name = "XL"
+		XL.Parent = BLChangerMain
+		XL.BackgroundColor3 = Color3.new(0.0588235, 0.0588235, 0.0588235)
+		XL.BackgroundTransparency = 1
+		XL.Position = UDim2.new(0.845, 0, 0.075, 0)
+		XL.Size = UDim2.new(0, 20, 0, 20)
+		XL.Image = "rbxassetid://5652699630"
+		XL.ImageColor3 = Color3.new(0.765,0.228,0.051)
+		
+		local X = Instance.new("TextButton")
+		X.Name = "X"
+		X.Parent = XL
+		X.BackgroundColor3 = Color3.new(0.0588235, 0.0588235, 0.0588235)
+		X.BackgroundTransparency = 1
+		X.BorderSizePixel = 0
+		X.Size = UDim2.new(0, 20, 0, 20)
+		X.Font = Enum.Font.GothamBlack
+		X.Text = "X"
+		X.TextColor3 = Color3.new(1, 1, 1)
+		X.TextScaled = false
+		X.TextSize = 13
+		X.TextWrapped = true
+		
+		function DeleteGui() -- X.LocalScript 
+			local script = Instance.new('LocalScript')
+			script.Parent = X
+			function OnClicked()
+				script.Parent.Parent.Parent.Parent.BLChangerMain:Destroy()
+			end
+			script.Parent.MouseButton1Down:Connect(OnClicked)
 		end
-	end)
-end
-
---Properties:
-local ScreenGui = Instance.new("ScreenGui")
---LoadoutChanger.Name = "LoadoutChanger"
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-
-local BLChangerMain = Instance.new("ImageLabel")
-BLChangerMain.Name = "BLChangerMain"
-BLChangerMain.Parent = ScreenGui
-BLChangerMain.BackgroundColor3 = Color3.new(1, 1, 1)
-BLChangerMain.BackgroundTransparency = 1
-BLChangerMain.Position = UDim2.new(0.4, 0, 0.3, 0)
-BLChangerMain.Size = UDim2.new(0, 350, 0, 350)
-BLChangerMain.Visible = true
-BLChangerMain.Active = true
-BLChangerMain.Image = "rbxassetid://5089201291"
-BLChangerMain.ImageColor3 = Color3.new(0.93,0.93,0.93)
-BLChangerMain.SliceCenter = Rect.new(12, 12, 13, 13)
-BLChangerMain.Draggable = true
-
-local XL = Instance.new("ImageButton")
-XL.Name = "XL"
-XL.Parent = BLChangerMain
-XL.BackgroundColor3 = Color3.new(0.0588235, 0.0588235, 0.0588235)
-XL.BackgroundTransparency = 1
-XL.Position = UDim2.new(0.845, 0, 0.075, 0)
-XL.Size = UDim2.new(0, 20, 0, 20)
-XL.Image = "rbxassetid://5652699630"
-XL.ImageColor3 = Color3.new(0.765,0.228,0.051)
-
-local X = Instance.new("TextButton")
-X.Name = "X"
-X.Parent = XL
-X.BackgroundColor3 = Color3.new(0.0588235, 0.0588235, 0.0588235)
-X.BackgroundTransparency = 1
-X.BorderSizePixel = 0
-X.Size = UDim2.new(0, 20, 0, 20)
-X.Font = Enum.Font.GothamBlack
-X.Text = "X"
-X.TextColor3 = Color3.new(1, 1, 1)
-X.TextScaled = false
-X.TextSize = 13
-X.TextWrapped = true
-
-function DeleteGui() -- X.LocalScript 
-	local script = Instance.new('LocalScript')
-	script.Parent = X
-	function OnClicked()
-		script.Parent.Parent.Parent.Parent.BLChangerMain:Destroy()
+		coroutine.resume(coroutine.create(DeleteGui))
+		
+		local Title = Instance.new("ImageLabel")
+		Title.Name = "Title"
+		Title.Parent = BLChangerMain
+		Title.BackgroundColor3 = Color3.new(1, 1, 1)
+		Title.BackgroundTransparency = 1
+		Title.Position = UDim2.new(0.125, 0, 0.075, 0)
+		Title.Size = UDim2.new(0, 30, 0, 30)
+		Title.Image = "rbxassetid://11586954811"
+		Title.ImageColor3 = Color3.new(1.020,1.020,1.020)
+		Title.ZIndex = 3
+		
+		local bg = Instance.new("ImageLabel")
+		bg.Name = "bg"
+		bg.Parent = Title
+		bg.BackgroundColor3 = Color3.new(1, 1, 1)
+		bg.BackgroundTransparency = 1
+		bg.Position = UDim2.new(0, 0, 0, 0)
+		bg.Size = UDim2.new(0, 30, 0, 30)
+		bg.Image = "rbxassetid://434411343"
+		bg.ImageColor3 = Color3.new(1.020,1.020,1.020)
+		bg.ZIndex = 2
+		
+		local amt = Instance.new("TextLabel")
+		amt.Name = "amt"
+		amt.Parent = Title
+		amt.BackgroundColor3 = Color3.new(1, 1, 1)
+		amt.BackgroundTransparency = 1
+		amt.Position = UDim2.new(1.1, 0, 0.25, 0)
+		amt.Size = UDim2.new(0, 200, 0, 20)
+		amt.Font = Enum.Font.SourceSansBold
+		amt.Text = "Shindo Auto Spin RELL Bloodline"
+		amt.TextColor3 = Color3.new(0, 0, 0)
+		amt.TextScaled = false
+		amt.TextSize = 17
+		amt.TextWrapped = false
+		amt.ZIndex = 2
+		
+		local line = Instance.new("TextLabel")
+		line.Name = "line"
+		line.Parent = Title
+		line.BackgroundColor3 = Color3.new(0, 0, 0)
+		line.BackgroundTransparency = 0
+		line.Position = UDim2.new(0.74, 0, 0.93, 0)
+		line.Size = UDim2.new(7.25, 0, 0.02, 0)
+		line.Font = Enum.Font.SourceSansBold
+		line.Text = ""
+		line.TextColor3 = Color3.new(0, 0, 0)
+		line.TextScaled = false
+		line.TextSize = 22
+		line.TextWrapped = false
+		line.ZIndex = 2
+		
+		local SettingsL = Instance.new("ImageLabel")
+		SettingsL.Name = "SettingsL"
+		SettingsL.Parent = BLChangerMain
+		SettingsL.BackgroundColor3 = Color3.new(1, 1, 1)
+		SettingsL.BackgroundTransparency = 1
+		SettingsL.Position = UDim2.new(0.16, 0, 0.2, 0)
+		SettingsL.Size = UDim2.new(0, 230, 0, 30)
+		SettingsL.Image = "rbxassetid://4823762651"
+		SettingsL.ImageColor3 = Color3.new(0, 0, 0)
+		SettingsL.ZIndex = 2
+		
+		local SettingsLabel = Instance.new("TextLabel")
+		SettingsLabel.Name = "SettingsLabel"
+		SettingsLabel.Parent = SettingsL
+		SettingsLabel.BackgroundColor3 = Color3.new(1, 1, 1)
+		SettingsLabel.BackgroundTransparency = 1
+		SettingsLabel.Position = UDim2.new(0, 0, 0.1, 0)
+		SettingsLabel.Size = UDim2.new(0, 250, 0, 20)
+		SettingsLabel.Font = Enum.Font.GothamBlack
+		SettingsLabel.Text = "???"
+		SettingsLabel.TextColor3 = Color3.new(1, 1, 1)
+		SettingsLabel.TextSize = 15
+		SettingsLabel.TextWrapped = false
+		SettingsLabel.TextStrokeColor3 = Color3.new(0, 0, 0)
+		SettingsLabel.ZIndex = 3
+		
+		local CreditsL2 = Instance.new("ImageLabel")
+		CreditsL2.Name = "CreditsL2"
+		CreditsL2.Parent = BLChangerMain
+		CreditsL2.BackgroundColor3 = Color3.new(1, 1, 1)
+		CreditsL2.BackgroundTransparency = 1
+		CreditsL2.Position = UDim2.new(0.15, 0, 0.4, 0)
+		CreditsL2.Size = UDim2.new(0, 230, 0, 30)
+		
+		CreditsL2.ImageColor3 = Color3.new(0, 0, 0)
+		CreditsL2.ZIndex = 2
+		
+		local CreditsLabel2 = Instance.new("TextLabel")
+		CreditsLabel2.Name = "CreditsLabel2"
+		CreditsLabel2.Parent = CreditsL2
+		CreditsLabel2.BackgroundColor3 = Color3.new(1, 1, 1)
+		CreditsLabel2.BackgroundTransparency = 1
+		CreditsLabel2.Position = UDim2.new(0, 0, 0.1, 0)
+		CreditsLabel2.Size = UDim2.new(0, 250, 0, 20)
+		CreditsLabel2.Font = Enum.Font.GothamBlack
+		CreditsLabel2.Text = "[Check]"
+		CreditsLabel2.TextColor3 = Color3.new(0, 0, 0)
+		CreditsLabel2.TextSize = 15
+		CreditsLabel2.TextWrapped = false
+		CreditsLabel2.TextStrokeColor3 = Color3.new(0, 0, 0)
+		CreditsLabel2.ZIndex = 3
+		
+		local line3 = Instance.new("TextLabel")
+		line3.Name = "line3"
+		line3.Parent = CreditsL2
+		line3.BackgroundColor3 = Color3.new(0, 0, 0)
+		line3.BackgroundTransparency = 0
+		line3.Position = UDim2.new(0.4, 0, 0.75, 0)
+		line3.Size = UDim2.new(0.29, 0, 0.02, 0)
+		line3.Font = Enum.Font.SourceSansBold
+		line3.Text = ""
+		line3.TextColor3 = Color3.new(0, 0, 0)
+		line3.TextScaled = false
+		line3.TextSize = 22
+		line3.TextWrapped = false
+		line3.ZIndex = 2
+		
+		local RSN = Instance.new("TextButton")
+		RSN.Name = "ResetSpinsNow"
+		RSN.Parent = BLChangerMain
+		RSN.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+		RSN.BorderColor3 = Color3.new(0,0,0)
+		RSN.BorderSizePixel = 2
+		RSN.Position = UDim2.new(0.22, 0, 0.6, 0)
+		RSN.Size = UDim2.new(0, 200, 0, 20)
+		RSN.Font = Enum.Font.SourceSansBold
+		RSN.Text = "Huh?"
+		RSN.TextColor3 = Color3.new(1, 1, 1)
+		RSN.TextSize = 18
+		RSN.MouseButton1Click:connect(function()
+			RSN.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
+			print(":)")
+			RSN.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+		end)
+	else
+		print("L")
 	end
-	script.Parent.MouseButton1Down:Connect(OnClicked)
+else
+	print("Executed Shindo auto spin RELL Bloodline script")
+	print("Game not supported")
+	print("end")
 end
-coroutine.resume(coroutine.create(DeleteGui))
-
-local Title = Instance.new("ImageLabel")
-Title.Name = "Title"
-Title.Parent = BLChangerMain
-Title.BackgroundColor3 = Color3.new(1, 1, 1)
-Title.BackgroundTransparency = 1
-Title.Position = UDim2.new(0.125, 0, 0.075, 0)
-Title.Size = UDim2.new(0, 30, 0, 30)
-Title.Image = "rbxassetid://11586954811"
-Title.ImageColor3 = Color3.new(1.020,1.020,1.020)
-Title.ZIndex = 3
-
-local bg = Instance.new("ImageLabel")
-bg.Name = "bg"
-bg.Parent = Title
-bg.BackgroundColor3 = Color3.new(1, 1, 1)
-bg.BackgroundTransparency = 1
-bg.Position = UDim2.new(0, 0, 0, 0)
-bg.Size = UDim2.new(0, 30, 0, 30)
-bg.Image = "rbxassetid://434411343"
-bg.ImageColor3 = Color3.new(1.020,1.020,1.020)
-bg.ZIndex = 2
-
-local amt = Instance.new("TextLabel")
-amt.Name = "amt"
-amt.Parent = Title
-amt.BackgroundColor3 = Color3.new(1, 1, 1)
-amt.BackgroundTransparency = 1
-amt.Position = UDim2.new(1.1, 0, 0.25, 0)
-amt.Size = UDim2.new(0, 200, 0, 20)
-amt.Font = Enum.Font.SourceSansBold
-amt.Text = "Shindo Auto Spin RELL Bloodline"
-amt.TextColor3 = Color3.new(0, 0, 0)
-amt.TextScaled = false
-amt.TextSize = 17
-amt.TextWrapped = false
-amt.ZIndex = 2
-
-local line = Instance.new("TextLabel")
-line.Name = "line"
-line.Parent = Title
-line.BackgroundColor3 = Color3.new(0, 0, 0)
-line.BackgroundTransparency = 0
-line.Position = UDim2.new(0.74, 0, 0.93, 0)
-line.Size = UDim2.new(7.25, 0, 0.02, 0)
-line.Font = Enum.Font.SourceSansBold
-line.Text = ""
-line.TextColor3 = Color3.new(0, 0, 0)
-line.TextScaled = false
-line.TextSize = 22
-line.TextWrapped = false
-line.ZIndex = 2
-
-local ScrollingFrame = Instance.new("ScrollingFrame")
-ScrollingFrame.Name = "ScrollingFrame"
-ScrollingFrame.Parent = BLChangerMain
-ScrollingFrame.BackgroundColor3 = Color3.new(1, 1, 1)
-ScrollingFrame.BackgroundTransparency = 1
-ScrollingFrame.BorderSizePixel = 0
-ScrollingFrame.Position = UDim2.new(0.145, 0, 0.18, 0)
-ScrollingFrame.Size = UDim2.new(0, 250, 0, 250)
-ScrollingFrame.CanvasSize = UDim2.new(0, 0, 1.1, 0)
-ScrollingFrame.ScrollBarThickness = 5
-
-local SettingsL = Instance.new("ImageLabel")
-SettingsL.Name = "SettingsL"
-SettingsL.Parent = ScrollingFrame
-SettingsL.BackgroundColor3 = Color3.new(1, 1, 1)
-SettingsL.BackgroundTransparency = 1
-SettingsL.Position = UDim2.new(0, 1, 0.005, 0)
-SettingsL.Size = UDim2.new(0, 230, 0, 30)
-SettingsL.Image = "rbxassetid://4823762651"
-SettingsL.ImageColor3 = Color3.new(0, 0, 0)
-SettingsL.ZIndex = 2
-
-local SettingsLabel = Instance.new("TextLabel")
-SettingsLabel.Name = "SettingsLabel"
-SettingsLabel.Parent = SettingsL
-SettingsLabel.BackgroundColor3 = Color3.new(1, 1, 1)
-SettingsLabel.BackgroundTransparency = 1
-SettingsLabel.Position = UDim2.new(0, 0, 0.1, 0)
-SettingsLabel.Size = UDim2.new(0, 250, 0, 20)
-SettingsLabel.Font = Enum.Font.GothamBlack
-SettingsLabel.Text = "Settings"
-SettingsLabel.TextColor3 = Color3.new(1, 1, 1)
-SettingsLabel.TextSize = 15
-SettingsLabel.TextWrapped = false
-SettingsLabel.TextStrokeColor3 = Color3.new(0, 0, 0)
-SettingsLabel.ZIndex = 3
-
-local RSN = Instance.new("TextButton")
-RSN.Name = "ResetSpinsNow"
-RSN.Parent = ScrollingFrame
-RSN.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
-RSN.BorderColor3 = Color3.new(0,0,0)
-RSN.BorderSizePixel = 2
-RSN.Position = UDim2.new(0.075, 0, 0.1, 0)
-RSN.Size = UDim2.new(0, 200, 0, 20)
-RSN.Font = Enum.Font.SourceSansBold
-RSN.Text = "Reset Spins NOW"
-RSN.TextColor3 = Color3.new(1, 1, 1)
-RSN.TextSize = 18
-RSN.MouseButton1Click:connect(function()
-	RSN.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
-	game.Players.LocalPlayer.startevent:FireServer("band", "\128")
-	wait()
-	game:GetService("TeleportService"):Teleport(game.PlaceId, player)
-	RSN.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
-end)
-
-local SSD = Instance.new("TextButton")
-SSD.Name = "SaveSpinsData"
-SSD.Parent = ScrollingFrame
-SSD.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
-SSD.BorderColor3 = Color3.new(0,0,0)
-SSD.BorderSizePixel = 2
-SSD.Position = UDim2.new(0.075, 0, 0.18, 0)
-SSD.Size = UDim2.new(0, 200, 0, 20)
-SSD.Font = Enum.Font.SourceSansBold
-SSD.Text = "Save Spins Data"
-SSD.TextColor3 = Color3.new(1, 1, 1)
-SSD.TextSize = 18
-SSD.MouseButton1Click:connect(function()
-	SSD.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
-	game.Players.LocalPlayer.startevent:FireServer("band", "Eye")
-	wait()
-	local args = {[1] = "arenateleport",[2] = 5451410109}
-	player.startevent:FireServer(unpack(args))
-	SSD.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
-end)
-
-local OurScriptL = Instance.new("ImageLabel")
-OurScriptL.Name = "OurScriptL"
-OurScriptL.Parent = ScrollingFrame
-OurScriptL.BackgroundColor3 = Color3.new(1, 1, 1)
-OurScriptL.BackgroundTransparency = 1
-OurScriptL.Position = UDim2.new(0, 0, 0.27, 0)
-OurScriptL.Size = UDim2.new(0, 230, 0, 30)
-OurScriptL.Image = "rbxassetid://4823762651"
-OurScriptL.ImageColor3 = Color3.new(0, 0, 0)
-OurScriptL.ZIndex = 2
-
-local OurScriptLabel = Instance.new("TextLabel")
-OurScriptLabel.Name = "OurScriptLabel"
-OurScriptLabel.Parent = OurScriptL
-OurScriptLabel.BackgroundColor3 = Color3.new(1, 1, 1)
-OurScriptLabel.BackgroundTransparency = 1
-OurScriptLabel.Position = UDim2.new(0, 0, 0.1, 0)
-OurScriptLabel.Size = UDim2.new(0, 250, 0, 20)
-OurScriptLabel.Font = Enum.Font.GothamBlack
-OurScriptLabel.Text = "Script"
-OurScriptLabel.TextColor3 = Color3.new(1, 1, 1)
-OurScriptLabel.TextSize = 15
-OurScriptLabel.TextWrapped = false
-OurScriptLabel.TextStrokeColor3 = Color3.new(0, 0, 0)
-OurScriptLabel.ZIndex = 3
-
-local LeScriptL = Instance.new("ImageLabel")
-LeScriptL.Name = "LeScriptL"
-LeScriptL.Parent = ScrollingFrame
-LeScriptL.BackgroundColor3 = Color3.new(1, 1, 1)
-LeScriptL.BackgroundTransparency = 1
-LeScriptL.Position = UDim2.new(0, 0, 0.37, 0)
-LeScriptL.Size = UDim2.new(0, 230, 0, 30)
-
-LeScriptL.ImageColor3 = Color3.new(0, 0, 0)
-LeScriptL.ZIndex = 2
-
-local LeScriptLabel = Instance.new("TextLabel")
-LeScriptLabel.Name = "LeScriptLabel"
-LeScriptLabel.Parent = LeScriptL
-LeScriptLabel.BackgroundColor3 = Color3.new(1, 1, 1)
-LeScriptLabel.BackgroundTransparency = 1
-LeScriptLabel.Position = UDim2.new(0, 0, 0.1, 0)
-LeScriptLabel.Size = UDim2.new(0, 250, 0, 20)
-LeScriptLabel.Font = Enum.Font.GothamBlack
-LeScriptLabel.Text = "[https://raw.githubusercontent.com/\nNoobieDoge/DogeHubV2/Functions/\nShindoLifeAutoSpinRELLBloodline', true))()]"
-LeScriptLabel.TextColor3 = Color3.new(0, 0, 0)
-LeScriptLabel.TextSize = 10
-LeScriptLabel.TextWrapped = false
-LeScriptLabel.TextStrokeColor3 = Color3.new(0, 0, 0)
-LeScriptLabel.ZIndex = 3
-
-local line1 = Instance.new("TextLabel")
-line1.Name = "line1"
-line1.Parent = LeScriptLabel
-line1.BackgroundColor3 = Color3.new(0, 0, 0)
-line1.BackgroundTransparency = 0
-line1.Position = UDim2.new(0.05, 0, 1.6, 0)
-line1.Size = UDim2.new(0.88, 0, 0.02, 0)
-line1.Font = Enum.Font.SourceSansBold
-line1.Text = ""
-line1.TextColor3 = Color3.new(0, 0, 0)
-line1.TextScaled = false
-line1.TextSize = 22
-line1.TextWrapped = false
-line1.ZIndex = 2
-
-local CSTC = Instance.new("TextButton")
-CSTC.Name = "CopyScriptToClipboard"
-CSTC.Parent = ScrollingFrame
-CSTC.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
-CSTC.BorderColor3 = Color3.new(0,0,0)
-CSTC.BorderSizePixel = 2
-CSTC.Position = UDim2.new(0.075, 0, 0.49, 0)
-CSTC.Size = UDim2.new(0, 200, 0, 20)
-CSTC.Font = Enum.Font.SourceSansBold
-CSTC.Text = "Copy Script to Clipboard"
-CSTC.TextColor3 = Color3.new(1, 1, 1)
-CSTC.TextSize = 18
-CSTC.MouseButton1Click:connect(function()
-	CSTC.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
-	CSTC.Text = "Script copied to clipboard"
-	wait()
-	setclipboard("loadstring(game:HttpGet('https://raw.githubusercontent.com/NoobieDoge/DogeHubV2/Functions/ShindoLifeAutoSpinRELLBloodline', true))()")
-	wait(1)
-	CSTC.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
-	CSTC.Text = "Copy Script to Clipboard"
-end)
-
-local CreditsL = Instance.new("ImageLabel")
-CreditsL.Name = "CreditsL"
-CreditsL.Parent = ScrollingFrame
-CreditsL.BackgroundColor3 = Color3.new(1, 1, 1)
-CreditsL.BackgroundTransparency = 1
-CreditsL.Position = UDim2.new(0, 0, 0.58, 0)
-CreditsL.Size = UDim2.new(0, 230, 0, 30)
-CreditsL.Image = "rbxassetid://4823762651"
-CreditsL.ImageColor3 = Color3.new(0, 0, 0)
-CreditsL.ZIndex = 2
-
-local CreditsLabel = Instance.new("TextLabel")
-CreditsLabel.Name = "CreditsLabel"
-CreditsLabel.Parent = CreditsL
-CreditsLabel.BackgroundColor3 = Color3.new(1, 1, 1)
-CreditsLabel.BackgroundTransparency = 1
-CreditsLabel.Position = UDim2.new(0, 0, 0.1, 0)
-CreditsLabel.Size = UDim2.new(0, 250, 0, 20)
-CreditsLabel.Font = Enum.Font.GothamBlack
-CreditsLabel.Text = "Credits"
-CreditsLabel.TextColor3 = Color3.new(1, 1, 1)
-CreditsLabel.TextSize = 15
-CreditsLabel.TextWrapped = false
-CreditsLabel.TextStrokeColor3 = Color3.new(0, 0, 0)
-CreditsLabel.ZIndex = 3
-
-local CreditsL1 = Instance.new("ImageLabel")
-CreditsL1.Name = "CreditsL1"
-CreditsL1.Parent = ScrollingFrame
-CreditsL1.BackgroundColor3 = Color3.new(1, 1, 1)
-CreditsL1.BackgroundTransparency = 1
-CreditsL1.Position = UDim2.new(0, 0, 0.65, 0)
-CreditsL1.Size = UDim2.new(0, 230, 0, 30)
-
-CreditsL1.ImageColor3 = Color3.new(0, 0, 0)
-CreditsL1.ZIndex = 2
-
-local CreditsLabel1 = Instance.new("TextLabel")
-CreditsLabel1.Name = "CreditsLabel1"
-CreditsLabel1.Parent = CreditsL1
-CreditsLabel1.BackgroundColor3 = Color3.new(1, 1, 1)
-CreditsLabel1.BackgroundTransparency = 1
-CreditsLabel1.Position = UDim2.new(0, 0, 0.1, 0)
-CreditsLabel1.Size = UDim2.new(0, 250, 0, 20)
-CreditsLabel1.Font = Enum.Font.GothamBlack
-CreditsLabel1.Text = "[Made by NoobieDoge]"
-CreditsLabel1.TextColor3 = Color3.new(0, 0, 0)
-CreditsLabel1.TextSize = 15
-CreditsLabel1.TextWrapped = false
-CreditsLabel1.TextStrokeColor3 = Color3.new(0, 0, 0)
-CreditsLabel1.ZIndex = 3
-
-local line2 = Instance.new("TextLabel")
-line2.Name = "line2"
-line2.Parent = CreditsL1
-line2.BackgroundColor3 = Color3.new(0, 0, 0)
-line2.BackgroundTransparency = 0
-line2.Position = UDim2.new(0.17, 0, 0.75, 0)
-line2.Size = UDim2.new(0.73, 0, 0.02, 0)
-line2.Font = Enum.Font.SourceSansBold
-line2.Text = ""
-line2.TextColor3 = Color3.new(0, 0, 0)
-line2.TextScaled = false
-line2.TextSize = 22
-line2.TextWrapped = false
-line2.ZIndex = 2
-
-local CreditsL2 = Instance.new("ImageLabel")
-CreditsL2.Name = "CreditsL2"
-CreditsL2.Parent = ScrollingFrame
-CreditsL2.BackgroundColor3 = Color3.new(1, 1, 1)
-CreditsL2.BackgroundTransparency = 1
-CreditsL2.Position = UDim2.new(0, 0, 0.71, 0)
-CreditsL2.Size = UDim2.new(0, 230, 0, 30)
-
-CreditsL2.ImageColor3 = Color3.new(0, 0, 0)
-CreditsL2.ZIndex = 2
-
-local CreditsLabel2 = Instance.new("TextLabel")
-CreditsLabel2.Name = "CreditsLabel2"
-CreditsLabel2.Parent = CreditsL2
-CreditsLabel2.BackgroundColor3 = Color3.new(1, 1, 1)
-CreditsLabel2.BackgroundTransparency = 1
-CreditsLabel2.Position = UDim2.new(0, 0, 0.1, 0)
-CreditsLabel2.Size = UDim2.new(0, 250, 0, 20)
-CreditsLabel2.Font = Enum.Font.GothamBlack
-CreditsLabel2.Text = "[https://discord.gg/P2CeRjvTDt]"
-CreditsLabel2.TextColor3 = Color3.new(0, 0, 0)
-CreditsLabel2.TextSize = 15
-CreditsLabel2.TextWrapped = false
-CreditsLabel2.TextStrokeColor3 = Color3.new(0, 0, 0)
-CreditsLabel2.ZIndex = 3
-
-local line3 = Instance.new("TextLabel")
-line3.Name = "line3"
-line3.Parent = CreditsL2
-line3.BackgroundColor3 = Color3.new(0, 0, 0)
-line3.BackgroundTransparency = 0
-line3.Position = UDim2.new(0.025, 0, 0.75, 0)
-line3.Size = UDim2.new(1.05, 0, 0.02, 0)
-line3.Font = Enum.Font.SourceSansBold
-line3.Text = ""
-line3.TextColor3 = Color3.new(0, 0, 0)
-line3.TextScaled = false
-line3.TextSize = 22
-line3.TextWrapped = false
-line3.ZIndex = 2
-
-local CDLTC = Instance.new("TextButton")
-CDLTC.Name = "CopyDiscordLinkToClipboard"
-CDLTC.Parent = ScrollingFrame
-CDLTC.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
-CDLTC.BorderColor3 = Color3.new(0,0,0)
-CDLTC.BorderSizePixel = 2
-CDLTC.Position = UDim2.new(0.075, 0, 0.81, 0)
-CDLTC.Size = UDim2.new(0, 200, 0, 20)
-CDLTC.Font = Enum.Font.SourceSansBold
-CDLTC.Text = "Copy Discord Link to Clipboard"
-CDLTC.TextColor3 = Color3.new(1, 1, 1)
-CDLTC.TextSize = 18
-CDLTC.MouseButton1Click:connect(function()
-	CDLTC.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
-	CDLTC.Text = "Discord link copied to clipboard"
-	wait()
-	setclipboard("https://discord.gg/P2CeRjvTDt', true))()")
-	wait(1)
-	CDLTC.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
-	CDLTC.Text = "Copy Discord Link to Clipboard"
-end)
