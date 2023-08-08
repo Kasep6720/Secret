@@ -1555,9 +1555,9 @@ local function ShindoInfSpin()
 		end)
 	end
 
-	-- forth page
-	local page4 = NoobieDoge:addPage("Others", 5176336983)
-	local section1 = page4:addSection("Other Scripts")
+	-- fifth page
+	local page5 = NoobieDoge:addPage("Others", 5176336983)
+	local section1 = page5:addSection("Other Scripts")
 
 	section1:addButton("Auto Spin RELL Bloodline Script",function()
 		loadstring(game:HttpGet('https://raw.githubusercontent.com/Kasep6720/Secret/DogeHubV2/Functions/ShindoAutoSpinRELLBloodline', true))()
