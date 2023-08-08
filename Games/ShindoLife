@@ -775,7 +775,6 @@ local function ShindoInfSpin()
 	local section1 = page1:addSection("Instructions")
 	local section2 = page1:addSection("Inf Spin Functions")
 	local section3 = page1:addSection("Inf Spin Settings")
-	local section4 = page1:addSection("Others")
 
 	section1:addButton("Instructions",function()
 		local player = game.Players.LocalPlayer
@@ -942,10 +941,6 @@ local function ShindoInfSpin()
 		section3:updateToggle("Teleport to My Home when saving data")
 	end)
 	savegomyhome = true
-
-	section4:addToggle("Auto Spin RELL Bloodline Script",false,function(bool)
-		loadstring(game:HttpGet('https://raw.githubusercontent.com/Kasep6720/Secret/DogeHubV2/Functions/ShindoAutoSpinRELLBloodline', true))()
-	end)
 	
 	-- load
 	NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
@@ -1559,6 +1554,14 @@ local function ShindoInfSpin()
 			end
 		end)
 	end
+
+	-- forth page
+	local page4 = NoobieDoge:addPage("Others", 5176336983)
+	local section1 = page4:addSection("Other Scripts")
+
+	section1:addButton("Auto Spin RELL Bloodline Script",function()
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/Kasep6720/Secret/DogeHubV2/Functions/ShindoAutoSpinRELLBloodline', true))()
+	end)
 
 	-- last page
 	local pagelast = NoobieDoge:addPage("Settings", 5176336983)
