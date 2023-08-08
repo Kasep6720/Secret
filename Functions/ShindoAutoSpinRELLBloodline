@@ -525,196 +525,234 @@ if game.GameId == 1511883870 then
 			CDLTC.Text = "Copy Discord Link to Clipboard"
 		end)
 		
-	elseif game.PlaceId == 5451410109 then
-		--Properties:
-		local ScreenGui = Instance.new("ScreenGui")
-		--LoadoutChanger.Name = "LoadoutChanger"
-		ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-		
-		local BLChangerMain = Instance.new("ImageLabel")
-		BLChangerMain.Name = "BLChangerMain"
-		BLChangerMain.Parent = ScreenGui
-		BLChangerMain.BackgroundColor3 = Color3.new(1, 1, 1)
-		BLChangerMain.BackgroundTransparency = 1
-		BLChangerMain.Position = UDim2.new(0.4, 0, 0.3, 0)
-		BLChangerMain.Size = UDim2.new(0, 350, 0, 350)
-		BLChangerMain.Visible = true
-		BLChangerMain.Active = true
-		BLChangerMain.Image = "rbxassetid://5089201291"
-		BLChangerMain.ImageColor3 = Color3.new(0.93,0.93,0.93)
-		BLChangerMain.SliceCenter = Rect.new(12, 12, 13, 13)
-		BLChangerMain.Draggable = true
-		
-		local XL = Instance.new("ImageButton")
-		XL.Name = "XL"
-		XL.Parent = BLChangerMain
-		XL.BackgroundColor3 = Color3.new(0.0588235, 0.0588235, 0.0588235)
-		XL.BackgroundTransparency = 1
-		XL.Position = UDim2.new(0.845, 0, 0.075, 0)
-		XL.Size = UDim2.new(0, 20, 0, 20)
-		XL.Image = "rbxassetid://5652699630"
-		XL.ImageColor3 = Color3.new(0.765,0.228,0.051)
-		
-		local X = Instance.new("TextButton")
-		X.Name = "X"
-		X.Parent = XL
-		X.BackgroundColor3 = Color3.new(0.0588235, 0.0588235, 0.0588235)
-		X.BackgroundTransparency = 1
-		X.BorderSizePixel = 0
-		X.Size = UDim2.new(0, 20, 0, 20)
-		X.Font = Enum.Font.GothamBlack
-		X.Text = "X"
-		X.TextColor3 = Color3.new(1, 1, 1)
-		X.TextScaled = false
-		X.TextSize = 13
-		X.TextWrapped = true
-		
-		function DeleteGui() -- X.LocalScript 
-			local script = Instance.new('LocalScript')
-			script.Parent = X
-			function OnClicked()
-				script.Parent.Parent.Parent.Parent.BLChangerMain:Destroy()
-			end
-			script.Parent.MouseButton1Down:Connect(OnClicked)
+		if game:GetService("Workspace").npc:FindFirstChild("InfSpinRELLBlNPC") then
+			print("Well it's not suggested to execute this script more than once")
+		else
+			local InfSpinRELLBlNPC = Instance.new("Part")
+			InfSpinRELLBlNPC.Parent = game:GetService("Workspace").npc
+			InfSpinRELLBlNPC.Name = "InfSpinRELLBlNPC"
+			InfSpinRELLBlNPC.Anchored = true
+			InfSpinRELLBlNPC.Transparency = 1
+			InfSpinRELLBlNPC.Size = Vector3.new(6, 1, 6)
+			--some functions that are important af
+			Autorejoin = true
+			player.startevent:FireServer("band", "\128")
+			player.PlayerGui.Main.RYOshop.ShopItems.HB.int.Text = "[DO NOT PURCHASE ANY ITEMS WHILE USING THE SCRIPT]"
+			player.PlayerGui.Main.RYOshop.ShopItems.HB.rellcloak.Text = "[DO NOT PURCHASE ANY ITEMS WHILE USING THE SCRIPT]"
+			player.PlayerGui.Main.RYOshop.ShopItems.HB.limited.Text = "[DO NOT PURCHASE ANY ITEMS WHILE USING THE SCRIPT]"
+			player.PlayerGui.Main.Customization.CharacterTab.Frame1.hair.color.Visible = false
+			player.PlayerGui.Main.Customization.CharacterTab.Frame1.hair.arrowleft.Visible = false
+			player.PlayerGui.Main.Customization.CharacterTab.Frame1.hair.arrowright.Visible = false
+			player.PlayerGui.Main.Customization.CharacterTab.Frame1.hair.custom.Visible = false
+			player.PlayerGui.Main.Customization.CharacterTab.Frame1.band.Visible = false
+			player.PlayerGui.Main.Customization.CharacterTab.Frame1.outfit.Visible = false
+			player.PlayerGui.Main.Customization.CharacterTab.Frame1.shoe.Visible = false
+			player.PlayerGui.Main.Customization.CharacterTab.Frame1.beard.Visible = false
+			player.PlayerGui.Main.Customization.CharacterTab.Frame1.face.Visible = false
+			player.PlayerGui.Main.Customization.CharacterTab.Frame2.Visible = false
+			game:GetService('RunService').Stepped:connect(function()
+				for i,v in pairs(player.PlayerGui.Main.Customization.CharacterTab.Frame1:GetChildren()) do
+					if v:FindFirstChild("text") then
+						v.text.Text = "You cannot customize character while inf spin"
+					end
+				end
+			end)
 		end
-		coroutine.resume(coroutine.create(DeleteGui))
-		
-		local Title = Instance.new("ImageLabel")
-		Title.Name = "Title"
-		Title.Parent = BLChangerMain
-		Title.BackgroundColor3 = Color3.new(1, 1, 1)
-		Title.BackgroundTransparency = 1
-		Title.Position = UDim2.new(0.125, 0, 0.075, 0)
-		Title.Size = UDim2.new(0, 30, 0, 30)
-		Title.Image = "rbxassetid://11586954811"
-		Title.ImageColor3 = Color3.new(1.020,1.020,1.020)
-		Title.ZIndex = 3
-		
-		local bg = Instance.new("ImageLabel")
-		bg.Name = "bg"
-		bg.Parent = Title
-		bg.BackgroundColor3 = Color3.new(1, 1, 1)
-		bg.BackgroundTransparency = 1
-		bg.Position = UDim2.new(0, 0, 0, 0)
-		bg.Size = UDim2.new(0, 30, 0, 30)
-		bg.Image = "rbxassetid://434411343"
-		bg.ImageColor3 = Color3.new(1.020,1.020,1.020)
-		bg.ZIndex = 2
-		
-		local amt = Instance.new("TextLabel")
-		amt.Name = "amt"
-		amt.Parent = Title
-		amt.BackgroundColor3 = Color3.new(1, 1, 1)
-		amt.BackgroundTransparency = 1
-		amt.Position = UDim2.new(1.1, 0, 0.25, 0)
-		amt.Size = UDim2.new(0, 200, 0, 20)
-		amt.Font = Enum.Font.SourceSansBold
-		amt.Text = "Shindo Auto Spin RELL Bloodline"
-		amt.TextColor3 = Color3.new(0, 0, 0)
-		amt.TextScaled = false
-		amt.TextSize = 17
-		amt.TextWrapped = false
-		amt.ZIndex = 2
-		
-		local line = Instance.new("TextLabel")
-		line.Name = "line"
-		line.Parent = Title
-		line.BackgroundColor3 = Color3.new(0, 0, 0)
-		line.BackgroundTransparency = 0
-		line.Position = UDim2.new(0.74, 0, 0.93, 0)
-		line.Size = UDim2.new(7.25, 0, 0.02, 0)
-		line.Font = Enum.Font.SourceSansBold
-		line.Text = ""
-		line.TextColor3 = Color3.new(0, 0, 0)
-		line.TextScaled = false
-		line.TextSize = 22
-		line.TextWrapped = false
-		line.ZIndex = 2
-		
-		local SettingsL = Instance.new("ImageLabel")
-		SettingsL.Name = "SettingsL"
-		SettingsL.Parent = BLChangerMain
-		SettingsL.BackgroundColor3 = Color3.new(1, 1, 1)
-		SettingsL.BackgroundTransparency = 1
-		SettingsL.Position = UDim2.new(0.16, 0, 0.2, 0)
-		SettingsL.Size = UDim2.new(0, 230, 0, 30)
-		SettingsL.Image = "rbxassetid://4823762651"
-		SettingsL.ImageColor3 = Color3.new(0, 0, 0)
-		SettingsL.ZIndex = 2
-		
-		local SettingsLabel = Instance.new("TextLabel")
-		SettingsLabel.Name = "SettingsLabel"
-		SettingsLabel.Parent = SettingsL
-		SettingsLabel.BackgroundColor3 = Color3.new(1, 1, 1)
-		SettingsLabel.BackgroundTransparency = 1
-		SettingsLabel.Position = UDim2.new(0, 0, 0.1, 0)
-		SettingsLabel.Size = UDim2.new(0, 250, 0, 20)
-		SettingsLabel.Font = Enum.Font.GothamBlack
-		SettingsLabel.Text = "???"
-		SettingsLabel.TextColor3 = Color3.new(1, 1, 1)
-		SettingsLabel.TextSize = 15
-		SettingsLabel.TextWrapped = false
-		SettingsLabel.TextStrokeColor3 = Color3.new(0, 0, 0)
-		SettingsLabel.ZIndex = 3
-		
-		local CreditsL2 = Instance.new("ImageLabel")
-		CreditsL2.Name = "CreditsL2"
-		CreditsL2.Parent = BLChangerMain
-		CreditsL2.BackgroundColor3 = Color3.new(1, 1, 1)
-		CreditsL2.BackgroundTransparency = 1
-		CreditsL2.Position = UDim2.new(0.15, 0, 0.4, 0)
-		CreditsL2.Size = UDim2.new(0, 230, 0, 30)
-		
-		CreditsL2.ImageColor3 = Color3.new(0, 0, 0)
-		CreditsL2.ZIndex = 2
-		
-		local CreditsLabel2 = Instance.new("TextLabel")
-		CreditsLabel2.Name = "CreditsLabel2"
-		CreditsLabel2.Parent = CreditsL2
-		CreditsLabel2.BackgroundColor3 = Color3.new(1, 1, 1)
-		CreditsLabel2.BackgroundTransparency = 1
-		CreditsLabel2.Position = UDim2.new(0, 0, 0.1, 0)
-		CreditsLabel2.Size = UDim2.new(0, 250, 0, 20)
-		CreditsLabel2.Font = Enum.Font.GothamBlack
-		CreditsLabel2.Text = "[Check]"
-		CreditsLabel2.TextColor3 = Color3.new(0, 0, 0)
-		CreditsLabel2.TextSize = 15
-		CreditsLabel2.TextWrapped = false
-		CreditsLabel2.TextStrokeColor3 = Color3.new(0, 0, 0)
-		CreditsLabel2.ZIndex = 3
-		
-		local line3 = Instance.new("TextLabel")
-		line3.Name = "line3"
-		line3.Parent = CreditsL2
-		line3.BackgroundColor3 = Color3.new(0, 0, 0)
-		line3.BackgroundTransparency = 0
-		line3.Position = UDim2.new(0.4, 0, 0.75, 0)
-		line3.Size = UDim2.new(0.29, 0, 0.02, 0)
-		line3.Font = Enum.Font.SourceSansBold
-		line3.Text = ""
-		line3.TextColor3 = Color3.new(0, 0, 0)
-		line3.TextScaled = false
-		line3.TextSize = 22
-		line3.TextWrapped = false
-		line3.ZIndex = 2
-		
-		local RSN = Instance.new("TextButton")
-		RSN.Name = "ResetSpinsNow"
-		RSN.Parent = BLChangerMain
-		RSN.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
-		RSN.BorderColor3 = Color3.new(0,0,0)
-		RSN.BorderSizePixel = 2
-		RSN.Position = UDim2.new(0.22, 0, 0.6, 0)
-		RSN.Size = UDim2.new(0, 200, 0, 20)
-		RSN.Font = Enum.Font.SourceSansBold
-		RSN.Text = "Huh?"
-		RSN.TextColor3 = Color3.new(1, 1, 1)
-		RSN.TextSize = 18
-		RSN.MouseButton1Click:connect(function()
-			RSN.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
-			print(":)")
-			RSN.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
-		end)
+
+	elseif game.PlaceId == 5451410109 then
+		for i,v in pairs(player.statz.main:GetChildren()) do
+			if v.Value == "RELL" then	
+				--Properties:
+				local ScreenGui = Instance.new("ScreenGui")
+				--LoadoutChanger.Name = "LoadoutChanger"
+				ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+				
+				local BLChangerMain = Instance.new("ImageLabel")
+				BLChangerMain.Name = "BLChangerMain"
+				BLChangerMain.Parent = ScreenGui
+				BLChangerMain.BackgroundColor3 = Color3.new(1, 1, 1)
+				BLChangerMain.BackgroundTransparency = 1
+				BLChangerMain.Position = UDim2.new(0.4, 0, 0.3, 0)
+				BLChangerMain.Size = UDim2.new(0, 350, 0, 350)
+				BLChangerMain.Visible = true
+				BLChangerMain.Active = true
+				BLChangerMain.Image = "rbxassetid://5089201291"
+				BLChangerMain.ImageColor3 = Color3.new(0.93,0.93,0.93)
+				BLChangerMain.SliceCenter = Rect.new(12, 12, 13, 13)
+				BLChangerMain.Draggable = true
+				
+				local XL = Instance.new("ImageButton")
+				XL.Name = "XL"
+				XL.Parent = BLChangerMain
+				XL.BackgroundColor3 = Color3.new(0.0588235, 0.0588235, 0.0588235)
+				XL.BackgroundTransparency = 1
+				XL.Position = UDim2.new(0.845, 0, 0.075, 0)
+				XL.Size = UDim2.new(0, 20, 0, 20)
+				XL.Image = "rbxassetid://5652699630"
+				XL.ImageColor3 = Color3.new(0.765,0.228,0.051)
+				
+				local X = Instance.new("TextButton")
+				X.Name = "X"
+				X.Parent = XL
+				X.BackgroundColor3 = Color3.new(0.0588235, 0.0588235, 0.0588235)
+				X.BackgroundTransparency = 1
+				X.BorderSizePixel = 0
+				X.Size = UDim2.new(0, 20, 0, 20)
+				X.Font = Enum.Font.GothamBlack
+				X.Text = "X"
+				X.TextColor3 = Color3.new(1, 1, 1)
+				X.TextScaled = false
+				X.TextSize = 13
+				X.TextWrapped = true
+				
+				function DeleteGui() -- X.LocalScript 
+					local script = Instance.new('LocalScript')
+					script.Parent = X
+					function OnClicked()
+						script.Parent.Parent.Parent.Parent.BLChangerMain:Destroy()
+					end
+					script.Parent.MouseButton1Down:Connect(OnClicked)
+				end
+				coroutine.resume(coroutine.create(DeleteGui))
+				
+				local Title = Instance.new("ImageLabel")
+				Title.Name = "Title"
+				Title.Parent = BLChangerMain
+				Title.BackgroundColor3 = Color3.new(1, 1, 1)
+				Title.BackgroundTransparency = 1
+				Title.Position = UDim2.new(0.125, 0, 0.075, 0)
+				Title.Size = UDim2.new(0, 30, 0, 30)
+				Title.Image = "rbxassetid://11586954811"
+				Title.ImageColor3 = Color3.new(1.020,1.020,1.020)
+				Title.ZIndex = 3
+				
+				local bg = Instance.new("ImageLabel")
+				bg.Name = "bg"
+				bg.Parent = Title
+				bg.BackgroundColor3 = Color3.new(1, 1, 1)
+				bg.BackgroundTransparency = 1
+				bg.Position = UDim2.new(0, 0, 0, 0)
+				bg.Size = UDim2.new(0, 30, 0, 30)
+				bg.Image = "rbxassetid://434411343"
+				bg.ImageColor3 = Color3.new(1.020,1.020,1.020)
+				bg.ZIndex = 2
+				
+				local amt = Instance.new("TextLabel")
+				amt.Name = "amt"
+				amt.Parent = Title
+				amt.BackgroundColor3 = Color3.new(1, 1, 1)
+				amt.BackgroundTransparency = 1
+				amt.Position = UDim2.new(1.1, 0, 0.25, 0)
+				amt.Size = UDim2.new(0, 200, 0, 20)
+				amt.Font = Enum.Font.SourceSansBold
+				amt.Text = "Shindo Auto Spin RELL Bloodline"
+				amt.TextColor3 = Color3.new(0, 0, 0)
+				amt.TextScaled = false
+				amt.TextSize = 17
+				amt.TextWrapped = false
+				amt.ZIndex = 2
+				
+				local line = Instance.new("TextLabel")
+				line.Name = "line"
+				line.Parent = Title
+				line.BackgroundColor3 = Color3.new(0, 0, 0)
+				line.BackgroundTransparency = 0
+				line.Position = UDim2.new(0.74, 0, 0.93, 0)
+				line.Size = UDim2.new(7.25, 0, 0.02, 0)
+				line.Font = Enum.Font.SourceSansBold
+				line.Text = ""
+				line.TextColor3 = Color3.new(0, 0, 0)
+				line.TextScaled = false
+				line.TextSize = 22
+				line.TextWrapped = false
+				line.ZIndex = 2
+				
+				local SettingsL = Instance.new("ImageLabel")
+				SettingsL.Name = "SettingsL"
+				SettingsL.Parent = BLChangerMain
+				SettingsL.BackgroundColor3 = Color3.new(1, 1, 1)
+				SettingsL.BackgroundTransparency = 1
+				SettingsL.Position = UDim2.new(0.16, 0, 0.2, 0)
+				SettingsL.Size = UDim2.new(0, 230, 0, 30)
+				SettingsL.Image = "rbxassetid://4823762651"
+				SettingsL.ImageColor3 = Color3.new(0, 0, 0)
+				SettingsL.ZIndex = 2
+				
+				local SettingsLabel = Instance.new("TextLabel")
+				SettingsLabel.Name = "SettingsLabel"
+				SettingsLabel.Parent = SettingsL
+				SettingsLabel.BackgroundColor3 = Color3.new(1, 1, 1)
+				SettingsLabel.BackgroundTransparency = 1
+				SettingsLabel.Position = UDim2.new(0, 0, 0.1, 0)
+				SettingsLabel.Size = UDim2.new(0, 250, 0, 20)
+				SettingsLabel.Font = Enum.Font.GothamBlack
+				SettingsLabel.Text = "???"
+				SettingsLabel.TextColor3 = Color3.new(1, 1, 1)
+				SettingsLabel.TextSize = 15
+				SettingsLabel.TextWrapped = false
+				SettingsLabel.TextStrokeColor3 = Color3.new(0, 0, 0)
+				SettingsLabel.ZIndex = 3
+				
+				local CreditsL2 = Instance.new("ImageLabel")
+				CreditsL2.Name = "CreditsL2"
+				CreditsL2.Parent = BLChangerMain
+				CreditsL2.BackgroundColor3 = Color3.new(1, 1, 1)
+				CreditsL2.BackgroundTransparency = 1
+				CreditsL2.Position = UDim2.new(0.15, 0, 0.4, 0)
+				CreditsL2.Size = UDim2.new(0, 230, 0, 30)
+				
+				CreditsL2.ImageColor3 = Color3.new(0, 0, 0)
+				CreditsL2.ZIndex = 2
+				
+				local CreditsLabel2 = Instance.new("TextLabel")
+				CreditsLabel2.Name = "CreditsLabel2"
+				CreditsLabel2.Parent = CreditsL2
+				CreditsLabel2.BackgroundColor3 = Color3.new(1, 1, 1)
+				CreditsLabel2.BackgroundTransparency = 1
+				CreditsLabel2.Position = UDim2.new(0, 0, 0.1, 0)
+				CreditsLabel2.Size = UDim2.new(0, 250, 0, 20)
+				CreditsLabel2.Font = Enum.Font.GothamBlack
+				CreditsLabel2.Text = "[Check]"
+				CreditsLabel2.TextColor3 = Color3.new(0, 0, 0)
+				CreditsLabel2.TextSize = 15
+				CreditsLabel2.TextWrapped = false
+				CreditsLabel2.TextStrokeColor3 = Color3.new(0, 0, 0)
+				CreditsLabel2.ZIndex = 3
+				
+				local line3 = Instance.new("TextLabel")
+				line3.Name = "line3"
+				line3.Parent = CreditsL2
+				line3.BackgroundColor3 = Color3.new(0, 0, 0)
+				line3.BackgroundTransparency = 0
+				line3.Position = UDim2.new(0.4, 0, 0.75, 0)
+				line3.Size = UDim2.new(0.29, 0, 0.02, 0)
+				line3.Font = Enum.Font.SourceSansBold
+				line3.Text = ""
+				line3.TextColor3 = Color3.new(0, 0, 0)
+				line3.TextScaled = false
+				line3.TextSize = 22
+				line3.TextWrapped = false
+				line3.ZIndex = 2
+				
+				local RSN = Instance.new("TextButton")
+				RSN.Name = "ResetSpinsNow"
+				RSN.Parent = BLChangerMain
+				RSN.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+				RSN.BorderColor3 = Color3.new(0,0,0)
+				RSN.BorderSizePixel = 2
+				RSN.Position = UDim2.new(0.22, 0, 0.6, 0)
+				RSN.Size = UDim2.new(0, 200, 0, 20)
+				RSN.Font = Enum.Font.SourceSansBold
+				RSN.Text = "Huh?"
+				RSN.TextColor3 = Color3.new(1, 1, 1)
+				RSN.TextSize = 18
+				RSN.MouseButton1Click:connect(function()
+					RSN.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
+					print(":)")
+					RSN.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+				end)
+			end
+		end
 	else
 		print("L")
 	end
