@@ -2814,6 +2814,40 @@ local function ShindoDungeons()
 		end
 	end)
 
+	section2:addTextbox("Track selected player","Player's Name",function(ripthatguy)
+		notify("Player Selected: " .. ripthatguy)
+		Target = ripthatguy
+	end)
+
+	local trackthatguy = false
+	section2:addToggle("Track Player",false,function(bool)
+		trackthatguy = bool
+		local platform = Instance.new("Part", player.Character)
+		platform.Anchored = true
+		platform.Transparency = 1
+		platform.Size = Vector3.new(6, 1, 6)
+
+		local connection
+		connection = game:GetService("RunService").RenderStepped:connect(function()
+			if player.Character:FindFirstChild("HumanoidRootPart") and game.Players:FindFirstChild(Target) then
+				platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -1.8, 0)
+			else
+				connection:Disconnect()
+			end
+		end)
+		game:GetService('RunService').Stepped:connect(function()
+			if trackthatguy ~= true then
+				platform:Destroy()
+			end
+		end)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if trackthatguy == true and player.Character:FindFirstChild("HumanoidRootPart") and game.Players:FindFirstChild(Target) then
+			player.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame * CFrame.new(0, 5, 10)
+			game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game.Players[Target].Character.HumanoidRootPart.Position)
+		end
+	end)
+
 	-- second page
 	local page2 = NoobieDoge:addPage("Misc", 5012544693)
 	local section1 = page2:addSection("Game Functions")
@@ -4705,17 +4739,12 @@ local function ShindoEventBoss()
 		end
 	end)
 
-	local playerlist = {}
-	for i,v in pairs(game:GetService("Players"):GetPlayers()) do
-		if v.Name ~= player.Name then
-			table.insert(playerlist, v.Name)
-		end
-	end
-	section2:addDropdown("Track selected player",playerlist,function(ripthatguy)
+	section2:addTextbox("Track selected player","Player's Name",function(ripthatguy)
 		notify("Player Selected: " .. ripthatguy)
 		Target = ripthatguy
 	end)
 
+	local trackthatguy = false
 	section2:addToggle("Track Player",false,function(bool)
 		trackthatguy = bool
 		local platform = Instance.new("Part", player.Character)
@@ -4725,7 +4754,7 @@ local function ShindoEventBoss()
 
 		local connection
 		connection = game:GetService("RunService").RenderStepped:connect(function()
-			if player.Character:FindFirstChild("HumanoidRootPart") then
+			if player.Character:FindFirstChild("HumanoidRootPart") and game.Players:FindFirstChild(Target) then
 				platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -1.8, 0)
 			else
 				connection:Disconnect()
@@ -4738,14 +4767,10 @@ local function ShindoEventBoss()
 		end)
 	end)
 	game:GetService('RunService').Stepped:connect(function()
-		if trackthatguy == true then
+		if trackthatguy == true and player.Character:FindFirstChild("HumanoidRootPart") and game.Players:FindFirstChild(Target) then
 			player.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame * CFrame.new(0, 5, 10)
 			game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game.Players[Target].Character.HumanoidRootPart.Position)
 		end
-	end)
-
-	section2:addButton("Refesh Players List",function()
-		section2:updateDropdown("Track selected player","Track selected player",playerlist)
 	end)
 
 	-- load
@@ -5979,17 +6004,12 @@ local function ShindoBoruVSKamaki()
 		end
 	end)
 
-	local playerlist = {}
-	for i,v in pairs(game:GetService("Players"):GetPlayers()) do
-		if v.Name ~= player.Name then
-			table.insert(playerlist, v.Name)
-		end
-	end
-	section2:addDropdown("Track selected player",playerlist,function(ripthatguy)
+	section2:addTextbox("Track selected player","Player's Name",function(ripthatguy)
 		notify("Player Selected: " .. ripthatguy)
 		Target = ripthatguy
 	end)
 
+	local trackthatguy = false
 	section2:addToggle("Track Player",false,function(bool)
 		trackthatguy = bool
 		local platform = Instance.new("Part", player.Character)
@@ -5999,7 +6019,7 @@ local function ShindoBoruVSKamaki()
 
 		local connection
 		connection = game:GetService("RunService").RenderStepped:connect(function()
-			if player.Character:FindFirstChild("HumanoidRootPart") then
+			if player.Character:FindFirstChild("HumanoidRootPart") and game.Players:FindFirstChild(Target) then
 				platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -1.8, 0)
 			else
 				connection:Disconnect()
@@ -6012,14 +6032,10 @@ local function ShindoBoruVSKamaki()
 		end)
 	end)
 	game:GetService('RunService').Stepped:connect(function()
-		if trackthatguy == true then
+		if trackthatguy == true and player.Character:FindFirstChild("HumanoidRootPart") and game.Players:FindFirstChild(Target) then
 			player.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame * CFrame.new(0, 5, 10)
 			game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game.Players[Target].Character.HumanoidRootPart.Position)
 		end
-	end)
-
-	section2:addButton("Refesh Players List",function()
-		section2:updateDropdown("Track selected player","Track selected player",playerlist)
 	end)
 
 	-- load
@@ -7590,27 +7606,22 @@ local function AXSSComps()
 			end
 		end)
 
-		local playerlist = {}
-		for i,v in pairs(game:GetService("Players"):GetPlayers()) do
-			if v.Name ~= player.Name then
-				table.insert(playerlist, v.Name)
-			end
-		end
-		section2:addDropdown("Track selected player",playerlist,function(ripthatguy)
+		section2:addTextbox("Track selected player","Player's Name",function(ripthatguy)
 			notify("Player Selected: " .. ripthatguy)
 			Target = ripthatguy
 		end)
-
+	
+		local trackthatguy = false
 		section2:addToggle("Track Player",false,function(bool)
 			trackthatguy = bool
 			local platform = Instance.new("Part", player.Character)
 			platform.Anchored = true
 			platform.Transparency = 1
 			platform.Size = Vector3.new(6, 1, 6)
-
+	
 			local connection
 			connection = game:GetService("RunService").RenderStepped:connect(function()
-				if player.Character:FindFirstChild("HumanoidRootPart") then
+				if player.Character:FindFirstChild("HumanoidRootPart") and game.Players:FindFirstChild(Target) then
 					platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -1.8, 0)
 				else
 					connection:Disconnect()
@@ -7623,14 +7634,10 @@ local function AXSSComps()
 			end)
 		end)
 		game:GetService('RunService').Stepped:connect(function()
-			if trackthatguy == true then
+			if trackthatguy == true and player.Character:FindFirstChild("HumanoidRootPart") and game.Players:FindFirstChild(Target) then
 				player.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame * CFrame.new(0, 5, 10)
 				game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game.Players[Target].Character.HumanoidRootPart.Position)
 			end
-		end)
-
-		section2:addButton("Refesh Players List",function()
-			section2:updateDropdown("Track selected player","Track selected player",playerlist)
 		end)
 
 		-- load
@@ -8733,17 +8740,12 @@ local function ShindoMain()
 		end
 	end)
 
-	local playerlist = {}
-	for i,v in pairs(game:GetService("Players"):GetPlayers()) do
-		if v.Name ~= player.Name then
-			table.insert(playerlist, v.Name)
-		end
-	end
-	section2:addDropdown("Track selected player",playerlist,function(ripthatguy)
+	section2:addTextbox("Track selected player","Player's Name",function(ripthatguy)
 		notify("Player Selected: " .. ripthatguy)
 		Target = ripthatguy
 	end)
 
+	local trackthatguy = false
 	section2:addToggle("Track Player",false,function(bool)
 		trackthatguy = bool
 		local platform = Instance.new("Part", player.Character)
@@ -8753,7 +8755,7 @@ local function ShindoMain()
 
 		local connection
 		connection = game:GetService("RunService").RenderStepped:connect(function()
-			if player.Character:FindFirstChild("HumanoidRootPart") then
+			if player.Character:FindFirstChild("HumanoidRootPart") and game.Players:FindFirstChild(Target) then
 				platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -1.8, 0)
 			else
 				connection:Disconnect()
@@ -8766,14 +8768,10 @@ local function ShindoMain()
 		end)
 	end)
 	game:GetService('RunService').Stepped:connect(function()
-		if trackthatguy == true then
+		if trackthatguy == true and player.Character:FindFirstChild("HumanoidRootPart") and game.Players:FindFirstChild(Target) then
 			player.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame * CFrame.new(0, 5, 10)
 			game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game.Players[Target].Character.HumanoidRootPart.Position)
 		end
-	end)
-
-	section2:addButton("Refesh Players List",function()
-		section2:updateDropdown("Track selected player","Track selected player",playerlist)
 	end)
 
 	-- load
