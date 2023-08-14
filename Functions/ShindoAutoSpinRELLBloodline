@@ -298,14 +298,31 @@ if game.GameId == 1511883870 then
 		SSD.TextColor3 = Color3.new(1, 1, 1)
 		SSD.TextSize = 18
 		SSD.MouseButton1Click:connect(function()
-			SSD.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
-			game.Players.LocalPlayer.startevent:FireServer("band", "Eye")
-			wait()
-			local args = {[1] = "arenateleport",[2] = 5451410109}
-			player.startevent:FireServer(unpack(args))
-			SSD.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+			local SSD1 = Instance.new("TextButton")
+			SSD1.Name = "SaveSpinsData1"
+			SSD1.Parent = ScrollingFrame
+			SSD1.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+			SSD1.BorderColor3 = Color3.new(0,0,0)
+			SSD1.BorderSizePixel = 2
+			SSD1.Position = UDim2.new(0.075, 0, 0.18, 0)
+			SSD1.Size = UDim2.new(0, 200, 0, 20)
+			SSD1.Font = Enum.Font.SourceSansBold
+			SSD1.Text = "Are you sure?"
+			SSD1.TextColor3 = Color3.new(1, 1, 1)
+			SSD1.TextSize = 18
+			SSD1.Transparency = 0
+			SSD1.MouseButton1Click:connect(function()
+
+				SSD1.BackgroundColor3 = Color3.new(0.3, 0.8, 0.3)
+				game.Players.LocalPlayer.startevent:FireServer("band", "Eye")
+				wait()
+				local args = {[1] = "arenateleport",[2] = 5451410109}
+				player.startevent:FireServer(unpack(args))
+				SSD1.BackgroundColor3 = Color3.new(0.2333333, 0.49, 0)
+			end)
 		end)
 		
+
 		local OurScriptL = Instance.new("ImageLabel")
 		OurScriptL.Name = "OurScriptL"
 		OurScriptL.Parent = ScrollingFrame
