@@ -445,13 +445,7 @@ local function Universal()
 		end
 	end)
 
-	local playerlist = {}
-	for i,v in pairs(game:GetService("Players"):GetPlayers()) do
-		if v.Name ~= player.Name then
-			table.insert(playerlist, v.Name)
-		end
-	end
-	section2:addDropdown("Track selected player",playerlist,function(ripthatguy)
+	section2:addTextbox("Track selected player","Player's Name",function(ripthatguy)
 		notify("Player Selected: " .. ripthatguy)
 		Target = ripthatguy
 	end)
@@ -466,7 +460,7 @@ local function Universal()
 
 		local connection
 		connection = game:GetService("RunService").RenderStepped:connect(function()
-			if player.Character:FindFirstChild("HumanoidRootPart") then
+			if player.Character:FindFirstChild("HumanoidRootPart") and game.Players:FindFirstChild(Target) then
 				platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -1.8, 0)
 			else
 				connection:Disconnect()
@@ -479,14 +473,10 @@ local function Universal()
 		end)
 	end)
 	game:GetService('RunService').Stepped:connect(function()
-		if trackthatguy == true then
+		if trackthatguy == true and player.Character:FindFirstChild("HumanoidRootPart") and game.Players:FindFirstChild(Target) then
 			player.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame * CFrame.new(0, 5, 10)
 			game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game.Players[Target].Character.HumanoidRootPart.Position)
 		end
-	end)
-
-	section2:addButton("Refesh Players List",function()
-		section2:updateDropdown("Track selected player","Track selected player",playerlist)
 	end)
 
 	-- load
