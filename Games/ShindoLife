@@ -10158,11 +10158,11 @@ local function ShindoMain()
 					if v:WaitForChild("Talk"):WaitForChild("mobname") then
 						local getmission = v:FindFirstChild("HumanoidRootPart")
 						local clienttalk = v:FindFirstChild("CLIENTTALK")
-						repeat
-							player.Character.HumanoidRootPart.CFrame=getmission.CFrame+Vector3.new(0,3,0)
+						player.Character.HumanoidRootPart.CFrame=getmission.CFrame+Vector3.new(0,3,0)
+						repeat task.wait()
 							clienttalk:FireServer()
 							clienttalk:FireServer("accept")
-							wait()
+							wait(1.5)
 						until mission.Visible or mission.title.text == "[Objective: Mission]" or not mobs
 					end
 				end
@@ -10174,39 +10174,47 @@ local function ShindoMain()
 		if random_boss then
 			if game.PlaceId == 7923764447 then
 				for i,v in pairs(workspace.sengokubossfight.missions:GetChildren()) do
-					if v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
-						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
-						local args = {[1] = player}
-						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
-						wait()
+					if v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") and not mission.Visible  then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
+						repeat task.wait()
+							player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
+							local args = {[1] = player}
+							v.missiongiver.CLIENTTALK:FireServer(unpack(args))
+							wait(1.5)
+						until mission.Visible or mission.title.text == "[Objective: Mission]" or not mobs
 					end
 				end
 			end
 			for i,v in pairs(workspace.bossdropmission.missions:GetChildren()) do
-				if v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
-					player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
-					local args = {[1] = player}
-					v.missiongiver.CLIENTTALK:FireServer(unpack(args))
-					wait()
+				if v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") and not mission.Visible  then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
+					repeat task.wait()
+						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
+						local args = {[1] = player}
+						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
+						wait(1.5)
+					until mission.Visible or mission.title.text == "[Objective: Mission]" or not mobs
 				end
 			end
 		elseif specific_boss then
 			if game.PlaceId == 7923764447 then
 				for i,v in pairs(workspace.sengokubossfight.missions:GetChildren()) do
-					if v.Name == selected_boss and v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
-						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
-						local args = {[1] = player}
-						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
-						wait()
+					if v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") and not mission.Visible  then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
+						repeat task.wait()
+							player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
+							local args = {[1] = player}
+							v.missiongiver.CLIENTTALK:FireServer(unpack(args))
+							wait(1.5)
+						until mission.Visible or mission.title.text == "[Objective: Mission]" or not mobs
 					end
 				end
 			end
 			for i,v in pairs(workspace.bossdropmission.missions:GetChildren()) do
-				if v.Name == selected_boss and v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
-					player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
-					local args = {[1] = player}
-					v.missiongiver.CLIENTTALK:FireServer(unpack(args))
-					wait()
+				if v:FindFirstChild("missiongiver") and v.missiongiver:FindFirstChild("timer") and v.missiongiver.timer:FindFirstChild("time") and v.missiongiver.timer.time:FindFirstChild("time") and (v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59") and not mission.Visible  then --and v.missiongiver.timer.time.time.Text == "59:59" then --or v.missiongiver.timer.time.time.Text == "00:00" or v.missiongiver.timer.time.time.Text == "59:59" then
+					repeat task.wait()
+						player.Character.HumanoidRootPart.CFrame=v.missiongiver.HumanoidRootPart.CFrame+Vector3.new(0,-0.8,0)
+						local args = {[1] = player}
+						v.missiongiver.CLIENTTALK:FireServer(unpack(args))
+						wait(1.5)
+					until mission.Visible or mission.title.text == "[Objective: Mission]" or not mobs
 				end
 			end
 		else
@@ -10274,7 +10282,7 @@ local function ShindoMain()
 					if(string.find(mobname,"(s)")) then
 						mobname = string.gsub(mobname,"(s)","")
 					end
-					if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and not v:FindFirstChild("fullsusanoo") and v.Head.CFrame.Y > -1000 then
+					if v and v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and not v:FindFirstChild("fullsusanoo") and v.Head.CFrame.Y > -1000 then
 						repeat
 							pcall(function()
 								v.Humanoid.Health = 0
@@ -10290,7 +10298,7 @@ local function ShindoMain()
 								wait(.000000000000001)
 								v.Humanoid.Health = 0
 							end)
-						until not v:FindFirstChild("Humanoid") or mission.Visible == false or (not autofarm and not boss and not megaboss) or not v
+						until not v:FindFirstChild("Humanoid") or mission.Visible == false or (not autofarm and not boss and not megaboss) or not v or not game.Workspace.npc:FindFirstChild(v)
 					end
 				end
 			elseif SpamGOBRRRRR and SpamOnlyInMissions then
@@ -10299,7 +10307,7 @@ local function ShindoMain()
 					if(string.find(mobname,"(s)")) then
 						mobname = string.gsub(mobname,"(s)","")
 					end
-					if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and not v:FindFirstChild("fullsusanoo") and v.Head.CFrame.Y > -1000 then
+					if v and v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and not v:FindFirstChild("fullsusanoo") and v.Head.CFrame.Y > -1000 then
 						player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 15, 0)
 						repeat wait()
 							pcall(function()
@@ -10324,7 +10332,7 @@ local function ShindoMain()
 									v.Humanoid.Health = 0
 								end)
 							end)
-						until not v:FindFirstChild("Humanoid") or mission.Visible == false or (not autofarm and not boss and not megaboss) or not v
+						until not v:FindFirstChild("Humanoid") or mission.Visible == false or (not autofarm and not boss and not megaboss) or not v or not game.Workspace.npc:FindFirstChild(v)
 					end
 				end
 			else
@@ -10333,7 +10341,7 @@ local function ShindoMain()
 					if(string.find(mobname,"(s)")) then
 						mobname = string.gsub(mobname,"(s)","")
 					end
-					if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and not v:FindFirstChild("fullsusanoo") and v.Head.CFrame.Y > -1000 then
+					if v and v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and not v:FindFirstChild("fullsusanoo") and v.Head.CFrame.Y > -1000 then
 						player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 15, 0)
 						repeat wait()
 							pcall(function()
@@ -10352,7 +10360,7 @@ local function ShindoMain()
 									v.Humanoid.Health = 0
 								end)
 							end)
-						until not v:FindFirstChild("Humanoid") or mission.Visible == false or (not autofarm and not boss and not megaboss) or not v
+						until not v:FindFirstChild("Humanoid") or mission.Visible == false or (not autofarm and not boss and not megaboss) or not v or not game.Workspace.npc:FindFirstChild(v)
 					end
 				end
 			end
