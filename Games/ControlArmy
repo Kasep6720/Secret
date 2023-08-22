@@ -161,7 +161,7 @@ local function ArmyControlMain()
 	}
 
 	-- first page
-	local page1 = NoobieDoge:addPage("Universal", 5012544693)
+	local page1 = NoobieDoge:addPage("Universal", 9526824538)
 	local section1 = page1:addSection("Walk Speed & Jump Power & Gravity")
 	local section2 = page1:addSection("Other Functions")
 
@@ -487,7 +487,7 @@ local function ArmyControlMain()
 	NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
 	
 	-- second page
-	local page2 = NoobieDoge:addPage("Misc", 5012544693)
+	local page2 = NoobieDoge:addPage("Misc", 9526824538)
 	local section1 = page2:addSection("Auto Use Dispensers (Club Members Only)")
 	local section2 = page2:addSection("Auto Use Lucky Wheel (Club Members Only)")
 	local section3 = page2:addSection("Game Functions")
@@ -539,7 +539,7 @@ local function ArmyControlMain()
 	end)
 	
 	-- third page
-	local page3 = NoobieDoge:addPage("Auto Farm", 5012544693)
+	local page3 = NoobieDoge:addPage("Auto Farm", 9526824538)
 	local section1 = page3:addSection("Auto Farm")
 	local section2 = page3:addSection("Farming Targets")
 	local section3 = page3:addSection("Boss Farm")
@@ -1249,7 +1249,7 @@ local function ArmyControlMain()
 	end)
 
 	-- forth page
-	local page4 = NoobieDoge:addPage("Open Shops", 5012544693)
+	local page4 = NoobieDoge:addPage("Open Shops", 9526824538)
 	local section1 = page4:addSection("Forest")
 	local section2 = page4:addSection("Riverlands")
 	local section3 = page4:addSection("Mountains")
@@ -1498,7 +1498,7 @@ local function ArmyControlMain()
 	end]]
 
 	-- fifth page
-	local page5 = NoobieDoge:addPage("NPCs", 5012544693)
+	local page5 = NoobieDoge:addPage("NPCs", 9526824538)
 	local section1 = page5:addSection("Quests")
 	local section2 = page5:addSection("Misc")
 
@@ -1773,7 +1773,7 @@ local function ArmyControlMain()
 	end]]
 
 	-- sixth page
-	local page6 = NoobieDoge:addPage("Teleports", 5012544693)
+	local page6 = NoobieDoge:addPage("Teleports", 9526824538)
 	local section1 = page6:addSection("Forest")
 	local section2 = page6:addSection("Riverlands")
 	local section3 = page6:addSection("Mountains")
@@ -1923,7 +1923,7 @@ local function ArmyControlMain()
 	end)
 
 	-- last page
-	local pagelast = NoobieDoge:addPage("Settings", 5012544693)
+	local pagelast = NoobieDoge:addPage("Settings", 9526824538)
 	local settings = pagelast:addSection("Settings")
 	local colors = pagelast:addSection("Colors")
 	local credits = pagelast:addSection("Credits")
@@ -2222,7 +2222,7 @@ local function ArmyControlRaid()
 	}
 
 	-- first page
-	local page1 = NoobieDoge:addPage("Universal", 5012544693)
+	local page1 = NoobieDoge:addPage("Universal", 9526824538)
 	local section1 = page1:addSection("Walk Speed & Jump Power & Gravity")
 	local section2 = page1:addSection("Other Functions")
 
@@ -2558,7 +2558,7 @@ local function ArmyControlRaid()
 	NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
 	
 	-- second page
-	local page2 = NoobieDoge:addPage("Misc", 5012544693)
+	local page2 = NoobieDoge:addPage("Misc", 9526824538)
 	local section1 = page2:addSection("Auto Use Dispensers (Club Members Only)")
 	local section2 = page2:addSection("Game Functions")
 
@@ -2591,7 +2591,7 @@ local function ArmyControlRaid()
 	end)
 	
 	-- third page
-	local page3 = NoobieDoge:addPage("Auto Farm", 5012544693)
+	local page3 = NoobieDoge:addPage("Auto Farm", 9526824538)
 	local section1 = page3:addSection("Auto Farm")
 	local section2 = page3:addSection("Auto Farm Settings")
 
@@ -2817,7 +2817,7 @@ local function ArmyControlRaid()
 	end)
 
 	-- forth page
-	local page4 = NoobieDoge:addPage("NPCs", 5012544693)
+	local page4 = NoobieDoge:addPage("NPCs", 9526824538)
 	local section1 = page4:addSection("Misc")
 	
 	section1:addButton("I'll buy your stuff (Forest) (Sell Items)",function()
@@ -2831,7 +2831,7 @@ local function ArmyControlRaid()
 	end)
 
 	-- sixth page
-	local page6 = NoobieDoge:addPage("Teleports", 5012544693)
+	local page6 = NoobieDoge:addPage("Teleports", 9526824538)
 	local section1 = page6:addSection("Stage 0")
 	local section2 = page6:addSection("Stages")
 
@@ -2889,7 +2889,7 @@ local function ArmyControlRaid()
 	end)
 	
 	-- last page
-	local pagelast = NoobieDoge:addPage("Settings", 5012544693)
+	local pagelast = NoobieDoge:addPage("Settings", 9526824538)
 	local settings = pagelast:addSection("Settings")
 	local colors = pagelast:addSection("Colors")
 	local credits = pagelast:addSection("Credits")
