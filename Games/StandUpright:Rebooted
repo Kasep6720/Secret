@@ -3216,7 +3216,7 @@ local function StandUprightRebootedMain()
 			table.insert(STANDSLIST, v.Name)
 		end
 	end
-	local ATTRIBUTESLIST = {"None","Cheerful","Strong","Powerful","Manic","Tough","Enrage","Sloppy","Lethargic","Godly","Daemon","Invincible","Tragic","Glass Cannon","Hacker","Legendary"}
+	local ATTRIBUTESLIST = {"None","Cheerful","Strong","Powerful","Manic","Tough","Enrage","Sloppy","Lethargic","Godly","Daemon","Invincible","Tragic","Glass Cannon","Hacker","Legendary","Diabolical"}
 
 	section2:addDropdown("Stand Choice 1",STANDSLIST,function(S1)
 		print("Selected: " .. S1)
@@ -4077,8 +4077,787 @@ local function StandUprightRebootedMain()
 
 end
 
-if game.GameId == 3258251641 then
+--Stand Upright: Rebooted 1v1 Matchmaking Lobby
+local function StandUprightRebooted1v1MatchmakingLobby()
+	local player = game.Players.LocalPlayer
+	local ScreenGuiK = Instance.new("ScreenGui")
+	local Frame = Instance.new("ImageLabel")
+	local TextLabelFrame = Instance.new("ImageLabel")
+	local TextLabel = Instance.new("TextLabel")
+	local Frame2 = Instance.new("ImageLabel")
+	local TextLabel2 = Instance.new("TextLabel")
+	local TextButton = Instance.new("ImageButton")
+	local TextButtonText = Instance.new("TextButton")
+	local TextButton2 = Instance.new("ImageButton")
+	local TextButtonText2 = Instance.new("TextButton")
+	local TextButton3 = Instance.new("ImageButton")
+	local TextButtonText3 = Instance.new("TextButton")
+	local TextButton4 = Instance.new("ImageButton")
+	local TextButtonText4 = Instance.new("TextButton")
+	local TextButton5 = Instance.new("ImageButton")
+	local TextButtonText5 = Instance.new("TextButton")
+	local TextButton6 = Instance.new("ImageButton")
+	local TextButtonText6 = Instance.new("TextButton")
+	local TextButton7 = Instance.new("ImageButton")
+	local TextButtonText7 = Instance.new("TextButton")
+
+	ScreenGuiK.Parent = player:WaitForChild("PlayerGui")
+
+	Frame.Parent = ScreenGuiK
+	Frame.Name = "Main"
+	Frame.BackgroundTransparency = 1
+	Frame.Position = UDim2.new(0.25, 0, 0.052435593, 0)
+	Frame.Size = UDim2.new(0, 511, 0, 270)
+	Frame.Image = "rbxassetid://4641149554"
+	Frame.ImageColor3 = Color3.fromRGB(24, 24, 24)
+	Frame.ScaleType = Enum.ScaleType.Slice
+	Frame.SliceCenter = Rect.new(4, 4, 296, 296)
+	Frame.Active = true
+	Frame.Draggable = true
+
+	TextLabelFrame.Parent = Frame
+	TextLabelFrame.Name = "TopBar"
+	TextLabelFrame.BackgroundTransparency = 1
+	TextLabelFrame.ClipsDescendants = true
+	TextLabelFrame.Size = UDim2.new(1, 0, 0, 38)
+	TextLabelFrame.ZIndex = 2
+	TextLabelFrame.Image = "rbxassetid://4595286933"
+	TextLabelFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
+	TextLabelFrame.ScaleType = Enum.ScaleType.Slice
+	TextLabelFrame.SliceCenter = Rect.new(4, 4, 296, 296)
+
+	TextLabel.Parent = Frame
+	TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+	TextLabel.Position = UDim2.new(0, 12, 0, 19)
+	TextLabel.BackgroundTransparency = 1
+	TextLabel.Size = UDim2.new(1, -46, 0, 16)
+	TextLabel.ZIndex = 3
+	TextLabel.Font = Enum.Font.GothamBold
+	TextLabel.Text = "DogeHub V2"
+	TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+	TextLabel.TextScaled = false
+	TextLabel.TextSize = 15.000
+	TextLabel.TextWrapped = true
+	TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+
+	Frame2.Parent = Frame
+	Frame2.Name = "Main"
+	Frame2.BackgroundTransparency = 1
+	Frame2.Position = UDim2.new(0.04, 0, 0.175, 0)
+	Frame2.Size = UDim2.new(0, 471, 0, 100)
+	Frame2.Image = "rbxassetid://4641149554"
+	Frame2.ImageColor3 = Color3.fromRGB(41, 41, 41)
+	Frame2.ScaleType = Enum.ScaleType.Slice
+	Frame2.SliceCenter = Rect.new(4, 4, 296, 296)
+	Frame2.Active = true
+	Frame2.Draggable = true
+
+	TextLabel2.Parent = Frame2
+	TextLabel2.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+	TextLabel2.Position = UDim2.new(0, 12, -0.1, 0)
+	TextLabel2.BackgroundTransparency = 1
+	TextLabel2.Size = UDim2.new(1, -26, 0, 120)
+	TextLabel2.ZIndex = 3
+	TextLabel2.Font = Enum.Font.GothamBold
+	TextLabel2.Text = "Why would you execute here bruh."
+	TextLabel2.TextColor3 = Color3.fromRGB(200, 200, 200)
+	TextLabel2.TextScaled = false
+	TextLabel2.TextSize = 39.000
+	TextLabel2.TextWrapped = true
+
+	TextButton.Parent = Frame
+	TextButton.Name = "Button"
+	TextButton.BackgroundTransparency = 1
+	TextButton.Position = UDim2.new(0.04, 0, 0.6, 0)
+	TextButton.BorderSizePixel = 0
+	TextButton.Size = UDim2.new(0, 471, 0, 45)
+	TextButton.ZIndex = 2
+	TextButton.Image = "rbxassetid://5028857472"
+	TextButton.ImageColor3 = Color3.fromRGB(41, 41, 41)
+	TextButton.ScaleType = Enum.ScaleType.Slice
+	TextButton.SliceCenter = Rect.new(2, 2, 298, 298)
+	TextButton.Visible = true
+
+	TextButtonText.Parent = TextButton
+	TextButtonText.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+	TextButtonText.BackgroundTransparency = 1
+	TextButtonText.ZIndex = 3
+	TextButtonText.Size = UDim2.new(0, 471, 0, 45)
+	TextButtonText.Font = Enum.Font.GothamSemibold
+	TextButtonText.Text = "Cuz yes"
+	TextButtonText.TextColor3 = Color3.fromRGB(200, 200, 200)
+	TextButtonText.TextScaled = false
+	TextButtonText.TextSize = 25.000
+	TextButtonText.TextWrapped = true
+	TextButtonText.Visible = true
+
+	TextButton2.Parent = Frame
+	TextButton2.Name = "Button"
+	TextButton2.BackgroundTransparency = 1
+	TextButton2.Position = UDim2.new(0.04, 0, 0.8, 0)
+	TextButton2.BorderSizePixel = 0
+	TextButton2.Size = UDim2.new(0, 471, 0, 45)
+	TextButton2.ZIndex = 2
+	TextButton2.Image = "rbxassetid://5028857472"
+	TextButton2.ImageColor3 = Color3.fromRGB(41, 41, 41)
+	TextButton2.ScaleType = Enum.ScaleType.Slice
+	TextButton2.SliceCenter = Rect.new(2, 2, 298, 298)
+	TextButton2.Visible = true
+
+	TextButtonText2.Parent = TextButton2
+	TextButtonText2.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+	TextButtonText2.BackgroundTransparency = 1
+	TextButtonText2.ZIndex = 3
+	TextButtonText2.Size = UDim2.new(0, 471, 0, 45)
+	TextButtonText2.Font = Enum.Font.GothamSemibold
+	TextButtonText2.Text = "I accidentally pressed it"
+	TextButtonText2.TextColor3 = Color3.fromRGB(200, 200, 200)
+	TextButtonText2.TextScaled = false
+	TextButtonText2.TextSize = 25.000
+	TextButtonText2.TextWrapped = true
+	TextButtonText2.Visible = true
+
+	function DELUI()
+		for i,v in pairs(player.PlayerGui:GetChildren()) do
+			if v.Name == "ScreenGui" then
+				v:Destroy()
+			end
+		end
+		notify("Bruh")
+	end
+	TextButton2.MouseButton1Click:connect(DELUI)
+	TextButtonText2.MouseButton1Click:connect(DELUI)
+	TextButton.MouseButton1Click:connect(DELUI)
+	TextButtonText.MouseButton1Click:connect(DELUI)
+end
+
+--Stand Upright: Rebooted Gang War Queueing Lobby
+local function StandUprightRebootedGangWarQueueingLobby()
+	--DogeHub V2 GUI
+	local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20page%20format%20gui"))()
+	local NoobieDoge = library.new("DogeHub V2", 5013109572)
+
+	-- themes
+	local themes = {
+	Background = Color3.fromRGB(24, 24, 24),
+	Glow = Color3.fromRGB(0, 0, 0),
+	Accent = Color3.fromRGB(10, 10, 10),
+	LightContrast = Color3.fromRGB(20, 20, 20),
+	DarkContrast = Color3.fromRGB(14, 14, 14),  
+	TextColor = Color3.fromRGB(255, 255, 255)
+	}
+
+	-- first page
+	local page1 = NoobieDoge:addPage("Universal", 5927656531)
+	local section1 = page1:addSection("Walk Speed & Jump Power & Gravity")
+	local section2 = page1:addSection("Other Functions")
+
+	local originalwalkspeed = 16
+	local originaljumppower = 50
+	local originalgravity = game:GetService("Workspace").Gravity
+
+	section1:addSlider("Walk Speed", originalwalkspeed, 0, 500, function(value)
+		sliderspeed = value
+	end)
+	section1:addSlider("Jump Power", originaljumppower, 0, 500, function(value)
+		sliderjump = value
+	end)
+	section1:addSlider("Gravity", originalgravity, 0, 500, function(value)
+		slidergravity = value
+	end)
+	sliderspeed = 16
+	sliderjump = 50
+	slidergravity = 196.2
+
+	section1:addToggle("Enabled", nil, function(value)
+		sliderpowa = value
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if sliderpowa then
+			player.Character.Humanoid.WalkSpeed = sliderspeed
+			player.Character.Humanoid.JumpPower = sliderjump
+			game:GetService("Workspace").Gravity = slidergravity
+		end
+	end)
+	sliderpowa = false
+
+	section1:addButton("Reset to Default", function()
+		player.Character.Humanoid.WalkSpeed = originalwalkspeed
+		player.Character.Humanoid.JumpPower = originaljumppower
+		game:GetService("Workspace").Gravity = originalgravity
+		section1:updateSlider("Walk Speed", "Walk Speed", originalwalkspeed, 0, 500)
+		section1:updateSlider("Jump Power", "Jump Power", originaljumppower, 0, 500)
+		section1:updateSlider("Gravity", "Gravity", originalgravity, 0, 500)
+	end)
+
+	section2:addButton("Add ESP GUI", function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Project%3A%20Bullshit%3A%20Rebooted"))()
+	end)
+
+	section2:addButton("Reset Character",function()
+		player.Character.Humanoid.Health = 0 
+	end)
+
+	section2:addToggle("Ctrl + Click TP",false,function(bool)
+		CtrlClickTeePee = bool
+		CTRLCLICKTP()
+		if CtrlClickTeePee == true then
+			notify("Press Ctrl + Click to Teleport")
+		end
+	end)
+	CtrlClickTeePee = false
+
+	local infjumptoggle = false
+	section2:addToggle("Infinite Jump",false,function()
+		infjumptoggle = not infjumptoggle
+		notify("Infinite Jump: "..tostring(infjumptoggle),true)
+		if infjumptoggle then
+			getgenv().dc = false
+			local infjump
+			infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
+				if dc then infjump:Disconnect() return end
+				player.Character.Humanoid:ChangeState("Jumping")
+			end)
+		else
+			getgenv().dc = true
+		end
+	end)
+
+	player.CharacterAdded:Connect(function()
+		if infjumptoggle then
+			wait(1)
+			getgenv().dc = false
+			local infjump
+			infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
+				if dc then infjump:Disconnect() return end
+				player.Character.Humanoid:ChangeState("Jumping")
+			end)
+		end
+	end)
+	getgenv().dc = true
+
+	section2:addToggle("Noclip", false, function(bool)
+		noclips = bool
+		game:GetService("RunService").Stepped:connect(function()
+			if noclips then
+				for i, v in pairs(player.Character:GetChildren()) do
+					if v:IsA("BasePart") then
+						v.CanCollide = false
+					end
+				end
+			end
+		end)
+	end)
+	noclips = false
+
+	section2:addSlider("Fly Speed", 101, 0, 999, function(value)
+		sliderfly = value
+	end)
+	sliderfly = 101
+	section2:addToggle("Press P to fly",false,function(bool)
+		Pfly = bool
+		repeat wait() 
+		until player and player.Character:findFirstChild("Head") player.Character:findFirstChild("Humanoid") 
+		local mouse = player:GetMouse() 
+		repeat wait() until mouse
+		local torso = player.Character.Head 
+		local flying = false
+		local deb = true 
+		local ctrl = {f = 0, b = 0, l = 0, r = 0} 
+		local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+		local maxspeed = sliderfly 
+		local speed = 0 
+
+		function Fly() 
+			local bg = Instance.new("BodyGyro", torso) 
+			bg.P = 9e4 
+			bg.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
+			bg.cframe = torso.CFrame 
+
+			local bv = Instance.new("BodyVelocity", torso) 
+			bv.velocity = Vector3.new(0,0.1,0) 
+			bv.maxForce = Vector3.new(9e9, 9e9, 9e9) 
+			repeat wait() 
+				player.Character.Humanoid.PlatformStand = true 
+				if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
+					speed = speed+(sliderfly/1.7)+(speed/maxspeed) 
+					if speed > maxspeed then 
+						speed = maxspeed 
+					end 
+
+				elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
+					speed = speed-(sliderfly/1.7)
+					if speed < 0 then 
+						speed = 0 
+					end 
+				end 
+				if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then 
+					bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+					lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r} 
+				elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then 
+					bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+				else 
+					bv.velocity = Vector3.new(0,0.1,0)
+				end 
+				bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
+			until not flying or not Pfly
+			ctrl = {f = 0, b = 0, l = 0, r = 0} 
+			lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+			speed = 0 
+			bg:Destroy() 
+			bv:Destroy() 
+			player.Character.Humanoid.PlatformStand = false 
+		end 
+
+		mouse.KeyDown:connect(function(key) 
+			if key:lower() == "p" then 
+				if flying then flying = false 
+				else 
+					flying = true 
+					Fly() 
+				end 
+			elseif key:lower() == "w" then 
+				ctrl.f = 1 
+			elseif key:lower() == "s" then 
+				ctrl.b = -1 
+			elseif key:lower() == "a" then 
+				ctrl.l = -1 
+			elseif key:lower() == "d" then 
+				ctrl.r = 1 
+			end 
+		end) 
+
+		mouse.KeyUp:connect(function(key) 
+
+			if key:lower() == "w" then 
+				ctrl.f = 0 
+			elseif key:lower() == "s" then 
+				ctrl.b = 0 
+			elseif key:lower() == "a" then 
+				ctrl.l = 0 
+			elseif key:lower() == "d" then 
+				ctrl.r = 0 
+			end 
+		end)
+		Fly()
+		notify("Press P to fly: "..tostring(Pfly),true)
+	end)
+
+	player.CharacterAdded:Connect(function()
+		if Pfly then
+			repeat wait() 
+			until player and player.Character:findFirstChild("Head") player.Character:findFirstChild("Humanoid") 
+			local mouse = player:GetMouse() 
+			repeat wait() until mouse
+			local player = game.Players.LocalPlayer 
+			local torso = player.Character.Head 
+			local flying = false
+			local deb = true 
+			local ctrl = {f = 0, b = 0, l = 0, r = 0} 
+			local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+			local maxspeed = sliderfly 
+			local speed = 0 
+			
+			function Fly() 
+				local bg = Instance.new("BodyGyro", torso) 
+				bg.P = 9e4 
+				bg.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
+				bg.cframe = torso.CFrame 
+	
+				local bv = Instance.new("BodyVelocity", torso) 
+				bv.velocity = Vector3.new(0,0.1,0) 
+				bv.maxForce = Vector3.new(9e9, 9e9, 9e9) 
+				repeat wait() 
+					player.Character.Humanoid.PlatformStand = true 
+					if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
+						speed = speed+(sliderfly/1.7)+(speed/maxspeed) 
+						if speed > maxspeed then 
+							speed = maxspeed 
+						end 
+	
+					elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
+						speed = speed-(sliderfly/1.7)
+						if speed < 0 then 
+							speed = 0 
+						end 
+					end 
+					if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then 
+						bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+						lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r} 
+					elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then 
+						bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+					else 
+						bv.velocity = Vector3.new(0,0.1,0)
+					end 
+					bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
+				until not flying or not Pfly
+				ctrl = {f = 0, b = 0, l = 0, r = 0} 
+				lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+				speed = 0 
+				bg:Destroy() 
+				bv:Destroy() 
+				player.Character.Humanoid.PlatformStand = false 
+			end 
+	
+			mouse.KeyDown:connect(function(key) 
+				if key:lower() == "p" then 
+					if flying then flying = false 
+					else 
+						flying = true 
+						Fly() 
+					end 
+				elseif key:lower() == "w" then 
+					ctrl.f = 1 
+				elseif key:lower() == "s" then 
+					ctrl.b = -1 
+				elseif key:lower() == "a" then 
+					ctrl.l = -1 
+				elseif key:lower() == "d" then 
+					ctrl.r = 1 
+				end 
+			end) 
+	
+			mouse.KeyUp:connect(function(key) 
+	
+				if key:lower() == "w" then 
+					ctrl.f = 0 
+				elseif key:lower() == "s" then 
+					ctrl.b = 0 
+				elseif key:lower() == "a" then 
+					ctrl.l = 0 
+				elseif key:lower() == "d" then 
+					ctrl.r = 0 
+				end 
+			end)
+			Fly()
+		end
+	end)
+	Pfly = false
+
+	section2:addTextbox("Track selected player","Player's Name",function(ripthatguy)
+		notify("Player Selected: " .. ripthatguy)
+		Target = ripthatguy
+	end)
+
+	local trackthatguy = false
+	section2:addToggle("Track Player",false,function(bool)
+		trackthatguy = bool
+		local platform = Instance.new("Part", player.Character)
+		platform.Anchored = true
+		platform.Transparency = 1
+		platform.Size = Vector3.new(6, 1, 6)
+
+		local connection
+		connection = game:GetService("RunService").RenderStepped:connect(function()
+			if player.Character:FindFirstChild("HumanoidRootPart") and game.Players:FindFirstChild(Target) then
+				platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -1.8, 0)
+			else
+				connection:Disconnect()
+			end
+		end)
+		game:GetService('RunService').Stepped:connect(function()
+			if trackthatguy ~= true then
+				platform:Destroy()
+			end
+		end)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if trackthatguy == true and player.Character:FindFirstChild("HumanoidRootPart") and game.Players:FindFirstChild(Target) then
+			player.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame * CFrame.new(0, 5, 10)
+			game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game.Players[Target].Character.HumanoidRootPart.Position)
+		end
+	end)
+
+	-- load
+	NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
+
+	-- last page
+	local pagelast = NoobieDoge:addPage("Settings", 5927656531)
+	local settings = pagelast:addSection("Settings")
+	local colors = pagelast:addSection("Colors")
+	local credits = pagelast:addSection("Credits")
+
+	settings:addButton("Upgrade Performance",function()
+		UPPERFORMANCE()
+		settings:updateButton("Upgrade Performance","Upgraded Performance")
+	end)
+
+	settings:addButton("Reset Script",function()
+		local player = game.Players.LocalPlayer
+		local ScreenGuiK = Instance.new("ScreenGui")
+		local Frame = Instance.new("ImageLabel")
+		local TextLabelFrame = Instance.new("ImageLabel")
+		local TextLabel = Instance.new("TextLabel")
+		local TextButton = Instance.new("ImageButton")
+		local TextButtonText = Instance.new("TextButton")
+		local TextButton_2 = Instance.new("ImageButton")
+		local TextButton_2Text = Instance.new("TextButton")
+
+		ScreenGuiK.Parent = player:WaitForChild("PlayerGui")
+
+		Frame.Parent = ScreenGuiK
+		Frame.Name = "Main"
+		Frame.BackgroundTransparency = 1
+		Frame.Position = UDim2.new(0.66, 0, 0.055, 0)
+		Frame.Size = UDim2.new(0, 220, 0, 120)
+		Frame.Image = "rbxassetid://4641149554"
+		Frame.ImageColor3 = Color3.fromRGB(24, 24, 24)
+		Frame.ScaleType = Enum.ScaleType.Slice
+		Frame.SliceCenter = Rect.new(4, 4, 296, 296)
+		Frame.Active = true
+		Frame.Draggable = true
+
+		TextLabelFrame.Parent = Frame
+		TextLabelFrame.Name = "TopBar"
+		TextLabelFrame.BackgroundTransparency = 1
+		TextLabelFrame.ClipsDescendants = true
+		TextLabelFrame.Size = UDim2.new(1, 0, 0, 38)
+		TextLabelFrame.ZIndex = 2
+		TextLabelFrame.Image = "rbxassetid://4595286933"
+		TextLabelFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabelFrame.ScaleType = Enum.ScaleType.Slice
+		TextLabelFrame.SliceCenter = Rect.new(4, 4, 296, 296)
+		
+		TextLabel.Parent = Frame
+		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabel.Position = UDim2.new(0, 0, -0.1, 0)
+		TextLabel.BackgroundTransparency = 1
+		TextLabel.Size = UDim2.new(0, 220, 0, 60)
+		TextLabel.ZIndex = 3
+		TextLabel.Font = Enum.Font.TitilliumWeb
+		TextLabel.Text = "Are you sure that you want to reset script?"
+		TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabel.TextScaled = false
+		TextLabel.TextSize = 21.000
+		TextLabel.TextWrapped = true
+
+		TextButton.Parent = Frame
+		TextButton.Name = "Button"
+		TextButton.BackgroundTransparency = 1
+		TextButton.Position = UDim2.new(0.075, 0, 0.500000006, 0)
+		TextButton.BorderSizePixel = 0
+		TextButton.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton.ZIndex = 2
+		TextButton.Image = "rbxassetid://5028857472"
+		TextButton.ImageColor3 = Color3.fromRGB(41, 41, 41)
+		TextButton.ScaleType = Enum.ScaleType.Slice
+		TextButton.SliceCenter = Rect.new(2, 2, 298, 298)
+
+		TextButtonText.Parent = TextButton
+		TextButtonText.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextButtonText.BackgroundTransparency = 1
+		TextButtonText.ZIndex = 3
+		TextButtonText.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButtonText.Font = Enum.Font.TitilliumWeb
+		TextButtonText.Text = "Yes"
+		TextButtonText.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButtonText.TextScaled = true
+		TextButtonText.TextSize = 40.000
+		TextButtonText.TextWrapped = true
+
+		function ResetYES()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+			wait()
+			for i,library in pairs(game:GetService("CoreGui"):GetChildren()) do
+				if library.Name == "DogeHub V2" then
+					library:Destroy()
+				end
+			end
+			notify("Do not reset script too many times!")
+			wait(.1)
+			StandUprightRebootedMain()
+		end
+		TextButton.MouseButton1Click:connect(ResetYES)
+		TextButtonText.MouseButton1Click:connect(ResetYES)
+
+		TextButton_2.Parent = Frame
+		TextButton_2.Name = "Button"
+		TextButton_2.BackgroundTransparency = 1
+		TextButton_2.Position = UDim2.new(0.55, 0, 0.500000006, 0)
+		TextButton_2.BorderSizePixel = 0
+		TextButton_2.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton_2.ZIndex = 2
+		TextButton_2.Image = "rbxassetid://5028857472"
+		TextButton_2.ImageColor3 = Color3.fromRGB(41, 41, 41)
+		TextButton_2.ScaleType = Enum.ScaleType.Slice
+		TextButton_2.SliceCenter = Rect.new(2, 2, 298, 298)
+
+		TextButton_2Text.Parent = TextButton_2
+		TextButton_2Text.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextButton_2Text.BackgroundTransparency = 1
+		TextButton_2Text.ZIndex = 3
+		TextButton_2Text.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton_2Text.Font = Enum.Font.TitilliumWeb
+		TextButton_2Text.Text = "No"
+		TextButton_2Text.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButton_2Text.TextScaled = true
+		TextButton_2Text.TextSize = 40.000
+		TextButton_2Text.TextWrapped = true
+
+		function ResetNO()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+		end
+		TextButton_2.MouseButton1Click:connect(ResetNO)	
+		TextButton_2Text.MouseButton1Click:connect(ResetNO)
+	end)
+
+	settings:addButton("Rejoin Server",function()
+		local player = game.Players.LocalPlayer
+		local ScreenGuiK = Instance.new("ScreenGui")
+		local Frame = Instance.new("ImageLabel")
+		local TextLabelFrame = Instance.new("ImageLabel")
+		local TextLabel = Instance.new("TextLabel")
+		local TextButton = Instance.new("ImageButton")
+		local TextButtonText = Instance.new("TextButton")
+		local TextButton_2 = Instance.new("ImageButton")
+		local TextButton_2Text = Instance.new("TextButton")
+
+		ScreenGuiK.Parent = player:WaitForChild("PlayerGui")
+
+		Frame.Parent = ScreenGuiK
+		Frame.Name = "Main"
+		Frame.BackgroundTransparency = 1
+		Frame.Position = UDim2.new(0.66, 0, 0.055, 0)
+		Frame.Size = UDim2.new(0, 220, 0, 120)
+		Frame.Image = "rbxassetid://4641149554"
+		Frame.ImageColor3 = Color3.fromRGB(24, 24, 24)
+		Frame.ScaleType = Enum.ScaleType.Slice
+		Frame.SliceCenter = Rect.new(4, 4, 296, 296)
+		Frame.Active = true
+		Frame.Draggable = true
+
+		TextLabelFrame.Parent = Frame
+		TextLabelFrame.Name = "TopBar"
+		TextLabelFrame.BackgroundTransparency = 1
+		TextLabelFrame.ClipsDescendants = true
+		TextLabelFrame.Size = UDim2.new(1, 0, 0, 38)
+		TextLabelFrame.ZIndex = 2
+		TextLabelFrame.Image = "rbxassetid://4595286933"
+		TextLabelFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabelFrame.ScaleType = Enum.ScaleType.Slice
+		TextLabelFrame.SliceCenter = Rect.new(4, 4, 296, 296)
+		
+		TextLabel.Parent = Frame
+		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabel.Position = UDim2.new(0, 0, -0.1, 0)
+		TextLabel.BackgroundTransparency = 1
+		TextLabel.Size = UDim2.new(0, 220, 0, 60)
+		TextLabel.ZIndex = 3
+		TextLabel.Font = Enum.Font.TitilliumWeb
+		TextLabel.Text = "Are you sure you want to rejoin server?"
+		TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabel.TextScaled = false
+		TextLabel.TextSize = 24.000
+		TextLabel.TextWrapped = true
+
+		TextButton.Parent = Frame
+		TextButton.Name = "Button"
+		TextButton.BackgroundTransparency = 1
+		TextButton.Position = UDim2.new(0.075, 0, 0.500000006, 0)
+		TextButton.BorderSizePixel = 0
+		TextButton.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton.ZIndex = 2
+		TextButton.Image = "rbxassetid://5028857472"
+		TextButton.ImageColor3 = Color3.fromRGB(41, 41, 41)
+		TextButton.ScaleType = Enum.ScaleType.Slice
+		TextButton.SliceCenter = Rect.new(2, 2, 298, 298)
+
+		TextButtonText.Parent = TextButton
+		TextButtonText.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextButtonText.BackgroundTransparency = 1
+		TextButtonText.ZIndex = 3
+		TextButtonText.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButtonText.Font = Enum.Font.TitilliumWeb
+		TextButtonText.Text = "Yes"
+		TextButtonText.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButtonText.TextScaled = true
+		TextButtonText.TextSize = 40.000
+		TextButtonText.TextWrapped = true
+
+		function RejoinYES()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+			local TS = game:GetService("TeleportService")
+			local Player = game.Players.LocalPlayer
+			TS:Teleport(game.PlaceId, Player)
+		end
+		TextButton.MouseButton1Click:connect(RejoinYES)
+		TextButtonText.MouseButton1Click:connect(RejoinYES)
+
+		TextButton_2.Parent = Frame
+		TextButton_2.Name = "Button"
+		TextButton_2.BackgroundTransparency = 1
+		TextButton_2.Position = UDim2.new(0.55, 0, 0.500000006, 0)
+		TextButton_2.BorderSizePixel = 0
+		TextButton_2.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton_2.ZIndex = 2
+		TextButton_2.Image = "rbxassetid://5028857472"
+		TextButton_2.ImageColor3 = Color3.fromRGB(41, 41, 41)
+		TextButton_2.ScaleType = Enum.ScaleType.Slice
+		TextButton_2.SliceCenter = Rect.new(2, 2, 298, 298)
+
+		TextButton_2Text.Parent = TextButton_2
+		TextButton_2Text.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextButton_2Text.BackgroundTransparency = 1
+		TextButton_2Text.ZIndex = 3
+		TextButton_2Text.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton_2Text.Font = Enum.Font.TitilliumWeb
+		TextButton_2Text.Text = "No"
+		TextButton_2Text.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButton_2Text.TextScaled = true
+		TextButton_2Text.TextSize = 40.000
+		TextButton_2Text.TextWrapped = true
+
+		function RejoinNO()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+		end
+		TextButton_2.MouseButton1Click:connect(RejoinNO)	
+		TextButton_2Text.MouseButton1Click:connect(RejoinNO)
+	end)
+
+	settings:addKeybind("Toggle Keybind", Enum.KeyCode.RightControl, function()
+	print("Activated Keybind")
+	NoobieDoge:toggle()
+	end, function()
+	print("Changed Keybind")
+	end)
+
+	for theme, color in pairs(themes) do -- all in one theme changer, i know, im cool
+		colors:addColorPicker(theme, color, function(color3)
+			NoobieDoge:setTheme(theme, color3)
+		end)
+	end
+
+	credits:addButton("Made by NoobieDoge")
+	credits:addButton("https://discord.gg/P2CeRjvTDt")
+	credits:addButton("Copy Discord Link",function()
+		setclipboard("https://discord.gg/P2CeRjvTDt")
+		wait()
+		notify("Discord link copied to clipboard!")
+	end)
+end
+
+if game.PlaceId == 8540168650 then
 	StandUprightRebootedMain()
+elseif game.PlaceId == 9608064557 then
+	StandUprightRebooted1v1MatchmakingLobby()
+elseif game.PlaceId == 12725290692 then
+	StandUprightRebootedGangWarQueueingLobby()
 else
 	StandUprightRebootedMain()
 end
