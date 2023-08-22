@@ -10286,16 +10286,20 @@ local function ShindoMain()
 						repeat
 							pcall(function()
 								v.Humanoid.Health = 0
-								game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
-								if player.statz.fightingstyle.Value == "" or player.statz.fightingstyle.Value == "boxing" or player.statz.fightingstyle.Value == "jeetkunedo" or player.statz.fightingstyle.Value == "muaythai" or player.statz.fightingstyle.Value == "mma" then
-									player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 0, 7)
+								if (player.Character:FindFirstChild("fakehealth") and player.Character.fakehealth.Value ~= 0) or not player.Character:FindFirstChild("fakehealth") then
+									game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
+									if player.statz.fightingstyle.Value == "" or player.statz.fightingstyle.Value == "boxing" or player.statz.fightingstyle.Value == "jeetkunedo" or player.statz.fightingstyle.Value == "muaythai" or player.statz.fightingstyle.Value == "mma" then
+										player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 0, 7)
+									else
+										player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 0, 10)
+									end
+									player.Character.combat.update:FireServer("key","e")
+									player.Character.combat.update:FireServer("key","eend")
+									player.Character.combat.update:FireServer("mouse1",true)
+									wait(.000000000000001)
 								else
-									player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 0, 10)
+									player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 200, 10)
 								end
-								player.Character.combat.update:FireServer("key","e")
-								player.Character.combat.update:FireServer("key","eend")
-								player.Character.combat.update:FireServer("mouse1",true)
-								wait(.000000000000001)
 								v.Humanoid.Health = 0
 							end)
 						until not v:FindFirstChild("Humanoid") or mission.Visible == false or (not autofarm and not boss and not megaboss) or not v or not game.Workspace.npc:FindFirstChild(v)
@@ -10311,26 +10315,30 @@ local function ShindoMain()
 						player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 15, 0)
 						repeat wait()
 							pcall(function()
-								game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
-								v.Humanoid.Health = 0
-								pcall(function()
-									player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, AFHeight, AFDistance)
-									if E then SpamE() end
-									if R then SpamR() end
-									if T then SpamT() end
-									if Y then SpamY() end
-									if F then SpamF() end
-									if G then SpamG() end
-									if H then SpamH() end
-									if V then SpamV() end
-									if B then SpamB() end
-									if N then SpamN() end
-									if Z then SpamZ() end
-									if C then SpamC() end
-									if Q then SpamQ() end
-									if ClickRATATA then SpamClick() end
+								if (player.Character:FindFirstChild("fakehealth") and player.Character.fakehealth.Value ~= 0) or not player.Character:FindFirstChild("fakehealth") then
+									game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
 									v.Humanoid.Health = 0
-								end)
+									pcall(function()
+										player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, AFHeight, AFDistance)
+										if E then SpamE() end
+										if R then SpamR() end
+										if T then SpamT() end
+										if Y then SpamY() end
+										if F then SpamF() end
+										if G then SpamG() end
+										if H then SpamH() end
+										if V then SpamV() end
+										if B then SpamB() end
+										if N then SpamN() end
+										if Z then SpamZ() end
+										if C then SpamC() end
+										if Q then SpamQ() end
+										if ClickRATATA then SpamClick() end
+										v.Humanoid.Health = 0
+									end)
+								else
+									player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 200, 10)
+								end
 							end)
 						until not v:FindFirstChild("Humanoid") or mission.Visible == false or (not autofarm and not boss and not megaboss) or not v or not game.Workspace.npc:FindFirstChild(v)
 					end
@@ -10345,20 +10353,24 @@ local function ShindoMain()
 						player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 15, 0)
 						repeat wait()
 							pcall(function()
-								game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
-								v.Humanoid.Health = 0
-								pcall(function()
-									player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, AFHeight, AFDistance)
-									player.Character.combat.update:FireServer("key","e")
-									player.Character.combat.update:FireServer("key","eend")
-									player.Character.combat.update:FireServer("key","e")
-									player.Character.combat.update:FireServer("key","eend")
-									player.Character.combat.update:FireServer("key","e")
-									player.Character.combat.update:FireServer("key","eend")
-									player.Character.combat.update:FireServer("key","e")
-									player.Character.combat.update:FireServer("key","eend")
+								if (player.Character:FindFirstChild("fakehealth") and player.Character.fakehealth.Value ~= 0) or not player.Character:FindFirstChild("fakehealth") then
+									game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, v.HumanoidRootPart.Position)
 									v.Humanoid.Health = 0
-								end)
+									pcall(function()
+										player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, AFHeight, AFDistance)
+										player.Character.combat.update:FireServer("key","e")
+										player.Character.combat.update:FireServer("key","eend")
+										player.Character.combat.update:FireServer("key","e")
+										player.Character.combat.update:FireServer("key","eend")
+										player.Character.combat.update:FireServer("key","e")
+										player.Character.combat.update:FireServer("key","eend")
+										player.Character.combat.update:FireServer("key","e")
+										player.Character.combat.update:FireServer("key","eend")
+										v.Humanoid.Health = 0
+									end)
+								else
+									player.Character.HumanoidRootPart.CFrame=v.HumanoidRootPart.CFrame * CFrame.new(0, 200, 10)
+								end
 							end)
 						until not v:FindFirstChild("Humanoid") or mission.Visible == false or (not autofarm and not boss and not megaboss) or not v or not game.Workspace.npc:FindFirstChild(v)
 					end
