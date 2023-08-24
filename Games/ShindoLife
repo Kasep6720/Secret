@@ -9319,6 +9319,16 @@ local function ShindoMain()
 		end)
 	end
 
+	local showracetoggle = false
+	section3:addToggle("Show Races",false,function()
+		showracetoggle = not showracetoggle
+		if showracetoggle then
+			game.Players.LocalPlayer.PlayerGui.Main.RaceCustom.Visible = true
+		else
+			game.Players.LocalPlayer.PlayerGui.Main.RaceCustom.Visible = false
+		end
+	end)
+
 	local raceselect1
 		section3:addDropdown("Race Choice 1",race,function(RACE1)
 		print("Selected: " .. RACE1)
@@ -11647,6 +11657,7 @@ local function ShindoMain()
 			DisabledInCombat = false
 			unbreakableblockstoggle = false
 			keel = false
+			game.Players.LocalPlayer.PlayerGui.Main.RaceCustom.Visible = false
 			SpamGOBRRRRR = false
 			SpamOnlyInMissions = false
 			ClickRATATA = false
