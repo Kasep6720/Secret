@@ -976,6 +976,13 @@ local function ShindoInfSpin()
 		end
 	end
 
+	local race = {}
+	for i,v in pairs(player.PlayerGui.Main.RaceCustom.Frame.ScrollingFrame:GetChildren()) do
+		if v:FindFirstChild("icon") and not v.icon:FindFirstChild("lock") then
+			table.insert(race, v.Name)
+		end
+	end
+
 	-- second page
 	local page2 = NoobieDoge:addPage("Elements", 5176336983)
 	local section1 = page2:addSection("Choose wanted elements")
@@ -1556,8 +1563,94 @@ local function ShindoInfSpin()
 	end
 
 	-- fifth page
-	local page5 = NoobieDoge:addPage("Others", 5176336983)
-	local section1 = page5:addSection("Other Scripts")
+	local page5 = NoobieDoge:addPage("Races", 5176336983)
+	local section1 = page5:addSection("Choose wanted races")
+	local section2 = page5:addSection("Start Spinning")
+
+	local showracetoggle = false
+	section1:addToggle("Show Races",false,function()
+		showracetoggle = not showracetoggle
+		if showracetoggle then
+			game.Players.LocalPlayer.PlayerGui.Main.RaceCustom.Visible = true
+		else
+			game.Players.LocalPlayer.PlayerGui.Main.RaceCustom.Visible = false
+		end
+	end)
+
+	local raceselect1
+		section1:addDropdown("Race Choice 1",race,function(RACE1)
+		print("Selected: " .. RACE1)
+		notify("Selected: " .. RACE1)
+		raceselect1 = RACE1
+	end)
+	local raceselect2
+		section1:addDropdown("Race Choice 2",race,function(RACE2)
+		print("Selected: " .. RACE2)
+		notify("Selected: " .. RACE2)
+		raceselect2 = RACE2
+	end)
+	local raceselect3
+		section1:addDropdown("Race Choice 3",race,function(RACE3)
+		print("Selected: " .. RACE3)
+		notify("Selected: " .. RACE3)
+		raceselect3 = RACE3
+	end)
+
+	section2:addToggle("Spin Race",false,function(bool)
+		StartSpinRace = bool
+		if StartSpinRace == true then
+			local rcamount = player.PlayerGui.Main.Ryo2.amt.text,""
+			if(string.find(rcamount,"(K)")) then
+				rcamount = (string.gsub(rcamount,"(K)",""))
+				rcamount = tonumber(rcamount)*1000
+				print(rcamount)
+			else
+				rcamount = string.gsub(rcamount)	
+				print(rcamount)
+			end
+			game:GetService('RunService').Stepped:connect(function()
+				if rcamount > 20000 then
+					rcamount = player.PlayerGui.Main.Ryo2.amt.text,""
+					if(string.find(rcamount,"(K)")) then
+						rcamount = (string.gsub(rcamount,"(K)",""))
+						rcamount = tonumber(rcamount)*1000
+						print(rcamount)
+					else
+						rcamount = string.gsub(rcamount)	
+						print(rcamount)
+					end
+					racevalue = player.statz.race.Value
+					if StartSpinRace == true then
+						if racevalue ~= raceselect1 and racevalue ~= raceselect2 and racevalue ~= raceselect3 then
+							local args = {[1]="spinrace"}
+							game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+							print("Rolled: " .. racevalue)
+							notify("Rolled: " .. racevalue)
+							wait(1)
+						else
+							print("You have got: " .. racevalue)
+							notify("You have got: " .. racevalue)
+							if Autosave == true then
+								datasavedandyoucanredeemcodes = true
+							end
+						end
+					end
+				else
+					if Autorejoin == true then
+						--player.statz.spins:Destroy()
+						player.startevent:FireServer("band", "\128")
+						wait()
+						game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+					end
+				end
+			end)
+		else
+		end
+	end)
+
+	-- sixth page
+	local page6 = NoobieDoge:addPage("Others", 5176336983)
+	local section1 = page6:addSection("Other Scripts")
 
 	section1:addButton("Auto Spin RELL Bloodline Script",function()
 		loadstring(game:HttpGet('https://raw.githubusercontent.com/Kasep6720/Secret/DogeHubV2/Functions/ShindoAutoSpinRELLBloodline', true))()
@@ -1634,6 +1727,7 @@ local function ShindoInfSpin()
 			StartSpinElm4 = false
 			StartSpinKen = false
 			StartSpinKen2 = false
+			StartSpinRace = false
 			datasavedandyoucanredeemcodes = false
 			player.startevent:FireServer("band", "Eye")
 			if savegomyhome then
@@ -1804,13 +1898,10 @@ local function ShindoMyHome()
 	end)
 
 	-- second page
-	local page2 = NoobieDoge:addPage("Misc", 10567878127)
-	local section1 = page2:addSection("Kenjutsu Spin")
-
-	section1:addDropdown("Custom Display Ranks",{"RELL", "F 0", "D 1", "D 2", "D 3", "C 1", "C 2", "C 3", "B 1", "B 2", "B 3", "A 1", "A 2", "A 3", "S 1", "S 2", "S 3", "V 1", "V 2", "V 3", "X 1", "X 2", "X 3", "Y 1", "Y 2", "Y 3", "Z 1", "Z 2", "Z 3", "MAX-69", "MAX-420", "MAX-666", "MAX-999", "GOD", "Dragon", "Hacker","???"},function(rektrank)
-		player.leaderstats.Rank.Value =  (rektrank)
-		notify("Rank Displayed: " .. rektrank)
-	end)
+	local page2 = NoobieDoge:addPage("Inf Spin", 10567878127)
+	local section1 = page2:addSection("Inf Spin Settings")
+	local section2 = page2:addSection("Kenjutsu Spin")
+	local section3 = page2:addSection("Race Spin")
 
 	local elm = {}
 	for i,v in pairs(game:GetService("Workspace").RAREKGS:GetChildren()) do
@@ -1843,6 +1934,13 @@ local function ShindoMyHome()
 		end
 	end
 
+	local race = {}
+	for i,v in pairs(player.PlayerGui.Main.RaceCustom.Frame.ScrollingFrame:GetChildren()) do
+		if v:FindFirstChild("icon") and not v.icon:FindFirstChild("lock") then
+			table.insert(race, v.Name)
+		end
+	end
+
 	section1:addButton("Reset Spins NOW",function()
 		player.startevent:FireServer("band", "\128")
 		wait()
@@ -1853,52 +1951,52 @@ local function ShindoMyHome()
 		SAVEDATA()
 	end)
 
-	section2:addToggle("Auto Rejoin",true,function(bool)
+	section1:addToggle("Auto Rejoin",true,function(bool)
 		Autorejoin = bool
 	end)
 
-	section2:addToggle("Auto Save",false,function(bool)
+	section1:addToggle("Auto Save",false,function(bool)
 		Autosave = bool
 	end)
 
 	if player.statz.unlocked:FindFirstChild("kenjutsuslot2") then
 		local kenselect1
-			section1:addDropdown("Kenjutsu Choice 1",ken,function(KEN1)
+			section2:addDropdown("Kenjutsu Choice 1",ken,function(KEN1)
 			print("Selected: " .. KEN1)
 			notify("Selected: " .. KEN1)
 			FrameK.Visible = true
 			kenselect1 = KEN1
 		end)
 		local kenselect2
-			section1:addDropdown("Kenjutsu Choice 2",ken,function(KEN2)
+			section2:addDropdown("Kenjutsu Choice 2",ken,function(KEN2)
 			print("Selected: " .. KEN2)
 			notify("Selected: " .. KEN2)
 			FrameK.Visible = true
 			kenselect2 = KEN2
 		end)
 		local kenselect3
-			section1:addDropdown("Kenjutsu Choice 3",ken,function(KEN3)
+			section2:addDropdown("Kenjutsu Choice 3",ken,function(KEN3)
 			print("Selected: " .. KEN3)
 			notify("Selected: " .. KEN3)
 			FrameK.Visible = true
 			kenselect3 = KEN3
 		end)
 		local kenselect4
-			section1:addDropdown("Kenjutsu Choice 4",ken,function(KEN4)
+			section2:addDropdown("Kenjutsu Choice 4",ken,function(KEN4)
 			print("Selected: " .. KEN4)
 			notify("Selected: " .. KEN4)
 			FrameK.Visible = true
 			kenselect4 = KEN4
 		end)
 		local kenselect5
-			section1:addDropdown("Kenjutsu Choice 3",ken,function(KEN5)
+			section2:addDropdown("Kenjutsu Choice 3",ken,function(KEN5)
 			print("Selected: " .. KEN5)
 			notify("Selected: " .. KEN5)
 			FrameK.Visible = true
 			kenselect5 = KEN5
 		end)
 
-		section1:addToggle("Spin Slot 1",false,function(bool)
+		section2:addToggle("Spin Slot 1",false,function(bool)
 			player.startevent:FireServer("band", "\128")
 			StartSpinKen = bool
 			if StartSpinKen == true then
@@ -1939,7 +2037,7 @@ local function ShindoMyHome()
 			end
 		end)
 
-		section1:addToggle("Spin Slot 2",false,function(bool)
+		section2:addToggle("Spin Slot 2",false,function(bool)
 			player.startevent:FireServer("band", "\128")
 			StartSpinKen2 = bool
 			if StartSpinKen2 == true then
@@ -1981,25 +2079,25 @@ local function ShindoMyHome()
 		end)
 	else
 		local kenselect1
-			section1:addDropdown("Kenjutsu Choice 1",ken,function(KEN1)
+			section2:addDropdown("Kenjutsu Choice 1",ken,function(KEN1)
 			print("Selected: " .. KEN1)
 			notify("Selected: " .. KEN1)
 			kenselect1 = KEN1
 		end)
 		local kenselect2
-			section1:addDropdown("Kenjutsu Choice 2",ken,function(KEN2)
+			section2:addDropdown("Kenjutsu Choice 2",ken,function(KEN2)
 			print("Selected: " .. KEN2)
 			notify("Selected: " .. KEN2)
 			kenselect2 = KEN2
 		end)
 		local kenselect3
-			section1:addDropdown("Kenjutsu Choice 3",ken,function(KEN3)
+			section2:addDropdown("Kenjutsu Choice 3",ken,function(KEN3)
 			print("Selected: " .. KEN3)
 			notify("Selected: " .. KEN3)
 			kenselect3 = KEN3
 		end)
 
-		section1:addToggle("Spin Kenjutsu",false,function(bool)
+		section2:addToggle("Spin Kenjutsu",false,function(bool)
 			player.startevent:FireServer("band", "\128")
 			StartSpinKen = bool
 			if StartSpinKen == true then
@@ -2037,10 +2135,92 @@ local function ShindoMyHome()
 		end)
 	end
 
+	local showracetoggle = false
+	section3:addToggle("Show Races",false,function()
+		showracetoggle = not showracetoggle
+		if showracetoggle then
+			game.Players.LocalPlayer.PlayerGui.Main.RaceCustom.Visible = true
+		else
+			game.Players.LocalPlayer.PlayerGui.Main.RaceCustom.Visible = false
+		end
+	end)
+
+	local raceselect1
+		section3:addDropdown("Race Choice 1",race,function(RACE1)
+		print("Selected: " .. RACE1)
+		notify("Selected: " .. RACE1)
+		raceselect1 = RACE1
+	end)
+	local raceselect2
+		section3:addDropdown("Race Choice 2",race,function(RACE2)
+		print("Selected: " .. RACE2)
+		notify("Selected: " .. RACE2)
+		raceselect2 = RACE2
+	end)
+	local raceselect3
+		section3:addDropdown("Race Choice 3",race,function(RACE3)
+		print("Selected: " .. RACE3)
+		notify("Selected: " .. RACE3)
+		raceselect3 = RACE3
+	end)
+
+	section3:addToggle("Spin Race",false,function(bool)
+		StartSpinRace = bool
+		if StartSpinRace == true then
+			local rcamount = player.PlayerGui.Main.Ryo2.amt.text,""
+			if(string.find(rcamount,"(K)")) then
+				rcamount = (string.gsub(rcamount,"(K)",""))
+				rcamount = tonumber(rcamount)*1000
+				print(rcamount)
+			else
+				rcamount = string.gsub(rcamount)	
+				print(rcamount)
+			end
+			game:GetService('RunService').Stepped:connect(function()
+				if rcamount > 20000 then
+					rcamount = player.PlayerGui.Main.Ryo2.amt.text,""
+					if(string.find(rcamount,"(K)")) then
+						rcamount = (string.gsub(rcamount,"(K)",""))
+						rcamount = tonumber(rcamount)*1000
+						print(rcamount)
+					else
+						rcamount = string.gsub(rcamount)	
+						print(rcamount)
+					end
+					racevalue = player.statz.race.Value
+					if StartSpinRace == true then
+						if racevalue ~= raceselect1 and racevalue ~= raceselect2 and racevalue ~= raceselect3 then
+							local args = {[1]="spinrace"}
+							game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+							print("Rolled: " .. racevalue)
+							notify("Rolled: " .. racevalue)
+							wait(1)
+						else
+							print("You have got: " .. racevalue)
+							notify("You have got: " .. racevalue)
+							if Autosave == true then
+								datasavedandyoucanredeemcodes = true
+							end
+						end
+					end
+				else
+					if Autorejoin == true then
+						--player.statz.spins:Destroy()
+						player.startevent:FireServer("band", "\128")
+						wait()
+						game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+					end
+				end
+			end)
+		else
+		end
+	end)
+
 	game:GetService('RunService').Stepped:connect(function()
 		if datasavedandyoucanredeemcodes == true then
 			StartSpinKen = false
 			StartSpinKen2 = false
+			StartSpinRace = false
 			datasavedandyoucanredeemcodes = false
 			player.startevent:FireServer("band", "Eye")
 			notify("You will be teleported to My Home in order to save data")
@@ -8876,6 +9056,12 @@ local function ShindoMain()
 		notify("Equip a beast mode, mode up, type '!spirit', press the ']' button, done!")
 	end)
 
+	-- third page
+	local page3 = NoobieDoge:addPage("Inf Spin", 5012544693)
+	local section1 = page3:addSection("Inf Spin Settings")
+	local section2 = page3:addSection("Kenjutsu Spin")	
+	local section3 = page3:addSection("Spin Race")
+
 	local elm = {}
 	for i,v in pairs(game:GetService("Workspace").RAREKGS:GetChildren()) do
 		if v.Name ~= "KGTEMPLATE" and game:GetService("ReplicatedStorage").alljutsu[v.Name]:FindFirstChild("ELEMENT") then
@@ -8909,90 +9095,92 @@ local function ShindoMain()
 
 	local race = {}
 	for i,v in pairs(player.PlayerGui.Main.RaceCustom.Frame.ScrollingFrame:GetChildren()) do
-		table.insert(race, v.Name)
+		if v:FindFirstChild("icon") and not v.icon:FindFirstChild("lock") then
+			table.insert(race, v.Name)
+		end
 	end
 	
-	section2:addButton("Reset Spins NOW",function()
+	section1:addButton("Reset Spins NOW",function()
 		player.startevent:FireServer("band", "\128")
 		wait()
 		game:GetService("TeleportService"):Teleport(game.PlaceId, player)
 	end)
 
-	section2:addButton("Save Spins Data",function()
+	section1:addButton("Save Spins Data",function()
 		SAVEDATA()
 	end)
 
-	section2:addToggle("Auto Rejoin",true,function(bool)
+	section1:addToggle("Auto Rejoin",true,function(bool)
 		Autorejoin = bool
 	end)
 
-	section2:addToggle("Auto Save",false,function(bool)
+	section1:addToggle("Auto Save",false,function(bool)
 		Autosave = bool
 	end)
 
 	if player.gamepasses:FindFirstChild("spinsbag") then
-		section2:addSlider("Auto Rejoin when spins lower than", 0, 0, 999, function(value)
+		section1:addSlider("Auto Rejoin when spins lower than", 0, 0, 999, function(value)
 			resetspinswhenthisnumberreached = value
 		end)
 	else
-		section2:addSlider("Auto Rejoin when spins lower than", 0, 0, 499, function(value)
+		section1:addSlider("Auto Rejoin when spins lower than", 0, 0, 499, function(value)
 			resetspinswhenthisnumberreached = value
 		end)
 	end
 	resetspinswhenthisnumberreached = 0
 
 	local savegomyhome
-	section2:addToggle("Teleport to My Home when saving data",true,function(bool)
+	section1:addToggle("Teleport to My Home when saving data",true,function(bool)
 		savegomyhome = bool
 		savegomainmenu = false
-		section2:updateToggle("Teleport back to Main Menu when saving data")
+		section1:updateToggle("Teleport back to Main Menu when saving data")
 	end)
 	local savegomainmenu
-	section2:addToggle("Teleport back to Main Menu when saving data",false,function(bool)
+	section1:addToggle("Teleport back to Main Menu when saving data",false,function(bool)
 		savegomainmenu = bool
 		savegomyhome = false
-		section2:updateToggle("Teleport to My Home when saving data")
+		section1:updateToggle("Teleport to My Home when saving data")
 	end)
 	savegomyhome = true
 
 	if player.statz.unlocked:FindFirstChild("kenjutsuslot2") then
 		local kenselect1
-			section3:addDropdown("Kenjutsu Choice 1",ken,function(KEN1)
+			section2:addDropdown("Kenjutsu Choice 1",ken,function(KEN1)
 			print("Selected: " .. KEN1)
 			notify("Selected: " .. KEN1)
 			FrameK.Visible = true
 			kenselect1 = KEN1
 		end)
 		local kenselect2
-			section3:addDropdown("Kenjutsu Choice 2",ken,function(KEN2)
+			section2:addDropdown("Kenjutsu Choice 2",ken,function(KEN2)
 			print("Selected: " .. KEN2)
 			notify("Selected: " .. KEN2)
 			FrameK.Visible = true
 			kenselect2 = KEN2
 		end)
 		local kenselect3
-			section3:addDropdown("Kenjutsu Choice 3",ken,function(KEN3)
+			section2:addDropdown("Kenjutsu Choice 3",ken,function(KEN3)
 			print("Selected: " .. KEN3)
 			notify("Selected: " .. KEN3)
 			FrameK.Visible = true
 			kenselect3 = KEN3
 		end)
 		local kenselect4
-			section3:addDropdown("Kenjutsu Choice 4",ken,function(KEN4)
+			section2:addDropdown("Kenjutsu Choice 4",ken,function(KEN4)
 			print("Selected: " .. KEN4)
 			notify("Selected: " .. KEN4)
 			FrameK.Visible = true
 			kenselect4 = KEN4
 		end)
 		local kenselect5
-			section3:addDropdown("Kenjutsu Choice 3",ken,function(KEN5)
+			section2:addDropdown("Kenjutsu Choice 3",ken,function(KEN5)
 			print("Selected: " .. KEN5)
 			notify("Selected: " .. KEN5)
 			FrameK.Visible = true
 			kenselect5 = KEN5
 		end)
 
-		section3:addToggle("Spin Slot 1",false,function(bool)
+		section2:addToggle("Spin Slot 1",false,function(bool)
 			player.startevent:FireServer("band", "\128")
 			StartSpinKen = bool
 			if StartSpinKen == true then
@@ -9033,7 +9221,7 @@ local function ShindoMain()
 			end
 		end)
 
-		section3:addToggle("Spin Slot 2",false,function(bool)
+		section2:addToggle("Spin Slot 2",false,function(bool)
 			player.startevent:FireServer("band", "\128")
 			StartSpinKen2 = bool
 			if StartSpinKen2 == true then
@@ -9075,25 +9263,25 @@ local function ShindoMain()
 		end)
 	else
 		local kenselect1
-			section3:addDropdown("Kenjutsu Choice 1",ken,function(KEN1)
+			section2:addDropdown("Kenjutsu Choice 1",ken,function(KEN1)
 			print("Selected: " .. KEN1)
 			notify("Selected: " .. KEN1)
 			kenselect1 = KEN1
 		end)
 		local kenselect2
-			section3:addDropdown("Kenjutsu Choice 2",ken,function(KEN2)
+			section2:addDropdown("Kenjutsu Choice 2",ken,function(KEN2)
 			print("Selected: " .. KEN2)
 			notify("Selected: " .. KEN2)
 			kenselect2 = KEN2
 		end)
 		local kenselect3
-			section3:addDropdown("Kenjutsu Choice 3",ken,function(KEN3)
+			section2:addDropdown("Kenjutsu Choice 3",ken,function(KEN3)
 			print("Selected: " .. KEN3)
 			notify("Selected: " .. KEN3)
 			kenselect3 = KEN3
 		end)
 
-		section3:addToggle("Spin Kenjutsu",false,function(bool)
+		section2:addToggle("Spin Kenjutsu",false,function(bool)
 			player.startevent:FireServer("band", "\128")
 			StartSpinKen = bool
 			if StartSpinKen == true then
@@ -9131,45 +9319,26 @@ local function ShindoMain()
 		end)
 	end
 
-	game:GetService('RunService').Stepped:connect(function()
-		if datasavedandyoucanredeemcodes == true then
-			StartSpinKen = false
-			StartSpinKen2 = false
-			datasavedandyoucanredeemcodes = false
-			player.startevent:FireServer("band", "Eye")
-			if savegomyhome then
-				notify("You will be teleported to My Home in order to save data")
-				wait(1)
-				local args = {[1] = "arenateleport",[2] = 5451410109}
-				player.startevent:FireServer(unpack(args))
-			elseif savegomainmenu then
-				notify("You will rejoin in order to save data")
-				wait(1)
-				game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-			end
-		end
-	end)
-
 	local raceselect1
-		section4:addDropdown("Race Choice 1",race,function(RACE1)
+		section3:addDropdown("Race Choice 1",race,function(RACE1)
 		print("Selected: " .. RACE1)
 		notify("Selected: " .. RACE1)
 		raceselect1 = RACE1
 	end)
 	local raceselect2
-		section4:addDropdown("Race Choice 2",race,function(RACE2)
+		section3:addDropdown("Race Choice 2",race,function(RACE2)
 		print("Selected: " .. RACE2)
 		notify("Selected: " .. RACE2)
 		raceselect2 = RACE2
 	end)
 	local raceselect3
-		section4:addDropdown("Race Choice 3",race,function(RACE3)
+		section3:addDropdown("Race Choice 3",race,function(RACE3)
 		print("Selected: " .. RACE3)
 		notify("Selected: " .. RACE3)
 		raceselect3 = RACE3
 	end)
 
-	section4:addToggle("Spin Race",false,function(bool)
+	section3:addToggle("Spin Race",false,function(bool)
 		StartSpinRace = bool
 		if StartSpinRace == true then
 			local rcamount = player.PlayerGui.Main.Ryo2.amt.text,""
@@ -9203,18 +9372,48 @@ local function ShindoMain()
 						else
 							print("You have got: " .. racevalue)
 							notify("You have got: " .. racevalue)
+							if Autosave == true then
+								datasavedandyoucanredeemcodes = true
+							end
 						end
+					end
+				else
+					if Autorejoin == true then
+						--player.statz.spins:Destroy()
+						player.startevent:FireServer("band", "\128")
+						wait()
+						game:GetService('TeleportService'):Teleport(game.PlaceId, player)
 					end
 				end
 			end)
 		else
 		end
 	end)
-		
-	-- third page
-	local page3 = NoobieDoge:addPage("Spam Keys", 5012544693)
-	local section1 = page3:addSection("Configurations")
-	local section2 = page3:addSection("Keys")
+
+	game:GetService('RunService').Stepped:connect(function()
+		if datasavedandyoucanredeemcodes == true then
+			StartSpinKen = false
+			StartSpinKen2 = false
+			StartSpinRace = false
+			datasavedandyoucanredeemcodes = false
+			player.startevent:FireServer("band", "Eye")
+			if savegomyhome then
+				notify("You will be teleported to My Home in order to save data")
+				wait(1)
+				local args = {[1] = "arenateleport",[2] = 5451410109}
+				player.startevent:FireServer(unpack(args))
+			elseif savegomainmenu then
+				notify("You will rejoin in order to save data")
+				wait(1)
+				game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+			end
+		end
+	end)
+
+	-- forth page
+	local page4 = NoobieDoge:addPage("Spam Keys", 5012544693)
+	local section1 = page4:addSection("Configurations")
+	local section2 = page4:addSection("Keys")
 
 	section1:addToggle("Enabled",false,function(bool)
 		SpamGOBRRRRR = bool
@@ -9352,13 +9551,13 @@ local function ShindoMain()
 		end
 	end)
 
-	-- forth page
-	local page4 = NoobieDoge:addPage("Customs", 5012544693)
-	local section1 = page4:addSection("Display Ranks")
-	local section2 = page4:addSection("Combat Art Animation")
-	local section3 = page4:addSection("Element Changer")
-	local section4 = page4:addSection("Bloodline Changer")
-	local section5 = page4:addSection("Extra")
+	-- fifth page
+	local page5 = NoobieDoge:addPage("Customs", 5012544693)
+	local section1 = page5:addSection("Display Ranks")
+	local section2 = page5:addSection("Combat Art Animation")
+	local section3 = page5:addSection("Element Changer")
+	local section4 = page5:addSection("Bloodline Changer")
+	local section5 = page5:addSection("Extra")
 
 	section1:addDropdown("Custom Display Ranks",{"RELL", "F 0", "D 1", "D 2", "D 3", "C 1", "C 2", "C 3", "B 1", "B 2", "B 3", "A 1", "A 2", "A 3", "S 1", "S 2", "S 3", "V 1", "V 2", "V 3", "X 1", "X 2", "X 3", "Y 1", "Y 2", "Y 3", "Z 1", "Z 2", "Z 3", "MAX-69", "MAX-420", "MAX-666", "MAX-999", "GOD", "Dragon", "Hacker","???"},function(rektrank)
 		player.leaderstats.Rank.Value =  (rektrank)
@@ -9423,14 +9622,14 @@ local function ShindoMain()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/NoobieDoge/DogeHub/Separated/ShindoBloodlineChanger"))()
 	end)
 
-	-- fifth page
-	local page5 = NoobieDoge:addPage("Mentor Farm", 5012544693)
+	-- sixth page
+	local page6 = NoobieDoge:addPage("Mentor Farm", 5012544693)
 	local MyRank = player.statz.prestige.rank.Value
 	if MyRank == "F" or MyRank == "D" or MyRank == "C" or MyRank == "B" or MyRank == "A" then
-		local section1 = page5:addSection("You need to be at least S rank to achieve this function")
+		local section1 = page6:addSection("You need to be at least S rank to achieve this function")
 	else
-		local section1 = page5:addSection("Teleport to mentors")
-		local section2 = page5:addSection("Mission Process")
+		local section1 = page6:addSection("Teleport to mentors")
+		local section2 = page6:addSection("Mission Process")
 
 		section1:addButton("Tp to Narumaki Mentor",function()
 			if game.PlaceId == 5451398863 then
@@ -9686,11 +9885,11 @@ local function ShindoMain()
 		end)
 	end
 
-	-- sixth page
-	local page6 = NoobieDoge:addPage("Daily Missions", 5012544693)
-	local section1 = page6:addSection("Claim Missions")
-	local section2 = page6:addSection("Auto Daily Missions")
-	local section3 = page6:addSection("Teleports")
+	-- seventh page
+	local page7 = NoobieDoge:addPage("Daily Missions", 5012544693)
+	local section1 = page7:addSection("Claim Missions")
+	local section2 = page7:addSection("Auto Daily Missions")
+	local section3 = page7:addSection("Teleports")
 
 	section1:addButton("Claim daily missions rewards",function()
 		local args = {[1] = "claim",[2] = player.statz.mission.dailyquest1}
@@ -9902,15 +10101,15 @@ local function ShindoMain()
 		end)
 	end
 
-	-- seventh page
-	local page7 = NoobieDoge:addPage("Quests", 5012544693)
-	local section1 = page7:addSection("Auto Farm")
-	local section2 = page7:addSection("Configurations")
-	local section3 = page7:addSection("Boss Farm Settings")
-	local section4 = page7:addSection("Beasts Farm Settings")
-	local section5 = page7:addSection("Auto Rank Up")
-	local section6 = page7:addSection("Auto Rank Up Settings")
-	local section7 = page7:addSection("Auto Stats")
+	-- eighth page
+	local page8 = NoobieDoge:addPage("Quests", 5012544693)
+	local section1 = page8:addSection("Auto Farm")
+	local section2 = page8:addSection("Configurations")
+	local section3 = page8:addSection("Boss Farm Settings")
+	local section4 = page8:addSection("Beasts Farm Settings")
+	local section5 = page8:addSection("Auto Rank Up")
+	local section6 = page8:addSection("Auto Rank Up Settings")
+	local section7 = page8:addSection("Auto Stats")
 
 	local mobs
 	section1:addToggle("Green Scroll Farm",false, function(bool)
@@ -10530,10 +10729,10 @@ local function ShindoMain()
 		end
 	end)
 
-	-- eighth page
-	local page8 = NoobieDoge:addPage("Teleports", 5012544693)
-	local section1 = page8:addSection("Map Teleports")
-	local section2 = page8:addSection("Server Teleports")
+	-- ninth page
+	local page9 = NoobieDoge:addPage("Teleports", 5012544693)
+	local section1 = page9:addSection("Map Teleports")
+	local section2 = page9:addSection("Server Teleports")
 
 	section1:addButton("Spawn Point",function()
 		if game:GetService("Workspace"):FindFirstChild("SpawnLocation") then
