@@ -731,6 +731,7 @@ local function ShindoInfSpin()
 		end
 	end)
 
+	--Workspace stuff
 	local DHV2SL2MMF = "DogeHubV2/ShindoLife/MainMenu"
 	if isfolder(DHV2SL2MMF) == false then
 		makefolder(DHV2SL2MMF)
@@ -840,6 +841,49 @@ local function ShindoInfSpin()
 	end 
 	if isfile(DHV2SL2MMF .. "/StartSpinRace.txt") == false then
 		writefile(DHV2SL2MMF .. "/StartSpinRace.txt","false")
+	end
+
+	--In case inf loop
+	local rcamount = player.PlayerGui.Main.Ryo2.amt.text,""
+	if(string.find(rcamount,"(K)")) then
+		rcamount = (string.gsub(rcamount,"(K)",""))
+		rcamount = tonumber(rcamount)*1000
+		print(rcamount)
+	else
+		rcamount = string.gsub(rcamount)	
+		print(rcamount)
+	end
+	if rcamount < 20000 and readfile(DHV2SL2MMF .. "/StartSpinRace.txt") == "true" then
+		StartSpinRace = false
+		writefile(DHV2SL2MMF .. "/StartSpinRace.txt","false")
+		wait(3)
+		notify("You don't have enough Rell Coins!")
+	end
+
+	local spins = player.statz.spins.Value
+	if spins < tonumber(readfile(DHV2SL2MMF .. "/resetspinswhenthisnumberreached.txt")) then
+		writefile(DHV2SL2MMF .. "/StartSpinElm1.txt","false")
+		writefile(DHV2SL2MMF .. "/StartSpinElm2.txt","false")
+		writefile(DHV2SL2MMF .. "/StartSpinElm3.txt","false")
+		writefile(DHV2SL2MMF .. "/StartSpinElm4.txt","false")
+		writefile(DHV2SL2MMF .. "/AutoSpinBL1.txt","false")
+		writefile(DHV2SL2MMF .. "/AutoSpinBL2.txt","false")
+		writefile(DHV2SL2MMF .. "/AutoSpinBL3.txt","false")
+		writefile(DHV2SL2MMF .. "/AutoSpinBL4.txt","false")
+		writefile(DHV2SL2MMF .. "/StartSpinKen.txt","false")
+		writefile(DHV2SL2MMF .. "/StartSpinKen2.txt","false")
+		StartSpinElm1 = false
+		StartSpinElm2 = false
+		StartSpinElm3 = false
+		StartSpinElm4 = false
+		AutoSpinBL1 = false
+		AutoSpinBL2 = false
+		AutoSpinBL3 = false
+		AutoSpinBL4 = false
+		StartSpinKen = false
+		StartSpinKen2 = false
+		wait(3)
+		notify("You don't have enough spin!")
 	end
 
 	--DogeHub V2 GUI
@@ -1140,8 +1184,22 @@ local function ShindoInfSpin()
 
 	local race = {}
 	for i,v in pairs(player.PlayerGui.Main.RaceCustom.Frame.ScrollingFrame:GetChildren()) do
-		if v:FindFirstChild("icon") and not v.icon:FindFirstChild("lock") then
+		if v:FindFirstChild("icon") and (not v.icon:FindFirstChild("lock") or v.icon.lock.Visible == false) then
 			table.insert(race, v.Name)
+		end
+	end
+	for i,v in pairs(player.statz.unlocked:GetChildren()) do
+		if v.Name == "celestialdna" then
+			table.insert(race, "celestial")
+		end
+		if v.Name == "snakedna" then
+			table.insert(race, "snake")
+		end
+		if v.Name == "sharkdna" then
+			table.insert(race, "shark")
+		end
+		if v.Name == "puppetdna" then
+			table.insert(race, "puppet")
 		end
 	end
 
@@ -2401,7 +2459,7 @@ local function ShindoMyHome()
 
 	local race = {}
 	for i,v in pairs(player.PlayerGui.Main.RaceCustom.Frame.ScrollingFrame:GetChildren()) do
-		if v:FindFirstChild("icon") and not v.icon:FindFirstChild("lock") then
+		if v:FindFirstChild("icon") and (not v.icon:FindFirstChild("lock") or v.icon.lock.Visible == false) then
 			table.insert(race, v.Name)
 		end
 	end
@@ -9560,7 +9618,7 @@ local function ShindoMain()
 
 	local race = {}
 	for i,v in pairs(player.PlayerGui.Main.RaceCustom.Frame.ScrollingFrame:GetChildren()) do
-		if v:FindFirstChild("icon") and not v.icon:FindFirstChild("lock") then
+		if v:FindFirstChild("icon") and (not v.icon:FindFirstChild("lock") or v.icon.lock.Visible == false) then
 			table.insert(race, v.Name)
 		end
 	end
