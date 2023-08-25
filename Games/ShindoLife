@@ -641,6 +641,10 @@ notify("Enabled anti-AFK")
 
 --Shindo Inf Spin
 local function ShindoInfSpin()
+	repeat wait() until game:IsLoaded()
+	repeat wait() until game.Players.LocalPlayer:FindFirstChild("leaderstats")
+	repeat wait() until game.Players.LocalPlayer.leaderstats:FindFirstChild("Pro").Value ~= "?"
+	
 	--Kenjutsu GUI
 	local player = game.Players.LocalPlayer
 	local ScreenGui4Ken = Instance.new("ScreenGui")
@@ -727,34 +731,113 @@ local function ShindoInfSpin()
 		end
 	end)
 
-	local a1
-	local a2
-	local a3
-	local a4
-	local a5
-	local A1
-	local A2
-	local A3
-	local A4
-	local A5
-
-	local Doge = {
-		Autorejoin = true, -- Self explanatory. LEAVE ON BY DEFAULT.
-		Autosave = false, -- Self explanatory. LEAVE OFF BY DEFAULT.
-		resetspinswhenthisnumberreached = 0, -- Self explanatory. VALUE 0 BY DEFAULT.
-		savegomyhome = true, -- Self explanatory. LEAVE ON BY DEFAULT.
-		savegomainmenu = false, -- Self explanatory. LEAVE OFF BY DEFAULT.
-		a1,
-		a2,
-		a3,
-		a4,
-		a5,
-		A1,
-		A2,
-		A3,
-		A4,
-		A5,
-	}
+	local DHV2SL2MMF = "DogeHubV2/ShindoLife/MainMenu"
+	if isfolder(DHV2SL2MMF) == false then
+		makefolder(DHV2SL2MMF)
+	end
+	if isfile(DHV2SL2MMF .. "/Autorejoin.txt") == false then
+		writefile(DHV2SL2MMF .. "/Autorejoin.txt","true")
+	end
+	if isfile(DHV2SL2MMF .. "/Autosave.txt") == false then
+		writefile(DHV2SL2MMF .. "/Autosave.txt","false")
+	end
+	if isfile(DHV2SL2MMF .. "/resetspinswhenthisnumberreached.txt") == false then
+		writefile(DHV2SL2MMF .. "/resetspinswhenthisnumberreached.txt","0")
+	end
+	if isfile(DHV2SL2MMF .. "/savegomyhome.txt") == false then
+		writefile(DHV2SL2MMF .. "/savegomyhome.txt","true")
+	end
+	if isfile(DHV2SL2MMF .. "/savegomainmenu.txt") == false then
+		writefile(DHV2SL2MMF .. "/savegomainmenu.txt","false")
+	end
+	local Choices = DHV2SL2MMF .. "/Choices"
+	if isfolder(Choices) == false then
+		makefolder(Choices)
+	end
+	if isfile(Choices .. "/a1.txt") == false then
+		writefile(Choices .. "/a1.txt"," ")
+	end
+	if isfile(Choices .. "/a2.txt") == false then
+		writefile(Choices .. "/a2.txt"," ")
+	end
+	if isfile(Choices .. "/a3.txt") == false then
+		writefile(Choices .. "/a3.txt"," ")
+	end
+	if isfile(Choices .. "/a4.txt") == false then
+		writefile(Choices .. "/a4.txt"," ")
+	end
+	if isfile(Choices .. "/a5.txt") == false then
+		writefile(Choices .. "/a5.txt"," ")
+	end
+	if isfile(Choices .. "/.A1.txt") == false then
+		writefile(Choices .. "/.A1.txt"," ")
+	end
+	if isfile(Choices .. "/.A2.txt") == false then
+		writefile(Choices .. "/.A2.txt"," ")
+	end
+	if isfile(Choices .. "/.A3.txt") == false then
+		writefile(Choices .. "/.A3.txt"," ")
+	end
+	if isfile(Choices .. "/.A4.txt") == false then
+		writefile(Choices .. "/.A4.txt"," ")
+	end
+	if isfile(Choices .. "/.A5.txt") == false then
+		writefile(Choices .. "/.A5.txt"," ")
+	end
+	if isfile(Choices .. "/kenselect1.txt") == false then
+		writefile(Choices .. "/kenselect1.txt"," ")
+	end
+	if isfile(Choices .. "/kenselect2.txt") == false then
+		writefile(Choices .. "/kenselect2.txt"," ")
+	end
+	if isfile(Choices .. "/kenselect3.txt") == false then
+		writefile(Choices .. "/kenselect3.txt"," ")
+	end
+	if isfile(Choices .. "/kenselect4.txt") == false then
+		writefile(Choices .. "/kenselect4.txt"," ")
+	end
+	if isfile(Choices .. "/kenselect5.txt") == false then
+		writefile(Choices .. "/kenselect5.txt"," ")
+	end
+	if isfile(Choices .. "/raceselect1.txt") == false then
+		writefile(Choices .. "/raceselect1.txt"," ")
+	end
+	if isfile(Choices .. "/raceselect2.txt") == false then
+		writefile(Choices .. "/raceselect2.txt"," ")
+	end
+	if isfile(Choices .. "/raceselect3.txt") == false then
+		writefile(Choices .. "/raceselect3.txt"," ")
+	end
+	if isfile(DHV2SL2MMF .. "/StartSpinElm1.txt") == false then
+		writefile(DHV2SL2MMF .. "/StartSpinElm1.txt","false")
+	end
+	if isfile(DHV2SL2MMF .. "/StartSpinElm2.txt") == false then
+		writefile(DHV2SL2MMF .. "/StartSpinElm2.txt","false")
+	end
+	if isfile(DHV2SL2MMF .. "/StartSpinElm3.txt") == false then
+		writefile(DHV2SL2MMF .. "/StartSpinElm3.txt","false")
+	end
+	if isfile(DHV2SL2MMF .. "/StartSpinElm4.txt") == false then
+		writefile(DHV2SL2MMF .. "/StartSpinElm4.txt","false")
+	end
+	if isfile(DHV2SL2MMF .. "/AutoSpinBL1.txt") == false then
+		writefile(DHV2SL2MMF .. "/AutoSpinBL1.txt","false")
+	end
+	if isfile(DHV2SL2MMF .. "/AutoSpinBL2.txt") == false then
+		writefile(DHV2SL2MMF .. "/AutoSpinBL2.txt","false")
+	end
+	if isfile(DHV2SL2MMF .. "/AutoSpinBL3.txt") == false then
+		writefile(DHV2SL2MMF .. "/AutoSpinBL3.txt","false")
+	end 
+	if isfile(DHV2SL2MMF .. "/StartSpinKen.txt") == false then
+		writefile(DHV2SL2MMF .. "/StartSpinKen.txt","false")
+	end
+	if isfile(DHV2SL2MMF .. "/StartSpinKen2.txt") == false then
+		writefile(DHV2SL2MMF .. "/StartSpinKen2.txt","false")
+	end 
+	if isfile(DHV2SL2MMF .. "/StartSpinRace.txt") == false then
+		writefile(DHV2SL2MMF .. "/StartSpinRace.txt","false")
+	end
 
 	--DogeHub V2 GUI
 	local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20page%20format%20gui"))()
@@ -909,39 +992,115 @@ local function ShindoInfSpin()
 		SAVEDATA()
 	end)
 
-	section3:addToggle("Auto Rejoin",true,function(bool)
-		Autorejoin = bool
-	end)
+	if 	readfile(DHV2SL2MMF .. "/Autorejoin.txt") == "true" then
+		section3:addToggle("Auto Rejoin",true,function(bool)
+			Autorejoin = bool
+			if Autorejoin == true then
+				writefile(DHV2SL2MMF .. "/Autorejoin.txt","true")
+			else
+				writefile(DHV2SL2MMF .. "/Autorejoin.txt","false")
+			end
+		end)
+		Autorejoin = true
+	else
+		section3:addToggle("Auto Rejoin",false,function(bool)
+			Autorejoin = bool
+			if Autorejoin == true then
+				writefile(DHV2SL2MMF .. "/Autorejoin.txt","true")
+			else
+				writefile(DHV2SL2MMF .. "/Autorejoin.txt","false")
+			end
+		end)
+		Autorejoin = false
+	end
 
-	section3:addToggle("Auto Save",false,function(bool)
-		Autosave = bool
-	end)
+	if 	readfile(DHV2SL2MMF .. "/Autosave.txt") == "true" then
+		section3:addToggle("Auto Save",true,function(bool)
+			Autosave = bool
+			if Autosave == true then
+				writefile(DHV2SL2MMF .. "/Autosave.txt","true")
+			else
+				writefile(DHV2SL2MMF .. "/Autosave.txt","false")
+			end
+		end)
+		Autosave = true
+	else
+		section3:addToggle("Auto Save",false,function(bool)
+			Autosave = bool
+			if Autosave == true then
+				writefile(DHV2SL2MMF .. "/Autosave.txt","true")
+			else
+				writefile(DHV2SL2MMF .. "/Autosave.txt","false")
+			end
+		end)
+		Autosave = false
+	end
 
 	if player.gamepasses:FindFirstChild("spinsbag") then
-		section3:addSlider("Auto Rejoin when spins lower than", 0, 0, 999, function(value)
+		section3:addSlider("Auto Rejoin when spins lower than", tonumber(readfile(DHV2SL2MMF .. "/resetspinswhenthisnumberreached.txt")), 0, 999, function(value)
 			resetspinswhenthisnumberreached = value
+			writefile(DHV2SL2MMF .. "/resetspinswhenthisnumberreached.txt",tostring(resetspinswhenthisnumberreached))
 		end)
 	else
-		section3:addSlider("Auto Rejoin when spins lower than", 0, 0, 499, function(value)
+		section3:addSlider("Auto Rejoin when spins lower than", tonumber(readfile(DHV2SL2MMF .. "/resetspinswhenthisnumberreached.txt")), 0, 499, function(value)
 			resetspinswhenthisnumberreached = value
+			writefile(DHV2SL2MMF .. "/resetspinswhenthisnumberreached.txt",tostring(resetspinswhenthisnumberreached))
 		end)
 	end
-	resetspinswhenthisnumberreached = 0
+	resetspinswhenthisnumberreached = tonumber(readfile(DHV2SL2MMF .. "/resetspinswhenthisnumberreached.txt"))
 
-	local savegomyhome
-	section3:addToggle("Teleport to My Home when saving data",true,function(bool)
-		savegomyhome = bool
-		savegomainmenu = false
-		section3:updateToggle("Teleport back to Main Menu when saving data")
-	end)
-	local savegomainmenu
-	section3:addToggle("Teleport back to Main Menu when saving data",false,function(bool)
-		savegomainmenu = bool
+
+	if 	readfile(DHV2SL2MMF .. "/savegomyhome.txt") == "true" then
+		section3:addToggle("Teleport to My Home when saving data",true,function(bool)
+			savegomyhome = bool
+			savegomainmenu = false
+			section3:updateToggle("Teleport back to Main Menu when saving data")
+			if savegomyhome == true then
+				writefile(DHV2SL2MMF .. "/savegomyhome.txt","true")
+			else
+				writefile(DHV2SL2MMF .. "/savegomyhome.txt","false")
+			end
+		end)
+		savegomyhome = true
+	else
+		section3:addToggle("Teleport to My Home when saving data",false,function(bool)
+			savegomyhome = bool
+			savegomainmenu = false
+			section3:updateToggle("Teleport back to Main Menu when saving data")
+			if savegomyhome == true then
+				writefile(DHV2SL2MMF .. "/savegomyhome.txt","true")
+			else
+				writefile(DHV2SL2MMF .. "/savegomyhome.txt","false")
+			end
+		end)
 		savegomyhome = false
-		section3:updateToggle("Teleport to My Home when saving data")
-	end)
-	savegomyhome = true
-	
+	end
+
+	if 	readfile(DHV2SL2MMF .. "/savegomainmenu.txt") == "true" then
+		section3:addToggle("Teleport back to Main Menu when saving data",true,function(bool)
+			savegomainmenu = bool
+			savegomyhome = false
+			section3:updateToggle("Teleport to My Home when saving data")
+			if savegomainmenu == true then
+				writefile(DHV2SL2MMF .. "/savegomainmenu.txt","true")
+			else
+				writefile(DHV2SL2MMF .. "/savegomainmenu.txt","false")
+			end
+		end)
+		savegomainmenu = true
+	else
+		section3:addToggle("Teleport back to Main Menu when saving data",false,function(bool)
+			savegomainmenu = bool
+			savegomyhome = true
+			section3:updateToggle("Teleport to My Home when saving data")
+			if savegomainmenu == true then
+				writefile(DHV2SL2MMF .. "/savegomainmenu.txt","true")
+			else
+				writefile(DHV2SL2MMF .. "/savegomainmenu.txt","false")
+			end
+		end)
+		savegomainmenu = false
+	end	
 	-- load
 	NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
 
@@ -988,398 +1147,581 @@ local function ShindoInfSpin()
 	local section1 = page2:addSection("Choose wanted elements")
 	local section2 = page2:addSection("Start Spinning")
 
-	section1:addDropdown("Element Choice 1",elm,function(ELM1)
+	section1:addDropdown("Element Choice 1: " .. readfile(Choices .. "/a1.txt"),elm,function(ELM1)
 		print("Selected: " .. ELM1)
 		notify("1st Element Selected: " .. ELM1)
 		a1 = ELM1
+		writefile(Choices .. "/a1.txt",a1)
 	end)
-	section1:addDropdown("Element Choice 2",elm,function(ELM2)
+	a1 = readfile(Choices .. "/a1.txt")
+	section1:addDropdown("Element Choice 2: ".. readfile(Choices .. "/a2.txt"),elm,function(ELM2)
 		print("Selected: " .. ELM2)
 		notify("2nd Element Selected: " .. ELM2)
 		a2 = ELM2
+		writefile(Choices .. "/a2.txt",a2)
 	end)
-	section1:addDropdown("Element Choice 3",elm,function(ELM3)
+	a2 = readfile(Choices .. "/a2.txt")
+	section1:addDropdown("Element Choice 3: " .. readfile(Choices .. "/a3.txt"),elm,function(ELM3)
 		print("Selected: " .. ELM3)
 		notify("3rd Element Selected: " .. ELM3)
 		a3 = ELM3
+		writefile(Choices .. "/a3.txt",a3)
 	end)
-	section1:addDropdown("Element Choice 4",elm,function(ELM4)
+	a3 = readfile(Choices .. "/a3.txt")
+	section1:addDropdown("Element Choice 4: " .. readfile(Choices .. "/a4.txt"),elm,function(ELM4)
 		print("Selected: " .. ELM4)
 		notify("4th Element Selected: " .. ELM4)
 		a4 = ELM4
+		writefile(Choices .. "/a4.txt",a4)
 	end)
-	section1:addDropdown("Element Choice 5",elm,function(ELM5)
+	a4 = readfile(Choices .. "/a4.txt")
+	section1:addDropdown("Element Choice 5: " .. readfile(Choices .. "/a5.txt"),elm,function(ELM5)
 		print("Selected: " .. ELM5)
 		notify("5th Element Selected: " .. ELM5)
 		a5 = ELM5
+		writefile(Choices .. "/a5.txt",a5)
 	end)
+	a5 = readfile(Choices .. "/a5.txt")
 
-	section2:addToggle("Spin Slot 1",false,function(bool)
-		StartSpinElm1 = bool
-		if StartSpinElm1 == true then
-			local spins = player.statz.spins.Value
-			game:GetService('RunService').Stepped:connect(function()
-				if spins > resetspinswhenthisnumberreached then
-					spins = player.statz.spins.Value
-					elmvalue1 = player.statz.main.element1.Value
-					elmvalue2 = player.statz.main.element2.Value
-					elmvalue3 = player.statz.main.element3.Value
-					elmvalue4 = player.statz.main.element4.Value
-					if StartSpinElm1 == true then
-						if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
-							player.startevent:FireServer("spin", "element1")
-							print("Rolled: " .. elmvalue1)
-							wait(1)
-						elseif elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 then
-							if Autosave == true then
-								datasavedandyoucanredeemcodes = true
-							end
-						else
-							print("You have got: " .. elmvalue1)
-							notify("You have got: " .. elmvalue1)
-							if Autosave == true then
-								datasavedandyoucanredeemcodes = true
-							end
-						end
-					end
-				else
-					if Autorejoin == true then
-						--player.statz.spins:Destroy()
-						player.startevent:FireServer("band", "\128")
-						wait()
-						game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-					end
-				end
-			end)
-		else
-		end
-	end)
-
-	section2:addToggle("Spin Slot 2",false,function(bool)
-		StartSpinElm2 = bool
-		if StartSpinElm2 == true then
-			local spins = player.statz.spins.Value
-			game:GetService('RunService').Stepped:connect(function()
-				if spins > resetspinswhenthisnumberreached then
-					spins = player.statz.spins.Value
-					elmvalue1 = player.statz.main.element1.Value
-					elmvalue2 = player.statz.main.element2.Value
-					elmvalue3 = player.statz.main.element3.Value
-					elmvalue4 = player.statz.main.element4.Value
-					if StartSpinElm2 == true then
-						if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
-							player.startevent:FireServer("spin", "element2")
-							print("Rolled: " .. elmvalue2)
-							wait(1)
-						elseif elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 then
-							if Autosave == true then
-								datasavedandyoucanredeemcodes = true
-							end
-						else
-							print("You have got: " .. elmvalue2)
-							notify("You have got: " .. elmvalue2)
-							if Autosave == true then
-								datasavedandyoucanredeemcodes = true
-							end
-						end
-					end
-				else
-					if Autorejoin == true then
-						--player.statz.spins:Destroy()
-						player.startevent:FireServer("band", "\128")
-						wait()
-						game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-					end
-				end
-			end)
-		else
-		end
-	end)
-
-	if player.gamepasses:FindFirstChild("element3") then
-		section2:addToggle("Spin Slot 3",false,function(bool)
-			StartSpinElm3 = bool
-			if StartSpinElm3 == true then
-				local spins = player.statz.spins.Value
-				game:GetService('RunService').Stepped:connect(function()
-					if spins > resetspinswhenthisnumberreached then
-						spins = player.statz.spins.Value
-						elmvalue1 = player.statz.main.element1.Value
-						elmvalue2 = player.statz.main.element2.Value
-						elmvalue3 = player.statz.main.element3.Value
-						elmvalue4 = player.statz.main.element4.Value
-						if StartSpinElm3 == true then
-							if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
-								player.startevent:FireServer("spin", "element3")
-								print("Rolled: " .. elmvalue3)
-								wait(1)
-							elseif elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 then
-								if Autosave == true then
-									datasavedandyoucanredeemcodes = true
-								end
-							else
-								print("You have got: " .. elmvalue3)
-								notify("You have got: " .. elmvalue3)
-								if Autosave == true then
-									datasavedandyoucanredeemcodes = true
-								end
-							end
-						end
-					else
-						if Autorejoin == true then
-							--player.statz.spins:Destroy()
-							player.startevent:FireServer("band", "\128")
-							wait()
-							game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-						end
-					end
-				end)
+	if readfile(DHV2SL2MMF .. "/StartSpinElm1.txt") == "true" then
+		section2:addToggle("Spin Slot 1",true,function(bool)
+			StartSpinElm1 = bool
+			if StartSpinElm1 == true then
+				writefile(DHV2SL2MMF .. "/StartSpinElm1.txt","true")
 			else
+				writefile(DHV2SL2MMF .. "/StartSpinElm1.txt","false")
 			end
 		end)
+		StartSpinElm1 = true
+	else
+		section2:addToggle("Spin Slot 1",false,function(bool)
+			StartSpinElm1 = bool
+			if StartSpinElm1 == true then
+				writefile(DHV2SL2MMF .. "/StartSpinElm1.txt","true")
+			else
+				writefile(DHV2SL2MMF .. "/StartSpinElm1.txt","false")
+			end
+		end)
+		StartSpinElm1 = false
+	end
+
+	if readfile(DHV2SL2MMF .. "/StartSpinElm2.txt") == "true" then
+		section2:addToggle("Spin Slot 2",true,function(bool)
+			StartSpinElm2 = bool
+			if StartSpinElm2 == true then
+				writefile(DHV2SL2MMF .. "/StartSpinElm2.txt","true")
+			else
+				writefile(DHV2SL2MMF .. "/StartSpinElm2.txt","false")
+			end
+		end)
+		StartSpinElm2 = true
+	else
+		section2:addToggle("Spin Slot 2",false,function(bool)
+			StartSpinElm2 = bool
+			if StartSpinElm2 == true then
+				writefile(DHV2SL2MMF .. "/StartSpinElm2.txt","true")
+			else
+				writefile(DHV2SL2MMF .. "/StartSpinElm2.txt","false")
+			end
+		end)
+		StartSpinElm2 = false
+	end
+
+	if player.gamepasses:FindFirstChild("element3") then
+		if readfile(DHV2SL2MMF .. "/StartSpinElm3.txt") == "true" then
+			section2:addToggle("Spin Slot 3",true,function(bool)
+				StartSpinElm3 = bool
+				if StartSpinElm3 == true then
+					writefile(DHV2SL2MMF .. "/StartSpinElm3.txt","true")
+				else
+					writefile(DHV2SL2MMF .. "/StartSpinElm3.txt","false")
+				end
+			end)
+			StartSpinElm3 = true
+		else
+			section2:addToggle("Spin Slot 3",false,function(bool)
+				StartSpinElm3 = bool
+				if StartSpinElm3 == true then
+					writefile(DHV2SL2MMF .. "/StartSpinElm3.txt","true")
+				else
+					writefile(DHV2SL2MMF .. "/StartSpinElm3.txt","false")
+				end
+			end)
+			StartSpinElm3 = false
+		end
 	end
 
 	if player.gamepasses:FindFirstChild("element4") then
-		section2:addToggle("Spin Slot 4",false,function(bool)
-			StartSpinElm4 = bool
-			if StartSpinElm4 == true then
-				local spins = player.statz.spins.Value
-				game:GetService('RunService').Stepped:connect(function()
-					if spins > resetspinswhenthisnumberreached then
-						spins = player.statz.spins.Value
-						elmvalue1 = player.statz.main.element1.Value
-						elmvalue2 = player.statz.main.element2.Value
-						elmvalue3 = player.statz.main.element3.Value
-						elmvalue4 = player.statz.main.element4.Value
-						if StartSpinElm4 == true then
-							if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
-								player.startevent:FireServer("spin", "element4")
-								print("Rolled: " .. elmvalue4)
-								wait(1)
-							elseif elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
-								if Autosave == true then
-									datasavedandyoucanredeemcodes = true
-								end
-							else
-								print("You have got: " .. elmvalue4)
-								notify("You have got: " .. elmvalue4)
-								if Autosave == true then
-									datasavedandyoucanredeemcodes = true
-								end
-							end
+		if readfile(DHV2SL2MMF .. "/StartSpinElm4.txt") == "true" then
+			section2:addToggle("Spin Slot 4",true,function(bool)
+				StartSpinElm4 = bool
+				if StartSpinElm4 == true then
+					writefile(DHV2SL2MMF .. "/StartSpinElm4.txt","true")
+				else
+					writefile(DHV2SL2MMF .. "/StartSpinElm4.txt","false")
+				end
+			end)
+			StartSpinElm4 = true
+		else
+			section2:addToggle("Spin Slot 4",false,function(bool)
+				StartSpinElm4 = bool
+				if StartSpinElm4 == true then
+					writefile(DHV2SL2MMF .. "/StartSpinElm4.txt","true")
+				else
+					writefile(DHV2SL2MMF .. "/StartSpinElm4.txt","false")
+				end
+			end)
+			StartSpinElm4 = false
+		end
+	end
+
+	game:GetService('RunService').Stepped:connect(function()
+		if StartSpinElm1 == true then
+			local spins = player.statz.spins.Value
+			if spins > resetspinswhenthisnumberreached then
+				spins = player.statz.spins.Value
+				elmvalue1 = player.statz.main.element1.Value
+				elmvalue2 = player.statz.main.element2.Value
+				elmvalue3 = player.statz.main.element3.Value
+				elmvalue4 = player.statz.main.element4.Value
+				if StartSpinElm1 == true then
+					if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
+						player.startevent:FireServer("spin", "element1")
+						print("Rolled: " .. elmvalue1)
+						wait(1)
+					elseif elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 then
+						if Autosave == true then
+							datasavedandyoucanredeemcodes = true
 						end
 					else
-						if Autorejoin == true then
-							--player.statz.spins:Destroy()
-							player.startevent:FireServer("band", "\128")
-							wait()
-							game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+						StartSpinElm1 = false
+						writefile(DHV2SL2MMF .. "/StartSpinElm1.txt","false")
+						print("You have got: " .. elmvalue1)
+						notify("You have got: " .. elmvalue1)
+						if Autosave == true then
+							datasavedandyoucanredeemcodes = true
 						end
 					end
-				end)
+				end
 			else
+				if Autorejoin == true then
+					--player.statz.spins:Destroy()
+					player.startevent:FireServer("band", "\128")
+					wait()
+					game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+				end
 			end
-		end)
-	end
+		else
+		end
+	end)
+
+	game:GetService('RunService').Stepped:connect(function()
+		if StartSpinElm2 == true then
+			local spins = player.statz.spins.Value
+			if spins > resetspinswhenthisnumberreached then
+				spins = player.statz.spins.Value
+				elmvalue1 = player.statz.main.element1.Value
+				elmvalue2 = player.statz.main.element2.Value
+				elmvalue3 = player.statz.main.element3.Value
+				elmvalue4 = player.statz.main.element4.Value
+				if StartSpinElm2 == true then
+					if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
+						player.startevent:FireServer("spin", "element2")
+						print("Rolled: " .. elmvalue2)
+						wait(1)
+					elseif elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 then
+						if Autosave == true then
+							datasavedandyoucanredeemcodes = true
+						end
+					else
+						StartSpinElm2 = false
+						writefile(DHV2SL2MMF .. "/StartSpinElm2.txt","false")
+						print("You have got: " .. elmvalue2)
+						notify("You have got: " .. elmvalue2)
+						if Autosave == true then
+							datasavedandyoucanredeemcodes = true
+						end
+					end
+				end
+			else
+				if Autorejoin == true then
+					--player.statz.spins:Destroy()
+					player.startevent:FireServer("band", "\128")
+					wait()
+					game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+				end
+			end
+		else
+		end
+	end)
+
+	game:GetService('RunService').Stepped:connect(function()
+		if StartSpinElm3 == true then
+			local spins = player.statz.spins.Value
+			if spins > resetspinswhenthisnumberreached then
+				spins = player.statz.spins.Value
+				elmvalue1 = player.statz.main.element1.Value
+				elmvalue2 = player.statz.main.element2.Value
+				elmvalue3 = player.statz.main.element3.Value
+				elmvalue4 = player.statz.main.element4.Value
+				if StartSpinElm3 == true then
+					if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
+						player.startevent:FireServer("spin", "element3")
+						print("Rolled: " .. elmvalue3)
+						wait(1)
+					elseif elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 then
+						if Autosave == true then
+							datasavedandyoucanredeemcodes = true
+						end
+					else
+						StartSpinElm3 = false
+						writefile(DHV2SL2MMF .. "/StartSpinElm3.txt","false")
+						print("You have got: " .. elmvalue3)
+						notify("You have got: " .. elmvalue3)
+						if Autosave == true then
+							datasavedandyoucanredeemcodes = true
+						end
+					end
+				end
+			else
+				if Autorejoin == true then
+					--player.statz.spins:Destroy()
+					player.startevent:FireServer("band", "\128")
+					wait()
+					game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+				end
+			end
+		else
+		end
+	end)
+
+	game:GetService('RunService').Stepped:connect(function()
+		if StartSpinElm4 == true then
+			local spins = player.statz.spins.Value
+			if spins > resetspinswhenthisnumberreached then
+				spins = player.statz.spins.Value
+				elmvalue1 = player.statz.main.element1.Value
+				elmvalue2 = player.statz.main.element2.Value
+				elmvalue3 = player.statz.main.element3.Value
+				elmvalue4 = player.statz.main.element4.Value
+				if StartSpinElm4 == true then
+					if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
+						player.startevent:FireServer("spin", "element4")
+						print("Rolled: " .. elmvalue4)
+						wait(1)
+					elseif elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
+						if Autosave == true then
+							datasavedandyoucanredeemcodes = true
+						end
+					else
+						StartSpinElm4 = false
+						writefile(DHV2SL2MMF .. "/StartSpinElm4.txt","false")
+						print("You have got: " .. elmvalue4)
+						notify("You have got: " .. elmvalue4)
+						if Autosave == true then
+							datasavedandyoucanredeemcodes = true
+						end
+					end
+				end
+			else
+				if Autorejoin == true then
+					--player.statz.spins:Destroy()
+					player.startevent:FireServer("band", "\128")
+					wait()
+					game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+				end
+			end
+		else
+		end
+	end)
 
 	-- third page
 	local page3 = NoobieDoge:addPage("Bloodlines", 5176336983)
 	local section1 = page3:addSection("Choose wanted bloodlines")
 	local section2 = page3:addSection("Start Spinning")
 
-	section1:addDropdown("Bloodline Choice 1",kgs,function(KG1)
+	section1:addDropdown("Bloodline Choice 1: " .. readfile(Choices .. "/.A1.txt"),kgs,function(KG1)
 		print("Selected: " .. KG1)
 		notify("1st Bloodline Selected: " .. KG1)
 		A1 = KG1
+		writefile(Choices .. "/.A1.txt",A1)
 	end)
-	section1:addDropdown("Bloodline Choice 2",kgs,function(KG2)
+	section1:addDropdown("Bloodline Choice 2: " .. readfile(Choices .. "/.A2.txt"),kgs,function(KG2)
 		print("Selected: " .. KG2)
 		notify("2nd Bloodline Selected: " .. KG2)
 		A2 = KG2
+		writefile(Choices .. "/.A2.txt",A2)
 	end)
-	section1:addDropdown("Bloodline Choice 3",kgs,function(KG3)
+	section1:addDropdown("Bloodline Choice 3: " .. readfile(Choices .. "/.A3.txt"),kgs,function(KG3)
 		print("Selected: " .. KG3)
 		notify("3rd Bloodline Selected: " .. KG3)
 		A3 = KG3
+		writefile(Choices .. "/.A3.txt",A3)
 	end)
-	section1:addDropdown("Bloodline Choice 4",kgs,function(KG4)
+	section1:addDropdown("Bloodline Choice 4: " .. readfile(Choices .. "/.A4.txt"),kgs,function(KG4)
 		print("Selected: " .. KG4)
 		notify("4th Bloodline Selected: " .. KG4)
 		A4 = KG4
+		writefile(Choices .. "/.A4.txt",A4)
 	end)
-	section1:addDropdown("Bloodline Choice 5",kgs,function(KG5)
+	section1:addDropdown("Bloodline Choice 5: " .. readfile(Choices .. "/.A5.txt"),kgs,function(KG5)
 		print("Selected: " .. KG5)
 		notify("5th Bloodline Selected: " .. KG5)
 		A5 = KG5
+		writefile(Choices .. "/.A5.txt",A5)
 	end)
 
-	section2:addToggle("Spin Slot 1",false,function(bool)
-		AutoSpinBL1 = bool
-		if AutoSpinBL1 == true then
-			local spins = player.statz.spins.Value
-			game:GetService('RunService').Stepped:connect(function()
-				if spins > resetspinswhenthisnumberreached then
-					spins = player.statz.spins.Value
-					kgvalue1 = player.statz.main.kg1.Value
-					kgvalue2 = player.statz.main.kg2.Value
-					kgvalue3 = player.statz.main.kg3.Value
-					kgvalue4 = player.statz.main.kg4.Value
-					if AutoSpinBL1 == true then
-						if kgvalue1 ~= A1 and kgvalue1 ~= A2 and kgvalue1 ~= A3 and kgvalue1 ~= A4 and kgvalue1 ~= A5 and kgvalue2 ~= A1 and kgvalue2 ~= A2 and kgvalue2 ~= A3 and kgvalue2 ~= A4 and kgvalue2 ~= A5 and kgvalue3 ~= A1 and kgvalue3 ~= A2 and kgvalue3 ~= A3 and kgvalue3 ~= A4 and kgvalue3 ~= A5 and kgvalue4 ~= A1 and kgvalue4 ~= A2 and kgvalue4 ~= A3 and kgvalue4 ~= A4 and kgvalue4 ~= A5 then
-							player.startevent:FireServer("spin", "kg1")
-							print("Rolled: " .. kgvalue1)
-							wait(1)
-						elseif kgvalue1 ~= A1 and kgvalue1 ~= A2 and kgvalue1 ~= A3 and kgvalue1 ~= A4 and kgvalue1 ~= A5 then
-							if Autosave == true then
-								datasavedandyoucanredeemcodes = true
-							end
-						else
-							print("You have got: " .. kgvalue1)
-							notify("You have got: " .. kgvalue1)
-							if Autosave == true then
-								datasavedandyoucanredeemcodes = true
-							end
-						end
-					end
-				else
-					if Autorejoin == true then
-						--player.statz.spins:Destroy()
-						player.startevent:FireServer("band", "\128")
-						wait()
-						game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-					end
-				end
-			end)
-		else
-		end
-	end)
-
-	section2:addToggle("Spin Slot 2",false,function(bool)
-		AutoSpinBL2 = bool
-		if AutoSpinBL2 == true then
-			local spins = player.statz.spins.Value
-			game:GetService('RunService').Stepped:connect(function()
-				if spins > resetspinswhenthisnumberreached then
-					spins = player.statz.spins.Value
-					kgvalue1 = player.statz.main.kg1.Value
-					kgvalue2 = player.statz.main.kg2.Value
-					kgvalue3 = player.statz.main.kg3.Value
-					kgvalue4 = player.statz.main.kg4.Value
-					if AutoSpinBL2 == true then
-						if kgvalue1 ~= A1 and kgvalue1 ~= A2 and kgvalue1 ~= A3 and kgvalue1 ~= A4 and kgvalue1 ~= A5 and kgvalue2 ~= A1 and kgvalue2 ~= A2 and kgvalue2 ~= A3 and kgvalue2 ~= A4 and kgvalue2 ~= A5 and kgvalue3 ~= A1 and kgvalue3 ~= A2 and kgvalue3 ~= A3 and kgvalue3 ~= A4 and kgvalue3 ~= A5 and kgvalue4 ~= A1 and kgvalue4 ~= A2 and kgvalue4 ~= A3 and kgvalue4 ~= A4 and kgvalue4 ~= A5 then
-							player.startevent:FireServer("spin", "kg2")
-							print("Rolled: " .. kgvalue2)
-							wait(1)
-						elseif kgvalue2 ~= A1 and kgvalue2 ~= A2 and kgvalue2 ~= A3 and kgvalue2 ~= A4 and kgvalue2 ~= A5 then
-							if Autosave == true then
-								datasavedandyoucanredeemcodes = true
-							end
-						else
-							print("You have got: " .. kgvalue2)
-							notify("You have got: " .. kgvalue2)
-							if Autosave == true then
-								datasavedandyoucanredeemcodes = true
-							end
-						end
-					end
-				else
-					if Autorejoin == true then
-						--player.statz.spins:Destroy()
-						player.startevent:FireServer("band", "\128")
-						wait()
-						game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-					end
-				end
-			end)
-		else
-		end
-	end)
-
-	if player.gamepasses:FindFirstChild("genkai3") then
-		section2:addToggle("Spin Slot 3",false,function(bool)
-			AutoSpinBL3 = bool
-			if AutoSpinBL3 == true then
-				local spins = player.statz.spins.Value
-				game:GetService('RunService').Stepped:connect(function()
-					if spins > resetspinswhenthisnumberreached then
-						spins = player.statz.spins.Value
-						kgvalue1 = player.statz.main.kg1.Value
-						kgvalue2 = player.statz.main.kg2.Value
-						kgvalue3 = player.statz.main.kg3.Value
-						kgvalue4 = player.statz.main.kg4.Value
-						if AutoSpinBL3 == true then
-							if kgvalue1 ~= A1 and kgvalue1 ~= A2 and kgvalue1 ~= A3 and kgvalue1 ~= A4 and kgvalue1 ~= A5 and kgvalue2 ~= A1 and kgvalue2 ~= A2 and kgvalue2 ~= A3 and kgvalue2 ~= A4 and kgvalue2 ~= A5 and kgvalue3 ~= A1 and kgvalue3 ~= A2 and kgvalue3 ~= A3 and kgvalue3 ~= A4 and kgvalue3 ~= A5 and kgvalue4 ~= A1 and kgvalue4 ~= A2 and kgvalue4 ~= A3 and kgvalue4 ~= A4 and kgvalue4 ~= A5 then
-								player.startevent:FireServer("spin", "kg3")
-								print("Rolled: " .. kgvalue3)
-								wait(1)
-							elseif kgvalue3 ~= A1 and kgvalue3 ~= A2 and kgvalue3 ~= A3 and kgvalue3 ~= A4 and kgvalue3 ~= A5 then
-								if Autosave == true then
-									datasavedandyoucanredeemcodes = true
-								end
-							else
-								print("You have got: " .. kgvalue3)
-								notify("You have got: " .. kgvalue3)
-								if Autosave == true then
-									datasavedandyoucanredeemcodes = true
-								end
-							end
-						end
-					else
-						if Autorejoin == true then
-							--player.statz.spins:Destroy()
-							player.startevent:FireServer("band", "\128")
-							wait()
-							game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-						end
-					end
-				end)
+	if readfile(DHV2SL2MMF .. "/AutoSpinBL1.txt") == "true" then
+		section2:addToggle("Spin Slot 1",true,function(bool)
+			AutoSpinBL1 = bool
+			if AutoSpinBL1 == true then
+				writefile(DHV2SL2MMF .. "/AutoSpinBL1.txt","true")
 			else
+				writefile(DHV2SL2MMF .. "/AutoSpinBL1.txt","false")
 			end
 		end)
+		AutoSpinBL1 = true
+	else
+		section2:addToggle("Spin Slot 1",false,function(bool)
+			AutoSpinBL1 = bool
+			if AutoSpinBL1 == true then
+				writefile(DHV2SL2MMF .. "/AutoSpinBL1.txt","true")
+			else
+				writefile(DHV2SL2MMF .. "/AutoSpinBL1.txt","false")
+			end
+		end)
+		AutoSpinBL1 = false
+	end
+
+	if readfile(DHV2SL2MMF .. "/AutoSpinBL1.txt") == "true" then
+		section2:addToggle("Spin Slot 2",false,function(bool)
+			AutoSpinBL2 = bool
+			if AutoSpinBL2 == true then
+				writefile(DHV2SL2MMF .. "/AutoSpinBL2.txt","true")
+			else
+				writefile(DHV2SL2MMF .. "/AutoSpinBL2.txt","false")
+			end
+		end)
+		AutoSpinBL2 = true
+	else
+		section2:addToggle("Spin Slot 2",false,function(bool)
+			AutoSpinBL2 = bool
+			if AutoSpinBL2 == true then
+				writefile(DHV2SL2MMF .. "/AutoSpinBL2.txt","true")
+			else
+				writefile(DHV2SL2MMF .. "/AutoSpinBL2.txt","false")
+			end
+		end)
+		AutoSpinBL2 = false
+	end
+
+	if player.gamepasses:FindFirstChild("genkai3") then
+		if readfile(DHV2SL2MMF .. "/AutoSpinBL3.txt") == "true" then
+			section2:addToggle("Spin Slot 3",false,function(bool)
+				AutoSpinBL3 = bool
+				if AutoSpinBL3 == true then
+					writefile(DHV2SL2MMF .. "/AutoSpinBL3.txt","true")
+				else
+					writefile(DHV2SL2MMF .. "/AutoSpinBL3.txt","false")
+				end
+			end)
+			AutoSpinBL3 = true
+		else
+			section2:addToggle("Spin Slot 3",false,function(bool)
+				AutoSpinBL3 = bool
+				if AutoSpinBL3 == true then
+					writefile(DHV2SL2MMF .. "/AutoSpinBL3.txt","true")
+				else
+					writefile(DHV2SL2MMF .. "/AutoSpinBL3.txt","false")
+				end
+			end)
+			AutoSpinBL3 = false
+		end
 	end
 
 	if player.gamepasses:FindFirstChild("genkai4") then
-		section2:addToggle("Spin Slot 4",false,function(bool)
-			AutoSpinBL4 = bool
-			if AutoSpinBL4 == true then
-				local spins = player.statz.spins.Value
-				game:GetService('RunService').Stepped:connect(function()
-					if spins > resetspinswhenthisnumberreached then
-						spins = player.statz.spins.Value
-						kgvalue1 = player.statz.main.kg1.Value
-						kgvalue2 = player.statz.main.kg2.Value
-						kgvalue3 = player.statz.main.kg3.Value
-						kgvalue4 = player.statz.main.kg4.Value
-						if AutoSpinBL4 == true then
-							if kgvalue1 ~= A1 and kgvalue1 ~= A2 and kgvalue1 ~= A3 and kgvalue1 ~= A4 and kgvalue1 ~= A5 and kgvalue2 ~= A1 and kgvalue2 ~= A2 and kgvalue2 ~= A3 and kgvalue2 ~= A4 and kgvalue2 ~= A5 and kgvalue3 ~= A1 and kgvalue3 ~= A2 and kgvalue3 ~= A3 and kgvalue3 ~= A4 and kgvalue3 ~= A5 and kgvalue4 ~= A1 and kgvalue4 ~= A2 and kgvalue4 ~= A3 and kgvalue4 ~= A4 and kgvalue4 ~= A5 then
-								player.startevent:FireServer("spin", "kg4")
-								print("Rolled: " .. kgvalue4)
-								wait(1)
-							elseif kgvalue4 ~= A1 and kgvalue4 ~= A2 and kgvalue4 ~= A3 and kgvalue4 ~= A4 and kgvalue4 ~= A5 then
-								if Autosave == true then
-									datasavedandyoucanredeemcodes = true
-								end
-							else
-								print("You have got: " .. kgvalue4)
-								notify("You have got: " .. kgvalue4)
-								if Autosave == true then
-									datasavedandyoucanredeemcodes = true
-								end
-							end
+		if readfile(DHV2SL2MMF .. "/AutoSpinBL4.txt") == "true" then
+			section2:addToggle("Spin Slot 4",false,function(bool)
+				AutoSpinBL4 = bool
+				if AutoSpinBL4 == true then
+					writefile(DHV2SL2MMF .. "/AutoSpinBL4.txt","true")
+				else
+					writefile(DHV2SL2MMF .. "/AutoSpinBL4.txt","false")
+				end
+			end)
+			AutoSpinBL4 = true
+		else
+			section2:addToggle("Spin Slot 4",false,function(bool)
+				AutoSpinBL4 = bool
+				if AutoSpinBL4 == true then
+					writefile(DHV2SL2MMF .. "/AutoSpinBL4.txt","true")
+				else
+					writefile(DHV2SL2MMF .. "/AutoSpinBL4.txt","false")
+				end
+			end)
+			AutoSpinBL4 = false
+		end
+	end
+
+	game:GetService('RunService').Stepped:connect(function()
+		if AutoSpinBL1 == true then
+			local spins = player.statz.spins.Value
+			if spins > resetspinswhenthisnumberreached then
+				spins = player.statz.spins.Value
+				kgvalue1 = player.statz.main.kg1.Value
+				kgvalue2 = player.statz.main.kg2.Value
+				kgvalue3 = player.statz.main.kg3.Value
+				kgvalue4 = player.statz.main.kg4.Value
+				if AutoSpinBL1 == true then
+					if kgvalue1 ~= A1 and kgvalue1 ~= A2 and kgvalue1 ~= A3 and kgvalue1 ~= A4 and kgvalue1 ~= A5 and kgvalue2 ~= A1 and kgvalue2 ~= A2 and kgvalue2 ~= A3 and kgvalue2 ~= A4 and kgvalue2 ~= A5 and kgvalue3 ~= A1 and kgvalue3 ~= A2 and kgvalue3 ~= A3 and kgvalue3 ~= A4 and kgvalue3 ~= A5 and kgvalue4 ~= A1 and kgvalue4 ~= A2 and kgvalue4 ~= A3 and kgvalue4 ~= A4 and kgvalue4 ~= A5 then
+						player.startevent:FireServer("spin", "kg1")
+						print("Rolled: " .. kgvalue1)
+						wait(1)
+					elseif kgvalue1 ~= A1 and kgvalue1 ~= A2 and kgvalue1 ~= A3 and kgvalue1 ~= A4 and kgvalue1 ~= A5 then
+						if Autosave == true then
+							datasavedandyoucanredeemcodes = true
 						end
 					else
-						if Autorejoin == true then
-							--player.statz.spins:Destroy()
-							player.startevent:FireServer("band", "\128")
-							wait()
-							game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+						AutoSpinBL1 = false
+						writefile(DHV2SL2MMF .. "/AutoSpinBL1.txt","false")
+						print("You have got: " .. kgvalue1)
+						notify("You have got: " .. kgvalue1)
+						if Autosave == true then
+							datasavedandyoucanredeemcodes = true
 						end
 					end
-				end)
+				end
 			else
+				if Autorejoin == true then
+					--player.statz.spins:Destroy()
+					player.startevent:FireServer("band", "\128")
+					wait()
+					game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+				end
 			end
-		end)
-	end
+		else
+		end
+	end)
+
+	game:GetService('RunService').Stepped:connect(function()
+		if AutoSpinBL2 == true then
+			local spins = player.statz.spins.Value
+			if spins > resetspinswhenthisnumberreached then
+				spins = player.statz.spins.Value
+				kgvalue1 = player.statz.main.kg1.Value
+				kgvalue2 = player.statz.main.kg2.Value
+				kgvalue3 = player.statz.main.kg3.Value
+				kgvalue4 = player.statz.main.kg4.Value
+				if AutoSpinBL2 == true then
+					if kgvalue1 ~= A1 and kgvalue1 ~= A2 and kgvalue1 ~= A3 and kgvalue1 ~= A4 and kgvalue1 ~= A5 and kgvalue2 ~= A1 and kgvalue2 ~= A2 and kgvalue2 ~= A3 and kgvalue2 ~= A4 and kgvalue2 ~= A5 and kgvalue3 ~= A1 and kgvalue3 ~= A2 and kgvalue3 ~= A3 and kgvalue3 ~= A4 and kgvalue3 ~= A5 and kgvalue4 ~= A1 and kgvalue4 ~= A2 and kgvalue4 ~= A3 and kgvalue4 ~= A4 and kgvalue4 ~= A5 then
+						player.startevent:FireServer("spin", "kg2")
+						print("Rolled: " .. kgvalue2)
+						wait(1)
+					elseif kgvalue2 ~= A1 and kgvalue2 ~= A2 and kgvalue2 ~= A3 and kgvalue2 ~= A4 and kgvalue2 ~= A5 then
+						if Autosave == true then
+							datasavedandyoucanredeemcodes = true
+						end
+					else
+						AutoSpinBL2 = false
+						writefile(DHV2SL2MMF .. "/AutoSpinBL2.txt","false")
+						print("You have got: " .. kgvalue2)
+						notify("You have got: " .. kgvalue2)
+						if Autosave == true then
+							datasavedandyoucanredeemcodes = true
+						end
+					end
+				end
+			else
+				if Autorejoin == true then
+					--player.statz.spins:Destroy()
+					player.startevent:FireServer("band", "\128")
+					wait()
+					game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+				end
+			end
+		else
+		end
+	end)
+
+	game:GetService('RunService').Stepped:connect(function()
+		if AutoSpinBL3 == true then
+			local spins = player.statz.spins.Value
+			if spins > resetspinswhenthisnumberreached then
+				spins = player.statz.spins.Value
+				kgvalue1 = player.statz.main.kg1.Value
+				kgvalue2 = player.statz.main.kg2.Value
+				kgvalue3 = player.statz.main.kg3.Value
+				kgvalue4 = player.statz.main.kg4.Value
+				if AutoSpinBL3 == true then
+					if kgvalue1 ~= A1 and kgvalue1 ~= A2 and kgvalue1 ~= A3 and kgvalue1 ~= A4 and kgvalue1 ~= A5 and kgvalue2 ~= A1 and kgvalue2 ~= A2 and kgvalue2 ~= A3 and kgvalue2 ~= A4 and kgvalue2 ~= A5 and kgvalue3 ~= A1 and kgvalue3 ~= A2 and kgvalue3 ~= A3 and kgvalue3 ~= A4 and kgvalue3 ~= A5 and kgvalue4 ~= A1 and kgvalue4 ~= A2 and kgvalue4 ~= A3 and kgvalue4 ~= A4 and kgvalue4 ~= A5 then
+						player.startevent:FireServer("spin", "kg3")
+						print("Rolled: " .. kgvalue3)
+						wait(1)
+					elseif kgvalue3 ~= A1 and kgvalue3 ~= A2 and kgvalue3 ~= A3 and kgvalue3 ~= A4 and kgvalue3 ~= A5 then
+						if Autosave == true then
+							datasavedandyoucanredeemcodes = true
+						end
+					else
+						AutoSpinBL3 = false
+						writefile(DHV2SL2MMF .. "/AutoSpinBL3.txt","false")
+						print("You have got: " .. kgvalue3)
+						notify("You have got: " .. kgvalue3)
+						if Autosave == true then
+							datasavedandyoucanredeemcodes = true
+						end
+					end
+				end
+			else
+				if Autorejoin == true then
+					--player.statz.spins:Destroy()
+					player.startevent:FireServer("band", "\128")
+					wait()
+					game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+				end
+			end
+		else
+		end
+	end)
+
+	game:GetService('RunService').Stepped:connect(function()
+		if AutoSpinBL4 == true then
+			local spins = player.statz.spins.Value
+			if spins > resetspinswhenthisnumberreached then
+				spins = player.statz.spins.Value
+				kgvalue1 = player.statz.main.kg1.Value
+				kgvalue2 = player.statz.main.kg2.Value
+				kgvalue3 = player.statz.main.kg3.Value
+				kgvalue4 = player.statz.main.kg4.Value
+				if AutoSpinBL4 == true then
+					if kgvalue1 ~= A1 and kgvalue1 ~= A2 and kgvalue1 ~= A3 and kgvalue1 ~= A4 and kgvalue1 ~= A5 and kgvalue2 ~= A1 and kgvalue2 ~= A2 and kgvalue2 ~= A3 and kgvalue2 ~= A4 and kgvalue2 ~= A5 and kgvalue3 ~= A1 and kgvalue3 ~= A2 and kgvalue3 ~= A3 and kgvalue3 ~= A4 and kgvalue3 ~= A5 and kgvalue4 ~= A1 and kgvalue4 ~= A2 and kgvalue4 ~= A3 and kgvalue4 ~= A4 and kgvalue4 ~= A5 then
+						player.startevent:FireServer("spin", "kg4")
+						print("Rolled: " .. kgvalue4)
+						wait(1)
+					elseif kgvalue4 ~= A1 and kgvalue4 ~= A2 and kgvalue4 ~= A3 and kgvalue4 ~= A4 and kgvalue4 ~= A5 then
+						if Autosave == true then
+							datasavedandyoucanredeemcodes = true
+						end
+					else
+						AutoSpinBL4 = false
+						writefile(DHV2SL2MMF .. "/AutoSpinBL4.txt","false")
+						print("You have got: " .. kgvalue4)
+						notify("You have got: " .. kgvalue4)
+						if Autosave == true then
+							datasavedandyoucanredeemcodes = true
+						end
+					end
+				end
+			else
+				if Autorejoin == true then
+					--player.statz.spins:Destroy()
+					player.startevent:FireServer("band", "\128")
+					wait()
+					game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+				end
+			end
+		else
+		end
+	end)
 
 	-- forth page
 	local page4 = NoobieDoge:addPage("Kenjutsu", 5176336983)
@@ -1388,178 +1730,255 @@ local function ShindoInfSpin()
 
 	if player.statz.unlocked:FindFirstChild("kenjutsuslot2") then
 		local kenselect1
-		section1:addDropdown("Kenjutsu Choice 1",ken,function(KEN1)
+		section1:addDropdown("Kenjutsu Choice 1: " .. readfile(Choices .. "/kenselect1.txt"),ken,function(KEN1)
 			print("Selected: " .. KEN1)
 			notify("Selected: " .. KEN1)
 			FrameK.Visible = true
 			kenselect1 = KEN1
+			writefile(Choices .. "/kenselect1.txt",kenselect1)
 		end)
 		local kenselect2
-		section1:addDropdown("Kenjutsu Choice 2",ken,function(KEN2)
+		section1:addDropdown("Kenjutsu Choice 2: " .. readfile(Choices .. "/kenselect2.txt"),ken,function(KEN2)
 			print("Selected: " .. KEN2)
 			notify("Selected: " .. KEN2)
 			FrameK.Visible = true
 			kenselect2 = KEN2
+			writefile(Choices .. "/kenselect2.txt",kenselect2)
 		end)
 		local kenselect3
-		section1:addDropdown("Kenjutsu Choice 3",ken,function(KEN3)
+		section1:addDropdown("Kenjutsu Choice 3: " .. readfile(Choices .. "/kenselect3.txt"),ken,function(KEN3)
 			print("Selected: " .. KEN3)
 			notify("Selected: " .. KEN3)
 			FrameK.Visible = true
 			kenselect3 = KEN3
+			writefile(Choices .. "/kenselect3.txt",kenselect3)
 		end)
 		local kenselect4
-		section1:addDropdown("Kenjutsu Choice 4",ken,function(KEN4)
+		section1:addDropdown("Kenjutsu Choice 4: " .. readfile(Choices .. "/kenselect4.txt"),ken,function(KEN4)
 			print("Selected: " .. KEN4)
 			notify("Selected: " .. KEN4)
 			FrameK.Visible = true
 			kenselect4 = KEN4
+			writefile(Choices .. "/kenselect4.txt",kenselect4)
 		end)
 		local kenselect5
-		section1:addDropdown("Kenjutsu Choice 3",ken,function(KEN5)
+		section1:addDropdown("Kenjutsu Choice 5: " .. readfile(Choices .. "/kenselect5.txt"),ken,function(KEN5)
 			print("Selected: " .. KEN5)
 			notify("Selected: " .. KEN5)
 			FrameK.Visible = true
 			kenselect5 = KEN5
+			writefile(Choices .. "/kenselect5.txt",kenselect5)
 		end)
 
-		section2:addToggle("Spin Slot 1",false,function(bool)
-			StartSpinKen = bool
+		if readfile(DHV2SL2MMF .. "/StartSpinKen.txt") == "true" then
+			section2:addToggle("Spin Slot 1",true,function(bool)
+				StartSpinKen = bool
+				if StartSpinKen then
+					writefile(DHV2SL2MMF .. "/StartSpinKen.txt","true")
+				else
+					writefile(DHV2SL2MMF .. "/StartSpinKen.txt","false")
+				end
+			end)
+			StartSpinKen = true
+		else
+			section2:addToggle("Spin Slot 1",false,function(bool)
+				StartSpinKen = bool
+				if StartSpinKen then
+					writefile(DHV2SL2MMF .. "/StartSpinKen.txt","true")
+				else
+					writefile(DHV2SL2MMF .. "/StartSpinKen.txt","false")
+				end
+			end)
+			StartSpinKen = false
+		end
+
+		if readfile(DHV2SL2MMF .. "/StartSpinKen2.txt") == "true" then
+			section2:addToggle("Spin Slot 2",true,function(bool)
+				StartSpinKen2 = bool
+				if StartSpinKen2 then
+					writefile(DHV2SL2MMF .. "/StartSpinKen2.txt","true")
+				else
+					writefile(DHV2SL2MMF .. "/StartSpinKen2.txt","false")
+				end
+			end)
+			StartSpinKen2 = true
+		else
+			section2:addToggle("Spin Slot 2",false,function(bool)
+				StartSpinKen2 = bool
+				if StartSpinKen2 then
+					writefile(DHV2SL2MMF .. "/StartSpinKen2.txt","true")
+				else
+					writefile(DHV2SL2MMF .. "/StartSpinKen2.txt","false")
+				end
+			end)
+			StartSpinKen2 = false
+		end
+
+		game:GetService('RunService').Stepped:connect(function()
 			if StartSpinKen == true then
 				local spins = player.statz.spins.Value
-				game:GetService('RunService').Stepped:connect(function()
-					if spins > resetspinswhenthisnumberreached+9 then
-						spins = player.statz.spins.Value
-						kenvalue = player.statz.breathingstyle.Value
-						kenvalue2 = player.statz.breathingstyle2.Value
-						if StartSpinKen == true then
-							if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 and kenvalue ~= kenselect4 and kenvalue ~= kenselect5 and kenvalue2 ~= kenselect1 and kenvalue2 ~= kenselect2 and kenvalue2 ~= kenselect3 and kenvalue2 ~= kenselect4 and kenvalue2 ~= kenselect5 then
-								local args = {[1] = "spinBREATHING"}
-								player.startevent:FireServer(unpack(args))
-								print("Rolled: " .. kenvalue)
-								wait(1)
-							elseif kenvalue2 ~= kenselect1 and kenvalue2 ~= kenselect2 and kenvalue2 ~= kenselect3 and kenvalue2 ~= kenselect4 and kenvalue2 ~= kenselect5 then
-								if Autosave == true then
-									datasavedandyoucanredeemcodes = true
-								end
-							else
-								print("You have got: " .. kenvalue)
-								notify("You have got " .. kenvalue .. " in slot 1")
-								if Autosave == true then
-									datasavedandyoucanredeemcodes = true
-								end
+				if spins > resetspinswhenthisnumberreached+9 then
+					spins = player.statz.spins.Value
+					kenvalue = player.statz.breathingstyle.Value
+					kenvalue2 = player.statz.breathingstyle2.Value
+					if StartSpinKen == true then
+						if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 and kenvalue ~= kenselect4 and kenvalue ~= kenselect5 and kenvalue2 ~= kenselect1 and kenvalue2 ~= kenselect2 and kenvalue2 ~= kenselect3 and kenvalue2 ~= kenselect4 and kenvalue2 ~= kenselect5 then
+							local args = {[1] = "spinBREATHING"}
+							player.startevent:FireServer(unpack(args))
+							print("Rolled: " .. kenvalue)
+							wait(1)
+						elseif kenvalue2 ~= kenselect1 and kenvalue2 ~= kenselect2 and kenvalue2 ~= kenselect3 and kenvalue2 ~= kenselect4 and kenvalue2 ~= kenselect5 then
+							if Autosave == true then
+								datasavedandyoucanredeemcodes = true
+							end
+						else
+							StartSpinKen = false
+							writefile(DHV2SL2MMF .. "/StartSpinKen.txt","false")
+							print("You have got: " .. kenvalue)
+							notify("You have got " .. kenvalue .. " in slot 1")
+							if Autosave == true then
+								datasavedandyoucanredeemcodes = true
 							end
 						end
-					else
-						if Autorejoin == true then
-							--player.statz.spins:Destroy()
-							player.startevent:FireServer("band", "\128")
-							wait()
-							game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-						end
 					end
-				end)
+				else
+					if Autorejoin == true then
+						--player.statz.spins:Destroy()
+						player.startevent:FireServer("band", "\128")
+						wait()
+						game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+					end
+				end
 			else
 			end
 		end)
 
-		section2:addToggle("Spin Slot 2",false,function(bool)
-			StartSpinKen2 = bool
+		game:GetService('RunService').Stepped:connect(function()
 			if StartSpinKen2 == true then
 				local spins = player.statz.spins.Value
-				game:GetService('RunService').Stepped:connect(function()
-					if spins > resetspinswhenthisnumberreached+9 then
-						spins = player.statz.spins.Value
-						kenvalue = player.statz.breathingstyle.Value
-						kenvalue2 = player.statz.breathingstyle2.Value
-						if StartSpinKen2 == true then
-							if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 and kenvalue ~= kenselect4 and kenvalue ~= kenselect5 and kenvalue2 ~= kenselect1 and kenvalue2 ~= kenselect2 and kenvalue2 ~= kenselect3 and kenvalue2 ~= kenselect4 and kenvalue2 ~= kenselect5 then
-								local args = {[1] = "spinBREATHING",[2] = "breathingstyle2"}
-								player.startevent:FireServer(unpack(args))
-								print("Rolled: " .. kenvalue2)
-								wait(1)
-							elseif kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 and kenvalue ~= kenselect4 and kenvalue ~= kenselect5 then
-								if Autosave == true then
-									datasavedandyoucanredeemcodes = true
-								end
-							else
-								print("You have got: " .. kenvalue2)
-								notify("You have got " .. kenvalue2 .. " in slot 2")
-								if Autosave == true then
-									datasavedandyoucanredeemcodes = true
-								end
+				if spins > resetspinswhenthisnumberreached+9 then
+					spins = player.statz.spins.Value
+					kenvalue = player.statz.breathingstyle.Value
+					kenvalue2 = player.statz.breathingstyle2.Value
+					if StartSpinKen2 == true then
+						if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 and kenvalue ~= kenselect4 and kenvalue ~= kenselect5 and kenvalue2 ~= kenselect1 and kenvalue2 ~= kenselect2 and kenvalue2 ~= kenselect3 and kenvalue2 ~= kenselect4 and kenvalue2 ~= kenselect5 then
+							local args = {[1] = "spinBREATHING",[2] = "breathingstyle2"}
+							player.startevent:FireServer(unpack(args))
+							print("Rolled: " .. kenvalue2)
+							wait(1)
+						elseif kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 and kenvalue ~= kenselect4 and kenvalue ~= kenselect5 then
+							if Autosave == true then
+								datasavedandyoucanredeemcodes = true
+							end
+						else
+							StartSpinKen2 = false
+							writefile(DHV2SL2MMF .. "/StartSpinKen2.txt","false")
+							print("You have got: " .. kenvalue2)
+							notify("You have got " .. kenvalue2 .. " in slot 2")
+							if Autosave == true then
+								datasavedandyoucanredeemcodes = true
 							end
 						end
-					else
-						if Autorejoin == true then
-							--player.statz.spins:Destroy()
-							player.startevent:FireServer("band", "\128")
-							wait()
-							game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-						end
 					end
-				end)
+				else
+					if Autorejoin == true then
+						--player.statz.spins:Destroy()
+						player.startevent:FireServer("band", "\128")
+						wait()
+						game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+					end
+				end
 			else
 			end
 		end)
+
 	else
 		local kenselect1
-		section1:addDropdown("Kenjutsu Choice 1",ken,function(KEN1)
+		section1:addDropdown("Kenjutsu Choice 1: " .. readfile(Choices .. "/kenselect1.txt"),ken,function(KEN1)
 			print("Selected: " .. KEN1)
 			notify("Selected: " .. KEN1)
 			FrameK.Visible = true
 			kenselect1 = KEN1
+			writefile(Choices .. "/kenselect1.txt",kenselect1)
 		end)
 		local kenselect2
-		section1:addDropdown("Kenjutsu Choice 2",ken,function(KEN2)
+		section1:addDropdown("Kenjutsu Choice 2: " .. readfile(Choices .. "/kenselect2.txt"),ken,function(KEN2)
 			print("Selected: " .. KEN2)
 			notify("Selected: " .. KEN2)
 			FrameK.Visible = true
 			kenselect2 = KEN2
+			writefile(Choices .. "/kenselect2.txt",kenselect2)
 		end)
 		local kenselect3
-		section1:addDropdown("Kenjutsu Choice 3",ken,function(KEN3)
+		section1:addDropdown("Kenjutsu Choice 3: " .. readfile(Choices .. "/kenselect3.txt"),ken,function(KEN3)
 			print("Selected: " .. KEN3)
 			notify("Selected: " .. KEN3)
 			FrameK.Visible = true
 			kenselect3 = KEN3
+			writefile(Choices .. "/kenselect3.txt",kenselect3)
 		end)
 
-		section2:addToggle("Spin Kenjutsu",false,function(bool)
-			StartSpinKen = bool
+		if readfile(DHV2SL2MMF .. "/StartSpinKen.txt") == "true" then
+			section2:addToggle("Spin Slot 1",true,function(bool)
+				StartSpinKen = bool
+				if StartSpinKen then
+					writefile(DHV2SL2MMF .. "/StartSpinKen.txt","true")
+				else
+					writefile(DHV2SL2MMF .. "/StartSpinKen.txt","false")
+				end
+			end)
+			StartSpinKen = true
+		else
+			section2:addToggle("Spin Slot 1",false,function(bool)
+				StartSpinKen = bool
+				if StartSpinKen then
+					writefile(DHV2SL2MMF .. "/StartSpinKen.txt","true")
+				else
+					writefile(DHV2SL2MMF .. "/StartSpinKen.txt","false")
+				end
+			end)
+			StartSpinKen = false
+		end
+
+		game:GetService('RunService').Stepped:connect(function()
 			if StartSpinKen == true then
 				local spins = player.statz.spins.Value
-				game:GetService('RunService').Stepped:connect(function()
-					if spins > resetspinswhenthisnumberreached+9 then
-						spins = player.statz.spins.Value
-						kenvalue = player.statz.breathingstyle.Value
-						if StartSpinKen == true then
-							if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 then
-								local args = {[1] = "spinBREATHING"}
-								player.startevent:FireServer(unpack(args))
-								print("Rolled: " .. kenvalue)
-								notify("Rolled: " .. kenvalue)
-								wait(1)
-							else
-								print("You have got: " .. kenvalue)
-								notify("You have got: " .. kenvalue)
-								if Autosave == true then
-									datasavedandyoucanredeemcodes = true
-								end
+				if spins > resetspinswhenthisnumberreached+9 then
+					spins = player.statz.spins.Value
+					kenvalue = player.statz.breathingstyle.Value
+					kenvalue2 = player.statz.breathingstyle2.Value
+					if StartSpinKen == true then
+						if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 and kenvalue ~= kenselect4 and kenvalue ~= kenselect5 and kenvalue2 ~= kenselect1 and kenvalue2 ~= kenselect2 and kenvalue2 ~= kenselect3 and kenvalue2 ~= kenselect4 and kenvalue2 ~= kenselect5 then
+							local args = {[1] = "spinBREATHING"}
+							player.startevent:FireServer(unpack(args))
+							print("Rolled: " .. kenvalue)
+							wait(1)
+						elseif kenvalue2 ~= kenselect1 and kenvalue2 ~= kenselect2 and kenvalue2 ~= kenselect3 and kenvalue2 ~= kenselect4 and kenvalue2 ~= kenselect5 then
+							if Autosave == true then
+								datasavedandyoucanredeemcodes = true
+							end
+						else
+							StartSpinKen = false
+							writefile(DHV2SL2MMF .. "/StartSpinKen.txt","false")
+							print("You have got: " .. kenvalue)
+							notify("You have got " .. kenvalue .. " in slot 1")
+							if Autosave == true then
+								datasavedandyoucanredeemcodes = true
 							end
 						end
-					else
-						if Autorejoin == true then
-							--player.statz.spins:Destroy()
-							player.startevent:FireServer("band", "\128")
-							wait()
-							game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-						end
 					end
-				end)
+				else
+					if Autorejoin == true then
+						--player.statz.spins:Destroy()
+						player.startevent:FireServer("band", "\128")
+						wait()
+						game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+					end
+				end
 			else
 			end
 		end)
+
 	end
 
 	-- fifth page
@@ -1578,26 +1997,50 @@ local function ShindoInfSpin()
 	end)
 
 	local raceselect1
-		section1:addDropdown("Race Choice 1",race,function(RACE1)
+	section1:addDropdown("Race Choice 1: " .. readfile(Choices .. "/raceselect1.txt"),race,function(RACE1)
 		print("Selected: " .. RACE1)
 		notify("Selected: " .. RACE1)
 		raceselect1 = RACE1
+		writefile(Choices .. "/raceselect1.txt",raceselect1)
 	end)
 	local raceselect2
-		section1:addDropdown("Race Choice 2",race,function(RACE2)
+	section1:addDropdown("Race Choice 2: " .. readfile(Choices .. "/raceselect2.txt"),race,function(RACE2)
 		print("Selected: " .. RACE2)
 		notify("Selected: " .. RACE2)
 		raceselect2 = RACE2
+		writefile(Choices .. "/raceselect2.txt",raceselect2)
 	end)
 	local raceselect3
-		section1:addDropdown("Race Choice 3",race,function(RACE3)
+	section1:addDropdown("Race Choice 3: " .. readfile(Choices .. "/raceselect3.txt"),race,function(RACE3)
 		print("Selected: " .. RACE3)
 		notify("Selected: " .. RACE3)
 		raceselect3 = RACE3
+		writefile(Choices .. "/raceselect3.txt",raceselect3)
 	end)
 
-	section2:addToggle("Spin Race",false,function(bool)
-		StartSpinRace = bool
+	if readfile(DHV2SL2MMF .. "/StartSpinRace.txt") == "true" then
+		section2:addToggle("Spin Race",true,function(bool)
+			StartSpinRace = bool
+			if StartSpinRace == true then
+				writefile(DHV2SL2MMF .. "/StartSpinRace.txt","true")
+			else
+				writefile(DHV2SL2MMF .. "/StartSpinRace.txt","false")
+			end
+		end)
+		StartSpinRace = true
+	else
+		section2:addToggle("Spin Race",false,function(bool)
+			StartSpinRace = bool
+			if StartSpinRace == true then
+				writefile(DHV2SL2MMF .. "/StartSpinRace.txt","true")
+			else
+				writefile(DHV2SL2MMF .. "/StartSpinRace.txt","false")
+			end
+		end)
+		StartSpinRace = false
+	end
+
+	game:GetService('RunService').Stepped:connect(function()
 		if StartSpinRace == true then
 			local rcamount = player.PlayerGui.Main.Ryo2.amt.text,""
 			if(string.find(rcamount,"(K)")) then
@@ -1608,42 +2051,42 @@ local function ShindoInfSpin()
 				rcamount = string.gsub(rcamount)	
 				print(rcamount)
 			end
-			game:GetService('RunService').Stepped:connect(function()
-				if rcamount > 20000 then
-					rcamount = player.PlayerGui.Main.Ryo2.amt.text,""
-					if(string.find(rcamount,"(K)")) then
-						rcamount = (string.gsub(rcamount,"(K)",""))
-						rcamount = tonumber(rcamount)*1000
-						print(rcamount)
+			if rcamount > 20000 then
+				rcamount = player.PlayerGui.Main.Ryo2.amt.text,""
+				if(string.find(rcamount,"(K)")) then
+					rcamount = (string.gsub(rcamount,"(K)",""))
+					rcamount = tonumber(rcamount)*1000
+					print(rcamount)
+				else
+					rcamount = string.gsub(rcamount)	
+					print(rcamount)
+				end
+				racevalue = player.statz.race.Value
+				if StartSpinRace == true then
+					if racevalue ~= raceselect1 and racevalue ~= raceselect2 and racevalue ~= raceselect3 then
+						local args = {[1]="spinrace"}
+						game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+						print("Rolled: " .. racevalue)
+						notify("Rolled: " .. racevalue)
+						wait(1)
 					else
-						rcamount = string.gsub(rcamount)	
-						print(rcamount)
-					end
-					racevalue = player.statz.race.Value
-					if StartSpinRace == true then
-						if racevalue ~= raceselect1 and racevalue ~= raceselect2 and racevalue ~= raceselect3 then
-							local args = {[1]="spinrace"}
-							game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-							print("Rolled: " .. racevalue)
-							notify("Rolled: " .. racevalue)
-							wait(1)
-						else
-							print("You have got: " .. racevalue)
-							notify("You have got: " .. racevalue)
-							if Autosave == true then
-								datasavedandyoucanredeemcodes = true
-							end
+						StartSpinRace = false
+						writefile(DHV2SL2MMF .. "/StartSpinRace.txt","false")
+						print("You have got: " .. racevalue)
+						notify("You have got: " .. racevalue)
+						if Autosave == true then
+							datasavedandyoucanredeemcodes = true
 						end
 					end
-				else
-					if Autorejoin == true then
-						--player.statz.spins:Destroy()
-						player.startevent:FireServer("band", "\128")
-						wait()
-						game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-					end
 				end
-			end)
+			else
+				if Autorejoin == true then
+					--player.statz.spins:Destroy()
+					player.startevent:FireServer("band", "\128")
+					wait()
+					game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+				end
+			end
 		else
 		end
 	end)
@@ -1662,31 +2105,50 @@ local function ShindoInfSpin()
 	local colors = pagelast:addSection("Colors")
 	local credits = pagelast:addSection("Credits")
 
-	settings:addButton("Save Script Data (unfinished)",function()
-		local HTTP = game:GetService("HttpService")
-		local temp = { }
-		local succ, out = pcall(function()
-			temp.Autorejoin = Doge.Autorejoin
-			temp.Autosave = Doge.Autosave
-			temp.resetspinswhenthisnumberreached = Doge.resetspinswhenthisnumberreached
-			temp.savegomyhome = Doge.savegomyhome
-			temp.savegomainmenu = Doge.savegomainmenu
-			temp.a1 = Doge.a1
-			temp.a2 = Doge.a2
-			temp.a3 = Doge.a3
-			temp.a4 = Doge.a4
-			temp.a5 = Doge.a5
-			temp.A1 = Doge.A1
-			temp.A2 = Doge.A2
-			temp.A3 = Doge.A3
-			temp.A4 = Doge.A4
-			temp.A5 = Doge.A5
-			makefolder("DogeHubV2/ShindoLife")
-			writefile("DogeHubV2/ShindoLife/MainMenu.txt", HTTP:JSONEncode(temp))
-		end)
-		if not succ then
-			error(out)
-		end
+	settings:addButton("Reset Script Data",function()
+		local DHV2SL2MMF = "DogeHubV2/ShindoLife/MainMenu"
+		makefolder(DHV2SL2MMF)
+		writefile(DHV2SL2MMF .. "/Autorejoin.txt","true")
+		writefile(DHV2SL2MMF .. "/Autosave.txt","false")
+		writefile(DHV2SL2MMF .. "/resetspinswhenthisnumberreached.txt","0")
+		writefile(DHV2SL2MMF .. "/savegomyhome.txt","true")
+		writefile(DHV2SL2MMF .. "/savegomainmenu.txt","false")
+		local Choices = DHV2SL2MMF .. "/Choices"
+		makefolder(Choices)
+		writefile(Choices .. "/a1.txt"," ")
+		writefile(Choices .. "/a2.txt"," ")
+		writefile(Choices .. "/a3.txt"," ")
+		writefile(Choices .. "/a4.txt"," ")
+		writefile(Choices .. "/a5.txt"," ")
+		writefile(Choices .. "/.A1.txt"," ")
+		writefile(Choices .. "/.A2.txt"," ")
+		writefile(Choices .. "/.A3.txt"," ")
+		writefile(Choices .. "/.A4.txt"," ")
+		writefile(Choices .. "/.A5.txt"," ")
+		writefile(Choices .. "/kenselect1.txt"," ")
+		writefile(Choices .. "/kenselect2.txt"," ")
+		writefile(Choices .. "/kenselect3.txt"," ")
+		writefile(Choices .. "/kenselect4.txt"," ")
+		writefile(Choices .. "/kenselect5.txt"," ")
+		writefile(Choices .. "/raceselect1.txt"," ")
+		writefile(Choices .. "/raceselect2.txt"," ")
+		writefile(Choices .. "/raceselect3.txt"," ")
+		writefile(DHV2SL2MMF .. "/StartSpinElm1.txt","false")
+		writefile(DHV2SL2MMF .. "/StartSpinElm2.txt","false")
+		writefile(DHV2SL2MMF .. "/StartSpinElm3.txt","false")
+		writefile(DHV2SL2MMF .. "/StartSpinElm4.txt","false")
+		writefile(DHV2SL2MMF .. "/AutoSpinBL1.txt","false")
+		writefile(DHV2SL2MMF .. "/AutoSpinBL2.txt","false")
+		writefile(DHV2SL2MMF .. "/AutoSpinBL3.txt","false")
+		writefile(DHV2SL2MMF .. "/AutoSpinBL4.txt","false")
+		writefile(DHV2SL2MMF .. "/StartSpinKen.txt","false")
+		writefile(DHV2SL2MMF .. "/StartSpinKen2.txt","false")
+		writefile(DHV2SL2MMF .. "/StartSpinRace.txt","false")
+		wait()
+		player.startevent:FireServer("band", "\128")
+		wait()
+		game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+
 	end)
 
 	settings:addButton("Upgrade Performance",function()
