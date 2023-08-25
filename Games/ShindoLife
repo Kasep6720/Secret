@@ -829,6 +829,9 @@ local function ShindoInfSpin()
 	if isfile(DHV2SL2MMF .. "/AutoSpinBL3.txt") == false then
 		writefile(DHV2SL2MMF .. "/AutoSpinBL3.txt","false")
 	end 
+	if isfile(DHV2SL2MMF .. "/AutoSpinBL4.txt") == false then
+		writefile(DHV2SL2MMF .. "/AutoSpinBL4.txt","false")
+	end 
 	if isfile(DHV2SL2MMF .. "/StartSpinKen.txt") == false then
 		writefile(DHV2SL2MMF .. "/StartSpinKen.txt","false")
 	end
