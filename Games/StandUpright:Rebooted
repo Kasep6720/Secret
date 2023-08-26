@@ -3553,6 +3553,14 @@ local function StandUprightRebootedMain()
 		end
 	end)
 
+	section2:addButton("Jonathan Joestar (Technique Learner)", function()
+		for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
+			if v.Name == "Jonathan Joestar" and v:FindFirstChild("HumanoidRootPart") then
+				player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
+			end
+		end
+	end)
+
 	section2:addButton("Gyro Zeppeli [Lvl.40+] (Technique Learner)", function()
 		for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
 			if v.Name == "Gyro" and v:FindFirstChild("HumanoidRootPart") then
