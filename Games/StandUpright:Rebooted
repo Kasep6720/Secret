@@ -1199,6 +1199,11 @@ local function StandUprightRebootedMain()
 		Farmlvl275 = bool
 	end)
 
+	local FarmGioR = false
+	section2:addToggle("Diavolo [Lvl. 500+]",false, function(bool)
+		FarmGioR = bool
+	end)
+	
 	local UndergroundMode = true
 	section3:addToggle("Underground Farming Mode", true, function(bool)
 		UndergroundMode = bool
@@ -2967,8 +2972,8 @@ local function StandUprightRebootedMain()
 					while (Farmlvl200 or (player.Data.Level.Value < 275 and FarmDueLVL)) and AutoFarm and task.wait() do
 						LVL200Farm()
 					end
-				elseif Farmlvl275 or (player.Data.Level.Value < 9999 and FarmDueLVL) then
-					while (Farmlvl275 or (player.Data.Level.Value < 9999 and FarmDueLVL)) and AutoFarm and task.wait() do
+				elseif Farmlvl275 or (player.Data.Level.Value < 500 and FarmDueLVL) or (player.Data.Level.Value > 499 and FarmDueLVL and not FARMINGGIOR) then
+					while (Farmlvl275 or (player.Data.Level.Value < 500 and FarmDueLVL) or (player.Data.Level.Value > 499 and FarmDueLVL and not FARMINGGIOR)) and AutoFarm and task.wait() do
 						LVL275Farm()
 					end
 				end
@@ -3756,6 +3761,11 @@ local function StandUprightRebootedMain()
 		FarmJohnny = bool
 	end)
 
+	local FarmGioR = false
+	section1:addToggle("Farm Giorno Giovanna Requiem",false, function(bool)
+		FarmGioR = bool
+	end)
+	
 	local UndergroundModeB = true
 	section2:addToggle("Underground Farming Mode", true, function(bool)
 		UndergroundModeB = bool
@@ -3770,220 +3780,145 @@ local function StandUprightRebootedMain()
 		while wait() do
 			pcall(function()
 				repeat task.wait() until player.Character:FindFirstChild("HumanoidRootPart")
-				if FarmOHJotaro then
-					for i, v in pairs(game:GetService("Workspace").Living:GetChildren()) do
-						if v.Name == "Jotaro Over Heaven" and v:FindFirstChild("Humanoid").Health ~= 0 then
-							FARMINGJOTAROOH = true
-							local URLASTPOS = player.Character.HumanoidRootPart.CFrame
-							repeat task.wait()
-								pcall(function()
-									if player.Data.Stand.Value == "None" then
-										for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
-											if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
-												--// waiting
+				if FarmGioR then
+					if not player.Data.Quests:FindFirstChild("KillGiornoRequiem") then
+						workspace.Map.NPCs["Diavolo"].Done:FireServer()
+					else
+						if not player.Data.Quests.KillGiornoRequiem.Completed.Value == true then
+							for i, v in pairs(game:GetService("Workspace").Living:GetChildren()) do
+								if v.Name == "Giorno Giovanna Requiem" and v:FindFirstChild("Humanoid").Health ~= 0 then
+									FARMINGGIOR = true
+									local URLASTPOS = player.Character.HumanoidRootPart.CFrame
+									repeat task.wait()
+										pcall(function()
+											if player.Data.Stand.Value == "None" then
+												for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
+													if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
+														--// waiting
+													else
+														local args = {[1] = "Beg",[2] = Enum.UserInputType.MouseButton1}
+														game:GetService("Players").LocalPlayer.Character.StandEvents.Comms:FireServer(unpack(args))
+													end
+												end
 											else
-												local args = {[1] = "Beg",[2] = Enum.UserInputType.MouseButton1}
-												game:GetService("Players").LocalPlayer.Character.StandEvents.Comms:FireServer(unpack(args))
+												if player.Character:FindFirstChild("Stand"):FindFirstChild("Head") then
+													--Diego's The World
+													if player.Character:FindFirstChild("Stand"):FindFirstChild("Head"):FindFirstChild("BodyPart") then
+														if player.Character:FindFirstChild("Stand").Head.BodyPart.Transparency == 1 then
+															local args = {[1] = "InitiateMove", [2] = "SummonStand", [3] = "Start"}
+															game:GetService("Players").LocalPlayer.Character.StandEvents:FireServer(unpack(args))
+														end
+														for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
+															if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
+																--// waiting
+															else
+																local args = {[1] = "InitiateMove", [2] = "NormalPunch", [3] = "Start"}
+																game:GetService("Players").LocalPlayer.Character.StandEvents:FireServer(unpack(args))
+															end
+														end
+													--Star Platinum The World
+													elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Head"):FindFirstChild("Head") then
+														if player.Character:FindFirstChild("Stand").Parts.Head.Transparency == 1 then
+															local args = {[1]={["State"]="Begin",["Type"]=Enum.UserInputType.Keyboard,["Key"]=Enum.KeyCode.Q}}
+															game:GetService("Players").LocalPlayer.Character.StandEvents.Input:FireServer(unpack(args))
+														end
+														for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
+															if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
+																--// waiting
+															else
+																local args = {[1]={["State"]="Begin",["Type"]=Enum.UserInputType.MouseButton1,["Key"]=Enum.KeyCode.Unknown}}
+																game:GetService("Players").LocalPlayer.Character.StandEvents.Input:FireServer(unpack(args))
+															end
+														end
+													--Old Stands
+													else
+														if player.Character:FindFirstChild("Stand").Head.Transparency == 1 then
+															player.Character.StandEvents.Summon:FireServer()
+														end
+														for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
+															if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
+																--// waiting
+															else
+																game:GetService("Players").LocalPlayer.Character.StandEvents.M1:FireServer()
+															end
+														end
+													end
+													if game:GetService("Players").LocalPlayer.Character:FindFirstChild("Stand") then
+														game:GetService("Players").LocalPlayer.Character.Stand:WaitForChild("HumanoidRootPart").CFrame = game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame
+													end
+												--Kars
+												elseif player.Character:FindFirstChild("Stand"):FindFirstChild("LeftKarsArm") or player.Character:FindFirstChild("Stand"):FindFirstChild("RightKarsArm") then
+													if player.Character:FindFirstChild("Stand").LeftKarsArm:FindFirstChild("Part").Transparency == 1 or player.Character:FindFirstChild("Stand").RightKarsArm:FindFirstChild("Part").Transparency == 1 then
+														player.Character.StandEvents.Summon:FireServer()
+													end
+													for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
+														if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
+															--// waiting
+														else
+															game:GetService("Players").LocalPlayer.Character.StandEvents.M1:FireServer()
+														end
+													end
+												--Emperor
+												elseif player.Character:FindFirstChild("Stand"):FindFirstChild("GunFrame") then
+													if player.Character:FindFirstChild("Stand").GunFrame.Transparency == 1 then
+														player.Character.StandEvents.Summon:FireServer()
+													end
+													for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
+														if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
+															--// waiting
+														else
+															game:GetService("Players").LocalPlayer.Character.StandEvents.M1:FireServer()
+														end
+													end
+												--Putrid Whine
+												elseif player.Character:FindFirstChild("Stand"):FindFirstChild("HeadMesh") then
+													if player.Character:FindFirstChild("Stand").HeadMesh.Transparency == 1 then
+														local args = {[1] = "Beg",[2] = Enum.KeyCode.Q}
+														game:GetService("Players").LocalPlayer.Character.StandEvents.Comms:FireServer(unpack(args))
+													end
+													for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
+														if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
+															--// waiting
+														else
+															local args = {[1] = "Beg",[2] = Enum.UserInputType.MouseButton1}
+															game:GetService("Players").LocalPlayer.Character.StandEvents.Comms:FireServer(unpack(args))
+														end
+													end
+												else
+													notify("Please report this bug to us")
+												end
 											end
-										end
-									else
-										if player.Character:FindFirstChild("Stand"):FindFirstChild("Head") then
-											--Diego's The World
-											if player.Character:FindFirstChild("Stand"):FindFirstChild("Head"):FindFirstChild("BodyPart") then
-												if player.Character:FindFirstChild("Stand").Head.BodyPart.Transparency == 1 then
-													local args = {[1] = "InitiateMove", [2] = "SummonStand", [3] = "Start"}
-													game:GetService("Players").LocalPlayer.Character.StandEvents:FireServer(unpack(args))
-												end
-												for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
-													if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
-														--// waiting
-													else
-														local args = {[1] = "InitiateMove", [2] = "NormalPunch", [3] = "Start"}
-														game:GetService("Players").LocalPlayer.Character.StandEvents:FireServer(unpack(args))
-													end
-												end
-											--Star Platinum The World
-											elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Head"):FindFirstChild("Head") then
-												if player.Character:FindFirstChild("Stand").Parts.Head.Transparency == 1 then
-													local args = {[1]={["State"]="Begin",["Type"]=Enum.UserInputType.Keyboard,["Key"]=Enum.KeyCode.Q}}
-													game:GetService("Players").LocalPlayer.Character.StandEvents.Input:FireServer(unpack(args))
-												end
-												for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
-													if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
-														--// waiting
-													else
-														local args = {[1]={["State"]="Begin",["Type"]=Enum.UserInputType.MouseButton1,["Key"]=Enum.KeyCode.Unknown}}
-														game:GetService("Players").LocalPlayer.Character.StandEvents.Input:FireServer(unpack(args))
-													end
-												end
-											--Old Stands
+											if UndergroundModeB == true then
+												game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = v:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, -6, 0, 1, 0, 0, 1) -- -593.952698, 66.6276474, -783.119934, -0.707110405, -5.96460623e-08, -0.707103133, -8.71555841e-08, 1, 2.80376944e-09, 0.707103133, 6.36105568e-08, -0.707110405
 											else
-												if player.Character:FindFirstChild("Stand").Head.Transparency == 1 then
-													player.Character.StandEvents.Summon:FireServer()
-												end
-												for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
-													if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
-														--// waiting
-													else
-														game:GetService("Players").LocalPlayer.Character.StandEvents.M1:FireServer()
-													end
-												end
+												game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = v:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, 0, 6)
 											end
-											if game:GetService("Players").LocalPlayer.Character:FindFirstChild("Stand") then
-												game:GetService("Players").LocalPlayer.Character.Stand:WaitForChild("HumanoidRootPart").CFrame = game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame
-											end
-										--Kars
-										elseif player.Character:FindFirstChild("Stand"):FindFirstChild("LeftKarsArm") or player.Character:FindFirstChild("Stand"):FindFirstChild("RightKarsArm") then
-											if player.Character:FindFirstChild("Stand").LeftKarsArm:FindFirstChild("Part").Transparency == 1 or player.Character:FindFirstChild("Stand").RightKarsArm:FindFirstChild("Part").Transparency == 1 then
-												player.Character.StandEvents.Summon:FireServer()
-											end
-											for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
-												if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
-													--// waiting
-												else
-													game:GetService("Players").LocalPlayer.Character.StandEvents.M1:FireServer()
-												end
-											end
-										--Emperor
-										elseif player.Character:FindFirstChild("Stand"):FindFirstChild("GunFrame") then
-											if player.Character:FindFirstChild("Stand").GunFrame.Transparency == 1 then
-												player.Character.StandEvents.Summon:FireServer()
-											end
-											for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
-												if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
-													--// waiting
-												else
-													game:GetService("Players").LocalPlayer.Character.StandEvents.M1:FireServer()
-												end
-											end
-										--Putrid Whine
-										elseif player.Character:FindFirstChild("Stand"):FindFirstChild("HeadMesh") then
-											if player.Character:FindFirstChild("Stand").HeadMesh.Transparency == 1 then
-												local args = {[1] = "Beg",[2] = Enum.KeyCode.Q}
-												game:GetService("Players").LocalPlayer.Character.StandEvents.Comms:FireServer(unpack(args))
-											end
-											for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
-												if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
-													--// waiting
-												else
-													local args = {[1] = "Beg",[2] = Enum.UserInputType.MouseButton1}
-													game:GetService("Players").LocalPlayer.Character.StandEvents.Comms:FireServer(unpack(args))
-												end
-											end
-										else
-											notify("Please report this bug to us")
-										end
+										end)
+									until v:FindFirstChild("Humanoid").Health == 0 or FarmGioR == false or player.Character.Humanoid.Health == 0
+									if TPBackB == true and FarmGioR then
+										game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = URLASTPOS
 									end
-									if UndergroundModeB == true then
-										game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = v:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, -6, 0, 1, 0, 0, 1) -- -593.952698, 66.6276474, -783.119934, -0.707110405, -5.96460623e-08, -0.707103133, -8.71555841e-08, 1, 2.80376944e-09, 0.707103133, 6.36105568e-08, -0.707110405
-									else
-										game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = v:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, 0, 6)
+									if UndergroundModeB == true and FarmGioR then
+										game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position + Vector3.new(0, 10, 0))
 									end
-								end)
-							until v:FindFirstChild("Humanoid").Health == 0 or FarmOHJotaro == false or player.Character.Humanoid.Health == 0
-							if TPBackB == true and FarmOHJotaro then
-								game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = URLASTPOS
+									repeat task.wait() until player.Character:FindFirstChild("HumanoidRootPart")
+								end
 							end
-							if UndergroundModeB == true and FarmOHJotaro then
-								game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position + Vector3.new(0, 10, 0))
-							end
-							repeat task.wait() until player.Character:FindFirstChild("HumanoidRootPart")
+							FARMINGGIOR = false
+						else
+							workspace.Map.NPCs["Diavolo"].QuestDone:FireServer()
 						end
 					end
-					FARMINGJOTAROOH = false
 				end
-				if FarmJohnny then 
-					for i, v in pairs(game:GetService("Workspace").Living:GetChildren()) do
-						if v.Name == "JohnnyJoestar" and v:FindFirstChild("Humanoid").Health ~= 0 then
-							FARMINGJOHNNY = true
-							local URLASTPOS = player.Character.HumanoidRootPart.CFrame
-							repeat task.wait()
-								pcall(function()
-									if player.Data.Stand.Value == "None" then
-										for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
-											if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
-												--// waiting
-											else
-												local args = {[1] = "Beg",[2] = Enum.UserInputType.MouseButton1}
-												game:GetService("Players").LocalPlayer.Character.StandEvents.Comms:FireServer(unpack(args))
-											end
-										end
-									else
-										if player.Character:FindFirstChild("Stand"):FindFirstChild("Head") then
-											--Diego's The World
-											if player.Character:FindFirstChild("Stand"):FindFirstChild("Head"):FindFirstChild("BodyPart") then
-												if player.Character:FindFirstChild("Stand").Head.BodyPart.Transparency == 1 then
-													local args = {[1] = "InitiateMove", [2] = "SummonStand", [3] = "Start"}
-													game:GetService("Players").LocalPlayer.Character.StandEvents:FireServer(unpack(args))
-												end
-												for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
-													if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
-														--// waiting
-													else
-														local args = {[1] = "InitiateMove", [2] = "NormalPunch", [3] = "Start"}
-														game:GetService("Players").LocalPlayer.Character.StandEvents:FireServer(unpack(args))
-													end
-												end
-											--Star Platinum The World
-											elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Head"):FindFirstChild("Head") then
-												if player.Character:FindFirstChild("Stand").Parts.Head.Transparency == 1 then
-													local args = {[1]={["State"]="Begin",["Type"]=Enum.UserInputType.Keyboard,["Key"]=Enum.KeyCode.Q}}
-													game:GetService("Players").LocalPlayer.Character.StandEvents.Input:FireServer(unpack(args))
-												end
-												for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
-													if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
-														--// waiting
-													else
-														local args = {[1]={["State"]="Begin",["Type"]=Enum.UserInputType.MouseButton1,["Key"]=Enum.KeyCode.Unknown}}
-														game:GetService("Players").LocalPlayer.Character.StandEvents.Input:FireServer(unpack(args))
-													end
-												end
-											--Old Stands
-											else
-												if player.Character:FindFirstChild("Stand").Head.Transparency == 1 then
-													player.Character.StandEvents.Summon:FireServer()
-												end
-												for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
-													if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
-														--// waiting
-													else
-														game:GetService("Players").LocalPlayer.Character.StandEvents.M1:FireServer()
-													end
-												end
-											end
-											if game:GetService("Players").LocalPlayer.Character:FindFirstChild("Stand") then
-												game:GetService("Players").LocalPlayer.Character.Stand:WaitForChild("HumanoidRootPart").CFrame = game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame
-											end
-										--Kars
-										elseif player.Character:FindFirstChild("Stand"):FindFirstChild("LeftKarsArm") or player.Character:FindFirstChild("Stand"):FindFirstChild("RightKarsArm") then
-											if player.Character:FindFirstChild("Stand").LeftKarsArm:FindFirstChild("Part").Transparency == 1 or player.Character:FindFirstChild("Stand").RightKarsArm:FindFirstChild("Part").Transparency == 1 then
-												player.Character.StandEvents.Summon:FireServer()
-											end
-											for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
-												if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
-													--// waiting
-												else
-													game:GetService("Players").LocalPlayer.Character.StandEvents.M1:FireServer()
-												end
-											end
-										--Emperor
-										elseif player.Character:FindFirstChild("Stand"):FindFirstChild("GunFrame") then
-											if player.Character:FindFirstChild("Stand").GunFrame.Transparency == 1 then
-												player.Character.StandEvents.Summon:FireServer()
-											end
-											for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
-												if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
-													--// waiting
-												else
-													game:GetService("Players").LocalPlayer.Character.StandEvents.M1:FireServer()
-												end
-											end
-										--Putrid Whine
-										elseif player.Character:FindFirstChild("Stand"):FindFirstChild("HeadMesh") then
-											if player.Character:FindFirstChild("Stand").HeadMesh.Transparency == 1 then
-												local args = {[1] = "Beg",[2] = Enum.KeyCode.Q}
-												game:GetService("Players").LocalPlayer.Character.StandEvents.Comms:FireServer(unpack(args))
-											end
+				if not FARMINGGIOR then
+					if FarmOHJotaro then
+						for i, v in pairs(game:GetService("Workspace").Living:GetChildren()) do
+							if v.Name == "Jotaro Over Heaven" and v:FindFirstChild("Humanoid").Health ~= 0 then
+								FARMINGJOTAROOH = true
+								local URLASTPOS = player.Character.HumanoidRootPart.CFrame
+								repeat task.wait()
+									pcall(function()
+										if player.Data.Stand.Value == "None" then
 											for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
 												if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
 													--// waiting
@@ -3993,76 +3928,54 @@ local function StandUprightRebootedMain()
 												end
 											end
 										else
-											notify("Please report this bug to us")
-										end
-									end
-									if UndergroundModeB == true then
-										game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = v:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, -6, 0, 1, 0, 0, 1) -- -593.952698, 66.6276474, -783.119934, -0.707110405, -5.96460623e-08, -0.707103133, -8.71555841e-08, 1, 2.80376944e-09, 0.707103133, 6.36105568e-08, -0.707110405
-									else
-										game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = v:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, 0, 6)
-									end
-								end)
-							until v:FindFirstChild("Humanoid").Health == 0 or FarmJohnny == false or player.Character.Humanoid.Health == 0
-							if TPBackB == true and FarmJohnny then
-								game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = URLASTPOS
-							end
-							if UndergroundModeB == true and FarmJohnny then
-								game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position + Vector3.new(0, 10, 0))
-							end
-							repeat task.wait() until player.Character:FindFirstChild("HumanoidRootPart")
-						end
-					end
-					FARMINGJOHNNY = false
-				end
-				if not FARMINGJOHNNY and not FARMINGJOTAROOH and FarmAUJotaroP4 then
-					for i, v in pairs(game:GetService("Workspace").Living:GetChildren()) do
-						if v.Name == "Alternate Jotaro Part 4" and v:FindFirstChild("Humanoid").Health ~= 0 then
-							FARMINGAUJOTAROP4 = true
-							local URLASTPOS = player.Character.HumanoidRootPart.CFrame
-							repeat task.wait()
-								pcall(function()
-									if player.Data.Stand.Value == "None" then
-										for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
-											if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
-												--// waiting
-											else
-												local args = {[1] = "Beg",[2] = Enum.UserInputType.MouseButton1}
-												game:GetService("Players").LocalPlayer.Character.StandEvents.Comms:FireServer(unpack(args))
-											end
-										end
-									else
-										if player.Character:FindFirstChild("Stand"):FindFirstChild("Head") then
-											--Diego's The World
-											if player.Character:FindFirstChild("Stand"):FindFirstChild("Head"):FindFirstChild("BodyPart") then
-												if player.Character:FindFirstChild("Stand").Head.BodyPart.Transparency == 1 then
-													local args = {[1] = "InitiateMove", [2] = "SummonStand", [3] = "Start"}
-													game:GetService("Players").LocalPlayer.Character.StandEvents:FireServer(unpack(args))
-												end
-												for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
-													if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
-														--// waiting
-													else
-														local args = {[1] = "InitiateMove", [2] = "NormalPunch", [3] = "Start"}
+											if player.Character:FindFirstChild("Stand"):FindFirstChild("Head") then
+												--Diego's The World
+												if player.Character:FindFirstChild("Stand"):FindFirstChild("Head"):FindFirstChild("BodyPart") then
+													if player.Character:FindFirstChild("Stand").Head.BodyPart.Transparency == 1 then
+														local args = {[1] = "InitiateMove", [2] = "SummonStand", [3] = "Start"}
 														game:GetService("Players").LocalPlayer.Character.StandEvents:FireServer(unpack(args))
 													end
-												end
-											--Star Platinum The World
-											elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Head"):FindFirstChild("Head") then
-												if player.Character:FindFirstChild("Stand").Parts.Head.Transparency == 1 then
-													local args = {[1]={["State"]="Begin",["Type"]=Enum.UserInputType.Keyboard,["Key"]=Enum.KeyCode.Q}}
-													game:GetService("Players").LocalPlayer.Character.StandEvents.Input:FireServer(unpack(args))
-												end
-												for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
-													if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
-														--// waiting
-													else
-														local args = {[1]={["State"]="Begin",["Type"]=Enum.UserInputType.MouseButton1,["Key"]=Enum.KeyCode.Unknown}}
+													for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
+														if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
+															--// waiting
+														else
+															local args = {[1] = "InitiateMove", [2] = "NormalPunch", [3] = "Start"}
+															game:GetService("Players").LocalPlayer.Character.StandEvents:FireServer(unpack(args))
+														end
+													end
+												--Star Platinum The World
+												elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Head"):FindFirstChild("Head") then
+													if player.Character:FindFirstChild("Stand").Parts.Head.Transparency == 1 then
+														local args = {[1]={["State"]="Begin",["Type"]=Enum.UserInputType.Keyboard,["Key"]=Enum.KeyCode.Q}}
 														game:GetService("Players").LocalPlayer.Character.StandEvents.Input:FireServer(unpack(args))
 													end
+													for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
+														if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
+															--// waiting
+														else
+															local args = {[1]={["State"]="Begin",["Type"]=Enum.UserInputType.MouseButton1,["Key"]=Enum.KeyCode.Unknown}}
+															game:GetService("Players").LocalPlayer.Character.StandEvents.Input:FireServer(unpack(args))
+														end
+													end
+												--Old Stands
+												else
+													if player.Character:FindFirstChild("Stand").Head.Transparency == 1 then
+														player.Character.StandEvents.Summon:FireServer()
+													end
+													for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
+														if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
+															--// waiting
+														else
+															game:GetService("Players").LocalPlayer.Character.StandEvents.M1:FireServer()
+														end
+													end
 												end
-											--Old Stands
-											else
-												if player.Character:FindFirstChild("Stand").Head.Transparency == 1 then
+												if game:GetService("Players").LocalPlayer.Character:FindFirstChild("Stand") then
+													game:GetService("Players").LocalPlayer.Character.Stand:WaitForChild("HumanoidRootPart").CFrame = game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame
+												end
+											--Kars
+											elseif player.Character:FindFirstChild("Stand"):FindFirstChild("LeftKarsArm") or player.Character:FindFirstChild("Stand"):FindFirstChild("RightKarsArm") then
+												if player.Character:FindFirstChild("Stand").LeftKarsArm:FindFirstChild("Part").Transparency == 1 or player.Character:FindFirstChild("Stand").RightKarsArm:FindFirstChild("Part").Transparency == 1 then
 													player.Character.StandEvents.Summon:FireServer()
 												end
 												for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
@@ -4072,40 +3985,62 @@ local function StandUprightRebootedMain()
 														game:GetService("Players").LocalPlayer.Character.StandEvents.M1:FireServer()
 													end
 												end
-											end
-											if game:GetService("Players").LocalPlayer.Character:FindFirstChild("Stand") then
-												game:GetService("Players").LocalPlayer.Character.Stand:WaitForChild("HumanoidRootPart").CFrame = game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame
-											end
-										--Kars
-										elseif player.Character:FindFirstChild("Stand"):FindFirstChild("LeftKarsArm") or player.Character:FindFirstChild("Stand"):FindFirstChild("RightKarsArm") then
-											if player.Character:FindFirstChild("Stand").LeftKarsArm:FindFirstChild("Part").Transparency == 1 or player.Character:FindFirstChild("Stand").RightKarsArm:FindFirstChild("Part").Transparency == 1 then
-												player.Character.StandEvents.Summon:FireServer()
-											end
-											for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
-												if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
-													--// waiting
-												else
-													game:GetService("Players").LocalPlayer.Character.StandEvents.M1:FireServer()
+											--Emperor
+											elseif player.Character:FindFirstChild("Stand"):FindFirstChild("GunFrame") then
+												if player.Character:FindFirstChild("Stand").GunFrame.Transparency == 1 then
+													player.Character.StandEvents.Summon:FireServer()
 												end
-											end
-										--Emperor
-										elseif player.Character:FindFirstChild("Stand"):FindFirstChild("GunFrame") then
-											if player.Character:FindFirstChild("Stand").GunFrame.Transparency == 1 then
-												player.Character.StandEvents.Summon:FireServer()
-											end
-											for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
-												if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
-													--// waiting
-												else
-													game:GetService("Players").LocalPlayer.Character.StandEvents.M1:FireServer()
+												for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
+													if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
+														--// waiting
+													else
+														game:GetService("Players").LocalPlayer.Character.StandEvents.M1:FireServer()
+													end
 												end
+											--Putrid Whine
+											elseif player.Character:FindFirstChild("Stand"):FindFirstChild("HeadMesh") then
+												if player.Character:FindFirstChild("Stand").HeadMesh.Transparency == 1 then
+													local args = {[1] = "Beg",[2] = Enum.KeyCode.Q}
+													game:GetService("Players").LocalPlayer.Character.StandEvents.Comms:FireServer(unpack(args))
+												end
+												for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
+													if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
+														--// waiting
+													else
+														local args = {[1] = "Beg",[2] = Enum.UserInputType.MouseButton1}
+														game:GetService("Players").LocalPlayer.Character.StandEvents.Comms:FireServer(unpack(args))
+													end
+												end
+											else
+												notify("Please report this bug to us")
 											end
-										--Putrid Whine
-										elseif player.Character:FindFirstChild("Stand"):FindFirstChild("HeadMesh") then
-											if player.Character:FindFirstChild("Stand").HeadMesh.Transparency == 1 then
-												local args = {[1] = "Beg",[2] = Enum.KeyCode.Q}
-												game:GetService("Players").LocalPlayer.Character.StandEvents.Comms:FireServer(unpack(args))
-											end
+										end
+										if UndergroundModeB == true then
+											game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = v:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, -6, 0, 1, 0, 0, 1) -- -593.952698, 66.6276474, -783.119934, -0.707110405, -5.96460623e-08, -0.707103133, -8.71555841e-08, 1, 2.80376944e-09, 0.707103133, 6.36105568e-08, -0.707110405
+										else
+											game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = v:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, 0, 6)
+										end
+									end)
+								until v:FindFirstChild("Humanoid").Health == 0 or FarmOHJotaro == false or player.Character.Humanoid.Health == 0
+								if TPBackB == true and FarmOHJotaro then
+									game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = URLASTPOS
+								end
+								if UndergroundModeB == true and FarmOHJotaro then
+									game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position + Vector3.new(0, 10, 0))
+								end
+								repeat task.wait() until player.Character:FindFirstChild("HumanoidRootPart")
+							end
+						end
+						FARMINGJOTAROOH = false
+					end
+					if FarmJohnny then 
+						for i, v in pairs(game:GetService("Workspace").Living:GetChildren()) do
+							if v.Name == "JohnnyJoestar" and v:FindFirstChild("Humanoid").Health ~= 0 then
+								FARMINGJOHNNY = true
+								local URLASTPOS = player.Character.HumanoidRootPart.CFrame
+								repeat task.wait()
+									pcall(function()
+										if player.Data.Stand.Value == "None" then
 											for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
 												if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
 													--// waiting
@@ -4115,26 +4050,233 @@ local function StandUprightRebootedMain()
 												end
 											end
 										else
-											notify("Please report this bug to us")
+											if player.Character:FindFirstChild("Stand"):FindFirstChild("Head") then
+												--Diego's The World
+												if player.Character:FindFirstChild("Stand"):FindFirstChild("Head"):FindFirstChild("BodyPart") then
+													if player.Character:FindFirstChild("Stand").Head.BodyPart.Transparency == 1 then
+														local args = {[1] = "InitiateMove", [2] = "SummonStand", [3] = "Start"}
+														game:GetService("Players").LocalPlayer.Character.StandEvents:FireServer(unpack(args))
+													end
+													for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
+														if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
+															--// waiting
+														else
+															local args = {[1] = "InitiateMove", [2] = "NormalPunch", [3] = "Start"}
+															game:GetService("Players").LocalPlayer.Character.StandEvents:FireServer(unpack(args))
+														end
+													end
+												--Star Platinum The World
+												elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Head"):FindFirstChild("Head") then
+													if player.Character:FindFirstChild("Stand").Parts.Head.Transparency == 1 then
+														local args = {[1]={["State"]="Begin",["Type"]=Enum.UserInputType.Keyboard,["Key"]=Enum.KeyCode.Q}}
+														game:GetService("Players").LocalPlayer.Character.StandEvents.Input:FireServer(unpack(args))
+													end
+													for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
+														if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
+															--// waiting
+														else
+															local args = {[1]={["State"]="Begin",["Type"]=Enum.UserInputType.MouseButton1,["Key"]=Enum.KeyCode.Unknown}}
+															game:GetService("Players").LocalPlayer.Character.StandEvents.Input:FireServer(unpack(args))
+														end
+													end
+												--Old Stands
+												else
+													if player.Character:FindFirstChild("Stand").Head.Transparency == 1 then
+														player.Character.StandEvents.Summon:FireServer()
+													end
+													for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
+														if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
+															--// waiting
+														else
+															game:GetService("Players").LocalPlayer.Character.StandEvents.M1:FireServer()
+														end
+													end
+												end
+												if game:GetService("Players").LocalPlayer.Character:FindFirstChild("Stand") then
+													game:GetService("Players").LocalPlayer.Character.Stand:WaitForChild("HumanoidRootPart").CFrame = game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame
+												end
+											--Kars
+											elseif player.Character:FindFirstChild("Stand"):FindFirstChild("LeftKarsArm") or player.Character:FindFirstChild("Stand"):FindFirstChild("RightKarsArm") then
+												if player.Character:FindFirstChild("Stand").LeftKarsArm:FindFirstChild("Part").Transparency == 1 or player.Character:FindFirstChild("Stand").RightKarsArm:FindFirstChild("Part").Transparency == 1 then
+													player.Character.StandEvents.Summon:FireServer()
+												end
+												for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
+													if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
+														--// waiting
+													else
+														game:GetService("Players").LocalPlayer.Character.StandEvents.M1:FireServer()
+													end
+												end
+											--Emperor
+											elseif player.Character:FindFirstChild("Stand"):FindFirstChild("GunFrame") then
+												if player.Character:FindFirstChild("Stand").GunFrame.Transparency == 1 then
+													player.Character.StandEvents.Summon:FireServer()
+												end
+												for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
+													if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
+														--// waiting
+													else
+														game:GetService("Players").LocalPlayer.Character.StandEvents.M1:FireServer()
+													end
+												end
+											--Putrid Whine
+											elseif player.Character:FindFirstChild("Stand"):FindFirstChild("HeadMesh") then
+												if player.Character:FindFirstChild("Stand").HeadMesh.Transparency == 1 then
+													local args = {[1] = "Beg",[2] = Enum.KeyCode.Q}
+													game:GetService("Players").LocalPlayer.Character.StandEvents.Comms:FireServer(unpack(args))
+												end
+												for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
+													if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
+														--// waiting
+													else
+														local args = {[1] = "Beg",[2] = Enum.UserInputType.MouseButton1}
+														game:GetService("Players").LocalPlayer.Character.StandEvents.Comms:FireServer(unpack(args))
+													end
+												end
+											else
+												notify("Please report this bug to us")
+											end
 										end
-									end
-									if UndergroundModeB == true then
-										game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = v:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, -6, 0, 1, 0, 0, 1) -- -593.952698, 66.6276474, -783.119934, -0.707110405, -5.96460623e-08, -0.707103133, -8.71555841e-08, 1, 2.80376944e-09, 0.707103133, 6.36105568e-08, -0.707110405
-									else
-										game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = v:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, 0, 6)
-									end
-								end)
-							until v:FindFirstChild("Humanoid").Health == 0 or FarmAUJotaroP4 == false or FARMINGJOHNNY or (FarmJohnny and game:GetService("Workspace").Living:FindFirstChild("JohnnyJoestar")) or FARMINGJOTAROOH or (FarmOHJotaro and game:GetService("Workspace").Living:FindFirstChild("Jotaro Over Heaven")) or player.Character.Humanoid.Health == 0
-							if TPBackB == true and FarmAUJotaroP4 then
-								game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = URLASTPOS
+										if UndergroundModeB == true then
+											game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = v:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, -6, 0, 1, 0, 0, 1) -- -593.952698, 66.6276474, -783.119934, -0.707110405, -5.96460623e-08, -0.707103133, -8.71555841e-08, 1, 2.80376944e-09, 0.707103133, 6.36105568e-08, -0.707110405
+										else
+											game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = v:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, 0, 6)
+										end
+									end)
+								until v:FindFirstChild("Humanoid").Health == 0 or FarmJohnny == false or player.Character.Humanoid.Health == 0
+								if TPBackB == true and FarmJohnny then
+									game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = URLASTPOS
+								end
+								if UndergroundModeB == true and FarmJohnny then
+									game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position + Vector3.new(0, 10, 0))
+								end
+								repeat task.wait() until player.Character:FindFirstChild("HumanoidRootPart")
 							end
-							if UndergroundModeB == true and FarmAUJotaroP4 then
-								game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position + Vector3.new(0, 10, 0))
-							end
-							repeat task.wait() until player.Character:FindFirstChild("HumanoidRootPart")
 						end
+						FARMINGJOHNNY = false
 					end
-					FARMINGAUJOTAROP4 = false
+					if not FARMINGJOHNNY and not FARMINGJOTAROOH and FarmAUJotaroP4 then
+						for i, v in pairs(game:GetService("Workspace").Living:GetChildren()) do
+							if v.Name == "Alternate Jotaro Part 4" and v:FindFirstChild("Humanoid").Health ~= 0 then
+								FARMINGAUJOTAROP4 = true
+								local URLASTPOS = player.Character.HumanoidRootPart.CFrame
+								repeat task.wait()
+									pcall(function()
+										if player.Data.Stand.Value == "None" then
+											for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
+												if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
+													--// waiting
+												else
+													local args = {[1] = "Beg",[2] = Enum.UserInputType.MouseButton1}
+													game:GetService("Players").LocalPlayer.Character.StandEvents.Comms:FireServer(unpack(args))
+												end
+											end
+										else
+											if player.Character:FindFirstChild("Stand"):FindFirstChild("Head") then
+												--Diego's The World
+												if player.Character:FindFirstChild("Stand"):FindFirstChild("Head"):FindFirstChild("BodyPart") then
+													if player.Character:FindFirstChild("Stand").Head.BodyPart.Transparency == 1 then
+														local args = {[1] = "InitiateMove", [2] = "SummonStand", [3] = "Start"}
+														game:GetService("Players").LocalPlayer.Character.StandEvents:FireServer(unpack(args))
+													end
+													for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
+														if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
+															--// waiting
+														else
+															local args = {[1] = "InitiateMove", [2] = "NormalPunch", [3] = "Start"}
+															game:GetService("Players").LocalPlayer.Character.StandEvents:FireServer(unpack(args))
+														end
+													end
+												--Star Platinum The World
+												elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Head"):FindFirstChild("Head") then
+													if player.Character:FindFirstChild("Stand").Parts.Head.Transparency == 1 then
+														local args = {[1]={["State"]="Begin",["Type"]=Enum.UserInputType.Keyboard,["Key"]=Enum.KeyCode.Q}}
+														game:GetService("Players").LocalPlayer.Character.StandEvents.Input:FireServer(unpack(args))
+													end
+													for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
+														if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
+															--// waiting
+														else
+															local args = {[1]={["State"]="Begin",["Type"]=Enum.UserInputType.MouseButton1,["Key"]=Enum.KeyCode.Unknown}}
+															game:GetService("Players").LocalPlayer.Character.StandEvents.Input:FireServer(unpack(args))
+														end
+													end
+												--Old Stands
+												else
+													if player.Character:FindFirstChild("Stand").Head.Transparency == 1 then
+														player.Character.StandEvents.Summon:FireServer()
+													end
+													for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
+														if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
+															--// waiting
+														else
+															game:GetService("Players").LocalPlayer.Character.StandEvents.M1:FireServer()
+														end
+													end
+												end
+												if game:GetService("Players").LocalPlayer.Character:FindFirstChild("Stand") then
+													game:GetService("Players").LocalPlayer.Character.Stand:WaitForChild("HumanoidRootPart").CFrame = game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame
+												end
+											--Kars
+											elseif player.Character:FindFirstChild("Stand"):FindFirstChild("LeftKarsArm") or player.Character:FindFirstChild("Stand"):FindFirstChild("RightKarsArm") then
+												if player.Character:FindFirstChild("Stand").LeftKarsArm:FindFirstChild("Part").Transparency == 1 or player.Character:FindFirstChild("Stand").RightKarsArm:FindFirstChild("Part").Transparency == 1 then
+													player.Character.StandEvents.Summon:FireServer()
+												end
+												for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
+													if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
+														--// waiting
+													else
+														game:GetService("Players").LocalPlayer.Character.StandEvents.M1:FireServer()
+													end
+												end
+											--Emperor
+											elseif player.Character:FindFirstChild("Stand"):FindFirstChild("GunFrame") then
+												if player.Character:FindFirstChild("Stand").GunFrame.Transparency == 1 then
+													player.Character.StandEvents.Summon:FireServer()
+												end
+												for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
+													if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
+														--// waiting
+													else
+														game:GetService("Players").LocalPlayer.Character.StandEvents.M1:FireServer()
+													end
+												end
+											--Putrid Whine
+											elseif player.Character:FindFirstChild("Stand"):FindFirstChild("HeadMesh") then
+												if player.Character:FindFirstChild("Stand").HeadMesh.Transparency == 1 then
+													local args = {[1] = "Beg",[2] = Enum.KeyCode.Q}
+													game:GetService("Players").LocalPlayer.Character.StandEvents.Comms:FireServer(unpack(args))
+												end
+												for i, v1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.CDgui.fortnite:GetChildren()) do
+													if v1:IsA("Frame") and (v1.Textt.Text == "Punch" or v1.Textt.Text == "Normal Punches") then
+														--// waiting
+													else
+														local args = {[1] = "Beg",[2] = Enum.UserInputType.MouseButton1}
+														game:GetService("Players").LocalPlayer.Character.StandEvents.Comms:FireServer(unpack(args))
+													end
+												end
+											else
+												notify("Please report this bug to us")
+											end
+										end
+										if UndergroundModeB == true then
+											game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = v:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, -6, 0, 1, 0, 0, 1) -- -593.952698, 66.6276474, -783.119934, -0.707110405, -5.96460623e-08, -0.707103133, -8.71555841e-08, 1, 2.80376944e-09, 0.707103133, 6.36105568e-08, -0.707110405
+										else
+											game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = v:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, 0, 6)
+										end
+									end)
+								until v:FindFirstChild("Humanoid").Health == 0 or FarmAUJotaroP4 == false or FARMINGJOHNNY or (FarmJohnny and game:GetService("Workspace").Living:FindFirstChild("JohnnyJoestar")) or FARMINGJOTAROOH or (FarmOHJotaro and game:GetService("Workspace").Living:FindFirstChild("Jotaro Over Heaven")) or player.Character.Humanoid.Health == 0
+								if TPBackB == true and FarmAUJotaroP4 then
+									game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = URLASTPOS
+								end
+								if UndergroundModeB == true and FarmAUJotaroP4 then
+									game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position + Vector3.new(0, 10, 0))
+								end
+								repeat task.wait() until player.Character:FindFirstChild("HumanoidRootPart")
+							end
+						end
+						FARMINGAUJOTAROP4 = false
+					end
 				end
 			end)
 		end
@@ -4142,7 +4284,7 @@ local function StandUprightRebootedMain()
 	
 	spawn(function()
 		while wait() do
-			if FARMINGJOTAROOH or FARMINGJOHNNY or FARMINGAUJOTAROP4 then
+			if FARMINGJOTAROOH or FARMINGJOHNNY or FARMINGAUJOTAROP4 or FARMINGGIOR then
 				FARMINGBOSSES = true
 			else
 				FARMINGBOSSES = false
@@ -4641,6 +4783,14 @@ local function StandUprightRebootedMain()
 		end
 	end)
 
+	section2:addButton("Diavolo [Lvl. 500+] (Quest)", function()
+		for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
+			if v.Name == "Diavolo" and v:FindFirstChild("HumanoidRootPart") then
+				player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
+			end
+		end
+	end)
+	
 	section2:addButton("i_stabman [Lvl. 15+] (Lair Quest)", function()
 		for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
 			if v:FindFirstChild("Head") and v.Head:FindFirstChild("Main") and v.Head.Main:FindFirstChild("Text") and v.Head.Main.Text.Text == "i_stabman [Lvl. 15+]" then
@@ -4754,7 +4904,23 @@ local function StandUprightRebootedMain()
 			end
 		end
 	end)
-
+	
+	section2:addButton("BobBallin (The Baller)", function()
+		for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
+			if v.Name == "BobBallin" and v:FindFirstChild("HumanoidRootPart") then
+				player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
+			end
+		end
+	end)
+	
+	section2:addButton("Staticaliza (Secret)", function()
+		for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
+			if v.Name == "Staticaliza" and v:FindFirstChild("HumanoidRootPart") then
+				player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
+			end
+		end
+	end)
+	
 	-- last page
 	local pagelast = NoobieDoge:addPage("Settings", 5927656531)
 	local settings = pagelast:addSection("Settings")
