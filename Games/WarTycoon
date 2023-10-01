@@ -647,7 +647,7 @@ local function WarTycoon()
 				CapingFlag = true
 				if game.Workspace:FindFirstChild(player.Name) and game.Players:FindFirstChild(player.Name) then
 					--player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["Game Systems"].CapturePoint.TubeBottom.CFrame * CFrame.new(0, -6, 0)
-					player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(70, 43, 180))
+					player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(70, 44, 180))
 				end
 			else
 				CapingFlag = false
