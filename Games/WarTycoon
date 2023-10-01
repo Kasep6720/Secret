@@ -711,7 +711,7 @@ local function WarTycoon()
 												player.Character.HumanoidRootPart.CFrame = v.Part.CFrame * CFrame.new(0, 3, 0)
 											end
 											if tonumber(player.leaderstats.Rebirths.Value) > 3 then
-												if v.Name == "Vietnam Unlock Rebirth 4" then
+												if v.Name == "Vietnam Unlock Rebirth 4" or v.Name == "WW2 [4 Rebirths]" then
 													player.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
 													player.Character.HumanoidRootPart.CFrame = v.Part.CFrame * CFrame.new(0, 3, 0)
 												end
