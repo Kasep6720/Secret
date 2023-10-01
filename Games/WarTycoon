@@ -643,7 +643,7 @@ local function WarTycoon()
 	
 	spawn(function()
 		while wait() do
-			if AuFlag and (game:GetService("Workspace")["Game Systems"].CapturePoint["Captured Team"].Value ~= MyBase or (game:GetService("Workspace")["Game Systems"].CapturePoint["Captured Team"].Value ~= MyBase and game:GetService("Workspace")["Game Systems"].CapturePoint.Flag.CubeFlag.CFrame ~= CFrame.new(Vector3.new(66.2132568, 81.0611343, 193.758408, 0.707078993, 1.37090683e-06, -0.707134604, -1.37090683e-06, 1, 5.36441803e-07, 0.707134604, 5.36441803e-07, 0.707078)))) then
+			if AuFlag and (game:GetService("Workspace")["Game Systems"].CapturePoint["Captured Team"].Value ~= MyBase or (game:GetService("Workspace")["Game Systems"].CapturePoint["Captured Team"].Value ~= MyBase and game:GetService("Workspace")["Game Systems"].CapturePoint.Flag.CubeFlag.CFrame ~= CFrame.new(66.2132568, 81.0611572, 193.758408, 0.707078993, 1.90734863e-06, -0.707134783, -1.90734863e-06, 1.00000012, 7.15255737e-07, 0.707134783, 7.15255737e-07, 0.707078815))) then
 				CapingFlag = true
 				if game.Workspace:FindFirstChild(player.Name) and game.Players:FindFirstChild(player.Name) then
 					--player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["Game Systems"].CapturePoint.TubeBottom.CFrame * CFrame.new(0, -6, 0)
@@ -658,7 +658,7 @@ local function WarTycoon()
 	
 	spawn(function()
 		while wait(sliderDBCG) do
-			if AuGold and game.Players:FindFirstChild(player.Name) and not CapingFlag then
+			if AuGold and game.Players:FindFirstChild(player.Name) and CapingFlag == false then
 				if not game:GetService("Workspace").Tycoon.Tycoons[MyBase].Essentials:FindFirstChild("CashCollector") then
 					player.Character.HumanoidRootPart.CFrame = game.Workspace.Tycoon.TycoonFloor[MyBase].CFrame
 				else
