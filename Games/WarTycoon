@@ -487,18 +487,43 @@ local function WarTycoon()
 	local page2 = NoobieDoge:addPage("Misc", 14547306374)
 	local section1 = page2:addSection("Game Functions")
 
+	repeat wait() until player:FindFirstChild("leaderstats")
 	local MyBase
 	for i, base in pairs(game:GetService("Workspace").Tycoon.Tycoons:GetChildren()) do
 		if base.Owner.Value == player then
 			MyBase = base.Name
 		end
 	end
-		
+
+	local NoFallDmg = false
+	section1:addToggle("Disable Fall Damage", false, function(bool)
+		NoFallDmg = bool
+		notify("Disable Fall Damage: "..tostring(NoFallDmg),true)
+	end)
+	
+	spawn(function()
+		while wait(1) do
+			if NoFallDmg then
+				for i,v in pairs(player.Character:GetChildren()) do
+					if v.Name == "ACS_Client" then
+						v.Parent = game:GetService("Workspace").VisualRockets
+					end
+				end
+			else
+				for i,v in pairs(game:GetService("Workspace").VisualRockets:GetChildren()) do
+					if v.Name == "ACS_Client" then
+						v.Parent = player.Character
+					end
+				end
+			end
+		end
+	end)
+	
 	section1:addSlider("Hixbox Size", 10, 0.1, 999, function(value)
 		sliderhitbox = value
 	end)
 	sliderhitbox = 10
-	
+
 	section1:addButton("Hitbox Expander",function()
 		notify("Imagine being so bad that need to use this function")
 		wait()
@@ -533,7 +558,7 @@ local function WarTycoon()
 		AuGold = bool
 		notify("Auto Collect Gold: "..tostring(AuGold),true)
 	end)
-	
+
 	section1:addSlider("Delay before Collecting Gold", 5, 1, 3600, function(value)
 		sliderDBCG = value
 	end)
@@ -545,6 +570,36 @@ local function WarTycoon()
 		notify("Auto Build: "..tostring(AuBuild),true)
 	end)
 	
+	local AuFlag = false
+	section1:addToggle("Auto Capture Flag", false, function(bool)
+		AuFlag = bool
+		notify("Auto Capture Flag: "..tostring(AuFlag),true)
+		local platform = Instance.new("Part", player.Character)
+		platform.Anchored = true
+		platform.Transparency = 1
+		platform.Size = Vector3.new(6, 1, 6)
+
+		local connection
+		connection = game:GetService("RunService").RenderStepped:connect(function()
+			if player.Character:FindFirstChild("HumanoidRootPart") then
+				platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -3, 0)
+			else
+				connection:Disconnect()
+			end
+		end)
+		game:GetService('RunService').Stepped:connect(function()
+			if AuFlag ~= true or CapingFlag == false then
+				platform:Destroy()
+			end
+		end)
+	end)
+	
+	local AuRepair = false
+	section1:addToggle("Auto Repair", false, function(bool)
+		AuRepair = bool
+		notify("Auto Repair: "..tostring(AuRepair),true)
+	end)
+	
 	local AuRebirth = false
 	section1:addToggle("Auto Rebirth", false, function(bool)
 		AuRebirth = bool
@@ -552,16 +607,70 @@ local function WarTycoon()
 	end)
 	
 	spawn(function()
-		while wait(sliderDBCG) do
-			if AuGold and game.Players:FindFirstChild(player.Name) then
-				player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Tycoon.Tycoons[MyBase].Essentials.CashCollector.CFrame * CFrame.new(0, 6, 0)
+		while wait() do
+			if AuRepair then
+				for i, v in pairs(game:GetService("Workspace").Tycoon.Tycoons[MyBase].PurchasedObjects:GetChildren()) do
+					if player.leaderstats.Cash.Value > 25000 and (v.Name == "Base Shield" and v.Broken.Value == true and v.Cooldown ~= true) then
+						player.Character.HumanoidRootPart.CFrame = v.Generator.Prompt.CFrame
+						wait()
+						VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+						wait(3)
+					else
+						if v.Name == "Base Shield" and v.Broken.Value == false and v.Status.Value ~= true then
+							player.Character.HumanoidRootPart.CFrame = v.Generator.Prompt.CFrame
+							wait()
+							VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+							wait(3)
+						else
+							if player.leaderstats.Cash.Value > 50000 and (v.Name == "CRAM" and v.CRAM.Broken.Value == true) then
+								player.Character.HumanoidRootPart.CFrame = v.CRAM.PromptPart.CFrame
+								wait()
+								VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+								wait(3)
+							end
+							if player.leaderstats.Cash.Value > 15000 and ((v.Name == "Large Oil 1" or v.Name == "Large Oil 2" or v.Name == "Large Oil 3" or v.Name == "Large Oil 4" or v.Name == "Large Oil 5" or v.Name == "Large Oil 6") and v.Broken.Value == true) then
+								player.Character.HumanoidRootPart.CFrame = v.ElectricalBox.Part.CFrame
+								wait()
+								VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+								wait(3)
+							end
+						end
+					end
+				end
 			end
 		end
 	end)
 	
 	spawn(function()
 		while wait() do
-			if AuBuild then
+			if AuFlag and (game:GetService("Workspace")["Game Systems"].CapturePoint["Captured Team"].Value ~= MyBase or (game:GetService("Workspace")["Game Systems"].CapturePoint["Captured Team"].Value ~= MyBase and game:GetService("Workspace")["Game Systems"].CapturePoint.Flag.CubeFlag.CFrame ~= CFrame.new(Vector3.new(66.2132568, 81.0611343, 193.758408, 0.707078993, 1.37090683e-06, -0.707134604, -1.37090683e-06, 1, 5.36441803e-07, 0.707134604, 5.36441803e-07, 0.707078)))) then
+				CapingFlag = true
+				if game.Workspace:FindFirstChild(player.Name) and game.Players:FindFirstChild(player.Name) then
+					--player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["Game Systems"].CapturePoint.TubeBottom.CFrame * CFrame.new(0, -6, 0)
+					player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(70, 43, 180))
+				end
+			else
+				CapingFlag = false
+			end
+		end
+	end)
+	CapingFlag = false
+	
+	spawn(function()
+		while wait(sliderDBCG) do
+			if AuGold and game.Players:FindFirstChild(player.Name) and not CapingFlag then
+				if not game:GetService("Workspace").Tycoon.Tycoons[MyBase].Essentials:FindFirstChild("CashCollector") then
+					player.Character.HumanoidRootPart.CFrame = game.Workspace.Tycoon.TycoonFloor[MyBase].CFrame
+				else
+					player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Tycoon.Tycoons[MyBase].Essentials.CashCollector.CFrame * CFrame.new(0, 6, 0)
+				end
+			end
+		end
+	end)
+	
+	spawn(function()
+		while wait() do
+			if AuBuild and not CapingFlag then
 				for i, v in pairs(game:GetService("Workspace").Tycoon.Tycoons[MyBase].UnpurchasedButtons:GetChildren()) do
 					if v:FindFirstChild("Neon") then
 						wait(.1)
@@ -571,11 +680,11 @@ local function WarTycoon()
 							VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
 							wait(4)
 						else
-							if v.Neon.BrickColor == BrickColor.new("Lime green") and (v.Name == "Oil 2" or v.Name == "Oil 3" or v.Name == "Oil 4" or v.Name == "Oil 5" or v.Name == "Oil 6" or v.Name == "Path 1st Floor" or v.Name == "Large Oil 1" or v.Name == "Large Oil 2" or v.Name == "Large Oil 3" or v.Name == "Large Oil 4" or v.Name == "Large Oil 5" or v.Name == "Large Oil 6") then
+							if v:FindFirstChild("Neon") and v.Neon.BrickColor == BrickColor.new("Lime green") and (v.Name == "Oil 2" or v.Name == "Oil 3" or v.Name == "Oil 4" or v.Name == "Oil 5" or v.Name == "Oil 6" or v.Name == "Path 1st Floor" or v.Name == "Large Oil 1" or v.Name == "Large Oil 2" or v.Name == "Large Oil 3" or v.Name == "Large Oil 4" or v.Name == "Large Oil 5" or v.Name == "Large Oil 6") then
 								player.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
 								player.Character.HumanoidRootPart.CFrame = v.Part.CFrame * CFrame.new(0, 3, 0)
 							else
-								if (v.Neon.BrickColor == BrickColor.new("Lime green") or v.Neon.BrickColor == BrickColor.new("Cyan")) then
+								if v:FindFirstChild("Neon") and (v.Neon.BrickColor == BrickColor.new("Lime green") or v.Neon.BrickColor == BrickColor.new("Cyan")) then
 									player.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
 									player.Character.HumanoidRootPart.CFrame = v.Part.CFrame * CFrame.new(0, 3, 0)
 									wait()
@@ -586,7 +695,7 @@ local function WarTycoon()
 									if player.leaderstats.Rebirths.Value > 1 and v.Name == "Unlock Bunker and Missile Silo [2 Rebirth]" then
 										player.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
 										player.Character.HumanoidRootPart.CFrame = v.Part.CFrame * CFrame.new(0, 3, 0)
-										if player.leaderstats.Rebirths.Value > 2 and v.Name == "Helicopters [3 Rebirths]" then
+										if player.leaderstats.Rebirths.Value > 2 and (v.Name == "Helicopters [3 Rebirths]" or v.Name == "Boats [3 Rebirths]") then
 											player.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
 											player.Character.HumanoidRootPart.CFrame = v.Part.CFrame * CFrame.new(0, 3, 0)
 											if player.leaderstats.Rebirths.Value > 3 and v.Name == "Vietnam Unlock Rebirth 4" then
@@ -618,7 +727,7 @@ local function WarTycoon()
 	
 	spawn(function()
 		while wait() do
-			if AuRebirth then
+			if AuRebirth and not CapingFlag then
 				if player.PlayerGui.MainHUD.HUD.Left.TycoonCompletion.Bar.BarProgressAmount.Text == "100%" then
 					if player.leaderstats.Cash.Value > 500000 then
 						game:GetService("ReplicatedStorage").RebirthEVT:FireServer()
@@ -815,7 +924,7 @@ local function WarTycoon()
 			end
 			notify("Do not reset script too many times!")
 			wait(.1)
-			Universal()
+			WarTycoon()
 		end
 		TextButton.MouseButton1Click:connect(ResetYES)
 		TextButtonText.MouseButton1Click:connect(ResetYES)
