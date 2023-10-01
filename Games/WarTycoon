@@ -609,30 +609,32 @@ local function WarTycoon()
 	spawn(function()
 		while wait() do
 			if AuRepair then
-				for i, v in pairs(game:GetService("Workspace").Tycoon.Tycoons[MyBase].PurchasedObjects:GetChildren()) do
-					if player.leaderstats.Cash.Value > 25000 and (v.Name == "Base Shield" and v.Broken.Value == true and v.Cooldown ~= true) then
-						player.Character.HumanoidRootPart.CFrame = v.Generator.Prompt.CFrame
-						wait()
-						VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
-						wait(3)
-					else
-						if v.Name == "Base Shield" and v.Broken.Value == false and v.Status.Value ~= true then
+				if game.Workspace:FindFirstChild(player.Name) and game.Players:FindFirstChild(player.Name) and player.Character:FindFirstChild("HumanoidRootPart") then
+					for i, v in pairs(game:GetService("Workspace").Tycoon.Tycoons[MyBase].PurchasedObjects:GetChildren()) do
+						if player.leaderstats.Cash.Value > 25000 and (v.Name == "Base Shield" and v.Broken.Value == true and v.Cooldown ~= true) then
 							player.Character.HumanoidRootPart.CFrame = v.Generator.Prompt.CFrame
 							wait()
 							VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
 							wait(3)
 						else
-							if player.leaderstats.Cash.Value > 50000 and (v.Name == "CRAM" and v.CRAM.Broken.Value == true) then
-								player.Character.HumanoidRootPart.CFrame = v.CRAM.PromptPart.CFrame
+							if v.Name == "Base Shield" and v.Broken.Value == false and v.Status.Value ~= true then
+								player.Character.HumanoidRootPart.CFrame = v.Generator.Prompt.CFrame
 								wait()
 								VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
 								wait(3)
-							end
-							if player.leaderstats.Cash.Value > 15000 and ((v.Name == "Large Oil 1" or v.Name == "Large Oil 2" or v.Name == "Large Oil 3" or v.Name == "Large Oil 4" or v.Name == "Large Oil 5" or v.Name == "Large Oil 6") and v.Broken.Value == true) then
-								player.Character.HumanoidRootPart.CFrame = v.ElectricalBox.Part.CFrame
-								wait()
-								VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
-								wait(3)
+							else
+								if player.leaderstats.Cash.Value > 50000 and (v.Name == "CRAM" and v.CRAM.Broken.Value == true) then
+									player.Character.HumanoidRootPart.CFrame = v.CRAM.PromptPart.CFrame
+									wait()
+									VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+									wait(3)
+								end
+								if player.leaderstats.Cash.Value > 15000 and ((v.Name == "Large Oil 1" or v.Name == "Large Oil 2" or v.Name == "Large Oil 3" or v.Name == "Large Oil 4" or v.Name == "Large Oil 5" or v.Name == "Large Oil 6") and v.Broken.Value == true) then
+									player.Character.HumanoidRootPart.CFrame = v.ElectricalBox.Part.CFrame
+									wait()
+									VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+									wait(3)
+								end
 							end
 						end
 					end
@@ -645,7 +647,7 @@ local function WarTycoon()
 		while wait() do
 			if AuFlag and (game:GetService("Workspace")["Game Systems"].CapturePoint["Captured Team"].Value ~= MyBase or (game:GetService("Workspace")["Game Systems"].CapturePoint["Captured Team"].Value ~= MyBase and game:GetService("Workspace")["Game Systems"].CapturePoint.Flag.CubeFlag.CFrame ~= CFrame.new(66.2132568, 81.0611572, 193.758408, 0.707078993, 1.90734863e-06, -0.707134783, -1.90734863e-06, 1.00000012, 7.15255737e-07, 0.707134783, 7.15255737e-07, 0.707078815))) then
 				CapingFlag = true
-				if game.Workspace:FindFirstChild(player.Name) and game.Players:FindFirstChild(player.Name) then
+				if game.Workspace:FindFirstChild(player.Name) and game.Players:FindFirstChild(player.Name) and player.Character:FindFirstChild("HumanoidRootPart") then
 					--player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["Game Systems"].CapturePoint.TubeBottom.CFrame * CFrame.new(0, -6, 0)
 					player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(70, 44, 180))
 				end
