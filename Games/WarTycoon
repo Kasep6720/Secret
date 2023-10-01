@@ -662,7 +662,9 @@ local function WarTycoon()
 				if not game:GetService("Workspace").Tycoon.Tycoons[MyBase].Essentials:FindFirstChild("CashCollector") then
 					player.Character.HumanoidRootPart.CFrame = game.Workspace.Tycoon.TycoonFloor[MyBase].CFrame
 				else
-					player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Tycoon.Tycoons[MyBase].Essentials.CashCollector.CFrame * CFrame.new(0, 6, 0)
+					if player.Character:FindFirstChild("HumanoidRootPart") then
+						player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Tycoon.Tycoons[MyBase].Essentials.CashCollector.CFrame * CFrame.new(0, 6, 0)
+					end
 				end
 			end
 		end
