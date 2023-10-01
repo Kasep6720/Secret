@@ -679,10 +679,12 @@ local function WarTycoon()
 					if v:FindFirstChild("Neon") then
 						wait(.1)
 						if player.leaderstats.Cash.Value < 10 then
-							player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Tycoon.Tycoons[MyBase].PurchasedObjects["Oil 1"].CB1.CFrame
-							wait()
-							VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
-							wait(4)
+							if game:GetService("Workspace").Tycoon.Tycoons[MyBase]:FindFirstChild("PurchasedObjects") then
+								player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Tycoon.Tycoons[MyBase].PurchasedObjects["Oil 1"].CB1.CFrame
+								wait()
+								VirtualInputManager:SendKeyEvent(true,"E",false,uwu)
+								wait(4)
+							end
 						else
 							if v:FindFirstChild("Neon") and v.Neon.BrickColor == BrickColor.new("Lime green") and (v.Name == "Oil 2" or v.Name == "Oil 3" or v.Name == "Oil 4" or v.Name == "Oil 5" or v.Name == "Oil 6" or v.Name == "Path 1st Floor" or v.Name == "Large Oil 1" or v.Name == "Large Oil 2" or v.Name == "Large Oil 3" or v.Name == "Large Oil 4" or v.Name == "Large Oil 5" or v.Name == "Large Oil 6") then
 								player.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
