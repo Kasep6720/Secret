@@ -1780,7 +1780,7 @@ local function ShindoInfSpin()
 
 	if player.gamepasses:FindFirstChild("genkai4") then
 		if readfile(DHV2SL2MMF .. "/AutoSpinBL4.txt") == "true" then
-			section2:addToggle("Spin Slot 4",false,function(bool)
+			section2:addToggle("Spin Slot 4",true,function(bool)
 				AutoSpinBL4 = bool
 				if AutoSpinBL4 == true then
 					writefile(DHV2SL2MMF .. "/AutoSpinBL4.txt","true")
