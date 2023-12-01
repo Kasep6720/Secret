@@ -1733,7 +1733,7 @@ local function ShindoInfSpin()
 	end
 
 	if readfile(DHV2SL2MMF .. "/AutoSpinBL1.txt") == "true" then
-		section2:addToggle("Spin Slot 2",false,function(bool)
+		section2:addToggle("Spin Slot 2",true,function(bool)
 			AutoSpinBL2 = bool
 			if AutoSpinBL2 == true then
 				writefile(DHV2SL2MMF .. "/AutoSpinBL2.txt","true")
@@ -1756,7 +1756,7 @@ local function ShindoInfSpin()
 
 	if player.gamepasses:FindFirstChild("genkai3") then
 		if readfile(DHV2SL2MMF .. "/AutoSpinBL3.txt") == "true" then
-			section2:addToggle("Spin Slot 3",false,function(bool)
+			section2:addToggle("Spin Slot 3",true,function(bool)
 				AutoSpinBL3 = bool
 				if AutoSpinBL3 == true then
 					writefile(DHV2SL2MMF .. "/AutoSpinBL3.txt","true")
