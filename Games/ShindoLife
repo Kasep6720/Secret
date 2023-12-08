@@ -1307,6 +1307,7 @@ local function ShindoInfSpin()
 	a5 = readfile(Choices .. "/a5.txt")
 
 	if readfile(DHV2SL2MMF .. "/StartSpinElm1.txt") == "true" then
+		StartSpinElm1 = true
 		section2:addToggle("Spin Slot 1",true,function(bool)
 			StartSpinElm1 = bool
 			if StartSpinElm1 == true then
@@ -1381,8 +1382,8 @@ local function ShindoInfSpin()
 			else
 			end
 		end)
-		StartSpinElm1 = true
 	else
+		StartSpinElm1 = false
 		section2:addToggle("Spin Slot 1",false,function(bool)
 			StartSpinElm1 = bool
 			if StartSpinElm1 == true then
@@ -1457,10 +1458,10 @@ local function ShindoInfSpin()
 			else
 			end
 		end)
-		StartSpinElm1 = false
 	end
 
 	if readfile(DHV2SL2MMF .. "/StartSpinElm2.txt") == "true" then
+		StartSpinElm2 = true
 		section2:addToggle("Spin Slot 2",true,function(bool)
 			StartSpinElm2 = bool
 			if StartSpinElm2 == true then
@@ -1535,8 +1536,8 @@ local function ShindoInfSpin()
 			else
 			end
 		end)
-		StartSpinElm2 = true
 	else
+		StartSpinElm2 = false
 		section2:addToggle("Spin Slot 2",false,function(bool)
 			StartSpinElm2 = bool
 			if StartSpinElm2 == true then
@@ -1611,11 +1612,11 @@ local function ShindoInfSpin()
 			else
 			end
 		end)
-		StartSpinElm2 = false
 	end
 
 	if player.gamepasses:FindFirstChild("element3") then
 		if readfile(DHV2SL2MMF .. "/StartSpinElm3.txt") == "true" then
+			StartSpinElm3 = true
 			section2:addToggle("Spin Slot 3",true,function(bool)
 				StartSpinElm3 = bool
 				if StartSpinElm3 == true then
@@ -1690,8 +1691,8 @@ local function ShindoInfSpin()
 				else
 				end
 			end)
-			StartSpinElm3 = true
 		else
+			StartSpinElm3 = false
 			section2:addToggle("Spin Slot 3",false,function(bool)
 				StartSpinElm3 = bool
 				if StartSpinElm3 == true then
@@ -1766,12 +1767,12 @@ local function ShindoInfSpin()
 				else
 				end
 			end)
-			StartSpinElm3 = false
 		end
 	end
 
 	if player.gamepasses:FindFirstChild("element4") then
 		if readfile(DHV2SL2MMF .. "/StartSpinElm4.txt") == "true" then
+			StartSpinElm4 = true
 			section2:addToggle("Spin Slot 4",true,function(bool)
 				StartSpinElm4 = bool
 				if StartSpinElm4 == true then
@@ -1846,8 +1847,8 @@ local function ShindoInfSpin()
 				else
 				end
 			end)
-			StartSpinElm4 = true
 		else
+			StartSpinElm4 = false
 			section2:addToggle("Spin Slot 4",false,function(bool)
 				StartSpinElm4 = bool
 				if StartSpinElm4 == true then
@@ -1922,7 +1923,6 @@ local function ShindoInfSpin()
 				else
 				end
 			end)
-			StartSpinElm4 = false
 		end
 	end
 
@@ -1963,6 +1963,7 @@ local function ShindoInfSpin()
 	end)
 
 	if readfile(DHV2SL2MMF .. "/AutoSpinBL1.txt") == "true" then
+		AutoSpinBL1 = true
 		section2:addToggle("Spin Slot 1",true,function(bool)
 			AutoSpinBL1 = bool
 			if AutoSpinBL1 == true then
@@ -2037,8 +2038,8 @@ local function ShindoInfSpin()
 			else
 			end
 		end)
-		AutoSpinBL1 = true
 	else
+		AutoSpinBL1 = false
 		section2:addToggle("Spin Slot 1",false,function(bool)
 			AutoSpinBL1 = bool
 			if AutoSpinBL1 == true then
@@ -2113,10 +2114,10 @@ local function ShindoInfSpin()
 			else
 			end
 		end)
-		AutoSpinBL1 = false
 	end
 
 	if readfile(DHV2SL2MMF .. "/AutoSpinBL1.txt") == "true" then
+		AutoSpinBL2 = true
 		section2:addToggle("Spin Slot 2",true,function(bool)
 			AutoSpinBL2 = bool
 			if AutoSpinBL2 == true then
@@ -2191,8 +2192,8 @@ local function ShindoInfSpin()
 			else
 			end
 		end)
-		AutoSpinBL2 = true
 	else
+		AutoSpinBL2 = false
 		section2:addToggle("Spin Slot 2",false,function(bool)
 			AutoSpinBL2 = bool
 			if AutoSpinBL2 == true then
@@ -2267,11 +2268,11 @@ local function ShindoInfSpin()
 			else
 			end
 		end)
-		AutoSpinBL2 = false
 	end
 
 	if player.gamepasses:FindFirstChild("genkai3") then
 		if readfile(DHV2SL2MMF .. "/AutoSpinBL3.txt") == "true" then
+			AutoSpinBL3 = true
 			section2:addToggle("Spin Slot 3",true,function(bool)
 				AutoSpinBL3 = bool
 				if AutoSpinBL3 == true then
@@ -2346,8 +2347,8 @@ local function ShindoInfSpin()
 				else
 				end
 			end)
-			AutoSpinBL3 = true
 		else
+			AutoSpinBL3 = false
 			section2:addToggle("Spin Slot 3",false,function(bool)
 				AutoSpinBL3 = bool
 				if AutoSpinBL3 == true then
@@ -2422,12 +2423,12 @@ local function ShindoInfSpin()
 				else
 				end
 			end)
-			AutoSpinBL3 = false
 		end
 	end
 
 	if player.gamepasses:FindFirstChild("genkai4") then
 		if readfile(DHV2SL2MMF .. "/AutoSpinBL4.txt") == "true" then
+			AutoSpinBL4 = true
 			section2:addToggle("Spin Slot 4",true,function(bool)
 				AutoSpinBL4 = bool
 				if AutoSpinBL4 == true then
@@ -2502,8 +2503,8 @@ local function ShindoInfSpin()
 				else
 				end
 			end)
-			AutoSpinBL4 = true
 		else
+			AutoSpinBL4 = false
 			section2:addToggle("Spin Slot 4",false,function(bool)
 				AutoSpinBL4 = bool
 				if AutoSpinBL4 == true then
@@ -2578,7 +2579,6 @@ local function ShindoInfSpin()
 				else
 				end
 			end)
-			AutoSpinBL4 = false
 		end
 	end
 
@@ -2630,6 +2630,7 @@ local function ShindoInfSpin()
 		end)
 
 		if readfile(DHV2SL2MMF .. "/StartSpinKen.txt") == "true" then
+			StartSpinKen = true
 			section2:addToggle("Spin Slot 1",true,function(bool)
 				StartSpinKen = bool
 				if StartSpinKen then
@@ -2703,8 +2704,8 @@ local function ShindoInfSpin()
 				else
 				end
 			end)
-			StartSpinKen = true
 		else
+			StartSpinKen = false
 			section2:addToggle("Spin Slot 1",false,function(bool)
 				StartSpinKen = bool
 				if StartSpinKen then
@@ -2778,10 +2779,10 @@ local function ShindoInfSpin()
 				else
 				end
 			end)
-			StartSpinKen = false
 		end
 
 		if readfile(DHV2SL2MMF .. "/StartSpinKen2.txt") == "true" then
+			StartSpinKen2 = true
 			section2:addToggle("Spin Slot 2",true,function(bool)
 				StartSpinKen2 = bool
 				if StartSpinKen2 then
@@ -2855,8 +2856,8 @@ local function ShindoInfSpin()
 				else
 				end
 			end)
-			StartSpinKen2 = true
 		else
+			StartSpinKen2 = false
 			section2:addToggle("Spin Slot 2",false,function(bool)
 				StartSpinKen2 = bool
 				if StartSpinKen2 then
@@ -2930,7 +2931,6 @@ local function ShindoInfSpin()
 				else
 				end
 			end)
-			StartSpinKen2 = false
 		end
 
 	else
@@ -2960,6 +2960,7 @@ local function ShindoInfSpin()
 		end)
 
 		if readfile(DHV2SL2MMF .. "/StartSpinKen.txt") == "true" then
+			StartSpinKen = true
 			section2:addToggle("Spin Kenjutsu",true,function(bool)
 				StartSpinKen = bool
 				if StartSpinKen then
@@ -3029,8 +3030,8 @@ local function ShindoInfSpin()
 				else
 				end
 			end)
-			StartSpinKen = true
 		else
+			StartSpinKen = false
 			section2:addToggle("Spin Kenjutsu",false,function(bool)
 				StartSpinKen = bool
 				if StartSpinKen then
@@ -3100,7 +3101,6 @@ local function ShindoInfSpin()
 				else
 				end
 			end)
-			StartSpinKen = false
 		end
 
 	end
@@ -3143,6 +3143,7 @@ local function ShindoInfSpin()
 	end)
 
 	if readfile(DHV2SL2MMF .. "/StartSpinRace.txt") == "true" then
+		StartSpinRace = true
 		section2:addToggle("Spin Race",true,function(bool)
 			StartSpinRace = bool
 			if StartSpinRace == true then
@@ -3228,8 +3229,8 @@ local function ShindoInfSpin()
 			else
 			end
 		end)
-		StartSpinRace = true
 	else
+		StartSpinRace = false
 		section2:addToggle("Spin Race",false,function(bool)
 			StartSpinRace = bool
 			if StartSpinRace == true then
@@ -3315,7 +3316,6 @@ local function ShindoInfSpin()
 			else
 			end
 		end)
-		StartSpinRace = false
 	end
 
 	-- sixth page
