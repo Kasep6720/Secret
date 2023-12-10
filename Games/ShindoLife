@@ -186,6 +186,7 @@ function INFMDON()
 	mode:Destroy()
 	notify("Do not charge chi til max while inf MD is on!")
 end
+local datasavedandyoucanredeemcodes
 function SAVEDATA()
 	local player = game.Players.LocalPlayer
 	local ScreenGuiK = Instance.new("ScreenGui")
@@ -1412,6 +1413,10 @@ local function ShindoInfSpin()
 						player.startevent:FireServer("spin", "element1")
 						print("Rolled: " .. elmvalue1)
 						wait(1)
+						elmvalue1 = player.statz.main.element1.Value
+						elmvalue2 = player.statz.main.element2.Value
+						elmvalue3 = player.statz.main.element3.Value
+						elmvalue4 = player.statz.main.element4.Value
 					else
 						if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 then
 							if Autosave == true then
@@ -1481,6 +1486,10 @@ local function ShindoInfSpin()
 						player.startevent:FireServer("spin", "element2")
 						print("Rolled: " .. elmvalue2)
 						wait(1)
+						elmvalue1 = player.statz.main.element1.Value
+						elmvalue2 = player.statz.main.element2.Value
+						elmvalue3 = player.statz.main.element3.Value
+						elmvalue4 = player.statz.main.element4.Value
 					else
 						if elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 then
 							if Autosave == true then
@@ -1550,6 +1559,10 @@ local function ShindoInfSpin()
 						player.startevent:FireServer("spin", "element3")
 						print("Rolled: " .. elmvalue3)
 						wait(1)
+						elmvalue1 = player.statz.main.element1.Value
+						elmvalue2 = player.statz.main.element2.Value
+						elmvalue3 = player.statz.main.element3.Value
+						elmvalue4 = player.statz.main.element4.Value
 					else
 						if elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 then
 							if Autosave == true then
@@ -1619,6 +1632,10 @@ local function ShindoInfSpin()
 						player.startevent:FireServer("spin", "element4")
 						print("Rolled: " .. elmvalue4)
 						wait(1)
+						elmvalue1 = player.statz.main.element1.Value
+						elmvalue2 = player.statz.main.element2.Value
+						elmvalue3 = player.statz.main.element3.Value
+						elmvalue4 = player.statz.main.element4.Value
 					else
 						if elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
 							if Autosave == true then
@@ -1816,6 +1833,10 @@ local function ShindoInfSpin()
 						player.startevent:FireServer("spin", "kg1")
 						print("Rolled: " .. kgvalue1)
 						wait(1)
+						kgvalue1 = player.statz.main.kg1.Value
+						kgvalue2 = player.statz.main.kg2.Value
+						kgvalue3 = player.statz.main.kg3.Value
+						kgvalue4 = player.statz.main.kg4.Value
 					else
 						if kgvalue1 ~= A1 and kgvalue1 ~= A2 and kgvalue1 ~= A3 and kgvalue1 ~= A4 and kgvalue1 ~= A5 then
 							if Autosave == true then
@@ -1885,6 +1906,10 @@ local function ShindoInfSpin()
 						player.startevent:FireServer("spin", "kg2")
 						print("Rolled: " .. kgvalue2)
 						wait(1)
+						kgvalue1 = player.statz.main.kg1.Value
+						kgvalue2 = player.statz.main.kg2.Value
+						kgvalue3 = player.statz.main.kg3.Value
+						kgvalue4 = player.statz.main.kg4.Value
 					else
 						if kgvalue2 ~= A1 and kgvalue2 ~= A2 and kgvalue2 ~= A3 and kgvalue2 ~= A4 and kgvalue2 ~= A5 then
 							if Autosave == true then
@@ -1954,6 +1979,10 @@ local function ShindoInfSpin()
 						player.startevent:FireServer("spin", "kg3")
 						print("Rolled: " .. kgvalue3)
 						wait(1)
+						kgvalue1 = player.statz.main.kg1.Value
+						kgvalue2 = player.statz.main.kg2.Value
+						kgvalue3 = player.statz.main.kg3.Value
+						kgvalue4 = player.statz.main.kg4.Value
 					else
 						if kgvalue3 ~= A1 and kgvalue3 ~= A2 and kgvalue3 ~= A3 and kgvalue3 ~= A4 and kgvalue3 ~= A5 then
 							if Autosave == true then
@@ -2023,6 +2052,10 @@ local function ShindoInfSpin()
 						player.startevent:FireServer("spin", "kg4")
 						print("Rolled: " .. kgvalue4)
 						wait(1)
+						kgvalue1 = player.statz.main.kg1.Value
+						kgvalue2 = player.statz.main.kg2.Value
+						kgvalue3 = player.statz.main.kg3.Value
+						kgvalue4 = player.statz.main.kg4.Value
 					else
 						if kgvalue4 ~= A1 and kgvalue4 ~= A2 and kgvalue4 ~= A3 and kgvalue4 ~= A4 and kgvalue4 ~= A5 then
 							if Autosave == true then
@@ -2182,6 +2215,8 @@ local function ShindoInfSpin()
 							player.startevent:FireServer(unpack(args))
 							print("Rolled: " .. kenvalue)
 							wait(1)
+							kenvalue = player.statz.breathingstyle.Value
+							kenvalue2 = player.statz.breathingstyle2.Value
 						else
 							if kenvalue2 ~= kenselect1 and kenvalue2 ~= kenselect2 and kenvalue2 ~= kenselect3 and kenvalue2 ~= kenselect4 and kenvalue2 ~= kenselect5 then
 								if Autosave == true then
@@ -2250,6 +2285,8 @@ local function ShindoInfSpin()
 							player.startevent:FireServer(unpack(args))
 							print("Rolled: " .. kenvalue2)
 							wait(1)
+							kenvalue = player.statz.breathingstyle.Value
+							kenvalue2 = player.statz.breathingstyle2.Value
 						else
 							if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 and kenvalue ~= kenselect4 and kenvalue ~= kenselect5 then
 								if Autosave == true then
@@ -2366,6 +2403,8 @@ local function ShindoInfSpin()
 							player.startevent:FireServer(unpack(args))
 							print("Rolled: " .. kenvalue)
 							wait(1)
+							kenvalue = player.statz.breathingstyle.Value
+							kenvalue2 = player.statz.breathingstyle2.Value
 						else
 							StartSpinKen = false
 							writefile(DHV2SL2MMF .. "/StartSpinKen.txt","false")
@@ -2540,6 +2579,7 @@ local function ShindoInfSpin()
 						print("Rolled: " .. racevalue)
 						notify("Rolled: " .. racevalue)
 						wait(1)
+						racevalue = player.statz.race.Value
 					end
 				end
 			else
