@@ -2848,7 +2848,7 @@ local function ShindoInfSpin()
 		print(rcamount)
 	end
 	game:GetService('RunService').Stepped:connect(function()
-		if rcamount > 20000 then
+		if StartSpinRace == true and rcamount > 20000 then
 			rcamount = player.PlayerGui.Main.Ryo2.amt.text,""
 			if(string.find(rcamount,"(K)")) then
 				rcamount = (string.gsub(rcamount,"(K)",""))
