@@ -27,6 +27,10 @@ if game.GameId == 1511883870 then
 					player.startevent:FireServer("spin", "kg1")
 					print("Rolled: " .. kgvalue1)
 					wait(1)
+					kgvalue1 = player.statz.main.kg1.Value
+					kgvalue2 = player.statz.main.kg2.Value
+					kgvalue3 = player.statz.main.kg3.Value
+					kgvalue4 = player.statz.main.kg4.Value
 				elseif kgvalue1 == "RELL" then
 					print("You have got: " .. kgvalue1)
 					player.startevent:FireServer("band", "Eye")
@@ -53,6 +57,10 @@ if game.GameId == 1511883870 then
 					player.startevent:FireServer("spin", "kg2")
 					print("Rolled: " .. kgvalue2)
 					wait(1)
+					kgvalue1 = player.statz.main.kg1.Value
+					kgvalue2 = player.statz.main.kg2.Value
+					kgvalue3 = player.statz.main.kg3.Value
+					kgvalue4 = player.statz.main.kg4.Value
 				elseif kgvalue2 == "RELL" then
 					print("You have got: " .. kgvalue2)
 					player.startevent:FireServer("band", "Eye")
@@ -80,6 +88,10 @@ if game.GameId == 1511883870 then
 						player.startevent:FireServer("spin", "kg3")
 						print("Rolled: " .. kgvalue3)
 						wait(1)
+						kgvalue1 = player.statz.main.kg1.Value
+						kgvalue2 = player.statz.main.kg2.Value
+						kgvalue3 = player.statz.main.kg3.Value
+						kgvalue4 = player.statz.main.kg4.Value
 					elseif kgvalue3 == "RELL" then
 						print("You have got: " .. kgvalue3)
 						player.startevent:FireServer("band", "Eye")
@@ -95,7 +107,7 @@ if game.GameId == 1511883870 then
 			end)
 		end
 		
-		if player.gamepasses:FindFirstChild("genkai3") then
+		if player.gamepasses:FindFirstChild("genkai4") then
 			--spin slot 4
 			game:GetService('RunService').Stepped:connect(function()
 				if spins > 0 then
@@ -108,6 +120,10 @@ if game.GameId == 1511883870 then
 						player.startevent:FireServer("spin", "kg4")
 						print("Rolled: " .. kgvalue4)
 						wait(1)
+						kgvalue1 = player.statz.main.kg1.Value
+						kgvalue2 = player.statz.main.kg2.Value
+						kgvalue3 = player.statz.main.kg3.Value
+						kgvalue4 = player.statz.main.kg4.Value
 					elseif kgvalue4 == "RELL" then
 						print("You have got: " .. kgvalue4)
 						player.startevent:FireServer("band", "Eye")
