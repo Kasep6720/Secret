@@ -1425,33 +1425,6 @@ local function ShindoInfSpin()
 						else
 							StartSpinElm1 = false
 							writefile(DHV2SL2MMF .. "/StartSpinElm1.txt","false")
-							if Webhooktrue then
-								if WebhookPingEveryone then
-									local HTTPService = game:GetService("HttpService")
-									request({
-										Url = WebHook,
-										Method = "POST",
-										Headers = {
-											["Content-Type"] = "application/json"
-										},
-										Body = game.HttpService:JSONEncode({
-											content = "@everyone You have got " .. elmvalue1 .. " on Element Slot 1!"
-										})
-									})
-								else
-									local HTTPService = game:GetService("HttpService")
-									request({
-										Url = WebHook,
-										Method = "POST",
-										Headers = {
-											["Content-Type"] = "application/json"
-										},
-										Body = game.HttpService:JSONEncode({
-											content = "You have got " .. elmvalue1 .. " on Element Slot 1!"
-										})
-									})
-								end
-							end
 							print("You have got: " .. elmvalue1)
 							notify("You have got: " .. elmvalue1)
 							if Autosave == true then
@@ -1498,33 +1471,6 @@ local function ShindoInfSpin()
 						else
 							StartSpinElm2 = false
 							writefile(DHV2SL2MMF .. "/StartSpinElm2.txt","false")
-							if Webhooktrue then
-								if WebhookPingEveryone then
-									local HTTPService = game:GetService("HttpService")
-									request({
-										Url = WebHook,
-										Method = "POST",
-										Headers = {
-											["Content-Type"] = "application/json"
-										},
-										Body = game.HttpService:JSONEncode({
-											content = "@everyone You have got " .. elmvalue2 .. " on Element Slot 2!"
-										})
-									})
-								else
-									local HTTPService = game:GetService("HttpService")
-									request({
-										Url = WebHook,
-										Method = "POST",
-										Headers = {
-											["Content-Type"] = "application/json"
-										},
-										Body = game.HttpService:JSONEncode({
-											content = "You have got " .. elmvalue2 .. " on Element Slot 2!"
-										})
-									})
-								end
-							end
 							print("You have got: " .. elmvalue2)
 							notify("You have got: " .. elmvalue2)
 							if Autosave == true then
@@ -1571,33 +1517,6 @@ local function ShindoInfSpin()
 						else
 							StartSpinElm3 = false
 							writefile(DHV2SL2MMF .. "/StartSpinElm3.txt","false")
-							if Webhooktrue then
-								if WebhookPingEveryone then
-									local HTTPService = game:GetService("HttpService")
-									request({
-										Url = WebHook,
-										Method = "POST",
-										Headers = {
-											["Content-Type"] = "application/json"
-										},
-										Body = game.HttpService:JSONEncode({
-											content = "@everyone You have got " .. elmvalue3 .. " on Element Slot 3!"
-										})
-									})
-								else
-									local HTTPService = game:GetService("HttpService")
-									request({
-										Url = WebHook,
-										Method = "POST",
-										Headers = {
-											["Content-Type"] = "application/json"
-										},
-										Body = game.HttpService:JSONEncode({
-											content = "You have got " .. elmvalue3 .. " on Element Slot 3!"
-										})
-									})
-								end
-							end
 							print("You have got: " .. elmvalue3)
 							notify("You have got: " .. elmvalue3)
 							if Autosave == true then
@@ -1644,33 +1563,6 @@ local function ShindoInfSpin()
 						else
 							StartSpinElm4 = false
 							writefile(DHV2SL2MMF .. "/StartSpinElm4.txt","false")
-							if Webhooktrue then
-								if WebhookPingEveryone then
-									local HTTPService = game:GetService("HttpService")
-									request({
-										Url = WebHook,
-										Method = "POST",
-										Headers = {
-											["Content-Type"] = "application/json"
-										},
-										Body = game.HttpService:JSONEncode({
-											content = "@everyone You have got " .. elmvalue4 .. " on Element Slot 4!"
-										})
-									})
-								else
-									local HTTPService = game:GetService("HttpService")
-									request({
-										Url = WebHook,
-										Method = "POST",
-										Headers = {
-											["Content-Type"] = "application/json"
-										},
-										Body = game.HttpService:JSONEncode({
-											content = "You have got " .. elmvalue4 .. " on Element Slot 4!"
-										})
-									})
-								end
-							end
 							print("You have got: " .. elmvalue4)
 							notify("You have got: " .. elmvalue4)
 							if Autosave == true then
@@ -1845,33 +1737,6 @@ local function ShindoInfSpin()
 						else
 							AutoSpinBL1 = false
 							writefile(DHV2SL2MMF .. "/AutoSpinBL1.txt","false")
-							if Webhooktrue then
-								if WebhookPingEveryone then
-									local HTTPService = game:GetService("HttpService")
-									request({
-										Url = WebHook,
-										Method = "POST",
-										Headers = {
-											["Content-Type"] = "application/json"
-										},
-										Body = game.HttpService:JSONEncode({
-											content = "@everyone You have got " .. kgvalue1 .. " on Bloodline Slot 1!"
-										})
-									})
-								else
-									local HTTPService = game:GetService("HttpService")
-									request({
-										Url = WebHook,
-										Method = "POST",
-										Headers = {
-											["Content-Type"] = "application/json"
-										},
-										Body = game.HttpService:JSONEncode({
-											content = "You have got " .. kgvalue1 .. " on Bloodline Slot 1!"
-										})
-									})
-								end
-							end
 							print("You have got: " .. kgvalue1)
 							notify("You have got: " .. kgvalue1)
 							if Autosave == true then
@@ -1918,33 +1783,6 @@ local function ShindoInfSpin()
 						else
 							AutoSpinBL2 = false
 							writefile(DHV2SL2MMF .. "/AutoSpinBL2.txt","false")
-							if Webhooktrue then
-								if WebhookPingEveryone then
-									local HTTPService = game:GetService("HttpService")
-									request({
-										Url = WebHook,
-										Method = "POST",
-										Headers = {
-											["Content-Type"] = "application/json"
-										},
-										Body = game.HttpService:JSONEncode({
-											content = "@everyone You have got " .. kgvalue2 .. " on Bloodline Slot 2!"
-										})
-									})
-								else
-									local HTTPService = game:GetService("HttpService")
-									request({
-										Url = WebHook,
-										Method = "POST",
-										Headers = {
-											["Content-Type"] = "application/json"
-										},
-										Body = game.HttpService:JSONEncode({
-											content = "You have got " .. kgvalue2 .. " on Bloodline Slot 2!"
-										})
-									})
-								end
-							end
 							print("You have got: " .. kgvalue2)
 							notify("You have got: " .. kgvalue2)
 							if Autosave == true then
@@ -1991,33 +1829,6 @@ local function ShindoInfSpin()
 						else
 							AutoSpinBL3 = false
 							writefile(DHV2SL2MMF .. "/AutoSpinBL3.txt","false")
-							if Webhooktrue then
-								if WebhookPingEveryone then
-									local HTTPService = game:GetService("HttpService")
-									request({
-										Url = WebHook,
-										Method = "POST",
-										Headers = {
-											["Content-Type"] = "application/json"
-										},
-										Body = game.HttpService:JSONEncode({
-											content = "@everyone You have got " .. kgvalue3 .. " on Bloodline Slot 3!"
-										})
-									})
-								else
-									local HTTPService = game:GetService("HttpService")
-									request({
-										Url = WebHook,
-										Method = "POST",
-										Headers = {
-											["Content-Type"] = "application/json"
-										},
-										Body = game.HttpService:JSONEncode({
-											content = "You have got " .. kgvalue3 .. " on Bloodline Slot 3!"
-										})
-									})
-								end
-							end
 							print("You have got: " .. kgvalue3)
 							notify("You have got: " .. kgvalue3)
 							if Autosave == true then
@@ -2064,33 +1875,6 @@ local function ShindoInfSpin()
 						else
 							AutoSpinBL4 = false
 							writefile(DHV2SL2MMF .. "/AutoSpinBL4.txt","false")
-							if Webhooktrue then
-								if WebhookPingEveryone then
-									local HTTPService = game:GetService("HttpService")
-									request({
-										Url = WebHook,
-										Method = "POST",
-										Headers = {
-											["Content-Type"] = "application/json"
-										},
-										Body = game.HttpService:JSONEncode({
-											content = "@everyone You have got " .. kgvalue4 .. " on Bloodline Slot 4!"
-										})
-									})
-								else
-									local HTTPService = game:GetService("HttpService")
-									request({
-										Url = WebHook,
-										Method = "POST",
-										Headers = {
-											["Content-Type"] = "application/json"
-										},
-										Body = game.HttpService:JSONEncode({
-											content = "You have got " .. kgvalue4 .. " on Bloodline Slot 4!"
-										})
-									})
-								end
-							end
 							print("You have got: " .. kgvalue4)
 							notify("You have got: " .. kgvalue4)
 							if Autosave == true then
@@ -2225,33 +2009,6 @@ local function ShindoInfSpin()
 							else
 								StartSpinKen = false
 								writefile(DHV2SL2MMF .. "/StartSpinKen.txt","false")
-								if Webhooktrue then
-									if WebhookPingEveryone then
-										local HTTPService = game:GetService("HttpService")
-										request({
-											Url = WebHook,
-											Method = "POST",
-											Headers = {
-												["Content-Type"] = "application/json"
-											},
-											Body = game.HttpService:JSONEncode({
-												content = "@everyone You have got " .. kenvalue .. " on Kenjutsu Slot 1!"
-											})
-										})
-									else
-										local HTTPService = game:GetService("HttpService")
-										request({
-											Url = WebHook,
-											Method = "POST",
-											Headers = {
-												["Content-Type"] = "application/json"
-											},
-											Body = game.HttpService:JSONEncode({
-												content = "You have got " .. kenvalue .. " on Kenjutsu Slot 1!"
-											})
-										})
-									end
-								end
 								print("You have got: " .. kenvalue)
 								notify("You have got " .. kenvalue .. " in slot 1")
 								if Autosave == true then
@@ -2295,33 +2052,6 @@ local function ShindoInfSpin()
 							else
 								StartSpinKen2 = false
 								writefile(DHV2SL2MMF .. "/StartSpinKen2.txt","false")
-								if Webhooktrue then
-									if WebhookPingEveryone then
-										local HTTPService = game:GetService("HttpService")
-										request({
-											Url = WebHook,
-											Method = "POST",
-											Headers = {
-												["Content-Type"] = "application/json"
-											},
-											Body = game.HttpService:JSONEncode({
-												content = "@everyone You have got " .. kenvalue2 .. " on Kenjutsu Slot 2!"
-											})
-										})
-									else
-										local HTTPService = game:GetService("HttpService")
-										request({
-											Url = WebHook,
-											Method = "POST",
-											Headers = {
-												["Content-Type"] = "application/json"
-											},
-											Body = game.HttpService:JSONEncode({
-												content = "You have got " .. kenvalue2 .. " on Kenjutsu Slot 2!"
-											})
-										})
-									end
-								end
 								print("You have got: " .. kenvalue2)
 								notify("You have got " .. kenvalue2 .. " in slot 2")
 								if Autosave == true then
@@ -2408,33 +2138,6 @@ local function ShindoInfSpin()
 						else
 							StartSpinKen = false
 							writefile(DHV2SL2MMF .. "/StartSpinKen.txt","false")
-							if Webhooktrue then
-								if WebhookPingEveryone then
-									local HTTPService = game:GetService("HttpService")
-									request({
-										Url = WebHook,
-										Method = "POST",
-										Headers = {
-											["Content-Type"] = "application/json"
-										},
-										Body = game.HttpService:JSONEncode({
-											content = "@everyone You have got " .. kenvalue .. " on Kenjutsu Slot 1!"
-										})
-									})
-								else
-									local HTTPService = game:GetService("HttpService")
-									request({
-										Url = WebHook,
-										Method = "POST",
-										Headers = {
-											["Content-Type"] = "application/json"
-										},
-										Body = game.HttpService:JSONEncode({
-											content = "You have got " .. kenvalue .. " on Kenjutsu Slot 1!"
-										})
-									})
-								end
-							end
 							print("You have got: " .. kenvalue)
 							notify("You have got " .. kenvalue)
 							if Autosave == true then
@@ -2541,33 +2244,6 @@ local function ShindoInfSpin()
 					if racevalue == raceselect1 or racevalue == raceselect2 or racevalue == raceselect3 then
 						StartSpinRace = false
 						writefile(DHV2SL2MMF .. "/StartSpinRace.txt","false")
-						if Webhooktrue then
-							if WebhookPingEveryone then
-								local HTTPService = game:GetService("HttpService")
-								request({
-									Url = WebHook,
-									Method = "POST",
-									Headers = {
-										["Content-Type"] = "application/json"
-									},
-									Body = game.HttpService:JSONEncode({
-										content = "@everyone You have got " .. racevalue .. " Race!"
-									})
-								})
-							else
-								local HTTPService = game:GetService("HttpService")
-								request({
-									Url = WebHook,
-									Method = "POST",
-									Headers = {
-										["Content-Type"] = "application/json"
-									},
-									Body = game.HttpService:JSONEncode({
-										content = "You have got " .. racevalue .. " Race!"
-									})
-								})
-							end
-						end
 						print("You have got: " .. racevalue)
 						notify("You have got: " .. racevalue)
 						if Autosave == true then
@@ -2697,253 +2373,6 @@ local function ShindoInfSpin()
 			StartSpinKen2 = false
 			StartSpinRace = false
 			datasavedandyoucanredeemcodes = false
-			if Webhooktrue then
-				if WebhookPingEveryone then
-					local HTTPService = game:GetService("HttpService")
-					request({
-						Url = WebHook,
-						Method = "POST",
-						Headers = {
-							["Content-Type"] = "application/json"
-						},
-						Body = game.HttpService:JSONEncode({
-							content = "@everyone You have got " .. elmvalue1 .. " on Element Slot 1"
-						})
-					})
-					request({
-						Url = WebHook,
-						Method = "POST",
-						Headers = {
-							["Content-Type"] = "application/json"
-						},
-						Body = game.HttpService:JSONEncode({
-							content = "@everyone You have got " .. elmvalue2 .. " on Element Slot 2"
-						})
-					})
-					if player.gamepasses:FindFirstChild("element3") then
-						request({
-							Url = WebHook,
-							Method = "POST",
-							Headers = {
-								["Content-Type"] = "application/json"
-							},
-							Body = game.HttpService:JSONEncode({
-								content = "@everyone You have got " .. elmvalue3 .. " on Element Slot 3"
-							})
-						})
-					end
-					if player.gamepasses:FindFirstChild("element4") then
-						request({
-							Url = WebHook,
-							Method = "POST",
-							Headers = {
-								["Content-Type"] = "application/json"
-							},
-							Body = game.HttpService:JSONEncode({
-								content = "@everyone You have got " .. elmvalue4 .. " on Element Slot 4"
-							})
-						})
-					end
-					request({
-						Url = WebHook,
-						Method = "POST",
-						Headers = {
-							["Content-Type"] = "application/json"
-						},
-						Body = game.HttpService:JSONEncode({
-							content = "@everyone You have got " .. kgvalue1 .. " on Bloodline Slot 1"
-						})
-					})
-					request({
-						Url = WebHook,
-						Method = "POST",
-						Headers = {
-							["Content-Type"] = "application/json"
-						},
-						Body = game.HttpService:JSONEncode({
-							content = "@everyone You have got " .. kgvalue2 .. " on Bloodline Slot 2"
-						})
-					})
-					if player.gamepasses:FindFirstChild("genkai3") then
-						request({
-							Url = WebHook,
-							Method = "POST",
-							Headers = {
-								["Content-Type"] = "application/json"
-							},
-							Body = game.HttpService:JSONEncode({
-								content = "@everyone You have got " .. kgvalue3 .. " on Bloodline Slot 3"
-							})
-						})
-					end
-					if player.gamepasses:FindFirstChild("genkai4") then
-						request({
-							Url = WebHook,
-							Method = "POST",
-							Headers = {
-								["Content-Type"] = "application/json"
-							},
-							Body = game.HttpService:JSONEncode({
-								content = "@everyone You have got " .. kgvalue4 .. " on Bloodline Slot 4"
-							})
-						})
-					end
-					request({
-						Url = WebHook,
-						Method = "POST",
-						Headers = {
-							["Content-Type"] = "application/json"
-						},
-						Body = game.HttpService:JSONEncode({
-							content = "@everyone You have got " .. kenvalue .. " on Kenjutsu Slot 1"
-						})
-					})
-					if player.statz.unlocked:FindFirstChild("kenjutsuslot2") then
-						request({
-							Url = WebHook,
-							Method = "POST",
-							Headers = {
-								["Content-Type"] = "application/json"
-							},
-							Body = game.HttpService:JSONEncode({
-								content = "@everyone You have got " .. kenvalue2 .. " on Kenjutsu Slot 2"
-							})
-						})
-					end
-					request({
-						Url = WebHook,
-						Method = "POST",
-						Headers = {
-							["Content-Type"] = "application/json"
-						},
-						Body = game.HttpService:JSONEncode({
-							content = "@everyone You have got " .. racevalue .. " Race"
-						})
-					})
-				else
-					local HTTPService = game:GetService("HttpService")
-					request({
-						Url = WebHook,
-						Method = "POST",
-						Headers = {
-							["Content-Type"] = "application/json"
-						},
-						Body = game.HttpService:JSONEncode({
-							content = " You have got " .. elmvalue1 .. " on Element Slot 1"
-						})
-					})
-					request({
-						Url = WebHook,
-						Method = "POST",
-						Headers = {
-							["Content-Type"] = "application/json"
-						},
-						Body = game.HttpService:JSONEncode({
-							content = " You have got " .. elmvalue2 .. " on Element Slot 2"
-						})
-					})
-					if player.gamepasses:FindFirstChild("element3") then
-						request({
-							Url = WebHook,
-							Method = "POST",
-							Headers = {
-								["Content-Type"] = "application/json"
-							},
-							Body = game.HttpService:JSONEncode({
-								content = " You have got " .. elmvalue3 .. " on Element Slot 3"
-							})
-						})
-					end
-					if player.gamepasses:FindFirstChild("element4") then
-						request({
-							Url = WebHook,
-							Method = "POST",
-							Headers = {
-								["Content-Type"] = "application/json"
-							},
-							Body = game.HttpService:JSONEncode({
-								content = " You have got " .. elmvalue4 .. " on Element Slot 4"
-							})
-						})
-					end
-					request({
-						Url = WebHook,
-						Method = "POST",
-						Headers = {
-							["Content-Type"] = "application/json"
-						},
-						Body = game.HttpService:JSONEncode({
-							content = " You have got " .. kgvalue1 .. " on Bloodline Slot 1"
-						})
-					})
-					request({
-						Url = WebHook,
-						Method = "POST",
-						Headers = {
-							["Content-Type"] = "application/json"
-						},
-						Body = game.HttpService:JSONEncode({
-							content = " You have got " .. kgvalue2 .. " on Bloodline Slot 2"
-						})
-					})
-					if player.gamepasses:FindFirstChild("genkai3") then
-						request({
-							Url = WebHook,
-							Method = "POST",
-							Headers = {
-								["Content-Type"] = "application/json"
-							},
-							Body = game.HttpService:JSONEncode({
-								content = " You have got " .. kgvalue3 .. " on Bloodline Slot 3"
-							})
-						})
-					end
-					if player.gamepasses:FindFirstChild("genkai4") then
-						request({
-							Url = WebHook,
-							Method = "POST",
-							Headers = {
-								["Content-Type"] = "application/json"
-							},
-							Body = game.HttpService:JSONEncode({
-								content = " You have got " .. kgvalue4 .. " on Bloodline Slot 4"
-							})
-						})
-					end
-					request({
-						Url = WebHook,
-						Method = "POST",
-						Headers = {
-							["Content-Type"] = "application/json"
-						},
-						Body = game.HttpService:JSONEncode({
-							content = " You have got " .. kenvalue .. " on Kenjutsu Slot 1"
-						})
-					})
-					if player.statz.unlocked:FindFirstChild("kenjutsuslot2") then
-						request({
-							Url = WebHook,
-							Method = "POST",
-							Headers = {
-								["Content-Type"] = "application/json"
-							},
-							Body = game.HttpService:JSONEncode({
-								content = " You have got " .. kenvalue2 .. " on Kenjutsu Slot 2"
-							})
-						})
-					end
-					request({
-						Url = WebHook,
-						Method = "POST",
-						Headers = {
-							["Content-Type"] = "application/json"
-						},
-						Body = game.HttpService:JSONEncode({
-							content = " You have got " .. racevalue .. " Race"
-						})
-					})
-				end
-			end
 			player.startevent:FireServer("band", "Eye")
 			if savegomyhome then
 				notify("You will be teleported to My Home in order to save data")
