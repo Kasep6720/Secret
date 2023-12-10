@@ -2848,70 +2848,72 @@ local function ShindoInfSpin()
 		print(rcamount)
 	end
 	game:GetService('RunService').Stepped:connect(function()
-		if StartSpinRace == true and rcamount > 20000 then
-			rcamount = player.PlayerGui.Main.Ryo2.amt.text,""
-			if(string.find(rcamount,"(K)")) then
-				rcamount = (string.gsub(rcamount,"(K)",""))
-				rcamount = tonumber(rcamount)*1000
-				print(rcamount)
-			else
-				rcamount = string.gsub(rcamount)	
-				print(rcamount)
-			end
-			racevalue = player.statz.race.Value
-			if StartSpinRace == true then
-				if racevalue == raceselect1 or racevalue == raceselect2 or racevalue == raceselect3 then
-					StartSpinRace = false
-					writefile(DHV2SL2MMF .. "/StartSpinRace.txt","false")
-					if Webhooktrue then
-						if WebhookPingEveryone then
-							local HTTPService = game:GetService("HttpService")
-							local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-							request({
-								Url = WebHook,
-								Method = "POST",
-								Headers = {
-									["Content-Type"] = "application/json"
-								},
-								Body = game.HttpService:JSONEncode({
-									content = "@everyone You have got " .. racevalue .. " Race!"
-								})
-							})
-						else
-							local HTTPService = game:GetService("HttpService")
-							local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-							request({
-								Url = WebHook,
-								Method = "POST",
-								Headers = {
-									["Content-Type"] = "application/json"
-								},
-								Body = game.HttpService:JSONEncode({
-									content = "You have got " .. racevalue .. " Race!"
-								})
-							})
-						end
-					end
-					print("You have got: " .. racevalue)
-					notify("You have got: " .. racevalue)
-					if Autosave == true then
-						datasavedandyoucanredeemcodes = true
-					end
+		if StartSpinRace == true then
+			if rcamount > 20000 then
+				rcamount = player.PlayerGui.Main.Ryo2.amt.text,""
+				if(string.find(rcamount,"(K)")) then
+					rcamount = (string.gsub(rcamount,"(K)",""))
+					rcamount = tonumber(rcamount)*1000
+					print(rcamount)
 				else
-					local args = {[1]="spinrace"}
-					game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
-					print("Rolled: " .. racevalue)
-					notify("Rolled: " .. racevalue)
-					wait(1)
-					racevalue = player.statz.race.Value
+					rcamount = string.gsub(rcamount)	
+					print(rcamount)
 				end
-			end
-		else
-			if Autorejoin == true then
-				--player.statz.spins:Destroy()
-				player.startevent:FireServer("band", "\128")
-				wait()
-				game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+				racevalue = player.statz.race.Value
+				if StartSpinRace == true then
+					if racevalue == raceselect1 or racevalue == raceselect2 or racevalue == raceselect3 then
+						StartSpinRace = false
+						writefile(DHV2SL2MMF .. "/StartSpinRace.txt","false")
+						if Webhooktrue then
+							if WebhookPingEveryone then
+								local HTTPService = game:GetService("HttpService")
+								local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+								request({
+									Url = WebHook,
+									Method = "POST",
+									Headers = {
+										["Content-Type"] = "application/json"
+									},
+									Body = game.HttpService:JSONEncode({
+										content = "@everyone You have got " .. racevalue .. " Race!"
+									})
+								})
+							else
+								local HTTPService = game:GetService("HttpService")
+								local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+								request({
+									Url = WebHook,
+									Method = "POST",
+									Headers = {
+										["Content-Type"] = "application/json"
+									},
+									Body = game.HttpService:JSONEncode({
+										content = "You have got " .. racevalue .. " Race!"
+									})
+								})
+							end
+						end
+						print("You have got: " .. racevalue)
+						notify("You have got: " .. racevalue)
+						if Autosave == true then
+							datasavedandyoucanredeemcodes = true
+						end
+					else
+						local args = {[1]="spinrace"}
+						game:GetService("Players").LocalPlayer.startevent:FireServer(unpack(args))
+						print("Rolled: " .. racevalue)
+						notify("Rolled: " .. racevalue)
+						wait(1)
+						racevalue = player.statz.race.Value
+					end
+				end
+			else
+				if Autorejoin == true then
+					--player.statz.spins:Destroy()
+					player.startevent:FireServer("band", "\128")
+					wait()
+					game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+				end
 			end
 		end
 	end)
