@@ -2700,6 +2700,17 @@ local function ShindoInfSpin()
 			StartSpinKen = false
 			StartSpinKen2 = false
 			StartSpinRace = false
+			writefile(DHV2SL2MMF .. "/StartSpinElm1.txt","false")
+			writefile(DHV2SL2MMF .. "/StartSpinElm2.txt","false")
+			writefile(DHV2SL2MMF .. "/StartSpinElm3.txt","false")
+			writefile(DHV2SL2MMF .. "/StartSpinElm4.txt","false")
+			writefile(DHV2SL2MMF .. "/AutoSpinBL1.txt","false")
+			writefile(DHV2SL2MMF .. "/AutoSpinBL2.txt","false")
+			writefile(DHV2SL2MMF .. "/AutoSpinBL3.txt","false")
+			writefile(DHV2SL2MMF .. "/AutoSpinBL4.txt","false")
+			writefile(DHV2SL2MMF .. "/StartSpinKen.txt","false")
+			writefile(DHV2SL2MMF .. "/StartSpinKen2.txt","false")
+			writefile(DHV2SL2MMF .. "/StartSpinRace.txt","false")
 			datasavedandyoucanredeemcodes = false
 			if Webhooktrue then
 				if WebhookPingEveryone then
