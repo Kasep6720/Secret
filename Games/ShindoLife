@@ -2120,97 +2120,10 @@ local function ShindoInfSpin()
 		end
 	end)
 
-	if game:GetService("Workspace").npc:FindFirstChild("DogeHubNPC") then
-		notify("Spam execute won't do anything m8")
-	else
-		local DogeHubNPC = Instance.new("Part")
-		DogeHubNPC.Parent = game:GetService("Workspace").npc
-		DogeHubNPC.Name = "DogeHubNPC"
-		DogeHubNPC.Anchored = true
-		DogeHubNPC.Transparency = 1
-		DogeHubNPC.Size = Vector3.new(6, 1, 6)
-		--some functions that are important af
-		Autorejoin = true
-		player.startevent:FireServer("band", "\128")
-		player.PlayerGui.Main.RYOshop.ShopItems.HB.int.Text = "[DO NOT PURCHASE ANY ITEMS WHILE USING THE SCRIPT]"
-		player.PlayerGui.Main.RYOshop.ShopItems.HB.rellcloak.Text = "[DO NOT PURCHASE ANY ITEMS WHILE USING THE SCRIPT]"
-		player.PlayerGui.Main.RYOshop.ShopItems.HB.limited.Text = "[DO NOT PURCHASE ANY ITEMS WHILE USING THE SCRIPT]"
-		player.PlayerGui.Main.Customization.CharacterTab.Frame1.hair.color.Visible = false
-		player.PlayerGui.Main.Customization.CharacterTab.Frame1.hair.arrowleft.Visible = false
-		player.PlayerGui.Main.Customization.CharacterTab.Frame1.hair.arrowright.Visible = false
-		player.PlayerGui.Main.Customization.CharacterTab.Frame1.hair.custom.Visible = false
-		player.PlayerGui.Main.Customization.CharacterTab.Frame1.band.Visible = false
-		player.PlayerGui.Main.Customization.CharacterTab.Frame1.outfit.Visible = false
-		player.PlayerGui.Main.Customization.CharacterTab.Frame1.shoe.Visible = false
-		player.PlayerGui.Main.Customization.CharacterTab.Frame1.beard.Visible = false
-		player.PlayerGui.Main.Customization.CharacterTab.Frame1.face.Visible = false
-		player.PlayerGui.Main.Customization.CharacterTab.Frame2.Visible = false
-		game:GetService('RunService').Stepped:connect(function()
-			for i,v in pairs(player.PlayerGui.Main.Customization.CharacterTab.Frame1:GetChildren()) do
-				if v:FindFirstChild("text") then
-					v.text.Text = "You cannot customize character while inf spin"
-				end
-			end
-		end)
-		repeat wait() until player.PlayerGui.Main.Customization.Genkaibag.Frame2.BossTab
-		for i,v in pairs(player.PlayerGui.Main.Customization.Genkaibag.Frame2.BossTab:GetChildren()) do
-			if v:FindFirstChild("name") then
-				v.name.Text = ("("..v.Name ..")".. " " .. v.name.Text)
-			end
-		end
-		--Random bullshit lol
-		for i,v in pairs(game.Workspace.Camera.startup:GetChildren()) do
-			if v.Name == "" and v.Model.hair.BrickColor == BrickColor.new(0,255,0) then
-				print("")
-			else
-				for i,v in pairs(game.Workspace.Camera.startup:GetChildren()) do
-					if v.Name == "" then
-						v.Name = "NPC"
-					end
-				end
-				game.Workspace.Camera.startup.NPC.Name = "DioSenko"
-				game.Workspace.Camera.startup.NPC.Name = ""
-				game.Workspace.Camera.startup.NPC.Name = "Narumaki"
-				game:GetService("Workspace").Camera.startup.DioSenko.Model.hair.BrickColor = BrickColor.new(0,255,0)
-				game:GetService("Workspace").Camera.startup.DioSenko.Model.hair.Material = Enum.Material.Neon
-				game:GetService("Workspace").Camera.startup.DioSenko.Head.Decal.Texture = [[rbxassetid://9792123944]]
-				game:GetService("Workspace").Camera.startup.DioSenko.Head.Mesh:Destroy()
-				game:GetService("Workspace").Camera.startup.DioSenko.Head.Shape = Enum.PartType.Ball
-				game:GetService("Workspace").Camera.startup.DioSenko.Head.Size = Vector3.new(2, 1.5, 2)
-				if game:GetService("Workspace").Camera.startup.Narumaki.uniform:FindFirstChild("ShirtTemplate") then
-					game:GetService("Workspace").Camera.startup.Narumaki.uniform.ShirtTemplate = [[rbxassetid://7384140987]]
-				end
-				if game:GetService("Workspace").Camera.startup.Narumaki.uniform:FindFirstChild("PantsTemplate") then
-					game:GetService("Workspace").Camera.startup.Narumaki.uniform.PantsTemplate = [[rbxassetid://7384140866]]
-				end
-				local leface = math.random(1, 6)
-				if leface == 1 then
-					game:GetService("Workspace").Camera.startup.Narumaki.Head.face.Texture = [[rbxassetid://7336910703]]
-				elseif leface == 2 then
-					game:GetService("Workspace").Camera.startup.Narumaki.Head.face.Texture = [[rbxassetid://7389509483]]
-				elseif leface == 3 then
-					game:GetService("Workspace").Camera.startup.Narumaki.Head.face.Texture = [[rbxassetid://7331429249]]
-				elseif leface == 4 then
-					game:GetService("Workspace").Camera.startup.Narumaki.Head.face.Texture = [[rbxassetid://10993872952]]
-				elseif leface == 5 then
-					game:GetService("Workspace").Camera.startup.Narumaki.Head.face.Texture = [[rbxassetid://9792123944]]
-
-				end
-				for i,v in pairs(game:GetService("Workspace").Camera.startup.Narumaki.Customize.Model:GetChildren()) do
-					if v.Name ~= "headhair" and v.Name ~= "torsoscroll" then
-						v:Destroy()
-					end
-				end
-				game:GetService("Workspace").Camera.startup.Narumaki.Name = ""
-				game:GetService("Workspace").Camera.startup.DioSenko.Name = ""
-			end
-		end
-	end
-
 	notify("Starting up shortly") wait(.5) notify("5") wait(1) notify("4") wait(1) notify("3") wait(1) notify("2") wait(1) notify("1") wait(1)
 	notify("Starting")
 	wait()
-	
+
 	local spins = player.statz.spins.Value
 	game:GetService('RunService').Stepped:connect(function()
 		if spins > resetspinswhenthisnumberreached then
@@ -3003,6 +2916,93 @@ local function ShindoInfSpin()
 		end
 	end)
 
+	if game:GetService("Workspace").npc:FindFirstChild("DogeHubNPC") then
+		notify("Spam execute won't do anything m8")
+	else
+		local DogeHubNPC = Instance.new("Part")
+		DogeHubNPC.Parent = game:GetService("Workspace").npc
+		DogeHubNPC.Name = "DogeHubNPC"
+		DogeHubNPC.Anchored = true
+		DogeHubNPC.Transparency = 1
+		DogeHubNPC.Size = Vector3.new(6, 1, 6)
+		--some functions that are important af
+		Autorejoin = true
+		player.startevent:FireServer("band", "\128")
+		player.PlayerGui.Main.RYOshop.ShopItems.HB.int.Text = "[DO NOT PURCHASE ANY ITEMS WHILE USING THE SCRIPT]"
+		player.PlayerGui.Main.RYOshop.ShopItems.HB.rellcloak.Text = "[DO NOT PURCHASE ANY ITEMS WHILE USING THE SCRIPT]"
+		player.PlayerGui.Main.RYOshop.ShopItems.HB.limited.Text = "[DO NOT PURCHASE ANY ITEMS WHILE USING THE SCRIPT]"
+		player.PlayerGui.Main.Customization.CharacterTab.Frame1.hair.color.Visible = false
+		player.PlayerGui.Main.Customization.CharacterTab.Frame1.hair.arrowleft.Visible = false
+		player.PlayerGui.Main.Customization.CharacterTab.Frame1.hair.arrowright.Visible = false
+		player.PlayerGui.Main.Customization.CharacterTab.Frame1.hair.custom.Visible = false
+		player.PlayerGui.Main.Customization.CharacterTab.Frame1.band.Visible = false
+		player.PlayerGui.Main.Customization.CharacterTab.Frame1.outfit.Visible = false
+		player.PlayerGui.Main.Customization.CharacterTab.Frame1.shoe.Visible = false
+		player.PlayerGui.Main.Customization.CharacterTab.Frame1.beard.Visible = false
+		player.PlayerGui.Main.Customization.CharacterTab.Frame1.face.Visible = false
+		player.PlayerGui.Main.Customization.CharacterTab.Frame2.Visible = false
+		game:GetService('RunService').Stepped:connect(function()
+			for i,v in pairs(player.PlayerGui.Main.Customization.CharacterTab.Frame1:GetChildren()) do
+				if v:FindFirstChild("text") then
+					v.text.Text = "You cannot customize character while inf spin"
+				end
+			end
+		end)
+		repeat wait() until player.PlayerGui.Main.Customization.Genkaibag.Frame2.BossTab
+		for i,v in pairs(player.PlayerGui.Main.Customization.Genkaibag.Frame2.BossTab:GetChildren()) do
+			if v:FindFirstChild("name") then
+				v.name.Text = ("("..v.Name ..")".. " " .. v.name.Text)
+			end
+		end
+		--Random bullshit lol
+		for i,v in pairs(game.Workspace.Camera.startup:GetChildren()) do
+			if v.Name == "" and v.Model.hair.BrickColor == BrickColor.new(0,255,0) then
+				print("")
+			else
+				for i,v in pairs(game.Workspace.Camera.startup:GetChildren()) do
+					if v.Name == "" then
+						v.Name = "NPC"
+					end
+				end
+				game.Workspace.Camera.startup.NPC.Name = "DioSenko"
+				game.Workspace.Camera.startup.NPC.Name = ""
+				game.Workspace.Camera.startup.NPC.Name = "Narumaki"
+				game:GetService("Workspace").Camera.startup.DioSenko.Model.hair.BrickColor = BrickColor.new(0,255,0)
+				game:GetService("Workspace").Camera.startup.DioSenko.Model.hair.Material = Enum.Material.Neon
+				game:GetService("Workspace").Camera.startup.DioSenko.Head.Decal.Texture = [[rbxassetid://9792123944]]
+				game:GetService("Workspace").Camera.startup.DioSenko.Head.Mesh:Destroy()
+				game:GetService("Workspace").Camera.startup.DioSenko.Head.Shape = Enum.PartType.Ball
+				game:GetService("Workspace").Camera.startup.DioSenko.Head.Size = Vector3.new(2, 1.5, 2)
+				if game:GetService("Workspace").Camera.startup.Narumaki.uniform:FindFirstChild("ShirtTemplate") then
+					game:GetService("Workspace").Camera.startup.Narumaki.uniform.ShirtTemplate = [[rbxassetid://7384140987]]
+				end
+				if game:GetService("Workspace").Camera.startup.Narumaki.uniform:FindFirstChild("PantsTemplate") then
+					game:GetService("Workspace").Camera.startup.Narumaki.uniform.PantsTemplate = [[rbxassetid://7384140866]]
+				end
+				local leface = math.random(1, 6)
+				if leface == 1 then
+					game:GetService("Workspace").Camera.startup.Narumaki.Head.face.Texture = [[rbxassetid://7336910703]]
+				elseif leface == 2 then
+					game:GetService("Workspace").Camera.startup.Narumaki.Head.face.Texture = [[rbxassetid://7389509483]]
+				elseif leface == 3 then
+					game:GetService("Workspace").Camera.startup.Narumaki.Head.face.Texture = [[rbxassetid://7331429249]]
+				elseif leface == 4 then
+					game:GetService("Workspace").Camera.startup.Narumaki.Head.face.Texture = [[rbxassetid://10993872952]]
+				elseif leface == 5 then
+					game:GetService("Workspace").Camera.startup.Narumaki.Head.face.Texture = [[rbxassetid://9792123944]]
+
+				end
+				for i,v in pairs(game:GetService("Workspace").Camera.startup.Narumaki.Customize.Model:GetChildren()) do
+					if v.Name ~= "headhair" and v.Name ~= "torsoscroll" then
+						v:Destroy()
+					end
+				end
+				game:GetService("Workspace").Camera.startup.Narumaki.Name = ""
+				game:GetService("Workspace").Camera.startup.DioSenko.Name = ""
+			end
+		end
+	end
+	
 end
 
 --Shindo My Home
