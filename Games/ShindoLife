@@ -10295,6 +10295,9 @@ local function ShindoMain()
 	local section2 = page3:addSection("Kenjutsu Spin")	
 	local section3 = page3:addSection("Spin Race")
 
+	repeat wait() until game.Workspace:FindFirstChild("RAREKGS")
+	repeat wait() until game.ReplicatedStorage:FindFirstChild("alljutsu")
+
 	local elm = {}
 	for i,v in pairs(game:GetService("Workspace").RAREKGS:GetChildren()) do
 		if v.Name ~= "KGTEMPLATE" and game:GetService("ReplicatedStorage").alljutsu[v.Name]:FindFirstChild("ELEMENT") then
