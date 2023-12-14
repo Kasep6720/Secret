@@ -2852,14 +2852,6 @@ local function ShindoInfSpin()
 			if StartSpinRace == true then
 				if rcamount > 20000 then
 					rcamount = player.PlayerGui.Main.Ryo2.amt.text,""
-					if(string.find(rcamount,"(K)")) then
-						rcamount = (string.gsub(rcamount,"(K)",""))
-						rcamount = tonumber(rcamount)*1000
-						print(rcamount)
-					else
-						rcamount = string.gsub(rcamount)	
-						print(rcamount)
-					end
 					racevalue = player.statz.race.Value
 					if StartSpinRace == true then
 						if racevalue == raceselect1 or racevalue == raceselect2 or racevalue == raceselect3 then
@@ -2907,6 +2899,14 @@ local function ShindoInfSpin()
 							wait(1)
 							racevalue = player.statz.race.Value
 						end
+					end
+					if(string.find(rcamount,"(K)")) then
+						rcamount = (string.gsub(rcamount,"(K)",""))
+						rcamount = tonumber(rcamount)*1000
+						print(rcamount)
+					else
+						rcamount = string.gsub(rcamount)	
+						print(rcamount)
 					end
 				else
 					if Autorejoin == true then
