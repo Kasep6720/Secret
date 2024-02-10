@@ -644,7 +644,7 @@ notify("Enabled anti-AFK")
 local function ShindoInfSpin()
 	repeat wait() until game:IsLoaded()
 	repeat wait() until game.Players.LocalPlayer:FindFirstChild("leaderstats")
-	repeat wait() until (game.Players.LocalPlayer.leaderstats:FindFirstChild("Pro").Value ~= "?" or game.Players.LocalPlayer.leaderstats:FindFirstChild("Pro").Value ~= "F1")
+	repeat wait() until game.Players.LocalPlayer.leaderstats:FindFirstChild("Pro").Value ~= "?"
 	
 	--Kenjutsu GUI
 	local player = game.Players.LocalPlayer
