@@ -1,5 +1,5 @@
 -- init
-local player = game.Players.LocalPlayer
+local player = game:service'Players'.LocalPlayer
 local mouse = player:GetMouse()
 
 -- services
