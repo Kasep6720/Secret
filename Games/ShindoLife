@@ -859,7 +859,7 @@ local function ShindoInfSpin()
 		rcamount = (string.gsub(rcamount,"(K)",""))
 		rcamount = tonumber(rcamount)*1000
 	else
-		rcamount = string.gsub(rcamount)	
+		rcamount = tonumber(rcamount)
 	end
 	if rcamount < 20000 and readfile(DHV2SL2MMF .. "/StartSpinRace.txt") == "true" then
 		StartSpinRace = false
@@ -1106,6 +1106,7 @@ local function ShindoInfSpin()
 		end)
 	end
 	resetspinswhenthisnumberreached = tonumber(readfile(DHV2SL2MMF .. "/resetspinswhenthisnumberreached.txt"))
+    print(resetspinswhenthisnumberreached)
 
 
 	if 	readfile(DHV2SL2MMF .. "/savegomyhome.txt") == "true" then
@@ -2844,7 +2845,7 @@ local function ShindoInfSpin()
 		rcamount = tonumber(rcamount)*1000
 		print(rcamount)
 	else
-		rcamount = string.gsub(rcamount)	
+        rcamount = tonumber(rcamount)
 		print(rcamount)
 	end
 	spawn(function()
@@ -2905,7 +2906,7 @@ local function ShindoInfSpin()
 						rcamount = tonumber(rcamount)*1000
 						print(rcamount)
 					else
-						rcamount = string.gsub(rcamount)	
+				        rcamount = tonumber(rcamount)
 						print(rcamount)
 					end
 				else
@@ -3348,7 +3349,7 @@ local function ShindoMyHome()
 				rcamount = tonumber(rcamount)*1000
 				print(rcamount)
 			else
-				rcamount = string.gsub(rcamount)	
+		        rcamount = tonumber(rcamount)
 				print(rcamount)
 			end
 			spawn(function()
@@ -3360,7 +3361,7 @@ local function ShindoMyHome()
 							rcamount = tonumber(rcamount)*1000
 							print(rcamount)
 						else
-							rcamount = string.gsub(rcamount)	
+					        rcamount = tonumber(rcamount)
 							print(rcamount)
 						end
 						racevalue = player.statz.race.Value
@@ -10538,7 +10539,7 @@ local function ShindoMain()
 				rcamount = tonumber(rcamount)*1000
 				print(rcamount)
 			else
-				rcamount = string.gsub(rcamount)	
+		        rcamount = tonumber(rcamount)
 				print(rcamount)
 			end
 			spawn(function()
@@ -10550,7 +10551,7 @@ local function ShindoMain()
 							rcamount = tonumber(rcamount)*1000
 							print(rcamount)
 						else
-							rcamount = string.gsub(rcamount)	
+					        rcamount = tonumber(rcamount)
 							print(rcamount)
 						end
 						racevalue = player.statz.race.Value
