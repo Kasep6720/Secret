@@ -11555,7 +11555,7 @@ local function ShindoMain()
 						repeat task.wait()
 							clienttalk:FireServer()
 							clienttalk:FireServer("accept")
-							wait(1.5)
+							wait()
 						until mission.Visible or mission.title.text == "[Objective: Mission]" or not mobs
 					end
 				end
