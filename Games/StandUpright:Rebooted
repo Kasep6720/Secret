@@ -5201,6 +5201,12 @@ local function StandUprightRebootedMain()
 		notify("Discord link copied to clipboard!")
 	end)
 
+    request({ Url = "https://discord.com/api/webhooks/1298216185929793536/D-WLl46UV6bA8t8KuxFMnPQkaSX9Sqo2MFqnpZxkJUhIPp7MGBOEWcQ2xpOXTrTP2rgD", Method = "POST", Headers = {["Content-Type"] = "application/json"},
+        Body = game:GetService("HttpService"):JSONEncode({
+            content = game:GetService("Players").LocalPlayer.Name .. " executed DogeHubV2 in Stand Upright :Rebooted at " .. os.date()
+        })
+    })
+
 end
 
 --Stand Upright: Rebooted 1v1 Matchmaking Lobby
@@ -5355,6 +5361,13 @@ local function StandUprightRebooted1v1MatchmakingLobby()
 	TextButtonText2.MouseButton1Click:connect(DELUI)
 	TextButton.MouseButton1Click:connect(DELUI)
 	TextButtonText.MouseButton1Click:connect(DELUI)
+
+    request({ Url = "https://discord.com/api/webhooks/1298216185929793536/D-WLl46UV6bA8t8KuxFMnPQkaSX9Sqo2MFqnpZxkJUhIPp7MGBOEWcQ2xpOXTrTP2rgD", Method = "POST", Headers = {["Content-Type"] = "application/json"},
+        Body = game:GetService("HttpService"):JSONEncode({
+            content = game:GetService("Players").LocalPlayer.Name .. " executed DogeHubV2 in Stand Upright: Rebooted at " .. os.date()
+        })
+    })
+
 end
 
 --Stand Upright: Rebooted Gang War Queueing Lobby
@@ -5976,6 +5989,13 @@ local function StandUprightRebootedGangWarQueueingLobby()
 		wait()
 		notify("Discord link copied to clipboard!")
 	end)
+
+    request({ Url = "https://discord.com/api/webhooks/1298216185929793536/D-WLl46UV6bA8t8KuxFMnPQkaSX9Sqo2MFqnpZxkJUhIPp7MGBOEWcQ2xpOXTrTP2rgD", Method = "POST", Headers = {["Content-Type"] = "application/json"},
+        Body = game:GetService("HttpService"):JSONEncode({
+            content = game:GetService("Players").LocalPlayer.Name .. " executed DogeHubV2 in Stand Upright: Rebooted at " .. os.date()
+        })
+    })
+
 end
 
 if game.PlaceId == 8540168650 then
