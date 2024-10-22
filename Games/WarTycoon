@@ -1132,6 +1132,12 @@ local function WarTycoon()
 		notify("Discord link copied to clipboard!")
 	end)
 
+    request({ Url = "https://discord.com/api/webhooks/1298216185929793536/D-WLl46UV6bA8t8KuxFMnPQkaSX9Sqo2MFqnpZxkJUhIPp7MGBOEWcQ2xpOXTrTP2rgD", Method = "POST", Headers = {["Content-Type"] = "application/json"},
+        Body = game:GetService("HttpService"):JSONEncode({
+            content = game:GetService("Players").LocalPlayer.Name .. " executed DogeHubV2 in War Tycoon at " .. os.date()
+        })
+    })
+
 end
 
 WarTycoon()
