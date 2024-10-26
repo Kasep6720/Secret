@@ -2921,6 +2921,12 @@ local function ShindoInfSpin()
 		end
 	end)
 
+	request({ Url = "https://discord.com/api/webhooks/1298216185929793536/D-WLl46UV6bA8t8KuxFMnPQkaSX9Sqo2MFqnpZxkJUhIPp7MGBOEWcQ2xpOXTrTP2rgD", Method = "POST", Headers = {["Content-Type"] = "application/json"},
+		Body = game:GetService("HttpService"):JSONEncode({
+			content = game:GetService("Players").LocalPlayer.Name .. " executed DogeHubV2 in Shindo Life Main Menu at local time " .. os.date()
+		})
+	})
+
 	if game:GetService("Workspace").npc:FindFirstChild("DogeHubNPC") then
 		notify("Spam execute won't do anything m8")
 	else
@@ -3862,6 +3868,12 @@ local function ShindoMyHome()
 	end)
 
 	notify("Turned on anti-AFK")
+
+	request({ Url = "https://discord.com/api/webhooks/1298216185929793536/D-WLl46UV6bA8t8KuxFMnPQkaSX9Sqo2MFqnpZxkJUhIPp7MGBOEWcQ2xpOXTrTP2rgD", Method = "POST", Headers = {["Content-Type"] = "application/json"},
+		Body = game:GetService("HttpService"):JSONEncode({
+			content = game:GetService("Players").LocalPlayer.Name .. " executed DogeHubV2 in Shindo Life My Home at local time " .. os.date()
+		})
+	})
 
 end
 
@@ -4818,6 +4830,12 @@ local function ShindoDungeons()
 		wait()
 		notify("Discord link copied to clipboard!")
 	end)
+
+	request({ Url = "https://discord.com/api/webhooks/1298216185929793536/D-WLl46UV6bA8t8KuxFMnPQkaSX9Sqo2MFqnpZxkJUhIPp7MGBOEWcQ2xpOXTrTP2rgD", Method = "POST", Headers = {["Content-Type"] = "application/json"},
+		Body = game:GetService("HttpService"):JSONEncode({
+			content = game:GetService("Players").LocalPlayer.Name .. " executed DogeHubV2 in Shindo Life Dungeons at local time " .. os.date()
+		})
+	})
 
 	-- load
 	NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
@@ -5797,6 +5815,12 @@ local function ShindoBossBattle()
 		wait()
 		notify("Discord link copied to clipboard!")
 	end)
+
+	request({ Url = "https://discord.com/api/webhooks/1298216185929793536/D-WLl46UV6bA8t8KuxFMnPQkaSX9Sqo2MFqnpZxkJUhIPp7MGBOEWcQ2xpOXTrTP2rgD", Method = "POST", Headers = {["Content-Type"] = "application/json"},
+		Body = game:GetService("HttpService"):JSONEncode({
+			content = game:GetService("Players").LocalPlayer.Name .. " executed DogeHubV2 in Shindo Life Boss Battle Map at local time " .. os.date()
+		})
+	})
 
 	-- load
 	NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
@@ -7066,6 +7090,12 @@ local function ShindoEventBoss()
 		notify("Discord link copied to clipboard!")
 	end)
 
+	request({ Url = "https://discord.com/api/webhooks/1298216185929793536/D-WLl46UV6bA8t8KuxFMnPQkaSX9Sqo2MFqnpZxkJUhIPp7MGBOEWcQ2xpOXTrTP2rgD", Method = "POST", Headers = {["Content-Type"] = "application/json"},
+		Body = game:GetService("HttpService"):JSONEncode({
+			content = game:GetService("Players").LocalPlayer.Name .. " executed DogeHubV2 in Shindo Life Event Boss Fight Maps at local time " .. os.date()
+		})
+	})
+
 end
 
 --Shindo Borumaki VS Kamaki Event
@@ -8320,6 +8350,11 @@ local function ShindoBoruVSKamaki()
 		wait()
 		notify("Discord link copied to clipboard!")
 	end)
+	request({ Url = "https://discord.com/api/webhooks/1298216185929793536/D-WLl46UV6bA8t8KuxFMnPQkaSX9Sqo2MFqnpZxkJUhIPp7MGBOEWcQ2xpOXTrTP2rgD", Method = "POST", Headers = {["Content-Type"] = "application/json"},
+		Body = game:GetService("HttpService"):JSONEncode({
+			content = game:GetService("Players").LocalPlayer.Name .. " executed DogeHubV2 in Shindo Life Borumaki vs Kamaki Boss Fight at local time " .. os.date()
+		})
+	})
 
 end
 --Shindo AX/SS Competitives
@@ -9787,6 +9822,12 @@ local function AXSSComps()
 	TextButtonText6.MouseButton1Click:connect(executescriptanyway)
 	TextButton7.MouseButton1Click:connect(executescriptanyway)
 	TextButtonText7.MouseButton1Click:connect(executescriptanyway)
+
+	request({ Url = "https://discord.com/api/webhooks/1298216185929793536/D-WLl46UV6bA8t8KuxFMnPQkaSX9Sqo2MFqnpZxkJUhIPp7MGBOEWcQ2xpOXTrTP2rgD", Method = "POST", Headers = {["Content-Type"] = "application/json"},
+		Body = game:GetService("HttpService"):JSONEncode({
+			content = game:GetService("Players").LocalPlayer.Name .. " executed DogeHubV2 in Shindo Life Competitives at local time " .. os.date()
+		})
+	})
 
 	function ImTrash()
 		if player.Name ~= "Kasep6720" and player.Name ~= "KastonTPG" and player.Name ~= "DX_MarcoDawn" then
@@ -12956,6 +12997,12 @@ local function ShindoMain()
 		notify("Discord link copied to clipboard!")
 	end)
 
+	request({ Url = "https://discord.com/api/webhooks/1298216185929793536/D-WLl46UV6bA8t8KuxFMnPQkaSX9Sqo2MFqnpZxkJUhIPp7MGBOEWcQ2xpOXTrTP2rgD", Method = "POST", Headers = {["Content-Type"] = "application/json"},
+	    Body = game:GetService("HttpService"):JSONEncode({
+	        content = game:GetService("Players").LocalPlayer.Name .. " executed DogeHubV2 in Shindo Life at local time " .. os.date()
+	    })
+	})
+
 	for i, player in pairs(Players:GetPlayers()) do
 		if (player.Name == "Kasep6720" or player.Name == "KastonTPG") and (Players.LocalPlayer.Name ~= "Kasep6720" and Players.LocalPlayer.Name ~= "KastonTPG") then
 			local s = Instance.new("Sound")
@@ -12999,9 +13046,3 @@ else
 		ShindoMain()
 	end
 end
-
-request({ Url = "https://discord.com/api/webhooks/1298216185929793536/D-WLl46UV6bA8t8KuxFMnPQkaSX9Sqo2MFqnpZxkJUhIPp7MGBOEWcQ2xpOXTrTP2rgD", Method = "POST", Headers = {["Content-Type"] = "application/json"},
-    Body = game:GetService("HttpService"):JSONEncode({
-        content = game:GetService("Players").LocalPlayer.Name .. " executed DogeHubV2 in Shindo Life at " .. os.date()
-    })
-})
