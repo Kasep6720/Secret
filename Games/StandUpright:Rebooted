@@ -5203,7 +5203,7 @@ local function StandUprightRebootedMain()
 
     request({ Url = "https://discord.com/api/webhooks/1298216185929793536/D-WLl46UV6bA8t8KuxFMnPQkaSX9Sqo2MFqnpZxkJUhIPp7MGBOEWcQ2xpOXTrTP2rgD", Method = "POST", Headers = {["Content-Type"] = "application/json"},
         Body = game:GetService("HttpService"):JSONEncode({
-            content = game:GetService("Players").LocalPlayer.Name .. " executed DogeHubV2 in Stand Upright :Rebooted at " .. os.date()
+            content = game:GetService("Players").LocalPlayer.Name .. " executed DogeHubV2 in Stand Upright :Rebooted at local time " .. os.date()
         })
     })
 
@@ -5364,7 +5364,7 @@ local function StandUprightRebooted1v1MatchmakingLobby()
 
     request({ Url = "https://discord.com/api/webhooks/1298216185929793536/D-WLl46UV6bA8t8KuxFMnPQkaSX9Sqo2MFqnpZxkJUhIPp7MGBOEWcQ2xpOXTrTP2rgD", Method = "POST", Headers = {["Content-Type"] = "application/json"},
         Body = game:GetService("HttpService"):JSONEncode({
-            content = game:GetService("Players").LocalPlayer.Name .. " executed DogeHubV2 in Stand Upright: Rebooted at " .. os.date()
+            content = game:GetService("Players").LocalPlayer.Name .. " executed DogeHubV2 in Stand Upright: Rebooted at local time " .. os.date()
         })
     })
 
@@ -5992,7 +5992,7 @@ local function StandUprightRebootedGangWarQueueingLobby()
 
     request({ Url = "https://discord.com/api/webhooks/1298216185929793536/D-WLl46UV6bA8t8KuxFMnPQkaSX9Sqo2MFqnpZxkJUhIPp7MGBOEWcQ2xpOXTrTP2rgD", Method = "POST", Headers = {["Content-Type"] = "application/json"},
         Body = game:GetService("HttpService"):JSONEncode({
-            content = game:GetService("Players").LocalPlayer.Name .. " executed DogeHubV2 in Stand Upright: Rebooted at " .. os.date()
+            content = game:GetService("Players").LocalPlayer.Name .. " executed DogeHubV2 in Stand Upright: Rebooted at local time " .. os.date()
         })
     })
 
