@@ -1363,7 +1363,7 @@ local function BRebirth()
     
     request({ Url = "https://discord.com/api/webhooks/1298216185929793536/D-WLl46UV6bA8t8KuxFMnPQkaSX9Sqo2MFqnpZxkJUhIPp7MGBOEWcQ2xpOXTrTP2rgD", Method = "POST", Headers = {["Content-Type"] = "application/json"},
         Body = game:GetService("HttpService"):JSONEncode({
-            content = game:GetService("Players").LocalPlayer.Name .. " executed DogeHubV2 in B:Rebirth at " .. os.date()
+            content = game:GetService("Players").LocalPlayer.Name .. " executed DogeHubV2 in B:Rebirth at local time " .. os.date()
         })
     })
     
