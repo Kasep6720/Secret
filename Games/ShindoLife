@@ -10198,9 +10198,6 @@ local function ShindoMain()
   -- second page
   local page2 = NoobieDoge:addPage("Misc", 5012544693)
   local section1 = page2:addSection("Game Functions")
-  local section2 = page2:addSection("Kenjutsu Spin Configurations")
-  local section3 = page2:addSection("Kenjutsu Spin")	
-  local section4 = page2:addSection("Spin Race")
   local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
 
   section1:addButton("SuperHuman",function()
