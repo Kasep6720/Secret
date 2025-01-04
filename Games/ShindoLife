@@ -450,6 +450,8 @@ function REJOINSERVER()
   TextButton_2.MouseButton1Click:connect(RejoinNO)
   TextButton_2Text.MouseButton1Click:connect(RejoinNO)
 end
+
+local ScrollWebHook
 local function SCROLLFARM()
   for i,v in pairs(game.workspace.GLOBALTIME:GetChildren()) do
     if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
@@ -459,11 +461,25 @@ local function SCROLLFARM()
         if player.statz.unlocked:FindFirstChild(v.Name) or player.statz.unlocked:FindFirstChild(v.Name .. "scroll") then
           v:Destroy()
           notify("Ignored Scroll: " .. v.Name)
+          request({ 
+            Url = ScrollWebHook, 
+            Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 6666666,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+                ["description"] = "Spawned but ignored since already owned",
+              }}      
+            })
+          })
         else
           player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
           fireclickdetector(v.sh:FindFirstChildWhichIsA("ClickDetector"))
           notify("Unlocked Scroll: " .. v.Name)
           player.Character.combat.update:FireServer("mouse1",true)
+          request({ 
+            Url = ScrollWebHook, 
+            Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 4444444,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+                ["description"] = "Spawned and collected!",
+              }}      
+            })
+          })
         end
       end)
     end
@@ -479,11 +495,25 @@ local function SCROLLFARM1()
         if player.statz.unlocked:FindFirstChild(v.Name) or player.statz.unlocked:FindFirstChild(v.Name .. "scroll") then
           v:Destroy()
           notify("Ignored Scroll: " .. v.Name)
+          request({ 
+            Url = ScrollWebHook, 
+            Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 6666666,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+                ["description"] = "Spawned but ignored since already owned",
+              }}      
+            })
+          })
         else
           player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
           fireclickdetector(v.sh:FindFirstChildWhichIsA("ClickDetector"))
           notify("Unlocked Scroll: " .. v.Name)
           player.Character.combat.update:FireServer("mouse1",true)
+          request({ 
+            Url = ScrollWebHook, 
+            Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 4444444,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+                ["description"] = "Spawned and collected!",
+              }}      
+            })
+          })
         end
       end)
     end
@@ -499,12 +529,26 @@ local function SCROLLFARM2()
         if player.statz.unlocked:FindFirstChild(v.Name) or player.statz.unlocked:FindFirstChild(v.Name .. "scroll") then
           v:Destroy()
           notify("Ignored Scroll: " .. v.Name)
+          request({ 
+            Url = ScrollWebHook, 
+            Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 6666666,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+                ["description"] = "Spawned but ignored since already owned",
+              }}      
+            })
+          })
         else
           player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
           scrollA:FireServer(player)
           fireclickdetector(v.sh.ClickDetector)
           notify("Unlocked Scroll: " .. v.Name)
           player.Character.combat.update:FireServer("mouse1",true)
+          request({ 
+            Url = ScrollWebHook, 
+            Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 4444444,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+                ["description"] = "Spawned and collected!",
+              }}      
+            })
+          })
         end
       end)
     end
@@ -520,12 +564,26 @@ local function SCROLLFARM3()
         if player.statz.unlocked:FindFirstChild(v.Name) or player.statz.unlocked:FindFirstChild(v.Name .. "scroll") then
           v:Destroy()
           notify("Ignored Scroll: " .. v.Name)
+          request({ 
+            Url = ScrollWebHook, 
+            Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 6666666,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+                ["description"] = "Spawned but ignored since already owned",
+              }}      
+            })
+          })
         else
           player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
           scrollA:FireServer(player)
           fireclickdetector(v.sh.ClickDetector)
           notify("Unlocked Scroll: " .. v.Name)
           player.Character.combat.update:FireServer("mouse1",true)
+          request({ 
+            Url = "ScrollWebHook", 
+            Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 4444444,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+                ["description"] = "Spawned and collected!",
+              }}      
+            })
+          })
         end
       end)
     end
@@ -2158,27 +2216,25 @@ local function ShindoInfSpin()
               if WebhookPingEveryone then
                 local HTTPService = game:GetService("HttpService")
                 local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-                request({
-                  Url = WebHook,
-                  Method = "POST",
-                  Headers = {
-                    ["Content-Type"] = "application/json"
-                  },
-                  Body = game.HttpService:JSONEncode({
-                    content = "@everyone You have got " .. elmvalue1 .. " on Element Slot 1!"
+                request({ 
+                  Url = WebHook, 
+                  Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "@everyone",["embeds"] = {{["type"] = "rich",
+                  ["title"] = "Element obtained in slot 1: ",
+                  ["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+                      ["description"] = elmvalue1,
+                    }}      
                   })
                 })
               else
                 local HTTPService = game:GetService("HttpService")
                 local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-                request({
-                  Url = WebHook,
-                  Method = "POST",
-                  Headers = {
-                    ["Content-Type"] = "application/json"
-                  },
-                  Body = game.HttpService:JSONEncode({
-                    content = "You have got " .. elmvalue1 .. " on Element Slot 1!"
+                request({ 
+                  Url = WebHook, 
+                  Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+                  ["title"] = "Element obtained in slot 1: ",
+                  ["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+                      ["description"] = elmvalue1,
+                    }}      
                   })
                 })
               end
@@ -2230,27 +2286,25 @@ local function ShindoInfSpin()
               if WebhookPingEveryone then
                 local HTTPService = game:GetService("HttpService")
                 local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-                request({
-                  Url = WebHook,
-                  Method = "POST",
-                  Headers = {
-                    ["Content-Type"] = "application/json"
-                  },
-                  Body = game.HttpService:JSONEncode({
-                    content = "@everyone You have got " .. elmvalue2 .. " on Element Slot 2!"
+                request({ 
+                  Url = WebHook, 
+                  Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "@everyone",["embeds"] = {{["type"] = "rich",
+                  ["title"] = "Element obtained in slot 2: ",
+                  ["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+                      ["description"] = elmvalue2,
+                    }}      
                   })
                 })
               else
                 local HTTPService = game:GetService("HttpService")
                 local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-                request({
-                  Url = WebHook,
-                  Method = "POST",
-                  Headers = {
-                    ["Content-Type"] = "application/json"
-                  },
-                  Body = game.HttpService:JSONEncode({
-                    content = "You have got " .. elmvalue2 .. " on Element Slot 2!"
+                request({ 
+                  Url = WebHook, 
+                  Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+                  ["title"] = "Element obtained in slot 2: ",
+                  ["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+                      ["description"] = elmvalue2,
+                    }}      
                   })
                 })
               end
@@ -2302,27 +2356,25 @@ local function ShindoInfSpin()
               if WebhookPingEveryone then
                 local HTTPService = game:GetService("HttpService")
                 local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-                request({
-                  Url = WebHook,
-                  Method = "POST",
-                  Headers = {
-                    ["Content-Type"] = "application/json"
-                  },
-                  Body = game.HttpService:JSONEncode({
-                    content = "@everyone You have got " .. elmvalue3 .. " on Element Slot 3!"
+                request({ 
+                  Url = WebHook, 
+                  Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "@everyone",["embeds"] = {{["type"] = "rich",
+                  ["title"] = "Element obtained in slot 3: ",
+                  ["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+                      ["description"] = elmvalue3,
+                    }}      
                   })
                 })
               else
                 local HTTPService = game:GetService("HttpService")
                 local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-                request({
-                  Url = WebHook,
-                  Method = "POST",
-                  Headers = {
-                    ["Content-Type"] = "application/json"
-                  },
-                  Body = game.HttpService:JSONEncode({
-                    content = "You have got " .. elmvalue3 .. " on Element Slot 3!"
+                request({ 
+                  Url = WebHook, 
+                  Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+                  ["title"] = "Element obtained in slot 3: ",
+                  ["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+                      ["description"] = elmvalue3,
+                    }}      
                   })
                 })
               end
@@ -2374,27 +2426,25 @@ local function ShindoInfSpin()
               if WebhookPingEveryone then
                 local HTTPService = game:GetService("HttpService")
                 local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-                request({
-                  Url = WebHook,
-                  Method = "POST",
-                  Headers = {
-                    ["Content-Type"] = "application/json"
-                  },
-                  Body = game.HttpService:JSONEncode({
-                    content = "@everyone You have got " .. elmvalue4 .. " on Element Slot 4!"
+                request({ 
+                  Url = WebHook, 
+                  Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "@everyone",["embeds"] = {{["type"] = "rich",
+                  ["title"] = "Element obtained in slot 4: ",
+                  ["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+                      ["description"] = elmvalue4,
+                    }}      
                   })
                 })
               else
                 local HTTPService = game:GetService("HttpService")
                 local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-                request({
-                  Url = WebHook,
-                  Method = "POST",
-                  Headers = {
-                    ["Content-Type"] = "application/json"
-                  },
-                  Body = game.HttpService:JSONEncode({
-                    content = "You have got " .. elmvalue4 .. " on Element Slot 4!"
+                request({ 
+                  Url = WebHook, 
+                  Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+                  ["title"] = "Element obtained in slot 4: ",
+                  ["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+                      ["description"] = elmvalue4,
+                    }}      
                   })
                 })
               end
@@ -2446,27 +2496,25 @@ local function ShindoInfSpin()
               if WebhookPingEveryone then
                 local HTTPService = game:GetService("HttpService")
                 local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-                request({
-                  Url = WebHook,
-                  Method = "POST",
-                  Headers = {
-                    ["Content-Type"] = "application/json"
-                  },
-                  Body = game.HttpService:JSONEncode({
-                    content = "@everyone You have got " .. kgvalue1 .. " on Bloodline Slot 1!"
+                request({ 
+                  Url = WebHook, 
+                  Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "@everyone",["embeds"] = {{["type"] = "rich",
+                  ["title"] = "Bloodline obtained in slot 1: ",
+                  ["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+                      ["description"] = kgvalue1,
+                    }}      
                   })
                 })
               else
                 local HTTPService = game:GetService("HttpService")
                 local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-                request({
-                  Url = WebHook,
-                  Method = "POST",
-                  Headers = {
-                    ["Content-Type"] = "application/json"
-                  },
-                  Body = game.HttpService:JSONEncode({
-                    content = "You have got " .. kgvalue1 .. " on Bloodline Slot 1!"
+                request({ 
+                  Url = WebHook, 
+                  Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+                  ["title"] = "Bloodline obtained in slot 1: ",
+                  ["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+                      ["description"] = kgvalue1,
+                    }}      
                   })
                 })
               end
@@ -2518,27 +2566,25 @@ local function ShindoInfSpin()
               if WebhookPingEveryone then
                 local HTTPService = game:GetService("HttpService")
                 local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-                request({
-                  Url = WebHook,
-                  Method = "POST",
-                  Headers = {
-                    ["Content-Type"] = "application/json"
-                  },
-                  Body = game.HttpService:JSONEncode({
-                    content = "@everyone You have got " .. kgvalue2 .. " on Bloodline Slot 2!"
+                request({ 
+                  Url = WebHook, 
+                  Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "@everyone",["embeds"] = {{["type"] = "rich",
+                  ["title"] = "Bloodline obtained in slot 2: ",
+                  ["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+                      ["description"] = kgvalue2,
+                    }}      
                   })
                 })
               else
                 local HTTPService = game:GetService("HttpService")
                 local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-                request({
-                  Url = WebHook,
-                  Method = "POST",
-                  Headers = {
-                    ["Content-Type"] = "application/json"
-                  },
-                  Body = game.HttpService:JSONEncode({
-                    content = "You have got " .. kgvalue2 .. " on Bloodline Slot 2!"
+                request({ 
+                  Url = WebHook, 
+                  Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+                  ["title"] = "Bloodline obtained in slot 2: ",
+                  ["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+                      ["description"] = kgvalue2,
+                    }}      
                   })
                 })
               end
@@ -2590,27 +2636,25 @@ local function ShindoInfSpin()
               if WebhookPingEveryone then
                 local HTTPService = game:GetService("HttpService")
                 local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-                request({
-                  Url = WebHook,
-                  Method = "POST",
-                  Headers = {
-                    ["Content-Type"] = "application/json"
-                  },
-                  Body = game.HttpService:JSONEncode({
-                    content = "@everyone You have got " .. kgvalue3 .. " on Bloodline Slot 3!"
+                request({ 
+                  Url = WebHook, 
+                  Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "@everyone",["embeds"] = {{["type"] = "rich",
+                  ["title"] = "Bloodline obtained in slot 3: ",
+                  ["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+                      ["description"] = kgvalue3,
+                    }}      
                   })
                 })
               else
                 local HTTPService = game:GetService("HttpService")
                 local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-                request({
-                  Url = WebHook,
-                  Method = "POST",
-                  Headers = {
-                    ["Content-Type"] = "application/json"
-                  },
-                  Body = game.HttpService:JSONEncode({
-                    content = "You have got " .. kgvalue3 .. " on Bloodline Slot 3!"
+                request({ 
+                  Url = WebHook, 
+                  Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+                  ["title"] = "Bloodline obtained in slot 3: ",
+                  ["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+                      ["description"] = kgvalue3,
+                    }}      
                   })
                 })
               end
@@ -2662,27 +2706,25 @@ local function ShindoInfSpin()
               if WebhookPingEveryone then
                 local HTTPService = game:GetService("HttpService")
                 local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-                request({
-                  Url = WebHook,
-                  Method = "POST",
-                  Headers = {
-                    ["Content-Type"] = "application/json"
-                  },
-                  Body = game.HttpService:JSONEncode({
-                    content = "@everyone You have got " .. kgvalue4 .. " on Bloodline Slot 4!"
+                request({ 
+                  Url = WebHook, 
+                  Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "@everyone",["embeds"] = {{["type"] = "rich",
+                  ["title"] = "Bloodline obtained in slot 4: ",
+                  ["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+                      ["description"] = kgvalue4,
+                    }}      
                   })
                 })
               else
                 local HTTPService = game:GetService("HttpService")
                 local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-                request({
-                  Url = WebHook,
-                  Method = "POST",
-                  Headers = {
-                    ["Content-Type"] = "application/json"
-                  },
-                  Body = game.HttpService:JSONEncode({
-                    content = "You have got " .. kgvalue4 .. " on Bloodline Slot 4!"
+                request({ 
+                  Url = WebHook, 
+                  Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+                  ["title"] = "Bloodline obtained in slot 4: ",
+                  ["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+                      ["description"] = kgvalue4,
+                    }}      
                   })
                 })
               end
@@ -2716,11 +2758,11 @@ local function ShindoInfSpin()
           local args = {[1] = "spinBREATHING"}
           player.startevent:FireServer(unpack(args))
           print("Rolled: " .. kenvalue)
-          wait(1)
           kenvalue = player.statz.breathingstyle.Value
           kenvalue2 = player.statz.breathingstyle2.Value
+          wait(1)
         else
-          if kenvalue2 ~= kenselect1 and kenvalue2 ~= kenselect2 and kenvalue2 ~= kenselect3 and kenvalue2 ~= kenselect4 and kenvalue2 ~= kenselect5 then
+          if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 and kenvalue ~= kenselect4 and kenvalue ~= kenselect5 then
             if Autosave == true then
               datasavedandyoucanredeemcodes = true
             end
@@ -2731,27 +2773,25 @@ local function ShindoInfSpin()
               if WebhookPingEveryone then
                 local HTTPService = game:GetService("HttpService")
                 local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-                request({
-                  Url = WebHook,
-                  Method = "POST",
-                  Headers = {
-                    ["Content-Type"] = "application/json"
-                  },
-                  Body = game.HttpService:JSONEncode({
-                    content = "@everyone You have got " .. kenvalue .. " on Kenjutsu Slot 1!"
+                request({ 
+                  Url = WebHook, 
+                  Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "@everyone",["embeds"] = {{["type"] = "rich",
+                  ["title"] = "Kenjutsu obtained in slot 1: ",
+                  ["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+                      ["description"] = kenvalue,
+                    }}      
                   })
                 })
               else
                 local HTTPService = game:GetService("HttpService")
                 local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-                request({
-                  Url = WebHook,
-                  Method = "POST",
-                  Headers = {
-                    ["Content-Type"] = "application/json"
-                  },
-                  Body = game.HttpService:JSONEncode({
-                    content = "You have got " .. kenvalue .. " on Kenjutsu Slot 1!"
+                request({ 
+                  Url = WebHook, 
+                  Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+                  ["title"] = "Kenjutsu obtained in slot 1: ",
+                  ["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+                      ["description"] = kenvalue,
+                    }}      
                   })
                 })
               end
@@ -2785,11 +2825,11 @@ local function ShindoInfSpin()
           local args = {[1] = "spinBREATHING",[2] = "breathingstyle2"}
           player.startevent:FireServer(unpack(args))
           print("Rolled: " .. kenvalue2)
-          wait(1)
           kenvalue = player.statz.breathingstyle.Value
           kenvalue2 = player.statz.breathingstyle2.Value
+          wait(1)
         else
-          if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 and kenvalue ~= kenselect4 and kenvalue ~= kenselect5 then
+          if kenvalue2 ~= kenselect1 and kenvalue2 ~= kenselect2 and kenvalue2 ~= kenselect3 and kenvalue2 ~= kenselect4 and kenvalue2 ~= kenselect5 then
             if Autosave == true then
               datasavedandyoucanredeemcodes = true
             end
@@ -2800,27 +2840,25 @@ local function ShindoInfSpin()
               if WebhookPingEveryone then
                 local HTTPService = game:GetService("HttpService")
                 local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-                request({
-                  Url = WebHook,
-                  Method = "POST",
-                  Headers = {
-                    ["Content-Type"] = "application/json"
-                  },
-                  Body = game.HttpService:JSONEncode({
-                    content = "@everyone You have got " .. kenvalue2 .. " on Kenjutsu Slot 2!"
+                request({ 
+                  Url = WebHook, 
+                  Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "@everyone",["embeds"] = {{["type"] = "rich",
+                  ["title"] = "Kenjutsu obtained in slot 2: ",
+                  ["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+                      ["description"] = kenvalue2,
+                    }}      
                   })
                 })
               else
                 local HTTPService = game:GetService("HttpService")
                 local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-                request({
-                  Url = WebHook,
-                  Method = "POST",
-                  Headers = {
-                    ["Content-Type"] = "application/json"
-                  },
-                  Body = game.HttpService:JSONEncode({
-                    content = "You have got " .. kenvalue2 .. " on Kenjutsu Slot 2!"
+                request({ 
+                  Url = WebHook, 
+                  Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+                  ["title"] = "Kenjutsu obtained in slot 2: ",
+                  ["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+                      ["description"] = kenvalue2,
+                    }}      
                   })
                 })
               end
@@ -2866,27 +2904,25 @@ local function ShindoInfSpin()
                 if WebhookPingEveryone then
                   local HTTPService = game:GetService("HttpService")
                   local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-                  request({
-                    Url = WebHook,
-                    Method = "POST",
-                    Headers = {
-                      ["Content-Type"] = "application/json"
-                    },
-                    Body = game.HttpService:JSONEncode({
-                      content = "@everyone You have got " .. racevalue .. " Race!"
+                  request({ 
+                    Url = WebHook, 
+                    Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "@everyone",["embeds"] = {{["type"] = "rich",
+                    ["title"] = "Race obtained: ",
+                    ["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+                        ["description"] = racevalue,
+                      }}      
                     })
                   })
                 else
                   local HTTPService = game:GetService("HttpService")
                   local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-                  request({
-                    Url = WebHook,
-                    Method = "POST",
-                    Headers = {
-                      ["Content-Type"] = "application/json"
-                    },
-                    Body = game.HttpService:JSONEncode({
-                      content = "You have got " .. racevalue .. " Race!"
+                  request({ 
+                    Url = WebHook, 
+                    Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+                    ["title"] = "Race obtained: ",
+                    ["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+                        ["description"] = racevalue,
+                      }}      
                     })
                   })
                 end
@@ -4229,6 +4265,7 @@ local function ShindoDungeons()
   -- second page
   local page2 = NoobieDoge:addPage("Misc", 5012544693)
   local section1 = page2:addSection("Game Functions")
+  local section2 = page2:addSection("Scroll Snipe")
   local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
 
   section1:addButton("SuperHuman",function()
@@ -4299,8 +4336,13 @@ local function ShindoDungeons()
   end)
 
   local scrollfarm
-  section1:addToggle("Scroll Snipe",false, function(bool)
+  section2:addToggle("Scroll Snipe",false, function(bool)
     scrollfarm = bool
+  end)
+
+  section2:addTextbox("Scroll Snipe Webhook URL","Webhook",function(ScrollWebHook1)
+    notify("WebHook URL: " .. ScrollWebHook1)
+    ScrollWebHook = ScrollWebHook1
   end)
 
   spawn(function()
@@ -6173,6 +6215,7 @@ local function ShindoEventBoss()
   -- second page
   local page2 = NoobieDoge:addPage("Misc", 5012544693)
   local section1 = page2:addSection("Game Functions")
+  local section2 = page2:addSection("Scroll Snipe")
   local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
 
   section1:addButton("SuperHuman",function()
@@ -6243,8 +6286,13 @@ local function ShindoEventBoss()
   end)
 
   local scrollfarm
-  section1:addToggle("Scroll Snipe",false, function(bool)
+  section2:addToggle("Scroll Snipe",false, function(bool)
     scrollfarm = bool
+  end)
+
+  section2:addTextbox("Scroll Snipe Webhook URL","Webhook",function(ScrollWebHook1)
+    notify("WebHook URL: " .. ScrollWebHook1)
+    ScrollWebHook = ScrollWebHook1
   end)
 
   spawn(function()
@@ -7446,6 +7494,7 @@ local function ShindoBoruVSKamaki()
   -- second page
   local page2 = NoobieDoge:addPage("Misc", 5012544693)
   local section1 = page2:addSection("Game Functions")
+  local section2 = page2:addSection("Scroll Snipe")
   local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
 
   section1:addButton("SuperHuman",function()
@@ -7516,8 +7565,13 @@ local function ShindoBoruVSKamaki()
   end)
 
   local scrollfarm
-  section1:addToggle("Scroll Snipe",false, function(bool)
+  section2:addToggle("Scroll Snipe",false, function(bool)
     scrollfarm = bool
+  end)
+
+  section2:addTextbox("Scroll Snipe Webhook URL","Webhook",function(ScrollWebHook1)
+    notify("WebHook URL: " .. ScrollWebHook1)
+    ScrollWebHook = ScrollWebHook1
   end)
 
   spawn(function()
@@ -9056,7 +9110,6 @@ local function AXSSComps()
     -- second page
     local page2 = NoobieDoge:addPage("Misc", 5012544693)
     local section1 = page2:addSection("Game Functions")
-    local section2 = page2:addSection("Customs")
 
     section1:addButton("SuperHuman",function()
       section1:updateButton("SuperHuman","SuperHuman (Activated)")
@@ -9129,15 +9182,6 @@ local function AXSSComps()
       loadstring(game:HttpGet("https://raw.githubusercontent.com/HDTerebi/Shindo-Life/main/No%20CD%20Method"))()
       wait()
       notify("Equip a beast mode, mode up, type '!spirit', press the ']' button, done!")
-    end)
-
-    section2:addDropdown("Custom Display Ranks",{"RELL", "F 0", "D 1", "D 2", "D 3", "C 1", "C 2", "C 3", "B 1", "B 2", "B 3", "A 1", "A 2", "A 3", "S 1", "S 2", "S 3", "V 1", "V 2", "V 3", "X 1", "X 2", "X 3", "Y 1", "Y 2", "Y 3", "Z 1", "Z 2", "Z 3", "MAX-69", "MAX-420", "MAX-666", "MAX-999", "GOD", "Dragon", "Hacker","???"},function(rektrank)
-      player.leaderstats.Rank.Value =  (rektrank)
-      notify("Rank Displayed: " .. rektrank)
-    end)
-
-    section2:addButton("Bloodline Changer",function()
-      loadstring(game:HttpGet("https://raw.githubusercontent.com/NoobieDoge/DogeHub/Separated/ShindoBloodlineChanger"))()
     end)
 
     -- third page
@@ -9277,11 +9321,82 @@ local function AXSSComps()
       end
     end)
 
-    -- forth page
-    local page4 = NoobieDoge:addPage("Daily Missions", 5012544693)
-    local section1 = page4:addSection("Claim Missions")
-    local section2 = page4:addSection("Auto Daily Missions")
-    local section3 = page4:addSection("Teleports")
+  -- forth page
+  local page4 = NoobieDoge:addPage("Customs", 5012544693)
+  local section1 = page4:addSection("Display Ranks")
+  local section2 = page4:addSection("Combat Art Animation")
+  local section3 = page4:addSection("Element Changer")
+  local section4 = page4:addSection("Bloodline Changer")
+  local section5 = page4:addSection("Extra")
+
+  section1:addDropdown("Custom Display Ranks",{"RELL", "F 0", "D 1", "D 2", "D 3", "C 1", "C 2", "C 3", "B 1", "B 2", "B 3", "A 1", "A 2", "A 3", "S 1", "S 2", "S 3", "V 1", "V 2", "V 3", "X 1", "X 2", "X 3", "Y 1", "Y 2", "Y 3", "Z 1", "Z 2", "Z 3", "MAX-69", "MAX-420", "MAX-666", "MAX-999", "GOD", "Dragon", "Hacker","???"},function(rektrank)
+    player.leaderstats.Rank.Value =  (rektrank)
+    notify("Rank Displayed: " .. rektrank)
+  end)
+
+  local CAA = {}
+  for i,v in pairs(player.PlayerGui.Main.ingame.Menu.CombatTab.Element1:GetChildren()) do
+    if v:FindFirstChild("level") then
+      table.insert(CAA, v.Name)
+    end
+  end
+  section2:addDropdown("Combat Art",CAA,function(CAA1)
+    print("Combat Art: " .. CAA1)
+    notify("Combat Art: " .. CAA1)
+    player.statz.fightingstyle.Value = CAA1
+  end)
+
+  section3:addDropdown("Element Slot 1",elm,function(aELM1)
+    print("Element Slot 1: " .. aELM1)
+    notify("Element Slot 1: " .. aELM1)
+    player.statz.main.element1.Value = aELM1
+  end)
+  section3:addDropdown("Element Slot 2",elm,function(aELM2)
+    print("Element Slot 2: " .. aELM2)
+    notify("Element Slot 2: " .. aELM2)
+    player.statz.main.element2.Value = aELM2
+  end)
+  section3:addDropdown("Element Slot 3",elm,function(aELM3)
+    print("Element Slot 3: " .. aELM3)
+    notify("Element Slot 3: " .. aELM3)
+    player.statz.main.element3.Value = aELM3
+  end)
+  section3:addDropdown("Element Slot 4",elm,function(aELM4)
+    print("Element Slot 4: " .. aELM4)
+    notify("Element Slot 4: " .. aELM4)
+    player.statz.main.element4.Value = aELM4
+  end)
+
+  section4:addDropdown("Bloodline Slot 1",kgs,function(aKG1)
+    print("Bloodline Slot 1: " .. aKG1)
+    notify("Bloodline Slot 1: " .. aKG1)
+    player.statz.main.kg1.Value = aKG1
+  end)
+  section4:addDropdown("Bloodline Slot 2",kgs,function(aKG2)
+    print("Bloodline Slot 2: " .. aKG2)
+    notify("Bloodline Slot 2: " .. aKG2)
+    player.statz.main.kg2.Value = aKG2
+  end)
+  section4:addDropdown("Bloodline Slot 3",kgs,function(aKG3)
+    print("Bloodline Slot 3: " .. aKG3)
+    notify("Bloodline Slot 3: " .. aKG3)
+    player.statz.main.kg3.Value = aKG3
+  end)
+  section4:addDropdown("Bloodline Slot 4",kgs,function(aKG4)
+    print("Bloodline Slot 4: " .. aKG4)
+    notify("Bloodline Slot 4: " .. aKG4)
+    player.statz.main.kg4.Value = aKG4
+  end)
+
+  section5:addButton("External Shindo Bloodline Changer",function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/NoobieDoge/DogeHub/Separated/ShindoBloodlineChanger"))()
+  end)
+
+    -- fifth page
+    local page5 = NoobieDoge:addPage("Daily Missions", 5012544693)
+    local section1 = page5:addSection("Claim Missions")
+    local section2 = page5:addSection("Auto Daily Missions")
+    local section3 = page5:addSection("Teleports")
 
     section1:addButton("Claim daily missions rewards",function()
       local args = {[1] = "claim",[2] = player.statz.mission.dailyquest1}
@@ -9493,10 +9608,10 @@ local function AXSSComps()
       end)
     end
 
-    -- fifth page
-    local page5 = NoobieDoge:addPage("Teleports", 5012544693)
-    local section1 = page5:addSection("Map Teleports")
-    local section2 = page5:addSection("Server Teleports")
+    -- sixth page
+    local page6 = NoobieDoge:addPage("Teleports", 5012544693)
+    local section1 = page6:addSection("Map Teleports")
+    local section2 = page6:addSection("Server Teleports")
 
     section1:addButton("Spawn Point",function()
       if game:GetService("Workspace"):FindFirstChild("SpawnLocation") then
@@ -10198,6 +10313,7 @@ local function ShindoMain()
   -- second page
   local page2 = NoobieDoge:addPage("Misc", 5012544693)
   local section1 = page2:addSection("Game Functions")
+  local section2 = page2:addSection("Scroll Snipe")
   local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
 
   section1:addButton("SuperHuman",function()
@@ -10268,8 +10384,13 @@ local function ShindoMain()
   end)
 
   local scrollfarm
-  section1:addToggle("Scroll Snipe",false, function(bool)
+  section2:addToggle("Scroll Snipe",false, function(bool)
     scrollfarm = bool
+  end)
+
+  section2:addTextbox("Scroll Snipe Webhook URL","Webhook",function(ScrollWebHook1)
+    notify("WebHook URL: " .. ScrollWebHook1)
+    ScrollWebHook = ScrollWebHook1
   end)
 
   spawn(function()
