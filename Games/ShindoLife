@@ -451,7 +451,8 @@ function REJOINSERVER()
   TextButton_2Text.MouseButton1Click:connect(RejoinNO)
 end
 
-local ScrollWebHook
+local tptospawnaftergetscroll = true
+local ScrollWebHook = "Webhook"
 local function SCROLLFARM()
   for i,v in pairs(game.workspace.GLOBALTIME:GetChildren()) do
     if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
@@ -461,25 +462,45 @@ local function SCROLLFARM()
         if player.statz.unlocked:FindFirstChild(v.Name) or player.statz.unlocked:FindFirstChild(v.Name .. "scroll") then
           v:Destroy()
           notify("Ignored Scroll: " .. v.Name)
-          request({ 
-            Url = ScrollWebHook, 
-            Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 6666666,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-                ["description"] = "Spawned but ignored since already owned",
-              }}      
+          if ScrollWebHook ~= "Webhook" then
+            request({ 
+              Url = ScrollWebHook, 
+              Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 6666666,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+                  ["description"] = "Spawned but ignored since already owned",
+                }}      
+              })
             })
-          })
+          end
         else
           player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
           fireclickdetector(v.sh:FindFirstChildWhichIsA("ClickDetector"))
           notify("Unlocked Scroll: " .. v.Name)
           player.Character.combat.update:FireServer("mouse1",true)
-          request({ 
-            Url = ScrollWebHook, 
-            Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 4444444,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-                ["description"] = "Spawned and collected!",
-              }}      
+          if tptospawnaftergetscroll == true then
+            wait()
+            if game:GetService("Workspace"):FindFirstChild("SpawnLocation") then
+              player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").SpawnLocation.CFrame
+            elseif game.PlaceId == 4601350809 then
+              player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(11465.656, 798, -17152.453))
+            elseif game.PlaceId == 4601350656 then
+              player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(17207.344, 790, -18651.334))
+            else
+              for i,v in pairs(workspace.spawns:GetChildren()) do
+                if v.Name ~= "DOGE" then
+                  player.Character.HumanoidRootPart.CFrame = v.CFrame
+                end
+              end
+            end
+          end
+          if ScrollWebHook ~= "Webhook" then
+            request({ 
+              Url = ScrollWebHook, 
+              Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 4444444,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+                  ["description"] = "Spawned and collected!",
+                }}      
+              })
             })
-          })
+          end
         end
       end)
     end
@@ -495,25 +516,45 @@ local function SCROLLFARM1()
         if player.statz.unlocked:FindFirstChild(v.Name) or player.statz.unlocked:FindFirstChild(v.Name .. "scroll") then
           v:Destroy()
           notify("Ignored Scroll: " .. v.Name)
-          request({ 
-            Url = ScrollWebHook, 
-            Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 6666666,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-                ["description"] = "Spawned but ignored since already owned",
-              }}      
+          if ScrollWebHook ~= "Webhook" then
+            request({ 
+              Url = ScrollWebHook, 
+              Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 6666666,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+                  ["description"] = "Spawned but ignored since already owned",
+                }}      
+              })
             })
-          })
+          end
         else
           player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
           fireclickdetector(v.sh:FindFirstChildWhichIsA("ClickDetector"))
           notify("Unlocked Scroll: " .. v.Name)
           player.Character.combat.update:FireServer("mouse1",true)
-          request({ 
-            Url = ScrollWebHook, 
-            Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 4444444,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-                ["description"] = "Spawned and collected!",
-              }}      
+          if tptospawnaftergetscroll == true then
+            wait()
+            if game:GetService("Workspace"):FindFirstChild("SpawnLocation") then
+              player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").SpawnLocation.CFrame
+            elseif game.PlaceId == 4601350809 then
+              player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(11465.656, 798, -17152.453))
+            elseif game.PlaceId == 4601350656 then
+              player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(17207.344, 790, -18651.334))
+            else
+              for i,v in pairs(workspace.spawns:GetChildren()) do
+                if v.Name ~= "DOGE" then
+                  player.Character.HumanoidRootPart.CFrame = v.CFrame
+                end
+              end
+            end
+          end
+          if ScrollWebHook ~= "Webhook" then
+            request({ 
+              Url = ScrollWebHook, 
+              Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 4444444,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+                  ["description"] = "Spawned and collected!",
+                }}      
+              })
             })
-          })
+          end
         end
       end)
     end
@@ -529,26 +570,46 @@ local function SCROLLFARM2()
         if player.statz.unlocked:FindFirstChild(v.Name) or player.statz.unlocked:FindFirstChild(v.Name .. "scroll") then
           v:Destroy()
           notify("Ignored Scroll: " .. v.Name)
-          request({ 
-            Url = ScrollWebHook, 
-            Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 6666666,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-                ["description"] = "Spawned but ignored since already owned",
-              }}      
+          if ScrollWebHook ~= "Webhook" then
+            request({ 
+              Url = ScrollWebHook, 
+              Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 6666666,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+                  ["description"] = "Spawned but ignored since already owned",
+                }}      
+              })
             })
-          })
+          end
         else
           player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
           scrollA:FireServer(player)
           fireclickdetector(v.sh.ClickDetector)
           notify("Unlocked Scroll: " .. v.Name)
           player.Character.combat.update:FireServer("mouse1",true)
-          request({ 
-            Url = ScrollWebHook, 
-            Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 4444444,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-                ["description"] = "Spawned and collected!",
-              }}      
+          if tptospawnaftergetscroll == true then
+            wait()
+            if game:GetService("Workspace"):FindFirstChild("SpawnLocation") then
+              player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").SpawnLocation.CFrame
+            elseif game.PlaceId == 4601350809 then
+              player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(11465.656, 798, -17152.453))
+            elseif game.PlaceId == 4601350656 then
+              player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(17207.344, 790, -18651.334))
+            else
+              for i,v in pairs(workspace.spawns:GetChildren()) do
+                if v.Name ~= "DOGE" then
+                  player.Character.HumanoidRootPart.CFrame = v.CFrame
+                end
+              end
+            end
+          end
+          if ScrollWebHook ~= "Webhook" then
+            request({ 
+              Url = ScrollWebHook, 
+              Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 4444444,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+                  ["description"] = "Spawned and collected!",
+                }}      
+              })
             })
-          })
+          end
         end
       end)
     end
@@ -564,26 +625,46 @@ local function SCROLLFARM3()
         if player.statz.unlocked:FindFirstChild(v.Name) or player.statz.unlocked:FindFirstChild(v.Name .. "scroll") then
           v:Destroy()
           notify("Ignored Scroll: " .. v.Name)
-          request({ 
-            Url = ScrollWebHook, 
-            Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 6666666,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-                ["description"] = "Spawned but ignored since already owned",
-              }}      
+          if ScrollWebHook ~= "Webhook" then
+            request({ 
+              Url = ScrollWebHook, 
+              Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 6666666,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+                  ["description"] = "Spawned but ignored since already owned",
+                }}      
+              })
             })
-          })
+          end
         else
           player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
           scrollA:FireServer(player)
           fireclickdetector(v.sh.ClickDetector)
           notify("Unlocked Scroll: " .. v.Name)
           player.Character.combat.update:FireServer("mouse1",true)
-          request({ 
-            Url = "ScrollWebHook", 
-            Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 4444444,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-                ["description"] = "Spawned and collected!",
-              }}      
+          if tptospawnaftergetscroll == true then
+            wait()
+            if game:GetService("Workspace"):FindFirstChild("SpawnLocation") then
+              player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").SpawnLocation.CFrame
+            elseif game.PlaceId == 4601350809 then
+              player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(11465.656, 798, -17152.453))
+            elseif game.PlaceId == 4601350656 then
+              player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(17207.344, 790, -18651.334))
+            else
+              for i,v in pairs(workspace.spawns:GetChildren()) do
+                if v.Name ~= "DOGE" then
+                  player.Character.HumanoidRootPart.CFrame = v.CFrame
+                end
+              end
+            end
+          end
+          if ScrollWebHook ~= "Webhook" then
+            request({ 
+              Url = ScrollWebHook, 
+              Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 4444444,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+                  ["description"] = "Spawned and collected!",
+                }}      
+              })
             })
-          })
+          end
         end
       end)
     end
@@ -4335,33 +4416,26 @@ local function ShindoDungeons()
     end
   end)
 
+  section1:addButton("Old No CD Method",function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/HDTerebi/Shindo-Life/main/No%20CD%20Method"))()
+    wait()
+    notify("Equip a beast mode, mode up, type '!spirit', press the ']' button, done!")
+  end)
+  
   local scrollfarm
   section2:addToggle("Scroll Snipe",false, function(bool)
     scrollfarm = bool
+    notify("Scroll Snipe: "..tostring(scrollfarm),true)
+  end)
+
+  section2:addToggle("Teleport to spawn after getting scroll",true, function(bool)
+    tptospawnaftergetscroll = bool
+    notify("Teleport to spawn after getting scroll: "..tostring(tptospawnaftergetscroll),true)
   end)
 
   section2:addTextbox("Scroll Snipe Webhook URL","Webhook",function(ScrollWebHook1)
     notify("WebHook URL: " .. ScrollWebHook1)
     ScrollWebHook = ScrollWebHook1
-  end)
-
-  spawn(function()
-    while wait() do
-      if scrollfarm then
-        repeat wait()
-          SCROLLFARM()
-          SCROLLFARM1()
-          SCROLLFARM2()
-          SCROLLFARM3()
-        until not scrollfarm
-      end
-    end
-  end)
-
-  section1:addButton("Old No CD Method",function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/HDTerebi/Shindo-Life/main/No%20CD%20Method"))()
-    wait()
-    notify("Equip a beast mode, mode up, type '!spirit', press the ']' button, done!")
   end)
 
   -- third page
@@ -6285,33 +6359,26 @@ local function ShindoEventBoss()
     end
   end)
 
+  section1:addButton("Old No CD Method",function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/HDTerebi/Shindo-Life/main/No%20CD%20Method"))()
+    wait()
+    notify("Equip a beast mode, mode up, type '!spirit', press the ']' button, done!")
+  end)
+  
   local scrollfarm
   section2:addToggle("Scroll Snipe",false, function(bool)
     scrollfarm = bool
+    notify("Scroll Snipe: "..tostring(scrollfarm),true)
+  end)
+
+  section2:addToggle("Teleport to spawn after getting scroll",true, function(bool)
+    tptospawnaftergetscroll = bool
+    notify("Teleport to spawn after getting scroll: "..tostring(tptospawnaftergetscroll),true)
   end)
 
   section2:addTextbox("Scroll Snipe Webhook URL","Webhook",function(ScrollWebHook1)
     notify("WebHook URL: " .. ScrollWebHook1)
     ScrollWebHook = ScrollWebHook1
-  end)
-
-  spawn(function()
-    while wait() do
-      if scrollfarm then
-        repeat wait()
-          SCROLLFARM()
-          SCROLLFARM1()
-          SCROLLFARM2()
-          SCROLLFARM3()
-        until not scrollfarm
-      end
-    end
-  end)
-
-  section1:addButton("Old No CD Method",function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/HDTerebi/Shindo-Life/main/No%20CD%20Method"))()
-    wait()
-    notify("Equip a beast mode, mode up, type '!spirit', press the ']' button, done!")
   end)
 
   -- third page
@@ -7564,33 +7631,26 @@ local function ShindoBoruVSKamaki()
     end
   end)
 
+  section1:addButton("Old No CD Method",function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/HDTerebi/Shindo-Life/main/No%20CD%20Method"))()
+    wait()
+    notify("Equip a beast mode, mode up, type '!spirit', press the ']' button, done!")
+  end)
+  
   local scrollfarm
   section2:addToggle("Scroll Snipe",false, function(bool)
     scrollfarm = bool
+    notify("Scroll Snipe: "..tostring(scrollfarm),true)
+  end)
+
+  section2:addToggle("Teleport to spawn after getting scroll",true, function(bool)
+    tptospawnaftergetscroll = bool
+    notify("Teleport to spawn after getting scroll: "..tostring(tptospawnaftergetscroll),true)
   end)
 
   section2:addTextbox("Scroll Snipe Webhook URL","Webhook",function(ScrollWebHook1)
     notify("WebHook URL: " .. ScrollWebHook1)
     ScrollWebHook = ScrollWebHook1
-  end)
-
-  spawn(function()
-    while wait() do
-      if scrollfarm then
-        repeat wait()
-          SCROLLFARM()
-          SCROLLFARM1()
-          SCROLLFARM2()
-          SCROLLFARM3()
-        until not scrollfarm
-      end
-    end
-  end)
-
-  section1:addButton("Old No CD Method",function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/HDTerebi/Shindo-Life/main/No%20CD%20Method"))()
-    wait()
-    notify("Equip a beast mode, mode up, type '!spirit', press the ']' button, done!")
   end)
 
   -- third page
@@ -10383,9 +10443,21 @@ local function ShindoMain()
     end
   end)
 
+  section1:addButton("Old No CD Method",function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/HDTerebi/Shindo-Life/main/No%20CD%20Method"))()
+    wait()
+    notify("Equip a beast mode, mode up, type '!spirit', press the ']' button, done!")
+  end)
+
   local scrollfarm
   section2:addToggle("Scroll Snipe",false, function(bool)
     scrollfarm = bool
+    notify("Scroll Snipe: "..tostring(scrollfarm),true)
+  end)
+
+  section2:addToggle("Teleport to spawn after getting scroll",true, function(bool)
+    tptospawnaftergetscroll = bool
+    notify("Teleport to spawn after getting scroll: "..tostring(tptospawnaftergetscroll),true)
   end)
 
   section2:addTextbox("Scroll Snipe Webhook URL","Webhook",function(ScrollWebHook1)
@@ -10404,12 +10476,6 @@ local function ShindoMain()
         until not scrollfarm
       end
     end
-  end)
-
-  section1:addButton("Old No CD Method",function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/HDTerebi/Shindo-Life/main/No%20CD%20Method"))()
-    wait()
-    notify("Equip a beast mode, mode up, type '!spirit', press the ']' button, done!")
   end)
 
   -- third page
