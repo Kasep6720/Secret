@@ -4438,6 +4438,19 @@ local function ShindoDungeons()
     ScrollWebHook = ScrollWebHook1
   end)
 
+  spawn(function()
+    while wait() do
+      if scrollfarm then
+        repeat wait()
+          SCROLLFARM()
+          SCROLLFARM1()
+          SCROLLFARM2()
+          SCROLLFARM3()
+        until not scrollfarm
+      end
+    end
+  end)
+
   -- third page
   local page3 = NoobieDoge:addPage("Spam Keys", 5012544693)
   local section1 = page3:addSection("Configurations")
@@ -6381,6 +6394,19 @@ local function ShindoEventBoss()
     ScrollWebHook = ScrollWebHook1
   end)
 
+  spawn(function()
+    while wait() do
+      if scrollfarm then
+        repeat wait()
+          SCROLLFARM()
+          SCROLLFARM1()
+          SCROLLFARM2()
+          SCROLLFARM3()
+        until not scrollfarm
+      end
+    end
+  end)
+
   -- third page
   local page3 = NoobieDoge:addPage("Spam Keys", 5012544693)
   local section1 = page3:addSection("Configurations")
@@ -7653,6 +7679,19 @@ local function ShindoBoruVSKamaki()
     ScrollWebHook = ScrollWebHook1
   end)
 
+  spawn(function()
+    while wait() do
+      if scrollfarm then
+        repeat wait()
+          SCROLLFARM()
+          SCROLLFARM1()
+          SCROLLFARM2()
+          SCROLLFARM3()
+        until not scrollfarm
+      end
+    end
+  end)
+  
   -- third page
   local page3 = NoobieDoge:addPage("Spam Keys", 5012544693)
   local section1 = page3:addSection("Configurations")
