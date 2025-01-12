@@ -3560,58 +3560,71 @@ local function ShindoMyHome()
   -- third page
   local page3 = NoobieDoge:addPage("Customs", 10567878127)
   local section1 = page3:addSection("Display Ranks")
-  local section2 = page3:addSection("Element Changer")
-  local section3 = page3:addSection("Bloodline Changer")
-  local section4 = page3:addSection("Extra")
+  local section2 = page3:addSection("Combat Art Animation")
+  local section3 = page3:addSection("Element Changer")
+  local section4 = page3:addSection("Bloodline Changer")
+  local section5 = page3:addSection("Extra")
 
   section1:addDropdown("Custom Display Ranks",{"RELL", "F 0", "D 1", "D 2", "D 3", "C 1", "C 2", "C 3", "B 1", "B 2", "B 3", "A 1", "A 2", "A 3", "S 1", "S 2", "S 3", "V 1", "V 2", "V 3", "X 1", "X 2", "X 3", "Y 1", "Y 2", "Y 3", "Z 1", "Z 2", "Z 3", "MAX-69", "MAX-420", "MAX-666", "MAX-999", "GOD", "Dragon", "Hacker","???"},function(rektrank)
     player.leaderstats.Rank.Value =  (rektrank)
     notify("Rank Displayed: " .. rektrank)
   end)
 
-  section2:addDropdown("Element Slot 1",elm,function(aELM1)
+  local CAA = {}
+  for i,v in pairs(player.PlayerGui.Main.ingame.Menu.CombatTab.Element1:GetChildren()) do
+    if v:FindFirstChild("level") then
+      table.insert(CAA, v.Name)
+    end
+  end
+  section2:addDropdown("Combat Art",CAA,function(CAA1)
+    print("Combat Art: " .. CAA1)
+    notify("Combat Art: " .. CAA1)
+    player.statz.fightingstyle.Value = CAA1
+  end)
+
+  section3:addDropdown("Element Slot 1",elm,function(aELM1)
     print("Element Slot 1: " .. aELM1)
     notify("Element Slot 1: " .. aELM1)
     player.statz.main.element1.Value = aELM1
   end)
-  section2:addDropdown("Element Slot 2",elm,function(aELM2)
+  section3:addDropdown("Element Slot 2",elm,function(aELM2)
     print("Element Slot 2: " .. aELM2)
     notify("Element Slot 2: " .. aELM2)
     player.statz.main.element2.Value = aELM2
   end)
-  section2:addDropdown("Element Slot 3",elm,function(aELM3)
+  section3:addDropdown("Element Slot 3",elm,function(aELM3)
     print("Element Slot 3: " .. aELM3)
     notify("Element Slot 3: " .. aELM3)
     player.statz.main.element3.Value = aELM3
   end)
-  section2:addDropdown("Element Slot 4",elm,function(aELM4)
+  section3:addDropdown("Element Slot 4",elm,function(aELM4)
     print("Element Slot 4: " .. aELM4)
     notify("Element Slot 4: " .. aELM4)
     player.statz.main.element4.Value = aELM4
   end)
 
-  section3:addDropdown("Bloodline Slot 1",kgs,function(aKG1)
+  section4:addDropdown("Bloodline Slot 1",kgs,function(aKG1)
     print("Bloodline Slot 1: " .. aKG1)
     notify("Bloodline Slot 1: " .. aKG1)
     player.statz.main.kg1.Value = aKG1
   end)
-  section3:addDropdown("Bloodline Slot 2",kgs,function(aKG2)
+  section4:addDropdown("Bloodline Slot 2",kgs,function(aKG2)
     print("Bloodline Slot 2: " .. aKG2)
     notify("Bloodline Slot 2: " .. aKG2)
     player.statz.main.kg2.Value = aKG2
   end)
-  section3:addDropdown("Bloodline Slot 3",kgs,function(aKG3)
+  section4:addDropdown("Bloodline Slot 3",kgs,function(aKG3)
     print("Bloodline Slot 3: " .. aKG3)
     notify("Bloodline Slot 3: " .. aKG3)
     player.statz.main.kg3.Value = aKG3
   end)
-  section3:addDropdown("Bloodline Slot 4",kgs,function(aKG4)
+  section4:addDropdown("Bloodline Slot 4",kgs,function(aKG4)
     print("Bloodline Slot 4: " .. aKG4)
     notify("Bloodline Slot 4: " .. aKG4)
     player.statz.main.kg4.Value = aKG4
   end)
 
-  section4:addButton("External Shindo Bloodline Changer",function()
+  section5:addButton("External Shindo Bloodline Changer",function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/NoobieDoge/DogeHub/Separated/ShindoBloodlineChanger"))()
   end)
 
