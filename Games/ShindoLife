@@ -3063,7 +3063,7 @@ local function ShindoInfSpin()
   end)
 
   request({ 
-    Url = "https://discord.com/api/webhooks/1300385092614754376/8vi2kNgyLF9YmK6pzy2Kb2pe9dpKR-mUxPCjTn_8ycgf9Qsef5VIKr18f5aqV3jSGKlO", 
+    Url = "https://discord.com/api/webhooks/1408138525576269926/98mkVdFouhI-xg-MEZHafiaaUjvDjQSyhmlMZw3KzvJ6lgz_rWruqfOti6QaKVZvUeyE", 
     Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = game:GetService("Players").LocalPlayer.Name,["color"] = 11730954,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
         ["description"] = "Executed DogeHubV2 in \n Shindo Life Main Menu",
       }}      
@@ -4026,7 +4026,7 @@ local function ShindoMyHome()
   notify("Turned on anti-AFK")
 
   request({ 
-    Url = "https://discord.com/api/webhooks/1300385092614754376/8vi2kNgyLF9YmK6pzy2Kb2pe9dpKR-mUxPCjTn_8ycgf9Qsef5VIKr18f5aqV3jSGKlO", 
+    Url = "https://discord.com/api/webhooks/1408138525576269926/98mkVdFouhI-xg-MEZHafiaaUjvDjQSyhmlMZw3KzvJ6lgz_rWruqfOti6QaKVZvUeyE", 
     Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = game:GetService("Players").LocalPlayer.Name,["color"] = 11730954,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
         ["description"] = "Executed DogeHubV2 in \n Shindo Life My Home",
       }}      
@@ -5002,7 +5002,7 @@ local function ShindoDungeons()
   end)
 
   request({ 
-    Url = "https://discord.com/api/webhooks/1300385092614754376/8vi2kNgyLF9YmK6pzy2Kb2pe9dpKR-mUxPCjTn_8ycgf9Qsef5VIKr18f5aqV3jSGKlO", 
+    Url = "https://discord.com/api/webhooks/1408138525576269926/98mkVdFouhI-xg-MEZHafiaaUjvDjQSyhmlMZw3KzvJ6lgz_rWruqfOti6QaKVZvUeyE", 
     Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = game:GetService("Players").LocalPlayer.Name,["color"] = 11730954,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
         ["description"] = "Executed DogeHubV2 in \n Shindo Life Dungeons",
       }}      
@@ -5989,7 +5989,7 @@ local function ShindoBossBattle()
   end)
 
   request({ 
-    Url = "https://discord.com/api/webhooks/1300385092614754376/8vi2kNgyLF9YmK6pzy2Kb2pe9dpKR-mUxPCjTn_8ycgf9Qsef5VIKr18f5aqV3jSGKlO", 
+    Url = "https://discord.com/api/webhooks/1408138525576269926/98mkVdFouhI-xg-MEZHafiaaUjvDjQSyhmlMZw3KzvJ6lgz_rWruqfOti6QaKVZvUeyE", 
     Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = game:GetService("Players").LocalPlayer.Name,["color"] = 11730954,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
         ["description"] = "Executed DogeHubV2 in \n Shindo Life Boss Battle Map",
       }}      
@@ -7277,7 +7277,7 @@ local function ShindoEventBoss()
   end)
 
   request({ 
-    Url = "https://discord.com/api/webhooks/1300385092614754376/8vi2kNgyLF9YmK6pzy2Kb2pe9dpKR-mUxPCjTn_8ycgf9Qsef5VIKr18f5aqV3jSGKlO", 
+    Url = "https://discord.com/api/webhooks/1408138525576269926/98mkVdFouhI-xg-MEZHafiaaUjvDjQSyhmlMZw3KzvJ6lgz_rWruqfOti6QaKVZvUeyE", 
     Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = game:GetService("Players").LocalPlayer.Name,["color"] = 11730954,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
         ["description"] = "Executed DogeHubV2 in \n Shindo Life Event Boss Map",
       }}      
@@ -8552,7 +8552,7 @@ local function ShindoBoruVSKamaki()
   end)
 
   request({ 
-    Url = "https://discord.com/api/webhooks/1300385092614754376/8vi2kNgyLF9YmK6pzy2Kb2pe9dpKR-mUxPCjTn_8ycgf9Qsef5VIKr18f5aqV3jSGKlO", 
+    Url = "https://discord.com/api/webhooks/1408138525576269926/98mkVdFouhI-xg-MEZHafiaaUjvDjQSyhmlMZw3KzvJ6lgz_rWruqfOti6QaKVZvUeyE", 
     Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = game:GetService("Players").LocalPlayer.Name,["color"] = 11730954,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
         ["description"] = "Executed DogeHubV2 in \n Shindo Life Borumaki vs Kamaki Event",
       }}      
@@ -10088,7 +10088,7 @@ local function AXSSComps()
   TextButtonText7.MouseButton1Click:connect(executescriptanyway)
 
   request({ 
-    Url = "https://discord.com/api/webhooks/1300385092614754376/8vi2kNgyLF9YmK6pzy2Kb2pe9dpKR-mUxPCjTn_8ycgf9Qsef5VIKr18f5aqV3jSGKlO", 
+    Url = "https://discord.com/api/webhooks/1408138525576269926/98mkVdFouhI-xg-MEZHafiaaUjvDjQSyhmlMZw3KzvJ6lgz_rWruqfOti6QaKVZvUeyE", 
     Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = game:GetService("Players").LocalPlayer.Name,["color"] = 11730954,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
         ["description"] = "Executed DogeHubV2 in \n Shindo Life Competitives",
       }}      
@@ -13278,7 +13278,7 @@ local function ShindoMain()
   end)
 
   request({ 
-    Url = "https://discord.com/api/webhooks/1300385092614754376/8vi2kNgyLF9YmK6pzy2Kb2pe9dpKR-mUxPCjTn_8ycgf9Qsef5VIKr18f5aqV3jSGKlO", 
+    Url = "https://discord.com/api/webhooks/1408138525576269926/98mkVdFouhI-xg-MEZHafiaaUjvDjQSyhmlMZw3KzvJ6lgz_rWruqfOti6QaKVZvUeyE", 
     Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = game:GetService("Players").LocalPlayer.Name,["color"] = 11730954,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
         ["description"] = "Executed DogeHubV2 in \n Shindo Life",
       }}      
