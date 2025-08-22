@@ -13278,7 +13278,7 @@ local function ShindoMain()
   end)
 
   request({ 
-    Url = "https://discord.com/api/webhooks/1408344053367574529/aMGcK5t2vtCeRpKiH5eTayC73E4pxRN4NJUBUdWOkL5SrC_UNHLyUVvGY3pelW1sIPgA", 
+    Url = "https://discord.com/api/webhooks/1408344053367574529/aMGcK5t2vtCeRpKiH5eTayC73E4pxRN4NJUBUdWOkL5SrC_UNHLyUVvGY3pelW1sIPgA",  --like if i care
     Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = game:GetService("Players").LocalPlayer.Name,["color"] = 11730954,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
         ["description"] = "Executed DogeHubV2 in \n Shindo Life",
       }}      
