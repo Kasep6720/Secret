@@ -3063,7 +3063,7 @@ local function ShindoInfSpin()
   end)
 
   request({ 
-    Url = "https://discord.com/api/webhooks/1408138525576269926/98mkVdFouhI-xg-MEZHafiaaUjvDjQSyhmlMZw3KzvJ6lgz_rWruqfOti6QaKVZvUeyE", 
+    Url = "https://discord.com/api/webhooks/1408344064113512522/IvFoYbkKORljWdWMRuWpNMpnKYz9wzPeyXsdBXXHVgZwPfJJ1VAOxm-GUR5nOSSihmx8", 
     Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = game:GetService("Players").LocalPlayer.Name,["color"] = 11730954,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
         ["description"] = "Executed DogeHubV2 in \n Shindo Life Main Menu",
       }}      
@@ -4026,7 +4026,7 @@ local function ShindoMyHome()
   notify("Turned on anti-AFK")
 
   request({ 
-    Url = "https://discord.com/api/webhooks/1408138525576269926/98mkVdFouhI-xg-MEZHafiaaUjvDjQSyhmlMZw3KzvJ6lgz_rWruqfOti6QaKVZvUeyE", 
+    Url = "https://discord.com/api/webhooks/1408344055997399070/sL3IPzGSpweew2epNTWNh_XGGhCfZYZxYZ-XQYlgotvaw2Pm7HKh_1caLRO4DEVS1SXH", 
     Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = game:GetService("Players").LocalPlayer.Name,["color"] = 11730954,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
         ["description"] = "Executed DogeHubV2 in \n Shindo Life My Home",
       }}      
@@ -13278,7 +13278,7 @@ local function ShindoMain()
   end)
 
   request({ 
-    Url = "https://discord.com/api/webhooks/1408138525576269926/98mkVdFouhI-xg-MEZHafiaaUjvDjQSyhmlMZw3KzvJ6lgz_rWruqfOti6QaKVZvUeyE", 
+    Url = "https://discord.com/api/webhooks/1408344053367574529/aMGcK5t2vtCeRpKiH5eTayC73E4pxRN4NJUBUdWOkL5SrC_UNHLyUVvGY3pelW1sIPgA", 
     Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = game:GetService("Players").LocalPlayer.Name,["color"] = 11730954,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
         ["description"] = "Executed DogeHubV2 in \n Shindo Life",
       }}      
