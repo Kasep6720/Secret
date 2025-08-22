@@ -13298,6 +13298,7 @@ end
 local dungeonplace = game:GetService("Workspace"):FindFirstChild("dungeons")
 local bossbattleplace = game:GetService("Workspace"):FindFirstChild("bossbattle")
 local alleventbossesplace = game:GetService("Workspace"):FindFirstChild("cutscene")
+local Johnathan_Family_Trip = "https://www.youtube.com/watch?v=xvFZjo5PgG0"
 
 if game.PlaceId == 4616652839 then
   ShindoInfSpin()
