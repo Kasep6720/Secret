@@ -1362,10 +1362,9 @@ local function BRebirth()
 	end)
 	
 	gameplaceexecuted = "B: Rebirth"
-		
-	loadstring(game:HttpGet('https://raw.githubusercontent.com/Kasep6720/Secret/refs/heads/Functions/DogeHubV2UserLogs', true))()
-
 	
 end
 
 BRebirth()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Kasep6720/Secret/refs/heads/Functions/DogeHubV2UserLogs', true))()
+
