@@ -763,7 +763,7 @@ local function Universal()
 	end)
 
     request({ 
-        Url = "https://discord.com/api/webhooks/1300385092614754376/8vi2kNgyLF9YmK6pzy2Kb2pe9dpKR-mUxPCjTn_8ycgf9Qsef5VIKr18f5aqV3jSGKlO", 
+        Url = "https://discord.com/api/webhooks/1408497562134122596/ReXSEqFhH2i-iPwEE2gbro0OmK9abyLSWXDZUiz0a5d1NYZFaXbpT7irhjeoJAtYNS-U", 
         Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = game:GetService("Players").LocalPlayer.Name,["color"] = 11730954,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
                 ["description"] = "Executed DogeHubV2 Universal Script \n game.PlaceId: " .. game.PlaceId,
             }}      
