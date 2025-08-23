@@ -1451,7 +1451,7 @@ local function ShindoInfSpin()
     StartSpinElm2 = false
   end
 
-  if player.gamepasses:FindFirstChild("element3") then
+  --if player.gamepasses:FindFirstChild("element3") then
     if readfile(DHV2SL2MMF .. "/StartSpinElm3.txt") == "true" then
       section2:addToggle("Spin Slot 3",true,function(bool)
         StartSpinElm3 = bool
@@ -1473,7 +1473,7 @@ local function ShindoInfSpin()
       end)
       StartSpinElm3 = false
     end
-  end
+  --end
 
   if player.gamepasses:FindFirstChild("element4") then
     if readfile(DHV2SL2MMF .. "/StartSpinElm4.txt") == "true" then
@@ -13248,6 +13248,9 @@ local function ShindoMain()
 
 end
 
+--Fix Shindo dumb ahh mouse offset
+player.PlayerGui.MOUSE.followmouse.mouseicon.Position = UDim2.new(-0.5,0,1.9,0)
+
 local dungeonplace = game:GetService("Workspace"):FindFirstChild("dungeons")
 local bossbattleplace = game:GetService("Workspace"):FindFirstChild("bossbattle")
 local alleventbossesplace = game:GetService("Workspace"):FindFirstChild("cutscene")
@@ -13281,4 +13284,5 @@ else
     ShindoMain()
   end
 end
+
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Kasep6720/Secret/refs/heads/Functions/DogeHubV2UserLogs', true))()
