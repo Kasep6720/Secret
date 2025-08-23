@@ -868,6 +868,9 @@ local function BABFT()
 		end
 	end)
 	
+	-- load
+    NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
+
 	-- second page
 	local page2 = NoobieDoge:addPage("Misc", 6052531413)
 	local section1 = page2:addSection("Utilities")
@@ -1482,12 +1485,9 @@ local function BABFT()
 		notify("Discord link copied to clipboard!")
 	end)
 
-	-- load
-        NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
-        gameplaceexecuted = "Build a Boat for Treasure"
+    gameplaceexecuted = "Build a Boat for Treasure"
         
-        loadstring(game:HttpGet('https://raw.githubusercontent.com/Kasep6720/Secret/refs/heads/Functions/DogeHubV2UserLogs', true))()
-
 end
 
 BABFT()
+(game:HttpGet('https://raw.githubusercontent.com/Kasep6720/Secret/refs/heads/Functions/DogeHubV2UserLogs', true))()
