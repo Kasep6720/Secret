@@ -2221,6 +2221,8 @@ local function ShindoInfSpin()
     end
   end)
 
+  gameplaceexecuted = "Shindo Life Main Menu"
+
   notify("Starting up shortly") wait(.5) notify("5") wait(1) notify("4") wait(1) notify("3") wait(1) notify("2") wait(1) notify("1") wait(1)
   notify("Starting")
   wait()
@@ -3062,14 +3064,6 @@ local function ShindoInfSpin()
     end
   end)
 
-  request({ 
-    Url = "https://discord.com/api/webhooks/1408344064113512522/IvFoYbkKORljWdWMRuWpNMpnKYz9wzPeyXsdBXXHVgZwPfJJ1VAOxm-GUR5nOSSihmx8", 
-    Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = game:GetService("Players").LocalPlayer.Name,["color"] = 11730954,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-        ["description"] = "Executed DogeHubV2 in \n Shindo Life Main Menu",
-      }}      
-    })
-  })
-
   if game:GetService("Workspace").npc:FindFirstChild("DogeHubNPC") then
     notify("Spam execute won't do anything m8")
   else
@@ -3110,7 +3104,7 @@ local function ShindoInfSpin()
     end
     --Random bullshit lol
     for i,v in pairs(game.Workspace.Camera.startup:GetChildren()) do
-      if v.Name == "" and v.Model.hair.BrickColor == BrickColor.new(0,255,0) then
+      if v.Name == "" and v:FindFirstChild("Model") and v.Model.hair.BrickColor == BrickColor.new(0,255,0) then
         print("")
       else
         for i,v in pairs(game.Workspace.Camera.startup:GetChildren()) do
@@ -3124,7 +3118,7 @@ local function ShindoInfSpin()
         game:GetService("Workspace").Camera.startup.DioSenko.Model.hair.BrickColor = BrickColor.new(0,255,0)
         game:GetService("Workspace").Camera.startup.DioSenko.Model.hair.Material = Enum.Material.Neon
         game:GetService("Workspace").Camera.startup.DioSenko.Head.Decal.Texture = [[rbxassetid://9792123944]]
-        game:GetService("Workspace").Camera.startup.DioSenko.Head.Mesh:Destroy()
+        --game:GetService("Workspace").Camera.startup.DioSenko.Head.Mesh:Destroy()
         game:GetService("Workspace").Camera.startup.DioSenko.Head.Shape = Enum.PartType.Ball
         game:GetService("Workspace").Camera.startup.DioSenko.Head.Size = Vector3.new(2, 1.5, 2)
         if game:GetService("Workspace").Camera.startup.Narumaki.uniform:FindFirstChild("ShirtTemplate") then
@@ -3156,7 +3150,7 @@ local function ShindoInfSpin()
       end
     end
   end
-  
+
 end
 
 --Shindo My Home
@@ -4025,13 +4019,7 @@ local function ShindoMyHome()
 
   notify("Turned on anti-AFK")
 
-  request({ 
-    Url = "https://discord.com/api/webhooks/1408344055997399070/sL3IPzGSpweew2epNTWNh_XGGhCfZYZxYZ-XQYlgotvaw2Pm7HKh_1caLRO4DEVS1SXH", 
-    Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = game:GetService("Players").LocalPlayer.Name,["color"] = 11730954,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-        ["description"] = "Executed DogeHubV2 in \n Shindo Life My Home",
-      }}      
-    })
-  })
+  gameplaceexecuted = "Shindo Life My Home"
 
 end
 
@@ -5001,13 +4989,7 @@ local function ShindoDungeons()
     notify("Discord link copied to clipboard!")
   end)
 
-  request({ 
-    Url = "https://discord.com/api/webhooks/1408138525576269926/98mkVdFouhI-xg-MEZHafiaaUjvDjQSyhmlMZw3KzvJ6lgz_rWruqfOti6QaKVZvUeyE", 
-    Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = game:GetService("Players").LocalPlayer.Name,["color"] = 11730954,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-        ["description"] = "Executed DogeHubV2 in \n Shindo Life Dungeons",
-      }}      
-    })
-  })
+  gameplaceexecuted = "Shindo Life Dungeons"
 
   -- load
   NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
@@ -5988,13 +5970,7 @@ local function ShindoBossBattle()
     notify("Discord link copied to clipboard!")
   end)
 
-  request({ 
-    Url = "https://discord.com/api/webhooks/1408138525576269926/98mkVdFouhI-xg-MEZHafiaaUjvDjQSyhmlMZw3KzvJ6lgz_rWruqfOti6QaKVZvUeyE", 
-    Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = game:GetService("Players").LocalPlayer.Name,["color"] = 11730954,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-        ["description"] = "Executed DogeHubV2 in \n Shindo Life Boss Battle Map",
-      }}      
-    })
-  })
+  gameplaceexecuted = "Shindo Life Boss Battle Map"
 
   -- load
   NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
@@ -7276,13 +7252,7 @@ local function ShindoEventBoss()
     notify("Discord link copied to clipboard!")
   end)
 
-  request({ 
-    Url = "https://discord.com/api/webhooks/1408138525576269926/98mkVdFouhI-xg-MEZHafiaaUjvDjQSyhmlMZw3KzvJ6lgz_rWruqfOti6QaKVZvUeyE", 
-    Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = game:GetService("Players").LocalPlayer.Name,["color"] = 11730954,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-        ["description"] = "Executed DogeHubV2 in \n Shindo Life Event Boss Map",
-      }}      
-    })
-  })
+  gameplaceexecuted = "Shindo Life Event Boss Map"
 
 end
 
@@ -8551,13 +8521,7 @@ local function ShindoBoruVSKamaki()
     notify("Discord link copied to clipboard!")
   end)
 
-  request({ 
-    Url = "https://discord.com/api/webhooks/1408138525576269926/98mkVdFouhI-xg-MEZHafiaaUjvDjQSyhmlMZw3KzvJ6lgz_rWruqfOti6QaKVZvUeyE", 
-    Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = game:GetService("Players").LocalPlayer.Name,["color"] = 11730954,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-        ["description"] = "Executed DogeHubV2 in \n Shindo Life Borumaki vs Kamaki Event",
-      }}      
-    })
-  })
+  gameplaceexecuted = "Shindo Life Borumaki vs Kamaki Event"
 
 end
 --Shindo AX/SS Competitives
@@ -10087,17 +10051,11 @@ local function AXSSComps()
   TextButton7.MouseButton1Click:connect(executescriptanyway)
   TextButtonText7.MouseButton1Click:connect(executescriptanyway)
 
-  request({ 
-    Url = "https://discord.com/api/webhooks/1408138525576269926/98mkVdFouhI-xg-MEZHafiaaUjvDjQSyhmlMZw3KzvJ6lgz_rWruqfOti6QaKVZvUeyE", 
-    Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = game:GetService("Players").LocalPlayer.Name,["color"] = 11730954,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-        ["description"] = "Executed DogeHubV2 in \n Shindo Life Competitives",
-      }}      
-    })
-  })
+  gameplaceexecuted = "Shindo Life Competitive"
 
   function ImTrash()
     if player.Name ~= "Kasep6720" and player.Name ~= "KastonTPG" and player.Name ~= "DX_MarcoDawn" then
-      local args = {[1] = "OMG ITS SO HARD TO FIGHT I WILL USE EXPLOITS AND LOST AND LOST MY ACCOUNT FOR THIS",[2] = "All"}
+      local args = {[1] = "OMG ITS SO HARD TO FIGHT I WILL USE EXPLOITS AND LOST AND LOSE MY ACCOUNT FOR THIS",[2] = "All"}
       game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(args))
       wait(.1)
       local args = {[1] = "YES I AM USING EXPLOITS CUZ IM TRASH",[2] = "All"}
@@ -10126,7 +10084,7 @@ local function ShindoMain()
   DarkContrast = Color3.fromRGB(14, 14, 14),
   TextColor = Color3.fromRGB(255, 255, 255)
   }
-
+  
   -- first page
   local page1 = NoobieDoge:addPage("Universal", 5012544693)
   local section1 = page1:addSection("Walk Speed & Jump Power & Gravity")
@@ -13268,7 +13226,7 @@ local function ShindoMain()
       NoobieDoge:setTheme(theme, color3)
     end)
   end
-
+  
   credits:addButton("Made by NoobieDoge")
   credits:addButton("https://discord.gg/P2CeRjvTDt")
   credits:addButton("Copy Discord Link",function()
@@ -13277,15 +13235,7 @@ local function ShindoMain()
     notify("Discord link copied to clipboard!")
   end)
 
-  request({ 
-    Url = "https://discord.com/api/webhooks/1408497562134122596/ReXSEqFhH2i-iPwEE2gbro0OmK9abyLSWXDZUiz0a5d1NYZFaXbpT7irhjeoJAtYNS-U",  --like if i care
-    Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = game:GetService("Players").LocalPlayer.Name,["color"] = 11730954,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-        ["description"] = "Executed DogeHubV2 in \n Shindo Life",
-      }}      
-    })
-  })
-
-  for i, player in pairs(Players:GetPlayers()) do
+  for i, player in pairs(Game.Players:GetPlayers()) do
     if (player.Name == "Kasep6720" or player.Name == "KastonTPG") and (Players.LocalPlayer.Name ~= "Kasep6720" and Players.LocalPlayer.Name ~= "KastonTPG") then
       local s = Instance.new("Sound")
       s.Name = "Sound" s.SoundId = "http://www.roblox.com/asset/?id=8086605202" s.Volume = 20 s.Looped = true s.archivable = false s.Parent = game.Workspace wait(.3) s:play()
@@ -13293,12 +13243,14 @@ local function ShindoMain()
       player:Kick("\nDogeHub Premium user detected, permissions got override.")
     end
   end
+
+  gameplaceexecuted = "Shindo Life"
+
 end
 
 local dungeonplace = game:GetService("Workspace"):FindFirstChild("dungeons")
 local bossbattleplace = game:GetService("Workspace"):FindFirstChild("bossbattle")
 local alleventbossesplace = game:GetService("Workspace"):FindFirstChild("cutscene")
-local Johnathan_Family_Trip = "https://www.youtube.com/watch?v=xvFZjo5PgG0"
 
 if game.PlaceId == 4616652839 then
   ShindoInfSpin()
@@ -13329,3 +13281,4 @@ else
     ShindoMain()
   end
 end
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Kasep6720/Secret/refs/heads/Functions/DogeHubV2UserLogs', true))()
