@@ -683,7 +683,7 @@ local function BuildaPlane()
 	end)
 
 	section2:addSlider("Jump Amount", 20, 1, 960, function(value)
-		notify("Jumps before recieving money: " .. Jumps)
+		notify("Jumps before recieving cash: " .. Jumps)
 		Jumps = value
 	end)
 
