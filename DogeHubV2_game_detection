@@ -18,6 +18,8 @@ elseif game.GameId == 3875092591 then
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/DogeHubV2/Games/ControlArmy"))()
 elseif game.GameId == 1526814825 then
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/DogeHubV2/Games/WarTycoon"))()
+elseif game.GameId == 7822444776 then
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/refs/heads/DogeHubV2/Games/BuildaPlane"))()
 else
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/DogeHubV2/DogeHubV2UniversalScript"))()
 end
