@@ -490,6 +490,7 @@ local function BuildaPlane()
 	local page2 = NoobieDoge:addPage("Misc", 123995398327937)
 	local section1 = page2:addSection("Beta")
 	local section2 = page2:addSection("Plane Height")
+	local section3 = page2:addSection("Teleport")
 
 	section1:addButton("Steroid Plane",function()
 		section1:updateButton("Steroid Plane","Steroid Plane (Activated)")
@@ -498,7 +499,7 @@ local function BuildaPlane()
 			for i,v in pairs(game.Workspace.Islands:GetChildren()) do
 				if player.UserId == v.Important.OwnerID.Value then
 					for i,v1 in pairs(v.PlacedBlocks:GetChildren()) do
-						if v1.Name ~= "driver_seat_1" and v1.Name ~= "block_1" and v1.Name ~= "block_metal" and v1.Name ~= "block_reinforced" then
+						if v1.Name ~= "driver_seat_1" and v1.Name ~= "missile_1" and v1.Name ~= "half_block" and v1.Name ~= "block_1" and v1.Name ~= "block_metal" and v1.Name ~= "block_reinforced" then
 							local clone = v1:Clone()
 							clone.Parent = v1.Parent
 						end
@@ -559,6 +560,19 @@ local function BuildaPlane()
 		end
 	end)]]
 
+	if game.PlaceId == 137925884276740 then
+		section3:addButton("Teleport to Free Flight Server",function()
+			local TS = game:GetService("TeleportService")
+			local player = game.Players.LocalPlayer
+			TS:Teleport(80077596050453, player)
+		end)
+	elseif game.PlaceId == 80077596050453 then
+		section3:addButton("Teleport back to Main Game",function()
+			local TS = game:GetService("TeleportService")
+			local player = game.Players.LocalPlayer
+			TS:Teleport(137925884276740, player)
+		end)
+	end
 	-- third page
 	local page3 = NoobieDoge:addPage("Auto Buy", 123995398327937)
 	local section1 = page3:addSection("Blocks")
@@ -583,8 +597,10 @@ local function BuildaPlane()
 	
 	section1:addToggle("Auto Buy all Blocks",false,function(bool)
 		ABAB = bool
-		section1:updateToggle("Auto Buy Specific Block")
-		ABSI = false
+		if ABSI == true then
+			section1:updateToggle("Auto Buy Specific Block")
+			ABSI = false
+		end
 	end)
 
 	section1:addDropdown("Specific Block: ",BuyBs,function(BUYS1)
@@ -596,8 +612,10 @@ local function BuildaPlane()
 
 	section1:addToggle("Auto Buy Specific Block",false,function(bool)
 		ABSI = bool
-		section1:updateToggle("Auto Buy all Blocks")
-		ABAB = false
+		if ABAB == true then
+			section1:updateToggle("Auto Buy all Blocks")
+			ABAB = false
+		end
 	end)
 
 	section2:addToggle("Auto Buy Tools",false,function(bool)
@@ -605,7 +623,7 @@ local function BuildaPlane()
 	end)
 
 	spawn(function()
-		while wait() do
+		while wait(1) do
 			if ABSI then
 				if bsi ~= 0 then
 					for i, v in ipairs(BuyBs) do
@@ -629,7 +647,7 @@ local function BuildaPlane()
 	end)
 
 	spawn(function()
-		while wait() do
+		while wait(1) do
 			if ABT then
 				for i, v in ipairs(BuyTs) do
 					local args = {v}
