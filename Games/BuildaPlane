@@ -545,7 +545,30 @@ local function BuildaPlane()
 			HideUrPlane()
 		end
 	end)
-	
+
+	for i,v in pairs(game.Workspace.Islands:GetChildren()) do
+		if player.UserId == v.Important.OwnerID.Value then	
+			if v.UpgradePlot.Part.Transparency == 0 then
+				section1:addButton("Upgrade Plot",function()
+					for i,v in pairs(game.Workspace.Islands:GetChildren()) do
+						if player.UserId == v.Important.OwnerID.Value then
+							if v.UpgradePlot.Part.Transparency == 0 then
+								--player.Character:WaitForChild("HumanoidRootPart").CFrame = v.UpgradePlot.Text
+								local prox = v.UpgradePlot.Text.ProximityPrompt
+								prox.Exclusivity = 2
+								prox.MaxActivationDistance = 99999999999999999999999999
+								prox.HoldDuration = 0
+								fireproximityprompt(prox)
+							else
+								notify("Already upgraded plot!")
+							end
+						end
+					end
+				end)
+			end
+		end
+	end
+
 	local Height = 20
 	section2:addSlider("Height", 20, -100, 6969, function(value)
 		Height = value
@@ -680,20 +703,20 @@ local function BuildaPlane()
 		local vehicle = getVehicle()
 		if not vehicle then
 			LaunchRemote:FireServer()
-			task.wait(.8)
+			task.wait(.75)
 			--game.Workspace.Islands.Island1.CorePart:Destroy()
 			if FJHI then
 				local vehicle = getVehicle()
 				if Farm and vehicle then
 					local character = player.Character or player.CharacterAdded:Wait()
 					character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(player.Character.HumanoidRootPart.Position+Vector3.new(4000,FJHIN,0))
-					task.wait(.8)
+					task.wait(.9)
 				end
 				for v = 1,Jumps-1 do
 					if Farm and vehicle then
 						local character = player.Character or player.CharacterAdded:Wait()
 						character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(player.Character.HumanoidRootPart.Position+Vector3.new(4000,HIEJ,0))
-						task.wait(.8)
+						task.wait(.9)
 					end
 				end
 			else
@@ -702,7 +725,7 @@ local function BuildaPlane()
 					if Farm and vehicle then
 						local character = player.Character or player.CharacterAdded:Wait()
 						character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(player.Character.HumanoidRootPart.Position+Vector3.new(4000,HIEJ,0))
-						task.wait(.8)
+						task.wait(.9)
 					end
 				end
 			end
