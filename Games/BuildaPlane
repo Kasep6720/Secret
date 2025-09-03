@@ -228,7 +228,7 @@ local function BuildaPlane()
 		writefile(DHV2BAP .. "/RALT.txt","true")
 	end
 	if isfile(DHV2BAP .. "/RALTN.txt") == false then
-		writefile(DHV2BAP .. "/RALTN.txt","100")
+		writefile(DHV2BAP .. "/RALTN.txt","50")
 	end
 
 	--DogeHub V2 GUI
@@ -1448,7 +1448,7 @@ local function BuildaPlane()
 			writefile(DHV2BAP .. "/FJHI.txt","true")
 			writefile(DHV2BAP .. "/FJHIN.txt","1000")
 			writefile(DHV2BAP .. "/RALT.txt","true")
-			writefile(DHV2BAP .. "/RALTN.txt","100")
+			writefile(DHV2BAP .. "/RALTN.txt","50")
 
 			EnabledSliderPowa = false
 			CtrlClickTeePee = false
@@ -1668,3 +1668,4 @@ end
 
 BuildaPlane()
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Kasep6720/Secret/refs/heads/Functions/DogeHubV2UserLogs', true))()
+
