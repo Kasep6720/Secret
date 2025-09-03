@@ -1330,6 +1330,7 @@ local function BuildaPlane()
 		print(RALTN - farmtriesRecorded)
 		if farmtriesRecorded == RALTN and RALT then
 			notify("Rejoining to prevent potential crashes")
+			wait(.6)
 			local TS = game:GetService("TeleportService")
 			local Player = game.Players.LocalPlayer
 			TS:Teleport(game.PlaceId, Player)
