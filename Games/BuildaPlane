@@ -13,6 +13,7 @@ local LaunchRemote = ReplicatedStorage:WaitForChild("Remotes"):WaitForChild("Lau
 local ReturnRemote = ReplicatedStorage:WaitForChild("Remotes"):WaitForChild("LaunchEvents"):WaitForChild("Return")
 
 --on9 functions that are so damn important
+game.Players.RespawnTime = 0
 function toTarget(pos, targetPos, targetCFrame)
 	local tween_s = game:service"TweenService"
 	local info = TweenInfo.new((targetPos - pos).Magnitude/getgenv().speed, Enum.EasingStyle.Linear)
@@ -148,6 +149,88 @@ notify("Enabled anti-AFK")
 --Build a Plane
 local function BuildaPlane()
 
+	--Workspace stuff
+	local DHV2BAP = "DogeHubV2/BuildaPlane"
+	if isfolder(DHV2BAP) == false then
+		makefolder(DHV2BAP)
+	end
+	local Universal = DHV2BAP .. "/Universal"
+	if isfolder(Universal) == false then
+		makefolder(Universal)
+	end
+	if isfile(Universal .. "/EnabledSliderPowa.txt") == false then
+		writefile(Universal .. "/EnabledSliderPowa.txt","false")
+	end
+	if isfile(Universal .. "/sliderspeed.txt") == false then
+		writefile(Universal .. "/sliderspeed.txt","16")
+	end
+	if isfile(Universal .. "/sliderjump.txt") == false then
+		writefile(Universal .. "/sliderjump.txt","50")
+	end
+	if isfile(Universal .. "/slidergravity.txt") == false then
+		writefile(Universal .. "/slidergravity.txt","196.2")
+	end
+	if isfile(Universal .. "/CtrlClickTeePee.txt") == false then
+		writefile(Universal .. "/CtrlClickTeePee.txt","false")
+	end
+	if isfile(Universal .. "/infjumptoggle.txt") == false then
+		writefile(Universal .. "/infjumptoggle.txt","false")
+	end
+	if isfile(Universal .. "/noclips.txt") == false then
+		writefile(Universal .. "/noclips.txt","false")
+	end
+	if isfile(Universal .. "/sliderfly.txt") == false then
+		writefile(Universal .. "/sliderfly.txt","201")
+	end
+	if isfile(Universal .. "/Pfly.txt") == false then
+		writefile(Universal .. "/Pfly.txt","false")
+	end
+	if isfile(Universal .. "/ripthatguy.txt") == false then
+		writefile(Universal .. "/ripthatguy.txt","Player's Name")
+	end
+	if isfile(Universal .. "/trackthatguy.txt") == false then
+		writefile(Universal .. "/trackthatguy.txt","false")
+	end
+	if isfile(DHV2BAP .. "/HidePlane.txt") == false then
+		writefile(DHV2BAP .. "/HidePlane.txt","false")
+	end
+	if isfile(DHV2BAP .. "/Height.txt") == false then
+		writefile(DHV2BAP .. "/Height.txt","20")
+	end
+	if isfile(DHV2BAP .. "/ABAB.txt") == false then
+		writefile(DHV2BAP .. "/ABAB.txt","false")
+	end
+	if isfile(DHV2BAP .. "/bsi.txt") == false then
+		writefile(DHV2BAP .. "/bsi.txt"," ")
+	end
+	if isfile(DHV2BAP .. "/ABSI.txt") == false then
+		writefile(DHV2BAP .. "/ABSI.txt","false")
+	end
+	if isfile(DHV2BAP .. "/ABT.txt") == false then
+		writefile(DHV2BAP .. "/ABT.txt","false")
+	end
+	if isfile(DHV2BAP .. "/Farm.txt") == false then
+		writefile(DHV2BAP .. "/Farm.txt","false")
+	end
+	if isfile(DHV2BAP .. "/Jumps.txt") == false then
+		writefile(DHV2BAP .. "/Jumps.txt","20")
+	end
+	if isfile(DHV2BAP .. "/HIEJ.txt") == false then
+		writefile(DHV2BAP .. "/HIEJ.txt","20")
+	end
+	if isfile(DHV2BAP .. "/FJHI.txt") == false then
+		writefile(DHV2BAP .. "/FJHI.txt","true")
+	end
+	if isfile(DHV2BAP .. "/FJHIN.txt") == false then
+		writefile(DHV2BAP .. "/FJHIN.txt","1000")
+	end
+	if isfile(DHV2BAP .. "/RALT.txt") == false then
+		writefile(DHV2BAP .. "/RALT.txt","true")
+	end
+	if isfile(DHV2BAP .. "/RALTN.txt") == false then
+		writefile(DHV2BAP .. "/RALTN.txt","100")
+	end
+
 	--DogeHub V2 GUI
 	local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20page%20format%20gui"))()
 	local NoobieDoge = library.new("DogeHub V2", 5013109572)
@@ -171,23 +254,43 @@ local function BuildaPlane()
 	local originaljumppower = 50
 	local originalgravity = game:GetService("Workspace").Gravity
 
-	section1:addSlider("Walk Speed", originalwalkspeed, 0, 500, function(value)
+	section1:addSlider("Walk Speed", tonumber(readfile(Universal .. "/sliderspeed.txt")), 0, 500, function(value)
 		sliderspeed = value
+		writefile(Universal .. "/sliderspeed.txt",tostring(sliderspeed))
 	end)
-	section1:addSlider("Jump Power", originaljumppower, 0, 500, function(value)
+	section1:addSlider("Jump Power", tonumber(readfile(Universal .. "/sliderjump.txt")), 0, 500, function(value)
 		sliderjump = value
+		writefile(Universal .. "/sliderjump.txt",tostring(sliderjump))
 	end)
-	section1:addSlider("Gravity", originalgravity, 0, 500, function(value)
+	section1:addSlider("Gravity", tonumber(readfile(Universal .. "/slidergravity.txt")), 0, 500, function(value)
 		slidergravity = value
+		writefile(Universal .. "/slidergravity.txt",tostring(slidergravity))
 	end)
-	sliderspeed = 16
-	sliderjump = 50
-	slidergravity = 196.2
+	sliderspeed = tonumber(readfile(Universal .. "/sliderspeed.txt"))
+	sliderjump = tonumber(readfile(Universal .. "/sliderjump.txt"))
+	slidergravity = tonumber(readfile(Universal .. "/slidergravity.txt"))
 
-	local sliderpowa = false
-	section1:addToggle("Enabled", nil, function(value)
-		sliderpowa = value
-	end)
+	if readfile(Universal .. "/EnabledSliderPowa.txt") == "true" then
+		section1:addToggle("Enabled", true, function(value)
+			sliderpowa = value
+			if sliderpowa == true then
+				writefile(Universal .. "/EnabledSliderPowa.txt","true")
+			else
+				writefile(Universal .. "/EnabledSliderPowa.txt","false")
+			end
+		end)
+		sliderpowa = true
+	else
+		section1:addToggle("Enabled", nil, function(value)
+			sliderpowa = value
+			if sliderpowa == true then
+				writefile(Universal .. "/EnabledSliderPowa.txt","true")
+			else
+				writefile(Universal .. "/EnabledSliderPowa.txt","false")
+			end
+		end)
+		sliderpowa = false
+	end
 	game:GetService('RunService').Stepped:connect(function()
 		if sliderpowa then
 			player.Character.Humanoid.WalkSpeed = sliderspeed
@@ -203,6 +306,10 @@ local function BuildaPlane()
 		section1:updateSlider("Walk Speed", "Walk Speed", originalwalkspeed, 0, 500)
 		section1:updateSlider("Jump Power", "Jump Power", originaljumppower, 0, 500)
 		section1:updateSlider("Gravity", "Gravity", originalgravity, 0, 500)
+		writefile(Universal .. "/EnabledSliderPowa.txt","true")
+		writefile(Universal .. "/originalwalkspeed.txt","16")
+		writefile(Universal .. "/originaljumppower.txt","50")
+		writefile(Universal .. "/originalgravity.txt","196.2")
 	end)
 
 	section2:addButton("Add ESP GUI", function()
@@ -213,30 +320,82 @@ local function BuildaPlane()
 		player.Character:BreakJoints()
 	end)
 
-	section2:addToggle("Ctrl + Click TP",false,function(bool)
-		CtrlClickTeePee = bool
+	if readfile(Universal .. "/CtrlClickTeePee.txt") == "true" then
+		section2:addToggle("Ctrl + Click TP",true,function(bool)
+			CtrlClickTeePee = bool
+			CTRLCLICKTP()
+			if CtrlClickTeePee == true then
+				notify("Press Ctrl + Click to Teleport")
+				writefile(Universal .. "/CtrlClickTeePee.txt","true")
+			else
+				writefile(Universal .. "/CtrlClickTeePee.txt","false")
+			end
+		end)
+		CtrlClickTeePee = true
 		CTRLCLICKTP()
-		if CtrlClickTeePee == true then
-			notify("Press Ctrl + Click to Teleport")
+	else
+		section2:addToggle("Ctrl + Click TP",false,function(bool)
+			CtrlClickTeePee = bool
+			CTRLCLICKTP()
+			if CtrlClickTeePee == true then
+				notify("Press Ctrl + Click to Teleport")
+				writefile(Universal .. "/CtrlClickTeePee.txt","true")
+			else
+				writefile(Universal .. "/CtrlClickTeePee.txt","false")
+			end
+		end)
+		CtrlClickTeePee = false
+	end
+
+	player.CharacterAdded:Connect(function()
+		if CtrlClickTeePee then
+			CTRLCLICKTP()
 		end
 	end)
 
-	local infjumptoggle = false
-	getgenv().dc = true
-	section2:addToggle("Infinite Jump",false,function()
-		infjumptoggle = not infjumptoggle
-		notify("Infinite Jump: "..tostring(infjumptoggle),true)
-		if infjumptoggle then
-			getgenv().dc = false
-			local infjump
-			infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
-				if dc then infjump:Disconnect() return end
-				player.Character.Humanoid:ChangeState("Jumping")
-			end)
-		else
-			getgenv().dc = true
-		end
-	end)
+	if readfile(Universal .. "/infjumptoggle.txt") == "true" then
+		local infjumptoggle = true
+		section2:addToggle("Infinite Jump",true,function()
+			infjumptoggle = not infjumptoggle
+			notify("Infinite Jump: "..tostring(infjumptoggle),true)
+			if infjumptoggle then
+				getgenv().dc = false
+				local infjump
+				infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
+					if dc then infjump:Disconnect() return end
+					player.Character.Humanoid:ChangeState("Jumping")
+				end)
+				writefile(Universal .. "/infjumptoggle.txt","true")
+			else
+				getgenv().dc = true
+				writefile(Universal .. "/infjumptoggle.txt","false")
+			end
+		end)
+		getgenv().dc = false
+		local infjump
+		infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
+			if dc then infjump:Disconnect() return end
+			player.Character.Humanoid:ChangeState("Jumping")
+		end)
+	else
+		local infjumptoggle = false
+		section2:addToggle("Infinite Jump",false,function()
+			infjumptoggle = not infjumptoggle
+			notify("Infinite Jump: "..tostring(infjumptoggle),true)
+			if infjumptoggle then
+				getgenv().dc = false
+				local infjump
+				infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
+					if dc then infjump:Disconnect() return end
+					player.Character.Humanoid:ChangeState("Jumping")
+				end)
+				writefile(Universal .. "/infjumptoggle.txt","true")
+			else
+				getgenv().dc = true
+				writefile(Universal .. "/infjumptoggle.txt","false")
+			end
+		end)
+	end
 
 	player.CharacterAdded:Connect(function()
 		if infjumptoggle then
@@ -250,28 +409,136 @@ local function BuildaPlane()
 		end
 	end)
 
-	local noclips = false
-	section2:addToggle("Noclip", false, function(bool)
-		noclips = bool
-		game:GetService("RunService").Stepped:connect(function()
+	if readfile(Universal .. "/noclips.txt") == "true" then
+		section2:addToggle("Noclip", true, function(bool)
+			noclips = bool
 			if noclips then
-				for i, v in pairs(player.Character:GetChildren()) do
-					if v:IsA("BasePart") then
-						v.CanCollide = false
-					end
-				end
+				writefile(Universal .. "/noclips.txt","true")
+			else
+				writefile(Universal .. "/noclips.txt","false")
 			end
 		end)
+		noclips = true
+	else
+		section2:addToggle("Noclip", false, function(bool)
+			noclips = bool
+			if noclips then
+				writefile(Universal .. "/noclips.txt","true")
+			else
+				writefile(Universal .. "/noclips.txt","false")
+			end
+		end)
+	end
+	game:GetService("RunService").Stepped:connect(function()
+		if noclips then
+			for i, v in pairs(player.Character:GetChildren()) do
+				if v:IsA("BasePart") then
+					v.CanCollide = false
+				end
+			end
+		end
 	end)
 
-	section2:addSlider("Fly Speed", 201, 0, 9999, function(value)
+	section2:addSlider("Fly Speed", tonumber(readfile(Universal .. "/sliderfly.txt")), 0, 9999, function(value)
 		sliderfly = value
+		writefile(Universal .. "/sliderfly.txt",tostring(sliderfly))
 	end)
-	sliderfly = 201
+	sliderfly = tonumber(readfile(Universal .. "/sliderfly.txt"))
+	if readfile(Universal .. "/Pfly.txt") == "true" then
+		section2:addToggle("Press P to fly",true,function(bool)
+			Pfly = bool
+			if Pfly then
+				writefile(Universal .. "/Pfly.txt","true")
+			else
+				writefile(Universal .. "/Pfly.txt","false")
+			end
+			repeat wait() 
+			until player and player.Character:findFirstChild("Head") player.Character:findFirstChild("Humanoid") 
+			local mouse = player:GetMouse() 
+			repeat wait() until mouse
+			local torso = player.Character.Head 
+			local flying = false
+			local deb = true 
+			local ctrl = {f = 0, b = 0, l = 0, r = 0} 
+			local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+			local maxspeed = sliderfly 
+			local speed = 0 
 
-	local Pfly = false
-	section2:addToggle("Press P to fly",false,function(bool)
-		Pfly = bool
+			function Fly() 
+				local bg = Instance.new("BodyGyro", torso) 
+				bg.P = 9e4 
+				bg.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
+				bg.cframe = torso.CFrame 
+
+				local bv = Instance.new("BodyVelocity", torso) 
+				bv.velocity = Vector3.new(0,0.1,0) 
+				bv.maxForce = Vector3.new(9e9, 9e9, 9e9) 
+				repeat wait() 
+					player.Character.Humanoid.PlatformStand = true 
+					if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
+						speed = speed+(sliderfly/1.7)+(speed/maxspeed) 
+						if speed > maxspeed then 
+							speed = maxspeed 
+						end 
+
+					elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
+						speed = speed-(sliderfly/1.7)
+						if speed < 0 then 
+							speed = 0 
+						end 
+					end 
+					if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then 
+						bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+						lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r} 
+					elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then 
+						bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+					else 
+						bv.velocity = Vector3.new(0,0.1,0)
+					end 
+					bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
+				until not flying or not Pfly
+				ctrl = {f = 0, b = 0, l = 0, r = 0} 
+				lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+				speed = 0 
+				bg:Destroy() 
+				bv:Destroy() 
+				player.Character.Humanoid.PlatformStand = false 
+			end 
+
+			mouse.KeyDown:connect(function(key) 
+				if key:lower() == "p" then 
+					if flying then flying = false 
+					else 
+						flying = true 
+						Fly() 
+					end 
+				elseif key:lower() == "w" then 
+					ctrl.f = 1 
+				elseif key:lower() == "s" then 
+					ctrl.b = -1 
+				elseif key:lower() == "a" then 
+					ctrl.l = -1 
+				elseif key:lower() == "d" then 
+					ctrl.r = 1 
+				end 
+			end) 
+
+			mouse.KeyUp:connect(function(key) 
+
+				if key:lower() == "w" then 
+					ctrl.f = 0 
+				elseif key:lower() == "s" then 
+					ctrl.b = 0 
+				elseif key:lower() == "a" then 
+					ctrl.l = 0 
+				elseif key:lower() == "d" then 
+					ctrl.r = 0 
+				end 
+			end)
+			Fly()
+			notify("Press P to fly: "..tostring(Pfly),true)
+		end)
+		Pfly = true
 		repeat wait() 
 		until player and player.Character:findFirstChild("Head") player.Character:findFirstChild("Humanoid") 
 		local mouse = player:GetMouse() 
@@ -356,8 +623,101 @@ local function BuildaPlane()
 			end 
 		end)
 		Fly()
-		notify("Press P to fly: "..tostring(Pfly),true)
-	end)
+	else
+		section2:addToggle("Press P to fly",false,function(bool)
+			Pfly = bool
+			if Pfly then
+				writefile(Universal .. "/Pfly.txt","true")
+			else
+				writefile(Universal .. "/Pfly.txt","false")
+			end
+			repeat wait() 
+			until player and player.Character:findFirstChild("Head") player.Character:findFirstChild("Humanoid") 
+			local mouse = player:GetMouse() 
+			repeat wait() until mouse
+			local torso = player.Character.Head 
+			local flying = false
+			local deb = true 
+			local ctrl = {f = 0, b = 0, l = 0, r = 0} 
+			local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+			local maxspeed = sliderfly 
+			local speed = 0 
+
+			function Fly() 
+				local bg = Instance.new("BodyGyro", torso) 
+				bg.P = 9e4 
+				bg.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
+				bg.cframe = torso.CFrame 
+
+				local bv = Instance.new("BodyVelocity", torso) 
+				bv.velocity = Vector3.new(0,0.1,0) 
+				bv.maxForce = Vector3.new(9e9, 9e9, 9e9) 
+				repeat wait() 
+					player.Character.Humanoid.PlatformStand = true 
+					if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
+						speed = speed+(sliderfly/1.7)+(speed/maxspeed) 
+						if speed > maxspeed then 
+							speed = maxspeed 
+						end 
+
+					elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
+						speed = speed-(sliderfly/1.7)
+						if speed < 0 then 
+							speed = 0 
+						end 
+					end 
+					if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then 
+						bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+						lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r} 
+					elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then 
+						bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+					else 
+						bv.velocity = Vector3.new(0,0.1,0)
+					end 
+					bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
+				until not flying or not Pfly
+				ctrl = {f = 0, b = 0, l = 0, r = 0} 
+				lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+				speed = 0 
+				bg:Destroy() 
+				bv:Destroy() 
+				player.Character.Humanoid.PlatformStand = false 
+			end 
+
+			mouse.KeyDown:connect(function(key) 
+				if key:lower() == "p" then 
+					if flying then flying = false 
+					else 
+						flying = true 
+						Fly() 
+					end 
+				elseif key:lower() == "w" then 
+					ctrl.f = 1 
+				elseif key:lower() == "s" then 
+					ctrl.b = -1 
+				elseif key:lower() == "a" then 
+					ctrl.l = -1 
+				elseif key:lower() == "d" then 
+					ctrl.r = 1 
+				end 
+			end) 
+
+			mouse.KeyUp:connect(function(key) 
+
+				if key:lower() == "w" then 
+					ctrl.f = 0 
+				elseif key:lower() == "s" then 
+					ctrl.b = 0 
+				elseif key:lower() == "a" then 
+					ctrl.l = 0 
+				elseif key:lower() == "d" then 
+					ctrl.r = 0 
+				end 
+			end)
+			Fly()
+			notify("Press P to fly: "..tostring(Pfly),true)
+		end)
+	end
 
 	player.CharacterAdded:Connect(function()
 		if Pfly then
@@ -449,40 +809,81 @@ local function BuildaPlane()
 		end
 	end)
 
-	section2:addTextbox("Track selected player","Player's Name",function(ripthatguy)
+	section2:addTextbox("Track selected player",readfile(Universal .. "/ripthatguy.txt"),function(ripthatguy)
 		notify("Player Selected: " .. ripthatguy)
 		Target = ripthatguy
+		writefile(Universal .. "/ripthatguy.txt",Target)
 	end)
+	Target = readfile(Universal .. "/ripthatguy.txt")
 
-	local trackthatguy = false
-	section2:addToggle("Track Player",false,function(bool)
-		trackthatguy = bool
-		local platform = Instance.new("Part", player.Character)
-		platform.Anchored = true
-		platform.Transparency = 1
-		platform.Size = Vector3.new(6, 1, 6)
-
-		local connection
-		connection = game:GetService("RunService").RenderStepped:connect(function()
-			if player.Character:FindFirstChild("HumanoidRootPart") and game.Players:FindFirstChild(Target) then
-				platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -1.8, 0)
+	if readfile(Universal .. "/trackthatguy.txt") == "true" then
+		local trackthatguy = true
+		section2:addToggle("Track Player",true,function(bool)
+			trackthatguy = bool
+			if trackthatguy == true then
+				writefile(Universal .. "/trackthatguy.txt","true")
 			else
-				connection:Disconnect()
+				writefile(Universal .. "/trackthatguy.txt","false")
 			end
+			local platform = Instance.new("Part", player.Character)
+			platform.Anchored = true
+			platform.Transparency = 1
+			platform.Size = Vector3.new(6, 1, 6)
+
+			local connection
+			connection = game:GetService("RunService").RenderStepped:connect(function()
+				if player.Character:FindFirstChild("HumanoidRootPart") and game.Players:FindFirstChild(Target) then
+					platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -1.8, 0)
+				else
+					connection:Disconnect()
+				end
+			end)
+			game:GetService('RunService').Stepped:connect(function()
+				if trackthatguy ~= true then
+					platform:Destroy()
+				end
+			end)
 		end)
-		game:GetService('RunService').Stepped:connect(function()
-			if trackthatguy ~= true then
-				platform:Destroy()
+		trackthatguy = true
+	else
+		local trackthatguy = false
+		section2:addToggle("Track Player",false,function(bool)
+			trackthatguy = bool
+			if trackthatguy == true then
+				writefile(Universal .. "/trackthatguy.txt","true")
+			else
+				writefile(Universal .. "/trackthatguy.txt","false")
 			end
+			local platform = Instance.new("Part", player.Character)
+			platform.Anchored = true
+			platform.Transparency = 1
+			platform.Size = Vector3.new(6, 1, 6)
+
+			local connection
+			connection = game:GetService("RunService").RenderStepped:connect(function()
+				if player.Character:FindFirstChild("HumanoidRootPart") and game.Players:FindFirstChild(Target) then
+					platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -1.8, 0)
+				else
+					connection:Disconnect()
+				end
+			end)
+			game:GetService('RunService').Stepped:connect(function()
+				if trackthatguy ~= true then
+					platform:Destroy()
+				end
+			end)
 		end)
-	end)
+	end
+
 	game:GetService('RunService').Stepped:connect(function()
-		if trackthatguy == true and player.Character:FindFirstChild("HumanoidRootPart") and game.Players:FindFirstChild(Target) then
-			player.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame * CFrame.new(0, 5, 10)
-			game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game.Players[Target].Character.HumanoidRootPart.Position)
+		if trackthatguy == true or readfile(Universal .. "/trackthatguy.txt") == "true" then
+			if player.Character:FindFirstChild("HumanoidRootPart") and game.Players:FindFirstChild(Target) then
+				player.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame * CFrame.new(0, 5, 10)
+				game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game.Players[Target].Character.HumanoidRootPart.Position)
+			end
 		end
 	end)
-
+	
 	-- load
 	NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
 	
@@ -530,14 +931,30 @@ local function BuildaPlane()
 		end
 	end
 
-	section1:addToggle("Hide Plane (Client Side)",false,function(bool)
-		HideP = bool
-		if HideP then
-			HideUrPlane()
-		else
-			notify("Plane will be visible again after reset")
-		end
-	end)
+	if readfile(DHV2BAP .. "/HidePlane.txt") == "true" then
+		section1:addToggle("Hide Plane (Client Side)",true,function(bool)
+			HideP = bool
+			if HideP then
+				writefile(DHV2BAP .. "/HidePlane.txt","true")
+				HideUrPlane()
+			else
+				writefile(DHV2BAP .. "/HidePlane.txt","false")
+				notify("Plane will be visible again after reset")
+			end
+		end)
+		HideP = true
+	else
+		section1:addToggle("Hide Plane (Client Side)",false,function(bool)
+			HideP = bool
+			if HideP then
+				writefile(DHV2BAP .. "/HidePlane.txt","true")
+				HideUrPlane()
+			else
+				writefile(DHV2BAP .. "/HidePlane.txt","false")
+				notify("Plane will be visible again after reset")
+			end
+		end)
+	end
 
 	player.CharacterAdded:Connect(function()
 		wait(1)
@@ -548,7 +965,7 @@ local function BuildaPlane()
 
 	for i,v in pairs(game.Workspace.Islands:GetChildren()) do
 		if player.UserId == v.Important.OwnerID.Value then	
-			if v.UpgradePlot.Part.Transparency == 0 then
+			if v.UpgradePlot:WaitForChild("Part").Transparency == 0 then
 				section1:addButton("Upgrade Plot",function()
 					for i,v in pairs(game.Workspace.Islands:GetChildren()) do
 						if player.UserId == v.Important.OwnerID.Value then
@@ -569,9 +986,10 @@ local function BuildaPlane()
 		end
 	end
 
-	local Height = 20
-	section2:addSlider("Height", 20, -100, 6969, function(value)
+	local Height = tonumber(readfile(DHV2BAP .. "/Height.txt"))
+	section2:addSlider("Height", tonumber(readfile(DHV2BAP .. "/Height.txt")), -100, 6969, function(value)
 		Height = value
+		writefile(DHV2BAP .. "/Height.txt",tostring(Height))
 	end)
 
 	section2:addButton("Up",function()
@@ -630,38 +1048,108 @@ local function BuildaPlane()
 
 	local ABAB
 	local ABSI
-	
-	section1:addToggle("Auto Buy all Blocks",false,function(bool)
-		ABAB = bool
-		if ABSI == true then
-			section1:updateToggle("Auto Buy Specific Block")
-			ABSI = false
-		end
-	end)
+	local ABT
 
-	section1:addDropdown("Specific Block: ",BuyBs,function(BUYS1)
+	if readfile(DHV2BAP .. "/ABAB.txt") == "true" then
+		ABAB = true
+		section1:addToggle("Auto Buy all Blocks",true,function(bool)
+			ABAB = bool
+			notify("Auto Buy all Blocks: " .. tostring(ABAB))
+			if ABAB == true then
+				writefile(DHV2BAP .. "/ABAB.txt","true")
+				writefile(DHV2BAP .. "/ABSI.txt","false")
+				section1:updateToggle("Auto Buy Specific Blocks")
+				ABSI = false
+			else
+				writefile(DHV2BAP .. "/ABAB.txt","false")
+			end
+		end)
+	else
+		ABAB = false
+		section1:addToggle("Auto Buy all Blocks",false,function(bool)
+			ABAB = bool
+			notify("Auto Buy all Blocks: " .. tostring(ABAB))
+			if ABAB == true then
+				writefile(DHV2BAP .. "/ABAB.txt","true")
+				writefile(DHV2BAP .. "/ABSI.txt","false")
+				section1:updateToggle("Auto Buy Specific Blocks")
+				ABSI = false
+			else
+				writefile(DHV2BAP .. "/ABAB.txt","false")
+			end
+		end)
+	end
+
+	section1:addDropdown("Specific Block: " .. readfile(DHV2BAP .. "/bsi.txt"),BuyBs,function(BUYS1)
 		print("Selected: " .. BUYS1)
 		notify("Selected: " .. BUYS1)
 		bsi = BUYS1
+		writefile(DHV2BAP .. "/bsi.txt",bsi)
 	end)
-	bsi = 0
+	local bsi = readfile(DHV2BAP .. "/bsi.txt")
 
-	section1:addToggle("Auto Buy Specific Block",false,function(bool)
-		ABSI = bool
-		if ABAB == true then
-			section1:updateToggle("Auto Buy all Blocks")
-			ABAB = false
-		end
-	end)
+	if readfile(DHV2BAP .. "/ABSI.txt") == "true" then
+		ABSI = true
+		section1:addToggle("Auto Buy Specific Blocks",true,function(bool)
+			ABSI = bool
+			notify("Auto Buy Specific Blocks: " .. tostring(ABSI))
+			if ABSI == true then
+				writefile(DHV2BAP .. "/ABSI.txt","true")
+				writefile(DHV2BAP .. "/ABAB.txt","false")
+				section1:updateToggle("Auto Buy all Blocks")
+				ABAB = false
+			else
+				writefile(DHV2BAP .. "/ABSI.txt","false")
+			end
+		end)
+	else
+		ABSI = false
+		section1:addToggle("Auto Buy Specific Blocks",false,function(bool)
+			ABSI = bool
+			notify("Auto Buy Specific Blocks: " .. tostring(ABSI))
+			if ABSI == true then
+				writefile(DHV2BAP .. "/ABSI.txt","true")
+				writefile(DHV2BAP .. "/ABAB.txt","false")
+				section1:updateToggle("Auto Buy all Blocks")
+				ABAB = false
+			else
+				writefile(DHV2BAP .. "/ABSI.txt","false")
+			end
+		end)
+	end
 
-	section2:addToggle("Auto Buy Tools",false,function(bool)
-		ABT = bool
-	end)
+	if readfile(DHV2BAP .. "/ABT.txt") == "true" then
+		section2:addToggle("Auto Buy Tools",true,function(bool)
+			ABT = bool
+			if ABT == true then
+				writefile(DHV2BAP .. "/ABT.txt","true")
+			else
+				writefile(DHV2BAP .. "/ABT.txt","false")
+			end
+		end)
+		ABT = true
+	else
+		section2:addToggle("Auto Buy Tools",false,function(bool)
+			ABT = bool
+			if ABT == true then
+				writefile(DHV2BAP .. "/ABT.txt","true")
+			else
+				writefile(DHV2BAP .. "/ABT.txt","false")
+			end
+		end)
+		ABT = false
+	end
 
 	spawn(function()
 		while wait() do
-			if ABSI then
-				if bsi ~= 0 then
+			if ABAB then
+				for i, v in ipairs(BuyBs) do
+					local args = {v}
+					game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("ShopEvents"):WaitForChild("BuyBlock"):FireServer(unpack(args))
+				end
+				task.wait()
+			elseif ABSI then
+				if bsi ~= " " then
 					for i, v in ipairs(BuyBs) do
 						if v == bsi then
 							local args = {v}
@@ -672,12 +1160,6 @@ local function BuildaPlane()
 				else
 					notify("Please select the block you want to buy!")
 				end
-			elseif ABAB then
-				for i, v in ipairs(BuyBs) do
-					local args = {v}
-					game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("ShopEvents"):WaitForChild("BuyBlock"):FireServer(unpack(args))
-				end
-				task.wait()
 			end
 		end
 	end)
@@ -698,6 +1180,15 @@ local function BuildaPlane()
 	local page4 = NoobieDoge:addPage("Auto Farm", 123995398327937)
 	local section1 = page4:addSection("Auto Farm")
 	local section2 = page4:addSection("Auto Farm Settings")
+	local section3 = page4:addSection("Misc")
+
+	local Farm
+	local HIEJ = tonumber(readfile(DHV2BAP .. "/HIEJ.txt"))
+	local Jumps = tonumber(readfile(DHV2BAP .. "/Jumps.txt"))
+	local FJHI 
+	local FJHIN = tonumber(readfile(DHV2BAP .. "/FJHIN.txt"))
+	local RALT
+	local RALTN = tonumber(readfile(DHV2BAP .. "/RALTN.txt"))
 
 	local function FARM()
 		local vehicle = getVehicle()
@@ -734,41 +1225,114 @@ local function BuildaPlane()
 		end
 	end
 
-	Jumps = 20
-	HIEJ = 20
-	FJHI = true
-	FJHIN = 1000
+	if readfile(DHV2BAP .. "/Farm.txt") == "true" then
+		Farm = true
+		section1:addToggle("Auto Farm",true,function(bool)
+			Farm = bool
+			if Farm then
+				writefile(DHV2BAP .. "/Farm.txt","true")
+				FARM()
+			else
+				writefile(DHV2BAP .. "/Farm.txt","false")
+			end
+		end)
+	else
+		Farm = false
+		section1:addToggle("Auto Farm",false,function(bool)
+			Farm = bool
+			if Farm then
+				writefile(DHV2BAP .. "/Farm.txt","true")
+				FARM()
+			else
+				writefile(DHV2BAP .. "/Farm.txt","false")
+			end
+		end)
+	end
 
-	section1:addToggle("Auto Farm",false,function(bool)
-		Farm = bool
-		if Farm then
-			FARM()
-		end
-	end)
-
-	section2:addSlider("Height increase each jump", 20, 0, 100000, function(value)
+	section2:addSlider("Height increase each jump", tonumber(readfile(DHV2BAP .. "/HIEJ.txt")), 0, 100000, function(value)
 		notify("Height increase each jump: " .. HIEJ)
 		HIEJ = value
+		writefile(DHV2BAP .. "/HIEJ.txt",tostring(HIEJ))
 	end)
 
-	section2:addSlider("Jump Amount", 20, 1, 960, function(value)
+	section2:addSlider("Jump Amount", tonumber(readfile(DHV2BAP .. "/Jumps.txt")), 1, 960, function(value)
 		notify("Jumps before recieving cash: " .. Jumps)
 		Jumps = value
+		writefile(DHV2BAP .. "/Jumps.txt",tostring(Jumps))
 	end)
 
-	section2:addToggle("Increase height after first jump",true,function(bool)
-		FJHI = bool
-	end)
+	if readfile(DHV2BAP .. "/FJHI.txt") == "true" then
+		FJHI = true
+		section2:addToggle("Increase height after first jump",true,function(bool)
+			FJHI = bool
+			if FJHI == true then
+				writefile(DHV2BAP .. "/FJHI.txt","true")
+			else
+				writefile(DHV2BAP .. "/FJHI.txt","false")
+			end
+		end)
+	else
+		FJHI = false
+		section2:addToggle("Increase height after first jump",false,function(bool)
+			FJHI = bool
+			if FJHI == true then
+				writefile(DHV2BAP .. "/FJHI.txt","true")
+			else
+				writefile(DHV2BAP .. "/FJHI.txt","false")
+			end
+		end)
+	end
 
-	section2:addSlider("First Jump Height Increase",1000, 0, 100000, function(value)
+	section2:addSlider("First Jump Height Increase",tonumber(readfile(DHV2BAP .. "/FJHIN.txt")), 0, 100000, function(value)
 		notify("First Jump Height Increase: " .. FJHIN)
 		FJHIN = value
+		writefile(DHV2BAP .. "/FJHIN.txt",tostring(FJHIN))
+	end)
+
+	if readfile(DHV2BAP .. "/RALT.txt") == "true" then
+		RALT = true
+		section3:addToggle("Rejoin after multiple tries",true,function(bool)
+			RALT = bool
+			if RALT == true then
+				writefile(DHV2BAP .. "/RALT.txt","true")
+			else
+				writefile(DHV2BAP .. "/RALT.txt","false")
+			end
+		end)
+	else
+		RALT = false
+		section3:addToggle("Rejoin after multiple tries",false,function(bool)
+			RALT = bool
+			if RALT == true then
+				writefile(DHV2BAP .. "/RALT.txt","true")
+			else
+				writefile(DHV2BAP .. "/RALT.txt","false")
+			end
+		end)
+	end
+
+	section3:addSlider("Rejoin after farming armount", tonumber(readfile(DHV2BAP .. "/RALTN.txt")), 5, 7200, function(value)
+		notify("Jumps before recieving cash: " .. RALTN)
+		RALTN = value
+		writefile(DHV2BAP .. "/RALTN.txt",tostring(RALTN))
 	end)
 
 	player.CharacterAdded:Connect(function()
 		wait(1)
 		if Farm then
 			FARM()
+		end
+	end)
+
+	farmtriesRecorded = -1
+	player.CharacterAdded:Connect(function()
+		farmtriesRecorded = farmtriesRecorded +1
+		print(RALTN - farmtriesRecorded)
+		if farmtriesRecorded == RALTN and RALT then
+			notify("Rejoining to prevent potential crashes")
+			local TS = game:GetService("TeleportService")
+			local Player = game.Players.LocalPlayer
+			TS:Teleport(game.PlaceId, Player)
 		end
 	end)
 
@@ -857,6 +1421,49 @@ local function BuildaPlane()
 		TextButtonText.TextWrapped = true
 
 		function ResetYES()
+			local DHV2BAP = "DogeHubV2/BuildaPlane"
+			makefolder(DHV2BAP)
+			local Universal = DHV2BAP .. "/Universal"
+			makefolder(Universal)
+			writefile(Universal .. "/EnabledSliderPowa.txt","false")
+			writefile(Universal .. "/sliderspeed.txt","16")
+			writefile(Universal .. "/sliderjump.txt","50")
+			writefile(Universal .. "/slidergravity.txt","196.2")
+			writefile(Universal .. "/CtrlClickTeePee.txt","false")
+			writefile(Universal .. "/infjumptoggle.txt","false")
+			writefile(Universal .. "/noclips.txt","false")
+			writefile(Universal .. "/sliderfly.txt","201")
+			writefile(Universal .. "/Pfly.txt","false")
+			writefile(Universal .. "/ripthatguy.txt","Player's Name")
+			writefile(Universal .. "/trackthatguy.txt","false")
+			writefile(DHV2BAP .. "/HidePlane.txt","false")
+			writefile(DHV2BAP .. "/Height.txt","20")
+			writefile(DHV2BAP .. "/ABAB.txt","false")
+			writefile(DHV2BAP .. "/bsi.txt"," ")
+			writefile(DHV2BAP .. "/ABSI.txt","false")
+			writefile(DHV2BAP .. "/ABT.txt","false")
+			writefile(DHV2BAP .. "/Farm.txt","false")
+			writefile(DHV2BAP .. "/Jumps.txt","20")
+			writefile(DHV2BAP .. "/HIEJ.txt","20")
+			writefile(DHV2BAP .. "/FJHI.txt","true")
+			writefile(DHV2BAP .. "/FJHIN.txt","1000")
+			writefile(DHV2BAP .. "/RALT.txt","true")
+			writefile(DHV2BAP .. "/RALTN.txt","100")
+
+			EnabledSliderPowa = false
+			CtrlClickTeePee = false
+			infjumptoggle = false
+			noclips = false
+			Pfly = false
+			trackthatguy = false
+			HideP = false
+			ABAB = false
+			ABSI = false
+			ABT = false
+			Farm = false
+			FJHI = true
+			RALT = true
+
 			for i,v in pairs(player.PlayerGui:GetChildren()) do
 				if v.Name == "ScreenGui" then
 					v:Destroy()
@@ -870,7 +1477,7 @@ local function BuildaPlane()
 			end
 			notify("Do not reset script too many times!")
 			wait(.1)
-			Universal()
+			BuildaPlane()
 		end
 		TextButton.MouseButton1Click:connect(ResetYES)
 		TextButtonText.MouseButton1Click:connect(ResetYES)
@@ -1051,6 +1658,9 @@ local function BuildaPlane()
 		wait()
 		notify("Discord link copied to clipboard!")
 	end)
+
+	wait(.2)
+	player.Character:BreakJoints() --To trigger auto farm
 
 	gameplaceexecuted = "Build a Plane"
 
