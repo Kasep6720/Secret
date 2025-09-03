@@ -1291,7 +1291,7 @@ local function BuildaPlane()
 
 	if readfile(DHV2BAP .. "/RALT.txt") == "true" then
 		RALT = true
-		section3:addToggle("Rejoin after multiple tries",true,function(bool)
+		section3:addToggle("Rejoin after multiple launches",true,function(bool)
 			RALT = bool
 			if RALT == true then
 				writefile(DHV2BAP .. "/RALT.txt","true")
@@ -1301,7 +1301,7 @@ local function BuildaPlane()
 		end)
 	else
 		RALT = false
-		section3:addToggle("Rejoin after multiple tries",false,function(bool)
+		section3:addToggle("Rejoin after multiple launches",false,function(bool)
 			RALT = bool
 			if RALT == true then
 				writefile(DHV2BAP .. "/RALT.txt","true")
@@ -1311,7 +1311,7 @@ local function BuildaPlane()
 		end)
 	end
 
-	section3:addSlider("Rejoin after farming armount", tonumber(readfile(DHV2BAP .. "/RALTN.txt")), 5, 7200, function(value)
+	section3:addSlider("Rejoin after launching armount", tonumber(readfile(DHV2BAP .. "/RALTN.txt")), 5, 7200, function(value)
 		notify("Jumps before recieving cash: " .. RALTN)
 		RALTN = value
 		writefile(DHV2BAP .. "/RALTN.txt",tostring(RALTN))
