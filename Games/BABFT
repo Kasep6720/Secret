@@ -427,7 +427,7 @@ local function BABFT()
 		sliderfly = value
 		writefile(Universal .. "/sliderfly.txt",tostring(sliderfly))
 	end)
-	sliderfly = 101
+	sliderfly = tonumber(readfile(Universal .. "/sliderfly.txt"))
 	if readfile(Universal .. "/Pfly.txt") == "true" then
 		section2:addToggle("Press P to fly",true,function(bool)
 			Pfly = bool
