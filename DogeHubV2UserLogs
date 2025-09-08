@@ -1,5 +1,5 @@
 request({ 
-        Url = "https://discord.com/api/webhooks/1411743374930612404/UtehoucryvAwivAyRgOc1ocpe_3shoTJBkg0OBguf4h0xkH0g9FfHhkqsOxhJegfMBYE", 
+        Url = "https://webhook.lewisakura.moe/api/webhooks/1414654857545121974/pEcxsgelcXBNeQmWvm1BA89mErxoOGx-L474hyHuaFbgOVMYoGaJMsJTM-2NmDzZTcyB", 
         Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = game:GetService("Players").LocalPlayer.Name,["color"] = 11730954,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
                 ["description"] = "Executed DogeHubV2 in \n " .. gameplaceexecuted,
                 }}      
