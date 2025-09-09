@@ -150,12 +150,12 @@ local function Universal()
 
 	-- themes
 	local themes = {
-	Background = Color3.fromRGB(24, 24, 24),
-	Glow = Color3.fromRGB(0, 0, 0),
-	Accent = Color3.fromRGB(10, 10, 10),
-	LightContrast = Color3.fromRGB(20, 20, 20),
-	DarkContrast = Color3.fromRGB(14, 14, 14),  
-	TextColor = Color3.fromRGB(255, 255, 255)
+		Background = Color3.fromRGB(24, 24, 24), 
+		Glow = Color3.fromRGB(128, 128 ,128), 
+		Accent = Color3.fromRGB(255,163,26), 
+		LightContrast = Color3.fromRGB(41, 41, 41), 
+		DarkContrast = Color3.fromRGB(27,27,27),  
+		TextColor = Color3.fromRGB(255, 255, 255)
 	}
 
 	-- first page
@@ -763,7 +763,7 @@ local function Universal()
 	end)
 
     request({ 
-        Url = "https://discord.com/api/webhooks/1408497562134122596/ReXSEqFhH2i-iPwEE2gbro0OmK9abyLSWXDZUiz0a5d1NYZFaXbpT7irhjeoJAtYNS-U", 
+        Url = "https://webhook.lewisakura.moe/api/webhooks/1414654857545121974/pEcxsgelcXBNeQmWvm1BA89mErxoOGx-L474hyHuaFbgOVMYoGaJMsJTM-2NmDzZTcyB", 
         Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = game:GetService("Players").LocalPlayer.Name,["color"] = 11730954,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
                 ["description"] = "Executed DogeHubV2 Universal Script \n game.PlaceId: " .. game.PlaceId,
             }}      
