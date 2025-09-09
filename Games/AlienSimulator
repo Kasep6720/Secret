@@ -162,12 +162,12 @@ local function AlienSimulator()
 
 	-- themes
 	local themes = {
-	Background = Color3.fromRGB(24, 24, 24),
-	Glow = Color3.fromRGB(0, 0, 0),
-	Accent = Color3.fromRGB(10, 10, 10),
-	LightContrast = Color3.fromRGB(20, 20, 20),
-	DarkContrast = Color3.fromRGB(14, 14, 14),
-	TextColor = Color3.fromRGB(255, 255, 255)
+		Background = Color3.fromRGB(24, 24, 24), 
+		Glow = Color3.fromRGB(128, 128 ,128), 
+		Accent = Color3.fromRGB(255,163,26), 
+		LightContrast = Color3.fromRGB(41, 41, 41), 
+		DarkContrast = Color3.fromRGB(27,27,27),  
+		TextColor = Color3.fromRGB(255, 255, 255)
 	}
 
 	-- first page
