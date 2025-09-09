@@ -997,14 +997,14 @@ local function ShindoInfSpin()
   local NoobieDoge = library.new("DogeHub V2", 5176336983)
 
   -- themes
-  local themes = {
-  Background = Color3.fromRGB(24, 24, 24),
-  Glow = Color3.fromRGB(0, 0, 0),
-  Accent = Color3.fromRGB(10, 10, 10),
-  LightContrast = Color3.fromRGB(20, 20, 20),
-  DarkContrast = Color3.fromRGB(14, 14, 14),
-  TextColor = Color3.fromRGB(255, 255, 255)
-  }
+local themes = {
+	Background = Color3.fromRGB(24, 24, 24), 
+	Glow = Color3.fromRGB(128, 128 ,128), 
+	Accent = Color3.fromRGB(255,163,26), 
+	LightContrast = Color3.fromRGB(41, 41, 41), 
+	DarkContrast = Color3.fromRGB(27,27,27),  
+	TextColor = Color3.fromRGB(255, 255, 255)
+}
 
   -- first page
   local page1 = NoobieDoge:addPage("Infinite Spin", 5176336983)
@@ -3160,14 +3160,14 @@ local function ShindoMyHome()
   local NoobieDoge = library.new("DogeHub V2", 10567878127)
 
   -- themes
-  local themes = {
-  Background = Color3.fromRGB(24, 24, 24),
-  Glow = Color3.fromRGB(0, 0, 0),
-  Accent = Color3.fromRGB(10, 10, 10),
-  LightContrast = Color3.fromRGB(20, 20, 20),
-  DarkContrast = Color3.fromRGB(14, 14, 14),
-  TextColor = Color3.fromRGB(255, 255, 255)
-  }
+local themes = {
+	Background = Color3.fromRGB(24, 24, 24), 
+	Glow = Color3.fromRGB(128, 128 ,128), 
+	Accent = Color3.fromRGB(255,163,26), 
+	LightContrast = Color3.fromRGB(41, 41, 41), 
+	DarkContrast = Color3.fromRGB(27,27,27),  
+	TextColor = Color3.fromRGB(255, 255, 255)
+}
 
   -- first page
   local page1 = NoobieDoge:addPage("Universal", 10567878127)
@@ -4043,14 +4043,14 @@ local function ShindoDungeons()
   local NoobieDoge = library.new("DogeHub V2", 5013109572)
 
   -- themes
-  local themes = {
-  Background = Color3.fromRGB(24, 24, 24),
-  Glow = Color3.fromRGB(0, 0, 0),
-  Accent = Color3.fromRGB(10, 10, 10),
-  LightContrast = Color3.fromRGB(20, 20, 20),
-  DarkContrast = Color3.fromRGB(14, 14, 14),
-  TextColor = Color3.fromRGB(255, 255, 255)
-  }
+local themes = {
+	Background = Color3.fromRGB(24, 24, 24), 
+	Glow = Color3.fromRGB(128, 128 ,128), 
+	Accent = Color3.fromRGB(255,163,26), 
+	LightContrast = Color3.fromRGB(41, 41, 41), 
+	DarkContrast = Color3.fromRGB(27,27,27),  
+	TextColor = Color3.fromRGB(255, 255, 255)
+}
 
   -- first page
   local page1 = NoobieDoge:addPage("Universal", 5012544693)
@@ -5004,14 +5004,14 @@ local function ShindoBossBattle()
   local NoobieDoge = library.new("DogeHub V2", 5013109572)
 
   -- themes
-  local themes = {
-  Background = Color3.fromRGB(24, 24, 24),
-  Glow = Color3.fromRGB(0, 0, 0),
-  Accent = Color3.fromRGB(10, 10, 10),
-  LightContrast = Color3.fromRGB(20, 20, 20),
-  DarkContrast = Color3.fromRGB(14, 14, 14),
-  TextColor = Color3.fromRGB(255, 255, 255)
-  }
+local themes = {
+	Background = Color3.fromRGB(24, 24, 24), 
+	Glow = Color3.fromRGB(128, 128 ,128), 
+	Accent = Color3.fromRGB(255,163,26), 
+	LightContrast = Color3.fromRGB(41, 41, 41), 
+	DarkContrast = Color3.fromRGB(27,27,27),  
+	TextColor = Color3.fromRGB(255, 255, 255)
+}
 
   -- first page
   local page1 = NoobieDoge:addPage("Universal", 5012544693)
@@ -5984,14 +5984,14 @@ local function ShindoEventBoss()
   local NoobieDoge = library.new("DogeHub V2", 5013109572)
 
   -- themes
-  local themes = {
-  Background = Color3.fromRGB(24, 24, 24),
-  Glow = Color3.fromRGB(0, 0, 0),
-  Accent = Color3.fromRGB(10, 10, 10),
-  LightContrast = Color3.fromRGB(20, 20, 20),
-  DarkContrast = Color3.fromRGB(14, 14, 14),
-  TextColor = Color3.fromRGB(255, 255, 255)
-  }
+local themes = {
+	Background = Color3.fromRGB(24, 24, 24), 
+	Glow = Color3.fromRGB(128, 128 ,128), 
+	Accent = Color3.fromRGB(255,163,26), 
+	LightContrast = Color3.fromRGB(41, 41, 41), 
+	DarkContrast = Color3.fromRGB(27,27,27),  
+	TextColor = Color3.fromRGB(255, 255, 255)
+}
 
   -- first page
   local page1 = NoobieDoge:addPage("Universal", 5012544693)
@@ -7263,14 +7263,14 @@ local function ShindoBoruVSKamaki()
   local NoobieDoge = library.new("DogeHub V2", 5013109572)
 
   -- themes
-  local themes = {
-  Background = Color3.fromRGB(24, 24, 24),
-  Glow = Color3.fromRGB(0, 0, 0),
-  Accent = Color3.fromRGB(10, 10, 10),
-  LightContrast = Color3.fromRGB(20, 20, 20),
-  DarkContrast = Color3.fromRGB(14, 14, 14),
-  TextColor = Color3.fromRGB(255, 255, 255)
-  }
+local themes = {
+	Background = Color3.fromRGB(24, 24, 24), 
+	Glow = Color3.fromRGB(128, 128 ,128), 
+	Accent = Color3.fromRGB(255,163,26), 
+	LightContrast = Color3.fromRGB(41, 41, 41), 
+	DarkContrast = Color3.fromRGB(27,27,27),  
+	TextColor = Color3.fromRGB(255, 255, 255)
+}
 
   -- first page
   local page1 = NoobieDoge:addPage("Universal", 5012544693)
@@ -10076,14 +10076,14 @@ local function ShindoMain()
   local NoobieDoge = library.new("DogeHub V2", 5013109572)
 
   -- themes
-  local themes = {
-  Background = Color3.fromRGB(24, 24, 24),
-  Glow = Color3.fromRGB(0, 0, 0),
-  Accent = Color3.fromRGB(10, 10, 10),
-  LightContrast = Color3.fromRGB(20, 20, 20),
-  DarkContrast = Color3.fromRGB(14, 14, 14),
-  TextColor = Color3.fromRGB(255, 255, 255)
-  }
+local themes = {
+	Background = Color3.fromRGB(24, 24, 24), 
+	Glow = Color3.fromRGB(128, 128 ,128), 
+	Accent = Color3.fromRGB(255,163,26), 
+	LightContrast = Color3.fromRGB(41, 41, 41), 
+	DarkContrast = Color3.fromRGB(27,27,27),  
+	TextColor = Color3.fromRGB(255, 255, 255)
+}
   
   -- first page
   local page1 = NoobieDoge:addPage("Universal", 5012544693)
