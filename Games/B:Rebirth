@@ -77,6 +77,59 @@ end
 if _G.dAAcG3fvBqVoPzVnAFk == nil then 
 	_G.dAAcG3fvBqVoPzVnAFk = "" 
 end 
+
+local player = game.Players.LocalPlayer
+local TopBar = game:GetService("CoreGui").TopBarApp.TopBarApp.UnibarLeftFrame
+local DHV2Frame = Instance.new("ImageLabel")
+local TextLabelFrame = Instance.new("ImageLabel")
+local DHV2TextButton = Instance.new("ImageButton")
+local DHV2TextButtonText = Instance.new("TextButton")
+
+DHV2Frame.Parent = TopBar
+DHV2Frame.Name = "DogeHub V2 Toggle"
+DHV2Frame.BackgroundTransparency = 1
+DHV2Frame.Position = UDim2.new(-0.03, 0, 1.1, 0)
+DHV2Frame.Size = UDim2.new(0, 40, 0, 40)
+DHV2Frame.Image = "rbxassetid://4641149554"
+DHV2Frame.ImageColor3 = Color3.fromRGB(24, 24, 24)
+DHV2Frame.ScaleType = Enum.ScaleType.Slice
+DHV2Frame.SliceCenter = Rect.new(4, 4, 296, 296)
+DHV2Frame.Active = true
+DHV2Frame.Visible = false
+
+TextLabelFrame.Parent = DHV2Frame
+TextLabelFrame.Name = "TopBar"
+TextLabelFrame.BackgroundTransparency = 1
+TextLabelFrame.ClipsDescendants = true
+TextLabelFrame.Size = UDim2.new(0, 40, 0, 8)
+TextLabelFrame.ZIndex = 2
+TextLabelFrame.Image = "rbxassetid://4595286933"
+TextLabelFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
+TextLabelFrame.ScaleType = Enum.ScaleType.Slice
+TextLabelFrame.SliceCenter = Rect.new(4, 4, 296, 296)
+
+DHV2TextButton.Parent = DHV2Frame
+DHV2TextButton.Name = "Button"
+DHV2TextButton.BackgroundTransparency = 1
+DHV2TextButton.Position = UDim2.new(0, 0, 0, 0)
+DHV2TextButton.BorderSizePixel = 0
+DHV2TextButton.Size = UDim2.new(0, 40, 0, 40)
+DHV2TextButton.ZIndex = 2
+DHV2TextButton.ScaleType = Enum.ScaleType.Slice
+DHV2TextButton.SliceCenter = Rect.new(2, 2, 298, 298)
+
+DHV2TextButtonText.Parent = DHV2TextButton
+DHV2TextButtonText.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+DHV2TextButtonText.BackgroundTransparency = 1
+DHV2TextButtonText.ZIndex = 3
+DHV2TextButtonText.Size = UDim2.new(0, 40, 0, 40)
+DHV2TextButtonText.Font = Enum.Font.TitilliumWeb
+DHV2TextButtonText.Text = "+"
+DHV2TextButtonText.TextColor3 = Color3.fromRGB(200, 200, 200)
+DHV2TextButtonText.TextScaled = true
+DHV2TextButtonText.TextSize = 10.000
+DHV2TextButtonText.TextWrapped = true
+
 function notify(a,b,c)
 	local d=c or function()return end;
 	local e=b or false;
@@ -1303,6 +1356,21 @@ local function BRebirth()
 	print("Changed Keybind")
 	end)
 
+	settings:addToggle("Show Mobile Toggle Button",false,function(bool)
+		SMTB = bool
+		if SMTB == true then
+			DHV2Frame.Visible = true
+		else
+			DHV2Frame.Visible = false
+		end
+	end)
+
+	function ToggleGUI()
+		NoobieDoge:toggle()
+	end
+	DHV2TextButton.MouseButton1Click:connect(ToggleGUI)
+	DHV2TextButtonText.MouseButton1Click:connect(ToggleGUI)
+	
 	for theme, color in pairs(themes) do -- all in one theme changer, i know, im cool
 		colors:addColorPicker(theme, color, function(color3)
 			NoobieDoge:setTheme(theme, color3)
