@@ -1043,6 +1043,16 @@ local function ShindoInfSpin()
   if isfile(DHV2SL2MMF .. "/WebhookPingEveryone.txt") == false then
 	writefile(DHV2SL2MMF .. "/WebhookPingEveryone.txt","false")
   end
+  local InfSpinsCount = DHV2SL2MMF .. "/InfSpinsCount"
+  if isfolder(InfSpinsCount) == false then
+	makefolder(InfSpinsCount)
+  end
+  if isfile(InfSpinsCount .. "/ResetedSpins.txt") == false then
+	writefile(InfSpinsCount .. "/ResetedSpins.txt","false")
+  end
+  if isfile(InfSpinsCount .. "/CountSpins.txt") == false then
+	writefile(InfSpinsCount .. "/CountSpins.txt","0")
+  end
 
   --DogeHub V2 GUI
   local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20page%20format%20gui"))()
@@ -1192,11 +1202,14 @@ local function ShindoInfSpin()
 	TextButtonText.MouseButton1Click:connect(X)
   end)
 
-  section2:addButton("Reset Spins NOW",function()
-	player.startevent:FireServer("band", "\128")
-	wait()
-	game:GetService("TeleportService"):Teleport(game.PlaceId, player)
-  end)
+	local originalspins = player.statz.spins.Value
+	print("Original spins amount: " .. originalspins)
+	section2:addButton("Reset Spins NOW",function()
+		writefile(InfSpinsCount .. "/CountSpins.txt",tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt")+originalspins-player.statz.spins.Value)))
+		player.startevent:FireServer("band", "\128")
+		wait()
+		game:GetService("TeleportService"):Teleport(game.PlaceId, player)
+	end)
 
   section2:addButton("Save Spins Data",function()
 	SAVEDATA()
@@ -1257,7 +1270,7 @@ local function ShindoInfSpin()
 	  writefile(DHV2SL2MMF .. "/resetspinswhenthisnumberreached.txt",tostring(resetspinswhenthisnumberreached))
 	end)
   end
-  resetspinswhenthisnumberreached = tonumber(readfile(DHV2SL2MMF .. "/resetspinswhenthisnumberreached.txt"))
+  	resetspinswhenthisnumberreached = tonumber(readfile(DHV2SL2MMF .. "/resetspinswhenthisnumberreached.txt"))
 	print(resetspinswhenthisnumberreached)
 
 
@@ -1614,7 +1627,7 @@ local function ShindoInfSpin()
 	AutoSpinBL1 = false
   end
 
-  if readfile(DHV2SL2MMF .. "/AutoSpinBL1.txt") == "true" then
+  if readfile(DHV2SL2MMF .. "/AutoSpinBL2.txt") == "true" then
 	section2:addToggle("Spin Slot 2",true,function(bool)
 	  AutoSpinBL2 = bool
 	  if AutoSpinBL2 == true then
@@ -1952,6 +1965,7 @@ local function ShindoInfSpin()
 	writefile(DHV2SL2MMF .. "/WebHook.txt","WebHook")
 	writefile(DHV2SL2MMF .. "/WebhookPingEveryone.txt","false")
 	wait()
+	writefile(InfSpinsCount .. "/CountSpins.txt",tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt")+originalspins-player.statz.spins.Value)))
 	player.startevent:FireServer("band", "\128")
 	wait()
 	game:GetService('TeleportService'):Teleport(game.PlaceId, player)
@@ -2288,6 +2302,12 @@ local function ShindoInfSpin()
 	end
   end)
 
+  	--count total spins spinned
+  	if readfile(InfSpinsCount .. "/ResetedSpins.txt") == "true" then
+		writefile(InfSpinsCount .. "/CountSpins.txt",tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt"))+player.statz.spins.Value))
+		writefile(InfSpinsCount .. "/ResetedSpins.txt","false")
+	end
+
   gameplaceexecuted = "Shindo Life Main Menu"
 
   notify("Starting up shortly") wait(.5) notify("5") wait(1) notify("4") wait(1) notify("3") wait(1) notify("2") wait(1) notify("1") wait(1)
@@ -2401,6 +2421,9 @@ local function ShindoInfSpin()
 	  else
 		if Autorejoin == true then
 		  --player.statz.spins:Destroy()
+		  if readfile(InfSpinsCount .. "/ResetedSpins.txt") == "false" then
+				writefile(InfSpinsCount .. "/ResetedSpins.txt","true")
+			end
 		  player.startevent:FireServer("band", "\128")
 		  wait()
 		  game:GetService('TeleportService'):Teleport(game.PlaceId, player)
@@ -2473,6 +2496,9 @@ local function ShindoInfSpin()
 	  else
 		if Autorejoin == true then
 		  --player.statz.spins:Destroy()
+		  if readfile(InfSpinsCount .. "/ResetedSpins.txt") == "false" then
+				writefile(InfSpinsCount .. "/ResetedSpins.txt","true")
+			end
 		  player.startevent:FireServer("band", "\128")
 		  wait()
 		  game:GetService('TeleportService'):Teleport(game.PlaceId, player)
@@ -2545,6 +2571,9 @@ local function ShindoInfSpin()
 	  else
 		if Autorejoin == true then
 		  --player.statz.spins:Destroy()
+		  if readfile(InfSpinsCount .. "/ResetedSpins.txt") == "false" then
+				writefile(InfSpinsCount .. "/ResetedSpins.txt","true")
+			end
 		  player.startevent:FireServer("band", "\128")
 		  wait()
 		  game:GetService('TeleportService'):Teleport(game.PlaceId, player)
@@ -2617,6 +2646,9 @@ local function ShindoInfSpin()
 	  else
 		if Autorejoin == true then
 		  --player.statz.spins:Destroy()
+		  if readfile(InfSpinsCount .. "/ResetedSpins.txt") == "false" then
+				writefile(InfSpinsCount .. "/ResetedSpins.txt","true")
+			end
 		  player.startevent:FireServer("band", "\128")
 		  wait()
 		  game:GetService('TeleportService'):Teleport(game.PlaceId, player)
@@ -2689,6 +2721,9 @@ local function ShindoInfSpin()
 	  else
 		if Autorejoin == true then
 		  --player.statz.spins:Destroy()
+		  if readfile(InfSpinsCount .. "/ResetedSpins.txt") == "false" then
+				writefile(InfSpinsCount .. "/ResetedSpins.txt","true")
+			end
 		  player.startevent:FireServer("band", "\128")
 		  wait()
 		  game:GetService('TeleportService'):Teleport(game.PlaceId, player)
@@ -2761,6 +2796,9 @@ local function ShindoInfSpin()
 	  else
 		if Autorejoin == true then
 		  --player.statz.spins:Destroy()
+		  if readfile(InfSpinsCount .. "/ResetedSpins.txt") == "false" then
+				writefile(InfSpinsCount .. "/ResetedSpins.txt","true")
+			end
 		  player.startevent:FireServer("band", "\128")
 		  wait()
 		  game:GetService('TeleportService'):Teleport(game.PlaceId, player)
@@ -2833,6 +2871,9 @@ local function ShindoInfSpin()
 	  else
 		if Autorejoin == true then
 		  --player.statz.spins:Destroy()
+		  if readfile(InfSpinsCount .. "/ResetedSpins.txt") == "false" then
+				writefile(InfSpinsCount .. "/ResetedSpins.txt","true")
+			end
 		  player.startevent:FireServer("band", "\128")
 		  wait()
 		  game:GetService('TeleportService'):Teleport(game.PlaceId, player)
@@ -2905,6 +2946,9 @@ local function ShindoInfSpin()
 	  else
 		if Autorejoin == true then
 		  --player.statz.spins:Destroy()
+		  if readfile(InfSpinsCount .. "/ResetedSpins.txt") == "false" then
+				writefile(InfSpinsCount .. "/ResetedSpins.txt","true")
+			end
 		  player.startevent:FireServer("band", "\128")
 		  wait()
 		  game:GetService('TeleportService'):Teleport(game.PlaceId, player)
@@ -2973,10 +3017,13 @@ local function ShindoInfSpin()
 		end
 	  else
 		if Autorejoin == true then
-		  --player.statz.spins:Destroy()
-		  player.startevent:FireServer("band", "\128")
-		  wait()
-		  game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+		  	--player.statz.spins:Destroy()
+		  	if readfile(InfSpinsCount .. "/ResetedSpins.txt") == "false" then
+				writefile(InfSpinsCount .. "/ResetedSpins.txt","true")
+			end
+		  	player.startevent:FireServer("band", "\128")
+		  	wait()
+		  	game:GetService('TeleportService'):Teleport(game.PlaceId, player)
 		end
 	  end
 	end
@@ -3043,6 +3090,9 @@ local function ShindoInfSpin()
 	  else
 		if Autorejoin == true then
 		  --player.statz.spins:Destroy()
+		  	if readfile(InfSpinsCount .. "/ResetedSpins.txt") == "false" then
+				writefile(InfSpinsCount .. "/ResetedSpins.txt","true")
+			end
 		  player.startevent:FireServer("band", "\128")
 		  wait()
 		  game:GetService('TeleportService'):Teleport(game.PlaceId, player)
@@ -3122,6 +3172,9 @@ local function ShindoInfSpin()
 		else
 		  if Autorejoin == true then
 			--player.statz.spins:Destroy()
+			if readfile(InfSpinsCount .. "/ResetedSpins.txt") == "false" then
+				writefile(InfSpinsCount .. "/ResetedSpins.txt","true")
+			end
 			player.startevent:FireServer("band", "\128")
 			wait()
 			game:GetService('TeleportService'):Teleport(game.PlaceId, player)
