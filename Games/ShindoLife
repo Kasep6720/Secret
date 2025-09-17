@@ -4314,15 +4314,628 @@ end
 
 --Shindo Dungeon Selection
 local function ShindoDungeonSelection()
-  notify("Dungeon will be chosen randomly")
-  wait()
-  local DungeonsRandom = math.random(1, 12)
-  wait(2)
-  notify("Dungeon chosen: " .. player.PlayerGui.teleport.serverframe.top.BossTab[DungeonsRandom].icon.lvl.Text)
-  wait(1)
-  local args = {[1] = "dungeon" .. DungeonsRandom}
-  player.pressplay:FireServer(unpack(args))
-  wait()
+	--Workspace stuff
+	local DHV2SL2DSF = "DogeHubV2/ShindoLife/DungeonSelection"
+	if isfolder(DHV2SL2DSF) == false then
+		makefolder(DHV2SL2DSF)
+	end
+	if isfile(DHV2SL2DSF .. "/StartDungeon.txt") == false then
+		writefile(DHV2SL2DSF .. "/StartDungeon.txt","false")
+	end
+	if isfile(DHV2SL2DSF .. "/TrainingGrounds.txt") == false then
+		writefile(DHV2SL2DSF .. "/TrainingGrounds.txt","false")
+	end
+	if isfile(DHV2SL2DSF .. "/DESEXAMS.txt") == false then
+		writefile(DHV2SL2DSF .. "/DESEXAMS.txt","false")
+	end
+	if isfile(DHV2SL2DSF .. "/SAMURAIBRIDGE.txt") == false then
+		writefile(DHV2SL2DSF .. "/SAMURAIBRIDGE.txt","false")
+	end
+	if isfile(DHV2SL2DSF .. "/SENEXAMS.txt") == false then
+		writefile(DHV2SL2DSF .. "/SENEXAMS.txt","false")
+	end
+	if isfile(DHV2SL2DSF .. "/NARUMAKIBRIDGE.txt") == false then
+		writefile(DHV2SL2DSF .. "/NARUMAKIBRIDGE.txt","false")
+	end
+	if isfile(DHV2SL2DSF .. "/EMBERHIDEOUT.txt") == false then
+		writefile(DHV2SL2DSF .. "/EMBERHIDEOUT.txt","false")
+	end
+	if isfile(DHV2SL2DSF .. "/SOVEREIGNSUMMIT.txt") == false then
+		writefile(DHV2SL2DSF .. "/SOVEREIGNSUMMIT.txt","false")
+	end
+	if isfile(DHV2SL2DSF .. "/DAWNHIDEOUT.txt") == false then
+		writefile(DHV2SL2DSF .. "/DAWNHIDEOUT.txt","false")
+	end
+	if isfile(DHV2SL2DSF .. "/ShindaiValley.txt") == false then
+		writefile(DHV2SL2DSF .. "/ShindaiValley.txt","false")
+	end
+	if isfile(DHV2SL2DSF .. "/KorashiManor.txt") == false then
+		writefile(DHV2SL2DSF .. "/KorashiManor.txt","false")
+	end
+	if isfile(DHV2SL2DSF .. "/MountMaki.txt") == false then
+		writefile(DHV2SL2DSF .. "/MountMaki.txt","false")
+	end
+	if isfile(DHV2SL2DSF .. "/TynStone.txt") == false then
+		writefile(DHV2SL2DSF .. "/TynStone.txt","false")
+	end
+
+	--DogeHub V2 GUI
+	local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20page%20format%20gui"))()
+	local NoobieDoge = library.new("DogeHub V2", 5013109572)
+
+	-- themes
+	local themes = {
+		Background = Color3.fromRGB(24, 24, 24), 
+		Glow = Color3.fromRGB(128, 128 ,128), 
+		Accent = Color3.fromRGB(255,163,26), 
+		LightContrast = Color3.fromRGB(41, 41, 41), 
+		DarkContrast = Color3.fromRGB(27,27,27),  
+		TextColor = Color3.fromRGB(255, 255, 255)
+	}
+	
+	-- first page
+	local page1 = NoobieDoge:addPage("Dungeon", 7532244548)
+	local section1 = page1:addSection("Start")
+	local section2 = page1:addSection("Dungeon Selection")
+
+	section1:addButton("Start Dungeon",function()
+		StartDungeon = true
+	end)
+
+	if readfile(DHV2SL2DSF .. "/StartDungeon.txt") == "true" then
+		section1:addToggle("Auto Start Dungeon",true,function(bool)
+			StartDungeon = bool
+			if StartDungeon == true then
+				writefile(DHV2SL2DSF .. "/StartDungeon.txt","true")
+			else
+				writefile(DHV2SL2DSF .. "/StartDungeon.txt","false")
+			end
+		end)
+		StartDungeon = true
+	else
+		section1:addToggle("Auto Start Dungeon",false,function(bool)
+			StartDungeon = bool
+			if StartDungeon == true then
+				writefile(DHV2SL2DSF .. "/StartDungeon.txt","true")
+			else
+				writefile(DHV2SL2DSF .. "/StartDungeon.txt","false")
+			end
+		end)
+		StartDungeon = false
+	end
+
+	if readfile(DHV2SL2DSF .. "/TrainingGrounds.txt") == "true" then
+		section2:addToggle("Training Grounds",true,function(bool)
+			TrainingGrounds = bool
+			if TrainingGrounds == true then
+				writefile(DHV2SL2DSF .. "/TrainingGrounds.txt","true")
+			else
+				writefile(DHV2SL2DSF .. "/TrainingGrounds.txt","false")
+			end
+		end)
+		TrainingGrounds = true
+	else
+		section2:addToggle("Training Grounds",false,function(bool)
+			TrainingGrounds = bool
+			if TrainingGrounds == true then
+				writefile(DHV2SL2DSF .. "/TrainingGrounds.txt","true")
+			else
+				writefile(DHV2SL2DSF .. "/TrainingGrounds.txt","false")
+			end
+		end)
+		TrainingGrounds = false
+	end
+
+	if readfile(DHV2SL2DSF .. "/DESEXAMS.txt") == "true" then
+		section2:addToggle("DES EXAMS",true,function(bool)
+			DESEXAMS = bool
+			if DESEXAMS == true then
+				writefile(DHV2SL2DSF .. "/DESEXAMS.txt","true")
+			else
+				writefile(DHV2SL2DSF .. "/DESEXAMS.txt","false")
+			end
+		end)
+		DESEXAMS = true
+	else
+		section2:addToggle("DES EXAMS",false,function(bool)
+			DESEXAMS = bool
+			if DESEXAMS == true then
+				writefile(DHV2SL2DSF .. "/DESEXAMS.txt","true")
+			else
+				writefile(DHV2SL2DSF .. "/DESEXAMS.txt","false")
+			end
+		end)
+		DESEXAMS = false
+	end
+
+	if readfile(DHV2SL2DSF .. "/SAMURAIBRIDGE.txt") == "true" then
+		section2:addToggle("SAMURAI BRIDGE",true,function(bool)
+			SAMURAIBRIDGE = bool
+			if SAMURAIBRIDGE == true then
+				writefile(DHV2SL2DSF .. "/SAMURAIBRIDGE.txt","true")
+			else
+				writefile(DHV2SL2DSF .. "/SAMURAIBRIDGE.txt","false")
+			end
+		end)
+		SAMURAIBRIDGE = true
+	else
+		section2:addToggle("SAMURAI BRIDGE",false,function(bool)
+			SAMURAIBRIDGE = bool
+			if SAMURAIBRIDGE == true then
+				writefile(DHV2SL2DSF .. "/SAMURAIBRIDGE.txt","true")
+			else
+				writefile(DHV2SL2DSF .. "/SAMURAIBRIDGE.txt","false")
+			end
+		end)
+		SAMURAIBRIDGE = false
+	end
+
+	if readfile(DHV2SL2DSF .. "/SENEXAMS.txt") == "true" then
+		section2:addToggle("SEN EXAMS",true,function(bool)
+			SENEXAMS = bool
+			if SENEXAMS == true then
+				writefile(DHV2SL2DSF .. "/SENEXAMS.txt","true")
+			else
+				writefile(DHV2SL2DSF .. "/SENEXAMS.txt","false")
+			end
+		end)
+		SENEXAMS = true
+	else
+		section2:addToggle("SEN EXAMS",false,function(bool)
+			SENEXAMS = bool
+			if SENEXAMS == true then
+				writefile(DHV2SL2DSF .. "/SENEXAMS.txt","true")
+			else
+				writefile(DHV2SL2DSF .. "/SENEXAMS.txt","false")
+			end
+		end)
+		SENEXAMS = false
+	end
+
+	if readfile(DHV2SL2DSF .. "/NARUMAKIBRIDGE.txt") == "true" then
+		section2:addToggle("NARUMAKI BRIDGE",true,function(bool)
+			NARUMAKIBRIDGE = bool
+			if NARUMAKIBRIDGE == true then
+				writefile(DHV2SL2DSF .. "/NARUMAKIBRIDGE.txt","true")
+			else
+				writefile(DHV2SL2DSF .. "/NARUMAKIBRIDGE.txt","false")
+			end
+		end)
+		NARUMAKIBRIDGE = true
+	else
+		section2:addToggle("NARUMAKI BRIDGE",false,function(bool)
+			NARUMAKIBRIDGE = bool
+			if NARUMAKIBRIDGE == true then
+				writefile(DHV2SL2DSF .. "/NARUMAKIBRIDGE.txt","true")
+			else
+				writefile(DHV2SL2DSF .. "/NARUMAKIBRIDGE.txt","false")
+			end
+		end)
+		NARUMAKIBRIDGE = false
+	end
+
+	if readfile(DHV2SL2DSF .. "/EMBERHIDEOUT.txt") == "true" then
+		section2:addToggle("EMBER HIDEOUT",true,function(bool)
+			EMBERHIDEOUT = bool
+			if EMBERHIDEOUT == true then
+				writefile(DHV2SL2DSF .. "/EMBERHIDEOUT.txt","true")
+			else
+				writefile(DHV2SL2DSF .. "/EMBERHIDEOUT.txt","false")
+			end
+		end)
+		EMBERHIDEOUT = true
+	else
+		section2:addToggle("EMBER HIDEOUT",false,function(bool)
+			EMBERHIDEOUT = bool
+			if EMBERHIDEOUT == true then
+				writefile(DHV2SL2DSF .. "/EMBERHIDEOUT.txt","true")
+			else
+				writefile(DHV2SL2DSF .. "/EMBERHIDEOUT.txt","false")
+			end
+		end)
+		EMBERHIDEOUT = false
+	end
+
+	if readfile(DHV2SL2DSF .. "/SOVEREIGNSUMMIT.txt") == "true" then
+		section2:addToggle("SOVEREIGN SUMMIT",true,function(bool)
+			SOVEREIGNSUMMIT = bool
+			if SOVEREIGNSUMMIT == true then
+				writefile(DHV2SL2DSF .. "/SOVEREIGNSUMMIT.txt","true")
+			else
+				writefile(DHV2SL2DSF .. "/SOVEREIGNSUMMIT.txt","false")
+			end
+		end)
+		SOVEREIGNSUMMIT = true
+	else
+		section2:addToggle("SOVEREIGN SUMMIT",false,function(bool)
+			SOVEREIGNSUMMIT = bool
+			if SOVEREIGNSUMMIT == true then
+				writefile(DHV2SL2DSF .. "/SOVEREIGNSUMMIT.txt","true")
+			else
+				writefile(DHV2SL2DSF .. "/SOVEREIGNSUMMIT.txt","false")
+			end
+		end)
+		SOVEREIGNSUMMIT = false
+	end
+
+	if readfile(DHV2SL2DSF .. "/DAWNHIDEOUT.txt") == "true" then
+		section2:addToggle("DAWN HIDEOUT",true,function(bool)
+			DAWNHIDEOUT = bool
+			if DAWNHIDEOUT == true then
+				writefile(DHV2SL2DSF .. "/DAWNHIDEOUT.txt","true")
+			else
+				writefile(DHV2SL2DSF .. "/DAWNHIDEOUT.txt","false")
+			end
+		end)
+		DAWNHIDEOUT = true
+	else
+		section2:addToggle("DAWN HIDEOUT",false,function(bool)
+			DAWNHIDEOUT = bool
+			if DAWNHIDEOUT == true then
+				writefile(DHV2SL2DSF .. "/DAWNHIDEOUT.txt","true")
+			else
+				writefile(DHV2SL2DSF .. "/DAWNHIDEOUT.txt","false")
+			end
+		end)
+		DAWNHIDEOUT = false
+	end
+
+	if readfile(DHV2SL2DSF .. "/ShindaiValley.txt") == "true" then
+		section2:addToggle("Shindai Valley",true,function(bool)
+			ShindaiValley = bool
+			if ShindaiValley == true then
+				writefile(DHV2SL2DSF .. "/ShindaiValley.txt","true")
+			else
+				writefile(DHV2SL2DSF .. "/ShindaiValley.txt","false")
+			end
+		end)
+		ShindaiValley = true
+	else
+		section2:addToggle("Shindai Valley",false,function(bool)
+			ShindaiValley = bool
+			if ShindaiValley == true then
+				writefile(DHV2SL2DSF .. "/ShindaiValley.txt","true")
+			else
+				writefile(DHV2SL2DSF .. "/ShindaiValley.txt","false")
+			end
+		end)
+		ShindaiValley = false
+	end
+
+	if readfile(DHV2SL2DSF .. "/KorashiManor.txt") == "true" then
+		section2:addToggle("Korashi Manor",true,function(bool)
+			KorashiManor = bool
+			if KorashiManor == true then
+				writefile(DHV2SL2DSF .. "/KorashiManor.txt","true")
+			else
+				writefile(DHV2SL2DSF .. "/KorashiManor.txt","false")
+			end
+		end)
+		KorashiManor = true
+	else
+		section2:addToggle("Korashi Manor",false,function(bool)
+			KorashiManor = bool
+			if KorashiManor == true then
+				writefile(DHV2SL2DSF .. "/KorashiManor.txt","true")
+			else
+				writefile(DHV2SL2DSF .. "/KorashiManor.txt","false")
+			end
+		end)
+		KorashiManor = false
+	end
+
+	if readfile(DHV2SL2DSF .. "/MountMaki.txt") == "true" then
+		section2:addToggle("Mount Maki",true,function(bool)
+			MountMaki = bool
+			if MountMaki == true then
+				writefile(DHV2SL2DSF .. "/MountMaki.txt","true")
+			else
+				writefile(DHV2SL2DSF .. "/MountMaki.txt","false")
+			end
+		end)
+		MountMaki = true
+	else
+		section2:addToggle("Mount Maki",false,function(bool)
+			MountMaki = bool
+			if MountMaki == true then
+				writefile(DHV2SL2DSF .. "/MountMaki.txt","true")
+			else
+				writefile(DHV2SL2DSF .. "/MountMaki.txt","false")
+			end
+		end)
+		MountMaki = false
+	end
+
+	if readfile(DHV2SL2DSF .. "/TynStone.txt") == "true" then
+		section2:addToggle("Tyn Stone",true,function(bool)
+			TynStone = bool
+			if TynStone == true then
+				writefile(DHV2SL2DSF .. "/TynStone.txt","true")
+			else
+				writefile(DHV2SL2DSF .. "/TynStone.txt","false")
+			end
+		end)
+		TynStone = true
+	else
+		section2:addToggle("Tyn Stone",false,function(bool)
+			TynStone = bool
+			if TynStone == true then
+				writefile(DHV2SL2DSF .. "/TynStone.txt","true")
+			else
+				writefile(DHV2SL2DSF .. "/TynStone.txt","false")
+			end
+		end)
+		TynStone = false
+	end
+	-- load
+	NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
+
+	-- last page
+	local pagelast = NoobieDoge:addPage("Settings", 7532244548)
+	local settings = pagelast:addSection("Settings")
+	local colors = pagelast:addSection("Colors")
+	local credits = pagelast:addSection("Credits")
+
+	settings:addButton("Reset Script",function()
+		local player = game.Players.LocalPlayer
+		local ScreenGuiK = Instance.new("ScreenGui")
+		local Frame = Instance.new("ImageLabel")
+		local TextLabelFrame = Instance.new("ImageLabel")
+		local TextLabel = Instance.new("TextLabel")
+		local TextButton = Instance.new("ImageButton")
+		local TextButtonText = Instance.new("TextButton")
+		local TextButton_2 = Instance.new("ImageButton")
+		local TextButton_2Text = Instance.new("TextButton")
+
+		ScreenGuiK.Parent = player:WaitForChild("PlayerGui")
+
+		Frame.Parent = ScreenGuiK
+		Frame.Name = "Main"
+		Frame.BackgroundTransparency = 1
+		Frame.Position = UDim2.new(0.66, 0, 0.055, 0)
+		Frame.Size = UDim2.new(0, 220, 0, 120)
+		Frame.Image = "rbxassetid://4641149554"
+		Frame.ImageColor3 = Color3.fromRGB(24, 24, 24)
+		Frame.ScaleType = Enum.ScaleType.Slice
+		Frame.SliceCenter = Rect.new(4, 4, 296, 296)
+		Frame.Active = true
+		Frame.Draggable = true
+
+		TextLabelFrame.Parent = Frame
+		TextLabelFrame.Name = "TopBar"
+		TextLabelFrame.BackgroundTransparency = 1
+		TextLabelFrame.ClipsDescendants = true
+		TextLabelFrame.Size = UDim2.new(1, 0, 0, 38)
+		TextLabelFrame.ZIndex = 2
+		TextLabelFrame.Image = "rbxassetid://4595286933"
+		TextLabelFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabelFrame.ScaleType = Enum.ScaleType.Slice
+		TextLabelFrame.SliceCenter = Rect.new(4, 4, 296, 296)
+
+		TextLabel.Parent = Frame
+		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabel.Position = UDim2.new(0, 0, -0.1, 0)
+		TextLabel.BackgroundTransparency = 1
+		TextLabel.Size = UDim2.new(0, 220, 0, 60)
+		TextLabel.ZIndex = 3
+		TextLabel.Font = Enum.Font.TitilliumWeb
+		TextLabel.Text = "Are you sure that you want to reset script?"
+		TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabel.TextScaled = false
+		TextLabel.TextSize = 21.000
+		TextLabel.TextWrapped = true
+
+		TextButton.Parent = Frame
+		TextButton.Name = "Button"
+		TextButton.BackgroundTransparency = 1
+		TextButton.Position = UDim2.new(0.075, 0, 0.500000006, 0)
+		TextButton.BorderSizePixel = 0
+		TextButton.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton.ZIndex = 2
+		TextButton.Image = "rbxassetid://5028857472"
+		TextButton.ImageColor3 = Color3.fromRGB(41, 41, 41)
+		TextButton.ScaleType = Enum.ScaleType.Slice
+		TextButton.SliceCenter = Rect.new(2, 2, 298, 298)
+
+		TextButtonText.Parent = TextButton
+		TextButtonText.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextButtonText.BackgroundTransparency = 1
+		TextButtonText.ZIndex = 3
+		TextButtonText.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButtonText.Font = Enum.Font.TitilliumWeb
+		TextButtonText.Text = "Yes"
+		TextButtonText.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButtonText.TextScaled = true
+		TextButtonText.TextSize = 40.000
+		TextButtonText.TextWrapped = true
+
+		function ResetYES()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+			wait()
+			local DHV2SL2DSF = "DogeHubV2/ShindoLife/DungeonSelection"
+			makefolder(DHV2SL2DSF)
+			writefile(DHV2SL2DSF .. "/StartDungeon.txt","false")
+			writefile(DHV2SL2DSF .. "/TrainingGrounds.txt","false")
+			writefile(DHV2SL2DSF .. "/DESEXAMS.txt","false")
+			writefile(DHV2SL2DSF .. "/SAMURAIBRIDGE.txt","false")
+			writefile(DHV2SL2DSF .. "/SENEXAMS.txt","false")
+			writefile(DHV2SL2DSF .. "/NARUMAKIBRIDGE.txt","false")
+			writefile(DHV2SL2DSF .. "/EMBERHIDEOUT.txt","false")
+			writefile(DHV2SL2DSF .. "/SOVEREIGNSUMMIT.txt","false")
+			writefile(DHV2SL2DSF .. "/DAWNHIDEOUT.txt","false")
+			writefile(DHV2SL2DSF .. "/ShindaiValley.txt","false")
+			writefile(DHV2SL2DSF .. "/KorashiManor.txt","false")
+			writefile(DHV2SL2DSF .. "/MountMaki.txt","false")
+			writefile(DHV2SL2DSF .. "/TynStone.txt","false")
+			wait()
+			for i,library in pairs(game:GetService("CoreGui"):GetChildren()) do
+				if library.Name == "DogeHub V2" then
+				library:Destroy()
+				end
+			end
+			notify("Do not reset script too many times!")
+			wait(.1)
+			ShindoDungeonSelection()
+		end
+		TextButton.MouseButton1Click:connect(ResetYES)
+		TextButtonText.MouseButton1Click:connect(ResetYES)
+
+		TextButton_2.Parent = Frame
+		TextButton_2.Name = "Button"
+		TextButton_2.BackgroundTransparency = 1
+		TextButton_2.Position = UDim2.new(0.55, 0, 0.500000006, 0)
+		TextButton_2.BorderSizePixel = 0
+		TextButton_2.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton_2.ZIndex = 2
+		TextButton_2.Image = "rbxassetid://5028857472"
+		TextButton_2.ImageColor3 = Color3.fromRGB(41, 41, 41)
+		TextButton_2.ScaleType = Enum.ScaleType.Slice
+		TextButton_2.SliceCenter = Rect.new(2, 2, 298, 298)
+
+		TextButton_2Text.Parent = TextButton_2
+		TextButton_2Text.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextButton_2Text.BackgroundTransparency = 1
+		TextButton_2Text.ZIndex = 3
+		TextButton_2Text.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton_2Text.Font = Enum.Font.TitilliumWeb
+		TextButton_2Text.Text = "No"
+		TextButton_2Text.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButton_2Text.TextScaled = true
+		TextButton_2Text.TextSize = 40.000
+		TextButton_2Text.TextWrapped = true
+
+		function ResetNO()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+		end
+		TextButton_2.MouseButton1Click:connect(ResetNO)
+		TextButton_2Text.MouseButton1Click:connect(ResetNO)
+	end)
+
+	settings:addButton("Rejoin Server",function()
+		REJOINSERVER()
+	end)
+
+	settings:addButton("Upgrade Performance",function()
+		UPPERFORMANCE()
+		settings:updateButton("Upgrade Performance","Upgraded Performance")
+	end)
+
+	settings:addKeybind("Toggle Keybind", Enum.KeyCode.RightControl, function()
+		print("Activated Keybind")
+		NoobieDoge:toggle()
+		end, function()
+		print("Changed Keybind")
+	end)
+
+	settings:addToggle("Show Mobile Toggle Button",false,function(bool)
+		SMTB = bool
+		if SMTB == true then
+			DHV2Frame.Visible = true
+		else
+			DHV2Frame.Visible = false
+		end
+	end)
+
+	function ToggleGUI()
+		NoobieDoge:toggle()
+	end
+	DHV2TextButton.MouseButton1Click:connect(ToggleGUI)
+	DHV2TextButtonText.MouseButton1Click:connect(ToggleGUI)
+
+	for theme, color in pairs(themes) do -- all in one theme changer, i know, im cool
+		colors:addColorPicker(theme, color, function(color3)
+		NoobieDoge:setTheme(theme, color3)
+		end)
+	end
+
+	credits:addButton("Made by NoobieDoge")
+	credits:addButton("https://discord.gg/P2CeRjvTDt")
+	credits:addButton("Copy Discord Link",function()
+		setclipboard("https://discord.gg/P2CeRjvTDt")
+		wait()
+		notify("Discord link copied to clipboard!")
+	end)
+
+	notify("Starting up shortly") wait(.5) notify("5") wait(1) notify("4") wait(1) notify("3") wait(1) notify("2") wait(1) notify("1") wait(1)
+	notify("Starting")
+	wait()
+
+	spawn(function()
+		while wait() do
+			if StartDungeon then
+				math.randomseed(os.time())
+				local specificNumbers = {} -- Your specific numbers
+				local DungeonsRandom = {}
+				if TrainingGrounds then
+					table.insert(specificNumbers, 1)
+				end
+				if DESEXAMS then
+					table.insert(specificNumbers, 2)
+				end
+				if SAMURAIBRIDGE then
+					table.insert(specificNumbers, 3)
+				end
+				if SENEXAMS then
+					table.insert(specificNumbers, 4)
+				end
+				if NARUMAKIBRIDGE then
+					table.insert(specificNumbers, 5)
+				end
+				if EMBERHIDEOUT then
+					table.insert(specificNumbers, 6)
+				end
+				if SOVEREIGNSUMMIT then
+					table.insert(specificNumbers, 7)
+				end
+				if DAWNHIDEOUT then
+					table.insert(specificNumbers, 8)
+				end
+				if ShindaiValley then
+					table.insert(specificNumbers, 9)
+				end
+				if KorashiManor then
+					table.insert(specificNumbers, 10)
+				end
+				if MountMaki then
+					table.insert(specificNumbers, 11)
+				end
+				if TynStone then
+					table.insert(specificNumbers, 12)
+				end
+				print("Dungeon choices:", specificNumbers)
+				-- Get a random index within the bounds of the specificNumbers table
+				local randomIndex = math.random(1, #specificNumbers)
+				-- Add the number at the random index to our chosenNumbers
+				table.insert(DungeonsRandom, specificNumbers[randomIndex])
+				-- (Optional) Remove the chosen number from specificNumbers to avoid duplicates
+				-- table.remove(specificNumbers, randomIndex)
+				local ComfirmedDungeon = table.unpack(DungeonsRandom)
+
+				notify("Dungeon chosen: " .. player.PlayerGui.teleport.serverframe.top.BossTab[ComfirmedDungeon].icon.lvl.Text)
+				print("Dungeon chosen: " .. player.PlayerGui.teleport.serverframe.top.BossTab[ComfirmedDungeon].icon.lvl.Text)
+				StartDungeon = false
+				wait()
+				local args = {[1] = "dungeon" .. ComfirmedDungeon}
+				player.pressplay:FireServer(unpack(args))
+			end
+		end
+	end)
+
+	--notify("Dungeon will be chosen randomly") wait() local DungeonsRandom = math.random(1, 12) wait(2) notify("Dungeon chosen: " .. player.PlayerGui.teleport.serverframe.top.BossTab[DungeonsRandom].icon.lvl.Text) wait(1)
+	--local args = {[1] = "dungeon" .. DungeonsRandom}
+	--player.pressplay:FireServer(unpack(args))
+	--wait()
+
+	gameplaceexecuted = "Shindo Life Dungeon Selection"
+
 end
 
 --Shindo Dungeons
@@ -13628,7 +14241,9 @@ local function ShindoMain()
 end
 
 --Fix Shindo dumb ahh mouse offset
-player.PlayerGui.MOUSE.followmouse.mouseicon.Position = UDim2.new(-0.5,0,1.9,0)
+if player.PlayerGui:FindFirstChild("MOUSE") then
+	player.PlayerGui.MOUSE.followmouse.mouseicon.Position = UDim2.new(-0.5,0,1.9,0)
+end
 
 local dungeonplace = game:GetService("Workspace"):FindFirstChild("dungeons")
 local bossbattleplace = game:GetService("Workspace"):FindFirstChild("bossbattle")
