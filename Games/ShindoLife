@@ -14,6 +14,7 @@ end
 if player.PlayerGui:FindFirstChild("Main") then
   repeat wait() until player.PlayerGui:FindFirstChild("Main")
 end 
+local TS = game:GetService("TeleportService")
 --on9 functions that are so damn important
 function toTarget(pos, targetPos, targetCFrame)
   local tween_s = game:service"TweenService"
@@ -186,7 +187,7 @@ function INFMDON()
   mode:Destroy()
   notify("Do not charge chi til max while inf MD is on!")
 end
-local datasavedandyoucanredeemcodes
+local datasavedandyoucanredeemcodes = false
 function SAVEDATA()
   local player = game.Players.LocalPlayer
   local ScreenGuiK = Instance.new("ScreenGui")
@@ -833,272 +834,33 @@ notify("Enabled anti-AFK")
 
 --Shindo Inf Spin
 local function ShindoInfSpin()
-  repeat wait() until game:IsLoaded()
-  repeat wait() until game.Players.LocalPlayer:FindFirstChild("leaderstats")
-  repeat wait() until game.Players.LocalPlayer.leaderstats:FindFirstChild("Pro").Value ~= "?"
-  
-  --Kenjutsu GUI
-  local player = game.Players.LocalPlayer
-  local ScreenGui4Ken = Instance.new("ScreenGui")
-  local FrameK = Instance.new("ImageLabel")
-  local TextLabel4topFrame = Instance.new("ImageLabel")
-  local TextLabel4top = Instance.new("TextLabel")
-  local TextLabel2 = Instance.new("TextLabel")
-  local TextLabel3 = Instance.new("TextLabel")
-
-  ScreenGui4Ken.Parent = player:WaitForChild("PlayerGui")
-
-  FrameK.Parent = ScreenGui4Ken
-  FrameK.Name = "Main"
-  FrameK.BackgroundTransparency = 1
-  FrameK.Position = UDim2.new(0.82, 0, 0.4, 0)
-  FrameK.Size = UDim2.new(0, 220, 0, 125)
-  FrameK.Image = "rbxassetid://4641149554"
-  FrameK.ImageColor3 = Color3.fromRGB(24, 24, 24)
-  FrameK.ScaleType = Enum.ScaleType.Slice
-  FrameK.SliceCenter = Rect.new(4, 4, 296, 296)
-  FrameK.Active = true
-  FrameK.Draggable = true
-  FrameK.Visible = false
-
-  TextLabel4topFrame.Parent = FrameK
-  TextLabel4topFrame.Name = "TopBar"
-  TextLabel4topFrame.BackgroundTransparency = 1
-  TextLabel4topFrame.ClipsDescendants = true
-  TextLabel4topFrame.Size = UDim2.new(1, 0, 0, 25)
-  TextLabel4topFrame.ZIndex = 2
-  TextLabel4topFrame.Image = "rbxassetid://4595286933"
-  TextLabel4topFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
-  TextLabel4topFrame.ScaleType = Enum.ScaleType.Slice
-  TextLabel4topFrame.SliceCenter = Rect.new(4, 4, 296, 296)
-
-  TextLabel4top.Parent = FrameK
-  TextLabel4top.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
-  TextLabel4top.Position = UDim2.new(0, 0, -0.15, 0)
-  TextLabel4top.BackgroundTransparency = 1
-  TextLabel4top.Size = UDim2.new(0, 220, 0, 60)
-  TextLabel4top.ZIndex = 3
-  TextLabel4top.Font = Enum.Font.TitilliumWeb
-  TextLabel4top.Text = "Current Kenjutsu"
-  TextLabel4top.TextColor3 = Color3.fromRGB(0, 0, 0)
-  TextLabel4top.TextScaled = false
-  TextLabel4top.TextSize = 24.000
-  TextLabel4top.TextWrapped = true
-
-  TextLabel2.Parent = FrameK
-  TextLabel2.BackgroundColor3 = Color3.fromRGB(41, 41, 41)
-  TextLabel2.ZIndex = 2
-  if player.statz.unlocked:FindFirstChild("kenjutsuslot2") then
-	TextLabel2.Size = UDim2.new(0, 214, 0, 45)
-  else
-	TextLabel2.Size = UDim2.new(0, 214, 0, 90)
-  end
-  TextLabel2.Position = UDim2.new(0.01, 0, 0.22, 0)
-  TextLabel2.Font = Enum.Font.TitilliumWeb
-  TextLabel2.Text = "Kenjutsu Slot 1: " .. player.statz.breathingstyle.Value
-  TextLabel2.TextColor3 = Color3.fromRGB(999,999,999)
-  TextLabel2.TextScaled = true
-  TextLabel2.TextSize = 25.000
-  TextLabel2.TextWrapped = true
-
-  if player.statz.unlocked:FindFirstChild("kenjutsuslot2") then
-	local TextLabel3 = Instance.new("TextLabel")
-	TextLabel3.Parent = FrameK
-	TextLabel3.BackgroundColor3 = Color3.fromRGB(41, 41, 41)
-	TextLabel3.ZIndex = 2
-	TextLabel3.Size = UDim2.new(0, 214, 0, 45)
-	TextLabel3.Position = UDim2.new(0.01, 0, 0.6, 0)
-	TextLabel3.Font = Enum.Font.TitilliumWeb
-	TextLabel3.Text = "Kenjutsu Slot 2: " .. player.statz.breathingstyle2.Value
-	TextLabel3.TextColor3 = Color3.fromRGB(999,999,999)
-	TextLabel3.TextScaled = true
-	TextLabel3.TextSize = 25.000
-	TextLabel3.TextWrapped = true
-  end
-
-  game:GetService('RunService').Stepped:connect(function()
-	TextLabel2.Text = "Kenjutsu Slot 1:" .. " " .. player.statz.breathingstyle.Value
-	if player.statz.unlocked:FindFirstChild("kenjutsuslot2") then
-	  TextLabel3.Text = "Kenjutsu Slot 2:" .. " " .. player.statz.breathingstyle2.Value
-	end
-  end)
-
-  --Workspace stuff
-  local DHV2SL2MMF = "DogeHubV2/ShindoLife/MainMenu"
-  if isfolder(DHV2SL2MMF) == false then
-	makefolder(DHV2SL2MMF)
-  end
-  if isfile(DHV2SL2MMF .. "/Autorejoin.txt") == false then
-	writefile(DHV2SL2MMF .. "/Autorejoin.txt","true")
-  end
-  if isfile(DHV2SL2MMF .. "/Autosave.txt") == false then
-	writefile(DHV2SL2MMF .. "/Autosave.txt","false")
-  end
-  if isfile(DHV2SL2MMF .. "/resetspinswhenthisnumberreached.txt") == false then
-	writefile(DHV2SL2MMF .. "/resetspinswhenthisnumberreached.txt","0")
-  end
-  if isfile(DHV2SL2MMF .. "/savegomyhome.txt") == false then
-	writefile(DHV2SL2MMF .. "/savegomyhome.txt","true")
-  end
-  if isfile(DHV2SL2MMF .. "/savegomainmenu.txt") == false then
-	writefile(DHV2SL2MMF .. "/savegomainmenu.txt","false")
-  end
-  local Choices = DHV2SL2MMF .. "/Choices"
-  if isfolder(Choices) == false then
-	makefolder(Choices)
-  end
-  if isfile(Choices .. "/a1.txt") == false then
-	writefile(Choices .. "/a1.txt"," ")
-  end
-  if isfile(Choices .. "/a2.txt") == false then
-	writefile(Choices .. "/a2.txt"," ")
-  end
-  if isfile(Choices .. "/a3.txt") == false then
-	writefile(Choices .. "/a3.txt"," ")
-  end
-  if isfile(Choices .. "/a4.txt") == false then
-	writefile(Choices .. "/a4.txt"," ")
-  end
-  if isfile(Choices .. "/a5.txt") == false then
-	writefile(Choices .. "/a5.txt"," ")
-  end
-  if isfile(Choices .. "/.A1.txt") == false then
-	writefile(Choices .. "/.A1.txt"," ")
-  end
-  if isfile(Choices .. "/.A2.txt") == false then
-	writefile(Choices .. "/.A2.txt"," ")
-  end
-  if isfile(Choices .. "/.A3.txt") == false then
-	writefile(Choices .. "/.A3.txt"," ")
-  end
-  if isfile(Choices .. "/.A4.txt") == false then
-	writefile(Choices .. "/.A4.txt"," ")
-  end
-  if isfile(Choices .. "/.A5.txt") == false then
-	writefile(Choices .. "/.A5.txt"," ")
-  end
-  if isfile(Choices .. "/kenselect1.txt") == false then
-	writefile(Choices .. "/kenselect1.txt"," ")
-  end
-  if isfile(Choices .. "/kenselect2.txt") == false then
-	writefile(Choices .. "/kenselect2.txt"," ")
-  end
-  if isfile(Choices .. "/kenselect3.txt") == false then
-	writefile(Choices .. "/kenselect3.txt"," ")
-  end
-  if isfile(Choices .. "/kenselect4.txt") == false then
-	writefile(Choices .. "/kenselect4.txt"," ")
-  end
-  if isfile(Choices .. "/kenselect5.txt") == false then
-	writefile(Choices .. "/kenselect5.txt"," ")
-  end
-  if isfile(Choices .. "/raceselect1.txt") == false then
-	writefile(Choices .. "/raceselect1.txt"," ")
-  end
-  if isfile(Choices .. "/raceselect2.txt") == false then
-	writefile(Choices .. "/raceselect2.txt"," ")
-  end
-  if isfile(Choices .. "/raceselect3.txt") == false then
-	writefile(Choices .. "/raceselect3.txt"," ")
-  end
-  if isfile(DHV2SL2MMF .. "/StartSpinElm1.txt") == false then
-	writefile(DHV2SL2MMF .. "/StartSpinElm1.txt","false")
-  end
-  if isfile(DHV2SL2MMF .. "/StartSpinElm2.txt") == false then
-	writefile(DHV2SL2MMF .. "/StartSpinElm2.txt","false")
-  end
-  if isfile(DHV2SL2MMF .. "/StartSpinElm3.txt") == false then
-	writefile(DHV2SL2MMF .. "/StartSpinElm3.txt","false")
-  end
-  if isfile(DHV2SL2MMF .. "/StartSpinElm4.txt") == false then
-	writefile(DHV2SL2MMF .. "/StartSpinElm4.txt","false")
-  end
-  if isfile(DHV2SL2MMF .. "/AutoSpinBL1.txt") == false then
-	writefile(DHV2SL2MMF .. "/AutoSpinBL1.txt","false")
-  end
-  if isfile(DHV2SL2MMF .. "/AutoSpinBL2.txt") == false then
-	writefile(DHV2SL2MMF .. "/AutoSpinBL2.txt","false")
-  end
-  if isfile(DHV2SL2MMF .. "/AutoSpinBL3.txt") == false then
-	writefile(DHV2SL2MMF .. "/AutoSpinBL3.txt","false")
-  end 
-  if isfile(DHV2SL2MMF .. "/AutoSpinBL4.txt") == false then
-	writefile(DHV2SL2MMF .. "/AutoSpinBL4.txt","false")
-  end 
-  if isfile(DHV2SL2MMF .. "/StartSpinKen.txt") == false then
-	writefile(DHV2SL2MMF .. "/StartSpinKen.txt","false")
-  end
-  if isfile(DHV2SL2MMF .. "/StartSpinKen2.txt") == false then
-	writefile(DHV2SL2MMF .. "/StartSpinKen2.txt","false")
-  end 
-  if isfile(DHV2SL2MMF .. "/StartSpinRace.txt") == false then
-	writefile(DHV2SL2MMF .. "/StartSpinRace.txt","false")
-  end
-  if isfile(DHV2SL2MMF .. "/Webhooktrue.txt") == false then
-	writefile(DHV2SL2MMF .. "/Webhooktrue.txt","false")
-  end
-  if isfile(DHV2SL2MMF .. "/WebHook.txt") == false then
-	writefile(DHV2SL2MMF .. "/WebHook.txt","WebHook")
-  end
-  if isfile(DHV2SL2MMF .. "/WebhookPingEveryone.txt") == false then
-	writefile(DHV2SL2MMF .. "/WebhookPingEveryone.txt","false")
-  end
-  local InfSpinsCount = DHV2SL2MMF .. "/InfSpinsCount"
-  if isfolder(InfSpinsCount) == false then
-	makefolder(InfSpinsCount)
-  end
-  if isfile(InfSpinsCount .. "/ResetedSpins.txt") == false then
-	writefile(InfSpinsCount .. "/ResetedSpins.txt","false")
-  end
-  if isfile(InfSpinsCount .. "/CountSpins.txt") == false then
-	writefile(InfSpinsCount .. "/CountSpins.txt","0")
-  end
-
-  --DogeHub V2 GUI
-  local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20page%20format%20gui"))()
-  local NoobieDoge = library.new("DogeHub V2", 5176336983)
-
-  -- themes
-	local themes = {
-		Background = Color3.fromRGB(24, 24, 24), 
-		Glow = Color3.fromRGB(128, 128 ,128), 
-		Accent = Color3.fromRGB(255,163,26), 
-		LightContrast = Color3.fromRGB(41, 41, 41), 
-		DarkContrast = Color3.fromRGB(27,27,27),  
-		TextColor = Color3.fromRGB(255, 255, 255)
-	}
-
-  -- first page
-  local page1 = NoobieDoge:addPage("Infinite Spin", 5176336983)
-  local section1 = page1:addSection("Instructions")
-  local section2 = page1:addSection("Inf Spin Functions")
-  local section3 = page1:addSection("Inf Spin Settings")
-  local section4 = page1:addSection("WebHook Settings")
-
-  section1:addButton("Instructions",function()
+	repeat wait() until game:IsLoaded()
+	repeat wait() until game.Players.LocalPlayer:FindFirstChild("leaderstats")
+	repeat wait() until game.Players.LocalPlayer.leaderstats:FindFirstChild("Pro").Value ~= "?"
+	
+	--Kenjutsu GUI
 	local player = game.Players.LocalPlayer
-	local ScreenGuiK = Instance.new("ScreenGui")
+	local ScreenGui4Ken = Instance.new("ScreenGui")
 	local FrameK = Instance.new("ImageLabel")
 	local TextLabel4topFrame = Instance.new("ImageLabel")
 	local TextLabel4top = Instance.new("TextLabel")
-	local ScrollingFrame = Instance.new("ScrollingFrame")
-	local TextLabel = Instance.new("TextLabel")
-	local TextButton = Instance.new("ImageButton")
-	local TextButtonText = Instance.new("TextButton")
-	local TextButton_2 = Instance.new("ImageButton")
-	local TextButton_2Text = Instance.new("TextButton")
+	local TextLabel2 = Instance.new("TextLabel")
+	local TextLabel3 = Instance.new("TextLabel")
 
-	ScreenGuiK.Parent = player:WaitForChild("PlayerGui")
+	ScreenGui4Ken.Parent = player:WaitForChild("PlayerGui")
 
-	FrameK.Parent = ScreenGuiK
+	FrameK.Parent = ScreenGui4Ken
 	FrameK.Name = "Main"
 	FrameK.BackgroundTransparency = 1
-	FrameK.Position = UDim2.new(0.005, 0, 0.7, 0)
-	FrameK.Size = UDim2.new(0, 220, 0, 180)
+	FrameK.Position = UDim2.new(0.82, 0, 0.4, 0)
+	FrameK.Size = UDim2.new(0, 220, 0, 125)
 	FrameK.Image = "rbxassetid://4641149554"
 	FrameK.ImageColor3 = Color3.fromRGB(24, 24, 24)
 	FrameK.ScaleType = Enum.ScaleType.Slice
 	FrameK.SliceCenter = Rect.new(4, 4, 296, 296)
+	FrameK.Active = true
+	FrameK.Draggable = true
+	FrameK.Visible = false
 
 	TextLabel4topFrame.Parent = FrameK
 	TextLabel4topFrame.Name = "TopBar"
@@ -1113,94 +875,339 @@ local function ShindoInfSpin()
 
 	TextLabel4top.Parent = FrameK
 	TextLabel4top.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
-	TextLabel4top.Position = UDim2.new(0, 0, -0.1, 0)
+	TextLabel4top.Position = UDim2.new(0, 0, -0.15, 0)
 	TextLabel4top.BackgroundTransparency = 1
 	TextLabel4top.Size = UDim2.new(0, 220, 0, 60)
 	TextLabel4top.ZIndex = 3
 	TextLabel4top.Font = Enum.Font.TitilliumWeb
-	TextLabel4top.Text = "Instructions"
+	TextLabel4top.Text = "Current Kenjutsu"
 	TextLabel4top.TextColor3 = Color3.fromRGB(0, 0, 0)
 	TextLabel4top.TextScaled = false
-	TextLabel4top.TextSize = 20.000
+	TextLabel4top.TextSize = 24.000
 	TextLabel4top.TextWrapped = true
 
-	ScrollingFrame.Parent = FrameK
-	ScrollingFrame.BackgroundColor3 = Color3.new(0.27, 0.27, 0.27)
-	ScrollingFrame.BackgroundTransparency = 0
-	ScrollingFrame.BorderSizePixel = 0
-	ScrollingFrame.Position = UDim2.new(0.025, 0, 0.16, 0)
-	ScrollingFrame.Size = UDim2.new(0, 210, 0, 145)
-	ScrollingFrame.CanvasSize = UDim2.new(0, 0, 5, 0)
-	ScrollingFrame.ScrollBarThickness = 4
-
-	TextLabel.Parent = ScrollingFrame
-	TextLabel.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
-	TextLabel.Size = UDim2.new(0, 208, 0, 900)
-	TextLabel.Font = Enum.Font.TitilliumWeb
-	TextLabel.Text = [[To use this inf spins script:
-
-	1.Choose the bloodline or element or kenjutsu that you want to get, you can choose no more than 5 choices for bloodlines and elements and no more than 3 choices for kenjutsu (5 choices when purchased 2nd slot).
-
-	2.Press spin the slots that you want to have the bloodline or element or kenjutsu.
-
-	3.Wait patiently and DO NOT change anything until you got the stuff that you want.
-
-	4.When you got the bloodline or element or kenjutsu that you want, you may press save data then leave this server to save it.
-
-	5.If you cannot find the bloodline or element or kenjutsu that you want, you may enter the names of the bloodline or element or kenjutsu in the dropdown's textbox.
-
-	6.I've already filtered out all unlocked limiteds and put all spinnable limiteds on top of the dropdown so you don't need to search for 1 specific limiteds for a long time :).
-
-	7.DO NOT redeem codes while the script is activated.
-
-	8.If you are unsatisfied about the results, you may always press Reset Spins NOW to reset, unless you pressed save spins data or turned on auto save.
-
-	9.True limiteds are NOT spinnable, it is not a bug for those bloodlines or elements not appearing on the script.
-
-	10.Races are only spinnable after they are unlocked, which are dropped by several bosses.
-
-	11.Press Right Ctrl to show/hide GUI]]
-	TextLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
-	TextLabel.TextScaled = false
-	TextLabel.TextSize = 18.000
-	TextLabel.TextWrapped = true
-	TextLabel.TextXAlignment = Enum.TextXAlignment.Left
-	TextLabel.TextYAlignment = Enum.TextYAlignment.Top
-
-	TextButton.Parent = FrameK
-	TextButton.Name = "Button"
-	TextButton.BackgroundTransparency = 1
-	TextButton.Position = UDim2.new(0.90, 0, 0.025, 0)
-	TextButton.BorderSizePixel = 0
-	TextButton.Size = UDim2.new(0, 15, 0, 15)
-	TextButton.ZIndex = 2
-	TextButton.Image = "rbxassetid://5028857472"
-	TextButton.ImageColor3 = Color3.fromRGB(41, 41, 41)
-	TextButton.ScaleType = Enum.ScaleType.Slice
-	TextButton.SliceCenter = Rect.new(2, 2, 298, 298)
-
-	TextButtonText.Parent = TextButton
-	TextButtonText.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
-	TextButtonText.BackgroundTransparency = 1
-	TextButtonText.ZIndex = 3
-	TextButtonText.Size = UDim2.new(0, 15, 0, 15)
-	TextButtonText.Font = Enum.Font.TitilliumWeb
-	TextButtonText.Text = "X"
-	TextButtonText.TextColor3 = Color3.fromRGB(200, 200, 200)
-	TextButtonText.TextScaled = true
-	TextButtonText.TextSize = 40.000
-	TextButtonText.TextWrapped = true
-
-	function X()
-	  for i,v in pairs(player.PlayerGui:GetChildren()) do
-		if v.Name == "ScreenGui" then
-		  v:Destroy()
-		end
-	  end
+	TextLabel2.Parent = FrameK
+	TextLabel2.BackgroundColor3 = Color3.fromRGB(41, 41, 41)
+	TextLabel2.ZIndex = 2
+	if player.statz.unlocked:FindFirstChild("kenjutsuslot2") then
+		TextLabel2.Size = UDim2.new(0, 214, 0, 45)
+	else
+		TextLabel2.Size = UDim2.new(0, 214, 0, 90)
 	end
-	TextButton.MouseButton1Click:connect(X)
-	TextButtonText.MouseButton1Click:connect(X)
-  end)
+	TextLabel2.Position = UDim2.new(0.01, 0, 0.22, 0)
+	TextLabel2.Font = Enum.Font.TitilliumWeb
+	TextLabel2.Text = "Kenjutsu Slot 1: " .. player.statz.breathingstyle.Value
+	TextLabel2.TextColor3 = Color3.fromRGB(999,999,999)
+	TextLabel2.TextScaled = true
+	TextLabel2.TextSize = 25.000
+	TextLabel2.TextWrapped = true
+
+	if player.statz.unlocked:FindFirstChild("kenjutsuslot2") then
+		local TextLabel3 = Instance.new("TextLabel")
+		TextLabel3.Parent = FrameK
+		TextLabel3.BackgroundColor3 = Color3.fromRGB(41, 41, 41)
+		TextLabel3.ZIndex = 2
+		TextLabel3.Size = UDim2.new(0, 214, 0, 45)
+		TextLabel3.Position = UDim2.new(0.01, 0, 0.6, 0)
+		TextLabel3.Font = Enum.Font.TitilliumWeb
+		TextLabel3.Text = "Kenjutsu Slot 2: " .. player.statz.breathingstyle2.Value
+		TextLabel3.TextColor3 = Color3.fromRGB(999,999,999)
+		TextLabel3.TextScaled = true
+		TextLabel3.TextSize = 25.000
+		TextLabel3.TextWrapped = true
+	end
+
+	game:GetService('RunService').Stepped:connect(function()
+		TextLabel2.Text = "Kenjutsu Slot 1:" .. " " .. player.statz.breathingstyle.Value
+		if player.statz.unlocked:FindFirstChild("kenjutsuslot2") then
+		TextLabel3.Text = "Kenjutsu Slot 2:" .. " " .. player.statz.breathingstyle2.Value
+		end
+	end)
+
+	--Workspace stuff
+	local DHV2SL2MMF = "DogeHubV2/ShindoLife/MainMenu"
+	if isfolder(DHV2SL2MMF) == false then
+		makefolder(DHV2SL2MMF)
+	end
+	if isfile(DHV2SL2MMF .. "/Autorejoin.txt") == false then
+		writefile(DHV2SL2MMF .. "/Autorejoin.txt","true")
+	end
+	if isfile(DHV2SL2MMF .. "/Autosave.txt") == false then
+		writefile(DHV2SL2MMF .. "/Autosave.txt","false")
+	end
+	if isfile(DHV2SL2MMF .. "/resetspinswhenthisnumberreached.txt") == false then
+		writefile(DHV2SL2MMF .. "/resetspinswhenthisnumberreached.txt","0")
+	end
+	if isfile(DHV2SL2MMF .. "/savegomyhome.txt") == false then
+		writefile(DHV2SL2MMF .. "/savegomyhome.txt","true")
+	end
+	if isfile(DHV2SL2MMF .. "/savegomainmenu.txt") == false then
+		writefile(DHV2SL2MMF .. "/savegomainmenu.txt","false")
+	end
+	local Choices = DHV2SL2MMF .. "/Choices"
+	if isfolder(Choices) == false then
+		makefolder(Choices)
+	end
+	if isfile(Choices .. "/a1.txt") == false then
+		writefile(Choices .. "/a1.txt"," ")
+	end
+	if isfile(Choices .. "/a2.txt") == false then
+		writefile(Choices .. "/a2.txt"," ")
+	end
+	if isfile(Choices .. "/a3.txt") == false then
+		writefile(Choices .. "/a3.txt"," ")
+	end
+	if isfile(Choices .. "/a4.txt") == false then
+		writefile(Choices .. "/a4.txt"," ")
+	end
+	if isfile(Choices .. "/a5.txt") == false then
+		writefile(Choices .. "/a5.txt"," ")
+	end
+	if isfile(Choices .. "/.A1.txt") == false then
+		writefile(Choices .. "/.A1.txt"," ")
+	end
+	if isfile(Choices .. "/.A2.txt") == false then
+		writefile(Choices .. "/.A2.txt"," ")
+	end
+	if isfile(Choices .. "/.A3.txt") == false then
+		writefile(Choices .. "/.A3.txt"," ")
+	end
+	if isfile(Choices .. "/.A4.txt") == false then
+		writefile(Choices .. "/.A4.txt"," ")
+	end
+	if isfile(Choices .. "/.A5.txt") == false then
+		writefile(Choices .. "/.A5.txt"," ")
+	end
+	if isfile(Choices .. "/kenselect1.txt") == false then
+		writefile(Choices .. "/kenselect1.txt"," ")
+	end
+	if isfile(Choices .. "/kenselect2.txt") == false then
+		writefile(Choices .. "/kenselect2.txt"," ")
+	end
+	if isfile(Choices .. "/kenselect3.txt") == false then
+		writefile(Choices .. "/kenselect3.txt"," ")
+	end
+	if isfile(Choices .. "/kenselect4.txt") == false then
+		writefile(Choices .. "/kenselect4.txt"," ")
+	end
+	if isfile(Choices .. "/kenselect5.txt") == false then
+		writefile(Choices .. "/kenselect5.txt"," ")
+	end
+	if isfile(Choices .. "/raceselect1.txt") == false then
+		writefile(Choices .. "/raceselect1.txt"," ")
+	end
+	if isfile(Choices .. "/raceselect2.txt") == false then
+		writefile(Choices .. "/raceselect2.txt"," ")
+	end
+	if isfile(Choices .. "/raceselect3.txt") == false then
+		writefile(Choices .. "/raceselect3.txt"," ")
+	end
+	if isfile(DHV2SL2MMF .. "/StartSpinElm1.txt") == false then
+		writefile(DHV2SL2MMF .. "/StartSpinElm1.txt","false")
+	end
+	if isfile(DHV2SL2MMF .. "/StartSpinElm2.txt") == false then
+		writefile(DHV2SL2MMF .. "/StartSpinElm2.txt","false")
+	end
+	if isfile(DHV2SL2MMF .. "/StartSpinElm3.txt") == false then
+		writefile(DHV2SL2MMF .. "/StartSpinElm3.txt","false")
+	end
+	if isfile(DHV2SL2MMF .. "/StartSpinElm4.txt") == false then
+		writefile(DHV2SL2MMF .. "/StartSpinElm4.txt","false")
+	end
+	if isfile(DHV2SL2MMF .. "/AutoSpinBL1.txt") == false then
+		writefile(DHV2SL2MMF .. "/AutoSpinBL1.txt","false")
+	end
+	if isfile(DHV2SL2MMF .. "/AutoSpinBL2.txt") == false then
+		writefile(DHV2SL2MMF .. "/AutoSpinBL2.txt","false")
+	end
+	if isfile(DHV2SL2MMF .. "/AutoSpinBL3.txt") == false then
+		writefile(DHV2SL2MMF .. "/AutoSpinBL3.txt","false")
+	end 
+	if isfile(DHV2SL2MMF .. "/AutoSpinBL4.txt") == false then
+		writefile(DHV2SL2MMF .. "/AutoSpinBL4.txt","false")
+	end 
+	if isfile(DHV2SL2MMF .. "/StartSpinKen.txt") == false then
+		writefile(DHV2SL2MMF .. "/StartSpinKen.txt","false")
+	end
+	if isfile(DHV2SL2MMF .. "/StartSpinKen2.txt") == false then
+		writefile(DHV2SL2MMF .. "/StartSpinKen2.txt","false")
+	end 
+	if isfile(DHV2SL2MMF .. "/StartSpinRace.txt") == false then
+		writefile(DHV2SL2MMF .. "/StartSpinRace.txt","false")
+	end
+	if isfile(DHV2SL2MMF .. "/Webhooktrue.txt") == false then
+		writefile(DHV2SL2MMF .. "/Webhooktrue.txt","false")
+	end
+	if isfile(DHV2SL2MMF .. "/WebHook.txt") == false then
+		writefile(DHV2SL2MMF .. "/WebHook.txt","WebHook")
+	end
+	if isfile(DHV2SL2MMF .. "/WebhookPingEveryone.txt") == false then
+		writefile(DHV2SL2MMF .. "/WebhookPingEveryone.txt","false")
+	end
+	if isfile(DHV2SL2MMF .. "/WebhookShowTotalSpinsUsed.txt") == false then
+		writefile(DHV2SL2MMF .. "/WebhookShowTotalSpinsUsed.txt","false")
+	end
+	local InfSpinsCount = DHV2SL2MMF .. "/InfSpinsCount"
+	if isfolder(InfSpinsCount) == false then
+		makefolder(InfSpinsCount)
+	end
+	if isfile(InfSpinsCount .. "/ResetedSpins.txt") == false then
+		writefile(InfSpinsCount .. "/ResetedSpins.txt","false")
+	end
+	if isfile(InfSpinsCount .. "/CountSpins.txt") == false then
+		writefile(InfSpinsCount .. "/CountSpins.txt","0")
+	end
+	if isfile(InfSpinsCount .. "/TotalSpinsB4Saving.txt") == false then
+		writefile(InfSpinsCount .. "/TotalSpinsB4Saving.txt","0")
+	end
+
+	--DogeHub V2 GUI
+	local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20page%20format%20gui"))()
+	local NoobieDoge = library.new("DogeHub V2", 5176336983)
+
+  	-- themes
+	local themes = {
+		Background = Color3.fromRGB(24, 24, 24), 
+		Glow = Color3.fromRGB(128, 128 ,128), 
+		Accent = Color3.fromRGB(255,163,26), 
+		LightContrast = Color3.fromRGB(41, 41, 41), 
+		DarkContrast = Color3.fromRGB(27,27,27),  
+		TextColor = Color3.fromRGB(255, 255, 255)
+	}
+
+	-- first page
+	local page1 = NoobieDoge:addPage("Infinite Spin", 5176336983)
+	local section1 = page1:addSection("Instructions")
+	local section2 = page1:addSection("Inf Spin Functions")
+	local section3 = page1:addSection("Inf Spin Settings")
+	local section4 = page1:addSection("WebHook Settings")
+
+	section1:addButton("Instructions",function()
+		local player = game.Players.LocalPlayer
+		local ScreenGuiK = Instance.new("ScreenGui")
+		local FrameK = Instance.new("ImageLabel")
+		local TextLabel4topFrame = Instance.new("ImageLabel")
+		local TextLabel4top = Instance.new("TextLabel")
+		local ScrollingFrame = Instance.new("ScrollingFrame")
+		local TextLabel = Instance.new("TextLabel")
+		local TextButton = Instance.new("ImageButton")
+		local TextButtonText = Instance.new("TextButton")
+		local TextButton_2 = Instance.new("ImageButton")
+		local TextButton_2Text = Instance.new("TextButton")
+
+		ScreenGuiK.Parent = player:WaitForChild("PlayerGui")
+
+		FrameK.Parent = ScreenGuiK
+		FrameK.Name = "Main"
+		FrameK.BackgroundTransparency = 1
+		FrameK.Position = UDim2.new(0.005, 0, 0.7, 0)
+		FrameK.Size = UDim2.new(0, 220, 0, 180)
+		FrameK.Image = "rbxassetid://4641149554"
+		FrameK.ImageColor3 = Color3.fromRGB(24, 24, 24)
+		FrameK.ScaleType = Enum.ScaleType.Slice
+		FrameK.SliceCenter = Rect.new(4, 4, 296, 296)
+
+		TextLabel4topFrame.Parent = FrameK
+		TextLabel4topFrame.Name = "TopBar"
+		TextLabel4topFrame.BackgroundTransparency = 1
+		TextLabel4topFrame.ClipsDescendants = true
+		TextLabel4topFrame.Size = UDim2.new(1, 0, 0, 25)
+		TextLabel4topFrame.ZIndex = 2
+		TextLabel4topFrame.Image = "rbxassetid://4595286933"
+		TextLabel4topFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabel4topFrame.ScaleType = Enum.ScaleType.Slice
+		TextLabel4topFrame.SliceCenter = Rect.new(4, 4, 296, 296)
+
+		TextLabel4top.Parent = FrameK
+		TextLabel4top.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabel4top.Position = UDim2.new(0, 0, -0.1, 0)
+		TextLabel4top.BackgroundTransparency = 1
+		TextLabel4top.Size = UDim2.new(0, 220, 0, 60)
+		TextLabel4top.ZIndex = 3
+		TextLabel4top.Font = Enum.Font.TitilliumWeb
+		TextLabel4top.Text = "Instructions"
+		TextLabel4top.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabel4top.TextScaled = false
+		TextLabel4top.TextSize = 20.000
+		TextLabel4top.TextWrapped = true
+
+		ScrollingFrame.Parent = FrameK
+		ScrollingFrame.BackgroundColor3 = Color3.new(0.27, 0.27, 0.27)
+		ScrollingFrame.BackgroundTransparency = 0
+		ScrollingFrame.BorderSizePixel = 0
+		ScrollingFrame.Position = UDim2.new(0.025, 0, 0.16, 0)
+		ScrollingFrame.Size = UDim2.new(0, 210, 0, 145)
+		ScrollingFrame.CanvasSize = UDim2.new(0, 0, 5, 0)
+		ScrollingFrame.ScrollBarThickness = 4
+
+		TextLabel.Parent = ScrollingFrame
+		TextLabel.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextLabel.Size = UDim2.new(0, 208, 0, 900)
+		TextLabel.Font = Enum.Font.TitilliumWeb
+		TextLabel.Text = [[To use this inf spins script:
+
+		1.Choose the bloodline or element or kenjutsu that you want to get, you can choose no more than 5 choices for bloodlines and elements and no more than 3 choices for kenjutsu (5 choices when purchased 2nd slot).
+
+		2.Press spin the slots that you want to have the bloodline or element or kenjutsu.
+
+		3.Wait patiently and DO NOT change anything until you got the stuff that you want.
+
+		4.When you got the bloodline or element or kenjutsu that you want, you may press save data then leave this server to save it.
+
+		5.If you cannot find the bloodline or element or kenjutsu that you want, you may enter the names of the bloodline or element or kenjutsu in the dropdown's textbox.
+
+		6.I've already filtered out all unlocked limiteds and put all spinnable limiteds on top of the dropdown so you don't need to search for 1 specific limiteds for a long time :).
+
+		7.DO NOT redeem codes while the script is activated.
+
+		8.If you are unsatisfied about the results, you may always press Reset Spins NOW to reset, unless you pressed save spins data or turned on auto save.
+
+		9.True limiteds are NOT spinnable, it is not a bug for those bloodlines or elements not appearing on the script.
+
+		10.Races are only spinnable after they are unlocked, which are dropped by several bosses.
+
+		11.Press Right Ctrl to show/hide GUI]]
+		TextLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextLabel.TextScaled = false
+		TextLabel.TextSize = 18.000
+		TextLabel.TextWrapped = true
+		TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+		TextLabel.TextYAlignment = Enum.TextYAlignment.Top
+
+		TextButton.Parent = FrameK
+		TextButton.Name = "Button"
+		TextButton.BackgroundTransparency = 1
+		TextButton.Position = UDim2.new(0.90, 0, 0.025, 0)
+		TextButton.BorderSizePixel = 0
+		TextButton.Size = UDim2.new(0, 15, 0, 15)
+		TextButton.ZIndex = 2
+		TextButton.Image = "rbxassetid://5028857472"
+		TextButton.ImageColor3 = Color3.fromRGB(41, 41, 41)
+		TextButton.ScaleType = Enum.ScaleType.Slice
+		TextButton.SliceCenter = Rect.new(2, 2, 298, 298)
+
+		TextButtonText.Parent = TextButton
+		TextButtonText.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextButtonText.BackgroundTransparency = 1
+		TextButtonText.ZIndex = 3
+		TextButtonText.Size = UDim2.new(0, 15, 0, 15)
+		TextButtonText.Font = Enum.Font.TitilliumWeb
+		TextButtonText.Text = "X"
+		TextButtonText.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButtonText.TextScaled = true
+		TextButtonText.TextSize = 40.000
+		TextButtonText.TextWrapped = true
+
+		function X()
+		for i,v in pairs(player.PlayerGui:GetChildren()) do
+			if v.Name == "ScreenGui" then
+			v:Destroy()
+			end
+		end
+		end
+		TextButton.MouseButton1Click:connect(X)
+		TextButtonText.MouseButton1Click:connect(X)
+	end)
 
 	local originalspins = player.statz.spins.Value
 	print("Original spins amount: " .. originalspins)
@@ -1211,778 +1218,811 @@ local function ShindoInfSpin()
 		game:GetService("TeleportService"):Teleport(game.PlaceId, player)
 	end)
 
-  section2:addButton("Save Spins Data",function()
-	SAVEDATA()
-  end)
+	section2:addButton("Save Spins Data",function()
+		SAVEDATA()
+	end)
 
-  if 	readfile(DHV2SL2MMF .. "/Autorejoin.txt") == "true" then
-	section3:addToggle("Auto Rejoin",true,function(bool)
-	  Autorejoin = bool
-	  if Autorejoin == true then
-		writefile(DHV2SL2MMF .. "/Autorejoin.txt","true")
-	  else
-		writefile(DHV2SL2MMF .. "/Autorejoin.txt","false")
-	  end
-	end)
-	Autorejoin = true
-  else
-	section3:addToggle("Auto Rejoin",false,function(bool)
-	  Autorejoin = bool
-	  if Autorejoin == true then
-		writefile(DHV2SL2MMF .. "/Autorejoin.txt","true")
-	  else
-		writefile(DHV2SL2MMF .. "/Autorejoin.txt","false")
-	  end
-	end)
-	Autorejoin = false
-  end
+	if readfile(DHV2SL2MMF .. "/Autorejoin.txt") == "true" then
+		section3:addToggle("Auto Rejoin",true,function(bool)
+		Autorejoin = bool
+		if Autorejoin == true then
+			writefile(DHV2SL2MMF .. "/Autorejoin.txt","true")
+		else
+			writefile(DHV2SL2MMF .. "/Autorejoin.txt","false")
+		end
+		end)
+		Autorejoin = true
+	else
+		section3:addToggle("Auto Rejoin",false,function(bool)
+		Autorejoin = bool
+		if Autorejoin == true then
+			writefile(DHV2SL2MMF .. "/Autorejoin.txt","true")
+		else
+			writefile(DHV2SL2MMF .. "/Autorejoin.txt","false")
+		end
+		end)
+		Autorejoin = false
+	end
 
-  if 	readfile(DHV2SL2MMF .. "/Autosave.txt") == "true" then
-	section3:addToggle("Auto Save",true,function(bool)
-	  Autosave = bool
-	  if Autosave == true then
-		writefile(DHV2SL2MMF .. "/Autosave.txt","true")
-	  else
-		writefile(DHV2SL2MMF .. "/Autosave.txt","false")
-	  end
-	end)
-	Autosave = true
-  else
-	section3:addToggle("Auto Save",false,function(bool)
-	  Autosave = bool
-	  if Autosave == true then
-		writefile(DHV2SL2MMF .. "/Autosave.txt","true")
-	  else
-		writefile(DHV2SL2MMF .. "/Autosave.txt","false")
-	  end
-	end)
-	Autosave = false
-  end
+	if readfile(DHV2SL2MMF .. "/Autosave.txt") == "true" then
+		section3:addToggle("Auto Save",true,function(bool)
+		Autosave = bool
+		if Autosave == true then
+			writefile(DHV2SL2MMF .. "/Autosave.txt","true")
+		else
+			writefile(DHV2SL2MMF .. "/Autosave.txt","false")
+		end
+		end)
+		Autosave = true
+	else
+		section3:addToggle("Auto Save",false,function(bool)
+		Autosave = bool
+		if Autosave == true then
+			writefile(DHV2SL2MMF .. "/Autosave.txt","true")
+		else
+			writefile(DHV2SL2MMF .. "/Autosave.txt","false")
+		end
+		end)
+		Autosave = false
+	end
 
-  if player.gamepasses:FindFirstChild("spinsbag") then
-	section3:addSlider("Auto Rejoin when spins lower than", tonumber(readfile(DHV2SL2MMF .. "/resetspinswhenthisnumberreached.txt")), 0, 999, function(value)
-	  resetspinswhenthisnumberreached = value
-	  writefile(DHV2SL2MMF .. "/resetspinswhenthisnumberreached.txt",tostring(resetspinswhenthisnumberreached))
-	end)
-  else
-	section3:addSlider("Auto Rejoin when spins lower than", tonumber(readfile(DHV2SL2MMF .. "/resetspinswhenthisnumberreached.txt")), 0, 499, function(value)
-	  resetspinswhenthisnumberreached = value
-	  writefile(DHV2SL2MMF .. "/resetspinswhenthisnumberreached.txt",tostring(resetspinswhenthisnumberreached))
-	end)
-  end
-  	resetspinswhenthisnumberreached = tonumber(readfile(DHV2SL2MMF .. "/resetspinswhenthisnumberreached.txt"))
+	if player.gamepasses:FindFirstChild("spinsbag") then
+		section3:addSlider("Auto Rejoin when spins lower than", tonumber(readfile(DHV2SL2MMF .. "/resetspinswhenthisnumberreached.txt")), 0, 999, function(value)
+		resetspinswhenthisnumberreached = value
+		writefile(DHV2SL2MMF .. "/resetspinswhenthisnumberreached.txt",tostring(resetspinswhenthisnumberreached))
+		end)
+	else
+		section3:addSlider("Auto Rejoin when spins lower than", tonumber(readfile(DHV2SL2MMF .. "/resetspinswhenthisnumberreached.txt")), 0, 499, function(value)
+		resetspinswhenthisnumberreached = value
+		writefile(DHV2SL2MMF .. "/resetspinswhenthisnumberreached.txt",tostring(resetspinswhenthisnumberreached))
+		end)
+	end
+	resetspinswhenthisnumberreached = tonumber(readfile(DHV2SL2MMF .. "/resetspinswhenthisnumberreached.txt"))
 	print(resetspinswhenthisnumberreached)
 
+	local savegomyhome
+	local savegomainmenu
 
-  if 	readfile(DHV2SL2MMF .. "/savegomyhome.txt") == "true" then
-	section3:addToggle("Teleport to My Home when saving data",true,function(bool)
-	  savegomyhome = bool
-	  savegomainmenu = false
-	  section3:updateToggle("Teleport back to Main Menu when saving data")
-	  if savegomyhome == true then
+	if readfile(DHV2SL2MMF .. "/savegomyhome.txt") == "true" then
+		section3:addToggle("Teleport to My Home when saving data",true,function(bool)
+		savegomyhome = bool
+		savegomainmenu = false
+		section3:updateToggle("Teleport back to Main Menu when saving data")
+		if savegomyhome == true then
+			writefile(DHV2SL2MMF .. "/savegomyhome.txt","true")
+			writefile(DHV2SL2MMF .. "/savegomainmenu.txt","false")
+		else
+			writefile(DHV2SL2MMF .. "/savegomyhome.txt","false")
+		end
+		end)
+		savegomyhome = true
+	else
+		section3:addToggle("Teleport to My Home when saving data",false,function(bool)
+		savegomyhome = bool
+		savegomainmenu = false
+		section3:updateToggle("Teleport back to Main Menu when saving data")
+		if savegomyhome == true then
+			writefile(DHV2SL2MMF .. "/savegomyhome.txt","true")
+			writefile(DHV2SL2MMF .. "/savegomainmenu.txt","false")
+		else
+			writefile(DHV2SL2MMF .. "/savegomyhome.txt","false")
+		end
+		end)
+		savegomyhome = false
+	end
+
+	if readfile(DHV2SL2MMF .. "/savegomainmenu.txt") == "true" then
+		section3:addToggle("Teleport back to Main Menu when saving data",true,function(bool)
+		savegomainmenu = bool
+		savegomyhome = false
+		section3:updateToggle("Teleport to My Home when saving data")
+		if savegomainmenu == true then
+			writefile(DHV2SL2MMF .. "/savegomainmenu.txt","true")
+			writefile(DHV2SL2MMF .. "/savegomyhome.txt","false")
+		else
+			writefile(DHV2SL2MMF .. "/savegomainmenu.txt","false")
+		end
+		end)
+		savegomainmenu = true
+	else
+		section3:addToggle("Teleport back to Main Menu when saving data",false,function(bool)
+		savegomainmenu = bool
+		savegomyhome = true
+		section3:updateToggle("Teleport to My Home when saving data")
+		if savegomainmenu == true then
+			writefile(DHV2SL2MMF .. "/savegomainmenu.txt","true")
+			writefile(DHV2SL2MMF .. "/savegomyhome.txt","false")
+		else
+			writefile(DHV2SL2MMF .. "/savegomainmenu.txt","false")
+		end
+		end)
+		savegomainmenu = false
+	end	
+
+	if readfile(DHV2SL2MMF .. "/Webhooktrue.txt") == "true" then
+		section4:addToggle("Enable Webhook",true,function(bool)
+		Webhooktrue = bool
+		if Webhooktrue == true then
+			writefile(DHV2SL2MMF .. "/Webhooktrue.txt","true")
+		else
+			writefile(DHV2SL2MMF .. "/Webhooktrue.txt","false")
+		end
+		end)
+		Webhooktrue = true
+	else
+		section4:addToggle("Enable WebHook",false,function(bool)
+		Webhooktrue = bool
+		if Webhooktrue == true then
+			writefile(DHV2SL2MMF .. "/Webhooktrue.txt","true")
+		else
+			writefile(DHV2SL2MMF .. "/Webhooktrue.txt","false")
+		end
+		end)
+		Webhooktrue = false
+	end
+
+	section4:addTextbox("Webhook URL",readfile(DHV2SL2MMF .. "/WebHook.txt"),function(WebHook1)
+		notify("WebHook URL: " .. WebHook1)
+		WebHook = WebHook1
+		writefile(DHV2SL2MMF .. "/WebHook.txt",WebHook)
+	end)
+
+	if readfile(DHV2SL2MMF .. "/WebhookPingEveryone.txt") == "true" then
+		section4:addToggle("Ping @everyone",true,function(bool)
+			WebhookPingEveryone = bool
+			if WebhookPingEveryone == true then
+				writefile(DHV2SL2MMF .. "/WebhookPingEveryone.txt","true")
+			else
+				writefile(DHV2SL2MMF .. "/WebhookPingEveryone.txt","false")
+			end
+		end)
+		WebhookPingEveryone = true
+	else
+		section4:addToggle("Ping @everyone",false,function(bool)
+			WebhookPingEveryone = bool
+			if WebhookPingEveryone == true then
+				writefile(DHV2SL2MMF .. "/WebhookPingEveryone.txt","true")
+			else
+				writefile(DHV2SL2MMF .. "/WebhookPingEveryone.txt","false")
+			end
+		end)
+		WebhookPingEveryone = false
+	end
+
+	if readfile(DHV2SL2MMF .. "/WebhookShowTotalSpinsUsed.txt") == "true" then
+		section4:addToggle("Show total spins used",true,function(bool)
+			WebhookShowTotalSpinsUsed = bool
+			if WebhookShowTotalSpinsUsed == true then
+				writefile(DHV2SL2MMF .. "/WebhookShowTotalSpinsUsed.txt","true")
+			else
+				writefile(DHV2SL2MMF .. "/WebhookShowTotalSpinsUsed.txt","false")
+			end
+		end)
+		WebhookShowTotalSpinsUsed = true
+	else
+		section4:addToggle("Show total spins used",false,function(bool)
+			WebhookShowTotalSpinsUsed = bool
+			if WebhookShowTotalSpinsUsed == true then
+				writefile(DHV2SL2MMF .. "/WebhookShowTotalSpinsUsed.txt","true")
+			else
+				writefile(DHV2SL2MMF .. "/WebhookShowTotalSpinsUsed.txt","false")
+			end
+		end)
+		WebhookShowTotalSpinsUsed = false
+	end
+
+	-- load
+	NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
+
+	local elm = {}
+	for i,v in pairs(game:GetService("Workspace").RAREKGS:GetChildren()) do
+		if v.Name ~= "KGTEMPLATE" and v.tim.Value ~= "N/A" and not player.statz.genkailevel:FindFirstChild(v.Name) and game:GetService("ReplicatedStorage").alljutsu[v.Name]:FindFirstChild("ELEMENT") then
+		table.insert(elm, v.Name)
+		end
+	end
+	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
+		if v:FindFirstChild("ELEMENT") and not v:FindFirstChild("limited") then
+		table.insert(elm, v.Name)
+		end
+	end
+
+	local kgs = {}
+	for i,v in pairs(game:GetService("Workspace").RAREKGS:GetChildren()) do
+		if v.Name ~= "KGTEMPLATE" and v.tim.Value ~= "N/A" and not player.statz.genkailevel:FindFirstChild(v.Name) and game:GetService("ReplicatedStorage").alljutsu[v.Name]:FindFirstChild("KG") then
+		table.insert(kgs, v.Name)
+		end
+	end
+	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
+		if (v:FindFirstChild("KG") and not v:FindFirstChild("cantspin") and not v:FindFirstChild("limited")) then
+		table.insert(kgs, v.Name)
+		end
+	end
+
+	local ken = {}
+	for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu.ALLKENSTYLES:GetChildren()) do
+		if v:FindFirstChild("BREATHINGSTYLE") and not v:FindFirstChild("limited") then
+		table.insert(ken, v.Name)
+		end
+	end
+
+	local race = {}
+	for i,v in pairs(player.PlayerGui.Main.RaceCustom.Frame.ScrollingFrame:GetChildren()) do
+		if v:FindFirstChild("icon") and (not v.icon:FindFirstChild("lock") or v.icon.lock.Visible == false) then
+		table.insert(race, v.Name)
+		end
+	end
+	for i,v in pairs(player.statz.unlocked:GetChildren()) do
+		if v.Name == "celestialdna" then
+		table.insert(race, "celestial")
+		end
+		if v.Name == "snakedna" then
+		table.insert(race, "snake")
+		end
+		if v.Name == "sharkdna" then
+		table.insert(race, "shark")
+		end
+		if v.Name == "puppetdna" then
+		table.insert(race, "puppet")
+		end
+	end
+
+	-- second page
+	local page2 = NoobieDoge:addPage("Elements", 5176336983)
+	local section1 = page2:addSection("Choose wanted elements")
+	local section2 = page2:addSection("Start Spinning")
+
+	section1:addDropdown("Element Choice 1: " .. readfile(Choices .. "/a1.txt"),elm,function(ELM1)
+		print("Selected: " .. ELM1)
+		notify("1st Element Selected: " .. ELM1)
+		a1 = ELM1
+		writefile(Choices .. "/a1.txt",a1)
+	end)
+	a1 = readfile(Choices .. "/a1.txt")
+	section1:addDropdown("Element Choice 2: ".. readfile(Choices .. "/a2.txt"),elm,function(ELM2)
+		print("Selected: " .. ELM2)
+		notify("2nd Element Selected: " .. ELM2)
+		a2 = ELM2
+		writefile(Choices .. "/a2.txt",a2)
+	end)
+	a2 = readfile(Choices .. "/a2.txt")
+	section1:addDropdown("Element Choice 3: " .. readfile(Choices .. "/a3.txt"),elm,function(ELM3)
+		print("Selected: " .. ELM3)
+		notify("3rd Element Selected: " .. ELM3)
+		a3 = ELM3
+		writefile(Choices .. "/a3.txt",a3)
+	end)
+	a3 = readfile(Choices .. "/a3.txt")
+	section1:addDropdown("Element Choice 4: " .. readfile(Choices .. "/a4.txt"),elm,function(ELM4)
+		print("Selected: " .. ELM4)
+		notify("4th Element Selected: " .. ELM4)
+		a4 = ELM4
+		writefile(Choices .. "/a4.txt",a4)
+	end)
+	a4 = readfile(Choices .. "/a4.txt")
+	section1:addDropdown("Element Choice 5: " .. readfile(Choices .. "/a5.txt"),elm,function(ELM5)
+		print("Selected: " .. ELM5)
+		notify("5th Element Selected: " .. ELM5)
+		a5 = ELM5
+		writefile(Choices .. "/a5.txt",a5)
+	end)
+	a5 = readfile(Choices .. "/a5.txt")
+
+	if readfile(DHV2SL2MMF .. "/StartSpinElm1.txt") == "true" then
+		section2:addToggle("Spin Slot 1",true,function(bool)
+		StartSpinElm1 = bool
+		if StartSpinElm1 == true then
+			writefile(DHV2SL2MMF .. "/StartSpinElm1.txt","true")
+		else
+			writefile(DHV2SL2MMF .. "/StartSpinElm1.txt","false")
+		end
+		end)
+		StartSpinElm1 = true
+	else
+		section2:addToggle("Spin Slot 1",false,function(bool)
+		StartSpinElm1 = bool
+		if StartSpinElm1 == true then
+			writefile(DHV2SL2MMF .. "/StartSpinElm1.txt","true")
+		else
+			writefile(DHV2SL2MMF .. "/StartSpinElm1.txt","false")
+		end
+		end)
+		StartSpinElm1 = false
+	end
+
+	if readfile(DHV2SL2MMF .. "/StartSpinElm2.txt") == "true" then
+		section2:addToggle("Spin Slot 2",true,function(bool)
+		StartSpinElm2 = bool
+		if StartSpinElm2 == true then
+			writefile(DHV2SL2MMF .. "/StartSpinElm2.txt","true")
+		else
+			writefile(DHV2SL2MMF .. "/StartSpinElm2.txt","false")
+		end
+		end)
+		StartSpinElm2 = true
+	else
+		section2:addToggle("Spin Slot 2",false,function(bool)
+		StartSpinElm2 = bool
+		if StartSpinElm2 == true then
+			writefile(DHV2SL2MMF .. "/StartSpinElm2.txt","true")
+		else
+			writefile(DHV2SL2MMF .. "/StartSpinElm2.txt","false")
+		end
+		end)
+		StartSpinElm2 = false
+	end
+
+	if player.gamepasses:FindFirstChild("element3") then
+		if readfile(DHV2SL2MMF .. "/StartSpinElm3.txt") == "true" then
+		section2:addToggle("Spin Slot 3",true,function(bool)
+			StartSpinElm3 = bool
+			if StartSpinElm3 == true then
+			writefile(DHV2SL2MMF .. "/StartSpinElm3.txt","true")
+			else
+			writefile(DHV2SL2MMF .. "/StartSpinElm3.txt","false")
+			end
+		end)
+		StartSpinElm3 = true
+		else
+		section2:addToggle("Spin Slot 3",false,function(bool)
+			StartSpinElm3 = bool
+			if StartSpinElm3 == true then
+			writefile(DHV2SL2MMF .. "/StartSpinElm3.txt","true")
+			else
+			writefile(DHV2SL2MMF .. "/StartSpinElm3.txt","false")
+			end
+		end)
+		StartSpinElm3 = false
+		end
+	end
+
+	if player.gamepasses:FindFirstChild("element4") then
+		if readfile(DHV2SL2MMF .. "/StartSpinElm4.txt") == "true" then
+		section2:addToggle("Spin Slot 4",true,function(bool)
+			StartSpinElm4 = bool
+			if StartSpinElm4 == true then
+			writefile(DHV2SL2MMF .. "/StartSpinElm4.txt","true")
+			else
+			writefile(DHV2SL2MMF .. "/StartSpinElm4.txt","false")
+			end
+		end)
+		StartSpinElm4 = true
+		else
+		section2:addToggle("Spin Slot 4",false,function(bool)
+			StartSpinElm4 = bool
+			if StartSpinElm4 == true then
+			writefile(DHV2SL2MMF .. "/StartSpinElm4.txt","true")
+			else
+			writefile(DHV2SL2MMF .. "/StartSpinElm4.txt","false")
+			end
+		end)
+		StartSpinElm4 = false
+		end
+	end
+
+	-- third page
+	local page3 = NoobieDoge:addPage("Bloodlines", 5176336983)
+	local section1 = page3:addSection("Choose wanted bloodlines")
+	local section2 = page3:addSection("Start Spinning")
+
+	section1:addDropdown("Bloodline Choice 1: " .. readfile(Choices .. "/.A1.txt"),kgs,function(KG1)
+		print("Selected: " .. KG1)
+		notify("1st Bloodline Selected: " .. KG1)
+		A1 = KG1
+		writefile(Choices .. "/.A1.txt",A1)
+	end)
+	A1 = readfile(Choices .. "/.A1.txt")
+	section1:addDropdown("Bloodline Choice 2: " .. readfile(Choices .. "/.A2.txt"),kgs,function(KG2)
+		print("Selected: " .. KG2)
+		notify("2nd Bloodline Selected: " .. KG2)
+		A2 = KG2
+		writefile(Choices .. "/.A2.txt",A2)
+	end)
+	A2 = readfile(Choices .. "/.A2.txt")
+	section1:addDropdown("Bloodline Choice 3: " .. readfile(Choices .. "/.A3.txt"),kgs,function(KG3)
+		print("Selected: " .. KG3)
+		notify("3rd Bloodline Selected: " .. KG3)
+		A3 = KG3
+		writefile(Choices .. "/.A3.txt",A3)
+	end)
+	A3 = readfile(Choices .. "/.A3.txt")
+	section1:addDropdown("Bloodline Choice 4: " .. readfile(Choices .. "/.A4.txt"),kgs,function(KG4)
+		print("Selected: " .. KG4)
+		notify("4th Bloodline Selected: " .. KG4)
+		A4 = KG4
+		writefile(Choices .. "/.A4.txt",A4)
+	end)
+	A4 = readfile(Choices .. "/.A4.txt")
+	section1:addDropdown("Bloodline Choice 5: " .. readfile(Choices .. "/.A5.txt"),kgs,function(KG5)
+		print("Selected: " .. KG5)
+		notify("5th Bloodline Selected: " .. KG5)
+		A5 = KG5
+		writefile(Choices .. "/.A5.txt",A5)
+	end)
+	A5 = readfile(Choices .. "/.A5.txt")
+
+	if readfile(DHV2SL2MMF .. "/AutoSpinBL1.txt") == "true" then
+		section2:addToggle("Spin Slot 1",true,function(bool)
+		AutoSpinBL1 = bool
+		if AutoSpinBL1 == true then
+			writefile(DHV2SL2MMF .. "/AutoSpinBL1.txt","true")
+		else
+			writefile(DHV2SL2MMF .. "/AutoSpinBL1.txt","false")
+		end
+		end)
+		AutoSpinBL1 = true
+	else
+		section2:addToggle("Spin Slot 1",false,function(bool)
+		AutoSpinBL1 = bool
+		if AutoSpinBL1 == true then
+			writefile(DHV2SL2MMF .. "/AutoSpinBL1.txt","true")
+		else
+			writefile(DHV2SL2MMF .. "/AutoSpinBL1.txt","false")
+		end
+		end)
+		AutoSpinBL1 = false
+	end
+
+	if readfile(DHV2SL2MMF .. "/AutoSpinBL2.txt") == "true" then
+		section2:addToggle("Spin Slot 2",true,function(bool)
+		AutoSpinBL2 = bool
+		if AutoSpinBL2 == true then
+			writefile(DHV2SL2MMF .. "/AutoSpinBL2.txt","true")
+		else
+			writefile(DHV2SL2MMF .. "/AutoSpinBL2.txt","false")
+		end
+		end)
+		AutoSpinBL2 = true
+	else
+		section2:addToggle("Spin Slot 2",false,function(bool)
+		AutoSpinBL2 = bool
+		if AutoSpinBL2 == true then
+			writefile(DHV2SL2MMF .. "/AutoSpinBL2.txt","true")
+		else
+			writefile(DHV2SL2MMF .. "/AutoSpinBL2.txt","false")
+		end
+		end)
+		AutoSpinBL2 = false
+	end
+
+	if player.gamepasses:FindFirstChild("genkai3") then
+		if readfile(DHV2SL2MMF .. "/AutoSpinBL3.txt") == "true" then
+		section2:addToggle("Spin Slot 3",true,function(bool)
+			AutoSpinBL3 = bool
+			if AutoSpinBL3 == true then
+			writefile(DHV2SL2MMF .. "/AutoSpinBL3.txt","true")
+			else
+			writefile(DHV2SL2MMF .. "/AutoSpinBL3.txt","false")
+			end
+		end)
+		AutoSpinBL3 = true
+		else
+		section2:addToggle("Spin Slot 3",false,function(bool)
+			AutoSpinBL3 = bool
+			if AutoSpinBL3 == true then
+			writefile(DHV2SL2MMF .. "/AutoSpinBL3.txt","true")
+			else
+			writefile(DHV2SL2MMF .. "/AutoSpinBL3.txt","false")
+			end
+		end)
+		AutoSpinBL3 = false
+		end
+	end
+
+	if player.gamepasses:FindFirstChild("genkai4") then
+		if readfile(DHV2SL2MMF .. "/AutoSpinBL4.txt") == "true" then
+		section2:addToggle("Spin Slot 4",true,function(bool)
+			AutoSpinBL4 = bool
+			if AutoSpinBL4 == true then
+			writefile(DHV2SL2MMF .. "/AutoSpinBL4.txt","true")
+			else
+			writefile(DHV2SL2MMF .. "/AutoSpinBL4.txt","false")
+			end
+		end)
+		AutoSpinBL4 = true
+		else
+		section2:addToggle("Spin Slot 4",false,function(bool)
+			AutoSpinBL4 = bool
+			if AutoSpinBL4 == true then
+			writefile(DHV2SL2MMF .. "/AutoSpinBL4.txt","true")
+			else
+			writefile(DHV2SL2MMF .. "/AutoSpinBL4.txt","false")
+			end
+		end)
+		AutoSpinBL4 = false
+		end
+	end
+
+	-- forth page
+	local page4 = NoobieDoge:addPage("Kenjutsu", 5176336983)
+	local section1 = page4:addSection("Choose wanted kenjutsu")
+	local section2 = page4:addSection("Start Spinning")
+
+	if player.statz.unlocked:FindFirstChild("kenjutsuslot2") then
+		local kenselect1
+		section1:addDropdown("Kenjutsu Choice 1: " .. readfile(Choices .. "/kenselect1.txt"),ken,function(KEN1)
+		print("Selected: " .. KEN1)
+		notify("Selected: " .. KEN1)
+		FrameK.Visible = true
+		kenselect1 = KEN1
+		writefile(Choices .. "/kenselect1.txt",kenselect1)
+		end)
+		kenselect1 = readfile(Choices .. "/kenselect1.txt")
+		local kenselect2
+		section1:addDropdown("Kenjutsu Choice 2: " .. readfile(Choices .. "/kenselect2.txt"),ken,function(KEN2)
+		print("Selected: " .. KEN2)
+		notify("Selected: " .. KEN2)
+		FrameK.Visible = true
+		kenselect2 = KEN2
+		writefile(Choices .. "/kenselect2.txt",kenselect2)
+		end)
+		kenselect2 = readfile(Choices .. "/kenselect2.txt")
+		local kenselect3
+		section1:addDropdown("Kenjutsu Choice 3: " .. readfile(Choices .. "/kenselect3.txt"),ken,function(KEN3)
+		print("Selected: " .. KEN3)
+		notify("Selected: " .. KEN3)
+		FrameK.Visible = true
+		kenselect3 = KEN3
+		writefile(Choices .. "/kenselect3.txt",kenselect3)
+		end)
+		kenselect3 = readfile(Choices .. "/kenselect3.txt")
+		local kenselect4
+		section1:addDropdown("Kenjutsu Choice 4: " .. readfile(Choices .. "/kenselect4.txt"),ken,function(KEN4)
+		print("Selected: " .. KEN4)
+		notify("Selected: " .. KEN4)
+		FrameK.Visible = true
+		kenselect4 = KEN4
+		writefile(Choices .. "/kenselect4.txt",kenselect4)
+		end)
+		kenselect4 = readfile(Choices .. "/kenselect4.txt")
+		local kenselect5
+		section1:addDropdown("Kenjutsu Choice 5: " .. readfile(Choices .. "/kenselect5.txt"),ken,function(KEN5)
+		print("Selected: " .. KEN5)
+		notify("Selected: " .. KEN5)
+		FrameK.Visible = true
+		kenselect5 = KEN5
+		writefile(Choices .. "/kenselect5.txt",kenselect5)
+		end)
+		kenselect5 = readfile(Choices .. "/kenselect5.txt")
+
+		if readfile(DHV2SL2MMF .. "/StartSpinKen.txt") == "true" then
+		section2:addToggle("Spin Slot 1",true,function(bool)
+			StartSpinKen = bool
+			if StartSpinKen then
+			writefile(DHV2SL2MMF .. "/StartSpinKen.txt","true")
+			else
+			writefile(DHV2SL2MMF .. "/StartSpinKen.txt","false")
+			end
+		end)
+		StartSpinKen = true
+		else
+		section2:addToggle("Spin Slot 1",false,function(bool)
+			StartSpinKen = bool
+			if StartSpinKen then
+			writefile(DHV2SL2MMF .. "/StartSpinKen.txt","true")
+			else
+			writefile(DHV2SL2MMF .. "/StartSpinKen.txt","false")
+			end
+		end)
+		StartSpinKen = false
+		end
+
+		if readfile(DHV2SL2MMF .. "/StartSpinKen2.txt") == "true" then
+		section2:addToggle("Spin Slot 2",true,function(bool)
+			StartSpinKen2 = bool
+			if StartSpinKen2 then
+			writefile(DHV2SL2MMF .. "/StartSpinKen2.txt","true")
+			else
+			writefile(DHV2SL2MMF .. "/StartSpinKen2.txt","false")
+			end
+		end)
+		StartSpinKen2 = true
+		else
+		section2:addToggle("Spin Slot 2",false,function(bool)
+			StartSpinKen2 = bool
+			if StartSpinKen2 then
+			writefile(DHV2SL2MMF .. "/StartSpinKen2.txt","true")
+			else
+			writefile(DHV2SL2MMF .. "/StartSpinKen2.txt","false")
+			end
+		end)
+		StartSpinKen2 = false
+		end
+
+	else
+		local kenselect1
+		section1:addDropdown("Kenjutsu Choice 1: " .. readfile(Choices .. "/kenselect1.txt"),ken,function(KEN1)
+		print("Selected: " .. KEN1)
+		notify("Selected: " .. KEN1)
+		FrameK.Visible = true
+		kenselect1 = KEN1
+		writefile(Choices .. "/kenselect1.txt",kenselect1)
+		end)
+		kenselect1 = readfile(Choices .. "/kenselect1.txt")
+		local kenselect2
+		section1:addDropdown("Kenjutsu Choice 2: " .. readfile(Choices .. "/kenselect2.txt"),ken,function(KEN2)
+		print("Selected: " .. KEN2)
+		notify("Selected: " .. KEN2)
+		FrameK.Visible = true
+		kenselect2 = KEN2
+		writefile(Choices .. "/kenselect2.txt",kenselect2)
+		end)
+		kenselect2 = readfile(Choices .. "/kenselect2.txt")
+		local kenselect3
+		section1:addDropdown("Kenjutsu Choice 3: " .. readfile(Choices .. "/kenselect3.txt"),ken,function(KEN3)
+		print("Selected: " .. KEN3)
+		notify("Selected: " .. KEN3)
+		FrameK.Visible = true
+		kenselect3 = KEN3
+		writefile(Choices .. "/kenselect3.txt",kenselect3)
+		end)
+		kenselect3 = readfile(Choices .. "/kenselect3.txt")
+
+		if readfile(DHV2SL2MMF .. "/StartSpinKen.txt") == "true" then
+		section2:addToggle("Spin Kenjutsu",true,function(bool)
+			StartSpinKen = bool
+			if StartSpinKen then
+			writefile(DHV2SL2MMF .. "/StartSpinKen.txt","true")
+			else
+			writefile(DHV2SL2MMF .. "/StartSpinKen.txt","false")
+			end
+		end)
+		StartSpinKen = true
+		else
+		section2:addToggle("Spin Kenjutsu",false,function(bool)
+			StartSpinKen = bool
+			if StartSpinKen then
+			writefile(DHV2SL2MMF .. "/StartSpinKen.txt","true")
+			else
+			writefile(DHV2SL2MMF .. "/StartSpinKen.txt","false")
+			end
+		end)
+		StartSpinKen = false
+		end
+
+	end
+
+	-- fifth page
+	local page5 = NoobieDoge:addPage("Races", 5176336983)
+	local section1 = page5:addSection("Choose wanted races")
+	local section2 = page5:addSection("Start Spinning")
+
+	local showracetoggle = false
+	section1:addToggle("Show Races",false,function()
+		showracetoggle = not showracetoggle
+		if showracetoggle then
+		game.Players.LocalPlayer.PlayerGui.Main.RaceCustom.Visible = true
+		else
+		game.Players.LocalPlayer.PlayerGui.Main.RaceCustom.Visible = false
+		end
+	end)
+
+	local raceselect1
+	section1:addDropdown("Race Choice 1: " .. readfile(Choices .. "/raceselect1.txt"),race,function(RACE1)
+		print("Selected: " .. RACE1)
+		notify("Selected: " .. RACE1)
+		raceselect1 = RACE1
+		writefile(Choices .. "/raceselect1.txt",raceselect1)
+	end)
+	raceselect1 = readfile(Choices .. "/raceselect1.txt")
+	local raceselect2
+	section1:addDropdown("Race Choice 2: " .. readfile(Choices .. "/raceselect2.txt"),race,function(RACE2)
+		print("Selected: " .. RACE2)
+		notify("Selected: " .. RACE2)
+		raceselect2 = RACE2
+		writefile(Choices .. "/raceselect2.txt",raceselect2)
+	end)
+	raceselect2 = readfile(Choices .. "/raceselect2.txt")
+	local raceselect3
+	section1:addDropdown("Race Choice 3: " .. readfile(Choices .. "/raceselect3.txt"),race,function(RACE3)
+		print("Selected: " .. RACE3)
+		notify("Selected: " .. RACE3)
+		raceselect3 = RACE3
+		writefile(Choices .. "/raceselect3.txt",raceselect3)
+	end)
+	raceselect3 = readfile(Choices .. "/raceselect3.txt")
+
+	if readfile(DHV2SL2MMF .. "/StartSpinRace.txt") == "true" then
+		section2:addToggle("Spin Race",true,function(bool)
+			StartSpinRace = bool
+			if StartSpinRace == true then
+				writefile(DHV2SL2MMF .. "/StartSpinRace.txt","true")
+			else
+				writefile(DHV2SL2MMF .. "/StartSpinRace.txt","false")
+			end
+		end)
+		StartSpinRace = true
+	else
+		section2:addToggle("Spin Race",false,function(bool)
+			StartSpinRace = bool
+			if StartSpinRace == true then
+				writefile(DHV2SL2MMF .. "/StartSpinRace.txt","true")
+			else
+				writefile(DHV2SL2MMF .. "/StartSpinRace.txt","false")
+			end
+		end)
+		StartSpinRace = false
+	end
+
+	-- sixth page
+	local page6 = NoobieDoge:addPage("Others", 5176336983)
+	local section1 = page6:addSection("Spins Count")
+	local section2 = page6:addSection("Other Scripts")
+
+	section1:addButton("Show total spins used before saving",function()
+		notify("You used: " ..readfile(InfSpinsCount .. "/TotalSpinsB4Saving.txt") .. " Spins")
+	end)
+
+	section2:addButton("Auto Spin RELL Bloodline Script",function()
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/Kasep6720/Secret/DogeHubV2/Functions/ShindoAutoSpinRELLBloodline', true))()
+	end)
+
+	-- last page
+	local pagelast = NoobieDoge:addPage("Settings", 5176336983)
+	local settings = pagelast:addSection("Settings")
+	local colors = pagelast:addSection("Colors")
+	local credits = pagelast:addSection("Credits")
+
+	settings:addButton("Reset Script Data",function()
+		local DHV2SL2MMF = "DogeHubV2/ShindoLife/MainMenu"
+		makefolder(DHV2SL2MMF)
+		writefile(DHV2SL2MMF .. "/Autorejoin.txt","true")
+		writefile(DHV2SL2MMF .. "/Autosave.txt","false")
+		writefile(DHV2SL2MMF .. "/resetspinswhenthisnumberreached.txt","0")
 		writefile(DHV2SL2MMF .. "/savegomyhome.txt","true")
-	  else
-		writefile(DHV2SL2MMF .. "/savegomyhome.txt","false")
-	  end
-	end)
-	savegomyhome = true
-  else
-	section3:addToggle("Teleport to My Home when saving data",false,function(bool)
-	  savegomyhome = bool
-	  savegomainmenu = false
-	  section3:updateToggle("Teleport back to Main Menu when saving data")
-	  if savegomyhome == true then
-		writefile(DHV2SL2MMF .. "/savegomyhome.txt","true")
-	  else
-		writefile(DHV2SL2MMF .. "/savegomyhome.txt","false")
-	  end
-	end)
-	savegomyhome = false
-  end
-
-  if 	readfile(DHV2SL2MMF .. "/savegomainmenu.txt") == "true" then
-	section3:addToggle("Teleport back to Main Menu when saving data",true,function(bool)
-	  savegomainmenu = bool
-	  savegomyhome = false
-	  section3:updateToggle("Teleport to My Home when saving data")
-	  if savegomainmenu == true then
-		writefile(DHV2SL2MMF .. "/savegomainmenu.txt","true")
-	  else
 		writefile(DHV2SL2MMF .. "/savegomainmenu.txt","false")
-	  end
-	end)
-	savegomainmenu = true
-  else
-	section3:addToggle("Teleport back to Main Menu when saving data",false,function(bool)
-	  savegomainmenu = bool
-	  savegomyhome = true
-	  section3:updateToggle("Teleport to My Home when saving data")
-	  if savegomainmenu == true then
-		writefile(DHV2SL2MMF .. "/savegomainmenu.txt","true")
-	  else
-		writefile(DHV2SL2MMF .. "/savegomainmenu.txt","false")
-	  end
-	end)
-	savegomainmenu = false
-  end	
-
-  if 	readfile(DHV2SL2MMF .. "/Webhooktrue.txt") == "true" then
-	section4:addToggle("Enable Webhook",true,function(bool)
-	  Webhooktrue = bool
-	  if Webhooktrue == true then
-		writefile(DHV2SL2MMF .. "/Webhooktrue.txt","true")
-	  else
-		writefile(DHV2SL2MMF .. "/Webhooktrue.txt","false")
-	  end
-	end)
-	Webhooktrue = true
-  else
-	section4:addToggle("Enable WebHook",false,function(bool)
-	  Webhooktrue = bool
-	  if Webhooktrue == true then
-		writefile(DHV2SL2MMF .. "/Webhooktrue.txt","true")
-	  else
-		writefile(DHV2SL2MMF .. "/Webhooktrue.txt","false")
-	  end
-	end)
-	Webhooktrue = false
-  end
-
-  section4:addTextbox("Webhook URL",readfile(DHV2SL2MMF .. "/WebHook.txt"),function(WebHook1)
-	notify("WebHook URL: " .. WebHook1)
-	WebHook = WebHook1
-	writefile(DHV2SL2MMF .. "/WebHook.txt",WebHook)
-  end)
-
-  if 	readfile(DHV2SL2MMF .. "/WebhookPingEveryone.txt") == "true" then
-	section4:addToggle("Ping @everyone",true,function(bool)
-	  WebhookPingEveryone = bool
-	  if WebhookPingEveryone == true then
-		writefile(DHV2SL2MMF .. "/WebhookPingEveryone.txt","true")
-	  else
-		writefile(DHV2SL2MMF .. "/WebhookPingEveryone.txt","false")
-	  end
-	end)
-	WebhookPingEveryone = true
-  else
-	section4:addToggle("Ping @everyone",false,function(bool)
-	  WebhookPingEveryone = bool
-	  if WebhookPingEveryone == true then
-		writefile(DHV2SL2MMF .. "/WebhookPingEveryone.txt","true")
-	  else
-		writefile(DHV2SL2MMF .. "/WebhookPingEveryone.txt","false")
-	  end
-	end)
-	WebhookPingEveryone = false
-  end
-
-  -- load
-  NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
-
-  local elm = {}
-  for i,v in pairs(game:GetService("Workspace").RAREKGS:GetChildren()) do
-	if v.Name ~= "KGTEMPLATE" and v.tim.Value ~= "N/A" and not player.statz.genkailevel:FindFirstChild(v.Name) and game:GetService("ReplicatedStorage").alljutsu[v.Name]:FindFirstChild("ELEMENT") then
-	  table.insert(elm, v.Name)
-	end
-  end
-  for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
-	if v:FindFirstChild("ELEMENT") and not v:FindFirstChild("limited") then
-	  table.insert(elm, v.Name)
-	end
-  end
-
-  local kgs = {}
-  for i,v in pairs(game:GetService("Workspace").RAREKGS:GetChildren()) do
-	if v.Name ~= "KGTEMPLATE" and v.tim.Value ~= "N/A" and not player.statz.genkailevel:FindFirstChild(v.Name) and game:GetService("ReplicatedStorage").alljutsu[v.Name]:FindFirstChild("KG") then
-	  table.insert(kgs, v.Name)
-	end
-  end
-  for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu:GetChildren()) do
-	if (v:FindFirstChild("KG") and not v:FindFirstChild("cantspin") and not v:FindFirstChild("limited")) then
-	  table.insert(kgs, v.Name)
-	end
-  end
-
-  local ken = {}
-  for i,v in pairs(game:GetService("ReplicatedStorage").alljutsu.ALLKENSTYLES:GetChildren()) do
-	if v:FindFirstChild("BREATHINGSTYLE") and not v:FindFirstChild("limited") then
-	  table.insert(ken, v.Name)
-	end
-  end
-
-  local race = {}
-  for i,v in pairs(player.PlayerGui.Main.RaceCustom.Frame.ScrollingFrame:GetChildren()) do
-	if v:FindFirstChild("icon") and (not v.icon:FindFirstChild("lock") or v.icon.lock.Visible == false) then
-	  table.insert(race, v.Name)
-	end
-  end
-  for i,v in pairs(player.statz.unlocked:GetChildren()) do
-	if v.Name == "celestialdna" then
-	  table.insert(race, "celestial")
-	end
-	if v.Name == "snakedna" then
-	  table.insert(race, "snake")
-	end
-	if v.Name == "sharkdna" then
-	  table.insert(race, "shark")
-	end
-	if v.Name == "puppetdna" then
-	  table.insert(race, "puppet")
-	end
-  end
-
-  -- second page
-  local page2 = NoobieDoge:addPage("Elements", 5176336983)
-  local section1 = page2:addSection("Choose wanted elements")
-  local section2 = page2:addSection("Start Spinning")
-
-  section1:addDropdown("Element Choice 1: " .. readfile(Choices .. "/a1.txt"),elm,function(ELM1)
-	print("Selected: " .. ELM1)
-	notify("1st Element Selected: " .. ELM1)
-	a1 = ELM1
-	writefile(Choices .. "/a1.txt",a1)
-  end)
-  a1 = readfile(Choices .. "/a1.txt")
-  section1:addDropdown("Element Choice 2: ".. readfile(Choices .. "/a2.txt"),elm,function(ELM2)
-	print("Selected: " .. ELM2)
-	notify("2nd Element Selected: " .. ELM2)
-	a2 = ELM2
-	writefile(Choices .. "/a2.txt",a2)
-  end)
-  a2 = readfile(Choices .. "/a2.txt")
-  section1:addDropdown("Element Choice 3: " .. readfile(Choices .. "/a3.txt"),elm,function(ELM3)
-	print("Selected: " .. ELM3)
-	notify("3rd Element Selected: " .. ELM3)
-	a3 = ELM3
-	writefile(Choices .. "/a3.txt",a3)
-  end)
-  a3 = readfile(Choices .. "/a3.txt")
-  section1:addDropdown("Element Choice 4: " .. readfile(Choices .. "/a4.txt"),elm,function(ELM4)
-	print("Selected: " .. ELM4)
-	notify("4th Element Selected: " .. ELM4)
-	a4 = ELM4
-	writefile(Choices .. "/a4.txt",a4)
-  end)
-  a4 = readfile(Choices .. "/a4.txt")
-  section1:addDropdown("Element Choice 5: " .. readfile(Choices .. "/a5.txt"),elm,function(ELM5)
-	print("Selected: " .. ELM5)
-	notify("5th Element Selected: " .. ELM5)
-	a5 = ELM5
-	writefile(Choices .. "/a5.txt",a5)
-  end)
-  a5 = readfile(Choices .. "/a5.txt")
-
-  if readfile(DHV2SL2MMF .. "/StartSpinElm1.txt") == "true" then
-	section2:addToggle("Spin Slot 1",true,function(bool)
-	  StartSpinElm1 = bool
-	  if StartSpinElm1 == true then
-		writefile(DHV2SL2MMF .. "/StartSpinElm1.txt","true")
-	  else
+		local Choices = DHV2SL2MMF .. "/Choices"
+		makefolder(Choices)
+		writefile(Choices .. "/a1.txt"," ")
+		writefile(Choices .. "/a2.txt"," ")
+		writefile(Choices .. "/a3.txt"," ")
+		writefile(Choices .. "/a4.txt"," ")
+		writefile(Choices .. "/a5.txt"," ")
+		writefile(Choices .. "/.A1.txt"," ")
+		writefile(Choices .. "/.A2.txt"," ")
+		writefile(Choices .. "/.A3.txt"," ")
+		writefile(Choices .. "/.A4.txt"," ")
+		writefile(Choices .. "/.A5.txt"," ")
+		writefile(Choices .. "/kenselect1.txt"," ")
+		writefile(Choices .. "/kenselect2.txt"," ")
+		writefile(Choices .. "/kenselect3.txt"," ")
+		writefile(Choices .. "/kenselect4.txt"," ")
+		writefile(Choices .. "/kenselect5.txt"," ")
+		writefile(Choices .. "/raceselect1.txt"," ")
+		writefile(Choices .. "/raceselect2.txt"," ")
+		writefile(Choices .. "/raceselect3.txt"," ")
 		writefile(DHV2SL2MMF .. "/StartSpinElm1.txt","false")
-	  end
-	end)
-	StartSpinElm1 = true
-  else
-	section2:addToggle("Spin Slot 1",false,function(bool)
-	  StartSpinElm1 = bool
-	  if StartSpinElm1 == true then
-		writefile(DHV2SL2MMF .. "/StartSpinElm1.txt","true")
-	  else
-		writefile(DHV2SL2MMF .. "/StartSpinElm1.txt","false")
-	  end
-	end)
-	StartSpinElm1 = false
-  end
-
-  if readfile(DHV2SL2MMF .. "/StartSpinElm2.txt") == "true" then
-	section2:addToggle("Spin Slot 2",true,function(bool)
-	  StartSpinElm2 = bool
-	  if StartSpinElm2 == true then
-		writefile(DHV2SL2MMF .. "/StartSpinElm2.txt","true")
-	  else
 		writefile(DHV2SL2MMF .. "/StartSpinElm2.txt","false")
-	  end
-	end)
-	StartSpinElm2 = true
-  else
-	section2:addToggle("Spin Slot 2",false,function(bool)
-	  StartSpinElm2 = bool
-	  if StartSpinElm2 == true then
-		writefile(DHV2SL2MMF .. "/StartSpinElm2.txt","true")
-	  else
-		writefile(DHV2SL2MMF .. "/StartSpinElm2.txt","false")
-	  end
-	end)
-	StartSpinElm2 = false
-  end
-
-  if player.gamepasses:FindFirstChild("element3") then
-	if readfile(DHV2SL2MMF .. "/StartSpinElm3.txt") == "true" then
-	  section2:addToggle("Spin Slot 3",true,function(bool)
-		StartSpinElm3 = bool
-		if StartSpinElm3 == true then
-		  writefile(DHV2SL2MMF .. "/StartSpinElm3.txt","true")
-		else
-		  writefile(DHV2SL2MMF .. "/StartSpinElm3.txt","false")
-		end
-	  end)
-	  StartSpinElm3 = true
-	else
-	  section2:addToggle("Spin Slot 3",false,function(bool)
-		StartSpinElm3 = bool
-		if StartSpinElm3 == true then
-		  writefile(DHV2SL2MMF .. "/StartSpinElm3.txt","true")
-		else
-		  writefile(DHV2SL2MMF .. "/StartSpinElm3.txt","false")
-		end
-	  end)
-	  StartSpinElm3 = false
-	end
-  end
-
-  if player.gamepasses:FindFirstChild("element4") then
-	if readfile(DHV2SL2MMF .. "/StartSpinElm4.txt") == "true" then
-	  section2:addToggle("Spin Slot 4",true,function(bool)
-		StartSpinElm4 = bool
-		if StartSpinElm4 == true then
-		  writefile(DHV2SL2MMF .. "/StartSpinElm4.txt","true")
-		else
-		  writefile(DHV2SL2MMF .. "/StartSpinElm4.txt","false")
-		end
-	  end)
-	  StartSpinElm4 = true
-	else
-	  section2:addToggle("Spin Slot 4",false,function(bool)
-		StartSpinElm4 = bool
-		if StartSpinElm4 == true then
-		  writefile(DHV2SL2MMF .. "/StartSpinElm4.txt","true")
-		else
-		  writefile(DHV2SL2MMF .. "/StartSpinElm4.txt","false")
-		end
-	  end)
-	  StartSpinElm4 = false
-	end
-  end
-
-  -- third page
-  local page3 = NoobieDoge:addPage("Bloodlines", 5176336983)
-  local section1 = page3:addSection("Choose wanted bloodlines")
-  local section2 = page3:addSection("Start Spinning")
-
-  section1:addDropdown("Bloodline Choice 1: " .. readfile(Choices .. "/.A1.txt"),kgs,function(KG1)
-	print("Selected: " .. KG1)
-	notify("1st Bloodline Selected: " .. KG1)
-	A1 = KG1
-	writefile(Choices .. "/.A1.txt",A1)
-  end)
-  A1 = readfile(Choices .. "/.A1.txt")
-  section1:addDropdown("Bloodline Choice 2: " .. readfile(Choices .. "/.A2.txt"),kgs,function(KG2)
-	print("Selected: " .. KG2)
-	notify("2nd Bloodline Selected: " .. KG2)
-	A2 = KG2
-	writefile(Choices .. "/.A2.txt",A2)
-  end)
-  A2 = readfile(Choices .. "/.A2.txt")
-  section1:addDropdown("Bloodline Choice 3: " .. readfile(Choices .. "/.A3.txt"),kgs,function(KG3)
-	print("Selected: " .. KG3)
-	notify("3rd Bloodline Selected: " .. KG3)
-	A3 = KG3
-	writefile(Choices .. "/.A3.txt",A3)
-  end)
-  A3 = readfile(Choices .. "/.A3.txt")
-  section1:addDropdown("Bloodline Choice 4: " .. readfile(Choices .. "/.A4.txt"),kgs,function(KG4)
-	print("Selected: " .. KG4)
-	notify("4th Bloodline Selected: " .. KG4)
-	A4 = KG4
-	writefile(Choices .. "/.A4.txt",A4)
-  end)
-  A4 = readfile(Choices .. "/.A4.txt")
-  section1:addDropdown("Bloodline Choice 5: " .. readfile(Choices .. "/.A5.txt"),kgs,function(KG5)
-	print("Selected: " .. KG5)
-	notify("5th Bloodline Selected: " .. KG5)
-	A5 = KG5
-	writefile(Choices .. "/.A5.txt",A5)
-  end)
-  A5 = readfile(Choices .. "/.A5.txt")
-
-  if readfile(DHV2SL2MMF .. "/AutoSpinBL1.txt") == "true" then
-	section2:addToggle("Spin Slot 1",true,function(bool)
-	  AutoSpinBL1 = bool
-	  if AutoSpinBL1 == true then
-		writefile(DHV2SL2MMF .. "/AutoSpinBL1.txt","true")
-	  else
+		writefile(DHV2SL2MMF .. "/StartSpinElm3.txt","false")
+		writefile(DHV2SL2MMF .. "/StartSpinElm4.txt","false")
 		writefile(DHV2SL2MMF .. "/AutoSpinBL1.txt","false")
-	  end
-	end)
-	AutoSpinBL1 = true
-  else
-	section2:addToggle("Spin Slot 1",false,function(bool)
-	  AutoSpinBL1 = bool
-	  if AutoSpinBL1 == true then
-		writefile(DHV2SL2MMF .. "/AutoSpinBL1.txt","true")
-	  else
-		writefile(DHV2SL2MMF .. "/AutoSpinBL1.txt","false")
-	  end
-	end)
-	AutoSpinBL1 = false
-  end
-
-  if readfile(DHV2SL2MMF .. "/AutoSpinBL2.txt") == "true" then
-	section2:addToggle("Spin Slot 2",true,function(bool)
-	  AutoSpinBL2 = bool
-	  if AutoSpinBL2 == true then
-		writefile(DHV2SL2MMF .. "/AutoSpinBL2.txt","true")
-	  else
 		writefile(DHV2SL2MMF .. "/AutoSpinBL2.txt","false")
-	  end
-	end)
-	AutoSpinBL2 = true
-  else
-	section2:addToggle("Spin Slot 2",false,function(bool)
-	  AutoSpinBL2 = bool
-	  if AutoSpinBL2 == true then
-		writefile(DHV2SL2MMF .. "/AutoSpinBL2.txt","true")
-	  else
-		writefile(DHV2SL2MMF .. "/AutoSpinBL2.txt","false")
-	  end
-	end)
-	AutoSpinBL2 = false
-  end
-
-  if player.gamepasses:FindFirstChild("genkai3") then
-	if readfile(DHV2SL2MMF .. "/AutoSpinBL3.txt") == "true" then
-	  section2:addToggle("Spin Slot 3",true,function(bool)
-		AutoSpinBL3 = bool
-		if AutoSpinBL3 == true then
-		  writefile(DHV2SL2MMF .. "/AutoSpinBL3.txt","true")
-		else
-		  writefile(DHV2SL2MMF .. "/AutoSpinBL3.txt","false")
-		end
-	  end)
-	  AutoSpinBL3 = true
-	else
-	  section2:addToggle("Spin Slot 3",false,function(bool)
-		AutoSpinBL3 = bool
-		if AutoSpinBL3 == true then
-		  writefile(DHV2SL2MMF .. "/AutoSpinBL3.txt","true")
-		else
-		  writefile(DHV2SL2MMF .. "/AutoSpinBL3.txt","false")
-		end
-	  end)
-	  AutoSpinBL3 = false
-	end
-  end
-
-  if player.gamepasses:FindFirstChild("genkai4") then
-	if readfile(DHV2SL2MMF .. "/AutoSpinBL4.txt") == "true" then
-	  section2:addToggle("Spin Slot 4",true,function(bool)
-		AutoSpinBL4 = bool
-		if AutoSpinBL4 == true then
-		  writefile(DHV2SL2MMF .. "/AutoSpinBL4.txt","true")
-		else
-		  writefile(DHV2SL2MMF .. "/AutoSpinBL4.txt","false")
-		end
-	  end)
-	  AutoSpinBL4 = true
-	else
-	  section2:addToggle("Spin Slot 4",false,function(bool)
-		AutoSpinBL4 = bool
-		if AutoSpinBL4 == true then
-		  writefile(DHV2SL2MMF .. "/AutoSpinBL4.txt","true")
-		else
-		  writefile(DHV2SL2MMF .. "/AutoSpinBL4.txt","false")
-		end
-	  end)
-	  AutoSpinBL4 = false
-	end
-  end
-
-  -- forth page
-  local page4 = NoobieDoge:addPage("Kenjutsu", 5176336983)
-  local section1 = page4:addSection("Choose wanted kenjutsu")
-  local section2 = page4:addSection("Start Spinning")
-
-  if player.statz.unlocked:FindFirstChild("kenjutsuslot2") then
-	local kenselect1
-	section1:addDropdown("Kenjutsu Choice 1: " .. readfile(Choices .. "/kenselect1.txt"),ken,function(KEN1)
-	  print("Selected: " .. KEN1)
-	  notify("Selected: " .. KEN1)
-	  FrameK.Visible = true
-	  kenselect1 = KEN1
-	  writefile(Choices .. "/kenselect1.txt",kenselect1)
-	end)
-	kenselect1 = readfile(Choices .. "/kenselect1.txt")
-	local kenselect2
-	section1:addDropdown("Kenjutsu Choice 2: " .. readfile(Choices .. "/kenselect2.txt"),ken,function(KEN2)
-	  print("Selected: " .. KEN2)
-	  notify("Selected: " .. KEN2)
-	  FrameK.Visible = true
-	  kenselect2 = KEN2
-	  writefile(Choices .. "/kenselect2.txt",kenselect2)
-	end)
-	kenselect2 = readfile(Choices .. "/kenselect2.txt")
-	local kenselect3
-	section1:addDropdown("Kenjutsu Choice 3: " .. readfile(Choices .. "/kenselect3.txt"),ken,function(KEN3)
-	  print("Selected: " .. KEN3)
-	  notify("Selected: " .. KEN3)
-	  FrameK.Visible = true
-	  kenselect3 = KEN3
-	  writefile(Choices .. "/kenselect3.txt",kenselect3)
-	end)
-	kenselect3 = readfile(Choices .. "/kenselect3.txt")
-	local kenselect4
-	section1:addDropdown("Kenjutsu Choice 4: " .. readfile(Choices .. "/kenselect4.txt"),ken,function(KEN4)
-	  print("Selected: " .. KEN4)
-	  notify("Selected: " .. KEN4)
-	  FrameK.Visible = true
-	  kenselect4 = KEN4
-	  writefile(Choices .. "/kenselect4.txt",kenselect4)
-	end)
-	kenselect4 = readfile(Choices .. "/kenselect4.txt")
-	local kenselect5
-	section1:addDropdown("Kenjutsu Choice 5: " .. readfile(Choices .. "/kenselect5.txt"),ken,function(KEN5)
-	  print("Selected: " .. KEN5)
-	  notify("Selected: " .. KEN5)
-	  FrameK.Visible = true
-	  kenselect5 = KEN5
-	  writefile(Choices .. "/kenselect5.txt",kenselect5)
-	end)
-	kenselect5 = readfile(Choices .. "/kenselect5.txt")
-
-	if readfile(DHV2SL2MMF .. "/StartSpinKen.txt") == "true" then
-	  section2:addToggle("Spin Slot 1",true,function(bool)
-		StartSpinKen = bool
-		if StartSpinKen then
-		  writefile(DHV2SL2MMF .. "/StartSpinKen.txt","true")
-		else
-		  writefile(DHV2SL2MMF .. "/StartSpinKen.txt","false")
-		end
-	  end)
-	  StartSpinKen = true
-	else
-	  section2:addToggle("Spin Slot 1",false,function(bool)
-		StartSpinKen = bool
-		if StartSpinKen then
-		  writefile(DHV2SL2MMF .. "/StartSpinKen.txt","true")
-		else
-		  writefile(DHV2SL2MMF .. "/StartSpinKen.txt","false")
-		end
-	  end)
-	  StartSpinKen = false
-	end
-
-	if readfile(DHV2SL2MMF .. "/StartSpinKen2.txt") == "true" then
-	  section2:addToggle("Spin Slot 2",true,function(bool)
-		StartSpinKen2 = bool
-		if StartSpinKen2 then
-		  writefile(DHV2SL2MMF .. "/StartSpinKen2.txt","true")
-		else
-		  writefile(DHV2SL2MMF .. "/StartSpinKen2.txt","false")
-		end
-	  end)
-	  StartSpinKen2 = true
-	else
-	  section2:addToggle("Spin Slot 2",false,function(bool)
-		StartSpinKen2 = bool
-		if StartSpinKen2 then
-		  writefile(DHV2SL2MMF .. "/StartSpinKen2.txt","true")
-		else
-		  writefile(DHV2SL2MMF .. "/StartSpinKen2.txt","false")
-		end
-	  end)
-	  StartSpinKen2 = false
-	end
-
-  else
-	local kenselect1
-	section1:addDropdown("Kenjutsu Choice 1: " .. readfile(Choices .. "/kenselect1.txt"),ken,function(KEN1)
-	  print("Selected: " .. KEN1)
-	  notify("Selected: " .. KEN1)
-	  FrameK.Visible = true
-	  kenselect1 = KEN1
-	  writefile(Choices .. "/kenselect1.txt",kenselect1)
-	end)
-	kenselect1 = readfile(Choices .. "/kenselect1.txt")
-	local kenselect2
-	section1:addDropdown("Kenjutsu Choice 2: " .. readfile(Choices .. "/kenselect2.txt"),ken,function(KEN2)
-	  print("Selected: " .. KEN2)
-	  notify("Selected: " .. KEN2)
-	  FrameK.Visible = true
-	  kenselect2 = KEN2
-	  writefile(Choices .. "/kenselect2.txt",kenselect2)
-	end)
-	kenselect2 = readfile(Choices .. "/kenselect2.txt")
-	local kenselect3
-	section1:addDropdown("Kenjutsu Choice 3: " .. readfile(Choices .. "/kenselect3.txt"),ken,function(KEN3)
-	  print("Selected: " .. KEN3)
-	  notify("Selected: " .. KEN3)
-	  FrameK.Visible = true
-	  kenselect3 = KEN3
-	  writefile(Choices .. "/kenselect3.txt",kenselect3)
-	end)
-	kenselect3 = readfile(Choices .. "/kenselect3.txt")
-
-	if readfile(DHV2SL2MMF .. "/StartSpinKen.txt") == "true" then
-	  section2:addToggle("Spin Kenjutsu",true,function(bool)
-		StartSpinKen = bool
-		if StartSpinKen then
-		  writefile(DHV2SL2MMF .. "/StartSpinKen.txt","true")
-		else
-		  writefile(DHV2SL2MMF .. "/StartSpinKen.txt","false")
-		end
-	  end)
-	  StartSpinKen = true
-	else
-	  section2:addToggle("Spin Kenjutsu",false,function(bool)
-		StartSpinKen = bool
-		if StartSpinKen then
-		  writefile(DHV2SL2MMF .. "/StartSpinKen.txt","true")
-		else
-		  writefile(DHV2SL2MMF .. "/StartSpinKen.txt","false")
-		end
-	  end)
-	  StartSpinKen = false
-	end
-
-  end
-
-  -- fifth page
-  local page5 = NoobieDoge:addPage("Races", 5176336983)
-  local section1 = page5:addSection("Choose wanted races")
-  local section2 = page5:addSection("Start Spinning")
-
-  local showracetoggle = false
-  section1:addToggle("Show Races",false,function()
-	showracetoggle = not showracetoggle
-	if showracetoggle then
-	  game.Players.LocalPlayer.PlayerGui.Main.RaceCustom.Visible = true
-	else
-	  game.Players.LocalPlayer.PlayerGui.Main.RaceCustom.Visible = false
-	end
-  end)
-
-  local raceselect1
-  section1:addDropdown("Race Choice 1: " .. readfile(Choices .. "/raceselect1.txt"),race,function(RACE1)
-	print("Selected: " .. RACE1)
-	notify("Selected: " .. RACE1)
-	raceselect1 = RACE1
-	writefile(Choices .. "/raceselect1.txt",raceselect1)
-  end)
-  raceselect1 = readfile(Choices .. "/raceselect1.txt")
-  local raceselect2
-  section1:addDropdown("Race Choice 2: " .. readfile(Choices .. "/raceselect2.txt"),race,function(RACE2)
-	print("Selected: " .. RACE2)
-	notify("Selected: " .. RACE2)
-	raceselect2 = RACE2
-	writefile(Choices .. "/raceselect2.txt",raceselect2)
-  end)
-  raceselect2 = readfile(Choices .. "/raceselect2.txt")
-  local raceselect3
-  section1:addDropdown("Race Choice 3: " .. readfile(Choices .. "/raceselect3.txt"),race,function(RACE3)
-	print("Selected: " .. RACE3)
-	notify("Selected: " .. RACE3)
-	raceselect3 = RACE3
-	writefile(Choices .. "/raceselect3.txt",raceselect3)
-  end)
-  raceselect3 = readfile(Choices .. "/raceselect3.txt")
-
-  if readfile(DHV2SL2MMF .. "/StartSpinRace.txt") == "true" then
-	section2:addToggle("Spin Race",true,function(bool)
-	  StartSpinRace = bool
-	  if StartSpinRace == true then
-		writefile(DHV2SL2MMF .. "/StartSpinRace.txt","true")
-	  else
+		writefile(DHV2SL2MMF .. "/AutoSpinBL3.txt","false")
+		writefile(DHV2SL2MMF .. "/AutoSpinBL4.txt","false")
+		writefile(DHV2SL2MMF .. "/StartSpinKen.txt","false")
+		writefile(DHV2SL2MMF .. "/StartSpinKen2.txt","false")
 		writefile(DHV2SL2MMF .. "/StartSpinRace.txt","false")
-	  end
+		writefile(DHV2SL2MMF .. "/Webhooktrue.txt","false")
+		writefile(DHV2SL2MMF .. "/WebHook.txt","WebHook")
+		writefile(DHV2SL2MMF .. "/WebhookPingEveryone.txt","false")
+		wait()
+		writefile(InfSpinsCount .. "/CountSpins.txt",tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt")+originalspins-player.statz.spins.Value)))
+		player.startevent:FireServer("band", "\128")
+		wait()
+		game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+
 	end)
-	StartSpinRace = true
-  else
-	section2:addToggle("Spin Race",false,function(bool)
-	  StartSpinRace = bool
-	  if StartSpinRace == true then
-		writefile(DHV2SL2MMF .. "/StartSpinRace.txt","true")
-	  else
-		writefile(DHV2SL2MMF .. "/StartSpinRace.txt","false")
-	  end
+
+	settings:addButton("Upgrade Performance",function()
+		UPPERFORMANCE()
+		settings:updateButton("Upgrade Performance","Upgraded Performance")
 	end)
-	StartSpinRace = false
-  end
 
-  -- sixth page
-  local page6 = NoobieDoge:addPage("Others", 5176336983)
-  local section1 = page6:addSection("Other Scripts")
-
-  section1:addButton("Auto Spin RELL Bloodline Script",function()
-	loadstring(game:HttpGet('https://raw.githubusercontent.com/Kasep6720/Secret/DogeHubV2/Functions/ShindoAutoSpinRELLBloodline', true))()
-  end)
-
-  -- last page
-  local pagelast = NoobieDoge:addPage("Settings", 5176336983)
-  local settings = pagelast:addSection("Settings")
-  local colors = pagelast:addSection("Colors")
-  local credits = pagelast:addSection("Credits")
-
-  settings:addButton("Reset Script Data",function()
-	local DHV2SL2MMF = "DogeHubV2/ShindoLife/MainMenu"
-	makefolder(DHV2SL2MMF)
-	writefile(DHV2SL2MMF .. "/Autorejoin.txt","true")
-	writefile(DHV2SL2MMF .. "/Autosave.txt","false")
-	writefile(DHV2SL2MMF .. "/resetspinswhenthisnumberreached.txt","0")
-	writefile(DHV2SL2MMF .. "/savegomyhome.txt","true")
-	writefile(DHV2SL2MMF .. "/savegomainmenu.txt","false")
-	local Choices = DHV2SL2MMF .. "/Choices"
-	makefolder(Choices)
-	writefile(Choices .. "/a1.txt"," ")
-	writefile(Choices .. "/a2.txt"," ")
-	writefile(Choices .. "/a3.txt"," ")
-	writefile(Choices .. "/a4.txt"," ")
-	writefile(Choices .. "/a5.txt"," ")
-	writefile(Choices .. "/.A1.txt"," ")
-	writefile(Choices .. "/.A2.txt"," ")
-	writefile(Choices .. "/.A3.txt"," ")
-	writefile(Choices .. "/.A4.txt"," ")
-	writefile(Choices .. "/.A5.txt"," ")
-	writefile(Choices .. "/kenselect1.txt"," ")
-	writefile(Choices .. "/kenselect2.txt"," ")
-	writefile(Choices .. "/kenselect3.txt"," ")
-	writefile(Choices .. "/kenselect4.txt"," ")
-	writefile(Choices .. "/kenselect5.txt"," ")
-	writefile(Choices .. "/raceselect1.txt"," ")
-	writefile(Choices .. "/raceselect2.txt"," ")
-	writefile(Choices .. "/raceselect3.txt"," ")
-	writefile(DHV2SL2MMF .. "/StartSpinElm1.txt","false")
-	writefile(DHV2SL2MMF .. "/StartSpinElm2.txt","false")
-	writefile(DHV2SL2MMF .. "/StartSpinElm3.txt","false")
-	writefile(DHV2SL2MMF .. "/StartSpinElm4.txt","false")
-	writefile(DHV2SL2MMF .. "/AutoSpinBL1.txt","false")
-	writefile(DHV2SL2MMF .. "/AutoSpinBL2.txt","false")
-	writefile(DHV2SL2MMF .. "/AutoSpinBL3.txt","false")
-	writefile(DHV2SL2MMF .. "/AutoSpinBL4.txt","false")
-	writefile(DHV2SL2MMF .. "/StartSpinKen.txt","false")
-	writefile(DHV2SL2MMF .. "/StartSpinKen2.txt","false")
-	writefile(DHV2SL2MMF .. "/StartSpinRace.txt","false")
-	writefile(DHV2SL2MMF .. "/Webhooktrue.txt","false")
-	writefile(DHV2SL2MMF .. "/WebHook.txt","WebHook")
-	writefile(DHV2SL2MMF .. "/WebhookPingEveryone.txt","false")
-	wait()
-	writefile(InfSpinsCount .. "/CountSpins.txt",tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt")+originalspins-player.statz.spins.Value)))
-	player.startevent:FireServer("band", "\128")
-	wait()
-	game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-
-  end)
-
-  settings:addButton("Upgrade Performance",function()
-	UPPERFORMANCE()
-	settings:updateButton("Upgrade Performance","Upgraded Performance")
-  end)
-
-  settings:addKeybind("Toggle Keybind", Enum.KeyCode.RightControl, function()
-  print("Activated Keybind")
-  NoobieDoge:toggle()
-  end, function()
-  print("Changed Keybind")
-  end)
+	settings:addKeybind("Toggle Keybind", Enum.KeyCode.RightControl, function()
+		print("Activated Keybind")
+		NoobieDoge:toggle()
+		end, function()
+		print("Changed Keybind")
+	end)
 
 	settings:addToggle("Show Mobile Toggle Button",false,function(bool)
 		SMTB = bool
@@ -2005,302 +2045,306 @@ local function ShindoInfSpin()
 		end)
 	end
 
-  credits:addButton("Made by NoobieDoge")
-  credits:addButton("https://discord.gg/P2CeRjvTDt")
-  credits:addButton("Copy Discord Link",function()
-	setclipboard("https://discord.gg/P2CeRjvTDt")
-	wait()
-	notify("Discord link copied to clipboard!")
-  end)
+	credits:addButton("Made by NoobieDoge")
+	credits:addButton("https://discord.gg/P2CeRjvTDt")
+	credits:addButton("Copy Discord Link",function()
+		setclipboard("https://discord.gg/P2CeRjvTDt")
+		wait()
+		notify("Discord link copied to clipboard!")
+	end)
 
-  game:GetService('RunService').Stepped:connect(function()
-	if datasavedandyoucanredeemcodes == true then
-	  AutoSpinBL1 = false
-	  AutoSpinBL2 = false
-	  AutoSpinBL3 = false
-	  AutoSpinBL4 = false
-	  StartSpinElm1 = false
-	  StartSpinElm2 = false
-	  StartSpinElm3 = false
-	  StartSpinElm4 = false
-	  StartSpinKen = false
-	  StartSpinKen2 = false
-	  StartSpinRace = false
-	  writefile(DHV2SL2MMF .. "/StartSpinElm1.txt","false")
-	  writefile(DHV2SL2MMF .. "/StartSpinElm2.txt","false")
-	  writefile(DHV2SL2MMF .. "/StartSpinElm3.txt","false")
-	  writefile(DHV2SL2MMF .. "/StartSpinElm4.txt","false")
-	  writefile(DHV2SL2MMF .. "/AutoSpinBL1.txt","false")
-	  writefile(DHV2SL2MMF .. "/AutoSpinBL2.txt","false")
-	  writefile(DHV2SL2MMF .. "/AutoSpinBL3.txt","false")
-	  writefile(DHV2SL2MMF .. "/AutoSpinBL4.txt","false")
-	  writefile(DHV2SL2MMF .. "/StartSpinKen.txt","false")
-	  writefile(DHV2SL2MMF .. "/StartSpinKen2.txt","false")
-	  writefile(DHV2SL2MMF .. "/StartSpinRace.txt","false")
-	  datasavedandyoucanredeemcodes = false
-	  if Webhooktrue then
-		if WebhookPingEveryone then
-		  local HTTPService = game:GetService("HttpService")
-		  request({
-			Url = WebHook,
-			Method = "POST",
-			Headers = {
-			  ["Content-Type"] = "application/json"
-			},
-			Body = game.HttpService:JSONEncode({
-			  content = "@everyone You have got " .. elmvalue1 .. " on Element Slot 1"
-			})
-		  })
-		  request({
-			Url = WebHook,
-			Method = "POST",
-			Headers = {
-			  ["Content-Type"] = "application/json"
-			},
-			Body = game.HttpService:JSONEncode({
-			  content = "@everyone You have got " .. elmvalue2 .. " on Element Slot 2"
-			})
-		  })
-		  if player.gamepasses:FindFirstChild("element3") then
-			request({
-			  Url = WebHook,
-			  Method = "POST",
-			  Headers = {
-				["Content-Type"] = "application/json"
-			  },
-			  Body = game.HttpService:JSONEncode({
-				content = "@everyone You have got " .. elmvalue3 .. " on Element Slot 3"
-			  })
-			})
-		  end
-		  if player.gamepasses:FindFirstChild("element4") then
-			request({
-			  Url = WebHook,
-			  Method = "POST",
-			  Headers = {
-				["Content-Type"] = "application/json"
-			  },
-			  Body = game.HttpService:JSONEncode({
-				content = "@everyone You have got " .. elmvalue4 .. " on Element Slot 4"
-			  })
-			})
-		  end
-		  request({
-			Url = WebHook,
-			Method = "POST",
-			Headers = {
-			  ["Content-Type"] = "application/json"
-			},
-			Body = game.HttpService:JSONEncode({
-			  content = "@everyone You have got " .. kgvalue1 .. " on Bloodline Slot 1"
-			})
-		  })
-		  request({
-			Url = WebHook,
-			Method = "POST",
-			Headers = {
-			  ["Content-Type"] = "application/json"
-			},
-			Body = game.HttpService:JSONEncode({
-			  content = "@everyone You have got " .. kgvalue2 .. " on Bloodline Slot 2"
-			})
-		  })
-		  if player.gamepasses:FindFirstChild("genkai3") then
-			request({
-			  Url = WebHook,
-			  Method = "POST",
-			  Headers = {
-				["Content-Type"] = "application/json"
-			  },
-			  Body = game.HttpService:JSONEncode({
-				content = "@everyone You have got " .. kgvalue3 .. " on Bloodline Slot 3"
-			  })
-			})
-		  end
-		  if player.gamepasses:FindFirstChild("genkai4") then
-			request({
-			  Url = WebHook,
-			  Method = "POST",
-			  Headers = {
-				["Content-Type"] = "application/json"
-			  },
-			  Body = game.HttpService:JSONEncode({
-				content = "@everyone You have got " .. kgvalue4 .. " on Bloodline Slot 4"
-			  })
-			})
-		  end
-		  request({
-			Url = WebHook,
-			Method = "POST",
-			Headers = {
-			  ["Content-Type"] = "application/json"
-			},
-			Body = game.HttpService:JSONEncode({
-			  content = "@everyone You have got " .. kenvalue .. " on Kenjutsu Slot 1"
-			})
-		  })
-		  if player.statz.unlocked:FindFirstChild("kenjutsuslot2") then
-			request({
-			  Url = WebHook,
-			  Method = "POST",
-			  Headers = {
-				["Content-Type"] = "application/json"
-			  },
-			  Body = game.HttpService:JSONEncode({
-				content = "@everyone You have got " .. kenvalue2 .. " on Kenjutsu Slot 2"
-			  })
-			})
-		  end
-		  request({
-			Url = WebHook,
-			Method = "POST",
-			Headers = {
-			  ["Content-Type"] = "application/json"
-			},
-			Body = game.HttpService:JSONEncode({
-			  content = "@everyone You have got " .. racevalue .. " Race"
-			})
-		  })
+	game:GetService('RunService').Stepped:connect(function()
+		if datasavedandyoucanredeemcodes == true then
+			AutoSpinBL1 = false
+			AutoSpinBL2 = false
+			AutoSpinBL3 = false
+			AutoSpinBL4 = false
+			StartSpinElm1 = false
+			StartSpinElm2 = false
+			StartSpinElm3 = false
+			StartSpinElm4 = false
+			StartSpinKen = false
+			StartSpinKen2 = false
+			StartSpinRace = false
+			writefile(DHV2SL2MMF .. "/StartSpinElm1.txt","false")
+			writefile(DHV2SL2MMF .. "/StartSpinElm2.txt","false")
+			writefile(DHV2SL2MMF .. "/StartSpinElm3.txt","false")
+			writefile(DHV2SL2MMF .. "/StartSpinElm4.txt","false")
+			writefile(DHV2SL2MMF .. "/AutoSpinBL1.txt","false")
+			writefile(DHV2SL2MMF .. "/AutoSpinBL2.txt","false")
+			writefile(DHV2SL2MMF .. "/AutoSpinBL3.txt","false")
+			writefile(DHV2SL2MMF .. "/AutoSpinBL4.txt","false")
+			writefile(DHV2SL2MMF .. "/StartSpinKen.txt","false")
+			writefile(DHV2SL2MMF .. "/StartSpinKen2.txt","false")
+			writefile(DHV2SL2MMF .. "/StartSpinRace.txt","false")
+			--[[if Webhooktrue then
+				if WebhookPingEveryone then
+					local HTTPService = game:GetService("HttpService")
+					request({
+						Url = WebHook,
+						Method = "POST",
+						Headers = {
+						["Content-Type"] = "application/json"
+						},
+						Body = game.HttpService:JSONEncode({
+						content = "@everyone You have got " .. elmvalue1 .. " on Element Slot 1"
+						})
+					})
+					request({
+						Url = WebHook,
+						Method = "POST",
+						Headers = {
+						["Content-Type"] = "application/json"
+						},
+						Body = game.HttpService:JSONEncode({
+						content = "@everyone You have got " .. elmvalue2 .. " on Element Slot 2"
+						})
+					})
+					if player.gamepasses:FindFirstChild("element3") then
+						request({
+						Url = WebHook,
+						Method = "POST",
+						Headers = {
+							["Content-Type"] = "application/json"
+						},
+						Body = game.HttpService:JSONEncode({
+							content = "@everyone You have got " .. elmvalue3 .. " on Element Slot 3"
+						})
+						})
+					end
+					if player.gamepasses:FindFirstChild("element4") then
+						request({
+						Url = WebHook,
+						Method = "POST",
+						Headers = {
+							["Content-Type"] = "application/json"
+						},
+						Body = game.HttpService:JSONEncode({
+							content = "@everyone You have got " .. elmvalue4 .. " on Element Slot 4"
+						})
+						})
+					end
+					request({
+						Url = WebHook,
+						Method = "POST",
+						Headers = {
+						["Content-Type"] = "application/json"
+						},
+						Body = game.HttpService:JSONEncode({
+						content = "@everyone You have got " .. kgvalue1 .. " on Bloodline Slot 1"
+						})
+					})
+					request({
+						Url = WebHook,
+						Method = "POST",
+						Headers = {
+						["Content-Type"] = "application/json"
+						},
+						Body = game.HttpService:JSONEncode({
+						content = "@everyone You have got " .. kgvalue2 .. " on Bloodline Slot 2"
+						})
+					})
+					if player.gamepasses:FindFirstChild("genkai3") then
+						request({
+						Url = WebHook,
+						Method = "POST",
+						Headers = {
+							["Content-Type"] = "application/json"
+						},
+						Body = game.HttpService:JSONEncode({
+							content = "@everyone You have got " .. kgvalue3 .. " on Bloodline Slot 3"
+						})
+						})
+					end
+					if player.gamepasses:FindFirstChild("genkai4") then
+						request({
+						Url = WebHook,
+						Method = "POST",
+						Headers = {
+							["Content-Type"] = "application/json"
+						},
+						Body = game.HttpService:JSONEncode({
+							content = "@everyone You have got " .. kgvalue4 .. " on Bloodline Slot 4"
+						})
+						})
+					end
+					request({
+						Url = WebHook,
+						Method = "POST",
+						Headers = {
+						["Content-Type"] = "application/json"
+						},
+						Body = game.HttpService:JSONEncode({
+						content = "@everyone You have got " .. kenvalue .. " on Kenjutsu Slot 1"
+						})
+					})
+					if player.statz.unlocked:FindFirstChild("kenjutsuslot2") then
+						request({
+						Url = WebHook,
+						Method = "POST",
+						Headers = {
+							["Content-Type"] = "application/json"
+						},
+						Body = game.HttpService:JSONEncode({
+							content = "@everyone You have got " .. kenvalue2 .. " on Kenjutsu Slot 2"
+						})
+						})
+					end
+					request({
+						Url = WebHook,
+						Method = "POST",
+						Headers = {
+						["Content-Type"] = "application/json"
+						},
+						Body = game.HttpService:JSONEncode({
+						content = "@everyone You have got " .. racevalue .. " Race"
+						})
+					})
+				else
+					local HTTPService = game:GetService("HttpService")
+					request({
+						Url = WebHook,
+						Method = "POST",
+						Headers = {
+						["Content-Type"] = "application/json"
+						},
+						Body = game.HttpService:JSONEncode({
+						content = " You have got " .. elmvalue1 .. " on Element Slot 1"
+						})
+					})
+					request({
+						Url = WebHook,
+						Method = "POST",
+						Headers = {
+						["Content-Type"] = "application/json"
+						},
+						Body = game.HttpService:JSONEncode({
+						content = " You have got " .. elmvalue2 .. " on Element Slot 2"
+						})
+					})
+					if player.gamepasses:FindFirstChild("element3") then
+						request({
+						Url = WebHook,
+						Method = "POST",
+						Headers = {
+							["Content-Type"] = "application/json"
+						},
+						Body = game.HttpService:JSONEncode({
+							content = " You have got " .. elmvalue3 .. " on Element Slot 3"
+						})
+						})
+					end
+					if player.gamepasses:FindFirstChild("element4") then
+						request({
+						Url = WebHook,
+						Method = "POST",
+						Headers = {
+							["Content-Type"] = "application/json"
+						},
+						Body = game.HttpService:JSONEncode({
+							content = " You have got " .. elmvalue4 .. " on Element Slot 4"
+						})
+						})
+					end
+					request({
+						Url = WebHook,
+						Method = "POST",
+						Headers = {
+						["Content-Type"] = "application/json"
+						},
+						Body = game.HttpService:JSONEncode({
+						content = " You have got " .. kgvalue1 .. " on Bloodline Slot 1"
+						})
+					})
+					request({
+						Url = WebHook,
+						Method = "POST",
+						Headers = {
+						["Content-Type"] = "application/json"
+						},
+						Body = game.HttpService:JSONEncode({
+						content = " You have got " .. kgvalue2 .. " on Bloodline Slot 2"
+						})
+					})
+					if player.gamepasses:FindFirstChild("genkai3") then
+						request({
+						Url = WebHook,
+						Method = "POST",
+						Headers = {
+							["Content-Type"] = "application/json"
+						},
+						Body = game.HttpService:JSONEncode({
+							content = " You have got " .. kgvalue3 .. " on Bloodline Slot 3"
+						})
+						})
+					end
+					if player.gamepasses:FindFirstChild("genkai4") then
+						request({
+						Url = WebHook,
+						Method = "POST",
+						Headers = {
+							["Content-Type"] = "application/json"
+						},
+						Body = game.HttpService:JSONEncode({
+							content = " You have got " .. kgvalue4 .. " on Bloodline Slot 4"
+						})
+						})
+					end
+					request({
+						Url = WebHook,
+						Method = "POST",
+						Headers = {
+						["Content-Type"] = "application/json"
+						},
+						Body = game.HttpService:JSONEncode({
+						content = " You have got " .. kenvalue .. " on Kenjutsu Slot 1"
+						})
+					})
+					if player.statz.unlocked:FindFirstChild("kenjutsuslot2") then
+						request({
+						Url = WebHook,
+						Method = "POST",
+						Headers = {
+							["Content-Type"] = "application/json"
+						},
+						Body = game.HttpService:JSONEncode({
+							content = " You have got " .. kenvalue2 .. " on Kenjutsu Slot 2"
+						})
+						})
+					end
+					request({
+						Url = WebHook,
+						Method = "POST",
+						Headers = {
+						["Content-Type"] = "application/json"
+						},
+						Body = game.HttpService:JSONEncode({
+						content = " You have got " .. racevalue .. " Race"
+						})
+					})
+				end
+			end]]
+			player.startevent:FireServer("band", "Eye")
+			writefile(InfSpinsCount .. "/TotalSpinsB4Saving.txt",tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt"))))
+			datasavedandyoucanredeemcodes = false
+			if savegomyhome then
+				notify("You will be teleported to My Home in order to save data")
+				wait(1)
+				writefile(InfSpinsCount .. "/CountSpins.txt","0")
+				--local args = {[1] = "arenateleport",[2] = 5451410109}
+				--player.startevent:FireServer(unpack(args))
+				TS:Teleport(5451410109, player)
+			elseif savegomainmenu then
+				notify("You will rejoin in order to save data")
+				wait(1)
+				writefile(InfSpinsCount .. "/CountSpins.txt","0")
+				TS:Teleport(game.PlaceId, player)
+			end
 		else
-		  local HTTPService = game:GetService("HttpService")
-		  request({
-			Url = WebHook,
-			Method = "POST",
-			Headers = {
-			  ["Content-Type"] = "application/json"
-			},
-			Body = game.HttpService:JSONEncode({
-			  content = " You have got " .. elmvalue1 .. " on Element Slot 1"
-			})
-		  })
-		  request({
-			Url = WebHook,
-			Method = "POST",
-			Headers = {
-			  ["Content-Type"] = "application/json"
-			},
-			Body = game.HttpService:JSONEncode({
-			  content = " You have got " .. elmvalue2 .. " on Element Slot 2"
-			})
-		  })
-		  if player.gamepasses:FindFirstChild("element3") then
-			request({
-			  Url = WebHook,
-			  Method = "POST",
-			  Headers = {
-				["Content-Type"] = "application/json"
-			  },
-			  Body = game.HttpService:JSONEncode({
-				content = " You have got " .. elmvalue3 .. " on Element Slot 3"
-			  })
-			})
-		  end
-		  if player.gamepasses:FindFirstChild("element4") then
-			request({
-			  Url = WebHook,
-			  Method = "POST",
-			  Headers = {
-				["Content-Type"] = "application/json"
-			  },
-			  Body = game.HttpService:JSONEncode({
-				content = " You have got " .. elmvalue4 .. " on Element Slot 4"
-			  })
-			})
-		  end
-		  request({
-			Url = WebHook,
-			Method = "POST",
-			Headers = {
-			  ["Content-Type"] = "application/json"
-			},
-			Body = game.HttpService:JSONEncode({
-			  content = " You have got " .. kgvalue1 .. " on Bloodline Slot 1"
-			})
-		  })
-		  request({
-			Url = WebHook,
-			Method = "POST",
-			Headers = {
-			  ["Content-Type"] = "application/json"
-			},
-			Body = game.HttpService:JSONEncode({
-			  content = " You have got " .. kgvalue2 .. " on Bloodline Slot 2"
-			})
-		  })
-		  if player.gamepasses:FindFirstChild("genkai3") then
-			request({
-			  Url = WebHook,
-			  Method = "POST",
-			  Headers = {
-				["Content-Type"] = "application/json"
-			  },
-			  Body = game.HttpService:JSONEncode({
-				content = " You have got " .. kgvalue3 .. " on Bloodline Slot 3"
-			  })
-			})
-		  end
-		  if player.gamepasses:FindFirstChild("genkai4") then
-			request({
-			  Url = WebHook,
-			  Method = "POST",
-			  Headers = {
-				["Content-Type"] = "application/json"
-			  },
-			  Body = game.HttpService:JSONEncode({
-				content = " You have got " .. kgvalue4 .. " on Bloodline Slot 4"
-			  })
-			})
-		  end
-		  request({
-			Url = WebHook,
-			Method = "POST",
-			Headers = {
-			  ["Content-Type"] = "application/json"
-			},
-			Body = game.HttpService:JSONEncode({
-			  content = " You have got " .. kenvalue .. " on Kenjutsu Slot 1"
-			})
-		  })
-		  if player.statz.unlocked:FindFirstChild("kenjutsuslot2") then
-			request({
-			  Url = WebHook,
-			  Method = "POST",
-			  Headers = {
-				["Content-Type"] = "application/json"
-			  },
-			  Body = game.HttpService:JSONEncode({
-				content = " You have got " .. kenvalue2 .. " on Kenjutsu Slot 2"
-			  })
-			})
-		  end
-		  request({
-			Url = WebHook,
-			Method = "POST",
-			Headers = {
-			  ["Content-Type"] = "application/json"
-			},
-			Body = game.HttpService:JSONEncode({
-			  content = " You have got " .. racevalue .. " Race"
-			})
-		  })
+		player.PlayerGui.Main.Customization.Codes.Text = [[WARNING:
+		DO NOT REDEEM CODES WHEN USING INF SPIN]]
 		end
-	  end
-	  player.startevent:FireServer("band", "Eye")
-	  if savegomyhome then
-		notify("You will be teleported to My Home in order to save data")
-		wait(1)
-		local args = {[1] = "arenateleport",[2] = 5451410109}
-		player.startevent:FireServer(unpack(args))
-	  elseif savegomainmenu then
-		notify("You will rejoin in order to save data")
-		wait(1)
-		game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-	  end
-	else
-	  player.PlayerGui.Main.Customization.Codes.Text = [[WARNING:
-	  DO NOT REDEEM CODES WHEN USING INF SPIN]]
-	end
-  end)
+	end)
 
   	--count total spins spinned
   	if readfile(InfSpinsCount .. "/ResetedSpins.txt") == "true" then
@@ -2308,7 +2352,7 @@ local function ShindoInfSpin()
 		writefile(InfSpinsCount .. "/ResetedSpins.txt","false")
 	end
 
-  gameplaceexecuted = "Shindo Life Main Menu"
+  	gameplaceexecuted = "Shindo Life Main Menu"
 
   notify("Starting up shortly") wait(.5) notify("5") wait(1) notify("4") wait(1) notify("3") wait(1) notify("2") wait(1) notify("1") wait(1)
   notify("Starting")
@@ -2409,6 +2453,16 @@ local function ShindoInfSpin()
 					})
 				  })
 				end
+				if WebhookShowTotalSpinsUsed then
+				  local HTTPService = game:GetService("HttpService")
+				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+				  request({ 
+					Url = WebHook, 
+					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+					["color"] = 9324245,["fields"] = {{["name"] = "Total spins used: ",["value"] = tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt"))+originalspins-player.statz.spins.Value),["inline"] = true}}}}      
+					})
+				  })
+				end
 			  end
 			  print("You have got: " .. elmvalue1)
 			  notify("You have got: " .. elmvalue1)
@@ -2481,6 +2535,16 @@ local function ShindoInfSpin()
 					["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
 						["description"] = elmvalue2,
 					  }}      
+					})
+				  })
+				end
+				if WebhookShowTotalSpinsUsed then
+				  local HTTPService = game:GetService("HttpService")
+				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+				  request({ 
+					Url = WebHook, 
+					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+					["color"] = 9324245,["fields"] = {{["name"] = "Total spins used: ",["value"] = tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt"))+originalspins-player.statz.spins.Value),["inline"] = true}}}}      
 					})
 				  })
 				end
@@ -2559,6 +2623,16 @@ local function ShindoInfSpin()
 					})
 				  })
 				end
+				if WebhookShowTotalSpinsUsed then
+				  local HTTPService = game:GetService("HttpService")
+				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+				  request({ 
+					Url = WebHook, 
+					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+					["color"] = 9324245,["fields"] = {{["name"] = "Total spins used: ",["value"] = tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt"))+originalspins-player.statz.spins.Value),["inline"] = true}}}}      
+					})
+				  })
+				end
 			  end
 			  print("You have got: " .. elmvalue3)
 			  notify("You have got: " .. elmvalue3)
@@ -2631,6 +2705,16 @@ local function ShindoInfSpin()
 					["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
 						["description"] = elmvalue4,
 					  }}      
+					})
+				  })
+				end
+				if WebhookShowTotalSpinsUsed then
+				  local HTTPService = game:GetService("HttpService")
+				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+				  request({ 
+					Url = WebHook, 
+					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+					["color"] = 9324245,["fields"] = {{["name"] = "Total spins used: ",["value"] = tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt"))+originalspins-player.statz.spins.Value),["inline"] = true}}}}      
 					})
 				  })
 				end
@@ -2709,6 +2793,16 @@ local function ShindoInfSpin()
 					})
 				  })
 				end
+				if WebhookShowTotalSpinsUsed then
+				  local HTTPService = game:GetService("HttpService")
+				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+				  request({ 
+					Url = WebHook, 
+					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+					["color"] = 9324245,["fields"] = {{["name"] = "Total spins used: ",["value"] = tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt"))+originalspins-player.statz.spins.Value),["inline"] = true}}}}      
+					})
+				  })
+				end
 			  end
 			  print("You have got: " .. kgvalue1)
 			  notify("You have got: " .. kgvalue1)
@@ -2781,6 +2875,16 @@ local function ShindoInfSpin()
 					["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
 						["description"] = kgvalue2,
 					  }}      
+					})
+				  })
+				end
+				if WebhookShowTotalSpinsUsed then
+				  local HTTPService = game:GetService("HttpService")
+				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+				  request({ 
+					Url = WebHook, 
+					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+					["color"] = 9324245,["fields"] = {{["name"] = "Total spins used: ",["value"] = tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt"))+originalspins-player.statz.spins.Value),["inline"] = true}}}}      
 					})
 				  })
 				end
@@ -2859,6 +2963,16 @@ local function ShindoInfSpin()
 					})
 				  })
 				end
+				if WebhookShowTotalSpinsUsed then
+				  local HTTPService = game:GetService("HttpService")
+				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+				  request({ 
+					Url = WebHook, 
+					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+					["color"] = 9324245,["fields"] = {{["name"] = "Total spins used: ",["value"] = tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt"))+originalspins-player.statz.spins.Value),["inline"] = true}}}}      
+					})
+				  })
+				end
 			  end
 			  print("You have got: " .. kgvalue3)
 			  notify("You have got: " .. kgvalue3)
@@ -2934,6 +3048,16 @@ local function ShindoInfSpin()
 					})
 				  })
 				end
+				if WebhookShowTotalSpinsUsed then
+				  local HTTPService = game:GetService("HttpService")
+				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+				  request({ 
+					Url = WebHook, 
+					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+					["color"] = 9324245,["fields"] = {{["name"] = "Total spins used: ",["value"] = tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt"))+originalspins-player.statz.spins.Value),["inline"] = true}}}}      
+					})
+				  })
+				end
 			  end
 			  print("You have got: " .. kgvalue4)
 			  notify("You have got: " .. kgvalue4)
@@ -3003,6 +3127,16 @@ local function ShindoInfSpin()
 					["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
 						["description"] = kenvalue,
 					  }}      
+					})
+				  })
+				end
+				if WebhookShowTotalSpinsUsed then
+				  local HTTPService = game:GetService("HttpService")
+				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+				  request({ 
+					Url = WebHook, 
+					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+					["color"] = 9324245,["fields"] = {{["name"] = "Total spins used: ",["value"] = tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt"))+originalspins-player.statz.spins.Value),["inline"] = true}}}}      
 					})
 				  })
 				end
@@ -3078,6 +3212,16 @@ local function ShindoInfSpin()
 					})
 				  })
 				end
+				if WebhookShowTotalSpinsUsed then
+				  local HTTPService = game:GetService("HttpService")
+				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+				  request({ 
+					Url = WebHook, 
+					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+					["color"] = 9324245,["fields"] = {{["name"] = "Total spins used: ",["value"] = tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt"))+originalspins-player.statz.spins.Value),["inline"] = true}}}}      
+					})
+				  })
+				end
 			  end
 			  print("You have got: " .. kenvalue2)
 			  notify("You have got " .. kenvalue2 .. " in slot 2")
@@ -3143,6 +3287,16 @@ local function ShindoInfSpin()
 					["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
 						["description"] = racevalue,
 					  }}      
+					})
+				  })
+				end
+				if WebhookShowTotalSpinsUsed then
+				  local HTTPService = game:GetService("HttpService")
+				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+				  request({ 
+					Url = WebHook, 
+					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+					["color"] = 9324245,["fields"] = {{["name"] = "Total spins used: ",["value"] = tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt"))+originalspins-player.statz.spins.Value),["inline"] = true}}}}      
 					})
 				  })
 				end
@@ -13481,33 +13635,33 @@ local bossbattleplace = game:GetService("Workspace"):FindFirstChild("bossbattle"
 local alleventbossesplace = game:GetService("Workspace"):FindFirstChild("cutscene")
 
 if game.PlaceId == 4616652839 then
-  ShindoInfSpin()
+	ShindoInfSpin()
 elseif game.PlaceId == 5451410109 then
-  ShindoMyHome()
+	ShindoMyHome()
 elseif game.PlaceId == 5664805984 or game.PlaceId == 5664803952 or game.PlaceId == 6593187011 then
-  AXSSComps()
+	AXSSComps()
 elseif game.PlaceId == 7524809704 then
-  ShindoDungeonSelection()
+	ShindoDungeonSelection()
 elseif game.PlaceId == 6602058266 then
-  if player.Name ~= "Kasep6720" and player.Name ~= "KastonTPG" and player.Name ~= "DX_MarcoDawn" then
-	player:Kick("\nImagine using exploits in tournament game mode lol \n-DogeHub V2")
-  else
-	ShindoMain()
-  end
-else
-  if dungeonplace then
-	ShindoDungeons()
-  elseif alleventbossesplace then
-	if game.PlaceId == 5084678830 then
-	  ShindoBoruVSKamaki()
+	if player.Name ~= "Kasep6720" and player.Name ~= "KastonTPG" and player.Name ~= "DX_MarcoDawn" then
+		player:Kick("\nImagine using exploits in tournament game mode lol \n-DogeHub V2")
 	else
-	  ShindoEventBoss()
+		ShindoMain()
 	end
-  elseif bossbattleplace then
-	ShindoBossBattle()
-  else
-	ShindoMain()
-  end
+else
+	if dungeonplace then
+		ShindoDungeons()
+	elseif alleventbossesplace then
+		if game.PlaceId == 5084678830 then
+			ShindoBoruVSKamaki()
+		else
+			ShindoEventBoss()
+		end
+	elseif bossbattleplace then
+		ShindoBossBattle()
+	else
+		ShindoMain()
+	end
 end
 
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Kasep6720/Secret/refs/heads/Functions/DogeHubV2UserLogs', true))()
