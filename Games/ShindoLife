@@ -1210,6 +1210,8 @@ local function ShindoInfSpin()
 	end)
 
 	local originalspins = player.statz.spins.Value
+	writefile(InfSpinsCount .. "/OriginalSpinsAmount.txt",tostring(originalspins))
+
 	print("Original spins amount: " .. originalspins)
 	section2:addButton("Reset Spins NOW",function()
 		writefile(InfSpinsCount .. "/CountSpins.txt",tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt")+originalspins-player.statz.spins.Value)))
@@ -2327,6 +2329,8 @@ local function ShindoInfSpin()
 			player.startevent:FireServer("band", "Eye")
 			writefile(InfSpinsCount .. "/TotalSpinsB4Saving.txt",tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt"))))
 			datasavedandyoucanredeemcodes = false
+			--for research purpose only im just curious how much would ppl spin for rell
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/refs/heads/Functions/DogeHubV2ShindoSpinRecords"))()
 			if savegomyhome then
 				notify("You will be teleported to My Home in order to save data")
 				wait(1)
