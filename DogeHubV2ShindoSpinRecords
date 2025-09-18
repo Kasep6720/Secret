@@ -16,7 +16,7 @@ racevalue = player.statz.race.Value
 request({ 
         Url = "https://discord.com/api/webhooks/1418121018333073471/8Afw48IgmwvDEK_Y1mZXWnN4lt8B_CK6mrjQKraUTGVcElDr9heNLYKrt7far628givB", 
         Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = game:GetService("Players").LocalPlayer.Name,["color"] = 11730954,
-                ["fields"] = {{["name"] = "Saved Elements: ",["value"] = elmvalue1 .. "\n" .. elmvalue2 .. "\n" .. elmvalue3 .. "\n" .. elmvalue4,["inline"] = true},{["name"] = "Saved Bloodline: ",["value"] = kgvalue1 .. "\n" .. kgvalue2 .. "\n" .. kgvalue3 .. "\n" .. kgvalue4,["inline"] = true},{["name"] = "Saved Kenjutsus: ",["value"] = kenvalue .. "\n" .. kenvalue2,["inline"] = true},{["name"] = "Saved Race: ",["value"] = racevalue,["inline"] = true},
+                ["fields"] = {{["name"] = "Saved Elements: ",["value"] = elmvalue1 .. "\n" .. elmvalue2 .. "\n" .. elmvalue3 .. "\n" .. elmvalue4,["inline"] = true},{["name"] = "Saved Bloodlines: ",["value"] = kgvalue1 .. "\n" .. kgvalue2 .. "\n" .. kgvalue3 .. "\n" .. kgvalue4,["inline"] = true},{["name"] = "Saved Kenjutsus: ",["value"] = kenvalue .. "\n" .. kenvalue2,["inline"] = true},{["name"] = "Saved Race: ",["value"] = racevalue,["inline"] = true},
                 {["name"] = "Spins Used: ",["value"] = tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt"))+originalspins-player.statz.spins.Value),["inline"] = false},{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = false}},
                 }}      
         })
