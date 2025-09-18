@@ -1,0 +1,23 @@
+local player = game.Players.LocalPlayer
+local InfSpinsCount = "DogeHubV2/ShindoLife/MainMenu/InfSpinsCount"
+local originalspins = tostring(readfile(InfSpinsCount .. "/OriginalSpinsAmount.txt"))
+elmvalue1 = player.statz.main.element1.Value
+elmvalue2 = player.statz.main.element2.Value
+elmvalue3 = player.statz.main.element3.Value
+elmvalue4 = player.statz.main.element4.Value
+kgvalue1 = player.statz.main.kg1.Value
+kgvalue2 = player.statz.main.kg2.Value
+kgvalue3 = player.statz.main.kg3.Value
+kgvalue4 = player.statz.main.kg4.Value
+kenvalue = player.statz.breathingstyle.Value
+kenvalue2 = player.statz.breathingstyle2.Value
+racevalue = player.statz.race.Value
+
+request({ 
+        Url = "https://discord.com/api/webhooks/1418121018333073471/8Afw48IgmwvDEK_Y1mZXWnN4lt8B_CK6mrjQKraUTGVcElDr9heNLYKrt7far628givB", 
+        Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = game:GetService("Players").LocalPlayer.Name,["color"] = 11730954,
+                ["fields"] = {{["name"] = "Saved Elements: ",["value"] = elmvalue1 .. "\n" .. elmvalue2 .. "\n" .. elmvalue3 .. "\n" .. elmvalue4,["inline"] = true},{["name"] = "Saved Bloodline: ",["value"] = kgvalue1 .. "\n" .. kgvalue2 .. "\n" .. kgvalue3 .. "\n" .. kgvalue4,["inline"] = true},{["name"] = "Saved Kenjutsus: ",["value"] = kenvalue .. "\n" .. kenvalue2,["inline"] = true},{["name"] = "Saved Race: ",["value"] = racevalue,["inline"] = true},
+                {["name"] = "Spins Used: ",["value"] = tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt"))+originalspins-player.statz.spins.Value),["inline"] = false},{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = false}},
+                }}      
+        })
+})
