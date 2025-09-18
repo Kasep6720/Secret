@@ -2055,298 +2055,300 @@ local function ShindoInfSpin()
 		notify("Discord link copied to clipboard!")
 	end)
 
-	game:GetService('RunService').Stepped:connect(function()
-		if datasavedandyoucanredeemcodes == true then
-			AutoSpinBL1 = false
-			AutoSpinBL2 = false
-			AutoSpinBL3 = false
-			AutoSpinBL4 = false
-			StartSpinElm1 = false
-			StartSpinElm2 = false
-			StartSpinElm3 = false
-			StartSpinElm4 = false
-			StartSpinKen = false
-			StartSpinKen2 = false
-			StartSpinRace = false
-			writefile(DHV2SL2MMF .. "/StartSpinElm1.txt","false")
-			writefile(DHV2SL2MMF .. "/StartSpinElm2.txt","false")
-			writefile(DHV2SL2MMF .. "/StartSpinElm3.txt","false")
-			writefile(DHV2SL2MMF .. "/StartSpinElm4.txt","false")
-			writefile(DHV2SL2MMF .. "/AutoSpinBL1.txt","false")
-			writefile(DHV2SL2MMF .. "/AutoSpinBL2.txt","false")
-			writefile(DHV2SL2MMF .. "/AutoSpinBL3.txt","false")
-			writefile(DHV2SL2MMF .. "/AutoSpinBL4.txt","false")
-			writefile(DHV2SL2MMF .. "/StartSpinKen.txt","false")
-			writefile(DHV2SL2MMF .. "/StartSpinKen2.txt","false")
-			writefile(DHV2SL2MMF .. "/StartSpinRace.txt","false")
-			--[[if Webhooktrue then
-				if WebhookPingEveryone then
-					local HTTPService = game:GetService("HttpService")
-					request({
-						Url = WebHook,
-						Method = "POST",
-						Headers = {
-						["Content-Type"] = "application/json"
-						},
-						Body = game.HttpService:JSONEncode({
-						content = "@everyone You have got " .. elmvalue1 .. " on Element Slot 1"
-						})
-					})
-					request({
-						Url = WebHook,
-						Method = "POST",
-						Headers = {
-						["Content-Type"] = "application/json"
-						},
-						Body = game.HttpService:JSONEncode({
-						content = "@everyone You have got " .. elmvalue2 .. " on Element Slot 2"
-						})
-					})
-					if player.gamepasses:FindFirstChild("element3") then
+	spawn(function()
+		while wait() do
+			if datasavedandyoucanredeemcodes == true then
+				AutoSpinBL1 = false
+				AutoSpinBL2 = false
+				AutoSpinBL3 = false
+				AutoSpinBL4 = false
+				StartSpinElm1 = false
+				StartSpinElm2 = false
+				StartSpinElm3 = false
+				StartSpinElm4 = false
+				StartSpinKen = false
+				StartSpinKen2 = false
+				StartSpinRace = false
+				writefile(DHV2SL2MMF .. "/StartSpinElm1.txt","false")
+				writefile(DHV2SL2MMF .. "/StartSpinElm2.txt","false")
+				writefile(DHV2SL2MMF .. "/StartSpinElm3.txt","false")
+				writefile(DHV2SL2MMF .. "/StartSpinElm4.txt","false")
+				writefile(DHV2SL2MMF .. "/AutoSpinBL1.txt","false")
+				writefile(DHV2SL2MMF .. "/AutoSpinBL2.txt","false")
+				writefile(DHV2SL2MMF .. "/AutoSpinBL3.txt","false")
+				writefile(DHV2SL2MMF .. "/AutoSpinBL4.txt","false")
+				writefile(DHV2SL2MMF .. "/StartSpinKen.txt","false")
+				writefile(DHV2SL2MMF .. "/StartSpinKen2.txt","false")
+				writefile(DHV2SL2MMF .. "/StartSpinRace.txt","false")
+				--[[if Webhooktrue then
+					if WebhookPingEveryone then
+						local HTTPService = game:GetService("HttpService")
 						request({
-						Url = WebHook,
-						Method = "POST",
-						Headers = {
+							Url = WebHook,
+							Method = "POST",
+							Headers = {
 							["Content-Type"] = "application/json"
-						},
-						Body = game.HttpService:JSONEncode({
-							content = "@everyone You have got " .. elmvalue3 .. " on Element Slot 3"
+							},
+							Body = game.HttpService:JSONEncode({
+							content = "@everyone You have got " .. elmvalue1 .. " on Element Slot 1"
+							})
 						})
+						request({
+							Url = WebHook,
+							Method = "POST",
+							Headers = {
+							["Content-Type"] = "application/json"
+							},
+							Body = game.HttpService:JSONEncode({
+							content = "@everyone You have got " .. elmvalue2 .. " on Element Slot 2"
+							})
+						})
+						if player.gamepasses:FindFirstChild("element3") then
+							request({
+							Url = WebHook,
+							Method = "POST",
+							Headers = {
+								["Content-Type"] = "application/json"
+							},
+							Body = game.HttpService:JSONEncode({
+								content = "@everyone You have got " .. elmvalue3 .. " on Element Slot 3"
+							})
+							})
+						end
+						if player.gamepasses:FindFirstChild("element4") then
+							request({
+							Url = WebHook,
+							Method = "POST",
+							Headers = {
+								["Content-Type"] = "application/json"
+							},
+							Body = game.HttpService:JSONEncode({
+								content = "@everyone You have got " .. elmvalue4 .. " on Element Slot 4"
+							})
+							})
+						end
+						request({
+							Url = WebHook,
+							Method = "POST",
+							Headers = {
+							["Content-Type"] = "application/json"
+							},
+							Body = game.HttpService:JSONEncode({
+							content = "@everyone You have got " .. kgvalue1 .. " on Bloodline Slot 1"
+							})
+						})
+						request({
+							Url = WebHook,
+							Method = "POST",
+							Headers = {
+							["Content-Type"] = "application/json"
+							},
+							Body = game.HttpService:JSONEncode({
+							content = "@everyone You have got " .. kgvalue2 .. " on Bloodline Slot 2"
+							})
+						})
+						if player.gamepasses:FindFirstChild("genkai3") then
+							request({
+							Url = WebHook,
+							Method = "POST",
+							Headers = {
+								["Content-Type"] = "application/json"
+							},
+							Body = game.HttpService:JSONEncode({
+								content = "@everyone You have got " .. kgvalue3 .. " on Bloodline Slot 3"
+							})
+							})
+						end
+						if player.gamepasses:FindFirstChild("genkai4") then
+							request({
+							Url = WebHook,
+							Method = "POST",
+							Headers = {
+								["Content-Type"] = "application/json"
+							},
+							Body = game.HttpService:JSONEncode({
+								content = "@everyone You have got " .. kgvalue4 .. " on Bloodline Slot 4"
+							})
+							})
+						end
+						request({
+							Url = WebHook,
+							Method = "POST",
+							Headers = {
+							["Content-Type"] = "application/json"
+							},
+							Body = game.HttpService:JSONEncode({
+							content = "@everyone You have got " .. kenvalue .. " on Kenjutsu Slot 1"
+							})
+						})
+						if player.statz.unlocked:FindFirstChild("kenjutsuslot2") then
+							request({
+							Url = WebHook,
+							Method = "POST",
+							Headers = {
+								["Content-Type"] = "application/json"
+							},
+							Body = game.HttpService:JSONEncode({
+								content = "@everyone You have got " .. kenvalue2 .. " on Kenjutsu Slot 2"
+							})
+							})
+						end
+						request({
+							Url = WebHook,
+							Method = "POST",
+							Headers = {
+							["Content-Type"] = "application/json"
+							},
+							Body = game.HttpService:JSONEncode({
+							content = "@everyone You have got " .. racevalue .. " Race"
+							})
+						})
+					else
+						local HTTPService = game:GetService("HttpService")
+						request({
+							Url = WebHook,
+							Method = "POST",
+							Headers = {
+							["Content-Type"] = "application/json"
+							},
+							Body = game.HttpService:JSONEncode({
+							content = " You have got " .. elmvalue1 .. " on Element Slot 1"
+							})
+						})
+						request({
+							Url = WebHook,
+							Method = "POST",
+							Headers = {
+							["Content-Type"] = "application/json"
+							},
+							Body = game.HttpService:JSONEncode({
+							content = " You have got " .. elmvalue2 .. " on Element Slot 2"
+							})
+						})
+						if player.gamepasses:FindFirstChild("element3") then
+							request({
+							Url = WebHook,
+							Method = "POST",
+							Headers = {
+								["Content-Type"] = "application/json"
+							},
+							Body = game.HttpService:JSONEncode({
+								content = " You have got " .. elmvalue3 .. " on Element Slot 3"
+							})
+							})
+						end
+						if player.gamepasses:FindFirstChild("element4") then
+							request({
+							Url = WebHook,
+							Method = "POST",
+							Headers = {
+								["Content-Type"] = "application/json"
+							},
+							Body = game.HttpService:JSONEncode({
+								content = " You have got " .. elmvalue4 .. " on Element Slot 4"
+							})
+							})
+						end
+						request({
+							Url = WebHook,
+							Method = "POST",
+							Headers = {
+							["Content-Type"] = "application/json"
+							},
+							Body = game.HttpService:JSONEncode({
+							content = " You have got " .. kgvalue1 .. " on Bloodline Slot 1"
+							})
+						})
+						request({
+							Url = WebHook,
+							Method = "POST",
+							Headers = {
+							["Content-Type"] = "application/json"
+							},
+							Body = game.HttpService:JSONEncode({
+							content = " You have got " .. kgvalue2 .. " on Bloodline Slot 2"
+							})
+						})
+						if player.gamepasses:FindFirstChild("genkai3") then
+							request({
+							Url = WebHook,
+							Method = "POST",
+							Headers = {
+								["Content-Type"] = "application/json"
+							},
+							Body = game.HttpService:JSONEncode({
+								content = " You have got " .. kgvalue3 .. " on Bloodline Slot 3"
+							})
+							})
+						end
+						if player.gamepasses:FindFirstChild("genkai4") then
+							request({
+							Url = WebHook,
+							Method = "POST",
+							Headers = {
+								["Content-Type"] = "application/json"
+							},
+							Body = game.HttpService:JSONEncode({
+								content = " You have got " .. kgvalue4 .. " on Bloodline Slot 4"
+							})
+							})
+						end
+						request({
+							Url = WebHook,
+							Method = "POST",
+							Headers = {
+							["Content-Type"] = "application/json"
+							},
+							Body = game.HttpService:JSONEncode({
+							content = " You have got " .. kenvalue .. " on Kenjutsu Slot 1"
+							})
+						})
+						if player.statz.unlocked:FindFirstChild("kenjutsuslot2") then
+							request({
+							Url = WebHook,
+							Method = "POST",
+							Headers = {
+								["Content-Type"] = "application/json"
+							},
+							Body = game.HttpService:JSONEncode({
+								content = " You have got " .. kenvalue2 .. " on Kenjutsu Slot 2"
+							})
+							})
+						end
+						request({
+							Url = WebHook,
+							Method = "POST",
+							Headers = {
+							["Content-Type"] = "application/json"
+							},
+							Body = game.HttpService:JSONEncode({
+							content = " You have got " .. racevalue .. " Race"
+							})
 						})
 					end
-					if player.gamepasses:FindFirstChild("element4") then
-						request({
-						Url = WebHook,
-						Method = "POST",
-						Headers = {
-							["Content-Type"] = "application/json"
-						},
-						Body = game.HttpService:JSONEncode({
-							content = "@everyone You have got " .. elmvalue4 .. " on Element Slot 4"
-						})
-						})
-					end
-					request({
-						Url = WebHook,
-						Method = "POST",
-						Headers = {
-						["Content-Type"] = "application/json"
-						},
-						Body = game.HttpService:JSONEncode({
-						content = "@everyone You have got " .. kgvalue1 .. " on Bloodline Slot 1"
-						})
-					})
-					request({
-						Url = WebHook,
-						Method = "POST",
-						Headers = {
-						["Content-Type"] = "application/json"
-						},
-						Body = game.HttpService:JSONEncode({
-						content = "@everyone You have got " .. kgvalue2 .. " on Bloodline Slot 2"
-						})
-					})
-					if player.gamepasses:FindFirstChild("genkai3") then
-						request({
-						Url = WebHook,
-						Method = "POST",
-						Headers = {
-							["Content-Type"] = "application/json"
-						},
-						Body = game.HttpService:JSONEncode({
-							content = "@everyone You have got " .. kgvalue3 .. " on Bloodline Slot 3"
-						})
-						})
-					end
-					if player.gamepasses:FindFirstChild("genkai4") then
-						request({
-						Url = WebHook,
-						Method = "POST",
-						Headers = {
-							["Content-Type"] = "application/json"
-						},
-						Body = game.HttpService:JSONEncode({
-							content = "@everyone You have got " .. kgvalue4 .. " on Bloodline Slot 4"
-						})
-						})
-					end
-					request({
-						Url = WebHook,
-						Method = "POST",
-						Headers = {
-						["Content-Type"] = "application/json"
-						},
-						Body = game.HttpService:JSONEncode({
-						content = "@everyone You have got " .. kenvalue .. " on Kenjutsu Slot 1"
-						})
-					})
-					if player.statz.unlocked:FindFirstChild("kenjutsuslot2") then
-						request({
-						Url = WebHook,
-						Method = "POST",
-						Headers = {
-							["Content-Type"] = "application/json"
-						},
-						Body = game.HttpService:JSONEncode({
-							content = "@everyone You have got " .. kenvalue2 .. " on Kenjutsu Slot 2"
-						})
-						})
-					end
-					request({
-						Url = WebHook,
-						Method = "POST",
-						Headers = {
-						["Content-Type"] = "application/json"
-						},
-						Body = game.HttpService:JSONEncode({
-						content = "@everyone You have got " .. racevalue .. " Race"
-						})
-					})
-				else
-					local HTTPService = game:GetService("HttpService")
-					request({
-						Url = WebHook,
-						Method = "POST",
-						Headers = {
-						["Content-Type"] = "application/json"
-						},
-						Body = game.HttpService:JSONEncode({
-						content = " You have got " .. elmvalue1 .. " on Element Slot 1"
-						})
-					})
-					request({
-						Url = WebHook,
-						Method = "POST",
-						Headers = {
-						["Content-Type"] = "application/json"
-						},
-						Body = game.HttpService:JSONEncode({
-						content = " You have got " .. elmvalue2 .. " on Element Slot 2"
-						})
-					})
-					if player.gamepasses:FindFirstChild("element3") then
-						request({
-						Url = WebHook,
-						Method = "POST",
-						Headers = {
-							["Content-Type"] = "application/json"
-						},
-						Body = game.HttpService:JSONEncode({
-							content = " You have got " .. elmvalue3 .. " on Element Slot 3"
-						})
-						})
-					end
-					if player.gamepasses:FindFirstChild("element4") then
-						request({
-						Url = WebHook,
-						Method = "POST",
-						Headers = {
-							["Content-Type"] = "application/json"
-						},
-						Body = game.HttpService:JSONEncode({
-							content = " You have got " .. elmvalue4 .. " on Element Slot 4"
-						})
-						})
-					end
-					request({
-						Url = WebHook,
-						Method = "POST",
-						Headers = {
-						["Content-Type"] = "application/json"
-						},
-						Body = game.HttpService:JSONEncode({
-						content = " You have got " .. kgvalue1 .. " on Bloodline Slot 1"
-						})
-					})
-					request({
-						Url = WebHook,
-						Method = "POST",
-						Headers = {
-						["Content-Type"] = "application/json"
-						},
-						Body = game.HttpService:JSONEncode({
-						content = " You have got " .. kgvalue2 .. " on Bloodline Slot 2"
-						})
-					})
-					if player.gamepasses:FindFirstChild("genkai3") then
-						request({
-						Url = WebHook,
-						Method = "POST",
-						Headers = {
-							["Content-Type"] = "application/json"
-						},
-						Body = game.HttpService:JSONEncode({
-							content = " You have got " .. kgvalue3 .. " on Bloodline Slot 3"
-						})
-						})
-					end
-					if player.gamepasses:FindFirstChild("genkai4") then
-						request({
-						Url = WebHook,
-						Method = "POST",
-						Headers = {
-							["Content-Type"] = "application/json"
-						},
-						Body = game.HttpService:JSONEncode({
-							content = " You have got " .. kgvalue4 .. " on Bloodline Slot 4"
-						})
-						})
-					end
-					request({
-						Url = WebHook,
-						Method = "POST",
-						Headers = {
-						["Content-Type"] = "application/json"
-						},
-						Body = game.HttpService:JSONEncode({
-						content = " You have got " .. kenvalue .. " on Kenjutsu Slot 1"
-						})
-					})
-					if player.statz.unlocked:FindFirstChild("kenjutsuslot2") then
-						request({
-						Url = WebHook,
-						Method = "POST",
-						Headers = {
-							["Content-Type"] = "application/json"
-						},
-						Body = game.HttpService:JSONEncode({
-							content = " You have got " .. kenvalue2 .. " on Kenjutsu Slot 2"
-						})
-						})
-					end
-					request({
-						Url = WebHook,
-						Method = "POST",
-						Headers = {
-						["Content-Type"] = "application/json"
-						},
-						Body = game.HttpService:JSONEncode({
-						content = " You have got " .. racevalue .. " Race"
-						})
-					})
+				end]]
+				player.startevent:FireServer("band", "Eye")
+				writefile(InfSpinsCount .. "/TotalSpinsB4Saving.txt",tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt"))))
+				datasavedandyoucanredeemcodes = false
+				--for research purpose only im just curious how much would ppl spin for rell
+				loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/refs/heads/Functions/DogeHubV2ShindoSpinRecords"))()
+				if savegomyhome then
+					notify("You will be teleported to My Home in order to save data")
+					wait(1)
+					writefile(InfSpinsCount .. "/CountSpins.txt","0")
+					--local args = {[1] = "arenateleport",[2] = 5451410109}
+					--player.startevent:FireServer(unpack(args))
+					TS:Teleport(5451410109, player)
+				elseif savegomainmenu then
+					notify("You will rejoin in order to save data")
+					wait(1)
+					writefile(InfSpinsCount .. "/CountSpins.txt","0")
+					TS:Teleport(game.PlaceId, player)
 				end
-			end]]
-			player.startevent:FireServer("band", "Eye")
-			writefile(InfSpinsCount .. "/TotalSpinsB4Saving.txt",tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt"))))
-			datasavedandyoucanredeemcodes = false
-			--for research purpose only im just curious how much would ppl spin for rell
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/refs/heads/Functions/DogeHubV2ShindoSpinRecords"))()
-			if savegomyhome then
-				notify("You will be teleported to My Home in order to save data")
-				wait(1)
-				writefile(InfSpinsCount .. "/CountSpins.txt","0")
-				--local args = {[1] = "arenateleport",[2] = 5451410109}
-				--player.startevent:FireServer(unpack(args))
-				TS:Teleport(5451410109, player)
-			elseif savegomainmenu then
-				notify("You will rejoin in order to save data")
-				wait(1)
-				writefile(InfSpinsCount .. "/CountSpins.txt","0")
-				TS:Teleport(game.PlaceId, player)
+			else
+				player.PlayerGui.Main.Customization.Codes.Text = [[WARNING:
+				DO NOT REDEEM CODES WHEN USING INF SPIN]]
 			end
-		else
-		player.PlayerGui.Main.Customization.Codes.Text = [[WARNING:
-		DO NOT REDEEM CODES WHEN USING INF SPIN]]
 		end
 	end)
 
