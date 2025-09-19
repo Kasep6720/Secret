@@ -549,17 +549,6 @@ do
 		self.toggling = false
 	end
 
-	-- Connect events
-	local DHV2TextButton = container:WaitForChild("DogeHub V2 Toggle"):WaitForChild("Button")
-	local DHV2TextButtonText = container:WaitForChild("DogeHub V2 Toggle"):WaitForChild("Button"):WaitForChild("TextButton")
-	if DHV2TextButton and DHV2TextButtonText then
-		DHV2TextButton.MouseButton1Click:Connect(library.toggle)
-		DHV2TextButtonText.MouseButton1Click:Connect(library.toggle)
-	else
-		print("Buttons not initialized properly.")
-	end
-		
-
 	-- new modules
 	
 	function library:Notify(title, text, callback)
