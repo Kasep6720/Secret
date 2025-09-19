@@ -302,7 +302,7 @@ do
 		DHV2TextButtonText = Instance.new("TextButton")
 
 		DHV2Frame.Parent = container
-		DHV2Frame.Name = container .." Toggle"
+		DHV2Frame.Name = title .." Toggle"
 		DHV2Frame.BackgroundTransparency = 1
 		DHV2Frame.Position = game:GetService("CoreGui").TopBarApp.TopBarApp.MenuIconHolder.TriggerPoint.Position+UDim2.new(0.0105, 0, 0.005, 0)
 		DHV2Frame.Size = UDim2.new(0, 40, 0, 40)
