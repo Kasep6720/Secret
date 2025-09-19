@@ -298,8 +298,8 @@ do
 		--Mobile Toggle UI
 		local DHV2Frame = Instance.new("ImageLabel")
 		local TextLabelFrame = Instance.new("ImageLabel")
-		local DHV2TextButton = Instance.new("ImageButton")
-		local DHV2TextButtonText = Instance.new("TextButton")
+		DHV2TextButton = Instance.new("ImageButton")
+		DHV2TextButtonText = Instance.new("TextButton")
 
 		DHV2Frame.Parent = container
 		DHV2Frame.Name = "DogeHub V2 Toggle"
@@ -345,48 +345,6 @@ do
 		DHV2TextButtonText.TextScaled = true
 		DHV2TextButtonText.TextSize = 10.000
 		DHV2TextButtonText.TextWrapped = true
-
-		local function MobileGUIToggle()
-			if self.toggling then
-				return
-			end
-			
-			self.toggling = true
-			
-			local container = self.container.Main
-			local topbar = container.TopBar
-			
-			if self.position then
-				utility:Tween(container, {
-					Size = UDim2.new(0, 511, 0, 428),
-					Position = self.position
-				}, 0.2)
-				wait(0.2)
-				
-				utility:Tween(topbar, {Size = UDim2.new(1, 0, 0, 38)}, 0.2)
-				wait(0.2)
-				
-				container.ClipsDescendants = false
-				self.position = nil
-			else
-				self.position = container.Position
-				container.ClipsDescendants = true
-				
-				utility:Tween(topbar, {Size = UDim2.new(1, 0, 1, 0)}, 0.2)
-				wait(0.2)
-				
-				utility:Tween(container, {
-					Size = UDim2.new(0, 511, 0, 0),
-					Position = self.position + UDim2.new(0, 0, 0, 428)
-				}, 0.2)
-				wait(0.2)
-			end
-			
-			self.toggling = false
-		end
-
-		DHV2TextButton.MouseButton1Click:connect(MobileGUIToggle)
-		DHV2TextButtonText.MouseButton1Click:connect(MobileGUIToggle)
 
 		return setmetatable({
 			container = container,
@@ -590,6 +548,13 @@ do
 		
 		self.toggling = false
 	end
+
+	DHV2TextButton.MouseButton1Click:connect(function()
+		library:toggle()
+	end)
+	DHV2TextButtonText.MouseButton1Click:connect(function()
+		library:toggle()
+	end)
 
 	-- new modules
 	
