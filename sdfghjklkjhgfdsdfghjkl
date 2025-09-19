@@ -552,11 +552,8 @@ do
 		self.toggling = false
 	end
 
-	function library:togglemobileUI()
-			library:toggle()
-	end
-	DHV2TextButton.MouseButton1Click:connect(togglemobileUI)
-	DHV2TextButtonText.MouseButton1Click:connect(togglemobileUI)
+	DHV2TextButton.MouseButton1Click:connect(toggle)
+	DHV2TextButtonText.MouseButton1Click:connect(toggle)
 
 	-- new modules
 	
