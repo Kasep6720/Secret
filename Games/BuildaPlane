@@ -195,6 +195,12 @@ local function BuildaPlane()
 	if isfile(DHV2BAP .. "/HidePlane.txt") == false then
 		writefile(DHV2BAP .. "/HidePlane.txt","false")
 	end
+	if isfile(DHV2BAP .. "/dmpc.txt") == false then
+		writefile(DHV2BAP .. "/dmpc.txt","true")
+	end
+	if isfile(DHV2BAP .. "/dp.txt") == false then
+		writefile(DHV2BAP .. "/dp.txt","false")
+	end
 	if isfile(DHV2BAP .. "/Height.txt") == false then
 		writefile(DHV2BAP .. "/Height.txt","20")
 	end
@@ -231,7 +237,10 @@ local function BuildaPlane()
 	if isfile(DHV2BAP .. "/RALTN.txt") == false then
 		writefile(DHV2BAP .. "/RALTN.txt","50")
 	end
-
+	local DHV2BAPEvents = DHV2BAP .. "/Events"
+	if isfolder(DHV2BAPEvents) == false then
+		makefolder(DHV2BAPEvents)
+	end
 	--DogeHub V2 GUI
 	local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20page%20format%20gui"))()
 	local NoobieDoge = library.new("DogeHub V2", 5013109572)
@@ -987,6 +996,64 @@ local function BuildaPlane()
 		end
 	end
 
+	if readfile(DHV2BAP .. "/dmpc.txt") == "true" then
+		section1:addToggle("Disable Map Parts Collision",true,function(bool)
+			dmpc = bool
+			if dmpc == true then
+				writefile(DHV2BAP .. "/dmpc.txt","true")
+			else
+				writefile(DHV2BAP .. "/dmpc.txt","false")
+			end
+		end)
+		dmpc = true
+	else
+		section1:addToggle("Disable Map Parts Collision",false,function(bool)
+			dmpc = bool
+			if dmpc == true then
+				writefile(DHV2BAP .. "/dmpc.txt","true")
+			else
+				writefile(DHV2BAP .. "/dmpc.txt","false")
+			end
+		end)
+		dmpc = false
+	end
+
+	if readfile(DHV2BAP .. "/dp.txt") == "true" then
+		section1:addToggle("Delete Map Parts",true,function(bool)
+			dp = bool
+			if dp == true then
+				writefile(DHV2BAP .. "/dp.txt","true")
+			else
+				writefile(DHV2BAP .. "/dp.txt","false")
+			end
+		end)
+		dp = true
+	else
+		section1:addToggle("Delete Map Parts",false,function(bool)
+			dp = bool
+			if dp == true then
+				writefile(DHV2BAP .. "/dp.txt","true")
+			else
+				writefile(DHV2BAP .. "/dp.txt","false")
+			end
+		end)
+		dp = false
+	end
+
+	game:GetService('RunService').Stepped:connect(function()
+		for i,v in pairs(workspace.SpawnedSections:GetDescendants()) do
+			if v.Name == "Part" or v.Name == "Ground" or ((v.Name == "1" or v.Name == "2" or v.Name == "3")and v:FindFirstChild("Cannon")) or v.Name == "Union" then
+				if dp then
+					v:Destroy()
+				end
+				if dmpc then
+					v.CanCollide = false
+					v.CanTouch = false
+				end
+			end
+		end
+	end)
+
 	local Height = tonumber(readfile(DHV2BAP .. "/Height.txt"))
 	section2:addSlider("Height", tonumber(readfile(DHV2BAP .. "/Height.txt")), -100, 6969, function(value)
 		Height = value
@@ -1191,38 +1258,51 @@ local function BuildaPlane()
 	local RALT
 	local RALTN = tonumber(readfile(DHV2BAP .. "/RALTN.txt"))
 
-	local function FARM()
-		local vehicle = getVehicle()
-		if not vehicle then
-			LaunchRemote:FireServer()
-			task.wait(.75)
-			--game.Workspace.Islands.Island1.CorePart:Destroy()
-			if FJHI then
-				local vehicle = getVehicle()
-				if Farm and vehicle then
-					local character = player.Character or player.CharacterAdded:Wait()
-					character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(player.Character.HumanoidRootPart.Position+Vector3.new(4000,FJHIN,0))
-					task.wait(.9)
-				end
-				for v = 1,Jumps-1 do
-					if Farm and vehicle then
-						local character = player.Character or player.CharacterAdded:Wait()
-						character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(player.Character.HumanoidRootPart.Position+Vector3.new(4000,HIEJ,0))
-						task.wait(.9)
-					end
-				end
+	game:GetService('RunService').Stepped:connect(function()
+		for i,v1 in pairs(workspace.SpawnedSections:GetDescendants()) do
+			if v1:FindFirstChild("AuroraPart") then
+				AuroraEventActive = true
 			else
-				for v = 1,Jumps do
+				AuroraEventActive = false
+			end
+		end
+	end)
+
+	local function FARM()
+		if AuroraEventActive == true and FarmAurora then
+		else
+			local vehicle = getVehicle()
+			if not vehicle then
+				LaunchRemote:FireServer()
+				task.wait(.75)
+				--game.Workspace.Islands.Island1.CorePart:Destroy()
+				if FJHI then
 					local vehicle = getVehicle()
-					if Farm and vehicle then
+					if Farm and vehicle and player.Character.Humanoid.Health ~= 0 then
 						local character = player.Character or player.CharacterAdded:Wait()
-						character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(player.Character.HumanoidRootPart.Position+Vector3.new(4000,HIEJ,0))
+						character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(player.Character.HumanoidRootPart.Position+Vector3.new(4000,FJHIN,0))
 						task.wait(.9)
 					end
+					for v = 1,Jumps-1 do
+						if Farm and vehicle and player.Character.Humanoid.Health ~= 0 then
+							local character = player.Character or player.CharacterAdded:Wait()
+							character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(player.Character.HumanoidRootPart.Position+Vector3.new(4000,HIEJ,0))
+							task.wait(.9)
+						end
+					end
+				else
+					for v = 1,Jumps do
+						local vehicle = getVehicle()
+						if Farm and vehicle and player.Character.Humanoid.Health ~= 0 then
+							local character = player.Character or player.CharacterAdded:Wait()
+							character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(player.Character.HumanoidRootPart.Position+Vector3.new(4000,HIEJ,0))
+							task.wait(.9)
+						end
+					end
 				end
+				ReturnRemote:FireServer()
+				notify("Returning")
 			end
-			ReturnRemote:FireServer()
-			notify("Returning")
 		end
 	end
 
@@ -1325,9 +1405,80 @@ local function BuildaPlane()
 		end
 	end)
 
+	-- fifth page
+	local page5 = NoobieDoge:addPage("Event", 123995398327937)
+	local section1 = page5:addSection("Aurora Event")
+	local section2 = page5:addSection("Blood Moon Event")
+
+	if isfile(DHV2BAPEvents .. "/FarmAurora.txt") == false then
+		writefile(DHV2BAPEvents .. "/FarmAurora.txt","false")
+	end
+
+	local function FARMAurora()
+		if AuroraEventActive and FarmAurora then
+			local vehicle = getVehicle()
+			if not vehicle then
+				LaunchRemote:FireServer()
+				task.wait(.75)
+				--game.Workspace.Islands.Island1.CorePart:Destroy()
+				repeat
+					local vehicle = getVehicle()
+					if FarmAurora and vehicle then
+						for i,v in pairs(workspace.SpawnedSections:GetDescendants()) do
+							if v.Name == "AuroraPart" and v.Parent ~= "Darkland3" and v.Parent ~= "2" and v.Parent ~= "3" then
+								local character = player.Character or player.CharacterAdded:Wait()
+								character:WaitForChild("HumanoidRootPart").CFrame = v.CFrame * CFrame.new(0, 10, 0)
+								task.wait(.1)
+							end
+						end
+					end
+				until not FarmAurora or not vehicle or not player.Character or player.Character.Humanoid.Health	== 0
+				ReturnRemote:FireServer()
+				notify("Returning")
+			end
+		else
+			print("Aurora event is not happening right now")
+			wait(5)
+		end
+	end
+
+	if readfile(DHV2BAPEvents .. "/FarmAurora.txt") == "true" then
+		section1:addToggle("Auto Farm Aurora",true,function(bool)
+			FarmAurora = bool
+			if FarmAurora == true then
+				writefile(DHV2BAPEvents .. "/FarmAurora.txt","true")
+				FARMAurora()
+			else
+				writefile(DHV2BAPEvents .. "/FarmAurora.txt","false")
+			end
+		end)
+		FarmAurora = true
+	else
+		section1:addToggle("Auto Farm Aurora",false,function(bool)
+			FarmAurora = bool
+			if FarmAurora == true then
+				writefile(DHV2BAPEvents .. "/FarmAurora.txt","true")
+				FARMAurora()
+			else
+				writefile(DHV2BAPEvents .. "/FarmAurora.txt","false")
+			end
+		end)
+	end
+
+	player.CharacterAdded:Connect(function()
+		wait(1.7)
+		if FarmAurora then
+			FARMAurora()
+		end
+	end)
+
 	farmtriesRecorded = -1
 	player.CharacterAdded:Connect(function()
-		farmtriesRecorded = farmtriesRecorded +1
+		if FarmAurora then 
+			farmtriesRecorded = farmtriesRecorded +5
+		else 
+			farmtriesRecorded = farmtriesRecorded +1
+		end
 		print(RALTN - farmtriesRecorded)
 		if farmtriesRecorded == RALTN and RALT then
 			notify("Rejoining to prevent potential crashes")
@@ -1439,6 +1590,8 @@ local function BuildaPlane()
 			writefile(Universal .. "/ripthatguy.txt","Player's Name")
 			writefile(Universal .. "/trackthatguy.txt","false")
 			writefile(DHV2BAP .. "/HidePlane.txt","false")
+			writefile(DHV2BAP .. "/dmpc.txt","true")
+			writefile(DHV2BAP .. "/dp.txt","false")
 			writefile(DHV2BAP .. "/Height.txt","20")
 			writefile(DHV2BAP .. "/ABAB.txt","false")
 			writefile(DHV2BAP .. "/bsi.txt"," ")
@@ -1451,6 +1604,9 @@ local function BuildaPlane()
 			writefile(DHV2BAP .. "/FJHIN.txt","1000")
 			writefile(DHV2BAP .. "/RALT.txt","true")
 			writefile(DHV2BAP .. "/RALTN.txt","50")
+			local DHV2BAPEvents = DHV2BAP .. "/Events"
+			makefolder(DHV2BAPEvents)
+			writefile(DHV2BAPEvents .. "/FarmAurora.txt","false")
 
 			EnabledSliderPowa = false
 			CtrlClickTeePee = false
@@ -1459,6 +1615,8 @@ local function BuildaPlane()
 			Pfly = false
 			trackthatguy = false
 			HideP = false
+			dmpc = true
+			dp = false
 			ABAB = false
 			ABSI = false
 			ABT = false
