@@ -1045,8 +1045,7 @@ local function BuildaPlane()
 			if v.Name == "Part" or v.Name == "Ground" or ((v.Name == "1" or v.Name == "2" or v.Name == "3")and v:FindFirstChild("Cannon")) or v.Name == "Union" then
 				if dp then
 					v:Destroy()
-				end
-				if dmpc then
+				elseif dmpc then
 					v.CanCollide = false
 					v.CanTouch = false
 				end
@@ -1623,6 +1622,7 @@ local function BuildaPlane()
 			Farm = false
 			FJHI = true
 			RALT = true
+			FarmAurora = false
 
 			for i,v in pairs(player.PlayerGui:GetChildren()) do
 				if v.Name == "ScreenGui" then
