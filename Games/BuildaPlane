@@ -1473,13 +1473,13 @@ local function BuildaPlane()
 
 	farmtriesRecorded = -1
 	player.CharacterAdded:Connect(function()
-		if FarmAurora then 
+		if AuroraEventActive == true and FarmAurora then 
 			farmtriesRecorded = farmtriesRecorded +5
 		else 
 			farmtriesRecorded = farmtriesRecorded +1
 		end
 		print(RALTN - farmtriesRecorded)
-		if farmtriesRecorded == RALTN and RALT then
+		if farmtriesRecorded >= RALTN and RALT then
 			notify("Rejoining to prevent potential crashes")
 			wait(.6)
 			local TS = game:GetService("TeleportService")
