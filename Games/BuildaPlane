@@ -1633,7 +1633,7 @@ local function BuildaPlane()
 	end
 
 	section3:addSlider("Rejoin after launching armount", tonumber(readfile(DHV2BAP .. "/RALTN.txt")), 5, 720, function(value)
-		notify("Jumps before recieving cash: " .. RALTN)
+		notify("Rejoin after launching armount: " .. RALTN)
 		RALTN = value
 		writefile(DHV2BAP .. "/RALTN.txt",tostring(RALTN))
 	end)
