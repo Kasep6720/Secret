@@ -1257,56 +1257,82 @@ local function BuildaPlane()
 	local RALT
 	local RALTN = tonumber(readfile(DHV2BAP .. "/RALTN.txt"))
 	local FarmAurora = false
-	local AuroraEventActive = false
 
-	game:GetService('RunService').Stepped:connect(function()
-		for i,v1 in pairs(workspace.SpawnedSections:GetDescendants()) do
-			if v1.Name == "AuroraPart" then
-				AuroraEventActive = true
+	local function CASHFARM()
+		local vehicle = getVehicle()
+		if not vehicle then
+			LaunchRemote:FireServer()
+			task.wait(.75)
+			--game.Workspace.Islands.Island1.CorePart:Destroy()
+			if FJHI then
+				local vehicle = getVehicle()
+				if Farm and vehicle and player.Character.Humanoid.Health ~= 0 then
+					local character = player.Character or player.CharacterAdded:Wait()
+					character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(player.Character.HumanoidRootPart.Position+Vector3.new(4000,FJHIN,0))
+					task.wait(.9)
+				end
+				for v = 1,Jumps-1 do
+					if Farm and vehicle and player.Character.Humanoid.Health ~= 0 then
+						local character = player.Character or player.CharacterAdded:Wait()
+						character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(player.Character.HumanoidRootPart.Position+Vector3.new(4000,HIEJ,0))
+						task.wait(.9)
+					end
+				end
 			else
-				AuroraEventActive = false
-			end
-		end
-	end)
-
-	local function FARM()
-		if AuroraEventActive == true and FarmAurora then
-		else
-			local vehicle = getVehicle()
-			if not vehicle then
-				LaunchRemote:FireServer()
-				task.wait(.75)
-				--game.Workspace.Islands.Island1.CorePart:Destroy()
-				if FJHI then
+				for v = 1,Jumps do
 					local vehicle = getVehicle()
 					if Farm and vehicle and player.Character.Humanoid.Health ~= 0 then
 						local character = player.Character or player.CharacterAdded:Wait()
-						character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(player.Character.HumanoidRootPart.Position+Vector3.new(4000,FJHIN,0))
+						character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(player.Character.HumanoidRootPart.Position+Vector3.new(4000,HIEJ,0))
 						task.wait(.9)
 					end
-					for v = 1,Jumps-1 do
-						if Farm and vehicle and player.Character.Humanoid.Health ~= 0 then
-							local character = player.Character or player.CharacterAdded:Wait()
-							character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(player.Character.HumanoidRootPart.Position+Vector3.new(4000,HIEJ,0))
-							task.wait(.9)
-						end
-					end
-				else
-					for v = 1,Jumps do
-						local vehicle = getVehicle()
-						if Farm and vehicle and player.Character.Humanoid.Health ~= 0 then
-							local character = player.Character or player.CharacterAdded:Wait()
-							character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(player.Character.HumanoidRootPart.Position+Vector3.new(4000,HIEJ,0))
-							task.wait(.9)
-						end
-					end
 				end
-				ReturnRemote:FireServer()
-				notify("Returning")
 			end
+			ReturnRemote:FireServer()
+			notify("Returning")
 		end
 	end
 
+	local function FARMAurora()
+		local vehicle = getVehicle()
+		if not vehicle then
+			LaunchRemote:FireServer()
+			task.wait(.75)
+			--game.Workspace.Islands.Island1.CorePart:Destroy()
+			repeat
+				local vehicle = getVehicle()
+				if FarmAurora and vehicle then
+					for i,v in pairs(workspace.SpawnedSections:GetDescendants()) do
+						if v.Name == "AuroraPart" and v.Parent ~= "Darkland3" and v.Parent ~= "1" and v.Parent ~= "2" and v.Parent ~= "3" then
+							local character = player.Character or player.CharacterAdded:Wait()
+							character:WaitForChild("HumanoidRootPart").CFrame = v.CFrame * CFrame.new(0, 10, 0)
+							task.wait(.1)
+						else return
+						end
+					end
+				end
+			until not FarmAurora or not vehicle or not player.Character or player.Character.Humanoid.Health == 0
+			ReturnRemote:FireServer()
+			notify("Returning")
+		end
+	end
+
+	local function FARM()
+		if Farm and FarmAurora then
+			for i,v in pairs(workspace.SpawnedSections:GetDescendants()) do
+				if v.Name == "AuroraPart" and v.Parent ~= "Darkland3" and v.Parent ~= "1" and v.Parent ~= "2" and v.Parent ~= "3" then
+					FARMAurora()
+				else
+					CASHFARM()
+				end
+			end
+		elseif FarmAurora then
+			FARMAurora()
+		elseif Farm then
+			CASHFARM()
+		end
+	end
+	
 	if readfile(DHV2BAP .. "/Farm.txt") == "true" then
 		Farm = true
 		section1:addToggle("Auto Farm",true,function(bool)
@@ -1399,13 +1425,6 @@ local function BuildaPlane()
 		writefile(DHV2BAP .. "/RALTN.txt",tostring(RALTN))
 	end)
 
-	player.CharacterAdded:Connect(function()
-		wait(1)
-		if Farm then
-			FARM()
-		end
-	end)
-
 	-- fifth page
 	local page5 = NoobieDoge:addPage("Event", 123995398327937)
 	local section1 = page5:addSection("Aurora Event")
@@ -1413,34 +1432,6 @@ local function BuildaPlane()
 
 	if isfile(DHV2BAPEvents .. "/FarmAurora.txt") == false then
 		writefile(DHV2BAPEvents .. "/FarmAurora.txt","false")
-	end
-
-	local function FARMAurora()
-		if AuroraEventActive == true then
-			local vehicle = getVehicle()
-			if not vehicle then
-				LaunchRemote:FireServer()
-				task.wait(.75)
-				--game.Workspace.Islands.Island1.CorePart:Destroy()
-				repeat
-					local vehicle = getVehicle()
-					if FarmAurora and vehicle then
-						for i,v in pairs(workspace.SpawnedSections:GetDescendants()) do
-							if v.Name == "AuroraPart" and v.Parent ~= "Darkland3" and v.Parent ~= "1" and v.Parent ~= "2" and v.Parent ~= "3" then
-								local character = player.Character or player.CharacterAdded:Wait()
-								character:WaitForChild("HumanoidRootPart").CFrame = v.CFrame * CFrame.new(0, 10, 0)
-								task.wait(.1)
-							end
-						end
-					end
-				until not FarmAurora or not AuroraEventActive or not vehicle or not player.Character or player.Character.Humanoid.Health == 0
-				ReturnRemote:FireServer()
-				notify("Returning")
-			end
-		else
-			print("Aurora event is not happening right now")
-			wait(4)
-		end
 	end
 
 	if readfile(DHV2BAPEvents .. "/FarmAurora.txt") == "true" then
@@ -1467,9 +1458,9 @@ local function BuildaPlane()
 	end
 
 	player.CharacterAdded:Connect(function()
-		wait(1.7)
-		if FarmAurora then
-			FARMAurora()
+		wait(1)
+		if Farm or FarmAurora then
+			FARM()
 		end
 	end)
 
