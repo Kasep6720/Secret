@@ -1256,10 +1256,12 @@ local function BuildaPlane()
 	local FJHIN = tonumber(readfile(DHV2BAP .. "/FJHIN.txt"))
 	local RALT
 	local RALTN = tonumber(readfile(DHV2BAP .. "/RALTN.txt"))
+	local FarmAurora = false
+	local AuroraEventActive = false
 
 	game:GetService('RunService').Stepped:connect(function()
 		for i,v1 in pairs(workspace.SpawnedSections:GetDescendants()) do
-			if v1:FindFirstChild("AuroraPart") then
+			if v1.Name == "AuroraPart" then
 				AuroraEventActive = true
 			else
 				AuroraEventActive = false
@@ -1414,7 +1416,7 @@ local function BuildaPlane()
 	end
 
 	local function FARMAurora()
-		if AuroraEventActive and FarmAurora then
+		if AuroraEventActive == true then
 			local vehicle = getVehicle()
 			if not vehicle then
 				LaunchRemote:FireServer()
@@ -1424,20 +1426,20 @@ local function BuildaPlane()
 					local vehicle = getVehicle()
 					if FarmAurora and vehicle then
 						for i,v in pairs(workspace.SpawnedSections:GetDescendants()) do
-							if v.Name == "AuroraPart" and v.Parent ~= "Darkland3" and v.Parent ~= "2" and v.Parent ~= "3" then
+							if v.Name == "AuroraPart" and v.Parent ~= "Darkland3" and v.Parent ~= "1" and v.Parent ~= "2" and v.Parent ~= "3" then
 								local character = player.Character or player.CharacterAdded:Wait()
 								character:WaitForChild("HumanoidRootPart").CFrame = v.CFrame * CFrame.new(0, 10, 0)
 								task.wait(.1)
 							end
 						end
 					end
-				until not FarmAurora or not vehicle or not player.Character or player.Character.Humanoid.Health	== 0
+				until not FarmAurora or not AuroraEventActive or not vehicle or player.Character.Humanoid.Health == 0
 				ReturnRemote:FireServer()
 				notify("Returning")
 			end
 		else
 			print("Aurora event is not happening right now")
-			wait(5)
+			wait(4)
 		end
 	end
 
