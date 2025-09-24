@@ -1433,7 +1433,7 @@ local function BuildaPlane()
 							end
 						end
 					end
-				until not FarmAurora or not AuroraEventActive or not vehicle or player.Character.Humanoid.Health == 0
+				until not FarmAurora or not AuroraEventActive or not vehicle or not player.Character or player.Character.Humanoid.Health == 0
 				ReturnRemote:FireServer()
 				notify("Returning")
 			end
