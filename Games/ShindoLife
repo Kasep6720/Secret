@@ -15,6 +15,7 @@ if player.PlayerGui:FindFirstChild("Main") then
   repeat wait() until player.PlayerGui:FindFirstChild("Main")
 end 
 local TS = game:GetService("TeleportService")
+local npcFolder = game:GetService("Workspace").npc
 --on9 functions that are so damn important
 function toTarget(pos, targetPos, targetCFrame)
   local tween_s = game:service"TweenService"
@@ -25,61 +26,26 @@ function toTarget(pos, targetPos, targetCFrame)
   end)
   if not tween then return err end
 end
+local function SpamKey(key)
+    player.Character.combat.update:FireServer("key", key)
+    player.Character.combat.update:FireServer("key", key .. "end")
+end
 function SpamClick()
-  player.Character.combat.update:FireServer("mouse1",true)
+    player.Character.combat.update:FireServer("mouse1", true)
 end
-function SpamQ()
-  player.Character.combat.update:FireServer("key","q")
-  player.Character.combat.update:FireServer("key","qend")
-end
-function SpamE()
-  player.Character.combat.update:FireServer("key","e")
-  player.Character.combat.update:FireServer("key","eend")
-end
-function SpamR()
-  player.Character.combat.update:FireServer("key","r")
-  player.Character.combat.update:FireServer("key","rend")
-end
-function SpamT()
-  player.Character.combat.update:FireServer("key","t")
-  player.Character.combat.update:FireServer("key","tend")
-end
-function SpamY()
-  player.Character.combat.update:FireServer("key","y")
-  player.Character.combat.update:FireServer("key","yend")
-end
-function SpamF()
-  player.Character.combat.update:FireServer("key","f")
-  player.Character.combat.update:FireServer("key","fend")
-end
-function SpamG()
-  player.Character.combat.update:FireServer("key","g")
-  player.Character.combat.update:FireServer("key","gend")
-end
-function SpamH()
-  player.Character.combat.update:FireServer("key","h")
-  player.Character.combat.update:FireServer("key","hend")
-end
-function SpamV()
-  player.Character.combat.update:FireServer("key","v")
-  player.Character.combat.update:FireServer("key","vend")
-end
-function SpamB()
-  player.Character.combat.update:FireServer("key","b")
-  player.Character.combat.update:FireServer("key","bend")
-end
-function SpamN()
-  player.Character.combat.update:FireServer("key","n")
-  player.Character.combat.update:FireServer("key","nend")
-end
-function SpamZ()
-  player.Character.combat.update:FireServer("key","z")
-  player.Character.combat.update:FireServer("key","zend")
-end
-function SpamC()
-  player.Character.combat.update:FireServer("key","c")
-  player.Character.combat.update:FireServer("key","cend")
-end
+function SpamQ() SpamKey("q") end
+function SpamE() SpamKey("e") end
+function SpamR() SpamKey("r") end
+function SpamT() SpamKey("t") end
+function SpamY() SpamKey("y") end
+function SpamF() SpamKey("f") end
+function SpamG() SpamKey("g") end
+function SpamH() SpamKey("h") end
+function SpamV() SpamKey("v") end
+function SpamB() SpamKey("b") end
+function SpamN() SpamKey("n") end
+function SpamZ() SpamKey("z") end
+function SpamC() SpamKey("c") end
 local CtrlClickTeePee
 function CTRLCLICKTP()
   local UIS = game:GetService("UserInputService")
@@ -172,13 +138,16 @@ function DISABLE_UNBREAKABLE_BLOCKS()
   end
 end
 function NPCKEELAURA()
-  for i,v in pairs(workspace.npc:GetChildren()) do
-	if v.ClassName == "Model" and v:FindFirstChild("npctype") and string.find(v.Name, "npc") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Head.CFrame.Y > -1000 then
-	  repeat
-		v.Humanoid.Health = 0
-	  until v.Humanoid.Health == 0 or (not keel and not keel2)
-	end
-  end
+    if not players or not players.Character then return end
+    for _, npc in ipairs(npcFolder:GetChildren()) do
+        if npc.ClassName == "Model" and npc:FindFirstChild("npctype") and npc.Name:match("npc") and npc:FindFirstChild("HumanoidRootPart") and npc:FindFirstChild("Humanoid") and npc.Head.CFrame.Y > -1000 then
+            local humanoid = npc.Humanoid
+            while humanoid.Health > 0 and (keel and keel2) do
+                humanoid.Health = 0
+                task.wait(0.1) -- Prevent freezing
+            end
+        end
+    end
 end
 function INFMDON()
   local mode = player.Character.combat.mode
@@ -3295,11 +3264,11 @@ local function ShindoInfSpin()
 	end
   end)
 
-  if game:GetService("Workspace").npc:FindFirstChild("DogeHubNPC") then
+  if npcFolder:FindFirstChild("DogeHubNPC") then
 	notify("Spam execute won't do anything m8")
   else
 	local DogeHubNPC = Instance.new("Part")
-	DogeHubNPC.Parent = game:GetService("Workspace").npc
+	DogeHubNPC.Parent = npcFolder
 	DogeHubNPC.Name = "DogeHubNPC"
 	DogeHubNPC.Anchored = true
 	DogeHubNPC.Transparency = 1
@@ -5881,7 +5850,7 @@ end
 
 --Shindo Boss Battle Map
 local function ShindoBossBattle()
-  repeat wait() until game:GetService("Workspace").npc.npc1.Head.mob.fram.name:FindFirstChild("info")
+  repeat wait() until npcFolder.npc1.Head.mob.fram.name:FindFirstChild("info")
   --DogeHub V2 GUI
   local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20page%20format%20gui"))()
   local NoobieDoge = library.new("DogeHub V2", 5013109572)
@@ -6496,7 +6465,7 @@ local function ShindoBossBattle()
   local section1 = page5:addSection("Boss Farm")
   local section2 = page5:addSection("Configurations")
 
-  if game:GetService("Workspace").npc.npc1:FindFirstChild("megaboss") then
+  if npcFolder.npc1:FindFirstChild("megaboss") then
 	section1:addToggle("Auto Gen 3 Tentacion",false, function(bool)
 	  gen3farm = bool
 	  --game:GetService("Workspace").ClientEffects:Destroy()
@@ -6522,7 +6491,7 @@ local function ShindoBossBattle()
 	  end)
 	end)
   else
-	if game:GetService("Workspace").npc.npc1.Head.mob.fram.name.info.Text == "[Lv. 2000][Ken Mentor]" then
+	if npcFolder.npc1.Head.mob.fram.name.info.Text == "[Lv. 2000][Ken Mentor]" then
 	  section1:addToggle("Kenjutsu Mentor Farm",false, function(bool)
 		dfarm = bool
 		notify("Kenjutsu Mentor Farm: "..tostring(dfarm),true)
@@ -6540,7 +6509,7 @@ local function ShindoBossBattle()
 	notify("Legacy Farm Mode: "..tostring(Legacy),true)
   end)
 
-  if game:GetService("Workspace").npc.npc1:FindFirstChild("megaboss") then
+  if npcFolder.npc1:FindFirstChild("megaboss") then
 	section2:addToggle("NPC Kill Aura (Hard to trigger)",false, function(bool)
 	  keel2 = bool
 	  NPCKEELAURA()
