@@ -1646,6 +1646,12 @@ local function BuildaPlane()
 	if isfile(DHV2BAPEvents .. "/FarmAurora.txt") == false then
 		writefile(DHV2BAPEvents .. "/FarmAurora.txt","false")
 	end
+	if isfile(DHV2BAPEvents .. "/BuySpinwithAurora.txt") == false then
+		writefile(DHV2BAPEvents .. "/BuySpinwithAurora.txt","false")
+	end
+	if isfile(DHV2BAPEvents .. "/AutoSpin.txt") == false then
+		writefile(DHV2BAPEvents .. "/AutoSpin.txt","false")
+	end
 
 	if readfile(DHV2BAPEvents .. "/FarmAurora.txt") == "true" then
 		section1:addToggle("Auto Farm Aurora",true,function(bool)
@@ -1669,6 +1675,72 @@ local function BuildaPlane()
 			end
 		end)
 	end
+
+	if readfile(DHV2BAPEvents .. "/BuySpinwithAurora.txt") == "true" then
+		section1:addToggle("Buy Spin with Aurora",true,function(bool)
+			BuySpinwithAurora = bool
+			if BuySpinwithAurora == true then
+				writefile(DHV2BAPEvents .. "/BuySpinwithAurora.txt","true")
+			else
+				writefile(DHV2BAPEvents .. "/BuySpinwithAurora.txt","false")
+			end
+		end)
+		BuySpinwithAurora = true
+	else
+		section1:addToggle("Buy Spin with Aurora",false,function(bool)
+			BuySpinwithAurora = bool
+			if BuySpinwithAurora == true then
+				writefile(DHV2BAPEvents .. "/BuySpinwithAurora.txt","true")
+			else
+				writefile(DHV2BAPEvents .. "/BuySpinwithAurora.txt","false")
+			end
+		end)
+	end
+
+	if readfile(DHV2BAPEvents .. "/AutoSpin.txt") == "true" then
+		section1:addToggle("Auto Spin",true,function(bool)
+			AutoSpin = bool
+			if AutoSpin == true then
+				writefile(DHV2BAPEvents .. "/AutoSpin.txt","true")
+			else
+				writefile(DHV2BAPEvents .. "/AutoSpin.txt","false")
+			end
+		end)
+		AutoSpin = true
+	else
+		section1:addToggle("Auto Spin",false,function(bool)
+			AutoSpin = bool
+			if AutoSpin == true then
+				writefile(DHV2BAPEvents .. "/AutoSpin.txt","true")
+			else
+				writefile(DHV2BAPEvents .. "/AutoSpin.txt","false")
+			end
+		end)
+	end
+
+	spawn(function()
+		while task.wait() do
+			if BuySpinwithAurora then
+				if player.Important.Aurora.Value > 10 then
+					game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("SpinEvents"):WaitForChild("PurchaseSpin"):InvokeServer()
+				--else
+					--warn("not enough aurora")
+				end
+			end
+		end
+	end)
+
+	spawn(function()
+		while task.wait() do
+			if AutoSpin then
+				if player.replicated_data.aurora_spins.Value > 1 then
+					game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("SpinEvents"):WaitForChild("PerformSpin"):InvokeServer()
+				--else
+					--warn("Not enough spins")
+				end
+			end
+		end
+	end)
 
 	player.CharacterAdded:Connect(function()
 		local character = player.Character or player.CharacterAdded:Wait()
@@ -1831,6 +1903,8 @@ local function BuildaPlane()
 			local DHV2BAPEvents = DHV2BAP .. "/Events"
 			makefolder(DHV2BAPEvents)
 			writefile(DHV2BAPEvents .. "/FarmAurora.txt","false")
+			writefile(DHV2BAPEvents .. "/BuySpinwithAurora.txt","false")
+			writefile(DHV2BAPEvents .. "/AutoSpin.txt","false")
 
 			EnabledSliderPowa = false
 			CtrlClickTeePee = false
