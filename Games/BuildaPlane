@@ -237,9 +237,6 @@ local function BuildaPlane()
 	if isfile(DHV2BAP .. "/RALTN.txt") == false then
 		writefile(DHV2BAP .. "/RALTN.txt","50")
 	end	
-	if isfile(DHV2BAP .. "/LEGACYFARM.txt") == false then
-		writefile(DHV2BAP .. "/LEGACYFARM.txt","false")
-	end
 	local DHV2BAPEvents = DHV2BAP .. "/Events"
 	if isfolder(DHV2BAPEvents) == false then
 		makefolder(DHV2BAPEvents)
@@ -1251,7 +1248,6 @@ local function BuildaPlane()
 	local section1 = page4:addSection("Auto Farm")
 	local section2 = page4:addSection("Auto Farm Settings")
 	local section3 = page4:addSection("Misc")
-	local section4 = page4:addSection("Legacy Farm")
 
 	local Farm
 	local HIEJ = tonumber(readfile(DHV2BAP .. "/HIEJ.txt"))
@@ -1261,9 +1257,8 @@ local function BuildaPlane()
 	local RALT
 	local RALTN = tonumber(readfile(DHV2BAP .. "/RALTN.txt"))
 	local FarmAurora = false
-	local LEGACYFARM1 = false
 
-	local function LEGACYFARM()
+	local function FARM()
 		local vehicle = getVehicle()
 		if not vehicle then
 			LaunchRemote:FireServer()
@@ -1271,13 +1266,13 @@ local function BuildaPlane()
 			--game.Workspace.Islands.Island1.CorePart:Destroy()
 			if FJHI then
 				local vehicle = getVehicle()
-				if LEGACYFARM1 and vehicle then
+				if Farm and vehicle then
 					local character = player.Character or player.CharacterAdded:Wait()
 					character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(player.Character.HumanoidRootPart.Position+Vector3.new(4000,FJHIN,0))
 					task.wait(.9)
 				end
 				for v = 1,Jumps-1 do
-					if LEGACYFARM1 and vehicle then
+					if Farm and vehicle then
 						local character = player.Character or player.CharacterAdded:Wait()
 						character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(player.Character.HumanoidRootPart.Position+Vector3.new(4000,HIEJ,0))
 						task.wait(.9)
@@ -1286,7 +1281,7 @@ local function BuildaPlane()
 			else
 				for v = 1,Jumps do
 					local vehicle = getVehicle()
-					if LEGACYFARM1 and vehicle then
+					if Farm and vehicle then
 						local character = player.Character or player.CharacterAdded:Wait()
 						character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(player.Character.HumanoidRootPart.Position+Vector3.new(4000,HIEJ,0))
 						task.wait(.9)
@@ -1296,230 +1291,6 @@ local function BuildaPlane()
 			ReturnRemote:FireServer()
 			notify("Returning")
 		end
-	end
-
-	local function CASHFARM()
-		-- Launch with retry
-		local vehicle
-		local character = player.Character or player.CharacterAdded:Wait()
-		local humanoid = character:WaitForChild("Humanoid",3)
-		local humanoidRootPart = character:WaitForChild("HumanoidRootPart",3)
-		wait(.7)
-		for i = 1, 3 do
-			LaunchRemote:FireServer()
-			task.wait(1)
-			vehicle = getVehicle()
-			if vehicle then break end
-			warn("Vehicle not spawned in cash farm, retrying (" .. i .. "/3)")
-		end
-		if not vehicle then
-			warn("Failed to spawn vehicle in cash farm, stopping")
-			return
-		end
-		wait(.4)
-		local currentjumps = 0
-
-		while Farm and currentjumps < Jumps do
-			local character = player.Character or player.CharacterAdded:Wait()
-			local humanoid = character:WaitForChild("Humanoid")
-			local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
-			
-			if not vehicle or not character or not humanoid or not humanoidRootPart or humanoid.Health <= 0 or humanoid:GetState() == Enum.HumanoidStateType.Dead then
-				if ReturnRemote then
-					ReturnRemote:FireServer()
-					notify("Returning due to invalid vehicle, character, or health")
-				end
-				break
-			end
-
-			if FJHI then
-				currentjumps = currentjumps +1
-				local targetPos = humanoidRootPart.Position + Vector3.new(4000, FJHIN, 0)
-				if targetPos.Y < 10 or targetPos.Y > 10000 then
-					warn("Invalid first jump height in cash farm: " .. targetPos.Y)
-					break
-				end
-				--pcall(function()
-					humanoidRootPart.CFrame = CFrame.new(targetPos)
-				--end)
-				task.wait(0.9)
-				
-				for v = 1, Jumps - 1 do
-					currentjumps = currentjumps +1
-					if not Farm or not vehicle or not character or humanoid.Health <= 0 or humanoid:GetState() == Enum.HumanoidStateType.Dead then
-						break
-					end
-					targetPos = humanoidRootPart.Position + Vector3.new(4000, HIEJ, 0)
-					if targetPos.Y < 10 or targetPos.Y > 10000 then
-						warn("Invalid jump height in cash farm: " .. targetPos.Y)
-						break
-					end
-					--pcall(function()
-						humanoidRootPart.CFrame = CFrame.new(targetPos)
-					--end)
-					task.wait(0.9)
-				end
-			else
-				for v = 1, Jumps do
-					currentjumps = currentjumps +1
-					if not Farm or not vehicle or not character or humanoid.Health <= 0 or humanoid:GetState() == Enum.HumanoidStateType.Dead then
-						break
-					end
-					local targetPos = humanoidRootPart.Position + Vector3.new(4000, HIEJ, 0)
-					if targetPos.Y < 10 or targetPos.Y > 10000 then
-						warn("Invalid jump height in cash farm: " .. targetPos.Y)
-						break
-					end
-					--pcall(function()
-						humanoidRootPart.CFrame = CFrame.new(targetPos)
-						currentjumps = currentjumps +1
-					--end)
-					task.wait(0.9)
-				end
-			end
-
-			task.wait(0.1)
-		end
-
-		if ReturnRemote then
-			ReturnRemote:FireServer()
-			notify("Returning from cash farm")
-		end
-	end
-
-	local function FARMAurora()
-		-- Launch with retry
-		local vehicle
-		local character = player.Character or player.CharacterAdded:Wait()
-		local humanoid = character:WaitForChild("Humanoid",3)
-		local humanoidRootPart = character:WaitForChild("HumanoidRootPart",3)
-		wait(.7)
-		for i = 1, 3 do
-			LaunchRemote:FireServer()
-			task.wait(1)
-			vehicle = getVehicle()
-			if vehicle then break end
-			warn("Vehicle not spawned in FARMAurora, retrying (" .. i .. "/3)")
-		end
-		if not vehicle then
-			warn("Failed to spawn vehicle in FARMAurora, stopping")
-			return
-		end
-		wait(.4)
-
-		while FarmAurora do
-			local character = player.Character or player.CharacterAdded:Wait()
-			local humanoid = character:WaitForChild("Humanoid")
-			local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
-
-			if not vehicle or not character or not humanoid or not humanoidRootPart or humanoid.Health <= 0 or humanoid:GetState() == Enum.HumanoidStateType.Dead then
-				if ReturnRemote then
-					ReturnRemote:FireServer()
-					notify("Returning due to invalid vehicle, character, or health")
-				end
-				break
-			end
-
-			local spawnedSections = workspace:FindFirstChild("SpawnedSections")
-			if not spawnedSections then
-				warn("SpawnedSections not found, stopping aurora farm")
-				if ReturnRemote then
-					ReturnRemote:FireServer()
-					notify("Returning due to missing SpawnedSections")
-				end
-				break
-			end
-
-			local auroraFound = false
-			for _, subfolder in pairs(spawnedSections:GetChildren()) do
-				if subfolder:FindFirstChild("Aurora") then
-					auroraFound = true
-					break
-				end
-			end
-
-			if not auroraFound then
-				warn("No Aurora folders found in SpawnedSections, event likely ended, stopping aurora farm")
-				wait(5)
-				ReturnRemote:FireServer()
-				if ReturnRemote then
-					ReturnRemote:FireServer()
-					notify("Returning due to missing Aurora folders (event ended)")
-				end
-				break
-			end
-
-			local auroraPartFound = false
-			for _, v in pairs(spawnedSections:GetDescendants()) do
-				if v.Name == "AuroraPart" and v.Parent and v.Parent.Name ~= "Darkland3" and v.Parent.Name ~= "1" and v.Parent.Name ~= "2" and v.Parent.Name ~= "3" and v:IsA("BasePart") then
-					auroraPartFound = true
-					if humanoidRootPart then
-						local targetPos = v.CFrame * CFrame.new(-5, 10, 0)
-						local targetPos1 = v.CFrame * CFrame.new(0, 10, 0)
-						if targetPos.Position.Y < 10 or targetPos.Position.Y > 10000 then
-							warn("Invalid AuroraPart height: " .. targetPos.Position.Y)
-							continue
-						end
-						--pcall(function()
-							humanoidRootPart.CFrame = targetPos
-							humanoidRootPart.CFrame = targetPos1
-						--end)
-					end
-					task.wait(0.12)
-				end
-			end
-
-			if not auroraPartFound then
-				warn("No valid AuroraPart found in SpawnedSections, pausing aurora farm")
-				wait(5)
-				ReturnRemote:FireServer()
-				break
-			end
-
-			task.wait(0.1)
-		end
-
-		if ReturnRemote then
-			ReturnRemote:FireServer()
-			notify("Returning from aurora farm")
-		end
-	end
-
-	local function FARM()
-		if isFarming then
-			warn("FARM already running, skipping new instance")
-			return
-		end
-		isFarming = true
-		warn("Starting FARM at " .. os.time())
-		
-		local player = game.Players.LocalPlayer
-		while Farm or FarmAurora do
-			local spawnedSections = workspace:FindFirstChild("SpawnedSections")
-			local auroraFound = false
-
-			if spawnedSections then
-				for _, subfolder in pairs(spawnedSections:GetChildren()) do
-					if subfolder:FindFirstChild("Aurora") then
-						auroraFound = true
-						break
-					end
-				end
-			end
-
-			if auroraFound and FarmAurora then
-				warn("Starting aurora farm at " .. os.time())
-				FARMAurora()
-			elseif Farm then
-				warn("Starting cash farm at " .. os.time())
-				CASHFARM()
-			else
-				break
-			end
-
-			task.wait(0.1)
-		end
-		isFarming = false
 	end
 	
 	if readfile(DHV2BAP .. "/Farm.txt") == "true" then
@@ -1546,30 +1317,6 @@ local function BuildaPlane()
 		end)
 	end
 
-	if readfile(DHV2BAP .. "/LEGACYFARM.txt") == "true" then
-		LEGACYFARM1 = true
-		section4:addToggle("Legacy Cash Farm",true,function(bool)
-			LEGACYFARM1 = bool
-			if LEGACYFARM1 == true then
-				writefile(DHV2BAP .. "/LEGACYFARM.txt","true")
-				LEGACYFARM()
-			else
-				writefile(DHV2BAP .. "/LEGACYFARM.txt","false")
-			end
-		end)
-	else
-		LEGACYFARM1 = false
-		section4:addToggle("Legacy Cash Farm",false,function(bool)
-			LEGACYFARM1 = bool
-			if LEGACYFARM1 == true then
-				writefile(DHV2BAP .. "/LEGACYFARM.txt","true")
-				LEGACYFARM()
-			else
-				writefile(DHV2BAP .. "/LEGACYFARM.txt","false")
-			end
-		end)
-	end
-	
 	section2:addSlider("Height increase each jump", tonumber(readfile(DHV2BAP .. "/HIEJ.txt")), 0, 100000, function(value)
 		notify("Height increase each jump: " .. HIEJ)
 		HIEJ = value
@@ -1652,13 +1399,15 @@ local function BuildaPlane()
 	if isfile(DHV2BAPEvents .. "/AutoSpin.txt") == false then
 		writefile(DHV2BAPEvents .. "/AutoSpin.txt","false")
 	end
+	if isfile(DHV2BAPEvents .. "/EventFunctionsMAXIMUMINPUT.txt") == false then
+		writefile(DHV2BAPEvents .. "/EventFunctionsMAXIMUMINPUT.txt","false")
+	end
 
 	if readfile(DHV2BAPEvents .. "/FarmAurora.txt") == "true" then
 		section1:addToggle("Auto Farm Aurora",true,function(bool)
 			FarmAurora = bool
 			if FarmAurora == true then
 				writefile(DHV2BAPEvents .. "/FarmAurora.txt","true")
-				FARMAurora()
 			else
 				writefile(DHV2BAPEvents .. "/FarmAurora.txt","false")
 			end
@@ -1669,7 +1418,6 @@ local function BuildaPlane()
 			FarmAurora = bool
 			if FarmAurora == true then
 				writefile(DHV2BAPEvents .. "/FarmAurora.txt","true")
-				FARMAurora()
 			else
 				writefile(DHV2BAPEvents .. "/FarmAurora.txt","false")
 			end
@@ -1718,18 +1466,70 @@ local function BuildaPlane()
 		end)
 	end
 
-	spawn(function()
-		while task.wait() do
-			if BuySpinwithAurora then
+	if readfile(DHV2BAPEvents .. "/EventFunctionsMAXIMUMINPUT.txt") == "true" then
+		section1:addToggle("Maximum Power",true,function(bool)
+			EventFunctionsMAXIMUMINPUT = bool
+			if EventFunctionsMAXIMUMINPUT == true then
+				writefile(DHV2BAPEvents .. "/EventFunctionsMAXIMUMINPUT.txt","true")
+				notify("Warning: This procedure will cause lag!")
+			else
+				writefile(DHV2BAPEvents .. "/EventFunctionsMAXIMUMINPUT.txt","false")
+			end
+		end)
+		EventFunctionsMAXIMUMINPUT = true
+	else
+		section1:addToggle("Maximum Power",false,function(bool)
+			EventFunctionsMAXIMUMINPUT = bool
+			if EventFunctionsMAXIMUMINPUT == true then
+				writefile(DHV2BAPEvents .. "/EventFunctionsMAXIMUMINPUT.txt","true")
+				notify("Warning: This procedure will cause lag!")
+			else
+				writefile(DHV2BAPEvents .. "/EventFunctionsMAXIMUMINPUT.txt","false")
+			end
+		end)
+	end
+
+	game:GetService('RunService').Stepped:connect(function()
+		if FarmAurora and EventFunctionsMAXIMUMINPUT then
+			for v = 1,100 do
+				local args = {Instance.new("Part", nil)}
+				game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("UIEvents"):WaitForChild("AuroraCollect"):FireServer(unpack(args))
+			end
+		elseif FarmAurora then
+			local args = {Instance.new("Part", nil)}
+			game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("UIEvents"):WaitForChild("AuroraCollect"):FireServer(unpack(args))
+		end
+	end)
+
+	game:GetService('RunService').Stepped:connect(function()
+		if BuySpinwithAurora and EventFunctionsMAXIMUMINPUT then
+			for v = 1,100 do
 				if player.Important.Aurora.Value > 10 then
 					game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("SpinEvents"):WaitForChild("PurchaseSpin"):InvokeServer()
 				--else
 					--warn("not enough aurora")
 				end
 			end
+		elseif BuySpinwithAurora then
+			if player.Important.Aurora.Value > 10 then
+				game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("SpinEvents"):WaitForChild("PurchaseSpin"):InvokeServer()
+			--else
+				--warn("not enough aurora")
+			end
 		end
 	end)
 
+	game:GetService('RunService').Stepped:connect(function()
+		if AutoSpin and EventFunctionsMAXIMUMINPUT then
+			for v = 1,100 do
+				if player.replicated_data.aurora_spins.Value > 1 then
+					game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("SpinEvents"):WaitForChild("PerformSpin"):InvokeServer()
+				--else
+					--warn("Not enough spins")
+				end
+			end
+		end
+	end)
 	spawn(function()
 		while task.wait() do
 			if AutoSpin then
@@ -1743,37 +1543,15 @@ local function BuildaPlane()
 	end)
 
 	player.CharacterAdded:Connect(function()
-		local character = player.Character or player.CharacterAdded:Wait()
-		local humanoid = character:WaitForChild("Humanoid",2)
-		local humanoidRootPart = character:WaitForChild("HumanoidRootPart",2)
-		
-		if humanoid and humanoidRootPart and humanoid.Health > 0 and humanoid:GetState() ~= Enum.HumanoidStateType.Dead then
-			task.wait(1.5)
-			if Farm or FarmAurora then
-				--LaunchRemote:FireServer()
-				--task.wait(1) -- Wait for launch to complete
-				warn("Character respawned, starting FARM at " .. os.time())
-				FARM()
-			end
-		else
-			warn("Character not ready after respawn, skipping FARM")
-		end
-	end)
-
-	player.CharacterAdded:Connect(function()
 		wait(1)
-		if LEGACYFARM1 then
-			LEGACYFARM()
+		if Farm then
+			FARM()
 		end
 	end)
 
 	farmtriesRecorded = -1
 	player.CharacterAdded:Connect(function()
-		if AuroraEventActive == true and FarmAurora then 
-			farmtriesRecorded = farmtriesRecorded +5
-		else 
-			farmtriesRecorded = farmtriesRecorded +1
-		end
+		farmtriesRecorded = farmtriesRecorded +1
 		print(RALTN - farmtriesRecorded)
 		if farmtriesRecorded >= RALTN and RALT then
 			notify("Rejoining to prevent potential crashes")
@@ -1899,12 +1677,12 @@ local function BuildaPlane()
 			writefile(DHV2BAP .. "/FJHIN.txt","1000")
 			writefile(DHV2BAP .. "/RALT.txt","true")
 			writefile(DHV2BAP .. "/RALTN.txt","50")
-			writefile(DHV2BAP .. "/LEGACYFARM.txt","false")
 			local DHV2BAPEvents = DHV2BAP .. "/Events"
 			makefolder(DHV2BAPEvents)
 			writefile(DHV2BAPEvents .. "/FarmAurora.txt","false")
 			writefile(DHV2BAPEvents .. "/BuySpinwithAurora.txt","false")
 			writefile(DHV2BAPEvents .. "/AutoSpin.txt","false")
+			writefile(DHV2BAPEvents .. "/EventFunctionsMAXIMUMINPUT.txt","false")
 
 			EnabledSliderPowa = false
 			CtrlClickTeePee = false
@@ -1922,7 +1700,9 @@ local function BuildaPlane()
 			FJHI = true
 			RALT = true
 			FarmAurora = false
-			LEGACYFARM1 = false
+			BuySpinwithAurora = false
+			AutoSpin = false
+			EventFunctionsMAXIMUMINPUT = false
 
 			for i,v in pairs(player.PlayerGui:GetChildren()) do
 				if v.Name == "ScreenGui" then
