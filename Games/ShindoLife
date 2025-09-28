@@ -4800,6 +4800,8 @@ local function ShindoDungeonSelection()
 	notify("Starting")
 	wait()
 
+	gameplaceexecuted = "Shindo Life Dungeon Selection"
+
 	spawn(function()
 		while wait() do
 			if StartDungeon then
@@ -4865,8 +4867,6 @@ local function ShindoDungeonSelection()
 	--local args = {[1] = "dungeon" .. DungeonsRandom}
 	--player.pressplay:FireServer(unpack(args))
 	--wait()
-
-	gameplaceexecuted = "Shindo Life Dungeon Selection"
 
 end
 
