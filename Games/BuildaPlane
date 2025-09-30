@@ -13,6 +13,25 @@ local LaunchRemote = ReplicatedStorage:WaitForChild("Remotes"):WaitForChild("Lau
 local ReturnRemote = ReplicatedStorage:WaitForChild("Remotes"):WaitForChild("LaunchEvents"):WaitForChild("Return")
 
 --on9 functions that are so damn important
+local function fireproximityprompt(ProximityPrompt, Amount, Skip) --fireproximityprompt for Solara executor
+	assert(ProximityPrompt, "Argument #1 Missing or nil")
+	assert(
+		typeof(ProximityPrompt) == "Instance" and ProximityPrompt:IsA("ProximityPrompt"),
+		"Attempted to fire a Value that is not a ProximityPrompt"
+	)
+	local HoldDuration = ProximityPrompt.HoldDuration
+	if Skip then
+		ProximityPrompt.HoldDuration = 0
+	end
+	for i = 1, Amount or 1 do
+		ProximityPrompt:InputHoldBegin()
+		if Skip then
+			wait(HoldDuration)
+		end
+		ProximityPrompt:InputHoldEnd()
+	end
+	ProximityPrompt.HoldDuration = HoldDuration
+end
 game.Players.RespawnTime = 0
 function toTarget(pos, targetPos, targetCFrame)
 	local tween_s = game:service"TweenService"
