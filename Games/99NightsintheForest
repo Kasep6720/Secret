@@ -161,6 +161,1429 @@ end
 notify("Enabled anti-AFK")
 -- init
 
+--99 Nights in the Forest Lobby
+local function NNNITFLobby()
+
+	if game:GetService("CoreGui"):FindFirstChild("DogeHub V2") then
+		game:GetService("CoreGui")["DogeHub V2"]:Destroy(0)
+	end
+
+	--Workspace stuff
+	local DHV299NITFL = "DogeHubV2/99NightsintheForest/Lobby"
+	if isfolder(DHV299NITFL) == false then
+		makefolder(DHV299NITFL)
+	end
+	local Universal = DHV299NITFL .. "/Universal"
+	if isfolder(Universal) == false then
+		makefolder(Universal)
+	end
+	if isfile(Universal .. "/EnabledSliderPowa.txt") == false then
+		writefile(Universal .. "/EnabledSliderPowa.txt","false")
+	end
+	if isfile(Universal .. "/sliderspeed.txt") == false then
+		writefile(Universal .. "/sliderspeed.txt","16")
+	end
+	if isfile(Universal .. "/sliderjump.txt") == false then
+		writefile(Universal .. "/sliderjump.txt","50")
+	end
+	if isfile(Universal .. "/slidergravity.txt") == false then
+		writefile(Universal .. "/slidergravity.txt","196.2")
+	end
+	if isfile(Universal .. "/CtrlClickTeePee.txt") == false then
+		writefile(Universal .. "/CtrlClickTeePee.txt","false")
+	end
+	if isfile(Universal .. "/infjumptoggle.txt") == false then
+		writefile(Universal .. "/infjumptoggle.txt","false")
+	end
+	if isfile(Universal .. "/noclips.txt") == false then
+		writefile(Universal .. "/noclips.txt","false")
+	end
+	if isfile(Universal .. "/sliderfly.txt") == false then
+		writefile(Universal .. "/sliderfly.txt","201")
+	end
+	if isfile(Universal .. "/Pfly.txt") == false then
+		writefile(Universal .. "/Pfly.txt","false")
+	end
+	if isfile(Universal .. "/ripthatguy.txt") == false then
+		writefile(Universal .. "/ripthatguy.txt","Player's Name")
+	end
+	if isfile(Universal .. "/trackthatguy.txt") == false then
+		writefile(Universal .. "/trackthatguy.txt","false")
+	end
+	if isfile(DHV299NITFL .. "/AutoStartGame.txt") == false then
+		writefile(DHV299NITFL .. "/AutoStartGame.txt","false")
+	end
+	if isfile(DHV299NITFL .. "/PartyPlayerAmount.txt") == false then
+		writefile(DHV299NITFL .. "/PartyPlayerAmount.txt","3")
+	end
+	if isfile(DHV299NITFL .. "/WLP1.txt") == false then
+		writefile(DHV299NITFL .. "/WLP1.txt","")
+	end
+	if isfile(DHV299NITFL .. "/WLP2.txt") == false then
+		writefile(DHV299NITFL .. "/WLP2.txt","")
+	end
+	if isfile(DHV299NITFL .. "/WLP3.txt") == false then
+		writefile(DHV299NITFL .. "/WLP3.txt","")
+	end
+	if isfile(DHV299NITFL .. "/WLP4.txt") == false then
+		writefile(DHV299NITFL .. "/WLP4.txt","")
+	end
+	if isfile(DHV299NITFL .. "/WLP5.txt") == false then
+		writefile(DHV299NITFL .. "/WLP5.txt","")
+	end
+	if isfile(DHV299NITFL .. "/StartWLP.txt") == false then
+		writefile(DHV299NITFL .. "/StartWLP.txt","false")
+	end
+	if isfile(DHV299NITFL .. "/BLP1.txt") == false then
+		writefile(DHV299NITFL .. "/BLP1.txt","")
+	end
+	if isfile(DHV299NITFL .. "/BLP2.txt") == false then
+		writefile(DHV299NITFL .. "/BLP2.txt","")
+	end
+	if isfile(DHV299NITFL .. "/BLP3.txt") == false then
+		writefile(DHV299NITFL .. "/BLP3.txt","")
+	end
+	if isfile(DHV299NITFL .. "/BLP4.txt") == false then
+		writefile(DHV299NITFL .. "/BLP4.txt","")
+	end
+	if isfile(DHV299NITFL .. "/BLP5.txt") == false then
+		writefile(DHV299NITFL .. "/BLP5.txt","")
+	end
+	if isfile(DHV299NITFL .. "/StartBLP.txt") == false then
+		writefile(DHV299NITFL .. "/StartBLP.txt","false")
+	end
+	if isfile(DHV299NITFL .. "/ClassSelection.txt") == false then
+		writefile(DHV299NITFL .. "/ClassSelection.txt","")
+	end
+	if isfile(DHV299NITFL .. "/SnipeClasses.txt") == false then
+		writefile(DHV299NITFL .. "/SnipeClasses.txt","")
+	end
+	if isfile(DHV299NITFL .. "/AutoSnipeClasses.txt") == false then
+		writefile(DHV299NITFL .. "/AutoSnipeClasses.txt","false")
+	end
+
+	--DogeHub V2 GUI
+	local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20page%20format%20gui"))()
+	local NoobieDoge = library.new("DogeHub V2", 5013109572)
+
+	-- themes
+	local themes = {
+		Background = Color3.fromRGB(24, 24, 24), 
+		Glow = Color3.fromRGB(128, 128 ,128), 
+		Accent = Color3.fromRGB(255,163,26), 
+		LightContrast = Color3.fromRGB(41, 41, 41), 
+		DarkContrast = Color3.fromRGB(27,27,27),  
+		TextColor = Color3.fromRGB(255, 255, 255)
+	}
+
+	-- first page
+	local page1 = NoobieDoge:addPage("Universal", 97521755974659)
+	local section1 = page1:addSection("Walk Speed & Jump Power & Gravity")
+	local section2 = page1:addSection("Other Functions")
+
+	local originalwalkspeed = 16
+	local originaljumppower = 50
+	local originalgravity = game:GetService("Workspace").Gravity
+
+	section1:addSlider("Walk Speed", tonumber(readfile(Universal .. "/sliderspeed.txt")), 0, 500, function(value)
+		sliderspeed = value
+		writefile(Universal .. "/sliderspeed.txt",tostring(sliderspeed))
+	end)
+	section1:addSlider("Jump Power", tonumber(readfile(Universal .. "/sliderjump.txt")), 0, 500, function(value)
+		sliderjump = value
+		writefile(Universal .. "/sliderjump.txt",tostring(sliderjump))
+	end)
+	section1:addSlider("Gravity", tonumber(readfile(Universal .. "/slidergravity.txt")), 0, 500, function(value)
+		slidergravity = value
+		writefile(Universal .. "/slidergravity.txt",tostring(slidergravity))
+	end)
+	sliderspeed = tonumber(readfile(Universal .. "/sliderspeed.txt"))
+	sliderjump = tonumber(readfile(Universal .. "/sliderjump.txt"))
+	slidergravity = tonumber(readfile(Universal .. "/slidergravity.txt"))
+
+	if readfile(Universal .. "/EnabledSliderPowa.txt") == "true" then
+		section1:addToggle("Enabled", true, function(value)
+			sliderpowa = value
+			if sliderpowa == true then
+				writefile(Universal .. "/EnabledSliderPowa.txt","true")
+			else
+				writefile(Universal .. "/EnabledSliderPowa.txt","false")
+			end
+		end)
+		sliderpowa = true
+	else
+		section1:addToggle("Enabled", nil, function(value)
+			sliderpowa = value
+			if sliderpowa == true then
+				writefile(Universal .. "/EnabledSliderPowa.txt","true")
+			else
+				writefile(Universal .. "/EnabledSliderPowa.txt","false")
+			end
+		end)
+		sliderpowa = false
+	end
+	game:GetService('RunService').Stepped:connect(function()
+		if sliderpowa then
+			player.Character.Humanoid.WalkSpeed = sliderspeed
+			player.Character.Humanoid.JumpPower = sliderjump
+			game:GetService("Workspace").Gravity = slidergravity
+		end
+	end)
+
+	section1:addButton("Reset to Default", function()
+		player.Character.Humanoid.WalkSpeed = originalwalkspeed
+		player.Character.Humanoid.JumpPower = originaljumppower
+		game:GetService("Workspace").Gravity = originalgravity
+		section1:updateSlider("Walk Speed", "Walk Speed", originalwalkspeed, 0, 500)
+		section1:updateSlider("Jump Power", "Jump Power", originaljumppower, 0, 500)
+		section1:updateSlider("Gravity", "Gravity", originalgravity, 0, 500)
+		writefile(Universal .. "/EnabledSliderPowa.txt","true")
+		writefile(Universal .. "/originalwalkspeed.txt","16")
+		writefile(Universal .. "/originaljumppower.txt","50")
+		writefile(Universal .. "/originalgravity.txt","196.2")
+	end)
+
+	section2:addButton("Add ESP GUI", function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/Project%3A%20Bullshit%3A%20Rebooted"))()
+	end)
+
+	section2:addButton("Reset Character",function()
+		player.Character:BreakJoints()
+	end)
+
+	if readfile(Universal .. "/CtrlClickTeePee.txt") == "true" then
+		section2:addToggle("Ctrl + Click TP",true,function(bool)
+			CtrlClickTeePee = bool
+			CTRLCLICKTP()
+			if CtrlClickTeePee == true then
+				notify("Press Ctrl + Click to Teleport")
+				writefile(Universal .. "/CtrlClickTeePee.txt","true")
+			else
+				writefile(Universal .. "/CtrlClickTeePee.txt","false")
+			end
+		end)
+		CtrlClickTeePee = true
+		CTRLCLICKTP()
+	else
+		section2:addToggle("Ctrl + Click TP",false,function(bool)
+			CtrlClickTeePee = bool
+			CTRLCLICKTP()
+			if CtrlClickTeePee == true then
+				notify("Press Ctrl + Click to Teleport")
+				writefile(Universal .. "/CtrlClickTeePee.txt","true")
+			else
+				writefile(Universal .. "/CtrlClickTeePee.txt","false")
+			end
+		end)
+		CtrlClickTeePee = false
+	end
+
+	player.CharacterAdded:Connect(function()
+		if CtrlClickTeePee then
+			CTRLCLICKTP()
+		end
+	end)
+
+	if readfile(Universal .. "/infjumptoggle.txt") == "true" then
+		local infjumptoggle = true
+		section2:addToggle("Infinite Jump",true,function()
+			infjumptoggle = not infjumptoggle
+			notify("Infinite Jump: "..tostring(infjumptoggle),true)
+			if infjumptoggle then
+				getgenv().dc = false
+				local infjump
+				infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
+					if dc then infjump:Disconnect() return end
+					player.Character.Humanoid:ChangeState("Jumping")
+				end)
+				writefile(Universal .. "/infjumptoggle.txt","true")
+			else
+				getgenv().dc = true
+				writefile(Universal .. "/infjumptoggle.txt","false")
+			end
+		end)
+		getgenv().dc = false
+		local infjump
+		infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
+			if dc then infjump:Disconnect() return end
+			player.Character.Humanoid:ChangeState("Jumping")
+		end)
+	else
+		local infjumptoggle = false
+		section2:addToggle("Infinite Jump",false,function()
+			infjumptoggle = not infjumptoggle
+			notify("Infinite Jump: "..tostring(infjumptoggle),true)
+			if infjumptoggle then
+				getgenv().dc = false
+				local infjump
+				infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
+					if dc then infjump:Disconnect() return end
+					player.Character.Humanoid:ChangeState("Jumping")
+				end)
+				writefile(Universal .. "/infjumptoggle.txt","true")
+			else
+				getgenv().dc = true
+				writefile(Universal .. "/infjumptoggle.txt","false")
+			end
+		end)
+	end
+
+	player.CharacterAdded:Connect(function()
+		if infjumptoggle then
+			wait(1)
+			getgenv().dc = false
+			local infjump
+			infJump = game:GetService("UserInputService").JumpRequest:Connect(function()
+				if dc then infjump:Disconnect() return end
+				player.Character.Humanoid:ChangeState("Jumping")
+			end)
+		end
+	end)
+
+	if readfile(Universal .. "/noclips.txt") == "true" then
+		section2:addToggle("Noclip", true, function(bool)
+			noclips = bool
+			if noclips then
+				writefile(Universal .. "/noclips.txt","true")
+			else
+				writefile(Universal .. "/noclips.txt","false")
+			end
+		end)
+		noclips = true
+	else
+		section2:addToggle("Noclip", false, function(bool)
+			noclips = bool
+			if noclips then
+				writefile(Universal .. "/noclips.txt","true")
+			else
+				writefile(Universal .. "/noclips.txt","false")
+			end
+		end)
+	end
+	game:GetService("RunService").Stepped:connect(function()
+		if noclips then
+			for i, v in pairs(player.Character:GetChildren()) do
+				if v:IsA("BasePart") then
+					v.CanCollide = false
+				end
+			end
+		end
+	end)
+
+	section2:addSlider("Fly Speed", tonumber(readfile(Universal .. "/sliderfly.txt")), 0, 9999, function(value)
+		sliderfly = value
+		writefile(Universal .. "/sliderfly.txt",tostring(sliderfly))
+	end)
+	sliderfly = tonumber(readfile(Universal .. "/sliderfly.txt"))
+	if readfile(Universal .. "/Pfly.txt") == "true" then
+		section2:addToggle("Press P to fly",true,function(bool)
+			Pfly = bool
+			if Pfly then
+				writefile(Universal .. "/Pfly.txt","true")
+			else
+				writefile(Universal .. "/Pfly.txt","false")
+			end
+			repeat wait() 
+			until player and player.Character:findFirstChild("Head") player.Character:findFirstChild("Humanoid") 
+			local mouse = player:GetMouse() 
+			repeat wait() until mouse
+			local torso = player.Character.Head 
+			local flying = false
+			local deb = true 
+			local ctrl = {f = 0, b = 0, l = 0, r = 0} 
+			local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+			local maxspeed = sliderfly 
+			local speed = 0 
+
+			function Fly() 
+				local bg = Instance.new("BodyGyro", torso) 
+				bg.P = 9e4 
+				bg.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
+				bg.cframe = torso.CFrame 
+
+				local bv = Instance.new("BodyVelocity", torso) 
+				bv.velocity = Vector3.new(0,0.1,0) 
+				bv.maxForce = Vector3.new(9e9, 9e9, 9e9) 
+				repeat wait() 
+					player.Character.Humanoid.PlatformStand = true 
+					if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
+						speed = speed+(sliderfly/1.7)+(speed/maxspeed) 
+						if speed > maxspeed then 
+							speed = maxspeed 
+						end 
+
+					elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
+						speed = speed-(sliderfly/1.7)
+						if speed < 0 then 
+							speed = 0 
+						end 
+					end 
+					if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then 
+						bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+						lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r} 
+					elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then 
+						bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+					else 
+						bv.velocity = Vector3.new(0,0.1,0)
+					end 
+					bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
+				until not flying or not Pfly
+				ctrl = {f = 0, b = 0, l = 0, r = 0} 
+				lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+				speed = 0 
+				bg:Destroy() 
+				bv:Destroy() 
+				player.Character.Humanoid.PlatformStand = false 
+			end 
+
+			mouse.KeyDown:connect(function(key) 
+				if key:lower() == "p" then 
+					if flying then flying = false 
+					else 
+						flying = true 
+						Fly() 
+					end 
+				elseif key:lower() == "w" then 
+					ctrl.f = 1 
+				elseif key:lower() == "s" then 
+					ctrl.b = -1 
+				elseif key:lower() == "a" then 
+					ctrl.l = -1 
+				elseif key:lower() == "d" then 
+					ctrl.r = 1 
+				end 
+			end) 
+
+			mouse.KeyUp:connect(function(key) 
+
+				if key:lower() == "w" then 
+					ctrl.f = 0 
+				elseif key:lower() == "s" then 
+					ctrl.b = 0 
+				elseif key:lower() == "a" then 
+					ctrl.l = 0 
+				elseif key:lower() == "d" then 
+					ctrl.r = 0 
+				end 
+			end)
+			Fly()
+			notify("Press P to fly: "..tostring(Pfly),true)
+		end)
+		Pfly = true
+		repeat wait() 
+		until player and player.Character:findFirstChild("Head") player.Character:findFirstChild("Humanoid") 
+		local mouse = player:GetMouse() 
+		repeat wait() until mouse
+		local torso = player.Character.Head 
+		local flying = false
+		local deb = true 
+		local ctrl = {f = 0, b = 0, l = 0, r = 0} 
+		local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+		local maxspeed = sliderfly 
+		local speed = 0 
+
+		function Fly() 
+			local bg = Instance.new("BodyGyro", torso) 
+			bg.P = 9e4 
+			bg.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
+			bg.cframe = torso.CFrame 
+
+			local bv = Instance.new("BodyVelocity", torso) 
+			bv.velocity = Vector3.new(0,0.1,0) 
+			bv.maxForce = Vector3.new(9e9, 9e9, 9e9) 
+			repeat wait() 
+				player.Character.Humanoid.PlatformStand = true 
+				if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
+					speed = speed+(sliderfly/1.7)+(speed/maxspeed) 
+					if speed > maxspeed then 
+						speed = maxspeed 
+					end 
+
+				elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
+					speed = speed-(sliderfly/1.7)
+					if speed < 0 then 
+						speed = 0 
+					end 
+				end 
+				if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then 
+					bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+					lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r} 
+				elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then 
+					bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+				else 
+					bv.velocity = Vector3.new(0,0.1,0)
+				end 
+				bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
+			until not flying or not Pfly
+			ctrl = {f = 0, b = 0, l = 0, r = 0} 
+			lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+			speed = 0 
+			bg:Destroy() 
+			bv:Destroy() 
+			player.Character.Humanoid.PlatformStand = false 
+		end 
+
+		mouse.KeyDown:connect(function(key) 
+			if key:lower() == "p" then 
+				if flying then flying = false 
+				else 
+					flying = true 
+					Fly() 
+				end 
+			elseif key:lower() == "w" then 
+				ctrl.f = 1 
+			elseif key:lower() == "s" then 
+				ctrl.b = -1 
+			elseif key:lower() == "a" then 
+				ctrl.l = -1 
+			elseif key:lower() == "d" then 
+				ctrl.r = 1 
+			end 
+		end) 
+
+		mouse.KeyUp:connect(function(key) 
+
+			if key:lower() == "w" then 
+				ctrl.f = 0 
+			elseif key:lower() == "s" then 
+				ctrl.b = 0 
+			elseif key:lower() == "a" then 
+				ctrl.l = 0 
+			elseif key:lower() == "d" then 
+				ctrl.r = 0 
+			end 
+		end)
+		Fly()
+	else
+		section2:addToggle("Press P to fly",false,function(bool)
+			Pfly = bool
+			if Pfly then
+				writefile(Universal .. "/Pfly.txt","true")
+			else
+				writefile(Universal .. "/Pfly.txt","false")
+			end
+			repeat wait() 
+			until player and player.Character:findFirstChild("Head") player.Character:findFirstChild("Humanoid") 
+			local mouse = player:GetMouse() 
+			repeat wait() until mouse
+			local torso = player.Character.Head 
+			local flying = false
+			local deb = true 
+			local ctrl = {f = 0, b = 0, l = 0, r = 0} 
+			local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+			local maxspeed = sliderfly 
+			local speed = 0 
+
+			function Fly() 
+				local bg = Instance.new("BodyGyro", torso) 
+				bg.P = 9e4 
+				bg.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
+				bg.cframe = torso.CFrame 
+
+				local bv = Instance.new("BodyVelocity", torso) 
+				bv.velocity = Vector3.new(0,0.1,0) 
+				bv.maxForce = Vector3.new(9e9, 9e9, 9e9) 
+				repeat wait() 
+					player.Character.Humanoid.PlatformStand = true 
+					if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
+						speed = speed+(sliderfly/1.7)+(speed/maxspeed) 
+						if speed > maxspeed then 
+							speed = maxspeed 
+						end 
+
+					elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
+						speed = speed-(sliderfly/1.7)
+						if speed < 0 then 
+							speed = 0 
+						end 
+					end 
+					if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then 
+						bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+						lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r} 
+					elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then 
+						bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+					else 
+						bv.velocity = Vector3.new(0,0.1,0)
+					end 
+					bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
+				until not flying or not Pfly
+				ctrl = {f = 0, b = 0, l = 0, r = 0} 
+				lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+				speed = 0 
+				bg:Destroy() 
+				bv:Destroy() 
+				player.Character.Humanoid.PlatformStand = false 
+			end 
+
+			mouse.KeyDown:connect(function(key) 
+				if key:lower() == "p" then 
+					if flying then flying = false 
+					else 
+						flying = true 
+						Fly() 
+					end 
+				elseif key:lower() == "w" then 
+					ctrl.f = 1 
+				elseif key:lower() == "s" then 
+					ctrl.b = -1 
+				elseif key:lower() == "a" then 
+					ctrl.l = -1 
+				elseif key:lower() == "d" then 
+					ctrl.r = 1 
+				end 
+			end) 
+
+			mouse.KeyUp:connect(function(key) 
+
+				if key:lower() == "w" then 
+					ctrl.f = 0 
+				elseif key:lower() == "s" then 
+					ctrl.b = 0 
+				elseif key:lower() == "a" then 
+					ctrl.l = 0 
+				elseif key:lower() == "d" then 
+					ctrl.r = 0 
+				end 
+			end)
+			Fly()
+			notify("Press P to fly: "..tostring(Pfly),true)
+		end)
+	end
+
+	player.CharacterAdded:Connect(function()
+		if Pfly then
+			repeat wait() 
+			until player and player.Character:findFirstChild("Head") player.Character:findFirstChild("Humanoid") 
+			local mouse = player:GetMouse() 
+			repeat wait() until mouse
+			local player = game.Players.LocalPlayer 
+			local torso = player.Character.Head 
+			local flying = false
+			local deb = true 
+			local ctrl = {f = 0, b = 0, l = 0, r = 0} 
+			local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+			local maxspeed = sliderfly 
+			local speed = 0 
+			
+			function Fly() 
+				local bg = Instance.new("BodyGyro", torso) 
+				bg.P = 9e4 
+				bg.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
+				bg.cframe = torso.CFrame 
+	
+				local bv = Instance.new("BodyVelocity", torso) 
+				bv.velocity = Vector3.new(0,0.1,0) 
+				bv.maxForce = Vector3.new(9e9, 9e9, 9e9) 
+				repeat wait() 
+					player.Character.Humanoid.PlatformStand = true 
+					if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
+						speed = speed+(sliderfly/1.7)+(speed/maxspeed) 
+						if speed > maxspeed then 
+							speed = maxspeed 
+						end 
+	
+					elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
+						speed = speed-(sliderfly/1.7)
+						if speed < 0 then 
+							speed = 0 
+						end 
+					end 
+					if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then 
+						bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+						lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r} 
+					elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then 
+						bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+					else 
+						bv.velocity = Vector3.new(0,0.1,0)
+					end 
+					bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
+				until not flying or not Pfly
+				ctrl = {f = 0, b = 0, l = 0, r = 0} 
+				lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+				speed = 0 
+				bg:Destroy() 
+				bv:Destroy() 
+				player.Character.Humanoid.PlatformStand = false 
+			end 
+	
+			mouse.KeyDown:connect(function(key) 
+				if key:lower() == "p" then 
+					if flying then flying = false 
+					else 
+						flying = true 
+						Fly() 
+					end 
+				elseif key:lower() == "w" then 
+					ctrl.f = 1 
+				elseif key:lower() == "s" then 
+					ctrl.b = -1 
+				elseif key:lower() == "a" then 
+					ctrl.l = -1 
+				elseif key:lower() == "d" then 
+					ctrl.r = 1 
+				end 
+			end) 
+	
+			mouse.KeyUp:connect(function(key) 
+	
+				if key:lower() == "w" then 
+					ctrl.f = 0 
+				elseif key:lower() == "s" then 
+					ctrl.b = 0 
+				elseif key:lower() == "a" then 
+					ctrl.l = 0 
+				elseif key:lower() == "d" then 
+					ctrl.r = 0 
+				end 
+			end)
+			Fly()
+		end
+	end)
+
+	section2:addTextbox("Track selected player",readfile(Universal .. "/ripthatguy.txt"),function(ripthatguy)
+		notify("Player Selected: " .. ripthatguy)
+		Target = ripthatguy
+		writefile(Universal .. "/ripthatguy.txt",Target)
+	end)
+	Target = readfile(Universal .. "/ripthatguy.txt")
+
+	if readfile(Universal .. "/trackthatguy.txt") == "true" then
+		local trackthatguy = true
+		section2:addToggle("Track Player",true,function(bool)
+			trackthatguy = bool
+			if trackthatguy == true then
+				writefile(Universal .. "/trackthatguy.txt","true")
+			else
+				writefile(Universal .. "/trackthatguy.txt","false")
+			end
+			local platform = Instance.new("Part", player.Character)
+			platform.Anchored = true
+			platform.Transparency = 1
+			platform.Size = Vector3.new(6, 1, 6)
+
+			local connection
+			connection = game:GetService("RunService").RenderStepped:connect(function()
+				if player.Character:FindFirstChild("HumanoidRootPart") and game.Players:FindFirstChild(Target) then
+					platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -1.8, 0)
+				else
+					connection:Disconnect()
+				end
+			end)
+			game:GetService('RunService').Stepped:connect(function()
+				if trackthatguy ~= true then
+					platform:Destroy()
+				end
+			end)
+		end)
+		trackthatguy = true
+	else
+		local trackthatguy = false
+		section2:addToggle("Track Player",false,function(bool)
+			trackthatguy = bool
+			if trackthatguy == true then
+				writefile(Universal .. "/trackthatguy.txt","true")
+			else
+				writefile(Universal .. "/trackthatguy.txt","false")
+			end
+			local platform = Instance.new("Part", player.Character)
+			platform.Anchored = true
+			platform.Transparency = 1
+			platform.Size = Vector3.new(6, 1, 6)
+
+			local connection
+			connection = game:GetService("RunService").RenderStepped:connect(function()
+				if player.Character:FindFirstChild("HumanoidRootPart") and game.Players:FindFirstChild(Target) then
+					platform.Position = player.Character.HumanoidRootPart.CFrame * Vector3.new(0, -1.8, 0)
+				else
+					connection:Disconnect()
+				end
+			end)
+			game:GetService('RunService').Stepped:connect(function()
+				if trackthatguy ~= true then
+					platform:Destroy()
+				end
+			end)
+		end)
+	end
+
+	game:GetService('RunService').Stepped:connect(function()
+		if trackthatguy == true or readfile(Universal .. "/trackthatguy.txt") == "true" then
+			if player.Character:FindFirstChild("HumanoidRootPart") and game.Players:FindFirstChild(Target) then
+				player.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame * CFrame.new(0, 5, 10)
+				game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, game.Players[Target].Character.HumanoidRootPart.Position)
+			end
+		end
+	end)
+	
+	-- load
+	NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
+
+	-- second page
+	local page2 = NoobieDoge:addPage("Auto Join", 97521755974659)
+	local section1 = page2:addSection("Create Party")
+	local section2 = page2:addSection("Party Settings")
+	local section3 = page2:addSection("Player Whitelist")
+	local section4 = page2:addSection("Player Blacklist")
+	local section5 = page2:addSection("Local Player")
+
+	section1:addButton("EVERYTHING HERE ARE NOT WORKING RN",function()
+		notify("I haven't done the script yet mb")
+	end)
+
+	local playernames = {}
+	local seenNames = {} -- Dictionary to track seen names
+	for _, peepo in pairs(Game.Players:GetPlayers()) do
+		if not seenNames[peepo.Name] and peepo.Name ~= player.Name then -- Check if name hasn't been seen & localplayer
+			table.insert(playernames, peepo.Name)
+			seenNames[peepo.Name] = true -- Mark name as seen
+		end
+	end
+
+	local AutoStartGame
+	if readfile(DHV299NITFL .. "/AutoStartGame.txt") == "true" then
+		AutoStartGame = true
+		section1:addToggle("Auto Start Game",true,function(bool)
+			AutoStartGame = bool
+			if AutoStartGame == true then
+				writefile(DHV299NITFL .. "/AutoStartGame.txt","true")
+			else
+				writefile(DHV299NITFL .. "/AutoStartGame.txt","false")
+			end
+		end)
+	else
+		AutoStartGame = false
+		section1:addToggle("Auto Start Game",false,function(bool)
+			AutoStartGame = bool
+			if AutoStartGame == true then
+				writefile(DHV299NITFL .. "/AutoStartGame.txt","true")
+			else
+				writefile(DHV299NITFL .. "/AutoStartGame.txt","false")
+			end
+		end)
+	end
+
+	section2:addSlider("Party Player Amount", tonumber(readfile(DHV299NITFL .. "/PartyPlayerAmount.txt")), 1, 5, function(value)
+		PartyPlayerAmount = value
+		writefile(DHV299NITFL .. "/PartyPlayerAmount.txt",tostring(PartyPlayerAmount))
+	end)
+	PartyPlayerAmount = tonumber(readfile(DHV299NITFL .. "/PartyPlayerAmount.txt"))
+
+	local tempdropdownnumber = 0
+	section3:addDropdown("Whitelisted Player 1: " .. readfile(DHV299NITFL .. "/WLP1.txt"),playernames,function(WLP1a)
+		print("Selected: " .. WLP1a)
+		notify("Selected: " .. WLP1a)
+		WLP1 = WLP1a
+		writefile(DHV299NITFL .. "/WLP1.txt",WLP1a)
+	end)
+	local WLP1 = readfile(DHV299NITFL .. "/WLP1.txt")
+
+	section3:addDropdown("Whitelisted Player 2: " .. readfile(DHV299NITFL .. "/WLP2.txt"),playernames,function(WLP2a)
+		print("Selected: " .. WLP2a)
+		notify("Selected: " .. WLP2a)
+		WLP2 = WLP2a
+		writefile(DHV299NITFL .. "/WLP2.txt",WLP2a)
+	end)
+	local WLP2 = readfile(DHV299NITFL .. "/WLP2.txt")
+
+	section3:addDropdown("Whitelisted Player 3: " .. readfile(DHV299NITFL .. "/WLP3.txt"),playernames,function(WLP3a)
+		print("Selected: " .. WLP3a)
+		notify("Selected: " .. WLP3a)
+		WLP3 = WLP3a
+		writefile(DHV299NITFL .. "/WLP3.txt",WLP3a)
+	end)
+	local WLP3 = readfile(DHV299NITFL .. "/WLP3.txt")
+
+	section3:addDropdown("Whitelisted Player 4: " .. readfile(DHV299NITFL .. "/WLP4.txt"),playernames,function(WLP4a)
+		print("Selected: " .. WLP4a)
+		notify("Selected: " .. WLP4a)
+		WLP4 = WLP4a
+		writefile(DHV299NITFL .. "/WLP4.txt",WLP4a)
+	end)
+	local WLP4 = readfile(DHV299NITFL .. "/WLP4.txt")
+
+	section3:addDropdown("Whitelisted Player 5: " .. readfile(DHV299NITFL .. "/WLP5.txt"),playernames,function(WLP5a)
+		print("Selected: " .. WLP5a)
+		notify("Selected: " .. WLP5a)
+		WLP5 = WLP5a
+		writefile(DHV299NITFL .. "/WLP5.txt",WLP5a)
+	end)
+	local WLP5 = readfile(DHV299NITFL .. "/WLP5.txt")
+
+	section3:addButton("Reset Whitelist",function()
+		for _, peepo in pairs(Game.Players:GetPlayers()) do
+			if not seenNames[peepo.Name] and peepo.Name ~= player.Name then -- Check if name hasn't been seen & localplayer
+				table.insert(playernames, peepo.Name)
+				seenNames[peepo.Name] = true -- Mark name as seen
+			end
+		end
+		tempdropdownnumber = 0
+		for _, dropdown in pairs(game:GetService("CoreGui")["DogeHub V2"].Main["Auto Join"]["Player Whitelist"].Container:GetChildren()) do
+			if dropdown.Name == "Dropdown" then
+				local tempddname = dropdown.Search.TextBox.Text
+				tempdropdownnumber = tempdropdownnumber + 1
+				section3:updateDropdown(tempddname,"Whitelisted Player ".. tempdropdownnumber..": ",playernames)
+			end
+		end
+		writefile(DHV299NITFL .. "/WLP1.txt","")
+		writefile(DHV299NITFL .. "/WLP2.txt","")
+		writefile(DHV299NITFL .. "/WLP3.txt","")
+		writefile(DHV299NITFL .. "/WLP4.txt","")
+		writefile(DHV299NITFL .. "/WLP5.txt","")
+		tempdropdownnumber = 0
+	end)
+
+	local StartWLP
+	if readfile(DHV299NITFL .. "/StartWLP.txt") == "true" then
+		StartWLP = true
+		section3:addToggle("Enabled",true,function(bool)
+			StartWLP = bool
+			if StartWLP == true then
+				writefile(DHV299NITFL .. "/StartWLP.txt","true")
+				section4:updateToggle("Enabled")
+				StartBLP = false
+				writefile(DHV299NITFL .. "/StartBLP.txt","false")
+			else
+				writefile(DHV299NITFL .. "/StartWLP.txt","false")
+			end
+		end)
+	else
+		StartWLP = false
+		section3:addToggle("Enabled",false,function(bool)
+			StartWLP = bool
+			if StartWLP == true then
+				writefile(DHV299NITFL .. "/StartWLP.txt","true")
+				section4:updateToggle("Enabled")
+				StartBLP = false
+				writefile(DHV299NITFL .. "/StartBLP.txt","false")
+			else
+				writefile(DHV299NITFL .. "/StartWLP.txt","false")
+			end
+		end)
+	end
+
+	section4:addDropdown("Blacklisted Player 1: " .. readfile(DHV299NITFL .. "/BLP1.txt"),playernames,function(BLP1a)
+		print("Selected: " .. BLP1a)
+		notify("Selected: " .. BLP1a)
+		BLP1 = BLP1a
+		writefile(DHV299NITFL .. "/BLP1.txt",BLP1a)
+	end)
+	local BLP1 = readfile(DHV299NITFL .. "/BLP1.txt")
+
+	section4:addDropdown("Blacklisted Player 2: " .. readfile(DHV299NITFL .. "/BLP2.txt"),playernames,function(BLP2a)
+		print("Selected: " .. BLP2a)
+		notify("Selected: " .. BLP2a)
+		BLP2 = BLP2a
+		writefile(DHV299NITFL .. "/BLP2.txt",BLP2a)
+	end)
+	local BLP2 = readfile(DHV299NITFL .. "/BLP2.txt")
+
+	section4:addDropdown("Blacklisted Player 3: " .. readfile(DHV299NITFL .. "/BLP3.txt"),playernames,function(BLP3a)
+		print("Selected: " .. BLP3a)
+		notify("Selected: " .. BLP3a)
+		BLP3 = BLP3a
+		writefile(DHV299NITFL .. "/BLP3.txt",BLP3a)
+	end)
+	local BLP3 = readfile(DHV299NITFL .. "/BLP3.txt")
+
+	section4:addDropdown("Blacklisted Player 4: " .. readfile(DHV299NITFL .. "/BLP4.txt"),playernames,function(BLP4a)
+		print("Selected: " .. BLP4a)
+		notify("Selected: " .. BLP4a)
+		BLP4 = BLP4a
+		writefile(DHV299NITFL .. "/BLP4.txt",BLP4a)
+	end)
+	local BLP4 = readfile(DHV299NITFL .. "/BLP4.txt")
+
+	section4:addDropdown("Blacklisted Player 5: " .. readfile(DHV299NITFL .. "/BLP5.txt"),playernames,function(BLP5a)
+		print("Selected: " .. BLP5a)
+		notify("Selected: " .. BLP5a)
+		BLP5 = BLP5a
+		writefile(DHV299NITFL .. "/BLP5.txt",BLP5a)
+	end)
+	local BLP5 = readfile(DHV299NITFL .. "/BLP5.txt")
+
+	section4:addButton("Reset Blacklist",function()
+		for _, peepo in pairs(Game.Players:GetPlayers()) do
+			if not seenNames[peepo.Name] and peepo.Name ~= player.Name then -- Check if name hasn't been seen & localplayer
+				table.insert(playernames, peepo.Name)
+				seenNames[peepo.Name] = true -- Mark name as seen
+			end
+		end
+		tempdropdownnumber = 0
+		for _, dropdown in pairs(game:GetService("CoreGui")["DogeHub V2"].Main["Auto Join"]["Player Blacklist"].Container:GetChildren()) do
+			if dropdown.Name == "Dropdown" then
+				local tempddname = dropdown.Search.TextBox.Text
+				tempdropdownnumber = tempdropdownnumber + 1
+				section4:updateDropdown(tempddname,"Blacklisted Player ".. tempdropdownnumber..": ",playernames)
+			end
+		end
+		writefile(DHV299NITFL .. "/BLP1.txt","")
+		writefile(DHV299NITFL .. "/BLP2.txt","")
+		writefile(DHV299NITFL .. "/BLP3.txt","")
+		writefile(DHV299NITFL .. "/BLP4.txt","")
+		writefile(DHV299NITFL .. "/BLP5.txt","")
+		tempdropdownnumber = 0
+	end)
+
+	local StartBLP
+	if readfile(DHV299NITFL .. "/StartBLP.txt") == "true" then
+		StartBLP = true
+		section4:addToggle("Enabled",true,function(bool)
+			StartBLP = bool
+			if StartBLP == true then
+				writefile(DHV299NITFL .. "/StartBLP.txt","true")
+				section3:updateToggle("Enabled")
+				StartWLP = false
+				writefile(DHV299NITFL .. "/StartWLP.txt","false")
+			else
+				writefile(DHV299NITFL .. "/StartBLP.txt","false")
+			end
+		end)
+	else
+		StartBLP = false
+		section4:addToggle("Enabled",false,function(bool)
+			StartBLP = bool
+			if StartBLP == true then
+				writefile(DHV299NITFL .. "/StartBLP.txt","true")
+				section3:updateToggle("Enabled")
+				StartWLP = false
+				writefile(DHV299NITFL .. "/StartWLP.txt","false")
+			else
+				writefile(DHV299NITFL .. "/StartBLP.txt","false")
+			end
+		end)
+	end
+
+	local UrClasses = {}
+	for _, classes in pairs(player.ClassProgress:GetChildren()) do
+		if true then
+			table.insert(UrClasses, classes.Name)
+		end
+	end
+	table.insert(UrClasses, "None")
+	section5:addDropdown("Class Selection: " .. readfile(DHV299NITFL .. "/ClassSelection.txt"),UrClasses,function(ClassSelection1)
+		print("Selected: " .. ClassSelection1)
+		notify("Selected: " .. ClassSelection1)
+		ClassSelection = ClassSelection1
+		writefile(DHV299NITFL .. "/ClassSelection.txt",ClassSelection1)
+		if ClassSelection1 == "None" then
+			writefile(DHV299NITFL .. "/ClassSelection.txt","")
+		end
+	end)
+	local ClassSelection = readfile(DHV299NITFL .. "/ClassSelection.txt")
+
+	section5:addButton("Teleport to Spawn",function()
+		player.Character.HumanoidRootPart.CFrame =  workspace.SpawnLocation.CFrame
+	end)
+
+	-- third page
+	local page3 = NoobieDoge:addPage("Daily Class Shop", 97521755974659)
+	local section1 = page3:addSection("Auto Buy Classes")
+	local section2 = page3:addSection("Daily Class Shop")
+
+	local ALLClasses = {}
+	for _, classes in pairs(player.PlayerGui.Interface.Classes.RotatingShop.Frame.ScrollingFrame:GetChildren()) do
+		if classes.Name ~= "UIGridLayout" and classes.Name ~= "Template" then
+			table.insert(ALLClasses, classes.Name)
+		end
+	end
+	section1:addDropdown("Class Selection: " .. readfile(DHV299NITFL .. "/SnipeClasses.txt"),ALLClasses,function(SnipeClasses1)
+		print("Class Selected: " .. SnipeClasses1)
+		notify("Class Selected: " .. SnipeClasses1)
+		SnipeClasses = SnipeClasses1
+		writefile(DHV299NITFL .. "/SnipeClasses.txt",SnipeClasses1)
+		if SnipeClasses1 == "None" then
+			writefile(DHV299NITFL .. "/SnipeClasses.txt","")
+		end
+	end)
+	SnipeClasses = readfile(DHV299NITFL .. "/SnipeClasses.txt")
+		
+	local AutoSnipeClasses
+	if readfile(DHV299NITFL .. "/AutoSnipeClasses.txt") == "true" then
+		AutoSnipeClasses = true
+		section1:addToggle("Enabled",true,function(bool)
+			AutoSnipeClasses = bool
+			if AutoSnipeClasses == true then
+				writefile(DHV299NITFL .. "/AutoSnipeClasses.txt","true")
+			else
+				writefile(DHV299NITFL .. "/AutoSnipeClasses.txt","false")
+			end
+		end)
+	else
+		AutoSnipeClasses = false
+		section1:addToggle("Enabled",false,function(bool)
+			AutoSnipeClasses = bool
+			if AutoSnipeClasses == true then
+				writefile(DHV299NITFL .. "/AutoSnipeClasses.txt","true")
+			else
+				writefile(DHV299NITFL .. "/AutoSnipeClasses.txt","false")
+			end
+		end)
+	end
+
+	section2:addButton("Show Daily Shop UI",function()
+		player.PlayerGui.Interface.Classes.Visible = true
+		notify("I don't know why you need this but ok.")
+	end)
+
+	task.spawn(function()
+		while task.wait(.5) do
+			if AutoSnipeClasses == true then
+				print("yes")
+				for _, class in pairs(player.PlayerGui.Interface.Classes.RotatingShop.Frame.ScrollingFrame:GetChildren()) do
+					if class.Name == SnipeClasses and class.Stock.Visible == false then
+						warn("ON STOCK!!!")
+					else
+						warn("Selected class is not on stock")
+					end
+				end
+			end
+		end
+	end)
+
+	-- last page
+	local pagelast = NoobieDoge:addPage("Settings", 97521755974659)
+	local settings = pagelast:addSection("Settings")
+	local colors = pagelast:addSection("Colors")
+	local credits = pagelast:addSection("Credits")
+
+	settings:addButton("Upgrade Performance",function()
+		UPPERFORMANCE()
+		settings:updateButton("Upgrade Performance","Upgraded Performance")
+	end)
+
+	settings:addButton("Reset Script",function()
+		local player = game.Players.LocalPlayer
+		local ScreenGuiK = Instance.new("ScreenGui")
+		local Frame = Instance.new("ImageLabel")
+		local TextLabelFrame = Instance.new("ImageLabel")
+		local TextLabel = Instance.new("TextLabel")
+		local TextButton = Instance.new("ImageButton")
+		local TextButtonText = Instance.new("TextButton")
+		local TextButton_2 = Instance.new("ImageButton")
+		local TextButton_2Text = Instance.new("TextButton")
+
+		ScreenGuiK.Parent = player:WaitForChild("PlayerGui")
+
+		Frame.Parent = ScreenGuiK
+		Frame.Name = "Main"
+		Frame.BackgroundTransparency = 1
+		Frame.Position = UDim2.new(0.66, 0, 0.055, 0)
+		Frame.Size = UDim2.new(0, 220, 0, 120)
+		Frame.Image = "rbxassetid://4641149554"
+		Frame.ImageColor3 = Color3.fromRGB(24, 24, 24)
+		Frame.ScaleType = Enum.ScaleType.Slice
+		Frame.SliceCenter = Rect.new(4, 4, 296, 296)
+		Frame.Active = true
+		Frame.Draggable = true
+
+		TextLabelFrame.Parent = Frame
+		TextLabelFrame.Name = "TopBar"
+		TextLabelFrame.BackgroundTransparency = 1
+		TextLabelFrame.ClipsDescendants = true
+		TextLabelFrame.Size = UDim2.new(1, 0, 0, 38)
+		TextLabelFrame.ZIndex = 2
+		TextLabelFrame.Image = "rbxassetid://4595286933"
+		TextLabelFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabelFrame.ScaleType = Enum.ScaleType.Slice
+		TextLabelFrame.SliceCenter = Rect.new(4, 4, 296, 296)
+		
+		TextLabel.Parent = Frame
+		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabel.Position = UDim2.new(0, 0, -0.1, 0)
+		TextLabel.BackgroundTransparency = 1
+		TextLabel.Size = UDim2.new(0, 220, 0, 60)
+		TextLabel.ZIndex = 3
+		TextLabel.Font = Enum.Font.TitilliumWeb
+		TextLabel.Text = "Are you sure that you want to reset script?"
+		TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabel.TextScaled = false
+		TextLabel.TextSize = 21.000
+		TextLabel.TextWrapped = true
+
+		TextButton.Parent = Frame
+		TextButton.Name = "Button"
+		TextButton.BackgroundTransparency = 1
+		TextButton.Position = UDim2.new(0.075, 0, 0.500000006, 0)
+		TextButton.BorderSizePixel = 0
+		TextButton.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton.ZIndex = 2
+		TextButton.Image = "rbxassetid://5028857472"
+		TextButton.ImageColor3 = Color3.fromRGB(41, 41, 41)
+		TextButton.ScaleType = Enum.ScaleType.Slice
+		TextButton.SliceCenter = Rect.new(2, 2, 298, 298)
+
+		TextButtonText.Parent = TextButton
+		TextButtonText.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextButtonText.BackgroundTransparency = 1
+		TextButtonText.ZIndex = 3
+		TextButtonText.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButtonText.Font = Enum.Font.TitilliumWeb
+		TextButtonText.Text = "Yes"
+		TextButtonText.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButtonText.TextScaled = true
+		TextButtonText.TextSize = 40.000
+		TextButtonText.TextWrapped = true
+
+		function ResetYES()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+			local DHV299NITFL = "DogeHubV2/99NightsintheForest/Lobby"
+			makefolder(DHV299NITFL)
+			local Universal = DHV299NITFL .. "/Universal"
+			makefolder(Universal)
+			writefile(Universal .. "/EnabledSliderPowa.txt","false")
+			writefile(Universal .. "/sliderspeed.txt","16")
+			writefile(Universal .. "/sliderjump.txt","50")
+			writefile(Universal .. "/slidergravity.txt","196.2")
+			writefile(Universal .. "/CtrlClickTeePee.txt","false")
+			writefile(Universal .. "/infjumptoggle.txt","false")
+			writefile(Universal .. "/noclips.txt","false")
+			writefile(Universal .. "/sliderfly.txt","201")
+			writefile(Universal .. "/Pfly.txt","false")
+			writefile(Universal .. "/ripthatguy.txt","Player's Name")
+			writefile(Universal .. "/trackthatguy.txt","false")
+			writefile(DHV299NITFL .. "/AutoStartGame.txt","false")
+			writefile(DHV299NITFL .. "/PartyPlayerAmount.txt","3")
+			writefile(DHV299NITFL .. "/WLP1.txt","")
+			writefile(DHV299NITFL .. "/WLP2.txt","")
+			writefile(DHV299NITFL .. "/WLP3.txt","")
+			writefile(DHV299NITFL .. "/WLP4.txt","")
+			writefile(DHV299NITFL .. "/WLP5.txt","")
+			writefile(DHV299NITFL .. "/StartWLP.txt","false")
+			writefile(DHV299NITFL .. "/BLP1.txt","")
+			writefile(DHV299NITFL .. "/BLP2.txt","")
+			writefile(DHV299NITFL .. "/BLP3.txt","")
+			writefile(DHV299NITFL .. "/BLP4.txt","")
+			writefile(DHV299NITFL .. "/BLP5.txt","")
+			writefile(DHV299NITFL .. "/StartBLP.txt","false")
+			writefile(DHV299NITFL .. "/ClassSelection.txt","")
+			writefile(DHV299NITFL .. "/SnipeClasses.txt","")
+			writefile(DHV299NITFL .. "/AutoSnipeClasses.txt","false")
+			sliderpowa = false
+			CtrlClickTeePee = false
+			noclips = false
+			Pfly = false
+			trackthatguy = false
+			getgenv().dc = true
+			AutoStartGame = false
+			StartWLP = false
+			StartBLP = false
+			AutoSnipeClasses = false
+			wait()
+			for i,library in pairs(game:GetService("CoreGui"):GetChildren()) do
+				if library.Name == "DogeHub V2" then
+					library:Destroy()
+				end
+			end
+			notify("Do not reset script too many times!")
+			wait(.1)
+			NNNITFLobby()
+		end
+		TextButton.MouseButton1Click:connect(ResetYES)
+		TextButtonText.MouseButton1Click:connect(ResetYES)
+
+		TextButton_2.Parent = Frame
+		TextButton_2.Name = "Button"
+		TextButton_2.BackgroundTransparency = 1
+		TextButton_2.Position = UDim2.new(0.55, 0, 0.500000006, 0)
+		TextButton_2.BorderSizePixel = 0
+		TextButton_2.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton_2.ZIndex = 2
+		TextButton_2.Image = "rbxassetid://5028857472"
+		TextButton_2.ImageColor3 = Color3.fromRGB(41, 41, 41)
+		TextButton_2.ScaleType = Enum.ScaleType.Slice
+		TextButton_2.SliceCenter = Rect.new(2, 2, 298, 298)
+
+		TextButton_2Text.Parent = TextButton_2
+		TextButton_2Text.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextButton_2Text.BackgroundTransparency = 1
+		TextButton_2Text.ZIndex = 3
+		TextButton_2Text.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton_2Text.Font = Enum.Font.TitilliumWeb
+		TextButton_2Text.Text = "No"
+		TextButton_2Text.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButton_2Text.TextScaled = true
+		TextButton_2Text.TextSize = 40.000
+		TextButton_2Text.TextWrapped = true
+
+		function ResetNO()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+		end
+		TextButton_2.MouseButton1Click:connect(ResetNO)	
+		TextButton_2Text.MouseButton1Click:connect(ResetNO)
+	end)
+
+	settings:addButton("Rejoin Server",function()
+		local player = game.Players.LocalPlayer
+		local ScreenGuiK = Instance.new("ScreenGui")
+		local Frame = Instance.new("ImageLabel")
+		local TextLabelFrame = Instance.new("ImageLabel")
+		local TextLabel = Instance.new("TextLabel")
+		local TextButton = Instance.new("ImageButton")
+		local TextButtonText = Instance.new("TextButton")
+		local TextButton_2 = Instance.new("ImageButton")
+		local TextButton_2Text = Instance.new("TextButton")
+
+		ScreenGuiK.Parent = player:WaitForChild("PlayerGui")
+
+		Frame.Parent = ScreenGuiK
+		Frame.Name = "Main"
+		Frame.BackgroundTransparency = 1
+		Frame.Position = UDim2.new(0.66, 0, 0.055, 0)
+		Frame.Size = UDim2.new(0, 220, 0, 120)
+		Frame.Image = "rbxassetid://4641149554"
+		Frame.ImageColor3 = Color3.fromRGB(24, 24, 24)
+		Frame.ScaleType = Enum.ScaleType.Slice
+		Frame.SliceCenter = Rect.new(4, 4, 296, 296)
+		Frame.Active = true
+		Frame.Draggable = true
+
+		TextLabelFrame.Parent = Frame
+		TextLabelFrame.Name = "TopBar"
+		TextLabelFrame.BackgroundTransparency = 1
+		TextLabelFrame.ClipsDescendants = true
+		TextLabelFrame.Size = UDim2.new(1, 0, 0, 38)
+		TextLabelFrame.ZIndex = 2
+		TextLabelFrame.Image = "rbxassetid://4595286933"
+		TextLabelFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabelFrame.ScaleType = Enum.ScaleType.Slice
+		TextLabelFrame.SliceCenter = Rect.new(4, 4, 296, 296)
+		
+		TextLabel.Parent = Frame
+		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabel.Position = UDim2.new(0, 0, -0.1, 0)
+		TextLabel.BackgroundTransparency = 1
+		TextLabel.Size = UDim2.new(0, 220, 0, 60)
+		TextLabel.ZIndex = 3
+		TextLabel.Font = Enum.Font.TitilliumWeb
+		TextLabel.Text = "Are you sure you want to rejoin server?"
+		TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabel.TextScaled = false
+		TextLabel.TextSize = 24.000
+		TextLabel.TextWrapped = true
+
+		TextButton.Parent = Frame
+		TextButton.Name = "Button"
+		TextButton.BackgroundTransparency = 1
+		TextButton.Position = UDim2.new(0.075, 0, 0.500000006, 0)
+		TextButton.BorderSizePixel = 0
+		TextButton.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton.ZIndex = 2
+		TextButton.Image = "rbxassetid://5028857472"
+		TextButton.ImageColor3 = Color3.fromRGB(41, 41, 41)
+		TextButton.ScaleType = Enum.ScaleType.Slice
+		TextButton.SliceCenter = Rect.new(2, 2, 298, 298)
+
+		TextButtonText.Parent = TextButton
+		TextButtonText.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextButtonText.BackgroundTransparency = 1
+		TextButtonText.ZIndex = 3
+		TextButtonText.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButtonText.Font = Enum.Font.TitilliumWeb
+		TextButtonText.Text = "Yes"
+		TextButtonText.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButtonText.TextScaled = true
+		TextButtonText.TextSize = 40.000
+		TextButtonText.TextWrapped = true
+
+		function RejoinYES()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+			local TS = game:GetService("TeleportService")
+			local Player = game.Players.LocalPlayer
+			TS:Teleport(game.PlaceId, Player)
+		end
+		TextButton.MouseButton1Click:connect(RejoinYES)
+		TextButtonText.MouseButton1Click:connect(RejoinYES)
+
+		TextButton_2.Parent = Frame
+		TextButton_2.Name = "Button"
+		TextButton_2.BackgroundTransparency = 1
+		TextButton_2.Position = UDim2.new(0.55, 0, 0.500000006, 0)
+		TextButton_2.BorderSizePixel = 0
+		TextButton_2.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton_2.ZIndex = 2
+		TextButton_2.Image = "rbxassetid://5028857472"
+		TextButton_2.ImageColor3 = Color3.fromRGB(41, 41, 41)
+		TextButton_2.ScaleType = Enum.ScaleType.Slice
+		TextButton_2.SliceCenter = Rect.new(2, 2, 298, 298)
+
+		TextButton_2Text.Parent = TextButton_2
+		TextButton_2Text.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextButton_2Text.BackgroundTransparency = 1
+		TextButton_2Text.ZIndex = 3
+		TextButton_2Text.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton_2Text.Font = Enum.Font.TitilliumWeb
+		TextButton_2Text.Text = "No"
+		TextButton_2Text.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButton_2Text.TextScaled = true
+		TextButton_2Text.TextSize = 40.000
+		TextButton_2Text.TextWrapped = true
+
+		function RejoinNO()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+		end
+		TextButton_2.MouseButton1Click:connect(RejoinNO)	
+		TextButton_2Text.MouseButton1Click:connect(RejoinNO)
+	end)
+
+	settings:addKeybind("Toggle Keybind", Enum.KeyCode.RightControl, function()
+	print("Activated Keybind")
+	NoobieDoge:toggle()
+	end, function()
+	print("Changed Keybind")
+	end)
+
+	local DHV2Frame = game:GetService("CoreGui")["DogeHub V2"]["DogeHub V2 Toggle"]
+	local DHV2TextButton = DHV2Frame.Button
+	local DHV2TextButtonText = DHV2Frame.Button.TextButton
+	local function ToggleGUI()
+		NoobieDoge:toggle()
+	end
+	DHV2TextButton.MouseButton1Click:connect(ToggleGUI)
+	DHV2TextButtonText.MouseButton1Click:connect(ToggleGUI)
+	
+	settings:addToggle("Show Mobile Toggle Button",false,function(bool)
+		SMTB = bool
+		if SMTB == true then
+			DHV2Frame.Visible = true
+		else
+			DHV2Frame.Visible = false
+		end
+	end)
+
+	for theme, color in pairs(themes) do -- all in one theme changer, i know, im cool
+		colors:addColorPicker(theme, color, function(color3)
+			NoobieDoge:setTheme(theme, color3)
+		end)
+	end
+
+	credits:addButton("Made by NoobieDoge")
+	credits:addButton("https://discord.gg/P2CeRjvTDt")
+	credits:addButton("Copy Discord Link",function()
+		setclipboard("https://discord.gg/P2CeRjvTDt")
+		wait()
+		notify("Discord link copied to clipboard!")
+	end)
+
+	gameplaceexecuted = "99 Nights in the Forest Lobby"
+
+end
+
 --99 Nights in the Forest
 local function NNNITFMain()
 
@@ -1379,7 +2802,7 @@ local function NNNITFMain()
 end
 
 if game.PlaceId == 79546208627805 then
-	notify("No.")
+	NNNITFLobby()
 elseif game.PlaceId == 126509999114328 then
 	NNNITFMain()
 end
