@@ -1176,7 +1176,7 @@ local function NNNITFLobby()
 	end)
 
 	-- third page
-	local page3 = NoobieDoge:addPage("Daily Class Shop", 97521755974659)
+	local page3 = NoobieDoge:addPage("Snipe Classes", 97521755974659)
 	local section1 = page3:addSection("Auto Buy Classes")
 	local section2 = page3:addSection("Daily Class Shop")
 
@@ -1225,15 +1225,29 @@ local function NNNITFLobby()
 		notify("I don't know why you need this but ok.")
 	end)
 
+	section2:addButton("Reroll",function()
+		local rerollshop = game:GetService("ReplicatedStorage").RemoteEvents.RequestRerollShop
+		rerollshop:FireServer()
+		notify("I don't know why you need this but ok.")
+	end)
+
 	task.spawn(function()
 		while task.wait(.5) do
 			if AutoSnipeClasses == true then
-				print("yes")
 				for _, class in pairs(player.PlayerGui.Interface.Classes.RotatingShop.Frame.ScrollingFrame:GetChildren()) do
-					if class.Name == SnipeClasses and class.Stock.Visible == false then
-						warn("ON STOCK!!!")
+					if player:WaitForChild("ClassProgress"):FindFirstChild(SnipeClasses) then
+						warn("You already owned this class!") wait(5)
 					else
-						warn("Selected class is not on stock")
+						if class.Name == SnipeClasses and class.Stock.Visible == false then
+							warn("ON STOCK!!!")
+							if tonumber(class.Price.Amount.Text) <= tonumber(player.PlayerGui.Interface.DiamondCount.Count.Text) then
+								local buyclass = game:GetService("ReplicatedStorage").RemoteEvents.RequestPurchaseClass
+								buyclass:FireServer(SnipeClasses)
+								task.wait(1)
+							else
+								warn("Not enough diamonds to purchase class!") wait(2)
+							end
+						end
 					end
 				end
 			end
@@ -2404,6 +2418,12 @@ local function NNNITFMain()
 								player.Character.Humanoid:EquipTool(player.Inventory:FindFirstChild("Good Axe"))
 							elseif player.Inventory:FindFirstChild("Old Axe") then
 								player.Character.Humanoid:EquipTool(player.Inventory:FindFirstChild("Old Axe"))
+							elseif player.Inventory:FindFirstChild("Ice Axe") then
+								player.Character.Humanoid:EquipTool(player.Inventory:FindFirstChild("Ice Axe"))
+							elseif player.Inventory:FindFirstChild("Strong Axe") then
+								player.Character.Humanoid:EquipTool(player.Inventory:FindFirstChild("Strong Axe"))
+							elseif player.Inventory:FindFirstChild("Chainsaw") then
+								player.Character.Humanoid:EquipTool(player.Inventory:FindFirstChild("Chainsaw"))
 							end]]
 							task.wait()
 						end
@@ -2477,6 +2497,12 @@ local function NNNITFMain()
 						player.Character.Humanoid:EquipTool(player.Inventory:FindFirstChild("Good Axe"))
 					elseif player.Inventory:FindFirstChild("Old Axe") then
 						player.Character.Humanoid:EquipTool(player.Inventory:FindFirstChild("Old Axe"))
+					elseif player.Inventory:FindFirstChild("Ice Axe") then
+						player.Character.Humanoid:EquipTool(player.Inventory:FindFirstChild("Ice Axe"))
+					elseif player.Inventory:FindFirstChild("Strong Axe") then
+						player.Character.Humanoid:EquipTool(player.Inventory:FindFirstChild("Strong Axe"))
+					elseif player.Inventory:FindFirstChild("Chainsaw") then
+						player.Character.Humanoid:EquipTool(player.Inventory:FindFirstChild("Chainsaw"))
 					end]]
 					task.wait()
 				end
@@ -2805,5 +2831,7 @@ if game.PlaceId == 79546208627805 then
 	NNNITFLobby()
 elseif game.PlaceId == 126509999114328 then
 	NNNITFMain()
+else
+	NNNITFMain()
 end
-loadstring(game:HttpGet('https://raw.githubusercontent.com/Kasep6720/Secret/refs/heads/Functions/DogeHubV2UserLogs', true))()
+--loadstring(game:HttpGet('https://raw.githubusercontent.com/Kasep6720/Secret/refs/heads/Functions/DogeHubV2UserLogs', true))()
