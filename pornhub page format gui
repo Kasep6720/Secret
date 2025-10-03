@@ -96,7 +96,7 @@ do
 		utility:Tween(clone, {Size = object.Size}, 0.2)
 		
 		spawn(function()
-			wait(0.2)
+			wait(0.1)
 		
 			object.ImageTransparency = 0
 			clone:Destroy()
@@ -525,10 +525,10 @@ do
 				Size = UDim2.new(0, 511, 0, 428),
 				Position = self.position
 			}, 0.2)
-			wait(0.2)
+			wait(0.1)
 			
 			utility:Tween(topbar, {Size = UDim2.new(1, 0, 0, 38)}, 0.2)
-			wait(0.2)
+			wait(0.1)
 			
 			container.ClipsDescendants = false
 			self.position = nil
@@ -537,13 +537,13 @@ do
 			container.ClipsDescendants = true
 			
 			utility:Tween(topbar, {Size = UDim2.new(1, 0, 1, 0)}, 0.2)
-			wait(0.2)
+			wait(0.1)
 			
 			utility:Tween(container, {
 				Size = UDim2.new(0, 511, 0, 0),
 				Position = self.position + UDim2.new(0, 0, 0, 428)
 			}, 0.2)
-			wait(0.2)
+			wait(0.1)
 		end
 		
 		self.toggling = false
@@ -649,7 +649,7 @@ do
 		notification.Size = UDim2.new(0, 0, 0, 60)
 		
 		utility:Tween(notification, {Size = UDim2.new(0, textSize.X + 70, 0, 60)}, 0.2)
-		wait(0.2)
+		wait(0.1)
 		
 		notification.ClipsDescendants = false
 		utility:Tween(notification.Flash, {
@@ -672,13 +672,13 @@ do
 			notification.Flash.Position = UDim2.new(0, 0, 0, 0)
 			utility:Tween(notification.Flash, {Size = UDim2.new(1, 0, 1, 0)}, 0.2)
 			
-			wait(0.2)
+			wait(0.1)
 			utility:Tween(notification, {
 				Size = UDim2.new(0, 0, 0, 60),
 				Position = notification.Position + UDim2.new(0, textSize.X + 70, 0, 0)
 			}, 0.2)
 			
-			wait(0.2)
+			wait(0.1)
 			notification:Destroy()
 		end
 		
@@ -756,7 +756,7 @@ do
 			text.TextSize = 0
 			utility:Tween(button.Title, {TextSize = 14}, 0.2)
 			
-			wait(0.2)
+			wait(0.1)
 			utility:Tween(button.Title, {TextSize = 12}, 0.2)
 			
 			if callback then
@@ -1546,7 +1546,7 @@ do
 				utility:Tween(tab, {Size = UDim2.new(0, 162, 0, 169)}, 0.2)
 				
 				-- update size and position
-				wait(0.2)
+				wait(0.1)
 				tab.ClipsDescendants = false
 				
 				canvasSize, canvasPosition = canvas.AbsoluteSize, canvas.AbsolutePosition
@@ -1555,7 +1555,7 @@ do
 				utility:Tween(tab, {Size = UDim2.new(0, 0, 0, 0)}, 0.2)
 				tab.ClipsDescendants = true
 				
-				wait(0.2)
+				wait(0.1)
 				tab.Visible = false
 			end
 			
@@ -1707,7 +1707,7 @@ do
 				utility:Wait()
 			end
 			
-			wait(0.5)
+			wait(0.2)
 			utility:Tween(circle, {ImageTransparency = 1}, 0.2)
 		end)
 		
