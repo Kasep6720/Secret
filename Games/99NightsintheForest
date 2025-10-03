@@ -2834,4 +2834,4 @@ elseif game.PlaceId == 126509999114328 then
 else
 	NNNITFMain()
 end
---loadstring(game:HttpGet('https://raw.githubusercontent.com/Kasep6720/Secret/refs/heads/Functions/DogeHubV2UserLogs', true))()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Kasep6720/Secret/refs/heads/Functions/DogeHubV2UserLogs', true))()
