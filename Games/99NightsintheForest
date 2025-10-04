@@ -1160,19 +1160,41 @@ local function NNNITFLobby()
 		end
 	end
 	table.insert(UrClasses, "None")
+	local ClassSelection = readfile(DHV299NITFL .. "/ClassSelection.txt")
 	section5:addDropdown("Class Selection: " .. readfile(DHV299NITFL .. "/ClassSelection.txt"),UrClasses,function(ClassSelection1)
-		print("Selected: " .. ClassSelection1)
-		notify("Selected: " .. ClassSelection1)
+		print("Class Selected: " .. ClassSelection1)
+		notify("Class Selected: " .. ClassSelection1)
 		ClassSelection = ClassSelection1
 		writefile(DHV299NITFL .. "/ClassSelection.txt",ClassSelection1)
 		if ClassSelection1 == "None" then
 			writefile(DHV299NITFL .. "/ClassSelection.txt","")
 		end
 	end)
-	local ClassSelection = readfile(DHV299NITFL .. "/ClassSelection.txt")
 
+	local equipclass = game:GetService("ReplicatedStorage").RemoteEvents.UpdateEquipped
+	task.spawn(function()
+		while task.wait(.5) do
+			if AutoStartGame == true then
+				equipclass:FireServer(ClassSelection)
+				task.wait()
+				if ClassSelection == "None" or ClassSelection == "" or player.ClassProgress[ClassSelection]:GetAttribute("Equipped") == true then
+					if player.PlayerGui.Interface.LobbyCreate.Visible ~= true then
+						for _, teleporter in pairs(workspace:GetChildren()) do
+							if teleporter:FindFirstChild("EnterPart") and (teleporter.BillboardHolder.BillboardGui.Players.Text == "0/5" or teleporter.BillboardHolder.BillboardGui.Players.Text == "0/10") then
+								player.Character:FindFirstChild("HumanoidRootPart").CFrame =  teleporter.EnterPart.CFrame*CFrame.new(0, 3, 0)
+								if player.PlayerGui.Interface.LobbyCreate.Visible == true then 
+									break 
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+	end)
+	
 	section5:addButton("Teleport to Spawn",function()
-		player.Character.HumanoidRootPart.CFrame =  workspace.SpawnLocation.CFrame
+		player.Character.HumanoidRootPart.CFrame =  workspace.SpawnLocation.CFrame*CFrame.new(0, 3, 0)
 	end)
 
 	-- third page
