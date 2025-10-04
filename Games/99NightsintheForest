@@ -1974,7 +1974,7 @@ local function NNNITFMain()
 
 	section1:addButton("Instant unlock all chests",function()
 		for _, item in pairs(workspace.Items:GetChildren()) do
-			if item:FindFirstChild("ChestLid") and item.Main:FindFirstChild("ProximityAttachment") then
+			if item:FindFirstChild("ChestLid") and item:FindFirstChild("Main") and item.Main:FindFirstChild("ProximityAttachment") then
 				local prox = item.Main.ProximityAttachment.ProximityInteraction
 				prox.HoldDuration = 0
 				prox.MaxActivationDistance = 9e9
@@ -2015,6 +2015,17 @@ local function NNNITFMain()
 			end
 		end
 		notify("Brought all coin stacks!")
+	end)
+
+	section1:addButton("Instant unlock cultist stronghold enterence doors",function()
+		local prox = workspace.Map.Landmarks.Stronghold.Functional.EntryDoors.DoorRight.Main.ProximityAttachment.ProximityInteraction
+		prox.HoldDuration = 0
+		prox.MaxActivationDistance = 9e9
+		prox.Exclusivity = 2
+		prox.RequiresLineOfSight  = false
+		task.wait(.1)
+		fireproximityprompt(prox)
+		notify("Unlocked Cultist Stronghold Enterance Doors")
 	end)
 
 	local BoostPad = false
@@ -2447,18 +2458,23 @@ local function NNNITFMain()
 				for _, mob in pairs(workspace.Characters:GetChildren()) do
 					if mob.Name ~= "Lost Child" and mob.Name ~= "Lost Child2" and mob.Name ~= "Lost Child3" and mob.Name ~= "Lost Child4" and not mob:FindFirstChild("Default") then
 						if mob:FindFirstChild("HumanoidRootPart") then
-							if mob.Name ~= "Arctic Fox" then
-								mob.HumanoidRootPart.Size = Vector3.new(Hitboxsizenum, Hitboxsizenum, Hitboxsizenum)
-								mob.HumanoidRootPart.CanCollide = false
-							else --Artic fox dunno why wont get damaged
+							if mob.Name == "Arctic Fox" then --Artic fox dunno why wont get damaged
 								mob.Torso.Size = Vector3.new(Hitboxsizenum, Hitboxsizenum, Hitboxsizenum)
 								mob.Torso.CanCollide = false
+								mob.Torso.Transparency = 1
+							elseif mob.Name == "Meteor Crab" then
+								mob.Head.Size = Vector3.new(Hitboxsizenum, Hitboxsizenum, Hitboxsizenum)
+								mob.Head.Transparency = 1
+							else 
+								mob.HumanoidRootPart.Size = Vector3.new(Hitboxsizenum, Hitboxsizenum, Hitboxsizenum)
+								mob.HumanoidRootPart.CanCollide = false
 							end
 							if ShowHitbox == true and not AutoKillMobs then
 								mob.HumanoidRootPart.Transparency = 0.5
 							else
 								mob.HumanoidRootPart.Transparency = 1
 							end
+							task.wait()
 						end
 					end
 				end
