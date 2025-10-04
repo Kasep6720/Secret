@@ -15,7 +15,7 @@ if player.PlayerGui:FindFirstChild("Main") then
   repeat wait() until player.PlayerGui:FindFirstChild("Main")
 end 
 local TS = game:GetService("TeleportService")
-local npcFolder = game:GetService("Workspace").npc
+local npcFolder = game:GetService("Workspace"):FindFirstChild("npc")
 --on9 functions that are so damn important
 local function fireproximityprompt(ProximityPrompt, Amount, Skip) --fireproximityprompt for Solara executor
 	assert(ProximityPrompt, "Argument #1 Missing or nil")
@@ -4876,7 +4876,6 @@ local function ShindoDungeonSelection()
 				print("Dungeon chosen: " .. player.PlayerGui.teleport.serverframe.top.BossTab[ComfirmedDungeon].icon.lvl.Text)
 				StartDungeon = false
 				wait()
-				loadstring(game:HttpGet('https://raw.githubusercontent.com/Kasep6720/Secret/refs/heads/Functions/DogeHubV2UserLogs', true))()
 				local args = {[1] = "dungeon" .. ComfirmedDungeon}
 				player.pressplay:FireServer(unpack(args))
 			end
