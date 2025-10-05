@@ -1326,7 +1326,6 @@ local function NNNITFLobby()
 	task.spawn(function()
 		while task.wait(.5) do
 			if AutoSnipeClasses == true then
-
 				for _, class in pairs(player.PlayerGui.Interface.Classes.RotatingShop.Frame.ScrollingFrame:GetChildren()) do
 					if player:WaitForChild("ClassProgress"):FindFirstChild(SnipeClasses) then
 						warn("You already owned this class!") wait(5)
