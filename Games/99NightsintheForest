@@ -200,7 +200,7 @@ local function NNNITFLobby()
 		writefile(Universal .. "/noclips.txt","false")
 	end
 	if isfile(Universal .. "/sliderfly.txt") == false then
-		writefile(Universal .. "/sliderfly.txt","201")
+		writefile(Universal .. "/sliderfly.txt","101")
 	end
 	if isfile(Universal .. "/Pfly.txt") == false then
 		writefile(Universal .. "/Pfly.txt","false")
@@ -210,9 +210,12 @@ local function NNNITFLobby()
 	end
 	if isfile(Universal .. "/trackthatguy.txt") == false then
 		writefile(Universal .. "/trackthatguy.txt","false")
-	end
+	end 
 	if isfile(DHV299NITFL .. "/AutoStartGame.txt") == false then
 		writefile(DHV299NITFL .. "/AutoStartGame.txt","false")
+	end
+	if isfile(DHV299NITFL .. "/AutoJoinGame.txt") == false then
+		writefile(DHV299NITFL .. "/AutoJoinGame.txt","false")
 	end
 	if isfile(DHV299NITFL .. "/PartyPlayerAmount.txt") == false then
 		writefile(DHV299NITFL .. "/PartyPlayerAmount.txt","3")
@@ -471,7 +474,7 @@ local function NNNITFLobby()
 		end
 	end)
 
-	section2:addSlider("Fly Speed", tonumber(readfile(Universal .. "/sliderfly.txt")), 0, 9999, function(value)
+	section2:addSlider("Fly Speed", tonumber(readfile(Universal .. "/sliderfly.txt")), 0, 999, function(value)
 		sliderfly = value
 		writefile(Universal .. "/sliderfly.txt",tostring(sliderfly))
 	end)
@@ -922,10 +925,11 @@ local function NNNITFLobby()
 	-- second page
 	local page2 = NoobieDoge:addPage("Auto Join", 97521755974659)
 	local section1 = page2:addSection("Create Party")
-	local section2 = page2:addSection("Party Settings")
-	local section3 = page2:addSection("Player Whitelist")
-	local section4 = page2:addSection("Player Blacklist")
-	local section5 = page2:addSection("Local Player")
+	local section2 = page2:addSection("Join Party")
+	local section3 = page2:addSection("Party Settings")
+	local section4 = page2:addSection("Player Whitelist")
+	local section5 = page2:addSection("Player Blacklist")
+	local section6 = page2:addSection("Local Player")
 
 	local playernames = {}
 	local seenNames = {} -- Dictionary to track seen names
@@ -943,6 +947,8 @@ local function NNNITFLobby()
 			AutoStartGame = bool
 			if AutoStartGame == true then
 				writefile(DHV299NITFL .. "/AutoStartGame.txt","true")
+				section2:updateToggle("Auto Join Game")
+				AutoJoinGame = false
 			else
 				writefile(DHV299NITFL .. "/AutoStartGame.txt","false")
 			end
@@ -953,25 +959,54 @@ local function NNNITFLobby()
 			AutoStartGame = bool
 			if AutoStartGame == true then
 				writefile(DHV299NITFL .. "/AutoStartGame.txt","true")
+				section2:updateToggle("Auto Join Game")
+				AutoJoinGame = false
 			else
 				writefile(DHV299NITFL .. "/AutoStartGame.txt","false")
 			end
 		end)
 	end
 
-	section2:addSlider("Party Player Amount", tonumber(readfile(DHV299NITFL .. "/PartyPlayerAmount.txt")), 1, 5, function(value)
+	local AutoJoinGame
+	if readfile(DHV299NITFL .. "/AutoJoinGame.txt") == "true" then
+		AutoJoinGame = true
+		section2:addToggle("Auto Join Game",true,function(bool)
+			AutoJoinGame = bool
+			if AutoJoinGame == true then
+				writefile(DHV299NITFL .. "/AutoJoinGame.txt","true")
+				section1:updateToggle("Auto Start Game")
+				AutoStartGame = false
+			else
+				writefile(DHV299NITFL .. "/AutoJoinGame.txt","false")
+			end
+		end)
+	else
+		AutoJoinGame = false
+		section2:addToggle("Auto Join Game",false,function(bool)
+			AutoJoinGame = bool
+			if AutoJoinGame == true then
+				writefile(DHV299NITFL .. "/AutoJoinGame.txt","true")
+				section1:updateToggle("Auto Start Game")
+				AutoStartGame = false
+			else
+				writefile(DHV299NITFL .. "/AutoJoinGame.txt","false")
+			end
+		end)
+	end
+
+	section3:addSlider("Party Player Amount", tonumber(readfile(DHV299NITFL .. "/PartyPlayerAmount.txt")), 1, 5, function(value)
 		PartyPlayerAmount = value
 		writefile(DHV299NITFL .. "/PartyPlayerAmount.txt",tostring(PartyPlayerAmount))
 	end)
 	PartyPlayerAmount = tonumber(readfile(DHV299NITFL .. "/PartyPlayerAmount.txt"))
 
-	section2:addButton("THIS FUNCTION IS NOT WORKING RN",function()
+	section3:addButton("THIS FUNCTION IS NOT WORKING RN",function()
 		notify("idk how to do auto click buttons so sorry")
 	end)
 
 	local tempdropdownnumber = 0
 	local WLP1 = readfile(DHV299NITFL .. "/WLP1.txt")
-	section3:addDropdown("Whitelisted Player 1: " .. readfile(DHV299NITFL .. "/WLP1.txt"),playernames,function(WLP1a)
+	section4:addDropdown("Whitelisted Player 1: " .. readfile(DHV299NITFL .. "/WLP1.txt"),playernames,function(WLP1a)
 		print("Selected: " .. WLP1a)
 		notify("Selected: " .. WLP1a)
 		WLP1 = WLP1a
@@ -979,7 +1014,7 @@ local function NNNITFLobby()
 	end)
 
 	local WLP2 = readfile(DHV299NITFL .. "/WLP2.txt")
-	section3:addDropdown("Whitelisted Player 2: " .. readfile(DHV299NITFL .. "/WLP2.txt"),playernames,function(WLP2a)
+	section4:addDropdown("Whitelisted Player 2: " .. readfile(DHV299NITFL .. "/WLP2.txt"),playernames,function(WLP2a)
 		print("Selected: " .. WLP2a)
 		notify("Selected: " .. WLP2a)
 		WLP2 = WLP2a
@@ -987,7 +1022,7 @@ local function NNNITFLobby()
 	end)
 
 	local WLP3 = readfile(DHV299NITFL .. "/WLP3.txt")
-	section3:addDropdown("Whitelisted Player 3: " .. readfile(DHV299NITFL .. "/WLP3.txt"),playernames,function(WLP3a)
+	section4:addDropdown("Whitelisted Player 3: " .. readfile(DHV299NITFL .. "/WLP3.txt"),playernames,function(WLP3a)
 		print("Selected: " .. WLP3a)
 		notify("Selected: " .. WLP3a)
 		WLP3 = WLP3a
@@ -995,7 +1030,7 @@ local function NNNITFLobby()
 	end)
 
 	local WLP4 = readfile(DHV299NITFL .. "/WLP4.txt")
-	section3:addDropdown("Whitelisted Player 4: " .. readfile(DHV299NITFL .. "/WLP4.txt"),playernames,function(WLP4a)
+	section4:addDropdown("Whitelisted Player 4: " .. readfile(DHV299NITFL .. "/WLP4.txt"),playernames,function(WLP4a)
 		print("Selected: " .. WLP4a)
 		notify("Selected: " .. WLP4a)
 		WLP4 = WLP4a
@@ -1003,14 +1038,14 @@ local function NNNITFLobby()
 	end)
 
 	local WLP5 = readfile(DHV299NITFL .. "/WLP5.txt")
-	section3:addDropdown("Whitelisted Player 5: " .. readfile(DHV299NITFL .. "/WLP5.txt"),playernames,function(WLP5a)
+	section4:addDropdown("Whitelisted Player 5: " .. readfile(DHV299NITFL .. "/WLP5.txt"),playernames,function(WLP5a)
 		print("Selected: " .. WLP5a)
 		notify("Selected: " .. WLP5a)
 		WLP5 = WLP5a
 		writefile(DHV299NITFL .. "/WLP5.txt",WLP5a)
 	end)
 
-	section3:addButton("Reset Whitelist",function()
+	section4:addButton("Reset Whitelist",function()
 		for _, peepo in pairs(Game.Players:GetPlayers()) do
 			if not seenNames[peepo.Name] and peepo.Name ~= player.Name then -- Check if name hasn't been seen & localplayer
 				table.insert(playernames, peepo.Name)
@@ -1022,7 +1057,7 @@ local function NNNITFLobby()
 			if dropdown.Name == "Dropdown" then
 				local tempddname = dropdown.Search.TextBox.Text
 				tempdropdownnumber = tempdropdownnumber + 1
-				section3:updateDropdown(tempddname,"Whitelisted Player ".. tempdropdownnumber..": ",playernames)
+				section4:updateDropdown(tempddname,"Whitelisted Player ".. tempdropdownnumber..": ",playernames)
 			end
 		end
 		writefile(DHV299NITFL .. "/WLP1.txt","")
@@ -1036,11 +1071,11 @@ local function NNNITFLobby()
 	local StartWLP
 	if readfile(DHV299NITFL .. "/StartWLP.txt") == "true" then
 		StartWLP = true
-		section3:addToggle("Enabled",true,function(bool)
+		section4:addToggle("Enabled",true,function(bool)
 			StartWLP = bool
 			if StartWLP == true then
 				writefile(DHV299NITFL .. "/StartWLP.txt","true")
-				section4:updateToggle("Enabled")
+				section5:updateToggle("Enabled")
 				StartBLP = false
 				writefile(DHV299NITFL .. "/StartBLP.txt","false")
 			else
@@ -1049,11 +1084,11 @@ local function NNNITFLobby()
 		end)
 	else
 		StartWLP = false
-		section3:addToggle("Enabled",false,function(bool)
+		section4:addToggle("Enabled",false,function(bool)
 			StartWLP = bool
 			if StartWLP == true then
 				writefile(DHV299NITFL .. "/StartWLP.txt","true")
-				section4:updateToggle("Enabled")
+				section5:updateToggle("Enabled")
 				StartBLP = false
 				writefile(DHV299NITFL .. "/StartBLP.txt","false")
 			else
@@ -1063,7 +1098,7 @@ local function NNNITFLobby()
 	end
 
 	local BLP1 = readfile(DHV299NITFL .. "/BLP1.txt")
-	section4:addDropdown("Blacklisted Player 1: " .. readfile(DHV299NITFL .. "/BLP1.txt"),playernames,function(BLP1a)
+	section5:addDropdown("Blacklisted Player 1: " .. readfile(DHV299NITFL .. "/BLP1.txt"),playernames,function(BLP1a)
 		print("Selected: " .. BLP1a)
 		notify("Selected: " .. BLP1a)
 		BLP1 = BLP1a
@@ -1071,7 +1106,7 @@ local function NNNITFLobby()
 	end)
 
 	local BLP2 = readfile(DHV299NITFL .. "/BLP2.txt")
-	section4:addDropdown("Blacklisted Player 2: " .. readfile(DHV299NITFL .. "/BLP2.txt"),playernames,function(BLP2a)
+	section5:addDropdown("Blacklisted Player 2: " .. readfile(DHV299NITFL .. "/BLP2.txt"),playernames,function(BLP2a)
 		print("Selected: " .. BLP2a)
 		notify("Selected: " .. BLP2a)
 		BLP2 = BLP2a
@@ -1079,7 +1114,7 @@ local function NNNITFLobby()
 	end)
 
 	local BLP3 = readfile(DHV299NITFL .. "/BLP3.txt")
-	section4:addDropdown("Blacklisted Player 3: " .. readfile(DHV299NITFL .. "/BLP3.txt"),playernames,function(BLP3a)
+	section5:addDropdown("Blacklisted Player 3: " .. readfile(DHV299NITFL .. "/BLP3.txt"),playernames,function(BLP3a)
 		print("Selected: " .. BLP3a)
 		notify("Selected: " .. BLP3a)
 		BLP3 = BLP3a
@@ -1087,7 +1122,7 @@ local function NNNITFLobby()
 	end)
 
 	local BLP4 = readfile(DHV299NITFL .. "/BLP4.txt")
-	section4:addDropdown("Blacklisted Player 4: " .. readfile(DHV299NITFL .. "/BLP4.txt"),playernames,function(BLP4a)
+	section5:addDropdown("Blacklisted Player 4: " .. readfile(DHV299NITFL .. "/BLP4.txt"),playernames,function(BLP4a)
 		print("Selected: " .. BLP4a)
 		notify("Selected: " .. BLP4a)
 		BLP4 = BLP4a
@@ -1095,14 +1130,14 @@ local function NNNITFLobby()
 	end)
 
 	local BLP5 = readfile(DHV299NITFL .. "/BLP5.txt")
-	section4:addDropdown("Blacklisted Player 5: " .. readfile(DHV299NITFL .. "/BLP5.txt"),playernames,function(BLP5a)
+	section5:addDropdown("Blacklisted Player 5: " .. readfile(DHV299NITFL .. "/BLP5.txt"),playernames,function(BLP5a)
 		print("Selected: " .. BLP5a)
 		notify("Selected: " .. BLP5a)
 		BLP5 = BLP5a
 		writefile(DHV299NITFL .. "/BLP5.txt",BLP5a)
 	end)
 
-	section4:addButton("Reset Blacklist",function()
+	section5:addButton("Reset Blacklist",function()
 		for _, peepo in pairs(Game.Players:GetPlayers()) do
 			if not seenNames[peepo.Name] and peepo.Name ~= player.Name then -- Check if name hasn't been seen & localplayer
 				table.insert(playernames, peepo.Name)
@@ -1114,7 +1149,7 @@ local function NNNITFLobby()
 			if dropdown.Name == "Dropdown" then
 				local tempddname = dropdown.Search.TextBox.Text
 				tempdropdownnumber = tempdropdownnumber + 1
-				section4:updateDropdown(tempddname,"Blacklisted Player ".. tempdropdownnumber..": ",playernames)
+				section5:updateDropdown(tempddname,"Blacklisted Player ".. tempdropdownnumber..": ",playernames)
 			end
 		end
 		writefile(DHV299NITFL .. "/BLP1.txt","")
@@ -1128,11 +1163,11 @@ local function NNNITFLobby()
 	local StartBLP
 	if readfile(DHV299NITFL .. "/StartBLP.txt") == "true" then
 		StartBLP = true
-		section4:addToggle("Enabled",true,function(bool)
+		section5:addToggle("Enabled",true,function(bool)
 			StartBLP = bool
 			if StartBLP == true then
 				writefile(DHV299NITFL .. "/StartBLP.txt","true")
-				section3:updateToggle("Enabled")
+				section4:updateToggle("Enabled")
 				StartWLP = false
 				writefile(DHV299NITFL .. "/StartWLP.txt","false")
 			else
@@ -1141,11 +1176,11 @@ local function NNNITFLobby()
 		end)
 	else
 		StartBLP = false
-		section4:addToggle("Enabled",false,function(bool)
+		section5:addToggle("Enabled",false,function(bool)
 			StartBLP = bool
 			if StartBLP == true then
 				writefile(DHV299NITFL .. "/StartBLP.txt","true")
-				section3:updateToggle("Enabled")
+				section4:updateToggle("Enabled")
 				StartWLP = false
 				writefile(DHV299NITFL .. "/StartWLP.txt","false")
 			else
@@ -1162,7 +1197,7 @@ local function NNNITFLobby()
 	end
 	table.insert(UrClasses, "None")
 	local ClassSelection = readfile(DHV299NITFL .. "/ClassSelection.txt")
-	section5:addDropdown("Class Selection: " .. readfile(DHV299NITFL .. "/ClassSelection.txt"),UrClasses,function(ClassSelection1)
+	section6:addDropdown("Class Selection: " .. readfile(DHV299NITFL .. "/ClassSelection.txt"),UrClasses,function(ClassSelection1)
 		print("Class Selected: " .. ClassSelection1)
 		notify("Class Selected: " .. ClassSelection1)
 		ClassSelection = ClassSelection1
@@ -1203,6 +1238,51 @@ local function NNNITFLobby()
 			end
 		end
 	end
+	local function JoinARandomTeleporterWithPeople()
+		for _, teleporter in pairs(workspace:GetChildren()) do
+			if teleporter:FindFirstChild("EnterPart") and (teleporter.BillboardHolder.BillboardGui.Players.Text ~= "0/5" and teleporter.BillboardHolder.BillboardGui.Players.Text ~= "0/10" and teleporter.BillboardHolder.BillboardGui.Players.Text ~= "Creating..." and teleporter.BillboardHolder.BillboardGui.Players.Text ~= "1/1" and teleporter.BillboardHolder.BillboardGui.Players.Text ~= "2/2" and teleporter.BillboardHolder.BillboardGui.Players.Text ~= "3/3" and teleporter.BillboardHolder.BillboardGui.Players.Text ~= "4/4" and teleporter.BillboardHolder.BillboardGui.Players.Text ~= "5/5" and teleporter.BillboardHolder.BillboardGui.Players.Text ~= "10/10" and teleporter.BillboardHolder.BillboardGui.Players.TextColor3 ~= Color3.fromRGB(225, 0, 0)) then
+				--player.Character:FindFirstChild("HumanoidRootPart").CFrame =  teleporter.EnterPart.CFrame*CFrame.new(0, 3, 0) task.wait()
+				toTarget(player.Character.HumanoidRootPart.Position,teleporter.EnterPart.Position,CFrame.new(teleporter.EnterPart.Position+Vector3.new(-1,3,-1)))
+				toTarget(player.Character.HumanoidRootPart.Position,teleporter.EnterPart.Position,CFrame.new(teleporter.EnterPart.Position+Vector3.new(1,3,1)))
+				if player.PlayerGui.Interface.LobbyCreate.Visible == true then 
+					playerisinparty = true
+					break 
+				end
+			end
+		end
+	end
+	local function CheckPartyMembersBlacklistWhitelist()
+		for _, teleporter in pairs(workspace:GetChildren()) do
+			if teleporter:FindFirstChild("EnterPart") and teleporter:FindFirstChild("BeamPartEnd") then
+				local part = teleporter.BeamPartEnd
+				part.Touched:Connect(function(hit)
+					local player1 = game.Players:GetPlayerFromCharacter(hit.Parent)
+					if player1 then
+						print(player1.Name .. " is touching the part!")
+						if player1.Name == player.Name then
+							playerisinparty = true
+						end
+						task.wait()
+						if StartWLP and playerisinparty then
+							if player1.Name ~= player.Name and player1.Name ~= WLP1 and player1.Name ~= WLP2 and player1.Name ~= WLP3 and player1.Name ~= WLP4 and player1.Name ~= WLP5 then
+								LeaveLobby()
+								notify("Left since player joined is not whitelisted")
+							else
+								warn(player1.Name .. ", safe")
+							end
+						elseif StartBLP and playerisinparty then
+							if player1.Name == player.Name or (player1.Name ~= BLP1 and player1.Name ~= BLP2 and player1.Name ~= BLP3 and player1.Name ~= BLP4 and player1.Name ~= BLP5) then
+								warn(player1.Name .. ", safe")
+							else
+								LeaveLobby()
+								notify("Left since blacklisted player joined")
+							end
+						end
+					end
+				end)
+			end
+		end
+	end
 	local function LeaveLobby()
 		playerisinparty = false
 		local args = {[1] = "Remove"}
@@ -1217,39 +1297,20 @@ local function NNNITFLobby()
 				equipclass:FireServer(ClassSelection)
 				task.wait()
 				if ClassSelection == "None" or ClassSelection == "" or player.ClassProgress[ClassSelection]:GetAttribute("Equipped") == true then
-					for _, teleporter in pairs(workspace:GetChildren()) do
-						if teleporter:FindFirstChild("EnterPart") and teleporter:FindFirstChild("BeamPartEnd") then
-							local part = teleporter.BeamPartEnd
-							part.Touched:Connect(function(hit)
-								local player1 = game.Players:GetPlayerFromCharacter(hit.Parent)
-								if player1 then
-									print(player1.Name .. " is touching the part!")
-									if player1.Name == player.Name then
-										playerisinparty = true
-									end
-									task.wait()
-									if StartWLP and playerisinparty then
-										if player1.Name ~= player.Name and player1.Name ~= WLP1 and player1.Name ~= WLP2 and player1.Name ~= WLP3 and player1.Name ~= WLP4 and player1.Name ~= WLP5 then
-											LeaveLobby()
-											notify("Left since player joined is not whitelisted")
-										else
-											warn(player1.Name .. ", safe")
-										end
-									elseif StartBLP and playerisinparty then
-										if player1.Name == player.Name or (player1.Name ~= BLP1 and player1.Name ~= BLP2 and player1.Name ~= BLP3 and player1.Name ~= BLP4 and player1.Name ~= BLP5) then
-											warn(player1.Name .. ", safe")
-										else
-											LeaveLobby()
-											notify("Left since blacklisted player joined")
-										end
-									end
-								end
-							end)
-						end
-					end
+					CheckPartyMembersBlacklistWhitelist()
 					task.wait()
 					if player.PlayerGui.Interface.LobbyCreate.Visible ~= true and playerisinparty == false then
 						JoinAnEmptyTeleporter()
+					end
+				end
+			elseif AutoJoinGame == true then
+				equipclass:FireServer(ClassSelection)
+				task.wait()
+				if ClassSelection == "None" or ClassSelection == "" or player.ClassProgress[ClassSelection]:GetAttribute("Equipped") == true then
+					CheckPartyMembersBlacklistWhitelist()
+					task.wait()
+					if player.PlayerGui.TeleporterAssets.TextButton.Visible ~= true and playerisinparty == false then
+						JoinARandomTeleporterWithPeople()
 					end
 				end
 			else
@@ -1263,7 +1324,7 @@ local function NNNITFLobby()
 	CreateLobbyCloseButton.MouseButton1Down:connect(LeaveLobby)
 	ExitLobbyButton.MouseButton1Down:connect(LeaveLobby)
 	
-	section5:addButton("Teleport to Spawn",function()
+	section6:addButton("Teleport to Spawn",function()
 		player.Character.HumanoidRootPart.CFrame =  workspace.SpawnLocation.CFrame*CFrame.new(0, 3, 0)
 	end)
 
@@ -1452,6 +1513,7 @@ local function NNNITFLobby()
 			writefile(Universal .. "/ripthatguy.txt","Player's Name")
 			writefile(Universal .. "/trackthatguy.txt","false")
 			writefile(DHV299NITFL .. "/AutoStartGame.txt","false")
+			writefile(DHV299NITFL .. "/AutoJoinGame.txt","false")
 			writefile(DHV299NITFL .. "/PartyPlayerAmount.txt","3")
 			writefile(DHV299NITFL .. "/WLP1.txt","")
 			writefile(DHV299NITFL .. "/WLP2.txt","")
@@ -1475,6 +1537,7 @@ local function NNNITFLobby()
 			trackthatguy = false
 			getgenv().dc = true
 			AutoStartGame = false
+			AutoJoinGame = false
 			StartWLP = false
 			StartBLP = false
 			AutoSnipeClasses = false
@@ -2033,7 +2096,7 @@ local function NNNITFMain()
 	-- second page
 	local page2 = NoobieDoge:addPage("Misc", 97521755974659)
 	local section1 = page2:addSection("Game Functions")
-	local section2 = page2:addSection("Hitbox")
+	local section2 = page2:addSection("idk")
 	local section3 = page2:addSection("Teleports")
 
 	local function store(item)
@@ -2063,7 +2126,7 @@ local function NNNITFMain()
 	
 	if workspace.Map.Landmarks:FindFirstChild("Fishing Hut") and workspace.Map.Landmarks["Fishing Hut"]:FindFirstChild("Main") then workspace.Map.Landmarks["Fishing Hut"].Main:Destroy() end
 	if workspace.Map.Landmarks["Taming Tent"]:FindFirstChild("Main") then workspace.Map.Landmarks["Taming Tent"].Main:Destroy() end
-	for _, berrybushes in pairs(workspace.Map.Landmarks:GetChildren()) do if berrybushes.Name == "Berry Bush" and berrybushes:FindFirstChild("Bush") then berrybushes.Bush:Destroy() end end
+	spawn(function() while task.wait(1) do for _, berrybushes in pairs(workspace.Map.Landmarks:GetChildren()) do if berrybushes.Name == "Berry Bush" and berrybushes:FindFirstChild("Bush") then berrybushes.Bush:Destroy() end end end end)
 
 	section1:addButton("Instant unlock all chests",function()
 		for _, item in pairs(workspace.Items:GetChildren()) do
@@ -2101,36 +2164,22 @@ local function NNNITFMain()
 		notify("Bagged all children avaliable!")
 	end)
 
-	section1:addButton("Instant get all coin stacks",function()
-		for _, item in pairs(workspace.Items:GetChildren()) do
-			if item.Name == "Coin Stack" and item:FindFirstChild("HumanoidRootPart") then
-				item.Main.CFrame=player.Character.HumanoidRootPart.CFrame*CFrame.new(0, 1, 0)
-			end
-		end
-		notify("Brought all coin stacks!")
+	section1:addToggle("Auto get all avaliable coin stacks",false,function(bool)
+		AutoGetAllCoinStacks = bool
 	end)
-
-	section1:addButton("Instant unlock cultist stronghold enterence doors (testing)",function()
-		local prox = workspace.Map.Landmarks.Stronghold.Functional.EntryDoors.DoorRight.Main.ProximityAttachment.ProximityInteraction
-		prox.HoldDuration = 0
-		prox.MaxActivationDistance = 9e9
-		prox.Exclusivity = 2
-		prox.RequiresLineOfSight  = false
-		task.wait(.1)
-		fireproximityprompt(prox)
-		notify("Unlocked Cultist Stronghold Enterance Doors")
-	end)
-
-	section1:addButton("bring mobs (testing)",function()
-		for _, mob in pairs(workspace.Characters:GetChildren()) do
-			if mob.Name ~= "Lost Child" and mob.Name ~= "Lost Child2" and mob.Name ~= "Lost Child3" and mob.Name ~= "Lost Child4" and not mob:FindFirstChild("Default") then
-				if mob:FindFirstChild("HumanoidRootPart") then
-					task.wait()
-					mob:FindFirstChildWhichIsA("BasePart").CFrame=player.Character.HumanoidRootPart.CFrame*CFrame.new(0, 30, 0)
+	task.spawn(function()
+		while wait(.1) do
+			if AutoGetAllCoinStacks then
+				for _, item in pairs(workspace.Items:GetChildren()) do
+					if item.Name == "Coin Stack" and item:FindFirstChild("HumanoidRootPart") then
+						--item.Main.CFrame=player.Character.HumanoidRootPart.CFrame*CFrame.new(0, 1, 0)
+						local args = {item}
+						game:GetService("ReplicatedStorage").RemoteEvents.RequestCollectCoints:InvokeServer(unpack(args))
+						warn("Collected a Coin Stack")
+					end
 				end
 			end
 		end
-		notify("Look up")
 	end)
 
 	local BoostPad = false
@@ -2140,8 +2189,8 @@ local function NNNITFMain()
 	spawn(function()
 		while task.wait(.1) do
 			if BoostPad then
-				if workspace.Structures:FindFirstChild("Boost Pad") then
-					local prox = v.Primary.ProximityAttachment.ProximityInteraction
+				if workspace.Structures:FindFirstChild("Boost Pad") and workspace.Structures["Boost Pad"]:FindFirstChild("Primary") then
+					local prox = workspace.Structures["Boost Pad"].Primary.ProximityAttachment.ProximityInteraction
 					prox.HoldDuration = 0
 					--prox.MaxActivationDistance = 9e9
 					prox.Exclusivity = 2
@@ -2170,7 +2219,7 @@ local function NNNITFMain()
 		end
 	end)
 
-	--[[section1:addButton("Dupe",function()
+	section2:addButton("Dupe coal (testing)",function()
 		for _, item in pairs(workspace.Items:GetChildren()) do
 			if item.Name ~= "Berry" and not item:FindFirstChild("ChestLid") and not item:FindFirstChild("AnvilFront") and not item:FindFirstChild("AnvilBase") and not item:FindFirstChild("AnvilBack") then
 				if item.Name == "Coal" then
@@ -2178,6 +2227,7 @@ local function NNNITFMain()
 					local args = {item}
 					game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
 					item:FindFirstChildWhichIsA("BasePart").CFrame=player.Character.HumanoidRootPart.CFrame*CFrame.new(0, 8, 0)
+					game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
 					for i = 1,4 do
 						local clone = item:Clone()
 						clone.Parent = item.Parent
@@ -2185,40 +2235,48 @@ local function NNNITFMain()
 				end
 			end
 		end
-	end)]]
-
-	local Hitboxsizenum
-	section2:addSlider("Hitbox size", 10, 1, 1000, function(value)
-		Hitboxsizenum = value
 	end)
 
-	local ShowHitbox
-	section2:addToggle("Show Hitbox",false,function(bool)
-		ShowHitbox = bool
-	end)
-
-	local EnableHitboxChange
-	section2:addToggle("Enabled",false,function(bool)
-		EnableHitboxChange = bool
+	section2:addButton("Instant unlock cultist stronghold enterence doors (testing)",function()
+		local prox = workspace.Map.Landmarks.Stronghold.Functional.EntryDoors.DoorRight.Main.ProximityAttachment.ProximityInteraction
+		prox.HoldDuration = 0
+		prox.MaxActivationDistance = 9e9
+		prox.Exclusivity = 2
+		prox.RequiresLineOfSight  = false
+		task.wait(.1)
+		fireproximityprompt(prox)
+		notify("Unlocked Cultist Stronghold Enterance Doors")
 	end)
 
 	section3:addButton("Teleport to campfire",function()
-		player.Character.HumanoidRootPart.CFrame =  campfire.CFrame*CFrame.new(0, 9, 0)
+		pcall(function()
+			player.Character.HumanoidRootPart.CFrame =  campfire.CFrame*CFrame.new(0, 9, 0)
+		end)
 	end)
 	section3:addButton("Teleport to scrapper",function()
+		pcall(function()
 		player.Character.HumanoidRootPart.CFrame =  scrapper.CFrame*CFrame.new(0, 3, 0)
+		end)
 	end)
 	section3:addButton("Teleport to fairy",function()
-		player.Character.HumanoidRootPart.CFrame = workspace.Map.Landmarks:FindFirstChild("Fairy House"):FindFirstChild("Door"):FindFirstChild("Part").CFrame*CFrame.new(0, 0, -10)
+		pcall(function()
+			player.Character.HumanoidRootPart.CFrame = workspace.Map.Landmarks:FindFirstChild("Fairy House"):FindFirstChild("Door"):FindFirstChild("Part").CFrame*CFrame.new(0, 0, -10)
+		end)
 	end)
 	section3:addButton("Teleport to fishing hut",function()
-		player.Character.HumanoidRootPart.CFrame = workspace.Map.Landmarks:FindFirstChild("Fishing GHut"):FindFirstChild("Building"):FindFirstChild("Door"):FindFirstChild("Main").CFrame*CFrame.new(0, 5, 0)
+		pcall(function()
+			player.Character.HumanoidRootPart.CFrame = workspace.Map.Landmarks:FindFirstChild("Fishing Hut"):FindFirstChild("Building"):FindFirstChild("Door"):FindFirstChild("Main").CFrame*CFrame.new(0, 5, 0)
+		end)
 	end)
 	section3:addButton("Teleport to skills building",function()
-		player.Character.HumanoidRootPart.CFrame = workspace.Map.Landmarks:FindFirstChild("Skills Building"):FindFirstChild("FluteBench"):FindFirstChild("Model"):FindFirstChild("Part").CFrame*CFrame.new(0, 15, -5)
+		pcall(function()
+			player.Character.HumanoidRootPart.CFrame = workspace.Map.Landmarks:FindFirstChild("Skills Building"):FindFirstChild("FluteBench"):FindFirstChild("Model"):FindFirstChild("Part").CFrame*CFrame.new(0, 15, -5)
+		end)
 	end)
 	section3:addButton("Teleport to cultist stronghold",function()
-		player.Character.HumanoidRootPart.CFrame = workspace.Map.Landmarks:FindFirstChild("Stronghold"):FindFirstChild("Building"):FindFirstChild("Sign"):FindFirstChild("Meshes/mossy_coin_Cylinder.001").CFrame*CFrame.new(-12, 0, 0)
+		pcall(function()
+			player.Character.HumanoidRootPart.CFrame = workspace.Map.Landmarks:FindFirstChild("Stronghold"):FindFirstChild("Building"):FindFirstChild("Sign"):FindFirstChild("Meshes/mossy_coin_Cylinder.001").CFrame*CFrame.new(-12, 0, 0)
+		end)
 	end)
 
 	-- third page
@@ -2228,6 +2286,10 @@ local function NNNITFMain()
 	local section3 = page3:addSection("Scrapper")
 	local section4 = page3:addSection("BioFuel Processor")
 
+	local AllKnownFuel = {"Log","Biofuel","Coal","Fuel Canister","Oil Barrel"}
+	local AllKnownCookableFood = {"Morsel","Steak","Ribs","Mackerel","Salmon","Clownfish","Char","Eel","Swordfish","Shark","Lava Eel","Lionfish"}
+	local AllKnownScrap = {"Bolt","Sheet Metal","UFO Junk","UFO Component","Broken Fan","Old Radio","Broken Microwave","Tyre","Metal Chair","Old Car Engine","Washing Machine","Cultist Experiment","Cultist Prototype","UFO Scrap","Log","Chair","Cultist Gem","Forest Gem"}
+	local AllKnownBioFuelMaterials = {"Log","Morsel","Cooked Morsel","Steak","Cooked Steak","Ribs","Cooked Ribs","Carrot","Corn","Pumpkin","Berry","Apple","Mackerel","Cooked Mackerel","Salmon","Cooked Salmon","Clownfish","Cooked Clownfish","Char","Cooked Char","Eel","Cooked Eel","Swordfish","Cooked Swordfish","Shark","Cooked Shark","Lava Eel","Cooked Lava Eel","Lionfish","Cooked Lionfish","Bunny Foot","Wolf Pelt","Alpha Wolf Pelt","Bear Pelt"}
 	section1:addButton("Update Item List",function()
 		for _, item in pairs(workspace.Items:GetChildren()) do
 			if item:FindFirstChildWhichIsA("BasePart") then
@@ -2263,10 +2325,11 @@ local function NNNITFMain()
 		for _, item in pairs(workspace.Items:GetChildren()) do
 			if not item:FindFirstChild("ChestLid") and not item:FindFirstChild("AnvilFront") and not item:FindFirstChild("AnvilBase") and not item:FindFirstChild("AnvilBack") then
 				if item.Name == LeBring then
-					task.wait(.1)
+					task.wait()
 					local args = {item}
 					game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
 					item:FindFirstChildWhichIsA("BasePart").CFrame=player.Character.HumanoidRootPart.CFrame*CFrame.new(0, 30, 0)
+					game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
 				end
 			end
 		end
@@ -2281,12 +2344,49 @@ local function NNNITFMain()
 						local args = {item}
 						game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
 						item:FindFirstChildWhichIsA("BasePart").CFrame=player.Character.HumanoidRootPart.CFrame*CFrame.new(0, 30, 0)
+						game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
 					end)
 				end
 			end
 		end
 	end)
 
+	section2:addButton("Burn fuel only",function()
+		for _, item in pairs(workspace.Items:GetChildren()) do
+			if not item:FindFirstChild("ChestLid") and not item:FindFirstChild("AnvilFront") and not item:FindFirstChild("AnvilBase") and not item:FindFirstChild("AnvilBack") then
+				for _, x in ipairs(AllKnownFuel) do
+					if item.Name == x then
+						pcall(function()
+							task.wait(.1)
+							local args = {item}
+							game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
+							item:FindFirstChildWhichIsA("BasePart").CFrame=campfire.CFrame*CFrame.new(0, 8, 0)
+							game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
+						end)
+					end
+				end
+			end
+		end
+	end)
+	
+	section2:addButton("Cook food only",function()
+		for _, item in pairs(workspace.Items:GetChildren()) do
+			if not item:FindFirstChild("ChestLid") and not item:FindFirstChild("AnvilFront") and not item:FindFirstChild("AnvilBase") and not item:FindFirstChild("AnvilBack") then
+				for _, x in ipairs(AllKnownCookableFood) do
+					if item.Name == x then
+						pcall(function()
+							task.wait(.1)
+							local args = {item}
+							game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
+							item:FindFirstChildWhichIsA("BasePart").CFrame=campfire.CFrame*CFrame.new(0, 8, 0)
+							game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
+						end)
+					end
+				end
+			end
+		end
+	end)
+	
 	section2:addButton("Update Item List",function()
 		for _, item in pairs(workspace.Items:GetChildren()) do
 			if item:FindFirstChildWhichIsA("BasePart") then
@@ -2322,10 +2422,13 @@ local function NNNITFMain()
 		for _, item in pairs(workspace.Items:GetChildren()) do
 			if not item:FindFirstChild("ChestLid") and not item:FindFirstChild("AnvilFront") and not item:FindFirstChild("AnvilBase") and not item:FindFirstChild("AnvilBack") then
 				if item.Name == Campfirethrow then
-					task.wait(.1)
-					local args = {item}
-					game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
-					item:FindFirstChildWhichIsA("BasePart").CFrame=campfire.CFrame*CFrame.new(0, 8, 0)
+					pcall(function()
+						task.wait(.1)
+						local args = {item}
+						game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
+						item:FindFirstChildWhichIsA("BasePart").CFrame=campfire.CFrame*CFrame.new(0, 8, 0)
+						game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
+					end)
 				end
 			end
 		end
@@ -2336,11 +2439,30 @@ local function NNNITFMain()
 			if not item:FindFirstChild("ChestLid") and not item:FindFirstChild("AnvilFront") and not item:FindFirstChild("AnvilBase") and not item:FindFirstChild("AnvilBack") then
 				if (item:FindFirstChild("Main") and item:FindFirstChildWhichIsA("MeshPart")) or item:GetDescendants("Glass") or item:FindFirstChild("Handle") or item:FindFirstChild("HumanoidRootPart") then
 					pcall(function()
-						task.wait()
+						task.wait(.1)
 						local args = {item}
 						game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
 						item:FindFirstChildWhichIsA("BasePart").CFrame=campfire.CFrame*CFrame.new(0, 8, 0)
+						game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
 					end)
+				end
+			end
+		end
+	end)
+
+	section3:addButton("Scrap materials only",function()
+		for _, item in pairs(workspace.Items:GetChildren()) do
+			if not item:FindFirstChild("ChestLid") and not item:FindFirstChild("AnvilFront") and not item:FindFirstChild("AnvilBase") and not item:FindFirstChild("AnvilBack") then
+				for _, x in ipairs(AllKnownScrap) do
+					if item.Name == x then
+						pcall(function()
+							task.wait(.1)
+							local args = {item}
+							game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
+							item:FindFirstChildWhichIsA("BasePart").CFrame=scrapper.CFrame*CFrame.new(0, 8, 0)
+							game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
+						end)
+					end
 				end
 			end
 		end
@@ -2381,10 +2503,13 @@ local function NNNITFMain()
 		for _, item in pairs(workspace.Items:GetChildren()) do
 			if not item:FindFirstChild("ChestLid") and not item:FindFirstChild("AnvilFront") and not item:FindFirstChild("AnvilBase") and not item:FindFirstChild("AnvilBack") then
 				if item.Name == Scrapperscrap then
-					task.wait(.1)
-					local args = {item}
-					game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
-					item:FindFirstChildWhichIsA("BasePart").CFrame=scrapper.CFrame*CFrame.new(0, 8, 0)
+					pcall(function()
+						task.wait(.1)
+						local args = {item}
+						game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
+						item:FindFirstChildWhichIsA("BasePart").CFrame=scrapper.CFrame*CFrame.new(0, 8, 0)
+						game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
+					end)
 				end
 			end
 		end
@@ -2395,11 +2520,30 @@ local function NNNITFMain()
 			if not item:FindFirstChild("ChestLid") and not item:FindFirstChild("AnvilFront") and not item:FindFirstChild("AnvilBase") and not item:FindFirstChild("AnvilBack") then
 				if (item:FindFirstChild("Main") and item:FindFirstChildWhichIsA("MeshPart")) or item:GetDescendants("Glass") or item:FindFirstChild("Handle") or item:FindFirstChild("HumanoidRootPart") then
 					pcall(function()
-						task.wait()
+						task.wait(.1)
 						local args = {item}
 						game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
 						item:FindFirstChildWhichIsA("BasePart").CFrame=scrapper.CFrame*CFrame.new(0, 8, 0)
+						game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
 					end)
+				end
+			end
+		end
+	end)
+
+	section4:addButton("Convert materials only",function()
+		for _, item in pairs(workspace.Items:GetChildren()) do
+			if not item:FindFirstChild("ChestLid") and not item:FindFirstChild("AnvilFront") and not item:FindFirstChild("AnvilBase") and not item:FindFirstChild("AnvilBack") then
+				for _, x in ipairs(AllKnownBioFuelMaterials) do
+					if item.Name == x then
+						pcall(function()
+							task.wait(.1)
+							local args = {item}
+							game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
+							item:FindFirstChildWhichIsA("BasePart").CFrame=workspace.Structures:FindFirstChild("Biofuel Processor").Part.CFrame*CFrame.new(0, 2, 0)
+							game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
+						end)
+					end
 				end
 			end
 		end
@@ -2421,7 +2565,7 @@ local function NNNITFMain()
 		table.insert(tempItemsBFP, "Select item to scrap") table.insert(tempItemsBFP, "")
 		for _, name in ipairs(tempItemsBFP) do
 			if game:GetService("CoreGui")["DogeHub V2"].Main["Bring Items"]["BioFuel Processor"].Container.Dropdown.Search.TextBox.Text == name then
-				section3:updateDropdown(name,"Select item to scrap",uniqueItems,function(BioFuelProcessorConvert1)
+				section4:updateDropdown(name,"Select item to convert",uniqueItems,function(BioFuelProcessorConvert1)
 					print("Selected: " .. ScrapperBioFuelProcessorConvert1scrap1)
 					notify("Item Selected: " .. BioFuelProcessorConvert1)
 					BioFuelProcessorConvert = BioFuelProcessorConvert1
@@ -2441,10 +2585,13 @@ local function NNNITFMain()
 			for _, item in pairs(workspace.Items:GetChildren()) do
 				if not item:FindFirstChild("ChestLid") and not item:FindFirstChild("AnvilFront") and not item:FindFirstChild("AnvilBase") and not item:FindFirstChild("AnvilBack") then
 					if item.Name == BioFuelProcessorConvert then
-						task.wait()
-						local args = {item}
-						game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
-						item:FindFirstChildWhichIsA("BasePart").CFrame=workspace.Structures:FindFirstChild("Biofuel Processor").Part.CFrame*CFrame.new(0, 2, 0)
+						pcall(function()
+							task.wait()
+							local args = {item}
+							game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
+							item:FindFirstChildWhichIsA("BasePart").CFrame=workspace.Structures:FindFirstChild("Biofuel Processor").Part.CFrame*CFrame.new(0, 2, 0)
+							game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
+						end)
 					end
 				end
 			end
@@ -2464,6 +2611,7 @@ local function NNNITFMain()
 								local args = {item}
 								game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
 								item:FindFirstChildWhichIsA("BasePart").CFrame=workspace.Structures:FindFirstChild("Biofuel Processor").Part.CFrame*CFrame.new(0, 2, 0)
+								game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
 							end)
 						end
 					end
@@ -2487,16 +2635,106 @@ local function NNNITFMain()
 						local args = {item}
 						game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
 						item:FindFirstChildWhichIsA("BasePart").CFrame=campfire.CFrame*CFrame.new(0, 5, 0)
+						game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
 					end
 				end
 			end
 		end
 	end)
 
+
 	-- forth page
-	local page4 = NoobieDoge:addPage("Auto Farm", 97521755974659)
-	local section1 = page4:addSection("Log Farm")
-	local section2 = page4:addSection("Mob Farm")
+	local page4 = NoobieDoge:addPage("Mobs", 97521755974659)
+	local section1 = page4:addSection("Bring Mobs (FE)")
+	local section2 = page4:addSection("Mob Hitbox")
+
+	local uniqueMobs = {}
+	local seenNamesM = {} -- Dictionary to track seen names
+	for _, mob in pairs(workspace.Characters:GetChildren()) do
+		if mob.Name ~= "Lost Child" and mob.Name ~= "Lost Child2" and mob.Name ~= "Lost Child3" and mob.Name ~= "Lost Child4" and not mob:FindFirstChild("Cosmetic") and (not mob:FindFirstChild("Default") or mob.Name == "Alien") then
+			if not seenNamesM[mob.Name] then -- Check if name hasn't been seen
+				table.insert(uniqueMobs, mob.Name)
+				seenNamesM[mob.Name] = true -- Mark name as seen
+			end
+		end
+	end
+
+	section1:addButton("Update Mob List",function()
+		for _, mob in pairs(workspace.Characters:GetChildren()) do
+			if mob.Name ~= "Lost Child" and mob.Name ~= "Lost Child2" and mob.Name ~= "Lost Child3" and mob.Name ~= "Lost Child4" and not mob:FindFirstChild("Cosmetic") and (not mob:FindFirstChild("Default") or mob.Name == "Alien") then
+				if not seenNamesM[mob.Name] then -- Check if name hasn't been seen
+					table.insert(uniqueMobs, mob.Name)
+					seenNamesM[mob.Name] = true -- Mark name as seen
+				end
+			end
+		end
+		local tempMobsB = {}
+		for _, name in ipairs(uniqueMobs) do
+			table.insert(tempMobsB, name)
+		end
+		table.insert(tempMobsB, "Select item to bring") table.insert(tempMobsB, "")
+		for _, name in ipairs(tempMobsB) do
+			if game:GetService("CoreGui")["DogeHub V2"].Main["Bring Items"]["Bring Items"].Container.Dropdown.Search.TextBox.Text == name then
+				section1:updateDropdown(name,"Select mobs to bring",uniqueMobs,function(LeBringMob1)
+					print("Selected: " .. LeBringMob1)
+					notify("Mob Selected: " .. LeBringMob1)
+					LeBringMob = LeBringMob1
+				end)
+			end
+		end
+	end)
+
+	section1:addDropdown("Select mobs to bring",uniqueMobs,function(LeBringMob1)
+		print("Selected: " .. LeBringMob1)
+		notify("Mob Selected: " .. LeBringMob1)
+		LeBringMob = LeBringMob1
+	end)
+
+	section1:addButton("Bring mob",function()
+		for _, mob in pairs(workspace.Characters:GetChildren()) do
+			if mob.Name ~= "Lost Child" and mob.Name ~= "Lost Child2" and mob.Name ~= "Lost Child3" and mob.Name ~= "Lost Child4" and not mob:FindFirstChild("Cosmetic") and (not mob:FindFirstChild("Default") or mob.Name == "Alien") then
+				if mob.Name == LeBringMob then
+					pcall(function()
+						ask.wait()
+						mob:FindFirstChildWhichIsA("BasePart").CFrame=player.Character.HumanoidRootPart.CFrame*CFrame.new(0, 13, 0)
+					end)
+				end
+			end
+		end
+	end)
+
+	section1:addButton("Bring every mobs",function()
+		for _, mob in pairs(workspace.Characters:GetChildren()) do
+			if mob.Name ~= "Lost Child" and mob.Name ~= "Lost Child2" and mob.Name ~= "Lost Child3" and mob.Name ~= "Lost Child4" and not mob:FindFirstChild("Cosmetic") and (not mob:FindFirstChild("Default") or mob.Name == "Alien") then
+				if mob:FindFirstChild("HumanoidRootPart") then
+					pcall(function()
+						task.wait()
+						mob:FindFirstChildWhichIsA("BasePart").CFrame=player.Character.HumanoidRootPart.CFrame*CFrame.new(0, 13, 0)
+					end)
+				end
+			end
+		end
+	end)
+
+	local Hitboxsizenum
+	section2:addSlider("Hitbox size", 10, 1, 1000, function(value)
+		Hitboxsizenum = value
+	end)
+
+	local ShowHitbox
+	section2:addToggle("Show Hitbox",false,function(bool)
+		ShowHitbox = bool
+	end)
+
+	local EnableHitboxChange
+	section2:addToggle("Enabled",false,function(bool)
+		EnableHitboxChange = bool
+	end)
+
+	-- fifth page
+	local page5 = NoobieDoge:addPage("Auto Farm", 97521755974659)
+	local section1 = page5:addSection("Log Farm")
+	local section2 = page5:addSection("Mob Farm")
 
 	local AutoChopTree = false
 	section1:addToggle("Log Farm",false,function(bool)
@@ -2567,24 +2805,12 @@ local function NNNITFMain()
 		while task.wait(.4) do
 			if EnableHitboxChange and not AutoKillMobs then
 				for _, mob in pairs(workspace.Characters:GetChildren()) do
-					if mob.Name ~= "Lost Child" and mob.Name ~= "Lost Child2" and mob.Name ~= "Lost Child3" and mob.Name ~= "Lost Child4" and (not mob:FindFirstChild("Default") or mob.Name == "Alien") then
+					if mob.Name ~= "Lost Child" and mob.Name ~= "Lost Child2" and mob.Name ~= "Lost Child3" and mob.Name ~= "Lost Child4" and not mob:FindFirstChild("Cosmetic") and (not mob:FindFirstChild("Default") or mob.Name == "Alien") then
 						if mob:FindFirstChild("HumanoidRootPart") then
 							if not mob:FindFirstChild("IceBlock") then
-								if mob.Name == "Arctic Fox" then --they dunno why wont get damaged
-									mob.Torso.Size = Vector3.new(Hitboxsizenum, Hitboxsizenum, Hitboxsizenum)
-									mob.Torso.CanCollide = false
-									mob.Torso.Transparency = 1
-								elseif mob.Name == "Meteor Crab" then
-									mob.Head.Size = Vector3.new(Hitboxsizenum, Hitboxsizenum, Hitboxsizenum)
-									mob.Head.Transparency = 1
-								elseif mob.Name == "Bear" then
-									mob.Head.Size = Vector3.new(Hitboxsizenum, Hitboxsizenum, Hitboxsizenum)
-									mob.Head.Transparency = 1
-									mob.Head.CanCollide = false
-								else 
-									mob.HumanoidRootPart.Size = Vector3.new(Hitboxsizenum, Hitboxsizenum, Hitboxsizenum)
-									mob.HumanoidRootPart.CanCollide = false
-								end
+								mob.HumanoidRootPart.Size = Vector3.new(Hitboxsizenum, Hitboxsizenum, Hitboxsizenum)
+								mob.HumanoidRootPart.CanCollide = false
+								mob.HumanoidRootPart.CanQuery = true
 								if ShowHitbox == true and not AutoKillMobs then
 									mob.HumanoidRootPart.Transparency = 0.5
 								else
@@ -2748,6 +2974,7 @@ local function NNNITFMain()
 			Pfly = false
 			trackthatguy = false
 			getgenv().dc = true
+			AutoGetAllCoinStacks = false
 			BoostPad = false
 			game.Lighting.FogStart = defaultFogStart
 			game.Lighting.FogEnd = defaultFogEnd
