@@ -2255,7 +2255,7 @@ local function NNNITFMain()
 	end)
 	section3:addButton("Teleport to scrapper",function()
 		pcall(function()
-		player.Character.HumanoidRootPart.CFrame =  scrapper.CFrame*CFrame.new(0, 3, 0)
+			player.Character.HumanoidRootPart.CFrame =  scrapper.CFrame*CFrame.new(0, 3, 0)
 		end)
 	end)
 	section3:addButton("Teleport to fairy",function()
@@ -2386,7 +2386,7 @@ local function NNNITFMain()
 			end
 		end
 	end)
-	
+
 	section2:addButton("Update Item List",function()
 		for _, item in pairs(workspace.Items:GetChildren()) do
 			if item:FindFirstChildWhichIsA("BasePart") then
