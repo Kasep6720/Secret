@@ -2125,7 +2125,6 @@ local function NNNITFMain()
 	local scrapper = workspace:FindFirstChild("Map"):FindFirstChild("Campground"):FindFirstChild("Scrapper"):FindFirstChild("Main")
 	
 	if workspace.Map.Landmarks:FindFirstChild("Fishing Hut") and workspace.Map.Landmarks["Fishing Hut"]:FindFirstChild("Main") then workspace.Map.Landmarks["Fishing Hut"].Main:Destroy() end
-	if workspace.Map.Landmarks["Taming Tent"]:FindFirstChild("Main") then workspace.Map.Landmarks["Taming Tent"].Main:Destroy() end
 	spawn(function() while task.wait(1) do for _, berrybushes in pairs(workspace.Map.Landmarks:GetChildren()) do if berrybushes.Name == "Berry Bush" and berrybushes:FindFirstChild("Bush") then berrybushes.Bush:Destroy() end end end end)
 
 	section1:addButton("Instant unlock all chests",function()
@@ -2268,9 +2267,14 @@ local function NNNITFMain()
 			player.Character.HumanoidRootPart.CFrame = workspace.Map.Landmarks:FindFirstChild("Fishing Hut"):FindFirstChild("Building"):FindFirstChild("Door"):FindFirstChild("Main").CFrame*CFrame.new(0, 5, 0)
 		end)
 	end)
+	section3:addButton("Teleport to animal shelter",function()
+		pcall(function()
+			player.Character.HumanoidRootPart.CFrame = workspace.Map.Landmarks:FindFirstChild("Animal Shelter"):FindFirstChild("Main").CFrame*CFrame.new(0, 5, 0)
+		end)
+	end)
 	section3:addButton("Teleport to skills building",function()
 		pcall(function()
-			player.Character.HumanoidRootPart.CFrame = workspace.Map.Landmarks:FindFirstChild("Skills Building"):FindFirstChild("FluteBench"):FindFirstChild("Model"):FindFirstChild("Part").CFrame*CFrame.new(0, 15, -5)
+			player.Character.HumanoidRootPart.CFrame = workspace.Map.Landmarks:FindFirstChild("SkillsBuilding"):FindFirstChild("FluteBench"):FindFirstChild("Model"):FindFirstChild("Part").CFrame*CFrame.new(0, 15, -5)
 		end)
 	end)
 	section3:addButton("Teleport to cultist stronghold",function()
@@ -2360,7 +2364,7 @@ local function NNNITFMain()
 							task.wait(.1)
 							local args = {item}
 							game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
-							item:FindFirstChildWhichIsA("BasePart").CFrame=campfire.CFrame*CFrame.new(0, 8, 0)
+							item:FindFirstChildWhichIsA("BasePart").CFrame=campfire.CFrame*CFrame.new(0, 13, 0)
 							game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
 						end)
 					end
@@ -2378,7 +2382,7 @@ local function NNNITFMain()
 							task.wait(.1)
 							local args = {item}
 							game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
-							item:FindFirstChildWhichIsA("BasePart").CFrame=campfire.CFrame*CFrame.new(0, 8, 0)
+							item:FindFirstChildWhichIsA("BasePart").CFrame=campfire.CFrame*CFrame.new(0, 13, 0)
 							game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
 						end)
 					end
@@ -2426,7 +2430,7 @@ local function NNNITFMain()
 						task.wait(.1)
 						local args = {item}
 						game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
-						item:FindFirstChildWhichIsA("BasePart").CFrame=campfire.CFrame*CFrame.new(0, 8, 0)
+						item:FindFirstChildWhichIsA("BasePart").CFrame=campfire.CFrame*CFrame.new(0, 13, 0)
 						game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
 					end)
 				end
@@ -2442,7 +2446,7 @@ local function NNNITFMain()
 						task.wait(.1)
 						local args = {item}
 						game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
-						item:FindFirstChildWhichIsA("BasePart").CFrame=campfire.CFrame*CFrame.new(0, 8, 0)
+						item:FindFirstChildWhichIsA("BasePart").CFrame=campfire.CFrame*CFrame.new(0, 13, 0)
 						game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
 					end)
 				end
