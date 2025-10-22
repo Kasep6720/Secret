@@ -3203,9 +3203,6 @@ local function NNNITFMain()
 					pcall(function()
 						task.wait()
 						mob:FindFirstChildWhichIsA("BasePart").CFrame=player.Character.HumanoidRootPart.CFrame*CFrame.new(0, 13, 0)
-						--mob:FindFirstChild("NPC").Health = 0
-						local args = {mob}
-						game:GetService("ReplicatedStorage").RemoteEvents.ToolDamageObject:InvokeServer(unpack(args))
 					end)
 				end
 			end
