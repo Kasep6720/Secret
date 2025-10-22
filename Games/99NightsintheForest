@@ -2099,13 +2099,36 @@ local function NNNITFMain()
 	local section2 = page2:addSection("idk")
 	local section3 = page2:addSection("Teleports")
 
+	local AllKnownMelee = {"Spear","Morningstar","Katana","Laser Sword","Ice Sword","Trident","Poison Spear","Inferno Sword","Cultist King Mace","Obsidiron Hammer"}
+	local sack = nil
+	local function findSack()
+		for _, item in pairs(player.Inventory:GetChildren()) do
+			if string.find(item.Name, "Sack") then
+				return item
+			end
+		end
+		return nil
+	end
+	local axe = nil
+	local function findAxe()
+		for _, item in pairs(player.Inventory:GetChildren()) do
+			if string.find(item.Name, "Axe") or string.find(item.Name, "Chainsaw") then
+				return item
+			end
+		end
+		return nil
+	end
+	sack = findSack()
+	axe = findAxe()
+	
 	local function store(item)
 		--if not sack then return end
-		local part = item:FindFirstChildWhichIsA("BasePart")
-		if part then
-			humanoidRootPart.CFrame = part.CFrame
+		sack = findSack()
+		local spart = item:FindFirstChildWhichIsA("BasePart")
+		if spart then
+			player.Character.HumanoidRootPart.CFrame = spart.CFrame
 			task.wait(0.2)
-			ReplicatedStorage:WaitForChild("RemoteEvents"):WaitForChild("RequestBagStoreItem"):InvokeServer(sack, item)
+			game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvents"):WaitForChild("RequestBagStoreItem"):InvokeServer(sack, item)
 			task.wait(0.2)
 		end
 	end
@@ -2127,40 +2150,31 @@ local function NNNITFMain()
 	if workspace.Map.Landmarks:FindFirstChild("Fishing Hut") and workspace.Map.Landmarks["Fishing Hut"]:FindFirstChild("Main") then workspace.Map.Landmarks["Fishing Hut"].Main:Destroy() end
 	spawn(function() while task.wait(1) do for _, berrybushes in pairs(workspace.Map.Landmarks:GetChildren()) do if berrybushes.Name == "Berry Bush" and berrybushes:FindFirstChild("Bush") then berrybushes.Bush:Destroy() end end end end)
 
-	section1:addButton("Instant unlock all chests",function()
-		for _, item in pairs(workspace.Items:GetChildren()) do
-			if item:FindFirstChild("ChestLid") and item:FindFirstChild("Main") and item.Main:FindFirstChild("ProximityAttachment") then
-				local prox = item.Main.ProximityAttachment.ProximityInteraction
-				prox.HoldDuration = 0
-				prox.MaxActivationDistance = 9e9
-				prox.Exclusivity = 2
-				prox.RequiresLineOfSight  = false
-				item.Main.CFrame=player.Character.HumanoidRootPart.CFrame*CFrame.new(0, 2, 0)
-				task.wait(.1)
-				prox.ActionText = "Open All Avaliable Chests :D"
-				fireproximityprompt(prox)
-			end
-		end
-		notify("Unlocked all chests!")
-	end)
-
 	section1:addButton("Instant bag children",function()
 		for _, kid in pairs(workspace.Characters:GetChildren()) do
 			if kid:FindFirstChild("Head") and kid.Head:FindFirstChild("ProximityAttachment") and kid.Head:FindFirstChild("KidCrying") then
-				local prox = kid.Head.ProximityAttachment.ProximityInteraction
-				prox.HoldDuration = 0
-				prox.MaxActivationDistance = 9e9
-				prox.Exclusivity = 2
-				prox.RequiresLineOfSight  = false
-				player.Character.HumanoidRootPart.CFrame=kid.Head.CFrame*CFrame.new(0, 4, 0)
-				task.wait(.15)
-				prox.ActionText = "Kidnap the Kid"
-				fireproximityprompt(prox)
-				task.wait(.15)
+				store(kid)
 			end
 		end
 		player.Character.HumanoidRootPart.CFrame =  campfire.CFrame*CFrame.new(0, 9, 0)
 		notify("Bagged all children avaliable!")
+	end)
+
+	section1:addToggle("Auto unlock all avaliable chests",false,function(bool)
+		AutoUnlockAllChests = bool
+	end)
+	task.spawn(function()
+		while wait(.1) do
+			if AutoUnlockAllChests then
+				for _, item in pairs(workspace.Items:GetChildren()) do
+					if item:FindFirstChild("ChestLid") and item:FindFirstChild("Main") and item.Main:FindFirstChild("ProximityAttachment") and not item:FindFirstChild("IceBlock") and not item:FindFirstChild("Platform") then
+						local args = {item}
+						game:GetService("ReplicatedStorage").RemoteEvents.RequestOpenItemChest:FireServer(unpack(args))
+						warn("Opened ".. item.Name)
+					end
+				end
+			end
+		end
 	end)
 
 	section1:addToggle("Auto get all avaliable coin stacks",false,function(bool)
@@ -2218,24 +2232,6 @@ local function NNNITFMain()
 		end
 	end)
 
-	section2:addButton("Dupe coal (testing)",function()
-		for _, item in pairs(workspace.Items:GetChildren()) do
-			if item.Name ~= "Berry" and not item:FindFirstChild("ChestLid") and not item:FindFirstChild("AnvilFront") and not item:FindFirstChild("AnvilBase") and not item:FindFirstChild("AnvilBack") then
-				if item.Name == "Coal" then
-					task.wait(.1)
-					local args = {item}
-					game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
-					item:FindFirstChildWhichIsA("BasePart").CFrame=player.Character.HumanoidRootPart.CFrame*CFrame.new(0, 8, 0)
-					game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
-					for i = 1,4 do
-						local clone = item:Clone()
-						clone.Parent = item.Parent
-					end
-				end
-			end
-		end
-	end)
-
 	section2:addButton("Instant unlock cultist stronghold enterence doors (testing)",function()
 		local prox = workspace.Map.Landmarks.Stronghold.Functional.EntryDoors.DoorRight.Main.ProximityAttachment.ProximityInteraction
 		prox.HoldDuration = 0
@@ -2245,6 +2241,11 @@ local function NNNITFMain()
 		task.wait(.1)
 		fireproximityprompt(prox)
 		notify("Unlocked Cultist Stronghold Enterance Doors")
+	end)
+	section2:addButton("Teleport to stronghold corridor (testing)",function()
+		pcall(function()
+			player.Character.HumanoidRootPart.CFrame = workspace.Map.Landmarks.Stronghold.Functional.Sign.CFrame*CFrame.new(0, 0, -20)
+		end)
 	end)
 
 	section3:addButton("Teleport to campfire",function()
@@ -2269,7 +2270,7 @@ local function NNNITFMain()
 	end)
 	section3:addButton("Teleport to animal shelter",function()
 		pcall(function()
-			player.Character.HumanoidRootPart.CFrame = workspace.Map.Landmarks:FindFirstChild("Animal Shelter"):FindFirstChild("Main").CFrame*CFrame.new(0, 5, 0)
+			player.Character.HumanoidRootPart.CFrame = workspace.Map.Landmarks:FindFirstChild("Animal Shelter"):FindFirstChild("Building").Part.CFrame*CFrame.new(0, 5, 0)
 		end)
 	end)
 	section3:addButton("Teleport to skills building",function()
@@ -2340,19 +2341,134 @@ local function NNNITFMain()
 	end)
 
 	section1:addButton("Bring Everything",function()
-		for _, item in pairs(workspace.Items:GetChildren()) do
-			if not item:FindFirstChild("ChestLid") and not item:FindFirstChild("AnvilFront") and not item:FindFirstChild("AnvilBase") and not item:FindFirstChild("AnvilBack") then
-				if (item:FindFirstChild("Main") and item:FindFirstChildWhichIsA("MeshPart")) or item:GetDescendants("Glass") or item:FindFirstChild("Handle") or item:FindFirstChild("HumanoidRootPart") then
-					pcall(function()
-						task.wait()
-						local args = {item}
-						game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
-						item:FindFirstChildWhichIsA("BasePart").CFrame=player.Character.HumanoidRootPart.CFrame*CFrame.new(0, 30, 0)
-						game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
-					end)
+		local player = game.Players.LocalPlayer
+		local ScreenGuiK = Instance.new("ScreenGui")
+		local Frame = Instance.new("ImageLabel")
+		local TextLabelFrame = Instance.new("ImageLabel")
+		local TextLabel = Instance.new("TextLabel")
+		local TextButton = Instance.new("ImageButton")
+		local TextButtonText = Instance.new("TextButton")
+		local TextButton_2 = Instance.new("ImageButton")
+		local TextButton_2Text = Instance.new("TextButton")
+
+		ScreenGuiK.Parent = player:WaitForChild("PlayerGui")
+
+		Frame.Parent = ScreenGuiK
+		Frame.Name = "Main"
+		Frame.BackgroundTransparency = 1
+		Frame.Position = UDim2.new(0.66, 0, 0.055, 0)
+		Frame.Size = UDim2.new(0, 220, 0, 120)
+		Frame.Image = "rbxassetid://4641149554"
+		Frame.ImageColor3 = Color3.fromRGB(24, 24, 24)
+		Frame.ScaleType = Enum.ScaleType.Slice
+		Frame.SliceCenter = Rect.new(4, 4, 296, 296)
+		Frame.Active = true
+		Frame.Draggable = true
+
+		TextLabelFrame.Parent = Frame
+		TextLabelFrame.Name = "TopBar"
+		TextLabelFrame.BackgroundTransparency = 1
+		TextLabelFrame.ClipsDescendants = true
+		TextLabelFrame.Size = UDim2.new(1, 0, 0, 38)
+		TextLabelFrame.ZIndex = 2
+		TextLabelFrame.Image = "rbxassetid://4595286933"
+		TextLabelFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabelFrame.ScaleType = Enum.ScaleType.Slice
+		TextLabelFrame.SliceCenter = Rect.new(4, 4, 296, 296)
+
+		TextLabel.Parent = Frame
+		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabel.Position = UDim2.new(0, 0, -0.1, 0)
+		TextLabel.BackgroundTransparency = 1
+		TextLabel.Size = UDim2.new(0, 220, 0, 60)
+		TextLabel.ZIndex = 3
+		TextLabel.Font = Enum.Font.TitilliumWeb
+		TextLabel.Text = "This procedure may cause lag! Are you sure that you want to bring everything?"
+		TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabel.TextScaled = false
+		TextLabel.TextSize = 18.000
+		TextLabel.TextWrapped = true
+
+		TextButton.Parent = Frame
+		TextButton.Name = "Button"
+		TextButton.BackgroundTransparency = 1
+		TextButton.Position = UDim2.new(0.075, 0, 0.500000006, 0)
+		TextButton.BorderSizePixel = 0
+		TextButton.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton.ZIndex = 2
+		TextButton.Image = "rbxassetid://5028857472"
+		TextButton.ImageColor3 = Color3.fromRGB(41, 41, 41)
+		TextButton.ScaleType = Enum.ScaleType.Slice
+		TextButton.SliceCenter = Rect.new(2, 2, 298, 298)
+
+		TextButtonText.Parent = TextButton
+		TextButtonText.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextButtonText.BackgroundTransparency = 1
+		TextButtonText.ZIndex = 3
+		TextButtonText.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButtonText.Font = Enum.Font.TitilliumWeb
+		TextButtonText.Text = "Yes"
+		TextButtonText.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButtonText.TextScaled = true
+		TextButtonText.TextSize = 40.000
+		TextButtonText.TextWrapped = true
+
+		function BEverythingYES()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+			for _, item in pairs(workspace.Items:GetChildren()) do
+				if not item:FindFirstChild("ChestLid") and not item:FindFirstChild("AnvilFront") and not item:FindFirstChild("AnvilBase") and not item:FindFirstChild("AnvilBack") then
+					if (item:FindFirstChild("Main") and item:FindFirstChildWhichIsA("MeshPart")) or item:GetDescendants("Glass") or item:FindFirstChild("Handle") or item:FindFirstChild("HumanoidRootPart") then
+						pcall(function()
+							task.wait()
+							local args = {item}
+							game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
+							item:FindFirstChildWhichIsA("BasePart").CFrame=player.Character.HumanoidRootPart.CFrame*CFrame.new(0, 30, 0)
+							game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
+						end)
+					end
 				end
 			end
 		end
+		TextButton.MouseButton1Click:connect(BEverythingYES)
+		TextButtonText.MouseButton1Click:connect(BEverythingYES)
+
+		TextButton_2.Parent = Frame
+		TextButton_2.Name = "Button"
+		TextButton_2.BackgroundTransparency = 1
+		TextButton_2.Position = UDim2.new(0.55, 0, 0.500000006, 0)
+		TextButton_2.BorderSizePixel = 0
+		TextButton_2.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton_2.ZIndex = 2
+		TextButton_2.Image = "rbxassetid://5028857472"
+		TextButton_2.ImageColor3 = Color3.fromRGB(41, 41, 41)
+		TextButton_2.ScaleType = Enum.ScaleType.Slice
+		TextButton_2.SliceCenter = Rect.new(2, 2, 298, 298)
+
+		TextButton_2Text.Parent = TextButton_2
+		TextButton_2Text.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextButton_2Text.BackgroundTransparency = 1
+		TextButton_2Text.ZIndex = 3
+		TextButton_2Text.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton_2Text.Font = Enum.Font.TitilliumWeb
+		TextButton_2Text.Text = "No"
+		TextButton_2Text.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButton_2Text.TextScaled = true
+		TextButton_2Text.TextSize = 40.000
+		TextButton_2Text.TextWrapped = true
+
+		function BEverythingNO()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+		end
+		TextButton_2.MouseButton1Click:connect(BEverythingNO)	
+		TextButton_2Text.MouseButton1Click:connect(BEverythingNO)
 	end)
 
 	section2:addButton("Burn fuel only",function()
@@ -2439,19 +2555,134 @@ local function NNNITFMain()
 	end)
 
 	section2:addButton("Burn Everything",function()
-		for _, item in pairs(workspace.Items:GetChildren()) do
-			if not item:FindFirstChild("ChestLid") and not item:FindFirstChild("AnvilFront") and not item:FindFirstChild("AnvilBase") and not item:FindFirstChild("AnvilBack") then
-				if (item:FindFirstChild("Main") and item:FindFirstChildWhichIsA("MeshPart")) or item:GetDescendants("Glass") or item:FindFirstChild("Handle") or item:FindFirstChild("HumanoidRootPart") then
-					pcall(function()
-						task.wait(.1)
-						local args = {item}
-						game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
-						item:FindFirstChildWhichIsA("BasePart").CFrame=campfire.CFrame*CFrame.new(0, 13, 0)
-						game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
-					end)
+		local player = game.Players.LocalPlayer
+		local ScreenGuiK = Instance.new("ScreenGui")
+		local Frame = Instance.new("ImageLabel")
+		local TextLabelFrame = Instance.new("ImageLabel")
+		local TextLabel = Instance.new("TextLabel")
+		local TextButton = Instance.new("ImageButton")
+		local TextButtonText = Instance.new("TextButton")
+		local TextButton_2 = Instance.new("ImageButton")
+		local TextButton_2Text = Instance.new("TextButton")
+
+		ScreenGuiK.Parent = player:WaitForChild("PlayerGui")
+
+		Frame.Parent = ScreenGuiK
+		Frame.Name = "Main"
+		Frame.BackgroundTransparency = 1
+		Frame.Position = UDim2.new(0.66, 0, 0.055, 0)
+		Frame.Size = UDim2.new(0, 220, 0, 120)
+		Frame.Image = "rbxassetid://4641149554"
+		Frame.ImageColor3 = Color3.fromRGB(24, 24, 24)
+		Frame.ScaleType = Enum.ScaleType.Slice
+		Frame.SliceCenter = Rect.new(4, 4, 296, 296)
+		Frame.Active = true
+		Frame.Draggable = true
+
+		TextLabelFrame.Parent = Frame
+		TextLabelFrame.Name = "TopBar"
+		TextLabelFrame.BackgroundTransparency = 1
+		TextLabelFrame.ClipsDescendants = true
+		TextLabelFrame.Size = UDim2.new(1, 0, 0, 38)
+		TextLabelFrame.ZIndex = 2
+		TextLabelFrame.Image = "rbxassetid://4595286933"
+		TextLabelFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabelFrame.ScaleType = Enum.ScaleType.Slice
+		TextLabelFrame.SliceCenter = Rect.new(4, 4, 296, 296)
+
+		TextLabel.Parent = Frame
+		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabel.Position = UDim2.new(0, 0, -0.1, 0)
+		TextLabel.BackgroundTransparency = 1
+		TextLabel.Size = UDim2.new(0, 220, 0, 60)
+		TextLabel.ZIndex = 3
+		TextLabel.Font = Enum.Font.TitilliumWeb
+		TextLabel.Text = "This procedure may cause lag! Are you sure that you want to burn everything?"
+		TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabel.TextScaled = false
+		TextLabel.TextSize = 18.000
+		TextLabel.TextWrapped = true
+
+		TextButton.Parent = Frame
+		TextButton.Name = "Button"
+		TextButton.BackgroundTransparency = 1
+		TextButton.Position = UDim2.new(0.075, 0, 0.500000006, 0)
+		TextButton.BorderSizePixel = 0
+		TextButton.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton.ZIndex = 2
+		TextButton.Image = "rbxassetid://5028857472"
+		TextButton.ImageColor3 = Color3.fromRGB(41, 41, 41)
+		TextButton.ScaleType = Enum.ScaleType.Slice
+		TextButton.SliceCenter = Rect.new(2, 2, 298, 298)
+
+		TextButtonText.Parent = TextButton
+		TextButtonText.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextButtonText.BackgroundTransparency = 1
+		TextButtonText.ZIndex = 3
+		TextButtonText.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButtonText.Font = Enum.Font.TitilliumWeb
+		TextButtonText.Text = "Yes"
+		TextButtonText.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButtonText.TextScaled = true
+		TextButtonText.TextSize = 40.000
+		TextButtonText.TextWrapped = true
+
+		function BurnEverythingYES()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+			for _, item in pairs(workspace.Items:GetChildren()) do
+				if not item:FindFirstChild("ChestLid") and not item:FindFirstChild("AnvilFront") and not item:FindFirstChild("AnvilBase") and not item:FindFirstChild("AnvilBack") then
+					if (item:FindFirstChild("Main") and item:FindFirstChildWhichIsA("MeshPart")) or item:GetDescendants("Glass") or item:FindFirstChild("Handle") or item:FindFirstChild("HumanoidRootPart") then
+						pcall(function()
+							task.wait(.1)
+							local args = {item}
+							game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
+							item:FindFirstChildWhichIsA("BasePart").CFrame=campfire.CFrame*CFrame.new(0, 13, 0)
+							game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
+						end)
+					end
 				end
 			end
 		end
+		TextButton.MouseButton1Click:connect(BurnEverythingYES)
+		TextButtonText.MouseButton1Click:connect(BurnEverythingYES)
+
+		TextButton_2.Parent = Frame
+		TextButton_2.Name = "Button"
+		TextButton_2.BackgroundTransparency = 1
+		TextButton_2.Position = UDim2.new(0.55, 0, 0.500000006, 0)
+		TextButton_2.BorderSizePixel = 0
+		TextButton_2.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton_2.ZIndex = 2
+		TextButton_2.Image = "rbxassetid://5028857472"
+		TextButton_2.ImageColor3 = Color3.fromRGB(41, 41, 41)
+		TextButton_2.ScaleType = Enum.ScaleType.Slice
+		TextButton_2.SliceCenter = Rect.new(2, 2, 298, 298)
+
+		TextButton_2Text.Parent = TextButton_2
+		TextButton_2Text.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextButton_2Text.BackgroundTransparency = 1
+		TextButton_2Text.ZIndex = 3
+		TextButton_2Text.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton_2Text.Font = Enum.Font.TitilliumWeb
+		TextButton_2Text.Text = "No"
+		TextButton_2Text.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButton_2Text.TextScaled = true
+		TextButton_2Text.TextSize = 40.000
+		TextButton_2Text.TextWrapped = true
+
+		function BurnEverythingNO()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+		end
+		TextButton_2.MouseButton1Click:connect(BurnEverythingNO)	
+		TextButton_2Text.MouseButton1Click:connect(BurnEverythingNO)
 	end)
 
 	section3:addButton("Scrap materials only",function()
@@ -2520,36 +2751,155 @@ local function NNNITFMain()
 	end)
 
 	section3:addButton("Scrap Everything",function()
-		for _, item in pairs(workspace.Items:GetChildren()) do
-			if not item:FindFirstChild("ChestLid") and not item:FindFirstChild("AnvilFront") and not item:FindFirstChild("AnvilBase") and not item:FindFirstChild("AnvilBack") then
-				if (item:FindFirstChild("Main") and item:FindFirstChildWhichIsA("MeshPart")) or item:GetDescendants("Glass") or item:FindFirstChild("Handle") or item:FindFirstChild("HumanoidRootPart") then
-					pcall(function()
-						task.wait(.1)
-						local args = {item}
-						game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
-						item:FindFirstChildWhichIsA("BasePart").CFrame=scrapper.CFrame*CFrame.new(0, 8, 0)
-						game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
-					end)
+		local player = game.Players.LocalPlayer
+		local ScreenGuiK = Instance.new("ScreenGui")
+		local Frame = Instance.new("ImageLabel")
+		local TextLabelFrame = Instance.new("ImageLabel")
+		local TextLabel = Instance.new("TextLabel")
+		local TextButton = Instance.new("ImageButton")
+		local TextButtonText = Instance.new("TextButton")
+		local TextButton_2 = Instance.new("ImageButton")
+		local TextButton_2Text = Instance.new("TextButton")
+
+		ScreenGuiK.Parent = player:WaitForChild("PlayerGui")
+
+		Frame.Parent = ScreenGuiK
+		Frame.Name = "Main"
+		Frame.BackgroundTransparency = 1
+		Frame.Position = UDim2.new(0.66, 0, 0.055, 0)
+		Frame.Size = UDim2.new(0, 220, 0, 120)
+		Frame.Image = "rbxassetid://4641149554"
+		Frame.ImageColor3 = Color3.fromRGB(24, 24, 24)
+		Frame.ScaleType = Enum.ScaleType.Slice
+		Frame.SliceCenter = Rect.new(4, 4, 296, 296)
+		Frame.Active = true
+		Frame.Draggable = true
+
+		TextLabelFrame.Parent = Frame
+		TextLabelFrame.Name = "TopBar"
+		TextLabelFrame.BackgroundTransparency = 1
+		TextLabelFrame.ClipsDescendants = true
+		TextLabelFrame.Size = UDim2.new(1, 0, 0, 38)
+		TextLabelFrame.ZIndex = 2
+		TextLabelFrame.Image = "rbxassetid://4595286933"
+		TextLabelFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabelFrame.ScaleType = Enum.ScaleType.Slice
+		TextLabelFrame.SliceCenter = Rect.new(4, 4, 296, 296)
+
+		TextLabel.Parent = Frame
+		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+		TextLabel.Position = UDim2.new(0, 0, -0.1, 0)
+		TextLabel.BackgroundTransparency = 1
+		TextLabel.Size = UDim2.new(0, 220, 0, 60)
+		TextLabel.ZIndex = 3
+		TextLabel.Font = Enum.Font.TitilliumWeb
+		TextLabel.Text = "This procedure may cause lag! Are you sure that you want to scrap everything?"
+		TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabel.TextScaled = false
+		TextLabel.TextSize = 18.000
+		TextLabel.TextWrapped = true
+
+		TextButton.Parent = Frame
+		TextButton.Name = "Button"
+		TextButton.BackgroundTransparency = 1
+		TextButton.Position = UDim2.new(0.075, 0, 0.500000006, 0)
+		TextButton.BorderSizePixel = 0
+		TextButton.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton.ZIndex = 2
+		TextButton.Image = "rbxassetid://5028857472"
+		TextButton.ImageColor3 = Color3.fromRGB(41, 41, 41)
+		TextButton.ScaleType = Enum.ScaleType.Slice
+		TextButton.SliceCenter = Rect.new(2, 2, 298, 298)
+
+		TextButtonText.Parent = TextButton
+		TextButtonText.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextButtonText.BackgroundTransparency = 1
+		TextButtonText.ZIndex = 3
+		TextButtonText.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButtonText.Font = Enum.Font.TitilliumWeb
+		TextButtonText.Text = "Yes"
+		TextButtonText.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButtonText.TextScaled = true
+		TextButtonText.TextSize = 40.000
+		TextButtonText.TextWrapped = true
+
+		function ScrapEverythingYES()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
 				end
 			end
-		end
-	end)
-
-	section4:addButton("Convert materials only",function()
-		for _, item in pairs(workspace.Items:GetChildren()) do
-			if not item:FindFirstChild("ChestLid") and not item:FindFirstChild("AnvilFront") and not item:FindFirstChild("AnvilBase") and not item:FindFirstChild("AnvilBack") then
-				for _, x in ipairs(AllKnownBioFuelMaterials) do
-					if item.Name == x then
+			for _, item in pairs(workspace.Items:GetChildren()) do
+				if not item:FindFirstChild("ChestLid") and not item:FindFirstChild("AnvilFront") and not item:FindFirstChild("AnvilBase") and not item:FindFirstChild("AnvilBack") then
+					if (item:FindFirstChild("Main") and item:FindFirstChildWhichIsA("MeshPart")) or item:GetDescendants("Glass") or item:FindFirstChild("Handle") or item:FindFirstChild("HumanoidRootPart") then
 						pcall(function()
 							task.wait(.1)
 							local args = {item}
 							game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
-							item:FindFirstChildWhichIsA("BasePart").CFrame=workspace.Structures:FindFirstChild("Biofuel Processor").Part.CFrame*CFrame.new(0, 2, 0)
+							item:FindFirstChildWhichIsA("BasePart").CFrame=scrapper.CFrame*CFrame.new(0, 8, 0)
 							game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
 						end)
 					end
 				end
 			end
+		end
+		TextButton.MouseButton1Click:connect(ScrapEverythingYES)
+		TextButtonText.MouseButton1Click:connect(ScrapEverythingYES)
+
+		TextButton_2.Parent = Frame
+		TextButton_2.Name = "Button"
+		TextButton_2.BackgroundTransparency = 1
+		TextButton_2.Position = UDim2.new(0.55, 0, 0.500000006, 0)
+		TextButton_2.BorderSizePixel = 0
+		TextButton_2.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton_2.ZIndex = 2
+		TextButton_2.Image = "rbxassetid://5028857472"
+		TextButton_2.ImageColor3 = Color3.fromRGB(41, 41, 41)
+		TextButton_2.ScaleType = Enum.ScaleType.Slice
+		TextButton_2.SliceCenter = Rect.new(2, 2, 298, 298)
+
+		TextButton_2Text.Parent = TextButton_2
+		TextButton_2Text.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+		TextButton_2Text.BackgroundTransparency = 1
+		TextButton_2Text.ZIndex = 3
+		TextButton_2Text.Size = UDim2.new(0, 82.5, 0, 45)
+		TextButton_2Text.Font = Enum.Font.TitilliumWeb
+		TextButton_2Text.Text = "No"
+		TextButton_2Text.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextButton_2Text.TextScaled = true
+		TextButton_2Text.TextSize = 40.000
+		TextButton_2Text.TextWrapped = true
+
+		function ScrapEverythingNO()
+			for i,v in pairs(player.PlayerGui:GetChildren()) do
+				if v.Name == "ScreenGui" then
+					v:Destroy()
+				end
+			end
+		end
+		TextButton_2.MouseButton1Click:connect(ScrapEverythingNO)	
+		TextButton_2Text.MouseButton1Click:connect(ScrapEverythingNO)
+	end)
+
+	section4:addButton("Convert materials only",function()
+		if workspace.Structures:FindFirstChild("Biofuel Processor") then
+			for _, item in pairs(workspace.Items:GetChildren()) do
+				if not item:FindFirstChild("ChestLid") and not item:FindFirstChild("AnvilFront") and not item:FindFirstChild("AnvilBase") and not item:FindFirstChild("AnvilBack") then
+					for _, x in ipairs(AllKnownBioFuelMaterials) do
+						if item.Name == x then
+							pcall(function()
+								task.wait(.1)
+								local args = {item}
+								game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
+								item:FindFirstChildWhichIsA("BasePart").CFrame=workspace.Structures:FindFirstChild("Biofuel Processor").Part.CFrame*CFrame.new(0, 2, 0)
+								game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
+							end)
+						end
+					end
+				end
+			end
+		else
+			notify("You don't have a Biofuel Processor!")
 		end
 	end)
 
@@ -2606,21 +2956,136 @@ local function NNNITFMain()
 
 	section4:addButton("Convert Everything",function()
 		if workspace.Structures:FindFirstChild("Biofuel Processor") then
-			for _, item in pairs(workspace.Items:GetChildren()) do
-				if not item:FindFirstChild("ChestLid") and not item:FindFirstChild("AnvilFront") and not item:FindFirstChild("AnvilBase") and not item:FindFirstChild("AnvilBack") then
-					if (item:FindFirstChild("Main") and item:FindFirstChildWhichIsA("MeshPart")) or item:GetDescendants("Glass") or item:FindFirstChild("Handle") or item:FindFirstChild("HumanoidRootPart") then
-						if workspace.Structures:FindFirstChild("Biofuel Processor") then
-							pcall(function()
-								task.wait()
-								local args = {item}
-								game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
-								item:FindFirstChildWhichIsA("BasePart").CFrame=workspace.Structures:FindFirstChild("Biofuel Processor").Part.CFrame*CFrame.new(0, 2, 0)
-								game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
-							end)
+			local player = game.Players.LocalPlayer
+			local ScreenGuiK = Instance.new("ScreenGui")
+			local Frame = Instance.new("ImageLabel")
+			local TextLabelFrame = Instance.new("ImageLabel")
+			local TextLabel = Instance.new("TextLabel")
+			local TextButton = Instance.new("ImageButton")
+			local TextButtonText = Instance.new("TextButton")
+			local TextButton_2 = Instance.new("ImageButton")
+			local TextButton_2Text = Instance.new("TextButton")
+
+			ScreenGuiK.Parent = player:WaitForChild("PlayerGui")
+
+			Frame.Parent = ScreenGuiK
+			Frame.Name = "Main"
+			Frame.BackgroundTransparency = 1
+			Frame.Position = UDim2.new(0.66, 0, 0.055, 0)
+			Frame.Size = UDim2.new(0, 220, 0, 120)
+			Frame.Image = "rbxassetid://4641149554"
+			Frame.ImageColor3 = Color3.fromRGB(24, 24, 24)
+			Frame.ScaleType = Enum.ScaleType.Slice
+			Frame.SliceCenter = Rect.new(4, 4, 296, 296)
+			Frame.Active = true
+			Frame.Draggable = true
+
+			TextLabelFrame.Parent = Frame
+			TextLabelFrame.Name = "TopBar"
+			TextLabelFrame.BackgroundTransparency = 1
+			TextLabelFrame.ClipsDescendants = true
+			TextLabelFrame.Size = UDim2.new(1, 0, 0, 38)
+			TextLabelFrame.ZIndex = 2
+			TextLabelFrame.Image = "rbxassetid://4595286933"
+			TextLabelFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
+			TextLabelFrame.ScaleType = Enum.ScaleType.Slice
+			TextLabelFrame.SliceCenter = Rect.new(4, 4, 296, 296)
+
+			TextLabel.Parent = Frame
+			TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+			TextLabel.Position = UDim2.new(0, 0, -0.1, 0)
+			TextLabel.BackgroundTransparency = 1
+			TextLabel.Size = UDim2.new(0, 220, 0, 60)
+			TextLabel.ZIndex = 3
+			TextLabel.Font = Enum.Font.TitilliumWeb
+			TextLabel.Text = "This procedure may cause lag! Are you sure that you want to convert everything?"
+			TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+			TextLabel.TextScaled = false
+			TextLabel.TextSize = 18.000
+			TextLabel.TextWrapped = true
+
+			TextButton.Parent = Frame
+			TextButton.Name = "Button"
+			TextButton.BackgroundTransparency = 1
+			TextButton.Position = UDim2.new(0.075, 0, 0.500000006, 0)
+			TextButton.BorderSizePixel = 0
+			TextButton.Size = UDim2.new(0, 82.5, 0, 45)
+			TextButton.ZIndex = 2
+			TextButton.Image = "rbxassetid://5028857472"
+			TextButton.ImageColor3 = Color3.fromRGB(41, 41, 41)
+			TextButton.ScaleType = Enum.ScaleType.Slice
+			TextButton.SliceCenter = Rect.new(2, 2, 298, 298)
+
+			TextButtonText.Parent = TextButton
+			TextButtonText.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+			TextButtonText.BackgroundTransparency = 1
+			TextButtonText.ZIndex = 3
+			TextButtonText.Size = UDim2.new(0, 82.5, 0, 45)
+			TextButtonText.Font = Enum.Font.TitilliumWeb
+			TextButtonText.Text = "Yes"
+			TextButtonText.TextColor3 = Color3.fromRGB(200, 200, 200)
+			TextButtonText.TextScaled = true
+			TextButtonText.TextSize = 40.000
+			TextButtonText.TextWrapped = true
+
+			function ConvertEverythingYES()
+				for i,v in pairs(player.PlayerGui:GetChildren()) do
+					if v.Name == "ScreenGui" then
+						v:Destroy()
+					end
+				end
+				for _, item in pairs(workspace.Items:GetChildren()) do
+					if not item:FindFirstChild("ChestLid") and not item:FindFirstChild("AnvilFront") and not item:FindFirstChild("AnvilBase") and not item:FindFirstChild("AnvilBack") then
+						if (item:FindFirstChild("Main") and item:FindFirstChildWhichIsA("MeshPart")) or item:GetDescendants("Glass") or item:FindFirstChild("Handle") or item:FindFirstChild("HumanoidRootPart") then
+							if workspace.Structures:FindFirstChild("Biofuel Processor") then
+								pcall(function()
+									task.wait()
+									local args = {item}
+									game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
+									item:FindFirstChildWhichIsA("BasePart").CFrame=workspace.Structures:FindFirstChild("Biofuel Processor").Part.CFrame*CFrame.new(0, 2, 0)
+									game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
+								end)
+							end
 						end
 					end
 				end
 			end
+			TextButton.MouseButton1Click:connect(ConvertEverythingYES)
+			TextButtonText.MouseButton1Click:connect(ConvertEverythingYES)
+
+			TextButton_2.Parent = Frame
+			TextButton_2.Name = "Button"
+			TextButton_2.BackgroundTransparency = 1
+			TextButton_2.Position = UDim2.new(0.55, 0, 0.500000006, 0)
+			TextButton_2.BorderSizePixel = 0
+			TextButton_2.Size = UDim2.new(0, 82.5, 0, 45)
+			TextButton_2.ZIndex = 2
+			TextButton_2.Image = "rbxassetid://5028857472"
+			TextButton_2.ImageColor3 = Color3.fromRGB(41, 41, 41)
+			TextButton_2.ScaleType = Enum.ScaleType.Slice
+			TextButton_2.SliceCenter = Rect.new(2, 2, 298, 298)
+
+			TextButton_2Text.Parent = TextButton_2
+			TextButton_2Text.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+			TextButton_2Text.BackgroundTransparency = 1
+			TextButton_2Text.ZIndex = 3
+			TextButton_2Text.Size = UDim2.new(0, 82.5, 0, 45)
+			TextButton_2Text.Font = Enum.Font.TitilliumWeb
+			TextButton_2Text.Text = "No"
+			TextButton_2Text.TextColor3 = Color3.fromRGB(200, 200, 200)
+			TextButton_2Text.TextScaled = true
+			TextButton_2Text.TextSize = 40.000
+			TextButton_2Text.TextWrapped = true
+
+			function ConvertEverythingNO()
+				for i,v in pairs(player.PlayerGui:GetChildren()) do
+					if v.Name == "ScreenGui" then
+						v:Destroy()
+					end
+				end
+			end
+			TextButton_2.MouseButton1Click:connect(ConvertEverythingNO)	
+			TextButton_2Text.MouseButton1Click:connect(ConvertEverythingNO)
 		else
 			notify("You don't have a Biofuel Processor!")
 		end
@@ -2649,8 +3114,9 @@ local function NNNITFMain()
 
 	-- forth page
 	local page4 = NoobieDoge:addPage("Mobs", 97521755974659)
-	local section1 = page4:addSection("Bring Mobs (FE)")
+	local section1 = page4:addSection("Kill Aura")
 	local section2 = page4:addSection("Mob Hitbox")
+	local section3 = page4:addSection("Bring Mobs (FE)")
 
 	local uniqueMobs = {}
 	local seenNamesM = {} -- Dictionary to track seen names
@@ -2663,60 +3129,11 @@ local function NNNITFMain()
 		end
 	end
 
-	section1:addButton("Update Mob List",function()
-		for _, mob in pairs(workspace.Characters:GetChildren()) do
-			if mob.Name ~= "Lost Child" and mob.Name ~= "Lost Child2" and mob.Name ~= "Lost Child3" and mob.Name ~= "Lost Child4" and not mob:FindFirstChild("Cosmetic") and (not mob:FindFirstChild("Default") or mob.Name == "Alien") then
-				if not seenNamesM[mob.Name] then -- Check if name hasn't been seen
-					table.insert(uniqueMobs, mob.Name)
-					seenNamesM[mob.Name] = true -- Mark name as seen
-				end
-			end
-		end
-		local tempMobsB = {}
-		for _, name in ipairs(uniqueMobs) do
-			table.insert(tempMobsB, name)
-		end
-		table.insert(tempMobsB, "Select item to bring") table.insert(tempMobsB, "")
-		for _, name in ipairs(tempMobsB) do
-			if game:GetService("CoreGui")["DogeHub V2"].Main["Bring Items"]["Bring Items"].Container.Dropdown.Search.TextBox.Text == name then
-				section1:updateDropdown(name,"Select mobs to bring",uniqueMobs,function(LeBringMob1)
-					print("Selected: " .. LeBringMob1)
-					notify("Mob Selected: " .. LeBringMob1)
-					LeBringMob = LeBringMob1
-				end)
-			end
-		end
-	end)
-
-	section1:addDropdown("Select mobs to bring",uniqueMobs,function(LeBringMob1)
-		print("Selected: " .. LeBringMob1)
-		notify("Mob Selected: " .. LeBringMob1)
-		LeBringMob = LeBringMob1
-	end)
-
-	section1:addButton("Bring mob",function()
-		for _, mob in pairs(workspace.Characters:GetChildren()) do
-			if mob.Name ~= "Lost Child" and mob.Name ~= "Lost Child2" and mob.Name ~= "Lost Child3" and mob.Name ~= "Lost Child4" and not mob:FindFirstChild("Cosmetic") and (not mob:FindFirstChild("Default") or mob.Name == "Alien") then
-				if mob.Name == LeBringMob then
-					pcall(function()
-						ask.wait()
-						mob:FindFirstChildWhichIsA("BasePart").CFrame=player.Character.HumanoidRootPart.CFrame*CFrame.new(0, 13, 0)
-					end)
-				end
-			end
-		end
-	end)
-
-	section1:addButton("Bring every mobs",function()
-		for _, mob in pairs(workspace.Characters:GetChildren()) do
-			if mob.Name ~= "Lost Child" and mob.Name ~= "Lost Child2" and mob.Name ~= "Lost Child3" and mob.Name ~= "Lost Child4" and not mob:FindFirstChild("Cosmetic") and (not mob:FindFirstChild("Default") or mob.Name == "Alien") then
-				if mob:FindFirstChild("HumanoidRootPart") then
-					pcall(function()
-						task.wait()
-						mob:FindFirstChildWhichIsA("BasePart").CFrame=player.Character.HumanoidRootPart.CFrame*CFrame.new(0, 13, 0)
-					end)
-				end
-			end
+	local MobsKillAura = false
+	section1:addToggle("Mobs Kill Aura",false,function(bool)
+		MobsKillAura = bool
+		if MobsKillAura then
+			notify("Hold weapon to activate")
 		end
 	end)
 
@@ -2735,10 +3152,125 @@ local function NNNITFMain()
 		EnableHitboxChange = bool
 	end)
 
+	section3:addButton("Update Mob List",function()
+		for _, mob in pairs(workspace.Characters:GetChildren()) do
+			if mob.Name ~= "Lost Child" and mob.Name ~= "Lost Child2" and mob.Name ~= "Lost Child3" and mob.Name ~= "Lost Child4" and not mob:FindFirstChild("Cosmetic") and (not mob:FindFirstChild("Default") or mob.Name == "Alien") then
+				if not seenNamesM[mob.Name] then -- Check if name hasn't been seen
+					table.insert(uniqueMobs, mob.Name)
+					seenNamesM[mob.Name] = true -- Mark name as seen
+				end
+			end
+		end
+		local tempMobsB = {}
+		for _, name in ipairs(uniqueMobs) do
+			table.insert(tempMobsB, name)
+		end
+		table.insert(tempMobsB, "Select item to bring") table.insert(tempMobsB, "")
+		for _, name in ipairs(tempMobsB) do
+			if game:GetService("CoreGui")["DogeHub V2"].Main["Mobs"]["Bring Mobs (FE)"].Container.Dropdown.Search.TextBox.Text == name then
+				section3:updateDropdown(name,"Select mobs to bring",uniqueMobs,function(LeBringMob1)
+					print("Selected: " .. LeBringMob1)
+					notify("Mob Selected: " .. LeBringMob1)
+					LeBringMob = LeBringMob1
+				end)
+			end
+		end
+	end)
+
+	section3:addDropdown("Select mobs to bring",uniqueMobs,function(LeBringMob1)
+		print("Selected: " .. LeBringMob1)
+		notify("Mob Selected: " .. LeBringMob1)
+		LeBringMob = LeBringMob1
+	end)
+
+	section3:addButton("Bring mob",function()
+		for _, mob in pairs(workspace.Characters:GetChildren()) do
+			if mob.Name ~= "Lost Child" and mob.Name ~= "Lost Child2" and mob.Name ~= "Lost Child3" and mob.Name ~= "Lost Child4" and not mob:FindFirstChild("Cosmetic") and (not mob:FindFirstChild("Default") or mob.Name == "Alien") then
+				if mob.Name == LeBringMob then
+					pcall(function()
+						ask.wait()
+						mob:FindFirstChildWhichIsA("BasePart").CFrame=player.Character.HumanoidRootPart.CFrame*CFrame.new(0, 13, 0)
+					end)
+				end
+			end
+		end
+	end)
+
+	section3:addButton("Bring every mobs",function()
+		for _, mob in pairs(workspace.Characters:GetChildren()) do
+			if mob.Name ~= "Lost Child" and mob.Name ~= "Lost Child2" and mob.Name ~= "Lost Child3" and mob.Name ~= "Lost Child4" and not mob:FindFirstChild("Cosmetic") and (not mob:FindFirstChild("Default") or mob.Name == "Alien") then
+				if mob:FindFirstChild("HumanoidRootPart") then
+					pcall(function()
+						task.wait()
+						mob:FindFirstChildWhichIsA("BasePart").CFrame=player.Character.HumanoidRootPart.CFrame*CFrame.new(0, 13, 0)
+						--mob:FindFirstChild("NPC").Health = 0
+						local args = {mob}
+						game:GetService("ReplicatedStorage").RemoteEvents.ToolDamageObject:InvokeServer(unpack(args))
+					end)
+				end
+			end
+		end
+	end)
+
+	task.spawn(function()
+		while task.wait(.01) do
+			if MobsKillAura then
+				for _, mob in pairs(workspace.Characters:GetChildren()) do
+					if mob.Name ~= "Lost Child" and mob.Name ~= "Lost Child2" and mob.Name ~= "Lost Child3" and mob.Name ~= "Lost Child4" and not mob:FindFirstChild("Cosmetic") and (not mob:FindFirstChild("Default") or mob.Name == "Alien") then
+						if mob:FindFirstChild("HumanoidRootPart") then
+							local character = player.Character 
+							if not character or not character:FindFirstChild("HumanoidRootPart") then return end
+							local distance = (character.HumanoidRootPart.Position - mob.HumanoidRootPart.Position).Magnitude
+							axe = findAxe()
+							if distance < 200 and axe then 
+								-- Simple single attack per detection, no infinite loops
+								game:GetService("ReplicatedStorage").RemoteEvents.ToolDamageObject:InvokeServer(mob, player.Inventory[axe.Name])
+							end
+						end
+					end
+				end
+			end
+		end
+	end)
+
+	task.spawn(function()
+		while task.wait(.4) do
+			if EnableHitboxChange then
+				for _, mob in pairs(workspace.Characters:GetChildren()) do
+					if mob.Name ~= "Lost Child" and mob.Name ~= "Lost Child2" and mob.Name ~= "Lost Child3" and mob.Name ~= "Lost Child4" and not mob:FindFirstChild("Cosmetic") and (not mob:FindFirstChild("Default") or mob.Name == "Alien") then
+						if mob:FindFirstChild("HumanoidRootPart") then
+							if not mob:FindFirstChild("IceBlock") then
+								mob.HumanoidRootPart.Size = Vector3.new(Hitboxsizenum, Hitboxsizenum, Hitboxsizenum)
+								mob.HumanoidRootPart.CanCollide = false
+								mob.HumanoidRootPart.CanQuery = true
+								mob.HumanoidRootPart.Shape = "Ball"
+								DamageTarget(mob)
+								if ShowHitbox == true then
+									mob.HumanoidRootPart.Transparency = 0.5
+								else
+									mob.HumanoidRootPart.Transparency = 1
+								end
+								task.wait()
+							else
+								mob.IceBlock.Block1.Size = Vector3.new(Hitboxsizenum, Hitboxsizenum, Hitboxsizenum)
+								mob.IceBlock.Block1.CanCollide = false
+							end
+						end
+					end
+				end
+				for _, item in pairs(workspace.Items:GetChildren()) do --also increase hitbox for iceblocks on chests
+					if item:FindFirstChild("ChestLid") and item:FindFirstChild("Main") and item.Main:FindFirstChild("ProximityAttachment") and item:FindFirstChild("IceBlock") then
+						item.IceBlock.Block1.Size = Vector3.new(Hitboxsizenum, Hitboxsizenum, Hitboxsizenum)
+						item.IceBlock.Block1.CanCollide = false
+					end
+				end
+			end
+		end
+	end)
+
 	-- fifth page
-	local page5 = NoobieDoge:addPage("Auto Farm", 97521755974659)
+	local page5 = NoobieDoge:addPage("Trees", 97521755974659)
 	local section1 = page5:addSection("Log Farm")
-	local section2 = page5:addSection("Mob Farm")
 
 	local AutoChopTree = false
 	section1:addToggle("Log Farm",false,function(bool)
@@ -2767,10 +3299,11 @@ local function NNNITFMain()
 				for _, trunk in ipairs(trees) do
 					if not AutoChopTree then break end
 					player.Character:PivotTo(trunk.CFrame + Vector3.new(0, 3, 0))
+					axe = findAxe()
 					task.wait(0.1)
 					local startTime = tick()
 					while AutoChopTree and trunk and trunk.Parent and trunk.Parent.Name == "Small Tree" do
-						if player.Character:FindFirstChild("ToolHandle") then
+						if player.Character:FindFirstChild("ToolHandle") and axe then
 							mouse1click()
 							task.wait(0.2)
 							if tick() - startTime > 12 then
@@ -2798,85 +3331,64 @@ local function NNNITFMain()
 			task.wait(.5)
 		end
 	end)
-	
-	local AutoKillMobs = false
-	section2:addToggle("Mob Farm",false,function(bool)
-		AutoKillMobs = bool
-		notify("Hold weapon to activate")
+
+	-- sixth page
+	local page6 = NoobieDoge:addPage("Events", 97521755974659)
+	local section1 = page6:addSection("Halloween")
+
+	local hh = {}
+	local function findhh()
+		for _, house in pairs(workspace.Map.Landmarks:GetChildren()) do
+			if string.find(house.Name, "Halloween House") then
+				table.insert(hh,house.Name)
+			end
+		end
+	end
+	findhh()
+	local hh2
+	section1:addDropdown("Halloween House",hh,function(hh1)
+		print("Selected: " .. hh1)
+		notify("House Selected: " .. hh1)
+		hh2 = hh1
 	end)
 
-	task.spawn(function()
-		while task.wait(.4) do
-			if EnableHitboxChange and not AutoKillMobs then
-				for _, mob in pairs(workspace.Characters:GetChildren()) do
-					if mob.Name ~= "Lost Child" and mob.Name ~= "Lost Child2" and mob.Name ~= "Lost Child3" and mob.Name ~= "Lost Child4" and not mob:FindFirstChild("Cosmetic") and (not mob:FindFirstChild("Default") or mob.Name == "Alien") then
-						if mob:FindFirstChild("HumanoidRootPart") then
-							if not mob:FindFirstChild("IceBlock") then
-								mob.HumanoidRootPart.Size = Vector3.new(Hitboxsizenum, Hitboxsizenum, Hitboxsizenum)
-								mob.HumanoidRootPart.CanCollide = false
-								mob.HumanoidRootPart.CanQuery = true
-								if ShowHitbox == true and not AutoKillMobs then
-									mob.HumanoidRootPart.Transparency = 0.5
-								else
-									mob.HumanoidRootPart.Transparency = 1
-								end
+	section1:addButton("Teleport to House",function()
+		pcall(function()
+			player.Character.HumanoidRootPart.CFrame = workspace.Map.Landmarks[hh2].Functional.TouchZone.CFrame*CFrame.new(0, 2, 0)
+		end)
+	end)
+
+	section1:addButton("Test1",function()
+		for _, item in pairs(workspace.Items:GetChildren()) do
+			if not item:FindFirstChild("ChestLid") and not item:FindFirstChild("AnvilFront") and not item:FindFirstChild("AnvilBase") and not item:FindFirstChild("AnvilBack") then
+				if item.Name == "Halloween Candle" then
+					pcall(function()
+						task.wait()
+						local args = {item}
+						game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
+						item:FindFirstChildWhichIsA("BasePart").CFrame=workspace.Map.Landmarks[hh2].Functional.TouchZone.CFrame*CFrame.new(0, 2, 0)
+						game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
+					end)
+				end
+			end
+		end
+	end)
+	section1:addButton("Test2",function()
+		for _, item in pairs(workspace.Items:GetChildren()) do
+			if not item:FindFirstChild("ChestLid") and not item:FindFirstChild("AnvilFront") and not item:FindFirstChild("AnvilBase") and not item:FindFirstChild("AnvilBack") then
+				if item.Name == "Halloween Candle" then
+					for _, item1 in pairs(workspace.Map.Landmarks:GetChildren()) do
+						if item1.Functional.Lighting.Window.PointLight.Enabled ~= true then
+							pcall(function()
 								task.wait()
-							else
-								mob.IceBlock.Block1.Size = Vector3.new(Hitboxsizenum, Hitboxsizenum, Hitboxsizenum)
-								mob.IceBlock.Block1.CanCollide = false
-							end
+								player.Character.HumanoidRootPart.CFrame = workspace.Map.Landmarks[item1].Functional.TouchZone.CFrame*CFrame.new(0, 2, 0)
+								local args = {item}
+								game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
+								item:FindFirstChildWhichIsA("BasePart").CFrame=workspace.Map.Landmarks[item1].Functional.TouchZone.CFrame*CFrame.new(0, 2, 0)
+								game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
+							end)
 						end
 					end
-				end
-				for _, item in pairs(workspace.Items:GetChildren()) do --also increase hitbox for iceblocks on chests
-					if item:FindFirstChild("ChestLid") and item:FindFirstChild("Main") and item.Main:FindFirstChild("ProximityAttachment") and item:FindFirstChild("IceBlock") then
-						item.IceBlock.Block1.Size = Vector3.new(Hitboxsizenum, Hitboxsizenum, Hitboxsizenum)
-						item.IceBlock.Block1.CanCollide = false
-					end
-				end
-			end
-		end
-	end)
-
-	task.spawn(function()
-		while task.wait(.5) do
-			if AutoKillMobs then
-				for _, mob in pairs(workspace.Characters:GetChildren()) do
-					if mob.Name ~= "Lost Child" and mob.Name ~= "Lost Child2" and mob.Name ~= "Lost Child3" and mob.Name ~= "Lost Child4" and not mob:FindFirstChild("Default") then
-						if mob:FindFirstChild("HumanoidRootPart") then
-							if mob.Name ~= "Arctic Fox" then
-								mob.HumanoidRootPart.Size = Vector3.new(9e9, 9e9, 9e9)
-								mob.HumanoidRootPart.CanCollide = false
-							else --Artic fox dunno why wont get damaged
-								mob.Torso.Size = Vector3.new(9e9, 9e9, 9e9)
-								mob.Torso.CanCollide = false
-							end
-							mob.HumanoidRootPart.Transparency = 1
-						end
-					end
-				end
-			end
-		end
-	end)
-	task.spawn(function()
-		while task.wait(.5) do
-			if AutoKillMobs then
-				if player.Character:FindFirstChild("ToolHandle") then
-					mouse1click()
-					task.wait(0.2)
-				else
-					--[[if player.Inventory:FindFirstChild("Good Axe") then
-						player.Character.Humanoid:EquipTool(player.Inventory:FindFirstChild("Good Axe"))
-					elseif player.Inventory:FindFirstChild("Old Axe") then
-						player.Character.Humanoid:EquipTool(player.Inventory:FindFirstChild("Old Axe"))
-					elseif player.Inventory:FindFirstChild("Ice Axe") then
-						player.Character.Humanoid:EquipTool(player.Inventory:FindFirstChild("Ice Axe"))
-					elseif player.Inventory:FindFirstChild("Strong Axe") then
-						player.Character.Humanoid:EquipTool(player.Inventory:FindFirstChild("Strong Axe"))
-					elseif player.Inventory:FindFirstChild("Chainsaw") then
-						player.Character.Humanoid:EquipTool(player.Inventory:FindFirstChild("Chainsaw"))
-					end]]
-					task.wait()
 				end
 			end
 		end
@@ -2978,16 +3490,17 @@ local function NNNITFMain()
 			Pfly = false
 			trackthatguy = false
 			getgenv().dc = true
+			AutoUnlockAllChests = false
 			AutoGetAllCoinStacks = false
 			BoostPad = false
 			game.Lighting.FogStart = defaultFogStart
 			game.Lighting.FogEnd = defaultFogEnd
+			MobsKillAura = false
 			Hitboxsizenum = false
 			ShowHitbox = false
 			EnableHitboxChange = false
 			BurnBioFuel = false
 			AutoChopTree = false
-			AutoKillMobs = false
 			wait()
 			for i,library in pairs(game:GetService("CoreGui"):GetChildren()) do
 				if library.Name == "DogeHub V2" then
