@@ -159,6 +159,9 @@ function notify(a,b,c)
 	function roundNumber(num, numDecimalPlaces) -- https://devforum.roblox.com/t/rounding-to-1-decimal-point/673504
 	return tonumber(string.format("%." .. (numDecimalPlaces or 0) .. "f", num))
 end
+--99 Nights in the Forest Only
+local RemoteEvents = game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvents")
+
 notify("Enabled anti-AFK")
 -- init
 
@@ -1207,7 +1210,7 @@ local function NNNITFLobby()
 		end
 	end)
 
-	local equipclass = game:GetService("ReplicatedStorage").RemoteEvents.UpdateEquipped
+	local equipclass = RemoteEvents.UpdateEquipped
 	local playerisinparty = false
 	local function getPlayersTouchingPart(part)
 		if not part or not part:IsA("BasePart") then
@@ -1286,7 +1289,7 @@ local function NNNITFLobby()
 	local function LeaveLobby()
 		playerisinparty = false
 		local args = {[1] = "Remove"}
-		game:GetService("ReplicatedStorage").RemoteEvents.TeleportEvent:FireServer(unpack(args))
+		RemoteEvents.TeleportEvent:FireServer(unpack(args))
 		print("leavelobby")
 	end
 
@@ -1379,7 +1382,7 @@ local function NNNITFLobby()
 	end)
 
 	section2:addButton("Reroll",function()
-		local rerollshop = game:GetService("ReplicatedStorage").RemoteEvents.RequestRerollShop
+		local rerollshop = RemoteEvents.RequestRerollShop
 		rerollshop:FireServer()
 		notify("I don't know why you need this but ok.")
 	end)
@@ -1394,7 +1397,7 @@ local function NNNITFLobby()
 						if class.Name == SnipeClasses and class.Stock.Visible == false then
 							warn("ON STOCK!!!")
 							if tonumber(class.Price.Amount.Text) <= tonumber(player.PlayerGui.Interface.DiamondCount.Count.Text) then
-								local buyclass = game:GetService("ReplicatedStorage").RemoteEvents.RequestPurchaseClass
+								local buyclass = RemoteEvents.RequestPurchaseClass
 								buyclass:FireServer(SnipeClasses)
 								task.wait(1)
 							else
@@ -2120,6 +2123,39 @@ local function NNNITFMain()
 	end
 	sack = findSack()
 	axe = findAxe()
+	local toolsDamageIDs = {
+		["Old Axe"] = "1_8982038982",
+		["Good Axe"] = "112_8982038982",
+		["Strong Axe"] = "116_8982038982",
+		["Chainsaw"] = "647_8992824875",
+		["Spear"] = "196_8999010016"
+		
+	}
+
+	-- Try to find any supported tool in inventory with damageID
+	local function getAnyToolWithDamageID()
+		for toolName, damageID in pairs(toolsDamageIDs) do
+			local tool = player.Inventory:FindFirstChild(toolName)
+			if tool then
+				return tool, damageID
+			end
+		end
+		return nil, nil
+	end
+
+	-- Equip a given tool
+	local function equipTool(tool)
+		if tool then
+			RemoteEvents.EquipItemHandle:FireServer("FireAllClients", tool)
+		end
+	end
+
+	-- Unequip a given tool
+	local function unequipTool(tool)
+		if tool then
+			RemoteEvents.UnequipItemHandle:FireServer("FireAllClients", tool)
+		end
+	end
 	
 	local function store(item)
 		--if not sack then return end
@@ -2128,7 +2164,7 @@ local function NNNITFMain()
 		if spart then
 			player.Character.HumanoidRootPart.CFrame = spart.CFrame
 			task.wait(0.2)
-			game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvents"):WaitForChild("RequestBagStoreItem"):InvokeServer(sack, item)
+			RemoteEvents:WaitForChild("RequestBagStoreItem"):InvokeServer(sack, item)
 			task.wait(0.2)
 		end
 	end
@@ -2146,9 +2182,36 @@ local function NNNITFMain()
 
 	local campfire = workspace:FindFirstChild("Map"):FindFirstChild("Campground"):FindFirstChild("MainFire"):FindFirstChild("Center")
 	local scrapper = workspace:FindFirstChild("Map"):FindFirstChild("Campground"):FindFirstChild("Scrapper"):FindFirstChild("Main")
+	local fillFrame = campfire.BillboardGui.Frame.Background.Fill
 	
 	if workspace.Map.Landmarks:FindFirstChild("Fishing Hut") and workspace.Map.Landmarks["Fishing Hut"]:FindFirstChild("Main") then workspace.Map.Landmarks["Fishing Hut"].Main:Destroy() end
 	spawn(function() while task.wait(1) do for _, berrybushes in pairs(workspace.Map.Landmarks:GetChildren()) do if berrybushes.Name == "Berry Bush" and berrybushes:FindFirstChild("Bush") then berrybushes.Bush:Destroy() end end end end)
+
+	section1:addButton("God Mode",function()
+		getgenv().godmode = true
+		notify("Godmode Activated")
+	end)
+
+	local function god()
+		if not RemoteEvents then return end
+		local dmg = RemoteEvents:FindFirstChild("DamagePlayer")
+		if not dmg then return end
+		local ok = pcall(function()
+			dmg:FireServer(-9e9)
+		end)
+		if not ok then
+			notify("Godmode failed to fire")
+			warn("Godmode failed to fire")
+		end
+	end
+
+	task.spawn(function()
+		while task.wait(0.5) do
+			if getgenv().godmode then
+				god()
+			end
+		end
+	end)
 
 	section1:addButton("Instant bag children",function()
 		for _, kid in pairs(workspace.Characters:GetChildren()) do
@@ -2169,7 +2232,7 @@ local function NNNITFMain()
 				for _, item in pairs(workspace.Items:GetChildren()) do
 					if item:FindFirstChild("ChestLid") and item:FindFirstChild("Main") and item.Main:FindFirstChild("ProximityAttachment") and not item:FindFirstChild("IceBlock") and not item:FindFirstChild("Platform") then
 						local args = {item}
-						game:GetService("ReplicatedStorage").RemoteEvents.RequestOpenItemChest:FireServer(unpack(args))
+						RemoteEvents.RequestOpenItemChest:FireServer(unpack(args))
 						warn("Opened ".. item.Name)
 					end
 				end
@@ -2187,7 +2250,7 @@ local function NNNITFMain()
 					if item.Name == "Coin Stack" and item:FindFirstChild("HumanoidRootPart") then
 						--item.Main.CFrame=player.Character.HumanoidRootPart.CFrame*CFrame.new(0, 1, 0)
 						local args = {item}
-						game:GetService("ReplicatedStorage").RemoteEvents.RequestCollectCoints:InvokeServer(unpack(args))
+						RemoteEvents.RequestCollectCoints:InvokeServer(unpack(args))
 						warn("Collected a Coin Stack")
 					end
 				end
@@ -2285,15 +2348,21 @@ local function NNNITFMain()
 	end)
 
 	-- third page
-	local page3 = NoobieDoge:addPage("Bring Items", 97521755974659)
+	local page3 = NoobieDoge:addPage("Items", 97521755974659)
 	local section1 = page3:addSection("Bring Items")
 	local section2 = page3:addSection("Campfire")
+	local section2a = page3:addSection("Auto Burn Fuel")
 	local section3 = page3:addSection("Scrapper")
-	local section4 = page3:addSection("BioFuel Processor")
+	local section3a = page3:addSection("Auto Scrap Items")
+	local section4 = page3:addSection("Food")
+	local section5 = page3:addSection("BioFuel Processor")
 
 	local AllKnownFuel = {"Log","Biofuel","Coal","Fuel Canister","Oil Barrel"}
 	local AllKnownCookableFood = {"Morsel","Steak","Ribs","Mackerel","Salmon","Clownfish","Char","Eel","Swordfish","Shark","Lava Eel","Lionfish"}
 	local AllKnownScrap = {"Bolt","Sheet Metal","UFO Junk","UFO Component","Broken Fan","Old Radio","Broken Microwave","Tyre","Metal Chair","Old Car Engine","Washing Machine","Cultist Experiment","Cultist Prototype","UFO Scrap","Log","Chair","Cultist Gem","Forest Gem"}
+	local AllKnownScrapMetal = {"Bolt","Sheet Metal","UFO Junk","UFO Component","Broken Fan","Old Radio","Broken Microwave","Tyre","Metal Chair","Old Car Engine","Washing Machine","Cultist Experiment","Cultist Prototype","UFO Scrap"}
+	local AllKnownScrapWood = {"Log","Chair"}
+	local AllKnownScrapGem = {"Cultist Gem","Forest Gem"}
 	local AllKnownBioFuelMaterials = {"Log","Morsel","Cooked Morsel","Steak","Cooked Steak","Ribs","Cooked Ribs","Carrot","Corn","Pumpkin","Berry","Apple","Mackerel","Cooked Mackerel","Salmon","Cooked Salmon","Clownfish","Cooked Clownfish","Char","Cooked Char","Eel","Cooked Eel","Swordfish","Cooked Swordfish","Shark","Cooked Shark","Lava Eel","Cooked Lava Eel","Lionfish","Cooked Lionfish","Bunny Foot","Wolf Pelt","Alpha Wolf Pelt","Bear Pelt"}
 	section1:addButton("Update Item List",function()
 		for _, item in pairs(workspace.Items:GetChildren()) do
@@ -2310,7 +2379,7 @@ local function NNNITFMain()
 		end
 		table.insert(tempItemsB, "Select item to bring") table.insert(tempItemsB, "")
 		for _, name in ipairs(tempItemsB) do
-			if game:GetService("CoreGui")["DogeHub V2"].Main["Bring Items"]["Bring Items"].Container.Dropdown.Search.TextBox.Text == name then
+			if game:GetService("CoreGui")["DogeHub V2"].Main["Items"]["Bring Items"].Container.Dropdown.Search.TextBox.Text == name then
 				section1:updateDropdown(name,"Select item to bring",uniqueItems,function(LeBring1)
 					print("Selected: " .. LeBring1)
 					notify("Item Selected: " .. LeBring1)
@@ -2332,9 +2401,9 @@ local function NNNITFMain()
 				if item.Name == LeBring then
 					task.wait()
 					local args = {item}
-					game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
+					RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
 					item:FindFirstChildWhichIsA("BasePart").CFrame=player.Character.HumanoidRootPart.CFrame*CFrame.new(0, 30, 0)
-					game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
+					RemoteEvents.StopDraggingItem:FireServer(unpack(args))
 				end
 			end
 		end
@@ -2425,9 +2494,9 @@ local function NNNITFMain()
 						pcall(function()
 							task.wait()
 							local args = {item}
-							game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
+							RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
 							item:FindFirstChildWhichIsA("BasePart").CFrame=player.Character.HumanoidRootPart.CFrame*CFrame.new(0, 30, 0)
-							game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
+							RemoteEvents.StopDraggingItem:FireServer(unpack(args))
 						end)
 					end
 				end
@@ -2479,9 +2548,9 @@ local function NNNITFMain()
 						pcall(function()
 							task.wait(.1)
 							local args = {item}
-							game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
+							RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
 							item:FindFirstChildWhichIsA("BasePart").CFrame=campfire.CFrame*CFrame.new(0, 13, 0)
-							game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
+							RemoteEvents.StopDraggingItem:FireServer(unpack(args))
 						end)
 					end
 				end
@@ -2497,9 +2566,9 @@ local function NNNITFMain()
 						pcall(function()
 							task.wait(.1)
 							local args = {item}
-							game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
+							RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
 							item:FindFirstChildWhichIsA("BasePart").CFrame=campfire.CFrame*CFrame.new(0, 13, 0)
-							game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
+							RemoteEvents.StopDraggingItem:FireServer(unpack(args))
 						end)
 					end
 				end
@@ -2522,7 +2591,7 @@ local function NNNITFMain()
 		end
 		table.insert(tempItemsC, "Select item to burn") table.insert(tempItemsC, "")
 		for _, name in ipairs(tempItemsC) do
-			if game:GetService("CoreGui")["DogeHub V2"].Main["Bring Items"].Campfire.Container.Dropdown.Search.TextBox.Text == name then
+			if game:GetService("CoreGui")["DogeHub V2"].Main["Items"].Campfire.Container.Dropdown.Search.TextBox.Text == name then
 				section2:updateDropdown(name,"Select item to burn",uniqueItems,function(Campfirethrow1)
 					print("Selected: " .. Campfirethrow1)
 					notify("Item Selected: " .. Campfirethrow1)
@@ -2545,9 +2614,9 @@ local function NNNITFMain()
 					pcall(function()
 						task.wait(.1)
 						local args = {item}
-						game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
+						RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
 						item:FindFirstChildWhichIsA("BasePart").CFrame=campfire.CFrame*CFrame.new(0, 13, 0)
-						game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
+						RemoteEvents.StopDraggingItem:FireServer(unpack(args))
 					end)
 				end
 			end
@@ -2639,9 +2708,9 @@ local function NNNITFMain()
 						pcall(function()
 							task.wait(.1)
 							local args = {item}
-							game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
+							RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
 							item:FindFirstChildWhichIsA("BasePart").CFrame=campfire.CFrame*CFrame.new(0, 13, 0)
-							game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
+							RemoteEvents.StopDraggingItem:FireServer(unpack(args))
 						end)
 					end
 				end
@@ -2685,6 +2754,68 @@ local function NNNITFMain()
 		TextButton_2Text.MouseButton1Click:connect(BurnEverythingNO)
 	end)
 
+	local AutoBurnFuel = false
+	local BurnFuelPercentage = 70
+	section2a:addToggle("Auto Burn Fuel",false,function(bool)
+		AutoBurnFuel = bool
+		if AutoBurnFuel then
+			notify("Auto burn fuel when campfire health is lower than "..tostring(BurnFuelPercentage).."%")
+		end
+	end)
+	section2a:addSlider("Auto burn fuel when campfire health dropped to:", 70, 0, 100, function(value)
+		BurnFuelPercentage = value
+	end)
+
+	task.spawn(function()
+		while task.wait() do
+			if AutoBurnFuel then
+				if workspace.Map.Campground.MainFire.Center.FireLight.Enabled == false then
+					for _, item in pairs(workspace.Items:GetChildren()) do
+						if not item:FindFirstChild("ChestLid") and not item:FindFirstChild("AnvilFront") and not item:FindFirstChild("AnvilBase") and not item:FindFirstChild("AnvilBack") then
+							for _, x in ipairs(AllKnownFuel) do
+								if item.Name == x then
+									pcall(function()
+										task.wait(.1)
+										local args = {item}
+										RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
+										item:FindFirstChildWhichIsA("BasePart").CFrame=campfire.CFrame*CFrame.new(0, 13, 0)
+										RemoteEvents.StopDraggingItem:FireServer(unpack(args))
+									end)
+								end
+							end
+						end
+					end
+				else
+					local healthPercent = fillFrame.Size.X.Scale
+					if healthPercent < (BurnFuelPercentage/100) then
+						repeat
+							for _, item in pairs(workspace.Items:GetChildren()) do
+								if not item:FindFirstChild("ChestLid") and not item:FindFirstChild("AnvilFront") and not item:FindFirstChild("AnvilBase") and not item:FindFirstChild("AnvilBack") then
+									for _, x in ipairs(AllKnownFuel) do
+										if item.Name == x and healthPercent <= 0.99 then
+											pcall(function()
+												task.wait(.5)
+												print("Campfire health percentage: "..healthPercent) print("Please search for fuel!")
+												local args = {item}
+												RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
+												item:FindFirstChildWhichIsA("BasePart").CFrame=campfire.CFrame*CFrame.new(0, 13, 0)
+												RemoteEvents.StopDraggingItem:FireServer(unpack(args))
+												healthPercent = fillFrame.Size.X.Scale
+											end)
+										end
+									end
+								end
+							end
+							task.wait(0.5)
+							healthPercent = fillFrame.Size.X.Scale
+						until healthPercent >= 1
+					end
+					task.wait(2)
+				end
+			end
+		end
+	end)
+
 	section3:addButton("Scrap materials only",function()
 		for _, item in pairs(workspace.Items:GetChildren()) do
 			if not item:FindFirstChild("ChestLid") and not item:FindFirstChild("AnvilFront") and not item:FindFirstChild("AnvilBase") and not item:FindFirstChild("AnvilBack") then
@@ -2693,9 +2824,9 @@ local function NNNITFMain()
 						pcall(function()
 							task.wait(.1)
 							local args = {item}
-							game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
+							RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
 							item:FindFirstChildWhichIsA("BasePart").CFrame=scrapper.CFrame*CFrame.new(0, 8, 0)
-							game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
+							RemoteEvents.StopDraggingItem:FireServer(unpack(args))
 						end)
 					end
 				end
@@ -2718,7 +2849,7 @@ local function NNNITFMain()
 		end
 		table.insert(tempItemsS, "Select item to scrap") table.insert(tempItemsS, "")
 		for _, name in ipairs(tempItemsS) do
-			if game:GetService("CoreGui")["DogeHub V2"].Main["Bring Items"].Scrapper.Container.Dropdown.Search.TextBox.Text == name then
+			if game:GetService("CoreGui")["DogeHub V2"].Main["Items"].Scrapper.Container.Dropdown.Search.TextBox.Text == name then
 				section3:updateDropdown(name,"Select item to scrap",uniqueItems,function(Scrapperscrap1)
 					print("Selected: " .. Scrapperscrap1)
 					notify("Item Selected: " .. Scrapperscrap1)
@@ -2741,9 +2872,9 @@ local function NNNITFMain()
 					pcall(function()
 						task.wait(.1)
 						local args = {item}
-						game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
+						RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
 						item:FindFirstChildWhichIsA("BasePart").CFrame=scrapper.CFrame*CFrame.new(0, 8, 0)
-						game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
+						RemoteEvents.StopDraggingItem:FireServer(unpack(args))
 					end)
 				end
 			end
@@ -2835,9 +2966,9 @@ local function NNNITFMain()
 						pcall(function()
 							task.wait(.1)
 							local args = {item}
-							game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
+							RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
 							item:FindFirstChildWhichIsA("BasePart").CFrame=scrapper.CFrame*CFrame.new(0, 8, 0)
-							game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
+							RemoteEvents.StopDraggingItem:FireServer(unpack(args))
 						end)
 					end
 				end
@@ -2881,7 +3012,178 @@ local function NNNITFMain()
 		TextButton_2Text.MouseButton1Click:connect(ScrapEverythingNO)
 	end)
 
-	section4:addButton("Convert materials only",function()
+	local AutoScrapItems = false
+	section3a:addToggle("Auto Scrap Items",false,function(bool)
+		AutoScrapItems = bool
+		if AutoScrapItems then
+			notify("Auto scrap items when found")
+		end
+	end)
+
+	local AutoScrapItemsM = true
+	section3a:addToggle("Scrap Metal",true,function(bool)
+		AutoScrapItemsM = bool
+	end)
+
+	local AutoScrapItemsW = true
+	section3a:addToggle("Scrap Wood",true,function(bool)
+		AutoScrapItemsW = bool
+	end)
+
+	local AutoScrapItemsG = true
+	section3a:addToggle("Scrap Gems",true,function(bool)
+		AutoScrapItemsG = bool
+	end)
+
+
+	task.spawn(function()
+		while task.wait() do
+			if AutoScrapItems then
+				for _, item in pairs(workspace.Items:GetChildren()) do
+					if not item:FindFirstChild("ChestLid") and not item:FindFirstChild("AnvilFront") and not item:FindFirstChild("AnvilBase") and not item:FindFirstChild("AnvilBack") then
+						if AutoScrapItemsM and AutoScrapItemsW and AutoScrapItemsG then
+							for _, x0 in ipairs(AllKnownScrap) do
+								if item.Name == x0 then
+									pcall(function()
+										task.wait(.1)
+										local args = {item}
+										RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
+										item:FindFirstChildWhichIsA("BasePart").CFrame=scrapper.CFrame*CFrame.new(0, 8, 0)
+										RemoteEvents.StopDraggingItem:FireServer(unpack(args))
+									end)
+								end
+							end
+						else
+							if AutoScrapItemsM then
+								for _, x1 in ipairs(AllKnownScrapMetal) do
+									if item.Name == x1 then
+										pcall(function()
+											task.wait(.1)
+											local args = {item}
+											RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
+											item:FindFirstChildWhichIsA("BasePart").CFrame=scrapper.CFrame*CFrame.new(0, 8, 0)
+											RemoteEvents.StopDraggingItem:FireServer(unpack(args))
+										end)
+									end
+								end
+							end
+							if AutoScrapItemsW then
+								for _, x2 in ipairs(AllKnownScrapWood) do
+									if item.Name == x2 then
+										pcall(function()
+											task.wait(.1)
+											local args = {item}
+											RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
+											item:FindFirstChildWhichIsA("BasePart").CFrame=scrapper.CFrame*CFrame.new(0, 8, 0)
+											RemoteEvents.StopDraggingItem:FireServer(unpack(args))
+										end)
+									end
+								end
+							end
+							if AutoScrapItemsG then
+								for _, x3 in ipairs(AllKnownScrapGem) do
+									if item.Name == x3 then
+										pcall(function()
+											task.wait(.1)
+											local args = {item}
+											RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
+											item:FindFirstChildWhichIsA("BasePart").CFrame=scrapper.CFrame*CFrame.new(0, 8, 0)
+											RemoteEvents.StopDraggingItem:FireServer(unpack(args))
+										end)
+									end
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+	end)
+
+	local AutoCook = false
+	section4:addToggle("Auto Cook",false,function(bool)
+		AutoCook = bool
+	end)
+
+	task.spawn(function()
+		while task.wait() do
+			if AutoCook then
+				if workspace.Map.Campground.MainFire.Center.FireLight.Enabled == false then
+					notify("The campfire is out!")
+				else
+					for _, item in pairs(workspace.Items:GetChildren()) do
+						if not item:FindFirstChild("ChestLid") and not item:FindFirstChild("AnvilFront") and not item:FindFirstChild("AnvilBase") and not item:FindFirstChild("AnvilBack") then
+							for _, x in ipairs(AllKnownCookableFood) do
+								if item.Name == x then
+									pcall(function()
+										task.wait(.1)
+										local args = {item}
+										RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
+										item:FindFirstChildWhichIsA("BasePart").CFrame=campfire.CFrame*CFrame.new(0, 13, 0)
+										RemoteEvents.StopDraggingItem:FireServer(unpack(args))
+									end)
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+	end)
+
+	local AutoEat = false
+	local AutoEatPercentage = 70
+	section4:addToggle("Auto Eat",false,function(bool)
+		AutoEat = bool
+		if AutoEat then
+			notify("Auto eat when hunger bar is lower than " .. AutoEatPercentage .."%")
+		end
+	end)
+
+	section4:addSlider("Auto eat when hunger bar dropped to:", 70, 0, 100, function(value)
+		AutoEatPercentage = value
+	end)
+
+	local hungerBar = player:WaitForChild("PlayerGui"):WaitForChild("Interface"):WaitForChild("StatBars"):WaitForChild("HungerBar"):WaitForChild("Bar")
+	local remoteConsume = RemoteEvents:WaitForChild("RequestConsumeItem")
+	local autoEatFoods = {"Cooked Steak", "Cooked Morsel", "Cooked Ribs", "Berry", "Corn", "Carrot", "Apple","Pumpkin"}
+
+	task.spawn(function()
+		while task.wait() do
+			if AutoEat then
+				if hungerBar.Size.X.Scale <= (AutoEatPercentage/100) then
+					repeat
+						local currentHunger = hungerBar.Size.X.Scale
+
+						local available = {}
+						for _, item in ipairs(workspace:WaitForChild("Items"):GetChildren()) do
+							if item.Name and table.find(autoEatFoods, item.Name) then
+								table.insert(available, item)
+								print("Found available food item: ", item.Name)
+							end
+						end
+
+						if #available > 0 then
+							local food = available[math.random(1, #available)]
+							if food then
+								pcall(function()
+									remoteConsume:InvokeServer(food)
+								end)
+							end
+						else
+							warn("No available food found in inventory.")
+							break -- Stop trying if no food
+						end
+
+						task.wait(1) -- Wait for GUI to reflect update
+
+					until hungerBar.Size.X.Scale >= 0.99 or not autoEatHPEnabled
+				end
+			end
+		end
+	end)
+
+	section5:addButton("Convert materials only",function()
 		if workspace.Structures:FindFirstChild("Biofuel Processor") then
 			for _, item in pairs(workspace.Items:GetChildren()) do
 				if not item:FindFirstChild("ChestLid") and not item:FindFirstChild("AnvilFront") and not item:FindFirstChild("AnvilBase") and not item:FindFirstChild("AnvilBack") then
@@ -2890,9 +3192,9 @@ local function NNNITFMain()
 							pcall(function()
 								task.wait(.1)
 								local args = {item}
-								game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
+								RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
 								item:FindFirstChildWhichIsA("BasePart").CFrame=workspace.Structures:FindFirstChild("Biofuel Processor").Part.CFrame*CFrame.new(0, 2, 0)
-								game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
+								RemoteEvents.StopDraggingItem:FireServer(unpack(args))
 							end)
 						end
 					end
@@ -2903,7 +3205,7 @@ local function NNNITFMain()
 		end
 	end)
 
-	section4:addButton("Update Item List",function()
+	section5:addButton("Update Item List",function()
 		for _, item in pairs(workspace.Items:GetChildren()) do
 			if item:FindFirstChildWhichIsA("BasePart") then
 				if not seenNames[item.Name] then -- Check if name hasn't been seen
@@ -2918,8 +3220,8 @@ local function NNNITFMain()
 		end
 		table.insert(tempItemsBFP, "Select item to scrap") table.insert(tempItemsBFP, "")
 		for _, name in ipairs(tempItemsBFP) do
-			if game:GetService("CoreGui")["DogeHub V2"].Main["Bring Items"]["BioFuel Processor"].Container.Dropdown.Search.TextBox.Text == name then
-				section4:updateDropdown(name,"Select item to convert",uniqueItems,function(BioFuelProcessorConvert1)
+			if game:GetService("CoreGui")["DogeHub V2"].Main["Items"]["BioFuel Processor"].Container.Dropdown.Search.TextBox.Text == name then
+				section5:updateDropdown(name,"Select item to convert",uniqueItems,function(BioFuelProcessorConvert1)
 					print("Selected: " .. ScrapperBioFuelProcessorConvert1scrap1)
 					notify("Item Selected: " .. BioFuelProcessorConvert1)
 					BioFuelProcessorConvert = BioFuelProcessorConvert1
@@ -2928,13 +3230,13 @@ local function NNNITFMain()
 		end
 	end)
 
-	section4:addDropdown("Select item to convert",uniqueItems,function(BioFuelProcessorConvert1)
+	section5:addDropdown("Select item to convert",uniqueItems,function(BioFuelProcessorConvert1)
 		print("Selected: " .. BioFuelProcessorConvert1)
 		notify("Item Selected: " .. BioFuelProcessorConvert1)
 		BioFuelProcessorConvert = BioFuelProcessorConvert1
 	end)
 
-	section4:addButton("Convert item",function()
+	section5:addButton("Convert item",function()
 		if workspace.Structures:FindFirstChild("Biofuel Processor") then
 			for _, item in pairs(workspace.Items:GetChildren()) do
 				if not item:FindFirstChild("ChestLid") and not item:FindFirstChild("AnvilFront") and not item:FindFirstChild("AnvilBase") and not item:FindFirstChild("AnvilBack") then
@@ -2942,9 +3244,9 @@ local function NNNITFMain()
 						pcall(function()
 							task.wait()
 							local args = {item}
-							game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
+							RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
 							item:FindFirstChildWhichIsA("BasePart").CFrame=workspace.Structures:FindFirstChild("Biofuel Processor").Part.CFrame*CFrame.new(0, 2, 0)
-							game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
+							RemoteEvents.StopDraggingItem:FireServer(unpack(args))
 						end)
 					end
 				end
@@ -2954,7 +3256,7 @@ local function NNNITFMain()
 		end
 	end)
 
-	section4:addButton("Convert Everything",function()
+	section5:addButton("Convert Everything",function()
 		if workspace.Structures:FindFirstChild("Biofuel Processor") then
 			local player = game.Players.LocalPlayer
 			local ScreenGuiK = Instance.new("ScreenGui")
@@ -3041,9 +3343,9 @@ local function NNNITFMain()
 								pcall(function()
 									task.wait()
 									local args = {item}
-									game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
+									RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
 									item:FindFirstChildWhichIsA("BasePart").CFrame=workspace.Structures:FindFirstChild("Biofuel Processor").Part.CFrame*CFrame.new(0, 2, 0)
-									game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
+									RemoteEvents.StopDraggingItem:FireServer(unpack(args))
 								end)
 							end
 						end
@@ -3091,27 +3393,6 @@ local function NNNITFMain()
 		end
 	end)
 
-	local BurnBioFuel = false
-	section4:addToggle("Auto Burn BioFuel",false,function(bool)
-		BurnBioFuel = bool
-	end)
-	game:GetService('RunService').Stepped:connect(function()
-		if BurnBioFuel then
-			for _, item in pairs(workspace.Items:GetChildren()) do
-				if not item:FindFirstChild("ChestLid") and not item:FindFirstChild("AnvilFront") and not item:FindFirstChild("AnvilBase") and not item:FindFirstChild("AnvilBack") then
-					if item.Name == "Biofuel" then
-						task.wait()
-						local args = {item}
-						game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
-						item:FindFirstChildWhichIsA("BasePart").CFrame=campfire.CFrame*CFrame.new(0, 5, 0)
-						game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
-					end
-				end
-			end
-		end
-	end)
-
-
 	-- forth page
 	local page4 = NoobieDoge:addPage("Mobs", 97521755974659)
 	local section1 = page4:addSection("Kill Aura")
@@ -3135,6 +3416,11 @@ local function NNNITFMain()
 		if MobsKillAura then
 			notify("Hold weapon to activate")
 		end
+	end)
+
+	local KillAuraRadius = 200
+	section1:addSlider("Kill Aura Radius", 200, 1, 200, function(value)
+		KillAuraRadius = value
 	end)
 
 	local Hitboxsizenum
@@ -3210,21 +3496,37 @@ local function NNNITFMain()
 	end)
 
 	task.spawn(function()
-		while task.wait(.01) do
+		while task.wait() do
 			if MobsKillAura then
-				for _, mob in pairs(workspace.Characters:GetChildren()) do
-					if mob.Name ~= "Lost Child" and mob.Name ~= "Lost Child2" and mob.Name ~= "Lost Child3" and mob.Name ~= "Lost Child4" and not mob:FindFirstChild("Cosmetic") and (not mob:FindFirstChild("Default") or mob.Name == "Alien") then
-						if mob:FindFirstChild("HumanoidRootPart") then
-							local character = player.Character 
-							if not character or not character:FindFirstChild("HumanoidRootPart") then return end
-							local distance = (character.HumanoidRootPart.Position - mob.HumanoidRootPart.Position).Magnitude
-							axe = findAxe()
-							if distance < 200 and axe then 
-								-- Simple single attack per detection, no infinite loops
-								game:GetService("ReplicatedStorage").RemoteEvents.ToolDamageObject:InvokeServer(mob, player.Inventory[axe.Name])
+				local character = player.Character or player.CharacterAdded:Wait()
+				local hrp = character:FindFirstChild("HumanoidRootPart")
+				if hrp then
+					local tool, damageID = getAnyToolWithDamageID()
+					if tool and damageID then
+						equipTool(tool)
+						for _, mob in ipairs(Workspace.Characters:GetChildren()) do
+							if mob:IsA("Model") then
+								local part = mob:FindFirstChildWhichIsA("BasePart")
+								if part and (part.Position - hrp.Position).Magnitude <= KillAuraRadius then
+									pcall(function()
+										RemoteEvents.ToolDamageObject:InvokeServer(
+											mob,
+											tool,
+											damageID,
+											CFrame.new(part.Position)
+										)
+									end)
+								end
 							end
 						end
+
+						task.wait(0.04)
+					else
+						warn("No supported tool found in inventory")
+						task.wait(1)
 					end
+				else
+					task.wait(0.5)
 				end
 			end
 		end
@@ -3267,65 +3569,77 @@ local function NNNITFMain()
 
 	-- fifth page
 	local page5 = NoobieDoge:addPage("Trees", 97521755974659)
-	local section1 = page5:addSection("Log Farm")
+	local section1 = page5:addSection("Log Aura")
 
 	local AutoChopTree = false
-	section1:addToggle("Log Farm",false,function(bool)
+	section1:addToggle("Log Aura",false,function(bool)
 		AutoChopTree = bool
-		notify("Hold axe to activate")
+		if AutoChopTree then
+			notify("Auto Chopping Wood")
+		end
 	end)
-	local badTrees = {}
-	task.spawn(function()
-		while true do
-			if AutoChopTree then
-				local trees = {}
-				for _, obj in pairs(workspace:GetDescendants()) do
-					if obj.Name == "Trunk" and obj.Parent and obj.Parent.Name == "Small Tree" then
-						local distance = (obj.Position - Vector3.new(0, 0, 0)).Magnitude
-						if distance > 50 and not badTrees[obj:GetFullName()] then
-							table.insert(trees, obj)
-						end
-					end
-				end
 
-				table.sort(trees, function(a, b)
-					return (a.Position - player.Character.HumanoidRootPart.Position).Magnitude <
-						(b.Position - player.Character.HumanoidRootPart.Position).Magnitude
-				end)
+	local LogAuraRadius = 200
+	section1:addSlider("Log Aura Radius", 200, 1, 200, function(value)
+		LogAuraRadius = value
+	end)
 
-				for _, trunk in ipairs(trees) do
-					if not AutoChopTree then break end
-					player.Character:PivotTo(trunk.CFrame + Vector3.new(0, 3, 0))
-					axe = findAxe()
-					task.wait(0.1)
-					local startTime = tick()
-					while AutoChopTree and trunk and trunk.Parent and trunk.Parent.Name == "Small Tree" do
-						if player.Character:FindFirstChild("ToolHandle") and axe then
-							mouse1click()
-							task.wait(0.2)
-							if tick() - startTime > 12 then
-								badTrees[trunk:GetFullName()] = true
-								break
-							end
-						else
-							--[[if player.Inventory:FindFirstChild("Good Axe") then
-								player.Character.Humanoid:EquipTool(player.Inventory:FindFirstChild("Good Axe"))
-							elseif player.Inventory:FindFirstChild("Old Axe") then
-								player.Character.Humanoid:EquipTool(player.Inventory:FindFirstChild("Old Axe"))
-							elseif player.Inventory:FindFirstChild("Ice Axe") then
-								player.Character.Humanoid:EquipTool(player.Inventory:FindFirstChild("Ice Axe"))
-							elseif player.Inventory:FindFirstChild("Strong Axe") then
-								player.Character.Humanoid:EquipTool(player.Inventory:FindFirstChild("Strong Axe"))
-							elseif player.Inventory:FindFirstChild("Chainsaw") then
-								player.Character.Humanoid:EquipTool(player.Inventory:FindFirstChild("Chainsaw"))
-							end]]
-							task.wait()
-						end
-					end
-					task.wait()
+	local function getAllSmallTrees()
+		local trees = {}
+		local function scan(folder)
+			for _, obj in ipairs(folder:GetChildren()) do
+				if obj:IsA("Model") and obj.Name == "Small Tree" then
+					table.insert(trees, obj)
 				end
 			end
-			task.wait(.5)
+		end
+
+		local map = Workspace:FindFirstChild("Map")
+		if map then
+			if map:FindFirstChild("Foliage") then scan(map.Foliage) end
+			if map:FindFirstChild("Landmarks") then scan(map.Landmarks) end
+		end
+		return trees
+	end
+
+	local function findTrunk(tree)
+		for _, part in ipairs(tree:GetDescendants()) do
+			if part:IsA("BasePart") and part.Name == "Trunk" then return part end
+		end
+	end
+
+	local badTrees = {}
+	task.spawn(function()
+		while task.wait() do
+			if AutoChopTree then
+				local character = player.Character or player.CharacterAdded:Wait()
+				local hrp = character:FindFirstChild("HumanoidRootPart")
+				if hrp then
+					local tool, damageID = getAnyToolWithDamageID()
+					if tool and damageID then
+						equipTool(tool)
+						for _, tree in ipairs(getAllSmallTrees()) do
+							local trunk = findTrunk(tree)
+							if trunk and (trunk.Position - hrp.Position).Magnitude <= LogAuraRadius then
+								pcall(function()
+									RemoteEvents.ToolDamageObject:InvokeServer(
+										tree,
+										tool,
+										damageID,
+										CFrame.new(trunk.Position)
+									)
+								end)
+							end
+						end
+						task.wait()
+					else
+						warn("No supported tool found in inventory")
+						task.wait(1)
+					end
+				else
+					task.wait(0.5)
+				end
+			end
 		end
 	end)
 
@@ -3362,9 +3676,9 @@ local function NNNITFMain()
 					pcall(function()
 						task.wait()
 						local args = {item}
-						game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
+						RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
 						item:FindFirstChildWhichIsA("BasePart").CFrame=workspace.Map.Landmarks[hh2].Functional.TouchZone.CFrame*CFrame.new(0, 2, 0)
-						game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
+						RemoteEvents.StopDraggingItem:FireServer(unpack(args))
 					end)
 				end
 			end
@@ -3380,9 +3694,9 @@ local function NNNITFMain()
 								task.wait()
 								player.Character.HumanoidRootPart.CFrame = workspace.Map.Landmarks[item1].Functional.TouchZone.CFrame*CFrame.new(0, 2, 0)
 								local args = {item}
-								game:GetService("ReplicatedStorage").RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
+								RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
 								item:FindFirstChildWhichIsA("BasePart").CFrame=workspace.Map.Landmarks[item1].Functional.TouchZone.CFrame*CFrame.new(0, 2, 0)
-								game:GetService("ReplicatedStorage").RemoteEvents.StopDraggingItem:FireServer(unpack(args))
+								RemoteEvents.StopDraggingItem:FireServer(unpack(args))
 							end)
 						end
 					end
@@ -3496,7 +3810,13 @@ local function NNNITFMain()
 			Hitboxsizenum = false
 			ShowHitbox = false
 			EnableHitboxChange = false
-			BurnBioFuel = false
+			AutoBurnFuel = false
+			AutoScrapItems = false
+			AutoScrapItemsM = true
+			AutoScrapItemsW = true
+			AutoScrapItemsG = true
+			AutoCook = false
+			AutoEat = false
 			AutoChopTree = false
 			wait()
 			for i,library in pairs(game:GetService("CoreGui"):GetChildren()) do
