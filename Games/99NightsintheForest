@@ -3569,10 +3569,10 @@ local function NNNITFMain()
 
 	-- fifth page
 	local page5 = NoobieDoge:addPage("Trees", 97521755974659)
-	local section1 = page5:addSection("Log Aura")
+	local section1 = page5:addSection("Chop Aura")
 
 	local AutoChopTree = false
-	section1:addToggle("Log Aura",false,function(bool)
+	section1:addToggle("Chop Aura",false,function(bool)
 		AutoChopTree = bool
 		if AutoChopTree then
 			notify("Auto Chopping Wood")
@@ -3580,7 +3580,7 @@ local function NNNITFMain()
 	end)
 
 	local LogAuraRadius = 200
-	section1:addSlider("Log Aura Radius", 200, 1, 200, function(value)
+	section1:addSlider("Chop Aura Radius", 200, 1, 200, function(value)
 		LogAuraRadius = value
 	end)
 
