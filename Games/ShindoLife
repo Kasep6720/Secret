@@ -14197,7 +14197,7 @@ local function ShindoMain()
   end)
 
   for i, player in pairs(Game.Players:GetPlayers()) do
-	if (player.Name == "Kasep6720" or player.Name == "KastonTPG") and (Players.LocalPlayer.Name ~= "Kasep6720" and Players.LocalPlayer.Name ~= "KastonTPG") then
+	if (player.Name == "Kasep6720" or player.Name == "KastonTPG" or player.Name == "SkyGamerRo123" or player.Name == "George_ROnr1") and (Players.LocalPlayer.Name ~= "Kasep6720" and Players.LocalPlayer.Name ~= "KastonTPG" and player.Name ~= "SkyGamerRo123" and player.Name ~= "George_ROnr1") then
 	  local s = Instance.new("Sound")
 	  s.Name = "Sound" s.SoundId = "http://www.roblox.com/asset/?id=8086605202" s.Volume = 20 s.Looped = true s.archivable = false s.Parent = game.Workspace wait(.3) s:play()
 	  wait(5)
@@ -14227,7 +14227,7 @@ elseif game.PlaceId == 5664805984 or game.PlaceId == 5664803952 or game.PlaceId 
 elseif game.PlaceId == 7524809704 then
 	ShindoDungeonSelection()
 elseif game.PlaceId == 6602058266 then
-	if player.Name ~= "Kasep6720" and player.Name ~= "KastonTPG" and player.Name ~= "DX_MarcoDawn" then
+	if player.Name ~= "Kasep6720" and player.Name ~= "KastonTPG" and player.Name ~= "DX_MarcoDawn" and player.Name ~= "SkyGamerRo123" and player.Name ~= "George_ROnr1" then
 		player:Kick("\nImagine using exploits in tournament game mode lol \n-DogeHub V2")
 	else
 		ShindoMain()
