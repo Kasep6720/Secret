@@ -3587,6 +3587,7 @@ local function NNNITFMain()
 
 	local originalTreeCFramesSmall = {}
 	local originalTreeCFramesBig = {}
+	local originalTreeCFramesSnowySmall = {}
 	local originalTreeCFramesDead = {}
 	local treesBrought = false
 
@@ -3624,6 +3625,24 @@ local function NNNITFMain()
 			if map:FindFirstChild("Landmarks") then scan(map.Landmarks) end
 		end
 		return treesBig
+	end
+
+	local function getAllSnowySmallTrees()
+		local treesSnowySmall = {}
+		local function scan(folder)
+			for _, obj in ipairs(folder:GetChildren()) do
+				if obj:IsA("Model") and obj.Name == "Snowy Small Tree" then
+					table.insert(treesSnowySmall, obj)
+				end
+			end
+		end
+
+		local map = Workspace:FindFirstChild("Map")
+		if map then
+			if map:FindFirstChild("Foliage") then scan(map.Foliage) end
+			if map:FindFirstChild("Landmarks") then scan(map.Landmarks) end
+		end
+		return treesSnowySmall
 	end
 
 	local function getAllDeadTrees()
@@ -3712,6 +3731,37 @@ local function NNNITFMain()
 		treesBroughtBig = false
 	end
 
+	local function bringAllTreesSnowySmall()
+		local target = CFrame.new(player.Character.HumanoidRootPart.Position + player.Character.HumanoidRootPart.CFrame.LookVector * 10)
+		for _, tree in ipairs(getAllSnowySmallTrees()) do
+			local trunk = findTrunk(tree)
+			if trunk then
+				if not originalTreeCFramesSnowySmall[tree] then originalTreeCFramesSnowySmall[tree] = trunk.CFrame end
+				tree.PrimaryPart = trunk
+				trunk.Anchored = false
+				trunk.CanCollide = false
+				--task.wait()
+				tree:SetPrimaryPartCFrame(target + Vector3.new(math.random(-5,5), 0, math.random(-5,5)))
+				trunk.Anchored = true
+			end
+		end
+		treesBroughtSnowySmall = true
+	end
+
+	local function restoreTreesSnowySmall()
+		for tree, cframe in pairs(originalTreeCFramesSnowySmall) do
+			local trunk = findTrunk(tree)
+			if trunk then
+				tree.PrimaryPart = trunk
+				tree:SetPrimaryPartCFrame(cframe)
+				trunk.Anchored = true
+				trunk.CanCollide = true
+			end
+		end
+		originalTreeCFramesSnowySmall = {}
+		treesBroughtSnowySmall = false
+	end
+
 	local function bringAllTreesDead()
 		local target = CFrame.new(player.Character.HumanoidRootPart.Position + player.Character.HumanoidRootPart.CFrame.LookVector * 20)
 		for _, tree in ipairs(getAllDeadTrees()) do
@@ -3760,6 +3810,16 @@ local function NNNITFMain()
 			bringAllTreesBig()
 		elseif not BringtreesBig and treesBroughtBig then
 			restoreTreesBig()
+		end
+	end)
+
+	local BringtreesSnowySmall = false
+	section2:addToggle("Bring All Snowy Small Trees",false,function(bool)
+		BringtreesSnowySmall = bool
+		if BringtreesSnowySmall and not treesBroughtSnowySmall then
+			bringAllTreesSnowySmall()
+		elseif not BringtreesSnowySmall and treesBroughtSnowySmall then
+			restoreTreesSnowySmall()
 		end
 	end)
 
@@ -3933,6 +3993,8 @@ local function NNNITFMain()
 			if not BringtreesSmall and treesBroughtSmall then restoreTreesSmall() end
 			BringtreesBig = false
 			if not BringtreesBig and treesBroughtBig then restoreTreesBig() end
+			BringtreesSnowySmall = false
+			if not BringtreesSnowySmall and treesBroughtSnowySmall then restoreTreesSnowySmall()end
 			BringtreesDead = false
 			if not BringtreesDead and treesBroughtDead then restoreTreesDead() end
 			wait()
