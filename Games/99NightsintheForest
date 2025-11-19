@@ -3570,6 +3570,7 @@ local function NNNITFMain()
 	-- fifth page
 	local page5 = NoobieDoge:addPage("Trees", 97521755974659)
 	local section1 = page5:addSection("Chop Aura")
+	local section2 = page5:addSection("Bring Trees")
 
 	local AutoChopTree = false
 	section1:addToggle("Chop Aura",false,function(bool)
@@ -3584,12 +3585,17 @@ local function NNNITFMain()
 		LogAuraRadius = value
 	end)
 
+	local originalTreeCFramesSmall = {}
+	local originalTreeCFramesBig = {}
+	local originalTreeCFramesDead = {}
+	local treesBrought = false
+
 	local function getAllSmallTrees()
-		local trees = {}
+		local treesSmall = {}
 		local function scan(folder)
 			for _, obj in ipairs(folder:GetChildren()) do
 				if obj:IsA("Model") and obj.Name == "Small Tree" then
-					table.insert(trees, obj)
+					table.insert(treesSmall, obj)
 				end
 			end
 		end
@@ -3599,7 +3605,43 @@ local function NNNITFMain()
 			if map:FindFirstChild("Foliage") then scan(map.Foliage) end
 			if map:FindFirstChild("Landmarks") then scan(map.Landmarks) end
 		end
-		return trees
+		return treesSmall
+	end
+
+	local function getAllBigTrees()
+		local treesBig = {}
+		local function scan(folder)
+			for _, obj in ipairs(folder:GetChildren()) do
+				if obj:IsA("Model") and (obj.Name == "TreeBig1" or obj.Name == "TreeBig2" or obj.Name == "TreeBig3") then
+					table.insert(treesBig, obj)
+				end
+			end
+		end
+
+		local map = Workspace:FindFirstChild("Map")
+		if map then
+			if map:FindFirstChild("Foliage") then scan(map.Foliage) end
+			if map:FindFirstChild("Landmarks") then scan(map.Landmarks) end
+		end
+		return treesBig
+	end
+
+	local function getAllDeadTrees()
+		local treesDead = {}
+		local function scan(folder)
+			for _, obj in ipairs(folder:GetChildren()) do
+				if obj:IsA("Model") and (obj.Name == "Dead Tree1" or obj.Name == "Dead Tree2" or obj.Name == "Dead Tree3") then
+					table.insert(treesDead, obj)
+				end
+			end
+		end
+
+		local map = Workspace:FindFirstChild("Map")
+		if map then
+			if map:FindFirstChild("Foliage") then scan(map.Foliage) end
+			if map:FindFirstChild("Landmarks") then scan(map.Landmarks) end
+		end
+		return treesDead
 	end
 
 	local function findTrunk(tree)
@@ -3607,6 +3649,129 @@ local function NNNITFMain()
 			if part:IsA("BasePart") and part.Name == "Trunk" then return part end
 		end
 	end
+
+	local function bringAllTreesSmall()
+		local target = CFrame.new(player.Character.HumanoidRootPart.Position + player.Character.HumanoidRootPart.CFrame.LookVector * 10)
+		for _, tree in ipairs(getAllSmallTrees()) do
+			local trunk = findTrunk(tree)
+			if trunk then
+				if not originalTreeCFramesSmall[tree] then originalTreeCFramesSmall[tree] = trunk.CFrame end
+				tree.PrimaryPart = trunk
+				trunk.Anchored = false
+				trunk.CanCollide = false
+				--task.wait()
+				tree:SetPrimaryPartCFrame(target + Vector3.new(math.random(-5,5), 0, math.random(-5,5)))
+				trunk.Anchored = true
+			end
+		end
+		treesBroughtSmall = true
+	end
+
+	local function restoreTreesSmall()
+		for tree, cframe in pairs(originalTreeCFramesSmall) do
+			local trunk = findTrunk(tree)
+			if trunk then
+				tree.PrimaryPart = trunk
+				tree:SetPrimaryPartCFrame(cframe)
+				trunk.Anchored = true
+				trunk.CanCollide = true
+			end
+		end
+		originalTreeCFramesSmall = {}
+		treesBroughtSmall = false
+	end
+
+	local function bringAllTreesBig()
+		local target = CFrame.new(player.Character.HumanoidRootPart.Position + player.Character.HumanoidRootPart.CFrame.LookVector * 40)
+		for _, tree in ipairs(getAllBigTrees()) do
+			local trunk = findTrunk(tree)
+			if trunk then
+				if not originalTreeCFramesBig[tree] then originalTreeCFramesBig[tree] = trunk.CFrame end
+				tree.PrimaryPart = trunk
+				trunk.Anchored = false
+				trunk.CanCollide = false
+				--task.wait()
+				tree:SetPrimaryPartCFrame(target + Vector3.new(math.random(-5,10), 20, math.random(-5,10)))
+				trunk.Anchored = true
+			end
+		end
+		treesBroughtBig = true
+	end
+
+	local function restoreTreesBig()
+		for tree, cframe in pairs(originalTreeCFramesBig) do
+			local trunk = findTrunk(tree)
+			if trunk then
+				tree.PrimaryPart = trunk
+				tree:SetPrimaryPartCFrame(cframe)
+				trunk.Anchored = true
+				trunk.CanCollide = true
+			end
+		end
+		originalTreeCFramesBig = {}
+		treesBroughtBig = false
+	end
+
+	local function bringAllTreesDead()
+		local target = CFrame.new(player.Character.HumanoidRootPart.Position + player.Character.HumanoidRootPart.CFrame.LookVector * 20)
+		for _, tree in ipairs(getAllDeadTrees()) do
+			local trunk = findTrunk(tree)
+			if trunk then
+				if not originalTreeCFramesDead[tree] then originalTreeCFramesDead[tree] = trunk.CFrame end
+				tree.PrimaryPart = trunk
+				trunk.Anchored = false
+				trunk.CanCollide = false
+				--task.wait()
+				tree:SetPrimaryPartCFrame(target + Vector3.new(math.random(-5,5), 0, math.random(-5,5)))
+				trunk.Anchored = true
+			end
+		end
+		treesBroughtDead = true
+	end
+
+	local function restoreTreesDead()
+		for tree, cframe in pairs(originalTreeCFramesDead) do
+			local trunk = findTrunk(tree)
+			if trunk then
+				tree.PrimaryPart = trunk
+				tree:SetPrimaryPartCFrame(cframe)
+				trunk.Anchored = true
+				trunk.CanCollide = true
+			end
+		end
+		originalTreeCFramesDead = {}
+		treesBroughtDead = false
+	end
+
+	local BringtreesSmall = false
+	section2:addToggle("Bring All Small Trees",false,function(bool)
+		BringtreesSmall = bool
+		if BringtreesSmall and not treesBroughtSmall then
+			bringAllTreesSmall()
+		elseif not BringtreesSmall and treesBroughtSmall then
+			restoreTreesSmall()
+		end
+	end)
+
+	local BringtreesBig = false
+	section2:addToggle("Bring All Big Trees",false,function(bool)
+		BringtreesBig = bool
+		if BringtreesBig and not treesBroughtBig then
+			bringAllTreesBig()
+		elseif not BringtreesBig and treesBroughtBig then
+			restoreTreesBig()
+		end
+	end)
+
+	local BringtreesDead = false
+	section2:addToggle("Bring All Dead Trees",false,function(bool)
+		BringtreesDead = bool
+		if BringtreesDead and not treesBroughtDead then
+			bringAllTreesDead()
+		elseif not BringtreesDead and treesBroughtDead then
+			restoreTreesDead()
+		end
+	end)
 
 	local badTrees = {}
 	task.spawn(function()
@@ -3647,62 +3812,8 @@ local function NNNITFMain()
 	local page6 = NoobieDoge:addPage("Events", 97521755974659)
 	local section1 = page6:addSection("Halloween")
 
-	local hh = {}
-	local function findhh()
-		for _, house in pairs(workspace.Map.Landmarks:GetChildren()) do
-			if string.find(house.Name, "Halloween House") then
-				table.insert(hh,house.Name)
-			end
-		end
-	end
-	findhh()
-	local hh2
-	section1:addDropdown("Halloween House",hh,function(hh1)
-		print("Selected: " .. hh1)
-		notify("House Selected: " .. hh1)
-		hh2 = hh1
-	end)
-
-	section1:addButton("Teleport to House",function()
-		pcall(function()
-			player.Character.HumanoidRootPart.CFrame = workspace.Map.Landmarks[hh2].Functional.TouchZone.CFrame*CFrame.new(0, 2, 0)
-		end)
-	end)
-
-	section1:addButton("Test1",function()
-		for _, item in pairs(workspace.Items:GetChildren()) do
-			if not item:FindFirstChild("ChestLid") and not item:FindFirstChild("AnvilFront") and not item:FindFirstChild("AnvilBase") and not item:FindFirstChild("AnvilBack") then
-				if item.Name == "Halloween Candle" then
-					pcall(function()
-						task.wait()
-						local args = {item}
-						RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
-						item:FindFirstChildWhichIsA("BasePart").CFrame=workspace.Map.Landmarks[hh2].Functional.TouchZone.CFrame*CFrame.new(0, 2, 0)
-						RemoteEvents.StopDraggingItem:FireServer(unpack(args))
-					end)
-				end
-			end
-		end
-	end)
-	section1:addButton("Test2",function()
-		for _, item in pairs(workspace.Items:GetChildren()) do
-			if not item:FindFirstChild("ChestLid") and not item:FindFirstChild("AnvilFront") and not item:FindFirstChild("AnvilBase") and not item:FindFirstChild("AnvilBack") then
-				if item.Name == "Halloween Candle" then
-					for _, item1 in pairs(workspace.Map.Landmarks:GetChildren()) do
-						if item1.Functional.Lighting.Window.PointLight.Enabled ~= true then
-							pcall(function()
-								task.wait()
-								player.Character.HumanoidRootPart.CFrame = workspace.Map.Landmarks[item1].Functional.TouchZone.CFrame*CFrame.new(0, 2, 0)
-								local args = {item}
-								RemoteEvents.RequestStartDraggingItem:FireServer(unpack(args))
-								item:FindFirstChildWhichIsA("BasePart").CFrame=workspace.Map.Landmarks[item1].Functional.TouchZone.CFrame*CFrame.new(0, 2, 0)
-								RemoteEvents.StopDraggingItem:FireServer(unpack(args))
-							end)
-						end
-					end
-				end
-			end
-		end
+	section1:addButton("Halloween Event Ended",function()
+		notify("Event ended")
 	end)
 
 	-- last page
@@ -3818,6 +3929,12 @@ local function NNNITFMain()
 			AutoCook = false
 			AutoEat = false
 			AutoChopTree = false
+			BringtreesSmall = false
+			if not BringtreesSmall and treesBroughtSmall then restoreTreesSmall() end
+			BringtreesBig = false
+			if not BringtreesBig and treesBroughtBig then restoreTreesBig() end
+			BringtreesDead = false
+			if not BringtreesDead and treesBroughtDead then restoreTreesDead() end
 			wait()
 			for i,library in pairs(game:GetService("CoreGui"):GetChildren()) do
 				if library.Name == "DogeHub V2" then
