@@ -542,7 +542,7 @@ TextLabel2.Text = [[
 
 	If you don't know the code names for the clothing or element or bloodline, press the green "?" button
 
-	You still need enough RC to purchase the stuff you've changed.]]
+	You still need enough RC to purchase the stuff you've changed. (The actual price may be 1.5x or even 2x of the displayed price)]]
 TextLabel2.TextSize = 40
 TextLabel2.TextColor3 = Color3.fromRGB(0, 0, 0)
 TextLabel2.TextScaled = false
