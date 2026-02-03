@@ -156,17 +156,45 @@ function DISABLE_UNBREAKABLE_BLOCKS()
 	end
   end
 end
-function NPCKEELAURA()
-    if not players or not players.Character then return end
-    for _, npc in ipairs(npcFolder:GetChildren()) do
-        if npc.ClassName == "Model" and npc:FindFirstChild("npctype") and npc.Name:match("npc") and npc:FindFirstChild("HumanoidRootPart") and npc:FindFirstChild("Humanoid") and npc.Head.CFrame.Y > -1000 then
-            local humanoid = npc.Humanoid
-            while humanoid.Health > 0 and (keel and keel2) do
-                humanoid.Health = 0
-                task.wait(0.1) -- Prevent freezing
+
+local npcFolder = workspace:WaitForChild("npc")  -- Confirmed Shindo Life NPC path
+local KILL_RANGE = 0  -- studs – adjust as needed (0 = unlimited)
+local SCAN_DELAY = 0.08  -- Fast but anti-lag
+-- Your toggle vars (keel & keel2 from original)
+local keel = false
+local keel2 = false
+-- Connection for smooth looping (better than while true)
+local connection
+local function isValidNPC(npc)
+    return npc:IsA("Model")
+        and npc:FindFirstChild("npctype")
+        and npc.Name:lower():find("npc")
+        and npc:FindFirstChild("HumanoidRootPart")
+        and npc:FindFirstChild("Humanoid")
+        and npc.Head.CFrame.Y > -1000
+        and npc.Humanoid.Health > 0
+end
+local function NPCKEELAURA()
+    if connection then connection:Disconnect() end
+    connection = game:GetService("RunService").Heartbeat:Connect(function()
+        if not (keel and keel2) then return end
+        local rootPart = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
+        if not rootPart then return end
+        for _, npc in ipairs(npcFolder:GetChildren()) do
+            if isValidNPC(npc) then
+                local npcRoot = npc.HumanoidRootPart
+                local distance = (rootPart.Position - npcRoot.Position).Magnitude
+                if KILL_RANGE == 0 or distance <= KILL_RANGE then
+                    pcall(function()
+                        npc.Humanoid.Health = 0
+						npc.Humanoid.Health = 0
+						npc.Humanoid.Health = 0
+						npc.Humanoid.Health = 0  -- Instant kill (works client-side in Shindo Life)
+                    end)
+                end
             end
         end
-    end
+    end)
 end
 function INFMDON()
   local mode = player.Character.combat.mode
@@ -443,221 +471,237 @@ end
 local tptospawnaftergetscroll = true
 local ScrollWebHook = "Webhook"
 local function SCROLLFARM()
-  for i,v in pairs(game.workspace.GLOBALTIME:GetChildren()) do
-	if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
-	  print(v.Name .. " spawned")
-	  local scrollA = v.sh:FindFirstChild("invoke")
-	  pcall(function()
-		if player.statz.unlocked:FindFirstChild(v.Name) or player.statz.unlocked:FindFirstChild(v.Name .. "scroll") then
-		  v:Destroy()
-		  notify("Ignored Scroll: " .. v.Name)
-		  if ScrollWebHook ~= "Webhook" then
-			request({ 
-			  Url = ScrollWebHook, 
-			  Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 6666666,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-				  ["description"] = "Spawned but ignored since already owned",
-				}}      
-			  })
-			})
-		  end
-		else
-		  player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
-		  fireclickdetector(v.sh:FindFirstChildWhichIsA("ClickDetector"))
-		  notify("Unlocked Scroll: " .. v.Name)
-		  player.Character.combat.update:FireServer("mouse1",true)
-		  if tptospawnaftergetscroll == true then
-			wait()
-			if game:GetService("Workspace"):FindFirstChild("SpawnLocation") then
-			  player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").SpawnLocation.CFrame
-			elseif game.PlaceId == 4601350809 then
-			  player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(11465.656, 798, -17152.453))
-			elseif game.PlaceId == 4601350656 then
-			  player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(17207.344, 790, -18651.334))
+	for i,v in pairs(game.workspace.GLOBALTIME:GetChildren()) do
+		if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
+			print(v.Name .. " spawned")
+			local scrollA = v.sh:FindFirstChild("invoke")
+			if player.statz.unlocked:FindFirstChild(v.Name) or player.statz.unlocked:FindFirstChild(v.Name .. "scroll") then
+				pcall(function()
+					v:Destroy()
+					notify("Ignored Scroll: " .. v.Name)
+					warn("Ignored Scroll: " .. v.Name)
+					if ScrollWebHook ~= "Webhook" then
+						request({ 
+						Url = ScrollWebHook, 
+						Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 6666666,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+							["description"] = "Spawned but ignored since already owned",
+							}}      
+						})
+						})
+					end
+				end)
 			else
-			  for i,v in pairs(workspace.spawns:GetChildren()) do
-				if v.Name ~= "DOGE" then
-				  player.Character.HumanoidRootPart.CFrame = v.CFrame
-				end
-			  end
+				pcall(function()
+					player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
+					fireclickdetector(v.sh:FindFirstChildWhichIsA("ClickDetector"))
+					notify("Unlocked Scroll: " .. v.Name)
+					warn("Unlocked Scroll: " .. v.Name)
+					player.Character.combat.update:FireServer("mouse1",true)
+					if tptospawnaftergetscroll == true then
+						wait()
+						if game:GetService("Workspace"):FindFirstChild("SpawnLocation") then
+							player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").SpawnLocation.CFrame
+						elseif game.PlaceId == 4601350809 then
+							player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(11465.656, 798, -17152.453))
+						elseif game.PlaceId == 4601350656 then
+							player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(17207.344, 790, -18651.334))
+						else
+							for i,v in pairs(workspace.spawns:GetChildren()) do
+								if v.Name ~= "DOGE" then
+									player.Character.HumanoidRootPart.CFrame = v.CFrame
+								end
+							end
+						end
+					end
+					if ScrollWebHook ~= "Webhook" then
+						request({ 
+						Url = ScrollWebHook, 
+						Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 4444444,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+							["description"] = "Spawned and collected!",
+							}}      
+						})
+						})
+					end
+				end)
 			end
-		  end
-		  if ScrollWebHook ~= "Webhook" then
-			request({ 
-			  Url = ScrollWebHook, 
-			  Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 4444444,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-				  ["description"] = "Spawned and collected!",
-				}}      
-			  })
-			})
-		  end
 		end
-	  end)
 	end
-  end
 end
 
 local function SCROLLFARM1()
-  for i,v in pairs(game.workspace:GetChildren()) do
-	if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
-	  print(v.Name .. " spawned in workspace")
-	  local scrollA = v.sh:FindFirstChild("invoke")
-	  pcall(function()
-		if player.statz.unlocked:FindFirstChild(v.Name) or player.statz.unlocked:FindFirstChild(v.Name .. "scroll") then
-		  v:Destroy()
-		  notify("Ignored Scroll: " .. v.Name)
-		  if ScrollWebHook ~= "Webhook" then
-			request({ 
-			  Url = ScrollWebHook, 
-			  Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 6666666,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-				  ["description"] = "Spawned but ignored since already owned",
-				}}      
-			  })
-			})
-		  end
-		else
-		  player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
-		  fireclickdetector(v.sh:FindFirstChildWhichIsA("ClickDetector"))
-		  notify("Unlocked Scroll: " .. v.Name)
-		  player.Character.combat.update:FireServer("mouse1",true)
-		  if tptospawnaftergetscroll == true then
-			wait()
-			if game:GetService("Workspace"):FindFirstChild("SpawnLocation") then
-			  player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").SpawnLocation.CFrame
-			elseif game.PlaceId == 4601350809 then
-			  player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(11465.656, 798, -17152.453))
-			elseif game.PlaceId == 4601350656 then
-			  player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(17207.344, 790, -18651.334))
+	for i,v in pairs(game.workspace:GetChildren()) do
+		if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
+			print(v.Name .. " spawned in workspace")
+			local scrollA = v.sh:FindFirstChild("invoke")
+			if player.statz.unlocked:FindFirstChild(v.Name) or player.statz.unlocked:FindFirstChild(v.Name .. "scroll") then
+				pcall(function()
+					v:Destroy()
+					notify("Ignored Scroll: " .. v.Name)
+					warn("Ignored Scroll: " .. v.Name)
+					if ScrollWebHook ~= "Webhook" then
+						request({ 
+						Url = ScrollWebHook, 
+						Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 6666666,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+							["description"] = "Spawned but ignored since already owned",
+							}}      
+						})
+						})
+					end
+				end)
 			else
-			  for i,v in pairs(workspace.spawns:GetChildren()) do
-				if v.Name ~= "DOGE" then
-				  player.Character.HumanoidRootPart.CFrame = v.CFrame
-				end
-			  end
+				pcall(function()
+					player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
+					fireclickdetector(v.sh:FindFirstChildWhichIsA("ClickDetector"))
+					notify("Unlocked Scroll: " .. v.Name)
+					warn("Unlocked Scroll: " .. v.Name)
+					player.Character.combat.update:FireServer("mouse1",true)
+					if tptospawnaftergetscroll == true then
+						wait()
+						if game:GetService("Workspace"):FindFirstChild("SpawnLocation") then
+							player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").SpawnLocation.CFrame
+						elseif game.PlaceId == 4601350809 then
+							player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(11465.656, 798, -17152.453))
+						elseif game.PlaceId == 4601350656 then
+							player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(17207.344, 790, -18651.334))
+						else
+							for i,v in pairs(workspace.spawns:GetChildren()) do
+								if v.Name ~= "DOGE" then
+									player.Character.HumanoidRootPart.CFrame = v.CFrame
+								end
+							end
+						end
+					end
+					if ScrollWebHook ~= "Webhook" then
+						request({ 
+						Url = ScrollWebHook, 
+						Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 4444444,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+							["description"] = "Spawned and collected!",
+							}}      
+						})
+						})
+					end
+				end)
 			end
-		  end
-		  if ScrollWebHook ~= "Webhook" then
-			request({ 
-			  Url = ScrollWebHook, 
-			  Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 4444444,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-				  ["description"] = "Spawned and collected!",
-				}}      
-			  })
-			})
-		  end
 		end
-	  end)
 	end
-  end
 end
 
 local function SCROLLFARM2()
-  for i,v in pairs(game.workspace.GLOBALTIME:GetChildren()) do
-	if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
-	  print(v.Name .. " spawned")
-	  local scrollA = v.sh:FindFirstChild("invoke")
-	  pcall(function()
-		if player.statz.unlocked:FindFirstChild(v.Name) or player.statz.unlocked:FindFirstChild(v.Name .. "scroll") then
-		  v:Destroy()
-		  notify("Ignored Scroll: " .. v.Name)
-		  if ScrollWebHook ~= "Webhook" then
-			request({ 
-			  Url = ScrollWebHook, 
-			  Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 6666666,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-				  ["description"] = "Spawned but ignored since already owned",
-				}}      
-			  })
-			})
-		  end
-		else
-		  player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
-		  scrollA:FireServer(player)
-		  fireclickdetector(v.sh.ClickDetector)
-		  notify("Unlocked Scroll: " .. v.Name)
-		  player.Character.combat.update:FireServer("mouse1",true)
-		  if tptospawnaftergetscroll == true then
-			wait()
-			if game:GetService("Workspace"):FindFirstChild("SpawnLocation") then
-			  player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").SpawnLocation.CFrame
-			elseif game.PlaceId == 4601350809 then
-			  player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(11465.656, 798, -17152.453))
-			elseif game.PlaceId == 4601350656 then
-			  player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(17207.344, 790, -18651.334))
+	for i,v in pairs(game.workspace.GLOBALTIME:GetChildren()) do
+		if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
+			print(v.Name .. " spawned")
+			local scrollA = v.sh:FindFirstChild("invoke")
+			if player.statz.unlocked:FindFirstChild(v.Name) or player.statz.unlocked:FindFirstChild(v.Name .. "scroll") then
+				pcall(function()
+					v:Destroy()
+					notify("Ignored Scroll: " .. v.Name)
+					warn("Ignored Scroll: " .. v.Name)
+					if ScrollWebHook ~= "Webhook" then
+						request({ 
+						Url = ScrollWebHook, 
+						Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 6666666,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+							["description"] = "Spawned but ignored since already owned",
+							}}      
+						})
+						})
+					end
+				end)
 			else
-			  for i,v in pairs(workspace.spawns:GetChildren()) do
-				if v.Name ~= "DOGE" then
-				  player.Character.HumanoidRootPart.CFrame = v.CFrame
-				end
-			  end
+				pcall(function()
+					player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
+					scrollA:FireServer(player)
+					fireclickdetector(v.sh.ClickDetector)
+					notify("Unlocked Scroll: " .. v.Name)
+					warn("Unlocked Scroll: " .. v.Name)
+					player.Character.combat.update:FireServer("mouse1",true)
+					if tptospawnaftergetscroll == true then
+						wait()
+						if game:GetService("Workspace"):FindFirstChild("SpawnLocation") then
+							player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").SpawnLocation.CFrame
+						elseif game.PlaceId == 4601350809 then
+							player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(11465.656, 798, -17152.453))
+						elseif game.PlaceId == 4601350656 then
+							player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(17207.344, 790, -18651.334))
+						else
+							for i,v in pairs(workspace.spawns:GetChildren()) do
+								if v.Name ~= "DOGE" then
+								player.Character.HumanoidRootPart.CFrame = v.CFrame
+								end
+							end
+						end
+					end
+					if ScrollWebHook ~= "Webhook" then
+						request({ 
+						Url = ScrollWebHook, 
+						Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 4444444,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+							["description"] = "Spawned and collected!",
+							}}      
+						})
+						})
+					end
+				end)
 			end
-		  end
-		  if ScrollWebHook ~= "Webhook" then
-			request({ 
-			  Url = ScrollWebHook, 
-			  Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 4444444,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-				  ["description"] = "Spawned and collected!",
-				}}      
-			  })
-			})
-		  end
 		end
-	  end)
 	end
-  end
 end
 
 local function SCROLLFARM3()
-  for i,v in pairs(game.workspace:GetChildren()) do
-	if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
-	  print(v.Name .. " spawned in workspace")
-	  local scrollA = v.sh:FindFirstChild("invoke")
-	  pcall(function()
-		if player.statz.unlocked:FindFirstChild(v.Name) or player.statz.unlocked:FindFirstChild(v.Name .. "scroll") then
-		  v:Destroy()
-		  notify("Ignored Scroll: " .. v.Name)
-		  if ScrollWebHook ~= "Webhook" then
-			request({ 
-			  Url = ScrollWebHook, 
-			  Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 6666666,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-				  ["description"] = "Spawned but ignored since already owned",
-				}}      
-			  })
-			})
-		  end
-		else
-		  player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
-		  scrollA:FireServer(player)
-		  fireclickdetector(v.sh.ClickDetector)
-		  notify("Unlocked Scroll: " .. v.Name)
-		  player.Character.combat.update:FireServer("mouse1",true)
-		  if tptospawnaftergetscroll == true then
-			wait()
-			if game:GetService("Workspace"):FindFirstChild("SpawnLocation") then
-			  player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").SpawnLocation.CFrame
-			elseif game.PlaceId == 4601350809 then
-			  player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(11465.656, 798, -17152.453))
-			elseif game.PlaceId == 4601350656 then
-			  player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(17207.344, 790, -18651.334))
+	for i,v in pairs(game.workspace:GetChildren()) do
+		if v.ClassName == "Model" and v:FindFirstChild("sh") and v.sh.Position.Y > -1000 and v.sh.Position.Y < 2000 then
+			print(v.Name .. " spawned in workspace")
+			local scrollA = v.sh:FindFirstChild("invoke")
+			if player.statz.unlocked:FindFirstChild(v.Name) or player.statz.unlocked:FindFirstChild(v.Name .. "scroll") then
+				pcall(function()
+					v:Destroy()
+					notify("Ignored Scroll: " .. v.Name)
+					warn("Ignored Scroll: " .. v.Name)
+					if ScrollWebHook ~= "Webhook" then
+						request({ 
+						Url = ScrollWebHook, 
+						Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 6666666,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+							["description"] = "Spawned but ignored since already owned",
+							}}      
+						})
+						})
+					end
+				end)
 			else
-			  for i,v in pairs(workspace.spawns:GetChildren()) do
-				if v.Name ~= "DOGE" then
-				  player.Character.HumanoidRootPart.CFrame = v.CFrame
-				end
-			  end
+				pcall(function()
+					player.Character.HumanoidRootPart.CFrame=v.sh.CFrame+Vector3.new(0,0,0)
+					scrollA:FireServer(player)
+					fireclickdetector(v.sh.ClickDetector)
+					notify("Unlocked Scroll: " .. v.Name)
+					warn("Unlocked Scroll: " .. v.Name)
+					player.Character.combat.update:FireServer("mouse1",true)
+					if tptospawnaftergetscroll == true then
+						wait()
+						if game:GetService("Workspace"):FindFirstChild("SpawnLocation") then
+							player.Character.HumanoidRootPart.CFrame=game:GetService("Workspace").SpawnLocation.CFrame
+						elseif game.PlaceId == 4601350809 then
+							player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(11465.656, 798, -17152.453))
+						elseif game.PlaceId == 4601350656 then
+							player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(17207.344, 790, -18651.334))
+						else
+							for i,v in pairs(workspace.spawns:GetChildren()) do
+								if v.Name ~= "DOGE" then
+								player.Character.HumanoidRootPart.CFrame = v.CFrame
+								end
+							end
+						end
+					end
+					if ScrollWebHook ~= "Webhook" then
+						request({ 
+						Url = ScrollWebHook, 
+						Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 4444444,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+							["description"] = "Spawned and collected!",
+							}}      
+						})
+						})
+					end
+				end)
 			end
-		  end
-		  if ScrollWebHook ~= "Webhook" then
-			request({ 
-			  Url = ScrollWebHook, 
-			  Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = v.Name,["color"] = 4444444,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-				  ["description"] = "Spawned and collected!",
-				}}      
-			  })
-			})
-		  end
 		end
-	  end)
 	end
-  end
 end
 
 local bosslist = {}
@@ -11340,87 +11384,87 @@ local function ShindoMain()
 	end
   end)
 
-  -- load
-  NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
+	-- load
+	NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
 
-  -- second page
-  local page2 = NoobieDoge:addPage("Misc", 5012544693)
-  local section1 = page2:addSection("Game Functions")
-  local section2 = page2:addSection("Scroll Snipe")
-  local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
+	-- second page
+	local page2 = NoobieDoge:addPage("Misc", 5012544693)
+	local section1 = page2:addSection("Game Functions")
+	local section2 = page2:addSection("Scroll Snipe")
+	local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
 
-  section1:addButton("SuperHuman",function()
-	section1:updateButton("SuperHuman","SuperHuman (Activated)")
-	SUPERHUMAN()
-  end)
+	section1:addButton("SuperHuman",function()
+		section1:updateButton("SuperHuman","SuperHuman (Activated)")
+		SUPERHUMAN()
+	end)
 
-  section1:addButton("Infinite MD",function()
-	INFMDON()
-  end)
+	section1:addButton("Infinite MD",function()
+		INFMDON()
+	end)
 
-  section1:addButton("God Mode",function()
-	GODMODE()
-  end)
+	section1:addButton("God Mode",function()
+		GODMODE()
+	end)
 
-  game:GetService('RunService').Stepped:connect(function()
-	if not player.Character:FindFirstChild("fakehealth") then
-	  if game:GetService("CoreGui").DevConsoleMaster.DevConsoleWindow.Visible == true then
-		notify("Just ignore the errors lol")
-	  end
-	end
-  end)
+	game:GetService('RunService').Stepped:connect(function()
+		if not player.Character:FindFirstChild("fakehealth") then
+			if game:GetService("CoreGui").DevConsoleMaster.DevConsoleWindow.Visible == true then
+				notify("Just ignore the errors lol")
+			end
+		end
+	end)
 
-  local disableincombattoggle = true
-  section1:addToggle("Disable In Combat",true,function(bool)
-	disableincombattoggle = not disableincombattoggle
-	if disableincombattoggle then
-	  DisabledInCombat = bool
-	  notify("Disabled In Combat")
-	else
-	  notify("In Combat will be re-activated after a while")
-	end
-  end)
-  DisabledInCombat = true
+	local disableincombattoggle = true
+	section1:addToggle("Disable In Combat",true,function(bool)
+		disableincombattoggle = not disableincombattoggle
+		if disableincombattoggle then
+			DisabledInCombat = bool
+			notify("Disabled In Combat")
+		else
+			notify("In Combat will be re-activated after a while")
+		end
+	end)
+	DisabledInCombat = true
 
-  game:GetService('RunService').Stepped:connect(function()
-	if DisabledInCombat then
-	  player.incombat.Value = false
-	end
-  end)
+	game:GetService('RunService').Stepped:connect(function()
+		if DisabledInCombat then
+			player.incombat.Value = false
+		end
+	end)
 
-  local unbreakableblockstoggle = false
-  section1:addToggle("Unbreakable Blocks",false,function()
-	unbreakableblockstoggle = not unbreakableblockstoggle
-	notify("Unbreakable Blocks: "..tostring(unbreakableblockstoggle),true)
-	if unbreakableblockstoggle then
-	  UNBREAKABLE_BLOCKS()
-	else
-	  DISABLE_UNBREAKABLE_BLOCKS()
-	end
-  end)
+	local unbreakableblockstoggle = false
+	section1:addToggle("Unbreakable Blocks",false,function()
+		unbreakableblockstoggle = not unbreakableblockstoggle
+		notify("Unbreakable Blocks: "..tostring(unbreakableblockstoggle),true)
+		if unbreakableblockstoggle then
+			UNBREAKABLE_BLOCKS()
+		else
+			DISABLE_UNBREAKABLE_BLOCKS()
+		end
+	end)
 
-  player.CharacterAdded:Connect(function()
-	if unbreakableblockstoggle then
-	  wait(2.5)
-	  UNBREAKABLE_BLOCKS()
-	end
-  end)
+	player.CharacterAdded:Connect(function()
+		if unbreakableblockstoggle then
+			wait(2.5)
+			UNBREAKABLE_BLOCKS()
+		end
+	end)
 
-  section1:addToggle("NPC Kill Aura",false,function(bool)
-	keel = bool
-	notify("NPC Kill Aura: "..tostring(keel),true)
-  end)
-  game:GetService('RunService').Stepped:connect(function()
-	if keel then
-	  NPCKEELAURA()
-	end
-  end)
+	section1:addToggle("NPC Kill Aura",false,function(bool)
+		keel = bool
+		notify("NPC Kill Aura: "..tostring(keel),true)
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if keel then
+			NPCKEELAURA()
+		end
+	end)
 
-  section1:addButton("Old No CD Method",function()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/HDTerebi/Shindo-Life/main/No%20CD%20Method"))()
-	wait()
-	notify("Equip a beast mode, mode up, type '!spirit', press the ']' button, done!")
-  end)
+	section1:addButton("Old No CD Method",function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/HDTerebi/Shindo-Life/main/No%20CD%20Method"))()
+		wait()
+		notify("Equip a beast mode, mode up, type '!spirit', press the ']' button, done!")
+	end)
 
   local scrollfarm
   section2:addToggle("Scroll Snipe",false, function(bool)
@@ -12031,6 +12075,9 @@ local function ShindoMain()
 
   section5:addButton("External Shindo Bloodline Changer",function()
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/NoobieDoge/DogeHub/Separated/ShindoBloodlineChanger"))()
+  end)
+  section5:addButton("External Shindo RC Shop Changer",function()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/NoobieDoge/DogeHub/Separated/ShindoRCShopChanger"))()
   end)
 
   -- sixth page
@@ -12708,62 +12755,41 @@ local function ShindoMain()
 	stopautorankwhenthisnumberreached = 500
   end
 
-  section7:addToggle("Auto Chi",false, function(bool)
-	auchi = bool
-  end)
-  game:GetService('RunService').Stepped:connect(function()
-	if auchi then
-	  local args = {[1] = "addstat",[2] = "chakra",[3] = 1}
-	  player.startevent:FireServer(unpack(args))
-	  local args = {[1] = "addstat",[2] = "chakra",[3] = 17}
-	  player.startevent:FireServer(unpack(args))
-	  local args = {[1] = "addstat",[2] = "chakra",[3] = 288}
-	  player.startevent:FireServer(unpack(args))
-	  wait(.25)
+	local statsToAuto = {
+		{ toggleVar = "chakra",  label = "Chi"     },
+		{ toggleVar = "ninjutsu", label = "Nin"    },
+		{ toggleVar = "taijutsu", label = "Tai"    },
+		{ toggleVar = "health",   label = "Health" },
+	}
+
+	local enabled = {}   -- will store true/false for each stat
+
+	local increments = {1, 17, 288}
+
+	local function fireAllAmounts(statName)
+		for _, amt in ipairs(increments) do
+			player.startevent:FireServer("addstat", statName, amt)
+		end
 	end
-  end)
-  section7:addToggle("Auto Nin",false, function(bool)
-	aunin = bool
-  end)
-  game:GetService('RunService').Stepped:connect(function()
-	if aunin then
-	  local args = {[1] = "addstat",[2] = "ninjutsu",[3] = 1}
-	  player.startevent:FireServer(unpack(args))
-	  local args = {[1] = "addstat",[2] = "ninjutsu",[3] = 17}
-	  player.startevent:FireServer(unpack(args))
-	  local args = {[1] = "addstat",[2] = "ninjutsu",[3] = 288}
-	  player.startevent:FireServer(unpack(args))
-	  wait(.25)
+
+	-- Single loop – fires every active stat
+	game:GetService("RunService").Stepped:Connect(function()
+		if player.statz.mastery.points.Value ~= 0 then
+			for _, entry in ipairs(statsToAuto) do
+				if enabled[entry.toggleVar] then
+					fireAllAmounts(entry.toggleVar)
+				end
+			end
+			wait(0.25)
+		end
+	end)
+
+	-- Create toggles
+	for _, entry in ipairs(statsToAuto) do
+		section7:addToggle("Auto " .. entry.label, false, function(state)
+			enabled[entry.toggleVar] = state
+		end)
 	end
-  end)
-  section7:addToggle("Auto Tai",false, function(bool)
-	autai = bool
-  end)
-  game:GetService('RunService').Stepped:connect(function()
-	if autai then
-	  local args = {[1] = "addstat",[2] = "taijutsu",[3] = 1}
-	  player.startevent:FireServer(unpack(args))
-	  local args = {[1] = "addstat",[2] = "taijutsu",[3] = 17}
-	  player.startevent:FireServer(unpack(args))
-	  local args = {[1] = "addstat",[2] = "taijutsu",[3] = 288}
-	  player.startevent:FireServer(unpack(args))
-	  wait(.25)
-	end
-  end)
-  section7:addToggle("Auto Health",false, function(bool)
-	auhp = bool
-  end)
-  game:GetService('RunService').Stepped:connect(function()
-	if auhp then
-	  local args = {[1] = "addstat",[2] = "health",[3] = 1}
-	  player.startevent:FireServer(unpack(args))
-	  local args = {[1] = "addstat",[2] = "health",[3] = 17}
-	  player.startevent:FireServer(unpack(args))
-	  local args = {[1] = "addstat",[2] = "health",[3] = 288}
-	  player.startevent:FireServer(unpack(args))
-	  wait(.25)
-	end
-  end)
 
   local function QUEST()
 	for i,v in pairs(workspace.missiongivers:GetChildren()) do
