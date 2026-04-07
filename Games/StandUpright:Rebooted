@@ -5757,13 +5757,13 @@ local function StandUprightRebootedMain()
 	end)
 
 	player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(27865.48, 32, -127.38))
-	task.wait(.25)
+	task.wait(.21)
 	player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(3326, 98, -121))
-	task.wait(.25)
+	task.wait(.21)
 	player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(11953.5, -2, -4497))
-	task.wait(.25)
+	task.wait(.21)
 	player.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-5308.646, -450, -3815.39))
-	task.wait(.25)
+	task.wait(.21)
 	player.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").PlayerSpawns.SpawnLocation.CFrame
 
     gameplaceexecuted = "Stand Upright: Rebooted"
