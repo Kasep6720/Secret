@@ -4832,7 +4832,8 @@ local function StandUprightRebootedMain()
 	local section1 = page8:addSection("Stand Farm")
 	local section2 = page8:addSection("Stand Selection")
 	local section3 = page8:addSection("Attribute Selection")
-	local section4 = page8:addSection("Others")
+	local section4 = page8:addSection("Options")
+	local section5 = page8:addSection("Webhook")
 
 	local StandFarm = false
 	section1:addToggle("Stand Farm",false, function(bool)
@@ -4947,6 +4948,18 @@ local function StandUprightRebootedMain()
 		SFRoka = bool
 	end)
 
+	local SFWebhook = false
+	section5:addTextbox("Stand Farm Webhook URL","Webhook",function(ScrollWebHook1)
+		notify("WebHook URL: " .. ScrollWebHook1)
+		SFWebhook = ScrollWebHook1
+	end)
+
+	local SFWebhookyes = false
+	section5:addToggle("Enable Webhook",false, function(bool)
+		SFWebhookyes = bool
+		notify("Enable WebHook: " .. tostring(SFWebhookyes))
+	end)
+
 	local function FARMSTANDS()
 		pcall(function()
 			if SFRoka and not player.Backpack:FindFirstChild("Rokakaka") and not player.Character:FindFirstChild("Rokakaka") then
@@ -5035,24 +5048,64 @@ local function StandUprightRebootedMain()
 						FARMSTANDS()
 					else
 						notify("You've got "  .. player.Data.Stand.Value .. " ,Attribute: " .. player.Data.Attri.Value)
+						if SFWebhookyes and SFWebhook ~= "Webhook" then
+							request({ 
+								Url = SFWebhook, 
+								Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = "DogeHubV2 Stand Farm",["color"] = 4444444,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+									["description"] = "Stand Obtained: " .. player.Data.Stand.Value .. " \nAttribute: " .. player.Data.Attri.Value,
+									}}      
+								})
+							})
+							task.wait(300)
+						end
 					end
 				elseif SFSC then
 					if player.Data.Stand.Value ~= SC1 and player.Data.Stand.Value ~= SC2 and player.Data.Stand.Value ~= SC3 and player.Data.Stand.Value ~= SC4 and player.Data.Stand.Value ~= SC5 then
 						FARMSTANDS()
 					else
 						notify("You've got "  .. player.Data.Stand.Value)
+						if SFWebhookyes and SFWebhook ~= "Webhook" then
+							request({ 
+								Url = SFWebhook, 
+								Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = "DogeHubV2 Stand Farm",["color"] = 4444444,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+									["description"] = "Stand Obtained: " .. player.Data.Stand.Value .. " \nAttribute: " .. player.Data.Attri.Value,
+									}}      
+								})
+							})
+							task.wait(300)
+						end
 					end
 				elseif SFAC then
 					if player.Data.Attri.Value ~= AC1 and player.Data.Attri.Value ~= AC2 and player.Data.Attri.Value ~= AC3 and player.Data.Attri.Value ~= AC4 and player.Data.Attri.Value ~= AC5 then
 						FARMSTANDS()
 					else
 						notify("You've got a "  .. player.Data.Attri.Value .. " Stand")
+						if SFWebhookyes and SFWebhook ~= "Webhook" then
+							request({ 
+								Url = SFWebhook, 
+								Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = "DogeHubV2 Stand Farm",["color"] = 4444444,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+									["description"] = "Stand Obtained: " .. player.Data.Stand.Value .. " \nAttribute: " .. player.Data.Attri.Value,
+									}}      
+								})
+							})
+							task.wait(300)
+						end
 					end
 				elseif SFSCAC then
 					if (player.Data.Stand.Value ~= SC1 and player.Data.Stand.Value ~= SC2 and player.Data.Stand.Value ~= SC3 and player.Data.Stand.Value ~= SC4 and player.Data.Stand.Value ~= SC5) or (player.Data.Attri.Value ~= AC1 and player.Data.Attri.Value ~= AC2 and player.Data.Attri.Value ~= AC3 and player.Data.Attri.Value ~= AC4 and player.Data.Attri.Value ~= AC5) then
 						FARMSTANDS()
 					else
 						notify("You've got "  .. player.Data.Stand.Value .. " ,Attribute: " .. player.Data.Attri.Value)
+						if SFWebhookyes and SFWebhook ~= "Webhook" then
+							request({ 
+								Url = SFWebhook, 
+								Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = "DogeHubV2 Stand Farm",["color"] = 4444444,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+									["description"] = "Stand Obtained: " .. player.Data.Stand.Value .. " \nAttribute: " .. player.Data.Attri.Value,
+									}}      
+								})
+							})
+							task.wait(300)
+						end
 					end
 				else
 					notify("Please scroll down bruh.")
