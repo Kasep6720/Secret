@@ -2391,846 +2391,866 @@ local function ShindoInfSpin()
 
 
   local spins = player.statz.spins.Value
-  game:GetService('RunService').Stepped:connect(function()
-	if StartSpinElm1 == true then
-	  if spins > resetspinswhenthisnumberreached then
-		spins = player.statz.spins.Value
-		elmvalue1 = player.statz.main.element1.Value
-		elmvalue2 = player.statz.main.element2.Value
-		elmvalue3 = player.statz.main.element3.Value
-		elmvalue4 = player.statz.main.element4.Value
+  spawn(function()
+	while task.wait() do
 		if StartSpinElm1 == true then
-		  if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
-			player.startevent:FireServer("spin", "element1")
-			print("Rolled: " .. elmvalue1)
-			wait(1)
+		if spins > resetspinswhenthisnumberreached then
+			spins = player.statz.spins.Value
 			elmvalue1 = player.statz.main.element1.Value
 			elmvalue2 = player.statz.main.element2.Value
 			elmvalue3 = player.statz.main.element3.Value
 			elmvalue4 = player.statz.main.element4.Value
-		  else
-			if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 then
-			  if Autosave == true then
-				datasavedandyoucanredeemcodes = true
-			  end
+			if StartSpinElm1 == true then
+			if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
+				player.startevent:FireServer("spin", "element1")
+				print("Rolled: " .. elmvalue1)
+				wait(1)
+				elmvalue1 = player.statz.main.element1.Value
+				elmvalue2 = player.statz.main.element2.Value
+				elmvalue3 = player.statz.main.element3.Value
+				elmvalue4 = player.statz.main.element4.Value
 			else
-			  StartSpinElm1 = false
-			  writefile(DHV2SL2MMF .. "/StartSpinElm1.txt","false")
-			  if Webhooktrue then
-				if WebhookPingEveryone then
-				  local HTTPService = game:GetService("HttpService")
-				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-				  request({ 
-					Url = WebHook, 
-					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "@everyone",["embeds"] = {{["type"] = "rich",
-					["title"] = "Element obtained in slot 1: ",
-					["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-						["description"] = elmvalue1,
-					  }}      
-					})
-				  })
+				if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 then
+				if Autosave == true then
+					datasavedandyoucanredeemcodes = true
+				end
 				else
-				  local HTTPService = game:GetService("HttpService")
-				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-				  request({ 
-					Url = WebHook, 
-					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
-					["title"] = "Element obtained in slot 1: ",
-					["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-						["description"] = elmvalue1,
-					  }}      
+				StartSpinElm1 = false
+				writefile(DHV2SL2MMF .. "/StartSpinElm1.txt","false")
+				if Webhooktrue then
+					if WebhookPingEveryone then
+					local HTTPService = game:GetService("HttpService")
+					local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+					request({ 
+						Url = WebHook, 
+						Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "@everyone",["embeds"] = {{["type"] = "rich",
+						["title"] = "Element obtained in slot 1: ",
+						["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+							["description"] = elmvalue1,
+						}}      
+						})
 					})
-				  })
-				end
-				if WebhookShowTotalSpinsUsed then
-				  local HTTPService = game:GetService("HttpService")
-				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-				  request({ 
-					Url = WebHook, 
-					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
-					["color"] = 9324245,["fields"] = {{["name"] = "Total spins used: ",["value"] = tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt"))+originalspins-player.statz.spins.Value),["inline"] = true}}}}      
+					else
+					local HTTPService = game:GetService("HttpService")
+					local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+					request({ 
+						Url = WebHook, 
+						Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+						["title"] = "Element obtained in slot 1: ",
+						["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+							["description"] = elmvalue1,
+						}}      
+						})
 					})
-				  })
+					end
+					if WebhookShowTotalSpinsUsed then
+					local HTTPService = game:GetService("HttpService")
+					local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+					request({ 
+						Url = WebHook, 
+						Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+						["color"] = 9324245,["fields"] = {{["name"] = "Total spins used: ",["value"] = tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt"))+originalspins-player.statz.spins.Value),["inline"] = true}}}}      
+						})
+					})
+					end
 				end
-			  end
-			  print("You have got: " .. elmvalue1)
-			  notify("You have got: " .. elmvalue1)
-			  if Autosave == true then
-				datasavedandyoucanredeemcodes = true
-			  end
+				print("You have got: " .. elmvalue1)
+				notify("You have got: " .. elmvalue1)
+				if Autosave == true then
+					datasavedandyoucanredeemcodes = true
+				end
+				end
 			end
-		  end
-		end
-	  else
-		if Autorejoin == true then
-		  --player.statz.spins:Destroy()
-		  if readfile(InfSpinsCount .. "/ResetedSpins.txt") == "false" then
-				writefile(InfSpinsCount .. "/ResetedSpins.txt","true")
 			end
-		  player.startevent:FireServer("band", "\128")
-		  wait()
-		  game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+		else
+			if Autorejoin == true then
+			--player.statz.spins:Destroy()
+			if readfile(InfSpinsCount .. "/ResetedSpins.txt") == "false" then
+					writefile(InfSpinsCount .. "/ResetedSpins.txt","true")
+				end
+			player.startevent:FireServer("band", "\128")
+			wait()
+			game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+			end
 		end
-	  end
+		end
 	end
   end)
 
   local spins = player.statz.spins.Value
-  game:GetService('RunService').Stepped:connect(function()
-	if StartSpinElm2 == true then
-	  if spins > resetspinswhenthisnumberreached then
-		spins = player.statz.spins.Value
-		elmvalue1 = player.statz.main.element1.Value
-		elmvalue2 = player.statz.main.element2.Value
-		elmvalue3 = player.statz.main.element3.Value
-		elmvalue4 = player.statz.main.element4.Value
+  spawn(function()
+	while task.wait() do
 		if StartSpinElm2 == true then
-		  if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
-			player.startevent:FireServer("spin", "element2")
-			print("Rolled: " .. elmvalue2)
-			wait(1)
+		if spins > resetspinswhenthisnumberreached then
+			spins = player.statz.spins.Value
 			elmvalue1 = player.statz.main.element1.Value
 			elmvalue2 = player.statz.main.element2.Value
 			elmvalue3 = player.statz.main.element3.Value
 			elmvalue4 = player.statz.main.element4.Value
-		  else
-			if elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 then
-			  if Autosave == true then
-				datasavedandyoucanredeemcodes = true
-			  end
+			if StartSpinElm2 == true then
+			if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
+				player.startevent:FireServer("spin", "element2")
+				print("Rolled: " .. elmvalue2)
+				wait(1)
+				elmvalue1 = player.statz.main.element1.Value
+				elmvalue2 = player.statz.main.element2.Value
+				elmvalue3 = player.statz.main.element3.Value
+				elmvalue4 = player.statz.main.element4.Value
 			else
-			  StartSpinElm2 = false
-			  writefile(DHV2SL2MMF .. "/StartSpinElm2.txt","false")
-			  if Webhooktrue then
-				if WebhookPingEveryone then
-				  local HTTPService = game:GetService("HttpService")
-				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-				  request({ 
-					Url = WebHook, 
-					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "@everyone",["embeds"] = {{["type"] = "rich",
-					["title"] = "Element obtained in slot 2: ",
-					["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-						["description"] = elmvalue2,
-					  }}      
-					})
-				  })
+				if elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 then
+				if Autosave == true then
+					datasavedandyoucanredeemcodes = true
+				end
 				else
-				  local HTTPService = game:GetService("HttpService")
-				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-				  request({ 
-					Url = WebHook, 
-					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
-					["title"] = "Element obtained in slot 2: ",
-					["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-						["description"] = elmvalue2,
-					  }}      
+				StartSpinElm2 = false
+				writefile(DHV2SL2MMF .. "/StartSpinElm2.txt","false")
+				if Webhooktrue then
+					if WebhookPingEveryone then
+					local HTTPService = game:GetService("HttpService")
+					local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+					request({ 
+						Url = WebHook, 
+						Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "@everyone",["embeds"] = {{["type"] = "rich",
+						["title"] = "Element obtained in slot 2: ",
+						["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+							["description"] = elmvalue2,
+						}}      
+						})
 					})
-				  })
-				end
-				if WebhookShowTotalSpinsUsed then
-				  local HTTPService = game:GetService("HttpService")
-				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-				  request({ 
-					Url = WebHook, 
-					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
-					["color"] = 9324245,["fields"] = {{["name"] = "Total spins used: ",["value"] = tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt"))+originalspins-player.statz.spins.Value),["inline"] = true}}}}      
+					else
+					local HTTPService = game:GetService("HttpService")
+					local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+					request({ 
+						Url = WebHook, 
+						Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+						["title"] = "Element obtained in slot 2: ",
+						["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+							["description"] = elmvalue2,
+						}}      
+						})
 					})
-				  })
+					end
+					if WebhookShowTotalSpinsUsed then
+					local HTTPService = game:GetService("HttpService")
+					local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+					request({ 
+						Url = WebHook, 
+						Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+						["color"] = 9324245,["fields"] = {{["name"] = "Total spins used: ",["value"] = tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt"))+originalspins-player.statz.spins.Value),["inline"] = true}}}}      
+						})
+					})
+					end
 				end
-			  end
-			  print("You have got: " .. elmvalue2)
-			  notify("You have got: " .. elmvalue2)
-			  if Autosave == true then
-				datasavedandyoucanredeemcodes = true
-			  end
+				print("You have got: " .. elmvalue2)
+				notify("You have got: " .. elmvalue2)
+				if Autosave == true then
+					datasavedandyoucanredeemcodes = true
+				end
+				end
 			end
-		  end
-		end
-	  else
-		if Autorejoin == true then
-		  --player.statz.spins:Destroy()
-		  if readfile(InfSpinsCount .. "/ResetedSpins.txt") == "false" then
-				writefile(InfSpinsCount .. "/ResetedSpins.txt","true")
 			end
-		  player.startevent:FireServer("band", "\128")
-		  wait()
-		  game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+		else
+			if Autorejoin == true then
+			--player.statz.spins:Destroy()
+			if readfile(InfSpinsCount .. "/ResetedSpins.txt") == "false" then
+					writefile(InfSpinsCount .. "/ResetedSpins.txt","true")
+				end
+			player.startevent:FireServer("band", "\128")
+			wait()
+			game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+			end
 		end
-	  end
+		end
 	end
   end)
 
   local spins = player.statz.spins.Value
-  game:GetService('RunService').Stepped:connect(function()
-	if StartSpinElm3 == true then
-	  if spins > resetspinswhenthisnumberreached then
-		spins = player.statz.spins.Value
-		elmvalue1 = player.statz.main.element1.Value
-		elmvalue2 = player.statz.main.element2.Value
-		elmvalue3 = player.statz.main.element3.Value
-		elmvalue4 = player.statz.main.element4.Value
+  spawn(function()
+	while task.wait() do
 		if StartSpinElm3 == true then
-		  if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
-			player.startevent:FireServer("spin", "element3")
-			print("Rolled: " .. elmvalue3)
-			wait(1)
+		if spins > resetspinswhenthisnumberreached then
+			spins = player.statz.spins.Value
 			elmvalue1 = player.statz.main.element1.Value
 			elmvalue2 = player.statz.main.element2.Value
 			elmvalue3 = player.statz.main.element3.Value
 			elmvalue4 = player.statz.main.element4.Value
-		  else
-			if elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 then
-			  if Autosave == true then
-				datasavedandyoucanredeemcodes = true
-			  end
+			if StartSpinElm3 == true then
+			if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
+				player.startevent:FireServer("spin", "element3")
+				print("Rolled: " .. elmvalue3)
+				wait(1)
+				elmvalue1 = player.statz.main.element1.Value
+				elmvalue2 = player.statz.main.element2.Value
+				elmvalue3 = player.statz.main.element3.Value
+				elmvalue4 = player.statz.main.element4.Value
 			else
-			  StartSpinElm3 = false
-			  writefile(DHV2SL2MMF .. "/StartSpinElm3.txt","false")
-			  if Webhooktrue then
-				if WebhookPingEveryone then
-				  local HTTPService = game:GetService("HttpService")
-				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-				  request({ 
-					Url = WebHook, 
-					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "@everyone",["embeds"] = {{["type"] = "rich",
-					["title"] = "Element obtained in slot 3: ",
-					["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-						["description"] = elmvalue3,
-					  }}      
-					})
-				  })
+				if elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 then
+				if Autosave == true then
+					datasavedandyoucanredeemcodes = true
+				end
 				else
-				  local HTTPService = game:GetService("HttpService")
-				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-				  request({ 
-					Url = WebHook, 
-					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
-					["title"] = "Element obtained in slot 3: ",
-					["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-						["description"] = elmvalue3,
-					  }}      
+				StartSpinElm3 = false
+				writefile(DHV2SL2MMF .. "/StartSpinElm3.txt","false")
+				if Webhooktrue then
+					if WebhookPingEveryone then
+					local HTTPService = game:GetService("HttpService")
+					local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+					request({ 
+						Url = WebHook, 
+						Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "@everyone",["embeds"] = {{["type"] = "rich",
+						["title"] = "Element obtained in slot 3: ",
+						["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+							["description"] = elmvalue3,
+						}}      
+						})
 					})
-				  })
-				end
-				if WebhookShowTotalSpinsUsed then
-				  local HTTPService = game:GetService("HttpService")
-				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-				  request({ 
-					Url = WebHook, 
-					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
-					["color"] = 9324245,["fields"] = {{["name"] = "Total spins used: ",["value"] = tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt"))+originalspins-player.statz.spins.Value),["inline"] = true}}}}      
+					else
+					local HTTPService = game:GetService("HttpService")
+					local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+					request({ 
+						Url = WebHook, 
+						Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+						["title"] = "Element obtained in slot 3: ",
+						["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+							["description"] = elmvalue3,
+						}}      
+						})
 					})
-				  })
+					end
+					if WebhookShowTotalSpinsUsed then
+					local HTTPService = game:GetService("HttpService")
+					local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+					request({ 
+						Url = WebHook, 
+						Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+						["color"] = 9324245,["fields"] = {{["name"] = "Total spins used: ",["value"] = tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt"))+originalspins-player.statz.spins.Value),["inline"] = true}}}}      
+						})
+					})
+					end
 				end
-			  end
-			  print("You have got: " .. elmvalue3)
-			  notify("You have got: " .. elmvalue3)
-			  if Autosave == true then
-				datasavedandyoucanredeemcodes = true
-			  end
+				print("You have got: " .. elmvalue3)
+				notify("You have got: " .. elmvalue3)
+				if Autosave == true then
+					datasavedandyoucanredeemcodes = true
+				end
+				end
 			end
-		  end
-		end
-	  else
-		if Autorejoin == true then
-		  --player.statz.spins:Destroy()
-		  if readfile(InfSpinsCount .. "/ResetedSpins.txt") == "false" then
-				writefile(InfSpinsCount .. "/ResetedSpins.txt","true")
 			end
-		  player.startevent:FireServer("band", "\128")
-		  wait()
-		  game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+		else
+			if Autorejoin == true then
+			--player.statz.spins:Destroy()
+			if readfile(InfSpinsCount .. "/ResetedSpins.txt") == "false" then
+					writefile(InfSpinsCount .. "/ResetedSpins.txt","true")
+				end
+			player.startevent:FireServer("band", "\128")
+			wait()
+			game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+			end
 		end
-	  end
+		end
 	end
   end)
 
   local spins = player.statz.spins.Value
-  game:GetService('RunService').Stepped:connect(function()
-	if StartSpinElm4 == true then
-	  if spins > resetspinswhenthisnumberreached then
-		spins = player.statz.spins.Value
-		elmvalue1 = player.statz.main.element1.Value
-		elmvalue2 = player.statz.main.element2.Value
-		elmvalue3 = player.statz.main.element3.Value
-		elmvalue4 = player.statz.main.element4.Value
+  spawn(function()
+	while task.wait() do
 		if StartSpinElm4 == true then
-		  if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
-			player.startevent:FireServer("spin", "element4")
-			print("Rolled: " .. elmvalue4)
-			wait(1)
+		if spins > resetspinswhenthisnumberreached then
+			spins = player.statz.spins.Value
 			elmvalue1 = player.statz.main.element1.Value
 			elmvalue2 = player.statz.main.element2.Value
 			elmvalue3 = player.statz.main.element3.Value
 			elmvalue4 = player.statz.main.element4.Value
-		  else
-			if elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
-			  if Autosave == true then
-				datasavedandyoucanredeemcodes = true
-			  end
+			if StartSpinElm4 == true then
+			if elmvalue1 ~= a1 and elmvalue1 ~= a2 and elmvalue1 ~= a3 and elmvalue1 ~= a4 and elmvalue1 ~= a5 and elmvalue2 ~= a1 and elmvalue2 ~= a2 and elmvalue2 ~= a3 and elmvalue2 ~= a4 and elmvalue2 ~= a5 and elmvalue3 ~= a1 and elmvalue3 ~= a2 and elmvalue3 ~= a3 and elmvalue3 ~= a4 and elmvalue3 ~= a5 and elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
+				player.startevent:FireServer("spin", "element4")
+				print("Rolled: " .. elmvalue4)
+				wait(1)
+				elmvalue1 = player.statz.main.element1.Value
+				elmvalue2 = player.statz.main.element2.Value
+				elmvalue3 = player.statz.main.element3.Value
+				elmvalue4 = player.statz.main.element4.Value
 			else
-			  StartSpinElm4 = false
-			  writefile(DHV2SL2MMF .. "/StartSpinElm4.txt","false")
-			  if Webhooktrue then
-				if WebhookPingEveryone then
-				  local HTTPService = game:GetService("HttpService")
-				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-				  request({ 
-					Url = WebHook, 
-					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "@everyone",["embeds"] = {{["type"] = "rich",
-					["title"] = "Element obtained in slot 4: ",
-					["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-						["description"] = elmvalue4,
-					  }}      
-					})
-				  })
+				if elmvalue4 ~= a1 and elmvalue4 ~= a2 and elmvalue4 ~= a3 and elmvalue4 ~= a4 and elmvalue4 ~= a5 then
+				if Autosave == true then
+					datasavedandyoucanredeemcodes = true
+				end
 				else
-				  local HTTPService = game:GetService("HttpService")
-				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-				  request({ 
-					Url = WebHook, 
-					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
-					["title"] = "Element obtained in slot 4: ",
-					["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-						["description"] = elmvalue4,
-					  }}      
+				StartSpinElm4 = false
+				writefile(DHV2SL2MMF .. "/StartSpinElm4.txt","false")
+				if Webhooktrue then
+					if WebhookPingEveryone then
+					local HTTPService = game:GetService("HttpService")
+					local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+					request({ 
+						Url = WebHook, 
+						Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "@everyone",["embeds"] = {{["type"] = "rich",
+						["title"] = "Element obtained in slot 4: ",
+						["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+							["description"] = elmvalue4,
+						}}      
+						})
 					})
-				  })
-				end
-				if WebhookShowTotalSpinsUsed then
-				  local HTTPService = game:GetService("HttpService")
-				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-				  request({ 
-					Url = WebHook, 
-					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
-					["color"] = 9324245,["fields"] = {{["name"] = "Total spins used: ",["value"] = tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt"))+originalspins-player.statz.spins.Value),["inline"] = true}}}}      
+					else
+					local HTTPService = game:GetService("HttpService")
+					local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+					request({ 
+						Url = WebHook, 
+						Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+						["title"] = "Element obtained in slot 4: ",
+						["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+							["description"] = elmvalue4,
+						}}      
+						})
 					})
-				  })
+					end
+					if WebhookShowTotalSpinsUsed then
+					local HTTPService = game:GetService("HttpService")
+					local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+					request({ 
+						Url = WebHook, 
+						Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+						["color"] = 9324245,["fields"] = {{["name"] = "Total spins used: ",["value"] = tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt"))+originalspins-player.statz.spins.Value),["inline"] = true}}}}      
+						})
+					})
+					end
 				end
-			  end
-			  print("You have got: " .. elmvalue4)
-			  notify("You have got: " .. elmvalue4)
-			  if Autosave == true then
-				datasavedandyoucanredeemcodes = true
-			  end
+				print("You have got: " .. elmvalue4)
+				notify("You have got: " .. elmvalue4)
+				if Autosave == true then
+					datasavedandyoucanredeemcodes = true
+				end
+				end
 			end
-		  end
-		end
-	  else
-		if Autorejoin == true then
-		  --player.statz.spins:Destroy()
-		  if readfile(InfSpinsCount .. "/ResetedSpins.txt") == "false" then
-				writefile(InfSpinsCount .. "/ResetedSpins.txt","true")
 			end
-		  player.startevent:FireServer("band", "\128")
-		  wait()
-		  game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+		else
+			if Autorejoin == true then
+			--player.statz.spins:Destroy()
+			if readfile(InfSpinsCount .. "/ResetedSpins.txt") == "false" then
+					writefile(InfSpinsCount .. "/ResetedSpins.txt","true")
+				end
+			player.startevent:FireServer("band", "\128")
+			wait()
+			game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+			end
 		end
-	  end
+		end
 	end
   end)
   
   local spins = player.statz.spins.Value
-  game:GetService('RunService').Stepped:connect(function()
-	if AutoSpinBL1 == true then
-	  if spins > resetspinswhenthisnumberreached then
-		spins = player.statz.spins.Value
-		kgvalue1 = player.statz.main.kg1.Value
-		kgvalue2 = player.statz.main.kg2.Value
-		kgvalue3 = player.statz.main.kg3.Value
-		kgvalue4 = player.statz.main.kg4.Value
+  spawn(function()
+	while task.wait() do
 		if AutoSpinBL1 == true then
-		  if kgvalue1 ~= A1 and kgvalue1 ~= A2 and kgvalue1 ~= A3 and kgvalue1 ~= A4 and kgvalue1 ~= A5 and kgvalue2 ~= A1 and kgvalue2 ~= A2 and kgvalue2 ~= A3 and kgvalue2 ~= A4 and kgvalue2 ~= A5 and kgvalue3 ~= A1 and kgvalue3 ~= A2 and kgvalue3 ~= A3 and kgvalue3 ~= A4 and kgvalue3 ~= A5 and kgvalue4 ~= A1 and kgvalue4 ~= A2 and kgvalue4 ~= A3 and kgvalue4 ~= A4 and kgvalue4 ~= A5 then
-			player.startevent:FireServer("spin", "kg1")
-			print("Rolled: " .. kgvalue1)
-			wait(1)
+		if spins > resetspinswhenthisnumberreached then
+			spins = player.statz.spins.Value
 			kgvalue1 = player.statz.main.kg1.Value
 			kgvalue2 = player.statz.main.kg2.Value
 			kgvalue3 = player.statz.main.kg3.Value
 			kgvalue4 = player.statz.main.kg4.Value
-		  else
-			if kgvalue1 ~= A1 and kgvalue1 ~= A2 and kgvalue1 ~= A3 and kgvalue1 ~= A4 and kgvalue1 ~= A5 then
-			  if Autosave == true then
-				datasavedandyoucanredeemcodes = true
-			  end
+			if AutoSpinBL1 == true then
+			if kgvalue1 ~= A1 and kgvalue1 ~= A2 and kgvalue1 ~= A3 and kgvalue1 ~= A4 and kgvalue1 ~= A5 and kgvalue2 ~= A1 and kgvalue2 ~= A2 and kgvalue2 ~= A3 and kgvalue2 ~= A4 and kgvalue2 ~= A5 and kgvalue3 ~= A1 and kgvalue3 ~= A2 and kgvalue3 ~= A3 and kgvalue3 ~= A4 and kgvalue3 ~= A5 and kgvalue4 ~= A1 and kgvalue4 ~= A2 and kgvalue4 ~= A3 and kgvalue4 ~= A4 and kgvalue4 ~= A5 then
+				player.startevent:FireServer("spin", "kg1")
+				print("Rolled: " .. kgvalue1)
+				wait(1)
+				kgvalue1 = player.statz.main.kg1.Value
+				kgvalue2 = player.statz.main.kg2.Value
+				kgvalue3 = player.statz.main.kg3.Value
+				kgvalue4 = player.statz.main.kg4.Value
 			else
-			  AutoSpinBL1 = false
-			  writefile(DHV2SL2MMF .. "/AutoSpinBL1.txt","false")
-			  if Webhooktrue then
-				if WebhookPingEveryone then
-				  local HTTPService = game:GetService("HttpService")
-				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-				  request({ 
-					Url = WebHook, 
-					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "@everyone",["embeds"] = {{["type"] = "rich",
-					["title"] = "Bloodline obtained in slot 1: ",
-					["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-						["description"] = kgvalue1,
-					  }}      
-					})
-				  })
+				if kgvalue1 ~= A1 and kgvalue1 ~= A2 and kgvalue1 ~= A3 and kgvalue1 ~= A4 and kgvalue1 ~= A5 then
+				if Autosave == true then
+					datasavedandyoucanredeemcodes = true
+				end
 				else
-				  local HTTPService = game:GetService("HttpService")
-				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-				  request({ 
-					Url = WebHook, 
-					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
-					["title"] = "Bloodline obtained in slot 1: ",
-					["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-						["description"] = kgvalue1,
-					  }}      
+				AutoSpinBL1 = false
+				writefile(DHV2SL2MMF .. "/AutoSpinBL1.txt","false")
+				if Webhooktrue then
+					if WebhookPingEveryone then
+					local HTTPService = game:GetService("HttpService")
+					local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+					request({ 
+						Url = WebHook, 
+						Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "@everyone",["embeds"] = {{["type"] = "rich",
+						["title"] = "Bloodline obtained in slot 1: ",
+						["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+							["description"] = kgvalue1,
+						}}      
+						})
 					})
-				  })
-				end
-				if WebhookShowTotalSpinsUsed then
-				  local HTTPService = game:GetService("HttpService")
-				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-				  request({ 
-					Url = WebHook, 
-					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
-					["color"] = 9324245,["fields"] = {{["name"] = "Total spins used: ",["value"] = tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt"))+originalspins-player.statz.spins.Value),["inline"] = true}}}}      
+					else
+					local HTTPService = game:GetService("HttpService")
+					local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+					request({ 
+						Url = WebHook, 
+						Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+						["title"] = "Bloodline obtained in slot 1: ",
+						["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+							["description"] = kgvalue1,
+						}}      
+						})
 					})
-				  })
+					end
+					if WebhookShowTotalSpinsUsed then
+					local HTTPService = game:GetService("HttpService")
+					local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+					request({ 
+						Url = WebHook, 
+						Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+						["color"] = 9324245,["fields"] = {{["name"] = "Total spins used: ",["value"] = tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt"))+originalspins-player.statz.spins.Value),["inline"] = true}}}}      
+						})
+					})
+					end
 				end
-			  end
-			  print("You have got: " .. kgvalue1)
-			  notify("You have got: " .. kgvalue1)
-			  if Autosave == true then
-				datasavedandyoucanredeemcodes = true
-			  end
+				print("You have got: " .. kgvalue1)
+				notify("You have got: " .. kgvalue1)
+				if Autosave == true then
+					datasavedandyoucanredeemcodes = true
+				end
+				end
 			end
-		  end
-		end
-	  else
-		if Autorejoin == true then
-		  --player.statz.spins:Destroy()
-		  if readfile(InfSpinsCount .. "/ResetedSpins.txt") == "false" then
-				writefile(InfSpinsCount .. "/ResetedSpins.txt","true")
 			end
-		  player.startevent:FireServer("band", "\128")
-		  wait()
-		  game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+		else
+			if Autorejoin == true then
+			--player.statz.spins:Destroy()
+			if readfile(InfSpinsCount .. "/ResetedSpins.txt") == "false" then
+					writefile(InfSpinsCount .. "/ResetedSpins.txt","true")
+				end
+			player.startevent:FireServer("band", "\128")
+			wait()
+			game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+			end
 		end
-	  end
+		end
 	end
   end)
 
   local spins = player.statz.spins.Value
-  game:GetService('RunService').Stepped:connect(function()
-	if AutoSpinBL2 == true then
-	  if spins > resetspinswhenthisnumberreached then
-		spins = player.statz.spins.Value
-		kgvalue1 = player.statz.main.kg1.Value
-		kgvalue2 = player.statz.main.kg2.Value
-		kgvalue3 = player.statz.main.kg3.Value
-		kgvalue4 = player.statz.main.kg4.Value
+  spawn(function()
+	while task.wait() do
 		if AutoSpinBL2 == true then
-		  if kgvalue1 ~= A1 and kgvalue1 ~= A2 and kgvalue1 ~= A3 and kgvalue1 ~= A4 and kgvalue1 ~= A5 and kgvalue2 ~= A1 and kgvalue2 ~= A2 and kgvalue2 ~= A3 and kgvalue2 ~= A4 and kgvalue2 ~= A5 and kgvalue3 ~= A1 and kgvalue3 ~= A2 and kgvalue3 ~= A3 and kgvalue3 ~= A4 and kgvalue3 ~= A5 and kgvalue4 ~= A1 and kgvalue4 ~= A2 and kgvalue4 ~= A3 and kgvalue4 ~= A4 and kgvalue4 ~= A5 then
-			player.startevent:FireServer("spin", "kg2")
-			print("Rolled: " .. kgvalue2)
-			wait(1)
+		if spins > resetspinswhenthisnumberreached then
+			spins = player.statz.spins.Value
 			kgvalue1 = player.statz.main.kg1.Value
 			kgvalue2 = player.statz.main.kg2.Value
 			kgvalue3 = player.statz.main.kg3.Value
 			kgvalue4 = player.statz.main.kg4.Value
-		  else
-			if kgvalue2 ~= A1 and kgvalue2 ~= A2 and kgvalue2 ~= A3 and kgvalue2 ~= A4 and kgvalue2 ~= A5 then
-			  if Autosave == true then
-				datasavedandyoucanredeemcodes = true
-			  end
+			if AutoSpinBL2 == true then
+			if kgvalue1 ~= A1 and kgvalue1 ~= A2 and kgvalue1 ~= A3 and kgvalue1 ~= A4 and kgvalue1 ~= A5 and kgvalue2 ~= A1 and kgvalue2 ~= A2 and kgvalue2 ~= A3 and kgvalue2 ~= A4 and kgvalue2 ~= A5 and kgvalue3 ~= A1 and kgvalue3 ~= A2 and kgvalue3 ~= A3 and kgvalue3 ~= A4 and kgvalue3 ~= A5 and kgvalue4 ~= A1 and kgvalue4 ~= A2 and kgvalue4 ~= A3 and kgvalue4 ~= A4 and kgvalue4 ~= A5 then
+				player.startevent:FireServer("spin", "kg2")
+				print("Rolled: " .. kgvalue2)
+				wait(1)
+				kgvalue1 = player.statz.main.kg1.Value
+				kgvalue2 = player.statz.main.kg2.Value
+				kgvalue3 = player.statz.main.kg3.Value
+				kgvalue4 = player.statz.main.kg4.Value
 			else
-			  AutoSpinBL2 = false
-			  writefile(DHV2SL2MMF .. "/AutoSpinBL2.txt","false")
-			  if Webhooktrue then
-				if WebhookPingEveryone then
-				  local HTTPService = game:GetService("HttpService")
-				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-				  request({ 
-					Url = WebHook, 
-					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "@everyone",["embeds"] = {{["type"] = "rich",
-					["title"] = "Bloodline obtained in slot 2: ",
-					["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-						["description"] = kgvalue2,
-					  }}      
-					})
-				  })
+				if kgvalue2 ~= A1 and kgvalue2 ~= A2 and kgvalue2 ~= A3 and kgvalue2 ~= A4 and kgvalue2 ~= A5 then
+				if Autosave == true then
+					datasavedandyoucanredeemcodes = true
+				end
 				else
-				  local HTTPService = game:GetService("HttpService")
-				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-				  request({ 
-					Url = WebHook, 
-					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
-					["title"] = "Bloodline obtained in slot 2: ",
-					["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-						["description"] = kgvalue2,
-					  }}      
+				AutoSpinBL2 = false
+				writefile(DHV2SL2MMF .. "/AutoSpinBL2.txt","false")
+				if Webhooktrue then
+					if WebhookPingEveryone then
+					local HTTPService = game:GetService("HttpService")
+					local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+					request({ 
+						Url = WebHook, 
+						Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "@everyone",["embeds"] = {{["type"] = "rich",
+						["title"] = "Bloodline obtained in slot 2: ",
+						["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+							["description"] = kgvalue2,
+						}}      
+						})
 					})
-				  })
-				end
-				if WebhookShowTotalSpinsUsed then
-				  local HTTPService = game:GetService("HttpService")
-				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-				  request({ 
-					Url = WebHook, 
-					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
-					["color"] = 9324245,["fields"] = {{["name"] = "Total spins used: ",["value"] = tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt"))+originalspins-player.statz.spins.Value),["inline"] = true}}}}      
+					else
+					local HTTPService = game:GetService("HttpService")
+					local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+					request({ 
+						Url = WebHook, 
+						Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+						["title"] = "Bloodline obtained in slot 2: ",
+						["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+							["description"] = kgvalue2,
+						}}      
+						})
 					})
-				  })
+					end
+					if WebhookShowTotalSpinsUsed then
+					local HTTPService = game:GetService("HttpService")
+					local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+					request({ 
+						Url = WebHook, 
+						Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+						["color"] = 9324245,["fields"] = {{["name"] = "Total spins used: ",["value"] = tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt"))+originalspins-player.statz.spins.Value),["inline"] = true}}}}      
+						})
+					})
+					end
 				end
-			  end
-			  print("You have got: " .. kgvalue2)
-			  notify("You have got: " .. kgvalue2)
-			  if Autosave == true then
-				datasavedandyoucanredeemcodes = true
-			  end
+				print("You have got: " .. kgvalue2)
+				notify("You have got: " .. kgvalue2)
+				if Autosave == true then
+					datasavedandyoucanredeemcodes = true
+				end
+				end
 			end
-		  end
-		end
-	  else
-		if Autorejoin == true then
-		  --player.statz.spins:Destroy()
-		  if readfile(InfSpinsCount .. "/ResetedSpins.txt") == "false" then
-				writefile(InfSpinsCount .. "/ResetedSpins.txt","true")
 			end
-		  player.startevent:FireServer("band", "\128")
-		  wait()
-		  game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+		else
+			if Autorejoin == true then
+			--player.statz.spins:Destroy()
+			if readfile(InfSpinsCount .. "/ResetedSpins.txt") == "false" then
+					writefile(InfSpinsCount .. "/ResetedSpins.txt","true")
+				end
+			player.startevent:FireServer("band", "\128")
+			wait()
+			game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+			end
 		end
-	  end
+		end
 	end
   end)
 
   local spins = player.statz.spins.Value
-  game:GetService('RunService').Stepped:connect(function()
-	if AutoSpinBL3 == true then
-	  if spins > resetspinswhenthisnumberreached then
-		spins = player.statz.spins.Value
-		kgvalue1 = player.statz.main.kg1.Value
-		kgvalue2 = player.statz.main.kg2.Value
-		kgvalue3 = player.statz.main.kg3.Value
-		kgvalue4 = player.statz.main.kg4.Value
+  spawn(function()
+	while task.wait() do
 		if AutoSpinBL3 == true then
-		  if kgvalue1 ~= A1 and kgvalue1 ~= A2 and kgvalue1 ~= A3 and kgvalue1 ~= A4 and kgvalue1 ~= A5 and kgvalue2 ~= A1 and kgvalue2 ~= A2 and kgvalue2 ~= A3 and kgvalue2 ~= A4 and kgvalue2 ~= A5 and kgvalue3 ~= A1 and kgvalue3 ~= A2 and kgvalue3 ~= A3 and kgvalue3 ~= A4 and kgvalue3 ~= A5 and kgvalue4 ~= A1 and kgvalue4 ~= A2 and kgvalue4 ~= A3 and kgvalue4 ~= A4 and kgvalue4 ~= A5 then
-			player.startevent:FireServer("spin", "kg3")
-			print("Rolled: " .. kgvalue3)
-			wait(1)
+		if spins > resetspinswhenthisnumberreached then
+			spins = player.statz.spins.Value
 			kgvalue1 = player.statz.main.kg1.Value
 			kgvalue2 = player.statz.main.kg2.Value
 			kgvalue3 = player.statz.main.kg3.Value
 			kgvalue4 = player.statz.main.kg4.Value
-		  else
-			if kgvalue3 ~= A1 and kgvalue3 ~= A2 and kgvalue3 ~= A3 and kgvalue3 ~= A4 and kgvalue3 ~= A5 then
-			  if Autosave == true then
-				datasavedandyoucanredeemcodes = true
-			  end
+			if AutoSpinBL3 == true then
+			if kgvalue1 ~= A1 and kgvalue1 ~= A2 and kgvalue1 ~= A3 and kgvalue1 ~= A4 and kgvalue1 ~= A5 and kgvalue2 ~= A1 and kgvalue2 ~= A2 and kgvalue2 ~= A3 and kgvalue2 ~= A4 and kgvalue2 ~= A5 and kgvalue3 ~= A1 and kgvalue3 ~= A2 and kgvalue3 ~= A3 and kgvalue3 ~= A4 and kgvalue3 ~= A5 and kgvalue4 ~= A1 and kgvalue4 ~= A2 and kgvalue4 ~= A3 and kgvalue4 ~= A4 and kgvalue4 ~= A5 then
+				player.startevent:FireServer("spin", "kg3")
+				print("Rolled: " .. kgvalue3)
+				wait(1)
+				kgvalue1 = player.statz.main.kg1.Value
+				kgvalue2 = player.statz.main.kg2.Value
+				kgvalue3 = player.statz.main.kg3.Value
+				kgvalue4 = player.statz.main.kg4.Value
 			else
-			  AutoSpinBL3 = false
-			  writefile(DHV2SL2MMF .. "/AutoSpinBL3.txt","false")
-			  if Webhooktrue then
-				if WebhookPingEveryone then
-				  local HTTPService = game:GetService("HttpService")
-				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-				  request({ 
-					Url = WebHook, 
-					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "@everyone",["embeds"] = {{["type"] = "rich",
-					["title"] = "Bloodline obtained in slot 3: ",
-					["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-						["description"] = kgvalue3,
-					  }}      
-					})
-				  })
+				if kgvalue3 ~= A1 and kgvalue3 ~= A2 and kgvalue3 ~= A3 and kgvalue3 ~= A4 and kgvalue3 ~= A5 then
+				if Autosave == true then
+					datasavedandyoucanredeemcodes = true
+				end
 				else
-				  local HTTPService = game:GetService("HttpService")
-				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-				  request({ 
-					Url = WebHook, 
-					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
-					["title"] = "Bloodline obtained in slot 3: ",
-					["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-						["description"] = kgvalue3,
-					  }}      
+				AutoSpinBL3 = false
+				writefile(DHV2SL2MMF .. "/AutoSpinBL3.txt","false")
+				if Webhooktrue then
+					if WebhookPingEveryone then
+					local HTTPService = game:GetService("HttpService")
+					local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+					request({ 
+						Url = WebHook, 
+						Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "@everyone",["embeds"] = {{["type"] = "rich",
+						["title"] = "Bloodline obtained in slot 3: ",
+						["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+							["description"] = kgvalue3,
+						}}      
+						})
 					})
-				  })
-				end
-				if WebhookShowTotalSpinsUsed then
-				  local HTTPService = game:GetService("HttpService")
-				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-				  request({ 
-					Url = WebHook, 
-					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
-					["color"] = 9324245,["fields"] = {{["name"] = "Total spins used: ",["value"] = tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt"))+originalspins-player.statz.spins.Value),["inline"] = true}}}}      
+					else
+					local HTTPService = game:GetService("HttpService")
+					local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+					request({ 
+						Url = WebHook, 
+						Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+						["title"] = "Bloodline obtained in slot 3: ",
+						["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+							["description"] = kgvalue3,
+						}}      
+						})
 					})
-				  })
+					end
+					if WebhookShowTotalSpinsUsed then
+					local HTTPService = game:GetService("HttpService")
+					local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+					request({ 
+						Url = WebHook, 
+						Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+						["color"] = 9324245,["fields"] = {{["name"] = "Total spins used: ",["value"] = tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt"))+originalspins-player.statz.spins.Value),["inline"] = true}}}}      
+						})
+					})
+					end
 				end
-			  end
-			  print("You have got: " .. kgvalue3)
-			  notify("You have got: " .. kgvalue3)
-			  if Autosave == true then
-				datasavedandyoucanredeemcodes = true
-			  end
+				print("You have got: " .. kgvalue3)
+				notify("You have got: " .. kgvalue3)
+				if Autosave == true then
+					datasavedandyoucanredeemcodes = true
+				end
+				end
 			end
-		  end
-		end
-	  else
-		if Autorejoin == true then
-		  --player.statz.spins:Destroy()
-		  if readfile(InfSpinsCount .. "/ResetedSpins.txt") == "false" then
-				writefile(InfSpinsCount .. "/ResetedSpins.txt","true")
 			end
-		  player.startevent:FireServer("band", "\128")
-		  wait()
-		  game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+		else
+			if Autorejoin == true then
+			--player.statz.spins:Destroy()
+			if readfile(InfSpinsCount .. "/ResetedSpins.txt") == "false" then
+					writefile(InfSpinsCount .. "/ResetedSpins.txt","true")
+				end
+			player.startevent:FireServer("band", "\128")
+			wait()
+			game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+			end
 		end
-	  end
+		end
 	end
   end)
 
   local spins = player.statz.spins.Value
-  game:GetService('RunService').Stepped:connect(function()
-	if AutoSpinBL4 == true then
-	  if spins > resetspinswhenthisnumberreached then
-		spins = player.statz.spins.Value
-		kgvalue1 = player.statz.main.kg1.Value
-		kgvalue2 = player.statz.main.kg2.Value
-		kgvalue3 = player.statz.main.kg3.Value
-		kgvalue4 = player.statz.main.kg4.Value
+  spawn(function()
+	while task.wait() do
 		if AutoSpinBL4 == true then
-		  if kgvalue1 ~= A1 and kgvalue1 ~= A2 and kgvalue1 ~= A3 and kgvalue1 ~= A4 and kgvalue1 ~= A5 and kgvalue2 ~= A1 and kgvalue2 ~= A2 and kgvalue2 ~= A3 and kgvalue2 ~= A4 and kgvalue2 ~= A5 and kgvalue3 ~= A1 and kgvalue3 ~= A2 and kgvalue3 ~= A3 and kgvalue3 ~= A4 and kgvalue3 ~= A5 and kgvalue4 ~= A1 and kgvalue4 ~= A2 and kgvalue4 ~= A3 and kgvalue4 ~= A4 and kgvalue4 ~= A5 then
-			player.startevent:FireServer("spin", "kg4")
-			print("Rolled: " .. kgvalue4)
-			wait(1)
+		if spins > resetspinswhenthisnumberreached then
+			spins = player.statz.spins.Value
 			kgvalue1 = player.statz.main.kg1.Value
 			kgvalue2 = player.statz.main.kg2.Value
 			kgvalue3 = player.statz.main.kg3.Value
 			kgvalue4 = player.statz.main.kg4.Value
-		  else
-			if kgvalue4 ~= A1 and kgvalue4 ~= A2 and kgvalue4 ~= A3 and kgvalue4 ~= A4 and kgvalue4 ~= A5 then
-			  if Autosave == true then
-				datasavedandyoucanredeemcodes = true
-			  end
+			if AutoSpinBL4 == true then
+			if kgvalue1 ~= A1 and kgvalue1 ~= A2 and kgvalue1 ~= A3 and kgvalue1 ~= A4 and kgvalue1 ~= A5 and kgvalue2 ~= A1 and kgvalue2 ~= A2 and kgvalue2 ~= A3 and kgvalue2 ~= A4 and kgvalue2 ~= A5 and kgvalue3 ~= A1 and kgvalue3 ~= A2 and kgvalue3 ~= A3 and kgvalue3 ~= A4 and kgvalue3 ~= A5 and kgvalue4 ~= A1 and kgvalue4 ~= A2 and kgvalue4 ~= A3 and kgvalue4 ~= A4 and kgvalue4 ~= A5 then
+				player.startevent:FireServer("spin", "kg4")
+				print("Rolled: " .. kgvalue4)
+				wait(1)
+				kgvalue1 = player.statz.main.kg1.Value
+				kgvalue2 = player.statz.main.kg2.Value
+				kgvalue3 = player.statz.main.kg3.Value
+				kgvalue4 = player.statz.main.kg4.Value
 			else
-			  AutoSpinBL4 = false
-			  writefile(DHV2SL2MMF .. "/AutoSpinBL4.txt","false")
-			  if Webhooktrue then
-				if WebhookPingEveryone then
-				  local HTTPService = game:GetService("HttpService")
-				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-				  request({ 
-					Url = WebHook, 
-					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "@everyone",["embeds"] = {{["type"] = "rich",
-					["title"] = "Bloodline obtained in slot 4: ",
-					["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-						["description"] = kgvalue4,
-					  }}      
-					})
-				  })
+				if kgvalue4 ~= A1 and kgvalue4 ~= A2 and kgvalue4 ~= A3 and kgvalue4 ~= A4 and kgvalue4 ~= A5 then
+				if Autosave == true then
+					datasavedandyoucanredeemcodes = true
+				end
 				else
-				  local HTTPService = game:GetService("HttpService")
-				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-				  request({ 
-					Url = WebHook, 
-					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
-					["title"] = "Bloodline obtained in slot 4: ",
-					["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-						["description"] = kgvalue4,
-					  }}      
+				AutoSpinBL4 = false
+				writefile(DHV2SL2MMF .. "/AutoSpinBL4.txt","false")
+				if Webhooktrue then
+					if WebhookPingEveryone then
+					local HTTPService = game:GetService("HttpService")
+					local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+					request({ 
+						Url = WebHook, 
+						Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "@everyone",["embeds"] = {{["type"] = "rich",
+						["title"] = "Bloodline obtained in slot 4: ",
+						["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+							["description"] = kgvalue4,
+						}}      
+						})
 					})
-				  })
-				end
-				if WebhookShowTotalSpinsUsed then
-				  local HTTPService = game:GetService("HttpService")
-				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-				  request({ 
-					Url = WebHook, 
-					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
-					["color"] = 9324245,["fields"] = {{["name"] = "Total spins used: ",["value"] = tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt"))+originalspins-player.statz.spins.Value),["inline"] = true}}}}      
+					else
+					local HTTPService = game:GetService("HttpService")
+					local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+					request({ 
+						Url = WebHook, 
+						Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+						["title"] = "Bloodline obtained in slot 4: ",
+						["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+							["description"] = kgvalue4,
+						}}      
+						})
 					})
-				  })
+					end
+					if WebhookShowTotalSpinsUsed then
+					local HTTPService = game:GetService("HttpService")
+					local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+					request({ 
+						Url = WebHook, 
+						Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+						["color"] = 9324245,["fields"] = {{["name"] = "Total spins used: ",["value"] = tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt"))+originalspins-player.statz.spins.Value),["inline"] = true}}}}      
+						})
+					})
+					end
 				end
-			  end
-			  print("You have got: " .. kgvalue4)
-			  notify("You have got: " .. kgvalue4)
-			  if Autosave == true then
-				datasavedandyoucanredeemcodes = true
-			  end
+				print("You have got: " .. kgvalue4)
+				notify("You have got: " .. kgvalue4)
+				if Autosave == true then
+					datasavedandyoucanredeemcodes = true
+				end
+				end
 			end
-		  end
-		end
-	  else
-		if Autorejoin == true then
-		  --player.statz.spins:Destroy()
-		  if readfile(InfSpinsCount .. "/ResetedSpins.txt") == "false" then
-				writefile(InfSpinsCount .. "/ResetedSpins.txt","true")
 			end
-		  player.startevent:FireServer("band", "\128")
-		  wait()
-		  game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+		else
+			if Autorejoin == true then
+			--player.statz.spins:Destroy()
+			if readfile(InfSpinsCount .. "/ResetedSpins.txt") == "false" then
+					writefile(InfSpinsCount .. "/ResetedSpins.txt","true")
+				end
+			player.startevent:FireServer("band", "\128")
+			wait()
+			game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+			end
 		end
-	  end
+		end
 	end
   end)
   
   local spins = player.statz.spins.Value
-  game:GetService('RunService').Stepped:connect(function()
-	if StartSpinKen == true then
-	  if spins > resetspinswhenthisnumberreached+9 then
-		spins = player.statz.spins.Value
-		kenvalue = player.statz.breathingstyle.Value
-		kenvalue2 = player.statz.breathingstyle2.Value
+  spawn(function()
+	while task.wait() do
 		if StartSpinKen == true then
-		  if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 and kenvalue ~= kenselect4 and kenvalue ~= kenselect5 and kenvalue2 ~= kenselect1 and kenvalue2 ~= kenselect2 and kenvalue2 ~= kenselect3 and kenvalue2 ~= kenselect4 and kenvalue2 ~= kenselect5 then
-			local args = {[1] = "spinBREATHING"}
-			player.startevent:FireServer(unpack(args))
-			print("Rolled: " .. kenvalue)
+		if spins > resetspinswhenthisnumberreached+9 then
+			spins = player.statz.spins.Value
 			kenvalue = player.statz.breathingstyle.Value
 			kenvalue2 = player.statz.breathingstyle2.Value
-			wait(1)
-		  else
-			if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 and kenvalue ~= kenselect4 and kenvalue ~= kenselect5 then
-			  if Autosave == true then
-				datasavedandyoucanredeemcodes = true
-			  end
+			if StartSpinKen == true then
+			if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 and kenvalue ~= kenselect4 and kenvalue ~= kenselect5 and kenvalue2 ~= kenselect1 and kenvalue2 ~= kenselect2 and kenvalue2 ~= kenselect3 and kenvalue2 ~= kenselect4 and kenvalue2 ~= kenselect5 then
+				local args = {[1] = "spinBREATHING"}
+				player.startevent:FireServer(unpack(args))
+				print("Rolled: " .. kenvalue)
+				kenvalue = player.statz.breathingstyle.Value
+				kenvalue2 = player.statz.breathingstyle2.Value
+				wait(1)
 			else
-			  StartSpinKen = false
-			  writefile(DHV2SL2MMF .. "/StartSpinKen.txt","false")
-			  if Webhooktrue then
-				if WebhookPingEveryone then
-				  local HTTPService = game:GetService("HttpService")
-				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-				  request({ 
-					Url = WebHook, 
-					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "@everyone",["embeds"] = {{["type"] = "rich",
-					["title"] = "Kenjutsu obtained in slot 1: ",
-					["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-						["description"] = kenvalue,
-					  }}      
-					})
-				  })
+				if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 and kenvalue ~= kenselect4 and kenvalue ~= kenselect5 then
+				if Autosave == true then
+					datasavedandyoucanredeemcodes = true
+				end
 				else
-				  local HTTPService = game:GetService("HttpService")
-				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-				  request({ 
-					Url = WebHook, 
-					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
-					["title"] = "Kenjutsu obtained in slot 1: ",
-					["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-						["description"] = kenvalue,
-					  }}      
+				StartSpinKen = false
+				writefile(DHV2SL2MMF .. "/StartSpinKen.txt","false")
+				if Webhooktrue then
+					if WebhookPingEveryone then
+					local HTTPService = game:GetService("HttpService")
+					local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+					request({ 
+						Url = WebHook, 
+						Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "@everyone",["embeds"] = {{["type"] = "rich",
+						["title"] = "Kenjutsu obtained in slot 1: ",
+						["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+							["description"] = kenvalue,
+						}}      
+						})
 					})
-				  })
-				end
-				if WebhookShowTotalSpinsUsed then
-				  local HTTPService = game:GetService("HttpService")
-				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-				  request({ 
-					Url = WebHook, 
-					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
-					["color"] = 9324245,["fields"] = {{["name"] = "Total spins used: ",["value"] = tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt"))+originalspins-player.statz.spins.Value),["inline"] = true}}}}      
+					else
+					local HTTPService = game:GetService("HttpService")
+					local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+					request({ 
+						Url = WebHook, 
+						Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+						["title"] = "Kenjutsu obtained in slot 1: ",
+						["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+							["description"] = kenvalue,
+						}}      
+						})
 					})
-				  })
+					end
+					if WebhookShowTotalSpinsUsed then
+					local HTTPService = game:GetService("HttpService")
+					local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+					request({ 
+						Url = WebHook, 
+						Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+						["color"] = 9324245,["fields"] = {{["name"] = "Total spins used: ",["value"] = tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt"))+originalspins-player.statz.spins.Value),["inline"] = true}}}}      
+						})
+					})
+					end
 				end
-			  end
-			  print("You have got: " .. kenvalue)
-			  notify("You have got " .. kenvalue .. " in slot 1")
-			  if Autosave == true then
-				datasavedandyoucanredeemcodes = true
-			  end
+				print("You have got: " .. kenvalue)
+				notify("You have got " .. kenvalue .. " in slot 1")
+				if Autosave == true then
+					datasavedandyoucanredeemcodes = true
+				end
+				end
 			end
-		  end
-		end
-	  else
-		if Autorejoin == true then
-		  	--player.statz.spins:Destroy()
-		  	if readfile(InfSpinsCount .. "/ResetedSpins.txt") == "false" then
-				writefile(InfSpinsCount .. "/ResetedSpins.txt","true")
 			end
-		  	player.startevent:FireServer("band", "\128")
-		  	wait()
-		  	game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+		else
+			if Autorejoin == true then
+				--player.statz.spins:Destroy()
+				if readfile(InfSpinsCount .. "/ResetedSpins.txt") == "false" then
+					writefile(InfSpinsCount .. "/ResetedSpins.txt","true")
+				end
+				player.startevent:FireServer("band", "\128")
+				wait()
+				game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+			end
 		end
-	  end
+		end
 	end
   end)
 
   local spins = player.statz.spins.Value
-  game:GetService('RunService').Stepped:connect(function()
-	if StartSpinKen2 == true then
-	  if spins > resetspinswhenthisnumberreached+9 then
-		spins = player.statz.spins.Value
-		kenvalue = player.statz.breathingstyle.Value
-		kenvalue2 = player.statz.breathingstyle2.Value
+  spawn(function()
+	while task.wait() do
 		if StartSpinKen2 == true then
-		  if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 and kenvalue ~= kenselect4 and kenvalue ~= kenselect5 and kenvalue2 ~= kenselect1 and kenvalue2 ~= kenselect2 and kenvalue2 ~= kenselect3 and kenvalue2 ~= kenselect4 and kenvalue2 ~= kenselect5 then
-			local args = {[1] = "spinBREATHING",[2] = "breathingstyle2"}
-			player.startevent:FireServer(unpack(args))
-			print("Rolled: " .. kenvalue2)
+		if spins > resetspinswhenthisnumberreached+9 then
+			spins = player.statz.spins.Value
 			kenvalue = player.statz.breathingstyle.Value
 			kenvalue2 = player.statz.breathingstyle2.Value
-			wait(1)
-		  else
-			if kenvalue2 ~= kenselect1 and kenvalue2 ~= kenselect2 and kenvalue2 ~= kenselect3 and kenvalue2 ~= kenselect4 and kenvalue2 ~= kenselect5 then
-			  if Autosave == true then
-				datasavedandyoucanredeemcodes = true
-			  end
+			if StartSpinKen2 == true then
+			if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 and kenvalue ~= kenselect4 and kenvalue ~= kenselect5 and kenvalue2 ~= kenselect1 and kenvalue2 ~= kenselect2 and kenvalue2 ~= kenselect3 and kenvalue2 ~= kenselect4 and kenvalue2 ~= kenselect5 then
+				local args = {[1] = "spinBREATHING",[2] = "breathingstyle2"}
+				player.startevent:FireServer(unpack(args))
+				print("Rolled: " .. kenvalue2)
+				kenvalue = player.statz.breathingstyle.Value
+				kenvalue2 = player.statz.breathingstyle2.Value
+				wait(1)
 			else
-			  StartSpinKen2 = false
-			  writefile(DHV2SL2MMF .. "/StartSpinKen2.txt","false")
-			  if Webhooktrue then
-				if WebhookPingEveryone then
-				  local HTTPService = game:GetService("HttpService")
-				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-				  request({ 
-					Url = WebHook, 
-					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "@everyone",["embeds"] = {{["type"] = "rich",
-					["title"] = "Kenjutsu obtained in slot 2: ",
-					["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-						["description"] = kenvalue2,
-					  }}      
-					})
-				  })
+				if kenvalue2 ~= kenselect1 and kenvalue2 ~= kenselect2 and kenvalue2 ~= kenselect3 and kenvalue2 ~= kenselect4 and kenvalue2 ~= kenselect5 then
+				if Autosave == true then
+					datasavedandyoucanredeemcodes = true
+				end
 				else
-				  local HTTPService = game:GetService("HttpService")
-				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-				  request({ 
-					Url = WebHook, 
-					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
-					["title"] = "Kenjutsu obtained in slot 2: ",
-					["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
-						["description"] = kenvalue2,
-					  }}      
+				StartSpinKen2 = false
+				writefile(DHV2SL2MMF .. "/StartSpinKen2.txt","false")
+				if Webhooktrue then
+					if WebhookPingEveryone then
+					local HTTPService = game:GetService("HttpService")
+					local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+					request({ 
+						Url = WebHook, 
+						Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "@everyone",["embeds"] = {{["type"] = "rich",
+						["title"] = "Kenjutsu obtained in slot 2: ",
+						["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+							["description"] = kenvalue2,
+						}}      
+						})
 					})
-				  })
-				end
-				if WebhookShowTotalSpinsUsed then
-				  local HTTPService = game:GetService("HttpService")
-				  local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
-				  request({ 
-					Url = WebHook, 
-					Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
-					["color"] = 9324245,["fields"] = {{["name"] = "Total spins used: ",["value"] = tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt"))+originalspins-player.statz.spins.Value),["inline"] = true}}}}      
+					else
+					local HTTPService = game:GetService("HttpService")
+					local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+					request({ 
+						Url = WebHook, 
+						Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+						["title"] = "Kenjutsu obtained in slot 2: ",
+						["color"] = 9324245,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
+							["description"] = kenvalue2,
+						}}      
+						})
 					})
-				  })
+					end
+					if WebhookShowTotalSpinsUsed then
+					local HTTPService = game:GetService("HttpService")
+					local WebHook = readfile(DHV2SL2MMF .. "/WebHook.txt")
+					request({ 
+						Url = WebHook, 
+						Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",
+						["color"] = 9324245,["fields"] = {{["name"] = "Total spins used: ",["value"] = tostring(tonumber(readfile(InfSpinsCount .. "/CountSpins.txt"))+originalspins-player.statz.spins.Value),["inline"] = true}}}}      
+						})
+					})
+					end
 				end
-			  end
-			  print("You have got: " .. kenvalue2)
-			  notify("You have got " .. kenvalue2 .. " in slot 2")
-			  if Autosave == true then
-				datasavedandyoucanredeemcodes = true
-			  end
+				print("You have got: " .. kenvalue2)
+				notify("You have got " .. kenvalue2 .. " in slot 2")
+				if Autosave == true then
+					datasavedandyoucanredeemcodes = true
+				end
+				end
 			end
-		  end
-		end
-	  else
-		if Autorejoin == true then
-		  --player.statz.spins:Destroy()
-		  	if readfile(InfSpinsCount .. "/ResetedSpins.txt") == "false" then
-				writefile(InfSpinsCount .. "/ResetedSpins.txt","true")
 			end
-		  player.startevent:FireServer("band", "\128")
-		  wait()
-		  game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+		else
+			if Autorejoin == true then
+			--player.statz.spins:Destroy()
+				if readfile(InfSpinsCount .. "/ResetedSpins.txt") == "false" then
+					writefile(InfSpinsCount .. "/ResetedSpins.txt","true")
+				end
+			player.startevent:FireServer("band", "\128")
+			wait()
+			game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+			end
 		end
-	  end
+		end
 	end
   end)
   
@@ -3583,37 +3603,39 @@ local function ShindoMyHome()
 	  StartSpinKen = bool
 	  if StartSpinKen == true then
 		local spins = player.statz.spins.Value
-		game:GetService('RunService').Stepped:connect(function()
-		  if spins > 9 then
-			spins = player.statz.spins.Value
-			kenvalue = player.statz.breathingstyle.Value
-			kenvalue2 = player.statz.breathingstyle2.Value
-			if StartSpinKen == true then
-			  if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 and kenvalue ~= kenselect4 and kenvalue ~= kenselect5 and kenvalue2 ~= kenselect1 and kenvalue2 ~= kenselect2 and kenvalue2 ~= kenselect3 and kenvalue2 ~= kenselect4 and kenvalue2 ~= kenselect5 then
-				local args = {[1] = "spinBREATHING"}
-				player.startevent:FireServer(unpack(args))
-				print("Rolled: " .. kenvalue)
-				wait(1)
-			  elseif kenvalue2 ~= kenselect1 and kenvalue2 ~= kenselect2 and kenvalue2 ~= kenselect3 and kenvalue2 ~= kenselect4 and kenvalue2 ~= kenselect5 then
-				if Autosave == true then
-				  datasavedandyoucanredeemcodes = true
+		spawn(function()
+			while task.wait() do
+				if spins > 9 then
+					spins = player.statz.spins.Value
+					kenvalue = player.statz.breathingstyle.Value
+					kenvalue2 = player.statz.breathingstyle2.Value
+					if StartSpinKen == true then
+					if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 and kenvalue ~= kenselect4 and kenvalue ~= kenselect5 and kenvalue2 ~= kenselect1 and kenvalue2 ~= kenselect2 and kenvalue2 ~= kenselect3 and kenvalue2 ~= kenselect4 and kenvalue2 ~= kenselect5 then
+						local args = {[1] = "spinBREATHING"}
+						player.startevent:FireServer(unpack(args))
+						print("Rolled: " .. kenvalue)
+						wait(1)
+					elseif kenvalue2 ~= kenselect1 and kenvalue2 ~= kenselect2 and kenvalue2 ~= kenselect3 and kenvalue2 ~= kenselect4 and kenvalue2 ~= kenselect5 then
+						if Autosave == true then
+						datasavedandyoucanredeemcodes = true
+						end
+					else
+						print("You have got: " .. kenvalue)
+						notify("You have got " .. kenvalue .. " in slot 1")
+						if Autosave == true then
+						datasavedandyoucanredeemcodes = true
+						end
+					end
+					end
+				else
+					if Autorejoin == true then
+					--player.statz.spins:Destroy()
+					player.startevent:FireServer("band", "\128")
+					wait()
+					game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+					end
 				end
-			  else
-				print("You have got: " .. kenvalue)
-				notify("You have got " .. kenvalue .. " in slot 1")
-				if Autosave == true then
-				  datasavedandyoucanredeemcodes = true
-				end
-			  end
 			end
-		  else
-			if Autorejoin == true then
-			  --player.statz.spins:Destroy()
-			  player.startevent:FireServer("band", "\128")
-			  wait()
-			  game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-			end
-		  end
 		end)
 	  else
 	  end
@@ -3624,37 +3646,39 @@ local function ShindoMyHome()
 	  StartSpinKen2 = bool
 	  if StartSpinKen2 == true then
 		local spins = player.statz.spins.Value
-		game:GetService('RunService').Stepped:connect(function()
-		  if spins > 9 then
-			spins = player.statz.spins.Value
-			kenvalue = player.statz.breathingstyle.Value
-			kenvalue2 = player.statz.breathingstyle2.Value
-			if StartSpinKen2 == true then
-			  if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 and kenvalue ~= kenselect4 and kenvalue ~= kenselect5 and kenvalue2 ~= kenselect1 and kenvalue2 ~= kenselect2 and kenvalue2 ~= kenselect3 and kenvalue2 ~= kenselect4 and kenvalue2 ~= kenselect5 then
-				local args = {[1] = "spinBREATHING",[2] = "breathingstyle2"}
-				player.startevent:FireServer(unpack(args))
-				print("Rolled: " .. kenvalue2)
-				wait(1)
-			  elseif kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 and kenvalue ~= kenselect4 and kenvalue ~= kenselect5 then
-				if Autosave == true then
-				  datasavedandyoucanredeemcodes = true
+		spawn(function()
+			while task.wait() do
+				if spins > 9 then
+					spins = player.statz.spins.Value
+					kenvalue = player.statz.breathingstyle.Value
+					kenvalue2 = player.statz.breathingstyle2.Value
+					if StartSpinKen2 == true then
+					if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 and kenvalue ~= kenselect4 and kenvalue ~= kenselect5 and kenvalue2 ~= kenselect1 and kenvalue2 ~= kenselect2 and kenvalue2 ~= kenselect3 and kenvalue2 ~= kenselect4 and kenvalue2 ~= kenselect5 then
+						local args = {[1] = "spinBREATHING",[2] = "breathingstyle2"}
+						player.startevent:FireServer(unpack(args))
+						print("Rolled: " .. kenvalue2)
+						wait(1)
+					elseif kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 and kenvalue ~= kenselect4 and kenvalue ~= kenselect5 then
+						if Autosave == true then
+						datasavedandyoucanredeemcodes = true
+						end
+					else
+						print("You have got: " .. kenvalue2)
+						notify("You have got " .. kenvalue2 .. " in slot 2")
+						if Autosave == true then
+						datasavedandyoucanredeemcodes = true
+						end
+					end
+					end
+				else
+					if Autorejoin == true then
+					--player.statz.spins:Destroy()
+					player.startevent:FireServer("band", "\128")
+					wait()
+					game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+					end
 				end
-			  else
-				print("You have got: " .. kenvalue2)
-				notify("You have got " .. kenvalue2 .. " in slot 2")
-				if Autosave == true then
-				  datasavedandyoucanredeemcodes = true
-				end
-			  end
 			end
-		  else
-			if Autorejoin == true then
-			  --player.statz.spins:Destroy()
-			  player.startevent:FireServer("band", "\128")
-			  wait()
-			  game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-			end
-		  end
 		end)
 	  else
 	  end
@@ -3684,33 +3708,35 @@ local function ShindoMyHome()
 	  StartSpinKen = bool
 	  if StartSpinKen == true then
 		local spins = player.statz.spins.Value
-		game:GetService('RunService').Stepped:connect(function()
-		  if spins > 9 then
-			spins = player.statz.spins.Value
-			kenvalue = player.statz.breathingstyle.Value
-			if StartSpinKen == true then
-			  if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 then
-				local args = {[1] = "spinBREATHING"}
-				player.startevent:FireServer(unpack(args))
-				print("Rolled: " .. kenvalue)
-				notify("Rolled: " .. kenvalue)
-				wait(1)
-			  else
-				print("You have got: " .. kenvalue)
-				notify("You have got: " .. kenvalue)
-				if Autosave == true then
-				  datasavedandyoucanredeemcodes = true
+		spawn(function()
+			while task.wait() do
+				if spins > 9 then
+					spins = player.statz.spins.Value
+					kenvalue = player.statz.breathingstyle.Value
+					if StartSpinKen == true then
+					if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 then
+						local args = {[1] = "spinBREATHING"}
+						player.startevent:FireServer(unpack(args))
+						print("Rolled: " .. kenvalue)
+						notify("Rolled: " .. kenvalue)
+						wait(1)
+					else
+						print("You have got: " .. kenvalue)
+						notify("You have got: " .. kenvalue)
+						if Autosave == true then
+						datasavedandyoucanredeemcodes = true
+						end
+					end
+					end
+				else
+					if Autorejoin == true then
+					--player.statz.spins:Destroy()
+					player.startevent:FireServer("band", "\128")
+					wait()
+					game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+					end
 				end
-			  end
 			end
-		  else
-			if Autorejoin == true then
-			  --player.statz.spins:Destroy()
-			  player.startevent:FireServer("band", "\128")
-			  wait()
-			  game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-			end
-		  end
 		end)
 	  else
 	  end
@@ -11628,37 +11654,39 @@ local function ShindoMain()
 	  StartSpinKen = bool
 	  if StartSpinKen == true then
 		local spins = player.statz.spins.Value
-		game:GetService('RunService').Stepped:connect(function()
-		  if spins > resetspinswhenthisnumberreached + 9 then
-			spins = player.statz.spins.Value
-			kenvalue = player.statz.breathingstyle.Value
-			kenvalue2 = player.statz.breathingstyle2.Value
-			if StartSpinKen == true then
-			  if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 and kenvalue ~= kenselect4 and kenvalue ~= kenselect5 and kenvalue2 ~= kenselect1 and kenvalue2 ~= kenselect2 and kenvalue2 ~= kenselect3 and kenvalue2 ~= kenselect4 and kenvalue2 ~= kenselect5 then
-				local args = {[1] = "spinBREATHING"}
-				player.startevent:FireServer(unpack(args))
-				print("Rolled: " .. kenvalue)
-				wait(1)
-			  elseif kenvalue2 ~= kenselect1 and kenvalue2 ~= kenselect2 and kenvalue2 ~= kenselect3 and kenvalue2 ~= kenselect4 and kenvalue2 ~= kenselect5 then
-				if Autosave == true then
-				  datasavedandyoucanredeemcodes = true
+		spawn(function()
+			while task.wait() do
+				if spins > resetspinswhenthisnumberreached + 9 then
+					spins = player.statz.spins.Value
+					kenvalue = player.statz.breathingstyle.Value
+					kenvalue2 = player.statz.breathingstyle2.Value
+					if StartSpinKen == true then
+					if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 and kenvalue ~= kenselect4 and kenvalue ~= kenselect5 and kenvalue2 ~= kenselect1 and kenvalue2 ~= kenselect2 and kenvalue2 ~= kenselect3 and kenvalue2 ~= kenselect4 and kenvalue2 ~= kenselect5 then
+						local args = {[1] = "spinBREATHING"}
+						player.startevent:FireServer(unpack(args))
+						print("Rolled: " .. kenvalue)
+						wait(1)
+					elseif kenvalue2 ~= kenselect1 and kenvalue2 ~= kenselect2 and kenvalue2 ~= kenselect3 and kenvalue2 ~= kenselect4 and kenvalue2 ~= kenselect5 then
+						if Autosave == true then
+						datasavedandyoucanredeemcodes = true
+						end
+					else
+						print("You have got: " .. kenvalue)
+						notify("You have got " .. kenvalue .. " in slot 1")
+						if Autosave == true then
+						datasavedandyoucanredeemcodes = true
+						end
+					end
+					end
+				else
+					if Autorejoin == true then
+					--player.statz.spins:Destroy()
+					player.startevent:FireServer("band", "\128")
+					wait()
+					game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+					end
 				end
-			  else
-				print("You have got: " .. kenvalue)
-				notify("You have got " .. kenvalue .. " in slot 1")
-				if Autosave == true then
-				  datasavedandyoucanredeemcodes = true
-				end
-			  end
 			end
-		  else
-			if Autorejoin == true then
-			  --player.statz.spins:Destroy()
-			  player.startevent:FireServer("band", "\128")
-			  wait()
-			  game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-			end
-		  end
 		end)
 	  else
 	  end
@@ -11669,37 +11697,39 @@ local function ShindoMain()
 	  StartSpinKen2 = bool
 	  if StartSpinKen2 == true then
 		local spins = player.statz.spins.Value
-		game:GetService('RunService').Stepped:connect(function()
-		  if spins > resetspinswhenthisnumberreached + 9 then
-			spins = player.statz.spins.Value
-			kenvalue = player.statz.breathingstyle.Value
-			kenvalue2 = player.statz.breathingstyle2.Value
-			if StartSpinKen2 == true then
-			  if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 and kenvalue ~= kenselect4 and kenvalue ~= kenselect5 and kenvalue2 ~= kenselect1 and kenvalue2 ~= kenselect2 and kenvalue2 ~= kenselect3 and kenvalue2 ~= kenselect4 and kenvalue2 ~= kenselect5 then
-				local args = {[1] = "spinBREATHING",[2] = "breathingstyle2"}
-				player.startevent:FireServer(unpack(args))
-				print("Rolled: " .. kenvalue2)
-				wait(1)
-			  elseif kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 and kenvalue ~= kenselect4 and kenvalue ~= kenselect5 then
-				if Autosave == true then
-				  datasavedandyoucanredeemcodes = true
+		spawn(function()
+			while task.wait() do
+				if spins > resetspinswhenthisnumberreached + 9 then
+					spins = player.statz.spins.Value
+					kenvalue = player.statz.breathingstyle.Value
+					kenvalue2 = player.statz.breathingstyle2.Value
+					if StartSpinKen2 == true then
+					if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 and kenvalue ~= kenselect4 and kenvalue ~= kenselect5 and kenvalue2 ~= kenselect1 and kenvalue2 ~= kenselect2 and kenvalue2 ~= kenselect3 and kenvalue2 ~= kenselect4 and kenvalue2 ~= kenselect5 then
+						local args = {[1] = "spinBREATHING",[2] = "breathingstyle2"}
+						player.startevent:FireServer(unpack(args))
+						print("Rolled: " .. kenvalue2)
+						wait(1)
+					elseif kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 and kenvalue ~= kenselect4 and kenvalue ~= kenselect5 then
+						if Autosave == true then
+						datasavedandyoucanredeemcodes = true
+						end
+					else
+						print("You have got: " .. kenvalue2)
+						notify("You have got " .. kenvalue2 .. " in slot 2")
+						if Autosave == true then
+						datasavedandyoucanredeemcodes = true
+						end
+					end
+					end
+				else
+					if Autorejoin == true then
+					--player.statz.spins:Destroy()
+					player.startevent:FireServer("band", "\128")
+					wait()
+					game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+					end
 				end
-			  else
-				print("You have got: " .. kenvalue2)
-				notify("You have got " .. kenvalue2 .. " in slot 2")
-				if Autosave == true then
-				  datasavedandyoucanredeemcodes = true
-				end
-			  end
 			end
-		  else
-			if Autorejoin == true then
-			  --player.statz.spins:Destroy()
-			  player.startevent:FireServer("band", "\128")
-			  wait()
-			  game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-			end
-		  end
 		end)
 	  else
 	  end
@@ -11729,33 +11759,35 @@ local function ShindoMain()
 	  StartSpinKen = bool
 	  if StartSpinKen == true then
 		local spins = player.statz.spins.Value
-		game:GetService('RunService').Stepped:connect(function()
-		  if spins > resetspinswhenthisnumberreached + 9 then
-			spins = player.statz.spins.Value
-			kenvalue = player.statz.breathingstyle.Value
-			if StartSpinKen == true then
-			  if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 then
-				local args = {[1] = "spinBREATHING"}
-				player.startevent:FireServer(unpack(args))
-				print("Rolled: " .. kenvalue)
-				notify("Rolled: " .. kenvalue)
-				wait(1)
-			  else
-				print("You have got: " .. kenvalue)
-				notify("You have got: " .. kenvalue)
-				if Autosave == true then
-				  datasavedandyoucanredeemcodes = true
+		spawn(function()
+			while task.wait() do
+				if spins > resetspinswhenthisnumberreached + 9 then
+					spins = player.statz.spins.Value
+					kenvalue = player.statz.breathingstyle.Value
+					if StartSpinKen == true then
+					if kenvalue ~= kenselect1 and kenvalue ~= kenselect2 and kenvalue ~= kenselect3 then
+						local args = {[1] = "spinBREATHING"}
+						player.startevent:FireServer(unpack(args))
+						print("Rolled: " .. kenvalue)
+						notify("Rolled: " .. kenvalue)
+						wait(1)
+					else
+						print("You have got: " .. kenvalue)
+						notify("You have got: " .. kenvalue)
+						if Autosave == true then
+						datasavedandyoucanredeemcodes = true
+						end
+					end
+					end
+				else
+					if Autorejoin == true then
+					--player.statz.spins:Destroy()
+					player.startevent:FireServer("band", "\128")
+					wait()
+					game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+					end
 				end
-			  end
 			end
-		  else
-			if Autorejoin == true then
-			  --player.statz.spins:Destroy()
-			  player.startevent:FireServer("band", "\128")
-			  wait()
-			  game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-			end
-		  end
 		end)
 	  else
 	  end
