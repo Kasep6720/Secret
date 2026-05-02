@@ -1494,7 +1494,7 @@ local function StandUprightRebootedMain()
 													end
 												end
 											--Tusk Act 4
-											elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
+											elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes") and player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
 												if player.Character.Stand.Meshes["Cube.021"].Transparency == 1 then
 													local args = {[1]={["State"]="Begin",["Type"]=Enum.UserInputType.Keyboard,["Key"]=Enum.KeyCode.Q}}
 													game:GetService("Players").LocalPlayer.Character.StandEvents.Input:FireServer(unpack(args))
@@ -1638,7 +1638,7 @@ local function StandUprightRebootedMain()
 													end
 												end
 											--Tusk Act 4
-											elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
+											elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes") and player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
 												if player.Character.Stand.Meshes["Cube.021"].Transparency == 1 then
 													local args = {[1]={["State"]="Begin",["Type"]=Enum.UserInputType.Keyboard,["Key"]=Enum.KeyCode.Q}}
 													game:GetService("Players").LocalPlayer.Character.StandEvents.Input:FireServer(unpack(args))
@@ -1782,7 +1782,7 @@ local function StandUprightRebootedMain()
 													end
 												end
 											--Tusk Act 4
-											elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
+											elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes") and player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
 												if player.Character.Stand.Meshes["Cube.021"].Transparency == 1 then
 													local args = {[1]={["State"]="Begin",["Type"]=Enum.UserInputType.Keyboard,["Key"]=Enum.KeyCode.Q}}
 													game:GetService("Players").LocalPlayer.Character.StandEvents.Input:FireServer(unpack(args))
@@ -1926,7 +1926,7 @@ local function StandUprightRebootedMain()
 													end
 												end
 											--Tusk Act 4
-											elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
+											elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes") and player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
 												if player.Character.Stand.Meshes["Cube.021"].Transparency == 1 then
 													local args = {[1]={["State"]="Begin",["Type"]=Enum.UserInputType.Keyboard,["Key"]=Enum.KeyCode.Q}}
 													game:GetService("Players").LocalPlayer.Character.StandEvents.Input:FireServer(unpack(args))
@@ -2070,7 +2070,7 @@ local function StandUprightRebootedMain()
 													end
 												end
 											--Tusk Act 4
-											elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
+											elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes") and player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
 												if player.Character.Stand.Meshes["Cube.021"].Transparency == 1 then
 													local args = {[1]={["State"]="Begin",["Type"]=Enum.UserInputType.Keyboard,["Key"]=Enum.KeyCode.Q}}
 													game:GetService("Players").LocalPlayer.Character.StandEvents.Input:FireServer(unpack(args))
@@ -2213,7 +2213,7 @@ local function StandUprightRebootedMain()
 													end
 												end
 											--Tusk Act 4
-											elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
+											elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes") and player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
 												if player.Character.Stand.Meshes["Cube.021"].Transparency == 1 then
 													local args = {[1]={["State"]="Begin",["Type"]=Enum.UserInputType.Keyboard,["Key"]=Enum.KeyCode.Q}}
 													game:GetService("Players").LocalPlayer.Character.StandEvents.Input:FireServer(unpack(args))
@@ -2356,7 +2356,7 @@ local function StandUprightRebootedMain()
 													end
 												end
 											--Tusk Act 4
-											elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
+											elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes") and player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
 												if player.Character.Stand.Meshes["Cube.021"].Transparency == 1 then
 													local args = {[1]={["State"]="Begin",["Type"]=Enum.UserInputType.Keyboard,["Key"]=Enum.KeyCode.Q}}
 													game:GetService("Players").LocalPlayer.Character.StandEvents.Input:FireServer(unpack(args))
@@ -2500,7 +2500,7 @@ local function StandUprightRebootedMain()
 													end
 												end
 											--Tusk Act 4
-											elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
+											elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes") and player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
 												if player.Character.Stand.Meshes["Cube.021"].Transparency == 1 then
 													local args = {[1]={["State"]="Begin",["Type"]=Enum.UserInputType.Keyboard,["Key"]=Enum.KeyCode.Q}}
 													game:GetService("Players").LocalPlayer.Character.StandEvents.Input:FireServer(unpack(args))
@@ -2644,7 +2644,7 @@ local function StandUprightRebootedMain()
 													end
 												end
 											--Tusk Act 4
-											elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
+											elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes") and player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
 												if player.Character.Stand.Meshes["Cube.021"].Transparency == 1 then
 													local args = {[1]={["State"]="Begin",["Type"]=Enum.UserInputType.Keyboard,["Key"]=Enum.KeyCode.Q}}
 													game:GetService("Players").LocalPlayer.Character.StandEvents.Input:FireServer(unpack(args))
@@ -2788,7 +2788,7 @@ local function StandUprightRebootedMain()
 													end
 												end
 											--Tusk Act 4
-											elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
+											elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes") and player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
 												if player.Character.Stand.Meshes["Cube.021"].Transparency == 1 then
 													local args = {[1]={["State"]="Begin",["Type"]=Enum.UserInputType.Keyboard,["Key"]=Enum.KeyCode.Q}}
 													game:GetService("Players").LocalPlayer.Character.StandEvents.Input:FireServer(unpack(args))
@@ -2938,7 +2938,7 @@ local function StandUprightRebootedMain()
 													end
 												end
 											--Tusk Act 4
-											elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
+											elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes") and player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
 												if player.Character.Stand.Meshes["Cube.021"].Transparency == 1 then
 													local args = {[1]={["State"]="Begin",["Type"]=Enum.UserInputType.Keyboard,["Key"]=Enum.KeyCode.Q}}
 													game:GetService("Players").LocalPlayer.Character.StandEvents.Input:FireServer(unpack(args))
@@ -3082,7 +3082,7 @@ local function StandUprightRebootedMain()
 													end
 												end
 											--Tusk Act 4
-											elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
+											elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes") and player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
 												if player.Character.Stand.Meshes["Cube.021"].Transparency == 1 then
 													local args = {[1]={["State"]="Begin",["Type"]=Enum.UserInputType.Keyboard,["Key"]=Enum.KeyCode.Q}}
 													game:GetService("Players").LocalPlayer.Character.StandEvents.Input:FireServer(unpack(args))
@@ -3226,7 +3226,7 @@ local function StandUprightRebootedMain()
 													end
 												end
 											--Tusk Act 4
-											elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
+											elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes") and player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
 												if player.Character.Stand.Meshes["Cube.021"].Transparency == 1 then
 													local args = {[1]={["State"]="Begin",["Type"]=Enum.UserInputType.Keyboard,["Key"]=Enum.KeyCode.Q}}
 													game:GetService("Players").LocalPlayer.Character.StandEvents.Input:FireServer(unpack(args))
@@ -3484,7 +3484,7 @@ local function StandUprightRebootedMain()
 														end
 													end
 												--Tusk Act 4
-												elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
+												elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes") and player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
 													if player.Character.Stand.Meshes["Cube.021"].Transparency == 1 then
 														local args = {[1]={["State"]="Begin",["Type"]=Enum.UserInputType.Keyboard,["Key"]=Enum.KeyCode.Q}}
 														game:GetService("Players").LocalPlayer.Character.StandEvents.Input:FireServer(unpack(args))
@@ -3636,7 +3636,7 @@ local function StandUprightRebootedMain()
 														end
 													end
 												--Tusk Act 4
-												elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
+												elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes") and player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
 													if player.Character.Stand.Meshes["Cube.021"].Transparency == 1 then
 														local args = {[1]={["State"]="Begin",["Type"]=Enum.UserInputType.Keyboard,["Key"]=Enum.KeyCode.Q}}
 														game:GetService("Players").LocalPlayer.Character.StandEvents.Input:FireServer(unpack(args))
@@ -3788,7 +3788,7 @@ local function StandUprightRebootedMain()
 														end
 													end
 												--Tusk Act 4
-												elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
+												elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes") and player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
 													if player.Character.Stand.Meshes["Cube.021"].Transparency == 1 then
 														local args = {[1]={["State"]="Begin",["Type"]=Enum.UserInputType.Keyboard,["Key"]=Enum.KeyCode.Q}}
 														game:GetService("Players").LocalPlayer.Character.StandEvents.Input:FireServer(unpack(args))
@@ -3940,7 +3940,7 @@ local function StandUprightRebootedMain()
 														end
 													end
 												--Tusk Act 4
-												elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
+												elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes") and player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
 													if player.Character.Stand.Meshes["Cube.021"].Transparency == 1 then
 														local args = {[1]={["State"]="Begin",["Type"]=Enum.UserInputType.Keyboard,["Key"]=Enum.KeyCode.Q}}
 														game:GetService("Players").LocalPlayer.Character.StandEvents.Input:FireServer(unpack(args))
@@ -4093,7 +4093,7 @@ local function StandUprightRebootedMain()
 														end
 													end
 												--Tusk Act 4
-												elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
+												elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes") and player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
 													if player.Character.Stand.Meshes["Cube.021"].Transparency == 1 then
 														player.Character.StandEvents.Summon:FireServer()
 													end
@@ -4310,7 +4310,7 @@ local function StandUprightRebootedMain()
 															end
 														end
 													--Tusk Act 4
-													elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
+													elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes") and player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
 														if player.Character.Stand.Meshes["Cube.021"].Transparency == 1 then
 															local args = {[1]={["State"]="Begin",["Type"]=Enum.UserInputType.Keyboard,["Key"]=Enum.KeyCode.Q}}
 															game:GetService("Players").LocalPlayer.Character.StandEvents.Input:FireServer(unpack(args))
@@ -4451,7 +4451,7 @@ local function StandUprightRebootedMain()
 														end
 													end
 												--Tusk Act 4
-												elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
+												elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes") and player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
 													if player.Character.Stand.Meshes["Cube.021"].Transparency == 1 then
 														local args = {[1]={["State"]="Begin",["Type"]=Enum.UserInputType.Keyboard,["Key"]=Enum.KeyCode.Q}}
 														game:GetService("Players").LocalPlayer.Character.StandEvents.Input:FireServer(unpack(args))
@@ -4587,7 +4587,7 @@ local function StandUprightRebootedMain()
 														end
 													end
 												--Tusk Act 4
-												elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
+												elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes") and player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
 													if player.Character.Stand.Meshes["Cube.021"].Transparency == 1 then
 														local args = {[1]={["State"]="Begin",["Type"]=Enum.UserInputType.Keyboard,["Key"]=Enum.KeyCode.Q}}
 														game:GetService("Players").LocalPlayer.Character.StandEvents.Input:FireServer(unpack(args))
@@ -4723,7 +4723,7 @@ local function StandUprightRebootedMain()
 														end
 													end
 												--Tusk Act 4
-												elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
+												elseif player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes") and player.Character:FindFirstChild("Stand"):FindFirstChild("Meshes"):FindFirstChild("Cube.021") then
 													if player.Character.Stand.Meshes["Cube.021"].Transparency == 1 then
 														local args = {[1]={["State"]="Begin",["Type"]=Enum.UserInputType.Keyboard,["Key"]=Enum.KeyCode.Q}}
 														game:GetService("Players").LocalPlayer.Character.StandEvents.Input:FireServer(unpack(args))
@@ -4948,6 +4948,16 @@ local function StandUprightRebootedMain()
 		SFRoka = bool
 	end)
 
+	local SFBuyArrow = false
+	section4:addToggle("Auto Buy Stand Arrow when run out of Arrows",false, function(bool)
+		SFBuyArrow = bool
+	end)
+
+	local SFBuyChargedArrow = false
+	section4:addToggle("Auto Buy Charged Arrow when run out of Arrows",false, function(bool)
+		SFBuyChargedArrow = bool
+	end)
+
 	local SFWebhook = false
 	section5:addTextbox("Stand Farm Webhook URL","Webhook",function(ScrollWebHook1)
 		notify("WebHook URL: " .. ScrollWebHook1)
@@ -4986,6 +4996,48 @@ local function StandUprightRebootedMain()
 							wait(.25)
 							game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("MerchantAU", "Option2")
 						end
+					end
+				end
+			end
+			if SFBuyArrow and not player.Backpack:FindFirstChild("Stand Arrow") and not player.Character:FindFirstChild("Stand Arrow") then
+				if player.Data.Level.Value < 15 then
+					notify("You cannot use this function yet")
+				else
+					if player.Data.Level.Value < 40 then
+						for i = 1, 5, 1 do
+							for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
+								if v:FindFirstChild("Head") and v.Head:FindFirstChild("Main") and v.Head.Main:FindFirstChild("Text") and v.Head.Main.Text.Text == "d0ge_316sBrother [Lvl. 15+]" then
+									player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
+								end
+							end
+							wait(.25)
+							game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("Merchant1", "Option4")
+						end
+					else
+						for i = 1, 5, 1 do
+							for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
+								if v:FindFirstChild("Head") and v.Head:FindFirstChild("Main") and v.Head.Main:FindFirstChild("Text") and v.Head.Main.Text.Text == "d0ge_316sBrother [Lvl. 40+]" then
+									player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
+								end
+							end
+							wait(.25)
+							game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("MerchantAU", "Option4")
+						end
+					end
+				end
+			end
+			if SFBuyChargedArrow and not player.Backpack:FindFirstChild("Charged Arrow") and not player.Character:FindFirstChild("Charged Arrow") then
+				if player.Data.Level.Value < 120 then
+					notify("You cannot use this function yet")
+				else
+					for i = 1, 5, 1 do
+						for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do
+							if v:FindFirstChild("Head") and v.Head:FindFirstChild("Main") and v.Head.Main:FindFirstChild("Text") and v.Head.Main.Text.Text == "MMLGG_316 [Lvl. 120+]" then
+								player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
+							end
+						end
+						wait(.25)
+						game:GetService("ReplicatedStorage").Events.BuyItem:FireServer("Merchantlvl120", "Option2")
 					end
 				end
 			end
