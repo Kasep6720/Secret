@@ -2364,7 +2364,7 @@ local function NNNITFMain()
 	local AllKnownScrapMetal = {"Bolt","Sheet Metal","UFO Junk","UFO Component","Broken Fan","Old Radio","Broken Microwave","Tyre","Metal Chair","Old Car Engine","Washing Machine","Cultist Experiment","Cultist Prototype","UFO Scrap"}
 	local AllKnownScrapWood = {"Log","Chair"}
 	local AllKnownScrapGem = {"Cultist Gem","Forest Gem"}
-	local AllKnownBioFuelMaterials = {"Log","Morsel","Cooked Morsel","Steak","Cooked Steak","Ribs","Cooked Ribs","Carrot","Corn","Pumpkin","Berry","Apple","Mackerel","Cooked Mackerel","Salmon","Cooked Salmon","Clownfish","Cooked Clownfish","Char","Cooked Char","Eel","Cooked Eel","Swordfish","Cooked Swordfish","Shark","Cooked Shark","Lava Eel","Cooked Lava Eel","Lionfish","Cooked Lionfish","Bunny Foot","Wolf Pelt","Alpha Wolf Pelt","Bear Pelt",}
+	local AllKnownBioFuelMaterials = {"Log","Morsel","Cooked Morsel","Steak","Cooked Steak","Ribs","Cooked Ribs","Carrot","Corn","Pumpkin","Berry","Apple","Mackerel","Cooked Mackerel","Salmon","Cooked Salmon","Clownfish","Cooked Clownfish","Char","Cooked Char","Eel","Cooked Eel","Swordfish","Cooked Swordfish","Shark","Cooked Shark","Lava Eel","Cooked Lava Eel","Lionfish","Cooked Lionfish","Bunny Foot","Wolf Pelt","Alpha Wolf Pelt","Bear Pelt"}
 	section1:addButton("Update Item List",function()
 		for _, item in pairs(workspace.Items:GetChildren()) do
 			if item:FindFirstChildWhichIsA("BasePart") then
