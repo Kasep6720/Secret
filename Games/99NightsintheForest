@@ -2102,7 +2102,7 @@ local function NNNITFMain()
 	local section2 = page2:addSection("idk")
 	local section3 = page2:addSection("Teleports")
 
-	local AllKnownMelee = {"Spear","Morningstar","Katana","Laser Sword","Ice Sword","Trident","Poison Spear","Inferno Sword","Cultist King Mace","Obsidiron Hammer"}
+	local AllKnownMelee = {"Spear","Morningstar","Katana","Laser Sword","Ice Sword","Trident","Poison Spear","Inferno Sword","Cultist King Mace","Obsidiron Hammer","Corrupted Axe"}
 	local sack = nil
 	local function findSack()
 		for _, item in pairs(player.Inventory:GetChildren()) do
@@ -2128,7 +2128,8 @@ local function NNNITFMain()
 		["Good Axe"] = "112_8982038982",
 		["Strong Axe"] = "116_8982038982",
 		["Chainsaw"] = "647_8992824875",
-		["Spear"] = "196_8999010016"
+		["Spear"] = "196_8999010016",
+		["Corrupted Axe"] = "116_8982038982" --need id
 		
 	}
 
@@ -2357,13 +2358,13 @@ local function NNNITFMain()
 	local section4 = page3:addSection("Food")
 	local section5 = page3:addSection("BioFuel Processor")
 
-	local AllKnownFuel = {"Log","Biofuel","Coal","Fuel Canister","Oil Barrel"}
+	local AllKnownFuel = {"Log","Biofuel","Coal","Fuel Canister","Oil Barrel","Purple Fur Tuft"}
 	local AllKnownCookableFood = {"Morsel","Steak","Ribs","Mackerel","Salmon","Clownfish","Char","Eel","Swordfish","Shark","Lava Eel","Lionfish"}
 	local AllKnownScrap = {"Bolt","Sheet Metal","UFO Junk","UFO Component","Broken Fan","Old Radio","Broken Microwave","Tyre","Metal Chair","Old Car Engine","Washing Machine","Cultist Experiment","Cultist Prototype","UFO Scrap","Log","Chair","Cultist Gem","Forest Gem"}
 	local AllKnownScrapMetal = {"Bolt","Sheet Metal","UFO Junk","UFO Component","Broken Fan","Old Radio","Broken Microwave","Tyre","Metal Chair","Old Car Engine","Washing Machine","Cultist Experiment","Cultist Prototype","UFO Scrap"}
 	local AllKnownScrapWood = {"Log","Chair"}
 	local AllKnownScrapGem = {"Cultist Gem","Forest Gem"}
-	local AllKnownBioFuelMaterials = {"Log","Morsel","Cooked Morsel","Steak","Cooked Steak","Ribs","Cooked Ribs","Carrot","Corn","Pumpkin","Berry","Apple","Mackerel","Cooked Mackerel","Salmon","Cooked Salmon","Clownfish","Cooked Clownfish","Char","Cooked Char","Eel","Cooked Eel","Swordfish","Cooked Swordfish","Shark","Cooked Shark","Lava Eel","Cooked Lava Eel","Lionfish","Cooked Lionfish","Bunny Foot","Wolf Pelt","Alpha Wolf Pelt","Bear Pelt"}
+	local AllKnownBioFuelMaterials = {"Log","Morsel","Cooked Morsel","Steak","Cooked Steak","Ribs","Cooked Ribs","Carrot","Corn","Pumpkin","Berry","Apple","Mackerel","Cooked Mackerel","Salmon","Cooked Salmon","Clownfish","Cooked Clownfish","Char","Cooked Char","Eel","Cooked Eel","Swordfish","Cooked Swordfish","Shark","Cooked Shark","Lava Eel","Cooked Lava Eel","Lionfish","Cooked Lionfish","Bunny Foot","Wolf Pelt","Alpha Wolf Pelt","Bear Pelt",}
 	section1:addButton("Update Item List",function()
 		for _, item in pairs(workspace.Items:GetChildren()) do
 			if item:FindFirstChildWhichIsA("BasePart") then
