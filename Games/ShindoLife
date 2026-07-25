@@ -14259,9 +14259,9 @@ local function ShindoMain()
 end
 
 --Fix Shindo dumb ahh mouse offset
-if player.PlayerGui:FindFirstChild("MOUSE") then
-	player.PlayerGui.MOUSE.followmouse.mouseicon.Position = UDim2.new(-0.5,0,1.9,0)
-end
+--if player.PlayerGui:FindFirstChild("MOUSE") then
+--	player.PlayerGui.MOUSE.followmouse.mouseicon.Position = UDim2.new(-0.5,0,1.9,0)
+--end
 
 local dungeonplace = game:GetService("Workspace"):FindFirstChild("dungeons")
 local bossbattleplace = game:GetService("Workspace"):FindFirstChild("bossbattle")
