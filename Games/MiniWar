@@ -960,7 +960,7 @@ local function MiniWar()
 		AutoBuyEverything = false
 		section1:addToggle("Auto Buy Everything",false,function(bool)
 			AutoBuyEverything = bool
-			notify("Auto Buy all Blocks: " .. tostring(AutoBuyEverything))
+			notify("Auto Buy Everything: " .. tostring(AutoBuyEverything))
 			if AutoBuyEverything == true then
 				writefile(DHV2MW .. "/AutoBuyEverything.txt","true")
 				writefile(DHV2MW .. "/ABSI.txt","false")
