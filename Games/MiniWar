@@ -1227,8 +1227,8 @@ local function MiniWar()
 		while task.wait(.5) do
 			if AutoCollectWarPassPoints then
 				for i,v in pairs(workspace:GetChildren()) do
-					if v.Name == "BATTLEPASS_POINT_PICKUP" then
-						player.Character.HumanoidRootPart.CFrame = v.CFrame* CFrame.new(0, 3, 0)
+					if v.Name == "BATTLEPASS_POINT_PICKUP" and v:FindFirstChild("Cube.001") then
+						player.Character.HumanoidRootPart.CFrame = v["Cube.001"].CFrame
 					end
 				end
 			end
@@ -1245,6 +1245,68 @@ local function MiniWar()
 	local page6 = NoobieDoge:addPage("Event", 136388769289535)
 	local section1 = page6:addSection("Godzilla")
 	local section2 = page6:addSection("dunno")
+
+	-- seventh page
+	local page7 = NoobieDoge:addPage("Teleports", 136388769289535)
+	local section1 = page7:addSection("Player Bases")
+	local section2 = page7:addSection("Misc")
+	local section3 = page7:addSection("Bases")
+	local section4 = page7:addSection("Others")
+
+	local PlayerBases = {}
+	for i,v in pairs(workspace.MilitaryMap.PlayerPlots:GetChildren()) do
+		table.insert(PlayerBases, v.Name)
+	end
+
+	section1:addDropdown("Player Bases",PlayerBases,function(tppbase)
+		print("Selected: " .. tppbase)
+		notify("Selected: " .. tppbase)
+		player.Character.HumanoidRootPart.CFrame=workspace.MilitaryMap.PlayerPlots[tppbase].SpawnPart.Part.CFrame+Vector3.new(0,4,0)
+	end)
+
+	section2:addButton("Tradesman",function()
+		task.wait()
+		player.Character.HumanoidRootPart.CFrame=workspace.Teleports.sell.CFrame+Vector3.new(0,4,0)
+	end)
+	section2:addButton("Premium Shop",function()
+		task.wait()
+		player.Character.HumanoidRootPart.CFrame=workspace.Teleports.shop.CFrame+Vector3.new(0,4,0)
+	end)
+	section2:addButton("Shopkeeper",function()
+		task.wait()
+		player.Character.HumanoidRootPart.CFrame=workspace.DziadekBogaty.HumanoidRootPart.CFrame+Vector3.new(0,4,0)
+	end)
+	section2:addButton("Black Market",function()
+		task.wait()
+		player.Character.HumanoidRootPart.CFrame=workspace.BlackMarket.Main.Helipad.Helipad["Plane.004"].CFrame+Vector3.new(0,4,0)
+	end)
+	
+	for i,v in pairs(workspace.MilitaryMap.Object:GetChildren()) do
+		for i,v1 in pairs(v:GetChildren()) do
+			section3:addButton(v1:GetAttribute("baseType"),function()
+				task.wait()
+				player.Character.HumanoidRootPart.CFrame=v1.Turrent1.CFrame+Vector3.new(0,4,0)
+			end)
+		end
+	end
+
+	section4:addButton("General Camera",function()
+		task.wait()
+		player.Character.HumanoidRootPart.CFrame=workspace.GenralCamera.GeneralModelSpawn.CFrame+Vector3.new(0,4,0)
+	end)
+	section4:addButton("Bat",function()
+		task.wait()
+		player.Character.HumanoidRootPart.CFrame=workspace.Bat.CFrame+Vector3.new(0,4,0)
+	end)
+
+	boarderno = 0
+	for i,v in pairs(workspace.Border:GetChildren()) do
+		boarderno = boarderno + 1
+		section4:addButton("Boarder " .. boarderno,function()
+			task.wait()
+			player.Character.HumanoidRootPart.CFrame=v.CFrame+Vector3.new(0,4,0)
+		end)
+	end
 
 	-- last page
 	local pagelast = NoobieDoge:addPage("Settings", 136388769289535)
