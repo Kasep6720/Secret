@@ -215,6 +215,12 @@ local function MiniWar()
 	if isfile(DHV2MW .. "/bsi.txt") == false then
 		writefile(DHV2MW .. "/bsi.txt"," ")
 	end
+	if isfile(DHV2MW .. "/bsi1.txt") == false then
+		writefile(DHV2MW .. "/bsi1.txt"," ")
+	end
+	if isfile(DHV2MW .. "/bsi11.txt") == false then
+		writefile(DHV2MW .. "/bsi11.txt"," ")
+	end
 	if isfile(DHV2MW .. "/ABSI.txt") == false then
 		writefile(DHV2MW .. "/ABSI.txt","false")
 	end	
@@ -223,6 +229,12 @@ local function MiniWar()
 	end
 	if isfile(DHV2MW .. "/bsiBM.txt") == false then
 		writefile(DHV2MW .. "/bsiBM.txt"," ")
+	end
+	if isfile(DHV2MW .. "/bsiBM1.txt") == false then
+		writefile(DHV2MW .. "/bsiBM1.txt"," ")
+	end
+	if isfile(DHV2MW .. "/bsiBM11.txt") == false then
+		writefile(DHV2MW .. "/bsiBM11.txt"," ")
 	end
 	if isfile(DHV2MW .. "/ABSIBM.txt") == false then
 		writefile(DHV2MW .. "/ABSIBM.txt","false")
@@ -235,6 +247,9 @@ local function MiniWar()
 	end
 	if isfile(DHV2MW .. "/AutoCollectWarPassPoints.txt") == false then
 		writefile(DHV2MW .. "/AutoCollectWarPassPoints.txt","false")
+	end 
+	if isfile(DHV2MW .. "/AutoClaimWarPassRewards.txt") == false then
+		writefile(DHV2MW .. "/AutoClaimWarPassRewards.txt","false")
 	end 
 	local DHV2MWEvents = DHV2MW .. "/Events"
 	if isfolder(DHV2MWEvents) == false then
@@ -963,6 +978,18 @@ local function MiniWar()
 		bsi = BUYS1
 		writefile(DHV2MW .. "/bsi.txt",bsi)
 	end)
+	section1:addDropdown("Shop Choice 2: " .. readfile(DHV2MW .. "/bsi1.txt"),BuyShop,function(BUYS11)
+		print("Selected: " .. BUYS11)
+		notify("Selected: " .. BUYS11)
+		bsi1 = BUYS11
+		writefile(DHV2MW .. "/bsi1.txt",bsi1)
+	end)
+	section1:addDropdown("Shop Choice 3: " .. readfile(DHV2MW .. "/bsi11.txt"),BuyShop,function(BUYS111)
+		print("Selected: " .. BUYS111)
+		notify("Selected: " .. BUYS111)
+		bsi11 = BUYS111
+		writefile(DHV2MW .. "/bsi11.txt",bsi11)
+	end)
 
 	if readfile(DHV2MW .. "/ABSI.txt") == "true" then
 		ABSI = true
@@ -1030,6 +1057,18 @@ local function MiniWar()
 		bsiBM = BUYS2
 		writefile(DHV2MW .. "/bsiBM.txt",bsiBM)
 	end)
+	section2:addDropdown("Black Market Choice 2: " .. readfile(DHV2MW .. "/bsiBM1.txt"),BuyBlackMarket,function(BUYS21)
+		print("Selected: " .. BUYS21)
+		notify("Selected: " .. BUYS21)
+		bsiBM1 = BUYS21
+		writefile(DHV2MW .. "/bsiBM1.txt",bsiBM1)
+	end)
+	section2:addDropdown("Black Market Choice 3: " .. readfile(DHV2MW .. "/bsiBM11.txt"),BuyBlackMarket,function(BUYS211)
+		print("Selected: " .. BUYS211)
+		notify("Selected: " .. BUYS211)
+		bsiBM11 = BUYS211
+		writefile(DHV2MW .. "/bsiBM11.txt",bsiBM11)
+	end)
 
 	if readfile(DHV2MW .. "/ABSIBM.txt") == "true" then
 		ABSIBM = true
@@ -1083,9 +1122,9 @@ local function MiniWar()
 				end
 				task.wait()
 			elseif ABSI then
-				if bsi ~= " " then
+				if bsi ~= " " and bsi1 ~= " " and bsi11 ~= " "then
 					for i, v in ipairs(BuyShop) do
-						if v == bsi then
+						if v == bsi or v == bsi1 or v == bsi11 then
 							if player.PlayerGui.MainUI.Fullscreen.BuyUI.ItemsGrid[v].Stock.Text ~= "Out of Stock!" then
 								local args = {[1] = {[1] = {["item"] = v,["shop"] = "Farm"},[2] = "3"}}
 								game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
@@ -1114,7 +1153,7 @@ local function MiniWar()
 				for i, v in ipairs(BuyBlackMarket) do
 					if v.Name ~= "UIListLayout" and v.Name ~= "UIPadding" and v.Name ~= "DontDelete" then
 						if player.PlayerGui.MainUI.Fullscreen.BlackMarketUI.ItemsGrid[v].Stock.Text ~= "Out of Stock!" then
-							local args = {[1] = {[1] = {["item"] = v,["shop"] = "BlackMarket"},[2] = "Y"}}
+							local args = {[1] = {[1] = {["item"] = v,["shop"] = "BlackMarket"},[2] = "X"}}
 							game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
 							notify("Purchased: " .. v .. "!")
 							print("Purchased: " .. v .. "!")
@@ -1123,12 +1162,12 @@ local function MiniWar()
 				end
 				task.wait()
 			elseif ABSIBM then
-				if bsi ~= " " then
+				if bsiBM ~= " " and bsiBM1 ~= " " and bsiBM11 ~= " " then
 					for i, v in ipairs(BuyBlackMarket) do
-						if v == bsi then
+						if v == bsiBM or v == bsiBM1 or v == bsiBM11 then
 							if v.Name ~= "UIListLayout" and v.Name ~= "UIPadding" and v.Name ~= "DontDelete" then
 								if player.PlayerGui.MainUI.Fullscreen.BlackMarketUI.ItemsGrid[v].Stock.Text ~= "Out of Stock!" then
-									local args = {[1] = {[1] = {["item"] = v,["shop"] = "BlackMarket"},[2] = "Y"}}
+									local args = {[1] = {[1] = {["item"] = v,["shop"] = "BlackMarket"},[2] = "X"}}
 									game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
 									notify("Purchased: " .. v .. "!")
 									print("Purchased: " .. v .. "!")
@@ -1222,6 +1261,45 @@ local function MiniWar()
 			end
 		end)
 	end
+
+	if readfile(DHV2MW .. "/AutoClaimWarPassRewards.txt") == "true" then
+		AutoClaimWarPassRewards = true
+		section4:addToggle("Auto Claim War Pass Rewards",true,function(bool)
+			AutoClaimWarPassRewards = bool
+			if AutoClaimWarPassRewards then
+				writefile(DHV2MW .. "/AutoClaimWarPassRewards.txt","true")
+			else
+				writefile(DHV2MW .. "/AutoClaimWarPassRewards.txt","false")
+			end
+		end)
+	else
+		AutoClaimWarPassRewards = false
+		section4:addToggle("Auto Claim War Pass Rewards",false,function(bool)
+			AutoClaimWarPassRewards = bool
+			if AutoClaimWarPassRewards then
+				writefile(DHV2MW .. "/AutoClaimWarPassRewards.txt","true")
+			else
+				writefile(DHV2MW .. "/AutoClaimWarPassRewards.txt","false")
+			end
+		end)
+	end
+
+	spawn(function()
+		while task.wait(2) do
+			if AutoClaimWarPassRewards then
+				for i,v in pairs(player.PlayerGui.MainUI.Fullscreen.SeasonPassUI.WarPass.ScrollingFrame:GetChildren()) do
+					if v.Name ~= "Frame" and v.Name ~= "UIListLayout" and tonumber(v.Name) < tonumber(player.PlayerGui.MainUI.Fullscreen.SeasonPassUI.WarPass.Top.Tier.ResetTimer.Text) then
+						if v.ItemTemplate.Status.Locked.Visible == false and v.ItemTemplate.Status.ClaimedIcon.Visible == false then
+							print("Claimed War Pass Level: ".. tostring(v.Name))
+							local args = {[1] = {[1] = {["stage"] = tonumber(v.Name),["track"] = "Free"},[2] = "@"}}
+							game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
+						end
+					end
+				end
+			end
+		end
+	end)
+
 
 	spawn(function()
 		while task.wait(.5) do
@@ -1410,13 +1488,18 @@ local function MiniWar()
 			writefile(Universal .. "/trackthatguy.txt","false")
 			writefile(DHV2MW .. "/AutoBuyEverything.txt","false")
 			writefile(DHV2MW .. "/bsi.txt"," ")
+			writefile(DHV2MW .. "/bsi1.txt"," ")
+			writefile(DHV2MW .. "/bsi11.txt"," ")
 			writefile(DHV2MW .. "/ABSI.txt","false")
 			writefile(DHV2MW .. "/AutoBuyEverythingBM.txt","false")
 			writefile(DHV2MW .. "/bsiBM.txt"," ")
+			writefile(DHV2MW .. "/bsiBM1.txt"," ")
+			writefile(DHV2MW .. "/bsiBM11.txt"," ")
 			writefile(DHV2MW .. "/ABSIBM.txt","false")
 			writefile(DHV2MW .. "/AutoCollect.txt","false")
 			writefile(DHV2MW .. "/Delaybetweencollect.txt","200")
 			writefile(DHV2MW .. "/AutoCollectWarPassPoints.txt","false")
+			writefile(DHV2MW .. "/AutoClaimWarPassRewards.txt","false")
 			local DHV2MWEvents = DHV2MW .. "/Events"
 			makefolder(DHV2MWEvents)
 
@@ -1433,6 +1516,7 @@ local function MiniWar()
 			AutoCollect = false
 			DBC = tonumber(readfile(DHV2MW .. "/Delaybetweencollect.txt"))/1000
 			AutoCollectWarPassPoints = false
+			AutoClaimWarPassRewards = false
 
 
 			for i,v in pairs(player.PlayerGui:GetChildren()) do
