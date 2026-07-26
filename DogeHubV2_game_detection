@@ -22,6 +22,9 @@ elseif game.GameId == 7822444776 then
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/refs/heads/DogeHubV2/Games/BuildaPlane"))()
 elseif game.GameId == 7326934954 then
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/refs/heads/DogeHubV2/Games/99NightsintheForest"))()
+elseif game.GameId == 9837612476 then
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/refs/heads/DogeHubV2/Games/MiniWar"))()
 else
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/DogeHubV2/DogeHubV2UniversalScript"))()
 end
+
