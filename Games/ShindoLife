@@ -1076,11 +1076,12 @@ local function ShindoInfSpin()
 		local TextButton_2Text = Instance.new("TextButton")
 
 		ScreenGuiK.Parent = player:WaitForChild("PlayerGui")
+		ScreenGuiK.Name = "DHV2InstructionsScreenGui"
 
 		FrameK.Parent = ScreenGuiK
 		FrameK.Name = "Main"
 		FrameK.BackgroundTransparency = 1
-		FrameK.Position = UDim2.new(0.005, 0, 0.7, 0)
+		FrameK.Position = UDim2.new(0.02, 0, 0.1, 0)
 		FrameK.Size = UDim2.new(0, 220, 0, 180)
 		FrameK.Image = "rbxassetid://4641149554"
 		FrameK.ImageColor3 = Color3.fromRGB(24, 24, 24)
