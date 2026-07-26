@@ -1857,5 +1857,4 @@ function ResetNO()
 end
 TextButton_2.MouseButton1Click:connect(ResetNO)	
 TextButton_2Text.MouseButton1Click:connect(ResetNO)
-
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Kasep6720/Secret/refs/heads/Functions/DogeHubV2UserLogs', true))()
