@@ -245,11 +245,17 @@ local function MiniWar()
 	if isfile(DHV2MW .. "/Delaybetweencollect.txt") == false then
 		writefile(DHV2MW .. "/Delaybetweencollect.txt","200")
 	end
+	if isfile(DHV2MW .. "/AutoClaimQuestRewards.txt") == false then
+		writefile(DHV2MW .. "/AutoClaimQuestRewards.txt","false")
+	end 
 	if isfile(DHV2MW .. "/AutoCollectWarPassPoints.txt") == false then
-		writefile(DHV2MW .. "/AutoCollectWarPassPoints.txt","false")
+		writefile(DHV2MW .. "/AutoCollectWarPassPoints.txt","false") 
 	end 
 	if isfile(DHV2MW .. "/AutoClaimWarPassRewards.txt") == false then
 		writefile(DHV2MW .. "/AutoClaimWarPassRewards.txt","false")
+	end 
+	if isfile(DHV2MW .. "/AutoResearch.txt") == false then
+		writefile(DHV2MW .. "/AutoResearch.txt","false")
 	end 
 	local DHV2MWEvents = DHV2MW .. "/Events"
 	if isfolder(DHV2MWEvents) == false then
@@ -921,7 +927,8 @@ local function MiniWar()
 	local page3 = NoobieDoge:addPage("Auto Buy", 136388769289535)
 	local section1 = page3:addSection("Shop")
 	local section2 = page3:addSection("Black Market")
-	local section3 = page3:addSection("Auto Buy Config")
+	local section3 = page3:addSection("Auto Expand")
+	local section4 = page3:addSection("Auto Buy Config")
 
 	local BuyShop = {}
 	for i,v in pairs(player.PlayerGui.MainUI.Fullscreen.BuyUI.ItemsGrid:GetChildren()) do
@@ -1100,46 +1107,80 @@ local function MiniWar()
 		end)
 	end
 
-	local CurrentMoney = player.PlayerGui.MainUI.HUD.CurrencyUI.Frame.Money.Text
-	local CurrentGem = player.PlayerGui.MainUI.HUD.CurrencyUI.Gems.Gems.Text
+	local suffixes = {
+		["K"] = 1e3,       -- 1,000
+		["M"] = 1e6,       -- 1,000,000
+		["B"] = 1e9,       -- 1,000,000,000
+		["T"] = 1e12,      -- 1,000,000,000,000
+		["Qd"] = 1e15,     -- 1,000,000,000,000,000
+	}
+	local function ShortToNumber(inputString)
+		inputString = string.gsub(inputString, "%s+", "")
+		local numPart, suffixPart = string.match(inputString, "^([%d%.]+)(%a*)$")
+		if numPart then
+			local number = tonumber(numPart)
+			if suffixPart and suffixes[suffixPart] then
+				return number * suffixes[suffixPart]
+			else
+				return number
+			end
+		end
+		return 0
+	end
+	local function CleanToNumber(inputString)
+		local cleanString = string.gsub(inputString, "%D", "")
+		return tonumber(cleanString) or 0
+	end
+	local CurrentMoney = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Frame.Money.Text)
+	local CurrentGem = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Gems.Gems.Text)
 
 	spawn(function()
-		while wait() do
+		while task.wait() do
 			if AutoBuyEverything then
 				for i, v in ipairs(BuyShop) do
-					if player.PlayerGui.MainUI.Fullscreen.BuyUI.ItemsGrid[v].Stock.Text ~= "Out of Stock!" then
-						local args = {[1] = {[1] = {["item"] = v,["shop"] = "Farm"},[2] = "3"}}
-						game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
-						local args = {[1] = {[1] = {["item"] = v,["shop"] = "House"},[2] = "3"}}
-						game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
-						local args = {[1] = {[1] = {["item"] = v,["shop"] = "Military"},[2] = "3"}}
-						game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
-						local args = {[1] = {[1] = {["item"] = v,["shop"] = "Decor"},[2] = "3"}}
-						game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
-						notify("Purchased: " .. v .. "!")
-						print("Purchased: " .. v .. "!")
+					if player.PlayerGui.MainUI.Fullscreen.BuyUI.ItemsGrid[v]:FindFirstChild("Stock") and player.PlayerGui.MainUI.Fullscreen.BuyUI.ItemsGrid[v].Stock.Text ~= "Out of Stock!" then
+						local CurrentMoney = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Frame.Money.Text)
+						if ShortToNumber(player.PlayerGui.MainUI.Fullscreen.BuyUI.ItemsGrid[v].Buy.Price.PriceText.Text) > CurrentMoney then
+							print("Not enough money to purchase")
+						else
+							local args = {[1] = {[1] = {["item"] = v,["shop"] = "Farm"},[2] = "3"}}
+							game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
+							local args = {[1] = {[1] = {["item"] = v,["shop"] = "House"},[2] = "3"}}
+							game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
+							local args = {[1] = {[1] = {["item"] = v,["shop"] = "Military"},[2] = "3"}}
+							game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
+							local args = {[1] = {[1] = {["item"] = v,["shop"] = "Decor"},[2] = "3"}}
+							game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
+							notify("Purchased: " .. v .. "!")
+							print("Purchased: " .. v .. "!")
+						end
 					end
 				end
-				task.wait()
+				task.wait(.2)
 			elseif ABSI then
 				if bsi ~= " " and bsi1 ~= " " and bsi11 ~= " "then
 					for i, v in ipairs(BuyShop) do
 						if v == bsi or v == bsi1 or v == bsi11 then
-							if player.PlayerGui.MainUI.Fullscreen.BuyUI.ItemsGrid[v].Stock.Text ~= "Out of Stock!" then
-								local args = {[1] = {[1] = {["item"] = v,["shop"] = "Farm"},[2] = "3"}}
-								game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
-								local args = {[1] = {[1] = {["item"] = v,["shop"] = "House"},[2] = "3"}}
-								game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
-								local args = {[1] = {[1] = {["item"] = v,["shop"] = "Military"},[2] = "3"}}
-								game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
-								local args = {[1] = {[1] = {["item"] = v,["shop"] = "Decor"},[2] = "3"}}
-								game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
-								notify("Purchased: " .. v .. "!")
-								print("Purchased: " .. v .. "!")
+							if player.PlayerGui.MainUI.Fullscreen.BuyUI.ItemsGrid[v]:FindFirstChild("Stock") and player.PlayerGui.MainUI.Fullscreen.BuyUI.ItemsGrid[v].Stock.Text ~= "Out of Stock!" then
+								local CurrentMoney = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Frame.Money.Text)
+								if ShortToNumber(player.PlayerGui.MainUI.Fullscreen.BuyUI.ItemsGrid[v].Buy.Price.PriceText.Text) > CurrentMoney then
+									print("Not enough money to purchase")
+								else
+									local args = {[1] = {[1] = {["item"] = v,["shop"] = "Farm"},[2] = "3"}}
+									game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
+									local args = {[1] = {[1] = {["item"] = v,["shop"] = "House"},[2] = "3"}}
+									game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
+									local args = {[1] = {[1] = {["item"] = v,["shop"] = "Military"},[2] = "3"}}
+									game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
+									local args = {[1] = {[1] = {["item"] = v,["shop"] = "Decor"},[2] = "3"}}
+									game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
+									notify("Purchased: " .. v .. "!")
+									print("Purchased: " .. v .. "!")
+								end
 							end
 						end
 					end
-					task.wait()
+					task.wait(.2)
 				else
 					notify("Please select the item you want to buy!")
 				end
@@ -1148,34 +1189,44 @@ local function MiniWar()
 	end)
 
 	spawn(function()
-		while wait() do
+		while task.wait() do
 			if AutoBuyEverythingBM then
 				for i, v in ipairs(BuyBlackMarket) do
 					if v.Name ~= "UIListLayout" and v.Name ~= "UIPadding" and v.Name ~= "DontDelete" then
-						if player.PlayerGui.MainUI.Fullscreen.BlackMarketUI.ItemsGrid[v].Stock.Text ~= "Out of Stock!" then
-							local args = {[1] = {[1] = {["item"] = v,["shop"] = "BlackMarket"},[2] = "X"}}
-							game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
-							notify("Purchased: " .. v .. "!")
-							print("Purchased: " .. v .. "!")
+						if player.PlayerGui.MainUI.Fullscreen.BlackMarketUI.ItemsGrid[v]:FindFirstChild("Stock") and player.PlayerGui.MainUI.Fullscreen.BlackMarketUI.ItemsGrid[v].Stock.Text ~= "Out of Stock!" then
+							local CurrentGem = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Gems.Gems.Text)
+							if ShortToNumber(player.PlayerGui.MainUI.Fullscreen.BlackMarketUI.ItemsGrid[v].Buy.Price.PriceText.Text) > CurrentGem then
+								print("Not enough gems to purchase")
+							else
+								local args = {[1] = {[1] = {["item"] = v,["shop"] = "BlackMarket"},[2] = "X"}}
+								game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
+								notify("Purchased: " .. v .. "!")
+								print("Purchased: " .. v .. "!")
+							end
 						end
 					end
 				end
-				task.wait()
+				task.wait(.2)
 			elseif ABSIBM then
 				if bsiBM ~= " " and bsiBM1 ~= " " and bsiBM11 ~= " " then
 					for i, v in ipairs(BuyBlackMarket) do
 						if v == bsiBM or v == bsiBM1 or v == bsiBM11 then
 							if v.Name ~= "UIListLayout" and v.Name ~= "UIPadding" and v.Name ~= "DontDelete" then
-								if player.PlayerGui.MainUI.Fullscreen.BlackMarketUI.ItemsGrid[v].Stock.Text ~= "Out of Stock!" then
-									local args = {[1] = {[1] = {["item"] = v,["shop"] = "BlackMarket"},[2] = "X"}}
-									game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
-									notify("Purchased: " .. v .. "!")
-									print("Purchased: " .. v .. "!")
+								if player.PlayerGui.MainUI.Fullscreen.BlackMarketUI.ItemsGrid[v]:FindFirstChild("Stock") and player.PlayerGui.MainUI.Fullscreen.BlackMarketUI.ItemsGrid[v].Stock.Text ~= "Out of Stock!" then
+									local CurrentGem = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Gems.Gems.Text)
+									if ShortToNumber(player.PlayerGui.MainUI.Fullscreen.BlackMarketUI.ItemsGrid[v].Buy.Price.PriceText.Text) > CurrentGem then
+										print("Not enough gems to purchase")
+									else
+										local args = {[1] = {[1] = {["item"] = v,["shop"] = "BlackMarket"},[2] = "X"}}
+										game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
+										notify("Purchased: " .. v .. "!")
+										print("Purchased: " .. v .. "!")
+									end
 								end
 							end
 						end
 					end
-					task.wait()
+					task.wait(.2)
 				else
 					notify("Please select the item you want to buy!")
 				end
@@ -1190,6 +1241,7 @@ local function MiniWar()
 	local section3 = page4:addSection("Quests")
 	local section4 = page4:addSection("War Pass")
 	local section5 = page4:addSection("Auto Research")
+	local section6 = page4:addSection("Auto Claim Daily Rewards")
 	
 	if readfile(DHV2MW .. "/AutoCollect.txt") == "true" then
 		AutoCollect = true
@@ -1221,8 +1273,13 @@ local function MiniWar()
 	DBC = tonumber(readfile(DHV2MW .. "/Delaybetweencollect.txt"))/1000
 
 	for i,v in pairs(workspace.MilitaryMap.PlayerPlots:GetChildren()) do
-		if v.UI.BillboardGui.Holder.PlayerName.Text == player.PlayerGui.MainUI.Fullscreen.SettingsUI.SettingsFrame.OwnCountry.EmpireName.Text then
+		local empireName = player.Name .. "'s Empire"
+		if v.UI.BillboardGui.Holder.PlayerName.Text == empireName then
 			v.Name = "YourBase"
+		else
+			if v.UI.BillboardGui.Holder.PlayerName.Text == player.PlayerGui.MainUI.Fullscreen.SettingsUI.SettingsFrame.OwnCountry.EmpireName.Text then
+				v.Name = "YourBase"
+			end
 		end
 	end
 
@@ -1234,6 +1291,60 @@ local function MiniWar()
 						--v.ProximityPrompt.MaxActivationDistance = 999999999
 						local args = {[1] = {[1] = v,[2] = "M"}}
 						game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
+					end
+				end
+			end
+		end
+	end)
+
+	if readfile(DHV2MW .. "/AutoClaimQuestRewards.txt") == "true" then
+		AutoClaimQuestRewards = true
+		section4:addToggle("Auto Claim Quest Rewards",true,function(bool)
+			AutoClaimQuestRewards = bool
+			if AutoClaimQuestRewards then
+				writefile(DHV2MW .. "/AutoClaimQuestRewards.txt","true")
+			else
+				writefile(DHV2MW .. "/AutoClaimQuestRewards.txt","false")
+			end
+		end)
+	else
+		AutoClaimQuestRewards = false
+		section4:addToggle("Auto Claim Quest Rewards",false,function(bool)
+			AutoClaimQuestRewards = bool
+			if AutoClaimQuestRewards then
+				writefile(DHV2MW .. "/AutoClaimQuestRewards.txt","true")
+			else
+				writefile(DHV2MW .. "/AutoClaimQuestRewards.txt","false")
+			end
+		end)
+	end
+
+	spawn(function()
+		while task.wait(1) do
+			if AutoClaimQuestRewards then
+				for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainUI.Fullscreen.SeasonPassUI.Quests.QuestList:GetChildren()) do
+					if v.Name ~= "UIPadding" and v.Name ~= "UIListLayout" and v.Name ~= "DontDelete" and v.Name ~= "Template" then
+						if v.Button.NameFrame.ButtonText.Text == "Claim!" and v.Button.Visible == true then
+							print("Claimed Quest Rewards: ".. tostring(v.Name))
+							local args = {[1] = {[1] = v.Name,[2] = "]"}}
+							game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
+						end
+					end
+				end
+			end
+		end
+	end)
+	spawn(function()
+		while task.wait(1) do
+			if AutoClaimQuestRewards then
+				for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainUI.Fullscreen.SeasonPassUI.Quests.StreakProgress.ProgressBar.TierList:GetChildren()) do
+					if v.Name ~= "Progress" and v.Name ~= "UIListLayout" then
+						if v.Quantity.Text == "Claim!" and v.ClaimButton.Visible == true then
+							print("Claimed Quest Progress Rewards: ".. tostring(v.Name))
+							local questprogressno = string.match(v.Name, "%d+")
+							local args = {[1] = {[1] = questprogressno,[2] = "^"}}
+							game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
+						end
 					end
 				end
 			end
@@ -1311,6 +1422,103 @@ local function MiniWar()
 				end
 			end
 		end
+	end)
+
+	if readfile(DHV2MW .. "/AutoResearch.txt") == "true" then
+		AutoResearch = true
+		section5:addToggle("AutoResearch",true,function(bool)
+			AutoResearch = bool
+			if AutoResearch then
+				writefile(DHV2MW .. "/AutoResearch.txt","true")
+			else
+				writefile(DHV2MW .. "/AutoResearch.txt","false")
+			end
+		end)
+	else
+		AutoResearch = false
+		section5:addToggle("Auto Research",false,function(bool)
+			AutoResearch = bool
+			if AutoResearch then
+				writefile(DHV2MW .. "/AutoResearch.txt","true")
+			else
+				writefile(DHV2MW .. "/AutoResearch.txt","false")
+			end
+		end)
+	end
+
+	local function IsResearchFull(inputString)
+		local lowerInput = string.lower(inputString)
+		local current, max = string.match(lowerInput, "researchers%s*:%s*(%d+)/(%d+)")
+		if current and max then
+			if tonumber(current) == tonumber(max) then
+				return true
+			end
+		end
+		return false
+	end
+
+	spawn(function()
+		while task.wait(.5) do
+			if AutoResearch then
+				if IsResearchFull(game:GetService("Players").LocalPlayer.PlayerGui.SkillsUI.SkillsUI.researchers.Quantity.Text) == false then
+					if not workspace:FindFirstChild("UpgradeTree") then
+						print("Locating data from ReplicatedStorage")
+						local foundAny = false
+						for i,v in pairs(game:GetService("ReplicatedStorage").shared.model.UpgradeTree.Upgrades:GetChildren()) do
+							if v:FindFirstChild("Inside") then
+								if v.Inside:FindFirstChild("LockedUI") and v.Inside:FindFirstChild("ToUnlockUI") then
+									foundAny = true
+									if v.Inside.Color == Color3.fromRGB(58, 58, 58) and v.Inside.ToUnlockUI.Enabled == true then
+										print(v.Name)
+										local CurrentMoney = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Frame.Money.Text)
+										if ShortToNumber(v.Inside.ToUnlockUI.Frame.PriceFrame.Money.Text) > CurrentMoney then
+											print("Not enough money to research")
+										else
+											local args = {[1] = {[1] = v.Name,[2] = "S"}}
+											game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
+										end
+									end
+								end
+							end
+						end
+						if not foundAny then
+							notify("Please open your research tab") 
+							task.wait(5)
+						end
+					else
+						print("Locating data from Workspace")
+						local foundAny = false
+						for i, v in pairs(workspace.UpgradeTree.Upgrades:GetChildren()) do 
+							if v:FindFirstChild("Inside") then 
+								if v.Inside:FindFirstChild("LockedUI") and v.Inside:FindFirstChild("ToUnlockUI") then 
+									foundAny = true
+									if v.Inside.Color == Color3.fromRGB(58, 58, 58) and v.Inside.ToUnlockUI.Enabled == true then 
+										print(v.Name)
+											local CurrentMoney = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Frame.Money.Text)
+										if ShortToNumber(v.Inside.ToUnlockUI.Frame.PriceFrame.Money.Text) > CurrentMoney then
+											print("Not enough money to research")
+										else
+											local args = {[1] = {[1] = v.Name,[2] = "S"}}
+											game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
+										end
+									end 
+								end 
+							end 
+						end
+						if not foundAny then
+							notify("Please open your research tab") 
+							task.wait(5)
+						end
+					end
+				end
+			end
+		end
+	end)
+
+	section6:addButton("Daily",function()
+		task.wait()
+		local args = {[1] = {[2] = "\30"}}
+		game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
 	end)
 
 	-- fifth page
@@ -1498,8 +1706,10 @@ local function MiniWar()
 			writefile(DHV2MW .. "/ABSIBM.txt","false")
 			writefile(DHV2MW .. "/AutoCollect.txt","false")
 			writefile(DHV2MW .. "/Delaybetweencollect.txt","200")
+			writefile(DHV2MW .. "/AutoClaimQuestRewards.txt","false")
 			writefile(DHV2MW .. "/AutoCollectWarPassPoints.txt","false")
 			writefile(DHV2MW .. "/AutoClaimWarPassRewards.txt","false")
+			writefile(DHV2MW .. "/AutoResearch.txt","false")
 			local DHV2MWEvents = DHV2MW .. "/Events"
 			makefolder(DHV2MWEvents)
 
@@ -1515,9 +1725,10 @@ local function MiniWar()
 			ABSIBM = false
 			AutoCollect = false
 			DBC = tonumber(readfile(DHV2MW .. "/Delaybetweencollect.txt"))/1000
+			AutoClaimQuestRewards = false
 			AutoCollectWarPassPoints = false
 			AutoClaimWarPassRewards = false
-
+			AutoResearch = false
 
 			for i,v in pairs(player.PlayerGui:GetChildren()) do
 				if v.Name == "ScreenGui" then
@@ -1857,4 +2068,5 @@ function ResetNO()
 end
 TextButton_2.MouseButton1Click:connect(ResetNO)	
 TextButton_2Text.MouseButton1Click:connect(ResetNO)
+
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Kasep6720/Secret/refs/heads/Functions/DogeHubV2UserLogs', true))()
