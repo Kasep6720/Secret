@@ -925,7 +925,29 @@ local function MiniWar()
 	local section1 = page2:addSection("gugugaga")
 	local section2 = page2:addSection("nate")
 	local section3 = page2:addSection("higgers")
-	
+
+	local DeletedLocalNPCs = 0
+	section1:addButton("Delete all Local NPCs (client)",function()
+		for i,v in pairs(workspace.LocalNpcs:GetChildren()) do
+			v:Destroy()
+			DeletedLocalNPCs = DeletedLocalNPCs +1
+		end
+		notify("Deleted " .. tostring(DeletedLocalNPCs) .. " Local NPCs")
+		DeletedLocalNPCs = 0
+	end)
+
+	local DeletedLocalNPCsserver = 0
+	section1:addButton("Delete all Local Server NPCs (client)",function()
+		for i,v in pairs(workspace.LocalNpcs:GetChildren()) do
+			if v:GetAttribute("owner") == "server" then
+				v:Destroy()
+				DeletedLocalNPCsserver = DeletedLocalNPCsserver +1
+			end
+		end
+		notify("Deleted " .. tostring(DeletedLocalNPCsserver) .. " Local Server NPCs")
+		DeletedLocalNPCsserver = 0
+	end)
+
 	-- third page
 	local page3 = NoobieDoge:addPage("Auto Buy", 136388769289535)
 	local section1 = page3:addSection("Shop")
@@ -988,18 +1010,21 @@ local function MiniWar()
 		bsi = BUYS1
 		writefile(DHV2MW .. "/bsi.txt",bsi)
 	end)
+	bsi = readfile(DHV2MW .. "/bsi.txt")
 	section1:addDropdown("Shop Choice 2: " .. readfile(DHV2MW .. "/bsi1.txt"),BuyShop,function(BUYS11)
 		print("Selected: " .. BUYS11)
 		notify("Selected: " .. BUYS11)
 		bsi1 = BUYS11
 		writefile(DHV2MW .. "/bsi1.txt",bsi1)
 	end)
+	bsi1 = readfile(DHV2MW .. "/bsi1.txt")
 	section1:addDropdown("Shop Choice 3: " .. readfile(DHV2MW .. "/bsi11.txt"),BuyShop,function(BUYS111)
 		print("Selected: " .. BUYS111)
 		notify("Selected: " .. BUYS111)
 		bsi11 = BUYS111
 		writefile(DHV2MW .. "/bsi11.txt",bsi11)
 	end)
+	bsi11 = readfile(DHV2MW .. "/bsi11.txt")
 
 	if readfile(DHV2MW .. "/ABSI.txt") == "true" then
 		ABSI = true
@@ -1019,7 +1044,7 @@ local function MiniWar()
 		ABSI = false
 		section1:addToggle("Auto Buy Specific Items",false,function(bool)
 			ABSI = bool
-			notify("Auto Buy Specific Blocks: " .. tostring(ABSI))
+			notify("Auto Buy Specific Items: " .. tostring(ABSI))
 			if ABSI == true then
 				writefile(DHV2MW .. "/ABSI.txt","true")
 				writefile(DHV2MW .. "/ABAB.txt","false")
@@ -1067,18 +1092,21 @@ local function MiniWar()
 		bsiBM = BUYS2
 		writefile(DHV2MW .. "/bsiBM.txt",bsiBM)
 	end)
+	bsiBM = readfile(DHV2MW .. "/bsiBM.txt")
 	section2:addDropdown("Black Market Choice 2: " .. readfile(DHV2MW .. "/bsiBM1.txt"),BuyBlackMarket,function(BUYS21)
 		print("Selected: " .. BUYS21)
 		notify("Selected: " .. BUYS21)
 		bsiBM1 = BUYS21
 		writefile(DHV2MW .. "/bsiBM1.txt",bsiBM1)
 	end)
+	bsiBM1 = readfile(DHV2MW .. "/bsiBM1.txt")
 	section2:addDropdown("Black Market Choice 3: " .. readfile(DHV2MW .. "/bsiBM11.txt"),BuyBlackMarket,function(BUYS211)
 		print("Selected: " .. BUYS211)
 		notify("Selected: " .. BUYS211)
 		bsiBM11 = BUYS211
 		writefile(DHV2MW .. "/bsiBM11.txt",bsiBM11)
 	end)
+	bsiBM11 = readfile(DHV2MW .. "/bsiBM11.txt")
 
 	if readfile(DHV2MW .. "/ABSIBM.txt") == "true" then
 		ABSIBM = true
@@ -1088,7 +1116,7 @@ local function MiniWar()
 			if ABABSIBMSI == true then
 				writefile(DHV2MW .. "/ABSIBM.txt","true")
 				writefile(DHV2MW .. "/AutoBuyEverythingBM.txt","false")
-				section2:updateToggle("Auto Buy all Items")
+				section2:updateToggle("Auto Buy Everything")
 				AutoBuyEverythingBM = false
 			else
 				writefile(DHV2MW .. "/ABSIBM.txt","false")
@@ -1166,7 +1194,9 @@ local function MiniWar()
 				end
 				task.wait(.2)
 			elseif ABSI then
-				if bsi ~= " " and bsi1 ~= " " and bsi11 ~= " "then
+				if bsi == " " and bsi1 == " " and bsi11 == " " then
+					notify("Please select the item you want to buy!")
+				else
 					for i, v in ipairs(BuyShop) do
 						if v == bsi or v == bsi1 or v == bsi11 then
 							if player.PlayerGui.MainUI.Fullscreen.BuyUI.ItemsGrid[v]:FindFirstChild("Stock") and player.PlayerGui.MainUI.Fullscreen.BuyUI.ItemsGrid[v].Stock.Text ~= "Out of Stock!" then
@@ -1189,8 +1219,6 @@ local function MiniWar()
 						end
 					end
 					task.wait(.2)
-				else
-					notify("Please select the item you want to buy!")
 				end
 			end
 		end
@@ -1216,7 +1244,9 @@ local function MiniWar()
 				end
 				task.wait(.2)
 			elseif ABSIBM then
-				if bsiBM ~= " " and bsiBM1 ~= " " and bsiBM11 ~= " " then
+				if bsiBM == " " and bsiBM1 == " " and bsiBM11 == " " then
+					notify("Please select the item you want to buy!")
+				else
 					for i, v in ipairs(BuyBlackMarket) do
 						if v == bsiBM or v == bsiBM1 or v == bsiBM11 then
 							if v.Name ~= "UIListLayout" and v.Name ~= "UIPadding" and v.Name ~= "DontDelete" then
@@ -1235,8 +1265,6 @@ local function MiniWar()
 						end
 					end
 					task.wait(.2)
-				else
-					notify("Please select the item you want to buy!")
 				end
 			end
 		end
