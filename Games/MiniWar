@@ -1039,14 +1039,14 @@ local function MiniWar()
 
 	local BuyShop = {}
 	for i,v in pairs(player.PlayerGui.MainUI.Fullscreen:WaitForChild("BuyUI"):WaitForChild("ItemsGrid"):GetChildren()) do
-		if v.Name ~= "UIListLayout" and v.Name ~= "UIPadding" and v.Name ~= "DontDelete" then
+		if v.Name ~= "UIListLayout" and v.Name ~= "UIPadding" and v.Name ~= "DontDelete" and v.Name ~= "PadderTemplate" then
 			table.insert(BuyShop, v.Name)
 		end
 	end
 
 	local BuyBlackMarket = {}
 	for i,v in pairs(player.PlayerGui.MainUI.Fullscreen:WaitForChild("BlackMarketUI"):WaitForChild("ItemsGrid"):GetChildren()) do
-		if v.Name ~= "UIListLayout" and v.Name ~= "UIPadding" and v.Name ~= "DontDelete" then
+		if v.Name ~= "UIListLayout" and v.Name ~= "UIPadding" and v.Name ~= "DontDelete" and v.Name ~= "PadderTemplate" then
 			table.insert(BuyBlackMarket, v.Name)
 		end
 	end
