@@ -260,6 +260,28 @@ local function MiniWar()
 	if isfile(DHV2MW .. "/AutoResearch.txt") == false then
 		writefile(DHV2MW .. "/AutoResearch.txt","false")
 	end 
+	local Choices = DHV2MW .. "/Choices"
+	if isfolder(Choices) == false then
+		makefolder(Choices)
+	end
+	if isfile(Choices .. "/a1.txt") == false then
+		writefile(Choices .. "/a1.txt"," ")
+	end
+	if isfile(Choices .. "/a2.txt") == false then
+		writefile(Choices .. "/a2.txt"," ")
+	end
+	if isfile(Choices .. "/a3.txt") == false then
+		writefile(Choices .. "/a3.txt"," ")
+	end
+	if isfile(Choices .. "/a4.txt") == false then
+		writefile(Choices .. "/a4.txt"," ")
+	end
+	if isfile(Choices .. "/a5.txt") == false then
+		writefile(Choices .. "/a5.txt"," ")
+	end 
+	if isfile(DHV2MW .. "/StartSpinGenerals.txt") == false then
+		writefile(DHV2MW .. "/StartSpinGenerals.txt","false")
+	end 
 	if isfile(DHV2MW .. "/RocketsTarget.txt") == false then
 		writefile(DHV2MW .. "/RocketsTarget.txt"," ")
 	end 
@@ -1271,6 +1293,7 @@ local function MiniWar()
 							game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
 							notify("Purchased: " .. v .. "!")
 							print("Purchased: " .. v .. "!")
+							task.wait()
 						end
 					end
 				end
@@ -1296,6 +1319,7 @@ local function MiniWar()
 									game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
 									notify("Purchased: " .. v .. "!")
 									print("Purchased: " .. v .. "!")
+									task.wait()
 								end
 							end
 						end
@@ -1329,6 +1353,7 @@ local function MiniWar()
 											game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
 											notify("Purchased: " .. v .. "!")
 											print("Purchased: " .. v .. "!")
+											task.wait()
 										end
 									end
 								end
@@ -1350,6 +1375,7 @@ local function MiniWar()
 													game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
 													notify("Purchased: " .. v .. "!")
 													print("Purchased: " .. v .. "!")
+													task.wait()
 												end
 											end
 										end
@@ -1427,7 +1453,8 @@ local function MiniWar()
 	local section1 = page4:addSection("Auto Collect")
 	local section2 = page4:addSection("Auto Sell")
 	local section3 = page4:addSection("Quests")
-	local section4 = page4:addSection("Auto Research")
+	local section4 = page4:addSection("Auto Roll Generals")
+	local section5 = page4:addSection("Auto Research")
 	
 	if readfile(DHV2MW .. "/AutoCollect.txt") == "true" then
 		AutoCollect = true
@@ -1534,9 +1561,140 @@ local function MiniWar()
 		end
 	end)
 
+	local Generals = {}
+	for i,v in pairs(player.PlayerGui.GeneralUI.GeneralsUI.RightSide.GeneralChances:GetChildren()) do
+		if v.Name ~= "UIListLayout" and v.Name ~= "Template" then
+			table.insert(Generals, v.Generalname.Text)
+		end
+	end
+	
+	section4:addDropdown("General Choice 1: " .. readfile(Choices .. "/a1.txt"),Generals,function(GEN1)
+		print("Selected: " .. GEN1)
+		notify("1st General Selected: " .. GEN1)
+		a1 = GEN1
+		writefile(Choices .. "/a1.txt",a1)
+	end)
+	a1 = readfile(Choices .. "/a1.txt")
+	section4:addDropdown("General Choice 2: ".. readfile(Choices .. "/a2.txt"),Generals,function(GEN2)
+		print("Selected: " .. GEN2)
+		notify("2nd General Selected: " .. GEN2)
+		a2 = GEN2
+		writefile(Choices .. "/a2.txt",a2)
+	end)
+	a2 = readfile(Choices .. "/a2.txt")
+	section4:addDropdown("General Choice 3: " .. readfile(Choices .. "/a3.txt"),Generals,function(GEN3)
+		print("Selected: " .. GEN3)
+		notify("3rd General Selected: " .. GEN3)
+		a3 = GEN3
+		writefile(Choices .. "/a3.txt",a3)
+	end)
+	a3 = readfile(Choices .. "/a3.txt")
+	section4:addDropdown("General Choice 4: " .. readfile(Choices .. "/a4.txt"),Generals,function(GEN4)
+		print("Selected: " .. GEN4)
+		notify("4th General Selected: " .. GEN4)
+		a4 = GEN4
+		writefile(Choices .. "/a4.txt",a4)
+	end)
+	a4 = readfile(Choices .. "/a4.txt")
+	section4:addDropdown("General Choice 5: " .. readfile(Choices .. "/a5.txt"),Generals,function(GEN5)
+		print("Selected: " .. GEN5)
+		notify("5th General Selected: " .. GEN5)
+		a5 = GEN5
+		writefile(Choices .. "/a5.txt",a5)
+	end)
+	a5 = readfile(Choices .. "/a5.txt")
+
+	if readfile(DHV2MW .. "/StartSpinGenerals.txt") == "true" then
+		section4:addToggle("Start Spinning",true,function(bool)
+			StartSpinGenerals = bool
+			if StartSpinGenerals == true then
+				writefile(DHV2MW .. "/StartSpinGenerals.txt","true")
+			else
+				writefile(DHV2MW .. "/StartSpinGenerals.txt","false")
+			end
+		end)
+		StartSpinGenerals = true
+	else
+		section4:addToggle("Start Spinning",false,function(bool)
+			StartSpinGenerals = bool
+			if StartSpinGenerals == true then
+				writefile(DHV2MW .. "/StartSpinGenerals.txt","true")
+			else
+				writefile(DHV2MW .. "/StartSpinGenerals.txt","false")
+			end
+		end)
+		StartSpinGenerals = false
+	end
+
+	local nochoicesobtained = false 
+
+	spawn(function() 
+		while task.wait(2) do 
+			if StartSpinGenerals then 
+				local itemsGrid = player.PlayerGui.GeneralUI.GeneralsUI.LeftSide.SelectGeneral.ItemsGrid
+				
+				if itemsGrid:FindFirstChild("Common") then 
+					local foundAnyMatch = false 
+					nochoicesobtained = false 
+					for i, v in pairs(itemsGrid:GetChildren()) do 
+						if v.Name ~= "UIListLayout" and v.Name ~= "UIPadding" and v.Name ~= "DontDelete" and v.Name ~= "GeneralTemplate" then 
+							for i, v1 in pairs(v:GetChildren()) do 
+								if v1.Name ~= "UIGridLayout" and v1.Name ~= "TemplateOLD" and v1.Name ~= "Template" then 
+									if v1.TextLabel.Text == a1 or v1.TextLabel.Text == a2 or v1.TextLabel.Text == a3 or v1.TextLabel.Text == a4 or v1.TextLabel.Text == a5 then 
+										foundAnyMatch = true
+									else 
+										print("Generals that does not match choices: " .. tostring(v1.Name))
+									end 
+								end 
+							end 
+						end 
+					end 
+					
+					if foundAnyMatch == false then
+						nochoicesobtained = true 
+						print("⚠️ None of the generals in inventory matches, start spinning")
+					else
+						print("🟢 There are generals in inventory matches")
+					end
+					
+					task.wait() 
+				else 
+					if nochoicesobtained == true or not itemsGrid:FindFirstChild("Common") then
+						local UrBuildings = workspace.MilitaryMap.PlayerPlots.YourBase.Plot.Buildings 
+						if UrBuildings:FindFirstChild("GeneralResidence") then 
+							notify("Finding general residence")
+							player.Character.HumanoidRootPart.CFrame=UrBuildings.GeneralResidence.Circle.CFrame+Vector3.new(0,4,0)
+							local prox = UrBuildings.GeneralResidence.GeneralPrompt 
+							prox.Exclusivity = 2 
+							prox.RequiresLineOfSight = false 
+							task.wait(.1) 
+							fireproximityprompt(prox) 
+							task.wait(1)
+						else 
+							notify("You don't have a general residence!") 
+							task.wait(10) 
+						end 
+					end
+				end 
+			end 
+		end 
+	end)
+
+	spawn(function()
+		while task.wait(7) do
+			if StartSpinGenerals then
+				if player.PlayerGui.GeneralUI.GeneralsUI.LeftSide.SelectGeneral.ItemsGrid:FindFirstChild("Common") then --check if general inventory is loaded
+					if nochoicesobtained == true then
+						notify("Spin")
+					end
+				end
+			end
+		end
+	end)
+
 	if readfile(DHV2MW .. "/AutoResearch.txt") == "true" then
 		AutoResearch = true
-		section4:addToggle("AutoResearch",true,function(bool)
+		section5:addToggle("AutoResearch",true,function(bool)
 			AutoResearch = bool
 			if AutoResearch then
 				writefile(DHV2MW .. "/AutoResearch.txt","true")
@@ -1546,7 +1704,7 @@ local function MiniWar()
 		end)
 	else
 		AutoResearch = false
-		section4:addToggle("Auto Research",false,function(bool)
+		section5:addToggle("Auto Research",false,function(bool)
 			AutoResearch = bool
 			if AutoResearch then
 				writefile(DHV2MW .. "/AutoResearch.txt","true")
@@ -1675,7 +1833,6 @@ local function MiniWar()
 
 
 	end
-
 	local AllCapturablePoints = {}
 	local seenBaseTypes = {}
 	for i,v in pairs(workspace.MilitaryMap.Object:GetChildren()) do
@@ -1690,6 +1847,13 @@ local function MiniWar()
 	for i,v in pairs(game:GetService("ReplicatedStorage").shared.model:GetChildren()) do
 		local baseType = v:GetAttribute("baseType")
 		if v:FindFirstChild("PromptHolder") and v.PromptHolder:FindFirstChild("ProximityPrompt") and v.PromptHolder.ProximityPrompt.ActionText == "Unclaim base" and baseType and not seenBaseTypes[baseType] then
+			table.insert(AllCapturablePoints, baseType)
+			seenBaseTypes[baseType] = true
+		end
+	end
+	for i,v in pairs(game:GetService("ReplicatedStorage").shared.model.EventsVFX.MeteorShower:GetChildren()) do
+		local baseType = v:GetAttribute("baseType")
+		if v:FindFirstChild("PromptHolder") and v.PromptHolder:FindFirstChild("ProximityPrompt") and v.PromptHolder.ProximityPrompt.ActionText == "Unclaim base" and baseType and not seenBaseTypes[baseType] and v.ModelStreamingMode == Enum.ModelStreamingMode.Persistent then
 			table.insert(AllCapturablePoints, baseType)
 			seenBaseTypes[baseType] = true
 		end
@@ -2103,6 +2267,10 @@ local function MiniWar()
 		end
 	end
 
+	section4:addButton("Spawn",function()
+		task.wait()
+		player.Character.HumanoidRootPart.CFrame=workspace.SpawnLocation.CFrame+Vector3.new(0,4,0)
+	end)
 	section4:addButton("General Camera",function()
 		task.wait()
 		player.Character.HumanoidRootPart.CFrame=workspace.GenralCamera.GeneralModelSpawn.CFrame+Vector3.new(0,4,0)
@@ -2236,6 +2404,14 @@ local function MiniWar()
 			writefile(DHV2MW .. "/AutoClaimQuestRewards.txt","false")
 			writefile(DHV2MW .. "/AutoCollectWarPassPoints.txt","false")
 			writefile(DHV2MW .. "/AutoClaimWarPassRewards.txt","false")
+			local Choices = DHV2MW .. "/Choices"
+			makefolder(Choices)
+			writefile(Choices .. "/a1.txt"," ")
+			writefile(Choices .. "/a2.txt"," ")
+			writefile(Choices .. "/a3.txt"," ")
+			writefile(Choices .. "/a4.txt"," ")
+			writefile(Choices .. "/a5.txt"," ")
+			writefile(DHV2MW .. "/StartSpinGenerals.txt","false")
 			writefile(DHV2MW .. "/AutoResearch.txt","false")
 			writefile(DHV2MW .. "/RocketsTarget.txt"," ")
 			writefile(DHV2MW .. "/AutoRocket.txt","false")
@@ -2257,7 +2433,6 @@ local function MiniWar()
 			end
 			local DHV2MWEvents = DHV2MW .. "/Events"
 			makefolder(DHV2MWEvents)
-
 			EnabledSliderPowa = false
 			CtrlClickTeePee = false
 			infjumptoggle = false
@@ -2274,6 +2449,7 @@ local function MiniWar()
 			AutoClaimQuestRewards = false
 			AutoCollectWarPassPoints = false
 			AutoClaimWarPassRewards = false
+			StartSpinGenerals = false
 			AutoResearch = false
 			AutoRocket = false
 			Army1AutoCapture = false
