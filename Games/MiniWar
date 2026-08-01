@@ -2532,8 +2532,8 @@ local function MiniWar()
 			if AutoCollectWarPassPoints then
 				for i,v in pairs(workspace:GetChildren()) do
 					if v.Name == "BATTLEPASS_POINT_PICKUP" and v:FindFirstChild("Cube.001") then
-						player.Character.HumanoidRootPart.CFrame = v["Cube.001"].CFrame
 						task.wait(1)
+						player.Character.HumanoidRootPart.CFrame = v["Cube.001"].CFrame
 					end
 				end
 			end
