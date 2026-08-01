@@ -232,6 +232,12 @@ local function MiniWar()
 	end 
 	if isfile(DHV2MW .. "/RemoveunnecessaryProximityPrompts.txt") == false then
 		writefile(DHV2MW .. "/RemoveunnecessaryProximityPrompts.txt","false")
+	end 
+	if isfile(DHV2MW .. "/AutoRejoin.txt") == false then
+		writefile(DHV2MW .. "/AutoRejoin.txt","false")
+	end 
+	if isfile(DHV2MW .. "/AutoRejoinInterval.txt") == false then
+		writefile(DHV2MW .. "/AutoRejoinInterval.txt","20")
 	end
 	if isfile(DHV2MW .. "/AutoBuyEverything.txt") == false then
 		writefile(DHV2MW .. "/AutoBuyEverything.txt","false")
@@ -265,10 +271,16 @@ local function MiniWar()
 	end	
 	if isfile(DHV2MW .. "/AutoExpandPlot.txt") == false then
 		writefile(DHV2MW .. "/AutoExpandPlot.txt","false")
-	end
+	end 
 	if isfile(DHV2MW .. "/AutoCollect.txt") == false then
 		writefile(DHV2MW .. "/AutoCollect.txt","false")
 	end 
+	if isfile(DHV2MW .. "/AutoCollectGP.txt") == false then
+		writefile(DHV2MW .. "/AutoCollectGP.txt","false")
+	end 
+	if isfile(DHV2MW .. "/AutoSellGP.txt") == false then
+		writefile(DHV2MW .. "/AutoSellGP.txt","false")
+	end
 	if isfile(DHV2MW .. "/Delaybetweencollect.txt") == false then
 		writefile(DHV2MW .. "/Delaybetweencollect.txt","200")
 	end
@@ -334,6 +346,9 @@ local function MiniWar()
 	local DHV2MWEvents = DHV2MW .. "/Events"
 	if isfolder(DHV2MWEvents) == false then
 		makefolder(DHV2MWEvents)
+	end
+	if isfile(DHV2MWEvents .. "/AutoSellAlien.txt") == false then
+		writefile(DHV2MWEvents .. "/AutoSellAlien.txt","false")
 	end
 	--DogeHub V2 GUI
 	local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20page%20format%20gui"))()
@@ -1364,6 +1379,52 @@ local function MiniWar()
 		end
 	end)
 
+	if readfile(DHV2MW .. "/AutoRejoin.txt") == "true" then
+		AutoRejoin = true
+		section2:addToggle("Auto Rejoin",true,function(bool)
+			AutoRejoin = bool
+			notify("Auto Rejoin: " .. tostring(AutoRejoin))
+			if AutoRejoin == true then
+				writefile(DHV2MW .. "/AutoRejoin.txt","true")
+			else
+				writefile(DHV2MW .. "/AutoRejoin.txt","false")
+			end
+		end)
+	else
+		AutoRejoin = false
+		section2:addToggle("Auto Rejoin",false,function(bool)
+			AutoRejoin = bool
+			notify("Auto Rejoin: " .. tostring(AutoRejoin))
+			if AutoRejoin == true then
+				writefile(DHV2MW .. "/AutoRejoin.txt","true")
+			else
+				writefile(DHV2MW .. "/AutoRejoin.txt","false")
+			end
+		end)
+	end
+	section2:addSlider("Auto Rejoin Interval", tonumber(readfile(DHV2MW .. "/AutoRejoinInterval.txt")), 1, 60, function(value)
+		notify("Auto Rejoin Interval: " .. value .. " minutes")
+		AutoRejoinInterval = value
+		writefile(DHV2MW .. "/AutoRejoinInterval.txt",tostring(value))
+	end)
+	AutoRejoinInterval = tonumber(readfile(DHV2MW .. "/AutoRejoinInterval.txt"))
+	local AutoRejoinTimer = 0
+	spawn(function()
+		while task.wait() do
+			if AutoRejoin then
+				AutoRejoinTimer = AutoRejoinTimer + 1
+				warn(string.format("%.1f%%", AutoRejoinTimer / AutoRejoinInterval / 60 * 100))
+				task.wait(1)
+				if AutoRejoin and AutoRejoinTimer >= AutoRejoinInterval*60 then
+					local TS = game:GetService("TeleportService")
+					local Player = game.Players.LocalPlayer
+					TS:Teleport(game.PlaceId, Player)
+				end
+			else AutoRejoinTimer = 0
+			end
+		end
+	end)
+
 	-- third page
 	local page3 = NoobieDoge:addPage("Auto Buy", 136388769289535)
 	local section1 = page3:addSection("Shop")
@@ -1594,13 +1655,13 @@ local function MiniWar()
 						if ShortToNumber(player.PlayerGui.MainUI.Fullscreen.BuyUI.ItemsGrid[v].Buy.Price.PriceText.Text) > CurrentMoney then
 							print("Not enough money to purchase")
 						else
-							local args = {[1] = {[1] = {["item"] = v,["shop"] = "Farm"},[2] = "3"}}
+							local args = {[1] = {[1] = {["item"] = v,["shop"] = "Farm"},[2] = "$"}}
 							game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
-							local args = {[1] = {[1] = {["item"] = v,["shop"] = "House"},[2] = "3"}}
+							local args = {[1] = {[1] = {["item"] = v,["shop"] = "House"},[2] = "$"}}
 							game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
-							local args = {[1] = {[1] = {["item"] = v,["shop"] = "Military"},[2] = "3"}}
+							local args = {[1] = {[1] = {["item"] = v,["shop"] = "Military"},[2] = "$"}}
 							game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
-							local args = {[1] = {[1] = {["item"] = v,["shop"] = "Decor"},[2] = "3"}}
+							local args = {[1] = {[1] = {["item"] = v,["shop"] = "Decor"},[2] = "$"}}
 							game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
 							notify("Purchased: " .. v .. "!")
 							print("Purchased: " .. v .. "!")
@@ -1620,13 +1681,13 @@ local function MiniWar()
 								if ShortToNumber(player.PlayerGui.MainUI.Fullscreen.BuyUI.ItemsGrid[v].Buy.Price.PriceText.Text) > CurrentMoney then
 									print("Not enough money to purchase")
 								else
-									local args = {[1] = {[1] = {["item"] = v,["shop"] = "Farm"},[2] = "3"}}
+									local args = {[1] = {[1] = {["item"] = v,["shop"] = "Farm"},[2] = "$"}}
 									game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
-									local args = {[1] = {[1] = {["item"] = v,["shop"] = "House"},[2] = "3"}}
+									local args = {[1] = {[1] = {["item"] = v,["shop"] = "House"},[2] = "$"}}
 									game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
-									local args = {[1] = {[1] = {["item"] = v,["shop"] = "Military"},[2] = "3"}}
+									local args = {[1] = {[1] = {["item"] = v,["shop"] = "Military"},[2] = "$"}}
 									game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
-									local args = {[1] = {[1] = {["item"] = v,["shop"] = "Decor"},[2] = "3"}}
+									local args = {[1] = {[1] = {["item"] = v,["shop"] = "Decor"},[2] = "$"}}
 									game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
 									notify("Purchased: " .. v .. "!")
 									print("Purchased: " .. v .. "!")
@@ -1660,7 +1721,7 @@ local function MiniWar()
 										if ShortToNumber(player.PlayerGui.MainUI.Fullscreen.BlackMarketUI.ItemsGrid[v].Buy.Price.PriceText.Text) > CurrentGem then
 											print("Not enough gems to purchase")
 										else
-											local args = {[1] = {[1] = {["item"] = v,["shop"] = "BlackMarket"},[2] = "X"}}
+											local args = {[1] = {[1] = {["item"] = v,["shop"] = "BlackMarket"},[2] = "`"}}
 											game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
 											notify("Purchased: " .. v .. "!")
 											print("Purchased: " .. v .. "!")
@@ -1682,7 +1743,7 @@ local function MiniWar()
 												if ShortToNumber(player.PlayerGui.MainUI.Fullscreen.BlackMarketUI.ItemsGrid[v].Buy.Price.PriceText.Text) > CurrentGem then
 													print("Not enough gems to purchase")
 												else
-													local args = {[1] = {[1] = {["item"] = v,["shop"] = "BlackMarket"},[2] = "X"}}
+													local args = {[1] = {[1] = {["item"] = v,["shop"] = "BlackMarket"},[2] = "`"}}
 													game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
 													notify("Purchased: " .. v .. "!")
 													print("Purchased: " .. v .. "!")
@@ -1803,8 +1864,46 @@ local function MiniWar()
 				for i,v in pairs(workspace.MilitaryMap.PlayerPlots["YourBase"].Plot.Buildings:GetChildren()) do
 					if v:FindFirstChild("ProximityPrompt") and v.ProximityPrompt.ObjectText == "Collect!" then
 						--v.ProximityPrompt.MaxActivationDistance = 999999999
-						local args = {[1] = {[1] = v,[2] = "M"}}
+						local args = {[1] = {[1] = v,[2] = "O"}}
 						game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
+					end
+				end
+			end
+		end
+	end)
+
+	if readfile(DHV2MW .. "/AutoCollectGP.txt") == "true" then
+		AutoCollectGP = true
+		section1:addToggle("Auto Collect Crops (Gamepass)",true,function(bool)
+			AutoCollectGP = bool
+			if AutoCollectGP then
+				writefile(DHV2MW .. "/AutoCollectGP.txt","true")
+			else
+				writefile(DHV2MW .. "/AutoCollectGP.txt","false")
+			end
+		end)
+	else
+		AutoCollectGP = false
+		section1:addToggle("Auto Collect Crops (Gamepass)",false,function(bool)
+			AutoCollectGP = bool
+			if AutoCollectGP then
+				writefile(DHV2MW .. "/AutoCollectGP.txt","true")
+			else
+				writefile(DHV2MW .. "/AutoCollectGP.txt","false")
+			end
+		end)
+	end
+
+	spawn(function()
+		while task.wait(1) do
+			if AutoCollectGP then
+				for i,v in pairs(workspace.MilitaryMap.PlayerPlots["YourBase"].Plot.Buildings:GetChildren()) do
+					if v:FindFirstChild("ProximityPrompt") and v.ProximityPrompt.ObjectText == "Collect!" then
+						if player.PlayerGui.MainUI.HUD.DownUI.AutoCollect.On.Enabled == false then
+							--v.ProximityPrompt.MaxActivationDistance = 999999999
+							local args = {[1] = {[1] = v,[2] = "M"}}
+							game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
+						end
 					end
 				end
 			end
@@ -1817,6 +1916,44 @@ local function MiniWar()
 			Title = "Fr i have no idea why it wont work", -- 必填
 			Text = "Pls help idk how to make this function", -- 必填
 		})
+	end)
+
+	if readfile(DHV2MW .. "/AutoSellGP.txt") == "true" then
+		AutoSellGP = true
+		section2:addToggle("Auto Sell Crops (Gamepass)",true,function(bool)
+			AutoSellGP = bool
+			if AutoSellGP then
+				writefile(DHV2MW .. "/AutoSellGP.txt","true")
+			else
+				writefile(DHV2MW .. "/AutoSellGP.txt","false")
+			end
+		end)
+	else
+		AutoSellGP = false
+		section2:addToggle("Auto Sell Crops (Gamepass)",false,function(bool)
+			AutoSellGP = bool
+			if AutoSellGP then
+				writefile(DHV2MW .. "/AutoSellGP.txt","true")
+			else
+				writefile(DHV2MW .. "/AutoSellGP.txt","false")
+			end
+		end)
+	end
+
+	spawn(function()
+		while task.wait(1) do
+			if AutoSellGP then
+				for i,v in pairs(workspace.MilitaryMap.PlayerPlots["YourBase"].Plot.Buildings:GetChildren()) do
+					if v:FindFirstChild("ProximityPrompt") and v.ProximityPrompt.ObjectText == "Collect!" then
+						if player.PlayerGui.MainUI.HUD.DownUI.AutoSell.On.Enabled == false then
+							--v.ProximityPrompt.MaxActivationDistance = 999999999
+							local args = {[1] = {[1] = v,[2] = "K"}}
+							game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
+						end
+					end
+				end
+			end
+		end
 	end)
 
 	if readfile(DHV2MW .. "/AutoClaimQuestRewards.txt") == "true" then
@@ -1948,14 +2085,16 @@ local function MiniWar()
 		while task.wait(2) do 
 			if StartSpinGenerals then 
 				if not itemsGrid:FindFirstChild("Common") then
-					notify("Finding general residence")
-					player.Character.HumanoidRootPart.CFrame=UrBuildings:WaitForChild("GeneralResidence").Circle.CFrame+Vector3.new(0,4,0)
-					local prox = UrBuildings.GeneralResidence.GeneralPrompt 
-					prox.Exclusivity = 2 
-					prox.RequiresLineOfSight = false 
-					task.wait(.1) 
-					fireproximityprompt(prox) 
-					task.wait(1)
+					if UrBuildings:FindFirstChild("GeneralResidence") then
+						notify("Finding general residence")
+						player.Character.HumanoidRootPart.CFrame=UrBuildings:FindFirstChild("GeneralResidence").Circle.CFrame+Vector3.new(0,4,0)
+						local prox = UrBuildings.GeneralResidence.GeneralPrompt 
+						prox.Exclusivity = 2 
+						prox.RequiresLineOfSight = false 
+						task.wait(.1) 
+						fireproximityprompt(prox) 
+						task.wait(1)
+					end
 				else
 					if GeneralUI.Enabled == true then 
 						local foundAnyMatch = false 
@@ -2183,6 +2322,11 @@ local function MiniWar()
 			table.insert(AllCapturablePointsRocket, v.Name)
 		end
 	end
+	for i,v in pairs(game:GetService("ReplicatedStorage").shared.model.EventsVFX.MeteorShower:GetChildren()) do
+		if v:FindFirstChild("PromptHolder") and v.PromptHolder:FindFirstChild("ProximityPrompt") and v.PromptHolder.ProximityPrompt.ActionText == "Unclaim base" and v.ModelStreamingMode == Enum.ModelStreamingMode.Persistent then
+			table.insert(AllCapturablePointsRocket, v.Name)
+		end
+	end
 
 	RocketsTarget = readfile(DHV2MW .. "/RocketsTarget.txt")
 	section1:addDropdown("Targetting: " .. readfile(DHV2MW .. "/RocketsTarget.txt"),AllCapturablePointsRocket,function(RocketsTarget1)
@@ -2222,7 +2366,7 @@ local function MiniWar()
 					for i,v1 in pairs(v:GetChildren()) do
 						if v1.Name == RocketsTarget and RocketLockOn == false then
 							local RocketLockOn = true
-							local args = {[1] = {[1] = {["capturePoint"] = v1},[2] = "\160"}}
+							local args = {[1] = {[1] = {["capturePoint"] = v1},[2] = "U"}}
 							game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
 							task.wait(.9)
 						end
@@ -2277,7 +2421,7 @@ local function MiniWar()
 									if v1:GetAttribute("baseType") == targetPriority then
 										for _, v2 in pairs(v1.PromptHolder:GetChildren()) do
 											if v2.ActionText == "Unclaim base" and v2.Enabled == false then
-												local args = {[1] = {[1] = {["armyIndex"] = 1, ["capturePoint"] = v1}, [2] = "\159"}}
+												local args = {[1] = {[1] = {["armyIndex"] = 1, ["capturePoint"] = v1}, [2] = "T"}}
 												remoteEvent:FireServer(unpack(args))
 												notify("Army 1 Priority " .. p .. " | Capturing: " .. v1.Name)
 												print("【Army 1 Priority " .. p .. "】Capturing: " .. v1.Name)
@@ -2326,7 +2470,7 @@ local function MiniWar()
 									if v1:GetAttribute("baseType") == targetPriority then
 										for _, v2 in pairs(v1.PromptHolder:GetChildren()) do
 											if v2.ActionText == "Unclaim base" and v2.Enabled == false then
-												local args = {[1] = {[1] = {["armyIndex"] = 2, ["capturePoint"] = v1}, [2] = "\159"}}
+												local args = {[1] = {[1] = {["armyIndex"] = 2, ["capturePoint"] = v1}, [2] = "T"}}
 												remoteEvent:FireServer(unpack(args))
 												notify("Army 2 Priority " .. p .. " | Capturing: " .. v1.Name)
 												print("【Army 2 Priority " .. p .. "】Capturing: " .. v1.Name)
@@ -2375,7 +2519,7 @@ local function MiniWar()
 									if v1:GetAttribute("baseType") == targetPriority then
 										for _, v2 in pairs(v1.PromptHolder:GetChildren()) do
 											if v2.ActionText == "Unclaim base" and v2.Enabled == false then
-												local args = {[1] = {[1] = {["armyIndex"] = 3, ["capturePoint"] = v1}, [2] = "\159"}}
+												local args = {[1] = {[1] = {["armyIndex"] = 3, ["capturePoint"] = v1}, [2] = "T"}}
 												remoteEvent:FireServer(unpack(args))
 												notify("Army 3 Priority " .. p .. " | Capturing: " .. v1.Name)
 												print("【Army 3 Priority " .. p .. "】Capturing: " .. v1.Name)
@@ -2424,7 +2568,7 @@ local function MiniWar()
 									if v1:GetAttribute("baseType") == targetPriority then
 										for _, v2 in pairs(v1.PromptHolder:GetChildren()) do
 											if v2.ActionText == "Unclaim base" and v2.Enabled == false then
-												local args = {[1] = {[1] = {["armyIndex"] = 4, ["capturePoint"] = v1}, [2] = "\159"}}
+												local args = {[1] = {[1] = {["armyIndex"] = 4, ["capturePoint"] = v1}, [2] = "T"}}
 												remoteEvent:FireServer(unpack(args))
 												notify("Army 4 Priority " .. p .. " | Capturing: " .. v1.Name)
 												print("【Army 4 Priority " .. p .. "】Capturing: " .. v1.Name)
@@ -2545,7 +2689,44 @@ local function MiniWar()
 	-- seventh page
 	local page7 = NoobieDoge:addPage("Events", 136388769289535)
 	local section1 = page7:addSection("Godzilla")
-	local section2 = page7:addSection("idk")
+	local section2 = page7:addSection("Alien Event")
+
+	if readfile(DHV2MWEvents .. "/AutoSellAlien.txt") == "true" then
+		AutoSellAlien = true
+		section2:addToggle("Auto Sell Alien Crops",true,function(bool)
+			AutoSellGP = bool
+			if AutoSellGP then
+				writefile(DHV2MWEvents .. "/AutoSellAlien.txt","true")
+			else
+				writefile(DHV2MWEvents .. "/AutoSellAlien.txt","false")
+			end
+		end)
+	else
+		AutoSellAlien = false
+		section2:addToggle("Auto Sell Alien Crops",false,function(bool)
+			AutoSellAlien = bool
+			if AutoSellAlien then
+				writefile(DHV2MWEvents .. "/AutoSellAlien.txt","true")
+			else
+				writefile(DHV2MWEvents .. "/AutoSellAlien.txt","false")
+			end
+		end)
+	end
+
+	local ExtractorUI = player.PlayerGui.MainUI.Fullscreen.ExtractorUI
+	spawn(function()
+		while task.wait(1) do
+			if AutoSellAlien then
+				pcall(function()
+					if ExtractorUI.alienCoreFrameAll.alienCoreAmount.Text > 1 then
+						for _, connection in pairs(getconnections(ExtractorUI.ExtractAll.MouseButton1Click)) do
+							connection:Fire()
+						end
+					end
+				end)
+			end
+		end
+	end)
 
 	-- seventh page
 	local page7 = NoobieDoge:addPage("Teleports", 136388769289535)
@@ -2719,6 +2900,8 @@ local function MiniWar()
 			writefile(DHV2MW .. "/AutoDeleteTEMPEffectsInterval.txt","200")
 			writefile(DHV2MW .. "/AutoDeleteBuildingEffects.txt","false")
 			writefile(DHV2MW .. "/RemoveunnecessaryProximityPrompts.txt","false")
+			writefile(DHV2MW .. "/AutoRejoin.txt","false")
+			writefile(DHV2MW .. "/AutoRejoinInterval.txt","20")
 			writefile(DHV2MW .. "/AutoBuyEverything.txt","false")
 			writefile(DHV2MW .. "/bsi.txt"," ")
 			writefile(DHV2MW .. "/bsi1.txt"," ")
@@ -2731,6 +2914,8 @@ local function MiniWar()
 			writefile(DHV2MW .. "/ABSIBM.txt","false")
 			writefile(DHV2MW .. "/AutoExpandPlot.txt","false")
 			writefile(DHV2MW .. "/AutoCollect.txt","false")
+			writefile(DHV2MW .. "/AutoCollectGP.txt","false")
+			writefile(DHV2MW .. "/AutoSellGP.txt","false")
 			writefile(DHV2MW .. "/Delaybetweencollect.txt","200")
 			writefile(DHV2MW .. "/AutoClaimQuestRewards.txt","false")
 			writefile(DHV2MW .. "/AutoCollectWarPassPoints.txt","false")
@@ -2764,6 +2949,7 @@ local function MiniWar()
 			end
 			local DHV2MWEvents = DHV2MW .. "/Events"
 			makefolder(DHV2MWEvents)
+			writefile(DHV2MWEvents .. "/AutoSellAlien.txt","false")
 			EnabledSliderPowa = false
 			CtrlClickTeePee = false
 			infjumptoggle = false
@@ -2777,13 +2963,15 @@ local function MiniWar()
 			AutoDeleteTEMPEffects = false
 			AutoDeleteBuildingEffects = false
 			RemoveunnecessaryProximityPrompts = false
+			AutoRejoin = false
 			AutoBuyEverything = false
 			ABSI = false
 			AutoBuyEverythingBM = false
 			ABSIBM = false
 			AutoExpandPlot = false
 			AutoCollect = false
-			DBC = tonumber(readfile(DHV2MW .. "/Delaybetweencollect.txt"))/1000
+			AutoCollectGP = false
+			AutoSellGP = false
 			AutoClaimQuestRewards = false
 			AutoCollectWarPassPoints = false
 			AutoClaimWarPassRewards = false
@@ -2802,6 +2990,7 @@ local function MiniWar()
 			Army4AutoCapture = false
 			Army4Patrol = false
 			Army4KeepLastBase = false
+			AutoSellAlien = false
 
 			for i,v in pairs(player.PlayerGui:GetChildren()) do
 				if v.Name == "ScreenGui" then
