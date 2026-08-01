@@ -350,6 +350,39 @@ local function MiniWar()
 	if isfile(DHV2MWEvents .. "/AutoSellAlien.txt") == false then
 		writefile(DHV2MWEvents .. "/AutoSellAlien.txt","false")
 	end
+
+	workspace:WaitForChild("MilitaryMap"):WaitForChild("Object"):WaitForChild("Wooden")
+	workspace.MilitaryMap:WaitForChild("PlayerPlots")
+	--Wait for stuff to load
+	local function waitForGridToLoad(gridInstance, expectedMin)
+		local isLoaded = false
+		local bindableEvent = Instance.new("BindableEvent")
+		local function checkProgress()
+			if isLoaded then return end
+			local currentChildCount = #gridInstance:GetChildren()
+			
+			if currentChildCount >= expectedMin then
+				task.wait(0.5) -- 防斷流延遲確認
+				if currentChildCount == #gridInstance:GetChildren() then
+					isLoaded = true
+					bindableEvent:Fire()
+				end
+			end
+		end
+		local connection = gridInstance.ChildAdded:Connect(checkProgress)
+		checkProgress()
+		if not isLoaded then
+			bindableEvent.Event:Wait()
+		end	
+		connection:Disconnect()
+		bindableEvent:Destroy()
+	end
+	local buyUI = player.PlayerGui:WaitForChild("MainUI"):WaitForChild("Fullscreen"):WaitForChild("BuyUI"):WaitForChild("ItemsGrid")
+	waitForGridToLoad(buyUI, 10)
+	local blackMarketUI = player.PlayerGui:WaitForChild("MainUI"):WaitForChild("Fullscreen"):WaitForChild("BlackMarketUI"):WaitForChild("ItemsGrid")
+	waitForGridToLoad(blackMarketUI, 10)
+	task.wait()
+	
 	--DogeHub V2 GUI
 	local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20page%20format%20gui"))()
 	local NoobieDoge = library.new("DogeHub V2", 5013109572)
@@ -1005,38 +1038,6 @@ local function MiniWar()
 	
 	-- load
 	NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
-	
-	workspace:WaitForChild("MilitaryMap"):WaitForChild("Object"):WaitForChild("Wooden")
-	workspace.MilitaryMap:WaitForChild("PlayerPlots")
-	--Wait for stuff to load
-	local function waitForGridToLoad(gridInstance, expectedMin)
-		local isLoaded = false
-		local bindableEvent = Instance.new("BindableEvent")
-		local function checkProgress()
-			if isLoaded then return end
-			local currentChildCount = #gridInstance:GetChildren()
-			
-			if currentChildCount >= expectedMin then
-				task.wait(0.5) -- 防斷流延遲確認
-				if currentChildCount == #gridInstance:GetChildren() then
-					isLoaded = true
-					bindableEvent:Fire()
-				end
-			end
-		end
-		local connection = gridInstance.ChildAdded:Connect(checkProgress)
-		checkProgress()
-		if not isLoaded then
-			bindableEvent.Event:Wait()
-		end	
-		connection:Disconnect()
-		bindableEvent:Destroy()
-	end
-	local buyUI = player.PlayerGui:WaitForChild("MainUI"):WaitForChild("Fullscreen"):WaitForChild("BuyUI"):WaitForChild("ItemsGrid")
-	waitForGridToLoad(buyUI, 10)
-	local blackMarketUI = player.PlayerGui:WaitForChild("MainUI"):WaitForChild("Fullscreen"):WaitForChild("BlackMarketUI"):WaitForChild("ItemsGrid")
-	waitForGridToLoad(blackMarketUI, 10)
-	task.wait()
 
 	-- second page
 	local page2 = NoobieDoge:addPage("Misc", 136388769289535)
