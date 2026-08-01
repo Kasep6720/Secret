@@ -1627,55 +1627,55 @@ local function MiniWar()
 	end
 
 	local nochoicesobtained = false 
+	local GeneralUI = player.PlayerGui.GeneralUI
+	local itemsGrid = GeneralUI.GeneralsUI.LeftSide.SelectGeneral.ItemsGrid
+	local BuyGeneralButton = GeneralUI.GeneralsUI.Buy
+	local UrBuildings = workspace.MilitaryMap.PlayerPlots.YourBase.Plot.Buildings 
 
 	spawn(function() 
 		while task.wait(2) do 
 			if StartSpinGenerals then 
-				local itemsGrid = player.PlayerGui.GeneralUI.GeneralsUI.LeftSide.SelectGeneral.ItemsGrid
-				
-				if itemsGrid:FindFirstChild("Common") then 
-					local foundAnyMatch = false 
-					nochoicesobtained = false 
-					for i, v in pairs(itemsGrid:GetChildren()) do 
-						if v.Name ~= "UIListLayout" and v.Name ~= "UIPadding" and v.Name ~= "DontDelete" and v.Name ~= "GeneralTemplate" then 
-							for i, v1 in pairs(v:GetChildren()) do 
-								if v1.Name ~= "UIGridLayout" and v1.Name ~= "TemplateOLD" and v1.Name ~= "Template" then 
-									if v1.TextLabel.Text == a1 or v1.TextLabel.Text == a2 or v1.TextLabel.Text == a3 or v1.TextLabel.Text == a4 or v1.TextLabel.Text == a5 then 
-										foundAnyMatch = true
-									else 
-										print("Generals that does not match choices: " .. tostring(v1.Name))
+				if not itemsGrid:FindFirstChild("Common") then
+					notify("Finding general residence")
+					player.Character.HumanoidRootPart.CFrame=UrBuildings:WaitForChild("GeneralResidence").Circle.CFrame+Vector3.new(0,4,0)
+					local prox = UrBuildings.GeneralResidence.GeneralPrompt 
+					prox.Exclusivity = 2 
+					prox.RequiresLineOfSight = false 
+					task.wait(.1) 
+					fireproximityprompt(prox) 
+					task.wait(1)
+				else
+					if GeneralUI.Enabled == true then 
+						local foundAnyMatch = false 
+						nochoicesobtained = false 
+						for i, v in pairs(itemsGrid:GetChildren()) do 
+							if v.Name ~= "UIListLayout" and v.Name ~= "UIPadding" and v.Name ~= "DontDelete" and v.Name ~= "GeneralTemplate" then 
+								for i, v1 in pairs(v:GetChildren()) do 
+									if v1.Name ~= "UIGridLayout" and v1.Name ~= "TemplateOLD" and v1.Name ~= "Template" then 
+										if v1.TextLabel.Text == a1 or v1.TextLabel.Text == a2 or v1.TextLabel.Text == a3 or v1.TextLabel.Text == a4 or v1.TextLabel.Text == a5 then 
+											foundAnyMatch = true
+										end 
 									end 
 								end 
 							end 
 						end 
-					end 
-					
-					if foundAnyMatch == false then
-						nochoicesobtained = true 
-						print("⚠️ None of the generals in inventory matches, start spinning")
-					else
-						print("🟢 There are generals in inventory matches")
-					end
-					
-					task.wait() 
-				else 
-					if nochoicesobtained == true or not itemsGrid:FindFirstChild("Common") then
-						local UrBuildings = workspace.MilitaryMap.PlayerPlots.YourBase.Plot.Buildings 
+						if foundAnyMatch == false then
+							nochoicesobtained = true 
+							print("⚠️ None of the generals in inventory matches, start spinning")
+						else
+							print("🟢 There are generals in inventory matches")
+						end
+						
+						task.wait() 
+					else 
 						if UrBuildings:FindFirstChild("GeneralResidence") then 
-							notify("Finding general residence")
-							player.Character.HumanoidRootPart.CFrame=UrBuildings.GeneralResidence.Circle.CFrame+Vector3.new(0,4,0)
-							local prox = UrBuildings.GeneralResidence.GeneralPrompt 
-							prox.Exclusivity = 2 
-							prox.RequiresLineOfSight = false 
-							task.wait(.1) 
-							fireproximityprompt(prox) 
-							task.wait(1)
+							GeneralUI.Enabled = true
 						else 
 							notify("You don't have a general residence!") 
 							task.wait(10) 
 						end 
-					end
-				end 
+					end 
+				end
 			end 
 		end 
 	end)
@@ -1683,9 +1683,11 @@ local function MiniWar()
 	spawn(function()
 		while task.wait(7) do
 			if StartSpinGenerals then
-				if player.PlayerGui.GeneralUI.GeneralsUI.LeftSide.SelectGeneral.ItemsGrid:FindFirstChild("Common") then --check if general inventory is loaded
+				if GeneralUI.Enabled == true then
 					if nochoicesobtained == true then
-						notify("Spin")
+						for _, connection in pairs(getconnections(BuyGeneralButton.MouseButton1Click)) do
+							connection:Fire()
+						end
 					end
 				end
 			end
@@ -1949,46 +1951,48 @@ local function MiniWar()
 	spawn(function()
 		while task.wait() do
 			if _G.Army1AutoCapture then
-				local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
-				local current, max = string.match(text, "(%d+)/(%d+)")
-				if current and max and tonumber(current) ~= tonumber(max) then
-					local capturedThisTick = false
-					for p = 1, 4 do
-						if capturedThisTick or not _G.Army1AutoCapture then break end
-						local targetPriority = _G["A1P" .. p]
-						for _, v in pairs(workspace.MilitaryMap.Object:GetChildren()) do
+				pcall(function()
+					local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
+					local current, max = string.match(text, "(%d+)/(%d+)")
+					if current and max and tonumber(current) ~= tonumber(max) then
+						local capturedThisTick = false
+						for p = 1, 4 do
 							if capturedThisTick or not _G.Army1AutoCapture then break end
-							for _, v1 in pairs(v:GetChildren()) do
-								if v1:GetAttribute("baseType") == targetPriority then
-									for _, v2 in pairs(v1.PromptHolder:GetChildren()) do
-										if v2.ActionText == "Unclaim base" and v2.Enabled == false then
-											local args = {[1] = {[1] = {["armyIndex"] = 1, ["capturePoint"] = v1}, [2] = "\160"}}
-											remoteEvent:FireServer(unpack(args))
-											notify("Army 1 Priority " .. p .. " | Capturing: " .. v1.Name)
-											print("【Army 1 Priority " .. p .. "】Capturing: " .. v1.Name)
-											capturedThisTick = true 
-											repeat task.wait(.2) until v2.ActionText == "Unclaim base" and v2.Enabled == true
-											local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
-											local current, max = string.match(text, "(%d+)/(%d+)")
-											if _G.Army1KeepLastBase then
-												if (current and max and tonumber(max) - tonumber(current) == 1) or (current and max and tonumber(current) == tonumber(max)) then
+							local targetPriority = _G["A1P" .. p]
+							for _, v in pairs(workspace.MilitaryMap.Object:GetChildren()) do
+								if capturedThisTick or not _G.Army1AutoCapture then break end
+								for _, v1 in pairs(v:GetChildren()) do
+									if v1:GetAttribute("baseType") == targetPriority then
+										for _, v2 in pairs(v1.PromptHolder:GetChildren()) do
+											if v2.ActionText == "Unclaim base" and v2.Enabled == false then
+												local args = {[1] = {[1] = {["armyIndex"] = 1, ["capturePoint"] = v1}, [2] = "\159"}}
+												remoteEvent:FireServer(unpack(args))
+												notify("Army 1 Priority " .. p .. " | Capturing: " .. v1.Name)
+												print("【Army 1 Priority " .. p .. "】Capturing: " .. v1.Name)
+												capturedThisTick = true 
+												repeat task.wait(.2) until v2.ActionText == "Unclaim base" and v2.Enabled == true
+												local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
+												local current, max = string.match(text, "(%d+)/(%d+)")
+												if _G.Army1KeepLastBase then
+													if (current and max and tonumber(max) - tonumber(current) == 1) or (current and max and tonumber(current) == tonumber(max)) then
+														local patrolArgs = {[1] = {[1] = v1, [2] = "\164"}}
+														remoteEvent:FireServer(unpack(patrolArgs))
+													end
+												end
+												if _G.Army1Patrol then
 													local patrolArgs = {[1] = {[1] = v1, [2] = "\164"}}
 													remoteEvent:FireServer(unpack(patrolArgs))
 												end
+												break
 											end
-											if _G.Army1Patrol then
-												local patrolArgs = {[1] = {[1] = v1, [2] = "\164"}}
-												remoteEvent:FireServer(unpack(patrolArgs))
-											end
-											break
 										end
 									end
+									if capturedThisTick or not _G.Army1AutoCapture then break end
 								end
-								if capturedThisTick or not _G.Army1AutoCapture then break end
 							end
 						end
 					end
-				end
+				end)
 			end
 		end
 	end)
@@ -1996,46 +2000,48 @@ local function MiniWar()
 	spawn(function()
 		while task.wait() do
 			if _G.Army2AutoCapture then
-				local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
-				local current, max = string.match(text, "(%d+)/(%d+)")
-				if current and max and tonumber(current) ~= tonumber(max) then
-					local capturedThisTick = false
-					for p = 1, 4 do
-						if capturedThisTick or not _G.Army2AutoCapture then break end
-						local targetPriority = _G["A2P" .. p]
-						for _, v in pairs(workspace.MilitaryMap.Object:GetChildren()) do
+				pcall(function()
+					local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
+					local current, max = string.match(text, "(%d+)/(%d+)")
+					if current and max and tonumber(current) ~= tonumber(max) then
+						local capturedThisTick = false
+						for p = 1, 4 do
 							if capturedThisTick or not _G.Army2AutoCapture then break end
-							for _, v1 in pairs(v:GetChildren()) do
-								if v1:GetAttribute("baseType") == targetPriority then
-									for _, v2 in pairs(v1.PromptHolder:GetChildren()) do
-										if v2.ActionText == "Unclaim base" and v2.Enabled == false then
-											local args = {[1] = {[1] = {["armyIndex"] = 1, ["capturePoint"] = v1}, [2] = "\160"}}
-											remoteEvent:FireServer(unpack(args))
-											notify("Army 2 Priority " .. p .. " | Capturing: " .. v1.Name)
-											print("【Army 2 Priority " .. p .. "】Capturing: " .. v1.Name)
-											capturedThisTick = true 
-											repeat task.wait(.2) until v2.ActionText == "Unclaim base" and v2.Enabled == true
-											local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
-											local current, max = string.match(text, "(%d+)/(%d+)")
-											if _G.Army2KeepLastBase then
-												if (current and max and tonumber(max) - tonumber(current) == 1) or (current and max and tonumber(current) == tonumber(max)) then
+							local targetPriority = _G["A2P" .. p]
+							for _, v in pairs(workspace.MilitaryMap.Object:GetChildren()) do
+								if capturedThisTick or not _G.Army2AutoCapture then break end
+								for _, v1 in pairs(v:GetChildren()) do
+									if v1:GetAttribute("baseType") == targetPriority then
+										for _, v2 in pairs(v1.PromptHolder:GetChildren()) do
+											if v2.ActionText == "Unclaim base" and v2.Enabled == false then
+												local args = {[1] = {[1] = {["armyIndex"] = 2, ["capturePoint"] = v1}, [2] = "\159"}}
+												remoteEvent:FireServer(unpack(args))
+												notify("Army 2 Priority " .. p .. " | Capturing: " .. v1.Name)
+												print("【Army 2 Priority " .. p .. "】Capturing: " .. v1.Name)
+												capturedThisTick = true 
+												repeat task.wait(.2) until v2.ActionText == "Unclaim base" and v2.Enabled == true
+												local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
+												local current, max = string.match(text, "(%d+)/(%d+)")
+												if _G.Army2KeepLastBase then
+													if (current and max and tonumber(max) - tonumber(current) == 1) or (current and max and tonumber(current) == tonumber(max)) then
+														local patrolArgs = {[1] = {[1] = v1, [2] = "\164"}}
+														remoteEvent:FireServer(unpack(patrolArgs))
+													end
+												end
+												if _G.Army2Patrol then
 													local patrolArgs = {[1] = {[1] = v1, [2] = "\164"}}
 													remoteEvent:FireServer(unpack(patrolArgs))
 												end
+												break
 											end
-											if _G.Army2Patrol then
-												local patrolArgs = {[1] = {[1] = v1, [2] = "\164"}}
-												remoteEvent:FireServer(unpack(patrolArgs))
-											end
-											break
 										end
 									end
+									if capturedThisTick or not _G.Army2AutoCapture then break end
 								end
-								if capturedThisTick or not _G.Army2AutoCapture then break end
 							end
 						end
 					end
-				end
+				end)
 			end
 		end
 	end)
@@ -2043,46 +2049,48 @@ local function MiniWar()
 	spawn(function()
 		while task.wait() do
 			if _G.Army3AutoCapture then
-				local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
-				local current, max = string.match(text, "(%d+)/(%d+)")
-				if current and max and tonumber(current) ~= tonumber(max) then
-					local capturedThisTick = false
-					for p = 1, 4 do
-						if capturedThisTick or not _G.Army3AutoCapture then break end
-						local targetPriority = _G["A3P" .. p]
-						for _, v in pairs(workspace.MilitaryMap.Object:GetChildren()) do
+				pcall(function()
+					local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
+					local current, max = string.match(text, "(%d+)/(%d+)")
+					if current and max and tonumber(current) ~= tonumber(max) then
+						local capturedThisTick = false
+						for p = 1, 4 do
 							if capturedThisTick or not _G.Army3AutoCapture then break end
-							for _, v1 in pairs(v:GetChildren()) do
-								if v1:GetAttribute("baseType") == targetPriority then
-									for _, v2 in pairs(v1.PromptHolder:GetChildren()) do
-										if v2.ActionText == "Unclaim base" and v2.Enabled == false then
-											local args = {[1] = {[1] = {["armyIndex"] = 1, ["capturePoint"] = v1}, [2] = "\160"}}
-											remoteEvent:FireServer(unpack(args))
-											notify("Army 3 Priority " .. p .. " | Capturing: " .. v1.Name)
-											print("【Army 3 Priority " .. p .. "】Capturing: " .. v1.Name)
-											capturedThisTick = true 
-											repeat task.wait(.2) until v2.ActionText == "Unclaim base" and v2.Enabled == true
-											local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
-											local current, max = string.match(text, "(%d+)/(%d+)")
-											if _G.Army3KeepLastBase then
-												if (current and max and tonumber(max) - tonumber(current) == 1) or (current and max and tonumber(current) == tonumber(max)) then
+							local targetPriority = _G["A3P" .. p]
+							for _, v in pairs(workspace.MilitaryMap.Object:GetChildren()) do
+								if capturedThisTick or not _G.Army3AutoCapture then break end
+								for _, v1 in pairs(v:GetChildren()) do
+									if v1:GetAttribute("baseType") == targetPriority then
+										for _, v2 in pairs(v1.PromptHolder:GetChildren()) do
+											if v2.ActionText == "Unclaim base" and v2.Enabled == false then
+												local args = {[1] = {[1] = {["armyIndex"] = 3, ["capturePoint"] = v1}, [2] = "\159"}}
+												remoteEvent:FireServer(unpack(args))
+												notify("Army 3 Priority " .. p .. " | Capturing: " .. v1.Name)
+												print("【Army 3 Priority " .. p .. "】Capturing: " .. v1.Name)
+												capturedThisTick = true 
+												repeat task.wait(.2) until v2.ActionText == "Unclaim base" and v2.Enabled == true
+												local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
+												local current, max = string.match(text, "(%d+)/(%d+)")
+												if _G.Army3KeepLastBase then
+													if (current and max and tonumber(max) - tonumber(current) == 1) or (current and max and tonumber(current) == tonumber(max)) then
+														local patrolArgs = {[1] = {[1] = v1, [2] = "\164"}}
+														remoteEvent:FireServer(unpack(patrolArgs))
+													end
+												end
+												if _G.Army3Patrol then
 													local patrolArgs = {[1] = {[1] = v1, [2] = "\164"}}
 													remoteEvent:FireServer(unpack(patrolArgs))
 												end
+												break
 											end
-											if _G.Army3Patrol then
-												local patrolArgs = {[1] = {[1] = v1, [2] = "\164"}}
-												remoteEvent:FireServer(unpack(patrolArgs))
-											end
-											break
 										end
 									end
+									if capturedThisTick or not _G.Army3AutoCapture then break end
 								end
-								if capturedThisTick or not _G.Army3AutoCapture then break end
 							end
 						end
 					end
-				end
+				end)
 			end
 		end
 	end)
@@ -2090,46 +2098,48 @@ local function MiniWar()
 	spawn(function()
 		while task.wait() do
 			if _G.Army4AutoCapture then
-				local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
-				local current, max = string.match(text, "(%d+)/(%d+)")
-				if current and max and tonumber(current) ~= tonumber(max) then
-					local capturedThisTick = false
-					for p = 1, 4 do
-						if capturedThisTick or not _G.Army4AutoCapture then break end
-						local targetPriority = _G["A4P" .. p]
-						for _, v in pairs(workspace.MilitaryMap.Object:GetChildren()) do
+				pcall(function()
+					local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
+					local current, max = string.match(text, "(%d+)/(%d+)")
+					if current and max and tonumber(current) ~= tonumber(max) then
+						local capturedThisTick = false
+						for p = 1, 4 do
 							if capturedThisTick or not _G.Army4AutoCapture then break end
-							for _, v1 in pairs(v:GetChildren()) do
-								if v1:GetAttribute("baseType") == targetPriority then
-									for _, v2 in pairs(v1.PromptHolder:GetChildren()) do
-										if v2.ActionText == "Unclaim base" and v2.Enabled == false then
-											local args = {[1] = {[1] = {["armyIndex"] = 1, ["capturePoint"] = v1}, [2] = "\160"}}
-											remoteEvent:FireServer(unpack(args))
-											notify("Army 4 Priority " .. p .. " | Capturing: " .. v1.Name)
-											print("【Army 4 Priority " .. p .. "】Capturing: " .. v1.Name)
-											capturedThisTick = true 
-											repeat task.wait(.2) until v2.ActionText == "Unclaim base" and v2.Enabled == true
-											local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
-											local current, max = string.match(text, "(%d+)/(%d+)")
-											if _G.Army4KeepLastBase then
-												if (current and max and tonumber(max) - tonumber(current) == 1) or (current and max and tonumber(current) == tonumber(max)) then
+							local targetPriority = _G["A4P" .. p]
+							for _, v in pairs(workspace.MilitaryMap.Object:GetChildren()) do
+								if capturedThisTick or not _G.Army4AutoCapture then break end
+								for _, v1 in pairs(v:GetChildren()) do
+									if v1:GetAttribute("baseType") == targetPriority then
+										for _, v2 in pairs(v1.PromptHolder:GetChildren()) do
+											if v2.ActionText == "Unclaim base" and v2.Enabled == false then
+												local args = {[1] = {[1] = {["armyIndex"] = 4, ["capturePoint"] = v1}, [2] = "\159"}}
+												remoteEvent:FireServer(unpack(args))
+												notify("Army 4 Priority " .. p .. " | Capturing: " .. v1.Name)
+												print("【Army 4 Priority " .. p .. "】Capturing: " .. v1.Name)
+												capturedThisTick = true 
+												repeat task.wait(.2) until v2.ActionText == "Unclaim base" and v2.Enabled == true
+												local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
+												local current, max = string.match(text, "(%d+)/(%d+)")
+												if _G.Army4KeepLastBase then
+													if (current and max and tonumber(max) - tonumber(current) == 1) or (current and max and tonumber(current) == tonumber(max)) then
+														local patrolArgs = {[1] = {[1] = v1, [2] = "\164"}}
+														remoteEvent:FireServer(unpack(patrolArgs))
+													end
+												end
+												if _G.Army4Patrol then
 													local patrolArgs = {[1] = {[1] = v1, [2] = "\164"}}
 													remoteEvent:FireServer(unpack(patrolArgs))
 												end
+												break
 											end
-											if _G.Army4Patrol then
-												local patrolArgs = {[1] = {[1] = v1, [2] = "\164"}}
-												remoteEvent:FireServer(unpack(patrolArgs))
-											end
-											break
 										end
 									end
+									if capturedThisTick or not _G.Army4AutoCapture then break end
 								end
-								if capturedThisTick or not _G.Army4AutoCapture then break end
 							end
 						end
 					end
-				end
+				end)
 			end
 		end
 	end)
