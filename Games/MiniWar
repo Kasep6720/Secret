@@ -1661,7 +1661,7 @@ local function MiniWar()
 						end 
 						if foundAnyMatch == false then
 							nochoicesobtained = true 
-							print("⚠️ None of the generals in inventory matches, start spinning")
+							print("⚠️ None of the generals in inventory matches, enabled spinning")
 						else
 							print("🟢 There are generals in inventory matches")
 						end
