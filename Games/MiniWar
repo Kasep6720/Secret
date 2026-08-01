@@ -2222,7 +2222,7 @@ local function MiniWar()
 					for i,v1 in pairs(v:GetChildren()) do
 						if v1.Name == RocketsTarget and RocketLockOn == false then
 							local RocketLockOn = true
-							local args = {[1] = {[1] = {["capturePoint"] = v1},[2] = "\161"}}
+							local args = {[1] = {[1] = {["capturePoint"] = v1},[2] = "\160"}}
 							game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
 							task.wait(.9)
 						end
