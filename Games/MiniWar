@@ -2530,12 +2530,14 @@ local function MiniWar()
 	spawn(function()
 		while task.wait(.5) do
 			if AutoCollectWarPassPoints then
-				for i,v in pairs(workspace:GetChildren()) do
-					if v.Name == "BATTLEPASS_POINT_PICKUP" and v:FindFirstChild("Cube.001") then
-						task.wait(1)
-						player.Character.HumanoidRootPart.CFrame = v["Cube.001"].CFrame
+				pcall(function()
+					for i,v in pairs(workspace:GetChildren()) do
+						if v.Name == "BATTLEPASS_POINT_PICKUP" and v:FindFirstChild("Cube.001") then
+							task.wait(1)
+							player.Character.HumanoidRootPart.CFrame = v["Cube.001"].CFrame
+						end
 					end
-				end
+				end)
 			end
 		end
 	end)
