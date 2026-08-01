@@ -208,6 +208,30 @@ local function MiniWar()
 	end
 	if isfile(Universal .. "/trackthatguy.txt") == false then
 		writefile(Universal .. "/trackthatguy.txt","false")
+	end 
+	if isfile(DHV2MW .. "/HiddenLocalNPCModel.txt") == false then
+		writefile(DHV2MW .. "/HiddenLocalNPCModel.txt","false")
+	end
+	if isfile(DHV2MW .. "/HiddenLocalNPCModelserver.txt") == false then
+		writefile(DHV2MW .. "/HiddenLocalNPCModelserver.txt","false")
+	end
+	if isfile(DHV2MW .. "/DeleteLocalNPCHealthBar.txt") == false then
+		writefile(DHV2MW .. "/DeleteLocalNPCHealthBar.txt","false")
+	end 
+	if isfile(DHV2MW .. "/DeleteLocalNPCHealthIndicator.txt") == false then
+		writefile(DHV2MW .. "/DeleteLocalNPCHealthIndicator.txt","false")
+	end
+	if isfile(DHV2MW .. "/AutoDeleteTEMPEffects.txt") == false then
+		writefile(DHV2MW .. "/AutoDeleteTEMPEffects.txt","false")
+	end 
+	if isfile(DHV2MW .. "/AutoDeleteTEMPEffectsInterval.txt") == false then
+		writefile(DHV2MW .. "/AutoDeleteTEMPEffectsInterval.txt","200")
+	end
+	if isfile(DHV2MW .. "/AutoDeleteBuildingEffects.txt") == false then
+		writefile(DHV2MW .. "/AutoDeleteBuildingEffects.txt","false")
+	end 
+	if isfile(DHV2MW .. "/RemoveunnecessaryProximityPrompts.txt") == false then
+		writefile(DHV2MW .. "/RemoveunnecessaryProximityPrompts.txt","false")
 	end
 	if isfile(DHV2MW .. "/AutoBuyEverything.txt") == false then
 		writefile(DHV2MW .. "/AutoBuyEverything.txt","false")
@@ -967,68 +991,8 @@ local function MiniWar()
 	-- load
 	NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
 	
-	-- second page
-	local page2 = NoobieDoge:addPage("Misc", 136388769289535)
-	local section1 = page2:addSection("gugugaga")
-	local section2 = page2:addSection("nate")
-	local section3 = page2:addSection("higgers")
-
-	local DeletedLocalNPCs = 0
-	section1:addButton("Delete all Local NPCs (client)",function()
-		for i,v in pairs(workspace.LocalNpcs:GetChildren()) do
-			v:Destroy()
-			DeletedLocalNPCs = DeletedLocalNPCs +1
-		end
-		notify("Deleted " .. tostring(DeletedLocalNPCs) .. " Local NPCs")
-		DeletedLocalNPCs = 0
-	end)
-
-	local DeletedLocalNPCsserver = 0
-	section1:addButton("Delete all Local Server NPCs (client)",function()
-		for i,v in pairs(workspace.LocalNpcs:GetChildren()) do
-			if v:GetAttribute("owner") == "server" then
-				v:Destroy()
-				DeletedLocalNPCsserver = DeletedLocalNPCsserver +1
-			end
-		end
-		notify("Deleted " .. tostring(DeletedLocalNPCsserver) .. " Local Server NPCs")
-		DeletedLocalNPCsserver = 0
-	end)
-
-	local DeletedTEMP = 0
-	section1:addButton("Delete all TEMP Effects (client)",function()
-		for i,v in pairs(workspace.TEMP:GetChildren()) do
-			v:Destroy()
-			DeletedTEMP = DeletedTEMP +1
-		end
-		notify("Deleted " .. tostring(DeletedTEMP) .. " TEMP Effects")
-		DeletedTEMP = 0
-	end)
-
-	local DeletedBaseBuildingsEffects = 0
-	section1:addButton("Delete all rendered Buildings Effects (client)",function()
-		notify("Deleting, should take a while")
-		for i,v in pairs(workspace.MilitaryMap:GetDescendants()) do
-			if v.ClassName == "ParticleEmitter" then
-				v:Destroy()
-				DeletedBaseBuildingsEffects = DeletedBaseBuildingsEffects +1
-				print(DeletedBaseBuildingsEffects)
-				if DeletedBaseBuildingsEffects % 50 == 0 then
-					task.wait()
-				end
-			end
-		end
-		notify("Deleted " .. tostring(DeletedBaseBuildingsEffects) .. " Buildings Effects")
-		DeletedBaseBuildingsEffects = 0
-	end)
-
-	-- third page
-	local page3 = NoobieDoge:addPage("Auto Buy", 136388769289535)
-	local section1 = page3:addSection("Shop")
-	local section2 = page3:addSection("Black Market")
-	local section3 = page3:addSection("Auto Expand")
-
 	workspace:WaitForChild("MilitaryMap"):WaitForChild("Object"):WaitForChild("Wooden")
+	workspace.MilitaryMap:WaitForChild("PlayerPlots")
 	--Wait for stuff to load
 	local function waitForGridToLoad(gridInstance, expectedMin)
 		local isLoaded = false
@@ -1058,6 +1022,353 @@ local function MiniWar()
 	local blackMarketUI = player.PlayerGui:WaitForChild("MainUI"):WaitForChild("Fullscreen"):WaitForChild("BlackMarketUI"):WaitForChild("ItemsGrid")
 	waitForGridToLoad(blackMarketUI, 10)
 	task.wait()
+
+	-- second page
+	local page2 = NoobieDoge:addPage("Misc", 136388769289535)
+	local section1 = page2:addSection("Improve Performance")
+	local section2 = page2:addSection("QoL Features")
+
+	local HiddenLocalNPCModel1 = 0
+	if readfile(DHV2MW .. "/HiddenLocalNPCModel.txt") == "true" then
+		HiddenLocalNPCModel = true
+		section1:addToggle("Hide all Local NPC Model (client)",true,function(bool)
+			HiddenLocalNPCModel = bool
+			notify("Hide all Local NPC Model: " .. tostring(HiddenLocalNPCModel))
+			if HiddenLocalNPCModel == true then
+				writefile(DHV2MW .. "/HiddenLocalNPCModel.txt","true")
+			else
+				writefile(DHV2MW .. "/HiddenLocalNPCModel.txt","false")
+			end
+		end)
+	else
+		HiddenLocalNPCModel = false
+		section1:addToggle("Hide all Local NPC Model (client)",false,function(bool)
+			HiddenLocalNPCModel = bool
+			notify("Hide all Local NPC Model: " .. tostring(HiddenLocalNPCModel))
+			if HiddenLocalNPCModel == true then
+				writefile(DHV2MW .. "/HiddenLocalNPCModel.txt","true")
+			else
+				writefile(DHV2MW .. "/HiddenLocalNPCModel.txt","false")
+			end
+		end)
+	end
+	spawn(function()
+		while task.wait(.1) do
+			if HiddenLocalNPCModel then
+				for i,v in pairs(workspace.LocalNpcs:GetChildren()) do
+					if v:FindFirstChild("Hitbox") and v.Hitbox.Transparency ~= 0.5 then
+						v.Hitbox.Transparency = 0.5
+						HiddenLocalNPCModel1 = HiddenLocalNPCModel1 +1
+					end 
+					if v:FindFirstChild("HumanoidRootPart") and v.HumanoidRootPart.Transparency ~= 0.5 then
+						v.HumanoidRootPart.Transparency = 0.5
+						HiddenLocalNPCModel1 = HiddenLocalNPCModel1 +1
+					end
+					for i,v1 in pairs(v:GetChildren()) do
+						if v1.Name ~= "Hitbox" and v1.Name ~= "HumanoidRootPart" then
+							v1:Destroy()
+						else
+							for i,v2 in pairs(v1:GetChildren()) do
+								if v2.ClassName == "Motor6D" then
+									v2:Destroy()
+								end
+							end
+						end
+					end
+				end
+				if HiddenLocalNPCModel1 > 1000 then
+					print("Hidden " .. tostring(HiddenLocalNPCModel1) .. " Local NPC Model")
+					HiddenLocalNPCModel1 = 0
+					task.wait()
+				end
+			end
+		end
+	end)
+
+	local HiddenLocalNPCModelserver1 = 0
+	if readfile(DHV2MW .. "/HiddenLocalNPCModelserver.txt") == "true" then
+		HiddenLocalNPCModelserver = true
+		section1:addToggle("Hide all Local Server NPC Model (client)",true,function(bool)
+			HiddenLocalNPCModelserver = bool
+			notify("Hide all Local Server NPC Model: " .. tostring(HiddenLocalNPCModelserver))
+			if HiddenLocalNPCModelserver == true then
+				writefile(DHV2MW .. "/HiddenLocalNPCModelserver.txt","true")
+			else
+				writefile(DHV2MW .. "/HiddenLocalNPCModelserver.txt","false")
+			end
+		end)
+	else
+		HiddenLocalNPCModelserver = false
+		section1:addToggle("Hide all Local Server NPC Model (client)",false,function(bool)
+			HiddenLocalNPCModelserver = bool
+			notify("Hide all Local Server NPC Model: " .. tostring(HiddenLocalNPCModelserver))
+			if HiddenLocalNPCModelserver == true then
+				writefile(DHV2MW .. "/HiddenLocalNPCModelserver.txt","true")
+			else
+				writefile(DHV2MW .. "/HiddenLocalNPCModelserver.txt","false")
+			end
+		end)
+	end
+	spawn(function()
+		while task.wait(.1) do
+			if HiddenLocalNPCModelserver then
+				for i,v in pairs(workspace.LocalNpcs:GetChildren()) do
+					if v:GetAttribute("owner") == "server" then
+						if v:FindFirstChild("Hitbox") and v.Hitbox.Transparency ~= 0.5 then
+							v.Hitbox.Transparency = 0.5
+							HiddenLocalNPCModelserver1 = HiddenLocalNPCModelserver1 +1
+						end 
+						if v:FindFirstChild("HumanoidRootPart") and v.HumanoidRootPart.Transparency ~= 0.5 then
+							v.HumanoidRootPart.Transparency = 0.5
+							HiddenLocalNPCModelserver1 = HiddenLocalNPCModelserver1 +1
+						end
+						for i,v1 in pairs(v:GetChildren()) do
+							if v1.Name ~= "Hitbox" and v1.Name ~= "HumanoidRootPart" then
+								v1:Destroy()
+							else
+								for i,v2 in pairs(v1:GetChildren()) do
+									if v2.ClassName == "Motor6D" then
+										v2:Destroy()
+									end
+								end
+							end
+						end
+					end
+				end
+				if HiddenLocalNPCModelserver1 > 100 then
+					print("Hidden " .. tostring(HiddenLocalNPCModelserver1) .. " Local Server NPC Model")
+					HiddenLocalNPCModelserver1 = 0
+					task.wait()
+				end
+			end
+		end
+	end)
+
+	if readfile(DHV2MW .. "/DeleteLocalNPCHealthBar.txt") == "true" then
+		DeleteLocalNPCHealthBar = true
+		section1:addToggle("Delete Local NPC Health Bar (client)",true,function(bool)
+			DeleteLocalNPCHealthBar = bool
+			notify("Delete Local NPC Health Bar: " .. tostring(DeleteLocalNPCHealthBar))
+			if DeleteLocalNPCHealthBar == true then
+				writefile(DHV2MW .. "/DeleteLocalNPCHealthBar.txt","true")
+			else
+				writefile(DHV2MW .. "/DeleteLocalNPCHealthBar.txt","false")
+			end
+		end)
+	else
+		DeleteLocalNPCHealthBar = false
+		section1:addToggle("Delete Local NPC Health Bar (client)",false,function(bool)
+			DeleteLocalNPCHealthBar = bool
+			notify("Delete Local NPC Health Bar: " .. tostring(DeleteLocalNPCHealthBar))
+			if DeleteLocalNPCHealthBar == true then
+				writefile(DHV2MW .. "/DeleteLocalNPCHealthBar.txt","true")
+			else
+				writefile(DHV2MW .. "/DeleteLocalNPCHealthBar.txt","false")
+			end
+		end)
+	end
+	spawn(function()
+		while task.wait(.1) do
+			if DeleteLocalNPCHealthBar then
+				for i,v in pairs(workspace.LocalNpcs:GetChildren()) do
+					for i,v1 in pairs(v:GetChildren()) do
+						if v1.Name ~= "Hitbox" and v1.Name ~= "HumanoidRootPart" then
+						else
+							for i,v2 in pairs(v1:GetChildren()) do
+								if v2.Name == "HealthBar" then
+									v2:Destroy()
+								end
+							end
+						end
+					end
+				end
+				task.wait()
+			end
+		end
+	end)
+
+	if readfile(DHV2MW .. "/DeleteLocalNPCHealthIndicator.txt") == "true" then
+		DeleteLocalNPCHealthIndicator = true
+		section1:addToggle("Delete Local NPC Health Indicator (client)",true,function(bool)
+			DeleteLocalNPCHealthIndicator = bool
+			notify("Delete Local NPC Health Indicator: " .. tostring(DeleteLocalNPCHealthIndicator))
+			if DeleteLocalNPCHealthIndicator == true then
+				writefile(DHV2MW .. "/DeleteLocalNPCHealthIndicator.txt","true")
+			else
+				writefile(DHV2MW .. "/DeleteLocalNPCHealthIndicator.txt","false")
+			end
+		end)
+	else
+		DeleteLocalNPCHealthIndicator = false
+		section1:addToggle("Delete Local NPC Health Indicator (client)",false,function(bool)
+			DeleteLocalNPCHealthIndicator = bool
+			notify("Delete Local NPC Health Indicator: " .. tostring(DeleteLocalNPCHealthIndicator))
+			if DeleteLocalNPCHealthIndicator == true then
+				writefile(DHV2MW .. "/DeleteLocalNPCHealthIndicator.txt","true")
+			else
+				writefile(DHV2MW .. "/DeleteLocalNPCHealthIndicator.txt","false")
+			end
+		end)
+	end
+	spawn(function()
+		while task.wait(.1) do
+			if DeleteLocalNPCHealthIndicator then
+				for i,v in pairs(workspace.LocalNpcs:GetChildren()) do
+					for i,v1 in pairs(v:GetChildren()) do
+						if v1.Name ~= "Hitbox" and v1.Name ~= "HumanoidRootPart" then
+						else
+							for i,v2 in pairs(v1:GetChildren()) do
+								if v2.Name == "HealthIndicator" then
+									v2:Destroy()
+								end
+							end
+						end
+					end
+				end
+				task.wait()
+			end
+		end
+	end)
+
+	local DeletedTEMP = 0
+	if readfile(DHV2MW .. "/AutoDeleteTEMPEffects.txt") == "true" then
+		AutoDeleteTEMPEffects = true
+		section1:addToggle("Delete all TEMP Effects (client)",true,function(bool)
+			AutoDeleteTEMPEffects = bool
+			notify("Auto Delete TEMP Effects: " .. tostring(AutoDeleteTEMPEffects))
+			if AutoDeleteTEMPEffects == true then
+				writefile(DHV2MW .. "/AutoDeleteTEMPEffects.txt","true")
+			else
+				writefile(DHV2MW .. "/AutoDeleteTEMPEffects.txt","false")
+			end
+		end)
+	else
+		AutoDeleteTEMPEffects = false
+		section1:addToggle("Delete all TEMP Effects (client)",false,function(bool)
+			AutoDeleteTEMPEffects = bool
+			notify("Auto Delete TEMP Effects: " .. tostring(AutoDeleteTEMPEffects))
+			if AutoDeleteTEMPEffects == true then
+				writefile(DHV2MW .. "/AutoDeleteTEMPEffects.txt","true")
+			else
+				writefile(DHV2MW .. "/AutoDeleteTEMPEffects.txt","false")
+			end
+		end)
+	end
+	section1:addSlider("Auto Delete TEMP Effects Interval", tonumber(readfile(DHV2MW .. "/AutoDeleteTEMPEffectsInterval.txt")), 100, 10000, function(value)
+		notify("Auto Delete TEMP Effects Interval: " .. value .. " ms")
+		AutoDeleteTEMPEffectsInterval = value/1000
+		writefile(DHV2MW .. "/AutoDeleteTEMPEffectsInterval.txt",tostring(value))
+	end)
+	AutoDeleteTEMPEffectsInterval = tonumber(readfile(DHV2MW .. "/AutoDeleteTEMPEffectsInterval.txt"))/1000
+	spawn(function()
+		while task.wait() do
+			if AutoDeleteTEMPEffects then
+				for i,v in pairs(workspace.TEMP:GetChildren()) do
+					v:Destroy()
+					DeletedTEMP = DeletedTEMP +1
+				end
+				if DeletedTEMP > 1000 then
+					print("Deleted " .. tostring(DeletedTEMP) .. " TEMP Effects")
+					DeletedTEMP = 0
+				end
+				task.wait(AutoDeleteTEMPEffectsInterval)
+			end
+		end
+	end)
+
+	local DeletedBaseBuildingsEffects = 0
+	if readfile(DHV2MW .. "/AutoDeleteBuildingEffects.txt") == "true" then
+		AutoDeleteBuildingEffects = true
+		section1:addToggle("Delete all rendered Buildings Effects (client)",true,function(bool)
+			AutoDeleteBuildingEffects = bool
+			notify("Auto Delete Building Effects: " .. tostring(AutoDeleteBuildingEffects))
+			if AutoDeleteBuildingEffects == true then
+				writefile(DHV2MW .. "/AutoDeleteBuildingEffects.txt","true")
+			else
+				writefile(DHV2MW .. "/AutoDeleteBuildingEffects.txt","false")
+			end
+		end)
+	else
+		AutoDeleteBuildingEffects = false
+		section1:addToggle("Delete all rendered Buildings Effects (client)",false,function(bool)
+			AutoDeleteBuildingEffects = bool
+			notify("Auto Delete Building Effects: " .. tostring(AutoDeleteBuildingEffects))
+			if AutoDeleteBuildingEffects == true then
+				writefile(DHV2MW .. "/AutoDeleteBuildingEffects.txt","true")
+			else
+				writefile(DHV2MW .. "/AutoDeleteBuildingEffects.txt","false")
+			end
+		end)
+	end
+	spawn(function()
+		while task.wait(2) do
+			if AutoDeleteBuildingEffects then
+				for i,v in pairs(workspace.MilitaryMap:GetDescendants()) do
+					if v.ClassName == "ParticleEmitter" then
+						v:Destroy()
+						DeletedBaseBuildingsEffects = DeletedBaseBuildingsEffects +1
+						if DeletedBaseBuildingsEffects % 50 == 0 then
+							task.wait()
+							--print(DeletedBaseBuildingsEffects)
+						end
+					end
+				end
+				if DeletedBaseBuildingsEffects ~= 0 then
+					notify("Deleted " .. tostring(DeletedBaseBuildingsEffects) .. " Buildings Effects")
+					DeletedBaseBuildingsEffects = 0
+				end
+				task.wait()
+			end
+		end
+	end)
+
+	local RemovedunnecessaryProximityPrompts = 0
+	if readfile(DHV2MW .. "/RemoveunnecessaryProximityPrompts.txt") == "true" then
+		RemoveunnecessaryProximityPrompts = true
+		section2:addToggle("Remove unnecessary Proximity Prompts",true,function(bool)
+			RemoveunnecessaryProximityPrompts = bool
+			notify("Remove unnecessary Proximity Prompts: " .. tostring(RemoveunnecessaryProximityPrompts))
+			if RemoveunnecessaryProximityPrompts == true then
+				writefile(DHV2MW .. "/RemoveunnecessaryProximityPrompts.txt","true")
+			else
+				writefile(DHV2MW .. "/RemoveunnecessaryProximityPrompts.txt","false")
+			end
+		end)
+	else
+		RemoveunnecessaryProximityPrompts = false
+		section2:addToggle("Remove unnecessary Proximity Prompts",false,function(bool)
+			RemoveunnecessaryProximityPrompts = bool
+			notify("Remove unnecessary Proximity Prompts: " .. tostring(RemoveunnecessaryProximityPrompts))
+			if RemoveunnecessaryProximityPrompts == true then
+				writefile(DHV2MW .. "/RemoveunnecessaryProximityPrompts.txt","true")
+			else
+				writefile(DHV2MW .. "/RemoveunnecessaryProximityPrompts.txt","false")
+			end
+		end)
+	end
+	spawn(function()
+		while task.wait(2) do
+			if RemoveunnecessaryProximityPrompts then
+				for i,v in pairs(workspace.MilitaryMap.PlayerPlots:GetDescendants()) do
+					if v.Name == "ProximityPrompt" and (v.ObjectText == "Steal Production!" or v.ActionText == "Skip!") then
+						v:Destroy()
+						RemovedunnecessaryProximityPrompts = RemovedunnecessaryProximityPrompts+1
+					end
+				end
+				if RemovedunnecessaryProximityPrompts ~= 0 then
+					print("Removed " .. tostring(RemovedunnecessaryProximityPrompts) .. " Proximity Prompts")
+					RemovedunnecessaryProximityPrompts = 0
+				end
+				task.wait()
+			end
+		end
+	end)
+
+	-- third page
+	local page3 = NoobieDoge:addPage("Auto Buy", 136388769289535)
+	local section1 = page3:addSection("Shop")
+	local section2 = page3:addSection("Black Market")
+	local section3 = page3:addSection("Auto Expand")
 
 	local BuyShop = {}
 	for i,v in pairs(player.PlayerGui.MainUI.Fullscreen:WaitForChild("BuyUI"):WaitForChild("ItemsGrid"):GetChildren()) do
@@ -1393,9 +1704,9 @@ local function MiniWar()
 	if readfile(DHV2MW .. "/AutoExpandPlot.txt") == "true" then
 		AutoExpandPlot = true
 		section3:addToggle("Auto Expand Plot",true,function(bool)
-			AutoBuyEverything = bool
+			AutoExpandPlot = bool
 			notify("Auto Expand Plot: " .. tostring(AutoExpandPlot))
-			if AutoBuyEverything == true then
+			if AutoExpandPlot == true then
 				writefile(DHV2MW .. "/AutoExpandPlot.txt","true")
 				notify("Will automatically expand plot when walk by")
 			else
@@ -1415,6 +1726,7 @@ local function MiniWar()
 			end
 		end)
 	end
+
 
 	for i,v in pairs(workspace.MilitaryMap.PlayerPlots:GetChildren()) do
 		local empireName = player.Name .. "'s Empire"
@@ -1730,7 +2042,7 @@ local function MiniWar()
 	spawn(function()
 		while task.wait(.5) do
 			if AutoResearch then
-				if IsResearchFull(game:GetService("Players").LocalPlayer.PlayerGui.SkillsUI.SkillsUI.researchers.Quantity.Text) == false then
+				if IsResearchFull(player.PlayerGui.SkillsUI.SkillsUI.researchers.Quantity.Text) == false then
 					if not workspace:FindFirstChild("UpgradeTree") then
 						print("Locating data from ReplicatedStorage")
 						local foundAny = false
@@ -1949,7 +2261,7 @@ local function MiniWar()
 
 	local remoteEvent = game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent
 	spawn(function()
-		while task.wait() do
+		while task.wait(.5) do
 			if _G.Army1AutoCapture then
 				pcall(function()
 					local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
@@ -1970,7 +2282,7 @@ local function MiniWar()
 												notify("Army 1 Priority " .. p .. " | Capturing: " .. v1.Name)
 												print("【Army 1 Priority " .. p .. "】Capturing: " .. v1.Name)
 												capturedThisTick = true 
-												repeat task.wait(.2) until v2.ActionText == "Unclaim base" and v2.Enabled == true
+												repeat task.wait(1) until v2.ActionText == "Unclaim base" and v2.Enabled == true
 												local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
 												local current, max = string.match(text, "(%d+)/(%d+)")
 												if _G.Army1KeepLastBase then
@@ -1998,7 +2310,7 @@ local function MiniWar()
 	end)
 
 	spawn(function()
-		while task.wait() do
+		while task.wait(.5) do
 			if _G.Army2AutoCapture then
 				pcall(function()
 					local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
@@ -2019,7 +2331,7 @@ local function MiniWar()
 												notify("Army 2 Priority " .. p .. " | Capturing: " .. v1.Name)
 												print("【Army 2 Priority " .. p .. "】Capturing: " .. v1.Name)
 												capturedThisTick = true 
-												repeat task.wait(.2) until v2.ActionText == "Unclaim base" and v2.Enabled == true
+												repeat task.wait(1) until v2.ActionText == "Unclaim base" and v2.Enabled == true
 												local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
 												local current, max = string.match(text, "(%d+)/(%d+)")
 												if _G.Army2KeepLastBase then
@@ -2047,7 +2359,7 @@ local function MiniWar()
 	end)
 
 	spawn(function()
-		while task.wait() do
+		while task.wait(.5) do
 			if _G.Army3AutoCapture then
 				pcall(function()
 					local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
@@ -2068,7 +2380,7 @@ local function MiniWar()
 												notify("Army 3 Priority " .. p .. " | Capturing: " .. v1.Name)
 												print("【Army 3 Priority " .. p .. "】Capturing: " .. v1.Name)
 												capturedThisTick = true 
-												repeat task.wait(.2) until v2.ActionText == "Unclaim base" and v2.Enabled == true
+												repeat task.wait(1) until v2.ActionText == "Unclaim base" and v2.Enabled == true
 												local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
 												local current, max = string.match(text, "(%d+)/(%d+)")
 												if _G.Army3KeepLastBase then
@@ -2096,7 +2408,7 @@ local function MiniWar()
 	end)
 
 	spawn(function()
-		while task.wait() do
+		while task.wait(.5) do
 			if _G.Army4AutoCapture then
 				pcall(function()
 					local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
@@ -2117,7 +2429,7 @@ local function MiniWar()
 												notify("Army 4 Priority " .. p .. " | Capturing: " .. v1.Name)
 												print("【Army 4 Priority " .. p .. "】Capturing: " .. v1.Name)
 												capturedThisTick = true 
-												repeat task.wait(.2) until v2.ActionText == "Unclaim base" and v2.Enabled == true
+												repeat task.wait(1) until v2.ActionText == "Unclaim base" and v2.Enabled == true
 												local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
 												local current, max = string.match(text, "(%d+)/(%d+)")
 												if _G.Army4KeepLastBase then
@@ -2228,11 +2540,10 @@ local function MiniWar()
 		end
 	end)
 
-
 	-- seventh page
 	local page7 = NoobieDoge:addPage("Events", 136388769289535)
 	local section1 = page7:addSection("Godzilla")
-	local section2 = page7:addSection("dunno")
+	local section2 = page7:addSection("idk")
 
 	-- seventh page
 	local page7 = NoobieDoge:addPage("Teleports", 136388769289535)
@@ -2398,6 +2709,14 @@ local function MiniWar()
 			writefile(Universal .. "/Pfly.txt","false")
 			writefile(Universal .. "/ripthatguy.txt","Player's Name")
 			writefile(Universal .. "/trackthatguy.txt","false")
+			writefile(DHV2MW .. "/HiddenLocalNPCModel.txt","false")
+			writefile(DHV2MW .. "/HiddenLocalNPCModelserver.txt","false")
+			writefile(DHV2MW .. "/DeleteLocalNPCHealthBar.txt","false")
+			writefile(DHV2MW .. "/DeleteLocalNPCHealthIndicator.txt","false")
+			writefile(DHV2MW .. "/AutoDeleteTEMPEffects.txt","false")
+			writefile(DHV2MW .. "/AutoDeleteTEMPEffectsInterval.txt","200")
+			writefile(DHV2MW .. "/AutoDeleteBuildingEffects.txt","false")
+			writefile(DHV2MW .. "/RemoveunnecessaryProximityPrompts.txt","false")
 			writefile(DHV2MW .. "/AutoBuyEverything.txt","false")
 			writefile(DHV2MW .. "/bsi.txt"," ")
 			writefile(DHV2MW .. "/bsi1.txt"," ")
@@ -2449,6 +2768,13 @@ local function MiniWar()
 			noclips = false
 			Pfly = false
 			trackthatguy = false
+			HiddenLocalNPCModel = false
+			HiddenLocalNPCModelserver = false
+			DeleteLocalNPCHealthBar = false
+			DeleteLocalNPCHealthIndicator = false
+			AutoDeleteTEMPEffects = false
+			AutoDeleteBuildingEffects = false
+			RemoveunnecessaryProximityPrompts = false
 			AutoBuyEverything = false
 			ABSI = false
 			AutoBuyEverythingBM = false
