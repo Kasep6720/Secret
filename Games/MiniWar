@@ -254,6 +254,9 @@ local function MiniWar()
 	if isfile(DHV2MW .. "/ABSI.txt") == false then
 		writefile(DHV2MW .. "/ABSI.txt","false")
 	end	
+	if isfile(DHV2MW .. "/AutoBuyLegacy.txt") == false then
+		writefile(DHV2MW .. "/AutoBuyLegacy.txt","false")
+	end
 	if isfile(DHV2MW .. "/AutoBuyEverythingBM.txt") == false then
 		writefile(DHV2MW .. "/AutoBuyEverythingBM.txt","false")
 	end
@@ -269,6 +272,9 @@ local function MiniWar()
 	if isfile(DHV2MW .. "/ABSIBM.txt") == false then
 		writefile(DHV2MW .. "/ABSIBM.txt","false")
 	end	
+	if isfile(DHV2MW .. "/AutoBuyBMLegacy.txt") == false then
+		writefile(DHV2MW .. "/AutoBuyBMLegacy.txt","false")
+	end
 	if isfile(DHV2MW .. "/AutoExpandPlot.txt") == false then
 		writefile(DHV2MW .. "/AutoExpandPlot.txt","false")
 	end 
@@ -278,6 +284,9 @@ local function MiniWar()
 	if isfile(DHV2MW .. "/AutoCollectGP.txt") == false then
 		writefile(DHV2MW .. "/AutoCollectGP.txt","false")
 	end 
+	if isfile(DHV2MW .. "/AutoSell.txt") == false then
+		writefile(DHV2MW .. "/AutoSell.txt","false")
+	end
 	if isfile(DHV2MW .. "/AutoSellGP.txt") == false then
 		writefile(DHV2MW .. "/AutoSellGP.txt","false")
 	end
@@ -362,7 +371,7 @@ local function MiniWar()
 			local currentChildCount = #gridInstance:GetChildren()
 			
 			if currentChildCount >= expectedMin then
-				task.wait(0.5) -- 防斷流延遲確認
+				task.wait(0.5)
 				if currentChildCount == #gridInstance:GetChildren() then
 					isLoaded = true
 					bindableEvent:Fire()
@@ -382,7 +391,7 @@ local function MiniWar()
 	local blackMarketUI = player.PlayerGui:WaitForChild("MainUI"):WaitForChild("Fullscreen"):WaitForChild("BlackMarketUI"):WaitForChild("ItemsGrid")
 	waitForGridToLoad(blackMarketUI, 10)
 	task.wait()
-	
+
 	--DogeHub V2 GUI
 	local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20page%20format%20gui"))()
 	local NoobieDoge = library.new("DogeHub V2", 5013109572)
@@ -1431,189 +1440,7 @@ local function MiniWar()
 	local section1 = page3:addSection("Shop")
 	local section2 = page3:addSection("Black Market")
 	local section3 = page3:addSection("Auto Expand")
-
-	local BuyShop = {}
-	for i,v in pairs(player.PlayerGui.MainUI.Fullscreen:WaitForChild("BuyUI"):WaitForChild("ItemsGrid"):GetChildren()) do
-		if v.Name ~= "UIListLayout" and v.Name ~= "UIPadding" and v.Name ~= "DontDelete" and v.Name ~= "PadderTemplate" then
-			table.insert(BuyShop, v.Name)
-		end
-	end
-
-	local BuyBlackMarket = {}
-	for i,v in pairs(player.PlayerGui.MainUI.Fullscreen:WaitForChild("BlackMarketUI"):WaitForChild("ItemsGrid"):GetChildren()) do
-		if v.Name ~= "UIListLayout" and v.Name ~= "UIPadding" and v.Name ~= "DontDelete" and v.Name ~= "PadderTemplate" then
-			table.insert(BuyBlackMarket, v.Name)
-		end
-	end
-
-	local AutoBuyEverything
-	local ABSI
-	local AutoBuyEverythingBM
-	local ABSIBM
-
-	if readfile(DHV2MW .. "/AutoBuyEverything.txt") == "true" then
-		AutoBuyEverything = true
-		section1:addToggle("Auto Buy Everything",true,function(bool)
-			AutoBuyEverything = bool
-			notify("Auto Buy Everything: " .. tostring(AutoBuyEverything))
-			if AutoBuyEverything == true then
-				writefile(DHV2MW .. "/AutoBuyEverything.txt","true")
-				writefile(DHV2MW .. "/ABSI.txt","false")
-				section1:updateToggle("Auto Buy Specific Items")
-				ABSI = false
-			else
-				writefile(DHV2MW .. "/AutoBuyEverything.txt","false")
-			end
-		end)
-	else
-		AutoBuyEverything = false
-		section1:addToggle("Auto Buy Everything",false,function(bool)
-			AutoBuyEverything = bool
-			notify("Auto Buy Everything: " .. tostring(AutoBuyEverything))
-			if AutoBuyEverything == true then
-				writefile(DHV2MW .. "/AutoBuyEverything.txt","true")
-				writefile(DHV2MW .. "/ABSI.txt","false")
-				section1:updateToggle("Auto Buy Specific Items")
-				ABSI = false
-			else
-				writefile(DHV2MW .. "/AutoBuyEverything.txt","false")
-			end
-		end)
-	end
-
-	section1:addDropdown("Shop Choice 1: " .. readfile(DHV2MW .. "/bsi.txt"),BuyShop,function(BUYS1)
-		print("Selected: " .. BUYS1)
-		notify("Selected: " .. BUYS1)
-		bsi = BUYS1
-		writefile(DHV2MW .. "/bsi.txt",bsi)
-	end)
-	bsi = readfile(DHV2MW .. "/bsi.txt")
-	section1:addDropdown("Shop Choice 2: " .. readfile(DHV2MW .. "/bsi1.txt"),BuyShop,function(BUYS11)
-		print("Selected: " .. BUYS11)
-		notify("Selected: " .. BUYS11)
-		bsi1 = BUYS11
-		writefile(DHV2MW .. "/bsi1.txt",bsi1)
-	end)
-	bsi1 = readfile(DHV2MW .. "/bsi1.txt")
-	section1:addDropdown("Shop Choice 3: " .. readfile(DHV2MW .. "/bsi11.txt"),BuyShop,function(BUYS111)
-		print("Selected: " .. BUYS111)
-		notify("Selected: " .. BUYS111)
-		bsi11 = BUYS111
-		writefile(DHV2MW .. "/bsi11.txt",bsi11)
-	end)
-	bsi11 = readfile(DHV2MW .. "/bsi11.txt")
-
-	if readfile(DHV2MW .. "/ABSI.txt") == "true" then
-		ABSI = true
-		section1:addToggle("Auto Buy Specific Items",true,function(bool)
-			ABSI = bool
-			notify("Auto Buy Specific Items: " .. tostring(ABSI))
-			if ABSI == true then
-				writefile(DHV2MW .. "/ABSI.txt","true")
-				writefile(DHV2MW .. "/AutoBuyEverything.txt","false")
-				section1:updateToggle("Auto Buy Everything")
-				AutoBuyEverything = false
-			else
-				writefile(DHV2MW .. "/ABSI.txt","false")
-			end
-		end)
-	else
-		ABSI = false
-		section1:addToggle("Auto Buy Specific Items",false,function(bool)
-			ABSI = bool
-			notify("Auto Buy Specific Items: " .. tostring(ABSI))
-			if ABSI == true then
-				writefile(DHV2MW .. "/ABSI.txt","true")
-				writefile(DHV2MW .. "/ABAB.txt","false")
-				section1:updateToggle("Auto Buy Everything")
-				AutoBuyEverything = false
-			else
-				writefile(DHV2MW .. "/ABSI.txt","false")
-			end
-		end)
-	end
-
-	if readfile(DHV2MW .. "/AutoBuyEverythingBM.txt") == "true" then
-		AutoBuyEverythingBM = true
-		section2:addToggle("Auto Buy Everything",true,function(bool)
-			AutoBuyEverythingBM = bool
-			notify("Auto Buy Everything: " .. tostring(AutoBuyEverythingBM))
-			if AutoBuyEverythingBM == true then
-				writefile(DHV2MW .. "/AutoBuyEverythingBM.txt","true")
-				writefile(DHV2MW .. "/ABSIBM.txt","false")
-				section2:updateToggle("Auto Buy Specific Items")
-				ABSIBM = false
-			else
-				writefile(DHV2MW .. "/AutoBuyEverythingBM.txt","false")
-			end
-		end)
-	else
-		AutoBuyEverythingBM = false
-		section2:addToggle("Auto Buy Everything",false,function(bool)
-			AutoBuyEverythingBM = bool
-			notify("Auto Buy Everything: " .. tostring(AutoBuyEverythingBM))
-			if AutoBuyEverythingBM == true then
-				writefile(DHV2MW .. "/AutoBuyEverythingBM.txt","true")
-				writefile(DHV2MW .. "/ABSIBM.txt","false")
-				section2:updateToggle("Auto Buy Specific Items")
-				ABSIBM = false
-			else
-				writefile(DHV2MW .. "/AutoBuyEverythingBM.txt","false")
-			end
-		end)
-	end
-
-	section2:addDropdown("Black Market Choice 1: " .. readfile(DHV2MW .. "/bsiBM.txt"),BuyBlackMarket,function(BUYS2)
-		print("Selected: " .. BUYS2)
-		notify("Selected: " .. BUYS2)
-		bsiBM = BUYS2
-		writefile(DHV2MW .. "/bsiBM.txt",bsiBM)
-	end)
-	bsiBM = readfile(DHV2MW .. "/bsiBM.txt")
-	section2:addDropdown("Black Market Choice 2: " .. readfile(DHV2MW .. "/bsiBM1.txt"),BuyBlackMarket,function(BUYS21)
-		print("Selected: " .. BUYS21)
-		notify("Selected: " .. BUYS21)
-		bsiBM1 = BUYS21
-		writefile(DHV2MW .. "/bsiBM1.txt",bsiBM1)
-	end)
-	bsiBM1 = readfile(DHV2MW .. "/bsiBM1.txt")
-	section2:addDropdown("Black Market Choice 3: " .. readfile(DHV2MW .. "/bsiBM11.txt"),BuyBlackMarket,function(BUYS211)
-		print("Selected: " .. BUYS211)
-		notify("Selected: " .. BUYS211)
-		bsiBM11 = BUYS211
-		writefile(DHV2MW .. "/bsiBM11.txt",bsiBM11)
-	end)
-	bsiBM11 = readfile(DHV2MW .. "/bsiBM11.txt")
-
-	if readfile(DHV2MW .. "/ABSIBM.txt") == "true" then
-		ABSIBM = true
-		section2:addToggle("Auto Buy Specific Items",true,function(bool)
-			ABSIBM = bool
-			notify("Auto Buy Specific Items: " .. tostring(ABSIBM))
-			if ABABSIBMSI == true then
-				writefile(DHV2MW .. "/ABSIBM.txt","true")
-				writefile(DHV2MW .. "/AutoBuyEverythingBM.txt","false")
-				section2:updateToggle("Auto Buy Everything")
-				AutoBuyEverythingBM = false
-			else
-				writefile(DHV2MW .. "/ABSIBM.txt","false")
-			end
-		end)
-	else
-		ABSIBM = false
-		section2:addToggle("Auto Buy Specific Items",false,function(bool)
-			ABSIBM = bool
-			notify("Auto Buy Specific Items: " .. tostring(ABSIBM))
-			if ABSIBM == true then
-				writefile(DHV2MW .. "/ABSIBM.txt","true")
-				writefile(DHV2MW .. "/ABAB.txt","false")
-				section2:updateToggle("Auto Buy Everything")
-				AutoBuyEverythingBM = false
-			else
-				writefile(DHV2MW .. "/ABSIBM.txt","false")
-			end
-		end)
-	end
+	local sectionW = page3:addSection("Unlock ncxyzero_bridgenet2-fork@1.1.5 Functions")
 
 	local suffixes = {
 		["K"] = 1e3,       -- 1,000
@@ -1643,153 +1470,6 @@ local function MiniWar()
 		local cleanText = string.gsub(text, "[$,%s]", "")
 		return tonumber(cleanText) or 0
 	end
-
-	local CurrentMoney = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Frame.Money.Text)
-	local CurrentGem = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Gems.Gems.Text)
-
-	spawn(function()
-		while task.wait(.2) do
-			if AutoBuyEverything then
-				for i, v in ipairs(BuyShop) do
-					if player.PlayerGui.MainUI.Fullscreen.BuyUI.ItemsGrid[v]:FindFirstChild("Stock") and player.PlayerGui.MainUI.Fullscreen.BuyUI.ItemsGrid[v].Stock.Text ~= "Out of Stock!" then
-						local CurrentMoney = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Frame.Money.Text)
-						if ShortToNumber(player.PlayerGui.MainUI.Fullscreen.BuyUI.ItemsGrid[v].Buy.Price.PriceText.Text) > CurrentMoney then
-							print("Not enough money to purchase")
-						else
-							local args = {[1] = {[1] = {["item"] = v,["shop"] = "Farm"},[2] = "$"}}
-							game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
-							local args = {[1] = {[1] = {["item"] = v,["shop"] = "House"},[2] = "$"}}
-							game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
-							local args = {[1] = {[1] = {["item"] = v,["shop"] = "Military"},[2] = "$"}}
-							game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
-							local args = {[1] = {[1] = {["item"] = v,["shop"] = "Decor"},[2] = "$"}}
-							game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
-							notify("Purchased: " .. v .. "!")
-							print("Purchased: " .. v .. "!")
-							task.wait()
-						end
-					end
-				end
-				task.wait(.2)
-			elseif ABSI then
-				if bsi == " " and bsi1 == " " and bsi11 == " " then
-					notify("Please select the item you want to buy!")
-				else
-					for i, v in ipairs(BuyShop) do
-						if v == bsi or v == bsi1 or v == bsi11 then
-							if player.PlayerGui.MainUI.Fullscreen.BuyUI.ItemsGrid[v]:FindFirstChild("Stock") and player.PlayerGui.MainUI.Fullscreen.BuyUI.ItemsGrid[v].Stock.Text ~= "Out of Stock!" then
-								local CurrentMoney = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Frame.Money.Text)
-								if ShortToNumber(player.PlayerGui.MainUI.Fullscreen.BuyUI.ItemsGrid[v].Buy.Price.PriceText.Text) > CurrentMoney then
-									print("Not enough money to purchase")
-								else
-									local args = {[1] = {[1] = {["item"] = v,["shop"] = "Farm"},[2] = "$"}}
-									game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
-									local args = {[1] = {[1] = {["item"] = v,["shop"] = "House"},[2] = "$"}}
-									game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
-									local args = {[1] = {[1] = {["item"] = v,["shop"] = "Military"},[2] = "$"}}
-									game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
-									local args = {[1] = {[1] = {["item"] = v,["shop"] = "Decor"},[2] = "$"}}
-									game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
-									notify("Purchased: " .. v .. "!")
-									print("Purchased: " .. v .. "!")
-									task.wait()
-								end
-							end
-						end
-					end
-					task.wait(.2)
-				end
-			end
-		end
-	end)
-
-	spawn(function()
-		while task.wait(.2) do
-			if AutoBuyEverythingBM or ABSIBM then
-				local timerTextLabel = workspace:WaitForChild("BlackMarket"):WaitForChild("Main"):WaitForChild("Other"):WaitForChild("Part"):WaitForChild("BillboardGui"):WaitForChild("BlackMarketTimer")
-				local hasTriggered = false 
-
-				timerTextLabel:GetPropertyChangedSignal("Text"):Connect(function()
-					if hasTriggered then return end
-					local currentText = timerTextLabel.Text
-					if not string.find(currentText, "ARRIVES IN:") then
-						hasTriggered = true
-						if AutoBuyEverythingBM then
-							for i, v in ipairs(BuyBlackMarket) do
-								if v.Name ~= "UIListLayout" and v.Name ~= "UIPadding" and v.Name ~= "DontDelete" then
-									if player.PlayerGui.MainUI.Fullscreen.BlackMarketUI.ItemsGrid[v]:FindFirstChild("Stock") and player.PlayerGui.MainUI.Fullscreen.BlackMarketUI.ItemsGrid[v].Stock.Text ~= "Out of Stock!" then
-										local CurrentGem = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Gems.Gems.Text)
-										if ShortToNumber(player.PlayerGui.MainUI.Fullscreen.BlackMarketUI.ItemsGrid[v].Buy.Price.PriceText.Text) > CurrentGem then
-											print("Not enough gems to purchase")
-										else
-											local args = {[1] = {[1] = {["item"] = v,["shop"] = "BlackMarket"},[2] = "`"}}
-											game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
-											notify("Purchased: " .. v .. "!")
-											print("Purchased: " .. v .. "!")
-											task.wait()
-										end
-									end
-								end
-							end
-							task.wait(.2)
-						elseif ABSIBM then
-							if bsiBM == " " and bsiBM1 == " " and bsiBM11 == " " then
-								notify("Please select the item you want to buy!")
-							else
-								for i, v in ipairs(BuyBlackMarket) do
-									if v == bsiBM or v == bsiBM1 or v == bsiBM11 then
-										if v.Name ~= "UIListLayout" and v.Name ~= "UIPadding" and v.Name ~= "DontDelete" then
-											if player.PlayerGui.MainUI.Fullscreen.BlackMarketUI.ItemsGrid[v]:FindFirstChild("Stock") and player.PlayerGui.MainUI.Fullscreen.BlackMarketUI.ItemsGrid[v].Stock.Text ~= "Out of Stock!" then
-												local CurrentGem = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Gems.Gems.Text)
-												if ShortToNumber(player.PlayerGui.MainUI.Fullscreen.BlackMarketUI.ItemsGrid[v].Buy.Price.PriceText.Text) > CurrentGem then
-													print("Not enough gems to purchase")
-												else
-													local args = {[1] = {[1] = {["item"] = v,["shop"] = "BlackMarket"},[2] = "`"}}
-													game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
-													notify("Purchased: " .. v .. "!")
-													print("Purchased: " .. v .. "!")
-													task.wait()
-												end
-											end
-										end
-									end
-								end
-								task.wait(.2)	
-							end
-						end	
-					end
-				end)
-			end
-		end
-	end)
-
-	if readfile(DHV2MW .. "/AutoExpandPlot.txt") == "true" then
-		AutoExpandPlot = true
-		section3:addToggle("Auto Expand Plot",true,function(bool)
-			AutoExpandPlot = bool
-			notify("Auto Expand Plot: " .. tostring(AutoExpandPlot))
-			if AutoExpandPlot == true then
-				writefile(DHV2MW .. "/AutoExpandPlot.txt","true")
-				notify("Will automatically expand plot when walk by")
-			else
-				writefile(DHV2MW .. "/AutoExpandPlot.txt","false")
-			end
-		end)
-	else
-		AutoExpandPlot = false
-		section3:addToggle("Auto Expand Plot",false,function(bool)
-			AutoExpandPlot = bool
-			notify("Auto Expand Plot: " .. tostring(AutoExpandPlot))
-			if AutoExpandPlot == true then
-				writefile(DHV2MW .. "/AutoExpandPlot.txt","true")
-				notify("Will automatically expand plot when walk by")
-			else
-				writefile(DHV2MW .. "/AutoExpandPlot.txt","false")
-			end
-		end)
-	end
-
-
 	for i,v in pairs(workspace.MilitaryMap.PlayerPlots:GetChildren()) do
 		local empireName = player.Name .. "'s Empire"
 		if v.UI.BillboardGui.Holder.PlayerName.Text == empireName then
@@ -1800,25 +1480,707 @@ local function MiniWar()
 			end
 		end
 	end
+	local UrBuildings = workspace.MilitaryMap.PlayerPlots.YourBase.Plot.Buildings 
 
-	spawn(function()
-		while task.wait(2) do
-			if AutoExpandPlot then
-				for i,v in pairs(workspace.MilitaryMap.PlayerPlots["YourBase"].Plot.ExpandPlot:GetChildren()) do
-					for i,v1 in pairs(v:GetChildren()) do
-						local CurrentMoney = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Frame.Money.Text)
-						if v1:FindFirstChild("PlotPart") and v1.PlotPart.ProximityPrompt.Style == Enum.ProximityPromptStyle.Custom then
-							if parseCurrency(v1.PlotPart.ProximityPrompt.ObjectText) < CurrentMoney then
-								local args = {[1] = {[1] = v,[2] = "f"}}
-								game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
-								task.wait(.5)
-							else
-								task.wait(5)
-							end
-						end
+	local UnlockedPage3 = false
+	sectionW:addButton("Unlock ncxyzero_bridgenet2-fork@1.1.5 Functions",function()
+		if UnlockedPage3 == true then
+			notify("Already unlocked")
+		else
+			local player = game.Players.LocalPlayer
+			local ScreenGuiK = Instance.new("ScreenGui")
+			local Frame = Instance.new("ImageLabel")
+			local TextLabelFrame = Instance.new("ImageLabel")
+			local TextLabel = Instance.new("TextLabel")
+			local TextLabel1 = Instance.new("TextLabel")
+			local TextButton = Instance.new("ImageButton")
+			local TextButtonText = Instance.new("TextButton")
+			local TextButton_2 = Instance.new("ImageButton")
+			local TextButton_2Text = Instance.new("TextButton")
+
+			ScreenGuiK.Parent = player:WaitForChild("PlayerGui")
+
+			Frame.Parent = ScreenGuiK
+			Frame.Name = "Main"
+			Frame.BackgroundTransparency = 1
+			Frame.Position = UDim2.new(0.1, 0, 0.05, 0)
+			Frame.Size = UDim2.new(0, 220, 0, 220)
+			Frame.Image = "rbxassetid://4641149554"
+			Frame.ImageColor3 = Color3.fromRGB(24, 24, 24)
+			Frame.ScaleType = Enum.ScaleType.Slice
+			Frame.SliceCenter = Rect.new(4, 4, 296, 296)
+			Frame.Active = true
+			Frame.Draggable = true
+
+			TextLabelFrame.Parent = Frame
+			TextLabelFrame.Name = "TopBar"
+			TextLabelFrame.BackgroundTransparency = 1
+			TextLabelFrame.ClipsDescendants = true
+			TextLabelFrame.Size = UDim2.new(1, 0, 0, 38)
+			TextLabelFrame.ZIndex = 2
+			TextLabelFrame.Image = "rbxassetid://4595286933"
+			TextLabelFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
+			TextLabelFrame.ScaleType = Enum.ScaleType.Slice
+			TextLabelFrame.SliceCenter = Rect.new(4, 4, 296, 296)
+
+			TextLabel.Parent = TextLabelFrame
+			TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+			TextLabel.Position = UDim2.new(0, 0, -0.3, 0)
+			TextLabel.BackgroundTransparency = 1
+			TextLabel.Size = UDim2.new(0, 220, 0, 60)
+			TextLabel.ZIndex = 3
+			TextLabel.Font = Enum.Font.TitilliumWeb
+			TextLabel.Text = "WARNING"
+			TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+			TextLabel.TextScaled = false
+			TextLabel.TextSize = 40.000
+			TextLabel.TextWrapped = true
+
+			TextLabel1.Parent = Frame
+			TextLabel1.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+			TextLabel1.Position = UDim2.new(0, 0, 0.2, 0)
+			TextLabel1.BackgroundTransparency = 1
+			TextLabel1.Size = UDim2.new(0, 220, 0, 100)
+			TextLabel1.ZIndex = 3
+			TextLabel1.Font = Enum.Font.TitilliumWeb
+			TextLabel1.Text = "ncxyzero_bridgenet2-fork@1.1.5 functions are highly unstable, use at your own risk.\n (I personally do not recommend activating them)"
+			TextLabel1.TextColor3 = Color3.fromRGB(255, 255, 255)
+			TextLabel1.TextScaled = true
+			TextLabel1.TextSize = 40.000
+			TextLabel1.TextWrapped = true
+
+			TextButton.Parent = Frame
+			TextButton.Name = "Button"
+			TextButton.BackgroundTransparency = 1
+			TextButton.Position = UDim2.new(0.55, 0, 0.72, 0)
+			TextButton.BorderSizePixel = 0
+			TextButton.Size = UDim2.new(0, 82.5, 0, 45)
+			TextButton.ZIndex = 2
+			TextButton.Image = "rbxassetid://5028857472"
+			TextButton.ImageColor3 = Color3.fromRGB(41, 41, 41)
+			TextButton.ScaleType = Enum.ScaleType.Slice
+			TextButton.SliceCenter = Rect.new(2, 2, 298, 298)
+
+			TextButtonText.Parent = TextButton
+			TextButtonText.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+			TextButtonText.BackgroundTransparency = 1
+			TextButtonText.ZIndex = 3
+			TextButtonText.Size = UDim2.new(0, 82.5, 0, 45)
+			TextButtonText.Font = Enum.Font.TitilliumWeb
+			TextButtonText.Text = "I know what I'm doing"
+			TextButtonText.TextColor3 = Color3.fromRGB(200, 200, 200)
+			TextButtonText.TextScaled = true
+			TextButtonText.TextSize = 40.000
+			TextButtonText.TextWrapped = true
+
+			TextButton_2.Parent = Frame
+			TextButton_2.Name = "Button"
+			TextButton_2.BackgroundTransparency = 1
+			TextButton_2.Position = UDim2.new(0.075, 0, 0.72, 0)
+			TextButton_2.BorderSizePixel = 0
+			TextButton_2.Size = UDim2.new(0, 82.5, 0, 45)
+			TextButton_2.ZIndex = 2
+			TextButton_2.Image = "rbxassetid://5028857472"
+			TextButton_2.ImageColor3 = Color3.fromRGB(41, 41, 41)
+			TextButton_2.ScaleType = Enum.ScaleType.Slice
+			TextButton_2.SliceCenter = Rect.new(2, 2, 298, 298)
+
+			TextButton_2Text.Parent = TextButton_2
+			TextButton_2Text.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+			TextButton_2Text.BackgroundTransparency = 1
+			TextButton_2Text.ZIndex = 3
+			TextButton_2Text.Size = UDim2.new(0, 82.5, 0, 45)
+			TextButton_2Text.Font = Enum.Font.TitilliumWeb
+			TextButton_2Text.Text = "Close"
+			TextButton_2Text.TextColor3 = Color3.fromRGB(200, 200, 200)
+			TextButton_2Text.TextScaled = true
+			TextButton_2Text.TextSize = 40.000
+			TextButton_2Text.TextWrapped = true
+
+			function UnlockNO()
+				for i,v in pairs(player.PlayerGui:GetChildren()) do
+					if v.Name == "ScreenGui" then
+						v:Destroy()
 					end
 				end
 			end
+			TextButton_2.MouseButton1Click:connect(UnlockNO)	
+			TextButton_2Text.MouseButton1Click:connect(UnlockNO)
+
+			function UnlockYES()
+				game:GetService("StarterGui"):SetCore("SendNotification",{
+					Title = "I warned you",
+					Text = "Don't cry when you screwed up",
+				})
+				local BuyShop = {}
+				for i,v in pairs(player.PlayerGui.MainUI.Fullscreen:WaitForChild("BuyUI"):WaitForChild("ItemsGrid"):GetChildren()) do
+					if v.Name ~= "UIListLayout" and v.Name ~= "UIPadding" and v.Name ~= "DontDelete" and v.Name ~= "PadderTemplate" then
+						table.insert(BuyShop, v.Name)
+					end
+				end
+
+				local BuyBlackMarket = {}
+				for i,v in pairs(player.PlayerGui.MainUI.Fullscreen:WaitForChild("BlackMarketUI"):WaitForChild("ItemsGrid"):GetChildren()) do
+					if v.Name ~= "UIListLayout" and v.Name ~= "UIPadding" and v.Name ~= "DontDelete" and v.Name ~= "PadderTemplate" then
+						table.insert(BuyBlackMarket, v.Name)
+					end
+				end
+
+				local AutoBuyEverything
+				local ABSI
+				local AutoBuyEverythingBM
+				local ABSIBM
+
+				if readfile(DHV2MW .. "/AutoBuyEverything.txt") == "true" then
+					AutoBuyEverything = true
+					section1:addToggle("Auto Buy Everything",true,function(bool)
+						AutoBuyEverything = bool
+						notify("Auto Buy Everything: " .. tostring(AutoBuyEverything))
+						if AutoBuyEverything == true then
+							writefile(DHV2MW .. "/AutoBuyEverything.txt","true")
+							writefile(DHV2MW .. "/ABSI.txt","false")
+							section1:updateToggle("Auto Buy Specific Items")
+							ABSI = false
+						else
+							writefile(DHV2MW .. "/AutoBuyEverything.txt","false")
+						end
+					end)
+				else
+					AutoBuyEverything = false
+					section1:addToggle("Auto Buy Everything",false,function(bool)
+						AutoBuyEverything = bool
+						notify("Auto Buy Everything: " .. tostring(AutoBuyEverything))
+						if AutoBuyEverything == true then
+							writefile(DHV2MW .. "/AutoBuyEverything.txt","true")
+							writefile(DHV2MW .. "/ABSI.txt","false")
+							section1:updateToggle("Auto Buy Specific Items")
+							ABSI = false
+						else
+							writefile(DHV2MW .. "/AutoBuyEverything.txt","false")
+						end
+					end)
+				end
+
+				section1:addDropdown("Shop Choice 1: " .. readfile(DHV2MW .. "/bsi.txt"),BuyShop,function(BUYS1)
+					print("Selected: " .. BUYS1)
+					notify("Selected: " .. BUYS1)
+					bsi = BUYS1
+					writefile(DHV2MW .. "/bsi.txt",bsi)
+				end)
+				bsi = readfile(DHV2MW .. "/bsi.txt")
+				section1:addDropdown("Shop Choice 2: " .. readfile(DHV2MW .. "/bsi1.txt"),BuyShop,function(BUYS11)
+					print("Selected: " .. BUYS11)
+					notify("Selected: " .. BUYS11)
+					bsi1 = BUYS11
+					writefile(DHV2MW .. "/bsi1.txt",bsi1)
+				end)
+				bsi1 = readfile(DHV2MW .. "/bsi1.txt")
+				section1:addDropdown("Shop Choice 3: " .. readfile(DHV2MW .. "/bsi11.txt"),BuyShop,function(BUYS111)
+					print("Selected: " .. BUYS111)
+					notify("Selected: " .. BUYS111)
+					bsi11 = BUYS111
+					writefile(DHV2MW .. "/bsi11.txt",bsi11)
+				end)
+				bsi11 = readfile(DHV2MW .. "/bsi11.txt")
+
+				if readfile(DHV2MW .. "/ABSI.txt") == "true" then
+					ABSI = true
+					section1:addToggle("Auto Buy Specific Items",true,function(bool)
+						ABSI = bool
+						notify("Auto Buy Specific Items: " .. tostring(ABSI))
+						if ABSI == true then
+							writefile(DHV2MW .. "/ABSI.txt","true")
+							writefile(DHV2MW .. "/AutoBuyEverything.txt","false")
+							section1:updateToggle("Auto Buy Everything")
+							AutoBuyEverything = false
+						else
+							writefile(DHV2MW .. "/ABSI.txt","false")
+						end
+					end)
+				else
+					ABSI = false
+					section1:addToggle("Auto Buy Specific Items",false,function(bool)
+						ABSI = bool
+						notify("Auto Buy Specific Items: " .. tostring(ABSI))
+						if ABSI == true then
+							writefile(DHV2MW .. "/ABSI.txt","true")
+							writefile(DHV2MW .. "/ABAB.txt","false")
+							section1:updateToggle("Auto Buy Everything")
+							AutoBuyEverything = false
+						else
+							writefile(DHV2MW .. "/ABSI.txt","false")
+						end
+					end)
+				end
+
+				if readfile(DHV2MW .. "/AutoBuyLegacy.txt") == "true" then
+					AutoBuyLegacy = true
+					section:addToggle("Legacy Mode",true,function(bool)
+						AutoBuyLegacy = bool
+						if AutoBuyLegacy then
+							writefile(DHV2MW .. "/AutoBuyLegacy.txt","true")
+						else
+							writefile(DHV2MW .. "/AutoBuyLegacy.txt","false")
+						end
+					end)
+				else
+					AutoBuyLegacy = false
+					section1:addToggle("Legacy Mode",false,function(bool)
+						AutoBuyLegacy = bool
+						if AutoBuyLegacy then
+							writefile(DHV2MW .. "/AutoBuyLegacy.txt","true")
+						else
+							writefile(DHV2MW .. "/AutoBuyLegacy.txt","false")
+						end
+					end)
+				end
+
+				if readfile(DHV2MW .. "/AutoBuyEverythingBM.txt") == "true" then
+					AutoBuyEverythingBM = true
+					section2:addToggle("Auto Buy Everything",true,function(bool)
+						AutoBuyEverythingBM = bool
+						notify("Auto Buy Everything: " .. tostring(AutoBuyEverythingBM))
+						if AutoBuyEverythingBM == true then
+							writefile(DHV2MW .. "/AutoBuyEverythingBM.txt","true")
+							writefile(DHV2MW .. "/ABSIBM.txt","false")
+							section2:updateToggle("Auto Buy Specific Items")
+							ABSIBM = false
+						else
+							writefile(DHV2MW .. "/AutoBuyEverythingBM.txt","false")
+						end
+					end)
+				else
+					AutoBuyEverythingBM = false
+					section2:addToggle("Auto Buy Everything",false,function(bool)
+						AutoBuyEverythingBM = bool
+						notify("Auto Buy Everything: " .. tostring(AutoBuyEverythingBM))
+						if AutoBuyEverythingBM == true then
+							writefile(DHV2MW .. "/AutoBuyEverythingBM.txt","true")
+							writefile(DHV2MW .. "/ABSIBM.txt","false")
+							section2:updateToggle("Auto Buy Specific Items")
+							ABSIBM = false
+						else
+							writefile(DHV2MW .. "/AutoBuyEverythingBM.txt","false")
+						end
+					end)
+				end
+
+				section2:addDropdown("Black Market Choice 1: " .. readfile(DHV2MW .. "/bsiBM.txt"),BuyBlackMarket,function(BUYS2)
+					print("Selected: " .. BUYS2)
+					notify("Selected: " .. BUYS2)
+					bsiBM = BUYS2
+					writefile(DHV2MW .. "/bsiBM.txt",bsiBM)
+				end)
+				bsiBM = readfile(DHV2MW .. "/bsiBM.txt")
+				section2:addDropdown("Black Market Choice 2: " .. readfile(DHV2MW .. "/bsiBM1.txt"),BuyBlackMarket,function(BUYS21)
+					print("Selected: " .. BUYS21)
+					notify("Selected: " .. BUYS21)
+					bsiBM1 = BUYS21
+					writefile(DHV2MW .. "/bsiBM1.txt",bsiBM1)
+				end)
+				bsiBM1 = readfile(DHV2MW .. "/bsiBM1.txt")
+				section2:addDropdown("Black Market Choice 3: " .. readfile(DHV2MW .. "/bsiBM11.txt"),BuyBlackMarket,function(BUYS211)
+					print("Selected: " .. BUYS211)
+					notify("Selected: " .. BUYS211)
+					bsiBM11 = BUYS211
+					writefile(DHV2MW .. "/bsiBM11.txt",bsiBM11)
+				end)
+				bsiBM11 = readfile(DHV2MW .. "/bsiBM11.txt")
+
+				if readfile(DHV2MW .. "/ABSIBM.txt") == "true" then
+					ABSIBM = true
+					section2:addToggle("Auto Buy Specific Items",true,function(bool)
+						ABSIBM = bool
+						notify("Auto Buy Specific Items: " .. tostring(ABSIBM))
+						if ABABSIBMSI == true then
+							writefile(DHV2MW .. "/ABSIBM.txt","true")
+							writefile(DHV2MW .. "/AutoBuyEverythingBM.txt","false")
+							section2:updateToggle("Auto Buy Everything")
+							AutoBuyEverythingBM = false
+						else
+							writefile(DHV2MW .. "/ABSIBM.txt","false")
+						end
+					end)
+				else
+					ABSIBM = false
+					section2:addToggle("Auto Buy Specific Items",false,function(bool)
+						ABSIBM = bool
+						notify("Auto Buy Specific Items: " .. tostring(ABSIBM))
+						if ABSIBM == true then
+							writefile(DHV2MW .. "/ABSIBM.txt","true")
+							writefile(DHV2MW .. "/ABAB.txt","false")
+							section2:updateToggle("Auto Buy Everything")
+							AutoBuyEverythingBM = false
+						else
+							writefile(DHV2MW .. "/ABSIBM.txt","false")
+						end
+					end)
+				end
+
+				if readfile(DHV2MW .. "/AutoBuyBMLegacy.txt") == "true" then
+					AutoBuyBMLegacy = true
+					section2:addToggle("Legacy Mode",true,function(bool)
+						AutoBuyBMLegacy = bool
+						if AutoBuyBMLegacy then
+							writefile(DHV2MW .. "/AutoBuyBMLegacy.txt","true")
+						else
+							writefile(DHV2MW .. "/AutoBuyBMLegacy.txt","false")
+						end
+					end)
+				else
+					AutoBuyBMLegacy = false
+					section2:addToggle("Legacy Mode",false,function(bool)
+						AutoBuyBMLegacy = bool
+						if AutoBuyBMLegacy then
+							writefile(DHV2MW .. "/AutoBuyBMLegacy.txt","true")
+						else
+							writefile(DHV2MW .. "/AutoBuyBMLegacy.txt","false")
+						end
+					end)
+				end
+
+				local CurrentMoney = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Frame.Money.Text)
+				local CurrentGem = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Gems.Gems.Text)
+				local vim = game:GetService("VirtualInputManager")
+				local BuyUI = player.PlayerGui.MainUI.Fullscreen.BuyUI
+				local BuyUIig = BuyUI.ItemsGrid
+				local BlackMarketUI = player.PlayerGui.MainUI.Fullscreen.BlackMarketUI
+				local BlackMarketUIig = BlackMarketUI.ItemsGrid
+
+				spawn(function()
+					while task.wait(.2) do
+						if AutoBuyEverything then
+							for i, v in ipairs(BuyShop) do
+								if player.PlayerGui.MainUI.Fullscreen.BuyUI.ItemsGrid[v]:FindFirstChild("Stock") and player.PlayerGui.MainUI.Fullscreen.BuyUI.ItemsGrid[v].Stock.Text ~= "Out of Stock!" then
+									local CurrentMoney = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Frame.Money.Text)
+									if ShortToNumber(player.PlayerGui.MainUI.Fullscreen.BuyUI.ItemsGrid[v].Buy.Price.PriceText.Text) > CurrentMoney then
+										print("Not enough money to purchase")
+									else
+										local args = {[1] = {[1] = {["item"] = v,["shop"] = "Farm"},[2] = "$"}}
+										game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
+										local args = {[1] = {[1] = {["item"] = v,["shop"] = "House"},[2] = "$"}}
+										game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
+										local args = {[1] = {[1] = {["item"] = v,["shop"] = "Military"},[2] = "$"}}
+										game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
+										local args = {[1] = {[1] = {["item"] = v,["shop"] = "Decor"},[2] = "$"}}
+										game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
+										notify("Purchased: " .. v .. "!")
+										print("Purchased: " .. v .. "!")
+										task.wait()
+									end
+								end
+							end
+							task.wait(.2)
+						elseif ABSI then
+							if bsi == " " and bsi1 == " " and bsi11 == " " then
+								notify("Please select the item you want to buy!")
+							else
+								for i, v in ipairs(BuyShop) do
+									if v == bsi or v == bsi1 or v == bsi11 then
+										if player.PlayerGui.MainUI.Fullscreen.BuyUI.ItemsGrid[v]:FindFirstChild("Stock") and player.PlayerGui.MainUI.Fullscreen.BuyUI.ItemsGrid[v].Stock.Text ~= "Out of Stock!" then
+											local CurrentMoney = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Frame.Money.Text)
+											if ShortToNumber(player.PlayerGui.MainUI.Fullscreen.BuyUI.ItemsGrid[v].Buy.Price.PriceText.Text) > CurrentMoney then
+												print("Not enough money to purchase")
+											else
+												local args = {[1] = {[1] = {["item"] = v,["shop"] = "Farm"},[2] = "$"}}
+												game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
+												local args = {[1] = {[1] = {["item"] = v,["shop"] = "House"},[2] = "$"}}
+												game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
+												local args = {[1] = {[1] = {["item"] = v,["shop"] = "Military"},[2] = "$"}}
+												game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
+												local args = {[1] = {[1] = {["item"] = v,["shop"] = "Decor"},[2] = "$"}}
+												game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
+												notify("Purchased: " .. v .. "!")
+												print("Purchased: " .. v .. "!")
+												task.wait()
+											end
+										end
+									end
+								end
+								task.wait(.2)
+							end
+						end
+					end
+				end)
+
+				spawn(function()
+					while task.wait(.2) do
+						if AutoBuyEverythingBM or ABSIBM then
+							local timerTextLabel = workspace:WaitForChild("BlackMarket"):WaitForChild("Main"):WaitForChild("Other"):WaitForChild("Part"):WaitForChild("BillboardGui"):WaitForChild("BlackMarketTimer")
+							local hasTriggered = false 
+
+							timerTextLabel:GetPropertyChangedSignal("Text"):Connect(function()
+								if hasTriggered then return end
+								local currentText = timerTextLabel.Text
+								if not string.find(currentText, "ARRIVES IN:") then
+									hasTriggered = true
+									if AutoBuyEverythingBM then
+										for i, v in ipairs(BuyBlackMarket) do
+											if v.Name ~= "UIListLayout" and v.Name ~= "UIPadding" and v.Name ~= "DontDelete" then
+												if player.PlayerGui.MainUI.Fullscreen.BlackMarketUI.ItemsGrid[v]:FindFirstChild("Stock") and player.PlayerGui.MainUI.Fullscreen.BlackMarketUI.ItemsGrid[v].Stock.Text ~= "Out of Stock!" then
+													local CurrentGem = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Gems.Gems.Text)
+													if ShortToNumber(player.PlayerGui.MainUI.Fullscreen.BlackMarketUI.ItemsGrid[v].Buy.Price.PriceText.Text) > CurrentGem then
+														print("Not enough gems to purchase")
+													else
+														local args = {[1] = {[1] = {["item"] = v,["shop"] = "BlackMarket"},[2] = "`"}}
+														game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
+														notify("Purchased: " .. v .. "!")
+														print("Purchased: " .. v .. "!")
+														task.wait()
+													end
+												end
+											end
+										end
+										task.wait(.2)
+									elseif ABSIBM then
+										if bsiBM == " " and bsiBM1 == " " and bsiBM11 == " " then
+											notify("Please select the item you want to buy!")
+										else
+											for i, v in ipairs(BuyBlackMarket) do
+												if v == bsiBM or v == bsiBM1 or v == bsiBM11 then
+													if v.Name ~= "UIListLayout" and v.Name ~= "UIPadding" and v.Name ~= "DontDelete" then
+														if player.PlayerGui.MainUI.Fullscreen.BlackMarketUI.ItemsGrid[v]:FindFirstChild("Stock") and player.PlayerGui.MainUI.Fullscreen.BlackMarketUI.ItemsGrid[v].Stock.Text ~= "Out of Stock!" then
+															local CurrentGem = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Gems.Gems.Text)
+															if ShortToNumber(player.PlayerGui.MainUI.Fullscreen.BlackMarketUI.ItemsGrid[v].Buy.Price.PriceText.Text) > CurrentGem then
+																print("Not enough gems to purchase")
+															else
+																local args = {[1] = {[1] = {["item"] = v,["shop"] = "BlackMarket"},[2] = "`"}}
+																game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
+																notify("Purchased: " .. v .. "!")
+																print("Purchased: " .. v .. "!")
+																task.wait()
+															end
+														end
+													end
+												end
+											end
+											task.wait(.2)	
+										end
+									end	
+								end
+							end)
+						end
+					end
+				end)
+
+				spawn(function()
+					while task.wait(.2) do
+						if AutoBuyEverything and AutoBuyLegacy then
+							for i, v in ipairs(BuyShop) do
+								if BuyUIig[v]:FindFirstChild("Stock") and BuyUIig[v].Stock.Text ~= "Out of Stock!" and BuyUIig[v].Stock.Text ~= "Max Reached (1/1)" and BuyUIig[v].Name ~= "UIListLayout"  and BuyUIig[v].Name ~= "UIPadding"  and BuyUIig[v].Name ~= "DontDelete" and BuyUIig[v]:FindFirstChild("Buy") then
+									local CurrentMoney = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Frame.Money.Text)
+									local Buy = BuyUIig[v].Buy
+									if ShortToNumber(Buy.Price.PriceText.Text) > CurrentMoney then
+										print("Not enough money to purchase")
+									else
+										BuyUI.Visible = true
+										BuyUIig[v].Visible = true
+										BuyUI.Topbar.Restock.Visible = false
+										local pos = Buy.AbsolutePosition local size = Buy.AbsoluteSize
+											
+										local centerX = pos.X + (size.X / 2)
+										local centerY = pos.Y + (size.Y / 2) + 58
+											
+										vim:SendMouseButtonEvent(centerX, centerY, 0, true, game, 0)
+										task.wait()
+										vim:SendMouseButtonEvent(centerX, centerY, 0, false, game, 0)
+										print("Purchased: " .. v .. "!")
+										notify("Purchased: " .. v .. "!")
+										task.wait()
+									end
+								else
+									BuyUIig[v].Visible = false
+								end
+							end
+							task.wait(.2)
+						elseif ABSI then
+							if bsi == " " and bsi1 == " " and bsi11 == " " then
+								notify("Please select the item you want to buy!")
+							else
+								for i, v in ipairs(BuyShop) do
+									if v == bsi or v == bsi1 or v == bsi11 then
+										if BuyUIig[v]:FindFirstChild("Stock") and BuyUIig[v].Stock.Text ~= "Out of Stock!" and BuyUIig[v].Stock.Text ~= "Max Reached (1/1)" and BuyUIig[v].Name ~= "UIListLayout"  and BuyUIig[v].Name ~= "UIPadding"  and BuyUIig[v].Name ~= "DontDelete" and BuyUIig[v]:FindFirstChild("Buy") then
+											local CurrentMoney = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Frame.Money.Text)
+											local Buy = BuyUIig[v].Buy
+											if ShortToNumber(Buy.Price.PriceText.Text) > CurrentMoney then
+												print("Not enough money to purchase")
+											else
+												BuyUI.Visible = true
+												BuyUIig[v].Visible = true
+												BuyUI.Topbar.Restock.Visible = false
+												local pos = Buy.AbsolutePosition local size = Buy.AbsoluteSize
+													
+												local centerX = pos.X + (size.X / 2)
+												local centerY = pos.Y + (size.Y / 2) + 58
+													
+												vim:SendMouseButtonEvent(centerX, centerY, 0, true, game, 0)
+												task.wait()
+												vim:SendMouseButtonEvent(centerX, centerY, 0, false, game, 0)
+												print("Purchased: " .. v .. "!")
+												notify("Purchased: " .. v .. "!")
+												task.wait()
+											end
+										else
+											BuyUIig[v].Visible = false
+										end
+									end
+								end
+								task.wait(.2)
+							end
+						else
+							BuyUI.Topbar.Restock.Visible = false
+						end
+					end
+				end)
+
+				spawn(function()
+					while task.wait(.2) do
+						if (AutoBuyEverythingBM or ABSIBM) and AutoBuyBMLegacy then
+							local timerTextLabel = workspace:WaitForChild("BlackMarket"):WaitForChild("Main"):WaitForChild("Other"):WaitForChild("Part"):WaitForChild("BillboardGui"):WaitForChild("BlackMarketTimer")
+							local hasTriggered = false 
+
+							timerTextLabel:GetPropertyChangedSignal("Text"):Connect(function()
+								if hasTriggered then return end
+								local currentText = timerTextLabel.Text
+								if not string.find(currentText, "ARRIVES IN:") then
+									hasTriggered = true
+									if AutoBuyEverythingBM then
+										for i, v in ipairs(BuyBlackMarket) do
+											if BlackMarketUIig[v]:FindFirstChild("Stock") and BlackMarketUIig[v].Stock.Text ~= "Out of Stock!" and BlackMarketUIig[v].Stock.Text ~= "Max Reached (1/1)" and BlackMarketUIig[v].Stock.Text ~= "Max Reached (3/3)" and BlackMarketUIig[v].Name ~= "UIListLayout"  and BlackMarketUIig[v].Name ~= "UIPadding"  and BlackMarketUIig[v].Name ~= "DontDelete" and BlackMarketUIig[v].Name ~= "PadderTemplate" and BlackMarketUIig[v]:FindFirstChild("Buy") then
+												local CurrentGem = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Gems.Gems.Text)
+												local Buy = BlackMarketUIig[v].Buy
+												if ShortToNumber(BlackMarketUIig[v].Buy.Price.PriceText.Text) > CurrentGem then
+													print("Not enough gems to purchase")
+												else
+													if BlackMarketUI.RequiredSell.Visible == false then
+														BlackMarketUI.Visible = true
+														BlackMarketUIig[v].Visible = true
+														local pos = Buy.AbsolutePosition local size = Buy.AbsoluteSize
+															
+														local centerX = pos.X + (size.X / 2)
+														local centerY = pos.Y + (size.Y / 2) + 58
+															
+														vim:SendMouseButtonEvent(centerX, centerY, 0, true, game, 0)
+														task.wait()
+														vim:SendMouseButtonEvent(centerX, centerY, 0, false, game, 0)
+														print("Purchased: " .. v .. "!")
+														notify("Purchased: " .. v .. "!")
+														task.wait()
+													else
+														for _, connection in pairs(getconnections(BlackMarketUI.RequiredSell.Yes.MouseButton1Click)) do
+															connection:Fire()
+														end
+													end
+												end
+											else
+												BlackMarketUIig[v].Visible = false
+											end
+										end
+										task.wait(.2)
+									elseif ABSIBM then
+										if bsiBM == " " and bsiBM1 == " " and bsiBM11 == " " then
+											notify("Please select the item you want to buy!")
+										else
+											for i, v in ipairs(BuyBlackMarket) do
+												if v == bsiBM or v == bsiBM1 or v == bsiBM11 then
+													if BlackMarketUIig[v]:FindFirstChild("Stock") and BlackMarketUIig[v].Stock.Text ~= "Out of Stock!" and BlackMarketUIig[v].Stock.Text ~= "Max Reached (1/1)" and BlackMarketUIig[v].Stock.Text ~= "Max Reached (3/3)" and BlackMarketUIig[v].Name ~= "UIListLayout"  and BlackMarketUIig[v].Name ~= "UIPadding"  and BlackMarketUIig[v].Name ~= "DontDelete" and BlackMarketUIig[v].Name ~= "PadderTemplate" and BlackMarketUIig[v]:FindFirstChild("Buy") then
+														local CurrentGem = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Gems.Gems.Text)
+														local Buy = BlackMarketUIig[v].Buy
+														if ShortToNumber(BlackMarketUIig[v].Buy.Price.PriceText.Text) > CurrentGem then
+															print("Not enough gems to purchase")
+														else
+															if BlackMarketUI.RequiredSell.Visible == false then
+																BlackMarketUI.Visible = true
+																BlackMarketUIig[v].Visible = true
+																local pos = Buy.AbsolutePosition local size = Buy.AbsoluteSize
+																	
+																local centerX = pos.X + (size.X / 2)
+																local centerY = pos.Y + (size.Y / 2) + 58
+																	
+																vim:SendMouseButtonEvent(centerX, centerY, 0, true, game, 0)
+																task.wait()
+																vim:SendMouseButtonEvent(centerX, centerY, 0, false, game, 0)
+																print("Purchased: " .. v .. "!")
+																notify("Purchased: " .. v .. "!")
+																task.wait()
+															else
+																for _, connection in pairs(getconnections(BlackMarketUI.RequiredSell.Yes.MouseButton1Click)) do
+																	connection:Fire()
+																end
+															end
+														end
+													else
+														BlackMarketUIig[v].Visible = false
+													end
+												end
+											end
+											task.wait(.2)	
+										end
+									end	
+								end
+							end)
+						end
+					end
+				end)
+
+				if readfile(DHV2MW .. "/AutoExpandPlot.txt") == "true" then
+					AutoExpandPlot = true
+					section3:addToggle("Auto Expand Plot",true,function(bool)
+						AutoExpandPlot = bool
+						notify("Auto Expand Plot: " .. tostring(AutoExpandPlot))
+						if AutoExpandPlot == true then
+							writefile(DHV2MW .. "/AutoExpandPlot.txt","true")
+							notify("Will automatically expand plot when walk by")
+						else
+							writefile(DHV2MW .. "/AutoExpandPlot.txt","false")
+						end
+					end)
+				else
+					AutoExpandPlot = false
+					section3:addToggle("Auto Expand Plot",false,function(bool)
+						AutoExpandPlot = bool
+						notify("Auto Expand Plot: " .. tostring(AutoExpandPlot))
+						if AutoExpandPlot == true then
+							writefile(DHV2MW .. "/AutoExpandPlot.txt","true")
+							notify("Will automatically expand plot when walk by")
+						else
+							writefile(DHV2MW .. "/AutoExpandPlot.txt","false")
+						end
+					end)
+				end
+
+				spawn(function()
+					while task.wait(2) do
+						if AutoExpandPlot then
+							for i,v in pairs(workspace.MilitaryMap.PlayerPlots["YourBase"].Plot.ExpandPlot:GetChildren()) do
+								for i,v1 in pairs(v:GetChildren()) do
+									local CurrentMoney = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Frame.Money.Text)
+									if v1:FindFirstChild("PlotPart") and v1.PlotPart.ProximityPrompt.Style == Enum.ProximityPromptStyle.Custom then
+										if parseCurrency(v1.PlotPart.ProximityPrompt.ObjectText) < CurrentMoney then
+											local args = {[1] = {[1] = v,[2] = "f"}}
+											game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
+											task.wait(.5)
+										else
+											task.wait(5)
+										end
+									end
+								end
+							end
+						end
+					end
+				end)
+				for i,v in pairs(player.PlayerGui:GetChildren()) do
+					if v.Name == "ScreenGui" then
+						v:Destroy()
+					end
+				end
+				task.wait(.2)
+				UnlockedPage3 = true
+				NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
+				NoobieDoge:SelectPage(NoobieDoge.pages[3], true)
+			end
+			TextButton.MouseButton1Click:connect(UnlockYES)
+			TextButtonText.MouseButton1Click:connect(UnlockYES)
 		end
 	end)
 
@@ -1829,187 +2191,7 @@ local function MiniWar()
 	local section3 = page4:addSection("Quests")
 	local section4 = page4:addSection("Auto Roll Generals")
 	local section5 = page4:addSection("Auto Research")
-	
-	if readfile(DHV2MW .. "/AutoCollect.txt") == "true" then
-		AutoCollect = true
-		section1:addToggle("Auto Collect Crops",true,function(bool)
-			AutoCollect = bool
-			if AutoCollect then
-				writefile(DHV2MW .. "/AutoCollect.txt","true")
-			else
-				writefile(DHV2MW .. "/AutoCollect.txt","false")
-			end
-		end)
-	else
-		AutoCollect = false
-		section1:addToggle("Auto Collect Crops",false,function(bool)
-			AutoCollect = bool
-			if AutoCollect then
-				writefile(DHV2MW .. "/AutoCollect.txt","true")
-			else
-				writefile(DHV2MW .. "/AutoCollect.txt","false")
-			end
-		end)
-	end
-
-	section1:addSlider("Delay between collect", tonumber(readfile(DHV2MW .. "/Delaybetweencollect.txt")), 100, 10000, function(value)
-		notify("Delay between collect: " .. value .. " ms")
-		DBC = value/1000
-		writefile(DHV2MW .. "/Delaybetweencollect.txt",tostring(DBC))
-	end)
-	DBC = tonumber(readfile(DHV2MW .. "/Delaybetweencollect.txt"))/1000
-
-	spawn(function()
-		while task.wait(DBC) do
-			if AutoCollect then
-				for i,v in pairs(workspace.MilitaryMap.PlayerPlots["YourBase"].Plot.Buildings:GetChildren()) do
-					if v:FindFirstChild("ProximityPrompt") and v.ProximityPrompt.ObjectText == "Collect!" then
-						--v.ProximityPrompt.MaxActivationDistance = 999999999
-						local args = {[1] = {[1] = v,[2] = "O"}}
-						game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
-					end
-				end
-			end
-		end
-	end)
-
-	if readfile(DHV2MW .. "/AutoCollectGP.txt") == "true" then
-		AutoCollectGP = true
-		section1:addToggle("Auto Collect Crops (Gamepass)",true,function(bool)
-			AutoCollectGP = bool
-			if AutoCollectGP then
-				writefile(DHV2MW .. "/AutoCollectGP.txt","true")
-			else
-				writefile(DHV2MW .. "/AutoCollectGP.txt","false")
-			end
-		end)
-	else
-		AutoCollectGP = false
-		section1:addToggle("Auto Collect Crops (Gamepass)",false,function(bool)
-			AutoCollectGP = bool
-			if AutoCollectGP then
-				writefile(DHV2MW .. "/AutoCollectGP.txt","true")
-			else
-				writefile(DHV2MW .. "/AutoCollectGP.txt","false")
-			end
-		end)
-	end
-
-	spawn(function()
-		while task.wait(1) do
-			if AutoCollectGP then
-				for i,v in pairs(workspace.MilitaryMap.PlayerPlots["YourBase"].Plot.Buildings:GetChildren()) do
-					if v:FindFirstChild("ProximityPrompt") and v.ProximityPrompt.ObjectText == "Collect!" then
-						if player.PlayerGui.MainUI.HUD.DownUI.AutoCollect.On.Enabled == false then
-							--v.ProximityPrompt.MaxActivationDistance = 999999999
-							local args = {[1] = {[1] = v,[2] = "M"}}
-							game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
-						end
-					end
-				end
-			end
-		end
-	end)
-
-	section2:addButton("Auto Sell",function()
-		notify("Pls help idk how to make this function")
-		game:GetService("StarterGui"):SetCore("SendNotification",{
-			Title = "Fr i have no idea why it wont work", -- 必填
-			Text = "Pls help idk how to make this function", -- 必填
-		})
-	end)
-
-	if readfile(DHV2MW .. "/AutoSellGP.txt") == "true" then
-		AutoSellGP = true
-		section2:addToggle("Auto Sell Crops (Gamepass)",true,function(bool)
-			AutoSellGP = bool
-			if AutoSellGP then
-				writefile(DHV2MW .. "/AutoSellGP.txt","true")
-			else
-				writefile(DHV2MW .. "/AutoSellGP.txt","false")
-			end
-		end)
-	else
-		AutoSellGP = false
-		section2:addToggle("Auto Sell Crops (Gamepass)",false,function(bool)
-			AutoSellGP = bool
-			if AutoSellGP then
-				writefile(DHV2MW .. "/AutoSellGP.txt","true")
-			else
-				writefile(DHV2MW .. "/AutoSellGP.txt","false")
-			end
-		end)
-	end
-
-	spawn(function()
-		while task.wait(1) do
-			if AutoSellGP then
-				for i,v in pairs(workspace.MilitaryMap.PlayerPlots["YourBase"].Plot.Buildings:GetChildren()) do
-					if v:FindFirstChild("ProximityPrompt") and v.ProximityPrompt.ObjectText == "Collect!" then
-						if player.PlayerGui.MainUI.HUD.DownUI.AutoSell.On.Enabled == false then
-							--v.ProximityPrompt.MaxActivationDistance = 999999999
-							local args = {[1] = {[1] = v,[2] = "K"}}
-							game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
-						end
-					end
-				end
-			end
-		end
-	end)
-
-	if readfile(DHV2MW .. "/AutoClaimQuestRewards.txt") == "true" then
-		AutoClaimQuestRewards = true
-		section3:addToggle("Auto Claim Quest Rewards",true,function(bool)
-			AutoClaimQuestRewards = bool
-			if AutoClaimQuestRewards then
-				writefile(DHV2MW .. "/AutoClaimQuestRewards.txt","true")
-			else
-				writefile(DHV2MW .. "/AutoClaimQuestRewards.txt","false")
-			end
-		end)
-	else
-		AutoClaimQuestRewards = false
-		section3:addToggle("Auto Claim Quest Rewards",false,function(bool)
-			AutoClaimQuestRewards = bool
-			if AutoClaimQuestRewards then
-				writefile(DHV2MW .. "/AutoClaimQuestRewards.txt","true")
-			else
-				writefile(DHV2MW .. "/AutoClaimQuestRewards.txt","false")
-			end
-		end)
-	end
-
-	spawn(function()
-		while task.wait(1) do
-			if AutoClaimQuestRewards then
-				for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainUI.Fullscreen.SeasonPassUI.Quests.QuestList:GetChildren()) do
-					if v.Name ~= "UIPadding" and v.Name ~= "UIListLayout" and v.Name ~= "DontDelete" and v.Name ~= "Template" then
-						if v.Button.NameFrame.ButtonText.Text == "Claim!" and v.Button.Visible == true then
-							print("Claimed Quest Rewards: ".. tostring(v.Name))
-							local args = {[1] = {[1] = v.Name,[2] = "]"}}
-							game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
-						end
-					end
-				end
-			end
-		end
-	end)
-	spawn(function()
-		while task.wait(1) do
-			if AutoClaimQuestRewards then
-				for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainUI.Fullscreen.SeasonPassUI.Quests.StreakProgress.ProgressBar.TierList:GetChildren()) do
-					if v.Name ~= "Progress" and v.Name ~= "UIListLayout" then
-						if v.Quantity.Text == "Claim!" and v.ClaimButton.Visible == true then
-							print("Claimed Quest Progress Rewards: ".. tostring(v.Name))
-							local questprogressno = string.match(v.Name, "%d+")
-							local args = {[1] = {[1] = questprogressno,[2] = "^"}}
-							game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
-						end
-					end
-				end
-			end
-		end
-	end)
+	local sectionW = page4:addSection("Unlock ncxyzero_bridgenet2-fork@1.1.5 Functions")
 
 	local Generals = {}
 	for i,v in pairs(player.PlayerGui.GeneralUI.GeneralsUI.RightSide.GeneralChances:GetChildren()) do
@@ -2080,7 +2262,6 @@ local function MiniWar()
 	local GeneralUI = player.PlayerGui.GeneralUI
 	local itemsGrid = GeneralUI.GeneralsUI.LeftSide.SelectGeneral.ItemsGrid
 	local BuyGeneralButton = GeneralUI.GeneralsUI.Buy
-	local UrBuildings = workspace.MilitaryMap.PlayerPlots.YourBase.Plot.Buildings 
 
 	spawn(function() 
 		while task.wait(2) do 
@@ -2146,94 +2327,443 @@ local function MiniWar()
 		end
 	end)
 
-	if readfile(DHV2MW .. "/AutoResearch.txt") == "true" then
-		AutoResearch = true
-		section5:addToggle("AutoResearch",true,function(bool)
-			AutoResearch = bool
-			if AutoResearch then
-				writefile(DHV2MW .. "/AutoResearch.txt","true")
-			else
-				writefile(DHV2MW .. "/AutoResearch.txt","false")
-			end
-		end)
-	else
-		AutoResearch = false
-		section5:addToggle("Auto Research",false,function(bool)
-			AutoResearch = bool
-			if AutoResearch then
-				writefile(DHV2MW .. "/AutoResearch.txt","true")
-			else
-				writefile(DHV2MW .. "/AutoResearch.txt","false")
-			end
-		end)
-	end
+	local UnlockedPage4 = false
+	sectionW:addButton("Unlock ncxyzero_bridgenet2-fork@1.1.5 Functions",function()
+		if UnlockedPage4 == true then
+			notify("Already unlocked")
+		else
+			local player = game.Players.LocalPlayer
+			local ScreenGuiK = Instance.new("ScreenGui")
+			local Frame = Instance.new("ImageLabel")
+			local TextLabelFrame = Instance.new("ImageLabel")
+			local TextLabel = Instance.new("TextLabel")
+			local TextLabel1 = Instance.new("TextLabel")
+			local TextButton = Instance.new("ImageButton")
+			local TextButtonText = Instance.new("TextButton")
+			local TextButton_2 = Instance.new("ImageButton")
+			local TextButton_2Text = Instance.new("TextButton")
 
-	local function IsResearchFull(inputString)
-		local lowerInput = string.lower(inputString)
-		local current, max = string.match(lowerInput, "researchers%s*:%s*(%d+)/(%d+)")
-		if current and max then
-			if tonumber(current) == tonumber(max) then
-				return true
-			end
-		end
-		return false
-	end
+			ScreenGuiK.Parent = player:WaitForChild("PlayerGui")
 
-	spawn(function()
-		while task.wait(.5) do
-			if AutoResearch then
-				if IsResearchFull(player.PlayerGui.SkillsUI.SkillsUI.researchers.Quantity.Text) == false then
-					if not workspace:FindFirstChild("UpgradeTree") then
-						print("Locating data from ReplicatedStorage")
-						local foundAny = false
-						for i,v in pairs(game:GetService("ReplicatedStorage").shared.model.UpgradeTree.Upgrades:GetChildren()) do
-							if v:FindFirstChild("Inside") then
-								if v.Inside:FindFirstChild("LockedUI") and v.Inside:FindFirstChild("ToUnlockUI") then
-									foundAny = true
-									if v.Inside.Color == Color3.fromRGB(58, 58, 58) and v.Inside.ToUnlockUI.Enabled == true then
-										print(v.Name)
-										local CurrentMoney = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Frame.Money.Text)
-										if ShortToNumber(v.Inside.ToUnlockUI.Frame.PriceFrame.Money.Text) > CurrentMoney then
-											print("Not enough money to research")
-										else
-											local args = {[1] = {[1] = v.Name,[2] = "S"}}
-											game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
-										end
+			Frame.Parent = ScreenGuiK
+			Frame.Name = "Main"
+			Frame.BackgroundTransparency = 1
+			Frame.Position = UDim2.new(0.1, 0, 0.05, 0)
+			Frame.Size = UDim2.new(0, 220, 0, 220)
+			Frame.Image = "rbxassetid://4641149554"
+			Frame.ImageColor3 = Color3.fromRGB(24, 24, 24)
+			Frame.ScaleType = Enum.ScaleType.Slice
+			Frame.SliceCenter = Rect.new(4, 4, 296, 296)
+			Frame.Active = true
+			Frame.Draggable = true
+
+			TextLabelFrame.Parent = Frame
+			TextLabelFrame.Name = "TopBar"
+			TextLabelFrame.BackgroundTransparency = 1
+			TextLabelFrame.ClipsDescendants = true
+			TextLabelFrame.Size = UDim2.new(1, 0, 0, 38)
+			TextLabelFrame.ZIndex = 2
+			TextLabelFrame.Image = "rbxassetid://4595286933"
+			TextLabelFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
+			TextLabelFrame.ScaleType = Enum.ScaleType.Slice
+			TextLabelFrame.SliceCenter = Rect.new(4, 4, 296, 296)
+
+			TextLabel.Parent = TextLabelFrame
+			TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+			TextLabel.Position = UDim2.new(0, 0, -0.3, 0)
+			TextLabel.BackgroundTransparency = 1
+			TextLabel.Size = UDim2.new(0, 220, 0, 60)
+			TextLabel.ZIndex = 3
+			TextLabel.Font = Enum.Font.TitilliumWeb
+			TextLabel.Text = "WARNING"
+			TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+			TextLabel.TextScaled = false
+			TextLabel.TextSize = 40.000
+			TextLabel.TextWrapped = true
+
+			TextLabel1.Parent = Frame
+			TextLabel1.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+			TextLabel1.Position = UDim2.new(0, 0, 0.2, 0)
+			TextLabel1.BackgroundTransparency = 1
+			TextLabel1.Size = UDim2.new(0, 220, 0, 100)
+			TextLabel1.ZIndex = 3
+			TextLabel1.Font = Enum.Font.TitilliumWeb
+			TextLabel1.Text = "ncxyzero_bridgenet2-fork@1.1.5 functions are highly unstable, use at your own risk.\n (I personally do not recommend activating them)"
+			TextLabel1.TextColor3 = Color3.fromRGB(255, 255, 255)
+			TextLabel1.TextScaled = true
+			TextLabel1.TextSize = 40.000
+			TextLabel1.TextWrapped = true
+
+			TextButton.Parent = Frame
+			TextButton.Name = "Button"
+			TextButton.BackgroundTransparency = 1
+			TextButton.Position = UDim2.new(0.55, 0, 0.72, 0)
+			TextButton.BorderSizePixel = 0
+			TextButton.Size = UDim2.new(0, 82.5, 0, 45)
+			TextButton.ZIndex = 2
+			TextButton.Image = "rbxassetid://5028857472"
+			TextButton.ImageColor3 = Color3.fromRGB(41, 41, 41)
+			TextButton.ScaleType = Enum.ScaleType.Slice
+			TextButton.SliceCenter = Rect.new(2, 2, 298, 298)
+
+			TextButtonText.Parent = TextButton
+			TextButtonText.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+			TextButtonText.BackgroundTransparency = 1
+			TextButtonText.ZIndex = 3
+			TextButtonText.Size = UDim2.new(0, 82.5, 0, 45)
+			TextButtonText.Font = Enum.Font.TitilliumWeb
+			TextButtonText.Text = "I know what I'm doing"
+			TextButtonText.TextColor3 = Color3.fromRGB(200, 200, 200)
+			TextButtonText.TextScaled = true
+			TextButtonText.TextSize = 40.000
+			TextButtonText.TextWrapped = true
+
+			TextButton_2.Parent = Frame
+			TextButton_2.Name = "Button"
+			TextButton_2.BackgroundTransparency = 1
+			TextButton_2.Position = UDim2.new(0.075, 0, 0.72, 0)
+			TextButton_2.BorderSizePixel = 0
+			TextButton_2.Size = UDim2.new(0, 82.5, 0, 45)
+			TextButton_2.ZIndex = 2
+			TextButton_2.Image = "rbxassetid://5028857472"
+			TextButton_2.ImageColor3 = Color3.fromRGB(41, 41, 41)
+			TextButton_2.ScaleType = Enum.ScaleType.Slice
+			TextButton_2.SliceCenter = Rect.new(2, 2, 298, 298)
+
+			TextButton_2Text.Parent = TextButton_2
+			TextButton_2Text.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+			TextButton_2Text.BackgroundTransparency = 1
+			TextButton_2Text.ZIndex = 3
+			TextButton_2Text.Size = UDim2.new(0, 82.5, 0, 45)
+			TextButton_2Text.Font = Enum.Font.TitilliumWeb
+			TextButton_2Text.Text = "Close"
+			TextButton_2Text.TextColor3 = Color3.fromRGB(200, 200, 200)
+			TextButton_2Text.TextScaled = true
+			TextButton_2Text.TextSize = 40.000
+			TextButton_2Text.TextWrapped = true
+
+			function UnlockNO()
+				for i,v in pairs(player.PlayerGui:GetChildren()) do
+					if v.Name == "ScreenGui" then
+						v:Destroy()
+					end
+				end
+			end
+			TextButton_2.MouseButton1Click:connect(UnlockNO)	
+			TextButton_2Text.MouseButton1Click:connect(UnlockNO)
+
+			function UnlockYES()
+				game:GetService("StarterGui"):SetCore("SendNotification",{
+					Title = "I warned you",
+					Text = "Don't cry when you screwed up",
+				})
+				if readfile(DHV2MW .. "/AutoCollect.txt") == "true" then
+					AutoCollect = true
+					section1:addToggle("Auto Collect Crops",true,function(bool)
+						AutoCollect = bool
+						if AutoCollect then
+							writefile(DHV2MW .. "/AutoCollect.txt","true")
+						else
+							writefile(DHV2MW .. "/AutoCollect.txt","false")
+						end
+					end)
+				else
+					AutoCollect = false
+					section1:addToggle("Auto Collect Crops",false,function(bool)
+						AutoCollect = bool
+						if AutoCollect then
+							writefile(DHV2MW .. "/AutoCollect.txt","true")
+						else
+							writefile(DHV2MW .. "/AutoCollect.txt","false")
+						end
+					end)
+				end
+
+				section1:addSlider("Delay between collect", tonumber(readfile(DHV2MW .. "/Delaybetweencollect.txt")), 100, 10000, function(value)
+					notify("Delay between collect: " .. value .. " ms")
+					DBC = value/1000
+					writefile(DHV2MW .. "/Delaybetweencollect.txt",tostring(DBC))
+				end)
+				DBC = tonumber(readfile(DHV2MW .. "/Delaybetweencollect.txt"))/1000
+
+				spawn(function()
+					while task.wait(DBC) do
+						if AutoCollect then
+							for i,v in pairs(workspace.MilitaryMap.PlayerPlots["YourBase"].Plot.Buildings:GetChildren()) do
+								if v:FindFirstChild("ProximityPrompt") and v.ProximityPrompt.ObjectText == "Collect!" then
+									--v.ProximityPrompt.MaxActivationDistance = 999999999
+									local args = {[1] = {[1] = v,[2] = "O"}}
+									game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
+								end
+							end
+						end
+					end
+				end)
+
+				if readfile(DHV2MW .. "/AutoCollectGP.txt") == "true" then
+					AutoCollectGP = true
+					section1:addToggle("Auto Collect Crops (Gamepass)",true,function(bool)
+						AutoCollectGP = bool
+						if AutoCollectGP then
+							writefile(DHV2MW .. "/AutoCollectGP.txt","true")
+						else
+							writefile(DHV2MW .. "/AutoCollectGP.txt","false")
+						end
+					end)
+				else
+					AutoCollectGP = false
+					section1:addToggle("Auto Collect Crops (Gamepass)",false,function(bool)
+						AutoCollectGP = bool
+						if AutoCollectGP then
+							writefile(DHV2MW .. "/AutoCollectGP.txt","true")
+						else
+							writefile(DHV2MW .. "/AutoCollectGP.txt","false")
+						end
+					end)
+				end
+
+				spawn(function()
+					while task.wait(1) do
+						if AutoCollectGP then
+							for i,v in pairs(workspace.MilitaryMap.PlayerPlots["YourBase"].Plot.Buildings:GetChildren()) do
+								if v:FindFirstChild("ProximityPrompt") and v.ProximityPrompt.ObjectText == "Collect!" then
+									if player.PlayerGui.MainUI.HUD.DownUI.AutoCollect.On.Enabled == false then
+										--v.ProximityPrompt.MaxActivationDistance = 999999999
+										local args = {[1] = {[1] = v,[2] = "M"}}
+										game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
 									end
 								end
 							end
 						end
-						if not foundAny then
-							notify("Please open your research tab") 
-							task.wait(5)
+					end
+				end)
+
+				if readfile(DHV2MW .. "/AutoSell.txt") == "true" then
+					AutoSell = true
+					section2:addToggle("Auto Sell Crops",true,function(bool)
+						AutoSell = bool
+						if AutoSell then
+							writefile(DHV2MW .. "/AutoSell.txt","true")
+						else
+							writefile(DHV2MW .. "/AutoSell.txt","false")
 						end
-					else
-						print("Locating data from Workspace")
-						local foundAny = false
-						for i, v in pairs(workspace.UpgradeTree.Upgrades:GetChildren()) do 
-							if v:FindFirstChild("Inside") then 
-								if v.Inside:FindFirstChild("LockedUI") and v.Inside:FindFirstChild("ToUnlockUI") then 
-									foundAny = true
-									if v.Inside.Color == Color3.fromRGB(58, 58, 58) and v.Inside.ToUnlockUI.Enabled == true then 
-										print(v.Name)
-											local CurrentMoney = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Frame.Money.Text)
-										if ShortToNumber(v.Inside.ToUnlockUI.Frame.PriceFrame.Money.Text) > CurrentMoney then
-											print("Not enough money to research")
-										else
-											local args = {[1] = {[1] = v.Name,[2] = "S"}}
-											game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
-										end
-									end 
-								end 
-							end 
+					end)
+				else
+					AutoSell = false
+					section2:addToggle("Auto Sell Crops",false,function(bool)
+						AutoSell = bool
+						if AutoSell then
+							writefile(DHV2MW .. "/AutoSell.txt","true")
+						else
+							writefile(DHV2MW .. "/AutoSell.txt","false")
 						end
-						if not foundAny then
-							notify("Please open your research tab") 
-							task.wait(5)
+					end)
+				end
+
+				spawn(function()
+					while task.wait(1) do
+						if AutoSell then
+							--v.ProximityPrompt.MaxActivationDistance = 999999999
+							local args = {[1] = {[1] = v,[2] = "O"}}
+							game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
 						end
 					end
+				end)
+
+				if readfile(DHV2MW .. "/AutoSellGP.txt") == "true" then
+					AutoSellGP = true
+					section2:addToggle("Auto Sell Crops (Gamepass)",true,function(bool)
+						AutoSellGP = bool
+						if AutoSellGP then
+							writefile(DHV2MW .. "/AutoSellGP.txt","true")
+						else
+							writefile(DHV2MW .. "/AutoSellGP.txt","false")
+						end
+					end)
+				else
+					AutoSellGP = false
+					section2:addToggle("Auto Sell Crops (Gamepass)",false,function(bool)
+						AutoSellGP = bool
+						if AutoSellGP then
+							writefile(DHV2MW .. "/AutoSellGP.txt","true")
+						else
+							writefile(DHV2MW .. "/AutoSellGP.txt","false")
+						end
+					end)
 				end
+
+				spawn(function()
+					while task.wait(1) do
+						if AutoSellGP then
+							for i,v in pairs(workspace.MilitaryMap.PlayerPlots["YourBase"].Plot.Buildings:GetChildren()) do
+								if v:FindFirstChild("ProximityPrompt") and v.ProximityPrompt.ObjectText == "Collect!" then
+									if player.PlayerGui.MainUI.HUD.DownUI.AutoSell.On.Enabled == false then
+										--v.ProximityPrompt.MaxActivationDistance = 999999999
+										local args = {[1] = {[1] = v,[2] = "K"}}
+										game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
+									end
+								end
+							end
+						end
+					end
+				end)
+
+				if readfile(DHV2MW .. "/AutoClaimQuestRewards.txt") == "true" then
+					AutoClaimQuestRewards = true
+					section3:addToggle("Auto Claim Quest Rewards",true,function(bool)
+						AutoClaimQuestRewards = bool
+						if AutoClaimQuestRewards then
+							writefile(DHV2MW .. "/AutoClaimQuestRewards.txt","true")
+						else
+							writefile(DHV2MW .. "/AutoClaimQuestRewards.txt","false")
+						end
+					end)
+				else
+					AutoClaimQuestRewards = false
+					section3:addToggle("Auto Claim Quest Rewards",false,function(bool)
+						AutoClaimQuestRewards = bool
+						if AutoClaimQuestRewards then
+							writefile(DHV2MW .. "/AutoClaimQuestRewards.txt","true")
+						else
+							writefile(DHV2MW .. "/AutoClaimQuestRewards.txt","false")
+						end
+					end)
+				end
+
+				spawn(function()
+					while task.wait(1) do
+						if AutoClaimQuestRewards then
+							for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainUI.Fullscreen.SeasonPassUI.Quests.QuestList:GetChildren()) do
+								if v.Name ~= "UIPadding" and v.Name ~= "UIListLayout" and v.Name ~= "DontDelete" and v.Name ~= "Template" then
+									if v.Button.NameFrame.ButtonText.Text == "Claim!" and v.Button.Visible == true then
+										print("Claimed Quest Rewards: ".. tostring(v.Name))
+										local args = {[1] = {[1] = v.Name,[2] = "/163"}}
+										game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
+									end
+								end
+							end
+						end
+					end
+				end)
+				spawn(function()
+					while task.wait(1) do
+						if AutoClaimQuestRewards then
+							for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainUI.Fullscreen.SeasonPassUI.Quests.StreakProgress.ProgressBar.TierList:GetChildren()) do
+								if v.Name ~= "Progress" and v.Name ~= "UIListLayout" then
+									if v.Quantity.Text == "Claim!" and v.ClaimButton.Visible == true then
+										print("Claimed Quest Progress Rewards: ".. tostring(v.Name))
+										local questprogressno = string.match(v.Name, "%d+")
+										local args = {[1] = {[1] = questprogressno,[2] = "^"}}
+										game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
+									end
+								end
+							end
+						end
+					end
+				end)
+
+				if readfile(DHV2MW .. "/AutoResearch.txt") == "true" then
+					AutoResearch = true
+					section5:addToggle("AutoResearch",true,function(bool)
+						AutoResearch = bool
+						if AutoResearch then
+							writefile(DHV2MW .. "/AutoResearch.txt","true")
+						else
+							writefile(DHV2MW .. "/AutoResearch.txt","false")
+						end
+					end)
+				else
+					AutoResearch = false
+					section5:addToggle("Auto Research",false,function(bool)
+						AutoResearch = bool
+						if AutoResearch then
+							writefile(DHV2MW .. "/AutoResearch.txt","true")
+						else
+							writefile(DHV2MW .. "/AutoResearch.txt","false")
+						end
+					end)
+				end
+
+				local function IsResearchFull(inputString)
+					local lowerInput = string.lower(inputString)
+					local current, max = string.match(lowerInput, "researchers%s*:%s*(%d+)/(%d+)")
+					if current and max then
+						if tonumber(current) == tonumber(max) then
+							return true
+						end
+					end
+					return false
+				end
+
+				spawn(function()
+					while task.wait(.5) do
+						if AutoResearch then
+							if IsResearchFull(player.PlayerGui.SkillsUI.SkillsUI.researchers.Quantity.Text) == false then
+								if not workspace:FindFirstChild("UpgradeTree") then
+									print("Locating data from ReplicatedStorage")
+									local foundAny = false
+									for i,v in pairs(game:GetService("ReplicatedStorage").shared.model.UpgradeTree.Upgrades:GetChildren()) do
+										if v:FindFirstChild("Inside") then
+											if v.Inside:FindFirstChild("LockedUI") and v.Inside:FindFirstChild("ToUnlockUI") then
+												foundAny = true
+												if v.Inside.Color == Color3.fromRGB(58, 58, 58) and v.Inside.ToUnlockUI.Enabled == true then
+													print(v.Name)
+													local CurrentMoney = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Frame.Money.Text)
+													if ShortToNumber(v.Inside.ToUnlockUI.Frame.PriceFrame.Money.Text) > CurrentMoney then
+														print("Not enough money to research")
+													else
+														local args = {[1] = {[1] = v.Name,[2] = "S"}}
+														game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
+													end
+												end
+											end
+										end
+									end
+									if not foundAny then
+										notify("Please open your research tab") 
+										task.wait(5)
+									end
+								else
+									print("Locating data from Workspace")
+									local foundAny = false
+									for i, v in pairs(workspace.UpgradeTree.Upgrades:GetChildren()) do 
+										if v:FindFirstChild("Inside") then 
+											if v.Inside:FindFirstChild("LockedUI") and v.Inside:FindFirstChild("ToUnlockUI") then 
+												foundAny = true
+												if v.Inside.Color == Color3.fromRGB(58, 58, 58) and v.Inside.ToUnlockUI.Enabled == true then 
+													print(v.Name)
+														local CurrentMoney = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Frame.Money.Text)
+													if ShortToNumber(v.Inside.ToUnlockUI.Frame.PriceFrame.Money.Text) > CurrentMoney then
+														print("Not enough money to research")
+													else
+														local args = {[1] = {[1] = v.Name,[2] = "S"}}
+														game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
+													end
+												end 
+											end 
+										end 
+									end
+									if not foundAny then
+										notify("Please open your research tab") 
+										task.wait(5)
+									end
+								end
+							end
+						end
+					end
+				end)
+				for i,v in pairs(player.PlayerGui:GetChildren()) do
+					if v.Name == "ScreenGui" then
+						v:Destroy()
+					end
+				end
+				task.wait(.2)
+				UnlockedPage4 = true
+				NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
+				NoobieDoge:SelectPage(NoobieDoge.pages[4], true)
 			end
+			TextButton.MouseButton1Click:connect(UnlockYES)
+			TextButtonText.MouseButton1Click:connect(UnlockYES)
 		end
 	end)
 
@@ -2248,391 +2778,511 @@ local function MiniWar()
 	local section7 = page5:addSection("Army 3 Config")
 	local section8 = page5:addSection("Army 4")	
 	local section9 = page5:addSection("Army 4 Config")
+	local sectionW = page5:addSection("Unlock ncxyzero_bridgenet2-fork@1.1.5 Functions")
 
-	local armySections = {[1] = section2,[2] = section4,[3] = section6,[4] = section8}
-	for i = 1, 4 do
-		local section = armySections[i]
-		if not section then continue end
+	local UnlockedPage5 = false
+	sectionW:addButton("Unlock ncxyzero_bridgenet2-fork@1.1.5 Functions",function()
+		if UnlockedPage5 == true then
+			notify("Already unlocked")
+		else
+			local player = game.Players.LocalPlayer
+			local ScreenGuiK = Instance.new("ScreenGui")
+			local Frame = Instance.new("ImageLabel")
+			local TextLabelFrame = Instance.new("ImageLabel")
+			local TextLabel = Instance.new("TextLabel")
+			local TextLabel1 = Instance.new("TextLabel")
+			local TextButton = Instance.new("ImageButton")
+			local TextButtonText = Instance.new("TextButton")
+			local TextButton_2 = Instance.new("ImageButton")
+			local TextButton_2Text = Instance.new("TextButton")
 
-		local capFile = string.format("/Army%dAutoCapture.txt", i)
-		local patFile = string.format("/Army%dPatrol.txt", i)
-    	local lastFile = string.format("/Army%dKeepLastBase.txt", i)
-		local capVar  = "Army" .. i .. "AutoCapture"
-		local patVar  = "Army" .. i .. "Patrol"
-		local lastVar = "Army" .. i .. "KeepLastBase"
+			ScreenGuiK.Parent = player:WaitForChild("PlayerGui")
 
-		local initialCap = (readfile(DHV2MW .. capFile) == "true")
-		_G[capVar] = initialCap
-		section:addToggle("Auto Capture", initialCap, function(bool)
-			_G[capVar] = bool
-			writefile(DHV2MW .. capFile, tostring(bool))
-			notify("Auto Capture: " .. tostring(_G[capVar]))
-		end)
+			Frame.Parent = ScreenGuiK
+			Frame.Name = "Main"
+			Frame.BackgroundTransparency = 1
+			Frame.Position = UDim2.new(0.1, 0, 0.05, 0)
+			Frame.Size = UDim2.new(0, 220, 0, 220)
+			Frame.Image = "rbxassetid://4641149554"
+			Frame.ImageColor3 = Color3.fromRGB(24, 24, 24)
+			Frame.ScaleType = Enum.ScaleType.Slice
+			Frame.SliceCenter = Rect.new(4, 4, 296, 296)
+			Frame.Active = true
+			Frame.Draggable = true
 
-		local initialPat = (readfile(DHV2MW .. patFile) == "true")
-		_G[patVar] = initialPat
-		section:addToggle("Unclaim right after capturing", initialPat, function(bool)
-			_G[patVar] = bool
-			writefile(DHV2MW .. patFile, tostring(bool))
-			notify("Unclaim Right After Capturing: " .. tostring(_G[patVar]))
-		end)
+			TextLabelFrame.Parent = Frame
+			TextLabelFrame.Name = "TopBar"
+			TextLabelFrame.BackgroundTransparency = 1
+			TextLabelFrame.ClipsDescendants = true
+			TextLabelFrame.Size = UDim2.new(1, 0, 0, 38)
+			TextLabelFrame.ZIndex = 2
+			TextLabelFrame.Image = "rbxassetid://4595286933"
+			TextLabelFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
+			TextLabelFrame.ScaleType = Enum.ScaleType.Slice
+			TextLabelFrame.SliceCenter = Rect.new(4, 4, 296, 296)
 
-		local initialLast = (readfile(DHV2MW .. lastFile) == "true")
-		_G[lastVar] = initialLast
-		section:addToggle("Unclaim when reached limit", initialLast, function(bool)
-			_G[lastVar] = bool
-			writefile(DHV2MW .. lastFile, tostring(bool))
-			notify("Unclaim when reached limit: " .. tostring(_G[lastVar]))
-		end)
+			TextLabel.Parent = TextLabelFrame
+			TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+			TextLabel.Position = UDim2.new(0, 0, -0.3, 0)
+			TextLabel.BackgroundTransparency = 1
+			TextLabel.Size = UDim2.new(0, 220, 0, 60)
+			TextLabel.ZIndex = 3
+			TextLabel.Font = Enum.Font.TitilliumWeb
+			TextLabel.Text = "WARNING"
+			TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+			TextLabel.TextScaled = false
+			TextLabel.TextSize = 40.000
+			TextLabel.TextWrapped = true
 
+			TextLabel1.Parent = Frame
+			TextLabel1.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+			TextLabel1.Position = UDim2.new(0, 0, 0.2, 0)
+			TextLabel1.BackgroundTransparency = 1
+			TextLabel1.Size = UDim2.new(0, 220, 0, 100)
+			TextLabel1.ZIndex = 3
+			TextLabel1.Font = Enum.Font.TitilliumWeb
+			TextLabel1.Text = "ncxyzero_bridgenet2-fork@1.1.5 functions are highly unstable, use at your own risk.\n (I personally do not recommend activating them)"
+			TextLabel1.TextColor3 = Color3.fromRGB(255, 255, 255)
+			TextLabel1.TextScaled = true
+			TextLabel1.TextSize = 40.000
+			TextLabel1.TextWrapped = true
 
-	end
-	local AllCapturablePoints = {}
-	local seenBaseTypes = {}
-	for i,v in pairs(workspace.MilitaryMap.Object:GetChildren()) do
-		for i,v1 in pairs(v:GetChildren()) do
-			local baseType = v1:GetAttribute("baseType")
-			if baseType and not seenBaseTypes[baseType] then
-				table.insert(AllCapturablePoints, baseType)
-				seenBaseTypes[baseType] = true
+			TextButton.Parent = Frame
+			TextButton.Name = "Button"
+			TextButton.BackgroundTransparency = 1
+			TextButton.Position = UDim2.new(0.55, 0, 0.72, 0)
+			TextButton.BorderSizePixel = 0
+			TextButton.Size = UDim2.new(0, 82.5, 0, 45)
+			TextButton.ZIndex = 2
+			TextButton.Image = "rbxassetid://5028857472"
+			TextButton.ImageColor3 = Color3.fromRGB(41, 41, 41)
+			TextButton.ScaleType = Enum.ScaleType.Slice
+			TextButton.SliceCenter = Rect.new(2, 2, 298, 298)
+
+			TextButtonText.Parent = TextButton
+			TextButtonText.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+			TextButtonText.BackgroundTransparency = 1
+			TextButtonText.ZIndex = 3
+			TextButtonText.Size = UDim2.new(0, 82.5, 0, 45)
+			TextButtonText.Font = Enum.Font.TitilliumWeb
+			TextButtonText.Text = "I know what I'm doing"
+			TextButtonText.TextColor3 = Color3.fromRGB(200, 200, 200)
+			TextButtonText.TextScaled = true
+			TextButtonText.TextSize = 40.000
+			TextButtonText.TextWrapped = true
+
+			TextButton_2.Parent = Frame
+			TextButton_2.Name = "Button"
+			TextButton_2.BackgroundTransparency = 1
+			TextButton_2.Position = UDim2.new(0.075, 0, 0.72, 0)
+			TextButton_2.BorderSizePixel = 0
+			TextButton_2.Size = UDim2.new(0, 82.5, 0, 45)
+			TextButton_2.ZIndex = 2
+			TextButton_2.Image = "rbxassetid://5028857472"
+			TextButton_2.ImageColor3 = Color3.fromRGB(41, 41, 41)
+			TextButton_2.ScaleType = Enum.ScaleType.Slice
+			TextButton_2.SliceCenter = Rect.new(2, 2, 298, 298)
+
+			TextButton_2Text.Parent = TextButton_2
+			TextButton_2Text.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+			TextButton_2Text.BackgroundTransparency = 1
+			TextButton_2Text.ZIndex = 3
+			TextButton_2Text.Size = UDim2.new(0, 82.5, 0, 45)
+			TextButton_2Text.Font = Enum.Font.TitilliumWeb
+			TextButton_2Text.Text = "Close"
+			TextButton_2Text.TextColor3 = Color3.fromRGB(200, 200, 200)
+			TextButton_2Text.TextScaled = true
+			TextButton_2Text.TextSize = 40.000
+			TextButton_2Text.TextWrapped = true
+
+			function UnlockNO()
+				for i,v in pairs(player.PlayerGui:GetChildren()) do
+					if v.Name == "ScreenGui" then
+						v:Destroy()
+					end
+				end
 			end
-		end
-	end
-	for i,v in pairs(game:GetService("ReplicatedStorage").shared.model:GetChildren()) do
-		local baseType = v:GetAttribute("baseType")
-		if v:FindFirstChild("PromptHolder") and v.PromptHolder:FindFirstChild("ProximityPrompt") and v.PromptHolder.ProximityPrompt.ActionText == "Unclaim base" and baseType and not seenBaseTypes[baseType] then
-			table.insert(AllCapturablePoints, baseType)
-			seenBaseTypes[baseType] = true
-		end
-	end
-	for i,v in pairs(game:GetService("ReplicatedStorage").shared.model.EventsVFX.MeteorShower:GetChildren()) do
-		local baseType = v:GetAttribute("baseType")
-		if v:FindFirstChild("PromptHolder") and v.PromptHolder:FindFirstChild("ProximityPrompt") and v.PromptHolder.ProximityPrompt.ActionText == "Unclaim base" and baseType and not seenBaseTypes[baseType] and v.ModelStreamingMode == Enum.ModelStreamingMode.Persistent then
-			table.insert(AllCapturablePoints, baseType)
-			seenBaseTypes[baseType] = true
-		end
-	end
-	local AllCapturablePointsRocket = {}
-	for i,v in pairs(workspace.MilitaryMap.Object:GetChildren()) do
-		for i,v1 in pairs(v:GetChildren()) do
-			table.insert(AllCapturablePointsRocket, v1.Name)
-		end
-	end
-	for i,v in pairs(game:GetService("ReplicatedStorage").shared.model:GetChildren()) do
-		if v:FindFirstChild("PromptHolder") and v.PromptHolder:FindFirstChild("ProximityPrompt") and v.PromptHolder.ProximityPrompt.ActionText == "Unclaim base" then
-			table.insert(AllCapturablePointsRocket, v.Name)
-		end
-	end
-	for i,v in pairs(game:GetService("ReplicatedStorage").shared.model.EventsVFX.MeteorShower:GetChildren()) do
-		if v:FindFirstChild("PromptHolder") and v.PromptHolder:FindFirstChild("ProximityPrompt") and v.PromptHolder.ProximityPrompt.ActionText == "Unclaim base" and v.ModelStreamingMode == Enum.ModelStreamingMode.Persistent then
-			table.insert(AllCapturablePointsRocket, v.Name)
-		end
-	end
+			TextButton_2.MouseButton1Click:connect(UnlockNO)	
+			TextButton_2Text.MouseButton1Click:connect(UnlockNO)
 
-	RocketsTarget = readfile(DHV2MW .. "/RocketsTarget.txt")
-	section1:addDropdown("Targetting: " .. readfile(DHV2MW .. "/RocketsTarget.txt"),AllCapturablePointsRocket,function(RocketsTarget1)
-		print("Rockets Targetting: " .. RocketsTarget1)
-		notify("Rockets Targetting: " .. RocketsTarget1)
-		RocketsTarget = RocketsTarget1
-		writefile(DHV2MW .. "/RocketsTarget.txt",RocketsTarget)
-	end)
+			function UnlockYES()
+				game:GetService("StarterGui"):SetCore("SendNotification",{
+					Title = "I warned you",
+					Text = "Don't cry when you screwed up",
+				})
+				local armySections = {[1] = section2,[2] = section4,[3] = section6,[4] = section8}
+				for i = 1, 4 do
+					local section = armySections[i]
+					if not section then continue end
 
-	if readfile(DHV2MW .. "/AutoRocket.txt") == "true" then
-		AutoRocket = true
-		section1:addToggle("Enabled",true,function(bool)
-			AutoRocket = bool
-			if AutoRocket then
-				writefile(DHV2MW .. "/AutoRocket.txt","true")
-			else
-				writefile(DHV2MW .. "/AutoRocket.txt","false")
-			end
-		end)
-	else
-		AutoRocket = false
-		section1:addToggle("Enabled",false,function(bool)
-			AutoRocket = bool
-			if AutoRocket then
-				writefile(DHV2MW .. "/AutoRocket.txt","true")
-			else
-				writefile(DHV2MW .. "/AutoRocket.txt","false")
-			end
-		end)
-	end
+					local capFile = string.format("/Army%dAutoCapture.txt", i)
+					local patFile = string.format("/Army%dPatrol.txt", i)
+					local lastFile = string.format("/Army%dKeepLastBase.txt", i)
+					local capVar  = "Army" .. i .. "AutoCapture"
+					local patVar  = "Army" .. i .. "Patrol"
+					local lastVar = "Army" .. i .. "KeepLastBase"
 
-	local RocketLockOn = false
-	spawn(function()
-		while task.wait(39) do
-			if AutoRocket and RocketsTarget ~= " " then
+					local initialCap = (readfile(DHV2MW .. capFile) == "true")
+					_G[capVar] = initialCap
+					section:addToggle("Auto Capture", initialCap, function(bool)
+						_G[capVar] = bool
+						writefile(DHV2MW .. capFile, tostring(bool))
+						notify("Auto Capture: " .. tostring(_G[capVar]))
+					end)
+
+					local initialPat = (readfile(DHV2MW .. patFile) == "true")
+					_G[patVar] = initialPat
+					section:addToggle("Unclaim right after capturing", initialPat, function(bool)
+						_G[patVar] = bool
+						writefile(DHV2MW .. patFile, tostring(bool))
+						notify("Unclaim Right After Capturing: " .. tostring(_G[patVar]))
+					end)
+
+					local initialLast = (readfile(DHV2MW .. lastFile) == "true")
+					_G[lastVar] = initialLast
+					section:addToggle("Unclaim when reached limit", initialLast, function(bool)
+						_G[lastVar] = bool
+						writefile(DHV2MW .. lastFile, tostring(bool))
+						notify("Unclaim when reached limit: " .. tostring(_G[lastVar]))
+					end)
+
+
+				end
+				local AllCapturablePoints = {}
+				local seenBaseTypes = {}
 				for i,v in pairs(workspace.MilitaryMap.Object:GetChildren()) do
 					for i,v1 in pairs(v:GetChildren()) do
-						if v1.Name == RocketsTarget and RocketLockOn == false then
-							local RocketLockOn = true
-							local args = {[1] = {[1] = {["capturePoint"] = v1},[2] = "U"}}
-							game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
-							task.wait(.9)
+						local baseType = v1:GetAttribute("baseType")
+						if baseType and not seenBaseTypes[baseType] then
+							table.insert(AllCapturablePoints, baseType)
+							seenBaseTypes[baseType] = true
 						end
 					end
 				end
+				for i,v in pairs(game:GetService("ReplicatedStorage").shared.model:GetChildren()) do
+					local baseType = v:GetAttribute("baseType")
+					if v:FindFirstChild("PromptHolder") and v.PromptHolder:FindFirstChild("ProximityPrompt") and v.PromptHolder.ProximityPrompt.ActionText == "Unclaim base" and baseType and not seenBaseTypes[baseType] then
+						table.insert(AllCapturablePoints, baseType)
+						seenBaseTypes[baseType] = true
+					end
+				end
+				for i,v in pairs(game:GetService("ReplicatedStorage").shared.model.EventsVFX.MeteorShower:GetChildren()) do
+					local baseType = v:GetAttribute("baseType")
+					if v:FindFirstChild("PromptHolder") and v.PromptHolder:FindFirstChild("ProximityPrompt") and v.PromptHolder.ProximityPrompt.ActionText == "Unclaim base" and baseType and not seenBaseTypes[baseType] and v.ModelStreamingMode == Enum.ModelStreamingMode.Persistent then
+						table.insert(AllCapturablePoints, baseType)
+						seenBaseTypes[baseType] = true
+					end
+				end
+				local AllCapturablePointsRocket = {}
+				for i,v in pairs(workspace.MilitaryMap.Object:GetChildren()) do
+					for i,v1 in pairs(v:GetChildren()) do
+						table.insert(AllCapturablePointsRocket, v1.Name)
+					end
+				end
+				for i,v in pairs(game:GetService("ReplicatedStorage").shared.model:GetChildren()) do
+					if v:FindFirstChild("PromptHolder") and v.PromptHolder:FindFirstChild("ProximityPrompt") and v.PromptHolder.ProximityPrompt.ActionText == "Unclaim base" then
+						table.insert(AllCapturablePointsRocket, v.Name)
+					end
+				end
+				for i,v in pairs(game:GetService("ReplicatedStorage").shared.model.EventsVFX.MeteorShower:GetChildren()) do
+					if v:FindFirstChild("PromptHolder") and v.PromptHolder:FindFirstChild("ProximityPrompt") and v.PromptHolder.ProximityPrompt.ActionText == "Unclaim base" and v.ModelStreamingMode == Enum.ModelStreamingMode.Persistent then
+						table.insert(AllCapturablePointsRocket, v.Name)
+					end
+				end
+
+				RocketsTarget = readfile(DHV2MW .. "/RocketsTarget.txt")
+				section1:addDropdown("Targetting: " .. readfile(DHV2MW .. "/RocketsTarget.txt"),AllCapturablePointsRocket,function(RocketsTarget1)
+					print("Rockets Targetting: " .. RocketsTarget1)
+					notify("Rockets Targetting: " .. RocketsTarget1)
+					RocketsTarget = RocketsTarget1
+					writefile(DHV2MW .. "/RocketsTarget.txt",RocketsTarget)
+				end)
+
+				if readfile(DHV2MW .. "/AutoRocket.txt") == "true" then
+					AutoRocket = true
+					section1:addToggle("Enabled",true,function(bool)
+						AutoRocket = bool
+						if AutoRocket then
+							writefile(DHV2MW .. "/AutoRocket.txt","true")
+						else
+							writefile(DHV2MW .. "/AutoRocket.txt","false")
+						end
+					end)
+				else
+					AutoRocket = false
+					section1:addToggle("Enabled",false,function(bool)
+						AutoRocket = bool
+						if AutoRocket then
+							writefile(DHV2MW .. "/AutoRocket.txt","true")
+						else
+							writefile(DHV2MW .. "/AutoRocket.txt","false")
+						end
+					end)
+				end
+
 				local RocketLockOn = false
-			end
-		end
-	end)
-
-	local priorities = {"First", "Second", "Third", "Forth", "Fifth"}
-	local armySections = {[1] = section3,[2] = section5,[3] = section7,[4] = section9}
-	for a = 1, 4 do
-		local section = armySections[a]
-		if not section then continue end
-
-		for p = 1, 5 do
-			local fileName = string.format("/A%dP%d.txt", a, p)
-			local filePath = DHV2MW .. fileName
-			local varName = string.format("A%dP%d", a, p) 
-			
-			local currentSetting = readfile(filePath)
-			_G[varName] = currentSetting
-			
-			local dropdownTitle = priorities[p] .. " Priority: " .. currentSetting
-			
-			section:addDropdown(dropdownTitle, AllCapturablePoints, function(selectedValue)
-				print("Selected: " .. selectedValue)
-				notify("Selected: " .. selectedValue)
-				
-				_G[varName] = selectedValue
-				writefile(filePath, selectedValue)
-			end)
-		end
-	end
-
-	local remoteEvent = game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent
-	spawn(function()
-		while task.wait(.5) do
-			if _G.Army1AutoCapture then
-				pcall(function()
-					local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
-					local current, max = string.match(text, "(%d+)/(%d+)")
-					if current and max and tonumber(current) ~= tonumber(max) then
-						local capturedThisTick = false
-						for p = 1, 4 do
-							if capturedThisTick or not _G.Army1AutoCapture then break end
-							local targetPriority = _G["A1P" .. p]
-							for _, v in pairs(workspace.MilitaryMap.Object:GetChildren()) do
-								if capturedThisTick or not _G.Army1AutoCapture then break end
-								for _, v1 in pairs(v:GetChildren()) do
-									if v1:GetAttribute("baseType") == targetPriority then
-										for _, v2 in pairs(v1.PromptHolder:GetChildren()) do
-											if v2.ActionText == "Unclaim base" and v2.Enabled == false then
-												local args = {[1] = {[1] = {["armyIndex"] = 1, ["capturePoint"] = v1}, [2] = "T"}}
-												remoteEvent:FireServer(unpack(args))
-												notify("Army 1 Priority " .. p .. " | Capturing: " .. v1.Name)
-												print("【Army 1 Priority " .. p .. "】Capturing: " .. v1.Name)
-												capturedThisTick = true 
-												repeat task.wait(1) until v2.ActionText == "Unclaim base" and v2.Enabled == true
-												local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
-												local current, max = string.match(text, "(%d+)/(%d+)")
-												if _G.Army1KeepLastBase then
-													if (current and max and tonumber(max) - tonumber(current) == 1) or (current and max and tonumber(current) == tonumber(max)) then
-														local patrolArgs = {[1] = {[1] = v1, [2] = "\164"}}
-														remoteEvent:FireServer(unpack(patrolArgs))
-													end
-												end
-												if _G.Army1Patrol then
-													local patrolArgs = {[1] = {[1] = v1, [2] = "\164"}}
-													remoteEvent:FireServer(unpack(patrolArgs))
-												end
-												break
-											end
-										end
+				spawn(function()
+					while task.wait(39) do
+						if AutoRocket and RocketsTarget ~= " " then
+							for i,v in pairs(workspace.MilitaryMap.Object:GetChildren()) do
+								for i,v1 in pairs(v:GetChildren()) do
+									if v1.Name == RocketsTarget and RocketLockOn == false then
+										local RocketLockOn = true
+										local args = {[1] = {[1] = {["capturePoint"] = v1},[2] = "U"}}
+										game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
+										task.wait(.9)
 									end
-									if capturedThisTick or not _G.Army1AutoCapture then break end
 								end
 							end
+							local RocketLockOn = false
 						end
 					end
 				end)
-			end
-		end
-	end)
 
-	spawn(function()
-		while task.wait(.5) do
-			if _G.Army2AutoCapture then
-				pcall(function()
-					local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
-					local current, max = string.match(text, "(%d+)/(%d+)")
-					if current and max and tonumber(current) ~= tonumber(max) then
-						local capturedThisTick = false
-						for p = 1, 4 do
-							if capturedThisTick or not _G.Army2AutoCapture then break end
-							local targetPriority = _G["A2P" .. p]
-							for _, v in pairs(workspace.MilitaryMap.Object:GetChildren()) do
-								if capturedThisTick or not _G.Army2AutoCapture then break end
-								for _, v1 in pairs(v:GetChildren()) do
-									if v1:GetAttribute("baseType") == targetPriority then
-										for _, v2 in pairs(v1.PromptHolder:GetChildren()) do
-											if v2.ActionText == "Unclaim base" and v2.Enabled == false then
-												local args = {[1] = {[1] = {["armyIndex"] = 2, ["capturePoint"] = v1}, [2] = "T"}}
-												remoteEvent:FireServer(unpack(args))
-												notify("Army 2 Priority " .. p .. " | Capturing: " .. v1.Name)
-												print("【Army 2 Priority " .. p .. "】Capturing: " .. v1.Name)
-												capturedThisTick = true 
-												repeat task.wait(1) until v2.ActionText == "Unclaim base" and v2.Enabled == true
-												local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
-												local current, max = string.match(text, "(%d+)/(%d+)")
-												if _G.Army2KeepLastBase then
-													if (current and max and tonumber(max) - tonumber(current) == 1) or (current and max and tonumber(current) == tonumber(max)) then
-														local patrolArgs = {[1] = {[1] = v1, [2] = "\164"}}
-														remoteEvent:FireServer(unpack(patrolArgs))
+				local priorities = {"First", "Second", "Third", "Forth", "Fifth"}
+				local armySections = {[1] = section3,[2] = section5,[3] = section7,[4] = section9}
+				for a = 1, 4 do
+					local section = armySections[a]
+					if not section then continue end
+
+					for p = 1, 5 do
+						local fileName = string.format("/A%dP%d.txt", a, p)
+						local filePath = DHV2MW .. fileName
+						local varName = string.format("A%dP%d", a, p) 
+						
+						local currentSetting = readfile(filePath)
+						_G[varName] = currentSetting
+						
+						local dropdownTitle = priorities[p] .. " Priority: " .. currentSetting
+						
+						section:addDropdown(dropdownTitle, AllCapturablePoints, function(selectedValue)
+							print("Selected: " .. selectedValue)
+							notify("Selected: " .. selectedValue)
+							
+							_G[varName] = selectedValue
+							writefile(filePath, selectedValue)
+						end)
+					end
+				end
+
+				local remoteEvent = game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent
+				spawn(function()
+					while task.wait(.5) do
+						if _G.Army1AutoCapture then
+							pcall(function()
+								local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
+								local current, max = string.match(text, "(%d+)/(%d+)")
+								if current and max and tonumber(current) ~= tonumber(max) then
+									local capturedThisTick = false
+									for p = 1, 4 do
+										if capturedThisTick or not _G.Army1AutoCapture then break end
+										local targetPriority = _G["A1P" .. p]
+										for _, v in pairs(workspace.MilitaryMap.Object:GetChildren()) do
+											if capturedThisTick or not _G.Army1AutoCapture then break end
+											for _, v1 in pairs(v:GetChildren()) do
+												if v1:GetAttribute("baseType") == targetPriority then
+													for _, v2 in pairs(v1.PromptHolder:GetChildren()) do
+														if v2.ActionText == "Unclaim base" and v2.Enabled == false then
+															local args = {[1] = {[1] = {["armyIndex"] = 1, ["capturePoint"] = v1}, [2] = "t"}}
+															remoteEvent:FireServer(unpack(args))
+															notify("Army 1 Priority " .. p .. " | Capturing: " .. v1.Name)
+															print("【Army 1 Priority " .. p .. "】Capturing: " .. v1.Name)
+															capturedThisTick = true 
+															repeat task.wait(1) until v2.ActionText == "Unclaim base" and v2.Enabled == true
+															local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
+															local current, max = string.match(text, "(%d+)/(%d+)")
+															if _G.Army1KeepLastBase then
+																if (current and max and tonumber(max) - tonumber(current) == 1) or (current and max and tonumber(current) == tonumber(max)) then
+																	local patrolArgs = {[1] = {[1] = v1, [2] = "\164"}}
+																	remoteEvent:FireServer(unpack(patrolArgs))
+																end
+															end
+															if _G.Army1Patrol then
+																local patrolArgs = {[1] = {[1] = v1, [2] = "\164"}}
+																remoteEvent:FireServer(unpack(patrolArgs))
+															end
+															break
+														end
 													end
 												end
-												if _G.Army2Patrol then
-													local patrolArgs = {[1] = {[1] = v1, [2] = "\164"}}
-													remoteEvent:FireServer(unpack(patrolArgs))
-												end
-												break
+												if capturedThisTick or not _G.Army1AutoCapture then break end
 											end
 										end
 									end
-									if capturedThisTick or not _G.Army2AutoCapture then break end
 								end
-							end
+							end)
 						end
 					end
 				end)
-			end
-		end
-	end)
 
-	spawn(function()
-		while task.wait(.5) do
-			if _G.Army3AutoCapture then
-				pcall(function()
-					local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
-					local current, max = string.match(text, "(%d+)/(%d+)")
-					if current and max and tonumber(current) ~= tonumber(max) then
-						local capturedThisTick = false
-						for p = 1, 4 do
-							if capturedThisTick or not _G.Army3AutoCapture then break end
-							local targetPriority = _G["A3P" .. p]
-							for _, v in pairs(workspace.MilitaryMap.Object:GetChildren()) do
-								if capturedThisTick or not _G.Army3AutoCapture then break end
-								for _, v1 in pairs(v:GetChildren()) do
-									if v1:GetAttribute("baseType") == targetPriority then
-										for _, v2 in pairs(v1.PromptHolder:GetChildren()) do
-											if v2.ActionText == "Unclaim base" and v2.Enabled == false then
-												local args = {[1] = {[1] = {["armyIndex"] = 3, ["capturePoint"] = v1}, [2] = "T"}}
-												remoteEvent:FireServer(unpack(args))
-												notify("Army 3 Priority " .. p .. " | Capturing: " .. v1.Name)
-												print("【Army 3 Priority " .. p .. "】Capturing: " .. v1.Name)
-												capturedThisTick = true 
-												repeat task.wait(1) until v2.ActionText == "Unclaim base" and v2.Enabled == true
-												local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
-												local current, max = string.match(text, "(%d+)/(%d+)")
-												if _G.Army3KeepLastBase then
-													if (current and max and tonumber(max) - tonumber(current) == 1) or (current and max and tonumber(current) == tonumber(max)) then
-														local patrolArgs = {[1] = {[1] = v1, [2] = "\164"}}
-														remoteEvent:FireServer(unpack(patrolArgs))
+				spawn(function()
+					while task.wait(.5) do
+						if _G.Army2AutoCapture then
+							pcall(function()
+								local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
+								local current, max = string.match(text, "(%d+)/(%d+)")
+								if current and max and tonumber(current) ~= tonumber(max) then
+									local capturedThisTick = false
+									for p = 1, 4 do
+										if capturedThisTick or not _G.Army2AutoCapture then break end
+										local targetPriority = _G["A2P" .. p]
+										for _, v in pairs(workspace.MilitaryMap.Object:GetChildren()) do
+											if capturedThisTick or not _G.Army2AutoCapture then break end
+											for _, v1 in pairs(v:GetChildren()) do
+												if v1:GetAttribute("baseType") == targetPriority then
+													for _, v2 in pairs(v1.PromptHolder:GetChildren()) do
+														if v2.ActionText == "Unclaim base" and v2.Enabled == false then
+															local args = {[1] = {[1] = {["armyIndex"] = 2, ["capturePoint"] = v1}, [2] = "t"}}
+															remoteEvent:FireServer(unpack(args))
+															notify("Army 2 Priority " .. p .. " | Capturing: " .. v1.Name)
+															print("【Army 2 Priority " .. p .. "】Capturing: " .. v1.Name)
+															capturedThisTick = true 
+															repeat task.wait(1) until v2.ActionText == "Unclaim base" and v2.Enabled == true
+															local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
+															local current, max = string.match(text, "(%d+)/(%d+)")
+															if _G.Army2KeepLastBase then
+																if (current and max and tonumber(max) - tonumber(current) == 1) or (current and max and tonumber(current) == tonumber(max)) then
+																	local patrolArgs = {[1] = {[1] = v1, [2] = "\164"}}
+																	remoteEvent:FireServer(unpack(patrolArgs))
+																end
+															end
+															if _G.Army2Patrol then
+																local patrolArgs = {[1] = {[1] = v1, [2] = "\164"}}
+																remoteEvent:FireServer(unpack(patrolArgs))
+															end
+															break
+														end
 													end
 												end
-												if _G.Army3Patrol then
-													local patrolArgs = {[1] = {[1] = v1, [2] = "\164"}}
-													remoteEvent:FireServer(unpack(patrolArgs))
-												end
-												break
+												if capturedThisTick or not _G.Army2AutoCapture then break end
 											end
 										end
 									end
-									if capturedThisTick or not _G.Army3AutoCapture then break end
 								end
-							end
+							end)
 						end
 					end
 				end)
-			end
-		end
-	end)
 
-	spawn(function()
-		while task.wait(.5) do
-			if _G.Army4AutoCapture then
-				pcall(function()
-					local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
-					local current, max = string.match(text, "(%d+)/(%d+)")
-					if current and max and tonumber(current) ~= tonumber(max) then
-						local capturedThisTick = false
-						for p = 1, 4 do
-							if capturedThisTick or not _G.Army4AutoCapture then break end
-							local targetPriority = _G["A4P" .. p]
-							for _, v in pairs(workspace.MilitaryMap.Object:GetChildren()) do
-								if capturedThisTick or not _G.Army4AutoCapture then break end
-								for _, v1 in pairs(v:GetChildren()) do
-									if v1:GetAttribute("baseType") == targetPriority then
-										for _, v2 in pairs(v1.PromptHolder:GetChildren()) do
-											if v2.ActionText == "Unclaim base" and v2.Enabled == false then
-												local args = {[1] = {[1] = {["armyIndex"] = 4, ["capturePoint"] = v1}, [2] = "T"}}
-												remoteEvent:FireServer(unpack(args))
-												notify("Army 4 Priority " .. p .. " | Capturing: " .. v1.Name)
-												print("【Army 4 Priority " .. p .. "】Capturing: " .. v1.Name)
-												capturedThisTick = true 
-												repeat task.wait(1) until v2.ActionText == "Unclaim base" and v2.Enabled == true
-												local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
-												local current, max = string.match(text, "(%d+)/(%d+)")
-												if _G.Army4KeepLastBase then
-													if (current and max and tonumber(max) - tonumber(current) == 1) or (current and max and tonumber(current) == tonumber(max)) then
-														local patrolArgs = {[1] = {[1] = v1, [2] = "\164"}}
-														remoteEvent:FireServer(unpack(patrolArgs))
+				spawn(function()
+					while task.wait(.5) do
+						if _G.Army3AutoCapture then
+							pcall(function()
+								local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
+								local current, max = string.match(text, "(%d+)/(%d+)")
+								if current and max and tonumber(current) ~= tonumber(max) then
+									local capturedThisTick = false
+									for p = 1, 4 do
+										if capturedThisTick or not _G.Army3AutoCapture then break end
+										local targetPriority = _G["A3P" .. p]
+										for _, v in pairs(workspace.MilitaryMap.Object:GetChildren()) do
+											if capturedThisTick or not _G.Army3AutoCapture then break end
+											for _, v1 in pairs(v:GetChildren()) do
+												if v1:GetAttribute("baseType") == targetPriority then
+													for _, v2 in pairs(v1.PromptHolder:GetChildren()) do
+														if v2.ActionText == "Unclaim base" and v2.Enabled == false then
+															local args = {[1] = {[1] = {["armyIndex"] = 3, ["capturePoint"] = v1}, [2] = "t"}}
+															remoteEvent:FireServer(unpack(args))
+															notify("Army 3 Priority " .. p .. " | Capturing: " .. v1.Name)
+															print("【Army 3 Priority " .. p .. "】Capturing: " .. v1.Name)
+															capturedThisTick = true 
+															repeat task.wait(1) until v2.ActionText == "Unclaim base" and v2.Enabled == true
+															local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
+															local current, max = string.match(text, "(%d+)/(%d+)")
+															if _G.Army3KeepLastBase then
+																if (current and max and tonumber(max) - tonumber(current) == 1) or (current and max and tonumber(current) == tonumber(max)) then
+																	local patrolArgs = {[1] = {[1] = v1, [2] = "\164"}}
+																	remoteEvent:FireServer(unpack(patrolArgs))
+																end
+															end
+															if _G.Army3Patrol then
+																local patrolArgs = {[1] = {[1] = v1, [2] = "\164"}}
+																remoteEvent:FireServer(unpack(patrolArgs))
+															end
+															break
+														end
 													end
 												end
-												if _G.Army4Patrol then
-													local patrolArgs = {[1] = {[1] = v1, [2] = "\164"}}
-													remoteEvent:FireServer(unpack(patrolArgs))
-												end
-												break
+												if capturedThisTick or not _G.Army3AutoCapture then break end
 											end
 										end
 									end
-									if capturedThisTick or not _G.Army4AutoCapture then break end
 								end
-							end
+							end)
 						end
 					end
 				end)
+
+				spawn(function()
+					while task.wait(.5) do
+						if _G.Army4AutoCapture then
+							pcall(function()
+								local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
+								local current, max = string.match(text, "(%d+)/(%d+)")
+								if current and max and tonumber(current) ~= tonumber(max) then
+									local capturedThisTick = false
+									for p = 1, 4 do
+										if capturedThisTick or not _G.Army4AutoCapture then break end
+										local targetPriority = _G["A4P" .. p]
+										for _, v in pairs(workspace.MilitaryMap.Object:GetChildren()) do
+											if capturedThisTick or not _G.Army4AutoCapture then break end
+											for _, v1 in pairs(v:GetChildren()) do
+												if v1:GetAttribute("baseType") == targetPriority then
+													for _, v2 in pairs(v1.PromptHolder:GetChildren()) do
+														if v2.ActionText == "Unclaim base" and v2.Enabled == false then
+															local args = {[1] = {[1] = {["armyIndex"] = 4, ["capturePoint"] = v1}, [2] = "t"}}
+															remoteEvent:FireServer(unpack(args))
+															notify("Army 4 Priority " .. p .. " | Capturing: " .. v1.Name)
+															print("【Army 4 Priority " .. p .. "】Capturing: " .. v1.Name)
+															capturedThisTick = true 
+															repeat task.wait(1) until v2.ActionText == "Unclaim base" and v2.Enabled == true
+															local text = player.PlayerGui.MainUI.HUD.DownUI.Conquered.Quantity.Text
+															local current, max = string.match(text, "(%d+)/(%d+)")
+															if _G.Army4KeepLastBase then
+																if (current and max and tonumber(max) - tonumber(current) == 1) or (current and max and tonumber(current) == tonumber(max)) then
+																	local patrolArgs = {[1] = {[1] = v1, [2] = "\164"}}
+																	remoteEvent:FireServer(unpack(patrolArgs))
+																end
+															end
+															if _G.Army4Patrol then
+																local patrolArgs = {[1] = {[1] = v1, [2] = "\164"}}
+																remoteEvent:FireServer(unpack(patrolArgs))
+															end
+															break
+														end
+													end
+												end
+												if capturedThisTick or not _G.Army4AutoCapture then break end
+											end
+										end
+									end
+								end
+							end)
+						end
+					end
+				end)
+				for i,v in pairs(player.PlayerGui:GetChildren()) do
+					if v.Name == "ScreenGui" then
+						v:Destroy()
+					end
+				end
+				task.wait(.2)
+				UnlockedPage5 = true
+				NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
+				NoobieDoge:SelectPage(NoobieDoge.pages[5], true)
 			end
+			TextButton.MouseButton1Click:connect(UnlockYES)
+			TextButtonText.MouseButton1Click:connect(UnlockYES)
 		end
 	end)
+
 
 	-- sixth page
 	local page6 = NoobieDoge:addPage("War Pass", 136388769289535)
 	local section1 = page6:addSection("Free")
 	local section2 = page6:addSection("War Pass")
 	local section3 = page6:addSection("Auto Farm")
-
-	if readfile(DHV2MW .. "/AutoClaimWarPassRewards.txt") == "true" then
-		AutoClaimWarPassRewards = true
-		section1:addToggle("Auto Claim War Pass Rewards",true,function(bool)
-			AutoClaimWarPassRewards = bool
-			if AutoClaimWarPassRewards then
-				writefile(DHV2MW .. "/AutoClaimWarPassRewards.txt","true")
-			else
-				writefile(DHV2MW .. "/AutoClaimWarPassRewards.txt","false")
-			end
-		end)
-	else
-		AutoClaimWarPassRewards = false
-		section1:addToggle("Auto Claim War Pass Rewards",false,function(bool)
-			AutoClaimWarPassRewards = bool
-			if AutoClaimWarPassRewards then
-				writefile(DHV2MW .. "/AutoClaimWarPassRewards.txt","true")
-			else
-				writefile(DHV2MW .. "/AutoClaimWarPassRewards.txt","false")
-			end
-		end)
-	end
-
-	section2:addButton("idk man i dont buy passes on my acc",function()
-		task.wait()
-		notify("can anyone lend me ur acc if u got the pass")
-	end)
+	local sectionW = page6:addSection("Unlock ncxyzero_bridgenet2-fork@1.1.5 Functions")
 
 	if readfile(DHV2MW .. "/AutoCollectWarPassPoints.txt") == "true" then
 		AutoCollectWarPassPoints = true
@@ -2655,23 +3305,7 @@ local function MiniWar()
 			end
 		end)
 	end
-
-	spawn(function()
-		while task.wait(2) do
-			if AutoClaimWarPassRewards then
-				for i,v in pairs(player.PlayerGui.MainUI.Fullscreen.SeasonPassUI.WarPass.ScrollingFrame:GetChildren()) do
-					if v.Name ~= "Frame" and v.Name ~= "UIListLayout" and tonumber(v.Name) < tonumber(player.PlayerGui.MainUI.Fullscreen.SeasonPassUI.WarPass.Top.Tier.ResetTimer.Text) then
-						if v.ItemTemplate.Status.Locked.Visible == false and v.ItemTemplate.Status.ClaimedIcon.Visible == false then
-							print("Claimed War Pass Level: ".. tostring(v.Name))
-							local args = {[1] = {[1] = {["stage"] = tonumber(v.Name),["track"] = "Free"},[2] = "@"}}
-							game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
-						end
-					end
-				end
-			end
-		end
-	end)
-
+	
 	spawn(function()
 		while task.wait(.5) do
 			if AutoCollectWarPassPoints then
@@ -2687,10 +3321,198 @@ local function MiniWar()
 		end
 	end)
 
+	local UnlockedPage6 = false
+	sectionW:addButton("Unlock ncxyzero_bridgenet2-fork@1.1.5 Functions",function()
+		if UnlockedPage6 == true then
+			notify("Already unlocked")
+		else
+			local player = game.Players.LocalPlayer
+			local ScreenGuiK = Instance.new("ScreenGui")
+			local Frame = Instance.new("ImageLabel")
+			local TextLabelFrame = Instance.new("ImageLabel")
+			local TextLabel = Instance.new("TextLabel")
+			local TextLabel1 = Instance.new("TextLabel")
+			local TextButton = Instance.new("ImageButton")
+			local TextButtonText = Instance.new("TextButton")
+			local TextButton_2 = Instance.new("ImageButton")
+			local TextButton_2Text = Instance.new("TextButton")
+
+			ScreenGuiK.Parent = player:WaitForChild("PlayerGui")
+
+			Frame.Parent = ScreenGuiK
+			Frame.Name = "Main"
+			Frame.BackgroundTransparency = 1
+			Frame.Position = UDim2.new(0.1, 0, 0.05, 0)
+			Frame.Size = UDim2.new(0, 220, 0, 220)
+			Frame.Image = "rbxassetid://4641149554"
+			Frame.ImageColor3 = Color3.fromRGB(24, 24, 24)
+			Frame.ScaleType = Enum.ScaleType.Slice
+			Frame.SliceCenter = Rect.new(4, 4, 296, 296)
+			Frame.Active = true
+			Frame.Draggable = true
+
+			TextLabelFrame.Parent = Frame
+			TextLabelFrame.Name = "TopBar"
+			TextLabelFrame.BackgroundTransparency = 1
+			TextLabelFrame.ClipsDescendants = true
+			TextLabelFrame.Size = UDim2.new(1, 0, 0, 38)
+			TextLabelFrame.ZIndex = 2
+			TextLabelFrame.Image = "rbxassetid://4595286933"
+			TextLabelFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
+			TextLabelFrame.ScaleType = Enum.ScaleType.Slice
+			TextLabelFrame.SliceCenter = Rect.new(4, 4, 296, 296)
+
+			TextLabel.Parent = TextLabelFrame
+			TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+			TextLabel.Position = UDim2.new(0, 0, -0.3, 0)
+			TextLabel.BackgroundTransparency = 1
+			TextLabel.Size = UDim2.new(0, 220, 0, 60)
+			TextLabel.ZIndex = 3
+			TextLabel.Font = Enum.Font.TitilliumWeb
+			TextLabel.Text = "WARNING"
+			TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+			TextLabel.TextScaled = false
+			TextLabel.TextSize = 40.000
+			TextLabel.TextWrapped = true
+
+			TextLabel1.Parent = Frame
+			TextLabel1.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+			TextLabel1.Position = UDim2.new(0, 0, 0.2, 0)
+			TextLabel1.BackgroundTransparency = 1
+			TextLabel1.Size = UDim2.new(0, 220, 0, 100)
+			TextLabel1.ZIndex = 3
+			TextLabel1.Font = Enum.Font.TitilliumWeb
+			TextLabel1.Text = "ncxyzero_bridgenet2-fork@1.1.5 functions are highly unstable, use at your own risk.\n (I personally do not recommend activating them)"
+			TextLabel1.TextColor3 = Color3.fromRGB(255, 255, 255)
+			TextLabel1.TextScaled = true
+			TextLabel1.TextSize = 40.000
+			TextLabel1.TextWrapped = true
+
+			TextButton.Parent = Frame
+			TextButton.Name = "Button"
+			TextButton.BackgroundTransparency = 1
+			TextButton.Position = UDim2.new(0.55, 0, 0.72, 0)
+			TextButton.BorderSizePixel = 0
+			TextButton.Size = UDim2.new(0, 82.5, 0, 45)
+			TextButton.ZIndex = 2
+			TextButton.Image = "rbxassetid://5028857472"
+			TextButton.ImageColor3 = Color3.fromRGB(41, 41, 41)
+			TextButton.ScaleType = Enum.ScaleType.Slice
+			TextButton.SliceCenter = Rect.new(2, 2, 298, 298)
+
+			TextButtonText.Parent = TextButton
+			TextButtonText.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+			TextButtonText.BackgroundTransparency = 1
+			TextButtonText.ZIndex = 3
+			TextButtonText.Size = UDim2.new(0, 82.5, 0, 45)
+			TextButtonText.Font = Enum.Font.TitilliumWeb
+			TextButtonText.Text = "I know what I'm doing"
+			TextButtonText.TextColor3 = Color3.fromRGB(200, 200, 200)
+			TextButtonText.TextScaled = true
+			TextButtonText.TextSize = 40.000
+			TextButtonText.TextWrapped = true
+
+			TextButton_2.Parent = Frame
+			TextButton_2.Name = "Button"
+			TextButton_2.BackgroundTransparency = 1
+			TextButton_2.Position = UDim2.new(0.075, 0, 0.72, 0)
+			TextButton_2.BorderSizePixel = 0
+			TextButton_2.Size = UDim2.new(0, 82.5, 0, 45)
+			TextButton_2.ZIndex = 2
+			TextButton_2.Image = "rbxassetid://5028857472"
+			TextButton_2.ImageColor3 = Color3.fromRGB(41, 41, 41)
+			TextButton_2.ScaleType = Enum.ScaleType.Slice
+			TextButton_2.SliceCenter = Rect.new(2, 2, 298, 298)
+
+			TextButton_2Text.Parent = TextButton_2
+			TextButton_2Text.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+			TextButton_2Text.BackgroundTransparency = 1
+			TextButton_2Text.ZIndex = 3
+			TextButton_2Text.Size = UDim2.new(0, 82.5, 0, 45)
+			TextButton_2Text.Font = Enum.Font.TitilliumWeb
+			TextButton_2Text.Text = "Close"
+			TextButton_2Text.TextColor3 = Color3.fromRGB(200, 200, 200)
+			TextButton_2Text.TextScaled = true
+			TextButton_2Text.TextSize = 40.000
+			TextButton_2Text.TextWrapped = true
+
+			function UnlockNO()
+				for i,v in pairs(player.PlayerGui:GetChildren()) do
+					if v.Name == "ScreenGui" then
+						v:Destroy()
+					end
+				end
+			end
+			TextButton_2.MouseButton1Click:connect(UnlockNO)	
+			TextButton_2Text.MouseButton1Click:connect(UnlockNO)
+
+			function UnlockYES()
+				game:GetService("StarterGui"):SetCore("SendNotification",{
+					Title = "I warned you",
+					Text = "Don't cry when you screwed up",
+				})
+				if readfile(DHV2MW .. "/AutoClaimWarPassRewards.txt") == "true" then
+					AutoClaimWarPassRewards = true
+					section1:addToggle("Auto Claim War Pass Rewards",true,function(bool)
+						AutoClaimWarPassRewards = bool
+						if AutoClaimWarPassRewards then
+							writefile(DHV2MW .. "/AutoClaimWarPassRewards.txt","true")
+						else
+							writefile(DHV2MW .. "/AutoClaimWarPassRewards.txt","false")
+						end
+					end)
+				else
+					AutoClaimWarPassRewards = false
+					section1:addToggle("Auto Claim War Pass Rewards",false,function(bool)
+						AutoClaimWarPassRewards = bool
+						if AutoClaimWarPassRewards then
+							writefile(DHV2MW .. "/AutoClaimWarPassRewards.txt","true")
+						else
+							writefile(DHV2MW .. "/AutoClaimWarPassRewards.txt","false")
+						end
+					end)
+				end
+
+				section2:addButton("idk man i dont buy passes on my acc",function()
+					task.wait()
+					notify("can anyone lend me ur acc if u got the pass")
+				end)
+
+				spawn(function()
+					while task.wait(2) do
+						if AutoClaimWarPassRewards then
+							for i,v in pairs(player.PlayerGui.MainUI.Fullscreen.SeasonPassUI.WarPass.ScrollingFrame:GetChildren()) do
+								if v.Name ~= "Frame" and v.Name ~= "UIListLayout" and tonumber(v.Name) < tonumber(player.PlayerGui.MainUI.Fullscreen.SeasonPassUI.WarPass.Top.Tier.ResetTimer.Text) then
+									if v.ItemTemplate.Status.Locked.Visible == false and v.ItemTemplate.Status.ClaimedIcon.Visible == false then
+										print("Claimed War Pass Level: ".. tostring(v.Name))
+										local args = {[1] = {[1] = {["stage"] = tonumber(v.Name),["track"] = "Free"},[2] = "B"}}
+										game:GetService("ReplicatedStorage"):FindFirstChild("ncxyzero_bridgenet2-fork@1.1.5").dataRemoteEvent:FireServer(unpack(args))
+									end
+								end
+							end
+						end
+					end
+				end)
+				for i,v in pairs(player.PlayerGui:GetChildren()) do
+					if v.Name == "ScreenGui" then
+						v:Destroy()
+					end
+				end
+				task.wait(.2)
+				UnlockedPage6 = true
+				NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
+				NoobieDoge:SelectPage(NoobieDoge.pages[6], true)
+			end
+			TextButton.MouseButton1Click:connect(UnlockYES)
+			TextButtonText.MouseButton1Click:connect(UnlockYES)
+		end
+	end)
+
 	-- seventh page
 	local page7 = NoobieDoge:addPage("Events", 136388769289535)
 	local section1 = page7:addSection("Godzilla")
 	local section2 = page7:addSection("Alien Event")
+	local sectionW = page7:addSection("Unlock ncxyzero_bridgenet2-fork@1.1.5 Functions")
 
 	if readfile(DHV2MWEvents .. "/AutoSellAlien.txt") == "true" then
 		AutoSellAlien = true
@@ -2729,12 +3551,162 @@ local function MiniWar()
 		end
 	end)
 
-	-- seventh page
-	local page7 = NoobieDoge:addPage("Teleports", 136388769289535)
-	local section1 = page7:addSection("Player Bases")
-	local section2 = page7:addSection("Misc")
-	local section3 = page7:addSection("Bases")
-	local section4 = page7:addSection("Others")
+	local UnlockedPage7 = false
+	sectionW:addButton("Unlock ncxyzero_bridgenet2-fork@1.1.5 Functions",function()
+		if UnlockedPage7 == true then
+			notify("Already unlocked")
+		else
+			local player = game.Players.LocalPlayer
+			local ScreenGuiK = Instance.new("ScreenGui")
+			local Frame = Instance.new("ImageLabel")
+			local TextLabelFrame = Instance.new("ImageLabel")
+			local TextLabel = Instance.new("TextLabel")
+			local TextLabel1 = Instance.new("TextLabel")
+			local TextButton = Instance.new("ImageButton")
+			local TextButtonText = Instance.new("TextButton")
+			local TextButton_2 = Instance.new("ImageButton")
+			local TextButton_2Text = Instance.new("TextButton")
+
+			ScreenGuiK.Parent = player:WaitForChild("PlayerGui")
+
+			Frame.Parent = ScreenGuiK
+			Frame.Name = "Main"
+			Frame.BackgroundTransparency = 1
+			Frame.Position = UDim2.new(0.1, 0, 0.05, 0)
+			Frame.Size = UDim2.new(0, 220, 0, 220)
+			Frame.Image = "rbxassetid://4641149554"
+			Frame.ImageColor3 = Color3.fromRGB(24, 24, 24)
+			Frame.ScaleType = Enum.ScaleType.Slice
+			Frame.SliceCenter = Rect.new(4, 4, 296, 296)
+			Frame.Active = true
+			Frame.Draggable = true
+
+			TextLabelFrame.Parent = Frame
+			TextLabelFrame.Name = "TopBar"
+			TextLabelFrame.BackgroundTransparency = 1
+			TextLabelFrame.ClipsDescendants = true
+			TextLabelFrame.Size = UDim2.new(1, 0, 0, 38)
+			TextLabelFrame.ZIndex = 2
+			TextLabelFrame.Image = "rbxassetid://4595286933"
+			TextLabelFrame.ImageColor3 = Color3.fromRGB(255, 163, 26)
+			TextLabelFrame.ScaleType = Enum.ScaleType.Slice
+			TextLabelFrame.SliceCenter = Rect.new(4, 4, 296, 296)
+
+			TextLabel.Parent = TextLabelFrame
+			TextLabel.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+			TextLabel.Position = UDim2.new(0, 0, -0.3, 0)
+			TextLabel.BackgroundTransparency = 1
+			TextLabel.Size = UDim2.new(0, 220, 0, 60)
+			TextLabel.ZIndex = 3
+			TextLabel.Font = Enum.Font.TitilliumWeb
+			TextLabel.Text = "WARNING"
+			TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+			TextLabel.TextScaled = false
+			TextLabel.TextSize = 40.000
+			TextLabel.TextWrapped = true
+
+			TextLabel1.Parent = Frame
+			TextLabel1.BackgroundColor3 = Color3.fromRGB(255, 163, 26)
+			TextLabel1.Position = UDim2.new(0, 0, 0.2, 0)
+			TextLabel1.BackgroundTransparency = 1
+			TextLabel1.Size = UDim2.new(0, 220, 0, 100)
+			TextLabel1.ZIndex = 3
+			TextLabel1.Font = Enum.Font.TitilliumWeb
+			TextLabel1.Text = "ncxyzero_bridgenet2-fork@1.1.5 functions are highly unstable, use at your own risk.\n (I personally do not recommend activating them)"
+			TextLabel1.TextColor3 = Color3.fromRGB(255, 255, 255)
+			TextLabel1.TextScaled = true
+			TextLabel1.TextSize = 40.000
+			TextLabel1.TextWrapped = true
+
+			TextButton.Parent = Frame
+			TextButton.Name = "Button"
+			TextButton.BackgroundTransparency = 1
+			TextButton.Position = UDim2.new(0.55, 0, 0.72, 0)
+			TextButton.BorderSizePixel = 0
+			TextButton.Size = UDim2.new(0, 82.5, 0, 45)
+			TextButton.ZIndex = 2
+			TextButton.Image = "rbxassetid://5028857472"
+			TextButton.ImageColor3 = Color3.fromRGB(41, 41, 41)
+			TextButton.ScaleType = Enum.ScaleType.Slice
+			TextButton.SliceCenter = Rect.new(2, 2, 298, 298)
+
+			TextButtonText.Parent = TextButton
+			TextButtonText.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+			TextButtonText.BackgroundTransparency = 1
+			TextButtonText.ZIndex = 3
+			TextButtonText.Size = UDim2.new(0, 82.5, 0, 45)
+			TextButtonText.Font = Enum.Font.TitilliumWeb
+			TextButtonText.Text = "I know what I'm doing"
+			TextButtonText.TextColor3 = Color3.fromRGB(200, 200, 200)
+			TextButtonText.TextScaled = true
+			TextButtonText.TextSize = 40.000
+			TextButtonText.TextWrapped = true
+
+			TextButton_2.Parent = Frame
+			TextButton_2.Name = "Button"
+			TextButton_2.BackgroundTransparency = 1
+			TextButton_2.Position = UDim2.new(0.075, 0, 0.72, 0)
+			TextButton_2.BorderSizePixel = 0
+			TextButton_2.Size = UDim2.new(0, 82.5, 0, 45)
+			TextButton_2.ZIndex = 2
+			TextButton_2.Image = "rbxassetid://5028857472"
+			TextButton_2.ImageColor3 = Color3.fromRGB(41, 41, 41)
+			TextButton_2.ScaleType = Enum.ScaleType.Slice
+			TextButton_2.SliceCenter = Rect.new(2, 2, 298, 298)
+
+			TextButton_2Text.Parent = TextButton_2
+			TextButton_2Text.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+			TextButton_2Text.BackgroundTransparency = 1
+			TextButton_2Text.ZIndex = 3
+			TextButton_2Text.Size = UDim2.new(0, 82.5, 0, 45)
+			TextButton_2Text.Font = Enum.Font.TitilliumWeb
+			TextButton_2Text.Text = "Close"
+			TextButton_2Text.TextColor3 = Color3.fromRGB(200, 200, 200)
+			TextButton_2Text.TextScaled = true
+			TextButton_2Text.TextSize = 40.000
+			TextButton_2Text.TextWrapped = true
+
+			function UnlockNO()
+				for i,v in pairs(player.PlayerGui:GetChildren()) do
+					if v.Name == "ScreenGui" then
+						v:Destroy()
+					end
+				end
+			end
+			TextButton_2.MouseButton1Click:connect(UnlockNO)	
+			TextButton_2Text.MouseButton1Click:connect(UnlockNO)
+
+			function UnlockYES()
+				game:GetService("StarterGui"):SetCore("SendNotification",{
+					Title = "I warned you",
+					Text = "Don't cry when you screwed up",
+				})
+				notify("Nothing here uses ncxyzero_bridgenet2 yet")
+				for i,v in pairs(player.PlayerGui:GetChildren()) do
+					if v.Name == "ScreenGui" then
+						v:Destroy()
+					end
+				end
+				task.wait(.2)
+				UnlockedPage7 = true
+				NoobieDoge:SelectPage(NoobieDoge.pages[1], true)
+				NoobieDoge:SelectPage(NoobieDoge.pages[7], true)
+			end
+			TextButton.MouseButton1Click:connect(UnlockYES)
+			TextButtonText.MouseButton1Click:connect(UnlockYES)
+		end
+	end)
+
+	-- eighth page
+	local page8 = NoobieDoge:addPage("BridgeNet2", 136388769289535)
+	local section1 = page8:addSection("test")
+ 
+	-- ninth page
+	local page9 = NoobieDoge:addPage("Teleports", 136388769289535)
+	local section1 = page9:addSection("Player Bases")
+	local section2 = page9:addSection("Misc")
+	local section3 = page9:addSection("Bases")
+	local section4 = page9:addSection("Others")
 
 	local PlayerBases = {}
 	for i,v in pairs(workspace.MilitaryMap.PlayerPlots:GetChildren()) do
@@ -2908,14 +3880,17 @@ local function MiniWar()
 			writefile(DHV2MW .. "/bsi1.txt"," ")
 			writefile(DHV2MW .. "/bsi11.txt"," ")
 			writefile(DHV2MW .. "/ABSI.txt","false")
+			writefile(DHV2MW .. "/AutoBuyLegacy.txt","false")
 			writefile(DHV2MW .. "/AutoBuyEverythingBM.txt","false")
 			writefile(DHV2MW .. "/bsiBM.txt"," ")
 			writefile(DHV2MW .. "/bsiBM1.txt"," ")
 			writefile(DHV2MW .. "/bsiBM11.txt"," ")
 			writefile(DHV2MW .. "/ABSIBM.txt","false")
+			writefile(DHV2MW .. "/AutoBuyBMLegacy.txt","false")
 			writefile(DHV2MW .. "/AutoExpandPlot.txt","false")
 			writefile(DHV2MW .. "/AutoCollect.txt","false")
 			writefile(DHV2MW .. "/AutoCollectGP.txt","false")
+			writefile(DHV2MW .. "/AutoSell.txt","false")
 			writefile(DHV2MW .. "/AutoSellGP.txt","false")
 			writefile(DHV2MW .. "/Delaybetweencollect.txt","200")
 			writefile(DHV2MW .. "/AutoClaimQuestRewards.txt","false")
@@ -2967,11 +3942,14 @@ local function MiniWar()
 			AutoRejoin = false
 			AutoBuyEverything = false
 			ABSI = false
+			AutoBuyLegacy = false
 			AutoBuyEverythingBM = false
 			ABSIBM = false
+			AutoBuyBMLegacy = false
 			AutoExpandPlot = false
 			AutoCollect = false
 			AutoCollectGP = false
+			AutoSell = false
 			AutoSellGP = false
 			AutoClaimQuestRewards = false
 			AutoCollectWarPassPoints = false
