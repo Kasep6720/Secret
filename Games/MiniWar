@@ -341,7 +341,6 @@ local function MiniWar()
 		if not isfile(patPath) then writefile(patPath, "false") end
 		if not isfile(lastPath) then writefile(lastPath, "false") end
 	end
-
 	for a = 1, 4 do
 		for p = 1, 5 do
 			local fileName = string.format("/A%dP%d.txt", a, p)
@@ -352,13 +351,34 @@ local function MiniWar()
 			end
 		end
 	end
+	if isfile(DHV2MW .. "/AutoCollectb.txt") == false then
+		writefile(DHV2MW .. "/AutoCollectb.txt","false")
+	end 
+	if isfile(DHV2MW .. "/Delaybetweencollectb.txt") == false then
+		writefile(DHV2MW .. "/Delaybetweencollectb.txt","200")
+	end  
+	if isfile(DHV2MW .. "/AutoCollectGPb.txt") == false then
+		writefile(DHV2MW .. "/AutoCollectGPb.txt","false")
+	end
+	if isfile(DHV2MW .. "/AutoSellGPb.txt") == false then
+		writefile(DHV2MW .. "/AutoSellGPb.txt","false")
+	end
 	local DHV2MWEvents = DHV2MW .. "/Events"
 	if isfolder(DHV2MWEvents) == false then
 		makefolder(DHV2MWEvents)
 	end
 	if isfile(DHV2MWEvents .. "/AutoSellAlien.txt") == false then
 		writefile(DHV2MWEvents .. "/AutoSellAlien.txt","false")
+	end 
+	if isfile(DHV2MWEvents .. "/AutoSellAlienCropsInterval.txt") == false then
+		writefile(DHV2MWEvents .. "/AutoSellAlienCropsInterval.txt","5")
 	end
+	if isfile(DHV2MWEvents .. "/AutoAttackMechBeast.txt") == false then
+		writefile(DHV2MWEvents .. "/AutoAttackMechBeast.txt","false")
+	end 
+	if isfile(DHV2MWEvents .. "/AutoBuyAlien.txt") == false then
+		writefile(DHV2MWEvents .. "/AutoBuyAlien.txt","false")
+	end 
 
 	workspace:WaitForChild("MilitaryMap"):WaitForChild("Object"):WaitForChild("Wooden")
 	workspace.MilitaryMap:WaitForChild("PlayerPlots")
@@ -1422,9 +1442,9 @@ local function MiniWar()
 	spawn(function()
 		while task.wait() do
 			if AutoRejoin then
-				AutoRejoinTimer = AutoRejoinTimer + 1
+				AutoRejoinTimer = AutoRejoinTimer + 10
 				warn(string.format("%.1f%%", AutoRejoinTimer / AutoRejoinInterval / 60 * 100))
-				task.wait(1)
+				task.wait(10)
 				if AutoRejoin and AutoRejoinTimer >= AutoRejoinInterval*60 then
 					local TS = game:GetService("TeleportService")
 					local Player = game.Players.LocalPlayer
@@ -1437,10 +1457,11 @@ local function MiniWar()
 
 	-- third page
 	local page3 = NoobieDoge:addPage("Auto Buy", 136388769289535)
-	local section1 = page3:addSection("Shop")
-	local section2 = page3:addSection("Black Market")
-	local section3 = page3:addSection("Auto Expand")
+
 	local sectionW = page3:addSection("Unlock ncxyzero_bridgenet2-fork@1.1.5 Functions")
+	local section1a = page3:addSection("Shop (ncxyzero_bridgenet2-fork@1.1.5)")
+	local section2a = page3:addSection("Black Market (ncxyzero_bridgenet2-fork@1.1.5)")
+	local section3a = page3:addSection("Auto Expand (ncxyzero_bridgenet2-fork@1.1.5)")
 
 	local suffixes = {
 		["K"] = 1e3,       -- 1,000
@@ -1661,21 +1682,21 @@ local function MiniWar()
 					end)
 				end
 
-				section1:addDropdown("Shop Choice 1: " .. readfile(DHV2MW .. "/bsi.txt"),BuyShop,function(BUYS1)
+				section1a:addDropdown("Shop Choice 1: " .. readfile(DHV2MW .. "/bsi.txt"),BuyShop,function(BUYS1)
 					print("Selected: " .. BUYS1)
 					notify("Selected: " .. BUYS1)
 					bsi = BUYS1
 					writefile(DHV2MW .. "/bsi.txt",bsi)
 				end)
 				bsi = readfile(DHV2MW .. "/bsi.txt")
-				section1:addDropdown("Shop Choice 2: " .. readfile(DHV2MW .. "/bsi1.txt"),BuyShop,function(BUYS11)
+				section1a:addDropdown("Shop Choice 2: " .. readfile(DHV2MW .. "/bsi1.txt"),BuyShop,function(BUYS11)
 					print("Selected: " .. BUYS11)
 					notify("Selected: " .. BUYS11)
 					bsi1 = BUYS11
 					writefile(DHV2MW .. "/bsi1.txt",bsi1)
 				end)
 				bsi1 = readfile(DHV2MW .. "/bsi1.txt")
-				section1:addDropdown("Shop Choice 3: " .. readfile(DHV2MW .. "/bsi11.txt"),BuyShop,function(BUYS111)
+				section1a:addDropdown("Shop Choice 3: " .. readfile(DHV2MW .. "/bsi11.txt"),BuyShop,function(BUYS111)
 					print("Selected: " .. BUYS111)
 					notify("Selected: " .. BUYS111)
 					bsi11 = BUYS111
@@ -1685,13 +1706,13 @@ local function MiniWar()
 
 				if readfile(DHV2MW .. "/ABSI.txt") == "true" then
 					ABSI = true
-					section1:addToggle("Auto Buy Specific Items",true,function(bool)
+					section1a:addToggle("Auto Buy Specific Items",true,function(bool)
 						ABSI = bool
 						notify("Auto Buy Specific Items: " .. tostring(ABSI))
 						if ABSI == true then
 							writefile(DHV2MW .. "/ABSI.txt","true")
 							writefile(DHV2MW .. "/AutoBuyEverything.txt","false")
-							section1:updateToggle("Auto Buy Everything")
+							section1a:updateToggle("Auto Buy Everything")
 							AutoBuyEverything = false
 						else
 							writefile(DHV2MW .. "/ABSI.txt","false")
@@ -1699,13 +1720,13 @@ local function MiniWar()
 					end)
 				else
 					ABSI = false
-					section1:addToggle("Auto Buy Specific Items",false,function(bool)
+					section1a:addToggle("Auto Buy Specific Items",false,function(bool)
 						ABSI = bool
 						notify("Auto Buy Specific Items: " .. tostring(ABSI))
 						if ABSI == true then
 							writefile(DHV2MW .. "/ABSI.txt","true")
 							writefile(DHV2MW .. "/ABAB.txt","false")
-							section1:updateToggle("Auto Buy Everything")
+							section1a:updateToggle("Auto Buy Everything")
 							AutoBuyEverything = false
 						else
 							writefile(DHV2MW .. "/ABSI.txt","false")
@@ -1715,7 +1736,7 @@ local function MiniWar()
 
 				if readfile(DHV2MW .. "/AutoBuyLegacy.txt") == "true" then
 					AutoBuyLegacy = true
-					section:addToggle("Legacy Mode",true,function(bool)
+					section1a:addToggle("Legacy Mode",true,function(bool)
 						AutoBuyLegacy = bool
 						if AutoBuyLegacy then
 							writefile(DHV2MW .. "/AutoBuyLegacy.txt","true")
@@ -1725,7 +1746,7 @@ local function MiniWar()
 					end)
 				else
 					AutoBuyLegacy = false
-					section1:addToggle("Legacy Mode",false,function(bool)
+					section1a:addToggle("Legacy Mode",false,function(bool)
 						AutoBuyLegacy = bool
 						if AutoBuyLegacy then
 							writefile(DHV2MW .. "/AutoBuyLegacy.txt","true")
@@ -1737,13 +1758,13 @@ local function MiniWar()
 
 				if readfile(DHV2MW .. "/AutoBuyEverythingBM.txt") == "true" then
 					AutoBuyEverythingBM = true
-					section2:addToggle("Auto Buy Everything",true,function(bool)
+					section2a:addToggle("Auto Buy Everything",true,function(bool)
 						AutoBuyEverythingBM = bool
 						notify("Auto Buy Everything: " .. tostring(AutoBuyEverythingBM))
 						if AutoBuyEverythingBM == true then
 							writefile(DHV2MW .. "/AutoBuyEverythingBM.txt","true")
 							writefile(DHV2MW .. "/ABSIBM.txt","false")
-							section2:updateToggle("Auto Buy Specific Items")
+							section2a:updateToggle("Auto Buy Specific Items")
 							ABSIBM = false
 						else
 							writefile(DHV2MW .. "/AutoBuyEverythingBM.txt","false")
@@ -1751,13 +1772,13 @@ local function MiniWar()
 					end)
 				else
 					AutoBuyEverythingBM = false
-					section2:addToggle("Auto Buy Everything",false,function(bool)
+					section2a:addToggle("Auto Buy Everything",false,function(bool)
 						AutoBuyEverythingBM = bool
 						notify("Auto Buy Everything: " .. tostring(AutoBuyEverythingBM))
 						if AutoBuyEverythingBM == true then
 							writefile(DHV2MW .. "/AutoBuyEverythingBM.txt","true")
 							writefile(DHV2MW .. "/ABSIBM.txt","false")
-							section2:updateToggle("Auto Buy Specific Items")
+							section2a:updateToggle("Auto Buy Specific Items")
 							ABSIBM = false
 						else
 							writefile(DHV2MW .. "/AutoBuyEverythingBM.txt","false")
@@ -1765,21 +1786,21 @@ local function MiniWar()
 					end)
 				end
 
-				section2:addDropdown("Black Market Choice 1: " .. readfile(DHV2MW .. "/bsiBM.txt"),BuyBlackMarket,function(BUYS2)
+				section2a:addDropdown("Black Market Choice 1: " .. readfile(DHV2MW .. "/bsiBM.txt"),BuyBlackMarket,function(BUYS2)
 					print("Selected: " .. BUYS2)
 					notify("Selected: " .. BUYS2)
 					bsiBM = BUYS2
 					writefile(DHV2MW .. "/bsiBM.txt",bsiBM)
 				end)
 				bsiBM = readfile(DHV2MW .. "/bsiBM.txt")
-				section2:addDropdown("Black Market Choice 2: " .. readfile(DHV2MW .. "/bsiBM1.txt"),BuyBlackMarket,function(BUYS21)
+				section2a:addDropdown("Black Market Choice 2: " .. readfile(DHV2MW .. "/bsiBM1.txt"),BuyBlackMarket,function(BUYS21)
 					print("Selected: " .. BUYS21)
 					notify("Selected: " .. BUYS21)
 					bsiBM1 = BUYS21
 					writefile(DHV2MW .. "/bsiBM1.txt",bsiBM1)
 				end)
 				bsiBM1 = readfile(DHV2MW .. "/bsiBM1.txt")
-				section2:addDropdown("Black Market Choice 3: " .. readfile(DHV2MW .. "/bsiBM11.txt"),BuyBlackMarket,function(BUYS211)
+				section2a:addDropdown("Black Market Choice 3: " .. readfile(DHV2MW .. "/bsiBM11.txt"),BuyBlackMarket,function(BUYS211)
 					print("Selected: " .. BUYS211)
 					notify("Selected: " .. BUYS211)
 					bsiBM11 = BUYS211
@@ -1789,13 +1810,13 @@ local function MiniWar()
 
 				if readfile(DHV2MW .. "/ABSIBM.txt") == "true" then
 					ABSIBM = true
-					section2:addToggle("Auto Buy Specific Items",true,function(bool)
+					section2a:addToggle("Auto Buy Specific Items",true,function(bool)
 						ABSIBM = bool
 						notify("Auto Buy Specific Items: " .. tostring(ABSIBM))
 						if ABABSIBMSI == true then
 							writefile(DHV2MW .. "/ABSIBM.txt","true")
 							writefile(DHV2MW .. "/AutoBuyEverythingBM.txt","false")
-							section2:updateToggle("Auto Buy Everything")
+							section2a:updateToggle("Auto Buy Everything")
 							AutoBuyEverythingBM = false
 						else
 							writefile(DHV2MW .. "/ABSIBM.txt","false")
@@ -1803,13 +1824,13 @@ local function MiniWar()
 					end)
 				else
 					ABSIBM = false
-					section2:addToggle("Auto Buy Specific Items",false,function(bool)
+					section2a:addToggle("Auto Buy Specific Items",false,function(bool)
 						ABSIBM = bool
 						notify("Auto Buy Specific Items: " .. tostring(ABSIBM))
 						if ABSIBM == true then
 							writefile(DHV2MW .. "/ABSIBM.txt","true")
 							writefile(DHV2MW .. "/ABAB.txt","false")
-							section2:updateToggle("Auto Buy Everything")
+							section2a:updateToggle("Auto Buy Everything")
 							AutoBuyEverythingBM = false
 						else
 							writefile(DHV2MW .. "/ABSIBM.txt","false")
@@ -1819,7 +1840,7 @@ local function MiniWar()
 
 				if readfile(DHV2MW .. "/AutoBuyBMLegacy.txt") == "true" then
 					AutoBuyBMLegacy = true
-					section2:addToggle("Legacy Mode",true,function(bool)
+					section2a:addToggle("Legacy Mode",true,function(bool)
 						AutoBuyBMLegacy = bool
 						if AutoBuyBMLegacy then
 							writefile(DHV2MW .. "/AutoBuyBMLegacy.txt","true")
@@ -1829,7 +1850,7 @@ local function MiniWar()
 					end)
 				else
 					AutoBuyBMLegacy = false
-					section2:addToggle("Legacy Mode",false,function(bool)
+					section2a:addToggle("Legacy Mode",false,function(bool)
 						AutoBuyBMLegacy = bool
 						if AutoBuyBMLegacy then
 							writefile(DHV2MW .. "/AutoBuyBMLegacy.txt","true")
@@ -2125,7 +2146,7 @@ local function MiniWar()
 
 				if readfile(DHV2MW .. "/AutoExpandPlot.txt") == "true" then
 					AutoExpandPlot = true
-					section3:addToggle("Auto Expand Plot",true,function(bool)
+					section3a:addToggle("Auto Expand Plot",true,function(bool)
 						AutoExpandPlot = bool
 						notify("Auto Expand Plot: " .. tostring(AutoExpandPlot))
 						if AutoExpandPlot == true then
@@ -2137,7 +2158,7 @@ local function MiniWar()
 					end)
 				else
 					AutoExpandPlot = false
-					section3:addToggle("Auto Expand Plot",false,function(bool)
+					section3a:addToggle("Auto Expand Plot",false,function(bool)
 						AutoExpandPlot = bool
 						notify("Auto Expand Plot: " .. tostring(AutoExpandPlot))
 						if AutoExpandPlot == true then
@@ -2186,12 +2207,139 @@ local function MiniWar()
 
 	-- forth page
 	local page4 = NoobieDoge:addPage("Auto Farm", 136388769289535)
+
 	local section1 = page4:addSection("Auto Collect")
 	local section2 = page4:addSection("Auto Sell")
-	local section3 = page4:addSection("Quests")
 	local section4 = page4:addSection("Auto Roll Generals")
-	local section5 = page4:addSection("Auto Research")
 	local sectionW = page4:addSection("Unlock ncxyzero_bridgenet2-fork@1.1.5 Functions")
+	local section1a = page4:addSection("Auto Collect (ncxyzero_bridgenet2-fork@1.1.5)")
+	local section2a = page4:addSection("Auto Sell (ncxyzero_bridgenet2-fork@1.1.5)")
+	local section3a = page4:addSection("Quests (ncxyzero_bridgenet2-fork@1.1.5)")
+	local section5a = page4:addSection("Auto Research (ncxyzero_bridgenet2-fork@1.1.5)")
+
+	if readfile(DHV2MW .. "/AutoCollectb.txt") == "true" then
+		AutoCollectb = true
+		section1:addToggle("Auto Collect Crops",true,function(bool)
+			AutoCollectb = bool
+			if AutoCollectb then
+				writefile(DHV2MW .. "/AutoCollectb.txt","true")
+			else
+				writefile(DHV2MW .. "/AutoCollectb.txt","false")
+			end
+		end)
+	else
+		AutoCollectb = false
+		section1:addToggle("Auto Collect Crops",false,function(bool)
+			AutoCollectb = bool
+			if AutoCollectb then
+				writefile(DHV2MW .. "/AutoCollectb.txt","true")
+			else
+				writefile(DHV2MW .. "/AutoCollectb.txt","false")
+			end
+		end)
+	end
+
+	section1:addSlider("Delay between collect", tonumber(readfile(DHV2MW .. "/Delaybetweencollectb.txt")), 100, 10000, function(value)
+		notify("Delay between collect: " .. value .. " ms")
+		DBCb = value/1000
+		writefile(DHV2MW .. "/Delaybetweencollectb.txt",tostring(value))
+	end)
+	DBCb = tonumber(readfile(DHV2MW .. "/Delaybetweencollectb.txt"))/1000
+
+	spawn(function()
+		while task.wait(DBCb) do
+			if AutoCollectb then
+				for i,v in pairs(workspace.MilitaryMap.PlayerPlots["YourBase"].Plot.Buildings:GetChildren()) do
+					if v:FindFirstChild("ProximityPrompt") and v.ProximityPrompt.ObjectText == "Collect!" then
+						local prox = v.ProximityPrompt
+						prox.HoldDuration = 0
+						prox.MaxActivationDistance = 9e9
+						prox.Exclusivity = 2
+						prox.RequiresLineOfSight  = false
+						fireproximityprompt(prox)
+					end
+				end
+			end
+		end
+	end)
+
+	if readfile(DHV2MW .. "/AutoCollectGPb.txt") == "true" then
+		AutoCollectGPb = true
+		section1:addToggle("Auto Collect Crops (Gamepass)",true,function(bool)
+			AutoCollectGPb = bool
+			if AutoCollectGPb then
+				writefile(DHV2MW .. "/AutoCollectGPb.txt","true")
+			else
+				writefile(DHV2MW .. "/AutoCollectGPb.txt","false")
+			end
+		end)
+	else
+		AutoCollectGPb = false
+		section1:addToggle("Auto Collect Crops (Gamepass)",false,function(bool)
+			AutoCollectGPb = bool
+			if AutoCollectGPb then
+				writefile(DHV2MW .. "/AutoCollectGPb.txt","true")
+			else
+				writefile(DHV2MW .. "/AutoCollectGPb.txt","false")
+			end
+		end)
+	end
+
+	spawn(function()
+		while task.wait(1) do
+			if AutoCollectGPb then
+				for i,v in pairs(workspace.MilitaryMap.PlayerPlots["YourBase"].Plot.Buildings:GetChildren()) do
+					if v:FindFirstChild("ProximityPrompt") and v.ProximityPrompt.ObjectText == "Collect!" then
+						if player.PlayerGui.MainUI.HUD.DownUI.AutoCollect.On.Enabled == false then
+							for _, connection in pairs(getconnections(player.PlayerGui.MainUI.HUD.DownUI.AutoCollect.MouseButton1Down)) do
+								connection:Fire()
+							end
+							task.wait(.5)
+						end
+					end
+				end
+			end
+		end
+	end)
+
+	if readfile(DHV2MW .. "/AutoSellGPb.txt") == "true" then
+		AutoSellGPb = true
+		section2:addToggle("Auto Sell Crops (Gamepass)",true,function(bool)
+			AutoSellGPb = bool
+			if AutoSellGPb then
+				writefile(DHV2MW .. "/AutoSellGPb.txt","true")
+			else
+				writefile(DHV2MW .. "/AutoSellGPb.txt","false")
+			end
+		end)
+	else
+		AutoSellGPb = false
+		section2:addToggle("Auto Sell Crops (Gamepass)",false,function(bool)
+			AutoSellGPb = bool
+			if AutoSellGPb then
+				writefile(DHV2MW .. "/AutoSellGPb.txt","true")
+			else
+				writefile(DHV2MW .. "/AutoSellGPb.txt","false")
+			end
+		end)
+	end
+
+	spawn(function()
+		while task.wait(1) do
+			if AutoSellGPb then
+				for i,v in pairs(workspace.MilitaryMap.PlayerPlots["YourBase"].Plot.Buildings:GetChildren()) do
+					if v:FindFirstChild("ProximityPrompt") and v.ProximityPrompt.ObjectText == "Collect!" then
+						if player.PlayerGui.MainUI.HUD.DownUI.AutoSell.On.Enabled == false then
+							for _, connection in pairs(getconnections(player.PlayerGui.MainUI.HUD.DownUI.AutoSell.MouseButton1Down)) do
+								connection:Fire()
+							end
+							task.wait(.5)
+						end
+					end
+				end
+			end
+		end
+	end)
 
 	local Generals = {}
 	for i,v in pairs(player.PlayerGui.GeneralUI.GeneralsUI.RightSide.GeneralChances:GetChildren()) do
@@ -2320,7 +2468,7 @@ local function MiniWar()
 					if nochoicesobtained == true then
 						local CurrentGem = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Gems.Gems.Text)
 						if ShortToNumber(BuyGeneralButton.Price.PriceText.Text) > CurrentGem then
-							print("Not enough money to purchase")
+							print("Not enough gems to purchase")
 						else
 							for _, connection in pairs(getconnections(BuyGeneralButton.MouseButton1Click)) do
 								connection:Fire()
@@ -2464,7 +2612,7 @@ local function MiniWar()
 				})
 				if readfile(DHV2MW .. "/AutoCollect.txt") == "true" then
 					AutoCollect = true
-					section1:addToggle("Auto Collect Crops",true,function(bool)
+					section1a:addToggle("Auto Collect Crops",true,function(bool)
 						AutoCollect = bool
 						if AutoCollect then
 							writefile(DHV2MW .. "/AutoCollect.txt","true")
@@ -2474,7 +2622,7 @@ local function MiniWar()
 					end)
 				else
 					AutoCollect = false
-					section1:addToggle("Auto Collect Crops",false,function(bool)
+					section1a:addToggle("Auto Collect Crops",false,function(bool)
 						AutoCollect = bool
 						if AutoCollect then
 							writefile(DHV2MW .. "/AutoCollect.txt","true")
@@ -2484,7 +2632,7 @@ local function MiniWar()
 					end)
 				end
 
-				section1:addSlider("Delay between collect", tonumber(readfile(DHV2MW .. "/Delaybetweencollect.txt")), 100, 10000, function(value)
+				section1a:addSlider("Delay between collect", tonumber(readfile(DHV2MW .. "/Delaybetweencollect.txt")), 100, 10000, function(value)
 					notify("Delay between collect: " .. value .. " ms")
 					DBC = value/1000
 					writefile(DHV2MW .. "/Delaybetweencollect.txt",tostring(DBC))
@@ -2507,7 +2655,7 @@ local function MiniWar()
 
 				if readfile(DHV2MW .. "/AutoCollectGP.txt") == "true" then
 					AutoCollectGP = true
-					section1:addToggle("Auto Collect Crops (Gamepass)",true,function(bool)
+					section1a:addToggle("Auto Collect Crops (Gamepass)",true,function(bool)
 						AutoCollectGP = bool
 						if AutoCollectGP then
 							writefile(DHV2MW .. "/AutoCollectGP.txt","true")
@@ -2517,7 +2665,7 @@ local function MiniWar()
 					end)
 				else
 					AutoCollectGP = false
-					section1:addToggle("Auto Collect Crops (Gamepass)",false,function(bool)
+					section1a:addToggle("Auto Collect Crops (Gamepass)",false,function(bool)
 						AutoCollectGP = bool
 						if AutoCollectGP then
 							writefile(DHV2MW .. "/AutoCollectGP.txt","true")
@@ -2545,7 +2693,7 @@ local function MiniWar()
 
 				if readfile(DHV2MW .. "/AutoSell.txt") == "true" then
 					AutoSell = true
-					section2:addToggle("Auto Sell Crops",true,function(bool)
+					section2a:addToggle("Auto Sell Crops",true,function(bool)
 						AutoSell = bool
 						if AutoSell then
 							writefile(DHV2MW .. "/AutoSell.txt","true")
@@ -2555,7 +2703,7 @@ local function MiniWar()
 					end)
 				else
 					AutoSell = false
-					section2:addToggle("Auto Sell Crops",false,function(bool)
+					section2a:addToggle("Auto Sell Crops",false,function(bool)
 						AutoSell = bool
 						if AutoSell then
 							writefile(DHV2MW .. "/AutoSell.txt","true")
@@ -2577,7 +2725,7 @@ local function MiniWar()
 
 				if readfile(DHV2MW .. "/AutoSellGP.txt") == "true" then
 					AutoSellGP = true
-					section2:addToggle("Auto Sell Crops (Gamepass)",true,function(bool)
+					section2a:addToggle("Auto Sell Crops (Gamepass)",true,function(bool)
 						AutoSellGP = bool
 						if AutoSellGP then
 							writefile(DHV2MW .. "/AutoSellGP.txt","true")
@@ -2587,7 +2735,7 @@ local function MiniWar()
 					end)
 				else
 					AutoSellGP = false
-					section2:addToggle("Auto Sell Crops (Gamepass)",false,function(bool)
+					section2a:addToggle("Auto Sell Crops (Gamepass)",false,function(bool)
 						AutoSellGP = bool
 						if AutoSellGP then
 							writefile(DHV2MW .. "/AutoSellGP.txt","true")
@@ -2615,7 +2763,7 @@ local function MiniWar()
 
 				if readfile(DHV2MW .. "/AutoClaimQuestRewards.txt") == "true" then
 					AutoClaimQuestRewards = true
-					section3:addToggle("Auto Claim Quest Rewards",true,function(bool)
+					section3a:addToggle("Auto Claim Quest Rewards",true,function(bool)
 						AutoClaimQuestRewards = bool
 						if AutoClaimQuestRewards then
 							writefile(DHV2MW .. "/AutoClaimQuestRewards.txt","true")
@@ -2625,7 +2773,7 @@ local function MiniWar()
 					end)
 				else
 					AutoClaimQuestRewards = false
-					section3:addToggle("Auto Claim Quest Rewards",false,function(bool)
+					section3a:addToggle("Auto Claim Quest Rewards",false,function(bool)
 						AutoClaimQuestRewards = bool
 						if AutoClaimQuestRewards then
 							writefile(DHV2MW .. "/AutoClaimQuestRewards.txt","true")
@@ -2669,7 +2817,7 @@ local function MiniWar()
 
 				if readfile(DHV2MW .. "/AutoResearch.txt") == "true" then
 					AutoResearch = true
-					section5:addToggle("AutoResearch",true,function(bool)
+					section5a:addToggle("AutoResearch",true,function(bool)
 						AutoResearch = bool
 						if AutoResearch then
 							writefile(DHV2MW .. "/AutoResearch.txt","true")
@@ -2679,7 +2827,7 @@ local function MiniWar()
 					end)
 				else
 					AutoResearch = false
-					section5:addToggle("Auto Research",false,function(bool)
+					section5a:addToggle("Auto Research",false,function(bool)
 						AutoResearch = bool
 						if AutoResearch then
 							writefile(DHV2MW .. "/AutoResearch.txt","true")
@@ -2774,17 +2922,17 @@ local function MiniWar()
 
 	-- fifth page
 	local page5 = NoobieDoge:addPage("Army", 136388769289535)
-	local section1 = page5:addSection("Rockets")	
-	local section2 = page5:addSection("Army 1")
-	local section3 = page5:addSection("Army 1 Config")
-	local section4 = page5:addSection("Army 2")	
-	local section5 = page5:addSection("Army 2 Config")
-	local section6 = page5:addSection("Army 3")	
-	local section7 = page5:addSection("Army 3 Config")
-	local section8 = page5:addSection("Army 4")	
-	local section9 = page5:addSection("Army 4 Config")
-	local sectionW = page5:addSection("Unlock ncxyzero_bridgenet2-fork@1.1.5 Functions")
 
+	local sectionW = page5:addSection("Unlock ncxyzero_bridgenet2-fork@1.1.5 Functions")
+	local section1a = page5:addSection("Rockets (ncxyzero_bridgenet2-fork@1.1.5)")	
+	local section2a = page5:addSection("Army 1 (ncxyzero_bridgenet2-fork@1.1.5)")
+	local section3a = page5:addSection("Army 1 Config (ncxyzero_bridgenet2-fork@1.1.5)")
+	local section4a = page5:addSection("Army 2 (ncxyzero_bridgenet2-fork@1.1.5)")	
+	local section5a = page5:addSection("Army 2 Config (ncxyzero_bridgenet2-fork@1.1.5)")
+	local section6a = page5:addSection("Army 3 (ncxyzero_bridgenet2-fork@1.1.5)")	
+	local section7a = page5:addSection("Army 3 Config (ncxyzero_bridgenet2-fork@1.1.5)")
+	local section8a = page5:addSection("Army 4 (ncxyzero_bridgenet2-fork@1.1.5)")	
+	local section9a = page5:addSection("Army 4 Config (ncxyzero_bridgenet2-fork@1.1.5)")
 	local UnlockedPage5 = false
 	sectionW:addButton("Unlock ncxyzero_bridgenet2-fork@1.1.5 Functions",function()
 		if UnlockedPage5 == true then
@@ -2915,7 +3063,7 @@ local function MiniWar()
 					Title = "I warned you",
 					Text = "Don't cry when you screwed up",
 				})
-				local armySections = {[1] = section2,[2] = section4,[3] = section6,[4] = section8}
+				local armySections = {[1] = section2a,[2] = section4a,[3] = section6a,[4] = section8a}
 				for i = 1, 4 do
 					local section = armySections[i]
 					if not section then continue end
@@ -2996,7 +3144,7 @@ local function MiniWar()
 				end
 
 				RocketsTarget = readfile(DHV2MW .. "/RocketsTarget.txt")
-				section1:addDropdown("Targetting: " .. readfile(DHV2MW .. "/RocketsTarget.txt"),AllCapturablePointsRocket,function(RocketsTarget1)
+				section1a:addDropdown("Targetting: " .. readfile(DHV2MW .. "/RocketsTarget.txt"),AllCapturablePointsRocket,function(RocketsTarget1)
 					print("Rockets Targetting: " .. RocketsTarget1)
 					notify("Rockets Targetting: " .. RocketsTarget1)
 					RocketsTarget = RocketsTarget1
@@ -3005,7 +3153,7 @@ local function MiniWar()
 
 				if readfile(DHV2MW .. "/AutoRocket.txt") == "true" then
 					AutoRocket = true
-					section1:addToggle("Enabled",true,function(bool)
+					section1a:addToggle("Enabled",true,function(bool)
 						AutoRocket = bool
 						if AutoRocket then
 							writefile(DHV2MW .. "/AutoRocket.txt","true")
@@ -3015,7 +3163,7 @@ local function MiniWar()
 					end)
 				else
 					AutoRocket = false
-					section1:addToggle("Enabled",false,function(bool)
+					section1a:addToggle("Enabled",false,function(bool)
 						AutoRocket = bool
 						if AutoRocket then
 							writefile(DHV2MW .. "/AutoRocket.txt","true")
@@ -3045,7 +3193,7 @@ local function MiniWar()
 				end)
 
 				local priorities = {"First", "Second", "Third", "Forth", "Fifth"}
-				local armySections = {[1] = section3,[2] = section5,[3] = section7,[4] = section9}
+				local armySections = {[1] = section3a,[2] = section5a,[3] = section7a,[4] = section9a}
 				for a = 1, 4 do
 					local section = armySections[a]
 					if not section then continue end
@@ -3284,10 +3432,11 @@ local function MiniWar()
 
 	-- sixth page
 	local page6 = NoobieDoge:addPage("War Pass", 136388769289535)
-	local section1 = page6:addSection("Free")
-	local section2 = page6:addSection("War Pass")
+
 	local section3 = page6:addSection("Auto Farm")
 	local sectionW = page6:addSection("Unlock ncxyzero_bridgenet2-fork@1.1.5 Functions")
+	local section1a = page6:addSection("Free (ncxyzero_bridgenet2-fork@1.1.5)")
+	local section2a = page6:addSection("War Pass (ncxyzero_bridgenet2-fork@1.1.5)")
 
 	if readfile(DHV2MW .. "/AutoCollectWarPassPoints.txt") == "true" then
 		AutoCollectWarPassPoints = true
@@ -3458,7 +3607,7 @@ local function MiniWar()
 				})
 				if readfile(DHV2MW .. "/AutoClaimWarPassRewards.txt") == "true" then
 					AutoClaimWarPassRewards = true
-					section1:addToggle("Auto Claim War Pass Rewards",true,function(bool)
+					section1a:addToggle("Auto Claim War Pass Rewards",true,function(bool)
 						AutoClaimWarPassRewards = bool
 						if AutoClaimWarPassRewards then
 							writefile(DHV2MW .. "/AutoClaimWarPassRewards.txt","true")
@@ -3468,7 +3617,7 @@ local function MiniWar()
 					end)
 				else
 					AutoClaimWarPassRewards = false
-					section1:addToggle("Auto Claim War Pass Rewards",false,function(bool)
+					section1a:addToggle("Auto Claim War Pass Rewards",false,function(bool)
 						AutoClaimWarPassRewards = bool
 						if AutoClaimWarPassRewards then
 							writefile(DHV2MW .. "/AutoClaimWarPassRewards.txt","true")
@@ -3478,7 +3627,7 @@ local function MiniWar()
 					end)
 				end
 
-				section2:addButton("idk man i dont buy passes on my acc",function()
+				section2a:addButton("idk man i dont buy passes on my acc",function()
 					task.wait()
 					notify("can anyone lend me ur acc if u got the pass")
 				end)
@@ -3515,15 +3664,67 @@ local function MiniWar()
 
 	-- seventh page
 	local page7 = NoobieDoge:addPage("Events", 136388769289535)
-	local section1 = page7:addSection("Godzilla")
+	local section1 = page7:addSection("Beast Breach Event")
 	local section2 = page7:addSection("Alien Event")
 	local sectionW = page7:addSection("Unlock ncxyzero_bridgenet2-fork@1.1.5 Functions")
+
+	if readfile(DHV2MWEvents .. "/AutoAttackMechBeast.txt") == "true" then
+		AutoAttackMechBeast = true
+		section1:addToggle("Auto Attack Mech Beast",true,function(bool)
+			AutoAttackMechBeast = bool
+			if AutoAttackMechBeast then
+				writefile(DHV2MWEvents .. "/AutoAttackMechBeast.txt","true")
+			else
+				writefile(DHV2MWEvents .. "/AutoAttackMechBeast.txt","false")
+			end
+		end)
+	else
+		AutoAttackMechBeast = false
+		section1:addToggle("Auto Attack Mech Beast",false,function(bool)
+			AutoAttackMechBeast = bool
+			if AutoAttackMechBeast then
+				writefile(DHV2MWEvents .. "/AutoAttackMechBeast.txt","true")
+			else
+				writefile(DHV2MWEvents .. "/AutoAttackMechBeast.txt","false")
+			end
+		end)
+	end
+
+	spawn(function()
+		while task.wait(1) do
+			if AutoAttackMechBeast then
+				if workspace:FindFirstChild("MechBeastTarget") then
+					pcall(function()
+						if workspace.MechBeastTarget:FindFirstChild("PromptHolder") and workspace.MechBeastTarget.PromptHolder:FindFirstChild("ProximityPrompt") then
+							if player.PlayerGui.MainUI.Fullscreen.DeployUI.Visible == true then
+								for i, v in pairs(player.PlayerGui.MainUI.Fullscreen.DeployUI:GetChildren()) do 
+									if v.Name == "ArmyTemplate" or v.Name == "RocketTemplate" then
+										for _, connection in pairs(getconnections(v.Deploy.MouseButton1Click)) do
+											connection:Fire()
+										end
+									end
+								end
+							else
+								local prox = workspace.MechBeastTarget.PromptHolder.ProximityPrompt
+								prox.HoldDuration = 0
+								prox.MaxActivationDistance = 9e9
+								prox.Exclusivity = 2
+								prox.RequiresLineOfSight  = false
+								fireproximityprompt(prox)
+								task.wait()
+							end
+						end
+					end)
+				end
+			end
+		end
+	end)
 
 	if readfile(DHV2MWEvents .. "/AutoSellAlien.txt") == "true" then
 		AutoSellAlien = true
 		section2:addToggle("Auto Sell Alien Crops",true,function(bool)
-			AutoSellGP = bool
-			if AutoSellGP then
+			AutoSellAlien = bool
+			if AutoSellAlien then
 				writefile(DHV2MWEvents .. "/AutoSellAlien.txt","true")
 			else
 				writefile(DHV2MWEvents .. "/AutoSellAlien.txt","false")
@@ -3540,18 +3741,67 @@ local function MiniWar()
 			end
 		end)
 	end
+	section2:addSlider("Auto Sell Crops Interval", tonumber(readfile(DHV2MWEvents .. "/AutoSellAlienCropsInterval.txt")), 0.5, 600, function(value)
+		notify("Auto Sell Crops Interval: " .. value .. " s")
+		AutoSellAlienCropsInterval = value
+		writefile(DHV2MWEvents .. "/AutoSellAlienCropsInterval.txt",tostring(value))
+	end)
+	AutoSellAlienCropsInterval = tonumber(readfile(DHV2MWEvents .. "/AutoSellAlienCropsInterval.txt"))
 
 	local ExtractorUI = player.PlayerGui.MainUI.Fullscreen.ExtractorUI
+	local AlienShopUI = player.PlayerGui.MainUI.Fullscreen.AlienShopUI
+	local CurrentAlienCore = ShortToNumber(AlienShopUI.Topbar.alienCoreFrame.alienCoreAmount.Text)
 	spawn(function()
-		while task.wait(1) do
+		while task.wait(AutoSellAlienCropsInterval) do
 			if AutoSellAlien then
 				pcall(function()
-					if ExtractorUI.alienCoreFrameAll.alienCoreAmount.Text > 1 then
+					if ShortToNumber(ExtractorUI.alienCoreFrameAll.alienCoreAmount.Text) > 1 then
 						for _, connection in pairs(getconnections(ExtractorUI.ExtractAll.MouseButton1Click)) do
 							connection:Fire()
 						end
 					end
 				end)
+			end
+		end
+	end)
+
+	if readfile(DHV2MWEvents .. "/AutoBuyAlien.txt") == "true" then
+		AutoBuyAlien = true
+		section2:addToggle("Auto Buy Alien Items",true,function(bool)
+			AutoBuyAlien = bool
+			if AutoBuyAlien then
+				writefile(DHV2MWEvents .. "/AutoBuyAlien.txt","true")
+			else
+				writefile(DHV2MWEvents .. "/AutoBuyAlien.txt","false")
+			end
+		end)
+	else
+		AutoBuyAlien = false
+		section2:addToggle("Auto Buy Alien Items",false,function(bool)
+			AutoBuyAlien = bool
+			if AutoBuyAlien then
+				writefile(DHV2MWEvents .. "/AutoBuyAlien.txt","true")
+			else
+				writefile(DHV2MWEvents .. "/AutoBuyAlien.txt","false")
+			end
+		end)
+	end
+	spawn(function()
+		while task.wait(1) do
+			if AutoBuyAlien then
+				for i, v in pairs(AlienShopUI.ItemsGrid:GetChildren()) do 
+					if v.Name ~= "UIListLayout" and v.Name ~= "DontDelete" and v.Name ~= "UIPadding" and v.Name ~= "Template" and v.Stock.Text ~= "Out of Stock!" then
+						local CurrentAlienCore = ShortToNumber(AlienShopUI.Topbar.alienCoreFrame.alienCoreAmount.Text)
+						if CleanToNumber(v.Buy.Price.PriceText.Text) > CurrentAlienCore then
+							print("Not enough alien core to purchase")
+						else
+							for _, connection in pairs(getconnections(v.Buy.MouseButton1Down)) do
+								connection:Fire()
+							end
+							task.wait()
+						end
+					end
+				end
 			end
 		end
 	end)
@@ -3928,9 +4178,16 @@ local function MiniWar()
 					writefile(filePath, " ")
 				end
 			end
+			writefile(DHV2MW .. "/AutoCollectb.txt","false")
+			writefile(DHV2MW .. "/Delaybetweencollectb.txt","200")
+			writefile(DHV2MW .. "/AutoCollectGPb.txt","false")
+			writefile(DHV2MW .. "/AutoSellGPb.txt","false")
 			local DHV2MWEvents = DHV2MW .. "/Events"
 			makefolder(DHV2MWEvents)
 			writefile(DHV2MWEvents .. "/AutoSellAlien.txt","false")
+			writefile(DHV2MWEvents .. "/AutoSellAlienCropsInterval.txt","5")
+			writefile(DHV2MWEvents .. "/AutoAttackMechBeast.txt","false")
+			writefile(DHV2MWEvents .. "/AutoBuyAlien.txt","false")
 			EnabledSliderPowa = false
 			CtrlClickTeePee = false
 			infjumptoggle = false
@@ -3975,6 +4232,11 @@ local function MiniWar()
 			Army4Patrol = false
 			Army4KeepLastBase = false
 			AutoSellAlien = false
+			AutoAttackMechBeast = false
+			AutoBuyAlien = false
+			AutoCollectb = false
+			AutoCollectGPb = false
+			AutoSellGPb = false
 
 			for i,v in pairs(player.PlayerGui:GetChildren()) do
 				if v.Name == "ScreenGui" then
