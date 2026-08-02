@@ -1970,7 +1970,7 @@ local function MiniWar()
 								if BuyUIig[v]:FindFirstChild("Stock") and BuyUIig[v].Stock.Text ~= "Out of Stock!" and BuyUIig[v].Stock.Text ~= "Max Reached (1/1)" and BuyUIig[v].Name ~= "UIListLayout"  and BuyUIig[v].Name ~= "UIPadding"  and BuyUIig[v].Name ~= "DontDelete" and BuyUIig[v]:FindFirstChild("Buy") then
 									local CurrentMoney = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Frame.Money.Text)
 									local Buy = BuyUIig[v].Buy
-									if ShortToNumber(Buy.Price.PriceText.Text) > CurrentMoney then
+									if ShortToNumber(Buy.Price.PriceText.Text) > CurrentGem then
 										print("Not enough money to purchase")
 									else
 										BuyUI.Visible = true
@@ -2318,8 +2318,13 @@ local function MiniWar()
 			if StartSpinGenerals then
 				if GeneralUI.Enabled == true then
 					if nochoicesobtained == true then
-						for _, connection in pairs(getconnections(BuyGeneralButton.MouseButton1Click)) do
-							connection:Fire()
+						local CurrentGem = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Gems.Gems.Text)
+						if ShortToNumber(BuyGeneralButton.Price.PriceText.Text) > CurrentGem then
+							print("Not enough money to purchase")
+						else
+							for _, connection in pairs(getconnections(BuyGeneralButton.MouseButton1Click)) do
+								connection:Fire()
+							end
 						end
 					end
 				end
