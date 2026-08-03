@@ -386,7 +386,7 @@ local function MiniWar()
 	end	
 	if isfile(DHV2MW .. "/AutoBuyEverythingBMb.txt") == false then
 		writefile(DHV2MW .. "/AutoBuyEverythingBMb.txt","false")
-	end
+	end 
 	if isfile(DHV2MW .. "/bsiBMb.txt") == false then
 		writefile(DHV2MW .. "/bsiBMb.txt"," ")
 	end 
@@ -399,6 +399,9 @@ local function MiniWar()
 	if isfile(DHV2MW .. "/ABSIBMb.txt") == false then
 		writefile(DHV2MW .. "/ABSIBMb.txt","false")
 	end	
+	if isfile(DHV2MW .. "/AutoSellb.txt") == false then
+		writefile(DHV2MW .. "/AutoSellb.txt","false")
+	end
 	if isfile(DHV2MW .. "/AutoClaimDailyRewards.txt") == false then
 		writefile(DHV2MW .. "/AutoClaimDailyRewards.txt","false")
 	end	
@@ -2640,6 +2643,55 @@ local function MiniWar()
 		end
 	end)
 
+	if readfile(DHV2MW .. "/AutoSellb.txt") == "true" then
+		AutoSellb = true
+		section2:addToggle("Auto Sell Crops",true,function(bool)
+			AutoSellb = bool
+			if AutoSellb then
+				writefile(DHV2MW .. "/AutoSellb.txt","true")
+			else
+				writefile(DHV2MW .. "/AutoSellb.txt","false")
+			end
+		end)
+	else
+		AutoSellb = false
+		section2:addToggle("Auto Sell Crops",false,function(bool)
+			AutoSellb = bool
+			if AutoSellb then
+				writefile(DHV2MW .. "/AutoSellb.txt","true")
+			else
+				writefile(DHV2MW .. "/AutoSellb.txt","false")
+			end
+		end)
+	end
+	spawn(function()
+		while task.wait(5) do
+			if AutoSellb then
+				if player.PlayerGui.DialogOptions:FindFirstChild("Holder") then
+					if not player.PlayerGui.DialogOptions.Holder.Inside:FindFirstChild("Sell all Crops") then
+						for i,v in pairs(workspace:GetChildren()) do
+							if v:FindFirstChild("Pants") and string.find(v.Pants.PantsTemplate, "100041709124119") and v.HumanoidRootPart.ProximityPrompt.ActionText == "Talk!" then
+								player.Character.HumanoidRootPart.CFrame=workspace.Teleports.sell.CFrame+Vector3.new(0,4,0)
+								local prox = v.HumanoidRootPart.ProximityPrompt
+								prox.HoldDuration = 0
+								prox.MaxActivationDistance = 9e9
+								prox.Exclusivity = 2
+								prox.RequiresLineOfSight  = false
+								fireproximityprompt(prox)
+								task.wait()
+							end
+						end
+					else
+						for _, connection in pairs(getconnections(player.PlayerGui.DialogOptions.Holder.Inside["Sell all Crops"].MouseButton1Down)) do
+							connection:Fire()
+						end
+						notify("Trying to sell")
+					end
+				end
+			end
+		end
+	end)
+
 	if readfile(DHV2MW .. "/AutoSellGPb.txt") == "true" then
 		AutoSellGPb = true
 		section2:addToggle("Auto Sell Crops (Gamepass)",true,function(bool)
@@ -4675,6 +4727,7 @@ local function MiniWar()
 			writefile(DHV2MW .. "/bsiBM1b.txt"," ")
 			writefile(DHV2MW .. "/bsiBM11b.txt"," ")
 			writefile(DHV2MW .. "/ABSIBMb.txt","false")
+			writefile(DHV2MW .. "/AutoSellb.txt","false")
 			writefile(DHV2MW .. "/AutoClaimDailyRewards.txt","false")
 			local DHV2MWEvents = DHV2MW .. "/Events"
 			makefolder(DHV2MWEvents)
@@ -4737,6 +4790,7 @@ local function MiniWar()
 			ABSIb = false
 			AutoBuyEverythingBMb = false
 			ABSIBMb = false
+			AutoSellb = false
 			AutoClaimDailyRewards = false
 
 			for i,v in pairs(player.PlayerGui:GetChildren()) do
