@@ -230,8 +230,8 @@ local function MiniWar()
 	if isfile(DHV2MW .. "/AutoDeleteBuildingEffects.txt") == false then
 		writefile(DHV2MW .. "/AutoDeleteBuildingEffects.txt","false")
 	end 
-	if isfile(DHV2MW .. "/RemoveunnecessaryProximityPrompts.txt") == false then
-		writefile(DHV2MW .. "/RemoveunnecessaryProximityPrompts.txt","false")
+	if isfile(DHV2MW .. "/RemoveunnecessaryProximityPromptsRobux.txt") == false then
+		writefile(DHV2MW .. "/RemoveunnecessaryProximityPromptsRobux.txt","false")
 	end 
 	if isfile(DHV2MW .. "/AutoRejoin.txt") == false then
 		writefile(DHV2MW .. "/AutoRejoin.txt","false")
@@ -362,7 +362,46 @@ local function MiniWar()
 	end
 	if isfile(DHV2MW .. "/AutoSellGPb.txt") == false then
 		writefile(DHV2MW .. "/AutoSellGPb.txt","false")
+	end 
+	if isfile(DHV2MW .. "/AutoClaimQuestRewardsb.txt") == false then
+		writefile(DHV2MW .. "/AutoClaimQuestRewardsb.txt","false")
+	end 
+	if isfile(DHV2MW .. "/AutoClaimWarPassRewardsb.txt") == false then
+		writefile(DHV2MW .. "/AutoClaimWarPassRewardsb.txt","false")
 	end
+	if isfile(DHV2MW .. "/AutoBuyEverythingb.txt") == false then
+		writefile(DHV2MW .. "/AutoBuyEverythingb.txt","false")
+	end
+	if isfile(DHV2MW .. "/bsib.txt") == false then
+		writefile(DHV2MW .. "/bsib.txt"," ")
+	end
+	if isfile(DHV2MW .. "/bsi1b.txt") == false then
+		writefile(DHV2MW .. "/bsi1b.txt"," ")
+	end
+	if isfile(DHV2MW .. "/bsi11b.txt") == false then
+		writefile(DHV2MW .. "/bsi11b.txt"," ")
+	end
+	if isfile(DHV2MW .. "/ABSIb.txt") == false then
+		writefile(DHV2MW .. "/ABSIb.txt","false")
+	end	
+	if isfile(DHV2MW .. "/AutoBuyEverythingBMb.txt") == false then
+		writefile(DHV2MW .. "/AutoBuyEverythingBMb.txt","false")
+	end
+	if isfile(DHV2MW .. "/bsiBMb.txt") == false then
+		writefile(DHV2MW .. "/bsiBMb.txt"," ")
+	end 
+	if isfile(DHV2MW .. "/bsiBM1b.txt") == false then
+		writefile(DHV2MW .. "/bsiBM1b.txt"," ")
+	end
+	if isfile(DHV2MW .. "/bsiBM11b.txt") == false then
+		writefile(DHV2MW .. "/bsiBM11b.txt"," ")
+	end 
+	if isfile(DHV2MW .. "/ABSIBMb.txt") == false then
+		writefile(DHV2MW .. "/ABSIBMb.txt","false")
+	end	
+	if isfile(DHV2MW .. "/AutoClaimDailyRewards.txt") == false then
+		writefile(DHV2MW .. "/AutoClaimDailyRewards.txt","false")
+	end	
 	local DHV2MWEvents = DHV2MW .. "/Events"
 	if isfolder(DHV2MWEvents) == false then
 		makefolder(DHV2MWEvents)
@@ -1108,9 +1147,15 @@ local function MiniWar()
 					if v:FindFirstChild("HumanoidRootPart") and v.HumanoidRootPart.Transparency ~= 0.5 then
 						v.HumanoidRootPart.Transparency = 0.5
 						HiddenLocalNPCModel1 = HiddenLocalNPCModel1 +1
+					end 
+					if v:FindFirstChild("RootPart") and v.RootPart.Transparency ~= 0.5 then
+						v.RootPart.Transparency = 0.5
+						v.RootPart.Size = v.RootPart.Size*20
+						v.RootPart.Color = Color3.fromRGB(255, 0, 0)
+						HiddenLocalNPCModel1 = HiddenLocalNPCModel1 +1
 					end
 					for i,v1 in pairs(v:GetChildren()) do
-						if v1.Name ~= "Hitbox" and v1.Name ~= "HumanoidRootPart" then
+						if v1.Name ~= "Hitbox" and v1.Name ~= "HumanoidRootPart" and v1.Name ~= "RootPart" then
 							v1:Destroy()
 						else
 							for i,v2 in pairs(v1:GetChildren()) do
@@ -1161,14 +1206,20 @@ local function MiniWar()
 					if v:GetAttribute("owner") == "server" then
 						if v:FindFirstChild("Hitbox") and v.Hitbox.Transparency ~= 0.5 then
 							v.Hitbox.Transparency = 0.5
-							HiddenLocalNPCModelserver1 = HiddenLocalNPCModelserver1 +1
+							HiddenLocalNPCModel1 = HiddenLocalNPCModel1 +1
 						end 
 						if v:FindFirstChild("HumanoidRootPart") and v.HumanoidRootPart.Transparency ~= 0.5 then
 							v.HumanoidRootPart.Transparency = 0.5
-							HiddenLocalNPCModelserver1 = HiddenLocalNPCModelserver1 +1
+							HiddenLocalNPCModel1 = HiddenLocalNPCModel1 +1
+						end 
+						if v:FindFirstChild("RootPart") and v.RootPart.Transparency ~= 0.5 then
+							v.RootPart.Transparency = 0.5
+							v.RootPart.Size = v.RootPart.Size*20
+							v.RootPart.Color = Color3.fromRGB(255, 0, 0)
+							HiddenLocalNPCModel1 = HiddenLocalNPCModel1 +1
 						end
 						for i,v1 in pairs(v:GetChildren()) do
-							if v1.Name ~= "Hitbox" and v1.Name ~= "HumanoidRootPart" then
+							if v1.Name ~= "Hitbox" and v1.Name ~= "HumanoidRootPart" and v1.Name ~= "RootPart" then
 								v1:Destroy()
 							else
 								for i,v2 in pairs(v1:GetChildren()) do
@@ -1367,42 +1418,42 @@ local function MiniWar()
 		end
 	end)
 
-	local RemovedunnecessaryProximityPrompts = 0
-	if readfile(DHV2MW .. "/RemoveunnecessaryProximityPrompts.txt") == "true" then
-		RemoveunnecessaryProximityPrompts = true
-		section2:addToggle("Remove unnecessary Proximity Prompts",true,function(bool)
-			RemoveunnecessaryProximityPrompts = bool
-			notify("Remove unnecessary Proximity Prompts: " .. tostring(RemoveunnecessaryProximityPrompts))
-			if RemoveunnecessaryProximityPrompts == true then
-				writefile(DHV2MW .. "/RemoveunnecessaryProximityPrompts.txt","true")
+	local RemovedunnecessaryProximityPromptsRobux = 0
+	if readfile(DHV2MW .. "/RemoveunnecessaryProximityPromptsRobux.txt") == "true" then
+		RemoveunnecessaryProximityPromptsRobux = true
+		section2:addToggle("Remove unnecessary Proximity Prompts (Robux)",true,function(bool)
+			RemoveunnecessaryProximityPromptsRobux = bool
+			notify("Remove unnecessary Proximity Prompts (Robux): " .. tostring(RemoveunnecessaryProximityPromptsRobux))
+			if RemoveunnecessaryProximityPromptsRobux == true then
+				writefile(DHV2MW .. "/RemoveunnecessaryProximityPromptsRobux.txt","true")
 			else
-				writefile(DHV2MW .. "/RemoveunnecessaryProximityPrompts.txt","false")
+				writefile(DHV2MW .. "/RemoveunnecessaryProximityPromptsRobux.txt","false")
 			end
 		end)
 	else
-		RemoveunnecessaryProximityPrompts = false
-		section2:addToggle("Remove unnecessary Proximity Prompts",false,function(bool)
-			RemoveunnecessaryProximityPrompts = bool
-			notify("Remove unnecessary Proximity Prompts: " .. tostring(RemoveunnecessaryProximityPrompts))
-			if RemoveunnecessaryProximityPrompts == true then
-				writefile(DHV2MW .. "/RemoveunnecessaryProximityPrompts.txt","true")
+		RemoveunnecessaryProximityPromptsRobux = false
+		section2:addToggle("Remove unnecessary Proximity Prompts (Robux)",false,function(bool)
+			RemoveunnecessaryProximityPromptsRobux = bool
+			notify("Remove unnecessary Proximity Prompts (Robux): " .. tostring(RemoveunnecessaryProximityPromptsRobux))
+			if RemoveunnecessaryProximityPromptsRobux == true then
+				writefile(DHV2MW .. "/RemoveunnecessaryProximityPromptsRobux.txt","true")
 			else
-				writefile(DHV2MW .. "/RemoveunnecessaryProximityPrompts.txt","false")
+				writefile(DHV2MW .. "/RemoveunnecessaryProximityPromptsRobux.txt","false")
 			end
 		end)
 	end
 	spawn(function()
 		while task.wait(2) do
-			if RemoveunnecessaryProximityPrompts then
+			if RemoveunnecessaryProximityPromptsRobux then
 				for i,v in pairs(workspace.MilitaryMap.PlayerPlots:GetDescendants()) do
 					if v.Name == "ProximityPrompt" and (v.ObjectText == "Steal Production!" or v.ActionText == "Skip!") then
 						v:Destroy()
-						RemovedunnecessaryProximityPrompts = RemovedunnecessaryProximityPrompts+1
+						RemovedunnecessaryProximityPromptsRobux = RemovedunnecessaryProximityPromptsRobux+1
 					end
 				end
-				if RemovedunnecessaryProximityPrompts ~= 0 then
-					print("Removed " .. tostring(RemovedunnecessaryProximityPrompts) .. " Proximity Prompts")
-					RemovedunnecessaryProximityPrompts = 0
+				if RemovedunnecessaryProximityPromptsRobux ~= 0 then
+					print("Removed " .. tostring(RemovedunnecessaryProximityPromptsRobux) .. " Proximity Prompts")
+					RemovedunnecessaryProximityPromptsRobux = 0
 				end
 				task.wait()
 			end
@@ -1458,10 +1509,25 @@ local function MiniWar()
 	-- third page
 	local page3 = NoobieDoge:addPage("Auto Buy", 136388769289535)
 
+	local section1 = page3:addSection("Shop")
+	local section2 = page3:addSection("Black Market")
 	local sectionW = page3:addSection("Unlock ncxyzero_bridgenet2-fork@1.1.5 Functions")
 	local section1a = page3:addSection("Shop (ncxyzero_bridgenet2-fork@1.1.5)")
 	local section2a = page3:addSection("Black Market (ncxyzero_bridgenet2-fork@1.1.5)")
 	local section3a = page3:addSection("Auto Expand (ncxyzero_bridgenet2-fork@1.1.5)")
+
+	local BuyShop = {}
+	for i,v in pairs(player.PlayerGui.MainUI.Fullscreen:WaitForChild("BuyUI"):WaitForChild("ItemsGrid"):GetChildren()) do
+		if v.Name ~= "UIListLayout" and v.Name ~= "UIPadding" and v.Name ~= "DontDelete" and v.Name ~= "PadderTemplate" then
+			table.insert(BuyShop, v.Name)
+		end
+	end
+	local BuyBlackMarket = {}
+	for i,v in pairs(player.PlayerGui.MainUI.Fullscreen:WaitForChild("BlackMarketUI"):WaitForChild("ItemsGrid"):GetChildren()) do
+		if v.Name ~= "UIListLayout" and v.Name ~= "UIPadding" and v.Name ~= "DontDelete" and v.Name ~= "PadderTemplate" then
+			table.insert(BuyBlackMarket, v.Name)
+		end
+	end
 
 	local suffixes = {
 		["K"] = 1e3,       -- 1,000
@@ -1502,6 +1568,290 @@ local function MiniWar()
 		end
 	end
 	local UrBuildings = workspace.MilitaryMap.PlayerPlots.YourBase.Plot.Buildings 
+
+	local AutoBuyEverythingb
+	local ABSIb
+	local AutoBuyEverythingBMb
+	local ABSIBMb
+
+	if readfile(DHV2MW .. "/AutoBuyEverythingb.txt") == "true" then
+		AutoBuyEverythingb = true
+		section1:addToggle("Auto Buy Everything",true,function(bool)
+			AutoBuyEverythingb = bool
+			notify("Auto Buy Everything: " .. tostring(AutoBuyEverythingb))
+			if AutoBuyEverythingb == true then
+				writefile(DHV2MW .. "/AutoBuyEverythingb.txt","true")
+				writefile(DHV2MW .. "/ABSIb.txt","false")
+				section1:updateToggle("Auto Buy Specific Items")
+				ABSIb = false
+			else
+				writefile(DHV2MW .. "/AutoBuyEverythingb.txt","false")
+			end
+		end)
+	else
+		AutoBuyEverythingb = false
+		section1:addToggle("Auto Buy Everything",false,function(bool)
+			AutoBuyEverythingb = bool
+			notify("Auto Buy Everything: " .. tostring(AutoBuyEverythingb))
+			if AutoBuyEverythingb == true then
+				writefile(DHV2MW .. "/AutoBuyEverythingb.txt","true")
+				writefile(DHV2MW .. "/ABSIb.txt","false")
+				section1:updateToggle("Auto Buy Specific Items")
+				ABSIb = false
+			else
+				writefile(DHV2MW .. "/AutoBuyEverythingb.txt","false")
+			end
+		end)
+	end
+
+	section1:addDropdown("Shop Choice 1: " .. readfile(DHV2MW .. "/bsib.txt"),BuyShop,function(BUYS1)
+		print("Selected: " .. BUYS1)
+		notify("Selected: " .. BUYS1)
+		bsib = BUYS1
+		writefile(DHV2MW .. "/bsib.txt",bsib)
+	end)
+	bsib = readfile(DHV2MW .. "/bsib.txt")
+	section1:addDropdown("Shop Choice 2: " .. readfile(DHV2MW .. "/bsi1b.txt"),BuyShop,function(BUYS11)
+		print("Selected: " .. BUYS11)
+		notify("Selected: " .. BUYS11)
+		bsi1b = BUYS11
+		writefile(DHV2MW .. "/bsi1b.txt",bsi1b)
+	end)
+	bsi1b = readfile(DHV2MW .. "/bsi1b.txt")
+	section1:addDropdown("Shop Choice 3: " .. readfile(DHV2MW .. "/bsi11b.txt"),BuyShop,function(BUYS111)
+		print("Selected: " .. BUYS111)
+		notify("Selected: " .. BUYS111)
+		bsi11b = BUYS111
+		writefile(DHV2MW .. "/bsi11b.txt",bsi11b)
+	end)
+	bsi11b = readfile(DHV2MW .. "/bsi11b.txt")
+
+	if readfile(DHV2MW .. "/ABSIb.txt") == "true" then
+		ABSIb = true
+		section1:addToggle("Auto Buy Specific Items",true,function(bool)
+			ABSIb = bool
+			notify("Auto Buy Specific Items: " .. tostring(ABSIb))
+			if ABSIb == true then
+				writefile(DHV2MW .. "/ABSIb.txt","true")
+				writefile(DHV2MW .. "/AutoBuyEverythingb.txt","false")
+				section1:updateToggle("Auto Buy Everything")
+				AutoBuyEverythingb = false
+			else
+				writefile(DHV2MW .. "/ABSIb.txt","false")
+			end
+		end)
+	else
+		ABSIb = false
+		section1:addToggle("Auto Buy Specific Items",false,function(bool)
+			ABSIb = bool
+			notify("Auto Buy Specific Items: " .. tostring(ABSIb))
+			if ABSIb == true then
+				writefile(DHV2MW .. "/ABSIb.txt","true")
+				writefile(DHV2MW .. "/AutoBuyEverythingb.txt","false")
+				section1:updateToggle("Auto Buy Everything")
+				AutoBuyEverythingb = false
+			else
+				writefile(DHV2MW .. "/ABSIb.txt","false")
+			end
+		end)
+	end
+
+	if readfile(DHV2MW .. "/AutoBuyEverythingBMb.txt") == "true" then
+		AutoBuyEverythingBMb = true
+		section2:addToggle("Auto Buy Everything",true,function(bool)
+			AutoBuyEverythingBMb = bool
+			notify("Auto Buy Everything: " .. tostring(AutoBuyEverythingBMb))
+			if AutoBuyEverythingBMb == true then
+				writefile(DHV2MW .. "/AutoBuyEverythingBMb.txt","true")
+				writefile(DHV2MW .. "/ABSIBMb.txt","false")
+				section2:updateToggle("Auto Buy Specific Items")
+				ABSIBMb = false
+			else
+				writefile(DHV2MW .. "/AutoBuyEverythingBMb.txt","false")
+			end
+		end)
+	else
+		AutoBuyEverythingBMb = false
+		section2:addToggle("Auto Buy Everything",false,function(bool)
+			AutoBuyEverythingBMb = bool
+			notify("Auto Buy Everything: " .. tostring(AutoBuyEverythingBMb))
+			if AutoBuyEverythingBMb == true then
+				writefile(DHV2MW .. "/AutoBuyEverythingBMb.txt","true")
+				writefile(DHV2MW .. "/ABSIBMb.txt","false")
+				section2:updateToggle("Auto Buy Specific Items")
+				ABSIBMb = false
+			else
+				writefile(DHV2MW .. "/AutoBuyEverythingBMb.txt","false")
+			end
+		end)
+	end
+
+	section2:addDropdown("Black Market Choice 1: " .. readfile(DHV2MW .. "/bsiBMb.txt"),BuyBlackMarket,function(BUYS2)
+		print("Selected: " .. BUYS2)
+		notify("Selected: " .. BUYS2)
+		bsiBMb = BUYS2
+		writefile(DHV2MW .. "/bsiBMb.txt",bsiBMb)
+	end)
+	bsiBMb = readfile(DHV2MW .. "/bsiBM.txt")
+	section2:addDropdown("Black Market Choice 2: " .. readfile(DHV2MW .. "/bsiBM1b.txt"),BuyBlackMarket,function(BUYS21)
+		print("Selected: " .. BUYS21)
+		notify("Selected: " .. BUYS21)
+		bsiBM1b = BUYS21
+		writefile(DHV2MW .. "/bsiBM1b.txt",bsiBM1b)
+	end)
+	bsiBM1b = readfile(DHV2MW .. "/bsiBM1.txt")
+	section2:addDropdown("Black Market Choice 3: " .. readfile(DHV2MW .. "/bsiBM11b.txt"),BuyBlackMarket,function(BUYS211)
+		print("Selected: " .. BUYS211)
+		notify("Selected: " .. BUYS211)
+		bsiBM11b = BUYS211
+		writefile(DHV2MW .. "/bsiBM11b.txt",bsiBM11b)
+	end)
+	bsiBM11b = readfile(DHV2MW .. "/bsiBM11b.txt")
+
+	if readfile(DHV2MW .. "/ABSIBMb.txt") == "true" then
+		ABSIBMb = true
+		section2:addToggle("Auto Buy Specific Items",true,function(bool)
+			ABSIBMb = bool
+			notify("Auto Buy Specific Items: " .. tostring(ABSIBMb))
+			if ABSIBMb == true then
+				writefile(DHV2MW .. "/ABSIBMb.txt","true")
+				writefile(DHV2MW .. "/AutoBuyEverythingBMb.txt","false")
+				section2:updateToggle("Auto Buy Everything")
+				AutoBuyEverythingBMb = false
+			else
+				writefile(DHV2MW .. "/ABSIBMb.txt","false")
+			end
+		end)
+	else
+		ABSIBMb = false
+		section2:addToggle("Auto Buy Specific Items",false,function(bool)
+			ABSIBMb = bool
+			notify("Auto Buy Specific Items: " .. tostring(ABSIBMb))
+			if ABSIBMb == true then
+				writefile(DHV2MW .. "/ABSIBMb.txt","true")
+				writefile(DHV2MW .. "/AutoBuyEverythingBMb.txt","false")
+				section2:updateToggle("Auto Buy Everything")
+				AutoBuyEverythingBMb = false
+			else
+				writefile(DHV2MW .. "/ABSIBMb.txt","false")
+			end
+		end)
+	end
+
+	local CurrentMoney = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Frame.Money.Text)
+	local CurrentGem = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Gems.Gems.Text)
+	local BuyUI = player.PlayerGui.MainUI.Fullscreen.BuyUI
+	local BuyUIig = BuyUI.ItemsGrid
+	local BlackMarketUI = player.PlayerGui.MainUI.Fullscreen.BlackMarketUI
+	local BlackMarketUIig = BlackMarketUI.ItemsGrid
+
+	spawn(function()
+		while task.wait(.2) do
+			if AutoBuyEverythingb then
+				for i, v in ipairs(BuyShop) do
+					if BuyUIig[v]:FindFirstChild("Stock") and BuyUIig[v].Stock.Text ~= "Out of Stock!" and BuyUIig[v].Stock.Text ~= "Max Reached (1/1)" and BuyUIig[v].Name ~= "UIListLayout"  and BuyUIig[v].Name ~= "UIPadding"  and BuyUIig[v].Name ~= "DontDelete" and BuyUIig[v]:FindFirstChild("Buy") then
+						local CurrentMoney = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Frame.Money.Text)
+						if ShortToNumber(BuyUIig[v].Buy.Price.PriceText.Text) > CurrentMoney then
+							print("Not enough money to purchase")
+						else
+							for _, connection in pairs(getconnections(BuyUIig[v].Buy.MouseButton1Down)) do
+								connection:Fire()
+							end
+							notify("Purchased: " .. v .. "!")
+							print("Purchased: " .. v .. "!")
+							task.wait()
+						end
+					end
+				end
+				task.wait()
+			elseif ABSIb then
+				if bsib == " " and bsi1b == " " and bsi11b == " " then
+					notify("Please select the item you want to buy!")
+				else
+					for i, v in ipairs(BuyShop) do
+						if v == bsib or v == bsi1b or v == bsi11b then
+							if BuyUIig[v]:FindFirstChild("Stock") and BuyUIig[v].Stock.Text ~= "Out of Stock!" and BuyUIig[v].Stock.Text ~= "Max Reached (1/1)" and BuyUIig[v].Name ~= "UIListLayout"  and BuyUIig[v].Name ~= "UIPadding"  and BuyUIig[v].Name ~= "DontDelete" and BuyUIig[v]:FindFirstChild("Buy") then
+								local CurrentMoney = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Frame.Money.Text)
+								if ShortToNumber(BuyUIig[v].Buy.Price.PriceText.Text) > CurrentMoney then
+									print("Not enough money to purchase")
+								else
+									for _, connection in pairs(getconnections(BuyUIig[v].Buy.MouseButton1Down)) do
+										connection:Fire()
+									end
+									notify("Purchased: " .. v .. "!")
+									print("Purchased: " .. v .. "!")
+									task.wait()
+								end
+							end
+						end
+					end
+					task.wait()
+				end
+			end
+		end
+	end)
+
+	spawn(function()
+		while task.wait(.2) do
+			if AutoBuyEverythingBMb or ABSIBMb then
+				local timerTextLabel = workspace:WaitForChild("BlackMarket"):WaitForChild("Main"):WaitForChild("Other"):WaitForChild("Part"):WaitForChild("BillboardGui"):WaitForChild("BlackMarketTimer")
+				local hasTriggered = false 
+
+				timerTextLabel:GetPropertyChangedSignal("Text"):Connect(function()
+					if hasTriggered then return end
+					local currentText = timerTextLabel.Text
+					if not string.find(currentText, "ARRIVES IN:") then
+						hasTriggered = true
+						if AutoBuyEverythingBMb then
+							for i, v in ipairs(BuyBlackMarket) do
+								if v.Name ~= "UIListLayout" and v.Name ~= "UIPadding" and v.Name ~= "DontDelete" then
+									if BlackMarketUIig[v]:FindFirstChild("Stock") and BlackMarketUIig[v].Stock.Text ~= "Out of Stock!" and BlackMarketUIig[v].Stock.Text ~= "Max Reached (1/1)" and BlackMarketUIig[v].Stock.Text ~= "Max Reached (2/2)" and BlackMarketUIig[v].Stock.Text ~= "Max Reached (3/3)" and BlackMarketUIig[v].Name ~= "UIListLayout"  and BlackMarketUIig[v].Name ~= "UIPadding"  and BlackMarketUIig[v].Name ~= "DontDelete" and BlackMarketUIig[v].Name ~= "PadderTemplate" and BlackMarketUIig[v]:FindFirstChild("Buy") then
+										local CurrentGem = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Gems.Gems.Text)
+										if ShortToNumber(BlackMarketUIig[v].Buy.Price.PriceText.Text) > CurrentGem then
+											print("Not enough gems to purchase")
+										else
+											for _, connection in pairs(getconnections(BlackMarketUIig[v].Buy.MouseButton1Down)) do
+												connection:Fire()
+											end
+											notify("Purchased: " .. v .. "!")
+											print("Purchased: " .. v .. "!")
+											task.wait()
+										end
+									end
+								end
+							end
+							task.wait()
+						elseif ABSIBMb then
+							if bsiBMb == " " and bsiBM1b == " " and bsiBM11b == " " then
+								notify("Please select the item you want to buy!")
+							else
+								for i, v in ipairs(BuyBlackMarket) do
+									if v == bsiBMb or v == bsiBM1b or v == bsiBM11b then
+										if v.Name ~= "UIListLayout" and v.Name ~= "UIPadding" and v.Name ~= "DontDelete" then
+											if BlackMarketUIig[v]:FindFirstChild("Stock") and BlackMarketUIig[v].Stock.Text ~= "Out of Stock!" and BlackMarketUIig[v].Stock.Text ~= "Max Reached (1/1)" and BlackMarketUIig[v].Stock.Text ~= "Max Reached (2/2)" and BlackMarketUIig[v].Stock.Text ~= "Max Reached (3/3)" and BlackMarketUIig[v].Name ~= "UIListLayout"  and BlackMarketUIig[v].Name ~= "UIPadding"  and BlackMarketUIig[v].Name ~= "DontDelete" and BlackMarketUIig[v].Name ~= "PadderTemplate" and BlackMarketUIig[v]:FindFirstChild("Buy") then
+												local CurrentGem = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Gems.Gems.Text)
+												if ShortToNumber(BlackMarketUIig[v].Buy.Price.PriceText.Text) > CurrentGem then
+													print("Not enough gems to purchase")
+												else
+													for _, connection in pairs(getconnections(BlackMarketUIig[v].Buy.MouseButton1Down)) do
+														connection:Fire()
+													end
+													notify("Purchased: " .. v .. "!")
+													print("Purchased: " .. v .. "!")
+													task.wait()
+												end
+											end
+										end
+									end
+								end
+								task.wait()	
+							end
+						end	
+					end
+				end)
+			end
+		end
+	end)
 
 	local UnlockedPage3 = false
 	sectionW:addButton("Unlock ncxyzero_bridgenet2-fork@1.1.5 Functions",function()
@@ -1633,19 +1983,6 @@ local function MiniWar()
 					Title = "I warned you",
 					Text = "Don't cry when you screwed up",
 				})
-				local BuyShop = {}
-				for i,v in pairs(player.PlayerGui.MainUI.Fullscreen:WaitForChild("BuyUI"):WaitForChild("ItemsGrid"):GetChildren()) do
-					if v.Name ~= "UIListLayout" and v.Name ~= "UIPadding" and v.Name ~= "DontDelete" and v.Name ~= "PadderTemplate" then
-						table.insert(BuyShop, v.Name)
-					end
-				end
-
-				local BuyBlackMarket = {}
-				for i,v in pairs(player.PlayerGui.MainUI.Fullscreen:WaitForChild("BlackMarketUI"):WaitForChild("ItemsGrid"):GetChildren()) do
-					if v.Name ~= "UIListLayout" and v.Name ~= "UIPadding" and v.Name ~= "DontDelete" and v.Name ~= "PadderTemplate" then
-						table.insert(BuyBlackMarket, v.Name)
-					end
-				end
 
 				local AutoBuyEverything
 				local ABSI
@@ -1654,13 +1991,13 @@ local function MiniWar()
 
 				if readfile(DHV2MW .. "/AutoBuyEverything.txt") == "true" then
 					AutoBuyEverything = true
-					section1:addToggle("Auto Buy Everything",true,function(bool)
+					section1a:addToggle("Auto Buy Everything",true,function(bool)
 						AutoBuyEverything = bool
 						notify("Auto Buy Everything: " .. tostring(AutoBuyEverything))
 						if AutoBuyEverything == true then
 							writefile(DHV2MW .. "/AutoBuyEverything.txt","true")
 							writefile(DHV2MW .. "/ABSI.txt","false")
-							section1:updateToggle("Auto Buy Specific Items")
+							section1a:updateToggle("Auto Buy Specific Items")
 							ABSI = false
 						else
 							writefile(DHV2MW .. "/AutoBuyEverything.txt","false")
@@ -1668,13 +2005,13 @@ local function MiniWar()
 					end)
 				else
 					AutoBuyEverything = false
-					section1:addToggle("Auto Buy Everything",false,function(bool)
+					section1a:addToggle("Auto Buy Everything",false,function(bool)
 						AutoBuyEverything = bool
 						notify("Auto Buy Everything: " .. tostring(AutoBuyEverything))
 						if AutoBuyEverything == true then
 							writefile(DHV2MW .. "/AutoBuyEverything.txt","true")
 							writefile(DHV2MW .. "/ABSI.txt","false")
-							section1:updateToggle("Auto Buy Specific Items")
+							section1a:updateToggle("Auto Buy Specific Items")
 							ABSI = false
 						else
 							writefile(DHV2MW .. "/AutoBuyEverything.txt","false")
@@ -1725,7 +2062,7 @@ local function MiniWar()
 						notify("Auto Buy Specific Items: " .. tostring(ABSI))
 						if ABSI == true then
 							writefile(DHV2MW .. "/ABSI.txt","true")
-							writefile(DHV2MW .. "/ABAB.txt","false")
+							writefile(DHV2MW .. "/AutoBuyEverything.txt","false")
 							section1a:updateToggle("Auto Buy Everything")
 							AutoBuyEverything = false
 						else
@@ -1813,7 +2150,7 @@ local function MiniWar()
 					section2a:addToggle("Auto Buy Specific Items",true,function(bool)
 						ABSIBM = bool
 						notify("Auto Buy Specific Items: " .. tostring(ABSIBM))
-						if ABABSIBMSI == true then
+						if ABSIBM == true then
 							writefile(DHV2MW .. "/ABSIBM.txt","true")
 							writefile(DHV2MW .. "/AutoBuyEverythingBM.txt","false")
 							section2a:updateToggle("Auto Buy Everything")
@@ -1829,7 +2166,7 @@ local function MiniWar()
 						notify("Auto Buy Specific Items: " .. tostring(ABSIBM))
 						if ABSIBM == true then
 							writefile(DHV2MW .. "/ABSIBM.txt","true")
-							writefile(DHV2MW .. "/ABAB.txt","false")
+							writefile(DHV2MW .. "/AutoBuyEverythingBM.txt","false")
 							section2a:updateToggle("Auto Buy Everything")
 							AutoBuyEverythingBM = false
 						else
@@ -2210,6 +2547,7 @@ local function MiniWar()
 
 	local section1 = page4:addSection("Auto Collect")
 	local section2 = page4:addSection("Auto Sell")
+	local section3 = page4:addSection("Daily")
 	local section4 = page4:addSection("Auto Roll Generals")
 	local sectionW = page4:addSection("Unlock ncxyzero_bridgenet2-fork@1.1.5 Functions")
 	local section1a = page4:addSection("Auto Collect (ncxyzero_bridgenet2-fork@1.1.5)")
@@ -2334,6 +2672,106 @@ local function MiniWar()
 								connection:Fire()
 							end
 							task.wait(.5)
+						end
+					end
+				end
+			end
+		end
+	end)
+
+	if readfile(DHV2MW .. "/AutoClaimDailyRewards.txt") == "true" then
+		AutoClaimDailyRewards = true
+		section3:addToggle("Auto Claim Daily Rewards",true,function(bool)
+			AutoClaimDailyRewards = bool
+			if AutoClaimDailyRewards then
+				writefile(DHV2MW .. "/AutoClaimDailyRewards.txt","true")
+			else
+				writefile(DHV2MW .. "/AutoClaimDailyRewards.txt","false")
+			end
+		end)
+	else
+		AutoClaimDailyRewards = false
+		section3:addToggle("Auto Claim Daily Rewards",false,function(bool)
+			AutoClaimDailyRewards = bool
+			if AutoClaimDailyRewards then
+				writefile(DHV2MW .. "/AutoClaimDailyRewards.txt","true")
+			else
+				writefile(DHV2MW .. "/AutoClaimDailyRewards.txt","false")
+			end
+		end)
+	end
+	spawn(function()
+		while task.wait(1) do
+			if AutoClaimDailyRewards then
+				for i,v in pairs(player.PlayerGui.MainUI.Fullscreen.RewardsUI:GetChildren()) do
+					if v.ClassName == "Frame" and v.Name ~= "Topbar" then
+						for i,v1 in pairs(v:GetChildren()) do
+							if v1.Name ~= "UIListLayout" then
+								if v1.Claim.Visible == true and v1.Claim.TextLabel.Text == "Claim" then
+									for _, connection in pairs(getconnections(v1.Claim.MouseButton1Down)) do
+										connection:Fire()
+									end
+									task.wait(.5)
+									print("Claimed Daily Rewards")
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+	end)
+
+	if readfile(DHV2MW .. "/AutoClaimQuestRewardsb.txt") == "true" then
+		AutoClaimQuestRewardsb = true
+		section3:addToggle("Auto Claim Quest Rewards",true,function(bool)
+			AutoClaimQuestRewardsb = bool
+			if AutoClaimQuestRewardsb then
+				writefile(DHV2MW .. "/AutoClaimQuestRewardsb.txt","true")
+			else
+				writefile(DHV2MW .. "/AutoClaimQuestRewardsb.txt","false")
+			end
+		end)
+	else
+		AutoClaimQuestRewardsb = false
+		section3:addToggle("Auto Claim Quest Rewards",false,function(bool)
+			AutoClaimQuestRewardsb = bool
+			if AutoClaimQuestRewardsb then
+				writefile(DHV2MW .. "/AutoClaimQuestRewardsb.txt","true")
+			else
+				writefile(DHV2MW .. "/AutoClaimQuestRewardsb.txt","false")
+			end
+		end)
+	end
+
+	spawn(function()
+		while task.wait(1) do
+			if AutoClaimQuestRewardsb then
+				for i,v in pairs(player.PlayerGui.MainUI.Fullscreen.SeasonPassUI.Quests.QuestList:GetChildren()) do
+					if v.Name ~= "UIPadding" and v.Name ~= "UIListLayout" and v.Name ~= "DontDelete" and v.Name ~= "Template" then
+						if v.Button.NameFrame.ButtonText.Text == "Claim!" and v.Button.Visible == true then
+							for _, connection in pairs(getconnections(v.Button.MouseButton1Click)) do
+								connection:Fire()
+							end
+							task.wait(.5)
+							print("Claimed Quest Rewards: ".. tostring(v.Name))
+						end
+					end
+				end
+			end
+		end
+	end)
+	spawn(function()
+		while task.wait(1) do
+			if AutoClaimQuestRewardsb then
+				for i,v in pairs(player.PlayerGui.MainUI.Fullscreen.SeasonPassUI.Quests.StreakProgress.ProgressBar.TierList:GetChildren()) do
+					if v.Name ~= "Progress" and v.Name ~= "UIListLayout" then
+						if v.Quantity.Text == "Claim!" and v.ClaimButton.Visible == true then
+							for _, connection in pairs(getconnections(v.ClaimButton.MouseButton1Click)) do
+								connection:Fire()
+							end
+							task.wait(.5)
+							print("Claimed Quest Progress Rewards: ".. tostring(v.Name))
 						end
 					end
 				end
@@ -3429,14 +3867,56 @@ local function MiniWar()
 		end
 	end)
 
-
 	-- sixth page
 	local page6 = NoobieDoge:addPage("War Pass", 136388769289535)
 
+	local section1 = page6:addSection("War Pass")
 	local section3 = page6:addSection("Auto Farm")
 	local sectionW = page6:addSection("Unlock ncxyzero_bridgenet2-fork@1.1.5 Functions")
 	local section1a = page6:addSection("Free (ncxyzero_bridgenet2-fork@1.1.5)")
 	local section2a = page6:addSection("War Pass (ncxyzero_bridgenet2-fork@1.1.5)")
+
+	if readfile(DHV2MW .. "/AutoClaimWarPassRewardsb.txt") == "true" then
+		AutoClaimWarPassRewardsb = true
+		section1:addToggle("Auto Claim War Pass Rewards",true,function(bool)
+			AutoClaimWarPassRewardsb = bool
+			if AutoClaimWarPassRewardsb then
+				writefile(DHV2MW .. "/AutoClaimWarPassRewardsb.txt","true")
+			else
+				writefile(DHV2MW .. "/AutoClaimWarPassRewardsb.txt","false")
+			end
+		end)
+	else
+		AutoClaimWarPassRewardsb = false
+		section1:addToggle("Auto Claim War Pass Rewards",false,function(bool)
+			AutoClaimWarPassRewardsb = bool
+			if AutoClaimWarPassRewardsb then
+				writefile(DHV2MW .. "/AutoClaimWarPassRewardsb.txt","true")
+			else
+				writefile(DHV2MW .. "/AutoClaimWarPassRewardsb.txt","false")
+			end
+		end)
+	end
+
+	spawn(function()
+		while task.wait(2) do
+			if AutoClaimWarPassRewardsb then
+				for i,v in pairs(player.PlayerGui.MainUI.Fullscreen.SeasonPassUI.WarPass.ScrollingFrame:GetChildren()) do
+					if v.Name ~= "Frame" and v.Name ~= "UIListLayout" and tonumber(v.Name) < tonumber(player.PlayerGui.MainUI.Fullscreen.SeasonPassUI.WarPass.Top.Tier.ResetTimer.Text) then
+						for i,v1 in pairs(v:GetChildren()) do
+							if v1.Name == "ItemTemplate" and v1.Status.Locked.Visible == false and v1.Status.ClaimedIcon.Visible == false then
+								for _, connection in pairs(getconnections(v1.MouseButton1Click)) do
+									connection:Fire()
+								end
+								task.wait(.5)
+								print("Claimed War Pass Level: ".. tostring(v.Name))
+							end
+						end
+					end
+				end
+			end
+		end
+	end)
 
 	if readfile(DHV2MW .. "/AutoCollectWarPassPoints.txt") == "true" then
 		AutoCollectWarPassPoints = true
@@ -3697,11 +4177,12 @@ local function MiniWar()
 					pcall(function()
 						if workspace.MechBeastTarget:FindFirstChild("PromptHolder") and workspace.MechBeastTarget.PromptHolder:FindFirstChild("ProximityPrompt") then
 							if player.PlayerGui.MainUI.Fullscreen.DeployUI.Visible == true then
-								for i, v in pairs(player.PlayerGui.MainUI.Fullscreen.DeployUI:GetChildren()) do 
+								for i, v in pairs(player.PlayerGui.MainUI.Fullscreen.DeployUI.ScrollingFrame:GetChildren()) do 
 									if v.Name == "ArmyTemplate" or v.Name == "RocketTemplate" then
 										for _, connection in pairs(getconnections(v.Deploy.MouseButton1Click)) do
 											connection:Fire()
 										end
+										task.wait()
 									end
 								end
 							else
@@ -3790,7 +4271,7 @@ local function MiniWar()
 		while task.wait(1) do
 			if AutoBuyAlien then
 				for i, v in pairs(AlienShopUI.ItemsGrid:GetChildren()) do 
-					if v.Name ~= "UIListLayout" and v.Name ~= "DontDelete" and v.Name ~= "UIPadding" and v.Name ~= "Template" and v.Stock.Text ~= "Out of Stock!" then
+					if v.Name ~= "UIListLayout" and v.Name ~= "DontDelete" and v.Name ~= "UIPadding" and v.Name ~= "Template" and v.Stock.Text ~= "Out of Stock!" and v.Stock.Text ~= "Max Reached (3/3)" and v.Stock.Text ~= "Max Reached (2/2)" then
 						local CurrentAlienCore = ShortToNumber(AlienShopUI.Topbar.alienCoreFrame.alienCoreAmount.Text)
 						if CleanToNumber(v.Buy.Price.PriceText.Text) > CurrentAlienCore then
 							print("Not enough alien core to purchase")
@@ -4127,7 +4608,7 @@ local function MiniWar()
 			writefile(DHV2MW .. "/AutoDeleteTEMPEffects.txt","false")
 			writefile(DHV2MW .. "/AutoDeleteTEMPEffectsInterval.txt","200")
 			writefile(DHV2MW .. "/AutoDeleteBuildingEffects.txt","false")
-			writefile(DHV2MW .. "/RemoveunnecessaryProximityPrompts.txt","false")
+			writefile(DHV2MW .. "/RemoveunnecessaryProximityPromptsRobux.txt","false")
 			writefile(DHV2MW .. "/AutoRejoin.txt","false")
 			writefile(DHV2MW .. "/AutoRejoinInterval.txt","20")
 			writefile(DHV2MW .. "/AutoBuyEverything.txt","false")
@@ -4182,6 +4663,19 @@ local function MiniWar()
 			writefile(DHV2MW .. "/Delaybetweencollectb.txt","200")
 			writefile(DHV2MW .. "/AutoCollectGPb.txt","false")
 			writefile(DHV2MW .. "/AutoSellGPb.txt","false")
+			writefile(DHV2MW .. "/AutoClaimQuestRewardsb.txt","false")
+			writefile(DHV2MW .. "/AutoClaimWarPassRewardsb.txt","false")
+			writefile(DHV2MW .. "/AutoBuyEverythingb.txt","false")
+			writefile(DHV2MW .. "/bsib.txt"," ")
+			writefile(DHV2MW .. "/bsi1b.txt"," ")
+			writefile(DHV2MW .. "/bsi11b.txt"," ")
+			writefile(DHV2MW .. "/ABSIb.txt","false")
+			writefile(DHV2MW .. "/AutoBuyEverythingBMb.txt","false")
+			writefile(DHV2MW .. "/bsiBMb.txt"," ")
+			writefile(DHV2MW .. "/bsiBM1b.txt"," ")
+			writefile(DHV2MW .. "/bsiBM11b.txt"," ")
+			writefile(DHV2MW .. "/ABSIBMb.txt","false")
+			writefile(DHV2MW .. "/AutoClaimDailyRewards.txt","false")
 			local DHV2MWEvents = DHV2MW .. "/Events"
 			makefolder(DHV2MWEvents)
 			writefile(DHV2MWEvents .. "/AutoSellAlien.txt","false")
@@ -4200,7 +4694,7 @@ local function MiniWar()
 			DeleteLocalNPCHealthIndicator = false
 			AutoDeleteTEMPEffects = false
 			AutoDeleteBuildingEffects = false
-			RemoveunnecessaryProximityPrompts = false
+			RemoveunnecessaryProximityPromptsRobux = false
 			AutoRejoin = false
 			AutoBuyEverything = false
 			ABSI = false
@@ -4237,6 +4731,13 @@ local function MiniWar()
 			AutoCollectb = false
 			AutoCollectGPb = false
 			AutoSellGPb = false
+			AutoClaimQuestRewardsb = false
+			AutoClaimWarPassRewardsb = false
+			AutoBuyEverythingb = false
+			ABSIb = false
+			AutoBuyEverythingBMb = false
+			ABSIBMb = false
+			AutoClaimDailyRewards = false
 
 			for i,v in pairs(player.PlayerGui:GetChildren()) do
 				if v.Name == "ScreenGui" then
@@ -4413,10 +4914,10 @@ local function MiniWar()
 	end)
 
 	settings:addKeybind("Toggle Keybind", Enum.KeyCode.RightControl, function()
-	print("Activated Keybind")
-	NoobieDoge:toggle()
-	end, function()
-	print("Changed Keybind")
+		print("Activated Keybind")
+		NoobieDoge:toggle()
+		end, function()
+		print("Changed Keybind")
 	end)
 
 	local DHV2Frame = game:GetService("CoreGui")["DogeHub V2"]["DogeHub V2 Toggle"]
