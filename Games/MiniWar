@@ -2629,15 +2629,11 @@ local function MiniWar()
 	spawn(function()
 		while task.wait(1) do
 			if AutoCollectGPb then
-				for i,v in pairs(workspace.MilitaryMap.PlayerPlots["YourBase"].Plot.Buildings:GetChildren()) do
-					if v:FindFirstChild("ProximityPrompt") and v.ProximityPrompt.ObjectText == "Collect!" then
-						if player.PlayerGui.MainUI.HUD.DownUI.AutoCollect.On.Enabled == false then
-							for _, connection in pairs(getconnections(player.PlayerGui.MainUI.HUD.DownUI.AutoCollect.MouseButton1Down)) do
-								connection:Fire()
-							end
-							task.wait(.5)
-						end
+				if player.PlayerGui.MainUI.HUD.DownUI.AutoCollect.On.Enabled == false then
+					for _, connection in pairs(getconnections(player.PlayerGui.MainUI.HUD.DownUI.AutoCollect.MouseButton1Down)) do
+						connection:Fire()
 					end
+					task.wait(.5)
 				end
 			end
 		end
@@ -2665,20 +2661,20 @@ local function MiniWar()
 		end)
 	end
 	spawn(function()
-		while task.wait(5) do
+		while task.wait() do
 			if AutoSellb then
 				if player.PlayerGui.DialogOptions:FindFirstChild("Holder") then
-					if not player.PlayerGui.DialogOptions.Holder.Inside:FindFirstChild("Sell all Crops") then
+					if not player.PlayerGui.DialogOptions.Holder.Inside:FindFirstChild("Sell all Crops") or player.PlayerGui.DialogOptions.Holder.Inside.Visible == false then
 						for i,v in pairs(workspace:GetChildren()) do
 							if v:FindFirstChild("Pants") and string.find(v.Pants.PantsTemplate, "100041709124119") and v.HumanoidRootPart.ProximityPrompt.ActionText == "Talk!" then
 								player.Character.HumanoidRootPart.CFrame=workspace.Teleports.sell.CFrame+Vector3.new(0,4,0)
 								local prox = v.HumanoidRootPart.ProximityPrompt
-								prox.HoldDuration = 0
-								prox.MaxActivationDistance = 9e9
-								prox.Exclusivity = 2
-								prox.RequiresLineOfSight  = false
+								--prox.HoldDuration = 0
+								--prox.MaxActivationDistance = 9e9
+								--prox.Exclusivity = 2
+								--prox.RequiresLineOfSight  = false
 								fireproximityprompt(prox)
-								task.wait()
+								task.wait(2)
 							end
 						end
 					else
@@ -2686,6 +2682,7 @@ local function MiniWar()
 							connection:Fire()
 						end
 						notify("Trying to sell")
+						task.wait(2)
 					end
 				end
 			end
@@ -2717,15 +2714,11 @@ local function MiniWar()
 	spawn(function()
 		while task.wait(1) do
 			if AutoSellGPb then
-				for i,v in pairs(workspace.MilitaryMap.PlayerPlots["YourBase"].Plot.Buildings:GetChildren()) do
-					if v:FindFirstChild("ProximityPrompt") and v.ProximityPrompt.ObjectText == "Collect!" then
-						if player.PlayerGui.MainUI.HUD.DownUI.AutoSell.On.Enabled == false then
-							for _, connection in pairs(getconnections(player.PlayerGui.MainUI.HUD.DownUI.AutoSell.MouseButton1Down)) do
-								connection:Fire()
-							end
-							task.wait(.5)
-						end
+				if player.PlayerGui.MainUI.HUD.DownUI.AutoSell.On.Enabled == false then
+					for _, connection in pairs(getconnections(player.PlayerGui.MainUI.HUD.DownUI.AutoSell.MouseButton1Down)) do
+						connection:Fire()
 					end
+					task.wait(.5)
 				end
 			end
 		end
@@ -2759,7 +2752,7 @@ local function MiniWar()
 					if v.ClassName == "Frame" and v.Name ~= "Topbar" then
 						for i,v1 in pairs(v:GetChildren()) do
 							if v1.Name ~= "UIListLayout" then
-								if v1.Claim.Visible == true and v1.Claim.TextLabel.Text == "Claim" then
+								if v1.Claim.Visible == true and v1.Claim.TextLabel.Text == "Claim!" then
 									for _, connection in pairs(getconnections(v1.Claim.MouseButton1Down)) do
 										connection:Fire()
 									end
