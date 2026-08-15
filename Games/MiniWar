@@ -1818,7 +1818,7 @@ local function MiniWar()
 											end
 											notify("Purchased: " .. v .. "!")
 											print("Purchased: " .. v .. "!")
-											task.wait()
+											task.wait(.1)
 										end
 									end
 								end
@@ -1841,13 +1841,13 @@ local function MiniWar()
 													end
 													notify("Purchased: " .. v .. "!")
 													print("Purchased: " .. v .. "!")
-													task.wait()
+													task.wait(.1)
 												end
 											end
 										end
 									end
 								end
-								task.wait()	
+								task.wait(.1)	
 							end
 						end	
 					end
