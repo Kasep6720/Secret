@@ -429,6 +429,9 @@ local function MiniWar()
 	if isfile(DHV2MW .. "/AutoCraft.txt") == false then
 		writefile(DHV2MW .. "/AutoCraft.txt","false")
 	end
+	if isfile(DHV2MW .. "/cpc.txt") == false then
+		writefile(DHV2MW .. "/cpc.txt","5s")
+	end
 	local DHV2MWEvents = DHV2MW .. "/Events"
 	if isfolder(DHV2MWEvents) == false then
 		makefolder(DHV2MWEvents)
@@ -1584,6 +1587,24 @@ local function MiniWar()
 		local cleanText = string.gsub(text, "[$,%s]", "")
 		return tonumber(cleanText) or 0
 	end
+	local function timeToSeconds(timeStr)
+		-- Extracts the number and the unit (h, m, s)
+		local amountStr, unit = string.match(timeStr, "(%d+)([hms])")
+		if not amountStr or not unit then 
+			return 0 -- Returns 0 if formatting is invalid
+		end
+		local amount = tonumber(amountStr)
+		-- Convert based on unit
+		if unit == "h" then
+			return amount * 3600
+		elseif unit == "m" then
+			return amount * 60
+		elseif unit == "s" then
+			return amount
+		end
+		return 0
+	end
+
 	for i,v in pairs(workspace.MilitaryMap.PlayerPlots:GetChildren()) do
 		local empireName = player.Name .. "'s Empire"
 		if v.UI.BillboardGui.Holder.PlayerName.Text == empireName then
@@ -1809,9 +1830,7 @@ local function MiniWar()
 						if ShortToNumber(BuyUIig[v].Buy.Price.PriceText.Text) > CurrentMoney then
 							print("Not enough money to purchase")
 						else
-							for _, connection in pairs(getconnections(BuyUIig[v].Buy.MouseButton1Down)) do
-								connection:Fire()
-							end
+							firesignal(BuyUIig[v].Buy.MouseButton1Down)
 							notify("Purchased: " .. v .. "!")
 							print("Purchased: " .. v .. "!")
 							task.wait()
@@ -1830,9 +1849,7 @@ local function MiniWar()
 								if ShortToNumber(BuyUIig[v].Buy.Price.PriceText.Text) > CurrentMoney then
 									print("Not enough money to purchase")
 								else
-									for _, connection in pairs(getconnections(BuyUIig[v].Buy.MouseButton1Down)) do
-										connection:Fire()
-									end
+									firesignal(BuyUIig[v].Buy.MouseButton1Down)
 									notify("Purchased: " .. v .. "!")
 									print("Purchased: " .. v .. "!")
 									task.wait()
@@ -1865,9 +1882,7 @@ local function MiniWar()
 										if ShortToNumber(BlackMarketUIig[v].Buy.Price.PriceText.Text) > CurrentGem then
 											print("Not enough gems to purchase")
 										else
-											for _, connection in pairs(getconnections(BlackMarketUIig[v].Buy.MouseButton1Down)) do
-												connection:Fire()
-											end
+											firesignal(BlackMarketUIig[v].Buy.MouseButton1Down)
 											notify("Purchased: " .. v .. "!")
 											print("Purchased: " .. v .. "!")
 											task.wait(.1)
@@ -1888,9 +1903,7 @@ local function MiniWar()
 												if ShortToNumber(BlackMarketUIig[v].Buy.Price.PriceText.Text) > CurrentGem then
 													print("Not enough gems to purchase")
 												else
-													for _, connection in pairs(getconnections(BlackMarketUIig[v].Buy.MouseButton1Down)) do
-														connection:Fire()
-													end
+													firesignal(BlackMarketUIig[v].Buy.MouseButton1Down)
 													notify("Purchased: " .. v .. "!")
 													print("Purchased: " .. v .. "!")
 													task.wait(.1)
@@ -2683,9 +2696,7 @@ local function MiniWar()
 		while task.wait(1) do
 			if AutoCollectGPb then
 				if player.PlayerGui.MainUI.HUD.DownUI.AutoCollect.On.Enabled == false then
-					for _, connection in pairs(getconnections(player.PlayerGui.MainUI.HUD.DownUI.AutoCollect.MouseButton1Down)) do
-						connection:Fire()
-					end
+					firesignal(player.PlayerGui.MainUI.HUD.DownUI.AutoCollect.MouseButton1Down)
 					task.wait(.5)
 				end
 			end
@@ -2731,9 +2742,7 @@ local function MiniWar()
 							end
 						end
 					else
-						for _, connection in pairs(getconnections(player.PlayerGui.DialogOptions.Holder.Inside["Sell all Crops"].MouseButton1Down)) do
-							connection:Fire()
-						end
+						firesignal(player.PlayerGui.DialogOptions.Holder.Inside["Sell all Crops"].MouseButton1Down)
 						notify("Trying to sell")
 						task.wait(2)
 					end
@@ -2768,9 +2777,7 @@ local function MiniWar()
 		while task.wait(1) do
 			if AutoSellGPb then
 				if player.PlayerGui.MainUI.HUD.DownUI.AutoSell.On.Enabled == false then
-					for _, connection in pairs(getconnections(player.PlayerGui.MainUI.HUD.DownUI.AutoSell.MouseButton1Down)) do
-						connection:Fire()
-					end
+					firesignal(player.PlayerGui.MainUI.HUD.DownUI.AutoSell.MouseButton1Down)
 					task.wait(.5)
 				end
 			end
@@ -2806,9 +2813,7 @@ local function MiniWar()
 						for i,v1 in pairs(v:GetChildren()) do
 							if v1.Name ~= "UIListLayout" then
 								if v1.Claim.Visible == true and v1.Claim.TextLabel.Text == "Claim!" then
-									for _, connection in pairs(getconnections(v1.Claim.MouseButton1Down)) do
-										connection:Fire()
-									end
+									firesignal(v1.Claim.MouseButton1Down)
 									task.wait(.5)
 									print("Claimed Daily Rewards")
 								end
@@ -2848,9 +2853,7 @@ local function MiniWar()
 				for i,v in pairs(player.PlayerGui.MainUI.Fullscreen.SeasonPassUI.Quests.QuestList:GetChildren()) do
 					if v.Name ~= "UIPadding" and v.Name ~= "UIListLayout" and v.Name ~= "DontDelete" and v.Name ~= "Template" then
 						if v.Button.NameFrame.ButtonText.Text == "Claim!" and v.Button.Visible == true then
-							for _, connection in pairs(getconnections(v.Button.MouseButton1Click)) do
-								connection:Fire()
-							end
+							firesignal(v.Button.MouseButton1Click)
 							task.wait(.5)
 							print("Claimed Quest Rewards: ".. tostring(v.Name))
 						end
@@ -2865,9 +2868,7 @@ local function MiniWar()
 				for i,v in pairs(player.PlayerGui.MainUI.Fullscreen.SeasonPassUI.Quests.StreakProgress.ProgressBar.TierList:GetChildren()) do
 					if v.Name ~= "Progress" and v.Name ~= "UIListLayout" then
 						if v.Quantity.Text == "Claim!" and v.ClaimButton.Visible == true then
-							for _, connection in pairs(getconnections(v.ClaimButton.MouseButton1Click)) do
-								connection:Fire()
-							end
+							firesignal(v.ClaimButton.MouseButton1Click)
 							task.wait(.5)
 							print("Claimed Quest Progress Rewards: ".. tostring(v.Name))
 						end
@@ -3006,9 +3007,7 @@ local function MiniWar()
 						if ShortToNumber(BuyGeneralButton.Price.PriceText.Text) > CurrentGem then
 							print("Not enough gems to purchase")
 						else
-							for _, connection in pairs(getconnections(BuyGeneralButton.MouseButton1Click)) do
-								connection:Fire()
-							end
+							firesignal(BuyGeneralButton.MouseButton1Click)
 						end
 					end
 				end
@@ -3018,7 +3017,7 @@ local function MiniWar()
 
 	local CraftingUI = player.PlayerGui.MainUI.Fullscreen.CraftingUI
 	local Craftables = {}
-	if not CraftingUI.ScrollingFrame:FindFirstChild("RecipeGrid_1") then
+	local function OpenCrafting()
 		if UrBuildings:FindFirstChild("Crafting") then
 			notify("Finding crafting")
 			player.Character.HumanoidRootPart.CFrame=UrBuildings:FindFirstChild("Crafting").Hitbox.CFrame+Vector3.new(0,4,0)
@@ -3027,15 +3026,20 @@ local function MiniWar()
 			prox.RequiresLineOfSight = false 
 			task.wait(.1) 
 			fireproximityprompt(prox) 
+			--CraftingUI.Position = UDim2.new(0.5, 0, 56, 0)
 			task.wait(1)
 		else 
-			if UrBuildings:FindFirstChild("Crafting") then 
-				CraftingUI.Enabled = true
-			else 
+			if not UrBuildings:FindFirstChild("Crafting") then 
 				notify("You don't have a crafting!") 
 				task.wait(10) 
 			end 
 		end
+	end
+
+	if not CraftingUI.ScrollingFrame:FindFirstChild("RecipeGrid_1") then
+		task.wait(.8)
+		OpenCrafting()
+		task.wait(.2)
 	end
 	for i,v in pairs(CraftingUI.ScrollingFrame:GetChildren()) do
 		if v:FindFirstChild("ItemTemplate") or v:FindFirstChild("CraftingUpgrade") then
@@ -3091,36 +3095,25 @@ local function MiniWar()
 		AutoCraft = false
 	end
 
+	section5:addDropdown("Crafting Progress Check: " .. readfile(DHV2MW .. "/cpc.txt"),{"10s","1m","5m","10m","30m","1h","2h","3h","6h","12h","18h","24h","36h","48h"},function(p)
+		print("Check crafting progress in every: " .. p)
+		notify("Check crafting progress in every: " .. p)
+		cpc = p
+		writefile(DHV2MW .. "/cpc.txt",cpc)
+	end)
+	cpc = readfile(DHV2MW .. "/cpc.txt")
+
 	spawn(function() 
-		while task.wait(2) do 
+		while task.wait(timeToSeconds(2)) do 
 			if AutoCraft then 
-				if not CraftingUI.ScrollingFrame:FindFirstChild("RecipeGrid_1") then
-					if UrBuildings:FindFirstChild("Crafting") then
-						notify("Finding crafting")
-						player.Character.HumanoidRootPart.CFrame=UrBuildings:FindFirstChild("Crafting").Hitbox.CFrame+Vector3.new(0,4,0)
-						local prox = UrBuildings.Crafting.Hitbox.CraftingPrompt 
-						prox.Exclusivity = 2 
-						prox.RequiresLineOfSight = false 
-						task.wait(.1) 
-						fireproximityprompt(prox) 
-						task.wait(1)
-					else 
-						if UrBuildings:FindFirstChild("Crafting") then 
-							CraftingUI.Enabled = true
-						else 
-							notify("You don't have a crafting!") 
-							task.wait(10) 
-						end 
-					end
-				else
-					if CraftingUI.Visible == false then CraftingUI.Visible = true end
+				if CraftingUI.ScrollingFrame:FindFirstChild("RecipeGrid_1") then
+					--if CraftingUI.Visible == false then OpenCrafting() end
 					for i, v in pairs(CraftingUI.ScrollingFrame:GetChildren()) do 
 						if v:FindFirstChild("ItemTemplate") or v:FindFirstChild("CraftingUpgrade") then
 							for i,v1 in pairs(v:GetChildren()) do
 								if v1.Name == "ItemTemplateCraftingToClaim" then
 									if CraftingUI.CraftableItem.ItemTemplateToClaim.Title.Text ~= v1.Title.Text then
 										firesignal(v1.MouseButton1Down)
-										print("swfsdgdr")
 									else
 										firesignal(CraftingUI.CraftableItem.Craft.MouseButton1Down)
 										print("Claimed " .. v1.Title.Text)
@@ -3144,7 +3137,17 @@ local function MiniWar()
 			end 
 		end 
 	end)
-	
+
+	spawn(function() 
+		while task.wait(timeToSeconds(cpc)) do 
+			if AutoCraft then 
+				if not CraftingUI.ScrollingFrame:FindFirstChild("RecipeGrid_1") then
+					OpenCrafting()
+				end
+			end
+		end
+	end)
+
 	local UnlockedPage4 = false
 	sectionW:addButton("Unlock ncxyzero_bridgenet2-fork@1.1.5 Functions",function()
 		if UnlockedPage4 == true then
@@ -4132,9 +4135,7 @@ local function MiniWar()
 					if v.Name ~= "Frame" and v.Name ~= "UIListLayout" and tonumber(v.Name) < tonumber(player.PlayerGui.MainUI.Fullscreen.SeasonPassUI.WarPass.Top.Tier.ResetTimer.Text) then
 						for i,v1 in pairs(v:GetChildren()) do
 							if v1.Name == "ItemTemplate" and v1.Status.Locked.Visible == false and v1.Status.ClaimedIcon.Visible == false then
-								for _, connection in pairs(getconnections(v1.MouseButton1Click)) do
-									connection:Fire()
-								end
+								firesignal(v1.MouseButton1Click)
 								task.wait(.5)
 								print("Claimed War Pass Level: ".. tostring(v.Name))
 							end
@@ -4406,9 +4407,7 @@ local function MiniWar()
 							if player.PlayerGui.MainUI.Fullscreen.DeployUI.Visible == true then
 								for i, v in pairs(player.PlayerGui.MainUI.Fullscreen.DeployUI.ScrollingFrame:GetChildren()) do 
 									if v.Name == "ArmyTemplate" or v.Name == "RocketTemplate" then
-										for _, connection in pairs(getconnections(v.Deploy.MouseButton1Click)) do
-											connection:Fire()
-										end
+										firesignal(v.Deploy.MouseButton1Click)
 										task.wait()
 									end
 								end
@@ -4474,9 +4473,7 @@ local function MiniWar()
 			if AutoSellAlien then
 				pcall(function()
 					if ShortToNumber(ExtractorUI.alienCoreFrameAll.alienCoreAmount.Text) > 1 then
-						for _, connection in pairs(getconnections(ExtractorUI.ExtractAll.MouseButton1Click)) do
-							connection:Fire()
-						end
+						firesignal(ExtractorUI.ExtractAll.MouseButton1Click)
 					end
 				end)
 			end
@@ -4513,9 +4510,7 @@ local function MiniWar()
 						if CleanToNumber(v.Buy.Price.PriceText.Text) > CurrentAlienCore then
 							print("Not enough alien core to purchase")
 						else
-							for _, connection in pairs(getconnections(v.Buy.MouseButton1Down)) do
-								connection:Fire()
-							end
+							firesignal(v.Buy.MouseButton1Down)
 							task.wait()
 						end
 					end
@@ -4922,6 +4917,7 @@ local function MiniWar()
 			writefile(Choices .. "/ca2.txt"," ")
 			writefile(Choices .. "/ca3.txt"," ")
 			writefile(DHV2MW .. "/AutoCraft.txt","false")
+			writefile(DHV2MW .. "/cpc.txt","5s")
 			local DHV2MWEvents = DHV2MW .. "/Events"
 			makefolder(DHV2MWEvents)
 			writefile(DHV2MWEvents .. "/AutoSellAlien.txt","false")
