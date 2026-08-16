@@ -295,7 +295,7 @@ do
 		-- after: local container = utility:Create("ScreenGui", { ... })
 		local guiScale = Instance.new("UIScale")
 		guiScale.Name = "GuiScale"
-		guiScale.Scale = 1 / 3
+		guiScale.Scale = 1 / 2
 		guiScale.Parent = container
 		
 		utility:InitializeKeybind()
