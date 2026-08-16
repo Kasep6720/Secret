@@ -1390,8 +1390,10 @@ local function MiniWar()
 		while task.wait() do
 			if AutoDeleteTEMPEffects then
 				for i,v in pairs(workspace.TEMP:GetChildren()) do
-					v:Destroy()
-					DeletedTEMP = DeletedTEMP +1
+					if not v:FindFirstChild("Meshes/orbital_Cube.001 (1)") then
+						v:Destroy()
+						DeletedTEMP = DeletedTEMP +1
+					end
 				end
 				if DeletedTEMP > 1000 then
 					print("Deleted " .. tostring(DeletedTEMP) .. " TEMP Effects")
