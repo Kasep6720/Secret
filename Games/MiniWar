@@ -381,6 +381,12 @@ local function MiniWar()
 	if isfile(DHV2MW .. "/bsi11b.txt") == false then
 		writefile(DHV2MW .. "/bsi11b.txt"," ")
 	end
+	if isfile(DHV2MW .. "/bsi111b.txt") == false then
+		writefile(DHV2MW .. "/bsi111b.txt"," ")
+	end
+	if isfile(DHV2MW .. "/bsi1111b.txt") == false then
+		writefile(DHV2MW .. "/bsi1111b.txt"," ")
+	end
 	if isfile(DHV2MW .. "/ABSIb.txt") == false then
 		writefile(DHV2MW .. "/ABSIb.txt","false")
 	end	
@@ -396,6 +402,12 @@ local function MiniWar()
 	if isfile(DHV2MW .. "/bsiBM11b.txt") == false then
 		writefile(DHV2MW .. "/bsiBM11b.txt"," ")
 	end 
+	if isfile(DHV2MW .. "/bsiBM111b.txt") == false then
+		writefile(DHV2MW .. "/bsiBM111b.txt"," ")
+	end 
+	if isfile(DHV2MW .. "/bsiBM1111b.txt") == false then
+		writefile(DHV2MW .. "/bsiBM1111b.txt"," ")
+	end 
 	if isfile(DHV2MW .. "/ABSIBMb.txt") == false then
 		writefile(DHV2MW .. "/ABSIBMb.txt","false")
 	end	
@@ -405,6 +417,18 @@ local function MiniWar()
 	if isfile(DHV2MW .. "/AutoClaimDailyRewards.txt") == false then
 		writefile(DHV2MW .. "/AutoClaimDailyRewards.txt","false")
 	end	
+	if isfile(Choices .. "/ca1.txt") == false then
+		writefile(Choices .. "/ca1.txt"," ")
+	end
+	if isfile(Choices .. "/ca2.txt") == false then
+		writefile(Choices .. "/ca2.txt"," ")
+	end
+	if isfile(Choices .. "/ca3.txt") == false then
+		writefile(Choices .. "/ca3.txt"," ")
+	end
+	if isfile(DHV2MW .. "/AutoCraft.txt") == false then
+		writefile(DHV2MW .. "/AutoCraft.txt","false")
+	end
 	local DHV2MWEvents = DHV2MW .. "/Events"
 	if isfolder(DHV2MWEvents) == false then
 		makefolder(DHV2MWEvents)
@@ -1628,6 +1652,20 @@ local function MiniWar()
 		writefile(DHV2MW .. "/bsi11b.txt",bsi11b)
 	end)
 	bsi11b = readfile(DHV2MW .. "/bsi11b.txt")
+	section1:addDropdown("Shop Choice 4: " .. readfile(DHV2MW .. "/bsi11b.txt"),BuyShop,function(BUYS1111)
+		print("Selected: " .. BUYS1111)
+		notify("Selected: " .. BUYS1111)
+		bsi11b = BUYS1111
+		writefile(DHV2MW .. "/bsi11b.txt",bsi11b)
+	end)
+	bsi11b = readfile(DHV2MW .. "/bsi11b.txt")
+	section1:addDropdown("Shop Choice 5: " .. readfile(DHV2MW .. "/bsi111b.txt"),BuyShop,function(BUYS11111)
+		print("Selected: " .. BUYS11111)
+		notify("Selected: " .. BUYS11111)
+		bsi111b = BUYS11111
+		writefile(DHV2MW .. "/bsi111b.txt",bsi111b)
+	end)
+	bsi111b = readfile(DHV2MW .. "/bsi111b.txt")
 
 	if readfile(DHV2MW .. "/ABSIb.txt") == "true" then
 		ABSIb = true
@@ -1710,6 +1748,20 @@ local function MiniWar()
 		writefile(DHV2MW .. "/bsiBM11b.txt",bsiBM11b)
 	end)
 	bsiBM11b = readfile(DHV2MW .. "/bsiBM11b.txt")
+	section2:addDropdown("Black Market Choice 4: " .. readfile(DHV2MW .. "/bsiBM111b.txt"),BuyBlackMarket,function(BUYS2111)
+		print("Selected: " .. BUYS2111)
+		notify("Selected: " .. BUYS2111)
+		bsiBM111b = BUYS2111
+		writefile(DHV2MW .. "/bsiBM111b.txt",bsiBM111b)
+	end)
+	bsiBM111b = readfile(DHV2MW .. "/bsiBM111b.txt")
+	section2:addDropdown("Black Market Choice 5: " .. readfile(DHV2MW .. "/bsiBM1111b.txt"),BuyBlackMarket,function(BUYS21111)
+		print("Selected: " .. BUYS21111)
+		notify("Selected: " .. BUYS21111)
+		bsiBM1111b = BUYS21111
+		writefile(DHV2MW .. "/bsiBM1111b.txt",bsiBM1111b)
+	end)
+	bsiBM1111b = readfile(DHV2MW .. "/bsiBM1111b.txt")
 
 	if readfile(DHV2MW .. "/ABSIBMb.txt") == "true" then
 		ABSIBMb = true
@@ -1768,11 +1820,11 @@ local function MiniWar()
 				end
 				task.wait()
 			elseif ABSIb then
-				if bsib == " " and bsi1b == " " and bsi11b == " " then
+				if bsib == " " and bsi1b == " " and bsi11b == " " and bsi111b == " " and bsi111b == " " then
 					notify("Please select the item you want to buy!")
 				else
 					for i, v in ipairs(BuyShop) do
-						if v == bsib or v == bsi1b or v == bsi11b then
+						if v == bsib or v == bsi1b or v == bsi11b or v == bsi111b or v == bsi1111b then
 							if BuyUIig[v]:FindFirstChild("Stock") and BuyUIig[v].Stock.Text ~= "Out of Stock!" and BuyUIig[v].Stock.Text ~= "Max Reached (1/1)" and BuyUIig[v].Stock.Text ~= "Max Reached (2/2)" and BuyUIig[v].Stock.Text ~= "Max Reached (3/3)" and BuyUIig[v].Name ~= "UIListLayout"  and BuyUIig[v].Name ~= "UIPadding"  and BuyUIig[v].Name ~= "DontDelete" and BuyUIig[v]:FindFirstChild("Buy") then
 								local CurrentMoney = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Frame.Money.Text)
 								if ShortToNumber(BuyUIig[v].Buy.Price.PriceText.Text) > CurrentMoney then
@@ -1808,7 +1860,7 @@ local function MiniWar()
 						if AutoBuyEverythingBMb then
 							for i, v in ipairs(BuyBlackMarket) do
 								if v.Name ~= "UIListLayout" and v.Name ~= "UIPadding" and v.Name ~= "DontDelete" then
-									if BlackMarketUIig[v]:FindFirstChild("Stock") and BlackMarketUIig[v].Stock.Text ~= "Out of Stock!" and BlackMarketUIig[v].Stock.Text ~= "Max Reached (1/1)" and BlackMarketUIig[v].Stock.Text ~= "Max Reached (2/2)" and BlackMarketUIig[v].Stock.Text ~= "Max Reached (3/3)" and BlackMarketUIig[v].Name ~= "UIListLayout"  and BlackMarketUIig[v].Name ~= "UIPadding"  and BlackMarketUIig[v].Name ~= "DontDelete" and BlackMarketUIig[v].Name ~= "PadderTemplate" and BlackMarketUIig[v]:FindFirstChild("Buy") then
+									if BlackMarketUIig[v]:FindFirstChild("Stock") and BlackMarketUIig[v].Stock.Text ~= "Out of Stock!" and BlackMarketUIig[v].Stock.Text ~= "Max Reached (1/1)" and BlackMarketUIig[v].Stock.Text ~= "Max Reached (2/2)" and BlackMarketUIig[v].Stock.Text ~= "Max Reached (3/3)" and BlackMarketUIig[v].Name ~= "UIListLayout"  and BlackMarketUIig[v].Name ~= "UIPadding"  and BlackMarketUIig[v].Name ~= "DontDelete" and BlackMarketUIig[v].Name ~= "PadderTemplate" and BlackMarketUIig[v]:FindFirstChild("Buy") and BlackMarketUIig[v].Name ~= "TransportPad" then
 										local CurrentGem = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Gems.Gems.Text)
 										if ShortToNumber(BlackMarketUIig[v].Buy.Price.PriceText.Text) > CurrentGem then
 											print("Not enough gems to purchase")
@@ -1825,12 +1877,12 @@ local function MiniWar()
 							end
 							task.wait()
 						elseif ABSIBMb then
-							if bsiBMb == " " and bsiBM1b == " " and bsiBM11b == " " then
+							if bsiBMb == " " and bsiBM1b == " " and bsiBM11b == " " and bsiBM111b == " " and bsiBM1111b == " " then
 								notify("Please select the item you want to buy!")
 							else
 								for i, v in ipairs(BuyBlackMarket) do
-									if v == bsiBMb or v == bsiBM1b or v == bsiBM11b then
-										if v.Name ~= "UIListLayout" and v.Name ~= "UIPadding" and v.Name ~= "DontDelete" then
+									if v == bsiBMb or v == bsiBM1b or v == bsiBM11b or v == bsiBM111b or v == bsiBM1111b then
+										if v.Name ~= "UIListLayout" and v.Name ~= "UIPadding" and v.Name ~= "DontDelete" and v.Name ~= "TransportPad" then
 											if BlackMarketUIig[v]:FindFirstChild("Stock") and BlackMarketUIig[v].Stock.Text ~= "Out of Stock!" and BlackMarketUIig[v].Stock.Text ~= "Max Reached (1/1)" and BlackMarketUIig[v].Stock.Text ~= "Max Reached (2/2)" and BlackMarketUIig[v].Stock.Text ~= "Max Reached (3/3)" and BlackMarketUIig[v].Name ~= "UIListLayout"  and BlackMarketUIig[v].Name ~= "UIPadding"  and BlackMarketUIig[v].Name ~= "DontDelete" and BlackMarketUIig[v].Name ~= "PadderTemplate" and BlackMarketUIig[v]:FindFirstChild("Buy") then
 												local CurrentGem = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Gems.Gems.Text)
 												if ShortToNumber(BlackMarketUIig[v].Buy.Price.PriceText.Text) > CurrentGem then
@@ -2908,6 +2960,13 @@ local function MiniWar()
 						task.wait(.1) 
 						fireproximityprompt(prox) 
 						task.wait(1)
+					else 
+						if UrBuildings:FindFirstChild("GeneralResidence") then 
+							GeneralUI.Enabled = true
+						else 
+							notify("You don't have a general residence!") 
+							task.wait(10) 
+						end 
 					end
 				else
 					if GeneralUI.Enabled == true then 
@@ -2932,13 +2991,6 @@ local function MiniWar()
 						end
 						
 						task.wait() 
-					else 
-						if UrBuildings:FindFirstChild("GeneralResidence") then 
-							GeneralUI.Enabled = true
-						else 
-							notify("You don't have a general residence!") 
-							task.wait(10) 
-						end 
 					end 
 				end
 			end 
@@ -2964,11 +3016,135 @@ local function MiniWar()
 		end
 	end)
 
-	section5:addButton("Craft",function()
-		task.wait()
-		player.PlayerGui.MainUI.Fullscreen.CraftingUI.Visible = true
+	local CraftingUI = player.PlayerGui.MainUI.Fullscreen.CraftingUI
+	local Craftables = {}
+	if not CraftingUI.ScrollingFrame:FindFirstChild("RecipeGrid_1") then
+		if UrBuildings:FindFirstChild("Crafting") then
+			notify("Finding crafting")
+			player.Character.HumanoidRootPart.CFrame=UrBuildings:FindFirstChild("Crafting").Hitbox.CFrame+Vector3.new(0,4,0)
+			local prox = UrBuildings.Crafting.Hitbox.CraftingPrompt 
+			prox.Exclusivity = 2 
+			prox.RequiresLineOfSight = false 
+			task.wait(.1) 
+			fireproximityprompt(prox) 
+			task.wait(1)
+		else 
+			if UrBuildings:FindFirstChild("Crafting") then 
+				CraftingUI.Enabled = true
+			else 
+				notify("You don't have a crafting!") 
+				task.wait(10) 
+			end 
+		end
+	end
+	for i,v in pairs(CraftingUI.ScrollingFrame:GetChildren()) do
+		if v:FindFirstChild("ItemTemplate") or v:FindFirstChild("CraftingUpgrade") then
+			for i,v1 in pairs(v:GetChildren()) do
+				if v1.Name ~= "UIGridLayout" then
+					table.insert(Craftables, v1.Title.Text)
+				end
+			end
+		end
+	end
+	
+	section5:addDropdown("Auto Craft Choice 1: " .. readfile(Choices .. "/ca1.txt"),Craftables,function(GEN1)
+		print("Selected: " .. GEN1)
+		notify("1st Choice Selected: " .. GEN1)
+		ca1 = GEN1
+		writefile(Choices .. "/ca1.txt",ca1)
 	end)
+	ca1 = readfile(Choices .. "/ca1.txt")
+	section5:addDropdown("Auto Craft Choice 2: ".. readfile(Choices .. "/ca2.txt"),Craftables,function(GEN2)
+		print("Selected: " .. GEN2)
+		notify("2nd Choice Selected: " .. GEN2)
+		ca2 = GEN2
+		writefile(Choices .. "/ca2.txt",ca2)
+	end)
+	ca2 = readfile(Choices .. "/ca2.txt")
+	section5:addDropdown("Auto Craft Choice 3: " .. readfile(Choices .. "/ca3.txt"),Craftables,function(GEN3)
+		print("Selected: " .. GEN3)
+		notify("3rd Choice Selected: " .. GEN3)
+		ca3 = GEN3
+		writefile(Choices .. "/ca3.txt",ca3)
+	end)
+	ca3 = readfile(Choices .. "/ca3.txt")
 
+	if readfile(DHV2MW .. "/AutoCraft.txt") == "true" then
+		section5:addToggle("Auto Craft",true,function(bool)
+			AutoCraft = bool
+			if AutoCraft == true then
+				writefile(DHV2MW .. "/AutoCraft.txt","true")
+			else
+				writefile(DHV2MW .. "/AutoCraft.txt","false")
+			end
+		end)
+		AutoCraft = true
+	else
+		section5:addToggle("Auto Craft",false,function(bool)
+			AutoCraft = bool
+			if AutoCraft == true then
+				writefile(DHV2MW .. "/AutoCraft.txt","true")
+			else
+				writefile(DHV2MW .. "/AutoCraft.txt","false")
+			end
+		end)
+		AutoCraft = false
+	end
+
+	spawn(function() 
+		while task.wait(2) do 
+			if AutoCraft then 
+				if not CraftingUI.ScrollingFrame:FindFirstChild("RecipeGrid_1") then
+					if UrBuildings:FindFirstChild("Crafting") then
+						notify("Finding crafting")
+						player.Character.HumanoidRootPart.CFrame=UrBuildings:FindFirstChild("Crafting").Hitbox.CFrame+Vector3.new(0,4,0)
+						local prox = UrBuildings.Crafting.Hitbox.CraftingPrompt 
+						prox.Exclusivity = 2 
+						prox.RequiresLineOfSight = false 
+						task.wait(.1) 
+						fireproximityprompt(prox) 
+						task.wait(1)
+					else 
+						if UrBuildings:FindFirstChild("Crafting") then 
+							CraftingUI.Enabled = true
+						else 
+							notify("You don't have a crafting!") 
+							task.wait(10) 
+						end 
+					end
+				else
+					if CraftingUI.Visible == false then CraftingUI.Visible = true end
+					for i, v in pairs(CraftingUI.ScrollingFrame:GetChildren()) do 
+						if v:FindFirstChild("ItemTemplate") or v:FindFirstChild("CraftingUpgrade") then
+							for i,v1 in pairs(v:GetChildren()) do
+								if v1.Name == "ItemTemplateCraftingToClaim" then
+									if CraftingUI.CraftableItem.ItemTemplateToClaim.Title.Text ~= v1.Title.Text then
+										firesignal(v1.MouseButton1Down)
+										print("swfsdgdr")
+									else
+										firesignal(CraftingUI.CraftableItem.Craft.MouseButton1Down)
+										print("Claimed " .. v1.Title.Text)
+										notify("Claimed " .. v1.Title.Text)
+									end
+								else
+									if v1:FindFirstChild("Title") and (v1.Title.Text == ca1 or v1.Title.Text == ca2 or v1.Title.Text == ca3) and v1.Name ~= "ItemTemplateCraftingProgress" then
+										if CraftingUI.CraftableItem.ItemTemplate.Title.Text ~= v1.Title.Text then
+											firesignal(v1.MouseButton1Down)
+										else
+											firesignal(CraftingUI.CraftableItem.Craft.MouseButton1Down)
+											print("Crafting " .. v1.Title.Text)
+											notify("Crafting " .. v1.Title.Text)
+										end
+									end
+								end 
+							end 
+						end 
+					end 
+				end
+			end 
+		end 
+	end)
+	
 	local UnlockedPage4 = false
 	sectionW:addButton("Unlock ncxyzero_bridgenet2-fork@1.1.5 Functions",function()
 		if UnlockedPage4 == true then
@@ -4730,14 +4906,22 @@ local function MiniWar()
 			writefile(DHV2MW .. "/bsib.txt"," ")
 			writefile(DHV2MW .. "/bsi1b.txt"," ")
 			writefile(DHV2MW .. "/bsi11b.txt"," ")
+			writefile(DHV2MW .. "/bsi111b.txt"," ")
+			writefile(DHV2MW .. "/bsi1111b.txt"," ")
 			writefile(DHV2MW .. "/ABSIb.txt","false")
 			writefile(DHV2MW .. "/AutoBuyEverythingBMb.txt","false")
 			writefile(DHV2MW .. "/bsiBMb.txt"," ")
 			writefile(DHV2MW .. "/bsiBM1b.txt"," ")
 			writefile(DHV2MW .. "/bsiBM11b.txt"," ")
+			writefile(DHV2MW .. "/bsiBM111b.txt"," ")
+			writefile(DHV2MW .. "/bsiBM1111b.txt"," ")
 			writefile(DHV2MW .. "/ABSIBMb.txt","false")
 			writefile(DHV2MW .. "/AutoSellb.txt","false")
 			writefile(DHV2MW .. "/AutoClaimDailyRewards.txt","false")
+			writefile(Choices .. "/ca1.txt"," ")
+			writefile(Choices .. "/ca2.txt"," ")
+			writefile(Choices .. "/ca3.txt"," ")
+			writefile(DHV2MW .. "/AutoCraft.txt","false")
 			local DHV2MWEvents = DHV2MW .. "/Events"
 			makefolder(DHV2MWEvents)
 			writefile(DHV2MWEvents .. "/AutoSellAlien.txt","false")
@@ -4801,6 +4985,7 @@ local function MiniWar()
 			ABSIBMb = false
 			AutoSellb = false
 			AutoClaimDailyRewards = false
+			AutoCraft = false
 
 			for i,v in pairs(player.PlayerGui:GetChildren()) do
 				if v.Name == "ScreenGui" then
