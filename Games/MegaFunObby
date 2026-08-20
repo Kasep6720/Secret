@@ -164,13 +164,14 @@ function notify(a,b,c)
 	return tonumber(string.format("%." .. (numDecimalPlaces or 0) .. "f", num))
 end
 notify("Enabled anti-AFK")
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/refs/heads/Functions/ChooseUrDevice"))()
 -- init
 
 --Mega Fun Obby
 local function MegaFunObby()
 
 	--DogeHub V2 GUI
-	local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20page%20format%20gui"))()
+	local library = DogeHubV2GUI
 	local NoobieDoge = library.new("DogeHub V2", 5013109572)
 
 	-- themes
