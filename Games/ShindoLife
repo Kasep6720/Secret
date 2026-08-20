@@ -810,6 +810,7 @@ function notify(a,b,c)
   return tonumber(string.format("%." .. (numDecimalPlaces or 0) .. "f", num))
 end
 notify("Enabled anti-AFK")
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/refs/heads/Functions/ChooseUrDevice"))()
 -- init
 
 --Shindo Inf Spin
@@ -1042,7 +1043,7 @@ local function ShindoInfSpin()
 	end
 
 	--DogeHub V2 GUI
-	local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20page%20format%20gui"))()
+	local library = DogeHubV2GUI
 	local NoobieDoge = library.new("DogeHub V2", 5176336983)
 
   	-- themes
@@ -3440,7 +3441,7 @@ end
 --Shindo My Home
 local function ShindoMyHome()
   --DogeHub V2 GUI
-  local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20page%20format%20gui"))()
+  local library = DogeHubV2GUI
   local NoobieDoge = library.new("DogeHub V2", 10567878127)
 
   -- themes
@@ -4379,7 +4380,7 @@ local function ShindoDungeonSelection()
 	end
 
 	--DogeHub V2 GUI
-	local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20page%20format%20gui"))()
+	local library = DogeHubV2GUI
 	local NoobieDoge = library.new("DogeHub V2", 5013109572)
 
 	-- themes
@@ -4963,7 +4964,7 @@ end
 --Shindo Dungeons
 local function ShindoDungeons()
   --DogeHub V2 GUI
-  local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20page%20format%20gui"))()
+  local library = DogeHubV2GUI
   local NoobieDoge = library.new("DogeHub V2", 5013109572)
 
   -- themes
@@ -5942,7 +5943,7 @@ end
 local function ShindoBossBattle()
   repeat wait() until npcFolder.npc1.Head.mob.fram.name:FindFirstChild("info")
   --DogeHub V2 GUI
-  local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20page%20format%20gui"))()
+  local library = DogeHubV2GUI
   local NoobieDoge = library.new("DogeHub V2", 5013109572)
 
   -- themes
@@ -6940,7 +6941,7 @@ end
 --Shindo Event Boss
 local function ShindoEventBoss()
   --DogeHub V2 GUI
-  local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20page%20format%20gui"))()
+  local library = DogeHubV2GUI
   local NoobieDoge = library.new("DogeHub V2", 5013109572)
 
 	-- themes
@@ -8237,7 +8238,7 @@ end
 --Shindo Borumaki VS Kamaki Event
 local function ShindoBoruVSKamaki()
   --DogeHub V2 GUI
-  local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20page%20format%20gui"))()
+  local library = DogeHubV2GUI
   local NoobieDoge = library.new("DogeHub V2", 5013109572)
 
 	-- themes
@@ -9870,7 +9871,7 @@ local function AXSSComps()
 	  end
 	end
 	--DogeHub V2 GUI
-	local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20page%20format%20gui"))()
+  local library = DogeHubV2GUI
 	local NoobieDoge = library.new("DogeHub V2", 5013109572)
 
 	-- themes
@@ -11086,7 +11087,7 @@ end
 --Shindo Main
 local function ShindoMain()
   --DogeHub V2 GUI
-  local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20page%20format%20gui"))()
+  local library = DogeHubV2GUI
   local NoobieDoge = library.new("DogeHub V2", 5013109572)
 
 	-- themes
