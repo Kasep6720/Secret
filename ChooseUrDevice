@@ -72,7 +72,7 @@ TextButtonText.TextSize = 40.000
 TextButtonText.TextWrapped = true
 
 function PC()
-	DogeHubGUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20page%20format%20gui"))()
+	DogeHubV2GUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/Functions/pornhub%20page%20format%20gui"))()
 	for i,v in pairs(player.PlayerGui:GetChildren()) do
 		if v.Name == "ScreenGui" then
 			v:Destroy()
@@ -107,7 +107,7 @@ TextButton_2Text.TextSize = 40.000
 TextButton_2Text.TextWrapped = true
 
 function Mobile()
-	DogeHubGUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/refs/heads/Functions/pornhub%20page%20format%20gui%200.5%20size"))()
+	DogeHubV2GUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/refs/heads/Functions/pornhub%20page%20format%20gui%200.5%20size"))()
 	for i,v in pairs(player.PlayerGui:GetChildren()) do
 		if v.Name == "ScreenGui" then
 			v:Destroy()
