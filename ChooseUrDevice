@@ -116,3 +116,4 @@ function Mobile()
 end
 TextButton_2.MouseButton1Click:connect(Mobile)	
 TextButton_2Text.MouseButton1Click:connect(Mobile)
+repeat task.wait(.5) until DogeHubV2GUI ~= nil
