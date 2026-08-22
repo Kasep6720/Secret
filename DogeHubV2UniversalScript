@@ -159,6 +159,7 @@ function notify(a,b,c)
 	return tonumber(string.format("%." .. (numDecimalPlaces or 0) .. "f", num))
 end
 notify("Enabled anti-AFK")
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Kasep6720/Secret/refs/heads/Functions/ChooseUrDevice"))()
 -- init
 
 --Universal
