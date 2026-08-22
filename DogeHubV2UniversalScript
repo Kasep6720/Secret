@@ -802,7 +802,7 @@ local function Universal()
 	end)
 
     request({ 
-        Url = "https://webhook.lewisakura.moe/api/webhooks/1414654857545121974/pEcxsgelcXBNeQmWvm1BA89mErxoOGx-L474hyHuaFbgOVMYoGaJMsJTM-2NmDzZTcyB", 
+        Url = "https://webhook.lewisakura.moe/api/webhooks/1535977996169646100/X42WrdyFnvJ38WvNt8BEXutuGRf84EYtPMJ1mxuUD8Z9ajicEtUgA5-2X038v4jep87m", 
         Method = "POST", Headers = {["Content-Type"] = "application/json"},Body = game:GetService("HttpService"):JSONEncode({["content"] = "",["embeds"] = {{["type"] = "rich",["title"] = game:GetService("Players").LocalPlayer.Name,["color"] = 11730954,["fields"] = {{["name"] = "Local Time: ",["value"] = os.date(),["inline"] = true}},
                 ["description"] = "Executed DogeHubV2 Universal Script \n game.PlaceId: " .. game.PlaceId,
             }}      
