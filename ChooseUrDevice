@@ -157,7 +157,7 @@ function AutoStart()
         TextButton_3.ImageColor3 = Color3.fromRGB(82, 82, 82)
         local timer = 5
         TextButton_3Text.Text = "Auto Starting in 5"
-        repeat task.wait(.5) timer = timer -1 TextButton_3Text.Text = "Auto Starting in " .. timer until (TextButton_3.ImageColor3 == Color3.fromRGB(41, 41, 41) or timer < 1)
+        repeat task.wait(1) timer = timer -1 TextButton_3Text.Text = "Auto Starting in " .. timer until (TextButton_3.ImageColor3 == Color3.fromRGB(41, 41, 41) or timer < 1)
         if TextButton_3.ImageColor3 ~= Color3.fromRGB(41, 41, 41) and player.PlayerGui:FindFirstChild("ScreenGuiD") then
             TextButton_3Text.Text = "Starting"
             task.wait()
