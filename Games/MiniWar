@@ -5142,8 +5142,8 @@ local function MiniWar()
 			writefile(DHV2MWEvents .. "/AutoBuyAnomalyEssence.txt","false")
 			writefile(DHV2MWEvents .. "/AutoBuyAlienOnly1.txt","false")
 			writefile(DHV2MWEvents .. "/AutoBuyAnomalyEssenceOnly1.txt","false")
-			writefile(DHV2MWEvents .. "/bsie.txt","false")
-			writefile(DHV2MWEvents .. "/bsie1.txt","false")
+			writefile(DHV2MWEvents .. "/bsie.txt"," ")
+			writefile(DHV2MWEvents .. "/bsie1.txt"," ")
 			EnabledSliderPowa = false
 			CtrlClickTeePee = false
 			infjumptoggle = false
