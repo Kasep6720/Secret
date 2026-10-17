@@ -304,7 +304,7 @@ do
 		DHV2Frame.Parent = container
 		DHV2Frame.Name = title .." Toggle"
 		DHV2Frame.BackgroundTransparency = 1
-		DHV2Frame.Position = game:GetService("CoreGui").TopBarApp.TopBarApp.MenuIconHolder.TriggerPoint.Position+UDim2.new(0.0105, 0, 0.005, 0)
+		DHV2Frame.Position = game:GetService("CoreGui").TopBarApp.TopBarApp.UnibarLeftFrame.UnibarMenu["2"].Unibar["3"].nine_dot.IconHitArea_nine_dot.Position+UDim2.new(0.0105, 0, 0.005, 0)
 		DHV2Frame.Size = UDim2.new(0, 40, 0, 40)
 		DHV2Frame.Image = "rbxassetid://4641149554"
 		DHV2Frame.ImageColor3 = Color3.fromRGB(24, 24, 24)
