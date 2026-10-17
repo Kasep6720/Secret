@@ -448,8 +448,28 @@ local function MiniWar()
 	end 
 	if isfile(DHV2MWEvents .. "/AutoBuyAlien.txt") == false then
 		writefile(DHV2MWEvents .. "/AutoBuyAlien.txt","false")
+	end  
+	if isfile(DHV2MWEvents .. "/AutoSellAnomalyEssence.txt") == false then
+		writefile(DHV2MWEvents .. "/AutoSellAnomalyEssence.txt","false")
+	end
+	if isfile(DHV2MWEvents .. "/AutoSellAnomalyEssenceInterval.txt") == false then
+		writefile(DHV2MWEvents .. "/AutoSellAnomalyEssenceInterval.txt","5")
+	end
+	if isfile(DHV2MWEvents .. "/AutoBuyAnomalyEssence.txt") == false then
+		writefile(DHV2MWEvents .. "/AutoBuyAnomalyEssence.txt","false")
+	end  
+	if isfile(DHV2MWEvents .. "/AutoBuyAlienOnly1.txt") == false then
+		writefile(DHV2MWEvents .. "/AutoBuyAlienOnly1.txt","false")
 	end 
-
+	if isfile(DHV2MWEvents .. "/AutoBuyAnomalyEssenceOnly1.txt") == false then
+		writefile(DHV2MWEvents .. "/AutoBuyAnomalyEssenceOnly1.txt","false")
+	end 
+	if isfile(DHV2MWEvents .. "/bsie.txt") == false then
+		writefile(DHV2MWEvents .. "/bsie.txt"," ")
+	end 
+	if isfile(DHV2MWEvents .. "/bsie1.txt") == false then
+		writefile(DHV2MWEvents .. "/bsie1.txt"," ")
+	end 
 	workspace:WaitForChild("MilitaryMap"):WaitForChild("Object"):WaitForChild("Wooden")
 	workspace.MilitaryMap:WaitForChild("PlayerPlots")
 	--Wait for stuff to load
@@ -1828,7 +1848,7 @@ local function MiniWar()
 		while task.wait(.2) do
 			if AutoBuyEverythingb then
 				for i, v in ipairs(BuyShop) do
-					if BuyUIig[v]:FindFirstChild("Stock") and BuyUIig[v].Stock.Text ~= "Out of Stock!" and BuyUIig[v].Stock.Text ~= "Max Reached (1/1)" and BuyUIig[v].Stock.Text ~= "Max Reached (2/2)" and BuyUIig[v].Stock.Text ~= "Max Reached (3/3)" and BuyUIig[v].Name ~= "UIListLayout"  and BuyUIig[v].Name ~= "UIPadding"  and BuyUIig[v].Name ~= "DontDelete" and BuyUIig[v]:FindFirstChild("Buy") then
+					if BuyUIig[v]:FindFirstChild("Stock") and BuyUIig[v].Stock.Text ~= "Out of Stock!" and BuyUIig[v].Stock.TextColor3 ~= Color3.fromRGB(255, 170, 0) and BuyUIig[v].Stock.Text ~= "Max Reached (1/1)" and BuyUIig[v].Stock.Text ~= "Max Reached (2/2)" and BuyUIig[v].Stock.Text ~= "Max Reached (3/3)" and BuyUIig[v].Name ~= "UIListLayout"  and BuyUIig[v].Name ~= "UIPadding"  and BuyUIig[v].Name ~= "DontDelete" and BuyUIig[v]:FindFirstChild("Buy") then
 						local CurrentMoney = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Frame.Money.Text)
 						if ShortToNumber(BuyUIig[v].Buy.Price.PriceText.Text) > CurrentMoney then
 							print("Not enough money to purchase")
@@ -1847,7 +1867,7 @@ local function MiniWar()
 				else
 					for i, v in ipairs(BuyShop) do
 						if v == bsib or v == bsi1b or v == bsi11b or v == bsi111b or v == bsi1111b then
-							if BuyUIig[v]:FindFirstChild("Stock") and BuyUIig[v].Stock.Text ~= "Out of Stock!" and BuyUIig[v].Stock.Text ~= "Max Reached (1/1)" and BuyUIig[v].Stock.Text ~= "Max Reached (2/2)" and BuyUIig[v].Stock.Text ~= "Max Reached (3/3)" and BuyUIig[v].Name ~= "UIListLayout"  and BuyUIig[v].Name ~= "UIPadding"  and BuyUIig[v].Name ~= "DontDelete" and BuyUIig[v]:FindFirstChild("Buy") then
+							if BuyUIig[v]:FindFirstChild("Stock") and BuyUIig[v].Stock.Text ~= "Out of Stock!" and BuyUIig[v].Stock.TextColor3 ~= Color3.fromRGB(255, 170, 0) and BuyUIig[v].Stock.Text ~= "Max Reached (1/1)" and BuyUIig[v].Stock.Text ~= "Max Reached (2/2)" and BuyUIig[v].Stock.Text ~= "Max Reached (3/3)" and BuyUIig[v].Name ~= "UIListLayout"  and BuyUIig[v].Name ~= "UIPadding"  and BuyUIig[v].Name ~= "DontDelete" and BuyUIig[v]:FindFirstChild("Buy") then
 								local CurrentMoney = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Frame.Money.Text)
 								if ShortToNumber(BuyUIig[v].Buy.Price.PriceText.Text) > CurrentMoney then
 									print("Not enough money to purchase")
@@ -1880,7 +1900,7 @@ local function MiniWar()
 						if AutoBuyEverythingBMb then
 							for i, v in ipairs(BuyBlackMarket) do
 								if v.Name ~= "UIListLayout" and v.Name ~= "UIPadding" and v.Name ~= "DontDelete" then
-									if BlackMarketUIig[v]:FindFirstChild("Stock") and BlackMarketUIig[v].Stock.Text ~= "Out of Stock!" and BlackMarketUIig[v].Stock.Text ~= "Max Reached (1/1)" and BlackMarketUIig[v].Stock.Text ~= "Max Reached (2/2)" and BlackMarketUIig[v].Stock.Text ~= "Max Reached (3/3)" and BlackMarketUIig[v].Name ~= "UIListLayout"  and BlackMarketUIig[v].Name ~= "UIPadding"  and BlackMarketUIig[v].Name ~= "DontDelete" and BlackMarketUIig[v].Name ~= "PadderTemplate" and BlackMarketUIig[v]:FindFirstChild("Buy") and BlackMarketUIig[v].Name ~= "TransportPad" then
+									if BlackMarketUIig[v]:FindFirstChild("Stock") and BlackMarketUIig[v].Stock.Text ~= "Out of Stock!" and BlackMarketUIig[v].Stock.Text ~= "Max Reached (1/1)" and BlackMarketUIig[v].Stock.TextColor3 ~= Color3.fromRGB(255, 170, 0) and BlackMarketUIig[v].Stock.Text ~= "Max Reached (2/2)" and BlackMarketUIig[v].Stock.Text ~= "Max Reached (3/3)" and BlackMarketUIig[v].Name ~= "UIListLayout"  and BlackMarketUIig[v].Name ~= "UIPadding"  and BlackMarketUIig[v].Name ~= "DontDelete" and BlackMarketUIig[v].Name ~= "PadderTemplate" and BlackMarketUIig[v]:FindFirstChild("Buy") and BlackMarketUIig[v].Name ~= "TransportPad" then
 										local CurrentGem = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Gems.Gems.Text)
 										if ShortToNumber(BlackMarketUIig[v].Buy.Price.PriceText.Text) > CurrentGem then
 											print("Not enough gems to purchase")
@@ -1901,7 +1921,7 @@ local function MiniWar()
 								for i, v in ipairs(BuyBlackMarket) do
 									if v == bsiBMb or v == bsiBM1b or v == bsiBM11b or v == bsiBM111b or v == bsiBM1111b then
 										if v.Name ~= "UIListLayout" and v.Name ~= "UIPadding" and v.Name ~= "DontDelete" and v.Name ~= "TransportPad" then
-											if BlackMarketUIig[v]:FindFirstChild("Stock") and BlackMarketUIig[v].Stock.Text ~= "Out of Stock!" and BlackMarketUIig[v].Stock.Text ~= "Max Reached (1/1)" and BlackMarketUIig[v].Stock.Text ~= "Max Reached (2/2)" and BlackMarketUIig[v].Stock.Text ~= "Max Reached (3/3)" and BlackMarketUIig[v].Name ~= "UIListLayout"  and BlackMarketUIig[v].Name ~= "UIPadding"  and BlackMarketUIig[v].Name ~= "DontDelete" and BlackMarketUIig[v].Name ~= "PadderTemplate" and BlackMarketUIig[v]:FindFirstChild("Buy") then
+											if BlackMarketUIig[v]:FindFirstChild("Stock") and BlackMarketUIig[v].Stock.Text ~= "Out of Stock!" and BlackMarketUIig[v].Stock.TextColor3 ~= Color3.fromRGB(255, 170, 0) and BlackMarketUIig[v].Stock.Text ~= "Max Reached (1/1)" and BlackMarketUIig[v].Stock.Text ~= "Max Reached (2/2)" and BlackMarketUIig[v].Stock.Text ~= "Max Reached (3/3)" and BlackMarketUIig[v].Name ~= "UIListLayout"  and BlackMarketUIig[v].Name ~= "UIPadding"  and BlackMarketUIig[v].Name ~= "DontDelete" and BlackMarketUIig[v].Name ~= "PadderTemplate" and BlackMarketUIig[v]:FindFirstChild("Buy") then
 												local CurrentGem = CleanToNumber(player.PlayerGui.MainUI.HUD.CurrencyUI.Gems.Gems.Text)
 												if ShortToNumber(BlackMarketUIig[v].Buy.Price.PriceText.Text) > CurrentGem then
 													print("Not enough gems to purchase")
@@ -4377,6 +4397,7 @@ local function MiniWar()
 	local page7 = NoobieDoge:addPage("Events", 136388769289535)
 	local section1 = page7:addSection("Beast Breach Event")
 	local section2 = page7:addSection("Alien Event")
+	local section3 = page7:addSection("Halloween Event")
 	local sectionW = page7:addSection("Unlock ncxyzero_bridgenet2-fork@1.1.5 Functions")
 
 	if readfile(DHV2MWEvents .. "/AutoAttackMechBeast.txt") == "true" then
@@ -4430,9 +4451,18 @@ local function MiniWar()
 		end
 	end)
 
+	local alienShopUI = player.PlayerGui:WaitForChild("MainUI"):WaitForChild("Fullscreen"):WaitForChild("AlienShopUI"):WaitForChild("ItemsGrid")
+	waitForGridToLoad(alienShopUI, 10)
+	local halloweenShopUI = player.PlayerGui:WaitForChild("MainUI"):WaitForChild("Fullscreen"):WaitForChild("HalloweenShopUI"):WaitForChild("ItemsGrid")
+	waitForGridToLoad(halloweenShopUI, 10)
+	task.wait()
+
 	local ExtractorUI = player.PlayerGui.MainUI.Fullscreen.ExtractorUI
 	local AlienShopUI = player.PlayerGui.MainUI.Fullscreen.AlienShopUI
 	local CurrentAlienCore = ShortToNumber(AlienShopUI.Topbar.alienCoreFrame.alienCoreAmount.Text)
+	local HalloweenExtractorUI = player.PlayerGui.MainUI.Fullscreen.HalloweenExtractorUI
+	local HalloweenShopUI = player.PlayerGui.MainUI.Fullscreen.HalloweenShopUI
+	local CurrentAnomalyEssence = ShortToNumber(HalloweenShopUI.Topbar.anomalyEssenceFrame.anomalyEssenceAmount.Text)
 
 	section2:addButton("Open Extract Alien Crops UI",function()
 		task.wait()
@@ -4504,17 +4534,197 @@ local function MiniWar()
 			end
 		end)
 	end
+	if readfile(DHV2MWEvents .. "/AutoBuyAlienOnly1.txt") == "true" then
+		AutoBuyAlienOnly1 = true
+		section2:addToggle("Only buy specific item",true,function(bool)
+			AutoBuyAlienOnly1 = bool
+			if AutoBuyAlienOnly1 then
+				writefile(DHV2MWEvents .. "/AutoBuyAlienOnly1.txt","true")
+			else
+				writefile(DHV2MWEvents .. "/AutoBuyAlienOnly1.txt","false")
+			end
+		end)
+	else
+		AutoBuyAlienOnly1 = false
+		section2:addToggle("Only buy specific item",false,function(bool)
+			AutoBuyAlienOnly1 = bool
+			if AutoBuyAlienOnly1 then
+				writefile(DHV2MWEvents .. "/AutoBuyAlienOnly1.txt","true")
+			else
+				writefile(DHV2MWEvents .. "/AutoBuyAlienOnly1.txt","false")
+			end
+		end)
+	end
+	local BuyAlienShop = {}
+	for i,v in pairs(AlienShopUI:WaitForChild("ItemsGrid"):GetChildren()) do
+		if v.Name ~= "Template" and v.Name ~= "UIListLayout" and v.Name ~= "UIPadding" and v.Name ~= "DontDelete" and v.Name ~= "PadderTemplate" and v:FindFirstChild("Stock") then
+			table.insert(BuyAlienShop, v.Name)
+		end
+	end
+	section2:addDropdown("Specific item: " .. readfile(DHV2MWEvents .. "/bsie.txt"),BuyAlienShop,function(BUYSe1)
+		print("Selected: " .. BUYSe1)
+		notify("Selected: " .. BUYSe1)
+		bsie = BUYSe1
+		writefile(DHV2MWEvents .. "/bsie1.txt",bsie)
+	end)
+
 	spawn(function()
 		while task.wait(1) do
 			if AutoBuyAlien then
 				for i, v in pairs(AlienShopUI.ItemsGrid:GetChildren()) do 
-					if v.Name ~= "UIListLayout" and v.Name ~= "DontDelete" and v.Name ~= "UIPadding" and v.Name ~= "Template" and v.Stock.Text ~= "Out of Stock!" and v.Stock.Text ~= "Max Reached (3/3)" and v.Stock.Text ~= "Max Reached (2/2)" then
-						local CurrentAlienCore = ShortToNumber(AlienShopUI.Topbar.alienCoreFrame.alienCoreAmount.Text)
-						if CleanToNumber(v.Buy.Price.PriceText.Text) > CurrentAlienCore then
-							print("Not enough alien core to purchase")
+					if v.Name ~= "UIListLayout" and v.Name ~= "DontDelete" and v.Name ~= "UIPadding" and v.Name ~= "Template" and v:FindFirstChild("Stock") and v.Stock.Text ~= "Out of Stock!" and v.Stock.Text ~= "Max Reached (3/3)" and v.Stock.Text ~= "Max Reached (2/2)" and v.Stock.TextColor3 ~= Color3.fromRGB(255, 170, 0) then
+						if AutoBuyAlienOnly1 then
+							if v.Name == bsie then
+								local CurrentAlienCore = ShortToNumber(AlienShopUI.Topbar.alienCoreFrame.alienCoreAmount.Text)
+								if CleanToNumber(v.Buy.Price.PriceText.Text) > CurrentAlienCore then
+									print("Not enough alien core to purchase")
+								else
+									firesignal(v.Buy.MouseButton1Down)
+									task.wait()
+								end
+							end
 						else
-							firesignal(v.Buy.MouseButton1Down)
-							task.wait()
+							local CurrentAlienCore = ShortToNumber(AlienShopUI.Topbar.alienCoreFrame.alienCoreAmount.Text)
+							if CleanToNumber(v.Buy.Price.PriceText.Text) > CurrentAlienCore then
+								print("Not enough alien core to purchase")
+							else
+								firesignal(v.Buy.MouseButton1Down)
+								task.wait()
+							end
+						end
+					end
+				end
+			end
+		end
+	end)
+
+	section3:addButton("Open Extract Anomaly Essence UI",function()
+		task.wait()
+		HalloweenExtractorUI.Visible = true
+	end)
+	section3:addButton("Open Halloween Shop UI",function()
+		task.wait()
+		HalloweenShopUI.Visible = true
+	end)
+
+	if readfile(DHV2MWEvents .. "/AutoSellAnomalyEssence.txt") == "true" then
+		AutoSellAnomalyEssence = true
+		section3:addToggle("Auto Sell Anomaly Essence",true,function(bool)
+			AutoSellAnomalyEssence = bool
+			if AutoSellAnomalyEssence then
+				writefile(DHV2MWEvents .. "/AutoSellAnomalyEssence.txt","true")
+			else
+				writefile(DHV2MWEvents .. "/AutoSellAnomalyEssence.txt","false")
+			end
+		end)
+	else
+		AutoSellAnomalyEssence = false
+		section3:addToggle("Auto Sell Anomaly Essence",false,function(bool)
+			AutoSellAnomalyEssence = bool
+			if AutoSellAnomalyEssence then
+				writefile(DHV2MWEvents .. "/AutoSellAnomalyEssence.txt","true")
+			else
+				writefile(DHV2MWEvents .. "/AutoSellAnomalyEssence.txt","false")
+			end
+		end)
+	end
+	section3:addSlider("Auto Sell Crops Interval", tonumber(readfile(DHV2MWEvents .. "/AutoSellAnomalyEssenceInterval.txt")), 0.5, 600, function(value)
+		notify("Auto Sell Crops Interval: " .. value .. " s")
+		AutoSellAlienCropsInterval = value
+		writefile(DHV2MWEvents .. "/AutoSellAlienCropsInterval.txt",tostring(value))
+	end)
+	AutoSellAnomalyEssenceInterval = tonumber(readfile(DHV2MWEvents .. "/AutoSellAnomalyEssenceInterval.txt"))
+
+	spawn(function()
+		while task.wait(AutoSellAnomalyEssenceInterval) do
+			if AutoSellAnomalyEssence then
+				pcall(function()
+					if ShortToNumber(HalloweenExtractorUI.anomalyEssenceFrameAll.anomalyEssenceAmount.Text) > 1 then
+						firesignal(HalloweenExtractorUI.ExtractAll.MouseButton1Click)
+					end
+				end)
+			end
+		end
+	end)
+
+	if readfile(DHV2MWEvents .. "/AutoBuyAnomalyEssence.txt") == "true" then
+		AutoBuyAnomalyEssence = true
+		section3:addToggle("Auto Buy Halloween Items",true,function(bool)
+			AutoBuyAnomalyEssence = bool
+			if AutoBuyAnomalyEssence then
+				writefile(DHV2MWEvents .. "/AutoBuyAnomalyEssence.txt","true")
+			else
+				writefile(DHV2MWEvents .. "/AutoBuyAnomalyEssence.txt","false")
+			end
+		end)
+	else
+		AutoBuyAnomalyEssence = false
+		section3:addToggle("Auto Buy Halloween Items",false,function(bool)
+			AutoBuyAnomalyEssence = bool
+			if AutoBuyAnomalyEssence then
+				writefile(DHV2MWEvents .. "/AutoBuyAnomalyEssence.txt","true")
+			else
+				writefile(DHV2MWEvents .. "/AutoBuyAnomalyEssence.txt","false")
+			end
+		end)
+	end
+	if readfile(DHV2MWEvents .. "/AutoBuyAnomalyEssenceOnly1.txt") == "true" then
+		AutoBuyAnomalyEssenceOnly1 = true
+		section3:addToggle("Only buy specific item",true,function(bool)
+			AutoBuyAnomalyEssenceOnly1 = bool
+			if AutoBuyAnomalyEssenceOnly1 then
+				writefile(DHV2MWEvents .. "/AutoBuyAnomalyEssenceOnly1.txt","true")
+			else
+				writefile(DHV2MWEvents .. "/AutoBuyAnomalyEssenceOnly1.txt","false")
+			end
+		end)
+	else
+		AutoBuyAnomalyEssenceOnly1 = false
+		section3:addToggle("Only buy specific item",false,function(bool)
+			AutoBuyAnomalyEssenceOnly1 = bool
+			if AutoBuyAnomalyEssenceOnly1 then
+				writefile(DHV2MWEvents .. "/AutoBuyAnomalyEssenceOnly1.txt","true")
+			else
+				writefile(DHV2MWEvents .. "/AutoBuyAnomalyEssenceOnly1.txt","false")
+			end
+		end)
+	end
+	local BuyHalloweenShop = {}
+	for i,v in pairs(HalloweenShopUI:WaitForChild("ItemsGrid"):GetChildren()) do
+		if v.Name ~= "Template" and v.Name ~= "UIListLayout" and v.Name ~= "UIPadding" and v.Name ~= "DontDelete" and v.Name ~= "PadderTemplate" and v:FindFirstChild("Stock") then
+			table.insert(BuyHalloweenShop, v.Name)
+		end
+	end
+	section3:addDropdown("Specific item: " .. readfile(DHV2MWEvents .. "/bsie1.txt"),BuyHalloweenShop,function(BUYSe11)
+		print("Selected: " .. BUYSe11)
+		notify("Selected: " .. BUYSe11)
+		bsie1 = BUYSe11
+		writefile(DHV2MWEvents .. "/bsie1.txt",bsie1)
+	end)
+
+	spawn(function()
+		while task.wait(1) do
+			if AutoBuyAnomalyEssence then
+				for i, v in pairs(HalloweenShopUI.ItemsGrid:GetChildren()) do 
+					if v.Name ~= "UIListLayout" and v.Name ~= "DontDelete" and v.Name ~= "UIPadding" and v.Name ~= "Template" and v:FindFirstChild("Stock") and v.Stock.Text ~= "Out of Stock!" and v.Stock.Text ~= "Max Reached (3/3)" and v.Stock.Text ~= "Max Reached (2/2)" and v.Stock.TextColor3 ~= Color3.fromRGB(255, 170, 0) then
+						if AutoBuyAnomalyEssenceOnly1 then
+							if v.Name == bsie1 then
+								local CurrentAnomalyEssence = ShortToNumber(HalloweenShopUI.Topbar.anomalyEssenceFrame.anomalyEssenceAmount.Text)
+								if CleanToNumber(v.Buy.Price.PriceText.Text) > CurrentAnomalyEssence then
+									print("Not enough anomaly essence to purchase")
+								else
+									firesignal(v.Buy.MouseButton1Down)
+									task.wait()
+								end
+							end
+						else
+							local CurrentAnomalyEssence = ShortToNumber(HalloweenShopUI.Topbar.anomalyEssenceFrame.anomalyEssenceAmount.Text)
+							if CleanToNumber(v.Buy.Price.PriceText.Text) > CurrentAnomalyEssence then
+								print("Not enough anomaly essence to purchase")
+							else
+								firesignal(v.Buy.MouseButton1Down)
+								task.wait()
+							end
 						end
 					end
 				end
@@ -4927,6 +5137,13 @@ local function MiniWar()
 			writefile(DHV2MWEvents .. "/AutoSellAlienCropsInterval.txt","5")
 			writefile(DHV2MWEvents .. "/AutoAttackMechBeast.txt","false")
 			writefile(DHV2MWEvents .. "/AutoBuyAlien.txt","false")
+			writefile(DHV2MWEvents .. "/AutoSellAnomalyEssence.txt","false")
+			writefile(DHV2MWEvents .. "/AutoSellAnomalyEssenceInterval.txt","false")
+			writefile(DHV2MWEvents .. "/AutoBuyAnomalyEssence.txt","false")
+			writefile(DHV2MWEvents .. "/AutoBuyAlienOnly1.txt","false")
+			writefile(DHV2MWEvents .. "/AutoBuyAnomalyEssenceOnly1.txt","false")
+			writefile(DHV2MWEvents .. "/bsie.txt","false")
+			writefile(DHV2MWEvents .. "/bsie1.txt","false")
 			EnabledSliderPowa = false
 			CtrlClickTeePee = false
 			infjumptoggle = false
@@ -4985,6 +5202,10 @@ local function MiniWar()
 			AutoSellb = false
 			AutoClaimDailyRewards = false
 			AutoCraft = false
+			AutoSellAnomalyEssence = false
+			AutoBuyAnomalyEssence = false
+			AutoBuyAlienOnly1 = false
+			AutoBuyAnomalyEssenceOnly1 = false
 
 			for i,v in pairs(player.PlayerGui:GetChildren()) do
 				if v.Name == "ScreenGui" then
